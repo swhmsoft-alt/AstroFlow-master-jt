@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import WireEdmAdvantages from '../../components/services/WireEdmAdvantages.astro';
+import WireEdmSpecsDashboard from '../../components/services/WireEdmSpecsDashboard.astro';
+import WireEdmKnowHow from '../../components/services/WireEdmKnowHow.astro';
+import WireEdmDedicatedCta from '../../components/services/WireEdmDedicatedCta.astro';
+---
+<BaseLayout title="Wire EDM Machining — BOZE CNC Ti" description="Precision wire EDM machining for titanium: zero mechanical stress, sharp internal corners (ø 0.1 mm wire), hardened alloy cutting, ±0.002 mm accuracy, Ra 0.25 µm finish.">
+  <!-- Hero — DO NOT MODIFY -->
+  <SubpageHero
+    title="Wire EDM Machining"
+    highlight="Services"
+    badge="Precision EDM Machining"
+    badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
+    subtitle="Electric discharge cutting for micro-slots, hardened titanium alloys, thin-wall parts, and complex tapered profiles — achieving ±0.002 mm accuracy and Ra 0.25 µm micro-finish."
+  />
+
+  <!-- Wire EDM Process Advantages — 3-column grid -->
+  <WireEdmAdvantages />
+
+  <!-- Wire EDM Technical Specs Dashboard — 4-column -->
+  <WireEdmSpecsDashboard />
+
+  <!-- Wire EDM Engineering Know-How — 2-column challenge/solution -->
+  <WireEdmKnowHow />
+
+  <!-- Dedicated CTA for Wire EDM DFM Analysis -->
+  <WireEdmDedicatedCta />
+</BaseLayout>

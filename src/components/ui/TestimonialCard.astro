@@ -1,0 +1,53 @@
+---
+import Img from '@components/ui/Image.astro';
+
+interface Props {
+  testimonial: any;
+  variant?: 'default' | 'home';
+}
+
+const { testimonial, variant = 'default' } = Astro.props;
+const starPath = "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z";
+
+// Style variants — dark titanium
+const cardClasses = variant === 'home'
+  ? "card-titanium p-8 transition-all duration-300 flex flex-col h-full"
+  : "card-titanium p-8 transition-all duration-300 flex flex-col h-full";
+
+const quoteClasses = variant === 'home'
+  ? "mb-6 leading-relaxed flex-1" 
+  : "mb-6 leading-relaxed flex-1";
+
+const nameClasses = "font-semibold";
+const roleClasses = "text-sm";
+---
+
+<div class={cardClasses}>
+  <div class="flex items-center mb-6">
+    <div class="flex" style="color: color-mix(in srgb, var(--theme-accent) 60%, transparent);">
+      {Array.from({ length: 5 }).map(() => (
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path d={starPath} />
+        </svg>
+      ))}
+    </div>
+  </div>
+  <p class={quoteClasses} style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+    "{testimonial.quote}"
+  </p>
+  <div class="flex items-center mt-auto">
+      <div class={`w-12 h-12 rounded-full overflow-hidden mr-4 ring-2 ${testimonial.ringColor}`}>
+        <Img
+          src={testimonial.image}
+          alt={testimonial.name}
+          class="w-full h-full object-cover"
+          widths={[48]}
+          sizes="48px"
+        />
+      </div>
+    <div>
+      <div class={nameClasses} style="color: color-mix(in srgb, var(--theme-text) 90%, transparent);">{testimonial.name}</div>
+      <div class={roleClasses} style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{testimonial.role}</div>
+    </div>
+  </div>
+</div>

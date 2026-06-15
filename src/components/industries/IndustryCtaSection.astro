@@ -1,0 +1,70 @@
+---
+---
+
+<section class="relative py-28 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Engineering blueprint-style background pattern -->
+  <div class="absolute inset-0 opacity-[0.04]">
+    <div class="absolute inset-0" style="background-image: 
+      linear-gradient(var(--theme-primary) 1px, transparent 1px), 
+      linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px);
+      background-size: 40px 40px;
+    "></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full" style="background: radial-gradient(circle, color-mix(in srgb, var(--theme-primary) 15%, transparent) 0%, transparent 70%); filter: blur(80px);"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: color-mix(in srgb, var(--theme-primary) 70%, white);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        24-Hour Engineering Response
+      </div>
+
+      <!-- Headline -->
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
+        Bring Us Your
+        <span class="block gradient-text-accent">Critical Components</span>
+      </h2>
+
+      <p class="text-xl leading-relaxed mb-8 max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Submit your part drawings and specifications for an expert <strong style="color: var(--theme-text);">Design for Manufacturability (DFM)</strong> review. Our engineering team will assess your titanium component's machinability, tolerancing, and cost-optimization potential — with a detailed quotation within <strong style="color: color-mix(in srgb, var(--theme-primary) 70%, white);">24 hours</strong>.
+      </p>
+
+      <!-- Engineering Promise Points -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-3xl mx-auto">
+        <div class="p-4 rounded-lg text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <span class="block text-2xl font-bold mb-1 gradient-text-accent">24h</span>
+          <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">DFM Review & Quotation</span>
+        </div>
+        <div class="p-4 rounded-lg text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <span class="block text-2xl font-bold mb-1 gradient-text-accent">100%</span>
+          <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Material Traceability</span>
+        </div>
+        <div class="p-4 rounded-lg text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <span class="block text-2xl font-bold mb-1 gradient-text-accent">±0.005mm</span>
+          <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Precision Tolerancing</span>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <a
+        href="/rfq"
+        class="inline-flex items-center px-8 py-4 text-lg font-bold rounded-lg shadow-lg transition-all"
+        style="background-color: var(--theme-primary); color: var(--theme-text);"
+        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 50%, transparent)'; this.style.transform='translateY(-2px)'"
+        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''; this.style.transform=''"
+      >
+        Submit Parts for DFM Review
+        <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+
+      <p class="mt-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        Supported file formats: STEP, IGES, STL, PDF, DWG &bull; NDA available on request
+      </p>
+    </div>
+  </div>
+</section>

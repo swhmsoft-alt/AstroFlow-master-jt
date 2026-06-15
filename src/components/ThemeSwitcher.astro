@@ -1,0 +1,62 @@
+---
+import { themes as localThemes, DEFAULT_THEME_ID } from '@lib/cmsThemes';
+
+interface DisplayItem {
+  id: string;
+  name: string;
+}
+
+interface Props {
+  /** Optional theme list from CMS. Falls back to local cmsThemes.ts if not provided. */
+  items?: DisplayItem[];
+  /** Default theme ID from CMS. Falls back to 'legacy-original'. */
+  defaultTheme?: string;
+}
+
+const { items, defaultTheme } = Astro.props;
+const displayItems = items ?? localThemes.map((t) => ({ id: t.id, name: t.name }));
+const fallbackId = defaultTheme || DEFAULT_THEME_ID;
+---
+
+<!-- ============================================================
+     ThemeSwitcher Component
+     Dropdown to switch between the 5 CMS-driven color themes.
+     Data source: CMS (via props) or fallback to local cmsThemes.ts
+     ============================================================ -->
+<div class="theme-switcher">
+  <label for="theme-select" class="sr-only">切换主题 / Switch Theme</label>
+  <select
+    id="theme-select"
+    class="cursor-pointer rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-200
+           bg-theme-surface text-theme-text
+           border-[var(--theme-primary)]/30 hover:border-[var(--theme-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--theme-primary)]/40"
+  >
+    {displayItems.map((item) => (
+      <option value={item.id}>{item.name}</option>
+    ))}
+  </select>
+</div>
+
+<script>
+  (function () {
+    const selectEl = document.getElementById('theme-select') as HTMLSelectElement | null;
+    if (!selectEl) return;
+
+    // --- 1. Initialise dropdown from current <html> data-theme ---
+    const currentTheme = document.documentElement.getAttribute('data-theme') || '{fallbackId}';
+    selectEl.value = currentTheme;
+
+    // --- 2. Listen for changes ---
+    selectEl.addEventListener('change', function () {
+      const theme = this.value;
+      // Update the <html> element
+      document.documentElement.setAttribute('data-theme', theme);
+      // Persist to localStorage
+      try {
+        localStorage.setItem('titanium-theme', theme);
+      } catch (_e) {
+        // localStorage might be unavailable (e.g. private browsing)
+      }
+    });
+  })();
+</script>

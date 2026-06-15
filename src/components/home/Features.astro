@@ -1,0 +1,74 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Card from '../ui/Card.astro';
+import Section from '../ui/Section.astro';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const features = [
+  {
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+    </svg>`,
+    title: t('home.features.feat0.title'),
+    description: t('home.features.feat0.desc')
+  },
+  {
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+    </svg>`,
+    title: t('home.features.feat1.title'),
+    description: t('home.features.feat1.desc')
+  },
+  {
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>`,
+    title: t('home.features.feat2.title'),
+    description: t('home.features.feat2.desc')
+  },
+  {
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+    </svg>`,
+    title: t('home.features.feat3.title'),
+    description: t('home.features.feat3.desc')
+  },
+  {
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+    </svg>`,
+    title: t('home.features.feat4.title'),
+    description: t('home.features.feat4.desc')
+  },
+  {
+    icon: `<svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>`,
+    title: t('home.features.feat5.title'),
+    description: t('home.features.feat5.desc')
+  }
+];
+---
+
+<Section>
+  <div class="text-center mb-16 animate-fadeInUp">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
+      {t('home.features.title')} <span class="gradient-text-accent">{t('home.features.titleHighlight')}</span>
+    </h2>
+    <p class="text-xl max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+      {t('home.features.subtitle')}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {features.map((feature, index) => (
+      <Card hover class="animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+        <div class="text-theme-primary mb-4" set:html={feature.icon} />
+        <h3 class="text-xl font-bold text-theme-text mb-3">{feature.title}</h3>
+        <p class="text-theme-text leading-relaxed" style="opacity: 0.6;">{feature.description}</p>
+      </Card>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ServiceMatrixGrid from '../../components/services/ServiceMatrixGrid.astro';
+import ComplianceRibbon from '../../components/services/ComplianceRibbon.astro';
+import EngineeringWorkflow from '../../components/services/EngineeringWorkflow.astro';
+import QuickIndustrySolutions from '../../components/services/QuickIndustrySolutions.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<BaseLayout title="钛材加工服务 - BOZE CNC Ti">
+  <!-- Hero -->
+  <SubpageHero
+    title="钛合金精密加工"
+    highlight="服务能力"
+    badge="精密制造"
+    badgeIcon="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+    subtitle="从快速成型到大批量精密 CNC 加工和重型工业制造，提供端到端的钛合金制造解决方案。"
+  />
+
+  <!-- Service Matrix Grid -->
+  <ServiceMatrixGrid />
+
+  <!-- Compliance Ribbon -->
+  <ComplianceRibbon />
+
+  <!-- Engineering Workflow -->
+  <EngineeringWorkflow />
+
+  <!-- Quick Industry Solutions -->
+  <QuickIndustrySolutions />
+</BaseLayout>

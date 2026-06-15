@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import EngineeringRfqForm from '../components/rfq/EngineeringRfqForm.astro';
+import SecurityNdaBanner from '../components/rfq/SecurityNdaBanner.astro';
+import ResponsePipelineTimeline from '../components/rfq/ResponsePipelineTimeline.astro';
+
+const pageTitle = 'Engineering RFQ | Titanium CNC Machining';
+const pageSubtitle = 'Submit your technical requirements and CAD files. Our processing engineers will respond with a formal quotation within 24–48 hours.';
+---
+
+<BaseLayout title={pageTitle} description={pageSubtitle}>
+  <!-- Hero -->
+  <SubpageHero
+    title="Request a"
+    highlight="Engineering Quote"
+    badge="RFQ Portal"
+    badgeIcon="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+    subtitle={pageSubtitle}
+  />
+
+  <!-- Engineering RFQ Form -->
+  <EngineeringRfqForm />
+
+  <!-- Security & NDA Banner -->
+  <SecurityNdaBanner />
+
+  <!-- Response Pipeline Timeline -->
+  <ResponsePipelineTimeline />
+</BaseLayout>

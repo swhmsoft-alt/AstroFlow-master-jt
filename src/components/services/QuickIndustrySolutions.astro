@@ -1,0 +1,126 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Industry {
+  name: string;
+  description: string;
+  icon: string;
+}
+
+const industries: Industry[] = [
+  {
+    name: t('services.industries.ind0.name'),
+    description: t('services.industries.ind0.desc'),
+    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    name: t('services.industries.ind1.name'),
+    description: t('services.industries.ind1.desc'),
+    icon: "M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    name: t('services.industries.ind2.name'),
+    description: t('services.industries.ind2.desc'),
+    icon: "M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+  },
+  {
+    name: t('services.industries.ind3.name'),
+    description: t('services.industries.ind3.desc'),
+    icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    name: t('services.industries.ind4.name'),
+    description: t('services.industries.ind4.desc'),
+    icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+  }
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Subtle grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+        {t('services.industries.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('services.industries.title')}<span class="gradient-text-accent"> {t('services.industries.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('services.industries.subtitle')}
+      </p>
+    </div>
+
+    <!-- Desktop: Grid -->
+    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+      {industries.map((industry) => (
+        <div
+          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col items-center text-center"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+        >
+          {/* Icon */}
+          <div
+            class="w-14 h-14 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+            style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+          >
+            <svg class="w-7 h-7" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={industry.icon} />
+            </svg>
+          </div>
+
+          {/* Name */}
+          <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">
+            {industry.name}
+          </h3>
+
+          {/* Description */}
+          <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            {industry.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mobile & Tablet: Horizontal Scroller -->
+    <div class="md:hidden overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+      </style>
+      <div class="flex gap-4" style="min-width: max-content;">
+        {industries.map((industry) => (
+          <div
+            class="snap-center shrink-0 w-[260px] rounded-xl p-6 transition-all duration-300"
+            style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          >
+            <div
+              class="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+              style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={industry.icon} />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">
+              {industry.name}
+            </h3>
+            <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+              {industry.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

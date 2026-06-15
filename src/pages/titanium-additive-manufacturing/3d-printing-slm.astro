@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import SlmProcessBreakdown from '../../components/services/SlmProcessBreakdown.astro';
+import SlmMechanicalDashboard from '../../components/services/SlmMechanicalDashboard.astro';
+import MetallurgyDefectControl from '../../components/services/MetallurgyDefectControl.astro';
+import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
+---
+<BaseLayout title="3D Printing (SLM / DMLS) — BOZE CNC Ti" description="Industrial SLM/DMLS 3D printing for titanium: Yb-fiber laser, 20-60 µm layer thickness, ≥99.5% density, 950-1,050 MPa tensile strength. ASTM F2924, AS9100D.">
+  <!-- Hero — DO NOT MODIFY -->
+  <SubpageHero
+    title="3D Printing (SLM / DMLS)"
+    highlight="Services"
+    badge="Additive Manufacturing"
+    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+    subtitle="Selective Laser Melting and Direct Metal Laser Sintering of titanium powders — achieving full-density components with mechanical properties surpassing wrought material, internal channels, and complex lattice geometries."
+  />
+
+  <!-- SLM Process Mechanics — 3-column breakdown -->
+  <SlmProcessBreakdown />
+
+  <!-- SLM Mechanical Performance Dashboard — 5-column -->
+  <SlmMechanicalDashboard />
+
+  <!-- Micro-Void & Layer Purity Control — 2-column -->
+  <MetallurgyDefectControl />
+
+  <!-- Dedicated CTA — SLM Feasibility Review -->
+  <SlmDedicatedCta />
+</BaseLayout>

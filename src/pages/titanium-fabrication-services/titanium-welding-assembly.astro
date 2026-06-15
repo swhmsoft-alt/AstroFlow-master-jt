@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import WeldingAssemblySpectrum from '../../components/services/WeldingAssemblySpectrum.astro';
+import AssemblySpecsDashboard from '../../components/services/AssemblySpecsDashboard.astro';
+import BrittleGallingControlKnowHow from '../../components/services/BrittleGallingControlKnowHow.astro';
+import AssemblyDedicatedCta from '../../components/services/AssemblyDedicatedCta.astro';
+---
+<BaseLayout title="Titanium Welding & Assembly — BOZE CNC Ti" description="Precision titanium welding and assembly: ultra-pure TIG, laser welding, multi-component system assembly with anti-galling and CMM verification. AWS D1.6, AS9100D.">
+  <SubpageHero
+    title="Titanium Welding & Assembly"
+    highlight="Services"
+    badge="Precision Welding & Assembly"
+    badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
+    subtitle="From ultra-pure TIG welding with triple-argon shielding to high-penetration laser welding and full multi-component system assembly — delivering mission-critical titanium structures meeting AWS D1.6 and AS9100D standards."
+  />
+
+  <!-- Welding & Assembly Process Spectrum — 3-column grid -->
+  <WeldingAssemblySpectrum />
+
+  <!-- Welding & Assembly Specifications Dashboard — 4-column -->
+  <AssemblySpecsDashboard />
+
+  <!-- Brittle Layer & Galling Control Engineering — 2-column -->
+  <BrittleGallingControlKnowHow />
+
+  <!-- Dedicated CTA — PQR & Commercial Assessment -->
+  <AssemblyDedicatedCta />
+</BaseLayout>

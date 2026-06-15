@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import PackagingProcessSpectrum from '../components/services/PackagingProcessSpectrum.astro';
+import PackagingSpecsDashboard from '../components/services/PackagingSpecsDashboard.astro';
+import SmearingWarehouseInterlockKnowHow from '../components/services/SmearingWarehouseInterlockKnowHow.astro';
+import PackagingDedicatedCta from '../components/services/PackagingDedicatedCta.astro';
+---
+<BaseLayout title="Branded & Custom Packaging Services — BOZE CNC Ti" description="Industrial titanium packaging solutions: CNC foam milling, VCI marine corrosion barriers, ISPM-15 export crating. ISTA 2A/3A certified, ERP-linked traceability.">
+  <!-- Hero — DO NOT MODIFY -->
+  <SubpageHero
+    title="Branded & Custom Packaging"
+    highlight="Services"
+    badge="Industrial Logistics Protection"
+    badgeIcon="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+    subtitle="End-to-end titanium logistics and structural asset protection solutions — from CNC-machined foam cavities and VCI anti-corrosion barriers to ISPM-15 export crating with full ERP traceability integration."
+  />
+
+  <!-- Packaging Process Spectrum — 3-card grid -->
+  <PackagingProcessSpectrum />
+
+  <!-- Technical Specifications Dashboard — 4-column metrics -->
+  <PackagingSpecsDashboard />
+
+  <!-- Smearing & Warehouse Interlock Know-How — 2-column challenge/solution -->
+  <SmearingWarehouseInterlockKnowHow />
+
+  <!-- Dedicated CTA — 24-Hour Packaging Quote -->
+  <PackagingDedicatedCta />
+</BaseLayout>

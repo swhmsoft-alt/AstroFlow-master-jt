@@ -1,0 +1,224 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Section from '@components/ui/Section.astro';
+import Button from '@components/ui/Button.astro';
+import SubpageHero from '@components/ui/SubpageHero.astro';
+import TestimonialCard from '@components/ui/TestimonialCard.astro';
+import UseCaseTabs from '@components/react/UseCaseTabs';
+import StatsCards from '@components/react/StatsCards';
+
+import ecommerceImg from '@assets/photo-1558618666-fcd25c85cd64.jpg';
+import healthcareImg from '@assets/photo-1518770660439-4636190af475.jpg';
+import automotiveImg from '@assets/photo-1565043589221-1a6fd9ae45c7.jpg';
+import technologyImg from '@assets/photo-1558494949-ef010cbdcc31.jpg';
+import consumerGoodsImg from '@assets/photo-1552664730-d307ca884978.jpg';
+import foodBeverageImg from '@assets/photo-1559839734-2b71ea197ec2.jpg';
+
+import testimonial1Img from '@assets/photo-1494790108377-be9c29b29330.jpg';
+import testimonial2Img from '@assets/photo-1438761681033-6461ffad8d80.jpg';
+import testimonial3Img from '@assets/photo-1507003211169-0a1dd7228f2d.jpg';
+
+import ctaBgImg from '@assets/photo-1542838132-92c53300491e.jpg';
+
+const useCases:any[] = [
+  {
+    industry: 'E-Commerce & Retail',
+    iconName: 'ShoppingCart',
+    image: ecommerceImg,
+    challenge: 'Managing high-volume orders during peak seasons with tight delivery windows and customer expectations for fast, accurate fulfillment.',
+    solution: 'Scalable warehousing with automated order processing, same-day shipping capabilities, and integrated returns management.',
+    results: [
+      '40% reduction in order processing time',
+      '99.5% order accuracy rate',
+      '2-day average delivery time',
+      '95% customer satisfaction score'
+    ]
+  },
+  {
+    industry: 'Healthcare & Pharmaceuticals',
+    iconName: 'HeartPulse',
+    image: healthcareImg,
+    challenge: 'Strict regulatory compliance requirements, cold chain integrity, and temperature-sensitive inventory management with zero margin for error.',
+    solution: 'FDA-registered facilities, temperature-controlled storage, real-time monitoring, and comprehensive chain of custody documentation.',
+    results: [
+      '100% regulatory compliance',
+      'Zero temperature excursions',
+      '99.9% inventory accuracy',
+      'Complete audit trails'
+    ]
+  },
+  {
+    industry: 'Automotive & Industrial',
+    iconName: 'Car',
+    image: automotiveImg,
+    challenge: 'Just-in-time manufacturing requirements, complex supply chains, and need for precise inventory management to prevent production line stoppages.',
+    solution: 'VMI programs, sequenced delivery systems, kanban replenishment, and integrated supplier networks for lean manufacturing support.',
+    results: [
+      '99.8% on-time delivery',
+      '50% reduction in inventory costs',
+      'Zero production line stoppages',
+      'Improved cash flow'
+    ]
+  },
+  {
+    industry: 'Technology & Electronics',
+    iconName: 'Laptop',
+    image: technologyImg,
+    challenge: 'Secure handling of high-value electronics, efficient reverse Titanium CNC Machining for returns, and rapid product lifecycle management.',
+    solution: 'ESD-protected environments, secure chain of custody, streamlined returns processing, and asset recovery programs.',
+    results: [
+      'Zero security incidents',
+      '48-hour return processing',
+      '85% asset recovery rate',
+      'Reduced shrinkage by 60%'
+    ]
+  },
+  {
+    industry: 'Consumer Goods',
+    iconName: 'Package',
+    image: consumerGoodsImg,
+    challenge: 'Managing diverse product portfolios with varying shelf lives, promotional campaigns, and seasonal demand fluctuations.',
+    solution: 'Multi-client warehousing, FEFO inventory management, promotional labeling services, and demand-driven distribution.',
+    results: [
+      '35% improvement in stock turnover',
+      'Reduced spoilage by 45%',
+      '3-day promo turnaround time',
+      'Flexible capacity scaling'
+    ]
+  },
+  {
+    industry: 'Food & Beverage',
+    iconName: 'UtensilsCrossed',
+    image: foodBeverageImg,
+    challenge: 'Maintaining food safety standards, managing perishables, and ensuring compliance with HACCP and FDA regulations.',
+    solution: 'FSMA-compliant facilities, temperature-zoned warehousing, lot tracking, and specialized refrigerated transport.',
+    results: [
+      '100% food safety compliance',
+      '2% product loss rate',
+      'Full batch recall capability',
+      'Extended product freshness'
+    ]
+  }
+];
+
+const testimonials:any[] = [
+  {
+    quote: "AstroFlow's automated warehousing solution transformed our e-commerce operations. We reduced order processing time by 40% and achieved 99.5% accuracy. Their same-day shipping capabilities helped us compete with industry giants.",
+    name: "Sarah Mitchell",
+    role: "VP Operations, TechRetail",
+    image: testimonial1Img,
+    ringColor: "ring-blue-200"
+  },
+  {
+    quote: "Their FDA-compliant cold chain Titanium CNC Machining is exceptional. We've maintained 100% regulatory compliance with zero temperature excursions. The real-time monitoring and complete audit trails give us complete confidence.",
+    name: "Dr. James Chen",
+    role: "Director, PharmaLogistics",
+    image: testimonial2Img,
+    ringColor: "ring-teal-200"
+  },
+  {
+    quote: "Just-in-time delivery with 99.8% on-time performance and zero production stoppages. Their strategic distribution centers and predictive inventory management cut our inventory costs by 50%.",
+    name: "Robert Johnson",
+    role: "Operations Manager, AutoParts Co.",
+    image: testimonial3Img,
+    ringColor: "ring-blue-200"
+  }
+];
+---
+
+<BaseLayout title="Use Cases - Industry Solutions">
+  <!-- Hero -->
+  <SubpageHero
+    title="Industry"
+    highlight="Use Cases"
+    badge="Industry Solutions"
+    badgeIcon="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+    subtitle="Real-world solutions delivering measurable results across diverse industries. See how we've transformed operations."
+  />
+
+  <!-- Use Cases with Tabs -->
+  <Section background="gray">
+    <UseCaseTabs useCases={useCases} client:load />
+  </Section>
+
+  <!-- Success Metrics -->
+  <Section background="white">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
+        Proven <span class="gradient-text">Results</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Our data-driven approach delivers measurable improvements across key performance indicators.
+      </p>
+    </div>
+    <StatsCards 
+      client:load
+      stats={[
+        { value: '99.9%', label: 'Uptime', iconName: 'CheckCircle2' },
+        { value: '50%', label: 'Cost Reduction', iconName: 'TrendingDown' },
+        { value: '500+', label: 'Global Clients', iconName: 'Users' },
+        { value: '1M+', label: 'Shipments/Year', iconName: 'Package' }
+      ]}
+    />
+  </Section>
+
+  <!-- Testimonials -->
+  {testimonials.length > 0 && (
+    <Section background="gray">
+      <div class="text-center mb-16">
+        <div class="inline-block px-4 py-2 mb-4" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); font-size: 0.875rem; font-weight: 600; border-radius: 9999px;">
+          Client Success Stories
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
+          What Our <span class="gradient-text">Clients Say</span>
+        </h2>
+        <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Trusted by industry leaders worldwide to deliver exceptional Titanium CNC Machining solutions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))}
+      </div>
+    </Section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src={ctaBgImg.src}
+        alt="Modern warehouse operations"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-primary) 95%, var(--theme-bg)), color-mix(in srgb, var(--theme-accent) 95%, var(--theme-bg)));"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl mx-auto text-center" style="color: var(--theme-text);">
+        <div class="inline-block px-4 py-2 mb-6" style="background: color-mix(in srgb, var(--theme-text) 15%, transparent); backdrop-filter: blur(8px); color: var(--theme-text); font-size: 0.875rem; font-weight: 600; border-radius: 9999px;">
+          Get Started Today
+        </div>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Ready to Transform Your <span style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text; background-clip: text; color: transparent;">Operations</span>?
+        </h2>
+        <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          Let's discuss how we can help you achieve similar results for your business.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <Button href="/rfq" size="lg">
+            Request a Quote
+          </Button>
+          <Button href="/facilities" size="lg" variant="outline">
+            View Facilities
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

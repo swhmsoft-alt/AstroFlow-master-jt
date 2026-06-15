@@ -1,0 +1,118 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "Continuous Nesting Chips Control",
+    problem: "During high-speed turning of titanium shafts and stepped components, long continuous chips wrap around the workpiece and tooling — forming 'bird-nests' that cause tool breakage, surface scoring, and unscheduled machine stops.",
+    solution: "High-Pressure Chip-Breaker Geometries & Variable Frequency Cutting Paths",
+    details: [
+      "Specially ground chip-breaker inserts create tightly curled 'C' and '6' shaped chips that break cleanly at ≤15 mm lengths — preventing entanglement on rotating shafts",
+      "Variable frequency spindle modulation (VFM) oscillates RPM ±10% around the programmed speed, disrupting continuous chip flow and promoting chip segmentation in titanium",
+      "Through-tool coolant at 70+ bar directed at the chip-tool interface hydraulically forces chip evacuation out of the cut zone before nesting can occur",
+      "Real-time chip load monitoring detects abnormal chip formation patterns and automatically adjusts feed rate to restore optimal chip breakage"
+    ],
+    icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+  },
+  {
+    title: "Thermal Shock Mitigation",
+    problem: "Interrupted milling of titanium (e.g., slotting, pocketing, and indexable insert face milling) subjects cutting edges to rapid thermal cycling — heating to 800°C+ during engagement, then quenching to <100°C during air cutting — leading to micro-cracking, chipping, and premature edge failure.",
+    solution: "Advanced Entrance Arc Controls & MQL/Flood Cooling Paths",
+    details: [
+      "Trochoidal and peel-mill entry arcs gradually increase radial engagement over 90°-180° of tool rotation — eliminating the thermal shock of full-width slotting entry",
+      "Minimum Quantity Lubrication (MQL) with nano-fluid additive delivers precisely metered coolant droplets (50-100 µm) directly to the cutting edge, reducing thermal gradient by up to 45% vs. flood alone",
+      "Dual-nozzle flood cooling system directs coolant streams at both the tool-workpiece interface and the chip evacuation path — ensuring continuous heat extraction during interrupted cuts",
+      "Sub-micrograin carbide substrates with AlTiSiN nano-layered coatings provide 1,100°C+ oxidation resistance and high hot-hardness, resisting thermal fatigue cracking through thousands of engagement cycles"
+    ],
+    icon: "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Dot matrix -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.959.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+        </svg>
+        Machining Know-How
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Solving Titanium's <span style="color: var(--theme-primary);">High-Speed Cutting Vulnerabilities</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Titanium's unique thermal and mechanical properties demand specialized countermeasures. Here's how we eliminate chip nesting and thermal shock in turning and milling operations.
+      </p>
+    </div>
+
+    <!-- 2-Column Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <!-- Problem zone -->
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <!-- Divider with arrow -->
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Solution zone -->
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Corner accent -->
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

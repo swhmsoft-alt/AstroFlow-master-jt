@@ -1,0 +1,110 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "5-Axis Intelligent Taper Eradication",
+    problem: "Abrasive waterjet streams naturally diverge after exiting the nozzle — creating a characteristic V-shaped kerf where the top entry is wider than the bottom exit. On heavy titanium plates (20-120 mm), this taper angle can reach 2-5°, causing dimensional non-conformance on critical edge profiles and requiring expensive secondary machining or scrapping of thick-stock components.",
+    solution: "Automated 5-Axis Articulation Tilting to Counter Fluid Beam Divergence",
+    details: [
+      "Real-time taper compensation via 5-axis cutting head articulation — the nozzle dynamically tilts in the A and C axes to counter the natural jet stream divergence angle, achieving near-perpendicular edge profiles (< 0.5° taper) across the full plate thickness",
+      "Beam divergence modeling: the control system calculates the theoretical jet lag and deflection angle based on material thickness (mm), abrasive flow rate (g/min), and traverse speed (mm/min) — generating a compensated tool path that cancels the taper before it occurs",
+      "Dynamic lead-in/lead-out angle control: at corner entries and exits where the jet decelerates, the head automatically adjusts the tilt angle to prevent over-cutting or under-cutting at the part boundary — maintaining consistent edge perpendicularity through directional changes",
+      "Result: ±0.05 mm angular repeatability on thick plates — edges that meet perpendicularity requirements without secondary squaring, face milling, or grinding operations"
+    ],
+    icon: "M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
+  },
+  {
+    title: "Multi-Tier Surface Finish Regulation",
+    problem: "Abrasive waterjet-cut surfaces inherently display vertical striation patterns (washboard marks) caused by the oscillating pressure waves in the intensifier pump and the natural pulsing of the abrasive slurry stream. On thick titanium plates, these striations can reach Ra 12-25 µm, requiring additional benching, grinding, or polishing operations to meet print surface finish requirements.",
+    solution: "Scaled Cutting Quality Grades: Q1 (Rapid) Through Q5 (Micro-Finish)",
+    details: [
+      "Five-tier quality classification system: Q1 (rapid rough cut at max traverse speed, Ra 12-25 µm), Q2 (standard production, Ra 6-12 µm), Q3 (improved finish, Ra 3-6 µm), Q4 (fine finish, Ra 1.5-3 µm), Q5 (micro-finish, Ra 0.8-1.5 µm) — allowing the programmer to select the optimal speed-quality trade-off for each cut edge",
+      "Q5 micro-finish achieved through reduced traverse speed (30-50% of Q1 rate), finer abrasive mesh (#120-#220 garnet vs. standard #80), and lower abrasive flow rate (200-300 g/min) — minimizing particle embedment and producing a near-polished surface free of visible striations",
+      "Progressive cut strategy: for critical edges, an initial Q1 rough cut removes bulk material at high speed (600-800 mm/min), followed by a Q4 or Q5 skim pass (150-250 mm/min) that removes 0.3-0.5 mm from the rough edge — eliminating striations and achieving the specified surface finish",
+      "Result: exit burrs eliminated, trailing striations removed, surface finish Ra 0.8-1.5 µm achievable on thin gauges — eliminating secondary benching, grinding, or polishing operations entirely for most aerospace and industrial applications"
+    ],
+    icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+        </svg>
+        Process Control
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Taper & Striation <span style="color: var(--theme-primary);">Elimination Know-How</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Dynamic stream distortion on thick titanium alloys demands intelligent head articulation and multi-tier quality control. Here's how we achieve near-perpendicular edges and micro-finish surfaces.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

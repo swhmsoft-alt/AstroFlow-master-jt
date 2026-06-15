@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import ServiceMatrixGrid from '../components/services/ServiceMatrixGrid.astro';
+import ComplianceRibbon from '../components/services/ComplianceRibbon.astro';
+import EngineeringWorkflow from '../components/services/EngineeringWorkflow.astro';
+import QuickIndustrySolutions from '../components/services/QuickIndustrySolutions.astro';
+---
+
+<BaseLayout title="Services - BOZE CNC Ti">
+  <!-- Hero -->
+  <SubpageHero
+    title="Titanium Machining"
+    highlight="Services"
+    badge="Precision Manufacturing"
+    badgeIcon="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+    subtitle="End-to-end titanium manufacturing solutions from rapid prototyping to high-volume precision CNC machining and heavy industrial fabrication."
+  />
+
+  <!-- Service Matrix Grid -->
+  <ServiceMatrixGrid />
+
+  <!-- Compliance Ribbon -->
+  <ComplianceRibbon />
+
+  <!-- Engineering Workflow -->
+  <EngineeringWorkflow />
+
+  <!-- Quick Industry Solutions -->
+  <QuickIndustrySolutions />
+</BaseLayout>

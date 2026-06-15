@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import IndustryVerticalsGrid from '../components/industries/IndustryVerticalsGrid.astro';
+import IndustryComplianceDashboard from '../components/industries/IndustryComplianceDashboard.astro';
+import IndustryCtaSection from '../components/industries/IndustryCtaSection.astro';
+---
+
+<BaseLayout title="Industry Solutions - BOZE CNC Ti">
+  <!-- Hero -->
+  <SubpageHero
+    title="Industry"
+    highlight="Solutions"
+    badge="Precision Manufacturing Verticals"
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    subtitle="Engineered titanium solutions for the world's most demanding industries — from aerospace structural components to AI infrastructure thermal management systems."
+  />
+
+  <!-- Industry Verticals Grid -->
+  <IndustryVerticalsGrid />
+
+  <!-- Compliance Dashboard -->
+  <IndustryComplianceDashboard />
+
+  <!-- CTA Section -->
+  <IndustryCtaSection />
+</BaseLayout>

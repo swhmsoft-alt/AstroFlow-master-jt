@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import CncProcessSpectrum from '../components/services/CncProcessSpectrum.astro';
+import CncTechnicalDashboard from '../components/services/CncTechnicalDashboard.astro';
+import TitaniumEngineeringKnowHow from '../components/services/TitaniumEngineeringKnowHow.astro';
+import CncDedicatedCta from '../components/services/CncDedicatedCta.astro';
+---
+<BaseLayout title="Titanium CNC Machining Services — BOZE CNC Ti" description="Precision titanium CNC machining services: 3/5-axis milling, turning, wire EDM, and custom industrial components. Aerospace-grade tolerances down to ±0.005 mm.">
+  <!-- Hero — DO NOT MODIFY -->
+  <SubpageHero
+    title="Titanium CNC Machining"
+    highlight="Services"
+    badge="Precision Manufacturing"
+    badgeIcon="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+    subtitle="End-to-end titanium CNC machining solutions — from rapid prototyping to high-volume production — across 3/5-axis milling, turning, wire EDM, and custom industrial components."
+  />
+
+  <!-- CNC Process Spectrum — 4-card grid -->
+  <CncProcessSpectrum />
+
+  <!-- Technical Specifications Dashboard — 4-column metrics -->
+  <CncTechnicalDashboard />
+
+  <!-- Titanium Engineering Know-How — Challenge/Solution 2-column -->
+  <TitaniumEngineeringKnowHow />
+
+  <!-- Dedicated CTA — DFM Analysis banner -->
+  <CncDedicatedCta />
+</BaseLayout>

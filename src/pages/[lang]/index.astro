@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PremiumHero from '../../components/home/PremiumHero.astro';
+import ServicesOverview from '../../components/home/ServicesOverview.astro';
+import TechnicalCapabilities from '../../components/home/TechnicalCapabilities.astro';
+import MaterialMatrix from '../../components/home/MaterialMatrix.astro';
+import IndustryApplications from '../../components/home/IndustryApplications.astro';
+import EngineeringResources from '../../components/home/EngineeringResources.astro';
+import PremiumCTA from '../../components/home/PremiumCTA.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'zh' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+// Load home page data from content collection at build time
+const pages = await getCollection('pages');
+const homePage = pages.find(p => p.id === 'home');
+const pageData = homePage?.data || {};
+const heroData: Record<string, any> = {
+  badge: pageData.badge || 'BOZE CNC Ti | AS9100D Certified | Baoji China',
+  title: pageData.title || 'End-to-End Titanium Manufacturing & Custom Processing Services',
+  highlight: pageData.highlight || '',
+  description: pageData.description || 'From rapid prototyping via titanium additive manufacturing to high-volume precision CNC machining and heavy industrial fabrication, we provide complete, one-stop processing for all titanium grades.',
+  primaryCta: t('hero.cta'),
+  primaryCtaLink: pageData.primaryCtaLink || '/rfq',
+  secondaryCta: t('hero.cta.secondary'),
+  secondaryCtaLink: pageData.secondaryCtaLink || '/services',
+  heroMediaType: pageData.heroMediaType || 'image',
+  heroVideoUrl: pageData.heroVideoUrl || '',
+  heroImage: pageData.heroImage || '/uploads/titanium-cnc-home.jpg',
+  heroImageAlt: pageData.heroImageAlt || 'CNC machining background',
+  stats: pageData.stats || [
+    { value: '500+', label: 'Global Clients' },
+    { value: '50M+', label: 'Units Shipped' },
+    { value: '99.9%', label: 'On-Time' },
+    { value: '15+', label: 'Facilities' }
+  ]
+};
+---
+
+<BaseLayout>
+  <PremiumHero hero={heroData} />
+  <ServicesOverview />
+  <TechnicalCapabilities />
+  <MaterialMatrix />
+  <IndustryApplications />
+  <EngineeringResources />
+  <PremiumCTA />
+</BaseLayout>

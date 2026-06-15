@@ -1,0 +1,50 @@
+---
+/**
+ * LanguagePicker.astro
+ *
+ * A theme-aware language switcher that renders a simple row of
+ * language codes. Clicking a language navigates to the same page
+ * under the corresponding locale prefix while preserving the
+ * current selected theme (which is stored in localStorage and
+ * survives navigation).
+ */
+
+import { LANGUAGES, DEFAULT_LANG, type Lang } from '../i18n/ui';
+import { getLangFromUrl, removeLangPrefix, localizePath } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const canonicalPath = removeLangPrefix(Astro.url.pathname);
+---
+
+<div class="flex items-center gap-1.5">
+  {
+    (Object.keys(LANGUAGES) as Lang[]).map((lang) => {
+      const isActive = lang === currentLang;
+      const href = localizePath(canonicalPath || '/', lang);
+
+      return (
+        <a
+          href={href}
+          aria-label={LANGUAGES[lang]}
+          class={`
+            inline-flex items-center justify-center
+            w-8 h-8 rounded-md text-xs font-semibold
+            transition-all duration-200
+            ${isActive
+              ? 'bg-theme-primary text-theme-text shadow-sm'
+              : 'text-theme-text opacity-50 hover:opacity-100 hover:bg-theme-surface'
+            }
+          `}
+          style={isActive
+            ? 'background-color: var(--theme-primary); color: var(--theme-text);'
+            : 'color: var(--theme-text);'
+          }
+          onmouseover={!isActive ? "this.style.backgroundColor='var(--theme-surface)'; this.style.opacity='1'" : undefined}
+          onmouseout={!isActive ? "this.style.backgroundColor='transparent'; this.style.opacity='0.5'" : undefined}
+        >
+          {lang.toUpperCase()}
+        </a>
+      );
+    })
+  }
+</div>

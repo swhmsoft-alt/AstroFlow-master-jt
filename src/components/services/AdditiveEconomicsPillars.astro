@@ -1,0 +1,104 @@
+---
+interface EconomicsPillar {
+  title: string;
+  subtitle: string;
+  description: string;
+  highlights: string[];
+  icon: string;
+}
+
+const pillars: EconomicsPillar[] = [
+  {
+    title: "Zero Upfront Tooling Costs",
+    subtitle: "No Molds, No Dies, No Fixtures",
+    description: "Erase tens of thousands in tooling investment and months of lead time — allocating 100% of your budget to component optimization and material quality rather than amortized hard tooling.",
+    highlights: [
+      "No injection mold, casting die, or forging tool set required",
+      "Design changes cost nothing — modify CAD and re-print same day",
+      "100% of program budget goes to part quality, not tooling depreciation",
+      "Ideal for short-run production where traditional tooling ROI is negative"
+    ],
+    icon: "M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    title: "Multi-Part Nested Optimization",
+    subtitle: "Advanced 3D Packing for Cost Compression",
+    description: "Utilizing advanced 3D nesting algorithms to pack dozens of geometrically diverse parts into a single build platform — drastically compressing laser execution costs per component while maximizing printer throughput.",
+    highlights: [
+      "Automated 3D bin-packing algorithms maximize build platform utilization",
+      "Mixed-part nesting: combine different geometries in one build cycle",
+      "Up to 40% cost reduction vs. individual single-part builds",
+      "Nesting optimization accounts for thermal shadowing and support access"
+    ],
+    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+  },
+  {
+    title: "Bridge-to-Mass Agility",
+    subtitle: "Zero-Penalty Batch Configuration Edits",
+    description: "Introduce zero-penalty configuration edits batch-by-batch based on direct market telemetry — dodging legacy dead inventory traps and enabling true demand-driven production scaling without risk.",
+    highlights: [
+      "Modify part geometry between batches with zero changeover cost",
+      "Scale batch quantity up or down based on real-time demand signals",
+      "No minimum batch commitment — print 10, 100, or 1,000+ as needed",
+      "Digital inventory: print-on-demand eliminates warehousing overhead"
+    ],
+    icon: "M13 10V3L4 14h7v7l9-11h-7z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Economics
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Low-Volume Production <span style="color: var(--theme-primary);">Economics Pillars</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Three economic advantages making additive manufacturing the most cost-effective path for low-to-mid volume titanium production — from 10 to 1,000+ units.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {pillars.map((pillar) => (
+        <div
+          class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+        >
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={pillar.icon} />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{pillar.title}</h3>
+          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{pillar.subtitle}</span>
+          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{pillar.description}</p>
+          <ul class="space-y-2 mt-auto">
+            {pillar.highlights.map((h) => (
+              <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {h}
+              </li>
+            ))}
+          </ul>
+          <div
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+          ></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

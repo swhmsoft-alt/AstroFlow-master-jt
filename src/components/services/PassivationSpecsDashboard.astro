@@ -1,0 +1,105 @@
+---
+interface Metric {
+  label: string;
+  value: string;
+  unit: string;
+  description: string;
+  icon: string;
+}
+
+const metrics: Metric[] = [
+  {
+    label: "Surface Free-Iron Metric",
+    value: "Zero",
+    unit: "Trace",
+    description: "Strict zero-trace parameters verified via potassium ferricyanide copper-spot testing protocols — no detectable free iron particles remaining on treated surfaces.",
+    icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+  },
+  {
+    label: "Compliance Accreditations",
+    value: "ASTM F86",
+    unit: "AMS 2700",
+    description: "100% fully interlocked under ASTM F86, ASTM A967, and AMS 2700 Type 2/3 structural codes — full material traceability with batch-level certification documentation.",
+    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+  },
+  {
+    label: "Cyclic Salt Spray Durability",
+    value: "1,000+",
+    unit: "Hours",
+    description: "Continuous anti-corrosion tracking exceeding 1,000+ hours zero-pitting boundaries per ASTM B117 standards — validated by accredited third-party corrosion laboratories.",
+    icon: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859"
+  },
+  {
+    label: "Native Oxide Continuity",
+    value: "100%",
+    unit: "Uniform",
+    description: "100% uniform amorphous TiO₂ film crystallization lacking micro crystal-boundary defects — verified via electrochemical impedance spectroscopy (EIS) across entire treated surface.",
+    icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+  }
+];
+---
+<section class="bg-[#0F172A]">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-[#38BDF8] text-[#38BDF8] bg-[#38BDF8]/10">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        Passivation Specifications
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
+        Passivation <span class="text-[#38BDF8]">Specifications Dashboard</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
+        Our chemical passivation processing purities — zero-trace free-iron verification, compliance accreditations, salt spray endurance, and native oxide layer continuity.
+      </p>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {metrics.map((metric) => (
+        <div
+          class="relative rounded-xl p-8 flex flex-col h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] transition-all duration-300"
+        >
+          <!-- Icon -->
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5 bg-[#38BDF8]/10">
+            <svg class="w-5 h-5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={metric.icon} />
+            </svg>
+          </div>
+
+          <!-- Value — prominently styled tech-noir numbers -->
+          <div class="mb-1">
+            <span class="text-4xl md:text-5xl font-bold tracking-tight text-[#38BDF8]">
+              {metric.value}
+            </span>
+            <span class="text-lg font-semibold ml-1 text-[#38BDF8]/70">
+              {metric.unit}
+            </span>
+          </div>
+
+          <!-- Label -->
+          <h3 class="text-base font-bold mb-3 text-[#F8FAFC]">
+            {metric.label}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-sm leading-relaxed mt-auto text-[#F8FAFC]/55">
+            {metric.description}
+          </p>
+
+          <!-- Bottom accent line -->
+          <div class="absolute bottom-0 left-6 right-6 h-px" style="background: linear-gradient(to right, transparent, #38BDF8, transparent); opacity: 0.2;"></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footnote -->
+    <div class="mt-12 text-center">
+      <p class="text-sm text-[#F8FAFC]/40">
+        All specifications measured under ASTM B117 salt spray, ASTM F86 passivation standards, and AMS 2700 controlled conditions. Actual results depend on titanium grade, geometry complexity, and surface finish.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ExtrusionProcessSpectrum from '../../components/services/ExtrusionProcessSpectrum.astro';
+import ExtrusionSpecsDashboard from '../../components/services/ExtrusionSpecsDashboard.astro';
+import DieGallingLubricationKnowHow from '../../components/services/DieGallingLubricationKnowHow.astro';
+import ExtrusionDedicatedCta from '../../components/services/ExtrusionDedicatedCta.astro';
+---
+<BaseLayout title="Titanium Extrusion — BOZE CNC Ti" description="Precision titanium extrusion: complex structural profiles, seamless heavy-wall tubes, multi-channel hollow shapes. 6,000 ton press, 12 m length, ø 350 mm envelope, AS9100D.">
+  <SubpageHero
+    title="Titanium Extrusion"
+    highlight="Services"
+    badge="Precision Metal Extrusion"
+    badgeIcon="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"
+    subtitle="Hot extrusion of complex titanium profiles, seamless heavy-wall tubes, and precision multi-channel hollow shapes — using glass-lubricated dies, isothermal tooling, and stretch straightening for aerospace-grade straightness."
+  />
+
+  <!-- Extrusion Process Spectrum — 3-column grid -->
+  <ExtrusionProcessSpectrum />
+
+  <!-- Extrusion Capacity Dashboard — 4-column specs -->
+  <ExtrusionSpecsDashboard />
+
+  <!-- Die Lubrication & Thermal Control Know-How — 2-column -->
+  <DieGallingLubricationKnowHow />
+
+  <!-- Dedicated CTA — Extrusion Feasibility Review -->
+  <ExtrusionDedicatedCta />
+</BaseLayout>

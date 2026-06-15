@@ -1,0 +1,46 @@
+---
+interface Props {
+  class?: string;
+  background?: 'dark' | 'card' | 'gradient' | 'white' | 'gray';
+  id?: string;
+}
+
+const { 
+  class: className = '',
+  background = 'dark',
+  id
+} = Astro.props;
+
+const bgStyles: Record<string, string> = {
+  dark: '',
+  card: '',
+  gradient: 'relative overflow-hidden',
+  white: '',
+  gray: ''
+};
+
+const bgExtra: Record<string, string> = {
+  dark: '',
+  card: 'border-t',
+  gradient: '',
+  white: '',
+  gray: ''
+};
+
+const bgColors: Record<string, string> = {
+  dark: '',
+  card: 'background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);',
+  gradient: '',
+  white: 'background: var(--theme-surface);',
+  gray: 'background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));'
+};
+
+const classes = `py-16 lg:py-24 ${bgStyles[background]} ${bgExtra[background]} ${className}`;
+const sectionStyle = bgColors[background];
+---
+
+<section class={classes} id={id} style={sectionStyle || undefined}>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</section>

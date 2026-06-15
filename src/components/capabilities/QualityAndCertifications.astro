@@ -1,0 +1,141 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface CertStandard {
+  name: string;
+  fullName: string;
+  description: string;
+  details: string[];
+  accentColor: string;
+}
+
+const certStandards: CertStandard[] = [
+  {
+    name: t('cap.quality.cert0.name'),
+    fullName: t('cap.quality.cert0.fullName'),
+    description: t('cap.quality.cert0.desc'),
+    details: [
+      t('cap.quality.cert0.detail0'),
+      t('cap.quality.cert0.detail1'),
+      t('cap.quality.cert0.detail2'),
+      t('cap.quality.cert0.detail3'),
+      t('cap.quality.cert0.detail4'),
+    ],
+    accentColor: "#3b82f6",
+  },
+  {
+    name: t('cap.quality.cert1.name'),
+    fullName: t('cap.quality.cert1.fullName'),
+    description: t('cap.quality.cert1.desc'),
+    details: [
+      t('cap.quality.cert1.detail0'),
+      t('cap.quality.cert1.detail1'),
+      t('cap.quality.cert1.detail2'),
+      t('cap.quality.cert1.detail3'),
+      t('cap.quality.cert1.detail4'),
+    ],
+    accentColor: "#10b981",
+  },
+];
+
+const qcStages = [
+  { code: t('cap.quality.qc0.code'), label: t('cap.quality.qc0.label'), description: t('cap.quality.qc0.desc'), iconPath: "M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" },
+  { code: t('cap.quality.qc1.code'), label: t('cap.quality.qc1.label'), description: t('cap.quality.qc1.desc'), iconPath: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" },
+  { code: t('cap.quality.qc2.code'), label: t('cap.quality.qc2.label'), description: t('cap.quality.qc2.desc'), iconPath: "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        {t('cap.quality.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('cap.quality.title')}<span class="gradient-text-accent"> {t('cap.quality.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        {t('cap.quality.subtitle')}
+      </p>
+    </div>
+
+    <!-- Certification Boxes -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
+      {certStandards.map((cert) => (
+        <div
+          class="relative rounded-xl p-8 transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); border-top: 3px solid {cert.accentColor};"
+          onmouseover="this.style.borderColor='{cert.accentColor}'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-accent) 6%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <h3 class="text-2xl font-bold" style="color: var(--theme-text);">{cert.name}</h3>
+              <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{cert.fullName}</p>
+            </div>
+            <span
+              class="inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-md shrink-0"
+              style="background-color: {cert.accentColor}15; color: {cert.accentColor}; border: 1px solid {cert.accentColor}25;"
+            >
+              {t('cap.quality.certified')}
+            </span>
+          </div>
+          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            {cert.description}
+          </p>
+          <ul class="space-y-2">
+            {cert.details.map((detail) => (
+              <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: {cert.accentColor};" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                </svg>
+                {detail}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Zero-Defect Control Pipeline -->
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-xl font-bold text-center mb-8" style="color: var(--theme-text);">
+        {t('cap.quality.pipelineTitle')}
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {qcStages.map((stage, idx) => (
+          <div class="relative text-center p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            {/* Step Number */}
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center justify-center w-7 h-7 text-xs font-bold rounded-full" style="background-color: var(--theme-primary); color: var(--theme-text);">
+                {idx + 1}
+              </span>
+            </div>
+
+            <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 mt-2 rounded-lg" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+              <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={stage.iconPath} />
+              </svg>
+            </div>
+
+            <h4 class="text-lg font-bold mb-1" style="color: var(--theme-text);">
+              <span style="color: var(--theme-primary);">{stage.code}</span>
+            </h4>
+            <p class="text-xs font-semibold mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{stage.label}</p>
+            <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{stage.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

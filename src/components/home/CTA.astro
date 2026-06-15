@@ -1,0 +1,57 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Button from '../ui/Button.astro';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section
+  class="relative overflow-hidden py-20"
+  style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 15%, var(--theme-bg)) 100%);"
+>
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: linear-gradient(45deg, var(--theme-text) 25%, transparent 25%), linear-gradient(-45deg, var(--theme-text) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--theme-text) 75%), linear-gradient(-45deg, transparent 75%, var(--theme-text) 75%); background-size: 60px 60px; background-position: 0 0, 0 30px, 30px -30px, -30px 0px;"></div>
+  </div>
+
+  <div class="container mx-auto relative z-10">
+    <div class="max-w-4xl mx-auto text-center space-y-6 animate-fadeInUp">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">
+        {t('home.ctaSection.title')}
+      </h2>
+      <p class="text-lg md:text-xl max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {t('home.ctaSection.subtitle')}
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+        <Button href="/rfq" size="lg" class="bg-theme-primary! text-white! hover:brightness-110! shadow-lg!">
+          {t('home.ctaSection.quote')}
+        </Button>
+        <Button href="/facilities" size="lg" variant="outline" class="border-theme-primary! text-theme-text! hover:bg-theme-primary! hover:text-white!">
+          {t('home.ctaSection.facilities')}
+        </Button>
+      </div>
+
+      <!-- Trust indicators -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="text-3xl font-bold" style="color: var(--theme-primary);">25+</div>
+          <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.ctaSection.years')}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold" style="color: var(--theme-primary);">15</div>
+          <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.ctaSection.globalFacilities')}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold" style="color: var(--theme-primary);">ISO 9001</div>
+          <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.ctaSection.certified')}</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold" style="color: var(--theme-primary);">24/7</div>
+          <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.ctaSection.support')}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

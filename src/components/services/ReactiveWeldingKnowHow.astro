@@ -1,0 +1,110 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "Weld Discoloration & Embrittlement Control",
+    problem: "Titanium's extreme oxygen affinity at welding temperatures (above 600°C) causes rapid surface oxidation — producing a brittle alpha-case layer that manifests as blue/gray weld discoloration. Oxygen contamination as low as 200 ppm can reduce ductility by 50%, causing embrittled welds that crack under thermal or mechanical load.",
+    solution: "Custom Trailing Chambers & Full Argon Isolation Until <250°C",
+    details: [
+      "Custom-fabricated trailing shielding chambers extend the inert gas coverage zone 200-300 mm behind the weld torch — isolating the solidifying melt pool and heat-affected zone until temperatures drop below 250°C, the threshold for rapid titanium oxidation",
+      "Dual-flow argon delivery: primary flow (15-20 LPM) through the torch nozzle, secondary flow (20-30 LPM) through the trailing chamber — creating a positive-pressure argon curtain that prevents atmospheric oxygen ingress across the full weld zone",
+      "Color-index quality verification per AWS D1.6: welds are visually inspected against the titanium weld color standard — silver (acceptable), straw (acceptable), blue/gray (reject) — with any discolored weldment ground out and re-welded before proceeding",
+      "Interpass temperature monitoring via contact thermocouple — if HAZ exceeds 250°C between passes, welding is halted until forced argon cooling restores the interpass temperature below limit, preventing cumulative oxide build-up in multi-pass weld joints"
+    ],
+    icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+  },
+  {
+    title: "Thermal Distortion Deflection",
+    problem: "Titanium's high coefficient of thermal expansion (8.6 µm/m·K) combined with its low elastic modulus (114 GPa) makes it acutely susceptible to welding-induced distortion. Uncontrolled heat input causes angular distortion, longitudinal bowing, and buckling in thin-gauge sheet metal assemblies — leading to misaligned bolt patterns, leaking flange faces, and structural fit-up failures.",
+    solution: "High-Rigidity Fixturing Matrices, Segmented Back-Step Welding & Post-Weld Stress Relief",
+    details: [
+      "High-rigidity fixturing matrices with toggle clamps on 100 mm centers — constraining all degrees of freedom during welding and preventing angular deflection that would otherwise occur as the weld pool solidifies and contracts",
+      "Segmented back-step weld path strategy: each weld pass is divided into 50-75 mm segments deposited in a reverse-progression sequence — distributing heat input evenly across the joint and reducing peak thermal gradients by up to 60% compared to continuous forward welding",
+      "Pre-set over-bend compensation angles (1-3° depending on plate thickness and joint design) built into the fixturing — accommodating the predictable angular shrinkage that occurs as the weld metal cools and contracts",
+      "Post-weld stress-relief annealing at 540-650°C in a vacuum or argon-purged furnace — eliminating residual welding stresses that would otherwise cause delayed distortion during machining, transport, or in-service thermal cycling"
+    ],
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+        </svg>
+        Welding Know-How
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Mastering Titanium's <span style="color: var(--theme-primary);">Reactive Welding Metallurgy</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Titanium's reactive metallurgy demands uncompromising shielding and thermal management. Here's how we eliminate weld discoloration, embrittlement, and distortion.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

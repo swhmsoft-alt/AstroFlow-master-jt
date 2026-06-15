@@ -1,0 +1,110 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "Chilled-Fluid Runaway Suppression",
+    problem: "During high-power band sawing and mechanical peeling of titanium, the intense friction generates localized temperatures that can exceed 600°C at the cutting interface — approaching titanium's beta transus temperature. This thermal buildup causes micro-structural phase transformations (grain coarsening, alpha-case formation) on the cut surface, creating a work-hardened layer that accelerates blade wear and reduces downstream forging tool life by up to 40%.",
+    solution: "High-Pressure Fully Synthetic Flood Cooling Directly into the Saw Kerf",
+    details: [
+      "High-pressure flood cooling at 15-25 bar delivering fully synthetic coolant directly into the saw kerf and peeling interface — the coolant jet penetrates the chip-tool contact zone, evacuating heat before it can diffuse into the subsurface microstructure",
+      "Synthetic coolant formulation (water-soluble polymer-based, 5-8% concentration) provides superior lubricity and heat extraction compared to standard soluble oils — thermal conductivity at the cutting interface is increased by 300%, keeping the workpiece surface temperature below 150°C at all times",
+      "Through-blade coolant delivery: the band saw blade has precision-drilled micro-channels that deliver coolant to each tooth tip — ensuring every cutting edge is lubricated and cooled at the point of contact, eliminating localized hot spots that cause thermal cracks and blade glazing",
+      "Result: cut surfaces with zero micro-structural alteration — no alpha-case formation, no grain coarsening, no work-hardened layer. Blade life extended by 35% and downstream forging tool life preserved by eliminating hard surface skins that accelerate die wear"
+    ],
+    icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+  },
+  {
+    title: "Unbroken Heat-Number Laser Interlock",
+    problem: "In multi-ton titanium processing, material traceability from mill certificate through sawing, peeling, and decontamination to the final forged or extruded component is critical for aerospace and defense compliance. Traditional manual label or paint-mark systems are destroyed during 1000°C furnace heating cycles or multi-ton compression, breaking the chain-of-custody and requiring expensive re-certification or component scrapping.",
+    solution: "Mill Test Certificate Digital Binding & Fiber-Laser Marking on Sliced Blanks",
+    details: [
+      "Mill Test Certificate (MTC) data is digitally ingested into the batch management system at material receipt — including heat number, chemical composition (%Al, %V, %Fe, %O, %N), mechanical properties, and ultrasonic inspection results — creating a digital twin for each incoming ingot or billet",
+      "Fiber-laser marking system applies a unique 2D Data Matrix code directly onto each sliced blank after sawing — the code is engraved 0.1-0.3 mm deep, surviving multi-ton compression forces (8,000 tons) and 1000°C furnace thermal cycles without degradation",
+      "The 2D code encodes: heat number, billet sequence number, alloy grade, cut date, and operator ID — scannable via handheld reader at any point in the production flow, from sawing through forging, extrusion, heat treatment, and final machining",
+      "Full digital chain-of-custody: every processing step (peeling depth, passivation batch, PMI verification result) is appended to the digital twin record, creating an unbroken traceability chain from mill to finished component — compliant with AS9100D, AMS 2750, and NIST traceability requirements"
+    ],
+    icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+        </svg>
+        Process Control
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Hardening Suppression & <span style="color: var(--theme-primary);">Traceability Control</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Raw titanium preparation demands thermal damage prevention and unbroken material chain-of-custody. Here's how we eliminate work-hardening and lock down heat-number traceability through the entire production flow.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

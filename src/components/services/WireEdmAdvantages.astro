@@ -1,0 +1,120 @@
+---
+interface Advantage {
+  title: string;
+  subtitle: string;
+  description: string;
+  highlights: string[];
+  icon: string;
+}
+
+const advantages: Advantage[] = [
+  {
+    title: "Zero Mechanical Stress",
+    subtitle: "No Physical Tool Contact",
+    description: "Unlike conventional milling or turning, wire EDM uses electrical discharge erosion — eliminating cutting forces entirely. Ideal for ultra-thin wall titanium structures that would deform under mechanical tool pressure.",
+    highlights: [
+      "No tool-workpiece contact eliminates distortion and edge breakout",
+      "Thin-wall capability down to 0.2 mm without deflection or chatter",
+      "Stress-free machining of pre-heat-treated titanium blanks",
+      "Ideal for fragile aerospace honeycomb and medical lattice structures"
+    ],
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+  },
+  {
+    title: "Sharp Internal Corners",
+    subtitle: "Ultra-Fine Electrode Wire ø 0.1 mm",
+    description: "Utilizing electrode wire diameters down to 0.1 mm (0.004\"), our wire EDM machines achieve near-zero radius internal corners — impossible for any rotating cutting tool to produce.",
+    highlights: [
+      "Corner radii as tight as 0.05 mm with ø 0.1 mm wire",
+      "No tool deflection at corner entries — repeatable geometry every pass",
+      "Wire tension control maintains straightness through deep cavities",
+      "Multiple skim passes refine corner acuity to ±0.002 mm"
+    ],
+    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+  },
+  {
+    title: "Hardened Titanium Mastery",
+    subtitle: "Post-Heat-Treatment Processing",
+    description: "Wire EDM's erosion-based process is independent of material hardness or toughness. We can cut fully hardened titanium alloys (48+ HRC) that would destroy carbide tooling — with the same precision as annealed stock.",
+    highlights: [
+      "Erodes any conductive material regardless of hardness — 48+ HRC capable",
+      "No tool wear compensation needed — accuracy consistent from first to last cut",
+      "Processes through hardened case layers, nitrided surfaces, and thermal spray coatings",
+      "Single setup for hardened blanks eliminates pre-machining then hardening distortion"
+    ],
+    icon: "M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        EDM Capabilities
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Wire EDM <span style="color: var(--theme-primary);">Process Advantages</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Electric discharge cutting offers unique capabilities for titanium that conventional machining cannot match — zero force, unlimited hardness, and microscopic corner radii.
+      </p>
+    </div>
+
+    <!-- 3-Column Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {advantages.map((adv) => (
+        <div
+          class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+        >
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={adv.icon} />
+            </svg>
+          </div>
+
+          <!-- Title & Subtitle -->
+          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{adv.title}</h3>
+          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{adv.subtitle}</span>
+
+          <!-- Description -->
+          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            {adv.description}
+          </p>
+
+          <!-- Highlights -->
+          <ul class="space-y-2 mt-auto">
+            {adv.highlights.map((h) => (
+              <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {h}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Corner hover accent -->
+          <div
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+          ></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

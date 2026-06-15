@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ForgingProcessSpectrum from '../../components/services/ForgingProcessSpectrum.astro';
+import ForgingSpecsDashboard from '../../components/services/ForgingSpecsDashboard.astro';
+import MetallurgyGrainFlowKnowHow from '../../components/services/MetallurgyGrainFlowKnowHow.astro';
+import ForgingDedicatedCta from '../../components/services/ForgingDedicatedCta.astro';
+---
+<BaseLayout title="Titanium Forging — BOZE CNC Ti" description="Precision titanium forging: closed-die, open-die, and seamless rolled ring forging. 8,000 metric ton press, ø 2,500 mm rings, AMS 2631 Class AA, ≥95% equiaxed α+β.">
+  <SubpageHero
+    title="Titanium Forging"
+    highlight="Services"
+    badge="Precision Metal Forging"
+    badgeIcon="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"
+    subtitle="Closed-die precision forging, open-die ingot breakdown, and seamless rolled ring forging — delivering aerospace-grade grain flow, AMS 2631 Class AA ultrasonic quality, and ≥95% equiaxed alpha+beta microstructure."
+  />
+
+  <!-- Forging Process Spectrum — 3-column grid -->
+  <ForgingProcessSpectrum />
+
+  <!-- Forging Capacity Dashboard — 4-column specs -->
+  <ForgingSpecsDashboard />
+
+  <!-- Grain Flow & Metallurgy Control — 2-column -->
+  <MetallurgyGrainFlowKnowHow />
+
+  <!-- Dedicated CTA — Forging Assessment -->
+  <ForgingDedicatedCta />
+</BaseLayout>

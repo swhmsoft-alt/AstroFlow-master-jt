@@ -1,0 +1,110 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "Advanced Molten Glass Envelope Lubrication",
+    problem: "During hot extrusion of titanium at 900-1050°C, the extreme pressure (6,000 metric tons) and temperature cause severe adhesion between the titanium billet and the die steel surface — producing surface tearing, galling, and characteristic 'fish-bone' wave patterns on the extruded profile that render the surface unfit for aerospace or structural applications and require extensive post-extrusion grinding or scrapping.",
+    solution: "Aerospace-Certified Micro-Glass Powder Matrices Forming Liquid Boundary Layers",
+    details: [
+      "Aerospace-certified micro-glass powder (particle size 50-200 µm) applied as a uniform coating to the preheated titanium billet before insertion into the extrusion press — the glass composition is precisely formulated to melt at extrusion temperature (950-1050°C), forming a continuous viscous liquid boundary between the billet and the die bearing surface",
+      "The molten glass layer (viscosity 10³-10⁵ Poise at extrusion temperature) creates a hydrodynamic lubrication film 10-30 µm thick — completely isolating the titanium from the die steel and eliminating metal-to-metal contact that causes surface tearing, galling, and fish-bone wave formation",
+      "Continuous lubrication throughout the entire extrusion stroke: the glass coating is replenished from a reservoir in the dummy block, maintaining the liquid boundary layer as fresh billet material feeds into the die — ensuring uniform surface quality from the first meter to the last",
+      "Result: surface finish Ra 1.6-3.2 µm directly from the extrusion press — no surface tearing, no galling, no fish-bone waves — eliminating the need for secondary surface conditioning and maximizing material yield"
+    ],
+    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+  },
+  {
+    title: "Isothermal Tooling Cycles & Stretch Straightening",
+    problem: "Titanium's high extrusion temperature (900-1050°C) and low thermal conductivity create significant thermal gradients across the die face during extrusion — causing differential material flow rates across the profile cross-section that result in axial twist, longitudinal bowing, and cross-sectional distortion. Without active thermal management and post-extrusion correction, these geometric defects render long-length extruded profiles unsuitable for structural assembly.",
+    solution: "Inductive Die Heating Loops for Isothermal Flow & Multi-Ton Stretch Straightening",
+    details: [
+      "Inductive heating coils embedded in the die holder maintain the die temperature at the target set point (typically 950-1000°C) with ±5°C accuracy throughout the entire extrusion cycle — eliminating the progressive cooling that would otherwise occur as the die conducts heat away from the extrusion, ensuring uniform metal flow from start to finish",
+      "Multi-zone inductive control: individual heating zones at the die center, bearing surface, and periphery are independently regulated — compensating for the higher heat loss at the profile edges vs. the center, ensuring uniform material velocity across the entire cross-section and eliminating differential flow-induced twist",
+      "Post-extrusion stretch straightening on a multi-ton hydraulic tension bed: the extruded profile is gripped at both ends and subjected to a controlled tensile load (typically 1-3% permanent elongation) — this plastic deformation removes axial twist, longitudinal bow, and cross-sectional distortion while improving the straightness to within ±0.5 mm/m",
+      "Result: extruded profiles delivered with straightness within ±0.5 mm/m, twist-free, and dimensionally compliant — ready for direct integration into structural assemblies without secondary straightening or rework"
+    ],
+    icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Process Engineering
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Die Lubrication & <span style="color: var(--theme-primary);">Thermal Control Know-How</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Conquering titanium's high-temperature sticking, die wear, and linear distortion requires specialized glass lubrication and isothermal tooling control. Here's how we achieve aerospace-grade extruded surfaces and straightness.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

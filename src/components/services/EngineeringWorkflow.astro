@@ -1,0 +1,132 @@
+---
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface WorkflowStep {
+  number: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const steps: WorkflowStep[] = [
+  {
+    number: "01",
+    title: t('services.workflow.step0.title'),
+    description: t('services.workflow.step0.desc'),
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />'
+  },
+  {
+    number: "02",
+    title: t('services.workflow.step1.title'),
+    description: t('services.workflow.step1.desc'),
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />'
+  },
+  {
+    number: "03",
+    title: t('services.workflow.step2.title'),
+    description: t('services.workflow.step2.desc'),
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />'
+  },
+  {
+    number: "04",
+    title: t('services.workflow.step3.title'),
+    description: t('services.workflow.step3.desc'),
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />'
+  }
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        {t('services.workflow.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('services.workflow.title')}<span class="gradient-text-accent"> {t('services.workflow.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('services.workflow.subtitle')}
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Central connecting line (desktop) -->
+      <div class="hidden lg:block absolute top-24 left-[12.5%] right-[12.5%] h-0.5" style="background: linear-gradient(90deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 18%, transparent) 50%, color-mix(in srgb, var(--theme-primary) 18%, transparent) 100%);"></div>
+
+      <!-- Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        {steps.map((step, index) => (
+          <div class="relative flex flex-col items-center text-center group">
+            {/* Step Number & Icon */}
+            <div class="relative mb-6">
+              {/* Circle */}
+              <div
+                class="w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 z-10 relative"
+                style="background-color: var(--theme-surface); border: 2px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+                onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 25px color-mix(in srgb, var(--theme-primary) 15%, transparent)'"
+                onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+              >
+                <svg class="w-8 h-8" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                  <path set:html={step.icon} />
+                </svg>
+              </div>
+              {/* Number badge */}
+              <div
+                class="absolute -top-2 -right-2 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold z-20"
+                style="background-color: var(--theme-primary); color: #ffffff;"
+              >
+                {step.number}
+              </div>
+            </div>
+
+            {/* Content */}
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">
+              {step.title}
+            </h3>
+            <p class="text-sm leading-relaxed max-w-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+              {step.description}
+            </p>
+
+            {/* Connector arrow (desktop, between steps) */}
+            {index < steps.length - 1 && (
+              <div class="hidden lg:block absolute -right-3 top-24 transform translate-x-1/2 -translate-y-1/2 z-20">
+                <svg class="w-6 h-6" fill="none" stroke="color-mix(in srgb, var(--theme-primary) 18%, transparent)" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            )}
+
+            {/* Mobile connector line */}
+            {index < steps.length - 1 && (
+              <div class="lg:hidden w-0.5 h-8 my-2" style="background: linear-gradient(to bottom, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 18%, transparent));"></div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16">
+      <a
+        href={localizePath('/rfq', currentLang)}
+        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+        style="background-color: var(--theme-primary); color: #ffffff;"
+        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
+        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
+      >
+        {t('services.workflow.cta')}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PremiumHero from '../components/home/PremiumHero.astro';
+import ServicesOverview from '../components/home/ServicesOverview.astro';
+import TechnicalCapabilities from '../components/home/TechnicalCapabilities.astro';
+import MaterialMatrix from '../components/home/MaterialMatrix.astro';
+import IndustryApplications from '../components/home/IndustryApplications.astro';
+import EngineeringResources from '../components/home/EngineeringResources.astro';
+import PremiumCTA from '../components/home/PremiumCTA.astro';
+import { getCollection } from 'astro:content';
+
+// This collection is defined in src/content/config.ts
+// home.md from src/content/pages/home.md is loaded at build time
+const pages = await getCollection('pages');
+const homePage = pages.find(p => p.id === 'home');
+const heroData = homePage?.data || {
+  badge: 'BOZE CNC Ti | AS9100D Certified | Baoji China',
+  title: 'End-to-End Titanium Manufacturing & Custom Processing Services',
+  highlight: '',
+  description: 'From rapid prototyping via titanium additive manufacturing to high-volume precision CNC machining and heavy industrial fabrication, we provide complete, one-stop processing for all titanium grades. Our AS9100 compliant processes guarantee exact tolerances for the world\'s most demanding industries.',
+  primaryCta: 'Request a Quote',
+  primaryCtaLink: '/rfq',
+  secondaryCta: 'Explore Solutions',
+  secondaryCtaLink: '/services',
+  heroMediaType: 'image',
+  heroVideoUrl: '',
+  heroImage: '/uploads/titanium-cnc-home.jpg',
+  heroImageAlt: 'CNC machining background',
+  stats: [
+    { value: '500+', label: 'Global Clients' },
+    { value: '50M+', label: 'Units Shipped' },
+    { value: '99.9%', label: 'On-Time' },
+    { value: '15+', label: 'Facilities' }
+  ]
+};
+---
+
+<BaseLayout>
+  <PremiumHero hero={heroData} />
+  <ServicesOverview />
+  <TechnicalCapabilities />
+  <MaterialMatrix />
+  <IndustryApplications />
+  <EngineeringResources />
+  <PremiumCTA />
+</BaseLayout>

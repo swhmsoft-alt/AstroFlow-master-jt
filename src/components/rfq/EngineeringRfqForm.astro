@@ -1,0 +1,563 @@
+---
+// EngineeringRfqForm.astro
+// High-End B2B RFQ Form for Titanium CNC Machining
+// Target: Defense, Aerospace, Medical Device Procurement Engineers
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section class="w-full" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="max-w-5xl mx-auto">
+      <form
+        id="engineering-rfq-form"
+        class="space-y-0 divide-y divide-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)]/30"
+        action="#"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <!-- ============================== -->
+        <!-- SECTION 1: Contact & Company    -->
+        <!-- ============================== -->
+        <fieldset class="pb-12">
+          <legend class="text-base font-semibold tracking-wider uppercase mb-8 flex items-center gap-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.08em;">
+            <span class="w-6 h-6 flex items-center justify-center text-xs font-bold" style="background-color: var(--theme-primary); color: #ffffff;">{t('rfq.form.section1.num')}</span>
+            {t('rfq.form.section1.title')}
+          </legend>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <!-- First Name -->
+            <div>
+              <label for="firstName" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.firstName.label')} <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                required
+                class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                placeholder={t('rfq.form.firstName.placeholder')}
+              />
+            </div>
+
+            <!-- Last Name -->
+            <div>
+              <label for="lastName" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.lastName.label')} <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                required
+                class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                placeholder={t('rfq.form.lastName.placeholder')}
+              />
+            </div>
+
+            <!-- Company Email -->
+            <div>
+              <label for="companyEmail" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.email.label')} <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                type="email"
+                id="companyEmail"
+                name="companyEmail"
+                required
+                class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                placeholder={t('rfq.form.email.placeholder')}
+              />
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.phone.label')}
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                placeholder={t('rfq.form.phone.placeholder')}
+              />
+            </div>
+
+            <!-- Company Name -->
+            <div>
+              <label for="companyName" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.company.label')} <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                type="text"
+                id="companyName"
+                name="companyName"
+                required
+                class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                placeholder={t('rfq.form.company.placeholder')}
+              />
+            </div>
+
+            <!-- Timeline -->
+            <div>
+              <label for="timeline" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.timeline.label')} <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <select
+                id="timeline"
+                name="timeline"
+                required
+                class="w-full px-4 py-3 border text-sm transition focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)] appearance-none"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+              >
+                <option value="" disabled selected style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('rfq.form.timeline.placeholder')}</option>
+                <option value="immediate">{t('rfq.form.timeline.immediate')}</option>
+                <option value="1-3-months">{t('rfq.form.timeline.1-3-months')}</option>
+                <option value="3-6-months">{t('rfq.form.timeline.3-6-months')}</option>
+                <option value="6-plus-months">{t('rfq.form.timeline.6-plus-months')}</option>
+                <option value="flexible">{t('rfq.form.timeline.flexible')}</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============================== -->
+        <!-- SECTION 2: Technical Parameters -->
+        <!-- ============================== -->
+        <fieldset class="py-12">
+          <legend class="text-base font-semibold tracking-wider uppercase mb-8 flex items-center gap-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.08em;">
+            <span class="w-6 h-6 flex items-center justify-center text-xs font-bold" style="background-color: var(--theme-primary); color: #ffffff;">{t('rfq.form.section2.num')}</span>
+            {t('rfq.form.section2.title')}
+          </legend>
+
+          <div class="space-y-8">
+            <!-- Titanium Grade -->
+            <div>
+              <label for="titaniumGrade" class="block text-xs font-medium uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.grade.label')} <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <select
+                id="titaniumGrade"
+                name="titaniumGrade"
+                required
+                class="w-full max-w-md px-4 py-3 border text-sm transition focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)] appearance-none"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+              >
+                <option value="" disabled selected style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('rfq.form.grade.placeholder')}</option>
+                <option value="grade-1">{t('rfq.form.grade.grade1')}</option>
+                <option value="grade-2">{t('rfq.form.grade.grade2')}</option>
+                <option value="grade-4">{t('rfq.form.grade.grade4')}</option>
+                <option value="grade-5">{t('rfq.form.grade.grade5')}</option>
+                <option value="grade-9">{t('rfq.form.grade.grade9')}</option>
+                <option value="grade-12">{t('rfq.form.grade.grade12')}</option>
+                <option value="grade-23">{t('rfq.form.grade.grade23')}</option>
+                <option value="other">{t('rfq.form.grade.other')}</option>
+              </select>
+            </div>
+
+            <!-- Core Services -->
+            <div>
+              <span class="block text-xs font-medium uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.services.label')} <span style="color: var(--theme-primary);">*</span>
+              </span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="3-5-axis-cnc" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.3-5-axis-cnc')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="cnc-milling-turning" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.cnc-milling-turning')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="wire-edm" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.wire-edm')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="additive-manufacturing" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.additive-manufacturing')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="laser-cutting" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.laser-cutting')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="waterjet-cutting" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.waterjet-cutting')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="welding-assembly" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.welding-assembly')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="surface-treatment" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.surface-treatment')}</span>
+                </label>
+                <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                  <input type="checkbox" name="services" value="forging-extrusion" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                  <span>{t('rfq.form.services.forging-extrusion')}</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Tolerance & Quantities -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+              <!-- Tolerance -->
+              <div>
+                <span class="block text-xs font-medium uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                  {t('rfq.form.tolerance.label')} <span style="color: var(--theme-primary);">*</span>
+                </span>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                    <input type="radio" name="tolerance" value="0.1mm" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                    <span>{t('rfq.form.tolerance.standard')}</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                    <input type="radio" name="tolerance" value="0.05mm" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                    <span>{t('rfq.form.tolerance.precision')}</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                    <input type="radio" name="tolerance" value="0.01mm" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                    <span>{t('rfq.form.tolerance.high_precision')}</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                    <input type="radio" name="tolerance" value="0.005mm" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                    <span>{t('rfq.form.tolerance.ultra_precision')}</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Quantities -->
+              <div class="space-y-6">
+                <div>
+                  <label for="estimatedQuantity" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                    {t('rfq.form.quantity.label')} <span style="color: var(--theme-primary);">*</span>
+                  </label>
+                  <input
+                    type="number"
+                    id="estimatedQuantity"
+                    name="estimatedQuantity"
+                    required
+                    min="1"
+                    class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                    style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                    placeholder={t('rfq.form.quantity.placeholder')}
+                  />
+                </div>
+                <div>
+                  <label for="targetUnitPrice" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                    {t('rfq.form.unitPrice.label')}
+                  </label>
+                  <input
+                    type="text"
+                    id="targetUnitPrice"
+                    name="targetUnitPrice"
+                    class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)]"
+                    style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                    placeholder={t('rfq.form.unitPrice.placeholder')}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============================== -->
+        <!-- SECTION 3: Secure CAD Upload     -->
+        <!-- ============================== -->
+        <fieldset class="py-12">
+          <legend class="text-base font-semibold tracking-wider uppercase mb-8 flex items-center gap-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.08em;">
+            <span class="w-6 h-6 flex items-center justify-center text-xs font-bold" style="background-color: var(--theme-primary); color: #ffffff;">{t('rfq.form.section3.num')}</span>
+            {t('rfq.form.section3.title')}
+          </legend>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Drop Zone -->
+            <div
+              id="cadDropZone"
+              class="relative flex flex-col items-center justify-center p-12 border transition-all cursor-pointer min-h-[200px]"
+              style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); border-style: dashed; background-color: var(--theme-surface); border-radius: 2px;"
+            >
+              <!-- Upload Icon -->
+              <svg class="w-10 h-10 mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+              </svg>
+              <p class="text-sm font-medium mb-1" style="color: var(--theme-text);">{t('rfq.form.cadUpload.dropText')}</p>
+              <p class="text-xs mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('rfq.form.cadUpload.clickText')}</p>
+              <button
+                type="button"
+                id="cadBrowseBtn"
+                class="px-5 py-2 text-xs font-semibold uppercase tracking-wider transition hover:opacity-90"
+                style="background-color: var(--theme-primary); color: #ffffff; letter-spacing: 0.06em; border-radius: 2px;"
+              >
+                {t('rfq.form.cadUpload.browseBtn')}
+              </button>
+              <input
+                type="file"
+                id="cadFileInput"
+                name="cadFile"
+                accept=".step,.stp,.igs,.iges,.pdf"
+                class="hidden"
+              />
+              <p class="absolute bottom-3 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('rfq.form.cadUpload.formats')}</p>
+            </div>
+
+            <!-- File Status -->
+            <div class="flex flex-col">
+              <div class="flex-grow p-6 border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); border-radius: 2px;">
+                <span class="block text-xs font-medium uppercase tracking-wider mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                  {t('rfq.form.cadUpload.statusLabel')}
+                </span>
+                <div id="cadFileStatus" class="flex items-center justify-center h-full min-h-[100px]">
+                  <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('rfq.form.cadUpload.noFile')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============================== -->
+        <!-- SECTION 4: Compliance & Notes    -->
+        <!-- ============================== -->
+        <fieldset class="py-12">
+          <legend class="text-base font-semibold tracking-wider uppercase mb-8 flex items-center gap-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.08em;">
+            <span class="w-6 h-6 flex items-center justify-center text-xs font-bold" style="background-color: var(--theme-primary); color: #ffffff;">{t('rfq.form.section4.num')}</span>
+            {t('rfq.form.section4.title')}
+          </legend>
+
+          <div class="space-y-8">
+            <!-- Compliance Checkboxes -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                <input type="checkbox" name="compliance" value="nda" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                <span>{t('rfq.form.compliance.nda')}</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                <input type="checkbox" name="compliance" value="en10204-3.1" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                <span>{t('rfq.form.compliance.en10204')}</span>
+              </label>
+              <label class="flex items-center gap-3 p-3 border text-sm cursor-pointer transition hover:border-[var(--theme-primary)]/50" style="border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); background-color: var(--theme-surface); border-radius: 2px;">
+                <input type="checkbox" name="compliance" value="inspection-reports" class="w-4 h-4 accent-[var(--theme-primary)]" />
+                <span>{t('rfq.form.compliance.inspectionReports')}</span>
+              </label>
+            </div>
+
+            <!-- Project Notes -->
+            <div>
+              <label for="projectNotes" class="block text-xs font-medium uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.06em;">
+                {t('rfq.form.notes.label')}
+              </label>
+              <textarea
+                id="projectNotes"
+                name="projectNotes"
+                rows="4"
+                class="w-full px-4 py-3 border text-sm transition placeholder:text-[color-mix(in_srgb,_var(--theme-text)_45%,_transparent)] focus:outline-none focus:ring-1 focus:ring-[var(--theme-primary)] resize-none"
+                style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 45%, transparent); color: var(--theme-text); border-radius: 2px;"
+                placeholder={t('rfq.form.notes.placeholder')}
+              ></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============================== -->
+        <!-- SUBMIT                           -->
+        <!-- ============================== -->
+        <div class="pt-12">
+          <button
+            type="submit"
+            id="rfqSubmitBtn"
+            class="w-full px-8 py-4 text-base font-semibold uppercase tracking-wider transition-all duration-200 hover:shadow-lg hover:shadow-[var(--theme-primary)]/30 active:scale-[0.99]"
+            style="background-color: var(--theme-primary); color: #ffffff; letter-spacing: 0.08em; border-radius: 2px;"
+          >
+            {t('rfq.form.submit.btn')}
+          </button>
+          <p class="text-xs text-center mt-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            {t('rfq.form.submit.agreement')} 
+            <a href="/privacy" class="underline hover:text-[var(--theme-primary)] transition-colors">{t('rfq.form.submit.privacyLink')}</a>.
+            {t('rfq.form.submit.encrypted')}
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // @ts-nocheck
+  (function() {
+    const supportedFormats = ['STEP', 'STP', 'IGS', 'IGES', 'PDF'];
+    const msg = {
+      unsupportedFormat: 'Unsupported file format. Please upload: ',
+      fileTooLarge: 'File size exceeds the 100 MB limit.',
+      submitting: 'Submitting...',
+      networkError: 'Network error. Please check your connection and try again.',
+      submitBtn: 'Submit Engineering RFQ',
+      noFile: 'No file selected.',
+    };
+
+    // --- CAD Upload Logic ---
+    const dropZone = document.getElementById('cadDropZone');
+    const fileInput = document.getElementById('cadFileInput');
+    const browseBtn = document.getElementById('cadBrowseBtn');
+    const fileStatus = document.getElementById('cadFileStatus');
+    const form = document.getElementById('engineering-rfq-form');
+    const maxFileSize = 100 * 1024 * 1024; // 100 MB
+
+    let selectedFile = null;
+
+    // Browse button click
+    browseBtn?.addEventListener('click', function(e) {
+      e.stopPropagation();
+      fileInput?.click();
+    });
+
+    // Drop zone click
+    dropZone?.addEventListener('click', function() {
+      fileInput?.click();
+    });
+
+    // File input change
+    fileInput?.addEventListener('change', function(e) {
+      const target = e.target;
+      const files = target.files;
+      if (files && files.length > 0) {
+        validateAndSetFile(files[0]);
+      }
+    });
+
+    // Drag events
+    dropZone?.addEventListener('dragenter', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.style.borderColor = 'var(--theme-primary)';
+      this.style.backgroundColor = 'color-mix(in srgb, var(--theme-primary) 5%, transparent)';
+    });
+
+    dropZone?.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.style.borderColor = 'var(--theme-primary)';
+      this.style.backgroundColor = 'color-mix(in srgb, var(--theme-primary) 5%, transparent)';
+    });
+
+    dropZone?.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.style.borderColor = 'color-mix(in srgb, var(--theme-text) 45%, transparent)';
+      this.style.backgroundColor = 'var(--theme-surface)';
+    });
+
+    dropZone?.addEventListener('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.style.borderColor = 'color-mix(in srgb, var(--theme-text) 45%, transparent)';
+      this.style.backgroundColor = 'var(--theme-surface)';
+      const dt = e.dataTransfer;
+      if (dt) {
+        const files = dt.files;
+        if (files && files.length > 0) {
+          validateAndSetFile(files[0]);
+        }
+      }
+    });
+
+    function validateAndSetFile(file) {
+      const ext = file.name.split('.').pop()?.toUpperCase();
+      if (!ext || !supportedFormats.includes(ext)) {
+        alert(msg.unsupportedFormat + supportedFormats.join(', '));
+        return;
+      }
+      if (file.size > maxFileSize) {
+        alert(msg.fileTooLarge);
+        return;
+      }
+      selectedFile = file;
+      updateFileStatus(file);
+    }
+
+    function updateFileStatus(file) {
+      if (!fileStatus) return;
+      const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+      fileStatus.innerHTML = `
+        <div class="flex items-start gap-3 w-full">
+          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="flex-grow min-w-0">
+            <p class="text-sm font-medium truncate" style="color: var(--theme-text);">${file.name}</p>
+            <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">${sizeMB} MB</p>
+          </div>
+          <button type="button" id="removeFileBtn" class="flex-shrink-0 p-1 transition-colors hover:text-[var(--theme-text)]" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      `;
+
+      const removeBtn = document.getElementById('removeFileBtn');
+      removeBtn?.addEventListener('click', function(e) {
+        e.stopPropagation();
+        selectedFile = null;
+        if (fileInput) {
+          fileInput.value = '';
+        }
+        if (fileStatus) {
+          fileStatus.innerHTML = `<p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">${msg.noFile}</p>`;
+        }
+      });
+    }
+
+    // --- Form Submission (Static Mode) ---
+  // Generates a mailto: link with form data for manual sending
+  form?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formEl = e.currentTarget;
+    const submitBtn = document.getElementById('rfqSubmitBtn');
+
+    // Collect form data
+    var firstName = formEl.querySelector('#firstName')?.value || '';
+    var lastName = formEl.querySelector('#lastName')?.value || '';
+    var email = formEl.querySelector('#companyEmail')?.value || '';
+    var phone = formEl.querySelector('#phone')?.value || '';
+    var company = formEl.querySelector('#companyName')?.value || '';
+    var timeline = formEl.querySelector('#timeline')?.value || '';
+    var grade = formEl.querySelector('#titaniumGrade')?.value || '';
+    var tolerance = formEl.querySelector('input[name="tolerance"]:checked')?.value || '';
+    var quantity = formEl.querySelector('#estimatedQuantity')?.value || '';
+    var notes = formEl.querySelector('#projectNotes')?.value || '';
+
+    var subject = 'RFQ: ' + firstName + ' ' + lastName + ' - ' + company;
+    var body = 'RFQ Submission%0A%0A';
+    body += 'Name: ' + firstName + ' ' + lastName + '%0A';
+    body += 'Email: ' + email + '%0A';
+    body += 'Phone: ' + phone + '%0A';
+    body += 'Company: ' + company + '%0A';
+    body += 'Timeline: ' + timeline + '%0A';
+    body += 'Titanium Grade: ' + grade + '%0A';
+    body += 'Tolerance: ' + tolerance + '%0A';
+    body += 'Quantity: ' + quantity + '%0A';
+    body += 'Project Notes: ' + notes + '%0A%0A';
+    body += '--- Please attach CAD files separately to the email ---';
+
+    var mailtoLink = 'mailto:rfq@bozemetal.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailtoLink;
+
+    // Show confirmation
+    alert('Thank you for your submission! Please check your email client to complete sending your RFQ. Our team will respond within 24-48 hours.');
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = msg.submitBtn;
+    }
+  });
+  })();
+</script>

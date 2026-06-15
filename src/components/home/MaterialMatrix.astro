@@ -1,0 +1,130 @@
+---
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface GradeGroup {
+  group: string;
+  description: string;
+  grades: { label: string; spec: string; application: string }[];
+}
+
+const gradeGroups: GradeGroup[] = [
+  {
+    group: "Grade 5 (Ti-6Al-4V)",
+    description: t('home.materials.gg0.desc'),
+    grades: [
+      { label: "Grade 5", spec: "Ti-6Al-4V", application: t('home.materials.gg0.g0.app') },
+    ]
+  },
+  {
+    group: "Grade 23 (Ti-6Al-4V ELI)",
+    description: t('home.materials.gg1.desc'),
+    grades: [
+      { label: "Grade 23", spec: "Ti-6Al-4V ELI", application: t('home.materials.gg1.g0.app') },
+    ]
+  },
+  {
+    group: "Commercially Pure Grades",
+    description: t('home.materials.gg2.desc'),
+    grades: [
+      { label: "Grade 1", spec: "CP-Ti (99.9%)", application: t('home.materials.gg2.g0.app') },
+      { label: "Grade 2", spec: "CP-Ti (99.8%)", application: t('home.materials.gg2.g1.app') },
+      { label: "Grade 4", spec: "CP-Ti (99.6%)", application: t('home.materials.gg2.g2.app') },
+    ]
+  },
+  {
+    group: "Titanium Alloys",
+    description: t('home.materials.gg3.desc'),
+    grades: [
+      { label: "Grade 9", spec: "Ti-3Al-2.5V", application: t('home.materials.gg3.g0.app') },
+      { label: "Grade 12", spec: "Ti-0.3Mo-0.8Ni", application: t('home.materials.gg3.g1.app') },
+    ]
+  }
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Subtle gradient ambient -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full" style="background: radial-gradient(circle, var(--theme-primary) 0%, transparent 70%); filter: blur(60px);"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        {t('home.materials.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('home.materials.title')}
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        {t('home.materials.subtitle')}
+      </p>
+    </div>
+
+    <!-- Grade Groups -->
+    <div class="space-y-8 max-w-5xl mx-auto">
+      {gradeGroups.map((group) => (
+        <div
+          class="rounded-xl p-8 transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
+            <div>
+              <h3 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">
+                <span class="gradient-text-accent">{group.group}</span>
+              </h3>
+              <p class="text-sm leading-relaxed max-w-2xl" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{group.description}</p>
+            </div>
+          </div>
+
+          <!-- Grades Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                  <th class="text-left py-3 pr-4 font-semibold" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.materials.table.grade')}</th>
+                  <th class="text-left py-3 px-4 font-semibold" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.materials.table.spec')}</th>
+                  <th class="text-left py-3 pl-4 font-semibold" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.materials.table.application')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {group.grades.map((grade) => (
+                  <tr style="border-bottom: 1px solid var(--theme-surface);">
+                    <td class="py-4 pr-4 font-semibold" style="color: var(--theme-text);">{grade.label}</td>
+                    <td class="py-4 px-4 font-mono text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{grade.spec}</td>
+                    <td class="py-4 pl-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{grade.application}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a
+        href={localizePath('/services', currentLang)}
+        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+        style="background-color: var(--theme-primary); color: #ffffff;"
+        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
+        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
+      >
+        {t('home.materials.cta')}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

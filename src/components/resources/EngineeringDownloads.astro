@@ -1,0 +1,161 @@
+---
+interface DownloadItem {
+  name: string;
+  description: string;
+  format: string;
+  size: string;
+  href: string;
+}
+
+const downloads: DownloadItem[] = [
+  {
+    name: "CAD Standard Models — Titanium Grade 5 (Ti-6Al-4V)",
+    description: "ISO 10303 STEP AP242 native 3D models of common titanium billet, bar, plate, and tube stock geometries for engineering integration.",
+    format: "STEP",
+    size: "4.2 MB",
+    href: "/resources/downloads/cad-grade5-models.step",
+  },
+  {
+    name: "Titanium Property Datasheet — Full Grade Compendium",
+    description: "Complete mechanical, thermal, and chemical property datasheet across Grades 1–23, including ASTM/ISO cross-reference tables and heat treatment guidelines.",
+    format: "PDF",
+    size: "1.8 MB",
+    href: "/resources/downloads/titanium-property-datasheet.pdf",
+  },
+  {
+    name: "2026 Titanium DFM Booklet",
+    description: "Definitive design-for-manufacturability reference: minimum wall thickness charts, achievable tolerances per process, surface finish callouts, and anti-galling design rules.",
+    format: "PDF",
+    size: "6.7 MB",
+    href: "/resources/downloads/2026-titanium-dfm-booklet.pdf",
+  },
+  {
+    name: "Heat Treatment & Stress Relief Parameters",
+    description: "Recommended annealing, solution treating, and aging cycles for all wrought titanium grades, with post-treatment mechanical property verification data.",
+    format: "PDF",
+    size: "3.4 MB",
+    href: "/resources/downloads/heat-treatment-parameters.pdf",
+  },
+  {
+    name: "Welding Procedure Specification (WPS) — Grade 2 & 5",
+    description: "Qualified welding parameters for GTAW (TIG) and PAW of commercially pure and alpha-beta titanium alloys, including pre-weld cleaning and purge gas protocols.",
+    format: "PDF",
+    size: "2.1 MB",
+    href: "/resources/downloads/wps-titanium-grades.pdf",
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Engineering grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Engineering Downloads
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Technical <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Resource Library</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Downloadable engineering assets — CAD models, property datasheets, and manufacturing reference booklets. All files are production-grade and revision-controlled.
+      </p>
+    </div>
+
+    <!-- Spreadsheet-Style Table -->
+    <div class="overflow-x-auto rounded-xl" style="border: 1px solid color-mix(in srgb, var(--theme-text) 42%, transparent);">
+      <table class="w-full text-sm">
+        <!-- Table Head -->
+        <thead>
+          <tr style="background-color: var(--theme-surface); border-bottom: 1px solid color-mix(in srgb, var(--theme-text) 42%, transparent);">
+            <th class="text-left px-6 py-4 font-semibold tracking-wide uppercase" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
+              Resource
+            </th>
+            <th class="text-left px-6 py-4 font-semibold tracking-wide uppercase hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
+              Format
+            </th>
+            <th class="text-left px-6 py-4 font-semibold tracking-wide uppercase hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
+              Size
+            </th>
+            <th class="text-right px-6 py-4 font-semibold tracking-wide uppercase" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+          {downloads.map((item, index) => (
+            <tr
+              class="transition-colors"
+              style="border-bottom: 1px solid color-mix(in srgb, var(--theme-text) 20%, transparent); background-color: var(--theme-bg);"
+              onmouseover="this.style.backgroundColor='var(--theme-surface)'"
+              onmouseout="this.style.backgroundColor='var(--theme-bg)'"
+            >
+              <td class="px-6 py-5">
+                <div class="flex flex-col">
+                  <span class="font-semibold text-sm leading-snug" style="color: var(--theme-text);">
+                    {item.name}
+                  </span>
+                  <span class="text-xs mt-1 leading-relaxed max-w-lg" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent);">
+                    {item.description}
+                  </span>
+                </div>
+              </td>
+              <td class="px-6 py-5 hidden sm:table-cell">
+                <span
+                  class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded"
+                  style={item.format === 'PDF'
+                    ? 'background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);'
+                    : 'background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);'
+                  }
+                >
+                  {item.format}
+                </span>
+              </td>
+              <td class="px-6 py-5 hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent); font-size: 0.8rem;">
+                {item.size}
+              </td>
+              <td class="px-6 py-5 text-right">
+                <a
+                  href={item.href}
+                  class="inline-flex items-center text-sm font-semibold transition-all group/link"
+                  style="color: var(--theme-primary);"
+                  onmouseover="this.style.color='color-mix(in srgb, var(--theme-primary) 70%, white)'"
+                  onmouseout="this.style.color='var(--theme-primary)'"
+                >
+                  <span>[Download {item.format}]</span>
+                  <svg class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover/link:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer note -->
+    <div class="mt-4 text-right">
+      <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent);">
+        Files updated Q1 2026 · All assets verified
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gradient-text-primary {
+    background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>

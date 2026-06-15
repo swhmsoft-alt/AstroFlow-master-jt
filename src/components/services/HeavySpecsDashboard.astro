@@ -1,0 +1,86 @@
+---
+interface SpecItem {
+  label: string;
+  value: string;
+  unit: string;
+  description: string;
+  icon: string;
+}
+
+const specs: SpecItem[] = [
+  {
+    label: "Max Fabricated Footprint",
+    value: "12,000 x 4,500 x 4,000",
+    unit: "mm",
+    description: "Massive structural profile capacity accommodating multi-meter infrastructure frames, pressure vessel shells, and subsea structures in a single integrated build envelope.",
+    icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+  },
+  {
+    label: "Maximum Gauge Capacity",
+    value: "50+",
+    unit: "mm Hot Forming",
+    description: "In-house hot forming capability coping with heavy titanium stocks exceeding 50 mm thick — using localized infrared heating to enhance ductility before bending or rolling.",
+    icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+  },
+  {
+    label: "Total Cranes Lifting Load",
+    value: "30",
+    unit: "Metric Tons",
+    description: "Heavy duty bay crane transport layout scaling up to 30 metric tons — enabling safe handling and positioning of massive forged blocks, rolled shells, and assembled structures.",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z"
+  },
+  {
+    label: "Volumetric NDT Inspection",
+    value: "100%",
+    unit: "Class I RT & UT",
+    description: "100% compliant under Class I Radiographic (X-Ray) and Ultrasonic (UT) zero-defect requirements — ensuring structural integrity validation on every weld and parent metal section.",
+    icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+  }
+];
+---
+<section style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        Heavy Manufacturing Capacity
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Heavy Manufacturing <span style="color: var(--theme-primary);">Capacity Dashboard</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Colossal machinery tonnage, dimensional bounds, and metrology metrics of our heavy titanium forming and forging facility.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {specs.map((spec) => (
+        <div
+          class="relative rounded-xl p-8 flex flex-col h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={spec.icon} />
+            </svg>
+          </div>
+          <div class="mb-1">
+            <span class="text-4xl md:text-5xl font-bold tracking-tight" style="color: var(--theme-primary);">{spec.value}</span>
+            {spec.unit && <span class="text-lg font-semibold ml-1" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{spec.unit}</span>}
+          </div>
+          <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{spec.label}</h3>
+          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{spec.description}</p>
+          <div class="absolute bottom-0 left-6 right-6 h-px" style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent); opacity: 0.2;"></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+        NDT methods include radiographic (RT) per ASME Section V, ultrasonic (UT) per ASTM E2375, and dye-penetrant (PT) per ASTM E1417. All hot forming performed in inert atmosphere.
+      </p>
+    </div>
+  </div>
+</section>

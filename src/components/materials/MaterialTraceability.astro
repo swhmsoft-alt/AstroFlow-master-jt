@@ -1,0 +1,123 @@
+---
+interface TraceabilityItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  iconPath: string;
+  standard: string;
+}
+
+const items: TraceabilityItem[] = [
+  {
+    title: "EN 10204 3.1 MTRs",
+    subtitle: "Standard Material Test Reports",
+    description: "Every shipment includes certified mill test reports (MTRs) per EN 10204 Type 3.1, documenting chemical composition, mechanical properties, and heat treatment parameters. Full chain-of-custody documentation from mill to finished component.",
+    iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+    standard: "EN 10204 Type 3.1",
+  },
+  {
+    title: "In-House OES Spectrometry",
+    subtitle: "Positive Material Identification (PMI)",
+    description: "On-site Optical Emission Spectrometry (OES) verification for rapid positive material identification. Our SPECTROMAXx analyzer confirms elemental composition within 30 seconds, ensuring every incoming batch matches the specified grade chemistry.",
+    iconPath: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+    standard: "ASTM E415 / ISO 14284",
+  },
+  {
+    title: "Third-Party Validation",
+    subtitle: "SGS / TUV Readiness",
+    description: "Full readiness for independent third-party inspection and certification by SGS, TÜV, Bureau Veritas, or customer-nominated agencies. We maintain strict segregation of certified materials and can quarantine lots for external validation on demand.",
+    iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+    standard: "SGS / TÜV / BV Accredited",
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Subtle grid -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        Quality Assurance
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        100% Material <span class="gradient-text-accent">Traceability</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Every gram of titanium we machine is backed by certified documentation and verifiable chain-of-custody from mill to finished part.
+      </p>
+    </div>
+
+    <!-- 3-Column Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {items.map((item) => (
+        <div
+          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          {/* Icon */}
+          <div
+            class="w-14 h-14 rounded-lg flex items-center justify-center mb-5"
+            style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+          >
+            <svg class="w-7 h-7" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.iconPath} />
+            </svg>
+          </div>
+
+          {/* Standard Badge */}
+          <span
+            class="self-start inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full mb-4"
+            style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+          >
+            {item.standard}
+          </span>
+
+          {/* Text Content */}
+          <h3 class="text-xl font-bold mb-1" style="color: var(--theme-text);">
+            {item.title}
+          </h3>
+          <p class="text-sm mb-4 font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+            {item.subtitle}
+          </p>
+          <p class="text-sm leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+            {item.description}
+          </p>
+
+          {/* Corner accent on hover */}
+          <div
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300"
+            style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+          ></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a
+        href="/rfq"
+        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+        style="background-color: var(--theme-primary); color: var(--theme-text);"
+        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
+        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
+      >
+        Request Certified Material Quote
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+# ============================================================
+# 🚀 AstroFlow CI/CD — 自动部署到 cPanel (FTP)
+# 触发条件: 推送 main 分支时自动部署
+# ============================================================
+name: Deploy to cPanel via FTP
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npx astro build
+
+      - name: Deploy to cPanel via FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_PATH: ${{ secrets.FTP_REMOTE_PATH }}
+        run: node scripts/deploy-ftp-ci.mjs

@@ -1,0 +1,116 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Img from '../ui/Image.astro';
+import Button from '../ui/Button.astro';
+
+interface StatItem {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  hero: {
+    badge?: string;
+    title?: string;
+    highlight?: string;
+    description?: string;
+    primaryCta?: string;
+    primaryCtaLink?: string;
+    secondaryCta?: string;
+    secondaryCtaLink?: string;
+    heroMediaType?: string;
+    heroVideoUrl?: string;
+    heroImage?: string;
+    heroImageAlt?: string;
+    stats?: StatItem[];
+  };
+}
+
+const { hero } = Astro.props as Props;
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const isVideo = hero.heroMediaType === 'video' && hero.heroVideoUrl;
+---
+
+<section class="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+  <!-- Background Media -->
+  {isVideo ? (
+    <!-- Video Background -->
+    <div class="absolute inset-0">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="w-full h-full object-cover"
+        style="filter: brightness(0.6);"
+      >
+        <source src={hero.heroVideoUrl} type="video/mp4" />
+        {t('hero.video.fallback')}
+      </video>
+      <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-bg) 95%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 70%, transparent) 40%, color-mix(in srgb, var(--theme-bg) 30%, transparent) 100%);"></div>
+    </div>
+  ) : (
+    <!-- Image Background -->
+    <div class="absolute inset-0" style={`background-image: url(${hero.heroImage}); background-size: cover; background-position: center;`}>
+      <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-bg) 97%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 85%, transparent) 40%, color-mix(in srgb, var(--theme-bg) 50%, transparent) 100%);"></div>
+    </div>
+  )}
+
+  <!-- Content -->
+  <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl">
+      <!-- Badge — aerospace orange outline -->
+      <div class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full shadow-lg border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+        </svg>
+        {hero.badge}
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
+        {hero.title}
+        <span class="block gradient-text-accent mt-2">
+          {hero.highlight}
+        </span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {hero.description}
+      </p>
+      
+      <!-- CTA Buttons with aerospace orange -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-12">
+        <a href={hero.primaryCtaLink} class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all" style="background-color: var(--theme-primary); color: var(--theme-text);" onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 85%, black)'; this.style.boxShadow='0 0 25px color-mix(in srgb, var(--theme-primary) 50%, transparent)'" onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''">
+          {hero.primaryCta}
+        </a>
+        <a href={hero.secondaryCtaLink} class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg border-2 shadow-lg transition-all" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: color-mix(in srgb, var(--theme-text) 65%, transparent);" onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.color='var(--theme-primary)'" onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 20%, transparent)'; this.style.color='color-mix(in srgb, var(--theme-text) 65%, transparent)'">
+          {hero.secondaryCta}
+        </a>
+      </div>
+
+      <!-- Quick Stats — cold titanium -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8" style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        {hero.stats && hero.stats.length > 0 && hero.stats.map((stat: StatItem) => (
+          <div class="group">
+            <div class="text-3xl md:text-4xl font-bold mb-1 gradient-text-titanium">{stat.value}</div>
+            <div class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>
+
+<style>
+  video {
+    pointer-events: none;
+  }
+</style>

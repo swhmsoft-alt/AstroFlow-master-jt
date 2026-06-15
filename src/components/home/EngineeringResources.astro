@@ -1,0 +1,113 @@
+---
+import Img from '@components/ui/Image.astro';
+import techImg from '@assets/photo-1460925895917-afdab827c52f.jpg';
+import gradesImg from '@assets/photo-1550751827-4bd374c3f58b.jpg';
+import caseStudyImg from '@assets/photo-1450101499163-c8848c66ca85.jpg';
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Resource {
+  title: string;
+  category: string;
+  description: string;
+  image: any;
+  href: string;
+}
+
+const resources: Resource[] = [
+  {
+    title: t('home.resources.res0.title'),
+    category: t('home.resources.res0.category'),
+    description: t('home.resources.res0.desc'),
+    image: techImg,
+    href: localizePath('/documentation', currentLang)
+  },
+  {
+    title: t('home.resources.res1.title'),
+    category: t('home.resources.res1.category'),
+    description: t('home.resources.res1.desc'),
+    image: gradesImg,
+    href: localizePath('/documentation', currentLang)
+  },
+  {
+    title: t('home.resources.res2.title'),
+    category: t('home.resources.res2.category'),
+    description: t('home.resources.res2.desc'),
+    image: caseStudyImg,
+    href: localizePath('/documentation', currentLang)
+  }
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        {t('home.resources.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('home.resources.title')}
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        {t('home.resources.subtitle')}
+      </p>
+    </div>
+
+    <!-- Resources Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {resources.map((resource) => (
+        <a
+          href={resource.href}
+          class="group rounded-xl overflow-hidden transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          <!-- Image -->
+          <div class="relative h-48 overflow-hidden">
+            <Img
+              src={resource.image}
+              alt={resource.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              widths={[320, 480, 640]}
+              sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+            />
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, color-mix(in srgb, var(--theme-bg) 90%, transparent) 100%);"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <div class="inline-flex items-center px-3 py-1 mb-3 text-xs font-semibold rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+              {resource.category}
+            </div>
+            <h3 class="text-lg font-bold mb-3 transition-colors" style="color: var(--theme-text);" onmouseover="this.style.color='var(--theme-primary)'" onmouseout="this.style.color='var(--theme-text)'">
+              {resource.title}
+            </h3>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+              {resource.description}
+            </p>
+
+            <!-- Read More -->
+            <div class="mt-5 flex items-center text-sm font-semibold transition-all" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+              <span>{t('home.resources.read')}</span>
+              <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

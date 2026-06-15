@@ -1,0 +1,430 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import Img from '@components/ui/Image.astro';
+import ImageReveal from '../components/react/ImageReveal';
+import FacilityStats from '../components/react/FacilityStats';
+
+import northAmericanHubImg from '@assets/photo-1486406146926-c627a92ad1ab.jpg';
+import westCoastDistributionImg from '@assets/photo-1522071820081-009f0129c71c.jpg';
+import eastCoastOperationsImg from '@assets/photo-1607082349566-187342175e2f.jpg';
+import southernManufacturingCenterImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
+import midwestColdStorageImg from '@assets/photo-1550751827-4bd374c3f58b.jpg';
+import southeastDistributionImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
+
+import ctaBgImg from '@assets/photo-1451187580459-43490279c0fa.jpg';
+
+const facilities = [
+  {
+    name: 'North American Hub',
+    location: 'Chicago, Illinois',
+    address: '1234 Industrial Boulevard, Chicago, IL 60609',
+    type: 'Distribution & Manufacturing',
+    size: '500,000 sq ft',
+    image: northAmericanHubImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>`,
+    phone: '+1 (312) 555-0100',
+    email: 'info@bozemetal.com',
+    manager: 'Sarah Johnson',
+    hours: '24/7 Operations',
+    features: [
+      'Automated warehouse systems',
+      'Climate-controlled storage',
+      'CNC machining center',
+      'Rail and truck access',
+      '24/7 operations'
+    ],
+    certifications: ['ISO 9001', 'ISO 14001', 'OSHA Compliant']
+  },
+  {
+    name: 'West Coast Distribution',
+    location: 'Los Angeles, California',
+    address: '5678 Portside Drive, Los Angeles, CA 90040',
+    type: 'Port Titanium CNC Machining & Warehousing',
+    size: '350,000 sq ft',
+    image: westCoastDistributionImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>`,
+    phone: '+1 (323) 555-0200',
+    email: 'info@bozemetal.com',
+    manager: 'Michael Chen',
+    hours: 'Mon-Sun: 6:00 AM - 10:00 PM',
+    features: [
+      'Port-adjacent location',
+      'Cross-docking capabilities',
+      'Bonded warehouse',
+      'Container storage',
+      'LTL/FTL consolidation'
+    ],
+    certifications: ['C-TPAT', 'ISO 9001', 'FDA Registered']
+  },
+  {
+    name: 'East Coast Operations',
+    location: 'Newark, New Jersey',
+    address: '9012 Commerce Way, Newark, NJ 07114',
+    type: 'Distribution & Value-Added Services',
+    size: '400,000 sq ft',
+    image: eastCoastOperationsImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    </svg>`,
+    phone: '+1 (973) 555-0300',
+    email: 'info@bozemetal.com',
+    manager: 'David Rodriguez',
+    hours: 'Mon-Fri: 7:00 AM - 8:00 PM, Sat: 8:00 AM - 4:00 PM',
+    features: [
+      'E-commerce fulfillment',
+      'Kitting and assembly',
+      'Returns processing',
+      'Same-day shipping',
+      'Multi-client operations'
+    ],
+    certifications: ['ISO 9001', 'ISTA Certified', 'TSA Approved']
+  },
+  {
+    name: 'Southern Manufacturing Center',
+    location: 'Houston, Texas',
+    address: '3456 Manufacturing Parkway, Houston, TX 77001',
+    type: 'Manufacturing & Assembly',
+    size: '300,000 sq ft',
+    image: southernManufacturingCenterImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+    </svg>`,
+    phone: '+1 (713) 555-0400',
+    email: 'info@bozemetal.com',
+    manager: 'Jennifer Martinez',
+    hours: 'Mon-Fri: 6:00 AM - 6:00 PM',
+    features: [
+      'Precision manufacturing',
+      'Quality control lab',
+      'Assembly lines',
+      'Prototype development',
+      'Tool & die shop'
+    ],
+    certifications: ['ISO 9001', 'AS9100', 'ITAR Registered']
+  },
+  {
+    name: 'Midwest Cold Storage',
+    location: 'Minneapolis, Minnesota',
+    address: '7890 Cold Chain Avenue, Minneapolis, MN 55401',
+    type: 'Refrigerated & Frozen Storage',
+    size: '250,000 sq ft',
+    image: midwestColdStorageImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>`,
+    phone: '+1 (612) 555-0500',
+    email: 'info@bozemetal.com',
+    manager: 'Robert Anderson',
+    hours: '24/7 Operations',
+    features: [
+      'Temperature zones: -20°F to 60°F',
+      'HACCP compliant',
+      'Blast freezing',
+      'Food-grade facility',
+      'Lot tracking systems'
+    ],
+    certifications: ['FSMA', 'SQF Level 3', 'FDA Registered']
+  },
+  {
+    name: 'Southeast Distribution',
+    location: 'Atlanta, Georgia',
+    address: '2345 Titanium CNC Machining Boulevard, Atlanta, GA 30301',
+    type: 'Distribution & Transportation Hub',
+    size: '450,000 sq ft',
+    image: southeastDistributionImg,
+    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+    </svg>`,
+    phone: '+1 (404) 555-0600',
+    email: 'info@bozemetal.com',
+    manager: 'Amanda Williams',
+    hours: 'Mon-Sun: 5:00 AM - 11:00 PM',
+    features: [
+      'Strategic location',
+      'Cross-docking',
+      'Regional distribution',
+      'Parcel integration',
+      'Transloading services'
+    ],
+    certifications: ['ISO 9001', 'C-TPAT', 'OSHA Compliant']
+  }
+];
+
+const facilityStandards = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+    </svg>`,
+    title: 'Security',
+    description: '24/7 surveillance, access control, and security personnel at all locations',
+    color: 'linear-gradient(to bottom right, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, black))'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+    </svg>`,
+    title: 'Quality Control',
+    description: 'Rigorous inspection processes and quality management systems',
+    color: 'linear-gradient(to bottom right, var(--theme-primary), var(--theme-accent))'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>`,
+    title: 'Efficiency',
+    description: 'Optimized layouts and automated systems for maximum throughput',
+    color: 'linear-gradient(to bottom right, var(--theme-accent), color-mix(in srgb, var(--theme-accent) 70%, black))'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>`,
+    title: 'Sustainability',
+    description: 'Energy-efficient operations and environmental management programs',
+    color: 'linear-gradient(to bottom right, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 75%, white))'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>`,
+    title: 'Technology',
+    description: 'Real-time tracking, WMS, and automated reporting systems',
+    color: 'linear-gradient(to bottom right, var(--theme-accent), var(--theme-primary))'
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    </svg>`,
+    title: 'Expert Team',
+    description: 'Trained professionals dedicated to operational excellence',
+    color: 'linear-gradient(to bottom right, color-mix(in srgb, var(--theme-primary) 80%, black), var(--theme-accent))'
+  }
+];
+---
+
+<BaseLayout title="Our Facilities - BOZE CNC Ti">
+  <!-- Hero -->
+  <SubpageHero
+    title="Our"
+    highlight="Facilities"
+    badge="Our Infrastructure"
+    badgeIcon="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+    subtitle="Strategically located facilities across North America equipped with state-of-the-art technology and industry certifications."
+  />
+
+  <!-- Quick Stats -->
+  <Section background="white">
+    <FacilityStats client:load />
+  </Section>
+
+  <!-- Facilities Grid -->
+  <Section background="gray">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); font-size: 0.875rem; font-weight: 600; border-radius: 9999px;">
+        Our Locations
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
+        Strategic <span class="gradient-text">Facilities</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Each facility is designed to meet specific industry needs with cutting-edge infrastructure and capabilities.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {facilities.map((facility, index) => (
+        <ImageReveal client:load delay={index * 0.1}>
+          <Card hover class="overflow-hidden animate-fadeInUp group" style={`animation-delay: ${index * 0.1}s`}>
+            <!-- Facility Image -->
+            <div class="relative h-64 overflow-hidden">
+              <Img 
+                src={facility.image}
+                alt={facility.name}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                widths={[480,768,1024,1600,2070]}
+                sizes="100vw"
+              />
+              <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 80%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 40%, transparent) 60%, transparent 100%);"></div>
+              <div class="absolute top-4 right-4">
+                <div class="w-12 h-12 rounded-full backdrop-blur-sm flex items-center justify-center" style="background: color-mix(in srgb, var(--theme-text) 20%, transparent); border: 1px solid color-mix(in srgb, var(--theme-text) 30%, transparent);" set:html={facility.icon}></div>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 p-6" style="color: var(--theme-text);">
+                <h3 class="text-2xl font-bold mb-1">{facility.name}</h3>
+                <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{facility.type}</p>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-5" style="background: var(--theme-surface);">
+              <!-- Location & Size -->
+              <div class="flex flex-wrap items-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {facility.location}
+                </span>
+                <span style="color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">•</span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3zM14 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1v-3z" />
+                  </svg>
+                  {facility.size}
+                </span>
+              </div>
+
+              <!-- Features -->
+              <div>
+                <h4 class="text-sm font-semibold uppercase mb-3 tracking-wide flex items-center gap-2" style="color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+                  <svg class="w-4 h-4" style="color: var(--theme-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Key Features
+                </h4>
+                <ul class="grid grid-cols-1 gap-2.5">
+                  {facility.features.map((feature) => (
+                    <li class="flex items-start space-x-2.5 text-sm">
+                      <svg class="w-4 h-4 shrink-0 mt-0.5" style="color: var(--theme-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Certifications -->
+              <div class="border-t pt-4" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                <h4 class="text-sm font-semibold uppercase mb-3 tracking-wide flex items-center gap-2" style="color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+                  <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                  Certifications
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  {facility.certifications.map((cert) => (
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-accent) 15%, transparent)); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">
+                      {cert}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
+        </ImageReveal>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Map Section -->
+  <Section background="white">
+    <Card class="overflow-hidden">
+      <div class="text-center mb-8">
+        <div class="inline-block px-4 py-2 mb-4" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); font-size: 0.875rem; font-weight: 600; border-radius: 9999px;">
+          Network Coverage
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          Strategic <span class="gradient-text">Coverage</span>
+        </h2>
+        <p class="max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Our facilities are strategically positioned to provide optimal coverage across North America
+        </p>
+      </div>
+      
+      <!-- Map Placeholder -->
+      <div class="relative aspect-video rounded-xl overflow-hidden" style="background: linear-gradient(to bottom right, color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface)), var(--theme-surface), color-mix(in srgb, var(--theme-accent) 8%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+          <div class="text-center">
+            <svg class="w-24 h-24 mx-auto mb-4 animate-pulse" style="color: color-mix(in srgb, var(--theme-primary) 40%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="font-semibold text-lg mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Interactive Map</p>
+            <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Contact us for detailed facility information and tours</p>
+          </div>
+        </div>
+        
+        <!-- Decorative location markers -->
+        <div class="absolute inset-0 opacity-40">
+          <div class="absolute top-1/4 left-1/4 w-4 h-4" style="background: var(--theme-primary); border-radius: 9999px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--theme-primary) 30%, transparent);"></div>
+          <div class="absolute top-1/3 left-1/2 w-4 h-4" style="background: var(--theme-primary); border-radius: 9999px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--theme-primary) 30%, transparent); animation-delay: 0.2s"></div>
+          <div class="absolute top-1/2 right-1/3 w-4 h-4" style="background: var(--theme-primary); border-radius: 9999px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--theme-primary) 30%, transparent); animation-delay: 0.4s"></div>
+          <div class="absolute bottom-1/3 left-1/3 w-4 h-4" style="background: var(--theme-primary); border-radius: 9999px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--theme-primary) 30%, transparent); animation-delay: 0.6s"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-4 h-4" style="background: var(--theme-primary); border-radius: 9999px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--theme-primary) 30%, transparent); animation-delay: 0.8s"></div>
+          <div class="absolute top-2/3 right-1/4 w-4 h-4" style="background: var(--theme-primary); border-radius: 9999px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--theme-primary) 30%, transparent); animation-delay: 1s"></div>
+        </div>
+      </div>
+    </Card>
+  </Section>
+
+  <!-- Facility Standards -->
+  <Section background="gradient">
+    <div class="text-center mb-16">
+      <div class="inline-block px-4 py-2 mb-4" style="background: color-mix(in srgb, var(--theme-text) 15%, var(--theme-surface)); backdrop-filter: blur(8px); color: var(--theme-primary); font-size: 0.875rem; font-weight: 600; border-radius: 9999px; border: 1px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">
+        Our Standards
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
+        Facility <span class="gradient-text">Standards</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Every facility meets our rigorous standards for safety, security, and operational excellence.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {facilityStandards.map((feature, index) => (
+        <Card hover class="text-center animate-fadeInUp group" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg" style={`background: ${feature.color};`} set:html={feature.icon}></div>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{feature.title}</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{feature.description}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <section class="relative py-32 overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <Img 
+        src={ctaBgImg}
+        alt="Modern facilities and infrastructure"
+        class="w-full h-full object-cover"
+        widths={[480,768,1024,1600,2070]}
+        sizes="100vw"
+      />
+      <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-primary) 95%, var(--theme-bg)), color-mix(in srgb, var(--theme-accent) 95%, var(--theme-bg)));"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-4xl mx-auto text-center" style="color: var(--theme-text);">
+        <div class="inline-block px-4 py-2 mb-6" style="background: color-mix(in srgb, var(--theme-text) 15%, transparent); backdrop-filter: blur(8px); color: var(--theme-text); font-size: 0.875rem; font-weight: 600; border-radius: 9999px;">
+          Get Started Today
+        </div>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Ready to Visit Our <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">Facilities</span>?
+        </h2>
+        <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          Schedule a tour to see our operations firsthand and discuss how we can meet your needs.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <Button href="/rfq" size="lg">
+            Request a Quote
+          </Button>
+          <Button href="/services" size="lg" variant="outline">
+            View Capabilities
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

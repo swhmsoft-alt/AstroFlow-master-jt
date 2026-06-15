@@ -1,0 +1,139 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Img from '@components/ui/Image.astro';
+
+import discoveryImg from '@assets/photo-1454165804603-c6d57bc86b40.jpg';
+import implementationImg from '@assets/photo-1522071820081-009f0129c71c.jpg';
+import optimizationImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
+import supportGrowthImg from '@assets/photo-1552664730-d307ca884978.jpg';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  alt: string;
+}
+
+const steps = [
+  {
+    number: 1,
+    title: t('home.workflow.step0.title'),
+    description: t('home.workflow.step0.desc'),
+    image: discoveryImg,
+    alt: t('home.workflow.step0.title')
+  },
+  {
+    number: 2,
+    title: t('home.workflow.step1.title'),
+    description: t('home.workflow.step1.desc'),
+    image: implementationImg,
+    alt: t('home.workflow.step1.title')
+  },
+  {
+    number: 3,
+    title: t('home.workflow.step2.title'),
+    description: t('home.workflow.step2.desc'),
+    image: optimizationImg,
+    alt: t('home.workflow.step2.title')
+  },
+  {
+    number: 4,
+    title: t('home.workflow.step3.title'),
+    description: t('home.workflow.step3.desc'),
+    image: supportGrowthImg,
+    alt: t('home.workflow.step3.title')
+  }
+];
+
+const arrowPath = "M9 5l7 7-7 7";
+---
+
+<section>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center badge-accent mb-4">
+        {t('home.workflow.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('home.workflow.title')} <span class="gradient-text-accent">{t('home.workflow.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        {t('home.workflow.subtitle')}
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- Connection Line -->
+      <div class="hidden lg:block absolute top-24 left-0 right-0 h-px" style="background: linear-gradient(to right, var(--theme-primary), transparent, var(--theme-primary));"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        {steps.map((step) => (
+          <div class="relative h-full">
+            <div class="card-titanium overflow-hidden transition-all hover:border-[var(--theme-primary)] hover:shadow-[0_0_20px_rgba(255,90,0,0.3)] relative z-10 flex flex-col h-full">
+              <div class="relative h-48 overflow-hidden">
+                <Img 
+                  src={step.image}
+                  alt={step.alt}
+                  class="w-full h-full object-cover"
+                  widths={[480,768,1024,1200]}
+                  sizes="100vw"
+                />
+                <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
+                <div class="absolute top-4 right-4 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg" style="background-color: var(--theme-primary); color: #ffffff;">
+                  {step.number}
+                </div>
+              </div>
+              <div class="p-8 flex flex-col flex-1">
+                <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{step.title}</h3>
+                <p class="leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+                  {step.description}
+                </p>
+                <div class="mt-6 flex items-center text-sm font-semibold" style="color: var(--theme-primary);">
+                  {t('home.workflow.learn')}
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={arrowPath} />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Key Benefits -->
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <svg class="w-8 h-8" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h4 class="text-lg font-semibold mb-2" style="color: var(--theme-text);">{t('home.workflow.benefit0.title')}</h4>
+        <p style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.workflow.benefit0.desc')}</p>
+      </div>
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <svg class="w-8 h-8" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h4 class="text-lg font-semibold mb-2" style="color: var(--theme-text);">{t('home.workflow.benefit1.title')}</h4>
+        <p style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.workflow.benefit1.desc')}</p>
+      </div>
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <svg class="w-8 h-8" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </div>
+        <h4 class="text-lg font-semibold mb-2" style="color: var(--theme-text);">{t('home.workflow.benefit2.title')}</h4>
+        <p style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.workflow.benefit2.desc')}</p>
+      </div>
+    </div>
+  </div>
+</section>

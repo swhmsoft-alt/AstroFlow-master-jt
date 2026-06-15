@@ -1,0 +1,101 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Metric {
+  value: string;
+  label: string;
+  description: string;
+  iconPath: string;
+  iconPath2?: string;
+}
+
+const metrics: Metric[] = [
+  {
+    value: t('cap.dashboard.metric0.value'),
+    label: t('cap.dashboard.metric0.label'),
+    description: t('cap.dashboard.metric0.desc'),
+    iconPath: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+  },
+  {
+    value: t('cap.dashboard.metric1.value'),
+    label: t('cap.dashboard.metric1.label'),
+    description: t('cap.dashboard.metric1.desc'),
+    iconPath: "M15 10.5a3 3 0 11-6 0 3 3 0 016 0z",
+    iconPath2: "M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z",
+  },
+  {
+    value: t('cap.dashboard.metric2.value'),
+    label: t('cap.dashboard.metric2.label'),
+    description: t('cap.dashboard.metric2.desc'),
+    iconPath: "M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42",
+  },
+  {
+    value: t('cap.dashboard.metric3.value'),
+    label: t('cap.dashboard.metric3.label'),
+    description: t('cap.dashboard.metric3.desc'),
+    iconPath: "M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z",
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Subtle engineering grid -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+        </svg>
+        {t('cap.dashboard.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('cap.dashboard.title')} <span class="gradient-text-accent">{t('cap.dashboard.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        {t('cap.dashboard.subtitle')}
+      </p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+      {metrics.map((metric) => (
+        <div
+          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          {/* Icon */}
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4 shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+            <svg class="w-5 h-5" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={metric.iconPath} />
+              {metric.iconPath2 && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={metric.iconPath2} />}
+            </svg>
+          </div>
+
+          {/* Value */}
+          <div class="text-2xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">
+            {metric.value}
+          </div>
+
+          {/* Label */}
+          <h3 class="text-sm font-semibold mb-2" style="color: var(--theme-text);">
+            {metric.label}
+          </h3>
+
+          {/* Description */}
+          <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            {metric.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

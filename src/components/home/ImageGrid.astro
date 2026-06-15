@@ -1,0 +1,138 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import ImageReveal from '@components/react/ImageReveal';
+import Img from '@components/ui/Image.astro';
+import warehouseImg from '@assets/photo-1566576721346-d4a3b4eaeb55.jpg';
+import fleetImg from '@assets/photo-1601584115197-04ecc0da31d7.jpg';
+import manufacturingImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
+import commandCenterImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
+import distributionImg from '@assets/photo-1586528116311-ad8dd3c8310d.jpg';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center badge-accent mb-4">
+        {t('home.imageGrid.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('home.imageGrid.title')} <span class="gradient-text-accent">{t('home.imageGrid.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        {t('home.imageGrid.subtitle')}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Large featured image -->
+      <div class="md:row-span-2">
+        <ImageReveal client:load delay={0}>
+          <div class="relative h-full group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <Img 
+              src={warehouseImg}
+              alt={t('home.imageGrid.item0.title')}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              widths={[480,768,1024,1200]}
+              sizes="100vw"
+            />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8">
+              <h3 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">{t('home.imageGrid.item0.title')}</h3>
+              <p style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.imageGrid.item0.desc')}</p>
+            </div>
+          </div>
+        </ImageReveal>
+      </div>
+
+      <ImageReveal client:load delay={0.1}>
+        <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <Img 
+            src={fleetImg}
+            alt={t('home.imageGrid.item1.title')}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            widths={[480,768,1024,1200]}
+            sizes="100vw"
+          />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{t('home.imageGrid.item1.title')}</h3>
+            <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.imageGrid.item1.desc')}</p>
+          </div>
+        </div>
+      </ImageReveal>
+
+      <ImageReveal client:load delay={0.2}>
+        <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <Img 
+            src={manufacturingImg}
+            alt={t('home.imageGrid.item2.title')}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            widths={[480,768,1024,1200]}
+            sizes="100vw"
+          />
+          <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{t('home.imageGrid.item2.title')}</h3>
+            <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.imageGrid.item2.desc')}</p>
+          </div>
+        </div>
+      </ImageReveal>
+
+      <div class="lg:row-start-3">        
+        <ImageReveal client:load delay={0.3}>
+          <div class="lg:col-span-2 relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <Img 
+              src={commandCenterImg}
+              alt={t('home.imageGrid.item3.title')}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              widths={[480,768,1024,1200]}
+              sizes="100vw"
+            />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{t('home.imageGrid.item3.title')}</h3>
+              <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.imageGrid.item3.desc')}</p>
+            </div>
+          </div>
+        </ImageReveal>
+      </div>
+      <div class="lg:row-start-2 lg:col-start-2 lg:row-span-2 lg:col-span-2">        
+        <ImageReveal client:load delay={0.4}>
+          <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <Img 
+              src={distributionImg}
+              alt={t('home.imageGrid.item4.title')}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              widths={[480,768,1024,1200]}
+              sizes="100vw"
+            />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{t('home.imageGrid.item4.title')}</h3>
+              <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('home.imageGrid.item4.desc')}</p>
+            </div>
+          </div>
+        </ImageReveal>
+      </div>
+    </div>
+    
+    <!-- Bottom CTA -->
+    <div class="text-center mt-16">
+      <a 
+        href="/facilities" 
+        class="inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group"
+        style="background-color: var(--theme-primary); color: var(--theme-text);"
+        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
+        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
+      >
+        {t('home.imageGrid.cta')}
+        <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

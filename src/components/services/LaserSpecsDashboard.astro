@@ -1,0 +1,86 @@
+---
+interface SpecItem {
+  label: string;
+  value: string;
+  unit: string;
+  description: string;
+  icon: string;
+}
+
+const specs: SpecItem[] = [
+  {
+    label: "Max Sheet Dimensions",
+    value: "3,000 x 1,500",
+    unit: "mm",
+    description: "Large-format bed accommodating full-size titanium sheets and plates — heavy stock processing footprint for aerospace panels, chemical tank components, and structural members.",
+    icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+  },
+  {
+    label: "Tube Capacity Span",
+    value: "ø 20 – 220",
+    unit: "mm x 6,000 mm length",
+    description: "Rotary tube cutting capacity spanning ø 20 mm to ø 220 mm diameter with raw tube clamping up to 6,000 mm length — round, square, and rectangular profiles.",
+    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+  },
+  {
+    label: "Precision Positioning",
+    value: "±0.03",
+    unit: "mm",
+    description: "Linear repeatability parameters secured within ±0.03 mm limits — ensuring consistent cut accuracy across the entire bed and through multi-part nesting arrays.",
+    icon: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859"
+  },
+  {
+    label: "Kerf Width Resolution",
+    value: "0.1",
+    unit: "mm | Ra 1.6-3.2 µm",
+    description: "Minimum slot resolution down to 0.1 mm kerf width with surface roughness Ra 1.6-3.2 µm — achieving near-burr-free edges ready for direct welding or forming without secondary processing.",
+    icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+  }
+];
+---
+<section style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        Laser Specifications
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Laser Cutting <span style="color: var(--theme-primary);;">Specifications Dashboard</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Physical cut boundaries, geometric limits, and precision parameters of our fiber laser cutting infrastructure.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {specs.map((spec) => (
+        <div
+          class="relative rounded-xl p-8 flex flex-col h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={spec.icon} />
+            </svg>
+          </div>
+          <div class="mb-1">
+            <span class="text-4xl md:text-5xl font-bold tracking-tight" style="color: var(--theme-primary);">{spec.value}</span>
+            {spec.unit && <span class="text-lg font-semibold ml-1" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{spec.unit}</span>}
+          </div>
+          <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{spec.label}</h3>
+          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{spec.description}</p>
+          <div class="absolute bottom-0 left-6 right-6 h-px" style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent); opacity: 0.2;"></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+        Specifications based on our fiber laser cutting systems. Actual achievable kerf and edge quality depend on material grade, thickness, and assist gas selection.
+      </p>
+    </div>
+  </div>
+</section>

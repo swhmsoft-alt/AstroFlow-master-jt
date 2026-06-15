@@ -1,0 +1,135 @@
+---
+interface Industry {
+  name: string;
+  iconPath: string;
+  components: string[];
+  painPoint: string;
+}
+
+const industries: Industry[] = [
+  {
+    name: "Aerospace",
+    iconPath: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    components: ["Structural Airframe Components", "Turbine Engine Parts & Blades", "Landing Gear Assemblies", "Fasteners & Hydraulic Fittings"],
+    painPoint: "Fatigue resistance & stress-corrosion cracking under cyclic loading",
+  },
+  {
+    name: "Medical",
+    iconPath: "M4.26 10.147a60.438 60.438 0 0112.367-3.23 8.212 8.212 0 018.147 6.886 1 1 0 01-.965 1.147H2.942a1 1 0 01-.965-1.147 8.14 8.14 0 012.283-3.656z",
+    components: ["Orthopedic Implants (Hip/Knee/Spine)", "Surgical Instruments & Tools", "Dental Implant Abutments", "Trauma Fixation Plates & Screws"],
+    painPoint: "Bio-compatibility per ISO 10993 & strict ASTM F136 chemistry control",
+  },
+  {
+    name: "UAV & Drones",
+    iconPath: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859",
+    components: ["Lightweight Airframe Structures", "Motor Mounts & Arm Assemblies", "Gimbal Housings & Camera Mounts", "Propulsion System Components"],
+    painPoint: "Rigid weight reduction without sacrificing structural integrity",
+  },
+  {
+    name: "AI Infrastructure & Optical Comms",
+    iconPath: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+    components: ["Optical Module Enclosures (400G/800G)", "CPO Thermal Management Mounts", "Laser Diode Heat Sink Assemblies", "Fiber Alignment Brackets"],
+    painPoint: "Micron-level precision tolerances & thermal dissipation management",
+  },
+  {
+    name: "Semiconductor",
+    iconPath: "M7.5 3.75H6m2.25-2.25H7.5m4.125 0H12m-3.75 7.5h-3a.75.75 0 01-.75-.75V3.75a.75.75 0 01.75-.75h9a.75.75 0 01.75.75v3a.75.75 0 01-.75.75m-6 6.75h-3a.75.75 0 01-.75-.75v-3a.75.75 0 01.75-.75h9a.75.75 0 01.75.75v3a.75.75 0 01-.75.75",
+    components: ["Vacuum Chamber Bodies & Lids", "Wafer Handling End Effectors", "Etching Electrode Assemblies", "Gas Distribution Manifolds"],
+    painPoint: "Zero outgassing & ultra-high vacuum (UHV) compatibility",
+  },
+  {
+    name: "Marine",
+    iconPath: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z",
+    components: ["Propeller Shafts & Struts", "Submersible Enclosures & Housings", "Seawater Valve Bodies", "Sonar Array Frames"],
+    painPoint: "Saltwater corrosion resistance & galvanic compatibility",
+  },
+  {
+    name: "Energy",
+    iconPath: "M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605",
+    components: ["Hydrogen Electrolyzer Bipolar Plates", "Geothermal Drill Tooling", "Oil & Gas Downhole Components", "Nuclear Control Rod Assemblies"],
+    painPoint: "Hydrogen embrittlement resistance & extreme temperature stability",
+  },
+  {
+    name: "Industrial Equipment",
+    iconPath: "M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18",
+    components: ["High-Pressure Pump Housings", "Custom Valve Bodies & Seats", "Hydraulic Cylinder Components", "Wear-Resistant Liners & Bushings"],
+    painPoint: "Wear resistance & dimensional stability under high-pressure cycling",
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Subtle engineering grid -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: color-mix(in srgb, var(--theme-primary) 70%, white);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        </svg>
+        Target Verticals
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Industry <span class="gradient-text-accent">Verticals</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Eight specialized sectors where our titanium engineering expertise delivers measurable performance advantages.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
+      {industries.map((industry) => (
+        <div
+          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          {/* Header */}
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+                <svg class="w-5 h-5" fill="none" stroke="color-mix(in srgb, var(--theme-primary) 70%, white)" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={industry.iconPath} />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{industry.name}</h3>
+            </div>
+          </div>
+
+          <!-- Typical Components -->
+          <div class="mb-4 flex-1">
+            <h4 class="text-xs font-semibold uppercase tracking-wider mb-2.5" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Typical Components Engineered
+            </h4>
+            <ul class="space-y-1.5">
+              {industry.components.map((comp) => (
+                <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                  <svg class="w-3 h-3 mt-0.5 mr-2 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  {comp}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Pain Point -->
+          <div class="pt-4 mt-auto" style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h4 class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Pain Point Solved
+            </h4>
+            <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-primary) 70%, white);">
+              {industry.painPoint}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

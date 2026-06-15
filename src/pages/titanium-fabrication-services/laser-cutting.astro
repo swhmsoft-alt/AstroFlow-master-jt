@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import LaserProcessSpectrum from '../../components/services/LaserProcessSpectrum.astro';
+import LaserSpecsDashboard from '../../components/services/LaserSpecsDashboard.astro';
+import OxideSlagMitigation from '../../components/services/OxideSlagMitigation.astro';
+import LaserDedicatedCta from '../../components/services/LaserDedicatedCta.astro';
+---
+<BaseLayout title="Laser Cutting (Sheet & Tube) — BOZE CNC Ti" description="Precision fiber laser cutting for titanium sheets and tubes: 3,000 x 1,500 mm sheet capacity, ø 20-220 mm tube, ±0.03 mm accuracy, 0.1 mm kerf, weld-ready edges.">
+  <SubpageHero
+    title="Laser Cutting (Sheet & Tube)"
+    highlight="Services"
+    badge="Precision Laser Cutting"
+    badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
+    subtitle="High-kilowatt fiber laser cutting for titanium sheets and tubes — from 2D flat plate profiling to complex 3D rotary tube machining with oxide-free, weld-ready edges."
+  />
+
+  <!-- Sheet & Tube Laser Process Spectrum — 2-column -->
+  <LaserProcessSpectrum />
+
+  <!-- Laser Cutting Specifications Dashboard — 4-column -->
+  <LaserSpecsDashboard />
+
+  <!-- Oxide & Slag Mitigation Protocols — 2-column -->
+  <OxideSlagMitigation />
+
+  <!-- Dedicated CTA — Laser Nesting & Quote -->
+  <LaserDedicatedCta />
+</BaseLayout>

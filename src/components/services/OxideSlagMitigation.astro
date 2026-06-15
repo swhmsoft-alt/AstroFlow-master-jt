@@ -1,0 +1,110 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "High-Pressure Pure Nitrogen Purge",
+    problem: "During fiber laser cutting of titanium, the intense localized heat (above 1,600°C) causes rapid oxidation along the cut edge — producing a brittle blue/gray oxide layer (alpha-case) that must be mechanically removed before welding or forming. Additionally, molten titanium slag re-solidifies on the bottom edge, creating dross that requires secondary grinding operations.",
+    solution: "15-25 Bar Ultra-Pure 99.999% Nitrogen Gas Assist Lines",
+    details: [
+      "High-pressure nitrogen assist gas at 15-25 bar (218-363 psi) is delivered coaxially through the cutting nozzle — ejecting molten titanium slurry from the kerf within milliseconds before it can oxidize or re-solidify on the cut edge",
+      "Ultra-pure nitrogen (99.999% grade, O₂ < 3 ppm) eliminates oxygen from the cut zone entirely — preventing the formation of alpha-case embrittlement layers and keeping cut edges bright silver with zero oxide discoloration",
+      "Dynamic gas pressure modulation: thin gauges (0.5-3 mm) use 15-18 bar for clean dross-free bottom edges; thick plates (3-12 mm) use 20-25 bar to ensure complete molten material evacuation from the full plate thickness",
+      "Result: weld-ready cut edges with no oxide layer, no dross, and surface roughness Ra 1.6-3.2 µm — eliminating secondary deburring, grinding, or chemical cleaning operations before welding or forming"
+    ],
+    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+  },
+  {
+    title: "Dynamic Focal Clearance Control",
+    problem: "Titanium's variable surface reflectivity and thickness changes during laser cutting cause inconsistent energy coupling at the cut front — leading to bottom-side dross adherence, striation patterns on cut edges, and incomplete through-cuts that require rework or scrap the component.",
+    solution: "Automated German Follow-Up Capacitive Height Control & Adaptive Focal Positioning",
+    details: [
+      "German-manufactured capacitive height sensing system maintains a precise 0.5-1.5 mm standoff distance between the cutting nozzle and the titanium plate surface — compensating for material warp, surface irregularities, and bed level variations in real-time at 1 kHz sampling rate",
+      "Adaptive focal position control automatically shifts the laser beam focal point to the optimal depth within the material — near the top surface for thin gauges, at the lower third of the plate for thick sections — ensuring consistent energy density through the full cut depth",
+      "Dynamic focal dithering: for plate thicknesses above 6 mm, the focal point is oscillated ±0.5 mm around the optimal position, creating a wider, more stable kerf that improves molten material ejection and eliminates bottom-side dross adherence",
+      "Result: 100% dross-free bottom edges with perpendicular cut faces (< 2° taper) across the full thickness range — edges are immediately ready for welding, forming, or assembly without any secondary edge conditioning"
+    ],
+    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+        Process Engineering
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Oxide & Slag <span style="color: var(--theme-primary);">Mitigation Protocols</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Titanium's reactive laser cutting behavior demands precise gas dynamics and focal control. Here's how we eliminate oxide discoloration, dross, and deliver weld-ready edges.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

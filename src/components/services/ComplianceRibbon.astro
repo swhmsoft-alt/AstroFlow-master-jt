@@ -1,0 +1,81 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section class="relative py-16 overflow-hidden border-t border-b" style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+  <!-- Engineering grid background -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Badge -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 30%, transparent); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        {t('services.compliance.badge')}
+      </div>
+    </div>
+
+    <!-- Compliance Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <!-- Column 1: Certifications -->
+      <div class="text-center md:text-left">
+        <div
+          class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 mx-auto md:mx-0"
+          style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+        >
+          <svg class="w-7 h-7" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('services.compliance.col0.title')}</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          {t('services.compliance.col0.desc')}
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="hidden md:block w-px bg-gradient-to-b from-transparent via-[color-mix(in srgb, var(--theme-primary) 18%, transparent)] to-transparent"></div>
+
+      <!-- Column 2: Traceability -->
+      <div class="text-center md:text-left">
+        <div
+          class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 mx-auto md:mx-0"
+          style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+        >
+          <svg class="w-7 h-7" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('services.compliance.col1.title')}</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          {t('services.compliance.col1.desc')}
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="hidden md:block w-px bg-gradient-to-b from-transparent via-[color-mix(in srgb, var(--theme-primary) 18%, transparent)] to-transparent"></div>
+
+      <!-- Column 3: Standards -->
+      <div class="text-center md:text-left">
+        <div
+          class="w-14 h-14 rounded-xl flex items-center justify-center mb-5 mx-auto md:mx-0"
+          style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+        >
+          <svg class="w-7 h-7" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('services.compliance.col2.title')}</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          {t('services.compliance.col2.desc')}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

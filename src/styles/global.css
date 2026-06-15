@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Custom component classes used by .astro components */
+@import "./global.restore.css";
+
+/* ============================================================
+   Theme System — CSS Custom Properties (Design Tokens)
+   Tailwind v4 @theme maps semantic utility classes → CSS vars
+   ============================================================ */
+
+@theme {
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-surface: var(--theme-surface);
+  --color-theme-text: var(--theme-text);
+  --color-theme-primary: var(--theme-primary);
+  --color-theme-accent: var(--theme-accent);
+  --color-theme-nav-text: var(--theme-nav-text);
+}
+
+/* ════════════════════════════════════════════════════════════
+   5 THEMES — defined statically so NO JS injection needed
+   ════════════════════════════════════════════════════════════ */
+
+/* Theme 1: legacy-original */
+[data-theme="legacy-original"] {
+  --theme-bg: #0d0e10;
+  --theme-surface: #1a1c1e;
+  --theme-text: #e4e4e7;
+  --theme-primary: #ff5a00;
+  --theme-accent: #ff5a00;
+  --theme-nav-text: #FFFFFF;
+  --theme-nav-invert: 1;
+}
+
+/* Default theme (aerospace-precision — also the :root fallback) */
+:root,
+[data-theme="aerospace-precision"] {
+  --theme-bg: #0F172A;
+  --theme-surface: #1E293B;
+  --theme-text: #F8FAFC;
+  --theme-primary: #38BDF8;
+  --theme-accent: #34D399;
+  --theme-nav-text: #F8FAFC;
+  --theme-nav-invert: 1;
+}
+
+/* Theme 2: classic-titanium */
+[data-theme="classic-titanium"] {
+  --theme-bg: #F4F5F7;
+  --theme-surface: #FFFFFF;
+  --theme-text: #1E293B;
+  --theme-primary: #64748B;
+  --theme-accent: #0EA5E9;
+  --theme-nav-text: #1E293B;
+  --theme-nav-invert: 0;
+}
+
+
+/* Theme 4: anodized-colorway */
+[data-theme="anodized-colorway"] {
+  --theme-bg: #0B0F19;
+  --theme-surface: #161F30;
+  --theme-text: #E2E8F0;
+  --theme-primary: #8B5CF6;
+  --theme-accent: #EC4899;
+  --theme-nav-text: #E2E8F0;
+  --theme-nav-invert: 1;
+}
+
+/* Theme 5: sustainable-metallics */
+[data-theme="sustainable-metallics"] {
+  --theme-bg: #F8FAFC;
+  --theme-surface: #F1F5F9;
+  --theme-text: #0F172A;
+  --theme-primary: #059669;
+  --theme-accent: #475569;
+  --theme-nav-text: #0F172A;
+  --theme-nav-invert: 0;
+}

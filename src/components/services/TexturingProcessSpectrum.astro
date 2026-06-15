@@ -1,0 +1,103 @@
+---
+interface TexturingProcess {
+  title: string;
+  description: string;
+  capabilities: string[];
+  icon: string;
+}
+
+const processes: TexturingProcess[] = [
+  {
+    title: "Multi-Stage Precision Polishing",
+    description: "Executing progressive thermal-controlled wheel buffing and fluidic cut logic to yield perfect mirror finishes on consumer shells without violating dimensional limits.",
+    capabilities: [
+      "Progressive multi-stage polishing: coarse grinding → fine grinding → diamond compound buffing → colloidal silica final polish",
+      "Thermal-controlled wheel speeds (< 12 m/s surface velocity) prevent heat buildup that causes titanium oxide discoloration",
+      "Automated fluidic cut logic adjusts slurry pressure and flow rate per stage — maintaining ±0.5 µm dimensional tolerance on finished surfaces",
+      "Achieves mirror finishes down to Ra 0.01 µm with zero subsurface deformation verified by cross-section microscopy"
+    ],
+    icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+  },
+  {
+    title: "Engineered Abrasive Sandblasting",
+    description: "Utilizing pure garnet, ceramic, or glass spheres under closed-loop pressure variables to achieve continuous matte styles or medical-grade anchor pore grids.",
+    capabilities: [
+      "Closed-loop pressure regulation (1.5–6.0 Bar) with real-time mass flow monitoring ensures ±2% repeatability across batch runs",
+      "Multiple media options: garnet (sharp angular for anchor pores), ceramic beads (uniform matte), glass spheres (gentle peening for fatigue life)",
+      "Controlled surface roughness spanning Ra 1.6 µm (fine matte) to Ra 6.3 µm (aggressive anchor topography) from single nozzle programming",
+      "Zero embedding guarantee: post-blast ultrasonic chelation and ion chromatography validation confirms 0.00% abrasive particulate residue"
+    ],
+    icon: "M13 10V3L4 14h7v7l9-11h-7z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden bg-[#0F172A]">
+  <!-- Engineering grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(#38BDF8 1px, transparent 1px), linear-gradient(90deg, #38BDF8 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-[#38BDF8] text-[#38BDF8] bg-[#38BDF8]/10">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        </svg>
+        Finishing Processes
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
+        Texturing <span class="text-[#38BDF8]">Process Spectrum</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
+        Two dedicated titanium mechanical finishing and micro-topography control workflows — engineered for mirror polish surfaces and precision abrasive texturing.
+      </p>
+    </div>
+
+    <!-- Process Grid — 2-column -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {processes.map((process) => (
+        <div
+          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] hover:shadow-[0_0_30px_rgba(56,189,248,0.1)]"
+        >
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 bg-[#38BDF8]/10">
+            <svg class="w-6 h-6 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={process.icon} />
+            </svg>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-lg font-bold mb-3 text-[#F8FAFC]">
+            {process.title}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-sm mb-4 leading-relaxed text-[#F8FAFC]/60">
+            {process.description}
+          </p>
+
+          <!-- Capabilities list -->
+          <ul class="space-y-2 mt-auto">
+            {process.capabilities.map((cap) => (
+              <li class="flex items-start text-sm text-[#F8FAFC]/70">
+                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0 text-[#38BDF8]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {cap}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Corner hover accent -->
+          <div
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            style="border-style: solid; border-color: transparent #38BDF8 transparent transparent; opacity: 0;"
+            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+          ></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

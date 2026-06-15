@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import HeavyProcessSpectrum from '../components/services/HeavyProcessSpectrum.astro';
+import HeavySpecsDashboard from '../components/services/HeavySpecsDashboard.astro';
+import HotFormingStressKnowHow from '../components/services/HotFormingStressKnowHow.astro';
+import HeavyDedicatedCta from '../components/services/HeavyDedicatedCta.astro';
+---
+<BaseLayout title="Titanium Forming & Heavy Manufacturing — BOZE CNC Ti" description="Heavy titanium forming and manufacturing: hot plate rolling, open/closed-die forging, large-scale assembly. 12,000 x 4,500 x 4,000 mm capacity, 50+ mm hot forming, 30 ton crane, AS9100D.">
+  <SubpageHero
+    title="Titanium Forming & Heavy Manufacturing"
+    highlight="Services"
+    badge="Heavy Manufacturing"
+    badgeIcon="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
+    subtitle="Hot forming, open/closed-die forging, and large-scale multi-component integration for multi-ton titanium infrastructure — from heavy plate rolling to vacuum stress-relieved structural assemblies."
+  />
+
+  <!-- Heavy Manufacturing Process Spectrum — 3-column grid -->
+  <HeavyProcessSpectrum />
+
+  <!-- Heavy Manufacturing Capacity Dashboard — 4-column specs -->
+  <HeavySpecsDashboard />
+
+  <!-- Hot Forming & Stress Relief Engineering Know-How — 2-column -->
+  <HotFormingStressKnowHow />
+
+  <!-- Dedicated CTA — Heavy Compliance Assessment -->
+  <HeavyDedicatedCta />
+</BaseLayout>

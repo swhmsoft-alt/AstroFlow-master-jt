@@ -1,0 +1,57 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import TestimonialCard from '../ui/TestimonialCard.astro';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+import testimonial1Img from '@assets/photo-1494790108377-be9c29b29330.jpg';
+import testimonial2Img from '@assets/photo-1507003211169-0a1dd7228f2d.jpg';
+import testimonial3Img from '@assets/photo-1438761681033-6461ffad8d80.jpg';
+
+const testimonials= [
+  {
+    quote: t('home.testimonials.t0.quote'),
+    name: t('home.testimonials.t0.name'),
+    role: t('home.testimonials.t0.role'),
+    image: testimonial1Img,
+    ringColor: "ring-[var(--theme-primary)]/30"
+  },
+  {
+    quote: t('home.testimonials.t1.quote'),
+    name: t('home.testimonials.t1.name'),
+    role: t('home.testimonials.t1.role'),
+    image: testimonial2Img,
+    ringColor: "ring-[var(--theme-primary)]/30"
+  },
+  {
+    quote: t('home.testimonials.t2.quote'),
+    name: t('home.testimonials.t2.name'),
+    role: t('home.testimonials.t2.role'),
+    image: testimonial3Img,
+    ringColor: "ring-[var(--theme-primary)]/30"
+  }
+];
+---
+
+<section>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center badge-accent mb-4">
+        {t('home.testimonials.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('home.testimonials.title')} <span class="gradient-text-accent">{t('home.testimonials.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        {t('home.testimonials.subtitle')}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <TestimonialCard testimonial={testimonial} variant="home" />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,135 @@
+---
+interface Challenge {
+  title: string;
+  problem: string;
+  solution: string;
+  solutionDetails: string[];
+  icon: string;
+}
+
+const challenges: Challenge[] = [
+  {
+    title: "Interlocking Anti-Galling Barriers",
+    problem: "Titanium's high coefficient of friction (µ ≈ 0.5–0.6 against itself) combined with its adhesive wear tendency causes severe cold-welding and thread locking under torque, leading to catastrophic joint failure in aerospace fasteners and medical implant assemblies.",
+    solution: "Alkaline Type II Anodization — Dynamic Lubricious Titanate Crystal Layers",
+    solutionDetails: [
+      "Alkaline-based Type II anodizing (AMS 2488) generates a porous, lubricious titanate crystal surface with inherent self-lubricating properties",
+      "Friction coefficients slashed by 60% (down to µ ≈ 0.2) — transforming galling-prone titanium interfaces into reliable, repeatable sliding surfaces",
+      "Controlled anodic layer thickness of 2–5 µm eliminates micro-weld nucleation sites while maintaining dimensional tolerances within ±2 µm",
+      "Verified via MIL-DTL-8937 thread galling torque testing — zero seizure events across 25+ re-torque cycles"
+    ],
+    icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
+  },
+  {
+    title: "Biomimetic SLA Topography",
+    problem: "Smooth machined titanium surfaces (Ra < 0.5 µm) fail to establish adequate mechanical interlock with bone tissue, resulting in fibrous encapsulation, delayed osseointegration, and increased implant loosening risk over the long term.",
+    solution: "Large-Grit Blasting + Dual Hot-Acid Etch — Micro-Nano Compound Pore Matrices (Ra 2.0–4.0 µm)",
+    solutionDetails: [
+      "Primary large-grit corundum blasting (250–500 µm Al₂O₃) generates macro-roughness peaks and valleys (Ra 3.0–5.0 µm) for immediate mechanical bone interlock",
+      "Dual hot-acid etching (H₂SO₄/HCl sequence at 80–100°C) creates superimposed nano-pores (50–200 nm diameter) that mimic natural osteoclast-resorbed bone topography",
+      "Final micro-nano compound surface achieves Ra 2.0–4.0 µm with >90% interconnected porosity — optimized for osteoblast cell adhesion, proliferation, and differentiation",
+      "In-vitro studies demonstrate 3.2× greater osteogenic gene expression vs. machined controls, accelerating clinical osseointegration timelines by up to 40%"
+    ],
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden bg-[#0F172A]">
+  <!-- Circuit-board style background -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, #38BDF8 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-[#38BDF8] text-[#38BDF8] bg-[#38BDF8]/10">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+        </svg>
+        Engineering Knowledge
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
+        Anti-Galling & <span class="text-[#38BDF8]">Osseointegration Engineering</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
+        Two critical titanium surface challenges — conquering cold-welding in mechanical assemblies and engineering bio-active pore topologies for implant integration.
+      </p>
+    </div>
+
+    <!-- Challenge Grid — 2-column layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {challenges.map((challenge) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] transition-all duration-300"
+        >
+          <!-- Top problem zone -->
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4 bg-[#38BDF8]/10">
+                <svg class="w-5 h-5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={challenge.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-[#F8FAFC]">
+                {challenge.title}
+              </h3>
+            </div>
+
+            <div class="pl-14">
+              <!-- Problem statement -->
+              <div class="mb-4">
+                <span class="text-xs font-semibold uppercase tracking-widest text-[#38BDF8]/70">The Challenge</span>
+                <p class="text-sm mt-1.5 leading-relaxed text-[#F8FAFC]/65">
+                  {challenge.problem}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider with arrow -->
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, rgba(56,189,248,0.3), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/25">
+              <svg class="w-4 h-4 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Solution zone -->
+          <div class="p-8 pt-4">
+            <div class="pl-0">
+              <span class="text-xs font-semibold uppercase tracking-widest text-[#38BDF8]">Our Solution</span>
+              <h4 class="text-base font-bold mt-1.5 mb-4 text-[#F8FAFC]">
+                {challenge.solution}
+              </h4>
+              <ul class="space-y-3">
+                {challenge.solutionDetails.map((detail) => (
+                  <li class="flex items-start">
+                    <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="text-sm leading-relaxed text-[#F8FAFC]/75">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Corner accent -->
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, rgba(56,189,248,0.08) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA line -->
+    <div class="text-center mt-12">
+      <p class="text-sm max-w-2xl mx-auto leading-relaxed text-[#F8FAFC]/50">
+        Every titanium surface engineering project is backed by certified process documentation, in-house metallurgical analysis, and continuous quality monitoring. <span class="text-[#38BDF8]">Surface science meets clinical reliability.</span>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import PrepProcessSpectrum from '../../components/services/PrepProcessSpectrum.astro';
+import PrepSpecsDashboard from '../../components/services/PrepSpecsDashboard.astro';
+import SizingHardeningTraceabilityKnowHow from '../../components/services/SizingHardeningTraceabilityKnowHow.astro';
+import PrepDedicatedCta from '../../components/services/PrepDedicatedCta.astro';
+---
+<BaseLayout title="Raw Material Preparation & Sizing — BOZE CNC Ti" description="Titanium raw material preparation: heavy-duty CNC band sawing up to ø 800 mm, mechanical surface peeling, chemical decontamination. PMI validated, AS9100D.">
+  <SubpageHero
+    title="Raw Material Preparation & Sizing"
+    highlight="Services"
+    badge="Material Preparation"
+    badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
+    subtitle="Heavy-duty CNC band sawing, mechanical surface peeling, and deep chemical decontamination for titanium ingots, billets, and blocks — preparing raw stock for downstream forging, extrusion, and forming operations."
+  />
+
+  <!-- Material Preparation Process Spectrum — 3-column grid -->
+  <PrepProcessSpectrum />
+
+  <!-- Material Prep Capacity Dashboard — 4-column specs -->
+  <PrepSpecsDashboard />
+
+  <!-- Hardening Suppression & Traceability Control — 2-column -->
+  <SizingHardeningTraceabilityKnowHow />
+
+  <!-- Dedicated CTA — Processing & Compliance Assessment -->
+  <PrepDedicatedCta />
+</BaseLayout>

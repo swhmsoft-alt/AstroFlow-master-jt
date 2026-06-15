@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import MultiAxisComparison from '../../components/services/MultiAxisComparison.astro';
+import FiveAxisTechSpecs from '../../components/services/FiveAxisTechSpecs.astro';
+import CamSimulationKnowHow from '../../components/services/CamSimulationKnowHow.astro';
+import MultiAxisCta from '../../components/services/MultiAxisCta.astro';
+---
+<BaseLayout title="3/5-Axis CNC Machining — BOZE CNC Ti" description="Precision 3/4-axis and simultaneous 5-axis CNC machining for titanium: complex geometries, single-setup accuracy, aerospace-grade tolerances ±0.005 mm.">
+  <!-- Hero — DO NOT MODIFY -->
+  <SubpageHero
+    title="3/5-Axis CNC Machining"
+    highlight="Services"
+    badge="Precision Multi-Axis Machining"
+    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+    subtitle="From prismatic 3/4-axis operations to full simultaneous 5-axis contouring — engineered for complex titanium geometries, impellers, turbine blades, orthopedic structures, and aerospace structural nodes."
+  />
+
+  <!-- 3/4-Axis vs Simultaneous 5-Axis Comparison -->
+  <MultiAxisComparison />
+
+  <!-- 5-Axis Machine Platform Specifications -->
+  <FiveAxisTechSpecs />
+
+  <!-- CAM Simulation & Adaptive Machining Know-How -->
+  <CamSimulationKnowHow />
+
+  <!-- Dedicated CTA for 5-Axis DFM Analysis -->
+  <MultiAxisCta />
+</BaseLayout>

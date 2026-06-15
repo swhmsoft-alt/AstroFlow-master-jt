@@ -1,0 +1,60 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PremiumHero from '../../components/home/PremiumHero.astro';
+import ServicesOverview from '../../components/home/ServicesOverview.astro';
+import TechnicalCapabilities from '../../components/home/TechnicalCapabilities.astro';
+import MaterialMatrix from '../../components/home/MaterialMatrix.astro';
+import IndustryApplications from '../../components/home/IndustryApplications.astro';
+import EngineeringResources from '../../components/home/EngineeringResources.astro';
+import PremiumCTA from '../../components/home/PremiumCTA.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+// Read the markdown file directly to bypass Astro's content collection cache
+const homeMdPath = path.resolve(process.cwd(), 'src/content/pages/home.md');
+let heroData: Record<string, any> = {
+  badge: 'BOZE CNC Ti | AS9100D 认证 | 中国宝鸡',
+  title: '一站式钛材加工与定制服务',
+  highlight: '',
+  description: '从钛合金增材制造快速成型到大批量精密 CNC 加工和重型工业制造，我们为所有钛合金牌号提供完整的一站式加工服务。我们的 AS9100 合规流程能够为全球最苛刻的行业保证精确公差。',
+  primaryCta: t('form.submit'),
+  primaryCtaLink: '/rfq',
+  secondaryCta: '探索解决方案',
+  secondaryCtaLink: '/services',
+  heroMediaType: 'image',
+  heroVideoUrl: '',
+  heroImage: '/uploads/titanium-cnc-home.jpg',
+  heroImageAlt: 'CNC 加工背景图',
+  stats: [
+    { value: '500+', label: '全球客户' },
+    { value: '5000万+', label: '交付零件数' },
+    { value: '99.9%', label: '准时交付率' },
+    { value: '15+', label: '生产基地' }
+  ]
+};
+
+try {
+  const rawContent = fs.readFileSync(homeMdPath, 'utf-8');
+  const parsed = matter(rawContent);
+  heroData = { ...heroData, ...parsed.data };
+  // Override CTA buttons with translated text
+  heroData.primaryCta = t('form.submit');
+} catch (e) {
+  console.warn('Failed to load home.md:', e);
+}
+---
+
+<BaseLayout>
+  <PremiumHero hero={heroData} />
+  <ServicesOverview />
+  <TechnicalCapabilities />
+  <MaterialMatrix />
+  <IndustryApplications />
+  <EngineeringResources />
+  <PremiumCTA />
+</BaseLayout>

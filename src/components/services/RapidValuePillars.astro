@@ -1,0 +1,106 @@
+---
+interface ValuePillar {
+  title: string;
+  subtitle: string;
+  description: string;
+  highlights: string[];
+  icon: string;
+}
+
+const pillars: ValuePillar[] = [
+  {
+    title: "Accelerated Time-to-Market",
+    subtitle: "3-5 Business Days Lead Time",
+    description: "Slicing lead times down to 3-5 business days by eliminating traditional tooling setups, mold fabrication, and lengthy CAM programming — enabling rapid design-build-test loops for NPI programs.",
+    highlights: [
+      "No hard tooling — designs go directly from CAD to printer in hours",
+      "Parallel build scheduling for multi-part prototyping kits",
+      "Expedited shipping via DHL/FedEx worldwide upon completion",
+      "Same-day production start for urgent engineering validation runs"
+    ],
+    icon: "M13 10V3L4 14h7v7l9-11h-7z"
+  },
+  {
+    title: "100% Functional Testing Ready",
+    subtitle: "≥99.5% Relative Density, Forging-Grade Strength",
+    description: "Full-density titanium components with mechanical integrity equivalent to wrought forgings — built for physical destructive stress tests, proof-of-concept validation, and pre-production certification trials.",
+    highlights: [
+      "Relative material density ≥99.5% per ASTM B311 Archimedes method",
+      "Tensile strength 950-1,050 MPa matching forged Ti-6Al-4V specs",
+      "Suitable for hydrostatic pressure, burst, and fatigue testing",
+      "Material certs provided with every prototype shipment"
+    ],
+    icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+  },
+  {
+    title: "Zero-Cost Design Alterations",
+    subtitle: "Modify CAD Files, No Wasted Tooling",
+    description: "Unlike machining or injection molding, additive prototyping allows unlimited design iterations at zero hard tooling cost — ideal for fluid engineering cycles where geometry evolves rapidly between reviews.",
+    highlights: [
+      "Modify CAD files and re-print — no mold re-cut or fixture re-build costs",
+      "Iterate topology, wall thickness, and internal channels freely",
+      "Print multiple design variants in a single build for side-by-side comparison",
+      "Digital inventory eliminates warehouse storage between iterations"
+    ],
+    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        Value Proposition
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Rapid Prototyping <span style="color: var(--theme-primary);">Value Pillars</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Three core advantages that make additive rapid prototyping the fastest path from design validation to production-ready titanium components.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {pillars.map((pillar) => (
+        <div
+          class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+        >
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={pillar.icon} />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{pillar.title}</h3>
+          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{pillar.subtitle}</span>
+          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{pillar.description}</p>
+          <ul class="space-y-2 mt-auto">
+            {pillar.highlights.map((h) => (
+              <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {h}
+              </li>
+            ))}
+          </ul>
+          <div
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+          ></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+import { Image as AstroImage } from 'astro:assets';
+
+export let src: any;
+export let alt: string = '';
+export let className: string = '';
+export let widths: number[] = [480, 768, 1024, 1600, 2070];
+export let placeholder: 'blur' | 'dominant-color' | 'none' = 'dominant-color';
+export let sizes: string = '100vw';
+export let priority: boolean = false;
+export let decoding: 'async' | 'auto' | 'sync' | null | undefined = 'async';
+export let srcSet: string | undefined;
+export let fetchpriority: 'high' | undefined;
+
+const hasSrc = src !== undefined && src !== null && src !== '';
+const isString = typeof src === 'string';
+const useNativeImage = isString && hasSrc;
+const imageClass = className;
+---
+
+{useNativeImage ? (
+  <img
+    src={src}
+    alt={alt}
+    class={imageClass}
+    loading={priority ? 'eager' : 'lazy'}
+    decoding={decoding}
+    sizes={sizes}
+    srcset={srcSet}
+    fetchpriority={priority ? 'high' : undefined}
+  />
+) : src ? (
+  <AstroImage
+    src={src}
+    alt={alt}
+    class={imageClass}
+    widths={widths}
+    sizes={sizes}
+    decoding={decoding}
+    fetchpriority={priority ? 'high' : undefined}
+  />
+) : null}

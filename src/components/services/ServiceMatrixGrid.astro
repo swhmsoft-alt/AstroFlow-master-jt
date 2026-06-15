@@ -1,0 +1,160 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface ServiceItem {
+  title: string;
+  subItems: string[];
+  highlight: string;
+  href: string | null;
+}
+
+const services: ServiceItem[] = [
+  {
+    title: t('services.matrix.svc0.title'),
+    subItems: [t('services.matrix.svc0.sub0'), t('services.matrix.svc0.sub1'), t('services.matrix.svc0.sub2'), t('services.matrix.svc0.sub3')],
+    highlight: t('services.matrix.svc0.highlight'),
+    href: "/titanium-cnc-machining-services"
+  },
+  {
+    title: t('services.matrix.svc1.title'),
+    subItems: [t('services.matrix.svc1.sub0'), t('services.matrix.svc1.sub1'), t('services.matrix.svc1.sub2')],
+    highlight: t('services.matrix.svc1.highlight'),
+    href: "/titanium-additive-manufacturing"
+  },
+  {
+    title: t('services.matrix.svc2.title'),
+    subItems: [t('services.matrix.svc2.sub0'), t('services.matrix.svc2.sub1'), t('services.matrix.svc2.sub2')],
+    highlight: t('services.matrix.svc2.highlight'),
+    href: "/titanium-fabrication-services"
+  },
+  {
+    title: t('services.matrix.svc3.title'),
+    subItems: [t('services.matrix.svc3.sub0'), t('services.matrix.svc3.sub1'), t('services.matrix.svc3.sub2')],
+    highlight: t('services.matrix.svc3.highlight'),
+    href: "/titanium-forming-heavy-manufacturing"
+  },
+  {
+    title: t('services.matrix.svc4.title'),
+    subItems: [t('services.matrix.svc4.sub0'), t('services.matrix.svc4.sub1'), t('services.matrix.svc4.sub2')],
+    highlight: t('services.matrix.svc4.highlight'),
+    href: "/titanium-surface-treatment"
+  },
+  {
+    title: t('services.matrix.svc5.title'),
+    subItems: [t('services.matrix.svc5.sub0'), t('services.matrix.svc5.sub1'), t('services.matrix.svc5.sub2')],
+    highlight: t('services.matrix.svc5.highlight'),
+    href: "/laser-marking-custom-logo"
+  },
+  {
+    title: t('services.matrix.svc6.title'),
+    subItems: [t('services.matrix.svc6.sub0'), t('services.matrix.svc6.sub1'), t('services.matrix.svc6.sub2')],
+    highlight: t('services.matrix.svc6.highlight'),
+    href: "/branded-custom-packaging-services"
+  }
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <!-- Subtle engineering grid -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+        </svg>
+        {t('services.matrix.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('services.matrix.title')}<span class="gradient-text-accent"> {t('services.matrix.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('services.matrix.subtitle')}
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => {
+        return (
+          <div
+            class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full"
+            style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+            onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+          >
+            {/* Card Header */}
+            <div class="mb-4">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="text-xl font-bold leading-tight" style="color: var(--theme-text);">
+                  {service.title}
+                </h3>
+              </div>
+              {/* Capability Highlight */}
+              <span
+                class="inline-block text-xs font-semibold px-3 py-1 rounded-full mt-1"
+                style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);"
+              >
+                {service.highlight}
+              </span>
+            </div>
+
+            {/* Sub-Services List */}
+            <ul class="space-y-2.5 mb-6 flex-1">
+              {service.subItems.map((item) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-1 mr-3 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Action Area */}
+            <div class="mt-auto">
+              {service.href ? (
+                <a
+                  href={service.href}
+                  class="inline-flex items-center text-sm font-semibold transition-all group/link"
+                  style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"
+                  onmouseover="this.style.color='var(--theme-primary)'"
+                  onmouseout="this.style.color='color-mix(in srgb, var(--theme-text) 45%, transparent)'"
+                >
+                  <span>{t('services.matrix.details')}</span>
+                  <svg class="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              ) : (
+                <div
+                  class="inline-flex items-center px-4 py-2 text-sm font-semibold rounded-lg"
+                  style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);"
+                >
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {t('services.matrix.integrated')}
+                </div>
+              )}
+            </div>
+
+            <!-- Corner accent on hover -->
+            <div
+              class="absolute top-0 right-0 w-0 h-0 transition-all duration-300"
+              style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+              onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+              onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+            ></div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,134 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Button from '../ui/Button.astro';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<section
+  class="relative overflow-hidden"
+  style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg)) 50%, var(--theme-surface) 100%);"
+>
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, var(--theme-text) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto relative z-10">
+    <div class="flex flex-col lg:flex-row items-center justify-between py-20 lg:py-32 gap-12">
+      <!-- Content -->
+      <div class="flex-1 text-center lg:text-left space-y-6 animate-fadeInUp">
+        <div
+          class="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4"
+          style="background-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); color: var(--theme-primary); backdrop-filter: blur(4px);"
+        >
+          🚀 {t('home.mainHero.badge')}
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" style="color: var(--theme-text);">
+          {t('home.mainHero.title')}
+          <span class="block" style="color: var(--theme-primary);">{t('home.mainHero.titleHighlight')}</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl max-w-2xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          {t('home.mainHero.subtitle')}
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+          <Button href="/rfq" size="lg" variant="secondary" class="bg-theme-primary! text-white! shadow-lg!">
+            {t('home.mainHero.quote')}
+          </Button>
+          <Button
+            href="/services"
+            size="lg"
+            variant="outline"
+            class="border-theme-primary! text-theme-text! hover:bg-theme-primary! hover:text-white!"
+          >
+            {t('home.mainHero.explore')}
+          </Button>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 pt-8 max-w-2xl">
+          <div class="text-center lg:text-left">
+            <div class="text-3xl lg:text-4xl font-bold" style="color: var(--theme-primary);">{t('home.mainHero.stat0.value')}</div>
+            <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.mainHero.stat0.label')}</div>
+          </div>
+          <div class="text-center lg:text-left">
+            <div class="text-3xl lg:text-4xl font-bold" style="color: var(--theme-primary);">{t('home.mainHero.stat1.value')}</div>
+            <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.mainHero.stat1.label')}</div>
+          </div>
+          <div class="text-center lg:text-left">
+            <div class="text-3xl lg:text-4xl font-bold" style="color: var(--theme-primary);">{t('home.mainHero.stat2.value')}</div>
+            <div class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('home.mainHero.stat2.label')}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Element -->
+      <div class="flex-1 relative animate-fadeIn">
+        <div class="relative w-full max-w-lg mx-auto">
+          <!-- Decorative elements -->
+          <div class="absolute -top-4 -right-4 w-72 h-72 rounded-full opacity-20 blur-3xl" style="background-color: var(--theme-primary);"></div>
+          <div class="absolute -bottom-4 -left-4 w-72 h-72 rounded-full opacity-20 blur-3xl" style="background-color: var(--theme-accent);"></div>
+          
+          <!-- Main visual container -->
+          <div
+            class="relative rounded-3xl p-8 shadow-2xl"
+            style="background-color: color-mix(in srgb, var(--theme-surface) 40%, transparent); backdrop-filter: blur(12px); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);"
+          >
+            <div class="space-y-4">
+              <!-- Icon grid -->
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  class="rounded-xl p-6 flex flex-col items-center justify-center"
+                  style="background-color: color-mix(in srgb, var(--theme-surface) 50%, transparent); backdrop-filter: blur(4px);"
+                >
+                  <svg class="w-12 h-12" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                  <span class="text-sm font-semibold mt-2" style="color: var(--theme-text);">{t('home.mainHero.icon0')}</span>
+                </div>
+                <div
+                  class="rounded-xl p-6 flex flex-col items-center justify-center"
+                  style="background-color: color-mix(in srgb, var(--theme-surface) 50%, transparent); backdrop-filter: blur(4px);"
+                >
+                  <svg class="w-12 h-12" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span class="text-sm font-semibold mt-2" style="color: var(--theme-text);">{t('home.mainHero.icon1')}</span>
+                </div>
+                <div
+                  class="rounded-xl p-6 flex flex-col items-center justify-center"
+                  style="background-color: color-mix(in srgb, var(--theme-surface) 50%, transparent); backdrop-filter: blur(4px);"
+                >
+                  <svg class="w-12 h-12" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <span class="text-sm font-semibold mt-2" style="color: var(--theme-text);">{t('home.mainHero.icon2')}</span>
+                </div>
+                <div
+                  class="rounded-xl p-6 flex flex-col items-center justify-center"
+                  style="background-color: color-mix(in srgb, var(--theme-surface) 50%, transparent); backdrop-filter: blur(4px);"
+                >
+                  <svg class="w-12 h-12" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm font-semibold mt-2" style="color: var(--theme-text);">{t('home.mainHero.icon3')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave separator -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full" style="fill: var(--theme-bg);">
+      <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"/>
+    </svg>
+  </div>
+</section>

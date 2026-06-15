@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TurnMillSpectrum from '../../components/services/TurnMillSpectrum.astro';
+import TurnMillSpecsDashboard from '../../components/services/TurnMillSpecsDashboard.astro';
+import TurnMillKnowHow from '../../components/services/TurnMillKnowHow.astro';
+import TurnMillDedicatedCta from '../../components/services/TurnMillDedicatedCta.astro';
+---
+<BaseLayout title="CNC Milling & Turning — BOZE CNC Ti" description="Precision CNC turning, milling, and turn-mill multi-tasking for titanium: bone screws, prismatic components, complete single-setup parts. Tolerances ±0.005 mm.">
+  <!-- Hero — DO NOT MODIFY -->
+  <SubpageHero
+    title="CNC Milling & Turning"
+    highlight="Services"
+    badge="Precision Turn-Mill Machining"
+    badgeIcon="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+    subtitle="High-speed multi-axis turning-milling centers delivering precision titanium components — from custom fasteners and bone screws to complex prismatic block parts — with ±0.005 mm repeatable accuracy."
+  />
+
+  <!-- Turn-Mill Process Spectrum — 3-column grid -->
+  <TurnMillSpectrum />
+
+  <!-- Turn-Mill Technical Specs Dashboard -->
+  <TurnMillSpecsDashboard />
+
+  <!-- Turn-Mill Engineering Know-How -->
+  <TurnMillKnowHow />
+
+  <!-- Dedicated CTA for Turn-Mill DFM Analysis -->
+  <TurnMillDedicatedCta />
+</BaseLayout>

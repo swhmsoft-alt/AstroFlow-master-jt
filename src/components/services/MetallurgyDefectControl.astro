@@ -1,0 +1,110 @@
+---
+interface EngineeringFocus {
+  title: string;
+  problem: string;
+  solution: string;
+  details: string[];
+  icon: string;
+}
+
+const foci: EngineeringFocus[] = [
+  {
+    title: "Dynamic Melt Pool Control",
+    problem: "During SLM processing of titanium, unstable melt pool dynamics can cause balling (beading of molten material), lack-of-fusion porosity between adjacent scan tracks, and keyhole porosity from excessive energy density — all of which degrade relative material density below aerospace-acceptable thresholds of 99.5%.",
+    solution: "Optimized Laser Energy Density Parameters & Real-Time Melt Pool Monitoring",
+    details: [
+      "Volumetric energy density (VED) precisely tuned to 60-120 J/mm³ range for Ti-6Al-4V — balancing laser power (150-400 W), scan speed (600-1,200 mm/s), and hatch spacing (80-120 µm) to achieve stable conduction-mode melting without keyhole transition",
+      "Real-time melt pool monitoring via coaxial photodiode sensor — capturing melt pool emission intensity and geometry at 100 kHz sampling rate, enabling closed-loop power adjustment within individual scan vectors",
+      "Balling suppression through reduced oxygen content (<100 ppm) and optimized scan vector length (<5 mm island size) — eliminating capillary instability that causes droplet formation on molten track surfaces",
+      "Verification via Archimedes density measurement (ASTM B311) and cross-sectional micrograph analysis — consistently achieving ≥99.5% relative density with zero lack-of-fusion or keyhole porosity across all build positions"
+    ],
+    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
+  },
+  {
+    title: "Full Argon Gas Cycle",
+    problem: "Titanium's extreme chemical reactivity at SLM processing temperatures (1,600-2,000°C in the melt pool) means that even trace oxygen contamination causes oxide inclusion formation, alpha-case embrittlement layers, and reduced fatigue performance. Additionally, laser-generated soot and spatter particles can become entrapped in subsequent layers if not continuously evacuated.",
+    solution: "Sub-100 ppm O₂ Chamber Atmosphere & Forced Micro-Filtration Loop",
+    details: [
+      "Dual zirconia oxygen sensors positioned at gas inlet and outlet ports — maintaining continuous real-time monitoring with automated argon purge activation if O₂ exceeds 100 ppm threshold, preventing build contamination within <2 seconds",
+      "Ultra-high-purity argon (99.999% grade) with laminar flow distribution across the powder bed — creating a positive-pressure inert gas curtain that prevents atmospheric oxygen ingress through the recoater slot and chamber seals",
+      "Forced micro-filtration recirculation loop (HEPA H13 + activated carbon) extracting laser-generated soot, condensate aerosols, and spatter particles at 200 CFM — maintaining optical clarity for the galvanometer system and preventing particle re-deposition on the powder bed",
+      "Closed-loop gas management system with automated regeneration — argon consumption optimized via oxygen feedback, reducing operational costs while maintaining sub-100 ppm atmosphere across continuous 120+ hour print runs"
+    ],
+    icon: "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+  }
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+        </svg>
+        Metallurgical Control
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Micro-Void & <span style="color: var(--theme-primary);">Layer Purity Control</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Eliminating internal defects in titanium SLM requires precise control of melt pool dynamics and atmospheric purity. Here's how we guarantee ≥99.5% density and zero oxide contamination.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {foci.map((focus) => (
+        <div
+          class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div class="p-8 pb-6">
+            <div class="flex items-start mb-5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={focus.icon} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
+            </div>
+            <div class="pl-14">
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">The Challenge</span>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+            </div>
+          </div>
+
+          <div class="relative flex items-center justify-center py-3">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+              <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="p-8 pt-4">
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Our Solution</span>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <ul class="space-y-3">
+              {focus.details.map((detail) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
