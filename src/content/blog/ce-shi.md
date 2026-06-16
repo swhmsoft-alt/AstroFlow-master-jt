@@ -1,10 +1,10 @@
 ---
 title: "ceshi"
 description: "ceshi"
-pubDate: 2026-06-13T03:15:09+08:00
+pubDate: 2026-06-13
 author: "BOZE CNC Ti"
 category: "ceshi"
-tags: [ceshi]
+tags: ["ceshi"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"
 featured: false
 ---
