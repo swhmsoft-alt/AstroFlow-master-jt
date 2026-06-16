@@ -16,17 +16,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 24
+      - name: Setup Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: 'npm'
+          node-version: 22
+          # 注意: 删除了 cache: 'npm'，防止坏缓存持续污染环境
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install basic-ftp
 
       - name: Build Astro site
-        run: npx astro build
+        run: npm run build
 
       - name: Deploy to cPanel via FTP
         env:
