@@ -2,12 +2,28 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build
 export default defineConfig({
-  site: 'https://cnc.bozemetal.com', // 👈 请在这里精准加上你的线上访问域名
+  site: 'https://cnc.bozemetal.com',
   output: 'static',
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin'),
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          zh: 'zh-CN',
+        },
+      },
+    }),
+  ],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'zh'],

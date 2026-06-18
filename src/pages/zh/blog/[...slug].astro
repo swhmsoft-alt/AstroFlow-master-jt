@@ -30,7 +30,14 @@ const tags = data.tags || [];
 const blogUrl = `https://cnc.bozemetal.com/zh/blog/${post.slug}`;
 ---
 
-<BaseLayout title={seoTitle} description={data.description}>
+<BaseLayout
+  title={seoTitle}
+  description={data.description}
+  pubDate={pubDateISO}
+  author={data.author}
+  tags={tags.length > 0 ? tags : undefined}
+  ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
+>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

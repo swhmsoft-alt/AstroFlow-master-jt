@@ -10,6 +10,16 @@ interface Props {
   title?: string;
   description?: string;
   hideThemeSwitcher?: boolean;
+  /** SEO: Canonical URL override — defaults to current URL */
+  canonicalURL?: string;
+  /** SEO: Open Graph / Twitter share image — defaults to brand OG image */
+  ogImage?: string;
+  /** Article: publish date ISO string — enables article:published_time meta */
+  pubDate?: string | null;
+  /** Article: author name — enables article:author meta */
+  author?: string;
+  /** Article: tags array — enables article:tag meta */
+  tags?: string[];
 }
 
 const currentPathname = Astro.url.pathname;
@@ -20,7 +30,26 @@ const {
   title = SITE.title, 
   description = SITE.description,
   hideThemeSwitcher = false,
+  canonicalURL,
+  ogImage,
+  pubDate,
+  author,
+  tags,
 } = Astro.props;
+
+// ── Computed SEO values ────────────────────────────────
+const siteUrl = SITE.url;
+const currentUrl = `${siteUrl}${currentPathname}`;
+const canonicalUrl = canonicalURL || currentUrl;
+const defaultOgImage = `${siteUrl}/uploads/boze-1-en.png`;
+const seoImage = ogImage || defaultOgImage;
+
+// Language → OG locale mapping
+const ogLocales: Record<string, string> = {
+  en: 'en_US',
+  zh: 'zh_CN',
+};
+const ogLocale = ogLocales[currentLang] || 'en_US';
 
 // Static defaults (previously loaded from CMS collections)
 const favicon = '/favicon.svg';
@@ -67,6 +96,55 @@ const fontFamily = getCssFamily(fontConfig, fallbackFont);
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+
+    <!-- ══ Canonical URL (prevents duplicate content) ════════ -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- ══ Open Graph — URL, Image, Locale ════════════════════ -->
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={seoImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={ogLocale} />
+
+    <!-- ══ Twitter Card — URL & Image ═════════════════════════ -->
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:image" content={seoImage} />
+
+    <!-- ══ Article Meta (blog posts only) ═════════════════════ -->
+    {pubDate && <meta property="article:published_time" content={pubDate} />}
+    {author && <meta property="article:author" content={author} />}
+    {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+    <!-- ══ JSON-LD — Organization (brand entity for all pages) ══ -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BOZE CNC Ti",
+      "url": siteUrl,
+      "logo": `${siteUrl}/uploads/boze-logo-2.png`,
+      "description": "Leading provider of optimized Titanium CNC Machining and manufacturing solutions.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+86-917-1234-5678",
+        "contactType": "sales",
+        "availableLanguage": ["English", "Chinese"]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/bozemetal",
+        "https://www.facebook.com/bozemetal"
+      ]
+    })} />
+
+    <!-- ══ JSON-LD — WebSite (site search & identity) ══════════ -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "BOZE CNC Ti",
+      "url": siteUrl,
+      "description": SITE.description,
+      "inLanguage": currentLang === 'zh' ? 'zh-CN' : 'en-US'
+    })} />
 
     <!-- ══ hreflang Alternate Links (i18n SEO) ═══════════════ -->
     {alternateLinks.map((link) => (
