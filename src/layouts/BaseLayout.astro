@@ -3,8 +3,9 @@ import '../styles/global.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import { SITE } from '@config/site';
+import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
-import { getLangFromUrl, getAlternateLinks } from '../i18n/utils';
+import { getLangFromUrl, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 
 interface Props {
   title?: string;
@@ -27,8 +28,8 @@ const currentLang = getLangFromUrl(Astro.url);
 const alternateLinks = getAlternateLinks(currentPathname);
 
 const { 
-  title = SITE.title, 
-  description = SITE.description,
+  title: explicitTitle, 
+  description: explicitDesc,
   hideThemeSwitcher = false,
   canonicalURL,
   ogImage,
@@ -36,6 +37,21 @@ const {
   author,
   tags,
 } = Astro.props;
+
+// ── SEO Config auto-resolution ──────────────────────────
+// Remove language prefix to get canonical path for SEO lookup
+// Normalize: strip trailing slash (except for root path '/')
+const rawPath = removeLangPrefix(currentPathname);
+const canonicalPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
+const seoEntry = SEO_CONFIG[canonicalPath];
+
+// Language-specific SEO from config
+const seoTitleFromConfig = seoEntry?.title?.[currentLang];
+const seoDescFromConfig = seoEntry?.description?.[currentLang];
+
+// Priority: explicit prop > SEO_CONFIG > SITE defaults
+const title = explicitTitle || seoTitleFromConfig || SITE.title;
+const description = explicitDesc || seoDescFromConfig || SITE.description;
 
 // ── Computed SEO values ────────────────────────────────
 const siteUrl = SITE.url;
