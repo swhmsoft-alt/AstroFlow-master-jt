@@ -256,7 +256,7 @@ export const UI: Record<Lang, Record<string, string>> = {
     'home.imageGrid.item3.desc': 'Real-time visibility and control across all operations',
     'home.imageGrid.item4.title': 'Distribution Hub',
     'home.imageGrid.item4.desc': 'High-speed sorting and cross-docking',
-    'home.imageGrid.cta': 'Tour Our Facilities',
+    'home.imageGrid.cta': 'Our Services',
 
     /* ── Home: IndustriesServed ──────────────────────── */
     'home.industriesServed.badge': 'Our Services',
@@ -364,7 +364,7 @@ export const UI: Record<Lang, Record<string, string>> = {
     'home.cta.title': 'Secure Your Titanium Supply from the Source.',
     'home.cta.subtitle': 'Based in Baoji, China\'s Titanium Valley, BOZE CNC integrates the entire supply chain — from raw material to final machined parts. Stop worrying about material delays or fragmented vendors. Contact us today for a reliable, fully integrated Titanium solution.',
     'home.cta.quote': 'Request a Quote',
-    'home.cta.tour': 'Tour Our Facilities',
+    'home.cta.tour': 'Our Services',
     'home.cta.years': 'Years Experience',
     'home.cta.certified': 'Certified',
     'home.cta.support': 'Support',
@@ -1094,7 +1094,7 @@ export const UI: Record<Lang, Record<string, string>> = {
     'home.imageGrid.item3.desc': '所有运营的实时可见性和控制',
     'home.imageGrid.item4.title': '分拨中心',
     'home.imageGrid.item4.desc': '高速分拣和越库配送',
-    'home.imageGrid.cta': '参观工厂',
+    'home.imageGrid.cta': '我们的服务',
 
     /* ── Home: IndustriesServed ──────────────────────── */
     'home.industriesServed.badge': '我们的服务',
@@ -1208,7 +1208,7 @@ export const UI: Record<Lang, Record<string, string>> = {
     'home.cta.title': '从源头保障您的钛材供应。',
     'home.cta.subtitle': 'BOZE CNC 位于中国钛谷宝鸡，整合从原材料到最终机加工零件的整个供应链。无需再担心材料延误或供应商分散。立即联系我们，获得可靠、全面整合的钛材解决方案。',
     'home.cta.quote': '获取报价',
-    'home.cta.tour': '参观工厂',
+    'home.cta.tour': '我们的服务',
     'home.cta.years': '年经验',
     'home.cta.certified': '认证资质',
     'home.cta.support': '技术支持',
