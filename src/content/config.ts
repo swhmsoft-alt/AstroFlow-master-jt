@@ -43,7 +43,7 @@ const productsCollection = defineCollection({
       })
     ),
     btnText: z.string().default('Request Quote'),
-    btnLink: z.string().default('/rfq'),
+    btnLink: z.string().default('https://www.bozemetal.com/contact'),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
     featured: z.boolean().default(false),
