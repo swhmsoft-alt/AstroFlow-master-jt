@@ -144,12 +144,12 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Case Studies', href: '/resources#case-studies' },
           { name: 'FAQs', href: '/resources#faqs' },
           { name: 'Downloads', href: '/resources#downloads' },
+          { name: 'Blog', href: '/blog' },
         ],
       },
     ],
   },
   { name: 'Products', href: '/products' },
-  { name: 'Blog', href: '/blog' },
 ];
 
 export const SOCIAL_LINKS = {

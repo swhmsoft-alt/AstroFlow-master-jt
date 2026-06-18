@@ -20,7 +20,6 @@ const navKeyByHref: Record<string, string> = {
   '/industries': 'nav.industries',
   '/resources': 'nav.resources',
   '/products': 'nav.products',
-  '/blog': 'nav.blog',
 };
 
 // Map child href → child item translation key
@@ -89,6 +88,8 @@ const childNavKeyByHref: Record<string, string> = {
   '/resources#case-studies': 'nav.resources.caseStudies',
   '/resources#faqs': 'nav.resources.faqs',
   '/resources#downloads': 'nav.resources.downloads',
+  // Blog (inside Resources dropdown)
+  '/blog': 'nav.blog',
 };
 
 // Map (parent href → heading text → translation key) for dropdown column headings
