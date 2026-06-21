@@ -20,6 +20,25 @@ const SUPPORTED_LANGS = new Set(Object.keys(UI));
  *   /zh/services  → 'zh'
  *   /services     → 'en'   (default because prefixDefaultLocale=false)
  */
+/**
+ * Check if a string is a supported language code.
+ *
+ *   isSupportedLang('en')  → true
+ *   isSupportedLang('de')  → false
+ *   isSupportedLang(undefined) → false
+ */
+export function isSupportedLang(code: string | undefined | null): code is Lang {
+  return typeof code === 'string' && SUPPORTED_LANGS.has(code);
+}
+
+/**
+ * Extract the language code from an Astro URL.
+ *
+ * Examples:
+ *   /en/services  → 'en'
+ *   /zh/services  → 'zh'
+ *   /services     → 'en'   (default because prefixDefaultLocale=false)
+ */
 export function getLangFromUrl(url: URL): Lang {
   const parts = url.pathname.split('/').filter(Boolean);
   if (parts.length > 0 && SUPPORTED_LANGS.has(parts[0])) {
