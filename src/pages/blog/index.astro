@@ -78,7 +78,7 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
                   <span>{featured.data.author}</span>
                   <span style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">|</span>
                   <time datetime={featured.data.pubDate.toISOString()}>
-                    {new Date(featured.data.pubDate).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {new Date(featured.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </time>
                 </div>
                 <span class="inline-flex items-center font-semibold text-sm group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
@@ -150,7 +150,7 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
                   <div class="flex items-center justify-between pt-4" style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
                     <div class="flex items-center space-x-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
                       <time datetime={data.pubDate.toISOString()}>
-                        {new Date(data.pubDate).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        {new Date(data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </time>
                     </div>
                     <span class="inline-flex items-center font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--theme-primary);">

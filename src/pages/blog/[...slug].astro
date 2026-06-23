@@ -109,7 +109,7 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
           <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">|</span>
           <time datetime={pubDateISO || ''} class="flex items-center">
             <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-            {new Date(data.pubDate).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {new Date(data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         </div>
       </div>
@@ -139,7 +139,7 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
                 <nav aria-label="Table of contents">
                   <ul class="space-y-1">
                     {tocHeadings.map((heading, index) => {
-                      const id = heading.text.toLowerCase().replace(/[^\w\u4e00-\u9fff]+/g, '-').replace(/(^-|-$)/g, '');
+                      const id = heading.text.toLowerCase().replace(/[^\w]+/g, '-').replace(/(^-|-$)/g, '');
                       return (
                         <li>
                           <a

@@ -19,14 +19,13 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: {
           en: 'en-US',
-          zh: 'zh-CN',
         },
       },
     }),
   ],
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh'],
+    locales: ['en'],
     routing: {
       prefixDefaultLocale: false,
     },
