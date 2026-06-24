@@ -19,7 +19,6 @@ import it from './translations/it.json';
 import ko from './translations/ko.json';
 import nl from './translations/nl.json';
 import pl from './translations/pl.json';
-import zh from './translations/zh.json';
 
 export const LANGUAGES: Record<string, string> = {
   en: 'English',
@@ -32,7 +31,6 @@ export const LANGUAGES: Record<string, string> = {
   ko: '한국어',
   nl: 'Nederlands',
   pl: 'Polski',
-  zh: '中文',
 };
 
 export const DEFAULT_LANG = 'en';
