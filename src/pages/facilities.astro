@@ -208,6 +208,9 @@ const facilityStandards = [
     color: 'linear-gradient(to bottom right, color-mix(in srgb, var(--theme-primary) 80%, black), var(--theme-accent))'
   }
 ];
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <BaseLayout>

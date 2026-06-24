@@ -2,35 +2,14 @@
 /**
  * [lang]/[...slug].astro
  *
- * 唯一路由入口
- * ============
- *
- * 架构三句核心:
- *   1. 路由唯一 → 此文件是所有页面的唯一入口
- *   2. 英文唯一源 → src/content/pages/ 不复制
- *   3. 翻译退居数据层 → src/content/i18n/{lang}/ 纯缓存，fallback 英文
- *
- * 路由映射:
- *   /[lang]/           → home 页面
- *   /[lang]/services   → services 页面
- *   /[lang]/capabilities → capabilities 页面
- *   /[lang]/blog/mypost → 博客文章
- *   /[lang]/products/myproduct → 产品页面
- *   等
- *
- * 内容获取优先级:
- *   src/content/i18n/{lang}/pages/{pageId}.md  → 翻译缓存
- *   src/content/pages/{pageId}.md              → 英文原文
- *   默认值
- *
+ * 唯一路由入口 — 所有多语言页面的统一入口。
  * 组件映射根据 slug 路由到对应页面组件。
  */
-
 import type { GetStaticPathsResult } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 
-/* ── 页面组件 ───────────────────────────────────────── */
+/* ── Home 页面组件 ─────────────────────────── */
 import PremiumHero from '../../components/home/PremiumHero.astro';
 import ServicesOverview from '../../components/home/ServicesOverview.astro';
 import TechnicalCapabilities from '../../components/home/TechnicalCapabilities.astro';
@@ -38,45 +17,154 @@ import MaterialMatrix from '../../components/home/MaterialMatrix.astro';
 import IndustryApplications from '../../components/home/IndustryApplications.astro';
 import EngineeringResources from '../../components/home/EngineeringResources.astro';
 import PremiumCTA from '../../components/home/PremiumCTA.astro';
+
+/* ── Services 页面组件 ─────────────────────── */
 import ServiceMatrixGrid from '../../components/services/ServiceMatrixGrid.astro';
 import ComplianceRibbon from '../../components/services/ComplianceRibbon.astro';
 import EngineeringWorkflow from '../../components/services/EngineeringWorkflow.astro';
 import QuickIndustrySolutions from '../../components/services/QuickIndustrySolutions.astro';
 
+/* ── Materials 页面组件 ────────────────────── */
+import MaterialGradeMatrix from '../../components/materials/MaterialGradeMatrix.astro';
+import AlloyComparisonTable from '../../components/materials/AlloyComparisonTable.astro';
+import MachiningKnowHow from '../../components/materials/MachiningKnowHow.astro';
+import MaterialTraceability from '../../components/materials/MaterialTraceability.astro';
+
+/* ── Capabilities 页面组件 ─────────────────── */
+import CapacityDashboard from '../../components/capabilities/CapacityDashboard.astro';
+import EngineeringSupport from '../../components/capabilities/EngineeringSupport.astro';
+import QualityAndCertifications from '../../components/capabilities/QualityAndCertifications.astro';
+import InspectionLabGrid from '../../components/capabilities/InspectionLabGrid.astro';
+import TraceabilityFoundation from '../../components/capabilities/TraceabilityFoundation.astro';
+
+/* ── Industries 页面组件 ───────────────────── */
+import IndustryVerticalsGrid from '../../components/industries/IndustryVerticalsGrid.astro';
+import IndustryComplianceDashboard from '../../components/industries/IndustryComplianceDashboard.astro';
+import IndustryCtaSection from '../../components/industries/IndustryCtaSection.astro';
+
+/* ── Resources 页面组件 ────────────────────── */
+import FeaturedInsights from '../../components/resources/FeaturedInsights.astro';
+import ResourceHubMatrix from '../../components/resources/ResourceHubMatrix.astro';
+import EngineeringDownloads from '../../components/resources/EngineeringDownloads.astro';
+import TechnicalFaqAccordion from '../../components/resources/TechnicalFaqAccordion.astro';
+
+/* ── Other 页面组件 ────────────────────────── */
+import FacilityStats from '../../components/react/FacilityStats';
+import EngineeringRfqForm from '../../components/rfq/EngineeringRfqForm.astro';
+import SecurityNdaBanner from '../../components/rfq/SecurityNdaBanner.astro';
+import ResponsePipelineTimeline from '../../components/rfq/ResponsePipelineTimeline.astro';
+
+/* ── CNC Machining 系列 ───────────────────── */
+import CncProcessSpectrum from '../../components/services/CncProcessSpectrum.astro';
+import CncTechnicalDashboard from '../../components/services/CncTechnicalDashboard.astro';
+import TitaniumEngineeringKnowHow from '../../components/services/TitaniumEngineeringKnowHow.astro';
+import CncDedicatedCta from '../../components/services/CncDedicatedCta.astro';
+import FiveAxisTechSpecs from '../../components/services/FiveAxisTechSpecs.astro';
+import MultiAxisComparison from '../../components/services/MultiAxisComparison.astro';
+import MultiAxisCta from '../../components/services/MultiAxisCta.astro';
+import TurnMillKnowHow from '../../components/services/TurnMillKnowHow.astro';
+import TurnMillSpectrum from '../../components/services/TurnMillSpectrum.astro';
+import TurnMillSpecsDashboard from '../../components/services/TurnMillSpecsDashboard.astro';
+import TurnMillDedicatedCta from '../../components/services/TurnMillDedicatedCta.astro';
+import WireEdmKnowHow from '../../components/services/WireEdmKnowHow.astro';
+import WireEdmAdvantages from '../../components/services/WireEdmAdvantages.astro';
+import WireEdmDedicatedCta from '../../components/services/WireEdmDedicatedCta.astro';
+import WireEdmSpecsDashboard from '../../components/services/WireEdmSpecsDashboard.astro';
+import CustomComponentsKnowHow from '../../components/services/CustomComponentsKnowHow.astro';
+import CustomComponentSpectrum from '../../components/services/CustomComponentSpectrum.astro';
+import ComponentDedicatedCta from '../../components/services/ComponentDedicatedCta.astro';
+
+/* ── Additive 系列 ────────────────────────── */
+import AdditiveProcessSpectrum from '../../components/services/AdditiveProcessSpectrum.astro';
+import AdditiveSpecsDashboard from '../../components/services/AdditiveSpecsDashboard.astro';
+import AdditiveQualityKnowHow from '../../components/services/AdditiveQualityKnowHow.astro';
+import AdditiveDedicatedCta from '../../components/services/AdditiveDedicatedCta.astro';
+import RapidPrototypeCta from '../../components/services/RapidPrototypeCta.astro';
+import RapidValuePillars from '../../components/services/RapidValuePillars.astro';
+import PrototypingSpecsDashboard from '../../components/services/PrototypingSpecsDashboard.astro';
+import AdditiveBatchCta from '../../components/services/AdditiveBatchCta.astro';
+import ProductionVolumeDashboard from '../../components/services/ProductionVolumeDashboard.astro';
+import SlmMechanicalDashboard from '../../components/services/SlmMechanicalDashboard.astro';
+import SlmProcessBreakdown from '../../components/services/SlmProcessBreakdown.astro';
+import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
+import AdditiveEconomicsPillars from '../../components/services/AdditiveEconomicsPillars.astro';
+
+/* ── Fabrication 系列 ─────────────────────── */
+import FabProcessSpectrum from '../../components/services/FabProcessSpectrum.astro';
+import FabSpecsDashboard from '../../components/services/FabSpecsDashboard.astro';
+import ReactiveWeldingKnowHow from '../../components/services/ReactiveWeldingKnowHow.astro';
+import FabDedicatedCta from '../../components/services/FabDedicatedCta.astro';
+import LaserProcessSpectrum from '../../components/services/LaserProcessSpectrum.astro';
+import LaserSpecsDashboard from '../../components/services/LaserSpecsDashboard.astro';
+import LaserDedicatedCta from '../../components/services/LaserDedicatedCta.astro';
+import WaterjetAdvantages from '../../components/services/WaterjetAdvantages.astro';
+import WaterjetDedicatedCta from '../../components/services/WaterjetDedicatedCta.astro';
+import WaterjetSpecsDashboard from '../../components/services/WaterjetSpecsDashboard.astro';
+import WeldingAssemblySpectrum from '../../components/services/WeldingAssemblySpectrum.astro';
+import AssemblyDedicatedCta from '../../components/services/AssemblyDedicatedCta.astro';
+import AssemblySpecsDashboard from '../../components/services/AssemblySpecsDashboard.astro';
+
+/* ── Forming & Heavy 系列 ─────────────────── */
+import HeavyProcessSpectrum from '../../components/services/HeavyProcessSpectrum.astro';
+import HeavySpecsDashboard from '../../components/services/HeavySpecsDashboard.astro';
+import HotFormingStressKnowHow from '../../components/services/HotFormingStressKnowHow.astro';
+import HeavyDedicatedCta from '../../components/services/HeavyDedicatedCta.astro';
+import ForgingProcessSpectrum from '../../components/services/ForgingProcessSpectrum.astro';
+import ForgingSpecsDashboard from '../../components/services/ForgingSpecsDashboard.astro';
+import ForgingDedicatedCta from '../../components/services/ForgingDedicatedCta.astro';
+import ExtrusionProcessSpectrum from '../../components/services/ExtrusionProcessSpectrum.astro';
+import ExtrusionSpecsDashboard from '../../components/services/ExtrusionSpecsDashboard.astro';
+import ExtrusionDedicatedCta from '../../components/services/ExtrusionDedicatedCta.astro';
+import PrepProcessSpectrum from '../../components/services/PrepProcessSpectrum.astro';
+import PrepSpecsDashboard from '../../components/services/PrepSpecsDashboard.astro';
+import PrepDedicatedCta from '../../components/services/PrepDedicatedCta.astro';
+
+/* ── Surface Treatment 系列 ───────────────── */
+import SurfaceProcessSpectrum from '../../components/services/SurfaceProcessSpectrum.astro';
+import SurfaceSpecsDashboard from '../../components/services/SurfaceSpecsDashboard.astro';
+import SurfaceDedicatedCta from '../../components/services/SurfaceDedicatedCta.astro';
+import HydrogenEmbrittlementAcidControlKnowHow from '../../components/services/HydrogenEmbrittlementAcidControlKnowHow.astro';
+import AnodizingClassifications from '../../components/services/AnodizingClassifications.astro';
+import AnodizingDedicatedCta from '../../components/services/AnodizingDedicatedCta.astro';
+import AnodizingSpecsDashboard from '../../components/services/AnodizingSpecsDashboard.astro';
+import PassivationSpectrum from '../../components/services/PassivationSpectrum.astro';
+import PassivationDedicatedCta from '../../components/services/PassivationDedicatedCta.astro';
+import PassivationSpecsDashboard from '../../components/services/PassivationSpecsDashboard.astro';
+import GallingColorVariationKnowHow from '../../components/services/GallingColorVariationKnowHow.astro';
+import GallingOsseointegrationKnowHow from '../../components/services/GallingOsseointegrationKnowHow.astro';
+
+/* ── Value-Added 系列 ─────────────────────── */
+import BrittleGallingControlKnowHow from '../../components/services/BrittleGallingControlKnowHow.astro';
+import DieGallingLubricationKnowHow from '../../components/services/DieGallingLubricationKnowHow.astro';
+import SizingHardeningTraceabilityKnowHow from '../../components/services/SizingHardeningTraceabilityKnowHow.astro';
+import SmearingEmbeddingControlKnowHow from '../../components/services/SmearingEmbeddingControlKnowHow.astro';
+import TaperStriationKnowHow from '../../components/services/TaperStriationKnowHow.astro';
+import PackagingProcessSpectrum from '../../components/services/PackagingProcessSpectrum.astro';
+import PackagingSpecsDashboard from '../../components/services/PackagingSpecsDashboard.astro';
+import PackagingDedicatedCta from '../../components/services/PackagingDedicatedCta.astro';
+import SmearingWarehouseInterlockKnowHow from '../../components/services/SmearingWarehouseInterlockKnowHow.astro';
+import MarkingProcessSpectrum from '../../components/services/MarkingProcessSpectrum.astro';
+import MarkingSpecsDashboard from '../../components/services/MarkingSpecsDashboard.astro';
+import MarkingDedicatedCta from '../../components/services/MarkingDedicatedCta.astro';
+import ThermalStressContrastKnowHow from '../../components/services/ThermalStressContrastKnowHow.astro';
+
+/* ── Other services ─────────────────────────── */
+import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
+
 import { getLangFromUrl, useTranslations, isSupportedLang } from '../../i18n/utils';
 import { getLocalizedContent, resolveContentId } from '../../utils/getLocalizedContent';
 import { LANGUAGES, DEFAULT_LANG } from '../../i18n/ui';
 
-/**
- * ============================================================
- * 1. 静态路径生成
- *    为每个语言 + 每个已知 slug 组合生成路径
- * ============================================================
- */
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const supportedLangs = Object.keys(LANGUAGES);
-
-  /* 已知页面 slug 列表 — 对应根 pages/ 下的静态文件 */
   const knownSlugs: string[] = [
-    'services',
-    'capabilities',
-    'materials',
-    'industries',
-    'resources',
-    'documentation',
-    'facilities',
-    'rfq',
-    'use-cases',
-    'branded-custom-packaging-services',
-    'laser-marking-custom-logo',
-    'titanium-additive-manufacturing',
-    'titanium-cnc-machining-services',
-    'titanium-fabrication-services',
-    'titanium-forming-heavy-manufacturing',
+    'services', 'capabilities', 'materials', 'industries', 'resources',
+    'documentation', 'facilities', 'rfq', 'use-cases',
+    'branded-custom-packaging-services', 'laser-marking-custom-logo',
+    'titanium-additive-manufacturing', 'titanium-cnc-machining-services',
+    'titanium-fabrication-services', 'titanium-forming-heavy-manufacturing',
     'titanium-surface-treatment',
   ];
-
-  /* 深层子页面 slug */
   const deepSlugs: string[] = [
     'titanium-additive-manufacturing/3d-printing-slm',
     'titanium-additive-manufacturing/low-volume-production',
@@ -95,35 +183,23 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'titanium-surface-treatment/chemical-passivation',
     'titanium-surface-treatment/polishing-sandblasting',
   ];
-
   const allSlugs = [...knownSlugs, ...deepSlugs];
   const paths: GetStaticPathsResult = [];
-
   for (const lang of supportedLangs) {
-    /* 首页：/en/ 和 /zh/ */
     paths.push({ params: { lang, slug: undefined } });
-
-    /* 所有已知 slug */
     for (const slug of allSlugs) {
       paths.push({ params: { lang, slug } });
     }
   }
-
   return paths;
 }
 
-/* ============================================================
- * 2. 路由参数解析
- * ============================================================ */
 const { lang, slug } = Astro.params;
 const currentLang = isSupportedLang(lang) ? lang : DEFAULT_LANG;
 const t = useTranslations(currentLang);
 const pageId = resolveContentId(slug);
+const { data: pageData } = await getLocalizedContent(pageId, currentLang);
 
-/* 获取本地化内容（含 fallback 英文） */
-const { data: pageData, source } = await getLocalizedContent(pageId, currentLang);
-
-/* 根据 slug 判断页面类型 */
 const isHome = !slug || slug === '';
 const isServiceSubPage =
   slug?.includes('titanium-additive-manufacturing/') ||
@@ -134,247 +210,81 @@ const isServiceSubPage =
   slug === 'branded-custom-packaging-services' ||
   slug === 'laser-marking-custom-logo';
 
-/**
- * ============================================================
- * 3. 首页数据准备
- * ============================================================ */
 const heroData: Record<string, any> = {
-  badge: pageData.badge || 'BOZE CNC Ti | AS9100D Certified | Baoji · China',
-  title: pageData.title || 'End-to-End Titanium Manufacturing & Custom Processing Services',
-  highlight: pageData.highlight || '',
-  description: pageData.description || 'From rapid prototyping to precision CNC machining — integrated titanium processing.',
+  badge: pageData.badge || t('home.mainHero.badge'),
+  title: pageData.title || t('home.mainHero.title'),
+  highlight: pageData.highlight || t('home.mainHero.titleHighlight'),
+  description: pageData.description || t('home.mainHero.subtitle'),
   primaryCta: t('hero.cta'),
   primaryCtaLink: pageData.primaryCtaLink || 'https://www.bozemetal.com/contact',
   secondaryCta: t('hero.cta.secondary'),
   secondaryCtaLink: pageData.secondaryCtaLink || '/services',
   heroMediaType: pageData.heroMediaType || 'image',
-  heroVideoUrl: pageData.heroVideoUrl || '',
-  heroImage: pageData.heroImage || '/uploads/titanium-cnc-home.jpg',
-  heroImageAlt: pageData.heroImageAlt || 'CNC machining background',
   stats: pageData.stats || [
-    { value: '500+', label: 'Global Clients' },
-    { value: '50M+', label: 'Units Shipped' },
-    { value: '99.9%', label: 'On-Time' },
+    { value: t('home.mainHero.stat0.value'), label: t('home.mainHero.stat0.label') },
+    { value: t('home.mainHero.stat1.value'), label: t('home.mainHero.stat1.label') },
+    { value: t('home.mainHero.stat2.value'), label: t('home.mainHero.stat2.label') },
     { value: '15+', label: 'Facilities' },
   ],
 };
 
-/**
- * ============================================================
- * 4. SubpageHero props（非首页页面标题区数据）
- * ============================================================ */
-/* 根据 slug 映射页面标题和描述 */
-const pageMeta: Record<string, { title: string; highlight: string; badge: string; subtitle: string }> = {
-  services: {
-    title: 'Titanium Machining',
-    highlight: 'Services',
-    badge: 'Precision Manufacturing',
-    subtitle: 'End-to-end titanium manufacturing solutions from rapid prototyping to high-volume precision CNC machining and heavy industrial fabrication.',
-  },
-  capabilities: {
-    title: 'Technical',
-    highlight: 'Capabilities',
-    badge: 'Manufacturing Engineering Data Sheet',
-    subtitle: 'Certified precision manufacturing infrastructure — from micron-level CNC tolerancing to full material traceability.',
-  },
-  materials: {
-    title: 'Titanium Materials',
-    highlight: 'Engineering Guide',
-    badge: 'Metallurgy & Alloys',
-    subtitle: 'Comprehensive technical reference for procurement engineers — from Grade 1 CP-Titanium to Grade 5 ELI medical-grade alloys.',
-  },
-  industries: {
-    title: 'Industries',
-    highlight: 'Served',
-    badge: 'Industry Applications',
-    subtitle: 'Serving critical industries with precision titanium components engineered for the most demanding applications.',
-  },
-  resources: {
-    title: 'Resources',
-    highlight: 'Center',
-    badge: 'Engineering Resources',
-    subtitle: 'Expert-authored technical documentation to support your engineering and procurement teams.',
-  },
-  documentation: {
-    title: 'Documentation',
-    highlight: 'Center',
-    badge: 'Comprehensive Resource Center',
-    subtitle: 'Access comprehensive guides, technical documentation, compliance certificates, and resources.',
-  },
-  facilities: {
-    title: 'Our',
-    highlight: 'Facilities',
-    badge: 'Global Infrastructure',
-    subtitle: 'State-of-the-art facilities across multiple locations, equipped with cutting-edge technology.',
-  },
-  rfq: {
-    title: 'Request',
-    highlight: 'a Quote',
-    badge: 'Engineering RFQ',
-    subtitle: 'Submit your project requirements and receive a formal quotation within 24-48 hours.',
-  },
-  'use-cases': {
-    title: 'Use',
-    highlight: 'Cases',
-    badge: 'Applications',
-    subtitle: 'Real-world applications and success stories across industries.',
-  },
-  'branded-custom-packaging-services': {
-    title: 'Branded & Custom',
-    highlight: 'Packaging Services',
-    badge: 'Value-Added Services',
-    subtitle: 'Custom-designed packaging solutions for branded titanium products.',
-  },
-  'laser-marking-custom-logo': {
-    title: 'Laser Marking &',
-    highlight: 'Custom Logo',
-    badge: 'Value-Added Services',
-    subtitle: 'Permanent marking and branding solutions for titanium components.',
-  },
-  'titanium-additive-manufacturing': {
-    title: 'Titanium Additive',
-    highlight: 'Manufacturing',
-    badge: 'Advanced Manufacturing',
-    subtitle: 'Advanced metal 3D printing (DMLS/SLM) for rapid prototyping and low-volume production.',
-  },
-  'titanium-cnc-machining-services': {
-    title: 'Titanium CNC',
-    highlight: 'Machining Services',
-    badge: 'Precision Manufacturing',
-    subtitle: 'High-precision CNC machining for complex titanium components with tolerances down to ±0.005mm.',
-  },
-  'titanium-fabrication-services': {
-    title: 'Titanium',
-    highlight: 'Fabrication Services',
-    badge: 'Metal Fabrication',
-    subtitle: 'Comprehensive sheet metal fabrication including laser cutting, precision welding, and assembly.',
-  },
-  'titanium-forming-heavy-manufacturing': {
-    title: 'Titanium Forming &',
-    highlight: 'Heavy Manufacturing',
-    badge: 'Industrial Manufacturing',
-    subtitle: 'Hot and cold forming, forging, extrusion for heavy titanium components.',
-  },
-  'titanium-surface-treatment': {
-    title: 'Titanium Surface',
-    highlight: 'Treatment',
-    badge: 'Surface Engineering',
-    subtitle: 'Complete surface finishing solutions including anodizing, passivation, and coatings.',
-  },
+// Hero translation keys for t() - allows per-language hero text
+const pageMetaKeys: Record<string, { title: string; highlight: string; badge: string; subtitle: string }> = {
+  services: { title:'services.hero.title', highlight:'services.hero.highlight', badge:'services.hero.badge', subtitle:'services.hero.subtitle' },
+  capabilities: { title:'capabilities.hero.title', highlight:'capabilities.hero.highlight', badge:'capabilities.hero.badge', subtitle:'capabilities.hero.subtitle' },
+  materials: { title:'materials.title', highlight:'materials.highlight', badge:'materials.badge', subtitle:'materials.subtitle' },
+  industries: { title:'industries.hero.title', highlight:'industries.hero.highlight', badge:'industries.hero.badge', subtitle:'industries.hero.subtitle' },
+  resources: { title:'resources.hero.title', highlight:'resources.hero.highlight', badge:'resources.hero.badge', subtitle:'resources.hero.subtitle' },
+  documentation: { title:'documentation.hero.title', highlight:'documentation.hero.highlight', badge:'documentation.hero.badge', subtitle:'documentation.hero.subtitle' },
+  facilities: { title:'facilities.hero.title', highlight:'facilities.hero.highlight', badge:'facilities.hero.badge', subtitle:'facilities.hero.subtitle' },
+  rfq: { title:'rfq.hero.title', highlight:'rfq.hero.highlight', badge:'rfq.hero.badge', subtitle:'rfq.hero.subtitle' },
+  'use-cases': { title:'use-cases.hero.title', highlight:'use-cases.hero.highlight', badge:'use-cases.hero.badge', subtitle:'use-cases.hero.subtitle' },
+  'branded-custom-packaging-services': { title:'branded-custom-packaging-services.hero.title', highlight:'branded-custom-packaging-services.hero.highlight', badge:'branded-custom-packaging-services.hero.badge', subtitle:'branded-custom-packaging-services.hero.subtitle' },
+  'laser-marking-custom-logo': { title:'laser-marking-custom-logo.hero.title', highlight:'laser-marking-custom-logo.hero.highlight', badge:'laser-marking-custom-logo.hero.badge', subtitle:'laser-marking-custom-logo.hero.subtitle' },
+  'titanium-additive-manufacturing': { title:'titanium-additive-manufacturing.hero.title', highlight:'titanium-additive-manufacturing.hero.highlight', badge:'titanium-additive-manufacturing.hero.badge', subtitle:'titanium-additive-manufacturing.hero.subtitle' },
+  'titanium-cnc-machining-services': { title:'titanium-cnc-machining-services.hero.title', highlight:'titanium-cnc-machining-services.hero.highlight', badge:'titanium-cnc-machining-services.hero.badge', subtitle:'titanium-cnc-machining-services.hero.subtitle' },
+  'titanium-fabrication-services': { title:'titanium-fabrication-services.hero.title', highlight:'titanium-fabrication-services.hero.highlight', badge:'titanium-fabrication-services.hero.badge', subtitle:'titanium-fabrication-services.hero.subtitle' },
+  'titanium-forming-heavy-manufacturing': { title:'titanium-forming-heavy-manufacturing.hero.title', highlight:'titanium-forming-heavy-manufacturing.hero.highlight', badge:'titanium-forming-heavy-manufacturing.hero.badge', subtitle:'titanium-forming-heavy-manufacturing.hero.subtitle' },
+  'titanium-surface-treatment': { title:'titanium-surface-treatment.hero.title', highlight:'titanium-surface-treatment.hero.highlight', badge:'titanium-surface-treatment.hero.badge', subtitle:'titanium-surface-treatment.hero.subtitle' },
 };
 
-/* 子页面标题映射 */
 const subPageMeta: Record<string, { title: string; badge: string; subtitle: string }> = {
-  '3d-printing-slm': {
-    title: '3D Printing (SLM / DMLS)',
-    badge: 'Additive Manufacturing',
-    subtitle: 'Selective Laser Melting and Direct Metal Laser Sintering for complex titanium geometries.',
-  },
-  'low-volume-production': {
-    title: 'Low-Volume Production',
-    badge: 'Additive Manufacturing',
-    subtitle: 'Efficient low-volume production runs using additive manufacturing technology.',
-  },
-  'rapid-prototyping': {
-    title: 'Rapid Prototyping',
-    badge: 'Additive Manufacturing',
-    subtitle: 'Fast iteration prototyping to validate form, fit, and function.',
-  },
-  '3-5-axis-cnc-machining': {
-    title: '3/5-Axis CNC Machining',
-    badge: 'CNC Machining',
-    subtitle: 'Multi-axis CNC machining for complex geometries and tight tolerances.',
-  },
-  'cnc-milling-turning': {
-    title: 'CNC Milling & Turning',
-    badge: 'CNC Machining',
-    subtitle: 'Precision milling and turning for cylindrical and prismatic titanium parts.',
-  },
-  'custom-industrial-components': {
-    title: 'Custom Industrial Components',
-    badge: 'CNC Machining',
-    subtitle: 'Bespoke industrial components manufactured to your exact specifications.',
-  },
-  'wire-edm-machining': {
-    title: 'Wire EDM Machining',
-    badge: 'CNC Machining',
-    subtitle: 'Wire electrical discharge machining for intricate shapes and hard materials.',
-  },
-  'laser-cutting': {
-    title: 'Laser Cutting',
-    badge: 'Fabrication',
-    subtitle: 'High-precision laser cutting for sheet and tube titanium.',
-  },
-  'titanium-welding-assembly': {
-    title: 'Titanium Welding & Assembly',
-    badge: 'Fabrication',
-    subtitle: 'Expert TIG/MIG welding and assembly of titanium structures.',
-  },
-  'waterjet-cutting': {
-    title: 'Waterjet Cutting',
-    badge: 'Fabrication',
-    subtitle: 'Cold-cutting process for titanium without heat-affected zones.',
-  },
-  'raw-material-preparation-sizing': {
-    title: 'Raw Material Preparation & Sizing',
-    badge: 'Forming & Heavy',
-    subtitle: 'Material preparation and precision sizing for downstream processing.',
-  },
-  'titanium-extrusion': {
-    title: 'Titanium Extrusion',
-    badge: 'Forming & Heavy',
-    subtitle: 'Hot extrusion of titanium profiles and shapes.',
-  },
-  'titanium-forging': {
-    title: 'Titanium Forging',
-    badge: 'Forming & Heavy',
-    subtitle: 'Hot and cold forging of titanium for high-strength components.',
-  },
-  'anodizing': {
-    title: 'Anodizing',
-    badge: 'Surface Treatment',
-    subtitle: 'Electrochemical surface treatment for enhanced corrosion resistance.',
-  },
-  'chemical-passivation': {
-    title: 'Chemical Passivation',
-    badge: 'Surface Treatment',
-    subtitle: 'Chemical treatment to remove surface contaminants and enhance passivity.',
-  },
-  'polishing-sandblasting': {
-    title: 'Polishing & Sandblasting',
-    badge: 'Surface Treatment',
-    subtitle: 'Mechanical surface finishing for aesthetic and functional requirements.',
-  },
+  '3d-printing-slm': { title:'3D Printing (SLM / DMLS)', badge:'Additive Manufacturing', subtitle:'Selective Laser Melting for complex titanium geometries.' },
+  'low-volume-production': { title:'Low-Volume Production', badge:'Additive Manufacturing', subtitle:'Efficient low-volume production using additive.' },
+  'rapid-prototyping': { title:'Rapid Prototyping', badge:'Additive Manufacturing', subtitle:'Fast iteration prototyping.' },
+  '3-5-axis-cnc-machining': { title:'3/5-Axis CNC Machining', badge:'CNC Machining', subtitle:'Multi-axis CNC machining for complex geometries.' },
+  'cnc-milling-turning': { title:'CNC Milling & Turning', badge:'CNC Machining', subtitle:'Precision milling and turning.' },
+  'custom-industrial-components': { title:'Custom Industrial Components', badge:'CNC Machining', subtitle:'Bespoke industrial components.' },
+  'wire-edm-machining': { title:'Wire EDM Machining', badge:'CNC Machining', subtitle:'Wire EDM for intricate shapes.' },
+  'laser-cutting': { title:'Laser Cutting', badge:'Fabrication', subtitle:'High-precision laser cutting for sheet and tube.' },
+  'titanium-welding-assembly': { title:'Titanium Welding & Assembly', badge:'Fabrication', subtitle:'Expert TIG/MIG welding.' },
+  'waterjet-cutting': { title:'Waterjet Cutting', badge:'Fabrication', subtitle:'Cold-cutting without heat-affected zones.' },
+  'raw-material-preparation-sizing': { title:'Raw Material Preparation & Sizing', badge:'Forming & Heavy', subtitle:'Material preparation and sizing.' },
+  'titanium-extrusion': { title:'Titanium Extrusion', badge:'Forming & Heavy', subtitle:'Hot extrusion of titanium profiles.' },
+  'titanium-forging': { title:'Titanium Forging', badge:'Forming & Heavy', subtitle:'Hot and cold forging.' },
+  'anodizing': { title:'Anodizing', badge:'Surface Treatment', subtitle:'Electrochemical surface treatment.' },
+  'chemical-passivation': { title:'Chemical Passivation', badge:'Surface Treatment', subtitle:'Chemical treatment for surface contaminants.' },
+  'polishing-sandblasting': { title:'Polishing & Sandblasting', badge:'Surface Treatment', subtitle:'Mechanical surface finishing.' },
 };
 
-/* 提取子页面键名 */
 function getSubPageKey(slugStr: string): string | null {
   const parts = slugStr.split('/');
-  if (parts.length >= 2) {
-    return parts[parts.length - 1];
-  }
-  return null;
+  return parts.length >= 2 ? parts[parts.length - 1] : null;
 }
 
-/* 获取 subpage 元数据 */
 let subMeta: { title: string; badge: string; subtitle: string } | null = null;
 if (slug) {
   const subKey = getSubPageKey(slug);
-  if (subKey && subPageMeta[subKey]) {
-    subMeta = subPageMeta[subKey];
-  }
+  if (subKey && subPageMeta[subKey]) subMeta = subPageMeta[subKey];
 }
 
-const meta = slug ? pageMeta[slug] : undefined;
-const pageTitle = subMeta?.title || meta?.title || slug || 'Home';
-const pageBadge = subMeta?.badge || meta?.badge || '';
-const pageSubtitle = subMeta?.subtitle || meta?.subtitle || '';
-const pageHighlight = meta?.highlight || '';
+const metaKeys = slug ? pageMetaKeys[slug] : undefined;
+const pageTitle = subMeta?.title || (metaKeys ? t(metaKeys.title) : slug || 'Home');
+const pageBadge = subMeta?.badge || (metaKeys ? t(metaKeys.badge) : '');
+const pageSubtitle = subMeta?.subtitle || (metaKeys ? t(metaKeys.subtitle) : '');
+const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 ---
 
-<!-- ============================================================= -->
-<!-- 首页 -->
-<!-- ============================================================= -->
 {
   isHome && (
     <BaseLayout>
@@ -389,19 +299,10 @@ const pageHighlight = meta?.highlight || '';
   )
 }
 
-<!-- ============================================================= -->
-<!-- Services 页面 -->
-<!-- ============================================================= -->
 {
   slug === 'services' && (
     <BaseLayout>
-      <SubpageHero
-        title={pageTitle}
-        highlight={pageHighlight}
-        badge={pageBadge}
-        badgeIcon="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-        subtitle={pageSubtitle}
-      />
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <ServiceMatrixGrid />
       <ComplianceRibbon />
       <EngineeringWorkflow />
@@ -410,40 +311,355 @@ const pageHighlight = meta?.highlight || '';
   )
 }
 
-<!-- ============================================================= -->
-<!-- 其他已知页面（统一 SubpageHero 布局） -->
-<!-- ============================================================= -->
 {
-  !isHome && slug !== 'services' && !isServiceSubPage && meta && (
+  slug === 'materials' && !isHome && (
     <BaseLayout>
-      <SubpageHero
-        title={pageTitle}
-        highlight={pageHighlight}
-        badge={pageBadge}
-        subtitle={pageSubtitle}
-      />
-      <slot />
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <MaterialGradeMatrix />
+      <AlloyComparisonTable />
+      <MachiningKnowHow />
+      <MaterialTraceability />
     </BaseLayout>
   )
 }
 
-<!-- ============================================================= -->
-<!-- 页面未找到时的优雅降级 -->
-<!-- ============================================================= -->
 {
-  !isHome && !meta && !subMeta && (
+  slug === 'capabilities' && !isHome && (
     <BaseLayout>
-      <SubpageHero
-        title={slug || ''}
-        highlight=""
-        badge=""
-        subtitle={t('[lang].Slug].page_is_being_prepared_please')}
-      />
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <CapacityDashboard />
+      <EngineeringSupport />
+      <QualityAndCertifications />
+      <InspectionLabGrid />
+      <TraceabilityFoundation />
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'industries' && !isHome && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <IndustryVerticalsGrid />
+      <IndustryComplianceDashboard />
+      <IndustryCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'resources' && !isHome && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <FeaturedInsights />
+      <ResourceHubMatrix />
+      <EngineeringDownloads />
+      <TechnicalFaqAccordion />
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'rfq' && !isHome && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <EngineeringRfqForm />
+      <SecurityNdaBanner />
+      <ResponsePipelineTimeline />
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'documentation' && !isHome && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <div class="container mx-auto px-4 py-8">
+        <p class="text-lg text-center" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Documentation center content available in English only.</p>
+      </div>
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'facilities' && !isHome && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <FacilityStats client:idle />
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'use-cases' && !isHome && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <div class="container mx-auto px-4 py-8">
+        <p class="text-lg text-center" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Use cases content available in English only.</p>
+      </div>
+    </BaseLayout>
+  )
+}
+
+<!-- ===== CNC Machining 系列 ===== -->
+{
+  slug === 'titanium-cnc-machining-services' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <CncProcessSpectrum />
+      <CncTechnicalDashboard />
+      <TitaniumEngineeringKnowHow />
+      <CncDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-cnc-machining-services/3-5-axis-cnc-machining' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <FiveAxisTechSpecs />
+      <MultiAxisComparison />
+      <MultiAxisCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-cnc-machining-services/cnc-milling-turning' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <TurnMillKnowHow />
+      <TurnMillSpectrum />
+      <TurnMillSpecsDashboard />
+      <TurnMillDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-cnc-machining-services/wire-edm-machining' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <WireEdmKnowHow />
+      <WireEdmAdvantages />
+      <WireEdmSpecsDashboard />
+      <WireEdmDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-cnc-machining-services/custom-industrial-components' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <CustomComponentsKnowHow />
+      <CustomComponentSpectrum />
+      <ComponentDedicatedCta />
+    </BaseLayout>
+  )
+}
+
+<!-- ===== Additive 系列 ===== -->
+{
+  slug === 'titanium-additive-manufacturing' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <AdditiveProcessSpectrum />
+      <AdditiveSpecsDashboard />
+      <AdditiveQualityKnowHow />
+      <AdditiveDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-additive-manufacturing/3d-printing-slm' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SlmProcessBreakdown />
+      <SlmMechanicalDashboard />
+      <AdditiveEconomicsPillars />
+      <SlmDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-additive-manufacturing/rapid-prototyping' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <RapidValuePillars />
+      <PrototypingSpecsDashboard />
+      <RapidPrototypeCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-additive-manufacturing/low-volume-production' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <ProductionVolumeDashboard />
+      <AdditiveBatchCta />
+    </BaseLayout>
+  )
+}
+
+<!-- ===== Fabrication 系列 ===== -->
+{
+  slug === 'titanium-fabrication-services' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <FabProcessSpectrum />
+      <FabSpecsDashboard />
+      <ReactiveWeldingKnowHow />
+      <FabDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-fabrication-services/laser-cutting' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <LaserProcessSpectrum />
+      <LaserSpecsDashboard />
+      <LaserDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-fabrication-services/waterjet-cutting' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <WaterjetAdvantages />
+      <WaterjetSpecsDashboard />
+      <WaterjetDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-fabrication-services/titanium-welding-assembly' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <WeldingAssemblySpectrum />
+      <AssemblySpecsDashboard />
+      <AssemblyDedicatedCta />
+    </BaseLayout>
+  )
+}
+
+<!-- ===== Forming & Heavy 系列 ===== -->
+{
+  slug === 'titanium-forming-heavy-manufacturing' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <HeavyProcessSpectrum />
+      <HeavySpecsDashboard />
+      <HotFormingStressKnowHow />
+      <HeavyDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-forming-heavy-manufacturing/titanium-forging' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <ForgingProcessSpectrum />
+      <ForgingSpecsDashboard />
+      <ForgingDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-forming-heavy-manufacturing/titanium-extrusion' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <ExtrusionProcessSpectrum />
+      <ExtrusionSpecsDashboard />
+      <ExtrusionDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-forming-heavy-manufacturing/raw-material-preparation-sizing' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <PrepProcessSpectrum />
+      <PrepSpecsDashboard />
+      <PrepDedicatedCta />
+    </BaseLayout>
+  )
+}
+
+<!-- ===== Surface Treatment 系列 ===== -->
+{
+  slug === 'titanium-surface-treatment' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SurfaceProcessSpectrum />
+      <SurfaceSpecsDashboard />
+      <HydrogenEmbrittlementAcidControlKnowHow />
+      <SurfaceDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-surface-treatment/anodizing' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <AnodizingClassifications />
+      <AnodizingSpecsDashboard />
+      <AnodizingDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-surface-treatment/chemical-passivation' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <PassivationSpectrum />
+      <PassivationSpecsDashboard />
+      <PassivationDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'titanium-surface-treatment/polishing-sandblasting' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <GallingColorVariationKnowHow />
+      <GallingOsseointegrationKnowHow />
+      <SurfaceDedicatedCta />
+    </BaseLayout>
+  )
+}
+
+<!-- ===== Value-Added 系列 ===== -->
+{
+  slug === 'branded-custom-packaging-services' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <PackagingProcessSpectrum />
+      <PackagingSpecsDashboard />
+      <SmearingWarehouseInterlockKnowHow />
+      <PackagingDedicatedCta />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'laser-marking-custom-logo' && (
+    <BaseLayout>
+      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <MarkingProcessSpectrum />
+      <MarkingSpecsDashboard />
+      <ThermalStressContrastKnowHow />
+      <MarkingDedicatedCta />
+    </BaseLayout>
+  )
+}
+
+<!-- ===== 404 fallback ===== -->
+{
+  !isHome && !pageMetaKeys[slug || ''] && !subMeta && (
+    <BaseLayout>
+      <SubpageHero title={slug || ''} highlight="" badge="" subtitle={t('[lang].Slug].page_is_being_prepared_please')} />
       <div class="container mx-auto px-4 py-20 text-center">
         <p class="text-xl text-gray-500">Coming soon: {slug}</p>
       </div>
     </BaseLayout>
   )
 }
----
-</write_to_file>

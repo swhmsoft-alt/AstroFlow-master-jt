@@ -30,6 +30,9 @@ const items: TraceabilityItem[] = [
     standard: "SGS / TÜV / BV Accredited",
   },
 ];
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">

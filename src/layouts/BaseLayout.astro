@@ -6,6 +6,7 @@ import { SITE } from '@config/site';
 import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
+import { DEFAULT_LANG } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -60,10 +61,19 @@ const canonicalUrl = canonicalURL || currentUrl;
 const defaultOgImage = `${siteUrl}/uploads/boze-1-en.png`;
 const seoImage = ogImage || defaultOgImage;
 
-// Language → OG locale mapping
+// Language → OG locale mapping (ISO 639-1 → BCP 47)
 const ogLocales: Record<string, string> = {
   en: 'en_US',
+  de: 'de_DE',
   zh: 'zh_CN',
+  ja: 'ja_JP',
+  fr: 'fr_FR',
+  es: 'es_ES',
+  pt: 'pt_PT',
+  it: 'it_IT',
+  ko: 'ko_KR',
+  nl: 'nl_NL',
+  pl: 'pl_PL',
 };
 const ogLocale = ogLocales[currentLang] || 'en_US';
 
@@ -132,6 +142,45 @@ const fontFamily = getCssFamily(fontConfig, fallbackFont);
     {author && <meta property="article:author" content={author} />}
     {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 
+    <!-- ══ JSON-LD — BreadcrumbList (all pages) ═════════════════ -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": currentLang === DEFAULT_LANG ? siteUrl : `${siteUrl}/${currentLang}`
+        },
+        ...(canonicalPath !== '/'
+          ? [{
+              "@type": "ListItem",
+              "position": 2,
+              "name": title,
+              "item": canonicalUrl
+            }]
+          : [])
+      ]
+    })} />
+
+    <!-- ══ JSON-LD — WebPage (all pages) ════════════════════════ -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": title,
+      "description": description,
+      "url": canonicalUrl,
+      "inLanguage": ogLocale.replace('_', '-'),
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "BOZE CNC Ti",
+        "url": siteUrl
+      },
+      ...(pubDate ? { "datePublished": pubDate } : {}),
+      ...(author ? { "author": { "@type": "Person", "name": author } } : {})
+    })} />
+
     <!-- ══ JSON-LD — Organization (brand entity for all pages) ══ -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -139,12 +188,12 @@ const fontFamily = getCssFamily(fontConfig, fallbackFont);
       "name": "BOZE CNC Ti",
       "url": siteUrl,
       "logo": `${siteUrl}/uploads/boze-logo-2.png`,
-      "description": "Leading provider of optimized Titanium CNC Machining and manufacturing solutions.",
+      "description": SITE.description,
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+86-917-1234-5678",
         "contactType": "sales",
-        "availableLanguage": ["English", "Chinese"]
+        "availableLanguage": ["English", "Deutsch", "日本語", "Français", "Español", "Português", "Italiano", "한국어", "Nederlands", "Polski"]
       },
       "sameAs": [
         "https://www.linkedin.com/company/bozemetal",
@@ -159,7 +208,7 @@ const fontFamily = getCssFamily(fontConfig, fallbackFont);
       "name": "BOZE CNC Ti",
       "url": siteUrl,
       "description": SITE.description,
-      "inLanguage": 'en-US'
+      "inLanguage": ogLocale.replace('_', '-')
     })} />
 
     <!-- ══ hreflang Alternate Links (i18n SEO) ═══════════════ -->

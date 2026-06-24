@@ -1,0 +1,109 @@
+---
+/**
+ * LanguageSelector.astro
+ *
+ * A compact, theme-aware language switcher that shows a single button
+ * with a globe icon + current language code. On hover, a 2-column grid
+ * dropdown reveals all 10 languages with their native names.
+ *
+ * Styling uses ONLY the project's existing CSS variables:
+ *   --theme-surface  → dropdown background
+ *   --theme-primary   → accent/highlight color
+ *   --theme-text      → text color
+ *   --theme-nav-text  → nav text color
+ *
+ * No hardcoded colors. Fully compatible with all 5 data-themes and
+ * dark/light mode switching.
+ */
+
+import { LANGUAGES, DEFAULT_LANG, type Lang } from '../i18n/ui';
+import { getLangFromUrl, removeLangPrefix, localizePath } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const canonicalPath = removeLangPrefix(Astro.url.pathname);
+
+// Ordered list: lang code → native name (matches LANGUAGES ordering)
+const langEntries = (Object.keys(LANGUAGES) as Lang[]).map((lang) => ({
+  code: lang,
+  name: LANGUAGES[lang],
+  isActive: lang === currentLang,
+  href: localizePath(canonicalPath || '/', lang),
+}));
+---
+
+<div class="relative language-selector group">
+  <!-- Trigger Button -->
+  <button
+    class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer border"
+    style="
+      color: var(--theme-nav-text);
+      border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);
+      background-color: transparent;
+    "
+    onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+    onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 15%, transparent)'; this.style.backgroundColor='transparent'"
+    aria-label="Select language"
+  >
+    <!-- Globe Icon -->
+    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <!-- Current Language Code -->
+    <span>{currentLang.toUpperCase()}</span>
+    <!-- Chevron -->
+    <svg class="w-3 h-3 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <!-- Dropdown: 2-Column Grid -->
+  <div class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+    <div
+      class="p-3 rounded-xl shadow-2xl border min-w-[240px]"
+      style="
+        background-color: var(--theme-surface);
+        border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);
+      "
+    >
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px;">
+        {langEntries.map(({ code, name, isActive, href }) => (
+          <a
+            href={href}
+            aria-label={name}
+            class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-150"
+            style={{
+              color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)',
+              opacity: isActive ? 1 : 0.75,
+              backgroundColor: isActive ? 'color-mix(in srgb, var(--theme-primary) 10%, transparent)' : 'transparent',
+              fontWeight: isActive ? 600 : 400,
+            }}
+            onmouseover={!isActive ? "this.style.color='var(--theme-primary)'; this.style.opacity='1'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'" : undefined}
+            onmouseout={!isActive ? "this.style.color='var(--theme-text)'; this.style.opacity='0.75'; this.style.backgroundColor='transparent'" : undefined}
+          >
+            <!-- Language Code Badge -->
+            <span
+              class="inline-flex items-center justify-center w-7 h-6 rounded text-[10px] font-bold shrink-0 border"
+              style={{
+                backgroundColor: isActive ? 'var(--theme-primary)' : 'transparent',
+                color: isActive ? 'var(--theme-text)' : 'color-mix(in srgb, var(--theme-text) 50%, transparent)',
+                borderColor: isActive ? 'var(--theme-primary)' : 'color-mix(in srgb, var(--theme-primary) 12%, transparent)',
+              }}
+            >{code.toUpperCase()}</span>
+            <!-- Native Language Name -->
+            <span class="truncate">{name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Keep the hover zone alive while cursor moves from button to dropdown */
+  .language-selector .group-hover\:visible {
+    transition-delay: 0ms;
+  }
+  .language-selector:hover .pointer-events-none {
+    pointer-events: auto;
+  }
+</style>

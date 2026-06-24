@@ -18,6 +18,9 @@ const alloyData: AlloyRow[] = [
   { grade: "Grade 5", spec: "Ti-6Al-4V", tensile: "≥ 895", yield: "≥ 828", elongation: "≥ 10", hardness: "~ 330", advantage: "Industry-standard high-strength workhorse" },
   { grade: "Grade 23 ELI", spec: "Ti-6Al-4V ELI", tensile: "≥ 860", yield: "≥ 795", elongation: "≥ 10", hardness: "~ 315", advantage: "Enhanced fracture toughness for implants" },
 ];
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">

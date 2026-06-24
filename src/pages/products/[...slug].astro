@@ -20,6 +20,9 @@ const seoTitle = data.seoTitle || `${data.title} | BOZE CNC Ti`;
 const seoDesc = data.seoDescription || `${data.description} Precision CNC machined ${data.category.toLowerCase()} components. AS9100D & ISO 9001 certified. Request a quote.`;
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
 const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() : null;
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>

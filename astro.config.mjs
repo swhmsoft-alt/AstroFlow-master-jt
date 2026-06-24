@@ -1,4 +1,4 @@
-﻿// @ts-check
+// @ts-check
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
@@ -19,13 +19,22 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: {
           en: 'en-US',
+          de: 'de-DE',
+          ja: 'ja-JP',
+          fr: 'fr-FR',
+          es: 'es-ES',
+          pt: 'pt-PT',
+          it: 'it-IT',
+          ko: 'ko-KR',
+          nl: 'nl-NL',
+          pl: 'pl-PL',
         },
       },
     }),
   ],
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ja'],
+    locales: ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl'],
     routing: {
       prefixDefaultLocale: false,
     },

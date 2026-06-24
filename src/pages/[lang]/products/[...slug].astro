@@ -1,0 +1,183 @@
+---
+/**
+ * [lang]/products/[...slug].astro
+ *
+ * Multi-language products detail page.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Button from '../../../components/ui/Button.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+import { LANGUAGES } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products');
+  const langCodes = Object.keys(LANGUAGES);
+  const paths = [];
+  for (const lang of langCodes) {
+    for (const product of products) {
+      paths.push({
+        params: { lang, slug: product.slug },
+        props: { product },
+      });
+    }
+  }
+  return paths;
+}
+
+const { product } = Astro.props;
+const { data } = product;
+const firstImage = data.gallery?.[0]?.image || '/uploads/hero-bg.jpg';
+const seoTitle = data.seoTitle || `${data.title} | BOZE CNC Ti`;
+const seoDesc = data.seoDescription || `${data.description} Precision CNC machined ${data.category.toLowerCase()} components. AS9100D & ISO 9001 certified. Request a quote.`;
+const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
+const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() : null;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDesc}
+  pubDate={pubDateISO}
+  ogImage={firstImage.startsWith('/') ? `https://cnc.bozemetal.com${firstImage}` : firstImage}
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label={t('products.Slug].breadcrumb_2')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('products.Slug].home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/products', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('products.Slug].products')}</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.title}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Product Hero -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Image Gallery -->
+        <div class="space-y-4">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl" style="background: color-mix(in srgb, var(--theme-primary) 5%, transparent);">
+            <img src={firstImage} alt={data.title} class="w-full h-full object-cover" width="800" height="600" />
+            {data.featured && (
+              <span class="absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full shadow-lg" style="background: var(--theme-primary); color: var(--theme-text);">
+                {t('product.detail.featured')}
+              </span>
+            )}
+          </div>
+          {data.gallery && data.gallery.length > 1 && (
+            <div class="flex gap-3 overflow-x-auto pb-2">
+              {data.gallery.slice(1, 5).map((item: { image: string; alt?: string }) => (
+                <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 border-transparent hover:border-[var(--theme-primary)] transition-all cursor-pointer" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                  <img src={item.image} alt={item.alt || data.title} class="w-full h-full object-cover" width="80" height="80" loading="lazy" />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Product Info -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+              {data.category}
+            </span>
+            {data.integratedService && (
+              <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full" style="background: color-mix(in srgb, var(--theme-accent) 12%, transparent); color: var(--theme-accent);">
+                {t('product.detail.integratedService')}
+              </span>
+            )}
+          </div>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
+            {data.title}
+          </h1>
+          <p class="text-lg mb-8 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            {data.description}
+          </p>
+
+          <!-- Specs Table -->
+          {data.specs && data.specs.length > 0 && (
+            <div class="mb-8">
+              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">{t('product.specs.title')}</h2>
+              <div class="rounded-xl overflow-hidden border" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                <table class="w-full">
+                  <thead>
+                    <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                      <th class="text-left px-5 py-3 text-sm font-semibold" style="color: var(--theme-text);">{t('product.specs.param')}</th>
+                      <th class="text-left px-5 py-3 text-sm font-semibold" style="color: var(--theme-text);">{t('product.specs.value')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.specs.map((spec: { param: string; value: string }, index: number) => (
+                      <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                        <td class="px-5 py-3 text-sm font-medium" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{spec.param}</td>
+                        <td class="px-5 py-3 text-sm" style="color: var(--theme-text);">{spec.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
+          <!-- CTA -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={localizePath('/rfq', lang)} class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl shadow-2xl transition-all text-base" style="background: var(--theme-primary); color: var(--theme-text);">
+              {t('product.cta.submitRfq')}
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+            <a href={localizePath('/capabilities', lang)} class="inline-flex items-center justify-center px-8 py-4 border-2 font-bold rounded-xl transition-all text-base" style="border-color: color-mix(in srgb, var(--theme-text) 30%, transparent); color: var(--theme-text);">
+              {t('product.cta.viewCapabilities')}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications Section -->
+  {data.applications && data.applications.length > 0 && (
+    <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">{t('product.applications.title')}</h2>
+        <p class="text-base mb-8" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t('product.applications.subtitle')}</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {data.applications.map((app: string) => (
+            <div class="px-5 py-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <p class="text-sm font-medium" style="color: var(--theme-text);">{app}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": data.title,
+    "description": data.description,
+    "image": firstImage,
+    "category": data.category,
+    ...(pubDateISO ? { "datePublished": pubDateISO } : {}),
+    ...(updatedISO ? { "dateModified": updatedISO } : {})
+  })} />
+</BaseLayout>

@@ -1,0 +1,140 @@
+---
+/**
+ * [lang]/blog/index.astro
+ *
+ * Multi-language blog index page.
+ * Re-exports the existing blog index logic with language prefix.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+import { LANGUAGES } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const langCodes = Object.keys(LANGUAGES);
+  return langCodes.map(lang => ({ params: { lang } }));
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type BlogPost = CollectionEntry<'blog'>;
+
+const allPosts: BlogPost[] = await getCollection('blog');
+const sorted = allPosts.sort((a: BlogPost, b: BlogPost) => {
+  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+});
+
+const featured = sorted.find(p => p.data.featured);
+const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
+---
+
+<BaseLayout
+  description="Expert insights on CNC machining, titanium manufacturing, material science, and industry best practices. Stay informed with the latest from BOZE CNC Ti."
+>
+  <!-- Hero -->
+  <SubpageHero
+    title="Our"
+    highlight="Blog"
+    badge="Insights & Updates"
+    subtitle="Technical insights, manufacturing knowledge, and industry perspectives from the BOZE CNC Ti engineering team."
+  />
+
+  <!-- Featured Article -->
+  {featured && (
+    <Section>
+      <a
+        href={localizePath(`/blog/${featured.slug}`, lang)}
+        class="group block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
+        style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+      >
+        <div class="grid md:grid-cols-2 gap-0">
+          {featured.data.coverImage && (
+            <div class="relative overflow-hidden aspect-[4/3]">
+              <img
+                src={featured.data.coverImage}
+                alt={featured.data.coverImageAlt || featured.data.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width="800"
+                height="600"
+              />
+            </div>
+          )}
+          <div class="p-8 lg:p-12 flex flex-col justify-center">
+            {featured.data.category && (
+              <span class="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full mb-4 w-fit" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">
+                {featured.data.category}
+              </span>
+            )}
+            <h2 class="text-2xl lg:text-3xl font-bold mb-4 leading-tight" style="color: var(--theme-text);">
+              {featured.data.title}
+            </h2>
+            <p class="text-base mb-6 line-clamp-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              {featured.data.description}
+            </p>
+            <div class="flex items-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+              <span>{featured.data.author}</span>
+              <span>·</span>
+              <span>{new Date(featured.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </Section>
+  )}
+
+  <!-- Recent Articles -->
+  <Section
+    title={t('blog.latest.title')}
+    subtitle={t('blog.latest.subtitle')}
+    titleHighlight=""
+  >
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {recent.map((post) => (
+        <a
+          href={localizePath(`/blog/${post.slug}`, lang)}
+          class="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+          style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+        >
+          {post.data.coverImage && (
+            <div class="relative overflow-hidden aspect-[16/10]">
+              <img
+                src={post.data.coverImage}
+                alt={post.data.coverImageAlt || post.data.title}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                width="600"
+                height="375"
+                loading="lazy"
+              />
+            </div>
+          )}
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              {post.data.category && (
+                <span class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+                  {post.data.category}
+                </span>
+              )}
+              <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                {new Date(post.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2 transition-colors group-hover:text-[var(--theme-primary)]" style="color: var(--theme-text);">
+              {post.data.title}
+            </h3>
+            <p class="text-sm line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              {post.data.description}
+            </p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-medium" style="color: var(--theme-primary);">
+              {t('blog.readMore')}
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>

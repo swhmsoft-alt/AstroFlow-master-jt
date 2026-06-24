@@ -13,6 +13,9 @@ const sorted = allProducts
   .sort((a: Product, b: Product) => (a.data.order || 0) - (b.data.order || 0));
 
 const categories: string[] = [...new Set(sorted.map((p: Product) => p.data.category))];
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <BaseLayout

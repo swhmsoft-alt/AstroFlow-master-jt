@@ -2,7 +2,7 @@
 import { NAVIGATION, SITE } from '@config/site';
 import type { NavItem } from '@config/site';
 import MobileMenu from '@components/react/MobileMenu';
-import LanguagePicker from './LanguagePicker.astro';
+import LanguageSelector from './LanguageSelector.astro';
 import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
 
 const { currentPathname } = Astro.props;
@@ -267,7 +267,7 @@ const logoSubtext = 'Precision Titanium Manufacturing';
 
     <!-- Language Picker + CTA Button -->
     <div class="hidden lg:flex lg:items-center lg:space-x-4">
-      <LanguagePicker />
+      <LanguageSelector />
       <a
         href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
         class="inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-lg shadow-md transition-all"

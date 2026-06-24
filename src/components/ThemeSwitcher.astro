@@ -16,6 +16,9 @@ interface Props {
 const { items, defaultTheme } = Astro.props;
 const displayItems = items ?? localThemes.map((t) => ({ id: t.id, name: t.name }));
 const fallbackId = defaultTheme || DEFAULT_THEME_ID;
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <!-- ============================================================
@@ -24,7 +27,7 @@ const fallbackId = defaultTheme || DEFAULT_THEME_ID;
      Data source: CMS (via props) or fallback to local cmsThemes.ts
      ============================================================ -->
 <div class="theme-switcher">
-  <label for="theme-select" class="sr-only">切换主题 / Switch Theme</label>
+  <label for="theme-select" class="sr-only">{t('ThemeSwitcher.切换主题')} / Switch Theme</label>
   <select
     id="theme-select"
     class="cursor-pointer rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-200

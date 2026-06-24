@@ -45,6 +45,9 @@ const pillars: EconomicsPillar[] = [
     icon: "M13 10V3L4 14h7v7l9-11h-7z"
   }
 ];
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">

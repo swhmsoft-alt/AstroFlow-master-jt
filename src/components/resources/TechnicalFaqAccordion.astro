@@ -30,6 +30,9 @@ const faqs: FaqItem[] = [
     a: "Yes — all design reviews are conducted under executed <strong>mutual NDA</strong> as a standard procedure. Our engineering team provides a confidential DFM analysis report within 1–2 business days of file receipt, identifying potential manufacturing risks, cost-saving geometry adjustments, and lead time estimates — at no charge for qualified production inquiries.",
   },
 ];
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: color-mix(in srgb, var(--theme-surface) 20%, var(--theme-bg));">

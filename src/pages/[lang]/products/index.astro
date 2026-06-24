@@ -1,0 +1,108 @@
+---
+/**
+ * [lang]/products/index.astro
+ *
+ * Multi-language products listing page.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Section from '../../../components/ui/Section.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+import { LANGUAGES } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const langCodes = Object.keys(LANGUAGES);
+  return langCodes.map(lang => ({ params: { lang } }));
+}
+
+type Product = CollectionEntry<'products'>;
+type SpecItem = { param: string; value: string };
+
+const allProducts: Product[] = await getCollection('products');
+const sorted = allProducts.sort((a: Product, b: Product) => (a.data.order || 0) - (b.data.order || 0));
+const categories: string[] = [...new Set(sorted.map((p: Product) => p.data.category))];
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Group products by category
+const grouped = categories.map(cat => ({
+  category: cat,
+  items: sorted.filter(p => p.data.category === cat),
+}));
+---
+
+<BaseLayout description="Browse our catalog of precision CNC machined titanium components. Custom manufacturing available for aerospace, medical, and industrial applications.">
+  <SubpageHero
+    title="Precision"
+    highlight="Products"
+    badge="Manufacturing Catalog"
+    subtitle="Browse our catalog of precision machined titanium components, from standard parts to custom-engineered solutions."
+  />
+
+  {grouped.map(({ category, items }) => (
+    <Section
+      title={category}
+      titleHighlight=""
+      subtitle=""
+    >
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {items.map((product) => {
+          const { data } = product;
+          const firstImage = data.gallery?.[0]?.image || '/uploads/hero-bg.jpg';
+          return (
+            <a
+              href={localizePath(`/products/${product.slug}`, lang)}
+              class="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
+              style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+            >
+              <div class="relative overflow-hidden aspect-[4/3]">
+                <img
+                  src={firstImage}
+                  alt={data.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                />
+                {data.featured && (
+                  <span class="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full" style="background: var(--theme-primary); color: var(--theme-text);">
+                    {t('product.detail.featured')}
+                  </span>
+                )}
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold mb-2 transition-colors group-hover:text-[var(--theme-primary)]" style="color: var(--theme-text);">
+                  {data.title}
+                </h3>
+                <p class="text-sm line-clamp-2 mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                  {data.description}
+                </p>
+                {data.specs && data.specs.length > 0 && (
+                  <div class="flex flex-wrap gap-1.5">
+                    {data.specs.slice(0, 3).map((spec: SpecItem) => (
+                      <span class="px-2 py-0.5 text-[10px] font-medium rounded" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                        {spec.value}
+                      </span>
+                    ))}
+                    {data.specs.length > 3 && (
+                      <span class="px-2 py-0.5 text-[10px] font-medium rounded" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                        +{data.specs.length - 3}
+                      </span>
+                    )}
+                  </div>
+                )}
+                <div class="mt-4 flex items-center gap-2 text-xs font-medium" style="color: var(--theme-primary);">
+                  {t('product.detail.viewDetails')}
+                  <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </Section>
+  ))}
+</BaseLayout>
