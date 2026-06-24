@@ -1,7 +1,8 @@
 ---
-import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 interface WorkflowStep {
   number: string;

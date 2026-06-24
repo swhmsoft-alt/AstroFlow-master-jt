@@ -137,12 +137,16 @@ const faqs = [
     answer: 'Yes, our mobile application is available for both iOS and Android devices. You can download it from the App Store or Google Play Store. The app provides full access to all documentation and features offline reading capabilities.'
   }
 ];
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
 
 <BaseLayout>
   <!-- Hero -->
   <SubpageHero
-    title="Documentation"
+    title={t('documentation.astro.documentation.documentation')}
     highlight="Center"
     badge="Comprehensive Resource Center"
     badgeIcon="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
@@ -153,19 +157,19 @@ const faqs = [
         <svg class="w-4 h-4 mr-2" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span>100+ Documents</span>
+        <span>{t('documentation.astro.documentation.100_documents')}</span>
       </div>
       <div class="flex items-center">
         <svg class="w-4 h-4 mr-2" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span>Regular Updates</span>
+        <span>{t('documentation.astro.documentation.regular_updates')}</span>
       </div>
       <div class="flex items-center">
         <svg class="w-4 h-4 mr-2" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span>24/7 Access</span>
+        <span>{t('documentation.astro.documentation.247_access')}</span>
       </div>
     </div>
   </SubpageHero>
@@ -193,12 +197,12 @@ const faqs = [
           </button>
         </div>
         <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Quick links:</span>
-          <a href="#getting-started" class="text-sm font-medium" style="color: var(--theme-primary);">Getting Started</a>
+          <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('documentation.astro.documentation.quick_links')}</span>
+          <a href="#getting-started" class="text-sm font-medium" style="color: var(--theme-primary);">{t('documentation.astro.documentation.getting_started')}</a>
           <span style="color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">•</span>
-          <a href="#api" class="text-sm font-medium" style="color: var(--theme-primary);">API Docs</a>
+          <a href="#api" class="text-sm font-medium" style="color: var(--theme-primary);">{t('documentation.astro.documentation.api_docs')}</a>
           <span style="color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">•</span>
-          <a href="#compliance" class="text-sm font-medium" style="color: var(--theme-primary);">Compliance</a>
+          <a href="#compliance" class="text-sm font-medium" style="color: var(--theme-primary);">{t('documentation.astro.documentation.compliance')}</a>
           <span style="color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">•</span>
           <a href="#faq" class="text-sm font-medium" style="color: var(--theme-primary);">FAQ</a>
         </div>
@@ -269,7 +273,7 @@ const faqs = [
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
-                      <span>Download</span>
+                      <span>{t('documentation.astro.documentation.download')}</span>
                     </button>
                   </Card>
                 </ImageReveal>
@@ -288,7 +292,7 @@ const faqs = [
         Support
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
-        Frequently Asked <span class="gradient-text">Questions</span>
+        Frequently Asked <span class="gradient-text">{t('documentation.astro.documentation.questions')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Quick answers to common questions about our documentation and resources.
@@ -325,7 +329,7 @@ const faqs = [
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
-          Need More <span class="gradient-text">Help?</span>
+          Need More <span class="gradient-text">{t('documentation.astro.documentation.help')}</span>
         </h2>
         <p class="text-xl max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
           Our team is here to assist you with any questions or support you need.
@@ -340,7 +344,7 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">Need Support?</h3>
+            <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">{t('documentation.astro.documentation.need_support')}</h3>
             <p class="mb-6 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
               Our support team is available 24/7 to help with any questions or technical issues you may encounter.
             </p>
@@ -360,7 +364,7 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">Training Resources</h3>
+            <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">{t('documentation.astro.documentation.training_resources')}</h3>
             <p class="mb-6 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
               Access comprehensive video tutorials, webinars, and training materials to master our platform.
             </p>
@@ -380,7 +384,7 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">Stay Updated</h3>
+            <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">{t('documentation.astro.documentation.stay_updated')}</h3>
             <p class="mb-6 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
               Subscribe to receive notifications about new documentation, updates, and important announcements.
             </p>

@@ -119,8 +119,8 @@ const categories: string[] = [...new Set(sorted.map((p: Product) => p.data.categ
           <svg class="w-20 h-20 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
           </svg>
-          <h3 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">No Products Yet</h3>
-          <p style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Products will appear here once added via the CMS.</p>
+          <h3 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">{t('products.index.no_products_yet')}</h3>
+          <p style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('products.index.products_will_appear_here_once')}</p>
         </div>
       )}
     </div>
@@ -134,7 +134,7 @@ const categories: string[] = [...new Set(sorted.map((p: Product) => p.data.categ
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl mx-auto text-center" style="color: var(--theme-text);">
         <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-          Need Custom CNC <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-primary) 70%, white), color-mix(in srgb, var(--theme-accent) 70%, white)); -webkit-background-clip: text;">Components</span>?
+          Need Custom CNC <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-primary) 70%, white), color-mix(in srgb, var(--theme-accent) 70%, white)); -webkit-background-clip: text;">{t('products.index.components')}</span>?
         </h2>
         <p class="text-xl mb-10 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
           Send us your drawings and specifications. Our engineering team will respond within 24 hours with a competitive quote.

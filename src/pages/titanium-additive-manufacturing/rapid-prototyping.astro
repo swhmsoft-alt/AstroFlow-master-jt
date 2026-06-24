@@ -5,11 +5,15 @@ import RapidValuePillars from '../../components/services/RapidValuePillars.astro
 import PrototypingSpecsDashboard from '../../components/services/PrototypingSpecsDashboard.astro';
 import HybridPostProcessing from '../../components/services/HybridPostProcessing.astro';
 import RapidPrototypeCta from '../../components/services/RapidPrototypeCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
 <BaseLayout>
   <!-- Hero — DO NOT MODIFY -->
   <SubpageHero
-    title="Rapid Prototyping"
+    title={t('titanium-additive-manufacturing.rapidPrototyping.rapid_prototyping')}
     highlight="Services"
     badge="Additive Manufacturing"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"

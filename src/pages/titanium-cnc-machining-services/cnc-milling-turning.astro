@@ -5,11 +5,15 @@ import TurnMillSpectrum from '../../components/services/TurnMillSpectrum.astro';
 import TurnMillSpecsDashboard from '../../components/services/TurnMillSpecsDashboard.astro';
 import TurnMillKnowHow from '../../components/services/TurnMillKnowHow.astro';
 import TurnMillDedicatedCta from '../../components/services/TurnMillDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
 <BaseLayout>
   <!-- Hero — DO NOT MODIFY -->
   <SubpageHero
-    title="CNC Milling & Turning"
+    title={t('titanium-cnc-machining-services.cncMillingTurning.cnc_milling_turning')}
     highlight="Services"
     badge="Precision Turn-Mill Machining"
     badgeIcon="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"

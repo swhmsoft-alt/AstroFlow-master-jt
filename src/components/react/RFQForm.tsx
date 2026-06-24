@@ -235,14 +235,14 @@ export default function RFQForm() {
               style={inputStyle}
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-theme-primary focus:border-transparent transition"
             >
-              <option value="" style={{color: muted}}>Select an industry</option>
-              <option value="ecommerce">E-Commerce & Retail</option>
-              <option value="healthcare">Healthcare & Pharmaceuticals</option>
-              <option value="automotive">Automotive & Manufacturing</option>
-              <option value="technology">Technology & Electronics</option>
-              <option value="consumer-goods">Consumer Goods</option>
-              <option value="food-beverage">Food & Beverage</option>
-              <option value="other">Other</option>
+              <option value="" style={{color: muted}}>{t('react.rfqform.select_an_industry')}</option>
+              <option value="ecommerce">{t('react.rfqform.ecommerce_retail')}</option>
+              <option value="healthcare">{t('react.rfqform.healthcare_pharmaceuticals')}</option>
+              <option value="automotive">{t('react.rfqform.automotive_manufacturing')}</option>
+              <option value="technology">{t('react.rfqform.technology_electronics')}</option>
+              <option value="consumer-goods">{t('react.rfqform.consumer_goods')}</option>
+              <option value="food-beverage">{t('react.rfqform.food_beverage')}</option>
+              <option value="other">{t('react.rfqform.other')}</option>
             </select>
           </div>
         </div>
@@ -324,12 +324,12 @@ export default function RFQForm() {
                   style={inputStyle}
                   className="w-full px-4 py-2 pl-10 border-2 rounded-lg focus:ring-2 focus:ring-theme-primary focus:border-theme-primary transition appearance-none"
                 >
-                  <option value="">Select timeline</option>
-                  <option value="immediate">Immediate (Within 1 month)</option>
-                  <option value="1-3-months">1-3 months</option>
-                  <option value="3-6-months">3-6 months</option>
-                  <option value="6-plus-months">6+ months</option>
-                  <option value="flexible">Flexible</option>
+                  <option value="">{t('react.rfqform.select_timeline')}</option>
+                  <option value="immediate">{t('react.rfqform.immediate_within_month')}</option>
+                  <option value="1-3-months">{t('react.rfqform.13_months')}</option>
+                  <option value="3-6-months">{t('react.rfqform.36_months')}</option>
+                  <option value="6-plus-months">{t('react.rfqform.months')}</option>
+                  <option value="flexible">{t('react.rfqform.flexible')}</option>
                 </select>
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" style={{color: subtle}} />
               </div>
@@ -410,7 +410,7 @@ export default function RFQForm() {
               {/* File Status */}
               <div className="flex flex-col">
                 <div style={{backgroundColor: s}} className="rounded-lg p-4 flex-grow">
-                  <h4 style={{color: t}} className="font-semibold text-sm mb-3">Upload Status</h4>
+                  <h4 style={{color: t}} className="font-semibold text-sm mb-3">{t('react.rfqform.upload_status_2')}</h4>
                   {file ? (
                     <div className="flex items-start gap-2">
                       <FileCheck style={{color: p}} className="w-5 h-5 flex-shrink-0 mt-0.5" />
@@ -430,7 +430,7 @@ export default function RFQForm() {
                       </button>
                     </div>
                   ) : (
-                    <p style={{color: subtle}} className="text-sm">No file selected</p>
+                    <p style={{color: subtle}} className="text-sm">{t('react.rfqform.no_file_selected_2')}</p>
                   )}
                 </div>
               </div>
@@ -438,10 +438,10 @@ export default function RFQForm() {
             {/* Supported Formats Info */}
             <div style={{backgroundColor: s}} className="p-3 rounded-lg">
               <p style={{color: muted}} className="text-xs">
-                <span style={{color: t}} className="font-semibold">Supported formats:</span> STEP (.step), STP (.stp), STL (.stl), IGES (.iges, .igs)
+                <span style={{color: t}} className="font-semibold">{t('react.rfqform.supported_formats_2')}</span> STEP (.step), STP (.stp), STL (.stl), IGES (.iges, .igs)
               </p>
               <p style={{color: muted}} className="text-xs mt-1">
-                <span style={{color: t}} className="font-semibold">Max file size:</span> 100 MB
+                <span style={{color: t}} className="font-semibold">{t('react.rfqform.max_file_size_2')}</span> 100 MB
               </p>
             </div>
           </div>
@@ -474,7 +474,7 @@ export default function RFQForm() {
           style={{backgroundColor: p, color: t}}
           className="w-full px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transition-all duration-200 hover:shadow-xl active:scale-95 flex items-center justify-center space-x-2 hover:opacity-90"
         >
-          <span>Submit Request</span>
+          <span>{t('react.rfqform.submit_request')}</span>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>

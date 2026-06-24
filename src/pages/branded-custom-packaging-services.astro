@@ -5,11 +5,15 @@ import PackagingProcessSpectrum from '../components/services/PackagingProcessSpe
 import PackagingSpecsDashboard from '../components/services/PackagingSpecsDashboard.astro';
 import SmearingWarehouseInterlockKnowHow from '../components/services/SmearingWarehouseInterlockKnowHow.astro';
 import PackagingDedicatedCta from '../components/services/PackagingDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
 <BaseLayout>
   <!-- Hero — DO NOT MODIFY -->
   <SubpageHero
-    title="Branded & Custom Packaging"
+    title={t('branded-custom-packaging-services.astro.brandedCustomPackagingServices.branded_custom_packaging')}
     highlight="Services"
     badge="Industrial Logistics Protection"
     badgeIcon="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"

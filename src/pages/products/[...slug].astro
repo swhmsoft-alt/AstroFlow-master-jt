@@ -24,19 +24,19 @@ const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() :
 
 <BaseLayout title={seoTitle} description={seoDesc}>
   <!-- Breadcrumb -->
-  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+  <nav class="border-b" aria-label={t('products.Slug].breadcrumb_2')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/" itemprop="item" class="breadcrumb-link transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">Home</span>
+            <span itemprop="name">{t('products.Slug].home')}</span>
           </a>
           <meta itemprop="position" content="1" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/products" itemprop="item" class="breadcrumb-link transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">Products</span>
+            <span itemprop="name">{t('products.Slug].products')}</span>
           </a>
           <meta itemprop="position" content="2" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
@@ -136,7 +136,7 @@ const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() :
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
         <h2 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">
-          Technical <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">Specifications</span>
+          Technical <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">{t('products.Slug].specifications')}</span>
         </h2>
         <p style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Detailed parameters and tolerances for {data.title}</p>
       </div>
@@ -145,8 +145,8 @@ const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() :
         <table class="w-full text-sm">
           <thead>
             <tr style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent));">
-              <th class="px-6 py-4 text-left font-bold uppercase tracking-wider w-2/5" style="color: var(--theme-text);">Parameter</th>
-              <th class="px-6 py-4 text-left font-bold uppercase tracking-wider" style="color: var(--theme-text);">Specification / Value</th>
+              <th class="px-6 py-4 text-left font-bold uppercase tracking-wider w-2/5" style="color: var(--theme-text);">{t('products.Slug].parameter')}</th>
+              <th class="px-6 py-4 text-left font-bold uppercase tracking-wider" style="color: var(--theme-text);">{t('products.Slug].specification_value')}</th>
             </tr>
           </thead>
           <tbody>
@@ -167,7 +167,7 @@ const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() :
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">
-          Industry <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">Applications</span>
+          Industry <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">{t('products.Slug].applications')}</span>
         </h2>
         <p class="max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
           Our precision components are trusted across multiple industries worldwide

@@ -5,10 +5,14 @@ import LaserProcessSpectrum from '../../components/services/LaserProcessSpectrum
 import LaserSpecsDashboard from '../../components/services/LaserSpecsDashboard.astro';
 import OxideSlagMitigation from '../../components/services/OxideSlagMitigation.astro';
 import LaserDedicatedCta from '../../components/services/LaserDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
-<BaseLayout title="Laser Cutting (Sheet & Tube) — BOZE CNC Ti" description="Precision fiber laser cutting for titanium sheets and tubes: 3,000 x 1,500 mm sheet capacity, ø 20-220 mm tube, ±0.03 mm accuracy, 0.1 mm kerf, weld-ready edges.">
+<BaseLayout title={t('titanium-fabrication-services.laserCutting.laser_cutting_sheet_tube_boze')} description="Precision fiber laser cutting for titanium sheets and tubes: 3,000 x 1,500 mm sheet capacity, ø 20-220 mm tube, ±0.03 mm accuracy, 0.1 mm kerf, weld-ready edges.">
   <SubpageHero
-    title="Laser Cutting (Sheet & Tube)"
+    title={t('titanium-fabrication-services.laserCutting.laser_cutting_sheet_tube')}
     highlight="Services"
     badge="Precision Laser Cutting"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"

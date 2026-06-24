@@ -5,10 +5,14 @@ import ForgingProcessSpectrum from '../../components/services/ForgingProcessSpec
 import ForgingSpecsDashboard from '../../components/services/ForgingSpecsDashboard.astro';
 import MetallurgyGrainFlowKnowHow from '../../components/services/MetallurgyGrainFlowKnowHow.astro';
 import ForgingDedicatedCta from '../../components/services/ForgingDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
-<BaseLayout title="Titanium Forging — BOZE CNC Ti" description="Precision titanium forging: closed-die, open-die, and seamless rolled ring forging. 8,000 metric ton press, ø 2,500 mm rings, AMS 2631 Class AA, ≥95% equiaxed α+β.">
+<BaseLayout title={t('titanium-forming-heavy-manufacturing.titaniumForging.titanium_forging_boze_cnc_ti')} description="Precision titanium forging: closed-die, open-die, and seamless rolled ring forging. 8,000 metric ton press, ø 2,500 mm rings, AMS 2631 Class AA, ≥95% equiaxed α+β.">
   <SubpageHero
-    title="Titanium Forging"
+    title={t('titanium-forming-heavy-manufacturing.titaniumForging.titanium_forging')}
     highlight="Services"
     badge="Precision Metal Forging"
     badgeIcon="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"

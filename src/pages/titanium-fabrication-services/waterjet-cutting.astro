@@ -5,10 +5,14 @@ import WaterjetAdvantages from '../../components/services/WaterjetAdvantages.ast
 import WaterjetSpecsDashboard from '../../components/services/WaterjetSpecsDashboard.astro';
 import TaperStriationKnowHow from '../../components/services/TaperStriationKnowHow.astro';
 import WaterjetDedicatedCta from '../../components/services/WaterjetDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
-<BaseLayout title="Waterjet Cutting — BOZE CNC Ti" description="Precision abrasive waterjet cutting for titanium: 60,000 PSI, 120 mm thickness capacity, 3,000 x 2,000 mm bed, ±0.05 mm angular repeatability, zero HAZ.">
+<BaseLayout title={t('titanium-fabrication-services.waterjetCutting.waterjet_cutting_boze_cnc_ti')} description="Precision abrasive waterjet cutting for titanium: 60,000 PSI, 120 mm thickness capacity, 3,000 x 2,000 mm bed, ±0.05 mm angular repeatability, zero HAZ.">
   <SubpageHero
-    title="Waterjet Cutting"
+    title={t('titanium-fabrication-services.waterjetCutting.waterjet_cutting')}
     highlight="Services"
     badge="Precision Waterjet Cutting"
     badgeIcon="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"

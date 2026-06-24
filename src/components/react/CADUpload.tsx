@@ -127,7 +127,7 @@ const CADUpload: React.FC = () => {
           <div className="flex flex-col">
             {/* File Status */}
             <div style={{ backgroundColor: 'var(--theme-surface)' }} className="rounded-lg p-6 mb-6 flex-grow">
-              <h3 style={{ color: 'var(--theme-text)' }} className="font-semibold mb-4">Upload Status</h3>
+              <h3 style={{ color: 'var(--theme-text)' }} className="font-semibold mb-4">{t('react.cadupload.upload_status')}</h3>
               {file ? (
                 <div className="flex items-start gap-3">
                   <FileCheck style={{ color: 'var(--theme-primary)' }} className="w-5 h-5 flex-shrink-0 mt-0.5" />
@@ -146,7 +146,7 @@ const CADUpload: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <p style={{ color: 'color-mix(in srgb, var(--theme-text) 55%, transparent)' }}>No file selected</p>
+                <p style={{ color: 'color-mix(in srgb, var(--theme-text) 55%, transparent)' }}>{t('react.cadupload.no_file_selected')}</p>
               )}
             </div>
 
@@ -184,10 +184,10 @@ const CADUpload: React.FC = () => {
         {/* Supported Formats Info */}
         <div style={{ backgroundColor: 'var(--theme-surface)' }} className="mt-8 p-4 rounded-lg">
           <p style={{ color: 'color-mix(in srgb, var(--theme-text) 65%, transparent)' }} className="text-sm">
-            <span style={{ color: 'var(--theme-text)' }} className="font-semibold">Supported formats:</span> STEP (.step), STP (.stp), STL (.stl), IGES (.iges, .igs)
+            <span style={{ color: 'var(--theme-text)' }} className="font-semibold">{t('react.cadupload.supported_formats')}</span> STEP (.step), STP (.stp), STL (.stl), IGES (.iges, .igs)
           </p>
           <p style={{ color: 'color-mix(in srgb, var(--theme-text) 65%, transparent)' }} className="text-sm mt-2">
-            <span style={{ color: 'var(--theme-text)' }} className="font-semibold">Max file size:</span> 100 MB
+            <span style={{ color: 'var(--theme-text)' }} className="font-semibold">{t('react.cadupload.max_file_size')}</span> 100 MB
           </p>
         </div>
       </div>

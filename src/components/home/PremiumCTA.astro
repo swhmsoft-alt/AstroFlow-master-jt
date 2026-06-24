@@ -13,7 +13,7 @@ const t = useTranslations(currentLang);
   <div class="absolute inset-0">
     <Img 
       src={warehouseBgImg}
-      alt="Modern warehouse operations"
+      alt={t('home.premiumcta.modern_warehouse_operations')}
       class="w-full h-full object-cover"
       widths={[480,768,1024,1600,2070]}
       sizes="100vw"
@@ -68,7 +68,7 @@ const t = useTranslations(currentLang);
           <div class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('home.cta.years')}</div>
         </div>
         <div class="rounded-xl p-6 transition-all border" style="background-color: color-mix(in srgb, var(--theme-surface) 80%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-          <div class="text-3xl md:text-4xl font-bold mb-2 gradient-text-titanium">ISO 9001</div>
+          <div class="text-3xl md:text-4xl font-bold mb-2 gradient-text-titanium">{t('home.premiumcta.iso_9001_2')}</div>
           <div class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('home.cta.certified')}</div>
         </div>
         <div class="rounded-xl p-6 transition-all border" style="background-color: color-mix(in srgb, var(--theme-surface) 80%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
@@ -76,7 +76,7 @@ const t = useTranslations(currentLang);
           <div class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('home.cta.support')}</div>
         </div>
         <div class="rounded-xl p-6 transition-all border" style="background-color: color-mix(in srgb, var(--theme-surface) 80%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-          <div class="text-3xl md:text-4xl font-bold mb-2 gradient-text-titanium">Global</div>
+          <div class="text-3xl md:text-4xl font-bold mb-2 gradient-text-titanium">{t('home.premiumcta.global')}</div>
           <div class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('home.cta.network')}</div>
         </div>
       </div>

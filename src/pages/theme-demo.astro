@@ -20,7 +20,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
       <div class="mb-12 text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
           🎨 主题演示
-          <span class="block mt-1" style="color: var(--theme-primary);">Theme Demonstration</span>
+          <span class="block mt-1" style="color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.theme_demonstration')}</span>
         </h1>
         <p class="text-lg max-w-2xl mx-auto" style="color: var(--theme-text); opacity: 0.7;">
           使用 <code class="rounded px-2 py-0.5 text-sm font-mono" style="background-color: var(--theme-surface); color: var(--theme-primary);">bg-theme-bg</code>、<code class="rounded px-2 py-0.5 text-sm font-mono" style="background-color: var(--theme-surface); color: var(--theme-primary);">text-theme-text</code>、<code class="rounded px-2 py-0.5 text-sm font-mono" style="background-color: var(--theme-surface); color: var(--theme-primary);">bg-theme-primary</code>、<code class="rounded px-2 py-0.5 text-sm font-mono" style="background-color: var(--theme-surface); color: var(--theme-primary);">bg-theme-accent</code> 等语义类名驱动。
@@ -36,7 +36,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
       <!-- ── Cards Grid (bg-theme-surface demo) ── -->
       <h2 class="text-2xl font-bold mb-6 flex items-center gap-2" style="color: var(--theme-primary);">
         <span>📦</span> Surface Cards
-        <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">(bg-theme-surface)</span>
+        <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">{t('theme-demo.astro.themeDemo.bgthemesurface')}</span>
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
         {['钛合金精密加工', '航空航天认证', '全流程可追溯'].map((title, i) => (
@@ -55,28 +55,28 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
       <!-- ── Primary-colored Titles (text-theme-primary demo) ── -->
       <h2 class="text-2xl font-bold mb-6 flex items-center gap-2" style="color: var(--theme-primary);">
         <span>🎯</span> Primary Highlighted Titles
-        <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">(text-theme-primary)</span>
+        <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">{t('theme-demo.astro.themeDemo.textthemeprimary')}</span>
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
         <div class="rounded-xl p-8" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-          <h3 class="text-3xl font-bold mb-3" style="color: var(--theme-primary);">Titanium Excellence</h3>
+          <h3 class="text-3xl font-bold mb-3" style="color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.titanium_excellence')}</h3>
           <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">
             From raw billet to finished component — every step is precision engineered for the most demanding applications.
           </p>
           <div class="mt-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">AS9100D</span>
-            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">ISO 9001</span>
-            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Nadcap</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.as9100d_2')}</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.iso_9001_3')}</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.nadcap')}</span>
           </div>
         </div>
         <div class="rounded-xl p-8" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-          <h3 class="text-3xl font-bold mb-3" style="color: var(--theme-primary);">Aerospace Grade</h3>
+          <h3 class="text-3xl font-bold mb-3" style="color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.aerospace_grade')}</h3>
           <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">
             Trusted by leading aerospace manufacturers for critical structural components and engine parts.
           </p>
           <div class="mt-4 flex gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">✅ Traceable</span>
-            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">✅ Certified</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.traceable')}</span>
+            <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{t('theme-demo.astro.themeDemo.certified')}</span>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
       <!-- ── Accent CTA Buttons (bg-theme-accent demo) ── -->
       <h2 class="text-2xl font-bold mb-6 flex items-center gap-2" style="color: var(--theme-primary);">
         <span>🚀</span> Accent Call-to-Action Buttons
-        <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">(bg-theme-accent)</span>
+        <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">{t('theme-demo.astro.themeDemo.bgthemeaccent')}</span>
       </h2>
       <div class="flex flex-wrap gap-4 mb-16">
         <a
@@ -105,7 +105,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
 
       <!-- ── Description Text Example ── -->
       <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-primary);">
-        📝 Body Text Example <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">(text-theme-text, via body class)</span>
+        📝 Body Text Example <span class="text-sm font-normal opacity-60" style="color: var(--theme-text);">{t('theme-demo.astro.themeDemo.textthemetext_via_body_class')}</span>
       </h2>
       <div class="rounded-2xl p-8 mb-12" style="background-color: var(--theme-surface);">
         <p class="mb-4 leading-relaxed">
@@ -118,7 +118,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
           selecting a different theme from the dropdown above.
         </p>
         <p class="leading-relaxed" style="color: var(--theme-primary);">
-          <strong>All 5 themes &mdash; driven by a single data file at <code class="rounded px-2 py-0.5 text-sm font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">src/lib/cmsThemes.ts</code> &mdash; no hardcoded colors needed!</strong>
+          <strong>All 5 themes &mdash; driven by a single data file at <code class="rounded px-2 py-0.5 text-sm font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('theme-demo.astro.themeDemo.srclibcmsthemests')}</code> &mdash; no hardcoded colors needed!</strong>
         </p>
       </div>
 
@@ -130,7 +130,7 @@ import ThemeSwitcher from '@components/ThemeSwitcher.astro';
         <table class="w-full text-sm">
           <thead>
             <tr style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <th class="px-6 py-4 text-left font-semibold" style="color: var(--theme-text);">Theme</th>
+              <th class="px-6 py-4 text-left font-semibold" style="color: var(--theme-text);">{t('theme-demo.astro.themeDemo.theme')}</th>
               <th class="px-6 py-4 text-left font-semibold" style="color: var(--theme-text);">--theme-bg</th>
               <th class="px-6 py-4 text-left font-semibold" style="color: var(--theme-text);">--theme-surface</th>
               <th class="px-6 py-4 text-left font-semibold" style="color: var(--theme-text);">--theme-text</th>

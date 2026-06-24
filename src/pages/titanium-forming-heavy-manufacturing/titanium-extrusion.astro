@@ -5,10 +5,14 @@ import ExtrusionProcessSpectrum from '../../components/services/ExtrusionProcess
 import ExtrusionSpecsDashboard from '../../components/services/ExtrusionSpecsDashboard.astro';
 import DieGallingLubricationKnowHow from '../../components/services/DieGallingLubricationKnowHow.astro';
 import ExtrusionDedicatedCta from '../../components/services/ExtrusionDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
-<BaseLayout title="Titanium Extrusion — BOZE CNC Ti" description="Precision titanium extrusion: complex structural profiles, seamless heavy-wall tubes, multi-channel hollow shapes. 6,000 ton press, 12 m length, ø 350 mm envelope, AS9100D.">
+<BaseLayout title={t('titanium-forming-heavy-manufacturing.titaniumExtrusion.titanium_extrusion_boze_cnc_ti')} description="Precision titanium extrusion: complex structural profiles, seamless heavy-wall tubes, multi-channel hollow shapes. 6,000 ton press, 12 m length, ø 350 mm envelope, AS9100D.">
   <SubpageHero
-    title="Titanium Extrusion"
+    title={t('titanium-forming-heavy-manufacturing.titaniumExtrusion.titanium_extrusion')}
     highlight="Services"
     badge="Precision Metal Extrusion"
     badgeIcon="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"

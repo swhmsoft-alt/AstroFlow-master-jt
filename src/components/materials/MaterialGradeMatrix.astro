@@ -89,7 +89,7 @@ const gradeGroups: GradeGroup[] = [
         Metallurgical Selection Guide
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Titanium Grade <span class="gradient-text-accent">Catalog</span>
+        Titanium Grade <span class="gradient-text-accent">{t('materials.materialgradematrix.catalog')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Seven industry-standard titanium grades organized by metallurgical classification — from ultra-formable CP grades to high-strength alpha-beta alloys.
@@ -131,7 +131,7 @@ const gradeGroups: GradeGroup[] = [
 
                 {/* Key Features */}
                 <div class="mb-4">
-                  <h5 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Key Engineering Features</h5>
+                  <h5 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t('materials.materialgradematrix.key_engineering_features')}</h5>
                   <ul class="space-y-1.5">
                     {card.features.map((feature) => (
                       <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
@@ -146,7 +146,7 @@ const gradeGroups: GradeGroup[] = [
 
                 {/* Applications */}
                 <div>
-                  <h5 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Target Applications</h5>
+                  <h5 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t('materials.materialgradematrix.target_applications')}</h5>
                   <div class="flex flex-wrap gap-2">
                     {card.applications.map((app) => (
                       <span class="inline-flex items-center px-2.5 py-1 text-xs rounded-md" style="background-color: color-mix(in srgb, var(--theme-text) 3%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">

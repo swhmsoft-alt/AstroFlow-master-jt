@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface Industry {
   name: string;
   iconPath: string;
@@ -74,7 +78,7 @@ const industries: Industry[] = [
         Target Verticals
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Industry <span class="gradient-text-accent">Verticals</span>
+        Industry <span class="gradient-text-accent">{t('industries.industryverticalsgrid.verticals')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Eight specialized sectors where our titanium engineering expertise delivers measurable performance advantages.

@@ -5,12 +5,16 @@ import ServiceMatrixGrid from '../components/services/ServiceMatrixGrid.astro';
 import ComplianceRibbon from '../components/services/ComplianceRibbon.astro';
 import EngineeringWorkflow from '../components/services/EngineeringWorkflow.astro';
 import QuickIndustrySolutions from '../components/services/QuickIndustrySolutions.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
 
 <BaseLayout>
   <!-- Hero -->
   <SubpageHero
-    title="Titanium Machining"
+    title={t('services.astro.services.titanium_machining')}
     highlight="Services"
     badge="Precision Manufacturing"
     badgeIcon="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"

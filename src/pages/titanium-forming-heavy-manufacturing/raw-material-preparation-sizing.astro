@@ -5,10 +5,14 @@ import PrepProcessSpectrum from '../../components/services/PrepProcessSpectrum.a
 import PrepSpecsDashboard from '../../components/services/PrepSpecsDashboard.astro';
 import SizingHardeningTraceabilityKnowHow from '../../components/services/SizingHardeningTraceabilityKnowHow.astro';
 import PrepDedicatedCta from '../../components/services/PrepDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
-<BaseLayout title="Raw Material Preparation & Sizing — BOZE CNC Ti" description="Titanium raw material preparation: heavy-duty CNC band sawing up to ø 800 mm, mechanical surface peeling, chemical decontamination. PMI validated, AS9100D.">
+<BaseLayout title={t('titanium-forming-heavy-manufacturing.rawMaterialPreparationSizing.raw_material_preparation_sizing_boze')} description="Titanium raw material preparation: heavy-duty CNC band sawing up to ø 800 mm, mechanical surface peeling, chemical decontamination. PMI validated, AS9100D.">
   <SubpageHero
-    title="Raw Material Preparation & Sizing"
+    title={t('titanium-forming-heavy-manufacturing.rawMaterialPreparationSizing.raw_material_preparation_sizing')}
     highlight="Services"
     badge="Material Preparation"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"

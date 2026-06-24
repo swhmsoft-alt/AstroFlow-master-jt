@@ -5,8 +5,9 @@ import gradesImg from '@assets/photo-1550751827-4bd374c3f58b.jpg';
 import caseStudyImg from '@assets/photo-1450101499163-c8848c66ca85.jpg';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentLang = lang;
 
 interface Resource {
   title: string;

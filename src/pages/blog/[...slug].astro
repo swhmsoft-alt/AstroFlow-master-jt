@@ -39,7 +39,7 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
   ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
 >
   <!-- Breadcrumb -->
-  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+  <nav class="border-b" aria-label={t('blog.Slug].breadcrumb')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -136,7 +136,7 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
                   </svg>
                   <h3 class="text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">{t('blog.toc.title')}</h3>
                 </div>
-                <nav aria-label="Table of contents">
+                <nav aria-label={t('blog.Slug].table_of_contents')}>
                   <ul class="space-y-1">
                     {tocHeadings.map((heading, index) => {
                       const id = heading.text.toLowerCase().replace(/[^\w]+/g, '-').replace(/(^-|-$)/g, '');

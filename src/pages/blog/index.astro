@@ -6,10 +6,10 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 
-type BlogPost = CollectionEntry<'blog'>;
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+type BlogPost = CollectionEntry<'blog'>;
 
 const allPosts: BlogPost[] = await getCollection('blog');
 const sorted = allPosts.sort((a: BlogPost, b: BlogPost) => {

@@ -5,11 +5,15 @@ import WireEdmAdvantages from '../../components/services/WireEdmAdvantages.astro
 import WireEdmSpecsDashboard from '../../components/services/WireEdmSpecsDashboard.astro';
 import WireEdmKnowHow from '../../components/services/WireEdmKnowHow.astro';
 import WireEdmDedicatedCta from '../../components/services/WireEdmDedicatedCta.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 ---
 <BaseLayout>
   <!-- Hero — DO NOT MODIFY -->
   <SubpageHero
-    title="Wire EDM Machining"
+    title={t('titanium-cnc-machining-services.wireEdmMachining.wire_edm_machining')}
     highlight="Services"
     badge="Precision EDM Machining"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"

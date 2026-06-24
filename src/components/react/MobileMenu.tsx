@@ -3,6 +3,19 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { NAVIGATION } from '../../config/site';
 import type { NavItem } from '../../config/site';
+import { UI, DEFAULT_LANG } from '../../i18n/ui';
+import type { Lang } from '../../i18n/ui';
+
+/** Client-side t() — detects language from the URL path */
+const useT = (): ((key: string) => string) => {
+  const getLang = (): Lang => {
+    if (typeof window === 'undefined') return DEFAULT_LANG;
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return (parts.length > 0 && (parts[0] === 'en' || parts[0] === 'ja') ? parts[0] : DEFAULT_LANG) as Lang;
+  };
+  const lang = getLang();
+  return (key: string) => UI[lang]?.[key] ?? UI[DEFAULT_LANG]?.[key] ?? key;
+};
 
 function NavItemWithChildren({ item, onClose }: { item: NavItem; onClose: () => void }) {
   const [open, setOpen] = useState(false);
@@ -75,6 +88,7 @@ function NavItemWithChildren({ item, onClose }: { item: NavItem; onClose: () => 
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const t = useT();
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -84,7 +98,7 @@ export default function MobileMenu() {
           style={{ color: 'color-mix(in srgb, var(--theme-text) 75%, transparent)' }}
           onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--theme-primary) 10%, transparent)'}
           onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-          aria-label="Toggle menu"
+          aria-label={t('react.mobilemenu.toggle_menu')}
         >
           <Menu className="h-6 w-6" />
         </button>
@@ -94,8 +108,8 @@ export default function MobileMenu() {
         <Dialog.Content className="fixed top-0 left-0 right-0 z-50 lg:hidden max-h-[85vh] overflow-y-auto"
           style={{ backgroundColor: 'var(--theme-surface)', borderBottom: '1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent)' }}
         >
-          <Dialog.Title className="sr-only">Navigation Menu</Dialog.Title>
-          <Dialog.Description className="sr-only">Main navigation menu</Dialog.Description>
+          <Dialog.Title className="sr-only">{t('react.mobilemenu.navigation_menu')}</Dialog.Title>
+          <Dialog.Description className="sr-only">{t('react.mobilemenu.main_navigation_menu')}</Dialog.Description>
           <div className="container mx-auto px-4 py-6 space-y-2">
             {NAVIGATION.map((item) => (
               <NavItemWithChildren key={item.href} item={item} onClose={() => setOpen(false)} />
@@ -119,7 +133,7 @@ export default function MobileMenu() {
               style={{ color: 'color-mix(in srgb, var(--theme-text) 75%, transparent)' }}
               onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'color-mix(in srgb, var(--theme-primary) 10%, transparent)'}
               onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-              aria-label="Close menu"
+              aria-label={t('react.mobilemenu.close_menu')}
             >
               <X className="h-6 w-6" />
             </button>

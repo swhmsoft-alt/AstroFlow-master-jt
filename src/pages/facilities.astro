@@ -232,7 +232,7 @@ const facilityStandards = [
         Our Locations
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
-        Strategic <span class="gradient-text">Facilities</span>
+        Strategic <span class="gradient-text">{t('facilities.astro.facilities.facilities')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Each facility is designed to meet specific industry needs with cutting-edge infrastructure and capabilities.
@@ -332,7 +332,7 @@ const facilityStandards = [
           Network Coverage
         </div>
         <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
-          Strategic <span class="gradient-text">Coverage</span>
+          Strategic <span class="gradient-text">{t('facilities.astro.facilities.coverage')}</span>
         </h2>
         <p class="max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
           Our facilities are strategically positioned to provide optimal coverage across North America
@@ -346,8 +346,8 @@ const facilityStandards = [
             <svg class="w-24 h-24 mx-auto mb-4 animate-pulse" style="color: color-mix(in srgb, var(--theme-primary) 40%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p class="font-semibold text-lg mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Interactive Map</p>
-            <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Contact us for detailed facility information and tours</p>
+            <p class="font-semibold text-lg mb-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t('facilities.astro.facilities.interactive_map')}</p>
+            <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('facilities.astro.facilities.contact_us_detailed_facility_information')}</p>
           </div>
         </div>
         
@@ -371,7 +371,7 @@ const facilityStandards = [
         Our Standards
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">
-        Facility <span class="gradient-text">Standards</span>
+        Facility <span class="gradient-text">{t('facilities.astro.facilities.standards')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Every facility meets our rigorous standards for safety, security, and operational excellence.
@@ -395,7 +395,7 @@ const facilityStandards = [
     <div class="absolute inset-0">
       <Img 
         src={ctaBgImg}
-        alt="Modern facilities and infrastructure"
+        alt={t('facilities.astro.facilities.modern_facilities_infrastructure')}
         class="w-full h-full object-cover"
         widths={[480,768,1024,1600,2070]}
         sizes="100vw"
@@ -410,7 +410,7 @@ const facilityStandards = [
           Get Started Today
         </div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Ready to Visit Our <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">Facilities</span>?
+          Ready to Visit Our <span class="text-transparent bg-clip-text" style="background: linear-gradient(to right, var(--theme-primary), var(--theme-accent)); -webkit-background-clip: text;">{t('facilities.astro.facilities.facilities_2')}</span>?
         </h2>
         <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
           Schedule a tour to see our operations firsthand and discuss how we can meet your needs.
