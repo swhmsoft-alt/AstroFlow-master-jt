@@ -8,11 +8,12 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
-import { LANGUAGES } from '../../../i18n/ui';
+import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const langCodes = Object.keys(LANGUAGES);
+  // 排除默认语言(en)，根目录 blog/[...slug].astro 已处理 /blog/slug/
+  const langCodes = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
   const paths = [];
   for (const lang of langCodes) {
     for (const post of posts) {

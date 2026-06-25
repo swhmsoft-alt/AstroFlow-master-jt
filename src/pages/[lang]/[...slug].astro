@@ -156,7 +156,9 @@ import { getLocalizedContent, resolveContentId } from '../../utils/getLocalizedC
 import { LANGUAGES, DEFAULT_LANG } from '../../i18n/ui';
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const supportedLangs = Object.keys(LANGUAGES);
+  // 排除默认语言(en)，因为根目录已有独立的 .astro 页面处理英语路由
+  // 避免英语同时通过 /en/ 前缀生成重复URL
+  const supportedLangs = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
   const knownSlugs: string[] = [
     'services', 'capabilities', 'materials', 'industries', 'resources',
     'documentation', 'facilities', 'rfq', 'use-cases',
