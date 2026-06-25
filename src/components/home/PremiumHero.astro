@@ -13,6 +13,7 @@ interface Props {
     badge?: string;
     title?: string;
     highlight?: string;
+    h1?: string;
     description?: string;
     primaryCta?: string;
     primaryCtaLink?: string;
@@ -69,10 +70,16 @@ const isVideo = hero.heroMediaType === 'video' && hero.heroVideoUrl;
       </div>
       
       <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
-        {hero.title}
-        <span class="block gradient-text-accent mt-2">
-          {hero.highlight}
-        </span>
+        {hero.h1 ? (
+          <span>{hero.h1}</span>
+        ) : (
+          <>
+            {hero.title}
+            <span class="block gradient-text-accent mt-2">
+              {hero.highlight}
+            </span>
+          </>
+        )}
       </h1>
       
       <p class="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">

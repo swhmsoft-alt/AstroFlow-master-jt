@@ -148,9 +148,6 @@ import MarkingSpecsDashboard from '../../components/services/MarkingSpecsDashboa
 import MarkingDedicatedCta from '../../components/services/MarkingDedicatedCta.astro';
 import ThermalStressContrastKnowHow from '../../components/services/ThermalStressContrastKnowHow.astro';
 
-/* ── Other services ─────────────────────────── */
-import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
-
 import { getLangFromUrl, useTranslations, isSupportedLang } from '../../i18n/utils';
 import { getLocalizedContent, resolveContentId } from '../../utils/getLocalizedContent';
 import { LANGUAGES, DEFAULT_LANG } from '../../i18n/ui';
@@ -213,11 +210,31 @@ const isServiceSubPage =
   slug === 'branded-custom-packaging-services' ||
   slug === 'laser-marking-custom-logo';
 
+const heroEntry = HERO_CONFIG[`/${slug || ''}` as keyof typeof HERO_CONFIG] || undefined;
+
+// tH1 helper: returns translated value if found, null otherwise (t() returns key as fallback)
+const tH1 = (key: string) => {
+  const val = t(key);
+  return val && val !== key ? val : null;
+};
+
+// Translation-aware hero values for home page (isHome)
+const homeH1 = currentLang === 'en'
+  ? heroEntry?.h1
+  : (tH1('hero.home.h1') || heroEntry?.h1);
+const homeBadge = currentLang === 'en'
+  ? heroEntry?.badge
+  : (tH1('hero.home.badge') || heroEntry?.badge);
+const homeSubtitle = currentLang === 'en'
+  ? heroEntry?.subtitle
+  : (tH1('hero.home.subtitle') || heroEntry?.subtitle);
+
 const heroData: Record<string, any> = {
-  badge: pageData.badge || t('home.mainHero.badge'),
+  badge: isHome ? (homeBadge || '') : (pageData.badge || t('home.mainHero.badge')),
   title: pageData.title || t('home.mainHero.title'),
   highlight: pageData.highlight || t('home.mainHero.titleHighlight'),
-  description: pageData.description || t('home.mainHero.subtitle'),
+  h1: isHome ? homeH1 : (heroEntry?.h1 || null),
+  description: isHome ? (homeSubtitle || pageData.description || t('home.mainHero.subtitle')) : (pageData.description || t('home.mainHero.subtitle')),
   primaryCta: t('hero.cta'),
   primaryCtaLink: pageData.primaryCtaLink || 'https://www.bozemetal.com/contact',
   secondaryCta: t('hero.cta.secondary'),
@@ -281,18 +298,9 @@ if (slug) {
   if (subKey && subPageMeta[subKey]) subMeta = subPageMeta[subKey];
 }
 
-// Compute hero values:
-// 1. If slug has a HERO_CONFIG entry, use it as the English source of truth
-// 2. For non-English, look up translation via hero.{slug}.h1 / hero.{slug}.badge / hero.{slug}.subtitle keys
-// 3. Fallback to i18n t() / subMeta if no HERO_CONFIG entry exists
-const heroEntry = slug ? HERO_CONFIG[`/${slug}` as keyof typeof HERO_CONFIG] : undefined;
-
+// Compute hero values (slug-based pages only) - heroEntry already declared above for home page
 // Build i18n translation keys based on HERO_CONFIG path
 const heroKey = slug ? `hero.${slug.replace(/\//g, '.')}` : '';
-const tH1 = (key: string) => {
-  const val = t(key);
-  return val && val !== key ? val : null; // t() returns the key itself when missing
-};
 
 let pageH1: string | undefined;
 let pageBadge: string | undefined;

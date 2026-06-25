@@ -11,6 +11,7 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { getCollection } from 'astro:content';
 
 import { DEFAULT_LANG, LANGUAGES } from '../../i18n/ui';
+import { HERO_CONFIG } from '../../config/hero';
 
 export async function getStaticPaths() {
   // 排除默认语言(en)，根目录 index.astro 已处理 /
@@ -22,15 +23,35 @@ const { lang } = Astro.params;
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
+// tH1 helper: returns translated value if found, null otherwise (t() returns key as fallback)
+const tH1 = (key: string) => {
+  const val = t(key);
+  return val && val !== key ? val : null;
+};
+
 // Load home page data from content collection at build time
 const pages = await getCollection('pages');
 const homePage = pages.find(p => p.id === 'home');
 const pageData = homePage?.data || {};
+const heroEntry = HERO_CONFIG['/'] || undefined;
+
+// Translation-aware hero values for home page
+const homeH1 = currentLang === 'en'
+  ? (heroEntry?.h1 || pageData.title || 'End-to-End Titanium Manufacturing & Custom Processing Services')
+  : (tH1('hero.home.h1') || heroEntry?.h1 || pageData.title || 'End-to-End Titanium Manufacturing & Custom Processing Services');
+const homeBadge = currentLang === 'en'
+  ? (heroEntry?.badge || pageData.badge || '')
+  : (tH1('hero.home.badge') || heroEntry?.badge || pageData.badge || '');
+const homeDescription = currentLang === 'en'
+  ? (heroEntry?.subtitle || pageData.description || '')
+  : (tH1('hero.home.subtitle') || heroEntry?.subtitle || pageData.description || '');
+
 const heroData: Record<string, any> = {
-  badge: pageData.badge || 'BOZE CNC Ti | AS9100D Certified | Baoji China',
+  badge: homeBadge,
   title: pageData.title || 'End-to-End Titanium Manufacturing & Custom Processing Services',
   highlight: pageData.highlight || '',
-  description: pageData.description || 'From rapid prototyping via titanium additive manufacturing to high-volume precision CNC machining and heavy industrial fabrication, we provide complete, one-stop processing for all titanium grades.',
+  h1: homeH1,
+  description: homeDescription,
   primaryCta: t('hero.cta'),
   primaryCtaLink: pageData.primaryCtaLink || 'https://www.bozemetal.com/contact',
   secondaryCta: t('hero.cta.secondary'),

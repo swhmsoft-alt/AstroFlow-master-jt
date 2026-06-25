@@ -1,0 +1,335 @@
+/**
+ * Translate ALL Hero texts from English to a target language.
+ * Usage: node scripts/translate-all-hero.mjs <lang>
+ * Example: node scripts/translate-all-hero.mjs de
+ *
+ * Reads hero.ts → generates all hero.* JSON keys → calls DeepSeek API → writes JSON.
+ * Processes exactly ONE language per run.
+ */
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const TRANSLATIONS_DIR = path.resolve(__dirname, '../src/i18n/translations');
+
+const DEEPSEEK_API_KEY = 'sk-b187f5cf84c74f9aac8bd04b7fd0d2f8';
+const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
+
+// ── Language config ──
+const LANG_NAMES = {
+  de: 'German', ja: 'Japanese', fr: 'French', es: 'Spanish',
+  pt: 'Portuguese', it: 'Italian', ko: 'Korean', nl: 'Dutch', pl: 'Polish',
+};
+
+// ── Hero source data (from hero.ts) ──
+// Key = route path, Value = { h1, badge, subtitle }
+// These are the English source texts.
+const HERO_SOURCE = {
+  '/': {
+    h1: 'End-to-End Titanium Manufacturing Solutions',
+    badge: 'Industry-Leading Solutions',
+    subtitle: 'From titanium additive manufacturing and precision CNC machining to fabrication, finishing, and assembly, we provide complete one-stop solutions for custom titanium parts and components. Built on AS9100-compliant quality systems, we support projects from prototype development to full-scale production.',
+  },
+  '/services': {
+    h1: 'Titanium Machining Services',
+    subtitle: 'End-to-end titanium manufacturing solutions from rapid prototyping to high-volume precision CNC machining and heavy industrial fabrication.',
+    badge: 'Precision Manufacturing',
+  },
+  '/materials': {
+    h1: 'Titanium Materials Engineering Guide',
+    subtitle: 'Comprehensive technical reference for procurement engineers — from Grade 1 CP-Titanium to Grade 5 ELI medical-grade alloys. Every grade documented with certified properties and application guidance.',
+    badge: 'Metallurgy & Alloys',
+  },
+  '/capabilities': {
+    h1: 'Technical Capabilities',
+    subtitle: 'Certified precision manufacturing infrastructure — from micron-level CNC tolerancing to full material traceability. A detailed technical reference for procurement and engineering teams.',
+    badge: 'Manufacturing Engineering Data Sheet',
+  },
+  '/industries': {
+    h1: 'Industry Solutions',
+    subtitle: 'Engineered titanium solutions for the world\'s most demanding industries — from aerospace structural components to AI infrastructure thermal management systems.',
+    badge: 'Precision Manufacturing Verticals',
+  },
+  '/resources': {
+    h1: 'Technical Resources Library',
+    subtitle: 'Comprehensive technical documentation, engineering guides, whitepapers, and downloadable CAD resources — an open library for titanium manufacturing professionals.',
+    badge: 'Engineering Knowledge Base',
+  },
+  '/products': {
+    h1: 'Our Products',
+    subtitle: 'High-precision CNC machined components for aerospace, medical, automotive, and industrial applications. Certified quality, global delivery.',
+    badge: 'Precision Manufacturing',
+  },
+  '/rfq': {
+    h1: 'Request a Quote',
+    subtitle: 'Submit your engineering RFQ for titanium CNC machining, additive manufacturing, fabrication, or surface treatment. Get a formal quote within 24-48 hours. Secure CAD upload.',
+    badge: 'Engineering Procurement',
+  },
+  '/blog': {
+    h1: 'Our Blog',
+    subtitle: 'Technical guides, industry trends, and company news from the forefront of precision CNC titanium manufacturing.',
+    badge: 'Insights & Updates',
+  },
+  '/documentation': {
+    h1: 'Documentation Center',
+    subtitle: 'Access comprehensive guides, technical documentation, compliance certificates, and resources to optimize your Titanium CNC Machining operations.',
+    badge: 'Comprehensive Resource Center',
+  },
+  '/use-cases': {
+    h1: 'Use Cases',
+    subtitle: 'Real-world use cases and application examples of titanium CNC machining across aerospace, medical, automotive, and industrial sectors.',
+    badge: 'Industry Applications',
+  },
+  '/facilities': {
+    h1: 'Our Facilities',
+    subtitle: 'Strategically located facilities across the globe equipped with state-of-the-art technology to meet your Titanium CNC Machining and manufacturing needs.',
+    badge: 'Our Infrastructure',
+  },
+  '/titanium-cnc-machining-services': {
+    h1: 'Titanium CNC Machining Services',
+    subtitle: 'End-to-end titanium CNC machining solutions — from rapid prototyping to high-volume production — across 3/5-axis milling, turning, wire EDM, and custom industrial components.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-cnc-machining-services/3-5-axis-cnc-machining': {
+    h1: '3/5-Axis CNC Machining Services',
+    subtitle: 'Precision 3/4-axis and simultaneous 5-axis CNC machining for titanium: complex geometries, single-setup accuracy, aerospace-grade tolerances ±0.005 mm.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-cnc-machining-services/cnc-milling-turning': {
+    h1: 'CNC Milling & Turning Services',
+    subtitle: 'Precision CNC turning, milling, and turn-mill multi-tasking for titanium: bone screws, prismatic components, complete single-setup parts. Tolerances ±0.005 mm.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-cnc-machining-services/wire-edm-machining': {
+    h1: 'Wire EDM Machining Services',
+    subtitle: 'Precision wire EDM machining for titanium: zero mechanical stress, sharp internal corners (ø 0.1 mm wire), hardened alloy cutting, ±0.002 mm accuracy, Ra 0.25 µm finish.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-cnc-machining-services/custom-industrial-components': {
+    h1: 'Custom Industrial Components Services',
+    subtitle: 'Custom titanium industrial components: complex structural assemblies, high-vacuum chambers, fluid manifolds, and precision micro-components. AS9100D quality.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-additive-manufacturing': {
+    h1: 'Titanium Additive Manufacturing Services',
+    subtitle: 'Industrial titanium additive manufacturing: SLM/DMLS 3D printing, rapid prototyping in 3-5 days, low-volume production. Full-density Ti-6Al-4V, ASTM F2924, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-additive-manufacturing/3d-printing-slm': {
+    h1: '3D Printing Services',
+    subtitle: 'Industrial SLM/DMLS 3D printing for titanium: Yb-fiber laser, 20-60 µm layer thickness, ≥99.5% density, 950-1,050 MPa tensile strength. ASTM F2924, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-additive-manufacturing/rapid-prototyping': {
+    h1: 'Rapid Prototyping Services',
+    subtitle: 'Titanium rapid prototyping via SLM: 3-5 day lead time, single-unit MOQ, ≥99.5% density, 950-1,050 MPa tensile strength. Zero tooling cost design iterations.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-additive-manufacturing/low-volume-production': {
+    h1: 'Low-Volume Production Services',
+    subtitle: 'Low-volume titanium production via SLM: 10-1,000+ unit batches, zero tooling costs, ≥95% material utilization, multi-laser sync, SPC witness bar validation. AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-fabrication-services': {
+    h1: 'Titanium Fabrication Services',
+    subtitle: 'Precision titanium fabrication: TIG/laser welding with full argon purge, CNC sheet metal profiling, industrial vessels and piping. AWS D1.6, ASME Sec IX, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-fabrication-services/laser-cutting': {
+    h1: 'Laser Cutting Services',
+    subtitle: 'Precision fiber laser cutting for titanium sheets and tubes: 3,000 x 1,500 mm sheet capacity, ø 20-220 mm tube, ±0.03 mm accuracy, 0.1 mm kerf, weld-ready edges.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-fabrication-services/waterjet-cutting': {
+    h1: 'Waterjet Cutting Services',
+    subtitle: 'Precision abrasive waterjet cutting for titanium: 60,000 PSI, 120 mm thickness capacity, 3,000 x 2,000 mm bed, ±0.05 mm angular repeatability, zero HAZ.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-fabrication-services/titanium-welding-assembly': {
+    h1: 'Titanium Welding & Assembly Services',
+    subtitle: 'Precision titanium welding and assembly: ultra-pure TIG, laser welding, multi-component system assembly with anti-galling and CMM verification. AWS D1.6, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-forming-heavy-manufacturing': {
+    h1: 'Titanium Forming & Heavy Manufacturing Services',
+    subtitle: 'Heavy titanium forming and manufacturing: hot plate rolling, open/closed-die forging, large-scale assembly. 12,000 x 4,500 x 4,000 mm capacity, 50+ mm hot forming, 30 ton crane, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-forming-heavy-manufacturing/titanium-forging': {
+    h1: 'Titanium Forging Services',
+    subtitle: 'Precision titanium forging: closed-die, open-die, and seamless rolled ring forging. 8,000 metric ton press, ø 2,500 mm rings, AMS 2631 Class AA, ≥95% equiaxed α+β.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-forming-heavy-manufacturing/titanium-extrusion': {
+    h1: 'Titanium Extrusion Services',
+    subtitle: 'Precision titanium extrusion: complex structural profiles, seamless heavy-wall tubes, multi-channel hollow shapes. 6,000 ton press, 12 m length, ø 350 mm envelope, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing': {
+    h1: 'Raw Material Preparation & Sizing Services',
+    subtitle: 'Titanium raw material preparation: heavy-duty CNC band sawing up to ø 800 mm, mechanical surface peeling, chemical decontamination. PMI validated, AS9100D.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-surface-treatment': {
+    h1: 'Titanium Surface Treatment Services',
+    subtitle: 'Precision titanium surface treatment services: anodizing, micro-arc oxidation (MAO), acid pickling & passivation. AMS 2488, ISO 13485, ASTM F86 certified surface engineering.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-surface-treatment/anodizing': {
+    h1: 'Anodizing Services',
+    subtitle: 'Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. ISO 13485, AMS 2488D certified.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-surface-treatment/chemical-passivation': {
+    h1: 'Chemical Passivation Services',
+    subtitle: 'Precision titanium chemical passivation services: nitric acid passivation, citric acid biocompatible lines, HF-HNO3 acid pickling. ASTM F86, ASTM A967, AMS 2700 certified.',
+    badge: 'Precision Manufacturing',
+  },
+  '/titanium-surface-treatment/polishing-sandblasting': {
+    h1: 'Polishing & Sandblasting Services',
+    subtitle: 'Precision titanium mechanical finishing: multi-stage mirror polishing down to Ra 0.01 µm and engineered abrasive sandblasting for medical-grade anchor pore grids. Zero-contamination certified.',
+    badge: 'Precision Manufacturing',
+  },
+  '/laser-marking-custom-logo': {
+    h1: 'Laser Marking & Custom Logo Services',
+    subtitle: 'Precision titanium laser marking services: laser annealing, deep engraving, UID/DataMatrix serialization. MIL-STD-130, UDI compliant, ≤0.01 mm beam precision.',
+    badge: 'Precision Manufacturing',
+  },
+  '/branded-custom-packaging-services': {
+    h1: 'Branded & Custom Packaging Services',
+    subtitle: 'End-to-end titanium logistics and structural asset protection solutions: CNC foam milling, VCI marine corrosion barriers, ISPM-15 export crating. ISTA 2A/3A certified, ERP-linked traceability.',
+    badge: 'Industrial Logistics Protection',
+  },
+};
+
+/**
+ * Generate JSON translation key from route path.
+ * Route "/" → "hero.home.h1"
+ * Route "/services" → "hero.services.h1"
+ * Route "/titanium-cnc-machining-services/3-5-axis-cnc-machining" → "hero.titanium-cnc-machining-services.3-5-axis-cnc-machining.h1"
+ */
+function routeToKey(route, field) {
+  const cleanRoute = route.replace(/^\//, '') || 'home';
+  const keyPath = cleanRoute.replace(/\//g, '.');
+  return `hero.${keyPath}.${field}`;
+}
+
+async function translateAll(texts, targetLang) {
+  // Build the system prompt
+  const systemPrompt = `You are a professional translator for industrial/manufacturing content. Translate from English to ${targetLang}.
+
+CRITICAL RULES:
+- Keep technical terms, standards, brands, and abbreviations in English EXACTLY as-is:
+  CNC, SLM, DMLS, EDM, CMM, TIG, MIG, CAD, CAM, DFM, AS9100, AS9100D, ISO 9001, ISO 13485, ASTM, AMS, AWS, MIL-STD, HACCP, ITAR, NDA, RFQ, BOM, MTR, PMI, OES, FPI, UT, NDT, CAPA, SPC, KPI, MOQ, UID, ELI, MAO, VCI, ERP, ISTA, PSI, Ra, µm, Grade 1, Grade 2, Grade 5, Grade 9, Grade 12, Grade 23, Ti-6Al-4V
+- Keep brand names: BOZE CNC, Mastercam, ZEISS, SPECTROMAXx, Mitutoyo
+- Keep units and numbers: ±0.005 mm, 500+, 50M+, 99.9%, 24/7, etc.
+- Keep file formats: STEP, STP, IGS, PDF, DXF, DWG, STL
+- DO NOT translate the JSON keys — only translate the VALUES
+- Return ONLY a valid JSON object with the translated values. No explanations, no markdown.`;
+
+  const userPrompt = `Translate the following Hero section texts from English to ${targetLang}. Return a JSON object with the SAME keys but translated values.
+
+${JSON.stringify(texts, null, 2)}`;
+
+  const response = await fetch(DEEPSEEK_API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'deepseek-chat',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt },
+      ],
+      temperature: 0.3,
+      max_tokens: 16000,
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`API error ${response.status}: ${errText}`);
+  }
+
+  const data = await response.json();
+  const content = data.choices[0].message.content.trim();
+  
+  // Try to extract JSON from the response
+  const jsonMatch = content.match(/\{[\s\S]*\}/);
+  if (jsonMatch) {
+    return JSON.parse(jsonMatch[0]);
+  }
+  
+  throw new Error(`Could not parse JSON from API response:\n${content.substring(0, 500)}`);
+}
+
+async function main() {
+  const langCode = process.argv[2];
+  if (!langCode) {
+    console.error('Usage: node scripts/translate-all-hero.mjs <lang>');
+    console.error('Example: node scripts/translate-all-hero.mjs de');
+    console.error('Supported: ' + Object.keys(LANG_NAMES).join(', '));
+    process.exit(1);
+  }
+
+  const targetLang = LANG_NAMES[langCode];
+  if (!targetLang) {
+    console.error(`Unsupported language: ${langCode}`);
+    console.error('Supported: ' + Object.keys(LANG_NAMES).join(', '));
+    process.exit(1);
+  }
+
+  // Build the translation payload: all routes × fields
+  const translationInput = {};
+  for (const [route, data] of Object.entries(HERO_SOURCE)) {
+    translationInput[routeToKey(route, 'h1')] = data.h1;
+    translationInput[routeToKey(route, 'badge')] = data.badge;
+    translationInput[routeToKey(route, 'subtitle')] = data.subtitle;
+  }
+
+  const totalKeys = Object.keys(translationInput).length;
+  console.log(`\n🌐 Translating ${totalKeys} entries to ${targetLang} (${langCode})...`);
+  console.log(`   API endpoint: ${DEEPSEEK_API_URL}`);
+  console.log(`   Model: deepseek-chat\n`);
+
+  // Call API
+  console.log(`⏳ Sending request...`);
+  const translated = await translateAll(translationInput, targetLang);
+  console.log(`✅ Received ${Object.keys(translated).length} translated entries\n`);
+
+  // Read the existing JSON file
+  const filePath = path.join(TRANSLATIONS_DIR, `${langCode}.json`);
+  const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+
+  // Add/overwrite hero keys
+  let added = 0;
+  for (const [key, value] of Object.entries(translated)) {
+    if (!json[key]) {
+      added++;
+    }
+    json[key] = value;
+  }
+
+  // Write back
+  fs.writeFileSync(filePath, JSON.stringify(json, null, 2) + '\n');
+  console.log(`📝 Wrote to ${langCode}.json`);
+  console.log(`   Added ${added} new keys, ${totalKeys - added} already existed`);
+
+  // Validate JSON
+  const validated = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const heroKeys = Object.keys(validated).filter(k => k.startsWith('hero.'));
+  console.log(`   Total "hero." keys now in file: ${heroKeys.length}`);
+
+  console.log(`\n🎉 ${targetLang} (${langCode}) translation complete!`);
+}
+
+main().catch(err => {
+  console.error(`\n❌ Error: ${err.message}`);
+  if (err.stack) {
+    console.error(err.stack.substring(0, 500));
+  }
+  process.exit(1);
+});
