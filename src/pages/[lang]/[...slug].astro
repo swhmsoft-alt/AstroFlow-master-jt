@@ -154,6 +154,7 @@ import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
 import { getLangFromUrl, useTranslations, isSupportedLang } from '../../i18n/utils';
 import { getLocalizedContent, resolveContentId } from '../../utils/getLocalizedContent';
 import { LANGUAGES, DEFAULT_LANG } from '../../i18n/ui';
+import { HERO_CONFIG } from '../../config/hero';
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   // 排除默认语言(en)，因为根目录已有独立的 .astro 页面处理英语路由
@@ -280,11 +281,46 @@ if (slug) {
   if (subKey && subPageMeta[subKey]) subMeta = subPageMeta[subKey];
 }
 
-const metaKeys = slug ? pageMetaKeys[slug] : undefined;
-const pageTitle = subMeta?.title || (metaKeys ? t(metaKeys.title) : slug || 'Home');
-const pageBadge = subMeta?.badge || (metaKeys ? t(metaKeys.badge) : '');
-const pageSubtitle = subMeta?.subtitle || (metaKeys ? t(metaKeys.subtitle) : '');
-const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
+// Compute hero values:
+// 1. If slug has a HERO_CONFIG entry, use it as the English source of truth
+// 2. For non-English, look up translation via hero.{slug}.h1 / hero.{slug}.badge / hero.{slug}.subtitle keys
+// 3. Fallback to i18n t() / subMeta if no HERO_CONFIG entry exists
+const heroEntry = slug ? HERO_CONFIG[`/${slug}` as keyof typeof HERO_CONFIG] : undefined;
+
+// Build i18n translation keys based on HERO_CONFIG path
+const heroKey = slug ? `hero.${slug.replace(/\//g, '.')}` : '';
+const tH1 = (key: string) => {
+  const val = t(key);
+  return val && val !== key ? val : null; // t() returns the key itself when missing
+};
+
+let pageH1: string | undefined;
+let pageBadge: string | undefined;
+let pageSubtitle: string | undefined;
+let pageTitle: string | undefined;
+let pageHighlight: string | undefined;
+
+if (heroEntry) {
+  // This page is in HERO_CONFIG - hero.ts is the English source of truth
+  // For non-English, try translation, fallback to hero.ts English
+  if (currentLang === 'en') {
+    pageH1 = heroEntry.h1;
+    pageBadge = heroEntry.badge;
+    pageSubtitle = heroEntry.subtitle;
+  } else {
+    pageH1 = tH1(`${heroKey}.h1`) || heroEntry.h1;
+    pageBadge = tH1(`${heroKey}.badge`) || heroEntry.badge;
+    pageSubtitle = tH1(`${heroKey}.subtitle`) || heroEntry.subtitle;
+  }
+  // title/highlight not needed - h1 replaces them
+} else {
+  // Fallback: use existing i18n/subMeta logic
+  const metaKeys = slug ? pageMetaKeys[slug] : undefined;
+  pageTitle = subMeta?.title || (metaKeys ? t(metaKeys.title) : slug || 'Home');
+  pageBadge = subMeta?.badge || (metaKeys ? t(metaKeys.badge) : '');
+  pageSubtitle = subMeta?.subtitle || (metaKeys ? t(metaKeys.subtitle) : '');
+  pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
+}
 ---
 
 {
@@ -304,7 +340,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'services' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <ServiceMatrixGrid />
       <ComplianceRibbon />
       <EngineeringWorkflow />
@@ -316,7 +352,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'materials' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <MaterialGradeMatrix />
       <AlloyComparisonTable />
       <MachiningKnowHow />
@@ -328,7 +364,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'capabilities' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <CapacityDashboard />
       <EngineeringSupport />
       <QualityAndCertifications />
@@ -341,7 +377,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'industries' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <IndustryVerticalsGrid />
       <IndustryComplianceDashboard />
       <IndustryCtaSection />
@@ -352,7 +388,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'resources' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <FeaturedInsights />
       <ResourceHubMatrix />
       <EngineeringDownloads />
@@ -364,7 +400,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'rfq' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <EngineeringRfqForm />
       <SecurityNdaBanner />
       <ResponsePipelineTimeline />
@@ -375,7 +411,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'documentation' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <div class="container mx-auto px-4 py-8">
         <p class="text-lg text-center" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Documentation center content available in English only.</p>
       </div>
@@ -386,7 +422,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'facilities' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <FacilityStats client:idle />
     </BaseLayout>
   )
@@ -395,7 +431,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'use-cases' && !isHome && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <div class="container mx-auto px-4 py-8">
         <p class="text-lg text-center" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Use cases content available in English only.</p>
       </div>
@@ -407,7 +443,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-cnc-machining-services' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <CncProcessSpectrum />
       <CncTechnicalDashboard />
       <TitaniumEngineeringKnowHow />
@@ -418,7 +454,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-cnc-machining-services/3-5-axis-cnc-machining' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <FiveAxisTechSpecs />
       <MultiAxisComparison />
       <MultiAxisCta />
@@ -428,7 +464,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-cnc-machining-services/cnc-milling-turning' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <TurnMillKnowHow />
       <TurnMillSpectrum />
       <TurnMillSpecsDashboard />
@@ -439,7 +475,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-cnc-machining-services/wire-edm-machining' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <WireEdmKnowHow />
       <WireEdmAdvantages />
       <WireEdmSpecsDashboard />
@@ -450,7 +486,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-cnc-machining-services/custom-industrial-components' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <CustomComponentsKnowHow />
       <CustomComponentSpectrum />
       <ComponentDedicatedCta />
@@ -462,7 +498,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-additive-manufacturing' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <AdditiveProcessSpectrum />
       <AdditiveSpecsDashboard />
       <AdditiveQualityKnowHow />
@@ -473,7 +509,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-additive-manufacturing/3d-printing-slm' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <SlmProcessBreakdown />
       <SlmMechanicalDashboard />
       <AdditiveEconomicsPillars />
@@ -484,7 +520,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-additive-manufacturing/rapid-prototyping' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <RapidValuePillars />
       <PrototypingSpecsDashboard />
       <RapidPrototypeCta />
@@ -494,7 +530,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-additive-manufacturing/low-volume-production' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <ProductionVolumeDashboard />
       <AdditiveBatchCta />
     </BaseLayout>
@@ -505,7 +541,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-fabrication-services' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <FabProcessSpectrum />
       <FabSpecsDashboard />
       <ReactiveWeldingKnowHow />
@@ -516,7 +552,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-fabrication-services/laser-cutting' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <LaserProcessSpectrum />
       <LaserSpecsDashboard />
       <LaserDedicatedCta />
@@ -526,7 +562,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-fabrication-services/waterjet-cutting' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <WaterjetAdvantages />
       <WaterjetSpecsDashboard />
       <WaterjetDedicatedCta />
@@ -536,7 +572,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-fabrication-services/titanium-welding-assembly' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <WeldingAssemblySpectrum />
       <AssemblySpecsDashboard />
       <AssemblyDedicatedCta />
@@ -548,7 +584,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-forming-heavy-manufacturing' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <HeavyProcessSpectrum />
       <HeavySpecsDashboard />
       <HotFormingStressKnowHow />
@@ -559,7 +595,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-forming-heavy-manufacturing/titanium-forging' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <ForgingProcessSpectrum />
       <ForgingSpecsDashboard />
       <ForgingDedicatedCta />
@@ -569,7 +605,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-forming-heavy-manufacturing/titanium-extrusion' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <ExtrusionProcessSpectrum />
       <ExtrusionSpecsDashboard />
       <ExtrusionDedicatedCta />
@@ -579,7 +615,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-forming-heavy-manufacturing/raw-material-preparation-sizing' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <PrepProcessSpectrum />
       <PrepSpecsDashboard />
       <PrepDedicatedCta />
@@ -591,7 +627,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-surface-treatment' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <SurfaceProcessSpectrum />
       <SurfaceSpecsDashboard />
       <HydrogenEmbrittlementAcidControlKnowHow />
@@ -602,7 +638,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-surface-treatment/anodizing' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <AnodizingClassifications />
       <AnodizingSpecsDashboard />
       <AnodizingDedicatedCta />
@@ -612,7 +648,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-surface-treatment/chemical-passivation' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <PassivationSpectrum />
       <PassivationSpecsDashboard />
       <PassivationDedicatedCta />
@@ -622,7 +658,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'titanium-surface-treatment/polishing-sandblasting' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <GallingColorVariationKnowHow />
       <GallingOsseointegrationKnowHow />
       <SurfaceDedicatedCta />
@@ -634,7 +670,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'branded-custom-packaging-services' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <PackagingProcessSpectrum />
       <PackagingSpecsDashboard />
       <SmearingWarehouseInterlockKnowHow />
@@ -645,7 +681,7 @@ const pageHighlight = metaKeys ? t(metaKeys.highlight) : '';
 {
   slug === 'laser-marking-custom-logo' && (
     <BaseLayout>
-      <SubpageHero title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
       <MarkingProcessSpectrum />
       <MarkingSpecsDashboard />
       <ThermalStressContrastKnowHow />
