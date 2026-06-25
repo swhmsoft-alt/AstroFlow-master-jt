@@ -1,6 +1,6 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   highlight?: string;
   subtitle?: string;
   badge?: string;
@@ -11,6 +11,8 @@ interface Props {
   highlightGradient?: string;
   /** Extra content after subtitle, before the slot */
   extra?: string;
+  /** Complete H1 string (merges title + highlight into one). Overrides title/highlight when provided. */
+  h1?: string;
 }
 
 const {
@@ -21,6 +23,7 @@ const {
   badgeIcon,
   badgeGradient,
   highlightGradient,
+  h1,
 } = Astro.props;
 
 // Static hero defaults (previously loaded from CMS collection 'hero')
@@ -63,11 +66,17 @@ const hlGradient = highlightGradient || '';
             {badgeLabel}
           </div>
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
-            {title}
-            {highlight && (
-              <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
-                {highlight}
-              </span>
+            {h1 ? (
+              <span>{h1}</span>
+            ) : (
+              <>
+                {title}
+                {highlight && (
+                  <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
+                    {highlight}
+                  </span>
+                )}
+              </>
             )}
           </h1>
           {subtitle && (
@@ -100,11 +109,17 @@ const hlGradient = highlightGradient || '';
             {badgeLabel}
           </div>
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
-            {title}
-            {highlight && (
-              <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
-                {highlight}
-              </span>
+            {h1 ? (
+              <span>{h1}</span>
+            ) : (
+              <>
+                {title}
+                {highlight && (
+                  <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
+                    {highlight}
+                  </span>
+                )}
+              </>
             )}
           </h1>
           {subtitle && (
