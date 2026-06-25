@@ -47,9 +47,9 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     badge: 'Engineering Knowledge Base',
   },
   '/products': {
-    h1: 'Precision Products',
-    subtitle: 'Browse our catalog of precision CNC machined titanium components. Custom manufacturing available for aerospace, medical, and industrial applications.',
-    badge: 'Product Catalog',
+    h1: 'Our Products',
+    subtitle: 'High-precision CNC machined components for aerospace, medical, automotive, and industrial applications. Certified quality, global delivery.',
+    badge: 'Precision Manufacturing',
   },
   '/rfq': {
     h1: 'Request a Quote',
@@ -57,9 +57,9 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     badge: 'Engineering Procurement',
   },
   '/blog': {
-    h1: 'Blog',
-    subtitle: 'Expert insights on CNC machining, titanium manufacturing, material science, and industry best practices. Stay informed with the latest from BOZE CNC Ti.',
-    badge: 'Manufacturing Insights',
+    h1: 'Our Blog',
+    subtitle: 'Technical guides, industry trends, and company news from the forefront of precision CNC titanium manufacturing.',
+    badge: 'Insights & Updates',
   },
   '/documentation': {
     h1: 'Documentation Center',
