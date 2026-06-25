@@ -17,8 +17,8 @@ export interface HeroEntry {
 
 export const HERO_CONFIG: Record<string, HeroEntry> = {
   '/': {
-    h1: 'End-to-End Titanium Manufacturing & Custom Processing Services',
-    subtitle: 'From rapid prototyping via titanium additive manufacturing to high-volume precision CNC machining and heavy industrial fabrication, we provide complete, one-stop processing for all titanium grades. Our AS9100 compliant processes guarantee exact tolerances for the world\'s most demanding industries.',
+    h1: 'End-to-End Titanium Manufacturing Solutions',
+    subtitle: 'From titanium additive manufacturing and precision CNC machining to fabrication, finishing, and assembly, we provide complete one-stop solutions for custom titanium parts and components. Built on AS9100-compliant quality systems, we support projects from prototype development to full-scale production.',
     badge: 'Industry-Leading Solutions',
   },
   '/services': {
