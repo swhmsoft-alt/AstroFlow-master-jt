@@ -194,8 +194,8 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   return paths;
 }
 
-const { lang, slug } = Astro.params;
-const currentLang = isSupportedLang(lang) ? lang : DEFAULT_LANG;
+const { lang, slug } = Astro.params as { lang?: string; slug?: string };
+const currentLang = isSupportedLang(lang) ? lang as string : DEFAULT_LANG;
 const t = useTranslations(currentLang);
 const pageId = resolveContentId(slug);
 const { data: pageData } = await getLocalizedContent(pageId, currentLang);
