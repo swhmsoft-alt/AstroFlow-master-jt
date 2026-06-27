@@ -6,6 +6,17 @@ import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
+// ── Navigation translation key mappings ────────────────────
+const navKeyByHref: Record<string, string> = {
+  '/': 'nav.home',
+  '/services': 'nav.services',
+  '/materials': 'nav.materials',
+  '/capabilities': 'nav.capabilities',
+  '/industries': 'nav.industries',
+  '/resources': 'nav.resources',
+  '/products': 'nav.products',
+};
+
 const logoImage = undefined;
 const logoAlt = 'Site Logo';
 const logoText = 'BOZE CNC Ti';
@@ -50,7 +61,7 @@ const siteDescription = SITE.description;
           )}
         </a>
         <p class="text-sm leading-relaxed max-w-xs" style="color: var(--theme-text); opacity: 0.55;">
-          {siteDescription}
+          {t('footer.description')}
         </p>
         <div class="flex space-x-4">
           <a
@@ -108,7 +119,7 @@ const siteDescription = SITE.description;
                 onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
               >
                 <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
-                {item.name}
+                {t(navKeyByHref[item.href] || 'nav.home')}
               </a>
             </li>
           ))}
