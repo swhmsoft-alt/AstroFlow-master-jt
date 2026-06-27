@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface AxisConfig {
   type: string;
   subtitle: string;
@@ -9,46 +13,30 @@ interface AxisConfig {
   isHighlight?: boolean;
 }
 
-const axisConfigs: AxisConfig[] = [
-  {
-    type: "3/4-Axis CNC Machining",
-    subtitle: "Prismatic & 2D/3D Contour Focus",
-    description: "Ideal for prismatic block parts, 2D/3D face contours, drilled-hole patterns, and straight-line profiling where the workpiece can be indexed manually or via rotary table.",
-    applications: [
-      "Rectangular block & flange faces",
-      "Drilled/tapped hole patterns on planar surfaces",
-      "Slotting, pocketing, and step profiling",
-      "Straight-wall prismatic enclosures"
-    ],
-    strengths: [
-      "Cost-effective for medium-tolerance prismatic parts",
-      "Faster cycle times for 2D-dominant geometries",
-      "Simpler setup with standard fixturing"
-    ],
-    icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-  },
-  {
-    type: "Simultaneous 5-Axis CNC Machining",
-    subtitle: "Single-Setup Complex Geometries",
-    description: "Enables complex freeform geometries — impellers, turbine blades, orthopedic implants, and aerospace structural nodes — in a single clamping operation, eliminating cumulative repositioning errors entirely.",
-    applications: [
-      "Impellers, blisks, and turbine blades",
-      "Orthopedic knee/hip implants & bone plates",
-      "Aerospace structural nodes & bulkheads",
-      "Multi-face ported valve bodies & manifolds"
-    ],
-    strengths: [
-      "Single-setup eliminates stack-up errors from re-clamping",
-      "Continuous tilt/rotation reaches undercuts inaccessible to 3/4-axis",
-      "Superior surface finish via constant tool-to-part engagement angle"
-    ],
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
-    isHighlight: true
-  }
+const cards = ['card1', 'card2'];
+const icons = [
+  "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z",
+  "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const axisConfigs: AxisConfig[] = cards.map((card, idx) => ({
+  type: t(`services.multiaxiscomparison.${card}.type`) || (idx === 0 ? "3/4-Axis CNC Machining" : "Simultaneous 5-Axis CNC Machining"),
+  subtitle: t(`services.multiaxiscomparison.${card}.subtitle`) || (idx === 0 ? "Prismatic & 2D/3D Contour Focus" : "Single-Setup Complex Geometries"),
+  description: t(`services.multiaxiscomparison.${card}.description`) || (idx === 0 ? "Ideal for prismatic block parts, 2D/3D face contours, drilled-hole patterns, and straight-line profiling where the workpiece can be indexed manually or via rotary table." : "Enables complex freeform geometries — impellers, turbine blades, orthopedic implants, and aerospace structural nodes — in a single clamping operation, eliminating cumulative repositioning errors entirely."),
+  applications: [
+    t(`services.multiaxiscomparison.${card}.app0`) || "",
+    t(`services.multiaxiscomparison.${card}.app1`) || "",
+    t(`services.multiaxiscomparison.${card}.app2`) || "",
+    t(`services.multiaxiscomparison.${card}.app3`) || "",
+  ].filter(Boolean),
+  strengths: [
+    t(`services.multiaxiscomparison.${card}.str0`) || "",
+    t(`services.multiaxiscomparison.${card}.str1`) || "",
+    t(`services.multiaxiscomparison.${card}.str2`) || "",
+  ].filter(Boolean),
+  icon: icons[idx],
+  isHighlight: idx === 1
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Engineering grid -->
@@ -63,13 +51,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         </svg>
-        Multi-Axis Capability
+        {t('services.multiaxiscomparison.section_badge') || "Multi-Axis Capability"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        3/4-Axis vs <span style="color: var(--theme-primary);">{t('services.multiaxiscomparison.simultaneous_5axis')}</span>
+        {t('services.multiaxiscomparison.title_part1') || "3/4-Axis vs"} <span style="color: var(--theme-primary);">{t('services.multiaxiscomparison.simultaneous_5axis')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Understanding the right axis configuration for your titanium component geometry — from prismatic blocks to complex freeform surfaces.
+        {t('services.multiaxiscomparison.subtitle') || "Understanding the right axis configuration for your titanium component geometry — from prismatic blocks to complex freeform surfaces."}
       </p>
     </div>
 
