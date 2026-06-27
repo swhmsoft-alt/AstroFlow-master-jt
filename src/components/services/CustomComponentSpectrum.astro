@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface ComponentCategory {
   title: string;
   subtitle: string;
@@ -7,47 +11,25 @@ interface ComponentCategory {
   icon: string;
 }
 
-const categories: ComponentCategory[] = [
-  {
-    title: "Complex Structural Assemblies",
-    subtitle: "Airframes, Beams & Lightweight Structures",
-    description: "Monolithic airframes, drone load-bearing beams, and automotive lightweight structures — achieving strict stress-free welding-machining synergy for mission-critical titanium assemblies.",
-    capabilities: [
-      "Large monolithic structural nodes for aerospace & UAV",
-      "Welded-machined hybrid assemblies — stress-relieved post-weld",
-      "Automotive subframe & suspension components in Ti-6Al-4V",
-      "Multi-operation integration: machine, weld, heat-treat, inspect"
-    ],
-    icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-  },
-  {
-    title: "High-Vacuum & Fluid Manifolds",
-    subtitle: "Vacuum Chambers, Valve Blocks & Pump Bodies",
-    description: "Deep-cavity semiconductor vacuum chambers, valve blocks, and high-pressure pump bodies — engineered for zero-leakage cross-hole networks in critical fluid and vacuum applications.",
-    capabilities: [
-      "Semiconductor-grade vacuum chamber machining (UHV compatible)",
-      "Multi-port valve blocks with cross-hole intersection accuracy ≤0.01 mm",
-      "High-pressure pump bodies rated to 3,000+ PSI operating pressure",
-      "Hydrostatic and helium leak testing — in-house certified"
-    ],
-    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-  },
-  {
-    title: "Precision Micro-Components",
-    subtitle: "Medical Devices, Optics & Micro-Fasteners",
-    description: "Miniature titanium components for medical devices, optical instrumentation, and micro-fasteners — guaranteeing burr-free microscopic finish with sub-micron feature accuracy.",
-    capabilities: [
-      "Medical implant modules & surgical instrument components",
-      "Optical mount fixtures and instrumentation-grade brackets",
-      "Micro-threaded fasteners down to M1.0 with full thread form",
-      "Burr-free edge finishing — validated under 20x optical inspection"
-    ],
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-  }
+const cards = ['card1', 'card2', 'card3'];
+const icons = [
+  "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z",
+  "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+  "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const categories: ComponentCategory[] = cards.map((card, idx) => ({
+  title: t(`services.customcomponentspectrum.${card}.title`) || (idx === 0 ? "Complex Structural Assemblies" : idx === 1 ? "High-Vacuum & Fluid Manifolds" : "Precision Micro-Components"),
+  subtitle: t(`services.customcomponentspectrum.${card}.subtitle`) || (idx === 0 ? "Airframes, Beams & Lightweight Structures" : idx === 1 ? "Vacuum Chambers, Valve Blocks & Pump Bodies" : "Medical Devices, Optics & Micro-Fasteners"),
+  description: t(`services.customcomponentspectrum.${card}.description`) || (idx === 0 ? "Monolithic airframes, drone load-bearing beams, and automotive lightweight structures — achieving strict stress-free welding-machining synergy for mission-critical titanium assemblies." : idx === 1 ? "Deep-cavity semiconductor vacuum chambers, valve blocks, and high-pressure pump bodies — engineered for zero-leakage cross-hole networks in critical fluid and vacuum applications." : "Miniature titanium components for medical devices, optical instrumentation, and micro-fasteners — guaranteeing burr-free microscopic finish with sub-micron feature accuracy."),
+  capabilities: [
+    t(`services.customcomponentspectrum.${card}.cap0`) || "",
+    t(`services.customcomponentspectrum.${card}.cap1`) || "",
+    t(`services.customcomponentspectrum.${card}.cap2`) || "",
+    t(`services.customcomponentspectrum.${card}.cap3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Grid pattern -->
@@ -62,13 +44,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
         </svg>
-        Component Categories
+        {t('services.customcomponentspectrum.section_badge') || "Component Categories"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Custom Industrial <span style="color: var(--theme-primary);">{t('services.customcomponentspectrum.component_spectrum')}</span>
+        {t('services.customcomponentspectrum.title_part1') || "Custom Industrial"} <span style="color: var(--theme-primary);">{t('services.customcomponentspectrum.component_spectrum')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        From large monolithic structural assemblies to sub-millimeter micro-components — three specialized workflows covering our full custom industrial component capability.
+        {t('services.customcomponentspectrum.subtitle') || "From large monolithic structural assemblies to sub-millimeter micro-components — three specialized workflows covering our full custom industrial component capability."}
       </p>
     </div>
 

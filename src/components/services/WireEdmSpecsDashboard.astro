@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface SpecItem {
   label: string;
   value: string;
@@ -7,39 +11,23 @@ interface SpecItem {
   icon: string;
 }
 
-const specs: SpecItem[] = [
-  {
-    label: "Max Workpiece Envelope",
-    value: "800 x 550 x 250",
-    unit: "mm",
-    description: "Generous work tank accommodating medium-to-large titanium components, aerospace structural frames, and medical implant blocks.",
-    icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-  },
-  {
-    label: "Maximum Taper Angle",
-    value: "±30°",
-    unit: "per 100 mm height",
-    description: "High-precision taper cutting for aerospace impeller vanes, turbine blade roots, and tapered slots — achieved with U/V axis travel compensation.",
-    icon: "M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
-  },
-  {
-    label: "Extreme Accuracy",
-    value: "±0.002",
-    unit: "mm",
-    description: "Linear positioning precision achieved through glass-scale feedback, thermal compensation, and multi-pass skim cutting routines.",
-    icon: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859"
-  },
-  {
-    label: "Micro Surface Finish",
-    value: "Ra 0.25",
-    unit: "µm",
-    description: "Ultra-smooth finish achieved through multi-pass skim cutting with progressively lower discharge energy — eliminating secondary polishing operations.",
-    icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-  }
+const cards = ['card1', 'card2', 'card3', 'card4'];
+const values = ["800 x 550 x 250", "±30°", "±0.002", "Ra 0.25"];
+const units = ["mm", "per 100 mm height", "mm", "µm"];
+const icons = [
+  "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4",
+  "M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z",
+  "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859",
+  "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const specs: SpecItem[] = cards.map((card, idx) => ({
+  label: t(`services.wireedmspecsdashboard.${card}.label`) || (idx === 0 ? "Max Workpiece Envelope" : idx === 1 ? "Maximum Taper Angle" : idx === 2 ? "Extreme Accuracy" : "Micro Surface Finish"),
+  value: values[idx],
+  unit: units[idx],
+  description: t(`services.wireedmspecsdashboard.${card}.description`) || (idx === 0 ? "Generous work tank accommodating medium-to-large titanium components, aerospace structural frames, and medical implant blocks." : idx === 1 ? "High-precision taper cutting for aerospace impeller vanes, turbine blade roots, and tapered slots — achieved with U/V axis travel compensation." : idx === 2 ? "Linear positioning precision achieved through glass-scale feedback, thermal compensation, and multi-pass skim cutting routines." : "Ultra-smooth finish achieved through multi-pass skim cutting with progressively lower discharge energy — eliminating secondary polishing operations."),
+  icon: icons[idx]
+}));
 ---
 <section style="background-color: var(--theme-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -49,13 +37,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Technical Specifications
+        {t('services.wireedmspecsdashboard.section_badge') || "Technical Specifications"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Wire EDM <span style="color: var(--theme-primary);">{t('services.wireedmspecsdashboard.machine_dashboard_3')}</span>
+        {t('services.wireedmspecsdashboard.title_part1') || "Wire EDM"} <span style="color: var(--theme-primary);">{t('services.wireedmspecsdashboard.machine_dashboard_3')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Physical machine boundaries of our wire EDM platforms — calibrated for titanium aerospace and medical precision standards.
+        {t('services.wireedmspecsdashboard.subtitle') || "Physical machine boundaries of our wire EDM platforms — calibrated for titanium aerospace and medical precision standards."}
       </p>
     </div>
 
@@ -102,7 +90,7 @@ const t = useTranslations(currentLang);
     <!-- Footnote -->
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        Specifications apply to our Sodick / Mitsubishi wire EDM platforms. Actual results depend on material thickness, part geometry, and number of skim passes.
+        {t('services.wireedmspecsdashboard.footnote') || "Specifications apply to our Sodick / Mitsubishi wire EDM platforms. Actual results depend on material thickness, part geometry, and number of skim passes."}
       </p>
     </div>
   </div>

@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface EngineeringFocus {
   title: string;
   problem: string;
@@ -7,35 +11,24 @@ interface EngineeringFocus {
   icon: string;
 }
 
-const foci: EngineeringFocus[] = [
-  {
-    title: "Residual Stress Relief Engineering",
-    problem: "Large titanium components with aggressive material removal (pocket-scooping, deep cavity milling, multi-face machining) contain unbalanced residual stresses locked within the raw billet. When material is removed asymmetrically, these stresses redistribute — causing part warping, geometric distortion, and dimensional drift that can exceed 0.5 mm on critical mating surfaces.",
-    solution: "Post-Roughing Stress-Relief Annealing & Dynamic Aging Cycles",
-    details: [
-      "Intermediate stress-relief annealing at 540-680°C (depending on titanium grade) after the roughing phase — reducing residual stresses by up to 85% before final finishing passes",
-      "Dynamic age hardening cycles controlled within ±5°C temperature uniformity across the entire workpiece — preventing thermal gradient-induced distortion during the stress relief process",
-      "Strategic machining sequence: rough → stress-relieve → semi-finish → stabilize → finish — with dedicated hold periods (24-72 hrs) between operations to allow natural stress equilibration",
-      "Post-process dimensional verification via laser tracker and CMM — with full geometric compensation data fed back into the CAM model for net-shape finishing passes"
-    ],
-    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-  },
-  {
-    title: "100% Physical Pre-Assembly & Metrology Verification",
-    problem: "Complex multi-component assemblies (structural nodes, manifold blocks, vacuum chambers) often reveal mismatched hole patterns, misaligned bolt interfaces, and interference fits only during on-site final assembly — causing costly field rework, extended commissioning delays, and reputational risk for industrial projects.",
-    solution: "Full CMM Dimensional Mapping & Physical Pin Alignment Checks Before Shipment",
-    details: [
-      "100% CMM (Coordinate Measuring Machine) inspection with full geometric dimensioning and tolerancing (GD&T) per ASME Y14.5 — creating a complete dimensional map of every critical feature, interface, and bolt pattern",
-      "Physical pre-assembly fixture: all mating components are dry-assembled on a precision granite surface plate with hardened dowel pins and torque-controlled fasteners — verifying fit, alignment, and clearance before any component leaves the facility",
-      "Color-coded shim and adjustment maps generated for each assembly — providing field installation teams with pre-calculated compensation values for on-site alignment without iterative trial-and-error",
-      "Digital twin report package: CMM data, assembly photos, torque logs, and alignment measurements compiled into a single A2 format report — delivered with each shipment for full traceability and QA sign-off"
-    ],
-    icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-  }
+const cards = ['card1', 'card2'];
+const icons = [
+  "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z",
+  "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const foci: EngineeringFocus[] = cards.map((card, idx) => ({
+  title: t(`services.customcomponentsknowhow.${card}.title`) || (idx === 0 ? "Residual Stress Relief Engineering" : "100% Physical Pre-Assembly & Metrology Verification"),
+  problem: t(`services.customcomponentsknowhow.${card}.problem`) || (idx === 0 ? "Large titanium components with aggressive material removal (pocket-scooping, deep cavity milling, multi-face machining) contain unbalanced residual stresses locked within the raw billet. When material is removed asymmetrically, these stresses redistribute — causing part warping, geometric distortion, and dimensional drift that can exceed 0.5 mm on critical mating surfaces." : "Complex multi-component assemblies (structural nodes, manifold blocks, vacuum chambers) often reveal mismatched hole patterns, misaligned bolt interfaces, and interference fits only during on-site final assembly — causing costly field rework, extended commissioning delays, and reputational risk for industrial projects."),
+  solution: t(`services.customcomponentsknowhow.${card}.solution`) || (idx === 0 ? "Post-Roughing Stress-Relief Annealing & Dynamic Aging Cycles" : "Full CMM Dimensional Mapping & Physical Pin Alignment Checks Before Shipment"),
+  details: [
+    t(`services.customcomponentsknowhow.${card}.detail0`) || "",
+    t(`services.customcomponentsknowhow.${card}.detail1`) || "",
+    t(`services.customcomponentsknowhow.${card}.detail2`) || "",
+    t(`services.customcomponentsknowhow.${card}.detail3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Dot matrix -->
@@ -50,13 +43,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
         </svg>
-        Engineering Know-How
+        {t('services.customcomponentsknowhow.section_badge') || "Engineering Know-How"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Stress Control & <span style="color: var(--theme-primary);">{t('services.customcomponentsknowhow.integration_assurance')}</span>
+        {t('services.customcomponentsknowhow.title_part1') || "Stress Control &"} <span style="color: var(--theme-primary);">{t('services.customcomponentsknowhow.integration_assurance')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Large non-standard titanium parts demand rigorous stress management and metrological verification. Here's how we prevent distortion and guarantee assembly fit.
+        {t('services.customcomponentsknowhow.subtitle') || "Large non-standard titanium parts demand rigorous stress management and metrological verification. Here's how we prevent distortion and guarantee assembly fit."}
       </p>
     </div>
 
