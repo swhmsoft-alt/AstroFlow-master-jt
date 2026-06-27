@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface EngineeringFocus {
   title: string;
   problem: string;
@@ -7,35 +11,24 @@ interface EngineeringFocus {
   icon: string;
 }
 
-const foci: EngineeringFocus[] = [
-  {
-    title: '"White Layer" Suppression',
-    problem: "During wire EDM of titanium, the intense localized heat (10,000°C+) from electrical discharge creates a recast layer — a brittle, re-solidified 'white layer' on the cut surface. This micro-cracked layer acts as a fatigue initiation site, reducing component lifespan by up to 40% in cyclically loaded aerospace and medical implants.",
-    solution: "Multi-Pass Skim Cutting & Anti-Electrolysis Micro-Pulse Power Supplies",
-    details: [
-      "Progressive skim cut strategy: first rough cut removes bulk material, followed by 3-5 skim passes with progressively lower discharge energy (from 30A → 1A) — each pass removes the recast layer from the previous cut",
-      "Anti-electrolysis (AC) micro-pulse power supply generates ultra-short pulse durations (< 1 µs) with zero-DC component, eliminating electrolytic corrosion of titanium grain boundaries during the cutting process",
-      "Final skim pass at < 1A discharge current produces a recast layer thickness of < 2 µm — a 95% reduction compared to single-pass cutting — eliminating micro-crack initiation sites",
-      "Metallurgical validation via SEM examination confirms white layer elimination, with post-cut fatigue life matching base material properties per ASTM E466 standards"
-    ],
-    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-  },
-  {
-    title: "Fluid Contamination & Oxidation Control",
-    problem: "Titanium's high chemical reactivity at elevated temperatures (above 600°C) causes rapid oxidation and discoloration during the EDM spark discharge. Contaminated dielectric fluid — carrying suspended erosion debris — further degrades surface quality, causing pitting, uneven recast, and color banding visible on the cut surface.",
-    solution: "Closed-Loop Deionized Water Resistivity Monitors & Nano-Filtration Systems",
-    details: [
-      "Closed-loop deionized water circulation system maintains resistivity at 15-20 MΩ·cm — preventing ionic contamination that would otherwise accelerate titanium surface oxidation during spark discharge",
-      "Multi-stage nano-filtration (0.5 µm absolute) removes 99.9% of suspended erosion debris from the dielectric, preventing re-deposition of titanium particles onto the freshly cut surface",
-      "Real-time resistivity feedback automatically adjusts deionization cartridge regeneration cycles — ensuring consistent dielectric purity across extended multi-hour EDM runs",
-      "Temperature-controlled dielectric bath (20°C ±0.5°C) suppresses thermal gradients that cause differential oxidation rates across the workpiece, eliminating visible color banding and ensuring uniform surface appearance"
-    ],
-    icon: "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
-  }
+const cards = ['card1', 'card2'];
+const icons = [
+  "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z",
+  "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const foci: EngineeringFocus[] = cards.map((card, idx) => ({
+  title: t(`services.wireedmknowhow.${card}.title`) || (idx === 0 ? "\"White Layer\" Suppression" : "Fluid Contamination & Oxidation Control"),
+  problem: t(`services.wireedmknowhow.${card}.problem`) || (idx === 0 ? "During wire EDM of titanium, the intense localized heat (10,000°C+) from electrical discharge creates a recast layer — a brittle, re-solidified 'white layer' on the cut surface. This micro-cracked layer acts as a fatigue initiation site, reducing component lifespan by up to 40% in cyclically loaded aerospace and medical implants." : "Titanium's high chemical reactivity at elevated temperatures (above 600°C) causes rapid oxidation and discoloration during the EDM spark discharge. Contaminated dielectric fluid — carrying suspended erosion debris — further degrades surface quality, causing pitting, uneven recast, and color banding visible on the cut surface."),
+  solution: t(`services.wireedmknowhow.${card}.solution`) || (idx === 0 ? "Multi-Pass Skim Cutting & Anti-Electrolysis Micro-Pulse Power Supplies" : "Closed-Loop Deionized Water Resistivity Monitors & Nano-Filtration Systems"),
+  details: [
+    t(`services.wireedmknowhow.${card}.detail0`) || "",
+    t(`services.wireedmknowhow.${card}.detail1`) || "",
+    t(`services.wireedmknowhow.${card}.detail2`) || "",
+    t(`services.wireedmknowhow.${card}.detail3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Dot matrix -->
@@ -50,13 +43,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
         </svg>
-        EDM Know-How
+        {t('services.wireedmknowhow.section_badge') || "EDM Know-How"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Controlling Titanium's <span style="color: var(--theme-primary);">{t('services.wireedmknowhow.edmspecific_challenges')}</span>
+        {t('services.wireedmknowhow.title_part1') || "Controlling Titanium's"} <span style="color: var(--theme-primary);">{t('services.wireedmknowhow.edmspecific_challenges')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Titanium's metallurgical response to electrical discharge machining requires precise control of thermal, chemical, and fluid dynamics. Here's how we ensure fatigue-safe, oxidation-free EDM surfaces.
+        {t('services.wireedmknowhow.subtitle') || "Titanium's metallurgical response to electrical discharge machining requires precise control of thermal, chemical, and fluid dynamics. Here's how we ensure fatigue-safe, oxidation-free EDM surfaces."}
       </p>
     </div>
 
