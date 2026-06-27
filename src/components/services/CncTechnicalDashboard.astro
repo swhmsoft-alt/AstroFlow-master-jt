@@ -1,39 +1,29 @@
 ---
 interface Metric {
-  label: string;
   value: string;
   unit: string;
-  description: string;
   icon: string;
 }
 
 const metrics: Metric[] = [
   {
-    label: "Max 5-Axis Envelope",
     value: "650",
     unit: "650 x 500 mm",
-    description: "Generous work zone for large titanium structural members, complex aerospace housings, and multi-face prismatic parts in a single setup.",
     icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
   },
   {
-    label: "Max Turning Diameter",
     value: "ø 320",
     unit: "mm",
-    description: "Capable of accommodating medium-to-large rotational titanium components including valve bodies, bushings, and custom fastener families.",
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   },
   {
-    label: "Attainable Tolerance",
     value: "±0.005",
     unit: "mm",
-    description: "Repeatable bounds maintained through rigorous thermal compensation cycles, in-process probing, and climate-controlled machining environments.",
     icon: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859"
   },
   {
-    label: "Surface Roughness",
     value: "Ra 0.4",
     unit: "µm",
-    description: "Microscopic micro-finish achieved via precision wiper insert geometries, optimized chip loads, and ultra-rigid spindle-tooling interfaces.",
     icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   }
 ];
@@ -85,12 +75,12 @@ const t = useTranslations(currentLang);
 
           <!-- Label -->
           <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-            {metric.label}
+            {t('services.cnctechnicaldashboard.metric' + metrics.indexOf(metric) + '.label')}
           </h3>
 
           <!-- Description -->
           <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-            {metric.description}
+            {t('services.cnctechnicaldashboard.metric' + metrics.indexOf(metric) + '.desc')}
           </p>
 
           <!-- Bottom accent line -->

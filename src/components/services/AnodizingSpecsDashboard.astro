@@ -1,39 +1,29 @@
 ---
 interface Metric {
-  label: string;
   value: string;
   unit: string;
-  description: string;
   icon: string;
 }
 
 const metrics: Metric[] = [
   {
-    label: "Oxide Film Thickness Control",
     value: "50 nm – 5",
     unit: "µm",
-    description: "Micron-level layer resolutions scaling from 50 nm up to 5 µm dense layers — precisely regulated via DC voltage calibration and electrolyte composition tuning.",
     icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
   },
   {
-    label: "Kinetic Friction Coefficient",
     value: "≥50 – 60",
     unit: "% Reduction",
-    description: "Slashing raw alloy sliding resistance by ≥50%–60% to bypass metal cold-welding — titanate conversion layers transform galling-prone interfaces into reliable sliding surfaces.",
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   },
   {
-    label: "Cytotoxicity Score",
     value: "Grade 0",
     unit: "Non-Toxic",
-    description: "100% qualified under Grade 0 non-toxic clinical implant benchmarks per ISO 10993-5 — zero cytotoxic leachables, fully inert TiO₂ surfaces for permanent implant contact.",
     icon: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859"
   },
   {
-    label: "Global Standards",
     value: "AMS 2488D",
     unit: "ISO 13485",
-    description: "Multi-certified under AMS 2488D, AMS 2487, ASTM F86, and ISO 13485 regulations — full material traceability with batch-level certification documentation for audit compliance.",
     icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   }
 ];
@@ -84,12 +74,12 @@ const t = useTranslations(currentLang);
 
           <!-- Label -->
           <h3 class="text-base font-bold mb-3 text-[#F8FAFC]">
-            {metric.label}
+            {t('services.anodizingspecsdashboard.metric' + metrics.indexOf(metric) + '.label')}
           </h3>
 
           <!-- Description -->
           <p class="text-sm leading-relaxed mt-auto text-[#F8FAFC]/55">
-            {metric.description}
+            {t('services.anodizingspecsdashboard.metric' + metrics.indexOf(metric) + '.desc')}
           </p>
 
           <!-- Bottom accent line -->

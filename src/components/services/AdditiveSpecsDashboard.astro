@@ -1,39 +1,29 @@
 ---
 interface SpecItem {
-  label: string;
   value: string;
   unit: string;
-  description: string;
   icon: string;
 }
 
 const specs: SpecItem[] = [
   {
-    label: "Max Build Volume Size",
     value: "250 x 250 x 300",
     unit: "mm",
-    description: "Industrial-grade build chamber accommodating medium-sized titanium components from aerospace brackets to medical implants in a single build cycle.",
     icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
   },
   {
-    label: "Layer Thickness Domain",
     value: "20 – 60",
     unit: "µm",
-    description: "Precision-tunable layer resolution — 20 µm for ultra-fine surface finish, 60 µm for maximum build speed — adjustable per part geometry requirements.",
     icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   },
   {
-    label: "Fine Laser Spot Diameter",
     value: "ø 0.07 – 0.1",
     unit: "mm",
-    description: "Tight fiber laser focus resolution enabling fine feature reproduction — down to 100 µm wall thickness and intricate lattice node geometries.",
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   },
   {
-    label: "Metallurgical Integrity Density",
     value: "≥99.5%",
     unit: "relative density",
-    description: "Full-density titanium components exceeding 99.5% relative density — validated via Archimedes method and cross-sectional micrograph analysis per ASTM B311.",
     icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
   }
 ];
@@ -87,12 +77,12 @@ const t = useTranslations(currentLang);
 
           <!-- Label -->
           <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-            {spec.label}
+            {t('services.additivespecsdashboard.metric' + specs.indexOf(spec) + '.label')}
           </h3>
 
           <!-- Description -->
           <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-            {spec.description}
+            {t('services.additivespecsdashboard.metric' + specs.indexOf(spec) + '.desc')}
           </p>
 
           <!-- Bottom accent -->
