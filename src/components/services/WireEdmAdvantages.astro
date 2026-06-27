@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface Advantage {
   title: string;
   subtitle: string;
@@ -7,47 +11,25 @@ interface Advantage {
   icon: string;
 }
 
-const advantages: Advantage[] = [
-  {
-    title: "Zero Mechanical Stress",
-    subtitle: "No Physical Tool Contact",
-    description: "Unlike conventional milling or turning, wire EDM uses electrical discharge erosion — eliminating cutting forces entirely. Ideal for ultra-thin wall titanium structures that would deform under mechanical tool pressure.",
-    highlights: [
-      "No tool-workpiece contact eliminates distortion and edge breakout",
-      "Thin-wall capability down to 0.2 mm without deflection or chatter",
-      "Stress-free machining of pre-heat-treated titanium blanks",
-      "Ideal for fragile aerospace honeycomb and medical lattice structures"
-    ],
-    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-  },
-  {
-    title: "Sharp Internal Corners",
-    subtitle: "Ultra-Fine Electrode Wire ø 0.1 mm",
-    description: "Utilizing electrode wire diameters down to 0.1 mm (0.004\"), our wire EDM machines achieve near-zero radius internal corners — impossible for any rotating cutting tool to produce.",
-    highlights: [
-      "Corner radii as tight as 0.05 mm with ø 0.1 mm wire",
-      "No tool deflection at corner entries — repeatable geometry every pass",
-      "Wire tension control maintains straightness through deep cavities",
-      "Multiple skim passes refine corner acuity to ±0.002 mm"
-    ],
-    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-  },
-  {
-    title: "Hardened Titanium Mastery",
-    subtitle: "Post-Heat-Treatment Processing",
-    description: "Wire EDM's erosion-based process is independent of material hardness or toughness. We can cut fully hardened titanium alloys (48+ HRC) that would destroy carbide tooling — with the same precision as annealed stock.",
-    highlights: [
-      "Erodes any conductive material regardless of hardness — 48+ HRC capable",
-      "No tool wear compensation needed — accuracy consistent from first to last cut",
-      "Processes through hardened case layers, nitrided surfaces, and thermal spray coatings",
-      "Single setup for hardened blanks eliminates pre-machining then hardening distortion"
-    ],
-    icon: "M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-  }
+const cards = ['card1', 'card2', 'card3'];
+const icons = [
+  "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+  "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+  "M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const advantages: Advantage[] = cards.map((card, idx) => ({
+  title: t(`services.wireedmadvantages.${card}.title`) || (idx === 0 ? "Zero Mechanical Stress" : idx === 1 ? "Sharp Internal Corners" : "Hardened Titanium Mastery"),
+  subtitle: t(`services.wireedmadvantages.${card}.subtitle`) || (idx === 0 ? "No Physical Tool Contact" : idx === 1 ? "Ultra-Fine Electrode Wire ø 0.1 mm" : "Post-Heat-Treatment Processing"),
+  description: t(`services.wireedmadvantages.${card}.description`) || (idx === 0 ? "Unlike conventional milling or turning, wire EDM uses electrical discharge erosion — eliminating cutting forces entirely. Ideal for ultra-thin wall titanium structures that would deform under mechanical tool pressure." : idx === 1 ? "Utilizing electrode wire diameters down to 0.1 mm (0.004\"), our wire EDM machines achieve near-zero radius internal corners — impossible for any rotating cutting tool to produce." : "Wire EDM's erosion-based process is independent of material hardness or toughness. We can cut fully hardened titanium alloys (48+ HRC) that would destroy carbide tooling — with the same precision as annealed stock."),
+  highlights: [
+    t(`services.wireedmadvantages.${card}.hl0`) || "",
+    t(`services.wireedmadvantages.${card}.hl1`) || "",
+    t(`services.wireedmadvantages.${card}.hl2`) || "",
+    t(`services.wireedmadvantages.${card}.hl3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Grid pattern -->
@@ -62,13 +44,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-        EDM Capabilities
+        {t('services.wireedmadvantages.section_badge') || "EDM Capabilities"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Wire EDM <span style="color: var(--theme-primary);">{t('services.wireedmadvantages.process_advantages_2')}</span>
+        {t('services.wireedmadvantages.title_part1') || "Wire EDM"} <span style="color: var(--theme-primary);">{t('services.wireedmadvantages.process_advantages_2')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Electric discharge cutting offers unique capabilities for titanium that conventional machining cannot match — zero force, unlimited hardness, and microscopic corner radii.
+        {t('services.wireedmadvantages.subtitle') || "Electric discharge cutting offers unique capabilities for titanium that conventional machining cannot match — zero force, unlimited hardness, and microscopic corner radii."}
       </p>
     </div>
 
