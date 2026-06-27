@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface ServiceCard {
   title: string;
   subtitle: string;
@@ -7,47 +11,26 @@ interface ServiceCard {
   icon: string;
 }
 
-const services: ServiceCard[] = [
-  {
-    title: "Precision CNC Turning",
-    subtitle: "Steps, Threads & Bone Screws",
-    description: "Optimized for cylindrical titanium components demanding tight coaxiality — from threaded fasteners and bone screws to high-grade adapters and stepped shafts.",
-    capabilities: [
-      "Single & multi-step turning with live tooling",
-      "Thread whirling for bone screws & implant posts",
-      "Tight coaxiality ≤0.01 mm between steps",
-      "Bar feed automation for high-volume runs"
-    ],
-    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-  },
-  {
-    title: "High-Speed CNC Milling",
-    subtitle: "Block Components, Slots & Profiling",
-    description: "Machining prismatic block components, slots, and complex profiles while maintaining stress-free structural stability — essential for thin-wall titanium housings.",
-    capabilities: [
-      "3-axis high-speed roughing & finishing cycles",
-      "Slotting, pocketing, and shoulder profiling",
-      "Stress-relieving tool path strategies for thin walls",
-      "Rigid tapping and thread milling in titanium"
-    ],
-    icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
-  },
-  {
-    title: "Turn-Mill Multi-Tasking",
-    subtitle: "Live Tooling, Single-Setup Completes",
-    description: "Integrating live tooling (drilling, milling, slotting) on turning centers to produce complete parts in a single clamping — zeroing out re-fixturing errors entirely.",
-    capabilities: [
-      "B-axis live tooling for angled drilling & milling",
-      "Complete part production in one clamping cycle",
-      "Eliminates secondary op errors & handling time",
-      "Ideal for complex valve bodies & fittings"
-    ],
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-  }
+const cards = ['card1', 'card2', 'card3'];
+
+const icons = [
+  "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+  "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z",
+  "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const services: ServiceCard[] = cards.map((card, idx) => ({
+  title: t(`services.turnmillspectrum.${card}.title`) || (idx === 0 ? "Precision CNC Turning" : idx === 1 ? "High-Speed CNC Milling" : "Turn-Mill Multi-Tasking"),
+  subtitle: t(`services.turnmillspectrum.${card}.subtitle`) || (idx === 0 ? "Steps, Threads & Bone Screws" : idx === 1 ? "Block Components, Slots & Profiling" : "Live Tooling, Single-Setup Completes"),
+  description: t(`services.turnmillspectrum.${card}.description`) || (idx === 0 ? "Optimized for cylindrical titanium components demanding tight coaxiality — from threaded fasteners and bone screws to high-grade adapters and stepped shafts." : idx === 1 ? "Machining prismatic block components, slots, and complex profiles while maintaining stress-free structural stability — essential for thin-wall titanium housings." : "Integrating live tooling (drilling, milling, slotting) on turning centers to produce complete parts in a single clamping — zeroing out re-fixturing errors entirely."),
+  capabilities: [
+    t(`services.turnmillspectrum.${card}.cap0`) || "",
+    t(`services.turnmillspectrum.${card}.cap1`) || "",
+    t(`services.turnmillspectrum.${card}.cap2`) || "",
+    t(`services.turnmillspectrum.${card}.cap3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Grid pattern -->
@@ -62,13 +45,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
         </svg>
-        Turn-Mill Capabilities
+        {t('services.turnmillspectrum.section_badge') || "Turn-Mill Capabilities"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        CNC Turning & Milling <span style="color: var(--theme-primary);">{t('services.turnmillspectrum.process_spectrum_9')}</span>
+        {t('services.turnmillspectrum.title_part1') || "CNC Turning & Milling"} <span style="color: var(--theme-primary);">{t('services.turnmillspectrum.process_spectrum_9')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        From precision turned bone screws to multi-axis milled prismatic components — three complementary capabilities covering your full titanium part portfolio.
+        {t('services.turnmillspectrum.subtitle') || "From precision turned bone screws to multi-axis milled prismatic components — three complementary capabilities covering your full titanium part portfolio."}
       </p>
     </div>
 
