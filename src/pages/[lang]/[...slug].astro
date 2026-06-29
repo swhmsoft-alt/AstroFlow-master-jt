@@ -84,6 +84,7 @@ import RapidValuePillars from '../../components/services/RapidValuePillars.astro
 import PrototypingSpecsDashboard from '../../components/services/PrototypingSpecsDashboard.astro';
 import AdditiveBatchCta from '../../components/services/AdditiveBatchCta.astro';
 import ProductionVolumeDashboard from '../../components/services/ProductionVolumeDashboard.astro';
+import InterBatchRepeatability from '../../components/services/InterBatchRepeatability.astro';
 import SlmMechanicalDashboard from '../../components/services/SlmMechanicalDashboard.astro';
 import SlmProcessBreakdown from '../../components/services/SlmProcessBreakdown.astro';
 import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
@@ -539,7 +540,9 @@ if (heroEntry) {
   slug === 'titanium-additive-manufacturing/low-volume-production' && (
     <BaseLayout>
       <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <AdditiveEconomicsPillars />
       <ProductionVolumeDashboard />
+      <InterBatchRepeatability />
       <AdditiveBatchCta />
     </BaseLayout>
   )

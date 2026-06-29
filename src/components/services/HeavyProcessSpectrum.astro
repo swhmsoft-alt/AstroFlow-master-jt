@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface Process {
   title: string;
   subtitle: string;
@@ -7,47 +11,25 @@ interface Process {
   icon: string;
 }
 
-const processes: Process[] = [
-  {
-    title: "Heavy-Gauge Plate Rolling & Forming",
-    subtitle: "Hot Forming & Multi-Axis Heavy Brake Rolling",
-    description: "Hot forming and multi-axis heavy brake rolling engineered to handle thick titanium shells, dished heads, and large-radius structural curves up to several centimeters thick — achieving precise geometry without cracking or spring-back.",
-    capabilities: [
-      "Hot forming at 600-800°C for enhanced titanium ductility",
-      "Multi-axis heavy plate rolling for conical, cylindrical, and compound curves",
-      "Dished head forming for pressure vessel and tank applications",
-      "Thick-plate straightening and flattening within ±1 mm/m flatness"
-    ],
-    icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
-  },
-  {
-    title: "Monolithic Heavy Structural Forging",
-    subtitle: "Open-Die & Closed-Die Titanium Forging",
-    description: "Strategic provisioning of heavy open-die and closed-die forged alloy blocks — refining internal metal grain flows for peak fatigue endurance lifetimes in defense, aerospace, and subsea structural applications.",
-    capabilities: [
-      "Open-die forging for large-block titanium billet breakdown",
-      "Closed-die forging for near-net-shape structural components",
-      "Grain flow optimization for enhanced fatigue and fracture toughness",
-      "Post-forge normalization and ultrasonic inspection"
-    ],
-    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-  },
-  {
-    title: "Large-Scale Multi-Component Integration",
-    subtitle: "Full-Scale Assembly & Gas-Shielded Welding",
-    description: "Full-scale assembly and mechanized gas-shielded welding for multi-meter infrastructure frames, heavy agitator shafts, and subsea structures — integrating forged, rolled, and machined components into completed assemblies.",
-    capabilities: [
-      "Multi-meter structural frame welding and assembly",
-      "Mechanized GTAW/GMAW for long-seam heavy plate welding",
-      "Heavy shaft and agitator fabrication with full NDT verification",
-      "Pre-assembly fit-up and dimensional verification on surface plates"
-    ],
-    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-  }
+const cards = ['card1', 'card2', 'card3'];
+const icons = [
+  "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z",
+  "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z",
+  "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const processes: Process[] = cards.map((card, idx) => ({
+  title: t(`services.heavyprocessspectrum.${card}.title`) || (idx === 0 ? "Heavy-Gauge Plate Rolling & Forming" : idx === 1 ? "Monolithic Heavy Structural Forging" : "Large-Scale Multi-Component Integration"),
+  subtitle: t(`services.heavyprocessspectrum.${card}.subtitle`) || (idx === 0 ? "Hot Forming & Multi-Axis Heavy Brake Rolling" : idx === 1 ? "Open-Die & Closed-Die Titanium Forging" : "Full-Scale Assembly & Gas-Shielded Welding"),
+  description: t(`services.heavyprocessspectrum.${card}.description`) || (idx === 0 ? "Hot forming and multi-axis heavy brake rolling engineered to handle thick titanium shells, dished heads, and large-radius structural curves up to several centimeters thick — achieving precise geometry without cracking or spring-back." : idx === 1 ? "Strategic provisioning of heavy open-die and closed-die forged alloy blocks — refining internal metal grain flows for peak fatigue endurance lifetimes in defense, aerospace, and subsea structural applications." : "Full-scale assembly and mechanized gas-shielded welding for multi-meter infrastructure frames, heavy agitator shafts, and subsea structures — integrating forged, rolled, and machined components into completed assemblies."),
+  capabilities: [
+    t(`services.heavyprocessspectrum.${card}.cap0`) || "",
+    t(`services.heavyprocessspectrum.${card}.cap1`) || "",
+    t(`services.heavyprocessspectrum.${card}.cap2`) || "",
+    t(`services.heavyprocessspectrum.${card}.cap3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">
@@ -59,23 +41,21 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
         </svg>
-        Heavy Manufacturing Capabilities
+        {t('services.heavyprocessspectrum.section_badge') || "Heavy Manufacturing Capabilities"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Forming & Heavy <span style="color: var(--theme-primary);">{t('services.heavyprocessspectrum.process_spectrum_5')}</span>
+        {t('services.heavyprocessspectrum.title_part1') || "Forming & Heavy"} <span style="color: var(--theme-primary);">{t('services.heavyprocessspectrum.process_spectrum_5')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        From hot-formed heavy-gauge plate rolling to monolithic structural forging and large-scale assembly — three macro-scale workflows for mission-critical titanium infrastructure.
+        {t('services.heavyprocessspectrum.subtitle') || "From hot-formed heavy-gauge plate rolling to monolithic structural forging and large-scale assembly — three macro-scale workflows for mission-critical titanium infrastructure."}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {processes.map((proc) => (
-        <div
-          class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
+        <div class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
           onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
-        >
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'">
           <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d={proc.icon} />
@@ -94,12 +74,10 @@ const t = useTranslations(currentLang);
               </li>
             ))}
           </ul>
-          <div
-            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+          <div class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
             style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
             onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
-            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
-          ></div>
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"></div>
         </div>
       ))}
     </div>

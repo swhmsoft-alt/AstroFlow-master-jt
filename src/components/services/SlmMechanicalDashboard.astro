@@ -55,13 +55,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Mechanical Properties
+        {t('services.slmmechanicaldashboard.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         SLM Mechanical <span style="color: var(--theme-primary);">{t('services.slmmechanicaldashboard.performance_dashboard_2')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Hard mechanical properties of our SLM Ti-6Al-4V components — validated per ASTM F2924 and ASTM F3302 aerospace specifications.
+        {t('services.slmmechanicaldashboard.subtitle')}
       </p>
     </div>
 
@@ -80,8 +80,8 @@ const t = useTranslations(currentLang);
             <span class="text-4xl md:text-5xl font-bold tracking-tight" style="color: var(--theme-primary);">{spec.value}</span>
             {spec.unit && <span class="text-lg font-semibold ml-1" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{spec.unit}</span>}
           </div>
-          <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{spec.label}</h3>
-          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{spec.description}</p>
+          <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('services.slmmechanicaldashboard.metric' + specs.indexOf(spec) + '.label')}</h3>
+          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('services.slmmechanicaldashboard.metric' + specs.indexOf(spec) + '.desc')}</p>
           <div class="absolute bottom-0 left-6 right-6 h-px" style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent); opacity: 0.2;"></div>
         </div>
       ))}
@@ -89,7 +89,7 @@ const t = useTranslations(currentLang);
 
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        Mechanical properties measured from as-built + stress-relieved condition. Post-HIP treatment can further enhance ductility and fatigue performance. All values per ASTM F2924 (Ti-6Al-4V).
+        {t('services.slmmechanicaldashboard.footnote')}
       </p>
     </div>
   </div>

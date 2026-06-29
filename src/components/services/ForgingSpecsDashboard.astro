@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface SpecItem {
   label: string;
   value: string;
@@ -7,39 +11,23 @@ interface SpecItem {
   icon: string;
 }
 
-const specs: SpecItem[] = [
-  {
-    label: "Hydraulic Press Capacity",
-    value: "8,000",
-    unit: "Metric Tons",
-    description: "Heavy infrastructure tonnage scaling up to 8,000 metric tons — delivering the compressive force needed to shape large titanium billets and complex closed-die geometries.",
-    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"
-  },
-  {
-    label: "Max Rolled Ring Size",
-    value: "ø 2,500",
-    unit: "mm",
-    description: "Seamless expanding outer diameter tracking up to 2,500 mm via radial-axial rolling — producing large annular forgings with continuous grain flow orientation.",
-    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-  },
-  {
-    label: "Subsurface Quality Metric",
-    value: "AMS 2631",
-    unit: "Class AA",
-    description: "100% compliant under Class I Ultrasonic Testing boundaries per AMS 2631 Class AA — the most stringent aerospace subsurface discontinuity standard.",
-    icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-  },
-  {
-    label: "Microstructure Phase Guarantee",
-    value: "≥95%",
-    unit: "Equiaxed α+β",
-    description: "Yielding ≥95% uniform equiaxed alpha+beta metallurgical transformation — ensuring optimum balance of strength, ductility, and fatigue resistance per aerospace specifications.",
-    icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-  }
+const cards = ['card1', 'card2', 'card3', 'card4'];
+const values = ["8,000", "ø 2,500", "AMS 2631", "≥95%"];
+const units = ["Metric Tons", "mm", "Class AA", "Equiaxed α+β"];
+const icons = [
+  "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z",
+  "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+  "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z",
+  "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const specs: SpecItem[] = cards.map((card, idx) => ({
+  label: t(`services.forgingspecsdashboard.${card}.label`) || (idx === 0 ? "Hydraulic Press Capacity" : idx === 1 ? "Max Rolled Ring Size" : idx === 2 ? "Subsurface Quality Metric" : "Microstructure Phase Guarantee"),
+  value: values[idx],
+  unit: units[idx],
+  description: t(`services.forgingspecsdashboard.${card}.description`) || (idx === 0 ? "Heavy infrastructure tonnage scaling up to 8,000 metric tons — delivering the compressive force needed to shape large titanium billets and complex closed-die geometries." : idx === 1 ? "Seamless expanding outer diameter tracking up to 2,500 mm via radial-axial rolling — producing large annular forgings with continuous grain flow orientation." : idx === 2 ? "100% compliant under Class I Ultrasonic Testing boundaries per AMS 2631 Class AA — the most stringent aerospace subsurface discontinuity standard." : "Yielding ≥95% uniform equiaxed alpha+beta metallurgical transformation — ensuring optimum balance of strength, ductility, and fatigue resistance per aerospace specifications."),
+  icon: icons[idx]
+}));
 ---
 <section style="background-color: var(--theme-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -48,13 +36,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Forging Specifications
+        {t('services.forgingspecsdashboard.section_badge') || "Forging Specifications"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Forging <span style="color: var(--theme-primary);">{t('services.forgingspecsdashboard.capacity_dashboard_3')}</span>
+        {t('services.forgingspecsdashboard.title_part1') || "Forging"} <span style="color: var(--theme-primary);">{t('services.forgingspecsdashboard.capacity_dashboard_3')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Press tonnage, ring size capacity, ultrasonic quality limits, and microstructure control metrics for our titanium forging facility.
+        {t('services.forgingspecsdashboard.subtitle') || "Press tonnage, ring size capacity, ultrasonic quality limits, and microstructure control metrics for our titanium forging facility."}
       </p>
     </div>
 
@@ -82,7 +70,7 @@ const t = useTranslations(currentLang);
 
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        All forging performed per AMS 2750 pyrometry and AMS 2631 ultrasonic inspection standards. Microstructure verified per ASTM E3 metallographic preparation.
+        {t('services.forgingspecsdashboard.footnote') || "All forging performed per AMS 2750 pyrometry and AMS 2631 ultrasonic inspection standards. Microstructure verified per ASTM E3 metallographic preparation."}
       </p>
     </div>
   </div>

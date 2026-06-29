@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface Process {
   title: string;
   subtitle: string;
@@ -7,47 +11,25 @@ interface Process {
   icon: string;
 }
 
-const processes: Process[] = [
-  {
-    title: "Closed-Die Precision Forging",
-    subtitle: "Heavy High-Tonnage Dies for Near-Net Shaping",
-    description: "Utilizing heavy high-tonnage dies for near-net shaping on complex aerospace linkages, turbine blades, and structural nodes — slashing post-machining scrap rates by up to 70% compared to billet machining.",
-    capabilities: [
-      "High-tonnage closed-die forging for complex 3D geometries",
-      "Near-net shape capability reduces machining stock to 1-3 mm",
-      "Controlled die temperature and lubrication for consistent fill",
-      "Post-forge cooling profiles optimized for uniform microstructure"
-    ],
-    icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
-  },
-  {
-    title: "Open-Die Heavy Forging",
-    subtitle: "Repetitive Upsetting & Drawing on Huge Ingots",
-    description: "Executing repetitive upsetting and drawing operations on huge titanium ingots to shatter primitive cast structures — creating dense, reliable forging stock with refined grain structures and zero centerline porosity.",
-    capabilities: [
-      "Multi-pass upsetting and drawing for ingot breakdown",
-      "Cast structure refinement through controlled reduction ratios",
-      "Centerline porosity closure via cross-sectional deformation",
-      "Ultrasonic inspection after each forging heat for quality verification"
-    ],
-    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-  },
-  {
-    title: "Seamless Rolled Ring Forging",
-    subtitle: "Radial-Axial Rolling Mills for Massive Diameters",
-    description: "Deploying radial-axial rolling mills for seamless ring wall expansion up to massive diameters — orienting grain matrices along peripheral load lines for optimum fatigue resistance in bearing races and flanges.",
-    capabilities: [
-      "Radial-axial ring rolling for seamless annular components",
-      "Grain flow orientation along circumferential load paths",
-      "Diameter range from 200 mm to 2,500 mm OD",
-      "Rectangular, contoured, and profiled cross-sections available"
-    ],
-    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-  }
+const cards = ['card1', 'card2', 'card3'];
+const icons = [
+  "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z",
+  "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+  "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const processes: Process[] = cards.map((card, idx) => ({
+  title: t(`services.forgingprocessspectrum.${card}.title`) || (idx === 0 ? "Closed-Die Precision Forging" : idx === 1 ? "Open-Die Heavy Forging" : "Seamless Rolled Ring Forging"),
+  subtitle: t(`services.forgingprocessspectrum.${card}.subtitle`) || (idx === 0 ? "Heavy High-Tonnage Dies for Near-Net Shaping" : idx === 1 ? "Repetitive Upsetting & Drawing on Huge Ingots" : "Radial-Axial Rolling Mills for Massive Diameters"),
+  description: t(`services.forgingprocessspectrum.${card}.description`) || (idx === 0 ? "Utilizing heavy high-tonnage dies for near-net shaping on complex aerospace linkages, turbine blades, and structural nodes — slashing post-machining scrap rates by up to 70% compared to billet machining." : idx === 1 ? "Executing repetitive upsetting and drawing operations on huge titanium ingots to shatter primitive cast structures — creating dense, reliable forging stock with refined grain structures and zero centerline porosity." : "Deploying radial-axial rolling mills for seamless ring wall expansion up to massive diameters — orienting grain matrices along peripheral load lines for optimum fatigue resistance in bearing races and flanges."),
+  capabilities: [
+    t(`services.forgingprocessspectrum.${card}.cap0`) || "",
+    t(`services.forgingprocessspectrum.${card}.cap1`) || "",
+    t(`services.forgingprocessspectrum.${card}.cap2`) || "",
+    t(`services.forgingprocessspectrum.${card}.cap3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">
@@ -59,13 +41,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Forging Capabilities
+        {t('services.forgingprocessspectrum.section_badge') || "Forging Capabilities"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Titanium Forging <span style="color: var(--theme-primary);">{t('services.forgingprocessspectrum.process_spectrum_4')}</span>
+        {t('services.forgingprocessspectrum.title_part1') || "Titanium Forging"} <span style="color: var(--theme-primary);">{t('services.forgingprocessspectrum.process_spectrum_4')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        From closed-die precision forging of complex aerospace geometries to open-die ingot breakdown and seamless ring rolling — three specialized plastic deformation workflows for mission-critical titanium components.
+        {t('services.forgingprocessspectrum.subtitle') || "From closed-die precision forging of complex aerospace geometries to open-die ingot breakdown and seamless ring rolling — three specialized plastic deformation workflows for mission-critical titanium components."}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

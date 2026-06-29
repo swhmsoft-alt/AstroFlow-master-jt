@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface EngineeringFocus {
   title: string;
   problem: string;
@@ -7,35 +11,24 @@ interface EngineeringFocus {
   icon: string;
 }
 
-const foci: EngineeringFocus[] = [
-  {
-    title: "Thermal Forming & Spring-Back Micro-Compensation",
-    problem: "Titanium's high strength-to-modulus ratio (UTS 950 MPa vs. elastic modulus 114 GPa) causes extreme spring-back during cold forming — where the material elastically recovers 15-30% of the bend angle after the forming load is released. On thick plates (10-50 mm), this spring-back is highly nonlinear and geometry-dependent, making conventional over-bend allowances inaccurate and causing costly dimensional rework.",
-    solution: "Localized Infrared Heating (600-800°C) & Finite Element Spring-Back Modeling",
-    details: [
-      "Localized infrared heating arrays target the bend zone exclusively, raising the titanium temperature to 600-800°C — the optimal hot-forming window where ductility increases by 300% and yield strength drops by 60%, dramatically reducing spring-back magnitude and enabling tight-radius bends without cracking",
-      "Finite Element Analysis (FEA) spring-back prediction models simulate the complete forming cycle: heating profile, creep forming during the soak period, elastic recovery during cooling, and final geometry — generating compensated tool geometries that counter the predicted offset before the first part is formed",
-      "Iterative over-bend compensation: the FEA model's predicted spring-back angle is fed into the press brake controller as an automated over-bend offset (typically 3-12° depending on plate thickness, bend radius, and temperature), reducing the trial-and-error cycle from 3-5 iterations to a single validated setup",
-      "Result: ±0.5° angular accuracy on hot-formed heavy titanium plates — eliminating secondary straightening operations and ensuring fit-up compliance with mating structural components"
-    ],
-    icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
-  },
-  {
-    title: "Full-Scale Vacuum Stress-Relief Thermal Cycles",
-    problem: "Heavy titanium plate rolling, forging, and welding operations introduce massive residual stresses — from the non-uniform plastic deformation during forming (rolling stresses up to 60% of yield), thermal contraction stresses in multi-pass weld seams, and stress concentration at formed radius transitions. If not relieved, these locked-in stresses cause delayed distortion during machining, dimensional drift over time, and unpredictable performance under deep-sea hyperbaric or cyclic fatigue loading.",
-    solution: "Multi-Meter Computerized Vacuum Annealing Furnace — 95%+ Stress Elimination",
-    details: [
-      "Full-scale vacuum annealing furnace with usable chamber dimensions accommodating components up to 12,000 x 4,500 x 4,000 mm — the entire fabricated structure is stress-relieved in a single thermal cycle, eliminating the need for localized or segmented stress relief",
-      "Computerized thermal cycle control with ±5°C uniformity across the entire workload: ramp to 540-650°C at 50°C/hour, soak for 1 hour per 25 mm of thickness, cool at 50°C/hour to 300°C, then natural convection to room temperature — ensuring complete stress relaxation without thermal gradient-induced distortion",
-      "Vacuum atmosphere maintained at ≤10⁻⁵ mbar throughout the entire thermal cycle — preventing any surface oxidation, alpha-case formation, or discoloration on the titanium components, eliminating the need for post-relief chemical cleaning or mechanical scale removal",
-      "Result: 95%+ of residual welding and forming stresses eliminated — verified by sectioning and strain gauge measurement per ASTM E837. Structures maintain dimensional stability through subsequent machining, transport, installation, and in-service thermal cycling under deep-sea hyperbaric or cryogenic conditions"
-    ],
-    icon: "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
-  }
+const cards = ['card1', 'card2'];
+const icons = [
+  "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z",
+  "M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+
+const foci: EngineeringFocus[] = cards.map((card, idx) => ({
+  title: t(`services.hotformingstressknowhow.${card}.title`) || (idx === 0 ? "Thermal Forming & Spring-Back Micro-Compensation" : "Full-Scale Vacuum Stress-Relief Thermal Cycles"),
+  problem: t(`services.hotformingstressknowhow.${card}.problem`) || (idx === 0 ? "Titanium's high strength-to-modulus ratio (UTS 950 MPa vs. elastic modulus 114 GPa) causes extreme spring-back during cold forming — where the material elastically recovers 15-30% of the bend angle after the forming load is released. On thick plates (10-50 mm), this spring-back is highly nonlinear and geometry-dependent, making conventional over-bend allowances inaccurate and causing costly dimensional rework." : "Heavy titanium plate rolling, forging, and welding operations introduce massive residual stresses — from the non-uniform plastic deformation during forming (rolling stresses up to 60% of yield), thermal contraction stresses in multi-pass weld seams, and stress concentration at formed radius transitions. If not relieved, these locked-in stresses cause delayed distortion during machining, dimensional drift over time, and unpredictable performance under deep-sea hyperbaric or cyclic fatigue loading."),
+  solution: t(`services.hotformingstressknowhow.${card}.solution`) || (idx === 0 ? "Localized Infrared Heating (600-800°C) & Finite Element Spring-Back Modeling" : "Multi-Meter Computerized Vacuum Annealing Furnace — 95%+ Stress Elimination"),
+  details: [
+    t(`services.hotformingstressknowhow.${card}.detail0`) || "",
+    t(`services.hotformingstressknowhow.${card}.detail1`) || "",
+    t(`services.hotformingstressknowhow.${card}.detail2`) || "",
+    t(`services.hotformingstressknowhow.${card}.detail3`) || "",
+  ].filter(Boolean),
+  icon: icons[idx]
+}));
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.02]">
@@ -48,22 +41,20 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
         </svg>
-        Process Engineering
+        {t('services.hotformingstressknowhow.section_badge') || "Process Engineering"}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Hot Forming & Stress <span style="color: var(--theme-primary);">{t('services.hotformingstressknowhow.relief_knowhow')}</span>
+        {t('services.hotformingstressknowhow.title_part1') || "Hot Forming & Stress"} <span style="color: var(--theme-primary);">{t('services.hotformingstressknowhow.relief_knowhow')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Conquering heavy titanium spring-back and structural warp requires thermal-mechanical modeling and full-scale vacuum stress relief. Here's how we achieve dimensional stability on multi-ton structures.
+        {t('services.hotformingstressknowhow.subtitle') || "Conquering heavy titanium spring-back and structural warp requires thermal-mechanical modeling and full-scale vacuum stress relief. Here's how we achieve dimensional stability on multi-ton structures."}
       </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {foci.map((focus) => (
-        <div
-          class="relative rounded-xl overflow-hidden h-full"
-          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
-        >
+        <div class="relative rounded-xl overflow-hidden h-full"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
           <div class="p-8 pb-6">
             <div class="flex items-start mb-5">
               <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">

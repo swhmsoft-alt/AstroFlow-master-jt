@@ -39,13 +39,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Technical Specifications
+        {t('services.additivespecsdashboard.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         3D Printing <span style="color: var(--theme-primary);">{t('services.additivespecsdashboard.machine_dashboard')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Industrial SLM/DMLS printer parameters — calibrated and verified for titanium aerospace and medical-grade production.
+        {t('services.additivespecsdashboard.subtitle')}
       </p>
     </div>
 
@@ -94,7 +94,7 @@ const t = useTranslations(currentLang);
     <!-- Footnote -->
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        Specifications apply to our EOS / Renishaw SLM platforms. Mechanical properties verified per ASTM F2924 (Ti-6Al-4V) and ASTM F3302 (additive manufacturing).
+        {t('services.additivespecsdashboard.footnote')}
       </p>
     </div>
   </div>

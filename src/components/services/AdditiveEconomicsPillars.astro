@@ -59,17 +59,17 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Economics
+        {t('services.additiveeconomicspillars.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         Low-Volume Production <span style="color: var(--theme-primary);">{t('services.additiveeconomicspillars.economics_pillars')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Three economic advantages making additive manufacturing the most cost-effective path for low-to-mid volume titanium production — from 10 to 1,000+ units.
+        {t('services.additiveeconomicspillars.subtitle')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {pillars.map((pillar) => (
+      {pillars.map((pillar, index) => (
         <div
           class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
@@ -81,16 +81,16 @@ const t = useTranslations(currentLang);
               <path stroke-linecap="round" stroke-linejoin="round" d={pillar.icon} />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{pillar.title}</h3>
-          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{pillar.subtitle}</span>
-          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{pillar.description}</p>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{t('services.additiveeconomicspillars.' + index + '.title')}</h3>
+          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{t('services.additiveeconomicspillars.' + index + '.subtitle')}</span>
+          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('services.additiveeconomicspillars.' + index + '.desc')}</p>
           <ul class="space-y-2 mt-auto">
-            {pillar.highlights.map((h) => (
+            {pillar.highlights.map((_, hIndex) => (
               <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
                 <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
-                {h}
+                {t('services.additiveeconomicspillars.' + index + '.highlight' + hIndex)}
               </li>
             ))}
           </ul>

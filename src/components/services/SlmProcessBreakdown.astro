@@ -60,18 +60,18 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         </svg>
-        SLM Process Mechanics
+        {t('services.slmprocessbreakdown.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         SLM Powder-Bed <span style="color: var(--theme-primary);">{t('services.slmprocessbreakdown.fusion_breakdown')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Three core mechanics powering our Selective Laser Melting process — from micro-laser scanning to complex topology generation.
+        {t('services.slmprocessbreakdown.subtitle')}
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {processes.map((proc) => (
+      {processes.map((proc, index) => (
         <div
           class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
@@ -83,16 +83,16 @@ const t = useTranslations(currentLang);
               <path stroke-linecap="round" stroke-linejoin="round" d={proc.icon} />
             </svg>
           </div>
-          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{proc.title}</h3>
-          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{proc.subtitle}</span>
-          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{proc.description}</p>
+          <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{t('services.slmprocessbreakdown.' + index + '.title')}</h3>
+          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{t('services.slmprocessbreakdown.' + index + '.subtitle')}</span>
+          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('services.slmprocessbreakdown.' + index + '.desc')}</p>
           <ul class="space-y-2 mt-auto">
-            {proc.capabilities.map((cap) => (
+            {proc.capabilities.map((_, capIndex) => (
               <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
                 <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
-                {cap}
+                {t('services.slmprocessbreakdown.' + index + '.cap' + capIndex)}
               </li>
             ))}
           </ul>

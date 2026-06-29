@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface EngineeringFocus {
   title: string;
   problem: string;
@@ -9,33 +13,30 @@ interface EngineeringFocus {
 
 const foci: EngineeringFocus[] = [
   {
-    title: "Advanced Molten Glass Envelope Lubrication",
-    problem: "During hot extrusion of titanium at 900-1050°C, the extreme pressure (6,000 metric tons) and temperature cause severe adhesion between the titanium billet and the die steel surface — producing surface tearing, galling, and characteristic 'fish-bone' wave patterns on the extruded profile that render the surface unfit for aerospace or structural applications and require extensive post-extrusion grinding or scrapping.",
-    solution: "Aerospace-Certified Micro-Glass Powder Matrices Forming Liquid Boundary Layers",
+    title: t('services.extrusionlubricationknowhow.card1.title'),
+    problem: t('services.extrusionlubricationknowhow.card1.problem'),
+    solution: t('services.extrusionlubricationknowhow.card1.solution'),
     details: [
-      "Aerospace-certified micro-glass powder (particle size 50-200 µm) applied as a uniform coating to the preheated titanium billet before insertion into the extrusion press — the glass composition is precisely formulated to melt at extrusion temperature (950-1050°C), forming a continuous viscous liquid boundary between the billet and the die bearing surface",
-      "The molten glass layer (viscosity 10³-10⁵ Poise at extrusion temperature) creates a hydrodynamic lubrication film 10-30 µm thick — completely isolating the titanium from the die steel and eliminating metal-to-metal contact that causes surface tearing, galling, and fish-bone wave formation",
-      "Continuous lubrication throughout the entire extrusion stroke: the glass coating is replenished from a reservoir in the dummy block, maintaining the liquid boundary layer as fresh billet material feeds into the die — ensuring uniform surface quality from the first meter to the last",
-      "Result: surface finish Ra 1.6-3.2 µm directly from the extrusion press — no surface tearing, no galling, no fish-bone waves — eliminating the need for secondary surface conditioning and maximizing material yield"
+      t('services.extrusionlubricationknowhow.card1.detail0'),
+      t('services.extrusionlubricationknowhow.card1.detail1'),
+      t('services.extrusionlubricationknowhow.card1.detail2'),
+      t('services.extrusionlubricationknowhow.card1.detail3')
     ],
     icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"
   },
   {
-    title: "Isothermal Tooling Cycles & Stretch Straightening",
-    problem: "Titanium's high extrusion temperature (900-1050°C) and low thermal conductivity create significant thermal gradients across the die face during extrusion — causing differential material flow rates across the profile cross-section that result in axial twist, longitudinal bowing, and cross-sectional distortion. Without active thermal management and post-extrusion correction, these geometric defects render long-length extruded profiles unsuitable for structural assembly.",
-    solution: "Inductive Die Heating Loops for Isothermal Flow & Multi-Ton Stretch Straightening",
+    title: t('services.extrusionlubricationknowhow.card2.title'),
+    problem: t('services.extrusionlubricationknowhow.card2.problem'),
+    solution: t('services.extrusionlubricationknowhow.card2.solution'),
     details: [
-      "Inductive heating coils embedded in the die holder maintain the die temperature at the target set point (typically 950-1000°C) with ±5°C accuracy throughout the entire extrusion cycle — eliminating the progressive cooling that would otherwise occur as the die conducts heat away from the extrusion, ensuring uniform metal flow from start to finish",
-      "Multi-zone inductive control: individual heating zones at the die center, bearing surface, and periphery are independently regulated — compensating for the higher heat loss at the profile edges vs. the center, ensuring uniform material velocity across the entire cross-section and eliminating differential flow-induced twist",
-      "Post-extrusion stretch straightening on a multi-ton hydraulic tension bed: the extruded profile is gripped at both ends and subjected to a controlled tensile load (typically 1-3% permanent elongation) — this plastic deformation removes axial twist, longitudinal bow, and cross-sectional distortion while improving the straightness to within ±0.5 mm/m",
-      "Result: extruded profiles delivered with straightness within ±0.5 mm/m, twist-free, and dimensionally compliant — ready for direct integration into structural assemblies without secondary straightening or rework"
+      t('services.extrusionlubricationknowhow.card2.detail0'),
+      t('services.extrusionlubricationknowhow.card2.detail1'),
+      t('services.extrusionlubricationknowhow.card2.detail2'),
+      t('services.extrusionlubricationknowhow.card2.detail3')
     ],
     icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.02]">
@@ -48,13 +49,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Process Engineering
+        {t('services.extrusionlubricationknowhow.section_badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Die Lubrication & <span style="color: var(--theme-primary);">{t('services.diegallinglubricationknowhow.thermal_control_knowhow')}</span>
+        {t('services.extrusionlubricationknowhow.title_part1')} <span style="color: var(--theme-primary);">{t('services.extrusionlubricationknowhow.subtitle_highlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Conquering titanium's high-temperature sticking, die wear, and linear distortion requires specialized glass lubrication and isothermal tooling control. Here's how we achieve aerospace-grade extruded surfaces and straightness.
+        {t('services.extrusionlubricationknowhow.subtitle')}
       </p>
     </div>
 
@@ -74,7 +75,7 @@ const t = useTranslations(currentLang);
               <h3 class="text-xl font-bold" style="color: var(--theme-text);">{focus.title}</h3>
             </div>
             <div class="pl-14">
-              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{t('services.diegallinglubricationknowhow.challenge_5')}</span>
+              <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{t('services.extrusionlubricationknowhow.challenge')}</span>
               <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
             </div>
           </div>
@@ -89,7 +90,7 @@ const t = useTranslations(currentLang);
           </div>
 
           <div class="p-8 pt-4">
-            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">{t('services.diegallinglubricationknowhow.solution_5')}</span>
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">{t('services.extrusionlubricationknowhow.solution')}</span>
             <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
             <ul class="space-y-3">
               {focus.details.map((detail) => (

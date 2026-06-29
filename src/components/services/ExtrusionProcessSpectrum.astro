@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface Process {
   title: string;
   subtitle: string;
@@ -9,45 +13,42 @@ interface Process {
 
 const processes: Process[] = [
   {
-    title: "Complex Profile Structural Extrusion",
-    subtitle: "Near-Net Continuous T, L, U & H Sections",
-    description: "Executing near-net continuous extrusion for T, L, U, and H structural sections — delivering seamless load-bearing airframes, transit rails, and industrial guide slides without weld joints or mechanical fasteners.",
+    title: t('services.extrusionprocessspectrum.0.title'),
+    subtitle: t('services.extrusionprocessspectrum.0.subtitle'),
+    description: t('services.extrusionprocessspectrum.0.desc'),
     capabilities: [
-      "Near-net extrusion of complex asymmetric structural profiles",
-      "Multi-cavity die designs for simultaneous multi-profile production",
-      "Consistent wall thickness across full 12,000 mm extruded length",
-      "Post-extrusion stretch straightening for dimensional stability"
+      t('services.extrusionprocessspectrum.0.cap0'),
+      t('services.extrusionprocessspectrum.0.cap1'),
+      t('services.extrusionprocessspectrum.0.cap2'),
+      t('services.extrusionprocessspectrum.0.cap3')
     ],
     icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
   },
   {
-    title: "Seamless Heavy-Wall Tubes",
-    subtitle: "High-Pressure Monolithic Subsea Piping Housings",
-    description: "Forming high-pressure monolithic subsea piping housings without any longitudinal weld lines — avoiding hot HAZ micro-cracking vulnerabilities inherent in welded pipe manufacturing.",
+    title: t('services.extrusionprocessspectrum.1.title'),
+    subtitle: t('services.extrusionprocessspectrum.1.subtitle'),
+    description: t('services.extrusionprocessspectrum.1.desc'),
     capabilities: [
-      "Seamless tube extrusion with wall thickness from 4.0 mm to 50+ mm",
-      "Mandrel-guided internal diameter control within ±0.5 mm",
-      "Hydrostatic pressure tested to 5,000+ PSI operating ratings",
-      "No longitudinal weld seam — zero HAZ, zero weld inspection required"
+      t('services.extrusionprocessspectrum.1.cap0'),
+      t('services.extrusionprocessspectrum.1.cap1'),
+      t('services.extrusionprocessspectrum.1.cap2'),
+      t('services.extrusionprocessspectrum.1.cap3')
     ],
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   },
   {
-    title: "Precision Hollow Multi-Channel Shapes",
-    subtitle: "Custom Mandrel Configurations for Cooling Voids",
-    description: "Driving custom interior mandrel configurations to fuse multiple cooling voids or weight-saving cavities inside a singular titanium extrusion blank — impossible to produce with rolling or forming methods.",
+    title: t('services.extrusionprocessspectrum.2.title'),
+    subtitle: t('services.extrusionprocessspectrum.2.subtitle'),
+    description: t('services.extrusionprocessspectrum.2.desc'),
     capabilities: [
-      "Multi-void hollow shapes with 2-8 internal channels",
-      "Custom mandrel designs for asymmetric and offset cavity patterns",
-      "Consistent wall partitioning between adjacent cavities",
-      "Ideal for heat exchanger sections and lightweight structural beams"
+      t('services.extrusionprocessspectrum.2.cap0'),
+      t('services.extrusionprocessspectrum.2.cap1'),
+      t('services.extrusionprocessspectrum.2.cap2'),
+      t('services.extrusionprocessspectrum.2.cap3')
     ],
     icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">
@@ -59,13 +60,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z" />
         </svg>
-        Extrusion Capabilities
+        {t('services.extrusionprocessspectrum.section_badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Titanium Extrusion <span style="color: var(--theme-primary);">{t('services.extrusionprocessspectrum.process_spectrum_2')}</span>
+        {t('services.extrusionprocessspectrum.title_part1')} <span style="color: var(--theme-primary);">{t('services.extrusionprocessspectrum.process_spectrum_2')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        From complex structural profiles to seamless heavy-wall tubes and precision hollow multi-channel shapes — three specialized extrusion workflows for mission-critical titanium components.
+        {t('services.extrusionprocessspectrum.subtitle')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

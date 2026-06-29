@@ -1,4 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 interface SpecItem {
   label: string;
   value: string;
@@ -9,37 +13,34 @@ interface SpecItem {
 
 const specs: SpecItem[] = [
   {
-    label: "Extrusion Press Force",
+    label: t('services.extrusionspecsdashboard.card0.label'),
     value: "6,000",
     unit: "Metric Tons",
-    description: "High-tonnage continuous cylinder capacity scaling up to 6,000 metric tons — delivering the compressive force needed to push titanium billets through complex die geometries at elevated temperatures.",
+    description: t('services.extrusionspecsdashboard.card0.desc'),
     icon: "M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"
   },
   {
-    label: "Max Linear Profile Dispatch",
+    label: t('services.extrusionspecsdashboard.card1.label'),
     value: "12,000",
     unit: "mm (12 m)",
-    description: "Pushing single-piece uninterrupted alloy structures up to 12 meters in length — accommodating full-length structural profiles without butt-welding or mechanical joining.",
+    description: t('services.extrusionspecsdashboard.card1.desc'),
     icon: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5"
   },
   {
-    label: "Cross-Section Circumscribed Circle",
+    label: t('services.extrusionspecsdashboard.card2.label'),
     value: "ø 350",
     unit: "mm",
-    description: "Coping with complex geometric envelopes up to 350 mm circumscribed circle diameter — accommodating large structural profiles, heavy-wall tubes, and multi-channel hollow shapes.",
+    description: t('services.extrusionspecsdashboard.card2.desc'),
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   },
   {
-    label: "Structural Wall Consistency",
+    label: t('services.extrusionspecsdashboard.card3.label'),
     value: "4.0 – 50+",
     unit: "mm",
-    description: "Handling thick section limits balancing from 4.0 mm up to heavy 50+ mm profiles — spanning thin-wall lightweight sections to heavy structural load-bearing members.",
+    description: t('services.extrusionspecsdashboard.card3.desc'),
     icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section style="background-color: var(--theme-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
@@ -48,13 +49,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Extrusion Specifications
+        {t('services.extrusionspecsdashboard.section_badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Extrusion <span style="color: var(--theme-primary);">{t('services.extrusionspecsdashboard.capacity_dashboard')}</span>
+        {t('services.extrusionspecsdashboard.title_part1')} <span style="color: var(--theme-primary);">{t('services.extrusionspecsdashboard.capacity_dashboard')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Hydraulic press tonnage, linear dispatch length, cross-section envelope, and wall thickness boundaries of our titanium extrusion facility.
+        {t('services.extrusionspecsdashboard.subtitle')}
       </p>
     </div>
 
@@ -82,7 +83,7 @@ const t = useTranslations(currentLang);
 
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        All extrusion performed at elevated temperatures (900-1050°C) with glass lubricant envelopes. Post-extrusion stretch straightening and ultrasonic inspection available on all profiles.
+        {t('services.extrusionspecsdashboard.footnote')}
       </p>
     </div>
   </div>
