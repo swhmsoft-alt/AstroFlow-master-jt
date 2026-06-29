@@ -58,13 +58,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         </svg>
-        Passivation Methods
+        {t('services.passivationspectrum.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
         Passivation <span class="text-[#38BDF8]">{t('services.passivationspectrum.spectrum')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
-        Three standardized titanium chemical de-contamination and modification workflows — engineered for iron removal, biocompatible implant passivation, and deep oxide stripping.
+        {t('services.passivationspectrum.subtitle')}
       </p>
     </div>
 
@@ -83,12 +83,12 @@ const t = useTranslations(currentLang);
 
           <!-- Title -->
           <h3 class="text-lg font-bold mb-3 text-[#F8FAFC]">
-            {process.title}
+            {t(`services.passivationspectrum.card${processes.indexOf(process) + 1}.title`)}
           </h3>
 
           <!-- Description -->
           <p class="text-sm mb-4 leading-relaxed text-[#F8FAFC]/60">
-            {process.description}
+            {t(`services.passivationspectrum.card${processes.indexOf(process) + 1}.desc`)}
           </p>
 
           <!-- Capabilities list -->
@@ -98,7 +98,7 @@ const t = useTranslations(currentLang);
                 <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0 text-[#38BDF8]" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
-                {cap}
+                {t(`services.passivationspectrum.card${processes.indexOf(process) + 1}.cap${process.capabilities.indexOf(cap) + 1}`)}
               </li>
             ))}
           </ul>

@@ -39,13 +39,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Anodizing Specifications
+        {t('services.anodizingspecsdashboard.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
         Anodizing <span class="text-[#38BDF8]">{t('services.anodizingspecsdashboard.specifications_dashboard')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
-        Our anodizing processing resolutions — micron-level film thickness control, friction metrics, biocompatibility scores, and global industrial accreditations.
+        {t('services.anodizingspecsdashboard.subtitle')}
       </p>
     </div>
 
@@ -91,7 +91,7 @@ const t = useTranslations(currentLang);
     <!-- Footnote -->
     <div class="mt-12 text-center">
       <p class="text-sm text-[#F8FAFC]/40">
-        All specifications measured under ISO 10993-5 biocompatibility, AMS 2488D, and AS9100D controlled conditions. Actual results depend on titanium grade, geometry complexity, and surface preparation.
+        {t('services.anodizingspecsdashboard.footnote')}
       </p>
     </div>
   </div>
