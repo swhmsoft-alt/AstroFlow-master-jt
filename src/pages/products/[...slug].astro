@@ -25,7 +25,15 @@ const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
 
-<BaseLayout title={seoTitle} description={seoDesc}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDesc}
+  pageType="product-detail"
+  productName={data.title}
+  productImage={firstImage ? `https://cnc.bozemetal.com${firstImage}` : undefined}
+  productCategory={data.category}
+  productDatePublished={pubDateISO}
+>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label={t('products.Slug].breadcrumb_2')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -221,26 +229,6 @@ const t = useTranslations(currentLang);
     </div>
   </section>
 
-  <!-- Structured Data for SEO -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": data.title,
-    "description": data.description,
-    "image": firstImage,
-    "category": data.category,
-    "brand": {
-      "@type": "Brand",
-      "name": "BOZE CNC Ti"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock",
-      "description": "Custom quote based on specifications"
-    }
-  })} />
 </BaseLayout>
 
 <style>

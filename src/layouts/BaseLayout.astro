@@ -5,8 +5,14 @@ import Footer from '@components/Footer.astro';
 import { SITE } from '@config/site';
 import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
-import { getLangFromUrl, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
+import {
+  detectPageType,
+  buildBreadcrumbItems,
+  buildPageGraph,
+  type PageType,
+} from '../lib/schema';
 
 interface Props {
   title?: string;
@@ -22,10 +28,29 @@ interface Props {
   author?: string;
   /** Article: tags array — enables article:tag meta */
   tags?: string[];
+
+  // ── Structured Data props ──
+  /** Explicit page type (required for dynamic routes) */
+  pageType?: PageType;
+  /** Service name (service-detail pages) */
+  serviceName?: string;
+  /** Service category */
+  serviceCategory?: string;
+  /** Product name (product-detail pages) */
+  productName?: string;
+  /** Product image URL */
+  productImage?: string;
+  /** Product category */
+  productCategory?: string;
+  /** Collection / listing name */
+  collectionName?: string;
+  /** Collection item count */
+  itemCount?: number;
 }
 
 const currentPathname = Astro.url.pathname;
 const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 const alternateLinks = getAlternateLinks(currentPathname);
 
 const { 
@@ -37,6 +62,14 @@ const {
   pubDate,
   author,
   tags,
+  pageType: explicitPageType,
+  serviceName,
+  serviceCategory,
+  productName,
+  productImage,
+  productCategory,
+  collectionName,
+  itemCount,
 } = Astro.props;
 
 // ── SEO Config auto-resolution ──────────────────────────
@@ -86,6 +119,44 @@ const fallbackFont = 'monospace';
 const fontConfig = getFontConfig(fontStyle);
 const fontUrl = getGoogleFontsUrl(fontConfig);
 const fontFamily = getCssFamily(fontConfig, fallbackFont);
+
+// ── Structured Data ─────────────────────────────────────
+// Detect page type (explicit prop wins → SEO_CONFIG → pathname fallback)
+const pageType = detectPageType(canonicalPath, explicitPageType);
+
+// Build breadcrumb items using SEO_CONFIG titles + localized "Home" label
+const homeLabel = t('blog.breadcrumb.home');
+const breadcrumbItems = buildBreadcrumbItems(canonicalPath, SEO_CONFIG, siteUrl, currentLang, homeLabel);
+
+// Build the full @graph for this page
+// Auto-derive serviceName from title for service-detail pages when not explicitly provided
+const resolvedServiceName = serviceName ?? (pageType === 'service-detail' ? title : undefined);
+
+const schemaData = {
+  pageName: title,
+  pageDescription: description,
+  pageUrl: canonicalUrl,
+  inLanguage: ogLocale.replace('_', '-'),
+  breadcrumbItems,
+  // Pass through type-specific data
+  articleHeadline: explicitPageType === 'blog-post' ? title : undefined,
+  articleDescription: description,
+  articleAuthor: author,
+  articleDatePublished: pubDate ?? undefined,
+  serviceName: resolvedServiceName,
+  serviceDescription: resolvedServiceName ? description : undefined,
+  serviceCategory,
+  productName,
+  productDescription: productName ? description : undefined,
+  productImage,
+  productCategory,
+  productDatePublished: pubDate ?? null,
+  collectionName: collectionName ?? title,
+  itemCount,
+};
+
+const pageGraph = buildPageGraph(pageType, schemaData);
+const ldJson = JSON.stringify(pageGraph);
 ---
 
 <!doctype html>
@@ -142,74 +213,8 @@ const fontFamily = getCssFamily(fontConfig, fallbackFont);
     {author && <meta property="article:author" content={author} />}
     {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 
-    <!-- ══ JSON-LD — BreadcrumbList (all pages) ═════════════════ -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": currentLang === DEFAULT_LANG ? siteUrl : `${siteUrl}/${currentLang}`
-        },
-        ...(canonicalPath !== '/'
-          ? [{
-              "@type": "ListItem",
-              "position": 2,
-              "name": title,
-              "item": canonicalUrl
-            }]
-          : [])
-      ]
-    })} />
-
-    <!-- ══ JSON-LD — WebPage (all pages) ════════════════════════ -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": title,
-      "description": description,
-      "url": canonicalUrl,
-      "inLanguage": ogLocale.replace('_', '-'),
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "BOZE CNC Ti",
-        "url": siteUrl
-      },
-      ...(pubDate ? { "datePublished": pubDate } : {}),
-      ...(author ? { "author": { "@type": "Person", "name": author } } : {})
-    })} />
-
-    <!-- ══ JSON-LD — Organization (brand entity for all pages) ══ -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "BOZE CNC Ti",
-      "url": siteUrl,
-      "logo": `${siteUrl}/uploads/boze-logo-2.png`,
-      "description": SITE.description,
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+86-917-1234-5678",
-        "contactType": "sales",
-        "availableLanguage": ["English", "Deutsch", "日本語", "Français", "Español", "Português", "Italiano", "한국어", "Nederlands", "Polski"]
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/bozemetal",
-        "https://www.facebook.com/bozemetal"
-      ]
-    })} />
-
-    <!-- ══ JSON-LD — WebSite (site search & identity) ══════════ -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "BOZE CNC Ti",
-      "url": siteUrl,
-      "description": SITE.description,
-      "inLanguage": ogLocale.replace('_', '-')
-    })} />
+    <!-- ══ JSON-LD — Structured Data @graph (single block) ════ -->
+    <script type="application/ld+json" set:html={ldJson} />
 
     <!-- ══ hreflang Alternate Links (i18n SEO) ═══════════════ -->
     {alternateLinks.map((link) => (

@@ -37,6 +37,7 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
   author={data.author}
   tags={tags.length > 0 ? tags : undefined}
   ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
+  pageType="blog-post"
 >
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label={t('blog.Slug].breadcrumb')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -239,24 +240,6 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
       </div>
     </div>
   </section>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": data.title,
-    "description": data.description,
-    "image": data.coverImage || '',
-    "datePublished": pubDateISO,
-    "author": {
-      "@type": "Person",
-      "name": data.author
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "BOZE CNC Ti"
-    }
-  })} />
 </BaseLayout>
 
 <style is:global>
