@@ -24,7 +24,6 @@ import { SITE } from '@config/site';
 const SITEROOT = SITE.url;
 const ORG_ID     = `${SITEROOT}/#boze-org`;
 const WEBSITE_ID = `${SITEROOT}/#boze-website`;
-const LOGO_ID    = `${SITEROOT}/#boze-logo`;
 
 // ── Page Type ─────────────────────────────────────────
 
@@ -80,7 +79,7 @@ export function buildOrganization() {
     '@id': ORG_ID,
     name: 'BOZE CNC Ti',
     url: SITEROOT,
-    logo: { '@id': LOGO_ID },
+    logo: `${SITEROOT}/uploads/boze-logo-2.png`,
     description: SITE.description,
     contactPoint: {
       '@type': 'ContactPoint',
