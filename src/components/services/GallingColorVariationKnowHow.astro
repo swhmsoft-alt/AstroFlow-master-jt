@@ -7,35 +7,36 @@ interface Challenge {
   icon: string;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const challenges: Challenge[] = [
   {
-    title: "In-Situ Titanate Anti-Galling Barriers",
-    problem: "Titanium's high galling propensity (µ ≈ 0.5–0.6) causes micro-welding and thread seizure under heavy locking torque in aerospace fasteners and medical implants, resulting in catastrophic joint failure and costly field rework.",
-    solution: "Molecular-Bonded Porous Crystalline Nest Growth Under High Alkalinity",
+    title: t('services.gallingcolorvariationknowhow.card1.title'),
+    problem: t('services.gallingcolorvariationknowhow.card1.problem'),
+    solution: t('services.gallingcolorvariationknowhow.card1.solution'),
     solutionDetails: [
-      "High-alkaline electrolytic bath (pH 10–12) at 10–50 V DC grows molecular-bonded crystalline titanate nests directly into the titanium substrate surface",
-      "Micro-porous crystalline structure (pore diameter 20–100 nm) provides permanent mechanical interlocking anchor points for dry-film lubricants (MoS₂, PTFE) with > 5× adhesion vs. untreated surfaces",
-      "Permanent friction relief under heavy locking torque — verified zero seizure events across 25+ re-torque cycles per MIL-DLT-8937",
-      "Process validated on Grade 5 (Ti-6Al-4V), Grade 23 (Ti-6Al-4V ELI), and Grade 2 titanium alloys with consistent µ < 0.2 results"
+      t('services.gallingcolorvariationknowhow.card1.detail0'),
+      t('services.gallingcolorvariationknowhow.card1.detail1'),
+      t('services.gallingcolorvariationknowhow.card1.detail2'),
+      t('services.gallingcolorvariationknowhow.card1.detail3')
     ],
     icon: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"
   },
   {
-    title: "Nanometer-Level Voltage Interference Control",
-    problem: "Traditional DC rectification suffers from voltage ripple (±2–5 V) and bath temperature drift (±5°C), causing inconsistent oxide film growth that manifests as visible shade variation across batch runs — unacceptable for medical color-coding systems.",
-    solution: "Synchronized Pulse DC Power Grids + Chilled Fluid Loops (±0.1 V / ±1°C)",
+    title: t('services.gallingcolorvariationknowhow.card2.title'),
+    problem: t('services.gallingcolorvariationknowhow.card2.problem'),
+    solution: t('services.gallingcolorvariationknowhow.card2.solution'),
     solutionDetails: [
-      "Synchronized pulse DC power supplies regulate voltage to ±0.1 V precision — eliminating ripple-induced thickness variation across the oxide interference film",
-      "Closed-loop chilled electrolyte circulation maintains bath temperature at ±1°C (set point 15–25°C), preventing thermally-driven oxide growth rate deviations",
-      "Voltage-to-color mapping library (5 V = gold, 25 V = blue, 45 V = purple, 65 V = green, 85 V = pink) enables repeatable shade targeting across infinite production runs",
-      "Color difference measured via spectrophotometry: ΔE < 2.0 across entire batch — imperceptible to the human eye and compliant with medical instrument color-coding standards"
+      t('services.gallingcolorvariationknowhow.card2.detail0'),
+      t('services.gallingcolorvariationknowhow.card2.detail1'),
+      t('services.gallingcolorvariationknowhow.card2.detail2'),
+      t('services.gallingcolorvariationknowhow.card2.detail3')
     ],
     icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden bg-[#0F172A]">
   <!-- Circuit-board style background -->
@@ -53,10 +54,10 @@ const t = useTranslations(currentLang);
         {t('services.gallingcolorvariationknowhow.engineering_know_how')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
-        Anti-Galling & <span class="text-[#38BDF8]">{t('services.gallingcolorvariationknowhow.color_variation_control')}</span>
+        {t('services.gallingcolorvariationknowhow.title_prefix')}<span class="text-[#38BDF8]">{t('services.gallingcolorvariationknowhow.color_variation_control')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
-        Two critical anodizing challenges — conquering titanium thread friction failure and eliminating cross-batch color shift through precision voltage and thermal regulation.
+        {t('services.gallingcolorvariationknowhow.subtitle')}
       </p>
     </div>
 
@@ -131,7 +132,7 @@ const t = useTranslations(currentLang);
     <!-- Bottom CTA line -->
     <div class="text-center mt-12">
       <p class="text-sm max-w-2xl mx-auto leading-relaxed text-[#F8FAFC]/50">
-        Every titanium anodizing project is backed by certified process documentation, precision DC power regulation, and continuous bath chemistry monitoring. <span class="text-[#38BDF8]">{t('services.gallingcolorvariationknowhow.precision_voltage_engineering_meets_repeatable')}</span>
+        {t('services.gallingcolorvariationknowhow.footer')} <span class="text-[#38BDF8]">{t('services.gallingcolorvariationknowhow.precision_voltage_engineering_meets_repeatable')}</span>
       </p>
     </div>
   </div>
