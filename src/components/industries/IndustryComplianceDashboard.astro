@@ -5,6 +5,7 @@ interface ComplianceArea {
   description: string;
   details: string[];
   highlightColor: string;
+  prefix: string;
 }
 
 const areas: ComplianceArea[] = [
@@ -20,6 +21,7 @@ const areas: ComplianceArea[] = [
       "Counterfeit parts prevention per AS6174/AS5553 protocols",
     ],
     highlightColor: "#3b82f6",
+    prefix: "area0",
   },
   {
     title: "Medical",
@@ -33,6 +35,7 @@ const areas: ComplianceArea[] = [
       "Full material traceability with EN 10204 Type 3.1 MTRs",
     ],
     highlightColor: "#10b981",
+    prefix: "area1",
   },
   {
     title: "Semiconductor & AI Hardware",
@@ -46,6 +49,7 @@ const areas: ComplianceArea[] = [
       "Nickel-free surface cert for EU RoHS/WEEE compliance",
     ],
     highlightColor: "#a855f7",
+    prefix: "area2",
   },
 ];
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
@@ -66,13 +70,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
         </svg>
-        Industry Compliance Readiness
+        {t('industries.industrycompliancedashboard.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Compliance <span class="gradient-text-accent">{t('industries.industrycompliancedashboard.dashboard')}</span>
+        {t('industries.industrycompliancedashboard.title')} <span class="gradient-text-accent">{t('industries.industrycompliancedashboard.dashboard')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Pre-qualified for the strictest global industrial standards — from AS9100 aerospace traceability to UHV semiconductor surface integrity.
+        {t('industries.industrycompliancedashboard.description')}
       </p>
     </div>
 
@@ -88,7 +92,7 @@ const t = useTranslations(currentLang);
           <div class="flex flex-col lg:flex-row lg:items-start gap-6">
             {/* Left: Title & Standards */}
             <div class="lg:w-1/3 shrink-0">
-              <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">{area.title}</h3>
+              <h3 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">{t(`industries.industrycompliancedashboard.${area.prefix}_name`)}</h3>
               <div class="flex flex-wrap gap-2">
                 {area.standards.map((std) => (
                   <span
@@ -104,15 +108,15 @@ const t = useTranslations(currentLang);
             {/* Right: Description & Details */}
             <div class="flex-1">
               <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                {area.description}
+                {t(`industries.industrycompliancedashboard.${area.prefix}_desc`)}
               </p>
               <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                {area.details.map((detail) => (
+                {area.details.map((detail, i) => (
                   <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
                     <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: {area.highlightColor};" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
                     </svg>
-                    {detail}
+                    {t(`industries.industrycompliancedashboard.${area.prefix}_detail${i}`)}
                   </li>
                 ))}
               </ul>
@@ -125,7 +129,7 @@ const t = useTranslations(currentLang);
     <!-- Note -->
     <div class="text-center mt-8">
       <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Full certification documentation available upon request. Our quality team maintains current certifications with all major accreditation bodies.
+        {t('industries.industrycompliancedashboard.note')}
       </p>
     </div>
   </div>

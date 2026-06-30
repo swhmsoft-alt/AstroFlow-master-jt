@@ -13,67 +13,138 @@ interface GradeGroup {
   grades: GradeCard[];
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const gradeGroups: GradeGroup[] = [
   {
-    category: "Alpha-Beta Alloys",
-    description: "Heat-treatable, high-strength alloys offering an excellent balance of strength, fracture toughness, and fatigue resistance for structural applications.",
+    category: t('materials.materialgradematrix.cat_alpha_beta'),
+    description: t('materials.materialgradematrix.cat_alpha_beta_desc'),
     accentColor: "#ff5a00",
     grades: [
       {
-        grade: "Grade 5",
-        spec: "Ti-6Al-4V",
-        features: ["Highest strength-to-weight ratio", "Excellent fatigue resistance", "Good weldability & formability", "Heat treatable up to 1,200 MPa"],
-        applications: ["Aerospace airframes & landing gear", "Gas turbine engine components", "High-performance automotive", "Marine propulsion shafts"],
+        grade: t('materials.materialgradematrix.grade5_name'),
+        spec: t('materials.materialgradematrix.grade5_spec'),
+        features: [
+          t('materials.materialgradematrix.g5_feat0'),
+          t('materials.materialgradematrix.g5_feat1'),
+          t('materials.materialgradematrix.g5_feat2'),
+          t('materials.materialgradematrix.g5_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g5_app0'),
+          t('materials.materialgradematrix.g5_app1'),
+          t('materials.materialgradematrix.g5_app2'),
+          t('materials.materialgradematrix.g5_app3'),
+        ],
       },
       {
-        grade: "Grade 23 ELI",
-        spec: "Ti-6Al-4V ELI",
-        features: ["Extra Low Interstitial (ELI)", "Superior fracture toughness", "Enhanced biocompatibility", "Improved low-temperature performance"],
-        applications: ["Surgical implants & prosthetics", "Orthopedic & dental devices", "Cryogenic vessel systems", "High-reliability aerospace fittings"],
+        grade: t('materials.materialgradematrix.grade23_name'),
+        spec: t('materials.materialgradematrix.grade23_spec'),
+        features: [
+          t('materials.materialgradematrix.g23_feat0'),
+          t('materials.materialgradematrix.g23_feat1'),
+          t('materials.materialgradematrix.g23_feat2'),
+          t('materials.materialgradematrix.g23_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g23_app0'),
+          t('materials.materialgradematrix.g23_app1'),
+          t('materials.materialgradematrix.g23_app2'),
+          t('materials.materialgradematrix.g23_app3'),
+        ],
       },
     ],
   },
   {
-    category: "Commercially Pure Titanium",
-    description: "Non-heat-treatable grades valued for exceptional corrosion resistance, formability, and biocompatibility across a wide range of industries.",
+    category: t('materials.materialgradematrix.cat_cp_titanium'),
+    description: t('materials.materialgradematrix.cat_cp_titanium_desc'),
     accentColor: "#3b82f6",
     grades: [
       {
-        grade: "Grade 1",
-        spec: "CP-Ti (99.9%)",
-        features: ["Highest formability & ductility", "Superior corrosion resistance", "Excellent weldability", "Lowest strength of CP grades"],
-        applications: ["Chemical processing equipment", "Desalination plants", "Heat exchangers & condensers", "Architectural cladding"],
+        grade: t('materials.materialgradematrix.grade1_name'),
+        spec: t('materials.materialgradematrix.grade1_spec'),
+        features: [
+          t('materials.materialgradematrix.g1_feat0'),
+          t('materials.materialgradematrix.g1_feat1'),
+          t('materials.materialgradematrix.g1_feat2'),
+          t('materials.materialgradematrix.g1_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g1_app0'),
+          t('materials.materialgradematrix.g1_app1'),
+          t('materials.materialgradematrix.g1_app2'),
+          t('materials.materialgradematrix.g1_app3'),
+        ],
       },
       {
-        grade: "Grade 2",
-        spec: "CP-Ti (99.8%)",
-        features: ["Best balance of strength & formability", "Excellent seawater corrosion resistance", "Readily welded & fabricated", "Most widely used CP grade"],
-        applications: ["Marine & offshore components", "Power generation condensers", "Industrial piping systems", "Aerospace non-structural parts"],
+        grade: t('materials.materialgradematrix.grade2_name'),
+        spec: t('materials.materialgradematrix.grade2_spec'),
+        features: [
+          t('materials.materialgradematrix.g2_feat0'),
+          t('materials.materialgradematrix.g2_feat1'),
+          t('materials.materialgradematrix.g2_feat2'),
+          t('materials.materialgradematrix.g2_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g2_app0'),
+          t('materials.materialgradematrix.g2_app1'),
+          t('materials.materialgradematrix.g2_app2'),
+          t('materials.materialgradematrix.g2_app3'),
+        ],
       },
       {
-        grade: "Grade 4",
-        spec: "CP-Ti (99.6%)",
-        features: ["Highest strength CP grade", "Good cold formability", "Outstanding corrosion resistance", "Cost-effective alternative to alloys"],
-        applications: ["Medical devices & surgical tools", "Sporting goods (frames, heads)", "Cryogenic pressure vessels", "Industrial fasteners & fittings"],
+        grade: t('materials.materialgradematrix.grade4_name'),
+        spec: t('materials.materialgradematrix.grade4_spec'),
+        features: [
+          t('materials.materialgradematrix.g4_feat0'),
+          t('materials.materialgradematrix.g4_feat1'),
+          t('materials.materialgradematrix.g4_feat2'),
+          t('materials.materialgradematrix.g4_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g4_app0'),
+          t('materials.materialgradematrix.g4_app1'),
+          t('materials.materialgradematrix.g4_app2'),
+          t('materials.materialgradematrix.g4_app3'),
+        ],
       },
       {
-        grade: "Grade 9",
-        spec: "Ti-3Al-2.5V",
-        features: ["Medium-strength alpha-beta alloy", "Excellent fatigue properties", "Superior cold formability", "Weldable without post-treatment"],
-        applications: ["Hydraulic & pneumatic tubing", "Aerospace fluid systems", "Sporting equipment (bike frames)", "Chemical processing piping"],
+        grade: t('materials.materialgradematrix.grade9_name'),
+        spec: t('materials.materialgradematrix.grade9_spec'),
+        features: [
+          t('materials.materialgradematrix.g9_feat0'),
+          t('materials.materialgradematrix.g9_feat1'),
+          t('materials.materialgradematrix.g9_feat2'),
+          t('materials.materialgradematrix.g9_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g9_app0'),
+          t('materials.materialgradematrix.g9_app1'),
+          t('materials.materialgradematrix.g9_app2'),
+          t('materials.materialgradematrix.g9_app3'),
+        ],
       },
       {
-        grade: "Grade 12",
-        spec: "Ti-0.3Mo-0.8Ni",
-        features: ["Enhanced corrosion resistance", "Good strength at elevated temps", "Resists reducing acid environments", "Readily weldable & formable"],
-        applications: ["Chemical processing vessels", "Heat exchangers & evaporators", "Marine service equipment", "Pollution control systems"],
+        grade: t('materials.materialgradematrix.grade12_name'),
+        spec: t('materials.materialgradematrix.grade12_spec'),
+        features: [
+          t('materials.materialgradematrix.g12_feat0'),
+          t('materials.materialgradematrix.g12_feat1'),
+          t('materials.materialgradematrix.g12_feat2'),
+          t('materials.materialgradematrix.g12_feat3'),
+        ],
+        applications: [
+          t('materials.materialgradematrix.g12_app0'),
+          t('materials.materialgradematrix.g12_app1'),
+          t('materials.materialgradematrix.g12_app2'),
+          t('materials.materialgradematrix.g12_app3'),
+        ],
       },
     ],
   },
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
@@ -89,13 +160,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
-        Metallurgical Selection Guide
+        {t('materials.materialgradematrix.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Titanium Grade <span class="gradient-text-accent">{t('materials.materialgradematrix.catalog')}</span>
+        {t('materials.materialgradematrix.title')} <span class="gradient-text-accent">{t('materials.materialgradematrix.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Seven industry-standard titanium grades organized by metallurgical classification — from ultra-formable CP grades to high-strength alpha-beta alloys.
+        {t('materials.materialgradematrix.description')}
       </p>
     </div>
 
@@ -128,7 +199,7 @@ const t = useTranslations(currentLang);
                     <span class="text-sm font-mono" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{card.spec}</span>
                   </div>
                   <span class="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: color-mix(in srgb, var(--theme-primary) 70%, white); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);">
-                    {group.category === "Alpha-Beta Alloys" ? "Alpha-Beta" : "CP Grade"}
+                    {group.category === t('materials.materialgradematrix.cat_alpha_beta') ? t('materials.materialgradematrix.badge_alpha_beta') : t('materials.materialgradematrix.badge_cp_grade')}
                   </span>
                 </div>
 

@@ -7,35 +7,36 @@ interface KnowHowItem {
   iconPath: string;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const items: KnowHowItem[] = [
   {
-    title: "Low Thermal Conductivity",
-    problem: "Titanium's poor heat dissipation (≈ 7 W/m·K) causes rapid tool-edge temperatures exceeding 1,000°C, accelerating flank wear and compromising surface integrity.",
-    solution: "High-pressure coolant delivery at 70+ bar directly to the cutting zone evacuates heat instantly, prevents built-up edge formation, and extends tool life by up to 300%.",
+    title: t('materials.machiningknowhow.item1_title'),
+    problem: t('materials.machiningknowhow.item1_problem'),
+    solution: t('materials.machiningknowhow.item1_solution'),
     details: [
-      "Through-spindle coolant (TSC) at 70 bar minimum pressure",
-      "Cryogenic CO₂ or liquid nitrogen cooling for roughing operations",
-      "Sharp positive-rake geometries with TiAlN+ coating",
-      "Reduced cutting speeds (30–60 m/min) with increased feed rates",
+      t('materials.machiningknowhow.item1_detail0'),
+      t('materials.machiningknowhow.item1_detail1'),
+      t('materials.machiningknowhow.item1_detail2'),
+      t('materials.machiningknowhow.item1_detail3'),
     ],
     iconPath: "M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z",
   },
   {
-    title: "Chattering & Deformation",
-    problem: "Titanium's low elastic modulus (≈ 110 GPa) induces workpiece deflection and regenerative chatter during machining, especially in thin-wall and deep-cavity geometries.",
-    solution: "5-axis simultaneous machining with rigid fixturing and dynamic vibration damping eliminates chatter marks and holds micron-level tolerances on complex titanium structures.",
+    title: t('materials.machiningknowhow.item2_title'),
+    problem: t('materials.machiningknowhow.item2_problem'),
+    solution: t('materials.machiningknowhow.item2_solution'),
     details: [
-      "Hydrostatic workholding with custom soft-jaw fixturing systems",
-      "Dynamic stiffness analysis (FEA-optimized) for thin-wall components",
-      "Adaptive trochoidal toolpaths with constant chip-thickness algorithms",
-      "Real-time spindle load monitoring with automated feed-rate override",
+      t('materials.machiningknowhow.item2_detail0'),
+      t('materials.machiningknowhow.item2_detail1'),
+      t('materials.machiningknowhow.item2_detail2'),
+      t('materials.machiningknowhow.item2_detail3'),
     ],
     iconPath: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4",
   },
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
@@ -52,13 +53,13 @@ const t = useTranslations(currentLang);
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
-        Titanium Machining Expertise
+        {t('materials.machiningknowhow.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Engineering <span class="gradient-text-accent">{t('materials.machiningknowhow.knowhow')}</span>
+        {t('materials.machiningknowhow.title')} <span class="gradient-text-accent">{t('materials.machiningknowhow.knowhow')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Decades of hands-on metallurgical experience solving titanium's unique machining challenges through engineered process solutions.
+        {t('materials.machiningknowhow.description')}
       </p>
     </div>
 
@@ -89,7 +90,7 @@ const t = useTranslations(currentLang);
           {/* Problem Statement */}
           <div class="mb-6 p-4 rounded-lg" style="background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); border-left: 3px solid var(--theme-primary);">
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-              <span class="font-semibold" style="color: var(--theme-primary);">Problem — </span>
+              <span class="font-semibold" style="color: var(--theme-primary);">{t('materials.machiningknowhow.problem_label')}</span>
               {item.problem}
             </p>
           </div>
@@ -107,7 +108,7 @@ const t = useTranslations(currentLang);
           {/* Engineering Details */}
           <div>
             <h5 class="text-xs font-semibold uppercase tracking-wider mb-2.5" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Engineering Implementation
+              {t('materials.machiningknowhow.engineering_impl')}
             </h5>
             <ul class="space-y-2">
               {item.details.map((detail) => (
@@ -127,7 +128,7 @@ const t = useTranslations(currentLang);
     <!-- Bottom note -->
     <div class="text-center mt-10">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-        Our process engineers have logged over 50,000 hours of titanium-specific machining across all 7 grades.
+        {t('materials.machiningknowhow.bottom_note')}
       </p>
     </div>
   </div>

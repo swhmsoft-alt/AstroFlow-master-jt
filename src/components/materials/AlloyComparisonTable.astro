@@ -7,20 +7,22 @@ interface AlloyRow {
   elongation: string;
   hardness: string;
   advantage: string;
+  specStandard: string;
 }
 
-const alloyData: AlloyRow[] = [
-  { grade: "Grade 1", spec: "CP-Ti", tensile: "≥ 240", yield: "≥ 170", elongation: "≥ 24", hardness: "~ 120", advantage: "Maximum formability & corrosion resistance" },
-  { grade: "Grade 2", spec: "CP-Ti", tensile: "≥ 345", yield: "≥ 275", elongation: "≥ 20", hardness: "~ 145", advantage: "Best general-purpose CP balance" },
-  { grade: "Grade 4", spec: "CP-Ti", tensile: "≥ 550", yield: "≥ 483", elongation: "≥ 15", hardness: "~ 265", advantage: "Highest strength CP grade" },
-  { grade: "Grade 9", spec: "Ti-3Al-2.5V", tensile: "≥ 620", yield: "≥ 483", elongation: "≥ 20", hardness: "~ 285", advantage: "Excellent cold formability + strength" },
-  { grade: "Grade 12", spec: "Ti-0.3Mo-0.8Ni", tensile: "≥ 485", yield: "≥ 345", elongation: "≥ 18", hardness: "~ 230", advantage: "Superior reducing acid resistance" },
-  { grade: "Grade 5", spec: "Ti-6Al-4V", tensile: "≥ 895", yield: "≥ 828", elongation: "≥ 10", hardness: "~ 330", advantage: "Industry-standard high-strength workhorse" },
-  { grade: "Grade 23 ELI", spec: "Ti-6Al-4V ELI", tensile: "≥ 860", yield: "≥ 795", elongation: "≥ 10", hardness: "~ 315", advantage: "Enhanced fracture toughness for implants" },
-];
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+
+const alloyData: AlloyRow[] = [
+  { grade: "Grade 1", spec: "CP-Ti", tensile: "≥ 240", yield: "≥ 170", elongation: "≥ 24", hardness: "~ 120", advantage: t('materials.alloycomparisontable.adv_grade1'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
+  { grade: "Grade 2", spec: "CP-Ti", tensile: "≥ 345", yield: "≥ 275", elongation: "≥ 20", hardness: "~ 145", advantage: t('materials.alloycomparisontable.adv_grade2'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
+  { grade: "Grade 4", spec: "CP-Ti", tensile: "≥ 550", yield: "≥ 483", elongation: "≥ 15", hardness: "~ 265", advantage: t('materials.alloycomparisontable.adv_grade4'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
+  { grade: "Grade 9", spec: "Ti-3Al-2.5V", tensile: "≥ 620", yield: "≥ 483", elongation: "≥ 20", hardness: "~ 285", advantage: t('materials.alloycomparisontable.adv_grade9'), specStandard: t('materials.alloycomparisontable.spec_ams_4943') },
+  { grade: "Grade 12", spec: "Ti-0.3Mo-0.8Ni", tensile: "≥ 485", yield: "≥ 345", elongation: "≥ 18", hardness: "~ 230", advantage: t('materials.alloycomparisontable.adv_grade12'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
+  { grade: "Grade 5", spec: "Ti-6Al-4V", tensile: "≥ 895", yield: "≥ 828", elongation: "≥ 10", hardness: "~ 330", advantage: t('materials.alloycomparisontable.adv_grade5'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
+  { grade: "Grade 23 ELI", spec: "Ti-6Al-4V ELI", tensile: "≥ 860", yield: "≥ 795", elongation: "≥ 10", hardness: "~ 315", advantage: t('materials.alloycomparisontable.adv_grade23'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
+];
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
@@ -31,13 +33,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
         </svg>
-        Technical Reference Data
+        {t('materials.alloycomparisontable.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Alloy <span class="gradient-text-accent">{t('materials.alloycomparisontable.comparison_table')}</span>
+        {t('materials.alloycomparisontable.comparison_table')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Mechanical properties of our core titanium grades. All values represent minimum specified properties per ASTM B265 / AMS 4928 standards.
+        {t('materials.alloycomparisontable.description')}
       </p>
     </div>
 
@@ -48,25 +50,25 @@ const t = useTranslations(currentLang);
         <thead>
           <tr style="background-color: var(--theme-surface);">
             <th class="text-left py-4 px-5 font-bold whitespace-nowrap" style="color: var(--theme-text); border-bottom: 2px solid var(--theme-primary);">
-              Titanium Grade
+              {t('materials.alloycomparisontable.col_grade')}
             </th>
             <th class="text-left py-4 px-5 font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-              Spec
+              {t('materials.alloycomparisontable.col_spec')}
             </th>
             <th class="text-right py-4 px-5 font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-              Tensile Strength (MPa)
+              {t('materials.alloycomparisontable.col_tensile')}
             </th>
             <th class="text-right py-4 px-5 font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-              Yield Strength (MPa)
+              {t('materials.alloycomparisontable.col_yield')}
             </th>
             <th class="text-right py-4 px-5 font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-              Elongation (%)
+              {t('materials.alloycomparisontable.col_elongation')}
             </th>
             <th class="text-right py-4 px-5 font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-              Hardness (HV)
+              {t('materials.alloycomparisontable.col_hardness')}
             </th>
             <th class="text-left py-4 px-5 font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-              Primary Advantage
+              {t('materials.alloycomparisontable.col_advantage')}
             </th>
           </tr>
         </thead>
@@ -85,16 +87,16 @@ const t = useTranslations(currentLang);
                 <span class="block text-xs font-mono font-normal mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{row.spec}</span>
               </td>
               <td class="py-4 px-5 font-mono text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-                {row.spec.includes("Ti-6Al") ? row.spec : row.spec === "CP-Ti" ? "ASTM B265" : row.spec.includes("Ti-3Al") ? "AMS 4943" : row.spec.includes("Ti-0.3Mo") ? "ASTM B265" : "ASTM B265"}
+                {row.specStandard}
               </td>
               <td class="py-4 px-5 text-right font-mono font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                ≥ {row.tensile}
+                {row.tensile}
               </td>
               <td class="py-4 px-5 text-right font-mono font-semibold whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                ≥ {row.yield}
+                {row.yield}
               </td>
               <td class="py-4 px-5 text-right font-mono whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                ≥ {row.elongation}
+                {row.elongation}
               </td>
               <td class="py-4 px-5 text-right font-mono whitespace-nowrap" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
                 {row.hardness}
@@ -111,7 +113,7 @@ const t = useTranslations(currentLang);
     {/* Footnote */}
     <div class="max-w-6xl mx-auto mt-4">
       <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-        * All values are minimum specified properties at room temperature per applicable ASTM/AMS standards. Hardness values are approximate Vickers (HV). Consult our engineering team for application-specific data.
+        {t('materials.alloycomparisontable.footnote')}
       </p>
     </div>
   </div>
