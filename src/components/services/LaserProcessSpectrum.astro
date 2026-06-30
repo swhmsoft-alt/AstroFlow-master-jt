@@ -7,35 +7,36 @@ interface Process {
   icon: string;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const processes: Process[] = [
   {
-    title: "2D Flat Sheet Laser Cutting",
-    subtitle: "High-Kilowatt Fiber Laser for Titanium Plates",
-    description: "Utilizing high-kilowatt fiber lasers for rapid cold-state profile profiling on pure and alloyed titanium plates — guaranteeing razor-sharp micro-mesh arrays, intricate internal cutouts, and weld-ready edge quality without secondary deburring.",
+    title: t('services.laserprocessspectrum.card1.title'),
+    subtitle: t('services.laserprocessspectrum.card1.subtitle'),
+    description: t('services.laserprocessspectrum.card1.desc'),
     capabilities: [
-      "High-kW fiber laser sources optimized for titanium absorption spectrum",
-      "Micro-mesh and fine-feature cutting down to ø 0.5 mm holes",
-      "Rapid piercing and profile cutting with minimal HAZ (heat-affected zone)",
-      "Large-format bed 3,000 x 1,500 mm accommodating full plate sizes"
+      t('services.laserprocessspectrum.card1.cap0'),
+      t('services.laserprocessspectrum.card1.cap1'),
+      t('services.laserprocessspectrum.card1.cap2'),
+      t('services.laserprocessspectrum.card1.cap3')
     ],
     icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
   },
   {
-    title: "3D Rotary Tube Laser Machining",
-    subtitle: "Multi-Jaw Rotary Chucks for Complex Tube Profiles",
-    description: "Equipped with synchronized multi-jaw rotary chucks to execute complex 3D intersecting fish-mouth profiles, slots, and holes over round, square, or rectangular titanium tubes — in a single clamping setup without positional error accumulation.",
+    title: t('services.laserprocessspectrum.card2.title'),
+    subtitle: t('services.laserprocessspectrum.card2.subtitle'),
+    description: t('services.laserprocessspectrum.card2.desc'),
     capabilities: [
-      "Synchronized rotary chucks for continuous helical and index cutting",
-      "3D fish-mouth, saddle, and slot profile cutting on round/square/rectangular tubes",
-      "Tube diameter capacity ø 20 mm – ø 220 mm with 6,000 mm raw length",
-      "Automatic tube loading and unloading for batch production runs"
+      t('services.laserprocessspectrum.card2.cap0'),
+      t('services.laserprocessspectrum.card2.cap1'),
+      t('services.laserprocessspectrum.card2.cap2'),
+      t('services.laserprocessspectrum.card2.cap3')
     ],
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">
@@ -47,13 +48,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-        Laser Cutting Capabilities
+        {t('services.laserprocessspectrum.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Sheet & Tube <span style="color: var(--theme-primary);">{t('services.laserprocessspectrum.laser_process_spectrum')}</span>
+        {t('services.laserprocessspectrum.title_prefix')}<span style="color: var(--theme-primary);">{t('services.laserprocessspectrum.laser_process_spectrum')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Dual-infrastructure laser cutting capability — from 2D flat sheet profiling to 3D rotary tube machining — covering the full titanium component geometry spectrum.
+        {t('services.laserprocessspectrum.subtitle')}
       </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">

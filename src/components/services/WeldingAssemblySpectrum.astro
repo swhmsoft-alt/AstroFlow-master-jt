@@ -7,47 +7,48 @@ interface Process {
   icon: string;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const processes: Process[] = [
   {
-    title: "Ultra-Pure TIG Welding",
-    subtitle: "Digital Pulsed GTAW with Oversized Trailing Shields",
-    description: "Digital pulsed GTAW (Gas Tungsten Arc Welding) control paired with custom oversized trailing shield matrices to achieve elite silver/straw aerospace-grade joints — completely free of oxide discoloration and alpha-case embrittlement.",
+    title: t('services.weldingassemblyspectrum.card1.title'),
+    subtitle: t('services.weldingassemblyspectrum.card1.subtitle'),
+    description: t('services.weldingassemblyspectrum.card1.desc'),
     capabilities: [
-      "Digital pulsed GTAW with ±0.5 A current regulation precision",
-      "Custom trailing shields up to 150 mm width for full HAZ coverage",
-      "Pre-flow, trailing, and backing argon triple-shield streams",
-      "Real-time weld parameter logging per AWS D1.6 / ASME Section IX"
+      t('services.weldingassemblyspectrum.card1.cap0'),
+      t('services.weldingassemblyspectrum.card1.cap1'),
+      t('services.weldingassemblyspectrum.card1.cap2'),
+      t('services.weldingassemblyspectrum.card1.cap3')
     ],
     icon: "M13 10V3L4 14h7v7l9-11h-7z"
   },
   {
-    title: "High Penetration Laser Welding",
-    subtitle: "Concentrated Energy, Minimal Heat Input",
-    description: "Concentrated high energy density laser welding reducing total heat input by up to 60% versus TIG — minimizing grain coarsening and thermal micro-warping in critical structural and sealing weld paths.",
+    title: t('services.weldingassemblyspectrum.card2.title'),
+    subtitle: t('services.weldingassemblyspectrum.card2.subtitle'),
+    description: t('services.weldingassemblyspectrum.card2.desc'),
     capabilities: [
-      "Keyhole-mode laser welding for deep penetration with narrow HAZ",
-      "Reduced heat input minimizes distortion in thin-gauge assemblies",
-      "Automatic seam tracking for consistent weld placement",
-      "Ideal for hermetic sealing and structural node joining"
+      t('services.weldingassemblyspectrum.card2.cap0'),
+      t('services.weldingassemblyspectrum.card2.cap1'),
+      t('services.weldingassemblyspectrum.card2.cap2'),
+      t('services.weldingassemblyspectrum.card2.cap3')
     ],
     icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
   },
   {
-    title: "Multi-Component System Assembly",
-    subtitle: "Structural Fasteners, Torque Layout & Anti-Galling Compliance",
-    description: "System-level integration incorporating structural fasteners, precise torque layout constraints, and anti-galling engineering compliance — delivering fully assembled, tested, and documented sub-systems ready for final integration.",
+    title: t('services.weldingassemblyspectrum.card3.title'),
+    subtitle: t('services.weldingassemblyspectrum.card3.subtitle'),
+    description: t('services.weldingassemblyspectrum.card3.desc'),
     capabilities: [
-      "Structural assembly with torque-controlled fastener installation",
-      "Anti-galling compound application per aerospace specifications",
-      "Multi-axis CMM verification of assembly spatial tolerances",
-      "Full documentation package: torque logs, alignment reports, NDT results"
+      t('services.weldingassemblyspectrum.card3.cap0'),
+      t('services.weldingassemblyspectrum.card3.cap1'),
+      t('services.weldingassemblyspectrum.card3.cap2'),
+      t('services.weldingassemblyspectrum.card3.cap3')
     ],
     icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">
@@ -59,13 +60,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-        Welding & Assembly Capabilities
+        {t('services.weldingassemblyspectrum.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Welding & Assembly <span style="color: var(--theme-primary);">{t('services.weldingassemblyspectrum.process_spectrum_10')}</span>
+        {t('services.weldingassemblyspectrum.title_prefix')}<span style="color: var(--theme-primary);">{t('services.weldingassemblyspectrum.process_spectrum_10')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        From ultra-pure TIG welding with triple argon shielding to full multi-component system assembly — three integrated capabilities for mission-critical titanium structures.
+        {t('services.weldingassemblyspectrum.subtitle')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

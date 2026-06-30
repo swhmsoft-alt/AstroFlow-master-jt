@@ -7,47 +7,48 @@ interface Advantage {
   icon: string;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const advantages: Advantage[] = [
   {
-    title: "Absolute Zero Heat-Affected Zone",
-    subtitle: "Pure Supersonic Abrasive Erosion at Ambient Temperature",
-    description: "Pure physical supersonic abrasive erosion keeping workpiece temperatures below 100°C — 100% bypassing thermal warp, phase hardening, micro-cracks, or heat-induced metallurgical transformations that plague laser and plasma cutting of titanium.",
+    title: t('services.waterjetadvantages.card1.title'),
+    subtitle: t('services.waterjetadvantages.card1.subtitle'),
+    description: t('services.waterjetadvantages.card1.desc'),
     highlights: [
-      "No HAZ, no recast layer, no alpha-case embrittlement — cut edges retain native material properties",
-      "Zero thermal distortion — even on thin-gauge sheets down to 0.5 mm",
-      "No phase transformations in heat-treated titanium alloys",
-      "Ideal for thermally sensitive aerospace and medical components"
+      t('services.waterjetadvantages.card1.highlight0'),
+      t('services.waterjetadvantages.card1.highlight1'),
+      t('services.waterjetadvantages.card1.highlight2'),
+      t('services.waterjetadvantages.card1.highlight3')
     ],
     icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
   },
   {
-    title: "Exceptional Heavy-Plate Capacity",
-    subtitle: "Slicing Titanium Forgings Up to 100 mm+",
-    description: "Slicing through massive titanium forgings, billets, and heavy plates up to 120 mm thick — where commercial fiber lasers hit a physical roadblock at 12-20 mm and require multiple slow passes with gas-assist limitations.",
+    title: t('services.waterjetadvantages.card2.title'),
+    subtitle: t('services.waterjetadvantages.card2.subtitle'),
+    description: t('services.waterjetadvantages.card2.desc'),
     highlights: [
-      "Clean cuts through titanium up to 120 mm thick in a single pass",
-      "No thickness limitations from laser power or focal length constraints",
-      "Cuts stacked plates simultaneously for doubled throughput",
-      "Handles forged, cast, and heat-treated titanium without tooling changes"
+      t('services.waterjetadvantages.card2.highlight0'),
+      t('services.waterjetadvantages.card2.highlight1'),
+      t('services.waterjetadvantages.card2.highlight2'),
+      t('services.waterjetadvantages.card2.highlight3')
     ],
     icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   },
   {
-    title: "Material Yield Maximization",
-    subtitle: "Fine Jet ø 1.0 mm + Advanced Nesting Code",
-    description: "Fine abrasive jet streams down to ø 1.0 mm kerf width combined with advanced nesting algorithms — compressing expensive titanium material waste to near-theoretical minimums and maximizing part yield per billet.",
+    title: t('services.waterjetadvantages.card3.title'),
+    subtitle: t('services.waterjetadvantages.card3.subtitle'),
+    description: t('services.waterjetadvantages.card3.desc'),
     highlights: [
-      "Ultra-fine kerf ø 1.0 mm minimizes material loss between nested parts",
-      "Advanced nesting code optimizes part layout for >90% material utilization",
-      "Tight part-to-part spacing (2-3 mm) enabled by narrow jet stream",
-      "Significant cost savings on high-value titanium plate stock"
+      t('services.waterjetadvantages.card3.highlight0'),
+      t('services.waterjetadvantages.card3.highlight1'),
+      t('services.waterjetadvantages.card3.highlight2'),
+      t('services.waterjetadvantages.card3.highlight3')
     ],
     icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.03]">
@@ -59,13 +60,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
-        Waterjet Advantages
+        {t('services.waterjetadvantages.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         Waterjet Cutting <span style="color: var(--theme-primary);">{t('services.waterjetadvantages.process_advantages')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Cold abrasive waterjet cutting offers unique advantages for titanium that thermal processes cannot match — zero heat, unlimited thickness, and maximum material yield.
+        {t('services.waterjetadvantages.subtitle')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

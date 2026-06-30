@@ -6,92 +6,77 @@ interface PackagingProcess {
   icon: string;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const processes: PackagingProcess[] = [
   {
-    title: "Custom Form-Fitting CNC Foam",
-    description: "Milling high-density acid-free EPE/EVA cavities matched to individual 3D component CAD profiles to fully block transit vibrations and eliminate surface contact abrasion.",
+    title: t('services.packagingprocessspectrum.card1.title'),
+    description: t('services.packagingprocessspectrum.card1.desc'),
     capabilities: [
-      "CNC-route3D foam cavity milling from EPE (expanded polyethylene) or EVA (ethylene-vinyl acetate) — densities from 20–100 kg/m³ per application",
-      "Cavities matched directly from customer STEP/IGES CAD files, ensuring ±0.5 mm fit tolerance for each component contour",
-      "Acid-free certified foam formulations (pH 6.5–7.5 per TAPPI T 509) — zero outgassing or chemical migration onto polished/anodized titanium surfaces",
-      "Multi-layer nesting: individual components sealed in separated cavities with 50 mm minimum foam walls for impact energy dissipation"
+      t('services.packagingprocessspectrum.card1.cap0'),
+      t('services.packagingprocessspectrum.card1.cap1'),
+      t('services.packagingprocessspectrum.card1.cap2'),
+      t('services.packagingprocessspectrum.card1.cap3')
     ],
     icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
   },
   {
-    title: "VCI Marine Corrosion Barriers",
-    description: "Deploying anti-static vacuum-sealed Volatile Corrosion Inhibitor films to emit protective atmospheres, isolating alloy skins from ocean salt-spray during sea freight.",
+    title: t('services.packagingprocessspectrum.card2.title'),
+    description: t('services.packagingprocessspectrum.card2.desc'),
     capabilities: [
-      "Multi-layer VCI film construction: anti-static polyethylene outer, VCI-impregnated middle layer, and low-friction inner contact ply",
-      "Vacuum-sealed enclosure emits continuous molecular VCI vapor (amine carboxylates) that forms a mono-molecular protective layer on all exposed metal surfaces",
-      "Zero VCI residue on titanium — films leave no trace after unwrapping, eliminating post-shipment cleaning for downstream assembly lines",
-      "Validated for 24-month continuous anti-corrosion protection in ASTM D1749 marine environment simulation (40°C, 95% RH, salt-fog cyclic)"
+      t('services.packagingprocessspectrum.card2.cap0'),
+      t('services.packagingprocessspectrum.card2.cap1'),
+      t('services.packagingprocessspectrum.card2.cap2'),
+      t('services.packagingprocessspectrum.card2.cap3')
     ],
     icon: "M13 10V3L4 14h7v7l9-11h-7z"
   },
   {
-    title: "ISPM-15 Certified Export Crating",
-    description: "Constructing heavy-duty non-fumigation plywood enclosures with localized structural tie-downs to secure heavy multi-ton assemblies under rough crane lifts and container stacking.",
+    title: t('services.packagingprocessspectrum.card3.title'),
+    description: t('services.packagingprocessspectrum.card3.desc'),
     capabilities: [
-      "100% ISPM-15 compliant heat-treated (HT) plywood and timber — certified phytosanitary, requires no methyl bromide fumigation for international shipping",
-      "Engineered structural tie-down points with threaded steel inserts rated to 5,000 kg per anchor point — secured to crate base via M16 bolts",
-      "Finite element analysis (FEA) optimized crate designs for multi-ton assemblies — validated to withstand 8-point container stacking loads at sea",
-      "Full documentation package: ISPM-15 stamp, packing list, photo log, and lift/crane instruction diagrams affixed to crate exterior"
+      t('services.packagingprocessspectrum.card3.cap0'),
+      t('services.packagingprocessspectrum.card3.cap1'),
+      t('services.packagingprocessspectrum.card3.cap2'),
+      t('services.packagingprocessspectrum.card3.cap3')
     ],
     icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
   }
 ];
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
 ---
 <section class="relative py-24 overflow-hidden bg-[#0F172A]">
-  <!-- Engineering grid pattern -->
   <div class="absolute inset-0 opacity-[0.03]">
     <div class="absolute inset-0" style="background-image: linear-gradient(#38BDF8 1px, transparent 1px), linear-gradient(90deg, #38BDF8 1px, transparent 1px); background-size: 60px 60px;"></div>
   </div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Section Header -->
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-[#38BDF8] text-[#38BDF8] bg-[#38BDF8]/10">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         </svg>
-        Packaging Solutions
+        {t('services.packagingprocessspectrum.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
-        Packaging <span class="text-[#38BDF8]">{t('services.packagingprocessspectrum.process_spectrum_7')}</span>
+        {t('services.packagingprocessspectrum.title_prefix')}<span class="text-[#38BDF8]">{t('services.packagingprocessspectrum.process_spectrum_7')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
-        Three dedicated titanium logistics protection workflows — engineered for precision foam nesting, marine-grade corrosion barriers, and heavy-lift export crating.
+        {t('services.packagingprocessspectrum.subtitle')}
       </p>
     </div>
 
-    <!-- Process Grid — 3-column -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {processes.map((process) => (
-        <div
-          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] hover:shadow-[0_0_30px_rgba(56,189,248,0.1)]"
-        >
-          <!-- Icon -->
+        <div class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] hover:shadow-[0_0_30px_rgba(56,189,248,0.1)]">
           <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 bg-[#38BDF8]/10">
             <svg class="w-6 h-6 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d={process.icon} />
             </svg>
           </div>
-
-          <!-- Title -->
-          <h3 class="text-lg font-bold mb-3 text-[#F8FAFC]">
-            {process.title}
-          </h3>
-
-          <!-- Description -->
-          <p class="text-sm mb-4 leading-relaxed text-[#F8FAFC]/60">
-            {process.description}
-          </p>
-
-          <!-- Capabilities list -->
+          <h3 class="text-lg font-bold mb-3 text-[#F8FAFC]">{process.title}</h3>
+          <p class="text-sm mb-4 leading-relaxed text-[#F8FAFC]/60">{process.description}</p>
           <ul class="space-y-2 mt-auto">
             {process.capabilities.map((cap) => (
               <li class="flex items-start text-sm text-[#F8FAFC]/70">
@@ -102,14 +87,7 @@ const t = useTranslations(currentLang);
               </li>
             ))}
           </ul>
-
-          <!-- Corner hover accent -->
-          <div
-            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
-            style="border-style: solid; border-color: transparent #38BDF8 transparent transparent; opacity: 0;"
-            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
-            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
-          ></div>
+          <div class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl" style="border-style: solid; border-color: transparent #38BDF8 transparent transparent; opacity: 0;" onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'" onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"></div>
         </div>
       ))}
     </div>

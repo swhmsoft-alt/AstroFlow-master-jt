@@ -1,39 +1,29 @@
 ---
 interface SpecItem {
-  label: string;
   value: string;
   unit: string;
-  description: string;
   icon: string;
 }
 
 const specs: SpecItem[] = [
   {
-    label: "Welding Current Regulation",
     value: "±0.5",
     unit: "A",
-    description: "Digital boundary tracking precision down to ±0.5 A limits — ensuring consistent heat input and weld pool control across the full joint geometry, from thin-gauge sheet to heavy plate.",
     icon: "M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859"
   },
   {
-    label: "Argon Purge Shield Trailing Width",
     value: "150",
     unit: "mm",
-    description: "Extended physical trailing enclosure paths up to 150 mm width — providing complete inert gas coverage over the weld pool and heat-affected zone until temperatures drop below 250°C.",
     icon: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
   },
   {
-    label: "Mechanical Assembly Spatial Tolerance",
     value: "±0.05",
     unit: "mm",
-    description: "Strict multidirectional space compliance within ±0.05 mm metrics — verified via multi-axis CMM inspection for bolted interfaces, dowel pin alignments, and mating surface registration.",
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
   },
   {
-    label: "Thread Integration Quality",
     value: "100%",
     unit: "Ultrasonic & Torque Tracked",
-    description: "100% qualified under ultrasonic anti-galling lubrication verification and precise dynamic torque tracking — guaranteeing thread integrity, clamp load accuracy, and galling-free fastener installation.",
     icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
   }
 ];
@@ -48,13 +38,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        Assembly Specifications
+        {t('services.assemblyspecsdashboard.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Welding & Assembly <span style="color: var(--theme-primary);">{t('services.assemblyspecsdashboard.specifications_dashboard_2')}</span>
+        {t('services.assemblyspecsdashboard.title_prefix')}<span style="color: var(--theme-primary);">{t('services.assemblyspecsdashboard.specifications_dashboard_2')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Precision boundaries for weld current control, argon shielding, mechanical assembly fit, and thread quality assurance.
+        {t('services.assemblyspecsdashboard.subtitle')}
       </p>
     </div>
 
@@ -73,8 +63,8 @@ const t = useTranslations(currentLang);
             <span class="text-4xl md:text-5xl font-bold tracking-tight" style="color: var(--theme-primary);">{spec.value}</span>
             {spec.unit && <span class="text-lg font-semibold ml-1" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{spec.unit}</span>}
           </div>
-          <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{spec.label}</h3>
-          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{spec.description}</p>
+          <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('services.assemblyspecsdashboard.metric' + specs.indexOf(spec) + '.label')}</h3>
+          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('services.assemblyspecsdashboard.metric' + specs.indexOf(spec) + '.desc')}</p>
           <div class="absolute bottom-0 left-6 right-6 h-px" style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent); opacity: 0.2;"></div>
         </div>
       ))}
@@ -82,7 +72,7 @@ const t = useTranslations(currentLang);
 
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        All welding performed per AWS D1.6 / ASME Section IX. Assembly torque certified per fastener grade and lubrication specification.
+        {t('services.assemblyspecsdashboard.footnote')}
       </p>
     </div>
   </div>
