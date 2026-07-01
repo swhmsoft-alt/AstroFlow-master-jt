@@ -22,7 +22,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     badge: 'Industry-Leading Solutions',
   },
   '/services': {
-    h1: 'Titanium Machining Services',
+    h1: 'Titanium CNC Manufacturing Services',
     subtitle: 'End-to-end titanium manufacturing solutions from rapid prototyping to high-volume precision CNC machining and heavy industrial fabrication.',
     badge: 'Precision Manufacturing',
   },
