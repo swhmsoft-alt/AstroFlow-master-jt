@@ -8,6 +8,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://cnc.bozemetal.com',
   output: 'static',
+  trailingSlash: 'ignore',
   integrations: [
     react(),
     sitemap({
