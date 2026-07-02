@@ -12,6 +12,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
 import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
+import { getBlogPosts, getOriginalSlug } from '../../../lib/blog-i18n';
 
 export async function getStaticPaths() {
   // 排除默认语言(en)，根目录 blog/index.astro 已处理 /blog/
@@ -24,10 +25,8 @@ const t = useTranslations(lang);
 
 type BlogPost = CollectionEntry<'blog'>;
 
-const allPosts: BlogPost[] = await getCollection('blog');
-const sorted = allPosts.sort((a: BlogPost, b: BlogPost) => {
-  return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
-});
+// Load translated blog posts for this language
+const sorted: BlogPost[] = await getBlogPosts(lang);
 
 const featured = sorted.find(p => p.data.featured);
 const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
@@ -48,7 +47,7 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
   {featured && (
     <Section>
       <a
-        href={localizePath(`/blog/${featured.slug}`, lang)}
+        href={localizePath(`/blog/${getOriginalSlug(featured.slug)}`, lang)}
         class="group block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
         style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
       >
@@ -96,7 +95,7 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {recent.map((post) => (
         <a
-          href={localizePath(`/blog/${post.slug}`, lang)}
+          href={localizePath(`/blog/${getOriginalSlug(post.slug)}`, lang)}
           class="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl"
           style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
         >

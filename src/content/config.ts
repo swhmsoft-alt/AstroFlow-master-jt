@@ -68,8 +68,26 @@ const blogCollection = defineCollection({
   }),
 });
 
+const blogTranslationsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    author: z.string().default('BOZE CNC Ti'),
+    category: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    coverImage: z.string().optional(),
+    coverImageAlt: z.string().optional(),
+    featured: z.boolean().default(false),
+    lang: z.string(),
+    originalSlug: z.string(),
+  }),
+});
+
 export const collections = {
   pages: pagesCollection,
   products: productsCollection,
   blog: blogCollection,
+  'blog-translations': blogTranslationsCollection,
 };

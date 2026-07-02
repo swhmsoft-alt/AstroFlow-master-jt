@@ -2,17 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import { getOriginalSlug } from '../../lib/blog-i18n';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  // CMS Migration: When migrating to a headless CMS, replace the local getCollection('blog')
-  // with an API call that returns posts with { slug, data } shape.
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  // English only: top-level posts (no lang/ prefix)
+  return posts
+    .filter(post => !post.slug.includes('/'))
+    .map((post) => ({
+      params: { slug: post.slug },
+      props: { post },
+    }));
 }
 
 const { post } = Astro.props;

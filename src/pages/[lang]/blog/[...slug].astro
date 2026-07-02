@@ -3,41 +3,69 @@
  * [lang]/blog/[...slug].astro
  *
  * Multi-language blog article page.
- * Same as src/pages/blog/[...slug].astro but with language prefix.
+ * Loads translated content from blogTranslations collection (if available)
+ * or falls back to English blog collection.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
 import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
+import { getBlogPost } from '../../../lib/blog-i18n';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  // 排除默认语言(en)，根目录 blog/[...slug].astro 已处理 /blog/slug/
+  const englishPosts = (await getCollection('blog')).filter(p => !p.slug.includes('/'));
   const langCodes = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
   const paths = [];
+
   for (const lang of langCodes) {
-    for (const post of posts) {
+    for (const post of englishPosts) {
       paths.push({
         params: { lang, slug: post.slug },
-        props: { post },
       });
     }
   }
+
   return paths;
 }
 
-const { post } = Astro.props;
-const { data } = post;
-const { Content, headings } = await post.render();
-
+const { slug } = Astro.params;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const tocHeadings = headings.filter(h => h.depth === 2);
+// Try to find translation entry first
+const allTranslations = await getCollection('blog-translations');
+const translationEntry = lang !== DEFAULT_LANG
+  ? allTranslations.find(t => t.data.lang === lang && t.data.originalSlug === slug)
+  : undefined;
+
+// Find the English post for fallback
+const englishPosts = await getCollection('blog');
+const engPost = englishPosts.find(p => p.slug === slug && !p.slug.includes('/'));
+
+if (!engPost) {
+  return Astro.redirect('/404');
+}
+
+// Determine which entry to render and what data to use
+let renderEntry: any;
+let data: any;
+
+if (translationEntry) {
+  renderEntry = translationEntry;
+  data = translationEntry.data;
+} else {
+  renderEntry = engPost;
+  data = engPost.data;
+}
+
+const { Content, headings } = await renderEntry.render();
+
+const tocHeadings = headings.filter((h: any) => h.depth === 2);
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
 const seoTitle = `${data.title} | BOZE CNC Ti Blog`;
 const tags = data.tags || [];
-const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blog/${post.slug}`;
+const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blog/${slug}`;
 ---
 
 <BaseLayout
@@ -89,7 +117,7 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
               {data.category}
             </span>
           )}
-          {tags.slice(0, 3).map(tag => (
+          {tags.slice(0, 3).map((tag: string) => (
             <span class="inline-block px-2.5 py-0.5 text-xs rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
               #{tag}
             </span>
@@ -134,7 +162,7 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
                 </div>
                 <nav aria-label={t('blog.Slug].table_of_contents')}>
                   <ul class="space-y-1">
-                    {tocHeadings.map((heading, index) => {
+                    {tocHeadings.map((heading: any, index: number) => {
                       const id = heading.text.toLowerCase().replace(/[^\w]+/g, '-').replace(/(^-|-$)/g, '');
                       return (
                         <li>
