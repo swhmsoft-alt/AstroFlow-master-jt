@@ -10,7 +10,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 ---
-<BaseLayout>
+<BaseLayout serviceHubKey="surface">
   <!-- Hero — DO NOT MODIFY -->
   <SubpageHero
     title={t('titanium-surface-treatment.astro.titaniumSurfaceTreatment.titanium_surface_treatment')}

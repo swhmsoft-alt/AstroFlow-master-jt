@@ -46,6 +46,19 @@ interface Props {
   collectionName?: string;
   /** Collection item count */
   itemCount?: number;
+
+  // ── Hierarchical Service Schema props ──
+  /**
+   * Key into servicesHierarchyData to inject a nested Service entity with hasPart.
+   * Supported keys: "master-service", "cnc-machining", "additive", "fabrication", "forming", "surface"
+   *   "master-service" → /services (all 6 pillars as hasPart)
+   *   "cnc-machining"  → /titanium-cnc-machining-services
+   *   "additive"       → /titanium-additive-manufacturing
+   *   "fabrication"    → /titanium-fabrication-services
+   *   "forming"        → /titanium-forming-heavy-manufacturing
+   *   "surface"        → /titanium-surface-treatment
+   */
+  serviceHubKey?: string;
 }
 
 const currentPathname = Astro.url.pathname;
@@ -70,6 +83,7 @@ const {
   productCategory,
   collectionName,
   itemCount,
+  serviceHubKey,
 } = Astro.props;
 
 // ── SEO Config auto-resolution ──────────────────────────
@@ -155,7 +169,7 @@ const schemaData = {
   itemCount,
 };
 
-const pageGraph = buildPageGraph(pageType, schemaData);
+const pageGraph = buildPageGraph(pageType, schemaData, serviceHubKey, currentLang);
 const ldJson = JSON.stringify(pageGraph);
 ---
 

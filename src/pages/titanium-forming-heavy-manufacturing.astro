@@ -10,7 +10,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 ---
-<BaseLayout>
+<BaseLayout serviceHubKey="forming">
   <SubpageHero
     title={t('titanium-forming-heavy-manufacturing.astro.titaniumFormingHeavyManufacturing.titanium_forming_heavy_manufacturing')}
     highlight="Services"

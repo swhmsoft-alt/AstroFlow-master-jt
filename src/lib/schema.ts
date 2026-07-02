@@ -18,12 +18,17 @@
  */
 
 import { SITE } from '@config/site';
+import { servicesHierarchyData, type ServiceNode } from '../data/services-schema';
 
 // ── Constants ─────────────────────────────────────────
 
 const SITEROOT = SITE.url;
 const ORG_ID     = `${SITEROOT}/#boze-org`;
 const WEBSITE_ID = `${SITEROOT}/#boze-website`;
+
+// Supported language keys (for ServiceNode lookups)
+type SupportedLang = 'en' | 'de' | 'ja' | 'fr' | 'es' | 'pt' | 'it' | 'ko' | 'nl' | 'pl';
+const FALLBACK_LANG = 'en' as const;
 
 // ── Page Type ─────────────────────────────────────────
 
@@ -75,12 +80,21 @@ function clean(obj: Record<string, unknown>): Record<string, unknown> {
 
 export function buildOrganization() {
   return {
-    '@type': 'Organization',
+    '@type': 'ManufacturingBusiness',
     '@id': ORG_ID,
     name: 'BOZE CNC Ti',
+    legalName: 'Bozhe Metal Titanium Technology Co., Ltd.',
     url: SITEROOT,
     logo: `${SITEROOT}/uploads/boze-logo-2.png`,
     description: SITE.description,
+    knowsAbout: [
+      'Titanium CNC Machining',
+      'Aerospace Component Manufacturing',
+      'Medical Device Titanium Implants',
+      'Additive Manufacturing LPBF',
+      'Titanium Surface Treatment',
+    ],
+    areaServed: 'Worldwide',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+86-186-2391-9905',
@@ -95,6 +109,56 @@ export function buildOrganization() {
       'https://www.facebook.com/bozemetal',
     ],
   };
+}
+
+// ── Hierarchical Service Builder ───────────────────────
+
+/**
+ * Safely resolve a language key from a LanguageDict.
+ * Falls back to 'en' if the requested language is not available.
+ */
+function resolveLang(dict: { en: string; [key: string]: string | undefined }, lang: string): string {
+  if (dict[lang]) return dict[lang]!;
+  return dict[FALLBACK_LANG] ?? '';
+}
+
+/**
+ * Recursively build a nested Service entity with hasPart children.
+ *
+ * Each node uses its hardcoded @id for consistent Google Knowledge Graph merging.
+ * The provider is always bound to the ManufacturingBusiness @id.
+ * If node.material is present, a ProductMaterial sub-entity is emitted.
+ *
+ * @param node     ServiceNode from servicesHierarchyData
+ * @param lang     Current page language (auto-fallback to 'en')
+ */
+export function buildServiceHierarchy(node: ServiceNode, lang: string = FALLBACK_LANG): Record<string, unknown> {
+  const schema: Record<string, unknown> = {
+    '@type': 'Service',
+    '@id': node.id,
+    name: resolveLang(node.name, lang),
+    description: resolveLang(node.description, lang),
+    provider: { '@id': ORG_ID },
+  };
+
+  if (node.serviceType) {
+    schema.serviceType = node.serviceType;
+  }
+
+  // Material specification (e.g. Ti-6Al-4V powder for additive)
+  if (node.material) {
+    schema.material = {
+      '@type': 'ProductMaterial',
+      name: resolveLang(node.material, lang),
+    };
+  }
+
+  // Recursive hasPart — children inherit the same lang
+  if (node.hasPart && node.hasPart.length > 0) {
+    schema.hasPart = node.hasPart.map((child) => buildServiceHierarchy(child, lang));
+  }
+
+  return schema;
 }
 
 export function buildWebSite() {
@@ -405,17 +469,29 @@ export interface SchemaPageData {
  * Build the full @graph for a page.
  *
  * Every page always gets:
- *   Organization  (@id: #boze-org)
- *   WebSite       (publisher → #boze-org)
- *   WebPage       (isPartOf → #boze-website)
- *   BreadcrumbList (if items provided)
+ *   ManufacturingBusiness  (@id: #boze-org)
+ *   WebSite                (publisher → #boze-org)
+ *   WebPage                (isPartOf → #boze-website)
+ *   BreadcrumbList         (if items provided)
  *
  * Additional entities are added based on pageType.
+ * If serviceHubKey is provided, a hierarchical Service entity with hasPart
+ * children from servicesHierarchyData is appended to the graph.
+ *
+ * @param pageType         Detected or explicit page type
+ * @param data             Page-specific schema data
+ * @param serviceHubKey    Optional key into servicesHierarchyData (e.g. "cnc-machining", "master-service")
+ * @param lang             Current page language (defaults to 'en')
  */
-export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
+export function buildPageGraph(
+  pageType: PageType,
+  data: SchemaPageData,
+  serviceHubKey?: string,
+  lang: string = FALLBACK_LANG,
+) {
   const graph: Record<string, unknown>[] = [];
 
-  // 1. Organization & WebSite — every page
+  // 1. ManufacturingBusiness & WebSite — every page
   graph.push(buildOrganization());
   graph.push(buildWebSite());
 
@@ -494,6 +570,13 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       // 'home', 'materials', 'capabilities', 'industries', 'resources', 'rfq', 'generic'
       // already have Org + WebSite + WebPage + Breadcrumb
       break;
+  }
+
+  // 5. Hierarchical Service entity (zero-conflict — same @id as detail pages)
+  //    Only pushed when the page explicitly provides a serviceHubKey
+  if (serviceHubKey && servicesHierarchyData[serviceHubKey]) {
+    const serviceEntity = buildServiceHierarchy(servicesHierarchyData[serviceHubKey], lang);
+    graph.push(serviceEntity);
   }
 
   return clean({ '@context': 'https://schema.org', '@graph': graph });
