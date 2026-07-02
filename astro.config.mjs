@@ -3,14 +3,16 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import normalizeTrailingSlash from '@reunmedia/astro-normalize-trailing-slash';
 
 // https://astro.build
 export default defineConfig({
   site: 'https://cnc.bozemetal.com',
   output: 'static',
-  trailingSlash: 'ignore',
+  trailingSlash: 'always',
   integrations: [
     react(),
+    normalizeTrailingSlash(),
     sitemap({
       filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin'),
       changefreq: 'weekly',

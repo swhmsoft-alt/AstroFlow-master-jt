@@ -89,7 +89,7 @@ const description = explicitDesc || seoDescFromConfig || SITE.description;
 
 // ── Computed SEO values ────────────────────────────────
 const siteUrl = SITE.url;
-const currentUrl = currentPathname === '/' ? siteUrl : `${siteUrl}${currentPathname}/`;
+const currentUrl = `${siteUrl}${currentPathname}`;
 const canonicalUrl = canonicalURL || currentUrl;
 const defaultOgImage = `${siteUrl}/uploads/boze-1-en.png`;
 const seoImage = ogImage || defaultOgImage;
