@@ -11,80 +11,80 @@ featured: false
 lang: "ko"
 originalSlug: "custom-titanium-machining-contract-manufacturer-china-rfq-preparation"
 ---
-If you are preparing an RFQ for custom titanium machining in China, the most important thing is not the lowest unit price but whether the supplier can hold tolerance, traceability, and delivery consistency across the full production run. For aerospace, medical, energy, and general industrial parts, the right contract manufacturer is one that can quote clearly, document material and process controls, and explain where the real cost and risk sit.
+중국에서 맞춤형 티타늄 가공을 위한 RFQ를 준비할 때 가장 중요한 것은 최저 단가가 아니라, 공급업체가 전체 생산 과정에서 공차 유지, 추적성, 납기 일관성을 확보할 수 있는지 여부입니다. 항공우주, 의료, 에너지 및 일반 산업용 부품의 경우, 명확하게 견적을 제시하고 자재 및 공정 관리를 문서화하며 실제 비용과 리스크가 어디에 있는지 설명할 수 있는 계약 제조업체가 올바른 선택입니다.
 
-## What a strong RFQ should ask for
+## 강력한 RFQ가 요청해야 할 사항
 
-A strong RFQ for titanium machining should request more than dimensions and quantities. It should specify material grade, drawing revision, critical tolerances, surface finish, inspection method, lot size, packaging requirements, and any applicable certification needs. If the supplier cannot respond to those points without ambiguity, the quote will usually hide later cost growth.
+티타늄 가공을 위한 강력한 RFQ는 치수와 수량 이상을 요청해야 합니다. 자재 등급, 도면 개정, 중요 공차, 표면 마감, 검사 방법, 로트 크기, 포장 요구 사항 및 적용 가능한 인증 요구 사항을 명시해야 합니다. 공급업체가 이러한 사항에 모호함 없이 응답할 수 없다면, 해당 견적은 일반적으로 추후 비용 증가를 숨기게 됩니다.
 
-The reason is simple: titanium machining cost is driven by more than machine time. Tool wear, heat management, fixturing stability, inspection time, and rework risk all increase when the part geometry is thin-walled, deep-pocketed, or tightly tolerated. In Chinese contract manufacturing, that gap becomes even larger when the buyer sends incomplete data and expects the factory to fill in the missing engineering assumptions.
+그 이유는 간단합니다. 티타늄 가공 비용은 기계 가공 시간 이상으로 결정됩니다. 부품 형상이 박벽, 깊은 포켓 또는 엄격한 공차를 가질 경우 공구 마모, 열 관리, 고정 안정성, 검사 시간 및 재작업 리스크가 모두 증가합니다. 중국 계약 제조에서 구매자가 불완전한 데이터를 보내고 공장이 누락된 엔지니어링 가정을 채우길 기대할 때 그 격차는 더욱 커집니다.
 
-The main tradeoff is between quote speed and quote accuracy. A fast RFQ response is useful, but an overly fast quote that ignores fixturing difficulty or traceability work can look attractive and then fail during production. For procurement teams, the safer approach is to force the supplier to quote on the same technical basis as everyone else.
+주요 절충점은 견적 속도와 견적 정확성 사이에 있습니다. 빠른 RFQ 응답은 유용하지만, 고정 난이도나 추적성 작업을 무시한 지나치게 빠른 견적은 매력적으로 보이다가 생산 중 실패할 수 있습니다. 조달팀의 경우 더 안전한 접근 방식은 공급업체가 다른 모든 업체와 동일한 기술적 기준으로 견적을 제출하도록 강제하는 것입니다.
 
-Use a written checklist before sending the RFQ: material grade, quantity by release, tolerance map, inspection plan, certification request, special processes, and target delivery window. That makes supplier comparison far cleaner and reduces the chance of hidden scope changes after award.
+RFQ를 보내기 전에 서면 체크리스트를 사용하십시오: 자재 등급, 릴리스별 수량, 공차 맵, 검사 계획, 인증 요청, 특수 공정 및 목표 납기 기간. 이렇게 하면 공급업체 비교가 훨씬 명확해지고 수주 후 숨겨진 범위 변경 가능성이 줄어듭니다.
 
-| RFQ item | Why it matters | Typical risk if omitted |
+| RFQ 항목 | 중요성 | 누락 시 일반적인 리스크 |
 |---|---|---|
-| Material grade | Controls machinability, strength, and cost structure | Wrong alloy selection or unusable quote basis |
-| Critical tolerances | Determines machine time, inspection effort, and reject risk | Price escalation after award |
-| Surface finish | Affects tooling strategy and post-processing | Finish mismatch and rework |
-| Inspection requirements | Defines metrology cost and documentation burden | Missing quality records |
-| Delivery window | Influences capacity allocation and expedited cost | Late shipment or rushed processing |
+| 자재 등급 | 가공성, 강도 및 비용 구조를 제어 | 잘못된 합금 선택 또는 사용 불가능한 견적 기준 |
+| 중요 공차 | 기계 가공 시간, 검사 노력 및 불량 리스크 결정 | 수주 후 가격 상승 |
+| 표면 마감 | 공구 전략 및 후처리에 영향 | 마감 불일치 및 재작업 |
+| 검사 요구 사항 | 계측 비용 및 문서 부담 정의 | 품질 기록 누락 |
+| 납기 기간 | 생산 능력 할당 및 긴급 비용에 영향 | 지연 선적 또는 긴급 처리 |
 
-## How to judge a titanium supplier
+## 티타늄 공급업체를 평가하는 방법
 
-The best supplier is not the one with the lowest hourly machine rate; it is the one that can repeatedly make acceptable parts with minimal supervision. For custom titanium machining, that usually means stable process control, clear traveler records, appropriate inspection capability, and a realistic understanding of the geometry you are asking them to produce. If the quote is vague about how they will make and inspect the part, treat that as a warning sign.
+최고의 공급업체는 시간당 기계 가공 비용이 가장 낮은 업체가 아니라, 최소한의 감독으로 반복적으로 허용 가능한 부품을 생산할 수 있는 업체입니다. 맞춤형 티타늄 가공의 경우, 이는 일반적으로 안정적인 공정 관리, 명확한 작업 지시 기록, 적절한 검사 역량 및 요청하는 형상에 대한 현실적인 이해를 의미합니다. 견적이 부품을 어떻게 만들고 검사할지에 대해 모호하다면, 이를 경고 신호로 간주하십시오.
 
-In aerospace and medical work, the supplier must also understand how traceability and documentation affect release timing. A shop can have good CNC equipment and still fail a program because the paperwork, material verification, or sub-tier process coordination is weak. This is especially common when buyers assume every machine shop handles titanium the same way.
+항공우주 및 의료 분야에서 공급업체는 추적성과 문서화가 릴리스 일정에 미치는 영향을 이해해야 합니다. 공장이 우수한 CNC 장비를 보유하더라도 서류 작업, 자재 검증 또는 하위 공정 조정이 취약하면 프로그램이 실패할 수 있습니다. 이는 구매자가 모든 기계 공장이 티타늄을 동일한 방식으로 처리한다고 가정할 때 특히 흔합니다.
 
-The main contradiction is that a supplier can appear technically strong while still being commercially weak. A shop may own advanced 5-axis equipment, but if it cannot control queue time, material flow, or inspection bottlenecks, the real delivery risk remains high. Procurement should therefore evaluate both machining capability and operational discipline.
+주요 모순은 공급업체가 기술적으로 강력해 보이면서도 상업적으로 취약할 수 있다는 점입니다. 공장이 첨단 5축 장비를 보유하더라도 대기 시간, 자재 흐름 또는 검사 병목 현상을 제어할 수 없다면 실제 납기 리스크는 여전히 높습니다. 따라서 조달은 가공 역량과 운영 규율을 모두 평가해야 합니다.
 
-For practical sourcing, ask for recent part families similar in material and complexity, not generic capability claims. Then compare whether the supplier can explain tooling choices, fixturing constraints, and quality checks in plain language.
+실질적인 소싱을 위해 일반적인 역량 주장이 아닌, 자재와 복잡성이 유사한 최근 부품군을 요청하십시오. 그런 다음 공급업체가 공구 선택, 고정 제약 조건 및 품질 검사를 평이한 언어로 설명할 수 있는지 비교하십시오.
 
-| Evaluation area | What to look for | Red flag |
+| 평가 영역 | 확인 사항 | 위험 신호 |
 |---|---|---|
-| Material knowledge | Clear understanding of titanium grade behavior and machinability | Generic answers that treat titanium like stainless steel |
-| Process control | Stable work instructions, fixturing, and inspection flow | Ad hoc production planning |
-| Documentation | Traceable material certificates and inspection records | Incomplete or delayed records |
-| Capacity realism | Lead times tied to actual loading and queue time | Overpromised delivery dates |
-| Engineering response | Ability to identify manufacturability risks before production | Quote-only behavior with no technical review |
+| 자재 지식 | 티타늄 등급 거동 및 가공성에 대한 명확한 이해 | 티타늄을 스테인리스강처럼 취급하는 일반적인 답변 |
+| 공정 관리 | 안정적인 작업 지침, 고정 및 검사 흐름 | 임시방편적인 생산 계획 |
+| 문서화 | 추적 가능한 자재 인증서 및 검사 기록 | 불완전하거나 지연된 기록 |
+| 생산 능력 현실성 | 실제 부하 및 대기 시간과 연계된 리드 타임 | 과장된 납기 약속 |
+| 엔지니어링 대응 | 생산 전 제조 리스크 식별 능력 | 기술 검토 없는 견적 전용 행동 |
 
-## Why titanium jobs miss targets
+## 티타늄 작업이 목표를 놓치는 이유
 
-Titanium machining fails for predictable reasons: heat buildup, tool wear, unstable clamping, poor chip evacuation, and unrealistic tolerances. When the part has deep cavities, thin walls, or tight flatness requirements, even a capable supplier can struggle if the RFQ does not describe the real functional requirement. In those cases, the process may technically run, but the yield and consistency may not be acceptable.
+티타늄 가공은 예측 가능한 이유로 실패합니다: 열 축적, 공구 마모, 불안정한 클램핑, 불량한 칩 배출 및 비현실적인 공차. 부품에 깊은 캐비티, 얇은 벽 또는 엄격한 평탄도 요구 사항이 있을 경우, RFQ가 실제 기능 요구 사항을 설명하지 않으면 유능한 공급업체도 어려움을 겪을 수 있습니다. 이러한 경우 공정이 기술적으로 작동할 수는 있지만 수율과 일관성이 허용 가능하지 않을 수 있습니다.
 
-One common failure mode is assuming the first prototype run represents production readiness. Prototype success often comes from slower feeds, more operator attention, and generous setup time, none of which scale cleanly into repeat production. The second or third lot is where hidden instability usually appears.
+일반적인 실패 모드 중 하나는 첫 번째 프로토타입 런이 생산 준비 상태를 나타낸다고 가정하는 것입니다. 프로토타입 성공은 종종 느린 이송, 더 많은 작업자 주의 및 충분한 셋업 시간에서 비롯되며, 이 중 어느 것도 반복 생산으로 깔끔하게 확장되지 않습니다. 숨겨진 불안정성은 일반적으로 두 번째 또는 세 번째 로트에서 나타납니다.
 
-The tradeoff here is between precision and manufacturability. A tighter tolerance can improve functional fit, but unnecessary tightening increases inspection burden, scrap probability, and schedule risk without improving performance. That is why experienced buyers usually push tolerances only where the design truly needs them.
+여기서의 절충점은 정밀도와 제조성 사이에 있습니다. 더 엄격한 공차는 기능적 적합성을 개선할 수 있지만, 불필요한 강화는 성능을 향상시키지 않으면서 검사 부담, 폐기 가능성 및 일정 리스크를 증가시킵니다. 따라서 경험 많은 구매자는 설계가 진정으로 필요한 부분에만 공차를 적용합니다.
 
-To reduce failure risk, separate critical dimensions from noncritical ones, and ask the supplier to comment on the hardest features before award. This exposes whether the factory understands the part or is simply accepting the order.
+실패 리스크를 줄이려면 중요 치수와 비중요 치수를 분리하고, 수주 전에 공급업체가 가장 어려운 형상에 대해 의견을 제시하도록 요청하십시오. 이는 공장이 부품을 이해하고 있는지 아니면 단순히 주문을 수락하는지 드러냅니다.
 
-## What drives cost in China
+## 중국에서 비용을 결정하는 요소
 
-Cost in custom titanium machining is driven by part complexity, not just country of manufacture. In China, strong cost performance often comes from process efficiency, but the lowest quote can still become expensive once tooling, inspection, and rework are counted. For low-volume work, setup cost and engineering attention often matter more than raw cycle time.
+맞춤형 티타늄 가공의 비용은 제조 국가뿐만 아니라 부품 복잡성에 의해 결정됩니다. 중국에서 강력한 비용 성능은 종종 공정 효율성에서 비롯되지만, 공구, 검사 및 재작업 비용이 포함되면 최저 견적도 비싸질 수 있습니다. 소량 작업의 경우 셋업 비용과 엔지니어링 관심이 원자재 사이클 시간보다 더 중요할 때가 많습니다.
 
-Thin-wall titanium parts, deep features, and high cosmetic requirements tend to multiply hidden cost. They require more careful fixturing, more tool changes, and more inspection points. If the buyer asks for fast turnaround as well, the supplier may add capacity premium or expedited logistics cost.
+박벽 티타늄 부품, 깊은 형상 및 높은 외관 요구 사항은 숨겨진 비용을 배가시키는 경향이 있습니다. 이들은 더 신중한 고정, 더 많은 공구 교체 및 더 많은 검사 지점이 필요합니다. 구매자가 또한 빠른 납기를 요구하면 공급업체는 생산 능력 프리미엄 또는 긴급 물류 비용을 추가할 수 있습니다.
 
-There is a real contradiction in low-volume sourcing: the part may be simple to describe but expensive to make reliably. Buyers often think small quantity should mean simple pricing, yet titanium does not behave that way when the geometry is unforgiving. The factory has to protect itself against scrap, and that protection gets embedded into the quote.
+소량 소싱에는 실제 모순이 있습니다: 부품은 설명하기는 간단하지만 안정적으로 제조하기에는 비쌀 수 있습니다. 구매자는 종종 소량이 단순한 가격 책정을 의미해야 한다고 생각하지만, 형상이 까다로울 때 티타늄은 그렇게 작동하지 않습니다. 공장은 폐기로부터 자신을 보호해야 하며, 그 보호는 견적에 포함됩니다.
 
-A useful RFQ practice is to ask for separate line items for material, machining, inspection, special processes, and packaging. That makes price movement easier to challenge and helps the buyer see whether the quote is technically grounded.
+유용한 RFQ 관행은 자재, 가공, 검사, 특수 공정 및 포장에 대해 별도의 라인 항목을 요청하는 것입니다. 이렇게 하면 가격 변동에 이의를 제기하기 쉬워지고 구매자가 견적이 기술적으로 근거가 있는지 확인하는 데 도움이 됩니다.
 
-## What procurement teams should verify
+## 조달팀이 확인해야 할 사항
 
-Procurement teams should verify material traceability, inspection capability, delivery promise, and communication discipline before award. For aerospace and medical programs, this is not just a commercial exercise; it is a release-control issue. A good supplier should be able to explain which certificates are provided, how nonconformance is handled, and what happens if the drawing changes midstream.
+조달팀은 수주 전에 자재 추적성, 검사 역량, 납기 약속 및 커뮤니케이션 규율을 확인해야 합니다. 항공우주 및 의료 프로그램의 경우 이는 단순한 상업적 활동이 아니라 릴리스 제어 문제입니다. 우수한 공급업체는 어떤 인증서가 제공되는지, 부적합이 어떻게 처리되는지, 도면이 중간에 변경되면 어떻게 되는지 설명할 수 있어야 합니다.
 
-Supplier qualification should also include a review of how the shop handles special processes such as passivation, anodizing, heat treatment, or EDM when those steps are part of the route. Problems often appear at the interface between in-house machining and outside processing. If the vendor manages those handoffs poorly, the final part quality becomes inconsistent even when the machining itself is acceptable.
+공급업체 자격 심사에는 패시베이션, 아노다이징, 열처리 또는 EDM과 같은 특수 공정이 경로의 일부일 때 공장이 이를 어떻게 처리하는지 검토하는 것도 포함되어야 합니다. 문제는 종종 사내 가공과 외부 처리 간의 인터페이스에서 발생합니다. 공급업체가 이러한 인계를 제대로 관리하지 못하면 가공 자체가 허용 가능하더라도 최종 부품 품질이 일관되지 않게 됩니다.
 
-For international buyers, logistics and documentation delays matter as much as machining. A part can finish on time and still miss the project window if export paperwork, inspection records, or material certificates arrive late. That is why buyer-side planning should include document lead time, not only cutting lead time.
+국제 구매자의 경우 물류 및 문서 지연이 가공만큼 중요합니다. 부품이 제때 완료되더라도 수출 서류, 검사 기록 또는 자재 인증서가 늦게 도착하면 프로젝트 기간을 놓칠 수 있습니다. 따라서 구매 측 계획에는 절삭 리드 타임뿐만 아니라 문서 리드 타임도 포함되어야 합니다.
 
-Use a supplier approval checklist before issuing a PO: technical review completed, certificates available, inspection plan agreed, delivery assumptions documented, and escalation contact defined.
+PO를 발행하기 전에 공급업체 승인 체크리스트를 사용하십시오: 기술 검토 완료, 인증서 사용 가능, 검사 계획 합의, 납기 가정 문서화, 에스컬레이션 연락처 정의.
 
-## How to write a cleaner RFQ
+## 더 명확한 RFQ 작성 방법
 
-A cleaner RFQ produces cleaner pricing. Start with the drawing, then add a brief manufacturing note that identifies material grade, quantity, inspection expectation, and any special handling requirements. If a feature is truly critical, say so directly; if it is not critical, do not force the supplier to guess.
+더 명확한 RFQ는 더 명확한 가격 책정을 만듭니다. 도면으로 시작한 다음 자재 등급, 수량, 검사 기대치 및 특수 취급 요구 사항을 식별하는 간략한 제조 노트를 추가하십시오. 형상이 진정으로 중요하다면 직접 명시하고, 중요하지 않다면 공급업체가 추측하도록 강요하지 마십시오.
 
-Good RFQs reduce ambiguity and make engineering questions easier to answer. That matters because titanium machining is sensitive to vague instructions, especially when the buyer wants low volume, fast delivery, and tight tolerances all at once. The supplier needs enough detail to choose the right fixturing, tooling, and inspection sequence.
+좋은 RFQ는 모호성을 줄이고 엔지니어링 질문에 답변하기 쉽게 만듭니다. 이는 티타늄 가공이 모호한 지침에 민감하기 때문에 중요하며, 특히 구매자가 소량, 빠른 납기 및 엄격한 공차를 동시에 원할 때 더욱 그렇습니다. 공급업체는 올바른 고정, 공구 및 검사 순서를 선택하기 위해 충분한 세부 정보가 필요합니다.
 
-Do not overcomplicate the request with unnecessary legal or commercial noise. Ask for what affects manufacturability and release quality, then compare the responses on technical clarity, not just price. That keeps the sourcing process focused on execution risk.
+불필요한 법적 또는 상업적 잡음으로 요청을 과도하게 복잡하게 만들지 마십시오. 제조성과 릴리스 품질에 영향을 미치는 사항을 요청한 다음 기술적 명확성에 대한 응답을 비교하십시오. 이렇게 하면 소싱 프로세스가 실행 리스크에 집중됩니다.
 
-For your next round of sourcing, build the RFQ around one principle: the supplier should be able to quote the part without inventing assumptions. If they need to invent assumptions, the order is not ready yet.
+다음 소싱 라운드에서는 한 가지 원칙을 중심으로 RFQ를 구성하십시오: 공급업체가 가정을 발명하지 않고 부품을 견적할 수 있어야 합니다. 가정을 발명해야 한다면 주문이 아직 준비되지 않은 것입니다.
