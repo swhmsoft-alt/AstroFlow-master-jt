@@ -3,6 +3,7 @@
  * [lang]/products/index.astro
  *
  * Multi-language products listing page.
+ * Loads translated product data if available.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Section from '../../../components/ui/Section.astro';
@@ -11,6 +12,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
 import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
+import { getProducts } from '../../../lib/product-i18n';
 
 export async function getStaticPaths() {
   // 排除默认语言(en)，根目录 products/index.astro 已处理 /products/
@@ -21,12 +23,13 @@ export async function getStaticPaths() {
 type Product = CollectionEntry<'products'>;
 type SpecItem = { param: string; value: string };
 
-const allProducts: Product[] = await getCollection('products');
-const sorted = allProducts.sort((a: Product, b: Product) => (a.data.order || 0) - (b.data.order || 0));
-const categories: string[] = [...new Set(sorted.map((p: Product) => p.data.category))];
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Get translated products for this language
+const allProducts: Product[] = await getProducts(lang);
+const sorted = allProducts.sort((a: Product, b: Product) => (a.data.order || 0) - (b.data.order || 0));
+const categories: string[] = [...new Set(sorted.map((p: Product) => p.data.category))];
 
 // Group products by category
 const grouped = categories.map(cat => ({

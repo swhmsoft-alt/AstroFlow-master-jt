@@ -85,9 +85,41 @@ const blogTranslationsCollection = defineCollection({
   }),
 });
 
+const productTranslationsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    category: z.string(),
+    description: z.string(),
+    gallery: z.array(
+      z.object({
+        image: z.string(),
+        alt: z.string().default('Product image'),
+      })
+    ),
+    specs: z.array(
+      z.object({
+        param: z.string(),
+        value: z.string(),
+      })
+    ),
+    btnText: z.string().default('Request Quote'),
+    btnLink: z.string().default('https://www.bozemetal.com/contact'),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    featured: z.boolean().default(false),
+    order: z.number().default(0),
+    pubDate: z.date().optional(),
+    updatedDate: z.date().optional(),
+    lang: z.string(),
+    originalSlug: z.string(),
+  }),
+});
+
 export const collections = {
   pages: pagesCollection,
   products: productsCollection,
   blog: blogCollection,
   'blog-translations': blogTranslationsCollection,
+  'product-translations': productTranslationsCollection,
 };

@@ -3,12 +3,15 @@
  * [lang]/products/[...slug].astro
  *
  * Multi-language products detail page.
+ * Loads translated content from productTranslations collection (if available)
+ * or falls back to English products collection.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Button from '../../../components/ui/Button.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
 import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
+import { getProduct, getRenderEntry } from '../../../lib/product-i18n';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
@@ -27,14 +30,25 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const { data } = product;
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Try to get translated product
+const result = await getProduct(lang, slug || '');
+const resolvedProduct = result?.product || product;
+const translationEntry = result?.translationEntry;
+
+const { data } = resolvedProduct;
 const firstImage = data.gallery?.[0]?.image || '/uploads/hero-bg.jpg';
 const seoTitle = data.seoTitle || `${data.title} | BOZE CNC Ti`;
 const seoDesc = data.seoDescription || `${data.description} Precision CNC machined ${data.category.toLowerCase()} components. AS9100D & ISO 9001 certified. Request a quote.`;
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
 const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() : null;
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+
+// Determine which entry to render for the body Content
+const renderEntry = getRenderEntry(product, translationEntry);
+const { Content } = await renderEntry.render();
 ---
 
 <BaseLayout
@@ -152,6 +166,17 @@ const t = useTranslations(lang);
       </div>
     </div>
   </section>
+
+  <!-- Product Body Content -->
+  {Content && (
+    <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="product-content">
+          <Content />
+        </article>
+      </div>
+    </section>
+  )}
 
   <!-- Applications Section -->
   {data.applications && data.applications.length > 0 && (
