@@ -1,0 +1,45 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { GradeData } from '../../data/titanium-grades';
+
+export interface Props {
+  grade: GradeData;
+  gradeKey: string;
+}
+
+const { grade, gradeKey } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pfx = `materials.${gradeKey}.usedIn`;
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-bg));">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
+    <div class="mb-12 pb-6" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+        Industries
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {t(`${pfx}.title`)}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t(`${pfx}.description`)}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {grade.usedIn.items.map((item, i) => (
+        <div class="p-5 rounded-lg transition-all duration-200 hover:shadow-lg" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t(`${pfx}.items.${i}`)}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { GradeData } from '../../data/titanium-grades';
+
+export interface Props {
+  grade: GradeData;
+  gradeKey: string;
+}
+
+const { grade, gradeKey } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pfx = `materials.${gradeKey}.processedBy`;
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-bg));">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
+    <div class="mb-12 pb-6" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        </svg>
+        Processing Methods
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {t(`${pfx}.title`)}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t(`${pfx}.description`)}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {grade.processedBy.items.map((item, i) => (
+        <div class="flex items-start p-4 rounded-lg transition-all duration-200" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="w-2 h-2 mt-2 mr-3 rounded-full shrink-0" style="background-color: var(--theme-primary);"></div>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t(`${pfx}.items.${i}`)}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

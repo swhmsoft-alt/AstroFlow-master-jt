@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GradePageLayout from '../../components/materials/GradePageLayout.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { GRADE_DATA } from '../../data/titanium-grades';
+
+const lang = getLangFromUrl(Astro.url);
+const grade = GRADE_DATA['grade-6'];
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout title={grade.pageTitle} description={grade.metaDescription} canonicalURL={canonicalURL}>
+  <GradePageLayout grade={grade} lang={lang} gradeKey={grade.key} />
+</BaseLayout>

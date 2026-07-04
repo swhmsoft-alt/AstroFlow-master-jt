@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { GradeData } from '../../data/titanium-grades';
+
+export interface Props {
+  grade: GradeData;
+  gradeKey: string;
+}
+
+const { grade, gradeKey } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pfx = `materials.${gradeKey}.manufacturedFrom`;
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
+    <div class="mb-12 pb-6" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        Downstream Products
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {t(`${pfx}.title`)}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t(`${pfx}.description`)}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {grade.manufacturedFrom.items.map((item, i) => (
+        <div class="p-4 rounded-lg transition-all duration-200 hover:shadow-lg" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="flex items-start">
+            <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t(`${pfx}.items.${i}`)}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -153,6 +153,8 @@ import { getLangFromUrl, useTranslations, isSupportedLang } from '../../i18n/uti
 import { getLocalizedContent, resolveContentId } from '../../utils/getLocalizedContent';
 import { LANGUAGES, DEFAULT_LANG } from '../../i18n/ui';
 import { HERO_CONFIG } from '../../config/hero';
+import GradePageLayout from '../../components/materials/GradePageLayout.astro';
+import { GRADE_DATA } from '../../data/titanium-grades';
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   // 排除默认语言(en)，因为根目录已有独立的 .astro 页面处理英语路由
@@ -184,7 +186,22 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'titanium-surface-treatment/chemical-passivation',
     'titanium-surface-treatment/polishing-sandblasting',
   ];
-  const allSlugs = [...knownSlugs, ...deepSlugs];
+  const materialSlugs: string[] = [
+    'materials/grade-1',
+    'materials/grade-2',
+    'materials/grade-3',
+    'materials/grade-4',
+    'materials/grade-4-eli',
+    'materials/grade-5',
+    'materials/grade-6',
+    'materials/grade-9',
+    'materials/grade-19',
+    'materials/grade-21',
+    'materials/grade-23',
+    'materials/grade-6242',
+    'materials/ti-5553',
+  ];
+  const allSlugs = [...knownSlugs, ...deepSlugs, ...materialSlugs];
   const paths: GetStaticPathsResult = [];
   for (const lang of supportedLangs) {
     paths.push({ params: { lang, slug: undefined } });
@@ -701,9 +718,18 @@ if (heroEntry) {
   )
 }
 
+<!-- ===== Titanium Materials Grade Pages ===== -->
+{
+  (slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) && (
+    <BaseLayout title={t(`materials.${getSubPageKey(slug!)}.pageTitle`)} description={t(`materials.${getSubPageKey(slug!)}.metaDescription`)}>
+      <GradePageLayout grade={GRADE_DATA[getSubPageKey(slug!)]} lang={currentLang} gradeKey={getSubPageKey(slug!)} />
+    </BaseLayout>
+  )
+}
+
 <!-- ===== 404 fallback ===== -->
 {
-  !isHome && !pageMetaKeys[slug || ''] && !subMeta && (
+  !isHome && !pageMetaKeys[slug || ''] && !subMeta && !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) && (
     <BaseLayout>
       <SubpageHero title={slug || ''} highlight="" badge="" subtitle={t('[lang].Slug].page_is_being_prepared_please')} />
       <div class="container mx-auto px-4 py-20 text-center">

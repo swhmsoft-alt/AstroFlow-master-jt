@@ -1,0 +1,71 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { GradeData } from '../../data/titanium-grades';
+
+export interface Props {
+  grade: GradeData;
+  gradeKey: string;
+}
+
+const { grade, gradeKey } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pfx = `materials.${gradeKey}.entity`;
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
+    <div class="mb-12 pb-6" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Entity Definition
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {t(`${pfx}.title`)}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t(`${pfx}.description`)}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div class="md:col-span-1">
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Classification</h3>
+        <div class="p-4 rounded-lg" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <span class="text-lg font-semibold" style="color: var(--theme-primary);">{t(`${pfx}.classification`)}</span>
+        </div>
+        <div class="mt-4">
+          <span class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS Number</span>
+          <p class="text-lg font-mono font-bold mt-1" style="color: var(--theme-text);">{grade.uns}</p>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Common Names</h3>
+        <div class="flex flex-wrap gap-2 mb-6">
+          {grade.entityDefinition.commonNames.map((name, i) => (
+            <span class="inline-flex items-center px-3 py-1.5 text-sm rounded-md font-medium" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent); color: color-mix(in srgb, var(--theme-primary) 70%, white);">
+              {t(`${pfx}.commonNames.${i}`)}
+            </span>
+          ))}
+        </div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Key Characteristics</h3>
+        <ul class="space-y-2">
+          {grade.entityDefinition.keyCharacteristics.map((char, i) => (
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {t(`${pfx}.keyCharacteristics.${i}`)}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
