@@ -1,0 +1,15 @@
+--- 
+import BaseLayout from '../../layouts/BaseLayout.astro'; 
+import EquipmentPageLayout from '../../components/equipment/EquipmentPageLayout.astro'; 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'; 
+import { EQUIPMENT_DATA } from '../../data/equipment'; 
+ 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang); 
+const equipment = EQUIPMENT_DATA['5-axis-machining-center']; 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com'); 
+--- 
+ 
+<BaseLayout title={t('equipment.5-axis-machining-center.pageTitle')} description={t('equipment.5-axis-machining-center.metaDescription')} canonicalURL={canonicalURL}> 
+  <EquipmentPageLayout equipment={equipment} lang={lang} equipmentKey={equipment.key} /> 
+</BaseLayout>

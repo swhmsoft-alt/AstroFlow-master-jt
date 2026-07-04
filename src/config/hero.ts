@@ -76,6 +76,11 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     subtitle: 'Strategically located facilities across the globe equipped with state-of-the-art technology to meet your Titanium CNC Machining and manufacturing needs.',
     badge: 'Our Infrastructure',
   },
+  '/equipment': {
+    h1: 'CNC Manufacturing Equipment Inventory',
+    subtitle: 'Comprehensive equipment specification sheets for our complete titanium CNC manufacturing facility — from 5-axis machining centers and multi-tasking turn-mill machines to CMM inspection, heat treatment, and automated pallet systems.',
+    badge: 'Manufacturing Equipment Specification Sheet',
+  },
   // --- Services Sub-pages ---
   '/titanium-cnc-machining-services': {
     h1: 'Titanium CNC Machining Services',

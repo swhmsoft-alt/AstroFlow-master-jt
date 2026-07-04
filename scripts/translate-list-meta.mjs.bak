@@ -1,0 +1,53 @@
+import fs from 'fs';
+
+const translations = {
+  'ja.json': {
+    'equipment.list.pageTitle': 'CNC加工設備一覧 | 高精度チタン加工',
+    'equipment.list.metaDescription': 'チタンCNC加工施設の全設備仕様書 — 5軸マシニングセンタ、複合旋盤、CMM測定機、熱処理炉、自動化システムまで網羅。AS9100D品質。'
+  },
+  'de.json': {
+    'equipment.list.pageTitle': 'CNC-Fertigungsanlagen Inventar | Präzisions-Titanbearbeitung',
+    'equipment.list.metaDescription': 'Umfassende Spezifikationsblätter für unsere Titan-CNC-Fertigungsanlage — 5-Achsen-Bearbeitungszentren, Dreh-Fräsen, CMM-Messung, Wärmebehandlung und automatisierte Systeme. AS9100D-Qualität.'
+  },
+  'fr.json': {
+    'equipment.list.pageTitle': 'Inventaire des équipements de fabrication CNC | Usinage de précision du titane',
+    'equipment.list.metaDescription': 'Fiches techniques complètes de notre installation de fabrication CNC de titane — centres d\'usinage 5 axes, tour-fraisage CNC, inspection CMM, traitement thermique et systèmes automatisés. Qualité AS9100D.'
+  },
+  'es.json': {
+    'equipment.list.pageTitle': 'Inventario de equipos de fabricación CNC | Mecanizado de precisión de titanio',
+    'equipment.list.metaDescription': 'Hojas de especificaciones completas de nuestra instalación de fabricación CNC de titanio — centros de mecanizado de 5 ejes, torno-fresa CNC, inspección CMM, tratamiento térmico y sistemas automatizados. Calidad AS9100D.'
+  },
+  'pt.json': {
+    'equipment.list.pageTitle': 'Inventário de equipamentos de fabricação CNC | Usinagem de precisão de titânio',
+    'equipment.list.metaDescription': 'Folhas de especificações abrangentes para nossa instalação de fabricação CNC de titânio — centros de usinagem de 5 eixos, torno-fresa CNC, inspeção CMM, tratamento térmico e sistemas automatizados. Qualidade AS9100D.'
+  },
+  'ko.json': {
+    'equipment.list.pageTitle': 'CNC 제조 장비 인벤토리 | 정밀 티타늄 가공',
+    'equipment.list.metaDescription': '티타늄 CNC 가공 설비의 전체 장비 사양서 — 5축 머시닝센터, 복합선반, CMM 검사, 열처리, 자동화 시스템. AS9100D 품질.'
+  },
+  'nl.json': {
+    'equipment.list.pageTitle': 'CNC-productieapparatuur Inventaris | Precisie titaniumbewerking',
+    'equipment.list.metaDescription': 'Uitgebreide specificatiebladen voor onze titanium CNC-productiefaciliteit — 5-assige bewerkingscentra, draai-frees CNC, CMM-inspectie, warmtebehandeling en geautomatiseerde systemen. AS9100D-kwaliteit.'
+  },
+  'pl.json': {
+    'equipment.list.pageTitle': 'Inwentarz sprzętu produkcyjnego CNC | Precyzyjna obróbka tytanu',
+    'equipment.list.metaDescription': 'Kompleksowe arkusze specyfikacji dla naszego zakładu produkcji CNC tytanu — 5-osiowe centra obróbcze, tokarko-frezarki CNC, inspekcja CMM, obróbka cieplna i systemy zautomatyzowane. Jakość AS9100D.'
+  },
+  'it.json': {
+    'equipment.list.pageTitle': 'Inventario attrezzature di produzione CNC | Lavorazione di precisione del titanio',
+    'equipment.list.metaDescription': 'Schede tecniche complete per il nostro impianto di produzione CNC di titanio — centri di lavoro a 5 assi, torni-fresatori CNC, ispezione CMM, trattamento termico e sistemi automatizzati. Qualità AS9100D.'
+  }
+};
+
+const langs = Object.keys(translations);
+langs.forEach(file => {
+  const path = `./src/i18n/translations/${file}`;
+  let data = JSON.parse(fs.readFileSync(path, 'utf8'));
+  const keys = translations[file];
+  Object.keys(keys).forEach(k => {
+    data[k] = keys[k];
+  });
+  fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
+  console.log(`${file}: updated SEO meta translations`);
+});
+console.log('Done! All 9 language files updated.');

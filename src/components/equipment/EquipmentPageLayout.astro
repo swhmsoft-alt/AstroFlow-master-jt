@@ -1,0 +1,61 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import SubpageHero from '../ui/SubpageHero.astro';
+import EquipmentEntityDefinition from './EquipmentEntityDefinition.astro';
+import EquipmentStandards from './EquipmentStandards.astro';
+import EquipmentSpecifications from './EquipmentSpecifications.astro';
+import EquipmentProcesses from './EquipmentProcesses.astro';
+import EquipmentProducts from './EquipmentProducts.astro';
+import EquipmentIndustries from './EquipmentIndustries.astro';
+import EquipmentAlternatives from './EquipmentAlternatives.astro';
+import EquipmentPageCta from './EquipmentPageCta.astro';
+import type { EquipmentData } from '../../data/equipment';
+
+export interface Props {
+  equipment: EquipmentData;
+  lang: string;
+  equipmentKey: string;
+}
+
+const { equipment, lang, equipmentKey } = Astro.props;
+const t = useTranslations(lang);
+const pfx = `equipment.${equipmentKey}`;
+const _t = (key: string, fallback: string) => { const v = t(key); return v !== key ? v : fallback; };
+const heroTitle = _t(`${pfx}.name`, equipment.name);
+const heroHighlight = _t(`${pfx}.highlight`, equipment.highlight);
+const heroBadge = _t(`${pfx}.badge`, equipment.badge);
+const heroSubtitle = _t(`${pfx}.subtitle`, equipment.subtitle);
+---
+
+<!-- Hero -->
+<SubpageHero
+  title={heroTitle}
+  highlight={heroHighlight}
+  badge={heroBadge}
+  badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+  subtitle={heroSubtitle}
+/>
+
+<!-- 1. Entity Definition -->
+<EquipmentEntityDefinition equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- 2. Applicable Standards (conforms_to) -->
+<EquipmentStandards equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- 3. Technical Specifications (has_property) -->
+<EquipmentSpecifications equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- 4. Processing Methods (processed_by) -->
+<EquipmentProcesses equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- 5. Typical Products (manufactured_from) -->
+<EquipmentProducts equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- 6. Industries (used_in) -->
+<EquipmentIndustries equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- 7. Alternatives (alternative_to) -->
+<EquipmentAlternatives equipment={equipment} equipmentKey={equipmentKey} />
+
+<!-- CTA -->
+<EquipmentPageCta equipment={equipment} lang={lang} equipmentKey={equipmentKey} />

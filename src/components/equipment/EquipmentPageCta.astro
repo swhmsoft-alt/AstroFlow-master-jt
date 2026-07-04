@@ -1,0 +1,52 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { EquipmentData } from '../../data/equipment';
+
+export interface Props {
+  equipment: EquipmentData;
+  lang: string;
+  equipmentKey: string;
+}
+
+const { equipment, equipmentKey } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const cp = `equipment.${equipmentKey}.cta`;
+const _t = (key: string, fallback: string) => { const v = t(key); return v !== key ? v : fallback; };
+const ctaTitle = _t(`${cp}.title`, `Need a ${equipment.name} for Your Project?`);
+const ctaDesc = _t(`${cp}.description`, `Contact our engineering team today for a free consultation and competitive quote.`);
+const ctaBtnQuote = _t(`${cp}.btnQuote`, 'Request Quote');
+const ctaBtnCap = _t(`${cp}.btnCapabilities`, 'View Capabilities');
+---
+
+<section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 8%, transparent) 0%, transparent 60%);"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+      {ctaTitle}
+    </h2>
+    <p class="text-lg leading-relaxed mb-8 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+      {ctaDesc}
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href="/rfq"
+        class="inline-flex items-center px-8 py-4 text-base font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+        style="background-color: var(--theme-primary); color: white;"
+      >
+        {ctaBtnQuote}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <a
+        href="/capabilities"
+        class="inline-flex items-center px-8 py-4 text-base font-bold rounded-lg transition-all duration-300 hover:shadow-lg"
+        style="background-color: var(--theme-surface); color: var(--theme-text); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);"
+      >
+        {ctaBtnCap}
+      </a>
+    </div>
+  </div>
+</section>

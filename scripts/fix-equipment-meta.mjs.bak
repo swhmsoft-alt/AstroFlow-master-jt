@@ -1,0 +1,38 @@
+import fs from 'fs';
+
+const dir = './src/pages/equipment/';
+const files = fs.readdirSync(dir).filter(f => f.endsWith('.astro'));
+
+files.forEach(file => {
+  const path = dir + file;
+  let content = fs.readFileSync(path, 'utf8');
+  
+  // Extract the equipment key from the file
+  const keyMatch = content.match(/EQUIPMENT_DATA\['([^']+)'\]/);
+  if (!keyMatch) {
+    console.log(`SKIP ${file}: cannot find equipment key`);
+    return;
+  }
+  const eqKey = keyMatch[1];
+
+  // Replace import line: add useTranslations
+  content = content.replace(
+    "import { getLangFromUrl } from '../../i18n/utils';",
+    "import { getLangFromUrl, useTranslations } from '../../i18n/utils';"
+  );
+
+  // Add t() after lang line
+  content = content.replace(
+    `const lang = getLangFromUrl(Astro.url);`,
+    `const lang = getLangFromUrl(Astro.url);\nconst t = useTranslations(lang);`
+  );
+
+  // Replace title and description
+  content = content.replace(
+    `title={equipment.pageTitle} description={equipment.metaDescription}`,
+    `title={t('equipment.${eqKey}.pageTitle')} description={t('equipment.${eqKey}.metaDescription')}`
+  );
+
+  fs.writeFileSync(path, content, 'utf8');
+  console.log(`FIXED ${file} (key: ${eqKey})`);
+});

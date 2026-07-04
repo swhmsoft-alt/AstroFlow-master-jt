@@ -1,0 +1,49 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import type { EquipmentData } from '../../data/equipment';
+
+export interface Props {
+  equipment: EquipmentData;
+  equipmentKey: string;
+}
+
+const { equipment, equipmentKey } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pfx = `equipment.${equipmentKey}.conformsTo`;
+const _t = (key: string, fallback: string) => { const v = t(key); return v !== key ? v : fallback; };
+const secTitle = _t(`${pfx}.title`, equipment.conformsTo.title);
+const secDesc = _t(`${pfx}.description`, equipment.conformsTo.description);
+---
+
+<section class="relative py-20 overflow-hidden" style="background-color: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
+    <div class="mb-12">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+        Standards & Certifications
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {secTitle}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {secDesc}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {equipment.conformsTo.items.map((item, i) => (
+        <div class="flex items-start p-4 rounded-lg" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <svg class="w-5 h-5 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4" />
+          </svg>
+          <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+            {_t(`${pfx}.items.${i}`, item)}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

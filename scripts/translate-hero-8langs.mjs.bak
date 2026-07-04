@@ -1,0 +1,65 @@
+import fs from 'fs';
+
+const translations = {
+  'de.json': {
+    'equipment.list.hero.title': 'CNC-Fertigungsanlagen Inventar',
+    'equipment.list.hero.highlight': 'Vollständige Gerätespezifikationen',
+    'equipment.list.hero.badge': 'Spezifikationsblatt für Fertigungsanlagen',
+    'equipment.list.hero.subtitle': 'Umfassende Spezifikationsblätter für unsere gesamte Titan-CNC-Fertigungsanlage — von 5-Achsen-Bearbeitungszentren und Multitasking-Dreh-Fräsmaschinen bis hin zu CMM-Prüfung, Wärmebehandlung und automatischen Palettensystemen.'
+  },
+  'fr.json': {
+    'equipment.list.hero.title': 'Inventaire des équipements de fabrication CNC',
+    'equipment.list.hero.highlight': 'Fiches techniques complètes des équipements',
+    'equipment.list.hero.badge': 'Fiche de spécification des équipements de fabrication',
+    'equipment.list.hero.subtitle': 'Fiches techniques complètes de notre installation de fabrication CNC de titane — des centres d\'usinage 5 axes et des tours-fraisage multitâches aux machines de mesure CMM, au traitement thermique et aux systèmes de palettisation automatisés.'
+  },
+  'es.json': {
+    'equipment.list.hero.title': 'Inventario de equipos de fabricación CNC',
+    'equipment.list.hero.highlight': 'Hojas de especificaciones completas de equipos',
+    'equipment.list.hero.badge': 'Hoja de especificaciones de equipos de fabricación',
+    'equipment.list.hero.subtitle': 'Hojas de especificaciones completas de nuestra instalación de fabricación CNC de titanio — desde centros de mecanizado de 5 ejes y tornos-fresa multieje hasta inspección CMM, tratamiento térmico y sistemas de paletización automatizados.'
+  },
+  'pt.json': {
+    'equipment.list.hero.title': 'Inventário de equipamentos de fabricação CNC',
+    'equipment.list.hero.highlight': 'Folhas de especificações completas de equipamentos',
+    'equipment.list.hero.badge': 'Folha de especificações de equipamentos de fabricação',
+    'equipment.list.hero.subtitle': 'Folhas de especificações abrangentes para nossa instalação completa de fabricação CNC de titânio — desde centros de usinagem de 5 eixos e máquinas multifuncionais de torneamento-fresamento até inspeção CMM, tratamento térmico e sistemas automatizados de paletização.'
+  },
+  'ko.json': {
+    'equipment.list.hero.title': 'CNC 제조 장비 인벤토리',
+    'equipment.list.hero.highlight': '전체 장비 사양서',
+    'equipment.list.hero.badge': '제조 장비 사양서',
+    'equipment.list.hero.subtitle': '티타늄 CNC 가공 설비의 전체 장비 사양서 — 5축 머시닝센터, 멀티태스킹 턴-밀 머신, CMM 검사, 열처리, 자동 팔레트 시스템까지 망라.'
+  },
+  'nl.json': {
+    'equipment.list.hero.title': 'CNC-productieapparatuur Inventaris',
+    'equipment.list.hero.highlight': 'Volledige productspecificatiebladen',
+    'equipment.list.hero.badge': 'Specificatieblad voor productieapparatuur',
+    'equipment.list.hero.subtitle': 'Uitgebreide specificatiebladen voor onze complete titanium CNC-productiefaciliteit — van 5-assige bewerkingscentra en multitasking draai-freesmachines tot CMM-inspectie, warmtebehandeling en geautomatiseerde palletsystemen.'
+  },
+  'pl.json': {
+    'equipment.list.hero.title': 'Inwentarz sprzętu produkcyjnego CNC',
+    'equipment.list.hero.highlight': 'Kompletne arkusze specyfikacji sprzętu',
+    'equipment.list.hero.badge': 'Arkusz specyfikacji sprzętu produkcyjnego',
+    'equipment.list.hero.subtitle': 'Kompleksowe arkusze specyfikacji dla naszego zakładu produkcji CNC tytanu — od 5-osiowych centrów obróbczych i tokarko-frezarek wielozadaniowych po kontrolę CMM, obróbkę cieplną i zautomatyzowane systemy paletowe.'
+  },
+  'it.json': {
+    'equipment.list.hero.title': 'Inventario attrezzature di produzione CNC',
+    'equipment.list.hero.highlight': 'Schede tecniche complete delle attrezzature',
+    'equipment.list.hero.badge': 'Scheda tecnica delle attrezzature di produzione',
+    'equipment.list.hero.subtitle': 'Schede tecniche complete per il nostro impianto di produzione CNC di titanio — dai centri di lavoro a 5 assi e macchine multitasking tornio-fresa fino al controllo CMM, trattamento termico e sistemi automatizzati di pallettizzazione.'
+  }
+};
+
+const langFiles = Object.keys(translations);
+langFiles.forEach(file => {
+  const path = `./src/i18n/translations/${file}`;
+  let data = JSON.parse(fs.readFileSync(path, 'utf8'));
+  const keys = translations[file];
+  Object.keys(keys).forEach(k => {
+    data[k] = keys[k];
+  });
+  fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
+  console.log(`${file}: updated hero translations`);
+});
+console.log('Done! All 8 language files updated.');

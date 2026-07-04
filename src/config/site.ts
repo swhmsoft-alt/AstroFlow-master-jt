@@ -112,6 +112,7 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Inspection & Testing', href: '/capabilities#inspection' },
           { name: 'Material Traceability', href: '/capabilities#traceability' },
           { name: 'Certifications', href: '/capabilities#certifications' },
+          { name: 'Equipment Inventory', href: '/equipment' },
         ],
       },
     ],

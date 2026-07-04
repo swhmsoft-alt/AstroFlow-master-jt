@@ -30,6 +30,11 @@ import AlloyComparisonTable from '../../components/materials/AlloyComparisonTabl
 import MachiningKnowHow from '../../components/materials/MachiningKnowHow.astro';
 import MaterialTraceability from '../../components/materials/MaterialTraceability.astro';
 
+/* ── Equipment 页面组件 ────────────────────── */
+import EquipmentListDashboard from '../../components/equipment/EquipmentListDashboard.astro';
+import EquipmentPageLayout from '../../components/equipment/EquipmentPageLayout.astro';
+import { EQUIPMENT_DATA } from '../../data/equipment';
+
 /* ── Capabilities 页面组件 ─────────────────── */
 import CapacityDashboard from '../../components/capabilities/CapacityDashboard.astro';
 import EngineeringSupport from '../../components/capabilities/EngineeringSupport.astro';
@@ -164,6 +169,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'services', 'capabilities', 'materials', 'industries', 'resources',
     'documentation', 'facilities', 'rfq', 'use-cases',
     'branded-custom-packaging-services', 'laser-marking-custom-logo',
+    'equipment',
     'titanium-additive-manufacturing', 'titanium-cnc-machining-services',
     'titanium-fabrication-services', 'titanium-forming-heavy-manufacturing',
     'titanium-surface-treatment',
@@ -186,6 +192,21 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'titanium-surface-treatment/chemical-passivation',
     'titanium-surface-treatment/polishing-sandblasting',
   ];
+  const equipmentSlugs: string[] = [
+    'equipment/5-axis-machining-center',
+    'equipment/turn-mill-cnc',
+    'equipment/high-pressure-coolant',
+    'equipment/automatic-tool-magazine',
+    'equipment/tool-presetter',
+    'equipment/chip-management-fire-suppression',
+    'equipment/vacuum-heat-treat-furnace',
+    'equipment/cmm',
+    'equipment/laser-tracker-3d-scanner',
+    'equipment/anodizing-surface-treatment',
+    'equipment/wire-edm',
+    'equipment/automatic-bar-feeder',
+    'equipment/robotic-pallet-system',
+  ];
   const materialSlugs: string[] = [
     'materials/grade-1',
     'materials/grade-2',
@@ -201,7 +222,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'materials/grade-6242',
     'materials/ti-5553',
   ];
-  const allSlugs = [...knownSlugs, ...deepSlugs, ...materialSlugs];
+  const allSlugs = [...knownSlugs, ...deepSlugs, ...equipmentSlugs, ...materialSlugs];
   const paths: GetStaticPathsResult = [];
   for (const lang of supportedLangs) {
     paths.push({ params: { lang, slug: undefined } });
@@ -718,6 +739,29 @@ if (heroEntry) {
   )
 }
 
+<!-- ===== Equipment Pages ===== -->
+{
+  slug === 'equipment' && (
+    <BaseLayout title={t('equipment.list.pageTitle')} description={t('equipment.list.metaDescription')}>
+      <SubpageHero
+        title={t('equipment.list.hero.title')}
+        highlight={t('equipment.list.hero.highlight')}
+        badge={t('equipment.list.hero.badge')}
+        subtitle={t('equipment.list.hero.subtitle')}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+      />
+      <EquipmentListDashboard />
+    </BaseLayout>
+  )
+}
+{
+  (slug?.startsWith('equipment/')) && (
+    <BaseLayout title={t(`equipment.${getSubPageKey(slug!)}.pageTitle`)} description={t(`equipment.${getSubPageKey(slug!)}.metaDescription`)}>
+      <EquipmentPageLayout equipment={EQUIPMENT_DATA[getSubPageKey(slug!)]} lang={currentLang} equipmentKey={getSubPageKey(slug!)} />
+    </BaseLayout>
+  )
+}
+
 <!-- ===== Titanium Materials Grade Pages ===== -->
 {
   (slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) && (
@@ -729,7 +773,10 @@ if (heroEntry) {
 
 <!-- ===== 404 fallback ===== -->
 {
-  !isHome && !pageMetaKeys[slug || ''] && !subMeta && !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) && (
+  !isHome && !pageMetaKeys[slug || ''] && !subMeta && 
+  slug !== 'equipment' &&
+  !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) &&
+  !slug?.startsWith('equipment/') && (
     <BaseLayout>
       <SubpageHero title={slug || ''} highlight="" badge="" subtitle={t('[lang].Slug].page_is_being_prepared_please')} />
       <div class="container mx-auto px-4 py-20 text-center">

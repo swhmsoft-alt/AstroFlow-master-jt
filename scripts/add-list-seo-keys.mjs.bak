@@ -1,0 +1,28 @@
+import fs from 'fs';
+
+const listSeoKeys = {
+  'equipment.list.pageTitle': 'CNC Manufacturing Equipment Inventory | Precision Titanium Machining',
+  'equipment.list.metaDescription': 'Comprehensive equipment specification sheets for our titanium CNC manufacturing facility — 5-axis machining centers, turn-mill CNC, CMM inspection, heat treatment, and automated systems. AS9100D quality.'
+};
+
+const langFiles = ['de.json', 'fr.json', 'es.json', 'pt.json', 'ko.json', 'nl.json', 'pl.json', 'it.json', 'ja.json'];
+
+// Update en.json
+let en = JSON.parse(fs.readFileSync('./src/i18n/translations/en.json', 'utf8'));
+Object.keys(listSeoKeys).forEach(k => { en[k] = listSeoKeys[k]; });
+fs.writeFileSync('./src/i18n/translations/en.json', JSON.stringify(en, null, 2), 'utf8');
+console.log('en.json updated with list SEO keys');
+
+// Update other language files (add English fallback for now)
+langFiles.forEach(file => {
+  const path = `./src/i18n/translations/${file}`;
+  let data = JSON.parse(fs.readFileSync(path, 'utf8'));
+  Object.keys(listSeoKeys).forEach(k => {
+    if (!(k in data)) {
+      data[k] = listSeoKeys[k];
+    }
+  });
+  fs.writeFileSync(path, JSON.stringify(data, null, 2), 'utf8');
+  console.log(`${file}: added list SEO keys`);
+});
+console.log('Done!');
