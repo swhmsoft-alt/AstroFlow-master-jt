@@ -71,6 +71,10 @@ export interface GradeData {
   usedIn: GradeSection;
   /** 7. 替代材质 (alternative_to) */
   alternativeTo: GradeSection;
+  /** Frequently asked questions for AIO */
+  faqs: { question: string; answer: string }[];
+  /** Why choose us narrative for AIO */
+  whyChooseUs: string;
 }
 
 export type GradeMap = Record<string, GradeData>;
@@ -187,7 +191,14 @@ export const GRADE_DATA: GradeMap = {
         "304L / 316L Stainless Steel — Lower cost but inferior corrosion resistance in chloride environments",
         "Hastelloy C-276 — Superior corrosion resistance in harsh reducing environments but significantly higher cost",
         "Nickel 200 / 201 — Alternative for caustic service where titanium may be unsuitable"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 1 titanium and what are its key advantages?", answer: "Grade 1 is the lowest-strength, softest, and most ductile grade in the commercially pure titanium family. It offers the highest formability and corrosion resistance among CP grades, making it ideal for applications requiring severe forming operations and exposure to corrosive environments." },
+      { question: "Can you machine and form Grade 1 titanium into complex components?", answer: "Yes. Grade 1 offers excellent cold formability and can be deeply drawn without intermediate annealing. We machine Grade 1 on our CNC centers with tolerances up to ±0.005 mm, and our fabrication team performs TIG welding, laser cutting, and forming per AWS D1.6 standards." },
+      { question: "What industries commonly use Grade 1 titanium?", answer: "Grade 1 is widely used in chemical processing equipment, desalination plants, heat exchangers, marine components, architectural cladding, and medical devices per ISO 5832-2." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a precision manufacturer of Grade 1 commercially pure titanium components for the chemical processing, desalination, marine, and architectural industries. Our facility processes certified CP-Ti Grade 1 stock with full material traceability, EN 10204 Type 3.1 MTRs, and CMM dimensional inspection."
+
     }
   },
 
@@ -306,7 +317,13 @@ export const GRADE_DATA: GradeMap = {
         "Super Duplex Stainless Steel (UNS S32750) — Higher strength alternative with good corrosion resistance",
         "Nickel Alloy 625 — Better high-temperature strength and corrosion resistance at higher cost"
       ]
-    }
+    },
+    faqs: [
+      { question: "What is Grade 2 titanium and why is it the most widely used commercially pure grade?", answer: "Grade 2 is the most commonly specified commercially pure titanium grade, offering an optimal balance of strength, ductility, corrosion resistance, and weldability. It is the default choice for industrial applications requiring excellent seawater corrosion resistance, good formability, and moderate strength." },
+      { question: "Can you machine Grade 2 titanium into custom industrial components?", answer: "Yes. We machine Grade 2 CP-Titanium on our 5-axis CNC centers and precision turning machines. Grade 2 offers good machinability for a titanium alloy. We achieve tolerances up to ±0.005 mm with excellent surface finishes for chemical processing, marine, and industrial components." },
+      { question: "What documentation do you provide with Grade 2 titanium parts?", answer: "Every order includes EN 10204 Type 3.1 Material Test Reports (MTRs) documenting chemical composition and mechanical properties per ASTM B265. CMM dimensional inspection reports and NDT (ultrasonic/penetrant) testing are available upon request." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a trusted manufacturer of Grade 2 commercially pure titanium components for the chemical processing, marine, oil & gas, and architectural industries. Our facility processes certified CP-Ti stock through 5-axis CNC milling, precision turning, and custom fabrication. Every component is backed by full material traceability, MTR documentation, and CMM inspection. Our engineering team provides 24-hour DFM review and competitive quoting for industrial and marine applications."
   },
 
   "grade-3": {
@@ -415,7 +432,14 @@ export const GRADE_DATA: GradeMap = {
         "Grade 5 (Ti-6Al-4V) — Significantly higher strength at the cost of corrosion resistance in some environments",
         "316L Stainless Steel — Lower cost but inferior chloride resistance",
         "Duplex 2205 Stainless Steel — Higher strength alternative for pressure-containing equipment"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 3 titanium and how does it compare to Grade 2?", answer: "Grade 3 is a medium-strength CP titanium grade between Grade 2 and Grade 4. It offers significantly higher tensile strength than Grade 2 while maintaining good ductility and the excellent corrosion resistance of unalloyed titanium." },
+      { question: "What tolerances can you achieve on Grade 3 titanium parts?", answer: "We achieve machining tolerances up to ±0.005 mm on Grade 3 CP-Titanium components using our multi-axis CNC machining centers." },
+      { question: "Which industries typically specify Grade 3 titanium?", answer: "Grade 3 is used in chemical processing vessels requiring higher strength than Grade 2, marine components for offshore platforms, oil & gas production water handling, and desalination pump housings." }
+    ],
+    whyChooseUs: "BOZE CNC Ti manufactures precision Grade 3 CP-Titanium components for industrial applications. Our facility processes certified stock through multi-axis CNC machining and fabrication, backed by full material traceability with EN 10204 Type 3.1 MTRs."
+
     }
   },
 
@@ -524,7 +548,14 @@ export const GRADE_DATA: GradeMap = {
         "Grade 23 (Ti-6Al-4V ELI) — Medical-grade alternative with improved fracture toughness",
         "316LVM Stainless Steel — Lower-cost medical-grade alternative",
         "CP-Ti Grade 4 ELI — Extra-low interstitial version with improved ductility"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 4 titanium and what makes it the strongest CP grade?", answer: "Grade 4 is the highest-strength grade in the CP titanium family, with increased oxygen content providing higher tensile and yield strengths while retaining excellent corrosion resistance." },
+      { question: "What machining capabilities do you offer for Grade 4 titanium?", answer: "We machine Grade 4 on 5-axis CNC centers with tolerances up to ±0.005 mm. Grade 4 work-hardens rapidly, so we use sharp carbide tooling with high-pressure coolant." },
+      { question: "What are primary applications for Grade 4 titanium?", answer: "Grade 4 is used in medical implants per ASTM F67, surgical instruments, heat exchanger tubing, chemical processing equipment, marine fasteners, and automotive components." }
+    ],
+    whyChooseUs: "BOZE CNC Ti delivers precision-machined Grade 4 CP-Titanium components for medical, marine, and industrial applications with full material traceability and CMM verification."
+
     }
   },
 
@@ -622,12 +653,19 @@ export const GRADE_DATA: GradeMap = {
         "Grade 23 (Ti-6Al-4V ELI) — Higher strength medical-grade alternative",
         "Grade 5 (Ti-6Al-4V) — Higher strength but lower corrosion resistance in some environments",
         "316LVM Stainless Steel — Lower cost but heavier and less biocompatible"
-      ]
+      ],
+    faqs: [
+      { question: "What is ELI Grade 4 titanium?", answer: "ELI Grade 4 is a modified version of standard CP-Ti Grade 4 with strictly controlled lower limits of interstitial elements, delivering significantly improved ductility and fracture toughness." },
+      { question: "What medical applications use ELI Grade 4?", answer: "ELI Grade 4 is preferred for trauma plates, bone screws, spinal fixation hardware, dental implants, and surgical instruments." },
+      { question: "What certifications do you provide for ELI Grade 4?", answer: "Each order includes EN 10204 Type 3.1 MTRs per ASTM F67 ELI, CMM inspection, surface finish measurements, and passivation certification per ASTM F86." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a medical-grade manufacturer of ELI Grade 4 components. Our ISO 13485 facility processes certified ASTM F67 ELI material with full traceability from certified mill sources."
+
     }
   },
 
   "grade-5": {
-    key: "grade-5",
+  key: "grade-5",
     name: "Grade 5 – Ti-6Al-4V Titanium Alloy",
     nameCn: "Ti-6Al-4V 5级钛合金",
     uns: "UNS R56400",
@@ -750,7 +788,13 @@ export const GRADE_DATA: GradeMap = {
         "17-4PH Stainless Steel — Lower cost alternative for less demanding environments",
         "7075-T6 Aluminum — Lighter but lower strength and temperature capability"
       ]
-    }
+    },
+    faqs: [
+      { question: "What is Grade 5 titanium (Ti-6Al-4V) and what makes it the most widely used titanium alloy?", answer: "Grade 5 (Ti-6Al-4V) is an alpha-beta titanium alloy containing 6% aluminum and 4% vanadium. It accounts for approximately 50% of global titanium consumption due to its exceptional strength-to-weight ratio, corrosion resistance, and heat treatability up to 400°C. It is the default choice for aerospace structures, medical implants, and high-performance industrial components." },
+      { question: "What machining tolerances can you hold on Grade 5 titanium components?", answer: "We consistently achieve machining tolerances up to ±0.005 mm (±0.0002 in) on Grade 5 Ti-6Al-4V using our 5-axis DMG Mori and Mazak machining centers with high-pressure coolant systems. All critical dimensions are verified by CMM inspection per AS9102 first article requirements." },
+      { question: "What certifications do you provide with machined Grade 5 titanium parts?", answer: "Every order includes EN 10204 Type 3.1 Material Test Reports (MTRs) documenting chemical composition and mechanical properties. CMM dimensional inspection reports, surface finish measurements, and material traceability documentation are provided. Aerospace orders include AS9102 first article inspection and NADCAP NDT reports upon request." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a leading precision manufacturer of Grade 5 Ti-6Al-4V components, trusted by aerospace OEMs, medical device companies, and industrial equipment manufacturers worldwide. Our fully integrated facility sources 100% certified Ti-6Al-4V stock — bars, forgings, plate, and sheet — and transforms them into complex, high-tolerance components using state-of-the-art 5-axis CNC machining centers, precision turning, and wire EDM. Every component is produced under AS9100D and ISO 9001:2015 quality systems, with full material traceability from mill to finished part. Our engineering team provides 24-hour DFM review and competitive quoting, backed by decades of metallurgical expertise in titanium processing."
   },
 
   "grade-23": {
@@ -864,7 +908,13 @@ export const GRADE_DATA: GradeMap = {
         "Co-Cr-Mo Alloy (ASTM F75) — Higher wear resistance for bearing surfaces",
         "316LVM Stainless Steel — Lower cost but heavier and less biocompatible"
       ]
-    }
+    },
+    faqs: [
+      { question: "What is Grade 23 titanium (Ti-6Al-4V ELI) and how is it different from standard Grade 5?", answer: "Grade 23 (Ti-6Al-4V ELI) is an Extra Low Interstitial variant of Grade 5 with tightly controlled oxygen (≤0.13%), nitrogen, and carbon limits. This ELI chemistry delivers superior fracture toughness, ductility, and fatigue resistance, making it the preferred material for implantable medical devices and cryogenic applications where reliability is critical." },
+      { question: "Can you machine Grade 23 ELI titanium for medical implant applications?", answer: "Yes. We machine Grade 23 Ti-6Al-4V ELI in our ISO 13485-compliant facility using Swiss-type CNC turning and 5-axis milling. We achieve tolerances up to ±0.003 mm (±0.00012 in) with surface finishes down to Ra 0.1 µm. All medical components are processed under strict process controls with full batch traceability." },
+      { question: "What certifications do you provide with Grade 23 titanium medical components?", answer: "Every medical order includes EN 10204 Type 3.1 MTRs documenting chemical composition per ASTM F136, CMM dimensional inspection reports, surface finish verification, and passivation certification. UDI-compliant laser marking and FDA/ISO 13485 DHR traceability are available." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a trusted medical-grade precision manufacturer specializing in Grade 23 Ti-6Al-4V ELI components for orthopedic, dental, and spinal implant applications. Our ISO 13485-certified facility processes certified ASTM F136 material through Swiss-type CNC turning, 5-axis milling, and advanced surface finishing. Every component is produced with full material traceability from certified mill sources, CMM dimensional verification, and passivation per ASTM F86. Our engineering team provides confidential 24-hour DFM review for medical device drawings, with complete documentation packages for FDA/ISO 13485 compliance."
   },
 
   "grade-6": {
@@ -969,7 +1019,14 @@ export const GRADE_DATA: GradeMap = {
         "INCONEL 718 — Higher temperature capability at significantly higher weight and cost",
         "Ti-8Al-1Mo-1V — Higher-temperature alpha alloy alternative",
         "Stainless Steel 321 — Lower-cost alternative for moderate temperature service"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 6 titanium (Ti-5Al-2.5Sn)?", answer: "Grade 6 is a near-alpha titanium alloy offering excellent elevated-temperature strength, oxidation resistance, and creep performance up to 480°C." },
+      { question: "What aerospace applications use Grade 6?", answer: "Grade 6 is used in gas turbine engine components, airframe structures near engine nacelles, high-temperature fasteners, and rocket components." },
+      { question: "Can you machine and weld Grade 6 titanium?", answer: "Yes. We machine Grade 6 on multi-axis CNC centers and perform TIG welding. Post-weld heat treatment is typically required to restore properties." }
+    ],
+    whyChooseUs: "BOZE CNC Ti manufactures precision Grade 6 components for aerospace and high-temperature applications with AS9100D quality systems and NADCAP NDT."
+
     }
   },
 
@@ -1080,7 +1137,14 @@ export const GRADE_DATA: GradeMap = {
         "Grade 21 (Ti-15V-3Cr-3Sn-3Al) — Higher strength alternative for thin-wall applications",
         "304L Stainless Steel — Lower cost tubing material with good formability",
         "AISI 4130 Chromoly Steel — Higher strength-to-cost ratio for bicycle frames"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 9 titanium (Ti-3Al-2.5V)?", answer: "Grade 9 is a medium-strength alpha-beta alloy offering an excellent balance of strength and formability, making it the standard for aerospace hydraulic tubing." },
+      { question: "What tube capabilities do you offer for Grade 9?", answer: "We process Grade 9 tubing through CNC bending, orbital TIG welding, and laser cutting with tube diameters from 6 mm to 220 mm." },
+      { question: "What industries use Grade 9 titanium?", answer: "Grade 9 is used in aerospace hydraulic systems, chemical processing tubing, bicycle frames, automotive exhaust, and marine piping." }
+    ],
+    whyChooseUs: "BOZE CNC Ti specializes in Grade 9 titanium tubing assemblies and machined components with full material traceability and AS9100D quality systems."
+
     }
   },
 
@@ -1184,7 +1248,13 @@ export const GRADE_DATA: GradeMap = {
         "300M Steel — Higher modulus and lower cost for landing gear, but heavier and corrosion-prone",
         "INCONEL 718 — Higher temperature capability but significantly higher density"
       ]
-    }
+    },
+    faqs: [
+      { question: "What is Grade 19 beta titanium (Ti-10V-2Fe-3Al)?", answer: "Grade 19 is a beta-rich titanium alloy designed for high-strength forgings with deep hardenability for thick-section aerospace components." },
+      { question: "What strengths can Grade 19 achieve?", answer: "Grade 19 achieves tensile strengths up to 1,240 MPa with good fracture toughness through solution treatment and aging." },
+      { question: "What processing for Grade 19?", answer: "We offer precision forging, 5-axis CNC machining, and vacuum heat treatment per AMS 2750F Class 2." }
+    ],
+    whyChooseUs: "BOZE CNC Ti manufactures Grade 19 beta titanium components for aerospace and defense with AS9100D certification and NADCAP NDT."
   },
 
   "grade-21": {
@@ -1290,7 +1360,14 @@ export const GRADE_DATA: GradeMap = {
         "Grade 19 (Ti-10V-2Fe-3Al) — Better for thick-section forgings but less formable in sheet form",
         "Ti-5-5-5-3 (Ti-5Al-5V-5Mo-3Cr) — Alternative high-strength beta alloy",
         "Spring steel (SAE 5160) — Lower cost for spring applications but heavier"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 21 beta titanium (Ti-15V-3Cr-3Sn-3Al)?", answer: "Grade 21 is a metastable beta alloy offering exceptional cold formability in the solution-treated condition, then aging to over 1,170 MPa." },
+      { question: "What applications benefit from Grade 21?", answer: "Grade 21 is ideal for aerospace sheet metal structures, honeycomb panels, aircraft springs, and high-strength fasteners." },
+      { question: "Can you form Grade 21 titanium?", answer: "Yes. In solution-treated condition it forms like CP titanium. After forming we perform vacuum aging to achieve full strength." }
+    ],
+    whyChooseUs: "BOZE CNC Ti manufactures Grade 21 beta titanium components for aerospace with precision forming, vacuum heat treatment, and AS9100D quality systems."
+
     }
   },
 
@@ -1399,7 +1476,14 @@ export const GRADE_DATA: GradeMap = {
         "INCONEL 718 — Higher temperature capability (>650°C) at significantly higher weight and cost",
         "Waspaloy — Higher temperature capability for turbine disk applications at higher weight",
         "Ti-5.8Al-4Sn-3.5Zr-0.7Nb (IMI 834) — Higher-temperature near-alpha alloy for advanced engines"
-      ]
+      ],
+    faqs: [
+      { question: "What is Grade 6242 titanium (Ti-6Al-2Sn-4Zr-2Mo)?", answer: "Grade 6242 is a near-alpha titanium alloy designed for service up to 540°C with exceptional creep resistance for gas turbine engines." },
+      { question: "What engine components use Grade 6242?", answer: "Grade 6242 is used for compressor disks, blades, stators, and casings in gas turbine engines." },
+      { question: "What processing for Grade 6242?", answer: "We offer precision forging, 5-axis CNC machining, and vacuum heat treatment per AMS 2750F Class 2." }
+    ],
+    whyChooseUs: "BOZE CNC Ti delivers Grade 6242 components for gas turbine engines with AS9100D quality systems and NADCAP NDT inspection."
+
     }
   },
 
@@ -1505,6 +1589,12 @@ export const GRADE_DATA: GradeMap = {
         "300M Steel — Traditional landing gear material with higher modulus but heavier",
         "INCONEL 718 — Higher temperature capability but significantly higher density"
       ]
-    }
+    },
+    faqs: [
+      { question: "What is Ti-5Al-5V-5Mo-3Cr (Ti-5553) high-strength titanium?", answer: "Ti-5Al-5V-5Mo-3Cr, commonly known as Ti-5553, is a metastable beta titanium alloy developed as a successor to Ti-10V-2Fe-3Al (Grade 19). It offers excellent through-hardenability in thick sections up to 150 mm, combined with strengths up to 1,310 MPa (190 ksi) and superior fracture toughness." },
+      { question: "What aerospace applications use Ti-5553?", answer: "Ti-5553 is increasingly specified for large landing gear forgings, airframe structural components, helicopter rotor components, and high-strength fasteners in next-generation aircraft programs. Its deep hardenability makes it ideal for heavy-section structural forgings." },
+      { question: "What processing capabilities do you have for Ti-5553?", answer: "We offer precision forging, 5-axis CNC machining, and vacuum heat treatment (solution treat and age) for Ti-5553 components. Our AS9100D-compliant facility provides full material traceability, CMM dimensional verification, and NADCAP NDT inspection." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a precision manufacturer of Ti-5Al-5V-5Mo-3Cr (Ti-5553) high-strength beta titanium components for aerospace landing gear and structural applications. Our AS9100D-certified facility offers precision forging, 5-axis CNC machining, and vacuum heat treatment with full material traceability and NADCAP NDT inspection."
   }
 };

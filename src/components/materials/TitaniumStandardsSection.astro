@@ -1,0 +1,106 @@
+---
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import { STANDARD_DATA, STANDARD_CATEGORIES, type StandardCategory } from '../../data/titanium-standards';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+// Group standards by category
+const standardsByCategory: Record<string, typeof STANDARD_DATA[keyof typeof STANDARD_DATA][]> = {};
+for (const std of Object.values(STANDARD_DATA)) {
+  if (!standardsByCategory[std.category]) {
+    standardsByCategory[std.category] = [];
+  }
+  standardsByCategory[std.category].push(std);
+}
+
+// Sort categories by the order in STANDARD_CATEGORIES
+const orderedCategories = STANDARD_CATEGORIES.filter(cat => standardsByCategory[cat.id]);
+---
+
+<section class="py-24" style="background-color: color-mix(in srgb, var(--theme-primary) 2%, transparent);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="inline-block px-4 py-2 mb-4 text-sm font-semibold rounded-full"
+          style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+          {t('materials.titaniumstandards.badge')}
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('materials.titaniumstandards.title')}
+          <span class="block text-2xl md:text-3xl mt-1" style="color: var(--theme-primary);">
+            {t('materials.titaniumstandards.titleHighlight')}
+          </span>
+        </h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('materials.titaniumstandards.subtitle')}
+        </p>
+      </div>
+
+      <!-- Standards by Category -->
+      {orderedCategories.map((cat) => {
+        const stdList = standardsByCategory[cat.id] || [];
+        return (
+          <div id={cat.id === 'astm-general' ? 'astm-standards' : cat.id === 'ams-aerospace' ? 'ams-mil-specs' : cat.id === 'medical' ? 'medical-standards' : 'additive-manufacturing-standards'}
+            class="mb-16 last:mb-0 scroll-mt-24"
+          >
+            <!-- Category Header -->
+            <div class="flex items-start gap-4 mb-8">
+              <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
+                style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={cat.icon} />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold" style="color: var(--theme-text);">
+                  {t(cat.title)}
+                </h3>
+                <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+                  {t(cat.description)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Standards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {stdList.map((std) => {
+                const stdKey = std.key;
+                return (
+                  <a
+                    href={localizePath(`/materials/${stdKey}/`, currentLang)}
+                    class="group relative p-5 rounded-xl transition-all duration-300"
+                    style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+                    onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'; this.style.transform='translateY(-2px)'"
+                    onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'"
+                  >
+                    <div class="flex items-center justify-between mb-2">
+                      <h4 class="text-base font-bold group-hover:transition-colors" style="color: var(--theme-text);">
+                        {std.name}
+                      </h4>
+                      <svg class="w-4 h-4 transition-all duration-200" style="color: var(--theme-primary); opacity: 0;"
+                        onmouseover="this.style.opacity='1'; this.style.transform='translateX(2px)'"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                    <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                      {std.fullName}
+                    </p>
+                    <div class="mt-3">
+                      <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded"
+                        style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);">
+                        {std.organization}
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

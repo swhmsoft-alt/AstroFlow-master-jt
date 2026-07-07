@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StandardPageLayout from '../../components/materials/StandardPageLayout.astro';
+import { getLangFromUrl } from '../../i18n/utils';
+import { STANDARD_DATA } from '../../data/titanium-standards';
+
+const lang = getLangFromUrl(Astro.url);
+const standard = STANDARD_DATA['mil-t-9047'];
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout title={standard.pageTitle} description={standard.metaDescription} canonicalURL={canonicalURL}>
+  <StandardPageLayout standard={standard} lang={lang} canonicalURL={canonicalURL} />
+</BaseLayout>

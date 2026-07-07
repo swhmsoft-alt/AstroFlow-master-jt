@@ -1,0 +1,106 @@
+---
+import type { StandardData } from '../../data/titanium-standards';
+
+export interface Props {
+  standard: StandardData;
+  lang: string;
+  canonicalURL: URL;
+}
+
+const { standard, lang, canonicalURL } = Astro.props;
+const siteName = 'BOZE CNC Ti';
+const orgName = 'Bozemetal CNC Ti Manufacturing';
+const orgUrl = 'https://cnc.bozemetal.com';
+const currentDate = new Date().toISOString().split('T')[0];
+
+// Build breadcrumb items
+const breadcrumbItems = [
+  { name: 'Home', url: orgUrl },
+  { name: 'Materials', url: `${orgUrl}/materials/` },
+  { name: standard.name, url: canonicalURL.href },
+];
+
+// Build FAQ structured data
+const faqItems = standard.faqs.map((faq, i) => ({
+  '@type': 'Question',
+  name: faq.question,
+  acceptedAnswer: {
+    '@type': 'Answer',
+    text: faq.answer,
+  },
+}));
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      '@id': canonicalURL.href + '#article',
+      headline: standard.pageTitle,
+      description: standard.metaDescription,
+      name: `${standard.name} Titanium Precision CNC Machining Services`,
+      author: {
+        '@type': 'Organization',
+        name: orgName,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: orgName,
+        url: orgUrl,
+      },
+      image: `${orgUrl}/og-image.jpg`,
+      datePublished: currentDate,
+      dateModified: currentDate,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalURL.href,
+      },
+      about: {
+        '@type': 'Thing',
+        name: standard.name,
+        description: standard.specTitle,
+      },
+      keywords: standard.industries.join(', '),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': canonicalURL.href + '#breadcrumb',
+      itemListElement: breadcrumbItems.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        item: item.url,
+      })),
+    },
+    {
+      '@type': 'Product',
+      '@id': canonicalURL.href + '#product',
+      name: `${standard.name} Titanium Precision Machining Services`,
+      description: standard.subtitle,
+      brand: {
+        '@type': 'Brand',
+        name: siteName,
+      },
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        itemCondition: 'https://schema.org/NewCondition',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          priceCurrency: 'USD',
+        },
+      },
+      category: standard.category,
+      manufacturer: {
+        '@type': 'Organization',
+        name: orgName,
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': canonicalURL.href + '#faq',
+      mainEntity: faqItems,
+    },
+  ],
+})} />

@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 import SubpageHero from '../ui/SubpageHero.astro';
 import GradeEntityDefinition from './GradeEntityDefinition.astro';
 import GradeStandards from './GradeStandards.astro';
@@ -9,6 +9,7 @@ import GradeDownstreamProducts from './GradeDownstreamProducts.astro';
 import GradeIndustryApplications from './GradeIndustryApplications.astro';
 import GradeAlternativeMaterials from './GradeAlternativeMaterials.astro';
 import GradePageCta from './GradePageCta.astro';
+import GradeStructuredData from './GradeStructuredData.astro';
 import type { GradeData } from '../../data/titanium-grades';
 
 export interface Props {
@@ -21,6 +22,9 @@ const { grade, lang, gradeKey } = Astro.props;
 const t = useTranslations(lang);
 const hp = `materials.${gradeKey}.hero`;
 ---
+
+<!-- JSON-LD Structured Data -->
+<GradeStructuredData grade={grade} gradeKey={gradeKey} lang={lang} />
 
 <!-- Hero -->
 <SubpageHero
@@ -51,6 +55,69 @@ const hp = `materials.${gradeKey}.hero`;
 
 <!-- 7. Alternative Materials (alternative_to) -->
 <GradeAlternativeMaterials grade={grade} gradeKey={gradeKey} />
+
+<!-- Why Choose Us (AIO narrative) -->
+{grade.whyChooseUs && (
+<section class="py-16" style="background-color: color-mix(in srgb, var(--theme-primary) 2%, transparent);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <div class="inline-block px-4 py-2 mb-4 text-sm font-semibold rounded-full"
+          style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+          {t('materials.titaniumstandards.whyChooseBadge')}
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: var(--theme-text);">
+          {t('materials.grade.whyChooseTitle')}
+        </h2>
+        <div class="text-left max-w-4xl mx-auto p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <p class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); line-height: 1.8;">
+            {grade.whyChooseUs}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+)}
+
+<!-- FAQ Section (AIO) -->
+{grade.faqs && grade.faqs.length > 0 && (
+<section class="py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('materials.titaniumstandards.faqTitle')}
+        </h2>
+        <p class="text-lg" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('materials.grade.faqSubtitle')}
+        </p>
+      </div>
+      <div class="space-y-4">
+        {grade.faqs.map((faq) => (
+          <details class="group rounded-xl overflow-hidden transition-all duration-200"
+            style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none transition-colors"
+              style="color: var(--theme-text);"
+              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
+              onmouseout="this.style.backgroundColor='transparent'">
+              <span class="text-base font-semibold pr-4">{faq.question}</span>
+              <svg class="w-5 h-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-5 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <p class="text-sm leading-relaxed mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                {faq.answer}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+)}
 
 <!-- CTA -->
 <GradePageCta grade={grade} lang={lang} gradeKey={gradeKey} />

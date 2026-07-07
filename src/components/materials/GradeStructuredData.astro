@@ -1,0 +1,68 @@
+---
+import type { GradeData } from '../../data/titanium-grades';
+
+export interface Props {
+  grade: GradeData;
+  gradeKey: string;
+  lang: string;
+}
+
+const { grade, gradeKey, lang } = Astro.props;
+const siteUrl = 'https://cnc.bozemetal.com';
+const canonicalURL = `${siteUrl}/materials/${gradeKey}/`;
+const currentDate = new Date().toISOString().split('T')[0];
+
+const faqItems = (grade.faqs || []).map((faq) => ({
+  '@type': 'Question',
+  name: faq.question,
+  acceptedAnswer: {
+    '@type': 'Answer',
+    text: faq.answer,
+  },
+}));
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'TechArticle',
+      '@id': canonicalURL + '#article',
+      headline: grade.pageTitle,
+      description: grade.metaDescription,
+      name: `${grade.name} Titanium Precision CNC Machining`,
+      author: { '@type': 'Organization', name: 'Bozemetal CNC Ti Manufacturing' },
+      publisher: { '@type': 'Organization', name: 'Bozemetal CNC Ti Manufacturing', url: siteUrl },
+      datePublished: currentDate,
+      dateModified: currentDate,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
+      about: { '@type': 'Thing', name: grade.name, description: grade.tagline },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': canonicalURL + '#breadcrumb',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Materials', item: siteUrl + '/materials/' },
+        { '@type': 'ListItem', position: 3, name: grade.name, item: canonicalURL },
+      ],
+    },
+    {
+      '@type': 'Product',
+      '@id': canonicalURL + '#product',
+      name: `${grade.name} Titanium Precision Machining Services`,
+      description: grade.subtitle,
+      brand: { '@type': 'Brand', name: 'BOZE CNC Ti' },
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        itemCondition: 'https://schema.org/NewCondition',
+      },
+    },
+    ...(grade.faqs && grade.faqs.length > 0 ? [{
+      '@type': 'FAQPage',
+      '@id': canonicalURL + '#faq',
+      mainEntity: faqItems,
+    }] : []),
+  ],
+})} />
