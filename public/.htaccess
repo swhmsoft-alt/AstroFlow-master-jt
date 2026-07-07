@@ -1,0 +1,9 @@
+# BEGIN BotControl
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} (PetalBot|Baiduspider|monitoring360) [NC]
+RewriteRule .* - [F,L]
+</IfModule>
+# END BotControl
+
+ErrorDocument 404 /404.html
