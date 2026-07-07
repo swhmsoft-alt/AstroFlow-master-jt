@@ -1,0 +1,19 @@
+import fs from 'fs';
+
+const file = 'src/components/home/ServicesOverview.astro';
+let c = fs.readFileSync(file, 'utf-8');
+
+c = c.replace("'/services#cnc-machining'", "'/titanium-cnc-machining-services/'");
+c = c.replace("'/services#3d-printing'", "'/titanium-additive-manufacturing/'");
+c = c.replace("'/services#laser-cutting'", "'/titanium-fabrication-services/'");
+c = c.replace("'/services#metal-forging'", "'/titanium-surface-treatment/'");
+c = c.replace("'/services#surface-finishing'", "'/titanium-forming-heavy-manufacturing/'");
+c = c.replace("'/services#packaging'", "'/services/'");
+
+if (c.includes('/services#')) {
+  console.error('ERROR: some links still have #');
+  process.exit(1);
+}
+
+fs.writeFileSync(file, c, 'utf-8');
+console.log('OK - all 6 links updated');
