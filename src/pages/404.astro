@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<BaseLayout title="404 - Page Not Found">
+  <div class="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
+    <h1 class="mb-4 text-8xl font-bold text-theme-primary">404</h1>
+    <p class="mb-8 text-2xl text-theme-text/70">{t('404.title')}</p>
+    <p class="mb-12 max-w-md text-lg text-theme-text/50">
+      {t('404.description')}
+    </p>
+    <a
+      href="/"
+      class="rounded-lg bg-theme-primary px-8 py-3 text-lg font-semibold text-white transition-colors hover:bg-theme-primary/80"
+    >
+      {t('404.back_home')}
+    </a>
+  </div>
+</BaseLayout>

@@ -240,6 +240,7 @@ const pageId = resolveContentId(slug);
 const { data: pageData } = await getLocalizedContent(pageId, currentLang);
 
 const isHome = !slug || slug === '';
+const isInvalidLang = !isSupportedLang(lang);
 const isServiceSubPage =
   slug?.includes('titanium-additive-manufacturing/') ||
   slug?.includes('titanium-cnc-machining-services/') ||
@@ -371,7 +372,7 @@ if (heroEntry) {
 ---
 
 {
-  isHome && (
+  isHome && !isInvalidLang && (
     <BaseLayout>
       <PremiumHero hero={heroData} />
       <ServicesOverview />
@@ -773,14 +774,23 @@ if (heroEntry) {
 
 <!-- ===== 404 fallback ===== -->
 {
-  !isHome && !pageMetaKeys[slug || ''] && !subMeta && 
+  (isInvalidLang || (!isHome && !pageMetaKeys[slug || ''] && !subMeta && 
   slug !== 'equipment' &&
   !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) &&
-  !slug?.startsWith('equipment/') && (
-    <BaseLayout>
-      <SubpageHero title={slug || ''} highlight="" badge="" subtitle={t('[lang].Slug].page_is_being_prepared_please')} />
-      <div class="container mx-auto px-4 py-20 text-center">
-        <p class="text-xl text-gray-500">Coming soon: {slug}</p>
+  !slug?.startsWith('equipment/'))) && (
+    <BaseLayout title="404 - Page Not Found">
+      <div class="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
+        <h1 class="mb-4 text-8xl font-bold text-theme-primary">404</h1>
+        <p class="mb-8 text-2xl text-theme-text/70">{t('404.title')}</p>
+        <p class="mb-12 max-w-md text-lg text-theme-text/50">
+          {t('404.description')}
+        </p>
+        <a
+          href="/"
+          class="rounded-lg bg-theme-primary px-8 py-3 text-lg font-semibold text-white transition-colors hover:bg-theme-primary/80"
+        >
+          {t('404.back_home')}
+        </a>
       </div>
     </BaseLayout>
   )
