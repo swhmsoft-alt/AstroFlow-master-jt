@@ -267,6 +267,8 @@ const KEYS = [
   'services.titaniumengineeringknowhow.titlePrefix',
   'services.titaniumengineeringknowhow.titleHighlight',
   'services.cncdedicatedcta.titlePrefix',
+  'equipment.list.hero.title',
+  'equipment.list.hero.highlight',
   'resources.featuredinsights.whitepaper0.title',
   'resources.featuredinsights.whitepaper0.abstract',
   'resources.featuredinsights.whitepaper1.title',
