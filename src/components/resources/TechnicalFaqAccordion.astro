@@ -48,13 +48,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
         </svg>
-        Technical FAQ
+        {t('resources.technicalfaqaccordion.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Frequently Asked <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.technicalfaqaccordion.engineering_questions')}</span>
+        <span style="color: var(--theme-text);">{t('resources.technicalfaqaccordion.titlePrefix')}</span> <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.technicalfaqaccordion.titleHighlight')}</span>
       </h2>
       <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Technical answers to common procurement and engineering inquiries — backed by our production data and quality management systems.
+        {t('resources.technicalfaqaccordion.description')}
       </p>
     </div>
 
@@ -70,7 +70,7 @@ const t = useTranslations(currentLang);
             style="color: var(--theme-text);"
           >
             <span class="text-base font-semibold leading-snug pr-4">
-              {faq.q}
+              {t(`resources.technicalfaqaccordion.faq${index}.question`)}
             </span>
             <div
               class="shrink-0 w-6 h-6 flex items-center justify-center rounded-full transition-transform duration-300 group-open:rotate-180"
@@ -83,7 +83,7 @@ const t = useTranslations(currentLang);
           </summary>
           <div class="px-6 pb-5 pt-0 border-t" style="border-color: color-mix(in srgb, var(--theme-text) 20%, transparent);">
             <p class="text-sm leading-relaxed mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-              {faq.a}
+              {t(`resources.technicalfaqaccordion.faq${index}.answer`)}
             </p>
           </div>
         </details>
@@ -93,7 +93,7 @@ const t = useTranslations(currentLang);
     <!-- Bottom CTA hint -->
     <div class="text-center mt-10">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent);">
-        Have a specific technical question? <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="font-semibold underline-offset-2 hover:underline" style="color: var(--theme-primary);">{t('resources.technicalfaqaccordion.contact_engineering_team')}</a>
+        {t('resources.technicalfaqaccordion.ctaHint')} <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="font-semibold underline-offset-2 hover:underline" style="color: var(--theme-primary);">{t('resources.technicalfaqaccordion.contact_engineering_team')}</a>
       </p>
     </div>
   </div>

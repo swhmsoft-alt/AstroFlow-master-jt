@@ -33,14 +33,14 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
 ---
 
 <BaseLayout
-  description="Expert insights on CNC machining, titanium manufacturing, material science, and industry best practices. Stay informed with the latest from BOZE CNC Ti."
+  description={t('blog.hero.description')}
 >
   <!-- Hero -->
   <SubpageHero
-    title="Our"
-    highlight="Blog"
-    badge="Insights & Updates"
-    subtitle="Technical insights, manufacturing knowledge, and industry perspectives from the BOZE CNC Ti engineering team."
+    title={t('blog.hero.title')}
+    highlight={t('blog.hero.highlight')}
+    badge={t('blog.hero.badge')}
+    subtitle={t('blog.hero.subtitle')}
   />
 
   <!-- Featured Article -->

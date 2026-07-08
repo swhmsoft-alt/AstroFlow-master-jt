@@ -38,12 +38,12 @@ const grouped = categories.map(cat => ({
 }));
 ---
 
-<BaseLayout description="Browse our catalog of precision CNC machined titanium components. Custom manufacturing available for aerospace, medical, and industrial applications.">
+<BaseLayout description={t('products.hero.description')}>
   <SubpageHero
-    title="Precision"
-    highlight="Products"
-    badge="Manufacturing Catalog"
-    subtitle="Browse our catalog of precision machined titanium components, from standard parts to custom-engineered solutions."
+    title={t('products.hero.title')}
+    highlight={t('products.hero.highlight')}
+    badge={t('products.hero.badge')}
+    subtitle={t('products.hero.subtitle')}
   />
 
   {grouped.map(({ category, items }) => (

@@ -24,7 +24,7 @@ const pfx = `materials.${gradeKey}.entity`;
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Entity Definition
+        {t("materials.grade.badges.entityDefinition")}
       </div>
       <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
         {t(`${pfx}.title`)}
@@ -36,17 +36,17 @@ const pfx = `materials.${gradeKey}.entity`;
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
       <div class="md:col-span-1">
-        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Classification</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t("materials.grade.badges.classification")}</h3>
         <div class="p-4 rounded-lg" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
           <span class="text-lg font-semibold" style="color: var(--theme-primary);">{t(`${pfx}.classification`)}</span>
         </div>
         <div class="mt-4">
-          <span class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS Number</span>
+          <span class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t("materials.grade.badges.uns")}</span>
           <p class="text-lg font-mono font-bold mt-1" style="color: var(--theme-text);">{grade.uns}</p>
         </div>
       </div>
       <div class="md:col-span-2">
-        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Common Names</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t("materials.grade.badges.commonNames")}</h3>
         <div class="flex flex-wrap gap-2 mb-6">
           {grade.entityDefinition.commonNames.map((name, i) => (
             <span class="inline-flex items-center px-3 py-1.5 text-sm rounded-md font-medium" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent); color: color-mix(in srgb, var(--theme-primary) 70%, white);">
@@ -54,7 +54,7 @@ const pfx = `materials.${gradeKey}.entity`;
             </span>
           ))}
         </div>
-        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Key Characteristics</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t("materials.grade.badges.keyCharacteristics")}</h3>
         <ul class="space-y-2">
           {grade.entityDefinition.keyCharacteristics.map((char, i) => (
             <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">

@@ -62,13 +62,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
-        Engineering Downloads
+        {t('resources.engineeringdownloads.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Technical <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.engineeringdownloads.resource_library')}</span>
+        <span style="color: var(--theme-text);">{t('resources.engineeringdownloads.titlePrefix')}</span> <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.engineeringdownloads.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Downloadable engineering assets — CAD models, property datasheets, and manufacturing reference booklets. All files are production-grade and revision-controlled.
+        {t('resources.engineeringdownloads.description')}
       </p>
     </div>
 
@@ -79,16 +79,16 @@ const t = useTranslations(currentLang);
         <thead>
           <tr style="background-color: var(--theme-surface); border-bottom: 1px solid color-mix(in srgb, var(--theme-text) 42%, transparent);">
             <th class="text-left px-6 py-4 font-semibold tracking-wide uppercase" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
-              Resource
+              {t('resources.engineeringdownloads.colResource')}
             </th>
             <th class="text-left px-6 py-4 font-semibold tracking-wide uppercase hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
-              Format
+              {t('resources.engineeringdownloads.colFormat')}
             </th>
             <th class="text-left px-6 py-4 font-semibold tracking-wide uppercase hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
-              Size
+              {t('resources.engineeringdownloads.colSize')}
             </th>
             <th class="text-right px-6 py-4 font-semibold tracking-wide uppercase" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); letter-spacing: 0.05em; font-size: 0.7rem;">
-              Action
+              {t('resources.engineeringdownloads.colAction')}
             </th>
           </tr>
         </thead>
@@ -104,10 +104,10 @@ const t = useTranslations(currentLang);
               <td class="px-6 py-5">
                 <div class="flex flex-col">
                   <span class="font-semibold text-sm leading-snug" style="color: var(--theme-text);">
-                    {item.name}
+                    {t(`resources.engineeringdownloads.row${index}.name`)}
                   </span>
                   <span class="text-xs mt-1 leading-relaxed max-w-lg" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent);">
-                    {item.description}
+                    {t(`resources.engineeringdownloads.row${index}.description`)}
                   </span>
                 </div>
               </td>
@@ -133,7 +133,7 @@ const t = useTranslations(currentLang);
                   onmouseover="this.style.color='color-mix(in srgb, var(--theme-primary) 70%, white)'"
                   onmouseout="this.style.color='var(--theme-primary)'"
                 >
-                  <span>[Download {item.format}]</span>
+                  <span>{t('resources.engineeringdownloads.downloadPrefix')} {item.format}</span>
                   <svg class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover/link:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
@@ -148,7 +148,7 @@ const t = useTranslations(currentLang);
     <!-- Footer note -->
     <div class="mt-4 text-right">
       <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent);">
-        Files updated Q1 2026 · All assets verified
+        {t('resources.engineeringdownloads.footer')}
       </span>
     </div>
   </div>

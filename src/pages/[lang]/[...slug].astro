@@ -160,6 +160,8 @@ import { LANGUAGES, DEFAULT_LANG } from '../../i18n/ui';
 import { HERO_CONFIG } from '../../config/hero';
 import GradePageLayout from '../../components/materials/GradePageLayout.astro';
 import { GRADE_DATA } from '../../data/titanium-grades';
+import StandardPageLayout from '../../components/materials/StandardPageLayout.astro';
+import { STANDARD_DATA } from '../../data/titanium-standards';
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   // 排除默认语言(en)，因为根目录已有独立的 .astro 页面处理英语路由
@@ -221,6 +223,24 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'materials/grade-23',
     'materials/grade-6242',
     'materials/ti-5553',
+    'materials/astm-b348',
+    'materials/astm-b265',
+    'materials/astm-b381',
+    'materials/astm-b338',
+    'materials/astm-b861',
+    'materials/astm-f67',
+    'materials/astm-f136',
+    'materials/astm-f86',
+    'materials/astm-f2924',
+    'materials/astm-f3001',
+    'materials/ams-4911',
+    'materials/ams-4928',
+    'materials/ams-4943',
+    'materials/ams-4944',
+    'materials/ams-2488',
+    'materials/iso-5832-3',
+    'materials/iso-5832-11',
+    'materials/mil-t-9047',
   ];
   const allSlugs = [...knownSlugs, ...deepSlugs, ...equipmentSlugs, ...materialSlugs];
   const paths: GetStaticPathsResult = [];
@@ -763,6 +783,15 @@ if (heroEntry) {
   )
 }
 
+<!-- ===== Titanium Materials Standard Pages ===== -->
+{
+  (slug?.startsWith('materials/astm-') || slug?.startsWith('materials/ams-') || slug?.startsWith('materials/iso-') || slug?.startsWith('materials/mil-')) && (
+    <BaseLayout title={STANDARD_DATA[getSubPageKey(slug!)].pageTitle} description={STANDARD_DATA[getSubPageKey(slug!)].metaDescription}>
+      <StandardPageLayout standard={STANDARD_DATA[getSubPageKey(slug!)]} lang={currentLang} canonicalURL={new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com')} />
+    </BaseLayout>
+  )
+}
+
 <!-- ===== Titanium Materials Grade Pages ===== -->
 {
   (slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) && (
@@ -776,7 +805,7 @@ if (heroEntry) {
 {
   (isInvalidLang || (!isHome && !pageMetaKeys[slug || ''] && !subMeta && 
   slug !== 'equipment' &&
-  !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) &&
+  !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-') || slug?.startsWith('materials/astm-') || slug?.startsWith('materials/ams-') || slug?.startsWith('materials/iso-') || slug?.startsWith('materials/mil-')) &&
   !slug?.startsWith('equipment/'))) && (
     <BaseLayout title="404 - Page Not Found">
       <div class="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">

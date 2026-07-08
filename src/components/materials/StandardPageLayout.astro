@@ -22,9 +22,9 @@ const defaultCanonical = canonicalURL;
 <SubpageHero
   title={standard.name}
   highlight={standard.highlight}
-  badge={standard.badge}
+  badge={t(`materials.standards.badges.${standard.key}`)}
   badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-  subtitle={standard.subtitle}
+  subtitle={t(`materials.standards.subtitles.${standard.key}`)}
 />
 
 <!-- ===== STEP 1: Material Compliance ===== -->
@@ -111,8 +111,8 @@ const defaultCanonical = canonicalURL;
               <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent); background-color: idx % 2 === 0 ? 'var(--theme-surface)' : 'color-mix(in srgb, var(--theme-primary) 2%, transparent)';"
                 onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 5%, transparent)'"
                 onmouseout="this.style.backgroundColor= idx % 2 === 0 ? 'var(--theme-surface)' : 'color-mix(in srgb, var(--theme-primary) 2%, transparent)'">
-                <td class="px-6 py-3.5 font-medium" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{prop.label}</td>
-                <td class="px-6 py-3.5 font-semibold" style="color: var(--theme-text);">{prop.value}</td>
+                <td class="px-6 py-3.5 font-medium" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t(`materials.techspecs.${standard.faqCategoryKey}.label.${idx}`)}</td>
+                <td class="px-6 py-3.5 font-semibold" style="color: var(--theme-text);">{t(`materials.techspecs.${standard.faqCategoryKey}.value.${idx}`)}</td>
               </tr>
             ))}
           </tbody>
@@ -202,7 +202,7 @@ const defaultCanonical = canonicalURL;
         <!-- Rich narrative paragraph for AI context extraction -->
         <div class="text-left max-w-4xl mx-auto p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); line-height: 1.8;">
           <p class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-            {standard.whyChooseUs}
+            {t(`materials.standards.whyChooseUs.${standard.whyChooseUsKey}`)}
           </p>
         </div>
       </div>
@@ -270,7 +270,7 @@ const defaultCanonical = canonicalURL;
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
               </svg>
             </div>
-            <span class="text-sm font-medium" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{industry}</span>
+            <span class="text-sm font-medium" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t('materials.industries.' + industry.toLowerCase().replace(/[\s&]+/g, '_').replace(/-/g, '_'))}</span>
           </div>
         ))}
       </div>
@@ -292,7 +292,10 @@ const defaultCanonical = canonicalURL;
       </div>
 
       <div class="space-y-4">
-        {standard.faqs.map((faq, idx) => (
+        {[0, 1, 2].map((idx) => {
+            const qKey = `materials.standards.faq.${standard.faqCategoryKey}.q${idx}`;
+            const aKey = `materials.standards.faq.${standard.faqCategoryKey}.a${idx}`;
+          return (
           <details class="group rounded-xl overflow-hidden transition-all duration-200"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
           >
@@ -301,18 +304,19 @@ const defaultCanonical = canonicalURL;
               onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
               onmouseout="this.style.backgroundColor='transparent'"
             >
-              <span class="text-base font-semibold pr-4">{faq.question}</span>
+              <span class="text-base font-semibold pr-4">{t(qKey)}</span>
               <svg class="w-5 h-5 flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </summary>
             <div class="px-6 pb-5 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
               <p class="text-sm leading-relaxed mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                {faq.answer}
+                {t(aKey)}
               </p>
             </div>
           </details>
-        ))}
+          )
+        })}
       </div>
     </div>
   </div>

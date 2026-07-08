@@ -62,19 +62,19 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        Resource Index
+        {t('resources.resourcehubmatrix.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Content <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.resourcehubmatrix.hub_matrix')}</span>
+        <span style="color: var(--theme-text);">{t('resources.resourcehubmatrix.titlePrefix')}</span> <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.resourcehubmatrix.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Six core resource categories engineered for rapid technical discovery — from material science fundamentals to advanced manufacturing case studies.
+        {t('resources.resourcehubmatrix.description')}
       </p>
     </div>
 
     <!-- 3-Column Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {categories.map((cat) => (
+      {categories.map((cat, index) => (
         <a
           href={cat.href}
           class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col"
@@ -91,17 +91,17 @@ const t = useTranslations(currentLang);
 
           <!-- Title -->
           <h3 class="text-lg font-bold mb-2 transition-colors" style="color: var(--theme-text);" onmouseover="this.style.color='var(--theme-primary)'" onmouseout="this.style.color='var(--theme-text)'">
-            {cat.title}
+          {t(`resources.resourcehubmatrix.card${index}.title`)}
           </h3>
 
           <!-- Description -->
           <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-            {cat.description}
+          {t(`resources.resourcehubmatrix.card${index}.description`)}
           </p>
 
           <!-- Link Tag -->
           <div class="inline-flex items-center text-sm font-semibold transition-all" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-            <span style="color: var(--theme-primary);">Explore {cat.title.split(" ").slice(0, 1).join(" ").toLowerCase()} →</span>
+            <span style="color: var(--theme-primary);">{t('resources.resourcehubmatrix.explorePrefix')} →</span>
           </div>
         </a>
       ))}

@@ -52,19 +52,19 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
         </svg>
-        Featured Insights
+        {t('resources.featuredinsights.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Engineering <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.featuredinsights.whitepapers')}</span>
+        <span style="color: var(--theme-text);">{t('resources.featuredinsights.titlePrefix')}</span> <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{t('resources.featuredinsights.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Flagship technical reports authored by our engineering team — each paper validated against production-floor data and third-party metallurgical analysis.
+        {t('resources.featuredinsights.description')}
       </p>
     </div>
 
     <!-- 3-Column Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {whitepapers.map((wp) => (
+      {whitepapers.map((wp, index) => (
         <div
           class="group relative rounded-xl overflow-hidden transition-all duration-300 flex flex-col"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-text) 42%, transparent);"
@@ -90,12 +90,12 @@ const t = useTranslations(currentLang);
 
             {/* Title */}
             <h3 class="text-lg font-bold mb-3 leading-snug transition-colors" style="color: var(--theme-text);" onmouseover="this.style.color='var(--theme-primary)'" onmouseout="this.style.color='var(--theme-text)'">
-              {wp.title}
+              {t(`resources.featuredinsights.whitepaper${index}.title`)}
             </h3>
 
             {/* Abstract */}
             <p class="text-sm leading-relaxed mb-6 flex-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-              {wp.abstract}
+              {t(`resources.featuredinsights.whitepaper${index}.abstract`)}
             </p>
 
             {/* CTA */}
