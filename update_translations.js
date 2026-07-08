@@ -366,7 +366,7 @@
   "home.innovation.tech3.title": "Enterprise Security",
   "home.innovation.title": "Cutting-Edge",
   "home.innovation.titleHighlight": "Technology",
-  "home.mainHero.badge": "Industry-Leading Solutions",
+  "home.mainHero.badge": "Industry-Leading Solutions | AS9100D Certified",
   "home.mainHero.explore": "Explore Capabilities",
   "home.mainHero.icon0": "Warehousing",
   "home.mainHero.icon1": "Fast Delivery",

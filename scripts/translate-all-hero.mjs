@@ -28,7 +28,7 @@ const LANG_NAMES = {
 const HERO_SOURCE = {
   '/': {
     h1: 'End-to-End Titanium Manufacturing Solutions',
-    badge: 'Industry-Leading Solutions',
+    badge: 'Industry-Leading Solutions | AS9100D Certified',
     subtitle: 'From titanium additive manufacturing and precision CNC machining to fabrication, finishing, and assembly, we provide complete one-stop solutions for custom titanium parts and components. Built on AS9100-compliant quality systems, we support projects from prototype development to full-scale production.',
   },
   '/services': {

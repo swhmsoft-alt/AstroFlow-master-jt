@@ -188,7 +188,8 @@ export const NAVIGATION: NavItem[] = [
 ];
 
 export const SOCIAL_LINKS = {
-  linkedin: 'https://linkedin.com/company/yourcompany',
-  twitter: 'https://twitter.com/yourcompany',
-  facebook: 'https://facebook.com/yourcompany',
+  linkedin: 'https://www.linkedin.com/in/baoji-boze-metal-products-co-ltd-25a0923aa',
+  facebook: 'https://www.facebook.com/titaniummachinedparts/',
+  instagram: 'https://www.instagram.com/boze.metal.products.company/',
+  youtube: 'https://www.youtube.com/@boze-666',
 } as const;

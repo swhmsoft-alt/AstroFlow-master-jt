@@ -19,7 +19,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   '/': {
     h1: 'End-to-End Titanium Manufacturing Solutions',
     subtitle: 'From titanium additive manufacturing and precision CNC machining to fabrication, finishing, and assembly, we provide complete one-stop solutions for custom titanium parts and components. Built on AS9100-compliant quality systems, we support projects from prototype development to full-scale production.',
-    badge: 'Industry-Leading Solutions',
+    badge: 'Industry-Leading Solutions | AS9100D Certified',
   },
   '/services': {
     h1: 'Titanium CNC Manufacturing Services',
