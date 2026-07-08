@@ -35,6 +35,16 @@ const files = readdirSync(LOCAL_ROOT);
 console.log(`   ✓ dist/ 已就绪，共 ${files.length} 个条目。`);
 
 // ---------- FTP 上传 ----------
+async function clearRemoteDir(client) {
+  const items = await client.list();
+  for (const item of items) {
+    try {
+      if (item.isDirectory) await client.removeDir(item.name);
+      else await client.removeFile(item.name);
+    } catch (_) {}
+  }
+}
+
 async function deploy() {
   const client = new Client();
   client.ftp.verbose = false; // CI 中减少日志冗余，出错时再开启
@@ -62,11 +72,18 @@ async function deploy() {
 
     // 上传整个 dist/
     console.log('📤 正在上传文件 ...');
+    console.log('Cleaning remote directory (prevents 552 Disk full) ...');
+    await clearRemoteDir(client);
+
     await client.uploadFromDir(LOCAL_ROOT);
 
     console.log('✅ 部署完成！');
   } catch (err) {
-    console.error('❌ 部署失败:', err.message);
+    if (err.code === 552 || (err.message && err.message.includes('552'))) {
+      console.error('FTP 552 Disk full - server storage full. Clean cPanel or upgrade hosting.');
+    } else {
+      console.error('❌ 部署失败:', err.message);
+    }
     process.exit(1);
   } finally {
     client.close();
