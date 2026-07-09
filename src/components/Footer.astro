@@ -27,7 +27,7 @@ const siteDescription = SITE.description;
 
 <footer style="background-color: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
   <div class="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-5">
       <!-- Company Info -->
       <div class="lg:col-span-1 space-y-6">
         <a href={localizePath('/', currentLang)} class="flex items-center space-x-3 group">
@@ -179,6 +179,12 @@ const siteDescription = SITE.description;
         </h3>
         <ul class="space-y-3 text-sm">
           <li>
+            <a href={localizePath('/about', currentLang)} class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+              <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
+              {t('footer.aboutUs')}
+            </a>
+          </li>
+          <li>
             <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.requestQuote')}
@@ -197,6 +203,32 @@ const siteDescription = SITE.description;
             {t('footer.getStartedBtn')}
           </a>
         </div>
+      </div>
+
+      <!-- Contact Us -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-6" style="color: var(--theme-text);">
+          {t('footer.contactUs')}
+        </h3>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+            <span>{t('footer.tel')}</span>
+          </li>
+          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+            <span>{t('footer.phone')}</span>
+          </li>
+          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+            <span>{t('footer.whatsapp')}</span>
+          </li>
+          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+            <a href="mailto:info@bozemetal.com" class="hover:opacity-100 transition-opacity" style="color: var(--theme-text);">
+              {t('footer.email')}
+            </a>
+          </li>
+          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+            <span class="text-xs leading-relaxed">{t('footer.address')}</span>
+          </li>
+        </ul>
       </div>
     </div>
 
