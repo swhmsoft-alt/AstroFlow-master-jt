@@ -18,6 +18,9 @@ import IndustryApplications from '../../components/home/IndustryApplications.ast
 import EngineeringResources from '../../components/home/EngineeringResources.astro';
 import PremiumCTA from '../../components/home/PremiumCTA.astro';
 
+/* ── About 页面组件 ────────────────────────── */
+import AboutPage from '../../components/about/AboutPage.astro';
+
 /* ── Services 页面组件 ─────────────────────── */
 import ServiceMatrixGrid from '../../components/services/ServiceMatrixGrid.astro';
 import ComplianceRibbon from '../../components/services/ComplianceRibbon.astro';
@@ -169,7 +172,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   const supportedLangs = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
   const knownSlugs: string[] = [
     'services', 'capabilities', 'materials', 'industries', 'resources',
-    'documentation', 'facilities', 'rfq', 'use-cases',
+    'documentation', 'facilities', 'rfq', 'use-cases', 'about',
     'branded-custom-packaging-services', 'laser-marking-custom-logo',
     'equipment',
     'titanium-additive-manufacturing', 'titanium-cnc-machining-services',
@@ -310,6 +313,7 @@ const heroData: Record<string, any> = {
 
 // Hero translation keys for t() - allows per-language hero text
 const pageMetaKeys: Record<string, { title: string; highlight: string; badge: string; subtitle: string }> = {
+  about: { title:'about.hero.title', highlight:'', badge:'about.hero.badge', subtitle:'about.hero.headline' },
   services: { title:'services.hero.title', highlight:'services.hero.highlight', badge:'services.hero.badge', subtitle:'services.hero.subtitle' },
   capabilities: { title:'capabilities.hero.title', highlight:'capabilities.hero.highlight', badge:'capabilities.hero.badge', subtitle:'capabilities.hero.subtitle' },
   materials: { title:'materials.title', highlight:'materials.highlight', badge:'materials.badge', subtitle:'materials.subtitle' },
@@ -401,6 +405,15 @@ if (heroEntry) {
       <IndustryApplications />
       <EngineeringResources />
       <PremiumCTA />
+    </BaseLayout>
+  )
+}
+
+{
+  slug === 'about' && (
+    <BaseLayout>
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <AboutPage />
     </BaseLayout>
   )
 }

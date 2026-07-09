@@ -197,4 +197,9 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     subtitle: 'End-to-end titanium logistics and structural asset protection solutions: CNC foam milling, VCI marine corrosion barriers, ISPM-15 export crating. ISTA 2A/3A certified, ERP-linked traceability.',
     badge: 'Industrial Logistics Protection',
   },
+  '/about': {
+    h1: 'About BOZE CNC-Ti',
+    subtitle: 'Mastering One Metal to Serve the World\'s Most Demanding Industries — from precision titanium CNC machining to OEM/ODM customization.',
+    badge: 'Our Story',
+  },
 };
