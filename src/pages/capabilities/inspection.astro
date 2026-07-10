@@ -1,0 +1,77 @@
+---
+/**
+ * capabilities/inspection.astro
+ *
+ * Titanium Metrology, Inspection & Testing Infrastructure.
+ * Google AIO-optimized page for procurement engineers evaluating
+ * quality verification capabilities and NDT services.
+ *
+ * Route: /capabilities/inspection/ (English, default)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import InspectionPage from '../../components/capabilities/InspectionPage.astro';
+
+const canonicalURL = new URL('/capabilities/inspection/', Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout
+  title="Titanium CNC Metrology, Inspection & Testing Services | BOZE CNC Ti"
+  description="In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis. ISO 17025 calibrated."
+  canonicalURL={canonicalURL}
+>
+  <SubpageHero
+    h1="Titanium Metrology, Inspection &amp; Testing Infrastructure"
+    badge="Inspection &amp; Testing"
+    subtitle="Fully equipped in-house metrology laboratory with CMM, OES spectrometry, optical comparators, surface profilometry, and NDT capabilities — all calibrated per ISO 17025 traceable standards for aerospace and medical titanium components."
+  />
+
+  <InspectionPage />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cnc.bozemetal.com/capabilities/inspection/#webpage",
+        "url": "https://cnc.bozemetal.com/capabilities/inspection/",
+        "name": "Titanium CNC Metrology, Inspection & Testing Services",
+        "description": "In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://cnc.bozemetal.com/#website",
+          "url": "https://cnc.bozemetal.com/",
+          "name": "BOZE CNC Titanium Machining"
+        },
+        "breadcrumb": {
+          "@id": "https://cnc.bozemetal.com/capabilities/inspection/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cnc.bozemetal.com/capabilities/inspection/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+          { "@type": "ListItem", "position": 3, "name": "Inspection & Testing", "item": "https://cnc.bozemetal.com/capabilities/inspection/" }
+        ]
+      },
+      {
+        "@type": "ManufacturingBusiness",
+        "@id": "https://cnc.bozemetal.com/#organization",
+        "name": "BOZE CNC Metal",
+        "url": "https://cnc.bozemetal.com/",
+        "knowsAbout": [
+          "Coordinate Measuring Machine",
+          "Optical Emission Spectrometry",
+          "Non-Destructive Testing",
+          "Fluorescent Penetrant Inspection",
+          "Ultrasonic Testing",
+          "Surface Roughness Measurement",
+          "GD and T Dimensional Analysis",
+          "ISO 17025 Calibration"
+        ]
+      }
+    ]
+  })} />
+</BaseLayout>

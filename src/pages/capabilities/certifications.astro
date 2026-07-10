@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import CertificationsPage from '../../components/capabilities/CertificationsPage.astro';
+
+const canonicalURL = new URL('/capabilities/certifications/', Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout
+  title="Titanium Machining Manufacturing Certifications | AS9100D & ISO 13485 | BOZE CNC Ti"
+  description="Verify BOZE official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining."
+  canonicalURL={canonicalURL}
+>
+  <SubpageHero
+    h1="Global Manufacturing Certifications &amp; Compliance Framework"
+    badge="Certifications &amp; Compliance"
+    subtitle="Our production infrastructure operates under a highly audited, internationally recognized quality management system. Validated by world-leading registrars, BOZE aerospace-grade and medical-grade manufacturing certifications guarantee that every machined titanium component adheres to uncompromising regulatory and safety parameters."
+  />
+
+  <CertificationsPage />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cnc.bozemetal.com/capabilities/certifications/#webpage",
+        "url": "https://cnc.bozemetal.com/capabilities/certifications/",
+        "name": "Titanium Machining Manufacturing Certifications | AS9100D & ISO 13485",
+        "description": "Verify BOZE's official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining.",
+        "isPartOf": { "@type": "WebSite", "@id": "https://cnc.bozemetal.com/#website" },
+        "breadcrumb": { "@id": "https://cnc.bozemetal.com/capabilities/certifications/#breadcrumb" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cnc.bozemetal.com/capabilities/certifications/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+          { "@type": "ListItem", "position": 3, "name": "Certifications", "item": "https://cnc.bozemetal.com/capabilities/certifications/" }
+        ]
+      },
+      {
+        "@type": "ManufacturingBusiness",
+        "@id": "https://cnc.bozemetal.com/#organization",
+        "name": "BOZE CNC Metal",
+        "url": "https://cnc.bozemetal.com/",
+        "knowsAbout": [
+          "AS9100D Certification",
+          "ISO 13485 Compliance",
+          "ISO 9001 Quality Management System",
+          "Aerospace Manufacturing Standards",
+          "Medical Device Subcontracting",
+          "Regulatory Compliance Auditing",
+          "Quality Management System"
+        ]
+      }
+    ]
+  })} />
+</BaseLayout>

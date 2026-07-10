@@ -1,0 +1,327 @@
+---
+/**
+ * TraceabilityPage.astro
+ *
+ * Non-Compromised Titanium Material Traceability & Compliance.
+ * Google AIO E-E-A-T compliance core page.
+ * Content: lifecycle chain + compliance matrix + audit support + FAQ.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 1 — The Unbroken Chain: End-to-End Tracking Lifecycle
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-2.207a4.5 4.5 0 00-6.364 0l-4.5 4.5a4.5 4.5 0 006.364 6.364l1.757-1.757" />
+        </svg>
+        Digital Chain of Custody
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        The Unbroken Chain: <span class="gradient-text-accent">End-to-End Tracking Lifecycle</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        From raw titanium ingot heat lots to permanently marked finished components — every transfer, test, and transformation is digitally recorded and cross-referenced for complete forward and backward traceability.
+      </p>
+    </div>
+
+    <!-- 4-Stage Lifecycle -->
+    <div class="max-w-5xl mx-auto space-y-6">
+      <!-- Stage 1 -->
+      <div class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, #3b82f6 20%, transparent), color-mix(in srgb, #3b82f6 5%, transparent));">
+            <span class="text-sm font-bold" style="color: #3b82f6;">1</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">Inbound Raw Ingot Gating &amp; Heat Assignment</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #3b82f612; color: #3b82f6;">Stage 1: Gatekeeping</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Every incoming titanium bar, plate, or sheet is placed under quarantine upon arrival. The certified <strong style="color: var(--theme-text);">EN 10204 Type 3.1 Mill Test Report (MTR)</strong> is digitally cross-checked against the physical material heat number stamped on each piece. A unique internal batch number is generated in our ERP system and permanently linked to the mill's native heat number — creating the first link in the chain of custody.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, #10b981 20%, transparent), color-mix(in srgb, #10b981 5%, transparent));">
+            <span class="text-sm font-bold" style="color: #10b981;">2</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">Physical Color-Coding &amp; Chemical PMI Analysis</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #10b98112; color: #10b981;">Stage 2: Material Isolation</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Once released from quarantine, raw stock is physically <strong style="color: var(--theme-text);">laser-marked</strong> with grade identification and color-coded by titanium grade (Grade 5 Ti-6Al-4V, Grade 23 ELI, Grade 2 CP) in dedicated inventory zones. Handheld XRF spectrometers perform <strong style="color: var(--theme-text);">Positive Material Identification (PMI)</strong> to confirm chemical composition before any stock is released to the production floor. Material lots are physically segregated to prevent any cross-contamination between grades.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, #f59e0b 20%, transparent), color-mix(in srgb, #f59e0b 5%, transparent));">
+            <span class="text-sm font-bold" style="color: #f59e0b;">3</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">Job-Lot Splitting &amp; ERP Machine Tracking</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #f59e0b12; color: #f59e0b;">Stage 3: Production Isolation</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              As material moves to multi-axis CNC machining cells, the internal batch ID is <strong style="color: var(--theme-text);">digitally bound</strong> to the ERP production traveler job routing. Each operation — milling, turning, wire EDM, surface treatment — records the machine ID, operator, and timestamp against the same batch number. Scrap and raw metal turnings are segregated by grade in dedicated containers to prevent cross-contamination. The system supports full forward traceability (from heat to finished part) and backward traceability (from finished part back to heat).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4 -->
+      <div class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 20%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+            <span class="text-sm font-bold" style="color: var(--theme-primary);">4</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">Part-Level Laser Etching &amp; Quality Archival</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">Stage 4: Permanent Identity</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Finished parts undergo permanent <strong style="color: var(--theme-text);">micro-laser marking</strong> per blueprint requirements — serial numbers, heat IDs, date codes, or QR codes (Data Matrix per MIL-STD-130 / UDI compliance). The complete quality dossier — including MTR, CMM report, FAIR, surface roughness certificate, and CoC — is digitally archived under the part serial number and heat lot identifier. All records are retained for a <strong style="color: var(--theme-text);">minimum of 10 years</strong> and retrievable within 24 hours for customer or regulatory audit support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 2 — Material Compliance Checklist (合规矩阵)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Compliance &amp; Regulatory Alignment
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Global Material <span class="gradient-text-accent">Compliance Matrix</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Every titanium component is manufactured in full alignment with international defense, aerospace, medical, and environmental compliance frameworks.
+      </p>
+    </div>
+
+    <!-- Compliance Table -->
+    <div class="max-w-5xl mx-auto overflow-x-auto">
+      <table class="traceability-compliance-table w-full text-left border-collapse">
+        <thead>
+          <tr>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
+              Compliance Framework
+            </th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
+              Strict Operational Requirement
+            </th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
+              BOZE Implementation Status
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">DFARS 252.225-7009</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Specialty metals must be melted in the United States or qualifying countries (AUS, CAN, JPN, SWE, BEL, GBR).</td>
+            <td class="px-5 py-5 text-sm">
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">100% Compliant</span>
+              <span class="block mt-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Available upon procurement request</span>
+            </td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">EN 10204 Type 3.1</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Material certificate issued by the mill showing actual chemical composition and physical tensile test results — not generic compliance statements.</td>
+            <td class="px-5 py-5 text-sm">
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #3b82f615; color: #3b82f6; border: 1px solid #3b82f625;">Mandatory Standard</span>
+              <span class="block mt-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Provided for 100% of titanium batches</span>
+            </td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">AS9100D Clause 8.5.2</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Maintains explicit identification and status indicators throughout total production cycles — identification, status, traceability per AS9100D risk management.</td>
+            <td class="px-5 py-5 text-sm">
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #f59e0b15; color: #f59e0b; border: 1px solid #f59e0b25;">Fully Audited</span>
+              <span class="block mt-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Integrated within live ERP workflow</span>
+            </td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">RoHS &amp; REACH</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Verification that titanium alloys are free from restricted hazardous substances per EU Directives 2011/65/EU and 1907/2006.</td>
+            <td class="px-5 py-5 text-sm">
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">Certified</span>
+              <span class="block mt-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Documentation packed with final shipments</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 3 — Post-Delivery Audit Support
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Long-Term Data Archival
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Post-Project Accountability &amp; <span class="gradient-text-accent">Long-Term Data Archival</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Your quality documentation doesn't expire after shipment. We maintain comprehensive digital archives to support regulatory audits, downstream investigations, and procurement compliance reviews — often years after project completion.
+      </p>
+    </div>
+
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 10-Year Archival -->
+      <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-center justify-center w-12 h-12 rounded-lg mb-4" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">10-Year Minimum Digital Archival</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          All quality dossiers — including <strong style="color: var(--theme-text);">Mill Test Reports (MTRs)</strong>, CMM dimensional reports, First Article Inspection Reports (FAIR), surface roughness certificates, and Certificates of Conformance (CoC) — are digitally archived on redundant servers with off-site backup for a <strong style="color: var(--theme-text);">minimum of 10 years</strong>. Records are indexed by part number, heat number, customer PO, and date range for rapid retrieval.
+        </p>
+      </div>
+
+      <!-- 24-Hour Retrieval -->
+      <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-center justify-center w-12 h-12 rounded-lg mb-4" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">24-Hour Record Retrieval for Audits</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          When your quality or procurement team faces an <strong style="color: var(--theme-text);">FAA audit</strong>, <strong style="color: var(--theme-text);">FDA compliance review</strong>, or downstream supplier investigation, we can retrieve and deliver the complete quality dossier for any historical order within <strong style="color: var(--theme-text);">24 hours</strong>. Our document control team is trained to support auditor requests, providing certified copies of original MTRs, inspection reports, and process certifications.
+        </p>
+      </div>
+    </div>
+
+    <!-- Additional metrics badges -->
+    <div class="max-w-3xl mx-auto mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <div class="text-2xl font-bold gradient-text-accent mb-1">10+ Years</div>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Minimum quality record retention</p>
+      </div>
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <div class="text-2xl font-bold gradient-text-accent mb-1">&lt; 24 Hrs</div>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Historical record retrieval time</p>
+      </div>
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <div class="text-2xl font-bold gradient-text-accent mb-1">100%</div>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Of batches with EN 10204 3.1 MTRs</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 4 — Engineering-Focused FAQ
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+        </svg>
+        Traceability &amp; Compliance FAQ
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Procurement Compliance <span class="gradient-text-accent">Q&amp;A</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Answers to the most critical material traceability and compliance questions from procurement and regulatory teams.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto space-y-5">
+      <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">What material traceability documentation is provided with each shipment?</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Every shipment includes a comprehensive quality dossier containing: <strong style="color: var(--theme-text);">(1)</strong> Certified Mill Test Report (MTR) per EN 10204 Type 3.1 documenting chemical composition, mechanical properties, and heat treatment parameters; <strong style="color: var(--theme-text);">(2)</strong> Certificate of Conformance (CoC) confirming all manufacturing and inspection processes meet specifications; <strong style="color: var(--theme-text);">(3)</strong> Heat number and batch lot traceability linking the finished component back to the original mill ingot; and <strong style="color: var(--theme-text);">(4)</strong> CMM dimensional inspection reports with GD&amp;T verification. Additional documentation — including DFARS compliance certificates, RoHS/REACH declarations, and AS9102 FAIR — is available upon request.
+        </p>
+      </div>
+
+      <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">Can BOZE provide DFARS-compliant titanium for defense contracts?</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Yes. BOZE CNC is fully capable of supporting <strong style="color: var(--theme-text);">DFARS 252.225-7009</strong> compliant production. Upon procurement request, we can source titanium that is melted in the United States or other qualifying countries (Australia, Canada, Japan, Sweden, Belgium, United Kingdom). The DFARS compliance certificate and corresponding mill origin documentation are provided as part of the quality dossier. We recommend specifying DFARS requirements at the time of RFQ to ensure appropriate material sourcing and segregation.
+        </p>
+      </div>
+
+      <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">How does BOZE physically mark and identify parts for long-term traceability?</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          We employ <strong style="color: var(--theme-text);">micro-laser marking technology</strong> for permanent part identification — including serial numbers, heat lot IDs, date codes, and Data Matrix (QR) codes. Laser marking is preferred over inkjet or chemical etching for its permanence, readability through surface treatments (anodizing, passivation), and compliance with <strong style="color: var(--theme-text);">MIL-STD-130</strong> (DoD item identification) and <strong style="color: var(--theme-text);">UDI</strong> (Unique Device Identification for medical devices). Marking parameters are validated for each titanium grade to ensure legibility without compromising fatigue performance or corrosion resistance.
+        </p>
+      </div>
+
+      <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">How long are quality records retained, and can they be retrieved after project completion?</h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          All quality records are retained for a <strong style="color: var(--theme-text);">minimum of 10 years</strong> from the date of shipment. Records are stored on redundant digital servers with off-site backup and are indexed by part number, heat number, customer purchase order, and date range. In the event of an <strong style="color: var(--theme-text);">FAA audit</strong>, <strong style="color: var(--theme-text);">FDA compliance review</strong>, or customer quality investigation, our document control team can retrieve and deliver the complete quality dossier within <strong style="color: var(--theme-text);">24 hours</strong>. Certified copies of original MTRs and inspection reports are available upon request.
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        Have specific compliance requirements for your titanium program?
+      </p>
+      <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105" style="background-color: var(--theme-primary); color: var(--theme-bg);">
+        Submit Compliance Requirements
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

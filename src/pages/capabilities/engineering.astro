@@ -1,0 +1,98 @@
+---
+/**
+ * capabilities/engineering.astro
+ *
+ * Front-End Engineering Support & DFM Optimization for Titanium.
+ * Google AIO-optimized page for procurement engineer search intent.
+ * Entity network: DFM, CAD/CAM, Value Engineering, Metallurgy Consulting.
+ *
+ * Route: /capabilities/engineering/ (English, default)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import EngineeringPage from '../../components/capabilities/EngineeringPage.astro';
+
+// ── Canonical URL ──
+const canonicalURL = new URL('/capabilities/engineering/', Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout
+  title="Titanium Engineering Support & DFM Optimization Services | BOZE CNC Ti"
+  description="Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering for aerospace and medical applications."
+  canonicalURL={canonicalURL}
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1="Front-End Engineering Support &amp; DFM Optimization for Titanium"
+    badge="Engineering &amp; DFM Services"
+    subtitle="Bridge the gap between complex aerospace/medical designs and flawless physical execution. Our expert engineering team provides rigorous Design for Manufacturing (DFM) reviews, custom toolpath simulation, and metallurgical consultation to de-risk your titanium supply chain and optimize unit costs."
+  />
+
+  <!-- Main Content -->
+  <EngineeringPage />
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Custom JSON-LD — Google AIO Entity Mapping
+       Injected in addition to BaseLayout's auto-generated schema.
+       ════════════════════════════════════════════════════════════════ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cnc.bozemetal.com/capabilities/engineering/#webpage",
+        "url": "https://cnc.bozemetal.com/capabilities/engineering/",
+        "name": "Titanium Engineering Support & DFM Optimization Services",
+        "description": "Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://cnc.bozemetal.com/#website",
+          "url": "https://cnc.bozemetal.com/",
+          "name": "BOZE CNC Titanium Machining"
+        },
+        "breadcrumb": {
+          "@id": "https://cnc.bozemetal.com/capabilities/engineering/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cnc.bozemetal.com/capabilities/engineering/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cnc.bozemetal.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Capabilities",
+            "item": "https://cnc.bozemetal.com/capabilities/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Engineering Support",
+            "item": "https://cnc.bozemetal.com/capabilities/engineering/"
+          }
+        ]
+      },
+      {
+        "@type": "ManufacturingBusiness",
+        "@id": "https://cnc.bozemetal.com/#organization",
+        "name": "BOZE CNC Metal",
+        "url": "https://cnc.bozemetal.com/",
+        "knowsAbout": [
+          "Design for Manufacturing",
+          "DFM Optimization",
+          "CAD/CAM Programming",
+          "Mastercam Simulation",
+          "Titanium Metallurgy",
+          "Value Engineering",
+          "GD and T Blueprint Review"
+        ]
+      }
+    ]
+  })} />
+</BaseLayout>

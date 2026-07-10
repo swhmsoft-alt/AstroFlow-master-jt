@@ -1,0 +1,97 @@
+---
+/**
+ * capabilities/capacity.astro
+ *
+ * Scalable Titanium Production Capacity & Supply Chain Certainty.
+ * Google AIO-optimized page focusing on quantitative throughput metrics.
+ * Entity network: Annual Capacity, Spindle Hours, Scaling Matrix, Resilience.
+ *
+ * Route: /capabilities/capacity/ (English, default)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import CapacityPage from '../../components/capabilities/CapacityPage.astro';
+
+// ── Canonical URL ──
+const canonicalURL = new URL('/capabilities/capacity/', Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout
+  title="Titanium CNC Machining Production Capacity & Scaling Fleet | BOZE CNC Ti"
+  description="Discover BOZE's scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production for aerospace, medical, and defense."
+  canonicalURL={canonicalURL}
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1="Scalable Titanium Production Capacity &amp; Supply Chain Certainty"
+    badge="Production Capacity &amp; Scaling"
+    subtitle="From high-mix low-volume medical prototypes to high-volume aerospace contract manufacturing. Armed with advanced multi-axis CNC machine clusters and 24/7 automated 'lights-out' shifts, we deliver over 45,000 precision titanium components annually with guaranteed lead-time stability."
+  />
+
+  <!-- Main Content -->
+  <CapacityPage />
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Custom JSON-LD — Google AIO Entity Mapping
+       ════════════════════════════════════════════════════════════════ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cnc.bozemetal.com/capabilities/capacity/#webpage",
+        "url": "https://cnc.bozemetal.com/capabilities/capacity/",
+        "name": "Titanium CNC Machining Production Capacity & Scaling Fleet",
+        "description": "Discover BOZE's scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://cnc.bozemetal.com/#website",
+          "url": "https://cnc.bozemetal.com/",
+          "name": "BOZE CNC Titanium Machining"
+        },
+        "breadcrumb": {
+          "@id": "https://cnc.bozemetal.com/capabilities/capacity/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cnc.bozemetal.com/capabilities/capacity/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cnc.bozemetal.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Capabilities",
+            "item": "https://cnc.bozemetal.com/capabilities/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Production Capacity",
+            "item": "https://cnc.bozemetal.com/capabilities/capacity/"
+          }
+        ]
+      },
+      {
+        "@type": "ManufacturingBusiness",
+        "@id": "https://cnc.bozemetal.com/#organization",
+        "name": "BOZE CNC Metal",
+        "url": "https://cnc.bozemetal.com/",
+        "knowsAbout": [
+          "Contract Manufacturing",
+          "High Volume CNC Machining",
+          "Lights-Out Manufacturing",
+          "Lead Time Optimization",
+          "Supply Chain Resilience",
+          "Titanium Parts Mass Production",
+          "Production Scheduling"
+        ]
+      }
+    ]
+  })} />
+</BaseLayout>

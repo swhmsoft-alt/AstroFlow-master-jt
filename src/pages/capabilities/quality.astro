@@ -1,0 +1,98 @@
+---
+/**
+ * capabilities/quality.astro
+ *
+ * Certified Quality Assurance & Titanium Traceability Infrastructure.
+ * E-E-A-T core page — Google AIO trust entity extraction.
+ * Entity network: AS9100D, ISO 13485, CMM, EN 10204, FAIR, SPC.
+ *
+ * Route: /capabilities/quality/ (English, default)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import QualityPage from '../../components/capabilities/QualityPage.astro';
+
+// ── Canonical URL ──
+const canonicalURL = new URL('/capabilities/quality/', Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout
+  title="Titanium Machining Quality Assurance & Certification Standards | BOZE CNC Ti"
+  description="Explore BOZE's zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking for aerospace and medical applications."
+  canonicalURL={canonicalURL}
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1="Certified Quality Assurance &amp; Titanium Traceability Infrastructure"
+    badge="Quality &amp; Compliance"
+    subtitle="Operating under a zero-defect quality philosophy. From raw titanium sponge verification via EN 10204 3.1 MTRs to multi-axis CMM dimensional validation, our precision infrastructure is strictly aligned with AS9100D and ISO 13485 standards to guarantee mission-critical compliance."
+  />
+
+  <!-- Main Content -->
+  <QualityPage />
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Custom JSON-LD — Google AIO Trust Entity Mapping
+       ════════════════════════════════════════════════════════════════ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cnc.bozemetal.com/capabilities/quality/#webpage",
+        "url": "https://cnc.bozemetal.com/capabilities/quality/",
+        "name": "Titanium Machining Quality Assurance & Certification Standards",
+        "description": "Explore BOZE's zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://cnc.bozemetal.com/#website",
+          "url": "https://cnc.bozemetal.com/",
+          "name": "BOZE CNC Titanium Machining"
+        },
+        "breadcrumb": {
+          "@id": "https://cnc.bozemetal.com/capabilities/quality/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cnc.bozemetal.com/capabilities/quality/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cnc.bozemetal.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Capabilities",
+            "item": "https://cnc.bozemetal.com/capabilities/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Quality Assurance",
+            "item": "https://cnc.bozemetal.com/capabilities/quality/"
+          }
+        ]
+      },
+      {
+        "@type": "ManufacturingBusiness",
+        "@id": "https://cnc.bozemetal.com/#organization",
+        "name": "BOZE CNC Metal",
+        "url": "https://cnc.bozemetal.com/",
+        "knowsAbout": [
+          "Quality Assurance System",
+          "Coordinate Measuring Machine",
+          "AS9100D Compliance",
+          "ISO 13485 Medical Standards",
+          "First Article Inspection Report",
+          "Material Traceability",
+          "Statistical Process Control",
+          "Geometric Dimensioning and Tolerancing"
+        ]
+      }
+    ]
+  })} />
+</BaseLayout>

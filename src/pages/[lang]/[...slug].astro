@@ -44,6 +44,13 @@ import EngineeringSupport from '../../components/capabilities/EngineeringSupport
 import QualityAndCertifications from '../../components/capabilities/QualityAndCertifications.astro';
 import InspectionLabGrid from '../../components/capabilities/InspectionLabGrid.astro';
 import TraceabilityFoundation from '../../components/capabilities/TraceabilityFoundation.astro';
+import ManufacturingPage from '../../components/capabilities/ManufacturingPage.astro';
+import EngineeringPage from '../../components/capabilities/EngineeringPage.astro';
+import CapacityPage from '../../components/capabilities/CapacityPage.astro';
+import QualityPage from '../../components/capabilities/QualityPage.astro';
+import InspectionPage from '../../components/capabilities/InspectionPage.astro';
+import TraceabilityPage from '../../components/capabilities/TraceabilityPage.astro';
+import CertificationsPage from '../../components/capabilities/CertificationsPage.astro';
 
 /* ── Industries 页面组件 ───────────────────── */
 import IndustryVerticalsGrid from '../../components/industries/IndustryVerticalsGrid.astro';
@@ -180,6 +187,13 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'titanium-surface-treatment',
   ];
   const deepSlugs: string[] = [
+    'capabilities/manufacturing',
+    'capabilities/engineering',
+    'capabilities/capacity',
+    'capabilities/quality',
+    'capabilities/inspection',
+    'capabilities/traceability',
+    'capabilities/certifications',
     'titanium-additive-manufacturing/3d-printing-slm',
     'titanium-additive-manufacturing/low-volume-production',
     'titanium-additive-manufacturing/rapid-prototyping',
@@ -451,6 +465,364 @@ if (heroEntry) {
       <QualityAndCertifications />
       <InspectionLabGrid />
       <TraceabilityFoundation />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/manufacturing' && (
+    <BaseLayout
+      title="Advanced Titanium Manufacturing Capabilities & Infrastructure | BOZE CNC Ti"
+      description="Certified titanium precision manufacturing infrastructure. Specializing in micron-level CNC tolerances, 5-axis milling, Swiss turning, and full material traceability (MTR) for aerospace, medical, and defense applications."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <ManufacturingPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/manufacturing/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/manufacturing/",
+            "name": "Advanced Titanium CNC Machining & Manufacturing Capabilities",
+            "description": "Certified titanium precision manufacturing infrastructure. Specializing in micron-level CNC tolerances, 5-axis milling, Swiss turning, and full material traceability (MTR).",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://cnc.bozemetal.com/#website"
+            },
+            "breadcrumb": {
+              "@id": "https://cnc.bozemetal.com/capabilities/manufacturing/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/manufacturing/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Manufacturing Capabilities", "item": "https://cnc.bozemetal.com/capabilities/manufacturing/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": [
+              "Titanium CNC Machining",
+              "5-Axis CNC Milling",
+              "Swiss Precision Turning",
+              "Aerospace Component Manufacturing",
+              "Medical Device Components",
+              "Grade 5 Titanium Properties",
+              "Material Traceability"
+            ]
+          }
+        ]
+      })} />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/engineering' && (
+    <BaseLayout
+      title="Titanium Engineering Support & DFM Optimization Services | BOZE CNC Ti"
+      description="Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering for aerospace and medical applications."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <EngineeringPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/engineering/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/engineering/",
+            "name": "Titanium Engineering Support & DFM Optimization Services",
+            "description": "Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering.",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://cnc.bozemetal.com/#website"
+            },
+            "breadcrumb": {
+              "@id": "https://cnc.bozemetal.com/capabilities/engineering/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/engineering/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Engineering Support", "item": "https://cnc.bozemetal.com/capabilities/engineering/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": [
+              "Design for Manufacturing",
+              "DFM Optimization",
+              "CAD/CAM Programming",
+              "Mastercam Simulation",
+              "Titanium Metallurgy",
+              "Value Engineering",
+              "GD and T Blueprint Review"
+            ]
+          }
+        ]
+      })} />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/capacity' && (
+    <BaseLayout
+      title="Titanium CNC Machining Production Capacity & Scaling Fleet | BOZE CNC Ti"
+      description="Discover BOZE's scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production for aerospace, medical, and defense."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <CapacityPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/capacity/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/capacity/",
+            "name": "Titanium CNC Machining Production Capacity & Scaling Fleet",
+            "description": "Discover BOZE's scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production.",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://cnc.bozemetal.com/#website"
+            },
+            "breadcrumb": {
+              "@id": "https://cnc.bozemetal.com/capabilities/capacity/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/capacity/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Production Capacity", "item": "https://cnc.bozemetal.com/capabilities/capacity/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": [
+              "Contract Manufacturing",
+              "High Volume CNC Machining",
+              "Lights-Out Manufacturing",
+              "Lead Time Optimization",
+              "Supply Chain Resilience",
+              "Titanium Parts Mass Production",
+              "Production Scheduling"
+            ]
+          }
+        ]
+      })} />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/quality' && (
+    <BaseLayout
+      title="Titanium Machining Quality Assurance & Certification Standards | BOZE CNC Ti"
+      description="Explore BOZE's zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking for aerospace and medical applications."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <QualityPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/quality/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/quality/",
+            "name": "Titanium Machining Quality Assurance & Certification Standards",
+            "description": "Explore BOZE's zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking.",
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://cnc.bozemetal.com/#website"
+            },
+            "breadcrumb": {
+              "@id": "https://cnc.bozemetal.com/capabilities/quality/#breadcrumb"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/quality/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Quality Assurance", "item": "https://cnc.bozemetal.com/capabilities/quality/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": [
+              "Quality Assurance System",
+              "Coordinate Measuring Machine",
+              "AS9100D Compliance",
+              "ISO 13485 Medical Standards",
+              "First Article Inspection Report",
+              "Material Traceability",
+              "Statistical Process Control",
+              "Geometric Dimensioning and Tolerancing"
+            ]
+          }
+        ]
+      })} />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/inspection' && (
+    <BaseLayout
+      title="Titanium CNC Metrology, Inspection & Testing Services | BOZE CNC Ti"
+      description="In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis. ISO 17025 calibrated."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <InspectionPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/inspection/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/inspection/",
+            "name": "Titanium CNC Metrology, Inspection & Testing Services",
+            "description": "In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis.",
+            "isPartOf": { "@type": "WebSite", "@id": "https://cnc.bozemetal.com/#website" },
+            "breadcrumb": { "@id": "https://cnc.bozemetal.com/capabilities/inspection/#breadcrumb" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/inspection/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Inspection & Testing", "item": "https://cnc.bozemetal.com/capabilities/inspection/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": [
+              "Coordinate Measuring Machine",
+              "Optical Emission Spectrometry",
+              "Non-Destructive Testing",
+              "Fluorescent Penetrant Inspection",
+              "Ultrasonic Testing",
+              "Surface Roughness Measurement",
+              "GD and T Dimensional Analysis",
+              "ISO 17025 Calibration"
+            ]
+          }
+        ]
+      })} />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/traceability' && (
+    <BaseLayout
+      title="Titanium Material Traceability & DFARS Compliance Standards | BOZE CNC Ti"
+      description="Explore BOZE's unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation for aerospace and defense."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <TraceabilityPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/traceability/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/traceability/",
+            "name": "Titanium Material Traceability & DFARS Compliance Standards",
+            "description": "Explore BOZE's unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation.",
+            "isPartOf": { "@type": "WebSite", "@id": "https://cnc.bozemetal.com/#website" },
+            "breadcrumb": { "@id": "https://cnc.bozemetal.com/capabilities/traceability/#breadcrumb" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/traceability/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Material Traceability", "item": "https://cnc.bozemetal.com/capabilities/traceability/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": [
+              "Material Traceability",
+              "EN 10204 3.1 Certification",
+              "DFARS Compliance",
+              "Heat Number Tracking",
+              "Positive Material Identification",
+              "Chain of Custody Documentation",
+              "AS9100D Auditing Support",
+              "Laser Marking Identification"
+            ]
+          }
+        ]
+      })} />
+    </BaseLayout>
+  )
+}
+{
+  slug === 'capabilities/certifications' && (
+    <BaseLayout
+      title="Titanium Machining Manufacturing Certifications | AS9100D & ISO 13485 | BOZE CNC Ti"
+      description="Verify BOZE's official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining."
+    >
+      <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
+      <CertificationsPage />
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebPage",
+            "@id": "https://cnc.bozemetal.com/capabilities/certifications/#webpage",
+            "url": "https://cnc.bozemetal.com/capabilities/certifications/",
+            "name": "Titanium Machining Manufacturing Certifications | AS9100D & ISO 13485",
+            "description": "Verify BOZE's official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining.",
+            "isPartOf": { "@type": "WebSite", "@id": "https://cnc.bozemetal.com/#website" },
+            "breadcrumb": { "@id": "https://cnc.bozemetal.com/capabilities/certifications/#breadcrumb" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://cnc.bozemetal.com/capabilities/certifications/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+              { "@type": "ListItem", "position": 3, "name": "Certifications", "item": "https://cnc.bozemetal.com/capabilities/certifications/" }
+            ]
+          },
+          {
+            "@type": "ManufacturingBusiness",
+            "@id": "https://cnc.bozemetal.com/#organization",
+            "name": "BOZE CNC Metal",
+            "url": "https://cnc.bozemetal.com/",
+            "knowsAbout": ["AS9100D Certification","ISO 13485 Compliance","ISO 9001 Quality Management System","Aerospace Manufacturing Standards","Medical Device Subcontracting","Regulatory Compliance Auditing","Quality Management System"]
+          }
+        ]
+      })} />
     </BaseLayout>
   )
 }
@@ -818,6 +1190,13 @@ if (heroEntry) {
 {
   (isInvalidLang || (!isHome && !pageMetaKeys[slug || ''] && !subMeta && 
   slug !== 'equipment' &&
+  slug !== 'capabilities/manufacturing' &&
+  slug !== 'capabilities/engineering' &&
+  slug !== 'capabilities/capacity' &&
+  slug !== 'capabilities/quality' &&
+  slug !== 'capabilities/inspection' &&
+  slug !== 'capabilities/traceability' &&
+  slug !== 'capabilities/certifications' &&
   !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-') || slug?.startsWith('materials/astm-') || slug?.startsWith('materials/ams-') || slug?.startsWith('materials/iso-') || slug?.startsWith('materials/mil-')) &&
   !slug?.startsWith('equipment/'))) && (
     <BaseLayout title="404 - Page Not Found">

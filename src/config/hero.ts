@@ -197,6 +197,41 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     subtitle: 'End-to-end titanium logistics and structural asset protection solutions: CNC foam milling, VCI marine corrosion barriers, ISPM-15 export crating. ISTA 2A/3A certified, ERP-linked traceability.',
     badge: 'Industrial Logistics Protection',
   },
+  '/capabilities/manufacturing': {
+    h1: 'Advanced Titanium Manufacturing Capabilities & Infrastructure',
+    subtitle: 'Scalable, certified precision manufacturing delivering micron-level tolerances, multi-axis geometry, and 100% material traceability for aerospace, medical, and defense applications.',
+    badge: 'Precision Manufacturing Infrastructure',
+  },
+  '/capabilities/engineering': {
+    h1: 'Front-End Engineering Support & DFM Optimization for Titanium',
+    subtitle: 'Bridge the gap between complex aerospace/medical designs and flawless physical execution. Our expert engineering team provides rigorous Design for Manufacturing (DFM) reviews, custom toolpath simulation, and metallurgical consultation to de-risk your titanium supply chain and optimize unit costs.',
+    badge: 'Engineering & DFM Services',
+  },
+  '/capabilities/capacity': {
+    h1: 'Scalable Titanium Production Capacity & Supply Chain Certainty',
+    subtitle: 'From high-mix low-volume medical prototypes to high-volume aerospace contract manufacturing. Armed with advanced multi-axis CNC machine clusters and 24/7 automated "lights-out" shifts, we deliver over 45,000 precision titanium components annually with guaranteed lead-time stability.',
+    badge: 'Production Capacity & Scaling',
+  },
+  '/capabilities/quality': {
+    h1: 'Certified Quality Assurance & Titanium Traceability Infrastructure',
+    subtitle: 'Operating under a zero-defect quality philosophy. From raw titanium sponge verification via EN 10204 3.1 MTRs to multi-axis CMM dimensional validation, our precision infrastructure is strictly aligned with AS9100D and ISO 13485 standards to guarantee mission-critical compliance.',
+    badge: 'Quality & Compliance',
+  },
+  '/capabilities/inspection': {
+    h1: 'Titanium Metrology, Inspection & Testing Infrastructure',
+    subtitle: 'Fully equipped in-house metrology laboratory with CMM, OES spectrometry, optical comparators, surface profilometry, and NDT capabilities — all calibrated per ISO 17025 traceable standards for aerospace and medical titanium components.',
+    badge: 'Inspection & Testing',
+  },
+  '/capabilities/traceability': {
+    h1: 'Non-Compromised Titanium Material Traceability & Compliance',
+    subtitle: 'De-risking your high-liability applications with an unbroken digital chain of custody. Operating in strict accordance with AS9100D and DFARS compliance, BOZE guarantees 100% material provenance tracking — from raw ingot heat lots to permanently marked, finished multi-axis CNC components.',
+    badge: 'Material Traceability',
+  },
+  '/capabilities/certifications': {
+    h1: 'Global Manufacturing Certifications & Compliance Framework',
+    subtitle: 'Our production infrastructure operates under a highly audited, internationally recognized quality management system. Validated by world-leading registrars, BOZE aerospace-grade and medical-grade manufacturing certifications guarantee that every machined titanium component adheres to uncompromising regulatory and safety parameters.',
+    badge: 'Certifications & Compliance',
+  },
   '/about': {
     h1: 'About BOZE CNC-Ti',
     subtitle: 'Mastering One Metal to Serve the World\'s Most Demanding Industries — from precision titanium CNC machining to OEM/ODM customization.',

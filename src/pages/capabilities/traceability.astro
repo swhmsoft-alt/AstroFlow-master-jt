@@ -1,0 +1,76 @@
+---
+/**
+ * capabilities/traceability.astro
+ *
+ * Non-Compromised Titanium Material Traceability & Compliance.
+ * Google AIO compliance core page — DFARS, EN 10204, AS9100D.
+ *
+ * Route: /capabilities/traceability/ (English, default)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TraceabilityPage from '../../components/capabilities/TraceabilityPage.astro';
+
+const canonicalURL = new URL('/capabilities/traceability/', Astro.site || 'https://cnc.bozemetal.com');
+---
+
+<BaseLayout
+  title="Titanium Material Traceability & DFARS Compliance Standards | BOZE CNC Ti"
+  description="Explore BOZE's unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation for aerospace and defense."
+  canonicalURL={canonicalURL}
+>
+  <SubpageHero
+    h1="Non-Compromised Titanium Material Traceability &amp; Compliance"
+    badge="Material Traceability"
+    subtitle="De-risking your high-liability applications with an unbroken digital chain of custody. Operating in strict accordance with AS9100D and DFARS compliance, BOZE guarantees 100% material provenance tracking — from raw ingot heat lots to permanently marked, finished multi-axis CNC components."
+  />
+
+  <TraceabilityPage />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://cnc.bozemetal.com/capabilities/traceability/#webpage",
+        "url": "https://cnc.bozemetal.com/capabilities/traceability/",
+        "name": "Titanium Material Traceability & DFARS Compliance Standards",
+        "description": "Explore BOZE's unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://cnc.bozemetal.com/#website",
+          "url": "https://cnc.bozemetal.com/",
+          "name": "BOZE CNC Titanium Machining"
+        },
+        "breadcrumb": {
+          "@id": "https://cnc.bozemetal.com/capabilities/traceability/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cnc.bozemetal.com/capabilities/traceability/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
+          { "@type": "ListItem", "position": 3, "name": "Material Traceability", "item": "https://cnc.bozemetal.com/capabilities/traceability/" }
+        ]
+      },
+      {
+        "@type": "ManufacturingBusiness",
+        "@id": "https://cnc.bozemetal.com/#organization",
+        "name": "BOZE CNC Metal",
+        "url": "https://cnc.bozemetal.com/",
+        "knowsAbout": [
+          "Material Traceability",
+          "EN 10204 3.1 Certification",
+          "DFARS Compliance",
+          "Heat Number Tracking",
+          "Positive Material Identification",
+          "Chain of Custody Documentation",
+          "AS9100D Auditing Support",
+          "Laser Marking Identification"
+        ]
+      }
+    ]
+  })} />
+</BaseLayout>
