@@ -6,6 +6,7 @@ import PackagingSpecsDashboard from '../components/services/PackagingSpecsDashbo
 import SmearingWarehouseInterlockKnowHow from '../components/services/SmearingWarehouseInterlockKnowHow.astro';
 import PackagingDedicatedCta from '../components/services/PackagingDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -18,6 +19,9 @@ const t = useTranslations(lang);
     badge={t('branded-custom-packaging-services.hero.badge')}
     badgeIcon="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
     subtitle={t('branded-custom-packaging-services.hero.subtitle')}
+  
+    keyMetrics={HERO_CONFIG['/branded-custom-packaging-services'].keyMetrics}
+    entityChips={HERO_CONFIG['/branded-custom-packaging-services'].entityChips}
   />
 
   <!-- Packaging Process Spectrum — 3-card grid -->

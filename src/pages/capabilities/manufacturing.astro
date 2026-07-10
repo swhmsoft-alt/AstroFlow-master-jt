@@ -11,9 +11,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import ManufacturingPage from '../../components/capabilities/ManufacturingPage.astro';
+import { HERO_CONFIG } from '../../config/hero';
 
 // ── Canonical URL ──
 const canonicalURL = new URL('/capabilities/manufacturing/', Astro.site || 'https://cnc.bozemetal.com');
+const hero = HERO_CONFIG['/capabilities/manufacturing'];
 ---
 
 <BaseLayout
@@ -23,9 +25,12 @@ const canonicalURL = new URL('/capabilities/manufacturing/', Astro.site || 'http
 >
   <!-- Hero Section -->
   <SubpageHero
-    h1="Advanced Titanium Manufacturing Capabilities & Infrastructure"
-    badge="Precision Manufacturing Infrastructure"
-    subtitle="Scalable, certified precision manufacturing delivering micron-level tolerances, multi-axis geometry, and 100% material traceability for aerospace, medical, and defense applications."
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+    compact={hero.compact}
   />
 
   <!-- Main Content -->

@@ -6,6 +6,7 @@ import PrepSpecsDashboard from '../../components/services/PrepSpecsDashboard.ast
 import SizingHardeningTraceabilityKnowHow from '../../components/services/SizingHardeningTraceabilityKnowHow.astro';
 import PrepDedicatedCta from '../../components/services/PrepDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,6 +18,9 @@ const t = useTranslations(lang);
     badge="Material Preparation"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
     subtitle="Heavy-duty CNC band sawing, mechanical surface peeling, and deep chemical decontamination for titanium ingots, billets, and blocks — preparing raw stock for downstream forging, extrusion, and forming operations."
+  
+    keyMetrics={HERO_CONFIG['/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing']?.entityChips}
   />
 
   <!-- Material Preparation Process Spectrum — 3-column grid -->

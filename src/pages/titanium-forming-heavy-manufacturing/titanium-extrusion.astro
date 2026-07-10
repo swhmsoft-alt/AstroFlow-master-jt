@@ -6,6 +6,7 @@ import ExtrusionSpecsDashboard from '../../components/services/ExtrusionSpecsDas
 import DieGallingLubricationKnowHow from '../../components/services/DieGallingLubricationKnowHow.astro';
 import ExtrusionDedicatedCta from '../../components/services/ExtrusionDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,6 +18,9 @@ const t = useTranslations(lang);
     badge="Precision Metal Extrusion"
     badgeIcon="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"
     subtitle="Hot extrusion of complex titanium profiles, seamless heavy-wall tubes, and precision multi-channel hollow shapes — using glass-lubricated dies, isothermal tooling, and stretch straightening for aerospace-grade straightness."
+  
+    keyMetrics={HERO_CONFIG['/titanium-forming-heavy-manufacturing/titanium-extrusion']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-forming-heavy-manufacturing/titanium-extrusion']?.entityChips}
   />
 
   <!-- Extrusion Process Spectrum — 3-column grid -->

@@ -6,6 +6,7 @@ import FabSpecsDashboard from '../components/services/FabSpecsDashboard.astro';
 import ReactiveWeldingKnowHow from '../components/services/ReactiveWeldingKnowHow.astro';
 import FabDedicatedCta from '../components/services/FabDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -18,6 +19,9 @@ const t = useTranslations(lang);
     badge="Precision Fabrication"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
     subtitle="End-to-end titanium fabrication solutions — from precision TIG/laser welding with full argon shielding to custom sheet metal fabrication and large-scale industrial vessel and piping assembly."
+  
+    keyMetrics={HERO_CONFIG['/titanium-fabrication-services'].keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-fabrication-services'].entityChips}
   />
 
   <!-- Fabrication Process Spectrum — 3-column grid -->

@@ -6,6 +6,7 @@ import ForgingSpecsDashboard from '../../components/services/ForgingSpecsDashboa
 import MetallurgyGrainFlowKnowHow from '../../components/services/MetallurgyGrainFlowKnowHow.astro';
 import ForgingDedicatedCta from '../../components/services/ForgingDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,6 +18,9 @@ const t = useTranslations(lang);
     badge="Precision Metal Forging"
     badgeIcon="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0z"
     subtitle="Closed-die precision forging, open-die ingot breakdown, and seamless rolled ring forging — delivering aerospace-grade grain flow, AMS 2631 Class AA ultrasonic quality, and ≥95% equiaxed alpha+beta microstructure."
+  
+    keyMetrics={HERO_CONFIG['/titanium-forming-heavy-manufacturing/titanium-forging']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-forming-heavy-manufacturing/titanium-forging']?.entityChips}
   />
 
   <!-- Forging Process Spectrum — 3-column grid -->

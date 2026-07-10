@@ -11,9 +11,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import EngineeringPage from '../../components/capabilities/EngineeringPage.astro';
+import { HERO_CONFIG } from '../../config/hero';
 
 // ── Canonical URL ──
 const canonicalURL = new URL('/capabilities/engineering/', Astro.site || 'https://cnc.bozemetal.com');
+const hero = HERO_CONFIG['/capabilities/engineering'];
 ---
 
 <BaseLayout
@@ -23,9 +25,12 @@ const canonicalURL = new URL('/capabilities/engineering/', Astro.site || 'https:
 >
   <!-- Hero Section -->
   <SubpageHero
-    h1="Front-End Engineering Support &amp; DFM Optimization for Titanium"
-    badge="Engineering &amp; DFM Services"
-    subtitle="Bridge the gap between complex aerospace/medical designs and flawless physical execution. Our expert engineering team provides rigorous Design for Manufacturing (DFM) reviews, custom toolpath simulation, and metallurgical consultation to de-risk your titanium supply chain and optimize unit costs."
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+    compact={hero.compact}
   />
 
   <!-- Main Content -->

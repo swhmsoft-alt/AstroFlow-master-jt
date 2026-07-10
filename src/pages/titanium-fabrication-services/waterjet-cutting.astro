@@ -6,6 +6,7 @@ import WaterjetSpecsDashboard from '../../components/services/WaterjetSpecsDashb
 import TaperStriationKnowHow from '../../components/services/TaperStriationKnowHow.astro';
 import WaterjetDedicatedCta from '../../components/services/WaterjetDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,6 +18,9 @@ const t = useTranslations(lang);
     badge="Precision Waterjet Cutting"
     badgeIcon="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
     subtitle="Cold abrasive waterjet cutting for titanium — from thin sheets to 120 mm thick forgings — with zero HAZ, no thermal distortion, and near-perpendicular edge profiles."
+  
+    keyMetrics={HERO_CONFIG['/titanium-fabrication-services/waterjet-cutting']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-fabrication-services/waterjet-cutting']?.entityChips}
   />
 
   <!-- Waterjet Cutting Process Advantages — 3-column grid -->

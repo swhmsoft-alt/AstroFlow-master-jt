@@ -6,6 +6,7 @@ import AssemblySpecsDashboard from '../../components/services/AssemblySpecsDashb
 import BrittleGallingControlKnowHow from '../../components/services/BrittleGallingControlKnowHow.astro';
 import AssemblyDedicatedCta from '../../components/services/AssemblyDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,6 +18,9 @@ const t = useTranslations(lang);
     badge="Precision Welding & Assembly"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
     subtitle="From ultra-pure TIG welding with triple-argon shielding to high-penetration laser welding and full multi-component system assembly — delivering mission-critical titanium structures meeting AWS D1.6 and AS9100D standards."
+  
+    keyMetrics={HERO_CONFIG['/titanium-fabrication-services/titanium-welding-assembly']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-fabrication-services/titanium-welding-assembly']?.entityChips}
   />
 
   <!-- Welding & Assembly Process Spectrum — 3-column grid -->

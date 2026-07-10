@@ -53,7 +53,7 @@ const t = useTranslations(currentLang);
         <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">45,000+</div>
         <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">Parts / Year</div>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Total precision titanium component throughput across all production tiers — from prototype to high-volume serial production.
+          Total precision titanium component throughput across all production tiers �?from prototype to high-volume serial production.
         </p>
       </div>
 
@@ -224,7 +224,7 @@ const t = useTranslations(currentLang);
         </div>
         <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Raw Material Security &amp; Strategic Stock</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Maintained through long-term strategic partnerships with tier-1 titanium mills. Our warehouse carries <strong style="color: var(--theme-text);">strategic safety stock</strong> of Grade 5 (Ti-6Al-4V), Grade 23 (ELI), and Grade 2 in bar, plate, and near-net forged forms — insulating your program from international raw material price volatility, mill allocation constraints, or geopolitical supply disruptions. Typical raw material coverage: <strong style="color: var(--theme-text);">8–12 weeks</strong> of forecasted production demand.
+          {t('capabilities.capacity.faq.a4')}
         </p>
       </div>
 
@@ -249,7 +249,7 @@ const t = useTranslations(currentLang);
         <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Max machine switchover time for critical path programs</p>
       </div>
       <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-        <div class="text-2xl font-bold gradient-text-accent mb-1">8–12 Weeks</div>
+        <div class="text-2xl font-bold gradient-text-accent mb-1">8–2 Weeks</div>
         <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Raw material safety stock coverage for Grade 5 / Grade 23</p>
       </div>
       <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
@@ -288,41 +288,37 @@ const t = useTranslations(currentLang);
       <!-- FAQ 1: What is your maximum monthly output -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          What is your maximum monthly output capacity for titanium CNC machined parts?
+          {t('capabilities.capacity.faq.q1')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our aggregate monthly capacity exceeds <strong style="color: var(--theme-text);">8,500 spindle hours</strong> across our fleet of 35+ advanced CNC units, yielding an annual throughput of over <strong style="color: var(--theme-text);">45,000 precision titanium components</strong>. Actual part count varies by geometry complexity, material grade, tolerance requirements, and batch size. For a high-volume simple geometry part (e.g., M6 titanium fastener), monthly output can exceed 15,000 units. For complex 5-axis aerospace structural components, monthly output is approximately 200–500 units per machine. Contact our engineering team with your specific volumes for a tailored capacity assessment.
-        </p>
+          {t('capabilities.capacity.faq.a1')}
       </div>
 
       <!-- FAQ 2: How do you manage lead time for urgent orders -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          How do you manage lead times for urgent or expedited titanium production orders?
+          {t('capabilities.capacity.faq.q2')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          We maintain <strong style="color: var(--theme-text);">buffer capacity</strong> equivalent to approximately 15–20% of our total spindle hours specifically reserved for urgent/expedited programs and demand surges. Additionally, our 24/7 lights-out automated shift provides inherent schedule flexibility — non-urgent programs running on the night shift can be paused and swapped for priority orders within a single day shift. Standard lead time compression options include: (1) Dedicated machine allocation for continuous 24/7 running, (2) Pre-expedited raw material from strategic stock, and (3) Staged milestone deliveries with first-articles air-freighted while bulk production continues.
-        </p>
+          {t('capabilities.capacity.faq.a2')}
       </div>
 
       <!-- FAQ 3: Can you handle both prototype and mass production -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          Can BOZE handle both prototype R&amp;D and mass production under one roof?
+          {t('capabilities.capacity.faq.q3')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Yes. Our production scaling matrix is designed specifically for programs that mature from concept to volume. Prototype and R&amp;D orders (1–10 pcs) are managed by our dedicated engineering team with rapid CAM deployment and aggressive 3–7 day lead times. As the program validates and volumes increase, the same toolpaths, fixtures, and inspection programs migrate seamlessly into our low-volume high-mix (LVHM) cell and eventually into high-volume mass production — all under a single quality plan with no re-qualification required. This eliminates the common industry pain point of transferring programs between prototype shops and production foundries.
-        </p>
+          {t('capabilities.capacity.faq.a3')}
       </div>
 
       <!-- FAQ 4: Raw material supply assurance -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          How do you guarantee raw material supply stability for long-term production programs?
+          {t('capabilities.capacity.faq.q4')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Through three coordinated strategies: <strong style="color: var(--theme-text);">(1) Strategic Mill Partnerships</strong> — we maintain long-term framework agreements with tier-1 titanium mills (including VSMPO-AVISMA, ATI Metals, and BaoTi Group), guaranteeing allocated production capacity and preferential pricing; <strong style="color: var(--theme-text);">(2) Safety Stock Coverage</strong> — our warehouse carries 8–12 weeks of forecasted demand for Grade 5, Grade 23, and Grade 2 in bar, plate, and billet forms, fully certified with EN 10204 3.1 MTRs; <strong style="color: var(--theme-text);">(3) Multi-Source Qualification</strong> — we proactively qualify alternative mill sources for every program-critical grade, ensuring a qualified backup supply chain is ready before any disruption occurs.
-        </p>
+          {t('capabilities.capacity.faq.a4')}
       </div>
 
     </div>

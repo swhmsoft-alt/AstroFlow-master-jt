@@ -1,4 +1,9 @@
 ---
+interface MetricItem {
+  value: string;
+  label: string;
+}
+
 interface Props {
   title?: string;
   highlight?: string;
@@ -13,6 +18,18 @@ interface Props {
   extra?: string;
   /** Complete H1 string (merges title + highlight into one). Overrides title/highlight when provided. */
   h1?: string;
+
+  // ── Content overload management ──
+  /** Max subtitle characters before line-clamp kicks in (0 = no clamp) */
+  subtitleMaxChars?: number;
+  /** Max subtitle lines before line-clamp (default 4) */
+  subtitleMaxLines?: number;
+  /** Key metrics chips displayed below subtitle */
+  keyMetrics?: MetricItem[];
+  /** Entity badges displayed as chips below subtitle */
+  entityChips?: string[];
+  /** Force smaller font for long subtitles */
+  compact?: boolean;
 }
 
 const {
@@ -24,112 +41,120 @@ const {
   badgeGradient,
   highlightGradient,
   h1,
+  subtitleMaxChars = 180,
+  subtitleMaxLines = 4,
+  keyMetrics,
+  entityChips,
+  compact = false,
 } = Astro.props;
 
-// Static hero defaults (previously loaded from CMS collection 'hero')
-const heroStyle = 'gradient';
-const bgImage = '';
+// Static hero defaults
 const badgePrefix = 'BOZE CNC Ti';
-const heroHeight = '50vh';
-const heroMinHeight = '400px';
-
 const badgeLabel = badge ? `${badgePrefix} | ${badge}` : badgePrefix;
-const badgeBg = badgeGradient || '';
 const hlGradient = highlightGradient || '';
+
+// Determine if subtitle is long and needs truncation
+const isLongSubtitle = subtitle && subtitle.length > subtitleMaxChars;
+const subTextSize = compact || (subtitle && subtitle.length > 200) ? 'text-lg md:text-xl' : 'text-xl md:text-2xl';
+const subMaxWidth = isLongSubtitle ? 'max-w-5xl' : 'max-w-3xl';
 ---
 
-{
-  heroStyle === 'image' && bgImage ? (
-    <section
-      class="relative flex items-center overflow-hidden"
-      style={`height: ${heroHeight}; min-height: ${heroMinHeight};`}
-    >
-      <div class="absolute inset-0">
-        <img
-          src={bgImage}
-          alt=""
-          class="w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div
-          class="absolute inset-0"
-          style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-bg) 95%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 80%, transparent) 40%, color-mix(in srgb, var(--theme-bg) 50%, transparent) 100%);"
-        ></div>
+<section class="relative flex items-center overflow-hidden py-20 md:py-28 min-h-[360px]" style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);">
+  <!-- Ambient background glow -->
+  <div class="absolute inset-0 opacity-20">
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 50%), radial-gradient(circle at 80% 50%, color-mix(in srgb, var(--theme-accent) 30%, transparent) 0%, transparent 50%);"
+    ></div>
+  </div>
+
+  <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+
+      <!-- Badge -->
+      <div
+        class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full shadow-lg"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);"
+      >
+        {badgeIcon && <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d={badgeIcon} clip-rule="evenodd" /></svg>}
+        {badgeLabel}
       </div>
-      <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <div
-            class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full shadow-lg"
-            style="background-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);"
-          >
-            {badgeIcon && <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d={badgeIcon} clip-rule="evenodd" /></svg>}
-            {badgeLabel}
-          </div>
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
-            {h1 ? (
-              <span>{h1}</span>
-            ) : (
-              <>
-                {title}
-                {highlight && (
-                  <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
-                    {highlight}
-                  </span>
-                )}
-              </>
+
+      <!-- H1 Heading -->
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
+        {h1 ? (
+          <span>{h1}</span>
+        ) : (
+          <>
+            {title}
+            {highlight && (
+              <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
+                {highlight}
+              </span>
             )}
-          </h1>
-          {subtitle && (
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-              {subtitle}
-            </p>
-          )}
-          <slot />
-        </div>
-      </div>
-    </section>
-  ) : (
-    <section
-      class="relative flex items-center overflow-hidden"
-      style={`height: ${heroHeight}; min-height: ${heroMinHeight}; background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);`}
-    >
-      <div class="absolute inset-0 opacity-20">
-        <div
-          class="absolute inset-0"
-          style="background: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 50%), radial-gradient(circle at 80% 50%, color-mix(in srgb, var(--theme-accent) 30%, transparent) 0%, transparent 50%);"
-        ></div>
-      </div>
-      <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <div
-            class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full shadow-lg"
-            style="background-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);"
+          </>
+        )}
+      </h1>
+
+      <!-- Subtitle with line-clamp truncation -->
+      {subtitle && (
+        <div>
+          <p
+            class="{subTextSize} {subMaxWidth} mx-auto leading-relaxed"
+            style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"
+            class:list={{
+              'line-clamp-4 md:line-clamp-6': isLongSubtitle,
+            }}
+            title={isLongSubtitle ? subtitle : undefined}
           >
-            {badgeIcon && <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d={badgeIcon} clip-rule="evenodd" /></svg>}
-            {badgeLabel}
-          </div>
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
-            {h1 ? (
-              <span>{h1}</span>
-            ) : (
-              <>
-                {title}
-                {highlight && (
-                  <span class="block mt-2" style={hlGradient ? `background: linear-gradient(to right, ${hlGradient}); -webkit-background-clip: text; background-clip: text; color: transparent;` : `color: var(--theme-primary);`}>
-                    {highlight}
-                  </span>
-                )}
-              </>
-            )}
-          </h1>
-          {subtitle && (
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-              {subtitle}
-            </p>
+            {subtitle}
+          </p>
+
+          {isLongSubtitle && (
+            <details class="group mt-2">
+              <summary class="cursor-pointer text-sm font-semibold inline-flex items-center hover:opacity-80 transition-opacity" style="color: var(--theme-primary);">
+                <span class="group-open:hidden">Read more</span>
+                <span class="hidden group-open:inline">Show less</span>
+                <svg class="w-4 h-4 ml-1 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              {/* Hidden content already visible via line-clamp removal on details open */}
+            </details>
           )}
-          <slot />
         </div>
-      </div>
-    </section>
-  )
-}
+      )}
+
+      <!-- Key Metrics Row -->
+      {keyMetrics && keyMetrics.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6">
+          {keyMetrics.map((m) => (
+            <div class="flex items-center gap-1.5 text-sm" style="color: var(--theme-primary);">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="font-semibold">{m.value}</span>
+              <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{m.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <!-- Entity Chips -->
+      {entityChips && entityChips.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-2 mt-5">
+          {entityChips.map((chip) => (
+            <span
+              class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full"
+              style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+            >
+              {chip}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <slot />
+    </div>
+  </div>
+</section>

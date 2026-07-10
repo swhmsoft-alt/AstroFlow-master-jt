@@ -26,13 +26,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17l-5.25-5.25L3 12.92l8.25 8.25L21 10.5l-3.17-3.17M15.75 4.5a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9a2.25 2.25 0 012.25-2.25h9z" />
         </svg>
-        Engineering Core Competencies
+        {t('capabilities.engineering.pillar1.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Core Engineering <span class="gradient-text-accent">Service Pillars</span>
+        {t('capabilities.engineering.pillar1.title')} <span class="gradient-text-accent">{t('cap.engineeringpage.badge0')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Three specialized engineering disciplines that transform complex titanium designs into manufacturable, cost-optimized production programs.
+        {t('capabilities.engineering.pillar1.subtitle')}
       </p>
     </div>
 
@@ -50,9 +50,9 @@ const t = useTranslations(currentLang);
           <span class="text-lg font-bold" style="color: var(--theme-primary);">01</span>
         </div>
 
-        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">Titanium-Specific DFM Review</h3>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('cap.engineeringpage.badge1')}</h3>
         <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Design for Manufacturing audits tailored to titanium's unique metallurgical behavior — low thermal conductivity, high work-hardening rate, and elastic springback. Every feature is evaluated against titanium-specific machinability limits before production.
+          {t('capabilities.engineering.pillar1.desc')}
         </p>
 
         <div class="space-y-2.5 mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -60,19 +60,19 @@ const t = useTranslations(currentLang);
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Corner Radii Optimization</strong> — Avoid sharp internal corners (&lt; R 0.5 mm) to prevent tool chipping and stress risers in Ti-6Al-4V</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.badge2')}</strong> — {t('capabilities.engineering.pillar1.item1')}</span>
           </div>
           <div class="flex items-start text-xs">
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Wall Thickness Verification</strong> — Maintain minimum 0.5 mm wall to avoid resonant chatter and thermal warpage</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.text4_wall_thickness_verification')}</strong> — {t('capabilities.engineering.pillar1.item2')}</span>
           </div>
           <div class="flex items-start text-xs">
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Thread Engagement Depth</strong> — Optimize internal thread depth in Grade 5 to prevent tap breakage; thread milling recommended for M1.6–M6</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.text6_thread_engagement_depth')}</strong> — {t('capabilities.engineering.pillar1.item3')}</span>
           </div>
         </div>
       </div>
@@ -88,9 +88,9 @@ const t = useTranslations(currentLang);
           <span class="text-lg font-bold" style="color: var(--theme-primary);">02</span>
         </div>
 
-        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">Advanced CAD/CAM &amp; Multi-Axis Simulation</h3>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('cap.engineeringpage.badge8')}</h3>
         <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Full in-house CAD/CAM capability using Mastercam and HyperMILL for simultaneous 5-axis toolpath programming. Every program is validated through full-machine digital twin simulation — collision-free, gauge-free, and cycle-time-optimized before any titanium is cut.
+          {t('capabilities.engineering.pillar2.desc')}
         </p>
 
         <div class="space-y-2.5 mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -98,19 +98,19 @@ const t = useTranslations(currentLang);
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Simultaneous 5-Axis Programming</strong> — Full synchronous machining of complex organic geometries and undercuts</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.badge9')}</strong> — {t('capabilities.engineering.pillar2.item1')}</span>
           </div>
           <div class="flex items-start text-xs">
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Collision Avoidance Verification</strong> — Full-machine digital twin with holder, spindle, and fixture collision detection</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.text11_collision_avoidance_verification')}</strong> — {t('capabilities.engineering.pillar2.item2')}</span>
           </div>
           <div class="flex items-start text-xs">
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Adaptive Clearing Toolpaths</strong> — High-frequency micro-engagement cuts that reduce heat accumulation by up to 40% vs conventional toolpaths</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.text13_adaptive_clearing_toolpaths')}</strong> — {t('capabilities.engineering.pillar2.item3')}</span>
           </div>
         </div>
       </div>
@@ -126,9 +126,9 @@ const t = useTranslations(currentLang);
           <span class="text-lg font-bold" style="color: var(--theme-primary);">03</span>
         </div>
 
-        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">Value Engineering &amp; Cost-Out Collaboration</h3>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('cap.engineeringpage.badge15')}</h3>
         <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Systematic cost optimization without compromising functional performance. From raw material form selection (plate vs near-net forgings) to process consolidation, we partner with your procurement team to reduce total landed cost per part.
+          {t('capabilities.engineering.pillar3.desc')}
         </p>
 
         <div class="space-y-2.5 mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -136,19 +136,19 @@ const t = useTranslations(currentLang);
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Raw Material Yield Optimization</strong> — Nesting analysis and form selection to minimize buy-to-fly ratio (target &lt; 3:1 for Ti-6Al-4V)</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.badge16')}</strong> — {t('capabilities.engineering.pillar3.item1')}</span>
           </div>
           <div class="flex items-start text-xs">
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Process Consolidation</strong> — Multi-operation merging on mill-turn platforms; eliminate secondary EDM by wire-cut pre-form strategy</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.badge58')}</strong> — {t('capabilities.engineering.pillar3.item2')}</span>
           </div>
           <div class="flex items-start text-xs">
             <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
             </svg>
-            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">Cycle Time Analysis</strong> — Per-operation time study with bottleneck identification; average 15–25% cycle time reduction on first-pass programs</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"><strong style="color: var(--theme-text);">{t('cap.engineeringpage.text20_cycle_time_analysis')}</strong> — {t('capabilities.engineering.pillar3.item3')}</span>
           </div>
         </div>
       </div>
@@ -169,13 +169,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
         </svg>
-        Engineering Workflow
+        {t('capabilities.engineering.workflow.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        From Blueprint to <span class="gradient-text-accent">Production-Ready Code</span>
+        {t('capabilities.engineering.workflow.title')} <span class="gradient-text-accent">{t('cap.engineeringpage.badge22')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        A deterministic 4-stage engineering sequence that eliminates uncertainty before production begins. Every stage is documented, reviewed, and approved before progressing.
+        {t('capabilities.engineering.workflow.subtitle')}
       </p>
     </div>
 
@@ -189,11 +189,11 @@ const t = useTranslations(currentLang);
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-              <h3 class="text-base font-bold" style="color: var(--theme-text);">Secure Blueprint &amp; CAD Ingest</h3>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">Within 24 Hours</span>
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.engineeringpage.badge23')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.engineeringpage.badge24')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Accepting native CAD files (.STEP, .IGES, .SolidWorks, .AutoCAD) and GD&amp;T-annotated 2D drawings. All data is received and processed in a secure, NDA-compliant digital environment with full revision control.
+              {t('capabilities.engineering.workflow.step1.desc')}
             </p>
           </div>
         </div>
@@ -207,11 +207,11 @@ const t = useTranslations(currentLang);
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-              <h3 class="text-base font-bold" style="color: var(--theme-text);">Titanium Feasibility &amp; DFM Review</h3>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">Technical Audit</span>
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.engineeringpage.badge25')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.engineeringpage.badge26')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Evaluating the selected material grade (Grade 2, Grade 5, Grade 23 ELI, etc.) against every geometric feature in the design. Identifying localized thermal stress risks, hard-to-reach tool access zones, and potential fixturing challenges specific to titanium's low thermal conductivity and high springback.
+              {t('capabilities.engineering.workflow.step2.desc')}
             </p>
           </div>
         </div>
@@ -225,11 +225,11 @@ const t = useTranslations(currentLang);
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-              <h3 class="text-base font-bold" style="color: var(--theme-text);">Collaborative Cost-Out Proposal</h3>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">Engineering Feedback</span>
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.engineeringpage.badge27')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.engineeringpage.badge28')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Issuing a detailed DFM report with annotated drawings — recommending modifications to corner radii, wall thickness distributions, tolerance callouts, and thread specifications. Every recommendation is quantified: estimated yield improvement, cycle time reduction, and cost savings per part.
+              {t('capabilities.engineering.workflow.step3.desc')}
             </p>
           </div>
         </div>
@@ -243,11 +243,11 @@ const t = useTranslations(currentLang);
           </div>
           <div class="flex-1 min-w-0">
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-              <h3 class="text-base font-bold" style="color: var(--theme-text);">CAM Programming &amp; Virtual Prototyping</h3>
-              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">Digital Verification</span>
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.engineeringpage.badge29')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.engineeringpage.badge30')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Generating multi-axis G-code with Mastercam/HyperMILL and running full-machine digital twin simulations to verify tool interference, spindle load profiles, and surface finish predictions. First-article-right approach ensures zero-defect execution when the titanium bar touches the machine spindle.
+              {t('capabilities.engineering.workflow.step4.desc')}
             </p>
           </div>
         </div>
@@ -260,7 +260,7 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Average DFM review turnaround: <strong style="color: var(--theme-text);">24–48 hours</strong> from CAD submission to engineering feedback report.
+        Average DFM review turnaround: <strong style="color: var(--theme-text);">{t('cap.engineeringpage.badge56')}</strong> from CAD submission to engineering feedback report.
       </p>
     </div>
   </div>
@@ -282,13 +282,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
         </svg>
-        Engineering Value Matrix
+        {t('capabilities.engineering.matrix.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Standard vs. <span class="gradient-text-accent">BOZE Engineered</span> Approach
+        {t('capabilities.engineering.matrix.title')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Quantifiable evidence of how our front-end engineering transforms conventional machining into precision-optimized, cost-efficient production.
+        {t('capabilities.engineering.matrix.subtitle')}
       </p>
     </div>
 
@@ -298,53 +298,53 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Engineering Dimension
+              {t('capabilities.engineering.matrix.col1')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Standard Machining Approach
+              {t('capabilities.engineering.matrix.col2')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              BOZE Engineered &amp; Simulated Approach
+              {t('capabilities.engineering.matrix.col3')}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Toolpath Strategy</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Conventional linear cutting (High heat concentration)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">Trochoidal &amp; Adaptive toolpaths (Low heat generation)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.engineeringpage.text33_toolpath_strategy')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.engineeringpage.text34_conventional_linear_cutting')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">{t('cap.engineeringpage.text35_trochoidal_amp_adaptive')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Thin-Wall Geometry Control</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">High deflection risk (±0.05 mm typical)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">Balanced dynamic milling (Holds up to ±0.01 mm)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.engineeringpage.text36_thin_wall_geometry')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.engineeringpage.text37_high_deflection_risk')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">{t('cap.engineeringpage.text38_balanced_dynamic_milling')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Thread Tapping in Ti-6Al-4V</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">High tap breakage rates (frequent tool changes)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">Thread milling via specialized rigid CNC cycles (zero breakage)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.engineeringpage.text39_thread_tapping_6al')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.engineeringpage.text40_high_tap_breakage')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">{t('cap.engineeringpage.text41_thread_milling_via')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Yield Rate / First-Pass Quality</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Variable based on operator skill (85–92% typical)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">Controlled via 100% digital twin simulation (&gt; 98% first-pass)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.engineeringpage.text42_yield_rate_first')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.engineeringpage.text43_variable_based_operator')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">{t('cap.engineeringpage.text44_controlled_via_100')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Surface Finish Consistency</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Ra 1.6–3.2 μm (tool-path dependent)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">Ra 0.4–0.8 μm (predicted and verified via CAM)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.engineeringpage.text45_surface_finish_consistency')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.engineeringpage.text46_tool_path_dependent')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">{t('cap.engineeringpage.text47_predicted_verified_via')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Material Buy-to-Fly Ratio</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">4:1 – 6:1 (standard nesting)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">&lt; 3:1 (optimized nesting + form selection)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.engineering.matrix.row6')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.engineeringpage.text48_standard_nesting')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-accent);">{t('cap.engineeringpage.text49_optimized_nesting_form')}</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="max-w-5xl mx-auto mt-6 p-4 rounded-lg text-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-text);">Note:</span> Performance data based on actual production runs of Ti-6Al-4V (Grade 5) aerospace and medical components. Results may vary by geometry complexity, tolerance requirements, and batch quantity.
+      <span class="font-semibold" style="color: var(--theme-text);">{t('cap.engineeringpage.text50_note')}</span> {t('capabilities.engineering.matrix.note')}
     </div>
   </div>
 </section>
@@ -361,13 +361,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
         </svg>
-        Engineering FAQ
+        {t('capabilities.engineering.faq.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Engineer-to-Engineer <span class="gradient-text-accent">Technical Q&amp;A</span>
+        {t('capabilities.engineering.faq.title')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Direct answers to the most frequent DFM and engineering questions from procurement engineers evaluating titanium machining partners.
+        {t('capabilities.engineering.faq.subtitle')}
       </p>
     </div>
 
@@ -377,40 +377,40 @@ const t = useTranslations(currentLang);
       <!-- FAQ 1: Stress concentration in thin-walled Grade 5 -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          How to reduce stress concentration in thin-walled Grade 5 titanium aerospace components?
+          {t('capabilities.engineering.faq.q1')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Stress concentration in thin-walled Ti-6Al-4V geometries is addressed through three coordinated engineering strategies: <strong style="color: var(--theme-text);">(1) Corner Radii Optimization</strong> — specifying minimum internal radii of R 0.5–1.0 mm to distribute load paths and eliminate notch effects; <strong style="color: var(--theme-text);">(2) Balanced Dynamic Milling</strong> — employing trochoidal toolpaths with consistent radial engagement (&lt; 10% of tool diameter) to minimize cyclic thermal-mechanical loading; and <strong style="color: var(--theme-text);">(3) Sequential Roughing Strategy</strong> — alternating material removal passes to allow stress redistribution between cuts. FEA-validated toolpath simulations verify that peak von Mises stress remains below 60% of the material yield strength throughout the machining process.
+          {t('capabilities.engineering.faq.a1')}
         </p>
       </div>
 
       <!-- FAQ 2: DFM review turnaround -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          What is included in a standard DFM review for titanium CNC parts?
+          {t('capabilities.engineering.faq.q2')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our DFM review covers six mandatory checkpoints: (1) Titanium-specific machinability assessment per material grade (<em>Grade 5 vs Grade 23 vs Grade 2</em>); (2) Feature-based tool access analysis for deep cavities, undercuts, and small-diameter holes; (3) Tolerance stack-up evaluation against ASME Y14.5 GD&amp;T standards; (4) Thin-wall deflection prediction using finite element modeling; (5) Surface finish requirement validation against achievable machining parameters; and (6) Raw material utilization optimization — including buy-to-fly ratio calculation and alternative form recommendations (plate, bar, or near-net forging). A detailed written report with annotated drawings is delivered within <strong style="color: var(--theme-text);">24–48 hours</strong> of CAD submission.
+          {t('capabilities.engineering.faq.a2')}
         </p>
       </div>
 
       <!-- FAQ 3: Cycle time reduction -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          How can BOZE engineering reduce cycle times for existing titanium production programs?
+          {t('capabilities.engineering.faq.q3')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our value engineering team conducts a systematic cycle time analysis across four dimensions: <strong style="color: var(--theme-text);">Toolpath Optimization</strong> — converting conventional roughing to adaptive clearing with high-feed mills, reducing roughing time by up to 40%; <strong style="color: var(--theme-text);">Process Consolidation</strong> — combining milling, drilling, and tapping operations on multi-tasking mill-turn platforms, eliminating secondary setups; <strong style="color: var(--theme-text);">Tooling Strategy</strong> — selecting grade-specific carbide inserts with optimized chip-breaker geometries for titanium; and <strong style="color: var(--theme-text);">Fixture Optimization</strong> — reducing part loading/unloading time through quick-change pallet systems. Typical first-pass cycle time reduction: <strong style="color: var(--theme-text);">15–25%</strong> without capital equipment investment.
+          {t('capabilities.engineering.faq.a3')}
         </p>
       </div>
 
       <!-- FAQ 4: CAD/CAM software compatibility -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          Which CAD/CAM software platforms does BOZE engineering support?
+          {t('capabilities.engineering.faq.q4')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our engineering team works with all major CAD/CAM platforms. We accept native files from <strong style="color: var(--theme-text);">SolidWorks</strong>, <strong style="color: var(--theme-text);">Autodesk Inventor</strong>, <strong style="color: var(--theme-text);">AutoCAD</strong>, and neutral formats including <strong style="color: var(--theme-text);">STEP (AP203/AP214)</strong>, <strong style="color: var(--theme-text);">IGES</strong>, and <strong style="color: var(--theme-text);">Parasolid</strong>. For CAM programming, we use <strong style="color: var(--theme-text);">Mastercam</strong> (5-axis simultaneous, mill-turn, and wire EDM modules) and <strong style="color: var(--theme-text);">HyperMILL</strong> for complex freeform surface machining. All toolpaths are validated through full-machine digital twin simulation with collision detection, spindle load monitoring, and surface finish prediction before production release.
+          {t('capabilities.engineering.faq.a4')}
         </p>
       </div>
 
@@ -419,7 +419,7 @@ const t = useTranslations(currentLang);
     <!-- CTA -->
     <div class="text-center mt-12">
       <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Submit your design for a complimentary DFM feasibility assessment.
+        {t('capabilities.engineering.cta.text')}
       </p>
       <a
         href="https://www.bozemetal.com/contact"
@@ -428,7 +428,7 @@ const t = useTranslations(currentLang);
         class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105"
         style="background-color: var(--theme-primary); color: var(--theme-bg);"
       >
-        Submit CAD for DFM Review
+        {t('capabilities.engineering.cta.btn')}
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>

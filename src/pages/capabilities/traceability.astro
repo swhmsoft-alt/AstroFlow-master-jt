@@ -10,6 +10,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import TraceabilityPage from '../../components/capabilities/TraceabilityPage.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/capabilities/traceability'];
 
 const canonicalURL = new URL('/capabilities/traceability/', Astro.site || 'https://cnc.bozemetal.com');
 ---
@@ -20,9 +23,12 @@ const canonicalURL = new URL('/capabilities/traceability/', Astro.site || 'https
   canonicalURL={canonicalURL}
 >
   <SubpageHero
-    h1="Non-Compromised Titanium Material Traceability &amp; Compliance"
-    badge="Material Traceability"
-    subtitle="De-risking your high-liability applications with an unbroken digital chain of custody. Operating in strict accordance with AS9100D and DFARS compliance, BOZE guarantees 100% material provenance tracking — from raw ingot heat lots to permanently marked, finished multi-axis CNC components."
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+    compact={hero.compact}
   />
 
   <TraceabilityPage />

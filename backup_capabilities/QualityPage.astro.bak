@@ -1,0 +1,476 @@
+---
+/**
+ * QualityPage.astro
+ *
+ * Certified Quality Assurance & Titanium Traceability Infrastructure.
+ * E-E-A-T core page for Google AIO trust entity extraction.
+ * Content: metrology fleet + IQC-to-OQC workflow + doc matrix + FAQ.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 1 — Certification & Standards Overview (认证徽章)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Quality Management Framework
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Industry Certifications &amp; <span class="gradient-text-accent">{t('cap.qualitypage.badge0')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Every titanium component is manufactured under a multi-standard quality management framework audited by international registrars.
+      </p>
+    </div>
+
+    <!-- Certification Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+
+      <!-- AS9100 Rev D -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-center justify-center w-14 h-14 rounded-xl mb-4" style="background: linear-gradient(135deg, #3b82f615, #3b82f605);">
+          <span class="text-xs font-bold text-center leading-tight" style="color: #3b82f6;">AS<br/>{t('cap.qualitypage.text1_9100')}</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{t('cap.qualitypage.badge57')}</h3>
+        <p class="text-xs mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.badge3')}</p>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Full-scope aerospace quality management system covering design, development, production, and distribution of titanium aerospace components. Regular surveillance audits ensure continuous compliance with AS9100D risk management, counterfeit part prevention (AS6174/AS5553), and first-article inspection (AS9102) protocols.
+        </p>
+      </div>
+
+      <!-- ISO 13485:2016 -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-center justify-center w-14 h-14 rounded-xl mb-4" style="background: linear-gradient(135deg, #10b98115, #10b98105);">
+          <span class="text-xs font-bold text-center leading-tight" style="color: #10b981;">ISO<br/>{t('cap.qualitypage.badge4')}</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{t('cap.qualitypage.badge58')}</h3>
+        <p class="text-xs mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Medical Device QMS</p>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Process controls aligned with ISO 13485 for the manufacture of medical-grade titanium components — including surgical implants, orthopedic instruments, and dental prosthetics. Risk management per ISO 14971, cleanroom-compatible production workflows, and full batch traceability for implantable devices.
+        </p>
+      </div>
+
+      <!-- ISO 9001:2015 -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-center justify-center w-14 h-14 rounded-xl mb-4" style="background: linear-gradient(135deg, #f59e0b15, #f59e0b05);">
+          <span class="text-xs font-bold text-center leading-tight" style="color: #f59e0b;">ISO<br/>{t('cap.qualitypage.badge6')}</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{t('cap.qualitypage.badge59')}</h3>
+        <p class="text-xs mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.badge8')}</p>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Foundational quality management framework with documented processes for continuous improvement, corrective/preventive action, customer-focused output, and supplier quality management across all departments.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 2 — Metrology & Inspection Equipment Fleet (设备集群)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 7.5l16.5-4.125M12 6.75c-2.485 0-4.5-1.007-4.5-2.25s2.015-2.25 4.5-2.25 4.5 1.007 4.5 2.25-2.015 2.25-4.5 2.25zM12 15.75c-2.485 0-4.5 1.007-4.5 2.25s2.015 2.25 4.5 2.25 4.5-1.007 4.5-2.25-2.015-2.25-4.5-2.25zM3.75 7.5v9.75M20.25 4.125v9.75M3.75 17.25c0 1.243 2.015 2.25 4.5 2.25m13.5-11.25c0 1.243-2.015 2.25-4.5 2.25" />
+        </svg>
+        Metrology &amp; Inspection Infrastructure
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Advanced Metrology &amp; <span class="gradient-text-accent">{t('cap.qualitypage.badge9')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        In-house metrology laboratory equipped with industrial-grade inspection instruments for full dimensional, chemical, and surface integrity validation — all calibrated per ISO 17025 traceable standards.
+      </p>
+    </div>
+
+    <!-- Equipment Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+      <!-- CMM -->
+      <div
+        class="group relative rounded-xl p-6 md:p-8 transition-all duration-300 flex flex-col"
+        style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+        onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
+        onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+      >
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+          </svg>
+        </div>
+
+        <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('cap.qualitypage.text10_cnc_coordinate_measuring')}</h3>
+        <p class="text-sm leading-relaxed mb-4 flex-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Automated 3D dimensional analysis capturing tolerances down to ±0.0015 mm. Multi-axis scanning with active vibration dampening for micron-level accuracy on complex titanium geometries.
+        </p>
+
+        <div class="space-y-2 mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.badge11')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.badge12')}</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.text13_scanning_type')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">Multi-axis Continuous</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.text14_standard_compliance')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.text15_asme_y14_amp')}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- XRF Spectrometer -->
+      <div
+        class="group relative rounded-xl p-6 md:p-8 transition-all duration-300 flex flex-col"
+        style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+        onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
+        onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+      >
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+        </div>
+
+        <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('cap.qualitypage.text16_xrf_spectrometer_material')}</h3>
+        <p class="text-sm leading-relaxed mb-4 flex-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Instant, non-destructive chemical composition analysis of incoming titanium lots. Confirms elemental makeup within 30 seconds, ensuring every batch matches the specified grade chemistry per ASTM E415.
+        </p>
+
+        <div class="space-y-2 mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.badge17')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.badge18')}</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.text19_pmi_validation')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.text20_grade_grade_grade')}</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.text21_standard')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.text22_astm_e415_iso')}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision Inspection & Surface Profilometers -->
+      <div
+        class="group relative rounded-xl p-6 md:p-8 transition-all duration-300 flex flex-col"
+        style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+        onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
+        onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+      >
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
+          </svg>
+        </div>
+
+        <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('cap.qualitypage.text23_vision_inspection_amp')}</h3>
+        <p class="text-sm leading-relaxed mb-4 flex-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Non-contact high-resolution optical inspection for fragile micro-features and precise micro-inch surface roughness (Ra) certification. Optical comparators for 2D profile verification of complex titanium geometries.
+        </p>
+
+        <div class="space-y-2 mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.badge24')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.badge25')}</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Measurement Type</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.text26_non_contact_optical')}</span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.qualitypage.text27_parameters')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('cap.qualitypage.text28_rmax_iso_4287')}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 3 — Closed-Loop Quality Control Workflow (IQC→OQC)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
+        </svg>
+        Closed-Loop Quality Control
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        IQC to OQC: <span class="gradient-text-accent">{t('cap.qualitypage.badge29')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Four-stage quality control chain from raw material ingest through final pre-shipment metrology audit — every step documented and traceable.
+      </p>
+    </div>
+
+    <!-- Workflow Steps -->
+    <ol class="max-w-5xl mx-auto space-y-6">
+      <!-- Step 1: IQC -->
+      <li class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, #3b82f6 20%, transparent), color-mix(in srgb, #3b82f6 5%, transparent));">
+            <span class="text-sm font-bold" style="color: #3b82f6;">1</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.qualitypage.badge30')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #3b82f612; color: #3b82f6;">{t('cap.qualitypage.badge31')}</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Every incoming titanium lot is quarantined upon arrival until Positive Material Identification (PMI) using our XRF spectrometer confirms the chemical composition matches the mill test reports. Physical verification of <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge32')}</strong> is recorded against the material heat number. Lots that fail PMI or lack certified MTRs are rejected and returned to the supplier. Only PMI-verified, MTR-matched material is released to inventory.
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <!-- Step 2: FAI -->
+      <li class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, #10b981 20%, transparent), color-mix(in srgb, #10b981 5%, transparent));">
+            <span class="text-sm font-bold" style="color: #10b981;">2</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.qualitypage.badge33')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #10b98112; color: #10b981;">{t('cap.qualitypage.badge34')}</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Before mass-producing any production batch, the first machined part undergoes 100% layout inspection on our CMM. Full <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge35')}</strong> is generated — ballooning every dimension, recording actual vs. nominal values, and logging GD&amp;T callout verification per ASME Y14.5. The FAIR is reviewed and signed off by senior lead inspectors before production release is authorized.
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <!-- Step 3: IPQC -->
+      <li class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, #f59e0b 20%, transparent), color-mix(in srgb, #f59e0b 5%, transparent));">
+            <span class="text-sm font-bold" style="color: #f59e0b;">3</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.qualitypage.badge36')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #f59e0b12; color: #f59e0b;">{t('cap.qualitypage.badge37')}</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Machinists utilize calibrated on-machine probing and <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge38')}</strong> software to monitor real-time tool wear trends, spindle load variations, and dimensional drift. Control charts (X-bar and R) are maintained for critical features. If SPC signals indicate a process shift approaching specification limits, corrective action is triggered immediately — stopping variability before non-conformance occurs.
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <!-- Step 4: OQC -->
+      <li class="relative rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex items-start gap-5">
+          <div class="flex items-center justify-center w-10 h-10 rounded-lg shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 20%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+            <span class="text-sm font-bold" style="color: var(--theme-primary);">4</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.qualitypage.badge39')}</h3>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.qualitypage.badge40')}</span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Finished lots undergo random or 100% dimensional gating using programmatic CMM cycles. Components are packed with comprehensive quality dossiers containing <strong style="color: var(--theme-text);">Mill Test Reports (MTRs)</strong>, <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge41')}</strong>, surface roughness certificates, and <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge42')}</strong>. All quality records are archived and retrievable for the life of the product.
+            </p>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 4 — Deliverable Documentation Matrix (AIO 表格)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+        </svg>
+        Quality Deliverables
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Deliverable <span class="gradient-text-accent">{t('cap.qualitypage.badge43')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Every shipment includes a comprehensive quality dossier. Below is the complete set of compliance documentation provided with each order.
+      </p>
+    </div>
+
+    <!-- Documentation Matrix Table -->
+    <div class="max-w-5xl mx-auto overflow-x-auto">
+      <table class="quality-doc-table w-full text-left border-collapse">
+        <thead>
+          <tr>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
+              Compliance Document
+            </th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
+              What It Verifies
+            </th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
+              Applicable Standard / Regulation
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Mill Test Report (MTR)</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.qualitypage.text44_chemical_composition_physical')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.qualitypage.text45_10204_astm_specifications')}</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.qualitypage.text46_certificate_conformance_coc')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.qualitypage.text47_official_legal_binding')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.qualitypage.text48_iso_9001_customer')}</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.qualitypage.text49_cmm_dimensional_report')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.qualitypage.text50_full_geometric_dimensional')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.qualitypage.text51_amp_asme_y14')}</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.qualitypage.text52_as9102_fair_optional')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.qualitypage.text53_rigorous_aerospace_first')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.qualitypage.text54_aerospace_as9100d_protocols')}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Note -->
+    <div class="max-w-5xl mx-auto mt-6 p-4 rounded-lg text-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+      <span class="font-semibold" style="color: var(--theme-text);">{t('cap.qualitypage.text55_note')}</span> Additional documentation such as surface roughness certificates, NDT reports (FPI/UT), and material traceability matrices are available upon request. All quality records are retained for a minimum of 10 years.
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 5 — Engineering-Focused FAQ (AIO 长尾问答)
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+        </svg>
+        Quality Assurance FAQ
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Compliance &amp; Inspection <span class="gradient-text-accent">{t('cap.qualitypage.badge56')}</span>
+      </h2>
+      <p class="text-xl max-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Answers to the most frequent quality assurance questions from aerospace and medical procurement engineers.
+      </p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="max-w-4xl mx-auto space-y-5">
+
+      <!-- FAQ 1: Quality certifications held -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
+          Which quality certifications does BOZE CNC hold for titanium manufacturing?
+        </h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          BOZE CNC operates under a multi-standard quality framework aligned with <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge2')}</strong> (aerospace quality management), <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge5')}</strong> (medical device quality management), and <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge7')}</strong> (general quality management). Our processes are designed to meet the stringent requirements of aerospace, medical, defense, and industrial applications. We maintain Nadcap-accredited NDT capabilities and follow AS9102 first-article inspection protocols for all aerospace programs.
+        </p>
+      </div>
+
+      <!-- FAQ 2: Material traceability -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
+          How does BOZE ensure full material traceability for titanium components?
+        </h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Full chain-of-custody traceability is maintained from mill to finished component. Every incoming titanium lot undergoes <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge60')}</strong> via XRF spectrometry, cross-referenced against <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge61')}</strong>. Each part is assigned a unique lot number in our ERP system that links to the original heat number, MTR, CMM inspection results, and production traveler. This provides complete forward and backward traceability — from finished part back to the original mill batch.
+        </p>
+      </div>
+
+      <!-- FAQ 3: CMM inspection process -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
+          What inspection equipment is used for dimensional validation of titanium parts?
+        </h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Our in-house metrology lab is equipped with a <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge62')}</strong> (bridge-type, 1.9 μm volumetric accuracy), OGP SmartScope optical comparators, and Mitutoyo SJ-410 surface roughness testers. For material verification, we use a SPECTROMAXx Optical Emission Spectrometer for rapid PMI analysis. NDT capabilities include fluorescent dye penetrant (FPI) and ultrasonic (UT) testing. All inspection equipment is calibrated per <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge63')}</strong> traceable standards with calibration certificates available on request.
+        </p>
+      </div>
+
+      <!-- FAQ 4: Quality documents with shipments -->
+      <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
+          What quality documentation is included with each shipment?
+        </h3>
+        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          Each shipment includes a comprehensive quality dossier containing: <strong style="color: var(--theme-text);">(1)</strong> Certified Mill Test Reports (MTRs) per EN 10204 Type 3.1 documenting raw material composition and mechanical properties; <strong style="color: var(--theme-text);">(2)</strong> Certificate of Conformance (CoC) confirming all manufacturing and inspection processes meet customer specifications; <strong style="color: var(--theme-text);">(3)</strong> CMM dimensional inspection reports with actual vs. nominal measurements per ASME Y14.5 GD&amp;T; and <strong style="color: var(--theme-text);">(4)</strong> Surface roughness certification where required. AS9102-compliant First Article Inspection Reports (FAIR) are provided for aerospace programs upon request.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        Request our quality management brochure or schedule a facility audit.
+      </p>
+      <a
+        href="https://www.bozemetal.com/contact"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105"
+        style="background-color: var(--theme-primary); color: var(--theme-bg);"
+      >
+        Request Quality Documentation
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

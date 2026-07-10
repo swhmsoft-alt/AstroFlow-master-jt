@@ -6,6 +6,7 @@ import WireEdmSpecsDashboard from '../../components/services/WireEdmSpecsDashboa
 import WireEdmKnowHow from '../../components/services/WireEdmKnowHow.astro';
 import WireEdmDedicatedCta from '../../components/services/WireEdmDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -18,6 +19,9 @@ const t = useTranslations(lang);
     badge="Precision EDM Machining"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
     subtitle="Electric discharge cutting for micro-slots, hardened titanium alloys, thin-wall parts, and complex tapered profiles — achieving ±0.002 mm accuracy and Ra 0.25 µm micro-finish."
+  
+    keyMetrics={HERO_CONFIG['/titanium-cnc-machining-services/wire-edm-machining']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-cnc-machining-services/wire-edm-machining']?.entityChips}
   />
 
   <!-- Wire EDM Process Advantages — 3-column grid -->

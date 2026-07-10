@@ -6,6 +6,7 @@ import PrototypingSpecsDashboard from '../../components/services/PrototypingSpec
 import HybridPostProcessing from '../../components/services/HybridPostProcessing.astro';
 import RapidPrototypeCta from '../../components/services/RapidPrototypeCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -18,6 +19,9 @@ const t = useTranslations(lang);
     badge="Additive Manufacturing"
     badgeIcon="M13 10V3L4 14h7v7l9-11h-7z"
     subtitle="Quick turn-around functional titanium prototypes delivered in 3-5 business days — with full structural mechanical strength for physical fit checks, form verification, and functional validation."
+  
+    keyMetrics={HERO_CONFIG['/titanium-additive-manufacturing/rapid-prototyping']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-additive-manufacturing/rapid-prototyping']?.entityChips}
   />
 
   <!-- Rapid Prototyping Value Pillars — 3-column grid -->

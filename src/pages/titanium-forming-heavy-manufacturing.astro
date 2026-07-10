@@ -6,6 +6,7 @@ import HeavySpecsDashboard from '../components/services/HeavySpecsDashboard.astr
 import HotFormingStressKnowHow from '../components/services/HotFormingStressKnowHow.astro';
 import HeavyDedicatedCta from '../components/services/HeavyDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -17,6 +18,9 @@ const t = useTranslations(lang);
     badge="Heavy Manufacturing"
     badgeIcon="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
     subtitle="Hot forming, open/closed-die forging, and large-scale multi-component integration for multi-ton titanium infrastructure — from heavy plate rolling to vacuum stress-relieved structural assemblies."
+  
+    keyMetrics={HERO_CONFIG['/titanium-forming-heavy-manufacturing'].keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-forming-heavy-manufacturing'].entityChips}
   />
 
   <!-- Heavy Manufacturing Process Spectrum — 3-column grid -->

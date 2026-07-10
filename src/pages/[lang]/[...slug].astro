@@ -277,17 +277,25 @@ const pageId = resolveContentId(slug);
 const { data: pageData } = await getLocalizedContent(pageId, currentLang);
 
 const isHome = !slug || slug === '';
+// Normalize slug for English URLs without language prefix
+// e.g. /titanium-cnc-machining-services/3-5-axis → lang='titanium-cnc-machining-services', slug='3-5-axis'
+// effectiveSlug reconstructs the full path for correct matching
+const effectiveSlug = (slug && lang && !isSupportedLang(lang)) ? `${lang}/${slug}` : (slug || '');
+
 const isInvalidLang = !isSupportedLang(lang);
 const isServiceSubPage =
-  slug?.includes('titanium-additive-manufacturing/') ||
-  slug?.includes('titanium-cnc-machining-services/') ||
-  slug?.includes('titanium-fabrication-services/') ||
-  slug?.includes('titanium-forming-heavy-manufacturing/') ||
-  slug?.includes('titanium-surface-treatment/') ||
-  slug === 'branded-custom-packaging-services' ||
-  slug === 'laser-marking-custom-logo';
+  effectiveSlug?.includes('titanium-additive-manufacturing/') ||
+  effectiveSlug?.includes('titanium-cnc-machining-services/') ||
+  effectiveSlug?.includes('titanium-fabrication-services/') ||
+  effectiveSlug?.includes('titanium-forming-heavy-manufacturing/') ||
+  effectiveSlug?.includes('titanium-surface-treatment/') ||
+  effectiveSlug === 'branded-custom-packaging-services' ||
+  effectiveSlug === 'laser-marking-custom-logo';
 
-const heroEntry = HERO_CONFIG[`/${slug || ''}` as keyof typeof HERO_CONFIG] || undefined;
+// When lang is invalid (English URL without language prefix), lang IS the first path segment
+// e.g. /titanium-cnc-machining-services/3-5-axis → lang='titanium-cnc-machining-services', slug='3-5-axis'
+// Reconstruct full slug for HERO_CONFIG lookup
+const heroEntry = HERO_CONFIG[`/${effectiveSlug}` as keyof typeof HERO_CONFIG] || undefined;
 
 // tH1 helper: returns translated value if found, null otherwise (t() returns key as fallback)
 const tH1 = (key: string) => {
@@ -372,13 +380,13 @@ function getSubPageKey(slugStr: string): string | null {
 
 let subMeta: { title: string; badge: string; subtitle: string } | null = null;
 if (slug) {
-  const subKey = getSubPageKey(slug);
+  const subKey = getSubPageKey(effectiveSlug);
   if (subKey && subPageMeta[subKey]) subMeta = subPageMeta[subKey];
 }
 
 // Compute hero values (slug-based pages only) - heroEntry already declared above for home page
 // Build i18n translation keys based on HERO_CONFIG path
-const heroKey = slug ? `hero.${slug.replace(/\//g, '.')}` : '';
+const heroKey = effectiveSlug ? `hero.${slug.replace(/\//g, '.')}` : '';
 
 let pageH1: string | undefined;
 let pageBadge: string | undefined;
@@ -401,7 +409,7 @@ if (heroEntry) {
   // title/highlight not needed - h1 replaces them
 } else {
   // Fallback: use existing i18n/subMeta logic
-  const metaKeys = slug ? pageMetaKeys[slug] : undefined;
+  const metaKeys = effectiveSlug ? pageMetaKeys[effectiveSlug] : undefined;
   pageTitle = subMeta?.title || (metaKeys ? t(metaKeys.title) : slug || 'Home');
   pageBadge = subMeta?.badge || (metaKeys ? t(metaKeys.badge) : '');
   pageSubtitle = subMeta?.subtitle || (metaKeys ? t(metaKeys.subtitle) : '');
@@ -424,7 +432,7 @@ if (heroEntry) {
 }
 
 {
-  slug === 'about' && (
+  effectiveSlug === 'about' && (
     <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <AboutPage />
@@ -433,9 +441,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'services' && (
+  effectiveSlug === 'services' && (
     <BaseLayout serviceHubKey="master-service">
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <ServiceMatrixGrid />
       <ComplianceRibbon />
       <EngineeringWorkflow />
@@ -445,9 +460,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'materials' && !isHome && (
+  effectiveSlug === 'materials' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <MaterialGradeMatrix />
       <AlloyComparisonTable />
       <MachiningKnowHow />
@@ -457,9 +479,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'capabilities' && !isHome && (
+  effectiveSlug === 'capabilities' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <CapacityDashboard />
       <EngineeringSupport />
       <QualityAndCertifications />
@@ -469,11 +498,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/manufacturing' && (
-    <BaseLayout
-      title="Advanced Titanium Manufacturing Capabilities & Infrastructure | BOZE CNC Ti"
-      description="Certified titanium precision manufacturing infrastructure. Specializing in micron-level CNC tolerances, 5-axis milling, Swiss turning, and full material traceability (MTR) for aerospace, medical, and defense applications."
-    >
+  effectiveSlug === 'capabilities/manufacturing' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <ManufacturingPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -523,11 +549,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/engineering' && (
-    <BaseLayout
-      title="Titanium Engineering Support & DFM Optimization Services | BOZE CNC Ti"
-      description="Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering for aerospace and medical applications."
-    >
+  effectiveSlug === 'capabilities/engineering' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <EngineeringPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -577,11 +600,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/capacity' && (
-    <BaseLayout
-      title="Titanium CNC Machining Production Capacity & Scaling Fleet | BOZE CNC Ti"
-      description="Discover BOZE's scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production for aerospace, medical, and defense."
-    >
+  effectiveSlug === 'capabilities/capacity' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <CapacityPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -631,11 +651,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/quality' && (
-    <BaseLayout
-      title="Titanium Machining Quality Assurance & Certification Standards | BOZE CNC Ti"
-      description="Explore BOZE's zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking for aerospace and medical applications."
-    >
+  effectiveSlug === 'capabilities/quality' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <QualityPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -686,11 +703,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/inspection' && (
-    <BaseLayout
-      title="Titanium CNC Metrology, Inspection & Testing Services | BOZE CNC Ti"
-      description="In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis. ISO 17025 calibrated."
-    >
+  effectiveSlug === 'capabilities/inspection' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <InspectionPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -736,11 +750,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/traceability' && (
-    <BaseLayout
-      title="Titanium Material Traceability & DFARS Compliance Standards | BOZE CNC Ti"
-      description="Explore BOZE's unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation for aerospace and defense."
-    >
+  effectiveSlug === 'capabilities/traceability' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <TraceabilityPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -786,11 +797,8 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'capabilities/certifications' && (
-    <BaseLayout
-      title="Titanium Machining Manufacturing Certifications | AS9100D & ISO 13485 | BOZE CNC Ti"
-      description="Verify BOZE's official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining."
-    >
+  effectiveSlug === 'capabilities/certifications' && (
+    <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <CertificationsPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -828,9 +836,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'industries' && !isHome && (
+  effectiveSlug === 'industries' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <IndustryVerticalsGrid />
       <IndustryComplianceDashboard />
       <IndustryCtaSection />
@@ -839,9 +854,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'resources' && !isHome && (
+  effectiveSlug === 'resources' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <FeaturedInsights />
       <ResourceHubMatrix />
       <EngineeringDownloads />
@@ -851,9 +873,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'rfq' && !isHome && (
+  effectiveSlug === 'rfq' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <EngineeringRfqForm />
       <SecurityNdaBanner />
       <ResponsePipelineTimeline />
@@ -862,9 +891,16 @@ if (heroEntry) {
 }
 
 {
-  slug === 'documentation' && !isHome && (
+  effectiveSlug === 'documentation' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <div class="container mx-auto px-4 py-8">
         <p class="text-lg text-center" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Documentation center content available in English only.</p>
       </div>
@@ -873,18 +909,32 @@ if (heroEntry) {
 }
 
 {
-  slug === 'facilities' && !isHome && (
+  effectiveSlug === 'facilities' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <FacilityStats client:idle />
     </BaseLayout>
   )
 }
 
 {
-  slug === 'use-cases' && !isHome && (
+  effectiveSlug === 'use-cases' && !isHome && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <div class="container mx-auto px-4 py-8">
         <p class="text-lg text-center" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Use cases content available in English only.</p>
       </div>
@@ -894,9 +944,16 @@ if (heroEntry) {
 
 <!-- ===== CNC Machining 系列 ===== -->
 {
-  slug === 'titanium-cnc-machining-services' && (
+  effectiveSlug === 'titanium-cnc-machining-services' && (
     <BaseLayout serviceHubKey="cnc-machining">
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <CncProcessSpectrum />
       <CncTechnicalDashboard />
       <TitaniumEngineeringKnowHow />
@@ -905,9 +962,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-cnc-machining-services/3-5-axis-cnc-machining' && (
+  effectiveSlug === 'titanium-cnc-machining-services/3-5-axis-cnc-machining' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <FiveAxisTechSpecs />
       <MultiAxisComparison />
       <MultiAxisCta />
@@ -915,9 +979,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-cnc-machining-services/cnc-milling-turning' && (
+  effectiveSlug === 'titanium-cnc-machining-services/cnc-milling-turning' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <TurnMillKnowHow />
       <TurnMillSpectrum />
       <TurnMillSpecsDashboard />
@@ -926,9 +997,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-cnc-machining-services/wire-edm-machining' && (
+  effectiveSlug === 'titanium-cnc-machining-services/wire-edm-machining' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <WireEdmKnowHow />
       <WireEdmAdvantages />
       <WireEdmSpecsDashboard />
@@ -937,9 +1015,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-cnc-machining-services/custom-industrial-components' && (
+  effectiveSlug === 'titanium-cnc-machining-services/custom-industrial-components' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <CustomComponentsKnowHow />
       <CustomComponentSpectrum />
       <ComponentDedicatedCta />
@@ -949,9 +1034,16 @@ if (heroEntry) {
 
 <!-- ===== Additive 系列 ===== -->
 {
-  slug === 'titanium-additive-manufacturing' && (
+  effectiveSlug === 'titanium-additive-manufacturing' && (
     <BaseLayout serviceHubKey="additive">
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <AdditiveProcessSpectrum />
       <AdditiveSpecsDashboard />
       <AdditiveQualityKnowHow />
@@ -960,9 +1052,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-additive-manufacturing/3d-printing-slm' && (
+  effectiveSlug === 'titanium-additive-manufacturing/3d-printing-slm' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <SlmProcessBreakdown />
       <SlmMechanicalDashboard />
       <AdditiveEconomicsPillars />
@@ -971,9 +1070,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-additive-manufacturing/rapid-prototyping' && (
+  effectiveSlug === 'titanium-additive-manufacturing/rapid-prototyping' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <RapidValuePillars />
       <PrototypingSpecsDashboard />
       <RapidPrototypeCta />
@@ -981,9 +1087,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-additive-manufacturing/low-volume-production' && (
+  effectiveSlug === 'titanium-additive-manufacturing/low-volume-production' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <AdditiveEconomicsPillars />
       <ProductionVolumeDashboard />
       <InterBatchRepeatability />
@@ -994,9 +1107,16 @@ if (heroEntry) {
 
 <!-- ===== Fabrication 系列 ===== -->
 {
-  slug === 'titanium-fabrication-services' && (
+  effectiveSlug === 'titanium-fabrication-services' && (
     <BaseLayout serviceHubKey="fabrication">
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <FabProcessSpectrum />
       <FabSpecsDashboard />
       <ReactiveWeldingKnowHow />
@@ -1005,9 +1125,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-fabrication-services/laser-cutting' && (
+  effectiveSlug === 'titanium-fabrication-services/laser-cutting' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <LaserProcessSpectrum />
       <LaserSpecsDashboard />
       <LaserDedicatedCta />
@@ -1015,9 +1142,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-fabrication-services/waterjet-cutting' && (
+  effectiveSlug === 'titanium-fabrication-services/waterjet-cutting' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <WaterjetAdvantages />
       <WaterjetSpecsDashboard />
       <WaterjetDedicatedCta />
@@ -1025,9 +1159,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-fabrication-services/titanium-welding-assembly' && (
+  effectiveSlug === 'titanium-fabrication-services/titanium-welding-assembly' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <WeldingAssemblySpectrum />
       <AssemblySpecsDashboard />
       <AssemblyDedicatedCta />
@@ -1037,9 +1178,16 @@ if (heroEntry) {
 
 <!-- ===== Forming & Heavy 系列 ===== -->
 {
-  slug === 'titanium-forming-heavy-manufacturing' && (
+  effectiveSlug === 'titanium-forming-heavy-manufacturing' && (
     <BaseLayout serviceHubKey="forming">
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <HeavyProcessSpectrum />
       <HeavySpecsDashboard />
       <HotFormingStressKnowHow />
@@ -1048,9 +1196,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-forming-heavy-manufacturing/titanium-forging' && (
+  effectiveSlug === 'titanium-forming-heavy-manufacturing/titanium-forging' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <ForgingProcessSpectrum />
       <ForgingSpecsDashboard />
       <ForgingDedicatedCta />
@@ -1058,9 +1213,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-forming-heavy-manufacturing/titanium-extrusion' && (
+  effectiveSlug === 'titanium-forming-heavy-manufacturing/titanium-extrusion' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <ExtrusionProcessSpectrum />
       <ExtrusionSpecsDashboard />
       <ExtrusionDedicatedCta />
@@ -1068,9 +1230,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-forming-heavy-manufacturing/raw-material-preparation-sizing' && (
+  effectiveSlug === 'titanium-forming-heavy-manufacturing/raw-material-preparation-sizing' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <PrepProcessSpectrum />
       <PrepSpecsDashboard />
       <PrepDedicatedCta />
@@ -1080,9 +1249,16 @@ if (heroEntry) {
 
 <!-- ===== Surface Treatment 系列 ===== -->
 {
-  slug === 'titanium-surface-treatment' && (
+  effectiveSlug === 'titanium-surface-treatment' && (
     <BaseLayout serviceHubKey="surface">
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <SurfaceProcessSpectrum />
       <SurfaceSpecsDashboard />
       <HydrogenEmbrittlementAcidControlKnowHow />
@@ -1091,9 +1267,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-surface-treatment/anodizing' && (
+  effectiveSlug === 'titanium-surface-treatment/anodizing' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <AnodizingClassifications />
       <AnodizingSpecsDashboard />
       <AnodizingDedicatedCta />
@@ -1101,9 +1284,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-surface-treatment/chemical-passivation' && (
+  effectiveSlug === 'titanium-surface-treatment/chemical-passivation' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <PassivationSpectrum />
       <PassivationSpecsDashboard />
       <PassivationDedicatedCta />
@@ -1111,9 +1301,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'titanium-surface-treatment/polishing-sandblasting' && (
+  effectiveSlug === 'titanium-surface-treatment/polishing-sandblasting' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <GallingColorVariationKnowHow />
       <GallingOsseointegrationKnowHow />
       <SurfaceDedicatedCta />
@@ -1123,9 +1320,16 @@ if (heroEntry) {
 
 <!-- ===== Value-Added 系列 ===== -->
 {
-  slug === 'branded-custom-packaging-services' && (
+  effectiveSlug === 'branded-custom-packaging-services' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <PackagingProcessSpectrum />
       <PackagingSpecsDashboard />
       <SmearingWarehouseInterlockKnowHow />
@@ -1134,9 +1338,16 @@ if (heroEntry) {
   )
 }
 {
-  slug === 'laser-marking-custom-logo' && (
+  effectiveSlug === 'laser-marking-custom-logo' && (
     <BaseLayout>
-      <SubpageHero h1={pageH1} title={pageTitle} highlight={pageHighlight} badge={pageBadge} subtitle={pageSubtitle} />
+      <SubpageHero
+        h1={pageH1}
+        badge={pageBadge}
+        subtitle={pageSubtitle}
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={heroEntry?.compact}
+      />
       <MarkingProcessSpectrum />
       <MarkingSpecsDashboard />
       <ThermalStressContrastKnowHow />
@@ -1147,7 +1358,7 @@ if (heroEntry) {
 
 <!-- ===== Equipment Pages ===== -->
 {
-  slug === 'equipment' && (
+  effectiveSlug === 'equipment' && (
     <BaseLayout title={t('equipment.list.pageTitle')} description={t('equipment.list.metaDescription')}>
       <SubpageHero
         title={t('equipment.list.hero.title')}
@@ -1161,7 +1372,7 @@ if (heroEntry) {
   )
 }
 {
-  (slug?.startsWith('equipment/')) && (
+  (effectiveSlug?.startsWith('equipment/')) && (
     <BaseLayout title={t(`equipment.${getSubPageKey(slug!)}.pageTitle`)} description={t(`equipment.${getSubPageKey(slug!)}.metaDescription`)}>
       <EquipmentPageLayout equipment={EQUIPMENT_DATA[getSubPageKey(slug!)]} lang={currentLang} equipmentKey={getSubPageKey(slug!)} />
     </BaseLayout>
@@ -1170,7 +1381,7 @@ if (heroEntry) {
 
 <!-- ===== Titanium Materials Standard Pages ===== -->
 {
-  (slug?.startsWith('materials/astm-') || slug?.startsWith('materials/ams-') || slug?.startsWith('materials/iso-') || slug?.startsWith('materials/mil-')) && (
+  (effectiveSlug?.startsWith('materials/astm-') || effectiveSlug?.startsWith('materials/ams-') || effectiveSlug?.startsWith('materials/iso-') || effectiveSlug?.startsWith('materials/mil-')) && (
     <BaseLayout title={STANDARD_DATA[getSubPageKey(slug!)].pageTitle} description={STANDARD_DATA[getSubPageKey(slug!)].metaDescription}>
       <StandardPageLayout standard={STANDARD_DATA[getSubPageKey(slug!)]} lang={currentLang} canonicalURL={new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com')} />
     </BaseLayout>
@@ -1179,7 +1390,7 @@ if (heroEntry) {
 
 <!-- ===== Titanium Materials Grade Pages ===== -->
 {
-  (slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-')) && (
+  (effectiveSlug?.startsWith('materials/grade-') || effectiveSlug?.startsWith('materials/ti-')) && (
     <BaseLayout title={t(`materials.${getSubPageKey(slug!)}.pageTitle`)} description={t(`materials.${getSubPageKey(slug!)}.metaDescription`)}>
       <GradePageLayout grade={GRADE_DATA[getSubPageKey(slug!)]} lang={currentLang} gradeKey={getSubPageKey(slug!)} />
     </BaseLayout>
@@ -1197,8 +1408,8 @@ if (heroEntry) {
   slug !== 'capabilities/inspection' &&
   slug !== 'capabilities/traceability' &&
   slug !== 'capabilities/certifications' &&
-  !(slug?.startsWith('materials/grade-') || slug?.startsWith('materials/ti-') || slug?.startsWith('materials/astm-') || slug?.startsWith('materials/ams-') || slug?.startsWith('materials/iso-') || slug?.startsWith('materials/mil-')) &&
-  !slug?.startsWith('equipment/'))) && (
+  !(effectiveSlug?.startsWith('materials/grade-') || effectiveSlug?.startsWith('materials/ti-') || effectiveSlug?.startsWith('materials/astm-') || effectiveSlug?.startsWith('materials/ams-') || effectiveSlug?.startsWith('materials/iso-') || effectiveSlug?.startsWith('materials/mil-')) &&
+  !effectiveSlug?.startsWith('equipment/'))) && (
     <BaseLayout title="404 - Page Not Found">
       <div class="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
         <h1 class="mb-4 text-8xl font-bold text-theme-primary">404</h1>

@@ -27,13 +27,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.007-1.875 2.25-1.875s2.25.84 2.25 1.875c0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.959.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
         </svg>
-        Titanium CNC Machining Processes
+        {t('capabilities.manufacturing.processes.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        High-Precision <span class="gradient-text-accent">Titanium Machining Processes</span>
+        {t('capabilities.manufacturing.processes.title')} <span class="gradient-text-accent">{t('capabilities.manufacturing.processes.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Three-axis, five-axis, Swiss turning, and wire EDM — every subtractive manufacturing discipline engineered specifically for titanium's unique metallurgical challenges.
+        {t('capabilities.manufacturing.processes.subtitle')}
       </p>
     </div>
 
@@ -53,24 +53,24 @@ const t = useTranslations(currentLang);
           </svg>
         </div>
 
-        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">5-Axis CNC Milling</h3>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('capabilities.manufacturing.processes.card1.title')}</h3>
         <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Full 5-axis simultaneous contouring for complex aerospace monolithic bulkheads, medical orthopedic implants, and thin-wall structural components. Zero-interruption machining reduces setup errors and shortens lead times.
+          {t('capabilities.manufacturing.processes.card1.desc')}
         </p>
 
         <!-- Key Entities / Metrics -->
         <div class="space-y-2 mt-auto">
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">5-Axis Linkage</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">Full Simultaneous</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card1.metric1')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card1.value1')}</span>
           </div>
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Max Workspace</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">1,200 × 800 × 600 mm</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card1.metric2')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card1.value2')}</span>
           </div>
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Positional Accuracy</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">±0.003 mm</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card1.metric3')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card1.value3')}</span>
           </div>
         </div>
       </div>
@@ -88,24 +88,24 @@ const t = useTranslations(currentLang);
           </svg>
         </div>
 
-        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">Precision Swiss Lathe Turning</h3>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('capabilities.manufacturing.processes.card2.title')}</h3>
         <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Sliding-headstock Swiss-type turning for micro-scale titanium fasteners, bone screws, dental abutments, and long-shaft components. High-volume production maintains micron-level repeatability across millions of parts.
+          {t('capabilities.manufacturing.processes.card2.desc')}
         </p>
 
         <!-- Key Entities / Metrics -->
         <div class="space-y-2 mt-auto">
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Diameter Range</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">ø 1.0 – 32 mm</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card2.metric1')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card2.value1')}</span>
           </div>
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Micro-machining</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">Down to ø 0.5 mm</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card2.metric2')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card2.value2')}</span>
           </div>
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Repeatability</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">Cpk ≥ 1.67</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card2.metric3')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card2.value3')}</span>
           </div>
         </div>
       </div>
@@ -123,24 +123,24 @@ const t = useTranslations(currentLang);
           </svg>
         </div>
 
-        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">Wire EDM & EDM Sinking</h3>
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('capabilities.manufacturing.processes.card3.title')}</h3>
         <p class="text-sm leading-relaxed mb-5 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Thermal erosion with zero mechanical stress for ultra-hard titanium alloys. Produces sharp internal corners (wire ø 0.1 mm), micro-slots, and delicate thin-wall features impossible with conventional tooling.
+          {t('capabilities.manufacturing.processes.card3.desc')}
         </p>
 
         <!-- Key Entities / Metrics -->
         <div class="space-y-2 mt-auto">
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Zero Thermal Stress</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">No HAZ / Stress-free</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card3.metric1')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card3.value1')}</span>
           </div>
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Sharp Corners</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">Internal R ≤ 0.05 mm</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card3.metric2')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card3.value2')}</span>
           </div>
           <div class="flex items-center justify-between text-xs">
-            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Thin-Wall Features</span>
-            <span class="font-semibold" style="color: var(--theme-primary);">Down to 0.3 mm</span>
+            <span style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.processes.card3.metric3')}</span>
+            <span class="font-semibold" style="color: var(--theme-primary);">{t('capabilities.manufacturing.processes.card3.value3')}</span>
           </div>
         </div>
       </div>
@@ -161,13 +161,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0118 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0118 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 016 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125M18 18.375v-5.25m0 5.25v-1.5c0-.621.504-1.125 1.125-1.125M18 13.125v1.5c0 .621.504 1.125 1.125 1.125M18 13.125c0-.621.504-1.125 1.125-1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125M6 13.125C6 12.504 5.496 12 4.875 12m-1.5 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M19.125 12h1.5m0 0c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h1.5m14.25 0h1.5" />
         </svg>
-        Technical Data Sheet
+        {t('capabilities.manufacturing.specs.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Technical <span class="gradient-text-accent">Specifications</span>
+        {t('capabilities.manufacturing.specs.title')} <span class="gradient-text-accent">{t('capabilities.manufacturing.specs.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Certified precision metrics for procurement engineers — every tolerance range verified through in-house CMM metrology per ASME Y14.5 and ISO 2768 standards.
+        {t('capabilities.manufacturing.specs.subtitle')}
       </p>
     </div>
 
@@ -179,46 +179,46 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Capability Metric
+              {t('capabilities.manufacturing.specs.table.param')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Technical Limits / Specifications
+              {t('capabilities.manufacturing.specs.table.capability')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Supported Materials (Entities)
+              {t('capabilities.manufacturing.specs.table.material')}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Dimensional Tolerance</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Down to <strong style="color: var(--theme-text);">±0.005 mm</strong> (Micron-level precision)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Grade 2, Grade 5, Ti-6Al-4V ELI</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.row1.param')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('capabilities.manufacturing.specs.row1.value')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('capabilities.manufacturing.specs.row1.material')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Surface Roughness (Ra)</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">As low as <strong style="color: var(--theme-text);">Ra 0.4 μm</strong> (Finishing options available)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">All Titanium Alloys</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.row2.param')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('capabilities.manufacturing.specs.row2.value')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('capabilities.manufacturing.specs.row2.material')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Max Machining Size</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Up to <strong style="color: var(--theme-text);">1,200 mm × 800 mm × 600 mm</strong></td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Grade 5 / Ti-6Al-4V Blocks</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.row5.param')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('capabilities.manufacturing.specs.row5.value')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('capabilities.manufacturing.specs.row5.material')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Wall Thickness (Min)</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><strong style="color: var(--theme-text);">0.5 mm</strong> (Thin-wall structural components)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Grade 5 (Ti-6Al-4V)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.row6.param')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('capabilities.manufacturing.specs.row6.value')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('capabilities.manufacturing.specs.row6.material')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Spindle Speed (Milling)</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Up to <strong style="color: var(--theme-text);">20,000 RPM</strong> (HSK-A63 tooling)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Grade 5, Grade 23, Grade 2</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.row3.param')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('capabilities.manufacturing.specs.row3.value')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('capabilities.manufacturing.specs.row3.material')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Threading Capacity</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><strong style="color: var(--theme-text);">M1.6 – M30</strong> internal/external threading</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">All Titanium Alloys</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.row4.param')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('capabilities.manufacturing.specs.row4.value')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('capabilities.manufacturing.specs.row4.material')}</td>
           </tr>
         </tbody>
       </table>
@@ -226,7 +226,7 @@ const t = useTranslations(currentLang);
 
     <!-- Callout note -->
     <div class="max-w-5xl mx-auto mt-6 p-4 rounded-lg text-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-text);">Note:</span> All listed tolerances reflect achievable production-level capabilities on qualified titanium grades. Tighter tolerances available on engineering review. Support for Hi-Ni, Hi-Cr, Co-Cr alloys also available.
+      <span class="font-semibold" style="color: var(--theme-text);">{t('capabilities.manufacturing.specs.noteLabel')}</span> {t('capabilities.manufacturing.specs.note')}
     </div>
   </div>
 </section>
@@ -247,13 +247,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Quality & Compliance Infrastructure
+        {t('capabilities.manufacturing.quality.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Rigorous Quality Infrastructure & <span class="gradient-text-accent">EEAT Alignment</span>
+        {t('capabilities.manufacturing.quality.title')} <span class="gradient-text-accent">{t('capabilities.manufacturing.quality.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Every titanium component is backed by certified quality systems, full chain-of-custody material traceability, and multi-stage inspection — aligning with Google's Experience, Expertise, Authoritativeness, and Trustworthiness (EEAT) framework.
+        {t('capabilities.manufacturing.quality.subtitle')}
       </p>
     </div>
 
@@ -262,20 +262,20 @@ const t = useTranslations(currentLang);
       <!-- Left Column: Quality Management -->
       <div>
         <h3 class="text-xl font-bold mb-6" style="color: var(--theme-text);">
-          <span style="color: var(--theme-primary);">●</span> Quality Management Certifications
+          <span style="color: var(--theme-primary);">●</span> {t('capabilities.manufacturing.quality.column1')}
         </h3>
         <div class="space-y-4">
           <!-- AS9100D -->
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <div class="flex items-start justify-between mb-2">
               <div>
-                <h4 class="text-base font-bold" style="color: var(--theme-text);">AS9100 Rev D</h4>
-                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Aerospace Quality Management Standard</p>
+                <h4 class="text-base font-bold" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.as9100.title')}</h4>
+                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.quality.as9100.subtitle')}</p>
               </div>
-              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md shrink-0" style="background-color: #3b82f615; color: #3b82f6; border: 1px solid #3b82f625;">Certified</span>
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md shrink-0" style="background-color: #3b82f615; color: #3b82f6; border: 1px solid #3b82f625;">{t('capabilities.manufacturing.quality.as9100.badge')}</span>
             </div>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Full-scope AS9100D quality management system covering design, development, production, and distribution of titanium aerospace components. Regular surveillance audits ensure continuous compliance.
+              {t('capabilities.manufacturing.quality.as9100.desc')}
             </p>
           </div>
 
@@ -283,13 +283,13 @@ const t = useTranslations(currentLang);
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <div class="flex items-start justify-between mb-2">
               <div>
-                <h4 class="text-base font-bold" style="color: var(--theme-text);">ISO 13485:2016</h4>
-                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Medical Device QMS</p>
+                <h4 class="text-base font-bold" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.iso13485.title')}</h4>
+                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.quality.iso13485.subtitle')}</p>
               </div>
-              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md shrink-0" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">Compliant</span>
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md shrink-0" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">{t('capabilities.manufacturing.quality.iso13485.badge')}</span>
             </div>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Process controls aligned with ISO 13485 for the manufacture of medical-grade titanium components, including surgical implants, orthopedic instruments, and dental prosthetics.
+              {t('capabilities.manufacturing.quality.iso13485.desc')}
             </p>
           </div>
 
@@ -297,13 +297,13 @@ const t = useTranslations(currentLang);
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <div class="flex items-start justify-between mb-2">
               <div>
-                <h4 class="text-base font-bold" style="color: var(--theme-text);">ISO 9001:2015</h4>
-                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">General Quality Management</p>
+                <h4 class="text-base font-bold" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.iso9001.title')}</h4>
+                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('capabilities.manufacturing.quality.iso9001.subtitle')}</p>
               </div>
-              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md shrink-0" style="background-color: #f59e0b15; color: #f59e0b; border: 1px solid #f59e0b25;">Certified</span>
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md shrink-0" style="background-color: #f59e0b15; color: #f59e0b; border: 1px solid #f59e0b25;">{t('capabilities.manufacturing.quality.iso9001.badge')}</span>
             </div>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Foundational quality management framework with documented processes for continuous improvement, corrective/preventive action, and customer-focused output across all departments.
+              {t('capabilities.manufacturing.quality.iso9001.desc')} across all departments.
             </p>
           </div>
         </div>
@@ -312,38 +312,38 @@ const t = useTranslations(currentLang);
       <!-- Right Column: Material Traceability -->
       <div>
         <h3 class="text-xl font-bold mb-6" style="color: var(--theme-text);">
-          <span style="color: var(--theme-primary);">●</span> Material Traceability & Metrology
+          <span style="color: var(--theme-primary);">●</span> {t('capabilities.manufacturing.quality.column2')}
         </h3>
         <div class="space-y-4">
           <!-- EN 10204 3.1 MTRs -->
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">EN 10204 Type 3.1 Mill Test Reports</h4>
+            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.trace1.title')}</h4>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Every batch of titanium raw material is accompanied by certified MTRs documenting chemical composition, mechanical properties, and heat treatment parameters. Full chain-of-custody documentation from sponge to finished component — <strong style="color: var(--theme-text);">100% material traceability</strong>.
+              {t('capabilities.manufacturing.quality.trace1.desc')}
             </p>
           </div>
 
           <!-- CMM & Metrology -->
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">CMM, OGP & Surface Profilometry</h4>
+            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.trace2.title')}</h4>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              In-house metrology lab equipped with ZEISS CONTURA G2 CMM (1.9 μm accuracy), OGP SmartScope optical comparators, and Mitutoyo SJ-410 surface roughness testers. All instruments calibrated per ISO 17025 traceable standards.
+              {t('capabilities.manufacturing.quality.trace2.desc')}
             </p>
           </div>
 
           <!-- PMI Validation -->
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">Positive Material Identification (PMI)</h4>
+            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.trace3.title')}</h4>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              On-site SPECTROMAXx Optical Emission Spectrometry (OES) confirms elemental composition within 30 seconds per ASTM E415, ensuring every incoming batch matches the specified grade chemistry before production release.
+              {t('capabilities.manufacturing.quality.trace3.desc')}
             </p>
           </div>
 
           <!-- NDT -->
           <div class="rounded-xl p-5 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">Non-Destructive Testing (NDT)</h4>
+            <h4 class="text-base font-bold mb-1" style="color: var(--theme-text);">{t('capabilities.manufacturing.quality.trace4.title')}</h4>
             <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Fluorescent Penetrant Inspection (FPI) for surface flaw detection and ultrasonic (UT) for subsurface volumetric examination. Nadcap-accredited processes available for critical aerospace and medical applications.
+              {t('capabilities.manufacturing.quality.trace4.desc')}
             </p>
           </div>
         </div>
@@ -365,13 +365,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
         </svg>
-        Engineering FAQ
+        {t('capabilities.manufacturing.faq.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Frequently Asked <span class="gradient-text-accent">Engineering Questions</span>
+        {t('capabilities.manufacturing.faq.title')} <span class="gradient-text-accent">{t('capabilities.manufacturing.faq.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Direct technical answers to the high-intent procurement and engineering questions most frequently searched on Google by titanium component buyers.
+        {t('capabilities.manufacturing.faq.subtitle')}
       </p>
     </div>
 
@@ -381,50 +381,50 @@ const t = useTranslations(currentLang);
       <!-- FAQ 1: Tool-wear control on Grade 5 -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          How does BOZE CNC ensure tool-wear control when machining Grade 5 Titanium?
+          {t('capabilities.manufacturing.faq.q1')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          We employ high-rigidity 5-axis machines, custom carbide-coated tooling (AlTiN + TiAlN multi-layer PVD coatings), and high-pressure through-spindle coolant (&gt; 70 bar / 1,015 PSI) to actively suppress work-hardening and cutting heat generation during Ti-6Al-4V machining. Tool-path strategies incorporate variable helix angles and trochoidal milling to distribute thermal load evenly, maintaining micron-level dimensional stability across extended production runs. Tool wear is monitored in-cycle via spindle load &amp; acoustic emission sensors.
+          {t('capabilities.manufacturing.faq.a1')}
         </p>
       </div>
 
       <!-- FAQ 2: 5-micron tolerance for medical implants -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          Can Ti-6Al-4V be CNC machined to 5-micron tolerances for medical implants?
+          {t('capabilities.manufacturing.faq.q2')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Yes. Our temperature-controlled production environment (20 ±1°C) combined with high-rigidity 5-axis CNC platforms and real-time thermal compensation systems enables consistent achievement of ±0.005 mm (5-micron) dimensional tolerances on Ti-6Al-4V ELI (Grade 23) medical implant components. First-article inspection (FAI) per AS9102 and 100% dimensional reporting via ZEISS CMM with 1.9 μm accuracy provides full verification. Cpk ≥ 1.67 is maintained on all critical implant features.
+          {t('capabilities.manufacturing.faq.a2')}
         </p>
       </div>
 
       <!-- FAQ 3: Lead times for custom titanium parts -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          What is the typical lead time for a custom titanium CNC machined part?
+          {t('capabilities.manufacturing.faq.q3')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Standard lead times range from <strong style="color: var(--theme-text);">2–4 weeks</strong> for rapid prototyping (1–10 pcs) and <strong style="color: var(--theme-text);">4–8 weeks</strong> for production volumes (100–5,000+ pcs), depending on complexity, material certification requirements, and surface finishing specifications. Expedited DFM review is available within 24 hours of CAD submission. Our in-house raw material inventory covering Grade 2, Grade 5, and Grade 23 eliminates mill sourcing delays for standard stock sizes.
+          {t('capabilities.manufacturing.faq.a3')}
         </p>
       </div>
 
       <!-- FAQ 4: Material certification -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          Do you provide full material traceability and certified test reports?
+          {t('capabilities.manufacturing.faq.q4')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Absolutely. Every shipment includes <strong style="color: var(--theme-text);">EN 10204 Type 3.1 Mill Test Reports (MTRs)</strong> documenting chemical composition, mechanical properties, and heat treatment traceability. We maintain full chain-of-custody documentation from mill to finished component. Independent third-party inspection by SGS, TÜV, or Bureau Veritas is available on request. All inspection data is archived and retrievable for the life of the product.
+          {t('capabilities.manufacturing.faq.a4')}
         </p>
       </div>
 
       <!-- FAQ 5: Certifications compliance -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          Which quality certifications does BOZE CNC hold for titanium manufacturing?
+          {t('capabilities.manufacturing.faq.q5')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          BOZE CNC operates under a quality framework aligned with <strong style="color: var(--theme-text);">AS9100 Rev D</strong> (aerospace), <strong style="color: var(--theme-text);">ISO 13485:2016</strong> (medical devices), and <strong style="color: var(--theme-text);">ISO 9001:2015</strong>. Our manufacturing processes and quality management systems are designed to meet the stringent requirements of aerospace, medical, defense, and industrial applications. We maintain Nadcap-accredited NDT capabilities and follow AS9102 first-article inspection protocols.
+          {t('capabilities.manufacturing.faq.a5')}
         </p>
       </div>
 
@@ -433,7 +433,7 @@ const t = useTranslations(currentLang);
     <!-- CTA -->
     <div class="text-center mt-12">
       <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Have a specific technical question about your titanium project?
+        {t('capabilities.manufacturing.cta.text')}
       </p>
       <a
         href="https://www.bozemetal.com/contact"
@@ -442,7 +442,7 @@ const t = useTranslations(currentLang);
         class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105"
         style="background-color: var(--theme-primary); color: var(--theme-bg);"
       >
-        Submit Engineering RFQ
+        {t('capabilities.manufacturing.cta.btn')}
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>

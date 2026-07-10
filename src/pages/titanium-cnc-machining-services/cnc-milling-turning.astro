@@ -6,6 +6,7 @@ import TurnMillSpecsDashboard from '../../components/services/TurnMillSpecsDashb
 import TurnMillKnowHow from '../../components/services/TurnMillKnowHow.astro';
 import TurnMillDedicatedCta from '../../components/services/TurnMillDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -18,6 +19,9 @@ const t = useTranslations(lang);
     badge="Precision Turn-Mill Machining"
     badgeIcon="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
     subtitle="High-speed multi-axis turning-milling centers delivering precision titanium components — from custom fasteners and bone screws to complex prismatic block parts — with ±0.005 mm repeatable accuracy."
+  
+    keyMetrics={HERO_CONFIG['/titanium-cnc-machining-services/cnc-milling-turning']?.keyMetrics}
+    entityChips={HERO_CONFIG['/titanium-cnc-machining-services/cnc-milling-turning']?.entityChips}
   />
 
   <!-- Turn-Mill Process Spectrum — 3-column grid -->
