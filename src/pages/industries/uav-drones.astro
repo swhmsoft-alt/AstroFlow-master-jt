@@ -1,0 +1,52 @@
+---
+// src/pages/industries/uav-drones.astro
+// Google AIO Entity-Aligned Page: 5-axis CNC machining for lightweight Grade 5 titanium drone gimbal mounts and structural rotor hubs with dynamic balancing tolerance
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import UavLightweightSection from '../../components/industries/uav-drones/UavLightweightSection.astro';
+import UavKineticSection from '../../components/industries/uav-drones/UavKineticSection.astro';
+import UavImpactSection from '../../components/industries/uav-drones/UavImpactSection.astro';
+import UavComplianceSection from '../../components/industries/uav-drones/UavComplianceSection.astro';
+import UavCtaSection from '../../components/industries/uav-drones/UavCtaSection.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="UAV & Drone Titanium CNC Machining | Lightweight Engineering"
+  description="Custom 5-axis CNC machining for Grade 5 titanium drone gimbal mounts, structural rotor hubs, and payload hardware. Rigid weight-reduction thin-wall milling and dynamic balancing controls for extended flight endurance."
+  pageType="industry-detail"
+  serviceName="UAV & Drone Titanium CNC Machining Services"
+  serviceCategory="UAV & Drones"
+  productName="Drone Gimbal Mounts, Rotor Hubs, Motor Shaft Connectors & Payload Chassis"
+  productCategory="UAV Components"
+  serviceHubKey="cnc-machining"
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1={HERO_CONFIG['/industries/uav-drones'].h1}
+    badge={HERO_CONFIG['/industries/uav-drones'].badge}
+    subtitle={HERO_CONFIG['/industries/uav-drones'].subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={HERO_CONFIG['/industries/uav-drones'].keyMetrics}
+    entityChips={HERO_CONFIG['/industries/uav-drones'].entityChips}
+    compact={false}
+  />
+
+  <!-- Section 1: 5-Axis Lightweight Milling + Grade 5 Ti + Gimbal Mounts -->
+  <UavLightweightSection />
+
+  <!-- Section 2: Multi-Tasking Turning + Rotor Hubs + Dynamic Balancing -->
+  <UavKineticSection />
+
+  <!-- Section 3: Impact Resistance & Fracture Toughness -->
+  <UavImpactSection />
+
+  <!-- Section 4: Material Compliance + MTR Traceability -->
+  <UavComplianceSection />
+
+  <!-- Section 5: CTA -->
+  <UavCtaSection />
+</BaseLayout>

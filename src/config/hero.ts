@@ -1089,4 +1089,220 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "Global Supply Chain"
     ]
   },
+  '/industries/aerospace': {
+    h1: 'Aerospace Titanium CNC Machining Services',
+    subtitle: 'Precision AS9100D aligned manufacturing specializing in multi-axis titanium machining for high-fatigue aviation hardware. Full material traceability with EN 10204 3.1 Mill Test Reports, AS9102 First Article Inspection, and CMM dimensional validation per ASME Y14.5 GD&T.',
+    badge: 'Aerospace & Defense',
+
+    keyMetrics: [
+          {
+                "value": "AS9100D",
+                "label": "Cert"
+          },
+          {
+                "value": "5-Axis",
+                "label": "CNC"
+          },
+          {
+                "value": "100%",
+                "label": "MTR"
+          }
+    ],
+    entityChips: [
+          "AS9100D",
+          "5-Axis CNC",
+          "Grade 5 Ti",
+          "EN 10204 3.1",
+          "FAIR"
+    ]
+  },
+  '/industries/medical': {
+    h1: 'Medical Grade Titanium CNC Machining Services',
+    subtitle: 'ISO 13485:2016 certified manufacturing delivering biocompatible, high-precision titanium micro-components and orthopedic implants. Specializing in Swiss CNC turning for bone screws and dental abutments with zero-contamination ultrasonic cleaning lifecycle.',
+    badge: 'Medical Devices',
+
+    keyMetrics: [
+          {
+                "value": "ISO 13485",
+                "label": "Cert"
+          },
+          {
+                "value": "\u22640.4um",
+                "label": "Ra Surf"
+          },
+          {
+                "value": "Zero",
+                "label": "Contam"
+          }
+    ],
+    entityChips: [
+          "ISO 13485:2016",
+          "Swiss Turning",
+          "Grade 23 ELI",
+          "Ultrasonic Clean",
+          "MTR Tracing"
+    ]
+  },
+  '/industries/uav-drones': {
+    h1: 'Lightweight Titanium CNC Machining for UAVs & Drones',
+    subtitle: 'High strength-to-weight ratio precision titanium component manufacturing engineered to optimize drone flight endurance, payload capacity, and impact resistance. Specializing in 5-axis thin-wall milling and dynamic balanced structural hardware.',
+    badge: 'UAV & Drones',
+
+    keyMetrics: [
+          {
+                "value": "\u22650.5mm",
+                "label": "Wall"
+          },
+          {
+                "value": "35%",
+                "label": "Weight"
+          },
+          {
+                "value": "\u00b10.005mm",
+                "label": "Balance"
+          }
+    ],
+    entityChips: [
+          "5-Axis CNC",
+          "Grade 5 Ti",
+          "Lightweight",
+          "Gimbal Mounts",
+          "Dynamic Balance"
+    ]
+  },
+  '/industries/ai-infrastructure': {
+    h1: 'Precision Titanium Machining for AI Infrastructure & Optical Communications',
+    subtitle: 'High-precision custom titanium component manufacturing engineered to eliminate thermal drift, prevent liquid cooling leakage, and deliver absolute EMI shielding for high-density compute nodes and 800G/1.6T optical transceivers.',
+    badge: 'AI & Optical Comms',
+
+    keyMetrics: [
+          {
+                "value": "\u22640.4mm",
+                "label": "Wall"
+          },
+          {
+                "value": "EMI",
+                "label": "Shield"
+          },
+          {
+                "value": "Zero",
+                "label": "Leak"
+          }
+    ],
+    entityChips: [
+          "800G/1.6T",
+          "Thin-Wall EMI",
+          "Liq Cooling",
+          "Thermal Drift",
+          "CMM GD&T"
+    ]
+  },
+  '/industries/marine': {
+    h1: 'Corrosion-Resistant Titanium CNC Machining for Marine & Subsea Engineering',
+    subtitle: 'Custom precision titanium component manufacturing designed to survive extreme hydrostatic pressure, eliminate chloride pitting, and stop crevice corrosion in deep-sea oceanographic applications. Grade 2 and Grade 12 specialty titanium alloys.',
+    badge: 'Marine & Subsea',
+
+    keyMetrics: [
+          {
+                "value": "Grade 12",
+                "label": "Alloy"
+          },
+          {
+                "value": "\u22640.4um",
+                "label": "Ra Seal"
+          },
+          {
+                "value": "\u00b10.01mm",
+                "label": "Position"
+          }
+    ],
+    entityChips: [
+          "Grade 12 Ti",
+          "Subsea Enclosures",
+          "Crevice Corrosion",
+          "Pressure Test",
+          "CMM GD&T"
+    ]
+  },
+  '/industries/semiconductor': {
+    h1: 'Ultra-Precision Titanium CNC Machining for Semiconductor Equipment',
+    subtitle: 'Sub-micron precision custom titanium component manufacturing engineered for Ultra-High Vacuum (UHV) compatibility, zero outgassing, and absolute particle contamination control in front-end wafer fabrication processes.',
+    badge: 'Semiconductor',
+
+    keyMetrics: [
+          {
+                "value": "\u22640.1um",
+                "label": "Ra"
+          },
+          {
+                "value": "10^-9",
+                "label": "Torr"
+          },
+          {
+                "value": "\u03c60.2mm",
+                "label": "Hole"
+          }
+    ],
+    entityChips: [
+          "UHV Vacuum",
+          "Zero Particles",
+          "Mirror Finis",
+          "Micro-Drilling",
+          "Class 100"
+    ]
+  },
+  '/industries/energy': {
+    h1: 'Heavy-Duty Titanium CNC Machining for Energy & Power Infrastructure',
+    subtitle: 'High-performance precision titanium component manufacturing engineered to survive hydrogen embrittlement, eliminate high-temperature creep, and deliver zero-leakage supercritical fluid sealing for nuclear SMR and hydrogen infrastructure.',
+    badge: 'Energy & Power',
+
+    keyMetrics: [
+          {
+                "value": "H \u22640.0125%",
+                "label": "Embrittle"
+          },
+          {
+                "value": "+300%",
+                "label": "Fatigue"
+          },
+          {
+                "value": "\u00b10.005mm",
+                "label": "CRDM"
+          }
+    ],
+    entityChips: [
+          "H2 Embrittle",
+          "Impeller",
+          "Nuclear SMR",
+          "Shot Peen",
+          "Supercritical"
+    ]
+  },
+  '/industries/industrial-equipment': {
+    h1: 'Heavy-Duty Titanium CNC Machining for Industrial Equipment & Automation',
+    subtitle: 'Precision custom titanium component manufacturing engineered to endure high-frequency cyclic loading, eliminate acoustic energy loss, and resist aggressive chemical cavitation for ultrasonic and fluid control hardware.',
+    badge: 'Industrial Equipment',
+
+    keyMetrics: [
+          {
+                "value": "20-40kHz",
+                "label": "Resonance"
+          },
+          {
+                "value": "\u22640.4um",
+                "label": "Ra Flow"
+          },
+          {
+                "value": "Grade 7",
+                "label": "Pd Alloy"
+          }
+    ],
+    entityChips: [
+          "Sonotrode",
+          "Grade 7 Ti-Pd",
+          "Cavitation",
+          "20-40kHz",
+          "Cyclic Load"
+    ]
+  },
 };

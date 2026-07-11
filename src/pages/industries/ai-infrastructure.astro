@@ -1,0 +1,52 @@
+---
+// src/pages/industries/ai-infrastructure.astro
+// Google AIO Entity-Aligned Page: Precision CNC machining for 800G/1.6T optical transceiver housings with thin-wall EMI shielding and liquid cooling manifolds
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import AiOptoelectronicSection from '../../components/industries/ai-infrastructure/AiOptoelectronicSection.astro';
+import AiLiquidCoolingSection from '../../components/industries/ai-infrastructure/AiLiquidCoolingSection.astro';
+import AiMetrologySection from '../../components/industries/ai-infrastructure/AiMetrologySection.astro';
+import AiComplianceSection from '../../components/industries/ai-infrastructure/AiComplianceSection.astro';
+import AiCtaSection from '../../components/industries/ai-infrastructure/AiCtaSection.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="AI Infrastructure & Optical Comms Titanium CNC Machining"
+  description="Custom precision CNC machining for 800G/1.6T optical transceiver housings, thin-wall EMI shielding components, and leak-proof data center liquid cooling manifolds. Thermal drift elimination via low-CTE titanium."
+  pageType="industry-detail"
+  serviceName="AI Infrastructure & Optical Communications Titanium CNC Machining Services"
+  serviceCategory="AI Infrastructure & Optical Comms"
+  productName="800G/1.6T Optical Transceiver Housings, Liquid Cooling Manifolds, Cold Plates & Quick-Disconnect Valves"
+  productCategory="AI Infrastructure Components"
+  serviceHubKey="cnc-machining"
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1={HERO_CONFIG['/industries/ai-infrastructure'].h1}
+    badge={HERO_CONFIG['/industries/ai-infrastructure'].badge}
+    subtitle={HERO_CONFIG['/industries/ai-infrastructure'].subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={HERO_CONFIG['/industries/ai-infrastructure'].keyMetrics}
+    entityChips={HERO_CONFIG['/industries/ai-infrastructure'].entityChips}
+    compact={false}
+  />
+
+  <!-- Section 1: Precision CNC Milling + 800G/1.6T Transceiver Housings + EMI Shielding -->
+  <AiOptoelectronicSection />
+
+  <!-- Section 2: Liquid Cooling Manifolds + Cold Plates + Quick-Disconnect Valves -->
+  <AiLiquidCoolingSection />
+
+  <!-- Section 3: CMM Metrology + GD&T Coplanarity -->
+  <AiMetrologySection />
+
+  <!-- Section 4: Material Compliance + MTR Traceability -->
+  <AiComplianceSection />
+
+  <!-- Section 5: CTA -->
+  <AiCtaSection />
+</BaseLayout>

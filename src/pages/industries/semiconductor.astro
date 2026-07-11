@@ -1,0 +1,52 @@
+---
+// src/pages/industries/semiconductor.astro
+// Google AIO Entity-Aligned Page: Ultra-precision UHP titanium CNC machining for wafer processing vacuum chambers and gas distribution showerheads with zero particle contamination
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import SemiUHVSection from '../../components/industries/semiconductor/SemiUHVSection.astro';
+import SemiMicroDrillSection from '../../components/industries/semiconductor/SemiMicroDrillSection.astro';
+import SemiCleanroomSection from '../../components/industries/semiconductor/SemiCleanroomSection.astro';
+import SemiComplianceSection from '../../components/industries/semiconductor/SemiComplianceSection.astro';
+import SemiCtaSection from '../../components/industries/semiconductor/SemiCtaSection.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="Semiconductor Equipment Titanium CNC Machining | Ultra-Precision"
+  description="Custom sub-micron CNC machining for semiconductor wafer vacuum chambers, micro-hole gas showerheads, and UHV process components. Zero-particle cleanroom packaging and mirror-finish surface roughness Ra ≤ 0.1 µm."
+  pageType="industry-detail"
+  serviceName="Semiconductor Equipment Titanium CNC Machining Services"
+  serviceCategory="Semiconductor"
+  productName="Wafer Processing Vacuum Chambers, Gas Distribution Showerheads & UHV Components"
+  productCategory="Semiconductor Equipment Components"
+  serviceHubKey="cnc-machining"
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1={HERO_CONFIG['/industries/semiconductor'].h1}
+    badge={HERO_CONFIG['/industries/semiconductor'].badge}
+    subtitle={HERO_CONFIG['/industries/semiconductor'].subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={HERO_CONFIG['/industries/semiconductor'].keyMetrics}
+    entityChips={HERO_CONFIG['/industries/semiconductor'].entityChips}
+    compact={false}
+  />
+
+  <!-- Section 1: 5-Axis Ultra-Precision + UHV Vacuum Chambers + Outgassing Mitigation -->
+  <SemiUHVSection />
+
+  <!-- Section 2: CNC Micro-Drilling + Gas Showerheads + Mirror Finish Ra ≤ 0.1 µm -->
+  <SemiMicroDrillSection />
+
+  <!-- Section 3: Class 100 Cleanroom + Zero-Particle Packaging -->
+  <SemiCleanroomSection />
+
+  <!-- Section 4: Material Compliance + MTR Traceability -->
+  <SemiComplianceSection />
+
+  <!-- Section 5: CTA -->
+  <SemiCtaSection />
+</BaseLayout>

@@ -56,6 +56,46 @@ import CertificationsPage from '../../components/capabilities/CertificationsPage
 import IndustryVerticalsGrid from '../../components/industries/IndustryVerticalsGrid.astro';
 import IndustryComplianceDashboard from '../../components/industries/IndustryComplianceDashboard.astro';
 import IndustryCtaSection from '../../components/industries/IndustryCtaSection.astro';
+import AerospaceFiveAxisSection from '../../components/industries/aerospace/AerospaceFiveAxisSection.astro';
+import AerospaceSwissTurningSection from '../../components/industries/aerospace/AerospaceSwissTurningSection.astro';
+import AerospaceComplianceSection from '../../components/industries/aerospace/AerospaceComplianceSection.astro';
+import AerospaceMetrologySection from '../../components/industries/aerospace/AerospaceMetrologySection.astro';
+import AerospaceCtaSection from '../../components/industries/aerospace/AerospaceCtaSection.astro';
+import MedicalSwissTurningSection from '../../components/industries/medical/MedicalSwissTurningSection.astro';
+import MedicalFiveAxisSection from '../../components/industries/medical/MedicalFiveAxisSection.astro';
+import MedicalContaminationSection from '../../components/industries/medical/MedicalContaminationSection.astro';
+import MedicalComplianceSection from '../../components/industries/medical/MedicalComplianceSection.astro';
+import MedicalCtaSection from '../../components/industries/medical/MedicalCtaSection.astro';
+import UavLightweightSection from '../../components/industries/uav-drones/UavLightweightSection.astro';
+import UavKineticSection from '../../components/industries/uav-drones/UavKineticSection.astro';
+import UavImpactSection from '../../components/industries/uav-drones/UavImpactSection.astro';
+import UavComplianceSection from '../../components/industries/uav-drones/UavComplianceSection.astro';
+import UavCtaSection from '../../components/industries/uav-drones/UavCtaSection.astro';
+import AiOptoelectronicSection from '../../components/industries/ai-infrastructure/AiOptoelectronicSection.astro';
+import AiLiquidCoolingSection from '../../components/industries/ai-infrastructure/AiLiquidCoolingSection.astro';
+import AiMetrologySection from '../../components/industries/ai-infrastructure/AiMetrologySection.astro';
+import AiComplianceSection from '../../components/industries/ai-infrastructure/AiComplianceSection.astro';
+import AiCtaSection from '../../components/industries/ai-infrastructure/AiCtaSection.astro';
+import MarineSubseaSection from '../../components/industries/marine/MarineSubseaSection.astro';
+import MarineCorrosionSection from '../../components/industries/marine/MarineCorrosionSection.astro';
+import MarineValidationSection from '../../components/industries/marine/MarineValidationSection.astro';
+import MarineComplianceSection from '../../components/industries/marine/MarineComplianceSection.astro';
+import MarineCtaSection from '../../components/industries/marine/MarineCtaSection.astro';
+import SemiUHVSection from '../../components/industries/semiconductor/SemiUHVSection.astro';
+import SemiMicroDrillSection from '../../components/industries/semiconductor/SemiMicroDrillSection.astro';
+import SemiCleanroomSection from '../../components/industries/semiconductor/SemiCleanroomSection.astro';
+import SemiComplianceSection from '../../components/industries/semiconductor/SemiComplianceSection.astro';
+import SemiCtaSection from '../../components/industries/semiconductor/SemiCtaSection.astro';
+import EnergyHydrogenSection from '../../components/industries/energy/EnergyHydrogenSection.astro';
+import EnergyNuclearSection from '../../components/industries/energy/EnergyNuclearSection.astro';
+import EnergyFatigueSection from '../../components/industries/energy/EnergyFatigueSection.astro';
+import EnergyComplianceSection from '../../components/industries/energy/EnergyComplianceSection.astro';
+import EnergyCtaSection from '../../components/industries/energy/EnergyCtaSection.astro';
+import IndEqSonotrodeSection from '../../components/industries/industrial-equipment/IndEqSonotrodeSection.astro';
+import IndEqFlowControlSection from '../../components/industries/industrial-equipment/IndEqFlowControlSection.astro';
+import IndEqStressReliefSection from '../../components/industries/industrial-equipment/IndEqStressReliefSection.astro';
+import IndEqComplianceSection from '../../components/industries/industrial-equipment/IndEqComplianceSection.astro';
+import IndEqCtaSection from '../../components/industries/industrial-equipment/IndEqCtaSection.astro';
 
 /* ── Resources 页面组件 ────────────────────── */
 import FeaturedInsights from '../../components/resources/FeaturedInsights.astro';
@@ -187,6 +227,14 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'titanium-surface-treatment',
   ];
   const deepSlugs: string[] = [
+    'industries/aerospace',
+    'industries/medical',
+    'industries/uav-drones',
+    'industries/ai-infrastructure',
+    'industries/marine',
+    'industries/semiconductor',
+    'industries/energy',
+    'industries/industrial-equipment',
     'capabilities/manufacturing',
     'capabilities/engineering',
     'capabilities/capacity',
@@ -849,6 +897,246 @@ if (heroEntry) {
       <IndustryVerticalsGrid />
       <IndustryComplianceDashboard />
       <IndustryCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/aerospace' && (
+    <BaseLayout
+      title="Aerospace Titanium CNC Machining | AS9100D Certified Factory"
+      description="AS9100D certified 5-axis CNC machining for Grade 5 titanium aerospace brackets. Full EN 10204 3.1 MTR material tracing, AS9102 First Article Inspection reports, and CMM dimensional validation per ASME Y14.5 GD&T."
+      pageType="industry-detail"
+      serviceName="Aerospace Titanium CNC Machining Services"
+      serviceCategory="Aerospace & Defense"
+      productName="Aerospace Titanium Brackets, Fasteners & Hydraulic Valve Stems"
+      productCategory="Aerospace Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <AerospaceFiveAxisSection />
+      <AerospaceSwissTurningSection />
+      <AerospaceComplianceSection />
+      <AerospaceMetrologySection />
+      <AerospaceCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/medical' && (
+    <BaseLayout
+      title="Medical Titanium CNC Machining | ISO 13485 Certified Factory"
+      description="ISO 13485 certified CNC Swiss turning and 5-axis milling for Grade 23 Ti-6Al-4V ELI medical titanium bone screws and orthopedic implants. Zero-contamination ultrasonic cleaning process with full EN 10204 3.1 MTR material tracing."
+      pageType="industry-detail"
+      serviceName="Medical Grade Titanium CNC Machining Services"
+      serviceCategory="Medical Devices"
+      productName="Medical Titanium Bone Screws, Orthopedic Implants & Surgical Instruments"
+      productCategory="Medical Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <MedicalSwissTurningSection />
+      <MedicalFiveAxisSection />
+      <MedicalContaminationSection />
+      <MedicalComplianceSection />
+      <MedicalCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/uav-drones' && (
+    <BaseLayout
+      title="UAV & Drone Titanium CNC Machining | Lightweight Engineering"
+      description="Custom 5-axis CNC machining for Grade 5 titanium drone gimbal mounts, structural rotor hubs, and payload hardware. Rigid weight-reduction thin-wall milling and dynamic balancing controls for extended flight endurance."
+      pageType="industry-detail"
+      serviceName="UAV & Drone Titanium CNC Machining Services"
+      serviceCategory="UAV & Drones"
+      productName="Drone Gimbal Mounts, Rotor Hubs, Motor Shaft Connectors & Payload Chassis"
+      productCategory="UAV Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <UavLightweightSection />
+      <UavKineticSection />
+      <UavImpactSection />
+      <UavComplianceSection />
+      <UavCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/ai-infrastructure' && (
+    <BaseLayout
+      title="AI Infrastructure & Optical Comms Titanium CNC Machining"
+      description="Custom precision CNC machining for 800G/1.6T optical transceiver housings, thin-wall EMI shielding components, and leak-proof data center liquid cooling manifolds. Thermal drift elimination via low-CTE titanium."
+      pageType="industry-detail"
+      serviceName="AI Infrastructure & Optical Communications Titanium CNC Machining Services"
+      serviceCategory="AI Infrastructure & Optical Comms"
+      productName="800G/1.6T Optical Transceiver Housings, Liquid Cooling Manifolds, Cold Plates & Quick-Disconnect Valves"
+      productCategory="AI Infrastructure Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <AiOptoelectronicSection />
+      <AiLiquidCoolingSection />
+      <AiMetrologySection />
+      <AiComplianceSection />
+      <AiCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/marine' && (
+    <BaseLayout
+      title="Marine & Subsea Titanium CNC Machining | Anti-Corrosion Engineering"
+      description="Precision custom CNC machining for Grade 2 and Grade 12 titanium subsea enclosures, marine fasteners, and oceanographic sensor components. Absolute chloride pitting resistance and crevice corrosion mitigation for deep-sea applications."
+      pageType="industry-detail"
+      serviceName="Marine & Subsea Titanium CNC Machining Services"
+      serviceCategory="Marine Engineering"
+      productName="Subsea Enclosures, Pressure Vessels, Marine Fasteners & Valve Blocks"
+      productCategory="Marine Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <MarineSubseaSection />
+      <MarineCorrosionSection />
+      <MarineValidationSection />
+      <MarineComplianceSection />
+      <MarineCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/semiconductor' && (
+    <BaseLayout
+      title="Semiconductor Equipment Titanium CNC Machining | Ultra-Precision"
+      description="Custom sub-micron CNC machining for semiconductor wafer vacuum chambers, micro-hole gas showerheads, and UHV process components. Zero-particle cleanroom packaging and mirror-finish surface roughness Ra ≤ 0.1 µm."
+      pageType="industry-detail"
+      serviceName="Semiconductor Equipment Titanium CNC Machining Services"
+      serviceCategory="Semiconductor"
+      productName="Wafer Processing Vacuum Chambers, Gas Distribution Showerheads & UHV Components"
+      productCategory="Semiconductor Equipment Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <SemiUHVSection />
+      <SemiMicroDrillSection />
+      <SemiCleanroomSection />
+      <SemiComplianceSection />
+      <SemiCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/energy' && (
+    <BaseLayout
+      title="Energy & Nuclear Infrastructure Titanium CNC Machining"
+      description="Custom 5-axis CNC machining for titanium hydrogen compressor impellers, SMR nuclear control rod drive hardware, and high-pressure fluid power components. Complete hydrogen embrittlement mitigation with controlled shot peening fatigue enhancement."
+      pageType="industry-detail"
+      serviceName="Energy & Power Generation Titanium CNC Machining Services"
+      serviceCategory="Energy & Power"
+      productName="Hydrogen Compressor Impellers, CRDM Components & Supercritical Fluid Hardware"
+      productCategory="Energy Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <EnergyHydrogenSection />
+      <EnergyNuclearSection />
+      <EnergyFatigueSection />
+      <EnergyComplianceSection />
+      <EnergyCtaSection />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'industries/industrial-equipment' && (
+    <BaseLayout
+      title="Industrial Equipment & Automation Titanium CNC Machining"
+      description="Custom precision CNC machining for titanium ultrasonic welding horns and sonotrodes, high-pressure chemical reactor valves, and heavy-duty automation manifolds. Exceptional cyclic loading resistance and acoustic resonance optimization."
+      pageType="industry-detail"
+      serviceName="Industrial Equipment & Automation Titanium CNC Machining Services"
+      serviceCategory="Industrial Equipment"
+      productName="Ultrasonic Sonotrodes, Chemical Reactor Valves & Automation Manifolds"
+      productCategory="Industrial Components"
+      serviceHubKey="cnc-machining"
+    >
+      <SubpageHero
+        h1={heroEntry?.h1}
+        badge={heroEntry?.badge}
+        subtitle={heroEntry?.subtitle}
+        badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+        keyMetrics={heroEntry?.keyMetrics}
+        entityChips={heroEntry?.entityChips}
+        compact={false}
+      />
+      <IndEqSonotrodeSection />
+      <IndEqFlowControlSection />
+      <IndEqStressReliefSection />
+      <IndEqComplianceSection />
+      <IndEqCtaSection />
     </BaseLayout>
   )
 }

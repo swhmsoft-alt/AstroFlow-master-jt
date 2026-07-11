@@ -43,6 +43,7 @@ export type PageType =
   | 'materials'
   | 'capabilities'
   | 'industries'
+  | 'industry-detail'
   | 'resources'
   | 'rfq'
   | 'generic';
@@ -562,6 +563,31 @@ export function buildPageGraph(
           datePublished: data.articleDatePublished ?? new Date().toISOString(),
           image: data.articleImage,
           mainEntityOfPage: data.pageUrl,
+        }));
+      }
+      break;
+
+    case 'industry-detail':
+      // Industry detail pages (e.g. /industries/aerospace) emit both a Service entity
+      // (describing the manufacturing service) and a Product entity (describing the
+      // specific components produced), creating a rich entity relationship graph
+      // aligned with Google AIO intent matching.
+      if (data.serviceName) {
+        graph.push(buildService({
+          name: data.serviceName,
+          description: data.serviceDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          category: data.serviceCategory,
+        }));
+      }
+      if (data.productName) {
+        graph.push(buildProduct({
+          name: data.productName,
+          description: data.productDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          image: data.productImage,
+          category: data.productCategory,
+          datePublished: data.productDatePublished,
         }));
       }
       break;

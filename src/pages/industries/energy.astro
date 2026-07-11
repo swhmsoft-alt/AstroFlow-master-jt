@@ -1,0 +1,52 @@
+---
+// src/pages/industries/energy.astro
+// Google AIO Entity-Aligned Page: Precision CNC machining for Grade 5 titanium hydrogen compressor impellers and nuclear CRDM components with H2 embrittlement mitigation
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import EnergyHydrogenSection from '../../components/industries/energy/EnergyHydrogenSection.astro';
+import EnergyNuclearSection from '../../components/industries/energy/EnergyNuclearSection.astro';
+import EnergyFatigueSection from '../../components/industries/energy/EnergyFatigueSection.astro';
+import EnergyComplianceSection from '../../components/industries/energy/EnergyComplianceSection.astro';
+import EnergyCtaSection from '../../components/industries/energy/EnergyCtaSection.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="Energy & Nuclear Infrastructure Titanium CNC Machining"
+  description="Custom 5-axis CNC machining for titanium hydrogen compressor impellers, SMR nuclear control rod drive hardware, and high-pressure fluid power components. Complete hydrogen embrittlement mitigation with controlled shot peening fatigue enhancement."
+  pageType="industry-detail"
+  serviceName="Energy & Power Generation Titanium CNC Machining Services"
+  serviceCategory="Energy & Power"
+  productName="Hydrogen Compressor Impellers, CRDM Components & Supercritical Fluid Hardware"
+  productCategory="Energy Components"
+  serviceHubKey="cnc-machining"
+>
+  <!-- Hero Section -->
+  <SubpageHero
+    h1={HERO_CONFIG['/industries/energy'].h1}
+    badge={HERO_CONFIG['/industries/energy'].badge}
+    subtitle={HERO_CONFIG['/industries/energy'].subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={HERO_CONFIG['/industries/energy'].keyMetrics}
+    entityChips={HERO_CONFIG['/industries/energy'].entityChips}
+    compact={false}
+  />
+
+  <!-- Section 1: 5-Axis Impeller Machining + H₂ Compressors + Embrittlement Mitigation -->
+  <EnergyHydrogenSection />
+
+  <!-- Section 2: Multi-Axis CNC + CRDM + Nuclear SMR + Supercritical Sealing -->
+  <EnergyNuclearSection />
+
+  <!-- Section 3: Controlled Shot Peening + Fatigue Life +300% -->
+  <EnergyFatigueSection />
+
+  <!-- Section 4: Material Compliance + H ≤ 0.0125% + Alpha-Case Free -->
+  <EnergyComplianceSection />
+
+  <!-- Section 5: CTA -->
+  <EnergyCtaSection />
+</BaseLayout>
