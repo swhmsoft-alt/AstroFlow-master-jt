@@ -96,6 +96,15 @@ import IndEqFlowControlSection from '../../components/industries/industrial-equi
 import IndEqStressReliefSection from '../../components/industries/industrial-equipment/IndEqStressReliefSection.astro';
 import IndEqComplianceSection from '../../components/industries/industrial-equipment/IndEqComplianceSection.astro';
 import IndEqCtaSection from '../../components/industries/industrial-equipment/IndEqCtaSection.astro';
+// ── Resource sub-page components ──
+import TitaniumKnowledgeBase from '../../components/resources/TitaniumKnowledgeBase.astro';
+import TitaniumGradesGuide from '../../components/resources/TitaniumGradesGuide.astro';
+import DesignEngineeringGuide from '../../components/resources/DesignEngineeringGuide.astro';
+import ManufacturingInsights from '../../components/resources/ManufacturingInsights.astro';
+import IndustryApplications from '../../components/resources/IndustryApplications.astro';
+import CaseStudies from '../../components/resources/CaseStudies.astro';
+import FaqPage from '../../components/resources/FaqPage.astro';
+import DownloadsPage from '../../components/resources/DownloadsPage.astro';
 
 /* ── Resources 页面组件 ────────────────────── */
 import FeaturedInsights from '../../components/resources/FeaturedInsights.astro';
@@ -235,6 +244,14 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'industries/semiconductor',
     'industries/energy',
     'industries/industrial-equipment',
+    'resources/titanium-knowledge-base',
+    'resources/titanium-grades-guide',
+    'resources/design-engineering-guide',
+    'resources/manufacturing-insights',
+    'resources/industry-applications',
+    'resources/case-studies',
+    'resources/faq',
+    'resources/downloads',
     'capabilities/manufacturing',
     'capabilities/engineering',
     'capabilities/capacity',
@@ -1139,6 +1156,32 @@ if (heroEntry) {
       <IndEqCtaSection />
     </BaseLayout>
   )
+}
+
+<!-- ===== Resource Sub-Pages ===== -->
+{
+  effectiveSlug === 'resources/titanium-knowledge-base' && <TitaniumKnowledgeBase />
+}
+{
+  effectiveSlug === 'resources/titanium-grades-guide' && <TitaniumGradesGuide />
+}
+{
+  effectiveSlug === 'resources/design-engineering-guide' && <DesignEngineeringGuide />
+}
+{
+  effectiveSlug === 'resources/manufacturing-insights' && <ManufacturingInsights />
+}
+{
+  effectiveSlug === 'resources/industry-applications' && <IndustryApplications />
+}
+{
+  effectiveSlug === 'resources/case-studies' && <CaseStudies />
+}
+{
+  effectiveSlug === 'resources/faq' && <FaqPage />
+}
+{
+  effectiveSlug === 'resources/downloads' && <DownloadsPage />
 }
 
 {

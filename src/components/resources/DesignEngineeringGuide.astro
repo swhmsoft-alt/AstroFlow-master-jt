@@ -1,0 +1,37 @@
+---
+// DesignEngineeringGuide.astro
+// High-density entity network: thin-wall ≥0.5 mm, ≥1.0 mm, H/T 10:1, corner radius ≥15%, L/D 5:1 / 12:1,
+// 100 bar gun-drilling, ASME Y14.5-2018, Profile 0.02 mm, True Position ∅0.015 mm, perpendicularity 0.01 mm
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Titanium CNC Design & Engineering Guide | DFM Best Practices"
+  description="Engineering design guide for titanium CNC machined parts: thin-wall limits (≥0.5 mm), corner radius optimization (≥15% of tool Ø), deep-hole drilling L/D ratios (5:1 blind, 12:1 gun-drill), and GD&T per ASME Y14.5-2018 (Profile 0.02 mm, True Position ∅0.015 mm)."
+>
+  <div class="container mx-auto px-4 py-24 max-w-5xl">
+    <nav class="text-sm mb-8 text-zinc-400"><a href="/" class="hover:text-white">Home</a> / <a href="/resources" class="hover:text-white">Resources</a> / <span class="text-white">Design & Engineering Guide</span></nav>
+    <h1 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--theme-text);">Design for Manufacturability — Titanium CNC Machining Engineering Guide</h1>
+    <p class="text-xl mb-12 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Practical DFM guidelines for engineers developing titanium CNC machined components — covering thin-wall constraints, corner radius optimization, deep-hole drilling L/D ratio limits, and GD&T per ASME Y14.5-2018 for aerospace, medical, semiconductor, and UHV applications.</p>
+
+    <!-- Section 1: Thin-Wall Structures -->
+    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Thin-Wall Structures &amp; Dynamic Harmonic Chatter Suppression</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">When designing structural aeronautical components using Grade 5 titanium, the structural thin-wall framework represents a critical failure node due to aggressive cutting force deformation. BOZE enforces a strict minimum design threshold for thin walls at <strong>≥ 0.5 mm</strong> for isolated structural ribs, and <strong>≥ 1.0 mm</strong> for unbraced continuous outer walls. Designing below these thresholds triggers structural harmonic resonance (chatter) during the dynamic pocketing process, leading to rapid dimensional drift and catastrophic micro-cracking along the grain boundaries. For walls with an aspect ratio (Height-to-Thickness) exceeding <strong>10:1</strong>, our engineering team implements step-reduction axial profiling methods to structurally balance the residual stresses.</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Designers should specify generous draft angles where possible and allow multiple semi-finishing passes in the CAM program to progressively reduce wall deflection before final finishing. Trochoidal milling and adaptive feed-rate control are essential for maintaining dimensional accuracy in thin-wall titanium features.</p>
+    </article>
+
+    <!-- Section 2: Internal Corner Radii -->
+    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Internal Corner Radii Optimization &amp; Cutting Force Mitigation</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Sharp internal pockets are highly problematic for titanium processing. Standard engineering blueprints must incorporate an internal corner radius that is <strong>≥ 15% larger than the radius of the cutting tool</strong> (e.g., specifying a minimum internal radius of <strong>3.45 mm</strong> for a 6 mm diameter end mill). This gap prevents the tool from experiencing a sudden 180° wrap-around engagement, which spikes the radial cutting forces and instantly snaps the tool shank.</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Furthermore, deep-hole drilling profiles must respect severe aspect ratio constraints: the maximum Length-to-Diameter (<strong>L/D Ratio</strong>) for standard blind holes must be limited to <strong>5:1</strong>. For specialized ultra-deep geometries up to <strong>12:1</strong>, BOZE deploys specialized gun-drilling systems equipped with internal through-tool coolant channels running at <strong>100 bar</strong> to prevent severe chip packing and thermal seizing. For pocket floor-to-wall intersections, a radius of 1-2 mm is recommended to allow standard ball-nose end mills to achieve clean transitions without excessive tool deflection.</p>
+    </article>
+
+    <!-- Section 3: GD&T Integration -->
+    <article class="mb-8 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">ASME Y14.5 GD&amp;T Integration for Precision Mating Interfaces</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Titanium components engineered for semiconductor medical hardware and ultra-high vacuum (UHV) systems demand strict compliance with the <strong>ASME Y14.5-2018</strong> Geometric Dimensioning &amp; Tolerancing (GD&amp;T) metric system. Standard linear positioning tolerances are insufficient due to the material's thermal displacement variance. BOZE regularly holds a strict Profile of a Surface tolerance within <strong>0.02 mm</strong> and a True Position boundary down to <strong>∅0.015 mm</strong> relative to a rigid 3-plane datum frame (Datums A, B, and C).</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">When designing sealing interfaces, perpendicularity and parallelism callouts must be held to a maximum threshold of <strong>0.01 mm</strong> to guarantee an absolute hermetic metal-to-metal seal under high-pressure gas tracking. Profile tolerances are verified using ZEISS CMM platforms with ±1.9 µm volumetric accuracy. Consider titanium's variable springback when setting position tolerances below ±0.01 mm — specify tolerance on features rather than overall dimensions to avoid cumulative thermal effects.</p>
+    </article>
+  </div>
+</BaseLayout>

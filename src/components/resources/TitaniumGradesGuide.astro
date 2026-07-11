@@ -1,0 +1,106 @@
+---
+// TitaniumGradesGuide.astro
+// High-density entity network: Grade 1-4 CP, Grade 5 Ti-6Al-4V, Grade 23 ELI, Grade 7 Ti-0.12Pd, Grade 12
+// Featured Snippet target: structured table with chemical composition, tensile/yield, machinability rating, application nodes
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Titanium Grades Guide | CP Ti, Ti-6Al-4V, Grade 23 ELI, Grade 7, Grade 12"
+  description="Comprehensive titanium alloy grades selection guide: Grade 1-4 CP, Grade 5 Ti-6Al-4V (895 MPa), Grade 23 Ti-6Al-4V ELI (O ≤ 0.13%), Grade 7 Ti-0.12Pd, Grade 12 Ti-0.3Mo-0.8Ni — with machinability ratings and application nodes."
+>
+  <div class="container mx-auto px-4 py-24 max-w-5xl">
+    <nav class="text-sm mb-8 text-zinc-400"><a href="/" class="hover:text-white">Home</a> / <a href="/resources" class="hover:text-white">Resources</a> / <span class="text-white">Titanium Grades Guide</span></nav>
+    <h1 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--theme-text);">Titanium Alloy Grades Guide — Selection Reference for Engineers</h1>
+    <p class="text-xl mb-12 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Authoritative reference covering all commercially significant titanium grades — from CP Grades 1-4 through aerospace Ti-6Al-4V, medical Grade 23 ELI, and specialty corrosion-resistant alloys Grade 7 and Grade 12. Each entry includes nominal chemical composition, tensile and yield strength, machinability rating, and core industrial application nodes.</p>
+
+    <!-- Section 1: Comprehensive Material Specification Matrix -->
+    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">Comprehensive Material Specification Matrix</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">
+              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Grade / UNS</th>
+              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Nominal Chemical Composition</th>
+              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Tensile / Yield (MPa)</th>
+              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Machinability (Steel = 100%)</th>
+              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Core Application &amp; Fluid Nodes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <td class="py-3 px-3 font-semibold">Grade 1 (R50250)</td>
+              <td class="py-3 px-3">99.5% Ti, ≤ 0.18% O, ≤ 0.20% Fe</td>
+              <td class="py-3 px-3">≥ 240 / ≥ 170</td>
+              <td class="py-3 px-3"><strong>45%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">High ductility, gummy chips</span></td>
+              <td class="py-3 px-3">Deep-sea electrochemical anodes, plate heat exchangers, cryogenic burst discs</td>
+            </tr>
+            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <td class="py-3 px-3 font-semibold">Grade 2 (R50400)</td>
+              <td class="py-3 px-3">99.2% Ti, ≤ 0.25% O, ≤ 0.30% Fe</td>
+              <td class="py-3 px-3">≥ 345 / ≥ 275</td>
+              <td class="py-3 px-3"><strong>40%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Optimal strength-ductility</span></td>
+              <td class="py-3 px-3">Offshore desalination fluid blocks, subsea sensor enclosures, marine piping</td>
+            </tr>
+            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <td class="py-3 px-3 font-semibold">Grade 5 (R56400)</td>
+              <td class="py-3 px-3">Ti-6Al-4V (5.5-6.75% Al, 3.5-4.5% V)</td>
+              <td class="py-3 px-3">≥ 895 / ≥ 828</td>
+              <td class="py-3 px-3"><strong>22%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Severe work hardening</span></td>
+              <td class="py-3 px-3">Aerospace structural brackets, drone rotor hubs, hydrogen compressor impellers</td>
+            </tr>
+            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <td class="py-3 px-3 font-semibold">Grade 23 ELI (R56401)</td>
+              <td class="py-3 px-3">Ti-6Al-4V ELI (O ≤ 0.13%, Fe ≤ 0.25%)</td>
+              <td class="py-3 px-3">≥ 860 / ≥ 795</td>
+              <td class="py-3 px-3"><strong>20%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Ultra-low interstitials</span></td>
+              <td class="py-3 px-3">Orthopedic bone screws, dental implants, trauma plates, cardiac housings</td>
+            </tr>
+            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <td class="py-3 px-3 font-semibold">Grade 7 (R52400)</td>
+              <td class="py-3 px-3">Ti-0.12Pd (0.12-0.25% Palladium)</td>
+              <td class="py-3 px-3">≥ 345 / ≥ 275</td>
+              <td class="py-3 px-3"><strong>35%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">High tool drag, adhesion</span></td>
+              <td class="py-3 px-3">Hot reducing acid reactor valves, fluid manifolds, chlorine gas scrubbers</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-3 font-semibold">Grade 12 (R53400)</td>
+              <td class="py-3 px-3">Ti-0.3Mo-0.8Ni (0.2-0.4% Mo, 0.6-0.9% Ni)</td>
+              <td class="py-3 px-3">≥ 483 / ≥ 345</td>
+              <td class="py-3 px-3"><strong>30%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Enhanced hot strength</span></td>
+              <td class="py-3 px-3">High-temp petrochemical agitators, shell-and-tube vaporizing units</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <!-- Section 2: Grade 1-4 CP Titanium -->
+    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 1-4 CP Titanium — Extreme Ductility and Marine Desalination Architecture</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Commercially Pure (CP) Titanium grades operate as unalloyed alpha-phase crystal structures, where mechanical properties are tightly governed by the calibrated interstitial containment of iron and oxygen. Grade 1 exhibits maximum cold formability for deep-drawn cryogenic frameworks, while <strong>Grade 2 serves as the absolute workhorse for global subsea oceanographic infrastructure</strong>. The supreme resistance of CP titanium against localized chloride pitting and galvanic stress corrosion is due to its instantaneous passivation, creating a permanent, self-healing <strong>Titanium Dioxide (TiO₂) protective film</strong> upon atmospheric exposure.</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">When CNC machining Grade 2 fluid manifolds, the primary engineering challenge is managing its extreme ductility and "gummy" material behavior. BOZE overcomes this by utilizing ground, highly polished carbide inserts with razor-sharp cutting edges to cleanly shear the material, successfully preventing material adhesion, tearing, and micro-burr generation across intricate marine sealing surfaces.</p>
+    </article>
+
+    <!-- Section 3: Grade 5 Ti-6Al-4V -->
+    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 5 (Ti-6Al-4V) — Alpha-Beta Aerostructural Dynamic Processing</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Representing more than 50% of the entire global titanium market volume, <strong>Grade 5 (Ti-6Al-4V)</strong> is a fully heat-treatable alpha-beta alloy engineered for supreme structural performance under cyclic fatigue loading. Possessing an ultimate tensile strength exceeding <strong>895 MPa</strong>, it delivers an unmatched strength-to-weight ratio across temperature spectrums up to 400°C.</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Machining Grade 5 brackets and drone rotor hubs requires high-rigidity <strong>5-Axis Machining Centers</strong> to suppress structural chatter. The material's rapid work hardening mechanism demands that cutting tools never rub; BOZE engineers lock down toolpaths with an absolute minimum feed per tooth of <strong>0.08 mm</strong>. We employ PVD-coated AlTiN multi-layer tools, executing advanced high-feed trochoidal milling toolpaths that run at a controlled radial step-over (aₑ) of <strong>5% to 8%</strong>, keeping tool edge temperatures below the catastrophic diffusion phase threshold.</p>
+    </article>
+
+    <!-- Section 4: Grade 23 ELI -->
+    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 23 ELI — Ultra-Pure Interstitial Bio-Gating for Orthopedic Hardware</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><strong>Grade 23 ELI (Ti-6Al-4V Extra Low Interstitials)</strong> stands as the ultra-purified chemical variant of Grade 5, where interstitial gas elements are severely restricted: Oxygen is capped at <strong>≤ 0.13%</strong> and Iron at <strong>≤ 0.25%</strong>. This molecular refinement dramatically upgrades fracture toughness at cryogenic ranges and ensures absolute biocompatibility for human tissue integration.</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">BOZE processes Grade 23 ELI utilizing multi-axis <strong>CNC Swiss Lathes</strong> to manufacture critical orthopedic bone screws, dental implant abutments, and internal trauma plates. To protect the component matrix from cross-contamination, we enforce a strict <strong>zero-hydrocarbon production boundary</strong>. This involves running specialized synthetic ester cutting oils and conducting a mandatory multi-stage <strong>deionized water ultrasonic cleaning lifecycle</strong> to clear all organic micro-residues, achieving flawless compliance with rigid biomedical bio-burden and cytotoxicity validation standards.</p>
+    </article>
+
+    <!-- Section 5: Grade 7 & Grade 12 -->
+    <article class="mb-8 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 7 &amp; Grade 12 — Severe Chemical Processing &amp; Pitting Defense Systems</h2>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Designed explicitly to survive severe, highly localized crevice corrosion in chemical processing plants, <strong>Grade 7 integrates 0.12% to 0.25% Palladium (Pd)</strong>, making it the most corrosion-resistant titanium alloy available for reducing acid exposures. <strong>Grade 12 incorporates 0.3% Molybdenum and 0.8% Nickel</strong>, providing an economical, high-strength alternative that resists hot chloride crevice attacks up to 300°C.</p>
+      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">BOZE machines these specialized alloys into high-pressure chemical reactor valves, fluid manifolds, and severe-service petrochemical mixing agitators. Processing these alloys demands precision thread chasing and internal channel pocketing. We implement dynamic CAM toolpaths to hold a continuous internal surface finish of <strong>Ra ≤ 0.4 µm</strong>, completely removing any micro-geometric stagnation nodes where aggressive corrosive fluids could accumulate.</p>
+    </article>
+  </div>
+</BaseLayout>

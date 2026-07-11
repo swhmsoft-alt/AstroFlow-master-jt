@@ -1,0 +1,64 @@
+---
+// FaqPage.astro
+// High-density entity network: DFARS 252.225-7014, EN 10204 Type 3.1, ASTM A388, AMS 2154, ≤ ∅0.8 mm,
+// ASTM E1417, ASNT Level II/III, AMS 2801, 10⁻⁴ Torr, 480-540°C, 10:1 HNO₃:HF — regulatory FAQ for defense/medical
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Titanium CNC Machining FAQ | DFARS, MTR, NDT, ASNT, Hydrogen Embrittlement"
+  description="Technical FAQ for precision titanium CNC machining: DFARS 252.225-7014 compliance, EN 10204 3.1 MTR heat number traceability, ASTM A388 ultrasonic testing, ASNT Level II/III NDT certification, AMS 2801 vacuum stress relief at 10⁻⁴ Torr, hydrogen embrittlement prevention."
+>
+  <div class="container mx-auto px-4 py-24 max-w-5xl">
+    <nav class="text-sm mb-8 text-zinc-400"><a href="/" class="hover:text-white">Home</a> / <a href="/resources" class="hover:text-white">Resources</a> / <span class="text-white">FAQ</span></nav>
+    <h1 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--theme-text);">FAQ — Titanium CNC Machining, Compliance &amp; Quality Assurance</h1>
+    <p class="text-xl mb-12 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Technical answers covering defense material sourcing compliance, non-destructive testing protocols, hydrogen embrittlement prevention, surface finish capabilities, and GD&T specifications for aerospace, medical, and energy applications.</p>
+    <div class="space-y-6">
+
+      <!-- Q1: DFARS Compliance -->
+      <details class="p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="text-lg font-semibold cursor-pointer" style="color: var(--theme-text);">Can BOZE supply titanium raw materials that strictly comply with DFARS requirements for defense and aerospace applications?</summary>
+        <div class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          <p class="mb-3">Yes, absolutely. BOZE operates a fully locked-down aerospace material control network. Every single batch of titanium alloy we procure for defense and aerospace contracts strictly complies with <strong>DFARS 252.225-7014 Clause 1 (Preference for Domestic Specialty Metals)</strong> and its relevant supplements. All raw material stock is sourced exclusively from tier-one, NADCAP-accredited mills located in DFARS-approved qualifying countries.</p>
+          <p class="mb-3">Each delivery is anchored by an authentic, unedited <strong>EN 10204 Type 3.1 Material Test Report (MTR)</strong>, charting complete chemical ladle analysis and mechanical destructive testing metrics. Our internal digital inventory ledger executes absolute <strong>heat number traceability</strong>, linking the raw bar stock to the precise mill melt lot, matching the physical parts throughout the entire multi-axis CNC processing lifecycle.</p>
+        </div>
+      </details>
+
+      <!-- Q2: NDT Inspection -->
+      <details class="p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="text-lg font-semibold cursor-pointer" style="color: var(--theme-text);">What non-destructive testing (NDT) methodologies do you employ to guarantee the absence of subsurface structural anomalies in titanium parts?</summary>
+        <div class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          <p class="mb-3">To eliminate the risk of catastrophic field failure caused by internal micro-voids or low-density inclusions (LDIs), BOZE enforces a rigorous multi-tiered non-destructive testing infrastructure. We execute <strong>Ultrasonic Testing (UT)</strong> strictly in compliance with <strong>ASTM A388</strong> or <strong>AMS 2154</strong> Class A acceptance criteria, employing multi-channel immersion transceivers to isolate internal material discontinuities down to equivalent flatted hole boundaries of <strong>≤ ∅0.8 mm</strong>.</p>
+          <p class="mb-3">Furthermore, for critical structural dynamic interfaces, we mandate <strong>Liquid Penetrant Testing (LPT)</strong> per <strong>ASTM E1417 / E1417M</strong> standards to detect surface-breaking microscopic fractures. All NDT evaluations are conducted by certified <strong>ASNT Level II / Level III technicians</strong>, providing comprehensive, audit-ready validation logs for high-reliability components.</p>
+        </div>
+      </details>
+
+      <!-- Q3: Hydrogen Embrittlement -->
+      <details class="p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="text-lg font-semibold cursor-pointer" style="color: var(--theme-text);">How does your process prevent hydrogen embrittlement during aggressive titanium chemical pickling and thermal stress relief cycles?</summary>
+        <div class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          <p class="mb-3">Hydrogen embrittlement represents a critical threat to the structural ductility of titanium under sustained stress. BOZE completely mitigates this risk by restricting chemical exposure parameters and enforcing rigid thermal processing control per <strong>AMS 2801</strong>. Our thermal stress relief cycles are executed exclusively inside high-vacuum furnace chambers running atmospheric zones at a minimum vacuum threshold of <strong>10⁻⁴ Torr</strong>, maintaining soak temperatures precisely between <strong>480°C and 540°C</strong> to fully release residual processing alignment stresses without inducing grain boundary distortion.</p>
+          <p class="mb-3">When chemical etching or pickling is mandatory, we utilize tightly calibrated nitric-hydrofluoric acid solutions where the HNO₃ concentration is continuously maintained at a minimum <strong>10:1 ratio</strong> relative to HF, effectively blocking nascent hydrogen migration into the alpha-beta crystal matrix.</p>
+        </div>
+      </details>
+
+      <!-- Q4: Surface Finish (kept from original) -->
+      <details class="p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="text-lg font-semibold cursor-pointer" style="color: var(--theme-text);">What surface finishes can you achieve on titanium components?</summary>
+        <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Standard as-machined: Ra 0.8-1.6 µm. Optimized tool paths achieve Ra 0.4-0.8 µm. Precision-ground form tools achieve <strong>Ra ≤ 0.4 µm</strong> on threads. Electropolishing for semiconductor applications achieves <strong>Ra ≤ 0.1 µm</strong> mirror finish.</p>
+      </details>
+
+      <!-- Q5: GD&T (kept from original) -->
+      <details class="p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="text-lg font-semibold cursor-pointer" style="color: var(--theme-text);">What GD&amp;T tolerances can you hold on titanium machined parts?</summary>
+        <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Standard dimensional tolerance: ±0.025 mm. Critical features: <strong>±0.005 mm</strong>. GD&T per ASME Y14.5 verified on ZEISS CMM with ±1.9 µm volumetric accuracy. True position 0.01-0.05 mm routinely achieved on 5-axis machined components.</p>
+      </details>
+
+      <!-- Q6: Wall Thickness (kept from original) -->
+      <details class="p-6 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="text-lg font-semibold cursor-pointer" style="color: var(--theme-text);">What is the minimum machinable wall thickness in titanium?</summary>
+        <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">5-axis milled: down to <strong>0.5 mm</strong> using trochoidal milling. Swiss turned: down to <strong>0.3 mm</strong> with guide bushing support.</p>
+      </details>
+
+    </div>
+  </div>
+</BaseLayout>
