@@ -27,13 +27,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
         </svg>
-        Metrology &amp; Inspection Laboratory
+        {t('cap.inspection.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        In-House Metrology &amp; <span class="gradient-text-accent">{t('cap.inspectionpage.badge0')}</span>
+        {t('cap.inspection.title')} <span class="gradient-text-accent">{t('cap.inspection.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Fully equipped metrology laboratory with industrial-grade inspection instruments for full dimensional, chemical, mechanical, and surface integrity validation — all calibrated per ISO 17025 traceable standards.
+        {t('cap.inspection.subtitle')}
       </p>
     </div>
 
@@ -47,10 +47,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold" style="color: var(--theme-text);">CMM</h3>
-        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspectionpage.badge1')}</span>
+        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspection.inst0.name')}</h3>
+        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspection.inst0.spec')}</span>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Bridge-type 3D Coordinate Measuring Machine with active scanning. Dimensional accuracy to 1.9 μm. Full geometric dimensioning &amp; tolerancing (GD&amp;T) reporting per ASME Y14.5.
+          {t('cap.inspection.inst0.desc')}
         </p>
       </div>
 
@@ -61,10 +61,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspectionpage.text2_oes_spectrometer')}</h3>
-        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspectionpage.badge47')}</span>
+        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspection.inst1.name')}</h3>
+        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspection.inst1.spec')}</span>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Optical Emission Spectrometry for positive material identification (PMI). Confirms elemental composition of titanium alloys within 30 seconds per ASTM E415 standard.
+          {t('cap.inspection.inst1.desc')}
         </p>
       </div>
 
@@ -75,10 +75,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspectionpage.text4_roughness_tester')}</h3>
-        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">Mitutoyo SJ-410</span>
+        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspection.inst2.name')}</h3>
+        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspection.inst2.spec')}</span>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Surface finish measurement down to Ra 0.4 μm. Provides complete surface texture parameters (Ra, Rz, Rq, Rmax) with graphical profile recording per ISO 4287.
+          {t('cap.inspection.inst2.desc')}
         </p>
       </div>
 
@@ -89,10 +89,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspectionpage.text5_ndt_validation')}</h3>
-        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspectionpage.badge6')}</span>
+        <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('cap.inspection.inst3.name')}</h3>
+        <span class="inline-block mt-1 mb-3 text-sm font-mono" style="color: var(--theme-primary);">{t('cap.inspection.inst3.spec')}</span>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Non-Destructive Testing including fluorescent dye penetrant (FPI) for surface flaw detection and ultrasonic (UT) for subsurface volumetric examination. Nadcap-accredited.
+          {t('cap.inspection.inst3.desc')}
         </p>
       </div>
 
@@ -101,7 +101,7 @@ const t = useTranslations(currentLang);
     <!-- Calibration Note -->
     <div class="text-center mt-8">
       <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        All inspection equipment calibrated per ISO 17025 traceable standards. Calibration certificates available on request.
+        {t('cap.inspection.note')}
       </p>
     </div>
   </div>
@@ -119,13 +119,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
         </svg>
-        Specialized Testing
+        {t('cap.inspectionpage.badge7')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Non-Destructive &amp; <span class="gradient-text-accent">{t('cap.inspectionpage.badge7')}</span>
+        {t('cap.inspectionpage.badge7')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Beyond dimensional inspection, we offer a full suite of specialized testing services to validate material integrity, mechanical properties, and long-term reliability of titanium components.
+        {t('cap.inspectionpage.s2.subtitle')}
       </p>
     </div>
 
@@ -134,15 +134,15 @@ const t = useTranslations(currentLang);
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.badge51')}</h3>
         <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Surface flaw detection for titanium components using high-sensitivity fluorescent penetrants. Capable of detecting cracks, porosity, laps, and seams as fine as 1 μm wide. Performed in dedicated clean-room conditions with UV inspection booths. Nadcap-accredited processes available for aerospace and medical applications.
+          {t('cap.inspectionpage.s2.card1.desc')}
         </p>
         <div class="flex items-center text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Sensitivity: Crack detection down to 1 μm width
+          {t('cap.inspectionpage.s2.card1.label1')}: {t('cap.inspectionpage.s2.card1.val1')}
         </div>
         <div class="flex items-center mt-1.5 text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Standard: ASTM E1417 / AMS 2644
+          {t('cap.inspectionpage.s2.label_std')}: {t('cap.inspectionpage.s2.card1.val2')}
         </div>
       </div>
 
@@ -150,15 +150,15 @@ const t = useTranslations(currentLang);
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.badge52')}</h3>
         <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Volumetric examination for subsurface discontinuities in titanium — including inclusions, voids, and delaminations. Immersion and contact UT methods available for complex geometries. Full C-scan imaging provides permanent record of internal material integrity.
+          {t('cap.inspectionpage.s2.card2.desc')}
         </p>
         <div class="flex items-center text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Detection: Inclusions &amp; voids &gt; 0.5 mm diameter
+          {t('cap.inspectionpage.s2.card2.label1')}: {t('cap.inspectionpage.s2.card2.val1')}
         </div>
         <div class="flex items-center mt-1.5 text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Standard: ASTM E2375 / AMS 2631
+          {t('cap.inspectionpage.s2.label_std')}: {t('cap.inspectionpage.s2.card2.val2')}
         </div>
       </div>
 
@@ -166,31 +166,31 @@ const t = useTranslations(currentLang);
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.text10_full_dimensional_layout')}</h3>
         <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Comprehensive 3D dimensional analysis using programmatic CMM cycles. Every GD&amp;T callout per ASME Y14.5 — including flatness, concentricity, true position, profile of a surface, and runout — is verified against engineering specifications. Detailed color-coded deviation plots provided.
+          {t('cap.inspectionpage.s2.card3.desc')}
         </p>
         <div class="flex items-center text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Accuracy: ±0.0015 mm volumetric
+          {t('cap.inspectionpage.s2.card3.label1')}: {t('cap.inspectionpage.s2.card3.val1')}
         </div>
         <div class="flex items-center mt-1.5 text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Standard: ASME Y14.5-2009 / ISO 1101
+          {t('cap.inspectionpage.s2.label_std')}: {t('cap.inspectionpage.s2.card3.val2')}
         </div>
       </div>
 
       <!-- Mechanical Testing -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">Mechanical Properties &amp; Tensile Testing</h3>
+        <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.s2.card4.title')}</h3>
         <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Verification of tensile strength, yield strength, elongation, and hardness for titanium material verification. Hardness testing per Rockwell C and Brinell scales. Tensile testing per ASTM E8/E8M on qualified sub-contract partner equipment with full accreditation.
+          {t('cap.inspectionpage.s2.card4.desc')}
         </p>
         <div class="flex items-center text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Hardness: Rockwell C, Brinell
+          {t('cap.inspectionpage.s2.card4.label1')}: {t('cap.inspectionpage.s2.card4.val1')}
         </div>
         <div class="flex items-center mt-1.5 text-xs" style="color: var(--theme-primary);">
           <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-          Standard: ASTM E8/E8M, ASTM E18, ASTM E10
+          {t('cap.inspectionpage.s2.label_std')}: {t('cap.inspectionpage.s2.card4.val2')}
         </div>
       </div>
     </div>
@@ -213,13 +213,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
         </svg>
-        Inspection Workflow
+        {t('cap.inspectionpage.badge11')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Inspection &amp; Testing <span class="gradient-text-accent">{t('cap.inspectionpage.badge11')}</span>
+        {t('cap.inspectionpage.badge11')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Systematic inspection sequence ensuring every titanium component meets or exceeds specified requirements before shipment.
+        {t('cap.inspectionpage.s3.subtitle')}
       </p>
     </div>
 
@@ -232,11 +232,11 @@ const t = useTranslations(currentLang);
           </div>
           <div class="flex-1">
             <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
-              <h3 class="text-base font-bold" style="color: var(--theme-text);">Material Verification &amp; PMI</h3>
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{t('cap.inspectionpage.s3.step1.title')}</h3>
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #3b82f612; color: #3b82f6;">{t('cap.inspectionpage.badge12')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Every incoming titanium lot is tested using OES spectrometry for positive material identification. Chemical composition is verified against the certified mill test report (EN 10204 3.1 MTR). Only material matching specified grade chemistry is released to production.
+              {t('cap.inspectionpage.s3.step1.desc')}
             </p>
           </div>
         </div>
@@ -254,7 +254,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #10b98112; color: #10b981;">{t('cap.inspectionpage.badge14')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              First machined part from each production run undergoes 100% layout inspection on CMM. Full AS9102-compliant FAIR with ballooned drawings, actual vs. nominal measurements, and GD&amp;T verification. Review and sign-off by senior quality inspector before production release.
+            {t('cap.inspectionpage.s3.step2.desc')}
             </p>
           </div>
         </div>
@@ -272,7 +272,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #f59e0b12; color: #f59e0b;">{t('cap.inspectionpage.badge16')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              On-machine probing and statistical process control (SPC) for real-time dimensional monitoring. Control charts track critical features. Surface roughness verification at defined intervals. Tool wear monitoring through spindle load analysis.
+            {t('cap.inspectionpage.s3.step3.desc')}
             </p>
           </div>
         </div>
@@ -290,7 +290,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.inspectionpage.badge18')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Final dimensional gating using programmatic CMM cycles on sampled or 100% of parts. Surface finish certification. NDT (FPI/UT) where specified. Comprehensive quality dossier compiled — including MTRs, CMM reports, CoC, and inspection certificates.
+            {t('cap.inspectionpage.s3.step4.desc')}
             </p>
           </div>
         </div>
@@ -311,13 +311,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0118 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0118 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 016 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125" />
         </svg>
-        Equipment Specifications
+        {t('cap.inspectionpage.badge19')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Inspection Equipment <span class="gradient-text-accent">{t('cap.inspectionpage.badge19')}</span>
+        {t('cap.inspectionpage.text20_equipment')} <span class="gradient-text-accent">{t('cap.inspectionpage.badge19')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Detailed specifications of our inspection and metrology equipment — all maintained under strict ISO 17025 calibration schedules.
+        {t('cap.inspectionpage.s4.subtitle')}
       </p>
     </div>
 
@@ -327,7 +327,7 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">{t('cap.inspectionpage.text20_equipment')}</th>
-            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">Measurement Range</th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">{t('cap.inspectionpage.s4.col2')}</th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">{t('cap.inspectionpage.text21_accuracy_resolution')}</th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">{t('cap.inspectionpage.text22_applicable_standard')}</th>
           </tr>
@@ -384,13 +384,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
         </svg>
-        Inspection &amp; Testing FAQ
+        {t('cap.inspectionpage.s5.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Procurement <span class="gradient-text-accent">{t('cap.inspectionpage.badge43')}</span>
+        {t('cap.inspectionpage.s5.title')} <span class="gradient-text-accent">{t('cap.inspectionpage.badge43')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Answers to the most common inspection and testing questions from procurement engineers.
+        {t('cap.inspectionpage.s5.subtitle')}
       </p>
     </div>
 
@@ -398,38 +398,38 @@ const t = useTranslations(currentLang);
       <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.badge44')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our in-house metrology lab is equipped with a <strong style="color: var(--theme-text);">{t('cap.inspectionpage.badge45')}</strong> (bridge-type, 1.9 μm volumetric accuracy), <strong style="color: var(--theme-text);">{t('cap.inspectionpage.badge46')}</strong> optical comparators, and <strong style="color: var(--theme-text);">Mitutoyo SJ-410</strong> surface roughness testers. For material verification, we use a <strong style="color: var(--theme-text);">{t('cap.inspectionpage.badge3')}</strong> Optical Emission Spectrometer for rapid PMI analysis. All equipment is calibrated per ISO 17025 traceable standards with full calibration certificates on file.
+          {t('cap.inspectionpage.s5.a1')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.badge48')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Inspection scope is determined by customer specification and part criticality. High-volume production typically follows AQL-based sampling (ANSI/ASQ Z1.4) with CMM verification at defined intervals. Critical aerospace and medical components receive <strong style="color: var(--theme-text);">{t('cap.inspectionpage.badge49')}</strong> with full CMM reports. First-article inspection (FAI) per AS9102 is standard for all new programs. Surface roughness, NDT, and material certification are added per engineering requirements.
+          {t('cap.inspectionpage.s5.a2')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.badge50')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          We offer <strong style="color: var(--theme-text);">{t('cap.inspectionpage.badge8')}</strong> per ASTM E1417 for surface crack detection down to 1 μm width, and <strong style="color: var(--theme-text);">{t('cap.inspectionpage.text9_ultrasonic_testing')}</strong> per ASTM E2375 for subsurface volumetric examination. Our NDT processes are Nadcap-accredited for aerospace applications. Additional capabilities include eddy current testing for surface conductivity verification and leak testing for sealed assemblies.
+          {t('cap.inspectionpage.s5.a3')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.inspectionpage.badge53')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Yes. Every shipment includes a comprehensive quality dossier containing: <strong style="color: var(--theme-text);">(1)</strong> Certified Mill Test Reports (MTRs) per EN 10204 Type 3.1; <strong style="color: var(--theme-text);">(2)</strong> Certificate of Conformance (CoC); <strong style="color: var(--theme-text);">(3)</strong> CMM dimensional inspection reports with GD&amp;T verification; <strong style="color: var(--theme-text);">(4)</strong> Surface roughness certification; and <strong style="color: var(--theme-text);">(5)</strong> NDT reports where specified. AS9102 FAIR documentation is provided for aerospace programs. All records are archived and retrievable.
+          {t('cap.inspectionpage.s5.a4')}
         </p>
       </div>
     </div>
 
     <div class="text-center mt-12">
       <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Have specific inspection requirements? Contact our quality engineering team.
+        {t('cap.inspectionpage.s5.cta')}
       </p>
       <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105" style="background-color: var(--theme-primary); color: var(--theme-bg);">
-        Submit Inspection Requirements
+        {t('cap.inspectionpage.s5.cta_btn')}
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>

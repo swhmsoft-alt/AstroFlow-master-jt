@@ -26,13 +26,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Verified Quality Management Systems
+        {t('cap.certificationspage.s1.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Verified Quality <span class="gradient-text-accent">Management Systems</span>
+        {t('cap.certificationspage.s1.title_prefix')} <span class="gradient-text-accent">{t('cap.certificationspage.s1.badge')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Our production infrastructure operates under a highly audited, internationally recognized quality management system. Validated by world-leading registrars, every certification guarantees uncompromising regulatory and safety compliance.
+        {t('cap.certificationspage.s1.subtitle')}
       </p>
     </div>
 
@@ -71,7 +71,7 @@ const t = useTranslations(currentLang);
         <div class="mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <span class="inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">
             <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-            Active / Fully Audited
+            {t('cap.certificationspage.s1.as9100_status')}
           </span>
         </div>
       </div>
@@ -101,14 +101,14 @@ const t = useTranslations(currentLang);
           </div>
           <div>
             <p class="text-xs font-semibold mb-0.5" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.certificationspage.badge16')}</p>
-            <p class="text-sm" style="color: var(--theme-primary);">Medical Devices &amp; Bio-tech</p>
+            <p class="text-sm" style="color: var(--theme-primary);">{t('cap.certificationspage.s1.iso13485_scope')}</p>
           </div>
         </div>
 
         <div class="mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <span class="inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">
             <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-            Active / Fully Audited
+            {t('cap.certificationspage.s1.iso13485_status')}
           </span>
         </div>
       </div>
@@ -145,7 +145,7 @@ const t = useTranslations(currentLang);
         <div class="mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <span class="inline-flex items-center px-3 py-1.5 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">
             <svg class="w-3.5 h-3.5 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" /></svg>
-            Active / Fully Audited
+            {t('cap.certificationspage.s1.iso9001_status')}
           </span>
         </div>
       </div>
@@ -166,13 +166,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0118 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0118 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 016 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125" />
         </svg>
-        Certification Validation
+        {t('cap.certificationspage.s2.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Certification <span class="gradient-text-accent">{t('cap.certificationspage.badge26')}</span>
+        {t('cap.certificationspage.s2.title_prefix')} <span class="gradient-text-accent">{t('cap.certificationspage.badge26')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        A complete overview of BOZE's active quality management certifications — each verified by world-leading registrars through annual surveillance audits.
+        {t('cap.certificationspage.s2.subtitle')}
       </p>
     </div>
 
@@ -182,16 +182,16 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Certification Standard
+              {t('cap.certificationspage.s2.col1')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Primary Industry Focus
+              {t('cap.certificationspage.s2.col2')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Audit Scope &amp; Boundary
+              {t('cap.certificationspage.s2.col3')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Verification Status
+              {t('cap.certificationspage.s2.col4')}
             </th>
           </tr>
         </thead>
@@ -199,14 +199,14 @@ const t = useTranslations(currentLang);
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.certificationspage.badge45')}</td>
             <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.certificationspage.badge8')}</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Multi-axis titanium machining for high-stress structural parts, propulsion components, and critical flight hardware.</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.certificationspage.s2.row1_col3')}</td>
             <td class="px-5 py-5 text-sm">
               <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">{t('cap.certificationspage.text36_active_fully_audited')}</span>
             </td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.certificationspage.text30_iso_13485_2016')}</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Medical Implants &amp; Instruments</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.certificationspage.s2.row2_col2')}</td>
             <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.certificationspage.text31_bio_compatible_titanium')}</td>
             <td class="px-5 py-5 text-sm">
               <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #10b98115; color: #10b981; border: 1px solid #10b98125;">{t('cap.certificationspage.text32_active_fully_audited')}</span>
@@ -241,13 +241,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
         </svg>
-        Compliance Sustainability
+        {t('cap.certificationspage.s3.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        The Annual Audit <span class="gradient-text-accent">Lifecycle</span>
+        {t('cap.certificationspage.s3.title_prefix')} <span class="gradient-text-accent">{t('cap.certificationspage.s3.badge')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Certification is not a static badge — it is a dynamic, continuously verified system. Our compliance framework is tested quarterly internally and validated annually by independent third-party registrars.
+        {t('cap.certificationspage.s3.subtitle')}
       </p>
     </div>
 
@@ -260,7 +260,7 @@ const t = useTranslations(currentLang);
         <h3 class="text-base font-bold mb-2" style="color: var(--theme-text);">{t('cap.certificationspage.badge37')}</h3>
         <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded mb-3" style="background-color: #3b82f612; color: #3b82f6;">{t('cap.certificationspage.badge38')}</span>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our certified internal quality auditors conduct scheduled cross-departmental reviews every quarter to ensure total adherence to AS9100D and ISO 13485 operational clauses. Any non-conformities are logged, tracked, and resolved through our CAPA system before they can impact production quality.
+          {t('cap.certificationspage.s3.phase1_desc')}
         </p>
       </div>
 
@@ -272,7 +272,7 @@ const t = useTranslations(currentLang);
         <h3 class="text-base font-bold mb-2" style="color: var(--theme-text);">{t('cap.certificationspage.badge39')}</h3>
         <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded mb-3" style="background-color: #10b98112; color: #10b981;">{t('cap.certificationspage.badge40')}</span>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Leading international registrars (SGS, TÜV SÜD, BSI) perform rigorous on-site surveillance audits annually. Auditors verify tool calibration logs, material traceability data, process control documentation, and employee competency records against the relevant standard's clause requirements.
+          {t('cap.certificationspage.s3.phase2_desc')}
         </p>
       </div>
 
@@ -284,7 +284,7 @@ const t = useTranslations(currentLang);
         <h3 class="text-base font-bold mb-2" style="color: var(--theme-text);">{t('cap.certificationspage.badge41')}</h3>
         <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded mb-3" style="background-color: #f59e0b12; color: #f59e0b;">{t('cap.certificationspage.badge42')}</span>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Any process variance — whether identified internally or during registrar audits — triggers our formal Corrective and Preventive Action (CAPA) workflow. Root-cause analysis (5-Why, Fishbone, FMEA) is applied to determine systemic causes, and engineering protocols, toolpath strategies, or inspection plans are updated accordingly.
+          {t('cap.certificationspage.s3.phase3_desc')}
         </p>
       </div>
     </div>
@@ -302,13 +302,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
         </svg>
-        Compliance FAQ
+        {t('cap.certificationspage.s4.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Procurement Compliance <span class="gradient-text-accent">{t('cap.certificationspage.badge43')}</span>
+        {t('cap.certificationspage.s4.title_prefix')} <span class="gradient-text-accent">{t('cap.certificationspage.badge43')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Answers to the most frequent compliance and certification questions from procurement and supplier quality engineers.
+        {t('cap.certificationspage.s4.subtitle')}
       </p>
     </div>
 
@@ -316,38 +316,38 @@ const t = useTranslations(currentLang);
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.certificationspage.badge44')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          BOZE CNC operates under three internationally recognized quality management certifications: <strong style="color: var(--theme-text);">{t('cap.certificationspage.text27_as9100_rev')}</strong> (aerospace and defense), <strong style="color: var(--theme-text);">{t('cap.certificationspage.badge12')}</strong> (medical devices), and <strong style="color: var(--theme-text);">{t('cap.certificationspage.badge20')}</strong> (general manufacturing). Each certification is maintained through annual surveillance audits conducted by accredited third-party registrars. Our AS9100D scope specifically covers precision 5-axis CNC machining of titanium alloys for aerospace structural and propulsion applications.
+          {t('cap.certificationspage.s4.a0')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.certificationspage.badge48')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Yes. Certified copies of our current AS9100D, ISO 13485:2016, and ISO 9001:2015 certificates are available upon request. Each certificate includes the official scope statement, registrar accreditation details, issue and expiry dates, and the unique certificate number. We can provide these as part of your supplier qualification package or directly to your procurement portal. Contact our quality management team via our RFQ page to request current certificates.
+          {t('cap.certificationspage.s4.a1')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.certificationspage.badge49')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our quality management system is audited by internationally recognized registrars including <strong style="color: var(--theme-text);">SGS</strong>, <strong style="color: var(--theme-text);">{t('cap.certificationspage.badge50')}</strong>, and <strong style="color: var(--theme-text);">BSI</strong>. We undergo <strong style="color: var(--theme-text);">{t('cap.certificationspage.badge51')}</strong> for each certification, with full re-certification audits every three years. In addition, our internal audit team conducts comprehensive cross-departmental reviews on a quarterly basis, ensuring continuous compliance between registrar visits. All audit findings — including observations, non-conformities, and corrective actions — are documented and traceable.
+          {t('cap.certificationspage.s4.a2')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.certificationspage.badge52')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Yes. AS9100 Rev D is the aerospace, space, and defense industry-specific quality management standard. Our certification scope explicitly covers the manufacture of precision machined components for aerospace structural assemblies, propulsion systems, and defense hardware. The standard incorporates all ISO 9001:2015 requirements plus additional aerospace-specific provisions including configuration management, counterfeit part prevention (AS6174/AS5553), first-article inspection (AS9102), and special process control. For defense contracts requiring <strong style="color: var(--theme-text);">{t('cap.certificationspage.badge53')}</strong> compliance, we can additionally provide certifified material sourcing from qualifying countries.
+          {t('cap.certificationspage.s4.a3')}
         </p>
       </div>
     </div>
 
     <div class="text-center mt-12">
       <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Request our current certification documents for your supplier qualification process.
+        {t('cap.certificationspage.s4.cta')}
       </p>
       <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105" style="background-color: var(--theme-primary); color: var(--theme-bg);">
-        Request Certification Documents
+        {t('cap.certificationspage.s4.cta_btn')}
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>

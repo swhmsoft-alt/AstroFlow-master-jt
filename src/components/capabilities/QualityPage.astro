@@ -250,7 +250,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #3b82f612; color: #3b82f6;">{t('cap.qualitypage.badge31')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Every incoming titanium lot is quarantined upon arrival until Positive Material Identification (PMI) using our XRF spectrometer confirms the chemical composition matches the mill test reports. Physical verification of <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge32')}</strong> is recorded against the material heat number. Lots that fail PMI or lack certified MTRs are rejected and returned to the supplier. Only PMI-verified, MTR-matched material is released to inventory.
+              {t('page_quality.workflow.step1_desc')}
             </p>
           </div>
         </div>
@@ -268,7 +268,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #10b98112; color: #10b981;">{t('cap.qualitypage.badge34')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Before mass-producing any production batch, the first machined part undergoes 100% layout inspection on our CMM. Full <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge35')}</strong> is generated — ballooning every dimension, recording actual vs. nominal values, and logging GD&amp;T callout verification per ASME Y14.5. The FAIR is reviewed and signed off by senior lead inspectors before production release is authorized.
+              {t('page_quality.workflow.step2_desc')}
             </p>
           </div>
         </div>
@@ -286,7 +286,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #f59e0b12; color: #f59e0b;">{t('cap.qualitypage.badge37')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Machinists utilize calibrated on-machine probing and <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge38')}</strong> software to monitor real-time tool wear trends, spindle load variations, and dimensional drift. Control charts (X-bar and R) are maintained for critical features. If SPC signals indicate a process shift approaching specification limits, corrective action is triggered immediately — stopping variability before non-conformance occurs.
+              {t('page_quality.workflow.step3_desc')}
             </p>
           </div>
         </div>
@@ -304,7 +304,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.qualitypage.badge40')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Finished lots undergo random or 100% dimensional gating using programmatic CMM cycles. Components are packed with comprehensive quality dossiers containing <strong style="color: var(--theme-text);">Mill Test Reports (MTRs)</strong>, <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge41')}</strong>, surface roughness certificates, and <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge42')}</strong>. All quality records are archived and retrievable for the life of the product.
+              {t('page_quality.workflow.step4_desc')}
             </p>
           </div>
         </div>
@@ -325,13 +325,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
         </svg>
-        Quality Deliverables
+        {t('page_quality.docmatrix.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Deliverable <span class="gradient-text-accent">{t('cap.qualitypage.badge43')}</span>
+        {t('page_quality.docmatrix.title')} <span class="gradient-text-accent">{t('page_quality.docmatrix.title_highlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Every shipment includes a comprehensive quality dossier. Below is the complete set of compliance documentation provided with each order.
+        {t('page_quality.docmatrix.subtitle')}
       </p>
     </div>
 
@@ -341,19 +341,19 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Compliance Document
+              {t('page_quality.docmatrix.col1')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              What It Verifies
+              {t('page_quality.docmatrix.col2')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Applicable Standard / Regulation
+              {t('page_quality.docmatrix.col3')}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Mill Test Report (MTR)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('page_quality.docmatrix.row1')}</td>
             <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.qualitypage.text44_chemical_composition_physical')}</td>
             <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.qualitypage.text45_10204_astm_specifications')}</td>
           </tr>
@@ -415,40 +415,40 @@ const t = useTranslations(currentLang);
       <!-- FAQ 1: Quality certifications held -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          Which quality certifications does BOZE CNC hold for titanium manufacturing?
+          {t('page_quality.faq.q1')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          BOZE CNC operates under a multi-standard quality framework aligned with <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge2')}</strong> (aerospace quality management), <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge5')}</strong> (medical device quality management), and <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge7')}</strong> (general quality management). Our processes are designed to meet the stringent requirements of aerospace, medical, defense, and industrial applications. We maintain Nadcap-accredited NDT capabilities and follow AS9102 first-article inspection protocols for all aerospace programs.
+          {t('page_quality.faq.a1')}
         </p>
       </div>
 
       <!-- FAQ 2: Material traceability -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          How does BOZE ensure full material traceability for titanium components?
+          {t('page_quality.faq.q2')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Full chain-of-custody traceability is maintained from mill to finished component. Every incoming titanium lot undergoes <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge60')}</strong> via XRF spectrometry, cross-referenced against <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge61')}</strong>. Each part is assigned a unique lot number in our ERP system that links to the original heat number, MTR, CMM inspection results, and production traveler. This provides complete forward and backward traceability — from finished part back to the original mill batch.
+          {t('page_quality.faq.a2')}
         </p>
       </div>
 
       <!-- FAQ 3: CMM inspection process -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          What inspection equipment is used for dimensional validation of titanium parts?
+          {t('page_quality.faq.q3')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Our in-house metrology lab is equipped with a <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge62')}</strong> (bridge-type, 1.9 μm volumetric accuracy), OGP SmartScope optical comparators, and Mitutoyo SJ-410 surface roughness testers. For material verification, we use a SPECTROMAXx Optical Emission Spectrometer for rapid PMI analysis. NDT capabilities include fluorescent dye penetrant (FPI) and ultrasonic (UT) testing. All inspection equipment is calibrated per <strong style="color: var(--theme-text);">{t('cap.qualitypage.badge63')}</strong> traceable standards with calibration certificates available on request.
+          {t('page_quality.faq.a3')}
         </p>
       </div>
 
       <!-- FAQ 4: Quality documents with shipments -->
       <div class="rounded-xl p-6 transition-all duration-300" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">
-          What quality documentation is included with each shipment?
+          {t('page_quality.faq.q4')}
         </h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Each shipment includes a comprehensive quality dossier containing: <strong style="color: var(--theme-text);">(1)</strong> Certified Mill Test Reports (MTRs) per EN 10204 Type 3.1 documenting raw material composition and mechanical properties; <strong style="color: var(--theme-text);">(2)</strong> Certificate of Conformance (CoC) confirming all manufacturing and inspection processes meet customer specifications; <strong style="color: var(--theme-text);">(3)</strong> CMM dimensional inspection reports with actual vs. nominal measurements per ASME Y14.5 GD&amp;T; and <strong style="color: var(--theme-text);">(4)</strong> Surface roughness certification where required. AS9102-compliant First Article Inspection Reports (FAIR) are provided for aerospace programs upon request.
+          {t('page_quality.faq.a4')}
         </p>
       </div>
 

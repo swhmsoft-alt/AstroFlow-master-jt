@@ -26,13 +26,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-2.207a4.5 4.5 0 00-6.364 0l-4.5 4.5a4.5 4.5 0 006.364 6.364l1.757-1.757" />
         </svg>
-        Digital Chain of Custody
+        {t('cap.traceabilitypage.s1.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        The Unbroken Chain: <span class="gradient-text-accent">{t('cap.traceabilitypage.badge0')}</span>
+        {t('cap.traceabilitypage.s1.title_prefix')} <span class="gradient-text-accent">{t('cap.traceabilitypage.badge0')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        From raw titanium ingot heat lots to permanently marked finished components — every transfer, test, and transformation is digitally recorded and cross-referenced for complete forward and backward traceability.
+        {t('cap.traceabilitypage.s1.subtitle')}
       </p>
     </div>
 
@@ -50,7 +50,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #3b82f612; color: #3b82f6;">{t('cap.traceabilitypage.badge2')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Every incoming titanium bar, plate, or sheet is placed under quarantine upon arrival. The certified <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge3')}</strong> is digitally cross-checked against the physical material heat number stamped on each piece. A unique internal batch number is generated in our ERP system and permanently linked to the mill's native heat number — creating the first link in the chain of custody.
+              {t('cap.traceabilitypage.s1.step1.desc')}
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #10b98112; color: #10b981;">{t('cap.traceabilitypage.badge5')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Once released from quarantine, raw stock is physically <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge6')}</strong> with grade identification and color-coded by titanium grade (Grade 5 Ti-6Al-4V, Grade 23 ELI, Grade 2 CP) in dedicated inventory zones. Handheld XRF spectrometers perform <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge7')}</strong> to confirm chemical composition before any stock is released to the production floor. Material lots are physically segregated to prevent any cross-contamination between grades.
+              {t('cap.traceabilitypage.s1.step2.desc')}
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: #f59e0b12; color: #f59e0b;">{t('cap.traceabilitypage.badge9')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              As material moves to multi-axis CNC machining cells, the internal batch ID is <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge10')}</strong> to the ERP production traveler job routing. Each operation — milling, turning, wire EDM, surface treatment — records the machine ID, operator, and timestamp against the same batch number. Scrap and raw metal turnings are segregated by grade in dedicated containers to prevent cross-contamination. The system supports full forward traceability (from heat to finished part) and backward traceability (from finished part back to heat).
+              {t('cap.traceabilitypage.s1.step3.desc')}
             </p>
           </div>
         </div>
@@ -104,7 +104,7 @@ const t = useTranslations(currentLang);
               <span class="text-xs font-semibold px-2 py-0.5 rounded" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{t('cap.traceabilitypage.badge12')}</span>
             </div>
             <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Finished parts undergo permanent <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge13')}</strong> per blueprint requirements — serial numbers, heat IDs, date codes, or QR codes (Data Matrix per MIL-STD-130 / UDI compliance). The complete quality dossier — including MTR, CMM report, FAIR, surface roughness certificate, and CoC — is digitally archived under the part serial number and heat lot identifier. All records are retained for a <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge47')}</strong> and retrievable within 24 hours for customer or regulatory audit support.
+              {t('cap.traceabilitypage.s1.step4.desc')}
             </p>
           </div>
         </div>
@@ -125,13 +125,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Compliance &amp; Regulatory Alignment
+        {t('cap.traceabilitypage.s2.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Global Material <span class="gradient-text-accent">{t('cap.traceabilitypage.badge15')}</span>
+        {t('cap.traceabilitypage.s2.title_prefix')} <span class="gradient-text-accent">{t('cap.traceabilitypage.badge15')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Every titanium component is manufactured in full alignment with international defense, aerospace, medical, and environmental compliance frameworks.
+        {t('cap.traceabilitypage.s2.subtitle')}
       </p>
     </div>
 
@@ -141,13 +141,13 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Compliance Framework
+              {t('cap.traceabilitypage.s2.col1_head')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Strict Operational Requirement
+              {t('cap.traceabilitypage.s2.col2_head')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              BOZE Implementation Status
+              {t('cap.traceabilitypage.s2.col3_head')}
             </th>
           </tr>
         </thead>
@@ -162,15 +162,15 @@ const t = useTranslations(currentLang);
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.traceabilitypage.text20_10204_type')}</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Material certificate issued by the mill showing actual chemical composition and physical tensile test results — not generic compliance statements.</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.traceabilitypage.s2.row2.req')}</td>
             <td class="px-5 py-5 text-sm">
-              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #3b82f615; color: #3b82f6; border: 1px solid #3b82f625;">Mandatory Standard</span>
+              <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #3b82f615; color: #3b82f6; border: 1px solid #3b82f625;">{t('cap.traceabilitypage.s2.row2.status')}</span>
               <span class="block mt-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.traceabilitypage.text21_provided_100_titanium')}</span>
             </td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.traceabilitypage.text22_as9100d_clause')}</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Maintains explicit identification and status indicators throughout total production cycles — identification, status, traceability per AS9100D risk management.</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.traceabilitypage.s2.row3.req')}</td>
             <td class="px-5 py-5 text-sm">
               <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-md" style="background-color: #f59e0b15; color: #f59e0b; border: 1px solid #f59e0b25;">{t('cap.traceabilitypage.text23_fully_audited')}</span>
               <span class="block mt-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.traceabilitypage.text24_integrated_within_live')}</span>
@@ -205,13 +205,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Long-Term Data Archival
+        {t('cap.traceabilitypage.s3.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Post-Project Accountability &amp; <span class="gradient-text-accent">Long-Term Data Archival</span>
+        {t('cap.traceabilitypage.s3.title_prefix')} <span class="gradient-text-accent">{t('cap.traceabilitypage.s3.badge')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Your quality documentation doesn't expire after shipment. We maintain comprehensive digital archives to support regulatory audits, downstream investigations, and procurement compliance reviews — often years after project completion.
+        {t('cap.traceabilitypage.s3.subtitle')}
       </p>
     </div>
 
@@ -225,7 +225,7 @@ const t = useTranslations(currentLang);
         </div>
         <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('cap.traceabilitypage.text29_year_minimum_digital')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          All quality dossiers — including <strong style="color: var(--theme-text);">Mill Test Reports (MTRs)</strong>, CMM dimensional reports, First Article Inspection Reports (FAIR), surface roughness certificates, and Certificates of Conformance (CoC) — are digitally archived on redundant servers with off-site backup for a <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge30')}</strong>. Records are indexed by part number, heat number, customer PO, and date range for rapid retrieval.
+          {t('cap.traceabilitypage.s3.card1.desc')}
         </p>
       </div>
 
@@ -238,7 +238,7 @@ const t = useTranslations(currentLang);
         </div>
         <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('cap.traceabilitypage.text31_hour_record_retrieval')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          When your quality or procurement team faces an <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge48')}</strong>, <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge49')}</strong>, or downstream supplier investigation, we can retrieve and deliver the complete quality dossier for any historical order within <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge50')}</strong>. Our document control team is trained to support auditor requests, providing certified copies of original MTRs, inspection reports, and process certifications.
+          {t('cap.traceabilitypage.s3.card2.desc')}
         </p>
       </div>
     </div>
@@ -247,7 +247,7 @@ const t = useTranslations(currentLang);
     <div class="max-w-3xl mx-auto mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
       <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <div class="text-2xl font-bold gradient-text-accent mb-1">{t('cap.traceabilitypage.badge35')}</div>
-        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Minimum quality record retention</p>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{t('cap.traceabilitypage.s3.badge35_label')}</p>
       </div>
       <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <div class="text-2xl font-bold gradient-text-accent mb-1">{t('cap.traceabilitypage.badge36')}</div>
@@ -272,13 +272,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
         </svg>
-        Traceability &amp; Compliance FAQ
+        {t('cap.traceabilitypage.s4.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Procurement Compliance <span class="gradient-text-accent">{t('cap.traceabilitypage.badge40')}</span>
+        {t('cap.traceabilitypage.s4.title_prefix')} <span class="gradient-text-accent">{t('cap.traceabilitypage.badge40')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Answers to the most critical material traceability and compliance questions from procurement and regulatory teams.
+        {t('cap.traceabilitypage.s4.subtitle')}
       </p>
     </div>
 
@@ -286,38 +286,38 @@ const t = useTranslations(currentLang);
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.traceabilitypage.badge41')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Every shipment includes a comprehensive quality dossier containing: <strong style="color: var(--theme-text);">(1)</strong> Certified Mill Test Report (MTR) per EN 10204 Type 3.1 documenting chemical composition, mechanical properties, and heat treatment parameters; <strong style="color: var(--theme-text);">(2)</strong> Certificate of Conformance (CoC) confirming all manufacturing and inspection processes meet specifications; <strong style="color: var(--theme-text);">(3)</strong> Heat number and batch lot traceability linking the finished component back to the original mill ingot; and <strong style="color: var(--theme-text);">(4)</strong> CMM dimensional inspection reports with GD&amp;T verification. Additional documentation — including DFARS compliance certificates, RoHS/REACH declarations, and AS9102 FAIR — is available upon request.
+          {t('cap.traceabilitypage.s4.a1')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.traceabilitypage.badge42')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Yes. BOZE CNC is fully capable of supporting <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.text16_dfars_252_225')}</strong> compliant production. Upon procurement request, we can source titanium that is melted in the United States or other qualifying countries (Australia, Canada, Japan, Sweden, Belgium, United Kingdom). The DFARS compliance certificate and corresponding mill origin documentation are provided as part of the quality dossier. We recommend specifying DFARS requirements at the time of RFQ to ensure appropriate material sourcing and segregation.
+          {t('cap.traceabilitypage.s4.a2')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.traceabilitypage.badge44')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          We employ <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge45')}</strong> for permanent part identification — including serial numbers, heat lot IDs, date codes, and Data Matrix (QR) codes. Laser marking is preferred over inkjet or chemical etching for its permanence, readability through surface treatments (anodizing, passivation), and compliance with <strong style="color: var(--theme-text);">MIL-STD-130</strong> (DoD item identification) and <strong style="color: var(--theme-text);">UDI</strong> (Unique Device Identification for medical devices). Marking parameters are validated for each titanium grade to ensure legibility without compromising fatigue performance or corrosion resistance.
+          {t('cap.traceabilitypage.s4.a3')}
         </p>
       </div>
 
       <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{t('cap.traceabilitypage.badge46')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          All quality records are retained for a <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge14')}</strong> from the date of shipment. Records are stored on redundant digital servers with off-site backup and are indexed by part number, heat number, customer purchase order, and date range. In the event of an <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge32')}</strong>, <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge33')}</strong>, or customer quality investigation, our document control team can retrieve and deliver the complete quality dossier within <strong style="color: var(--theme-text);">{t('cap.traceabilitypage.badge34')}</strong>. Certified copies of original MTRs and inspection reports are available upon request.
+          {t('cap.traceabilitypage.s4.a4')}
         </p>
       </div>
     </div>
 
     <div class="text-center mt-12">
       <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Have specific compliance requirements for your titanium program?
+        {t('cap.traceabilitypage.s4.cta')}
       </p>
       <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105" style="background-color: var(--theme-primary); color: var(--theme-bg);">
-        Submit Compliance Requirements
+        {t('cap.traceabilitypage.s4.cta_btn')}
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>

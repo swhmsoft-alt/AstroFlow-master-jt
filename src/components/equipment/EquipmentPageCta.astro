@@ -11,12 +11,11 @@ export interface Props {
 const { equipment, equipmentKey } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const cp = `equipment.${equipmentKey}.cta`;
 const _t = (key: string, fallback: string) => { const v = t(key); return v !== key ? v : fallback; };
-const ctaTitle = _t(`${cp}.title`, `Need a ${equipment.name} for Your Project?`);
-const ctaDesc = _t(`${cp}.description`, `Contact our engineering team today for a free consultation and competitive quote.`);
-const ctaBtnQuote = _t(`${cp}.btnQuote`, 'Request Quote');
-const ctaBtnCap = _t(`${cp}.btnCapabilities`, 'View Capabilities');
+const ctaTitle = _t('equipment.cta.title', `Need a ${equipment.name} for Your Project?`).replace('{name}', equipment.name);
+const ctaDesc = _t('equipment.cta.description', `Contact our engineering team today for a free consultation and competitive quote.`);
+const ctaBtnQuote = _t('equipment.cta.btnQuote', 'Request Quote');
+const ctaBtnCap = _t('equipment.cta.btnCapabilities', 'View Capabilities');
 ---
 
 <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);">

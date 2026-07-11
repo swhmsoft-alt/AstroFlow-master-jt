@@ -26,13 +26,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
         </svg>
-        Production Capacity Dashboard
+        {t('cap.cap.s1.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Capacity &amp; Throughput <span class="gradient-text-accent">Metrics</span>
+        {t('cap.cap.s1.title')} <span class="gradient-text-accent">{t('cap.cap.s1.highlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Quantitative production capacity indicators — verified through ERP-driven data collection and presented for procurement engineering evaluation.
+        {t('cap.cap.s1.sub')}
       </p>
     </div>
 
@@ -50,10 +50,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
           </svg>
         </div>
-        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">45,000+</div>
-        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">Parts / Year</div>
+        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">{t('cap.cap.m1.val')}</div>
+        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">{t('cap.cap.m1.lbl')}</div>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Total precision titanium component throughput across all production tiers �?from prototype to high-volume serial production.
+          {t('cap.cap.m1.desc')}
         </p>
       </div>
 
@@ -69,10 +69,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">8,500+</div>
-        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">Spindle Hours / Month</div>
+        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">{t('cap.cap.m2.val')}</div>
+        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">{t('cap.cap.m2.lbl')}</div>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Aggregated multi-axis CNC machining operational capacity per month. Includes 3-axis, 5-axis milling, Swiss turning, and wire EDM spindle time.
+          {t('cap.cap.m2.desc')}
         </p>
       </div>
 
@@ -88,10 +88,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.007-1.875 2.25-1.875s2.25.84 2.25 1.875c0 .369-.128.713-.349 1.003-.215.283-.401.604-.401.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.959.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
           </svg>
         </div>
-        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">35+</div>
-        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">Advanced CNC Units</div>
+        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">{t('cap.cap.m3.val')}</div>
+        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">{t('cap.cap.m3.lbl')}</div>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Fleet specialized exclusively in reactive and hard metal machining — Ti-6Al-4V, Grade 2, Grade 23, and nickel-cobalt superalloys.
+          {t('cap.cap.m3.desc')}
         </p>
       </div>
 
@@ -107,10 +107,10 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z" />
           </svg>
         </div>
-        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">24/7</div>
-        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">"Lights-Out" Shift</div>
+        <div class="text-3xl font-bold mb-1 gradient-text-accent" style="font-variant-numeric: tabular-nums;">{t('cap.cap.m4.val')}</div>
+        <div class="text-sm font-semibold mb-2" style="color: var(--theme-text);">{t('cap.cap.m4.lbl')}</div>
         <p class="text-xs leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-          Continuous automated pallet-changing operation with robotic workpiece loading, minimizing human downtime and maximizing OEE.
+          {t('cap.cap.m4.desc')}
         </p>
       </div>
     </div>
@@ -129,13 +129,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-1.5A1.125 1.125 0 0118 18.375M20.625 4.5H3.375m17.25 0c.621 0 1.125.504 1.125 1.125M20.625 4.5h-1.5C18.504 4.5 18 5.004 18 5.625m3.75 0v1.5c0 .621-.504 1.125-1.125 1.125M3.375 4.5c-.621 0-1.125.504-1.125 1.125M3.375 4.5h1.5C5.496 4.5 6 5.004 6 5.625m-3.75 0v1.5c0 .621.504 1.125 1.125 1.125m0 0h1.5m-1.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m1.5-3.75C5.496 8.25 6 7.746 6 7.125v-1.5M4.875 8.25C5.496 8.25 6 8.754 6 9.375v1.5m0-5.25v5.25m0-5.25C6 5.004 6.504 4.5 7.125 4.5h9.75c.621 0 1.125.504 1.125 1.125m1.125 2.625h1.5m-1.5 0A1.125 1.125 0 0118 7.125v-1.5m1.125 2.625c-.621 0-1.125.504-1.125 1.125v1.5m2.625-2.625c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125M18 5.625v5.25M7.125 12h9.75m-9.75 0A1.125 1.125 0 016 10.875M7.125 12C6.504 12 6 12.504 6 13.125m0-2.25C6 11.496 5.496 12 4.875 12M18 10.875c0 .621-.504 1.125-1.125 1.125M18 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m-12 5.25v-5.25m0 5.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125m-12 0v-1.5c0-.621-.504-1.125-1.125-1.125M18 18.375v-5.25m0 5.25v-1.5c0-.621.504-1.125 1.125-1.125M18 13.125v1.5c0 .621.504 1.125 1.125 1.125M18 13.125c0-.621.504-1.125 1.125-1.125M6 13.125v1.5c0 .621-.504 1.125-1.125 1.125" />
         </svg>
-        Production Scaling Matrix
+        {t('cap.cap.mat.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        From Prototype to <span class="gradient-text-accent">Mass Production</span>
+        {t('cap.cap.mat.title')} <span class="gradient-text-accent">{t('cap.cap.mat.highlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Three distinct production tiers engineered to match your program maturity — each with optimized workflow, dedicated equipment strategy, and predictable lead times.
+        {t('cap.cap.mat.sub')}
       </p>
     </div>
 
@@ -145,37 +145,37 @@ const t = useTranslations(currentLang);
         <thead>
           <tr>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Production Tier
+              {t('cap.cap.mat.h1')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Typical Volume (Units)
+              {t('cap.cap.mat.h2')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Primary Technical Focus
+              {t('cap.cap.mat.h3')}
             </th>
             <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">
-              Standard Lead Time
+              {t('cap.cap.mat.h4')}
             </th>
           </tr>
         </thead>
         <tbody>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Prototyping &amp; R&amp;D</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">1 – 10 pieces</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Rapid CAD/CAM deployment, toolpath validation, geometric feasibility, material grade confirmation.</td>
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">3 – 7 Working Days</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.cap.mr1.t')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.cap.mr1.v')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.cap.mr1.f')}</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.cap.mr1.l')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Low-Volume High-Mix (LVHM)</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">11 – 500 pieces</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Fixture optimization, cycle-time stabilization, early-stage CMM reporting, process qualification.</td>
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">2 – 3 Weeks</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.cap.mr2.t')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.cap.mr2.v')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.cap.mr2.f')}</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.cap.mr2.l')}</td>
           </tr>
           <tr class="transition-colors hover:opacity-80">
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">High-Volume Mass Production</td>
-            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">500 – 5,000+ pieces</td>
-            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Automated Swiss turning, multi-pallet continuous milling, rigid SPC control, milestone delivery.</td>
-            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">4 – 6 Weeks (Milestone Delivery Available)</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.cap.mr3.t')}</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">{t('cap.cap.mr3.v')}</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{t('cap.cap.mr3.f')}</td>
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">{t('cap.cap.mr3.l')}</td>
           </tr>
         </tbody>
       </table>
@@ -183,7 +183,7 @@ const t = useTranslations(currentLang);
 
     <!-- Scaling note -->
     <div class="max-w-6xl mx-auto mt-6 p-4 rounded-lg text-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-text);">Scalability Note:</span> Production tiers are not fixed boundaries. Programs that begin as prototype runs can seamlessly transition into LVHM and subsequently full mass production under a single quality plan without re-qualification.
+    <span class="font-semibold" style="color: var(--theme-text);">Scalability Note:</span> {t('cap.cap.mat.note')}
     </div>
   </div>
 </section>
@@ -204,13 +204,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
         </svg>
-        Supply Chain Resilience
+        {t('cap.cap.res.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Production Resilience &amp; <span class="gradient-text-accent">Inventory Redundancy</span>
+        {t('cap.cap.res.title')} <span class="gradient-text-accent">{t('cap.cap.res.highlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Multi-layered risk mitigation strategies designed to guarantee on-time delivery regardless of raw material volatility, equipment anomalies, or demand surges.
+        {t('cap.cap.res.sub')}
       </p>
     </div>
 
@@ -222,9 +222,9 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Raw Material Security &amp; Strategic Stock</h3>
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('cap.cap.res.mat_t')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          {t('capabilities.capacity.faq.a4')}
+          {t('cap.cap.res.mat_d')}
         </p>
       </div>
 
@@ -235,9 +235,9 @@ const t = useTranslations(currentLang);
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" />
           </svg>
         </div>
-        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Machinery Redundancy &amp; Zero-Downtime Switchover</h3>
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('cap.cap.res.mach_t')}</h3>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Every critical machine specification (5-axis milling, Swiss turning, wire EDM) is backed by <strong style="color: var(--theme-text);">redundant sister machines</strong> within our fleet. In the event of an unexpected tool collision, spindle fault, or mechanical failure, production programs are transferred to an identical backup machine within <strong style="color: var(--theme-text);">2 hours</strong> — zero impact to the critical delivery path. CAM programs, fixture offsets, and inspection protocols are pre-loaded and validated across multiple machines as standard practice.
+          {t('cap.cap.res.mach_d')}
         </p>
       </div>
     </div>
@@ -272,13 +272,13 @@ const t = useTranslations(currentLang);
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
         </svg>
-        Capacity &amp; Delivery FAQ
+        {t('capabilities.capacity.faq.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        Procurement-Focused <span class="gradient-text-accent">Q&amp;A</span>
+        {t('capabilities.capacity.faq.title')} <span class="gradient-text-accent">{t('capabilities.capacity.faq.titleHighlight')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        Answers to the most common procurement and supply chain questions about scaling titanium CNC production.
+        {t('capabilities.capacity.faq.subtitle')}
       </p>
     </div>
 
@@ -326,7 +326,7 @@ const t = useTranslations(currentLang);
     <!-- CTA -->
     <div class="text-center mt-12">
       <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-        Ready to discuss your production volume requirements?
+        {t('cap.cap.cta.t')}
       </p>
       <a
         href="https://www.bozemetal.com/contact"
@@ -335,7 +335,7 @@ const t = useTranslations(currentLang);
         class="inline-flex items-center px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105"
         style="background-color: var(--theme-primary); color: var(--theme-bg);"
       >
-        Request Capacity Assessment
+        {t('cap.cap.cta.btn')}
         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
         </svg>
