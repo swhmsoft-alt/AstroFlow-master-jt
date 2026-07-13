@@ -1,0 +1,170 @@
+---
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface TrustItem {
+  label: string;
+  value: string;
+  iconPath: string;
+}
+
+const capabilityItems: TrustItem[] = [
+  {
+    label: t('home.japanTrust.machinableSize'),
+    value: t('home.japanTrust.machinableSizeVal'),
+    iconPath: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+  },
+  {
+    label: t('home.japanTrust.materials'),
+    value: t('home.japanTrust.materialsVal'),
+    iconPath: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+  },
+  {
+    label: t('home.japanTrust.monthlyCapacity'),
+    value: t('home.japanTrust.monthlyCapacityVal'),
+    iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+  },
+  {
+    label: t('home.japanTrust.cpk'),
+    value: t('home.japanTrust.cpkVal'),
+    iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+  },
+  {
+    label: t('home.japanTrust.leadTime'),
+    value: t('home.japanTrust.leadTimeVal'),
+    iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    label: t('home.japanTrust.minLot'),
+    value: t('home.japanTrust.minLotVal'),
+    iconPath: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+  },
+];
+
+const qualityItems: TrustItem[] = [
+  {
+    label: t('home.japanTrust.fai'),
+    value: t('home.japanTrust.faiVal'),
+    iconPath: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+  },
+  {
+    label: t('home.japanTrust.ppap'),
+    value: t('home.japanTrust.ppapVal'),
+    iconPath: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+  },
+  {
+    label: t('home.japanTrust.dfm'),
+    value: t('home.japanTrust.dfmVal'),
+    iconPath: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+  },
+  {
+    label: t('home.japanTrust.nda'),
+    value: t('home.japanTrust.ndaVal'),
+    iconPath: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+  },
+  {
+    label: t('home.japanTrust.sample'),
+    value: t('home.japanTrust.sampleVal'),
+    iconPath: "M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+  <!-- Subtle grid pattern -->
+  <div class="absolute inset-0 opacity-[0.015]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(0deg, var(--theme-primary), var(--theme-primary) 1px, transparent 1px, transparent 40px), linear-gradient(90deg, var(--theme-primary), var(--theme-primary) 1px, transparent 1px, transparent 40px);"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+        {t('home.japanTrust.badge')}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('home.japanTrust.title')} <span class="gradient-text-accent">{t('home.japanTrust.titleHighlight')}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        {t('home.japanTrust.subtitle')}
+      </p>
+    </div>
+
+    <!-- Two-column grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+      <!-- Left Column: Manufacturing Capabilities -->
+      <div class="rounded-xl p-8 border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-3" style="color: var(--theme-text);">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          {t('home.japanTrust.group1Title')}
+        </h3>
+        <div class="space-y-4">
+          {capabilityItems.map((item) => (
+            <div class="flex items-start gap-4 p-4 rounded-lg transition-all" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, transparent);" onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg))'" onmouseout="this.style.backgroundColor='color-mix(in srgb, var(--theme-bg) 50%, transparent)'">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+                <svg class="w-5 h-5" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.iconPath} />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-sm font-medium mb-0.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{item.label}</div>
+                <div class="text-base font-semibold" style="color: var(--theme-text);">{item.value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Quality Assurance & RFQ -->
+      <div class="rounded-xl p-8 border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <h3 class="text-xl font-bold mb-6 flex items-center gap-3" style="color: var(--theme-text);">
+          <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          {t('home.japanTrust.group2Title')}
+        </h3>
+        <div class="space-y-4">
+          {qualityItems.map((item) => (
+            <div class="flex items-start gap-4 p-4 rounded-lg transition-all" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, transparent);" onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg))'" onmouseout="this.style.backgroundColor='color-mix(in srgb, var(--theme-bg) 50%, transparent)'">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
+                <svg class="w-5 h-5" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.iconPath} />
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-sm font-medium mb-0.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{item.label}</div>
+                <div class="text-base font-semibold" style="color: var(--theme-text);">{item.value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mt-8 text-center">
+          <a
+            href="https://www.bozemetal.com/contact"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg transition-all group"
+            style="background-color: var(--theme-primary); color: var(--theme-text);"
+            onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 85%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
+            onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow='none'"
+          >
+            {t('home.japanTrust.cta')}
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
