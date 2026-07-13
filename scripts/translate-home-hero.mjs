@@ -1,90 +1,75 @@
 /**
- * Translate new Home Hero texts from English to 9 languages using DeepSeek API.
- * Updates home.mainHero.title and home.mainHero.subtitle in each {lang}.json.
+ * translate-home-hero.mjs
+ * Translate 3 homepage hero keys from English to Russian and Arabic via DeepSeek.
+ * Only adds hero.home.* keys, does NOT modify home.hero.* keys.
+ *
+ * Usage: node scripts/translate-home-hero.mjs
  */
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const API_KEY = 'sk-b187f5cf84c74f9aac8bd04b7fd0d2f8';
+const API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const TRANSLATIONS_DIR = path.resolve(__dirname, '../src/i18n/translations');
-
-const DEEPSEEK_API_KEY = 'sk-b187f5cf84c74f9aac8bd04b7fd0d2f8';
-const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
-
-// New English texts
-const EN_H1 = 'End-to-End Titanium Manufacturing Solutions';
-const EN_SUBTITLE = 'From titanium additive manufacturing and precision CNC machining to fabrication, finishing, and assembly, we provide complete one-stop solutions for custom titanium parts and components. Built on AS9100-compliant quality systems, we support projects from prototype development to full-scale production.';
-
-// Languages to update (excluding en which is already updated)
-const TARGET_LANGS = [
-  { code: 'de', name: 'German' },
-  { code: 'ja', name: 'Japanese' },
-  { code: 'fr', name: 'French' },
-  { code: 'es', name: 'Spanish' },
-  { code: 'pt', name: 'Portuguese' },
-  { code: 'it', name: 'Italian' },
-  { code: 'ko', name: 'Korean' },
-  { code: 'nl', name: 'Dutch' },
-  { code: 'pl', name: 'Polish' },
-];
-
-// 1. Update en.json first
-const enPath = path.join(TRANSLATIONS_DIR, 'en.json');
-const en = JSON.parse(fs.readFileSync(enPath, 'utf-8'));
-en['home.mainHero.title'] = EN_H1;
-en['home.mainHero.titleHighlight'] = ''; // Clear old highlight (now merged into title)
-en['home.mainHero.subtitle'] = EN_SUBTITLE;
-fs.writeFileSync(enPath, JSON.stringify(en, null, 2) + '\n');
-console.log('✅ Updated en.json');
-
-// 2. Translate for each target language
-async function translate(text, sourceLang, targetLang) {
-  const response = await fetch(DEEPSEEK_API_URL, {
+async function translate(texts, srcLang, tgtLang, tgtName) {
+  const src = {};
+  texts.forEach((t, i) => { src[`text_${i}`] = t; });
+  const resp = await fetch(API_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-    },
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${API_KEY}` },
     body: JSON.stringify({
       model: 'deepseek-chat',
       messages: [
-        { role: 'system', content: `You are a professional translator. Translate the following text from ${sourceLang} to ${targetLang}. Return ONLY the translated text, nothing else. No explanations.` },
-        { role: 'user', content: text },
+        { role: 'system', content: `Translate from ${srcLang} to ${tgtLang}. Return ONLY valid JSON. No markdown. No extra text.` },
+        { role: 'user', content: JSON.stringify(src, null, 2) },
       ],
-      temperature: 0.3,
+      temperature: 0.1,
+      max_tokens: 4096,
     }),
   });
-  const data = await response.json();
-  return data.choices[0].message.content.trim();
+  const json = await resp.json();
+  let txt = json.choices[0].message.content;
+  const m = txt.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (m) txt = m[1];
+  return JSON.parse(txt.trim());
 }
+
+const dir = 'src/i18n/translations';
+
+const HERO_KEYS = {
+  'hero.home.h1': 'End-to-End Titanium Manufacturing Solutions',
+  'hero.home.subtitle': 'From titanium additive manufacturing and precision CNC machining to fabrication, finishing, and assembly, we provide complete one-stop solutions for custom titanium parts and components. Built on AS9100-compliant quality systems, we support projects from prototype development to full-scale production.',
+  'hero.home.badge': 'Industry-Leading Solutions | AS9100D Certified',
+};
 
 async function main() {
-  for (const lang of TARGET_LANGS) {
-    const filePath = path.join(TRANSLATIONS_DIR, `${lang.code}.json`);
+  const configs = [
+    { lang: 'ru', name: 'Russian' },
+    { lang: 'ar', name: 'Arabic' },
+  ];
+
+  for (const cfg of configs) {
+    console.log(`\n--- Translating to ${cfg.name} ---`);
+    const filePath = `${dir}/${cfg.lang}.json`;
     const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     
-    console.log(`\n🌐 Translating to ${lang.name} (${lang.code})...`);
+    // Skip if already has hero.home.h1
+    if (json['hero.home.h1']) {
+      console.log(`  hero.home.h1 already exists, skipping ${cfg.lang}`);
+      continue;
+    }
+
+    const texts = Object.values(HERO_KEYS);
+    console.log(`  Translating ${texts.length} texts...`);
     
-    // Translate h1
-    let h1Translation = await translate(EN_H1, 'English', lang.name);
-    console.log(`  h1: "${h1Translation}"`);
-    json['home.mainHero.title'] = h1Translation;
-    json['home.mainHero.titleHighlight'] = '';
+    const result = await translate(texts, 'English', cfg.name, cfg.name);
+    const keys = Object.keys(HERO_KEYS);
+    for (let i = 0; i < keys.length; i++) {
+      json[keys[i]] = result[`text_${i}`] || texts[i];
+    }
     
-    // Translate subtitle
-    let subtitleTranslation = await translate(EN_SUBTITLE, 'English', lang.name);
-    console.log(`  subtitle: "${subtitleTranslation.substring(0, 60)}..."`);
-    json['home.mainHero.subtitle'] = subtitleTranslation;
-    
-    fs.writeFileSync(filePath, JSON.stringify(json, null, 2) + '\n');
-    console.log(`  ✅ Updated ${lang.code}.json`);
+    fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf-8');
+    console.log(`  ✅ ${cfg.lang}.json updated`);
   }
-  
-  console.log('\n🎉 All translations complete!');
+  console.log('\nDone.');
 }
 
-main().catch(err => {
-  console.error('❌ Error:', err.message);
-  process.exit(1);
-});
+main().catch(console.error);
