@@ -1740,7 +1740,9 @@ if (heroEntry) {
   slug !== 'capabilities/traceability' &&
   slug !== 'capabilities/certifications' &&
   !(effectiveSlug?.startsWith('materials/grade-') || effectiveSlug?.startsWith('materials/ti-') || effectiveSlug?.startsWith('materials/astm-') || effectiveSlug?.startsWith('materials/ams-') || effectiveSlug?.startsWith('materials/iso-') || effectiveSlug?.startsWith('materials/mil-')) &&
-  !effectiveSlug?.startsWith('equipment/'))) && (
+  !effectiveSlug?.startsWith('equipment/') &&
+  !effectiveSlug?.startsWith('industries/') &&
+  !effectiveSlug?.startsWith('resources/'))) && (
     <BaseLayout title="404 - Page Not Found">
       <div class="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
         <h1 class="mb-4 text-8xl font-bold text-theme-primary">404</h1>
