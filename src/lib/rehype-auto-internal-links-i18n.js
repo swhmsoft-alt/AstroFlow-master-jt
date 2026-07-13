@@ -14,12 +14,12 @@
  *   src/content/blog/xxx.md                     → en  (no lang prefix)
  *   src/content/blog-translations/de-xxx.md     → de  (prefix /de/)
  *   src/content/blog-translations/ja-xxx.md     → ja  (prefix /ja/)
- *   ...etc for all 10 languages
+ *   ...etc for all 12 languages
  */
 
 import { rehypeAutoInternalLinks } from 'rehype-auto-internal-links';
 
-const LANG_PREFIXES = ['de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl'];
+const LANG_PREFIXES = ['de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'];
 const DEFAULT_LANG = 'en';
 
 function detectLanguage(file) {

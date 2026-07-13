@@ -11,7 +11,7 @@ const useT = (): ((key: string) => string) => {
   const getLang = (): Lang => {
     if (typeof window === 'undefined') return DEFAULT_LANG;
     const parts = window.location.pathname.split('/').filter(Boolean);
-    return (parts.length > 0 && (parts[0] === 'en' || parts[0] === 'ja') ? parts[0] : DEFAULT_LANG) as Lang;
+    return (parts.length > 0 && Object.keys(UI).includes(parts[0]) ? parts[0] : DEFAULT_LANG) as Lang;
   };
   const lang = getLang();
   return (key: string) => UI[lang]?.[key] ?? UI[DEFAULT_LANG]?.[key] ?? key;

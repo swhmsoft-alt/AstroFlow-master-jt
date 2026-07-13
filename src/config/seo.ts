@@ -6,8 +6,8 @@
  * title/description are defined per language.
  */
 export interface SeoEntry {
-  title?: { en: string; de: string; zh: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string };
-  description?: { en: string; de: string; zh: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string };
+  title?: { en: string; de: string; zh: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string; ru: string; ar: string };
+  description?: { en: string; de: string; zh: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string; ru: string; ar: string };
   /** Override OG image for this page (relative to site URL) */
   ogImage?: string;
 }
@@ -26,6 +26,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE CNC Ti | AS9100D 인증 티타늄 CNC 가공 및 제조',
       nl: 'BOZE CNC Ti | AS9100D-gecertificeerde titanium CNC-bewerking en productie',
       pl: 'BOZE CNC Ti | Certyfikowana Obróbka CNC Tytanu AS9100D',
+      ru: 'BOZE CNC Ti | Сертифицированная по AS9100D обработка и производство титана на станках с ЧПУ',
+      ar: 'BOZE CNC Ti | التصنيع باستخدام الحاسب الآلي المعتمد AS9100D للتيتانيوم',
     },
     description: {
       en: 'End-to-end titanium manufacturing: precision CNC machining, additive manufacturing, fabrication, surface treatment. AS9100D & ISO 9001 certified. From prototype to production.',
@@ -39,6 +41,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 제조의 모든 과정: 정밀 CNC 가공, 적층 제조, 판금 제작, 표면 처리. AS9100D 및 ISO 9001 인증. 시제품부터 양산까지.',
       nl: 'End-to-end titaniumproductie: precisie CNC-bewerking, additive manufacturing, fabricage, oppervlaktebehandeling. AS9100D & ISO 9001 gecertificeerd. Van prototype tot productie.',
       pl: 'Kompleksowa produkcja tytanu: precyzyjna obróbka CNC, wytwarzanie addytywne, spawanie, obróbka powierzchni. Certyfikaty AS9100D i ISO 9001. Od prototypu do produkcji seryjnej.',
+      ru: 'Полный цикл производства титана: прецизионная обработка на ЧПУ, аддитивное производство, изготовление, обработка поверхности. Сертификация AS9100D и ISO 9001. От прототипа до серийного выпуска.',
+      ar: 'تصنيع متكامل للتيتانيوم: تشغيل دقيق باستخدام الحاسب الآلي، تصنيع مضاف، تشكيل، معالجة سطحية. معتمد AS9100D وISO 9001. من النموذج الأولي إلى الإنتاج.',
     },
   },
   '/services': {
@@ -54,6 +58,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 제조 서비스 | BOZE CNC Ti',
       nl: 'Titanium productiediensten | BOZE CNC Ti',
       pl: 'Usługi produkcji tytanu | BOZE CNC Ti',
+      ru: 'Услуги по производству титана | BOZE CNC Ti',
+      ar: 'خدمات تصنيع التيتانيوم | BOZE CNC Ti',
     },
     description: {
       en: 'End-to-end titanium manufacturing solutions from rapid prototyping to high-volume precision CNC machining and heavy industrial fabrication. AS9100D & ISO 9001 certified.',
@@ -67,6 +73,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '신속한 시제품 제작부터 대량 정밀 CNC 가공 및 중공업 판금 제작까지 아우르는 티타늄 제조 토탈 솔루션. AS9100D 및 ISO 9001 인증.',
       nl: 'End-to-end titaniumproductieoplossingen van rapid prototyping tot hoogvolume precisie CNC-bewerking en zware industriële fabricage. AS9100D & ISO 9001 gecertificeerd.',
       pl: 'Kompleksowe rozwiązania w zakresie produkcji tytanu – od szybkiego prototypowania po precyzyjną obróbkę CNC w dużych seriach i ciężką obróbkę przemysłową. Certyfikaty AS9100D i ISO 9001.',
+      ru: 'Комплексные решения по производству титана от быстрого прототипирования до высокообъемной прецизионной обработки на ЧПУ и тяжелого промышленного изготовления. Сертификация AS9100D и ISO 9001.',
+      ar: 'حلول تصنيع متكاملة للتيتانيوم من النماذج الأولية السريعة إلى التشغيل الدقيق عالي الحجم باستخدام الحاسب الآلي والتصنيع الصناعي الثقيل. معتمد AS9100D وISO 9001.',
     },
   },
   '/materials': {
@@ -82,6 +90,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 등급 및 재료 공학 가이드 | BOZE CNC Ti',
       nl: 'Titaniumkwaliteiten en materiaaltechnische gids | BOZE CNC Ti',
       pl: 'Gatunki Tytanu i Przewodnik Inżynierii Materiałowej | BOZE CNC Ti',
+      ru: 'Сорта титана и руководство по материаловедению | BOZE CNC Ti',
+      ar: 'دليل درجات التيتانيوم وهندسة المواد | BOZE CNC Ti',
     },
     description: {
       en: 'Comprehensive titanium grades reference: Grade 1-23 CP titanium, Ti-6Al-4V, Ti-6Al-4V ELI. Mechanical properties, corrosion resistance, and application guidance for procurement engineers.',
@@ -95,6 +105,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '종합 티타늄 등급 참고 자료: Grade 1-23 CP 티타늄, Ti-6Al-4V, Ti-6Al-4V ELI. 기계적 특성, 내식성 및 조달 엔지니어를 위한 용도별 가이드.',
       nl: 'Uitgebreide referentie voor titaniumkwaliteiten: Grade 1-23 CP titanium, Ti-6Al-4V, Ti-6Al-4V ELI. Mechanische eigenschappen, corrosiebestendigheid en toepassingsadvies voor inkoopingenieurs.',
       pl: 'Kompleksowe zestawienie gatunków tytanu: CP Grade 1-23, Ti-6Al-4V, Ti-6Al-4V ELI. Właściwości mechaniczne, odporność korozyjna i wskazówki aplikacyjne dla inżynierów zaopatrzenia.',
+      ru: 'Полный справочник по сортам титана: CP титан Grade 1-23, Ti-6Al-4V, Ti-6Al-4V ELI. Механические свойства, коррозионная стойкость и рекомендации по применению для инженеров-закупщиков.',
+      ar: 'مرجع شامل لدرجات التيتانيوم: التيتانيوم التجاري النقي من الدرجة 1-23، Ti-6Al-4V، Ti-6Al-4V ELI. الخواص الميكانيكية، مقاومة التآكل، وإرشادات التطبيق لمهندسي المشتريات.',
     },
   },
   '/capabilities': {
@@ -110,6 +122,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '기술 역량 | CNC 정밀 및 제조 엔지니어링 | BOZE CNC Ti',
       nl: 'Technische mogelijkheden | CNC-precisie en productietechniek | BOZE CNC Ti',
       pl: 'Możliwości Techniczne | Precyzja CNC i Inżynieria Produkcji | BOZE CNC Ti',
+      ru: 'Технические возможности | Прецизионная обработка на ЧПУ и производственная инженерия | BOZE CNC Ti',
+      ar: 'القدرات التقنية | الدقة باستخدام الحاسب الآلي وهندسة التصنيع | BOZE CNC Ti',
     },
     description: {
       en: 'AS9100D & ISO 9001 certified precision manufacturing infrastructure: micron-level CNC tolerancing, SLM additive manufacturing, CMM inspection, full material traceability.',
@@ -123,6 +137,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'AS9100D 및 ISO 9001 인증 정밀 제조 인프라: 미크론 단위 CNC 공차, SLM 적층 제조, CMM 검사, 완전 소재 추적성.',
       nl: 'AS9100D & ISO 9001 gecertificeerde precisieproductie-infrastructuur: micronniveau CNC-toleranties, SLM additive manufacturing, CMM-inspectie, volledige materiaaltraceerbaarheid.',
       pl: 'Infrastruktura produkcyjna z certyfikatami AS9100D i ISO 9001: tolerancje CNC na poziomie mikronów, wytwarzanie addytywne SLM, kontrola CMM, pełna identyfikowalność materiałów.',
+      ru: 'Сертифицированная по AS9100D и ISO 9001 инфраструктура прецизионного производства: допуски на уровне микрон на ЧПУ, SLM-аддитивное производство, контроль на КИМ, полная прослеживаемость материалов.',
+      ar: 'بنية تحتية للتصنيع الدقيق معتمدة AS9100D وISO 9001: تفاوتات دقيقة بالميكرون باستخدام الحاسب الآلي، تصنيع مضاف بتقنية SLM، فحص CMM، تتبع كامل للمواد.',
     },
   },
   '/industries': {
@@ -138,6 +154,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '산업 솔루션 | 항공우주, 의료 및 산업용 티타늄 응용 분야',
       nl: 'Industrieoplossingen | Luchtvaart, medische en industriële titaniumtoepassingen',
       pl: 'Rozwiązania Branżowe | Zastosowania Tytanu w Lotnictwie, Medycynie i Przemyśle',
+      ru: 'Отраслевые решения | Аэрокосмические, медицинские и промышленные применения титана',
+      ar: 'حلول صناعية | تطبيقات التيتانيوم في الطيران والطب والصناعة',
     },
     description: {
       en: 'Engineered titanium solutions for aerospace, medical, UAV/drones, marine, semiconductor, and energy industries. AS9100D certified precision components.',
@@ -151,6 +169,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '항공우주, 의료, UAV/드론, 해양, 반도체 및 에너지 산업을 위한 맞춤형 티타늄 솔루션. AS9100D 인증 정밀 부품.',
       nl: 'Technische titaniumoplossingen voor luchtvaart, medisch, UAV/drones, maritiem, halfgeleider en energie-industrie. AS9100D gecertificeerde precisiecomponenten.',
       pl: 'Inżynieryjne rozwiązania tytanowe dla lotnictwa, medycyny, UAV/dronów, przemysłu morskiego, półprzewodnikowego i energetycznego. Precyzyjne komponenty z certyfikatem AS9100D.',
+      ru: 'Инженерные решения из титана для аэрокосмической, медицинской, БПЛА/дронов, морской, полупроводниковой и энергетической отраслей. Сертифицированные по AS9100D прецизионные компоненты.',
+      ar: 'حلول تيتانيوم هندسية لصناعات الطيران، الطب، الطائرات بدون طيار، البحرية، أشباه الموصلات، والطاقة. مكونات دقيقة معتمدة AS9100D.',
     },
   },
   '/resources': {
@@ -166,6 +186,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '기술 자료 라이브러리 | 티타늄 엔지니어링 가이드 및 다운로드 | BOZE CNC Ti',
       nl: 'Technische bronnenbibliotheek | Titanium technische gidsen en downloads | BOZE CNC Ti',
       pl: 'Biblioteka Zasobów Technicznych | Przewodniki Inżynieryjne i Pliki do Pobrania | BOZE CNC Ti',
+      ru: 'Библиотека технических ресурсов | Руководства по титану и загрузки | BOZE CNC Ti',
+      ar: 'مكتبة الموارد التقنية | أدلة هندسة التيتانيوم وملفات التحميل | BOZE CNC Ti',
     },
     description: {
       en: 'Comprehensive technical documentation, engineering guides, whitepapers, CAD resources, and FAQs for titanium manufacturing professionals.',
@@ -179,6 +201,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 제조 전문가를 위한 포괄적인 기술 문서, 엔지니어링 가이드, 백서, CAD 자료 및 FAQ.',
       nl: 'Uitgebreide technische documentatie, technische gidsen, whitepapers, CAD-bronnen en veelgestelde vragen voor professionals in titaniumproductie.',
       pl: 'Obszerna dokumentacja techniczna, przewodniki inżynieryjne, whitepapery, zasoby CAD i FAQ dla profesjonalistów z branży obróbki tytanu.',
+      ru: 'Полная техническая документация, инженерные руководства, технические документы, ресурсы CAD и часто задаваемые вопросы для профессионалов в области производства титана.',
+      ar: 'وثائق تقنية شاملة، أدلة هندسية، أوراق بيضاء، موارد CAD، وأسئلة شائعة لمحترفي تصنيع التيتانيوم.',
     },
   },
   '/products': {
@@ -194,6 +218,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 CNC 가공 티타늄 제품 | B2B 제조 | BOZE CNC Ti',
       nl: 'Precisie CNC-bewerkte titaniumproducten | B2B-productie | BOZE CNC Ti',
       pl: 'Precyzyjne Produkty z Tytanu Obróbką CNC | Produkcja B2B | BOZE CNC Ti',
+      ru: 'Прецизионные изделия из титана с ЧПУ | B2B производство | BOZE CNC Ti',
+      ar: 'منتجات التيتانيوم المُشكَّلة بدقة باستخدام الحاسب الآلي | تصنيع B2B | BOZE CNC Ti',
     },
     description: {
       en: 'Browse our catalog of precision CNC machined titanium components. Custom manufacturing available for aerospace, medical, and industrial applications.',
@@ -207,6 +233,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 CNC 가공 티타늄 부품 카탈로그를 둘러보세요. 항공우주, 의료 및 산업용 맞춤 제작 가능.',
       nl: 'Bekijk onze catalogus van precisie CNC-bewerkte titaniumcomponenten. Op maat gemaakte productie beschikbaar voor luchtvaart-, medische en industriële toepassingen.',
       pl: 'Przegląd naszego katalogu precyzyjnych komponentów tytanowych obrabianych CNC. Dostępna produkcja na zamówienie dla zastosowań lotniczych, medycznych i przemysłowych.',
+      ru: 'Просмотрите наш каталог прецизионных компонентов из титана, обработанных на станках с ЧПУ. Доступно индивидуальное производство для аэрокосмической, медицинской и промышленной отраслей.',
+      ar: 'تصفح كتالوجنا لمكونات التيتانيوم المُشكَّلة بدقة باستخدام الحاسب الآلي. التصنيع المخصص متاح لتطبيقات الطيران والطب والصناعة.',
     },
   },
   '/rfq': {
@@ -222,6 +250,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '견적 요청 | 티타늄 CNC 가공 RFQ | BOZE CNC Ti',
       nl: 'Offerte aanvragen | Titanium CNC-bewerking RFQ | BOZE CNC Ti',
       pl: 'Zapytanie Ofertowe | RFQ Obróbki CNC Tytanu | BOZE CNC Ti',
+      ru: 'Запросить цену | Запрос предложения на титановую обработку с ЧПУ | BOZE CNC Ti',
+      ar: 'طلب عرض سعر | طلب عرض سعر لتصنيع التيتانيوم باستخدام الحاسب الآلي | BOZE CNC Ti',
     },
     description: {
       en: 'Submit your engineering RFQ for titanium CNC machining, additive manufacturing, fabrication, or surface treatment. Get a formal quote within 24-48 hours. Secure CAD upload.',
@@ -235,6 +265,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공, 적층 제조, 판금 제작 또는 표면 처리를 위한 엔지니어링 RFQ를 제출하세요. 24-48시간 내 공식 견적 제공. 안전한 CAD 업로드.',
       nl: 'Dien uw technische RFQ in voor titanium CNC-bewerking, additive manufacturing, fabricage of oppervlaktebehandeling. Ontvang een formele offerte binnen 24-48 uur. Beveiligde CAD-upload.',
       pl: 'Prześlij swoje zapytanie inżynieryjne (RFQ) dotyczące obróbki CNC tytanu, wytwarzania addytywnego, spawania lub obróbki powierzchni. Otrzymaj formalną wycenę w ciągu 24-48 godzin. Bezpieczne przesyłanie plików CAD.',
+      ru: 'Отправьте ваш инженерный запрос на титановую обработку с ЧПУ, аддитивное производство, изготовление или обработку поверхности. Получите официальное предложение в течение 24-48 часов. Безопасная загрузка CAD.',
+      ar: 'أرسل طلب عرض السعر الهندسي الخاص بك لتصنيع التيتانيوم باستخدام الحاسب الآلي، أو التصنيع الإضافي، أو التصنيع، أو المعالجة السطحية. احصل على عرض سعر رسمي خلال 24-48 ساعة. تحميل آمن لملفات CAD.',
     },
   },
   '/blog': {
@@ -250,6 +282,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공 블로그 | 제조 인사이트 | BOZE CNC Ti',
       nl: 'Titanium CNC-bewerkingsblog | Productie-inzichten | BOZE CNC Ti',
       pl: 'Blog o Obróbce CNC Tytanu | Wiedza Produkcyjna | BOZE CNC Ti',
+      ru: 'Блог о титановой обработке с ЧПУ | Производственные идеи | BOZE CNC Ti',
+      ar: 'مدونة تصنيع التيتانيوم باستخدام الحاسب الآلي | رؤى التصنيع | BOZE CNC Ti',
     },
     description: {
       en: 'Expert insights on CNC machining, titanium manufacturing, material science, and industry best practices. Stay informed with the latest from BOZE CNC Ti.',
@@ -263,6 +297,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'CNC 가공, 티타늄 제조, 재료 과학 및 업계 모범 사례에 대한 전문가 인사이트. BOZE CNC Ti의 최신 정보를 확인하세요.',
       nl: 'Deskundige inzichten over CNC-bewerking, titaniumproductie, materiaalkunde en industriële best practices. Blijf op de hoogte met het laatste nieuws van BOZE CNC Ti.',
       pl: 'Eksperckie artykuły na temat obróbki CNC, produkcji tytanu, inżynierii materiałowej i najlepszych praktyk branżowych. Bądź na bieżąco z najnowszymi informacjami od BOZE CNC Ti.',
+      ru: 'Экспертные идеи по обработке с ЧПУ, производству титана, материаловедению и лучшим отраслевым практикам. Будьте в курсе последних новостей от BOZE CNC Ti.',
+      ar: 'رؤى الخبراء حول التصنيع باستخدام الحاسب الآلي، وتصنيع التيتانيوم، وعلوم المواد، وأفضل الممارسات الصناعية. ابق على اطلاع بأحدث ما تقدمه BOZE CNC Ti.',
     },
   },
   '/documentation': {
@@ -278,6 +314,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '문서 센터 | 기술 가이드 및 자료 | BOZE CNC Ti',
       nl: 'Documentatiecentrum | Technische gidsen en bronnen | BOZE CNC Ti',
       pl: 'Centrum Dokumentacji | Przewodniki Techniczne i Zasoby | BOZE CNC Ti',
+      ru: 'Центр документации | Технические руководства и ресурсы | BOZE CNC Ti',
+      ar: 'مركز التوثيق | الأدلة التقنية والموارد | BOZE CNC Ti',
     },
     description: {
       en: 'Access comprehensive documentation, technical guides, compliance certificates, and resources for titanium CNC machining operations.',
@@ -291,6 +329,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공 작업을 위한 포괄적인 문서, 기술 가이드, 규정 준수 인증서 및 자료에 액세스하세요.',
       nl: 'Toegang tot uitgebreide documentatie, technische gidsen, nalevingscertificaten en bronnen voor titanium CNC-bewerkingsoperaties.',
       pl: 'Dostęp do obszernej dokumentacji, przewodników technicznych, certyfikatów zgodności i zasobów dotyczących operacji obróbki CNC tytanu.',
+      ru: 'Получите доступ к полной документации, техническим руководствам, сертификатам соответствия и ресурсам для операций титановой обработки с ЧПУ.',
+      ar: 'الوصول إلى الوثائق الشاملة والأدلة التقنية وشهادات الامتثال والموارد الخاصة بعمليات تصنيع التيتانيوم باستخدام الحاسب الآلي.',
     },
   },
   '/use-cases': {
@@ -306,6 +346,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공 사용 사례 | 산업 응용 분야 | BOZE CNC Ti',
       nl: 'Titanium CNC-bewerkings use cases | Industriële toepassingen | BOZE CNC Ti',
       pl: 'Przykłady Zastosowań Obróbki CNC Tytanu | Zastosowania Branżowe | BOZE CNC Ti',
+      ru: 'Применение титановой CNC-обработки | Отраслевые решения | BOZE CNC Ti',
+      ar: 'حالات استخدام التصنيع باستخدام الحاسب الآلي للتيتانيوم | تطبيقات صناعية | BOZE CNC Ti',
     },
     description: {
       en: 'Real-world use cases and application examples of titanium CNC machining across aerospace, medical, automotive, and industrial sectors.',
@@ -319,6 +361,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '항공우주, 의료, 자동차 및 산업 분야에서 티타늄 CNC 가공의 실제 사용 사례 및 응용 예시.',
       nl: 'Praktijkvoorbeelden en toepassingsvoorbeelden van titanium CNC-bewerking in de luchtvaart, medische sector, automobielindustrie en industriële sectoren.',
       pl: 'Rzeczywiste przypadki użycia i przykłady zastosowań obróbki CNC tytanu w sektorach lotniczym, medycznym, motoryzacyjnym i przemysłowym.',
+      ru: 'Реальные примеры использования и применения титановой CNC-обработки в аэрокосмической, медицинской, автомобильной и промышленной отраслях.',
+      ar: 'أمثلة واقعية لحالات استخدام وتطبيقات التصنيع باستخدام الحاسب الآلي للتيتانيوم في قطاعات الطيران والطب والسيارات والصناعة.',
     },
   },
   '/facilities': {
@@ -334,6 +378,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '제조 시설 | ISO 9001 및 AS9100D 인증 | BOZE CNC Ti',
       nl: 'Onze productiefaciliteiten | ISO 9001 & AS9100D gecertificeerd | BOZE CNC Ti',
       pl: 'Nasze Zakłady Produkcyjne | Certyfikaty ISO 9001 i AS9100D | BOZE CNC Ti',
+      ru: 'Наши производственные мощности | Сертификация ISO 9001 и AS9100D | BOZE CNC Ti',
+      ar: 'مرافق التصنيع لدينا | معتمدة ISO 9001 و AS9100D | BOZE CNC Ti',
     },
     description: {
       en: 'State-of-the-art titanium manufacturing facilities with multi-axis CNC machining centers, SLM additive manufacturing, and CMM inspection labs.',
@@ -347,6 +393,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '최첨단 티타늄 제조 시설: 다축 CNC 가공 센터, SLM 적층 제조 장비 및 CMM 검사 랩.',
       nl: 'State-of-the-art titaniumproductiefaciliteiten met meerassige CNC-bewerkingscentra, SLM additive manufacturing en CMM-inspectielaboratoria.',
       pl: 'Nowoczesne zakłady produkcyjne tytanu wyposażone w wieloosiowe centra obróbcze CNC, wytwarzanie addytywne SLM i laboratoria kontroli CMM.',
+      ru: 'Современные производственные мощности по обработке титана: многоосевые CNC-центры, SLM-аддитивное производство и лаборатории CMM-контроля.',
+      ar: 'مرافق تصنيع متطورة للتيتانيوم مزودة بمراكز تصنيع باستخدام الحاسب الآلي متعددة المحاور، وتصنيع مضاف بتقنية SLM، ومختبرات فحص CMM.',
     },
   },
   '/titanium-cnc-machining-services': {
@@ -362,6 +410,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공 서비스 | 정밀 밀링 및 터닝 | BOZE CNC Ti',
       nl: 'Titanium CNC-bewerkingsdiensten | Precisiefrezen en -draaien | BOZE CNC Ti',
       pl: 'Usługi Obróbki CNC Tytanu | Precyzyjne Frezowanie i Toczenie | BOZE CNC Ti',
+      ru: 'Услуги титановой CNC-обработки | Прецизионное фрезерование и точение | BOZE CNC Ti',
+      ar: 'خدمات التصنيع باستخدام الحاسب الآلي للتيتانيوم | طحن وتدوير دقيق | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium CNC machining services: 3/5-axis milling, turning, wire EDM, and custom industrial components. Aerospace-grade tolerances down to ±0.005 mm.',
@@ -375,6 +425,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 CNC 가공 서비스: 3/5축 밀링, 터닝, 와이어 EDM 및 맞춤형 산업용 부품. 항공우주 등급 공차 ±0.005 mm.',
       nl: 'Precisie titanium CNC-bewerkingsdiensten: 3/5-assig frezen, draaien, wire EDM en op maat gemaakte industriële componenten. Luchtvaartkwaliteit toleranties tot ±0,005 mm.',
       pl: 'Precyzyjne usługi obróbki CNC tytanu: frezowanie 3/5-osiowe, toczenie, drutowe EDM i niestandardowe komponenty przemysłowe. Tolerancje klasy lotniczej do ±0.005 mm.',
+      ru: 'Прецизионные услуги титановой CNC-обработки: 3/5-осевое фрезерование, точение, электроэрозионная обработка и изготовление промышленных компонентов. Допуски аэрокосмического класса до ±0,005 мм.',
+      ar: 'خدمات تصنيع دقيقة للتيتانيوم باستخدام الحاسب الآلي: طحن ثلاثي/خماسي المحاور، تدوير، قطع بالأسلاك الكهربائية، ومكونات صناعية مخصصة. تفاوتات بمستوى الطيران تصل إلى ±0.005 مم.',
     },
   },
   '/titanium-cnc-machining-services/3-5-axis-cnc-machining': {
@@ -390,6 +442,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 3/5축 CNC 가공 | 다축 정밀 가공 | BOZE CNC Ti',
       nl: '3/5-assige CNC-bewerking voor titanium | Meerassige precisie | BOZE CNC Ti',
       pl: 'Obróbka CNC 3/5-osiowa Tytanu | Precyzja Wieloosiowa | BOZE CNC Ti',
+      ru: '3/5-осевая CNC-обработка титана | Многоосевая точность | BOZE CNC Ti',
+      ar: 'تصنيع باستخدام الحاسب الآلي ثلاثي/خماسي المحاور للتيتانيوم | دقة متعددة المحاور | BOZE CNC Ti',
     },
     description: {
       en: 'Precision 3/4-axis and simultaneous 5-axis CNC machining for titanium: complex geometries, single-setup accuracy, aerospace-grade tolerances ±0.005 mm.',
@@ -403,6 +457,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 정밀 3/4축 및 동시 5축 CNC 가공: 복잡한 형상, 단일 셋업 정밀도, 항공우주 등급 공차 ±0.005 mm.',
       nl: 'Precisie 3/4-assige en simultane 5-assige CNC-bewerking voor titanium: complexe geometrieën, nauwkeurigheid in één opspanning, luchtvaartkwaliteit toleranties ±0,005 mm.',
       pl: 'Precyzyjna obróbka CNC 3/4-osiowa i symultaniczna 5-osiowa tytanu: złożone geometrie, dokładność w jednym ustawieniu, tolerancje klasy lotniczej ±0.005 mm.',
+      ru: 'Прецизионная 3/4-осевая и синхронная 5-осевая CNC-обработка титана: сложные геометрии, точность за одну установку, допуски аэрокосмического класса ±0,005 мм.',
+      ar: 'تصنيع دقيق باستخدام الحاسب الآلي ثلاثي/رباعي المحاور وخماسي المحاور المتزامن للتيتانيوم: أشكال هندسية معقدة، دقة إعداد واحد، تفاوتات بمستوى الطيران ±0.005 مم.',
     },
   },
   '/titanium-cnc-machining-services/cnc-milling-turning': {
@@ -418,6 +474,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 밀링 및 터닝 | 정밀 가공 | BOZE CNC Ti',
       nl: 'CNC-frezen en -draaien voor titanium | Precisiebewerking | BOZE CNC Ti',
       pl: 'Frezowanie i Toczenie CNC Tytanu | Precyzyjna Obróbka | BOZE CNC Ti',
+      ru: 'CNC-фрезерование и точение титана | Прецизионная обработка | BOZE CNC Ti',
+      ar: 'طحن وتدوير باستخدام الحاسب الآلي للتيتانيوم | تصنيع دقيق | BOZE CNC Ti',
     },
     description: {
       en: 'Precision CNC turning, milling, and turn-mill multi-tasking for titanium: bone screws, prismatic components, complete single-setup parts. Tolerances ±0.005 mm.',
@@ -431,6 +489,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 정밀 CNC 터닝, 밀링 및 턴-밀 멀티태스킹: 뼈 나사, 프리즘 부품, 단일 셋업 완제품. 공차 ±0.005 mm.',
       nl: 'Precisie CNC-draaien, frezen en draai-frees multitasking voor titanium: botschroeven, prismatische componenten, complete onderdelen in één opspanning. Toleranties ±0,005 mm.',
       pl: 'Precyzyjne toczenie CNC, frezowanie i obróbka wielozadaniowa typu turn-mill dla tytanu: śruby kostne, komponenty pryzmatyczne, części w jednym ustawieniu. Tolerancje ±0.005 mm.',
+      ru: 'Прецизионное CNC-точение, фрезерование и многофункциональная обработка титана: костные винты, призматические детали, готовые за одну установку. Допуски ±0,005 мм.',
+      ar: 'تدوير وطحن دقيق باستخدام الحاسب الآلي ومهام متعددة للتدوير والطحن للتيتانيوم: مسامير عظمية، مكونات موشورية، أجزاء كاملة بإعداد واحد. تفاوتات ±0.005 مم.',
     },
   },
   '/titanium-cnc-machining-services/wire-edm-machining': {
@@ -446,6 +506,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 와이어 EDM 가공 | 정밀 방전 가공 | BOZE CNC Ti',
       nl: 'Wire EDM-bewerking voor titanium | Precisie EDM | BOZE CNC Ti',
       pl: 'Obróbka Drutowa EDM Tytanu | Precyzyjne EDM | BOZE CNC Ti',
+      ru: 'Проволочная электроэрозионная обработка титана | Прецизионная электроэрозия | BOZE CNC Ti',
+      ar: 'تصنيع التيتانيوم بالقطع بالشرارة السلكية (EDM) | دقة EDM | BOZE CNC Ti',
     },
     description: {
       en: 'Precision wire EDM machining for titanium: zero mechanical stress, sharp internal corners (ø 0.1 mm wire), hardened alloy cutting, ±0.002 mm accuracy, Ra 0.25 µm finish.',
@@ -459,6 +521,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 정밀 와이어 EDM 가공: 기계적 응력 제로, 날카로운 내부 코너(ø 0.1 mm 와이어), 경화 합금 절단, ±0.002 mm 정밀도, Ra 0.25 µm 표면.',
       nl: 'Precisie wire EDM-bewerking voor titanium: nul mechanische spanning, scherpe binnenhoeken (ø 0,1 mm draad), snijden van geharde legeringen, ±0,002 mm nauwkeurigheid, Ra 0,25 µm afwerking.',
       pl: 'Precyzyjna obróbka drutowa EDM tytanu: zerowe naprężenia mechaniczne, ostre narożniki wewnętrzne (drut ø 0.1 mm), cięcie stopów utwardzonych, dokładność ±0.002 mm, chropowatość Ra 0.25 µm.',
+      ru: 'Прецизионная проволочная электроэрозионная обработка титана: нулевое механическое напряжение, острые внутренние углы (ø 0,1 мм проволока), резка закаленных сплавов, точность ±0,002 мм, шероховатость Ra 0,25 мкм.',
+      ar: 'تصنيع التيتانيوم بالقطع بالشرارة السلكية بدقة: إجهاد ميكانيكي صفري، زوايا داخلية حادة (سلك بقطر 0.1 مم)، قطع السبائك الصلبة، دقة ±0.002 مم، تشطيب Ra 0.25 ميكرومتر.',
     },
   },
   '/titanium-cnc-machining-services/custom-industrial-components': {
@@ -474,6 +538,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '맞춤형 티타늄 산업용 부품 | CNC 가공 | BOZE CNC Ti',
       nl: 'Op maat gemaakte titanium industriële componenten | CNC-bewerking | BOZE CNC Ti',
       pl: 'Niestandardowe Komponenty Przemysłowe z Tytanu | Obróbka CNC | BOZE CNC Ti',
+      ru: 'Индивидуальные промышленные компоненты из титана | CNC-обработка | BOZE CNC Ti',
+      ar: 'مكونات تيتانيوم صناعية مخصصة | التصنيع باستخدام الحاسب الآلي | BOZE CNC Ti',
     },
     description: {
       en: 'Custom titanium industrial components: complex structural assemblies, high-vacuum chambers, fluid manifolds, and precision micro-components. AS9100D quality.',
@@ -487,6 +553,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '맞춤형 티타늄 산업용 부품: 복잡한 구조용 어셈블리, 고진공 챔버, 유체 매니폴드 및 정밀 마이크로 부품. AS9100D 품질.',
       nl: 'Op maat gemaakte titanium industriële componenten: complexe structurele samenstellingen, hoogvacuümkamers, vloeistofverdeelblokken en precisie microcomponenten. AS9100D-kwaliteit.',
       pl: 'Niestandardowe komponenty przemysłowe z tytanu: złożone zespoły konstrukcyjne, komory próżniowe, rozdzielacze cieczy i precyzyjne mikrokomponenty. Jakość AS9100D.',
+      ru: 'Индивидуальные промышленные компоненты из титана: сложные структурные сборки, вакуумные камеры высокого вакуума, гидравлические коллекторы и прецизионные микрокомпоненты. Качество AS9100D.',
+      ar: 'مكونات تيتانيوم صناعية مخصصة: تجميعات هيكلية معقدة، غرف تفريغ عالية، مشعب سوائل، ومكونات دقيقة متناهية الصغر. جودة AS9100D.',
     },
   },
   '/titanium-additive-manufacturing': {
@@ -502,6 +570,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 적층 제조 | SLM/DMLS 3D 프린팅 | BOZE CNC Ti',
       nl: 'Titanium additive manufacturing | SLM/DMLS 3D-printen | BOZE CNC Ti',
       pl: 'Wytwarzanie Addytywne Tytanu | Druk 3D SLM/DMLS | BOZE CNC Ti',
+      ru: 'Аддитивное производство титана | SLM/DMLS 3D-печать | BOZE CNC Ti',
+      ar: 'التصنيع الإضافي للتيتانيوم | الطباعة ثلاثية الأبعاد SLM/DMLS | BOZE CNC Ti',
     },
     description: {
       en: 'Industrial titanium additive manufacturing: SLM/DMLS 3D printing, rapid prototyping in 3-5 days, low-volume production. Full-density Ti-6Al-4V, ASTM F2924, AS9100D.',
@@ -515,6 +585,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '산업용 티타늄 적층 제조: SLM/DMLS 3D 프린팅, 3-5일 내 신속한 시제품 제작, 소량 생산. 완전 치밀 Ti-6Al-4V, ASTM F2924, AS9100D.',
       nl: 'Industriële titanium additive manufacturing: SLM/DMLS 3D-printen, rapid prototyping in 3-5 dagen, productie in kleine oplagen. Volledige dichtheid Ti-6Al-4V, ASTM F2924, AS9100D.',
       pl: 'Przemysłowe wytwarzanie addytywne tytanu: druk 3D SLM/DMLS, szybkie prototypowanie w 3-5 dni, produkcja małoseryjna. Ti-6Al-4V o pełnej gęstości, ASTM F2924, AS9100D.',
+      ru: 'Промышленное аддитивное производство титана: SLM/DMLS 3D-печать, быстрое прототипирование за 3-5 дней, мелкосерийное производство. Полноплотный Ti-6Al-4V, ASTM F2924, AS9100D.',
+      ar: 'التصنيع الإضافي للتيتانيوم الصناعي: الطباعة ثلاثية الأبعاد SLM/DMLS، النماذج الأولية السريعة في 3-5 أيام، الإنتاج بكميات منخفضة. Ti-6Al-4V كامل الكثافة، ASTM F2924، AS9100D.',
     },
   },
   '/titanium-additive-manufacturing/3d-printing-slm': {
@@ -530,6 +602,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 SLM/DMLS 3D 프린팅 | 금속 적층 제조 | BOZE CNC Ti',
       nl: 'SLM/DMLS 3D-printen voor titanium | Metaal additive | BOZE CNC Ti',
       pl: 'Druk 3D SLM/DMLS Tytanu | Metalowe Wytwarzanie Addytywne | BOZE CNC Ti',
+      ru: 'SLM/DMLS 3D-печать для титана | Металлическая аддитивная технология | BOZE CNC Ti',
+      ar: 'الطباعة ثلاثية الأبعاد SLM/DMLS للتيتانيوم | الإضافة المعدنية | BOZE CNC Ti',
     },
     description: {
       en: 'Industrial SLM/DMLS 3D printing for titanium: Yb-fiber laser, 20-60 µm layer thickness, ≥99.5% density, 950-1,050 MPa tensile strength. ASTM F2924, AS9100D.',
@@ -543,6 +617,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 산업용 SLM/DMLS 3D 프린팅: Yb-파이버 레이저, 20-60 µm 층 두께, ≥99.5% 밀도, 950-1,050 MPa 인장 강도. ASTM F2924, AS9100D.',
       nl: 'Industrieel SLM/DMLS 3D-printen voor titanium: Yb-vezellaser, 20-60 µm laagdikte, ≥99,5% dichtheid, 950-1.050 MPa treksterkte. ASTM F2924, AS9100D.',
       pl: 'Przemysłowy druk 3D SLM/DMLS tytanu: laser Yb-włóknowy, grubość warstwy 20-60 µm, gęstość ≥99.5%, wytrzymałość na rozciąganie 950-1,050 MPa. ASTM F2924, AS9100D.',
+      ru: 'Промышленная SLM/DMLS 3D-печать для титана: иттербиевый волоконный лазер, толщина слоя 20-60 мкм, плотность ≥99,5%, предел прочности на растяжение 950-1 050 МПа. ASTM F2924, AS9100D.',
+      ar: 'الطباعة ثلاثية الأبعاد SLM/DMLS الصناعية للتيتانيوم: ليف Yb، سمك طبقة 20-60 ميكرومتر، كثافة ≥99.5%، قوة شد 950-1,050 ميجا باسكال. ASTM F2924، AS9100D.',
     },
   },
   '/titanium-additive-manufacturing/rapid-prototyping': {
@@ -558,6 +634,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 신속 시제품 제작 | 3D 프린팅 서비스 | BOZE CNC Ti',
       nl: 'Titanium rapid prototyping | 3D-printdiensten | BOZE CNC Ti',
       pl: 'Szybkie Prototypowanie Tytanu | Usługi Druku 3D | BOZE CNC Ti',
+      ru: 'Быстрое прототипирование титана | Услуги 3D-печати | BOZE CNC Ti',
+      ar: 'النماذج الأولية السريعة للتيتانيوم | خدمات الطباعة ثلاثية الأبعاد | BOZE CNC Ti',
     },
     description: {
       en: 'Titanium rapid prototyping via SLM: 3-5 day lead time, single-unit MOQ, ≥99.5% density, 950-1,050 MPa tensile strength. Zero tooling cost design iterations.',
@@ -571,6 +649,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'SLM을 통한 티타늄 신속 시제품 제작: 3-5일 리드 타임, 단일 단위 MOQ, ≥99.5% 밀도, 950-1,050 MPa 인장 강도. 제로 툴링 비용 설계 반복.',
       nl: 'Titanium rapid prototyping via SLM: 3-5 dagen doorlooptijd, MOQ van één stuk, ≥99,5% dichtheid, 950-1.050 MPa treksterkte. Nul gereedschapskosten voor ontwerpiteraties.',
       pl: 'Szybkie prototypowanie tytanu metodą SLM: czas realizacji 3-5 dni, MOQ 1 sztuka, gęstość ≥99.5%, wytrzymałość na rozciąganie 950-1,050 MPa. Iteracje projektowe bez kosztów oprzyrządowania.',
+      ru: 'Быстрое прототипирование титана методом SLM: срок изготовления 3-5 дней, минимальный заказ от 1 шт., плотность ≥99,5%, предел прочности на растяжение 950-1 050 МПа. Итерации дизайна без затрат на оснастку.',
+      ar: 'النماذج الأولية السريعة للتيتانيوم عبر SLM: مهلة 3-5 أيام، الحد الأدنى لكمية الطلب قطعة واحدة، كثافة ≥99.5%، قوة شد 950-1,050 ميجا باسكال. تكرارات تصميم بدون تكلفة أدوات.',
     },
   },
   '/titanium-additive-manufacturing/low-volume-production': {
@@ -586,6 +666,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '소량 티타늄 생산 | 적층 제조 | BOZE CNC Ti',
       nl: 'Kleine serie titaniumproductie | Additive manufacturing | BOZE CNC Ti',
       pl: 'Małoseryjna Produkcja Tytanu | Wytwarzanie Addytywne | BOZE CNC Ti',
+      ru: 'Мелкосерийное производство титана | Аддитивное производство | BOZE CNC Ti',
+      ar: 'إنتاج التيتانيوم بكميات منخفضة | التصنيع الإضافي | BOZE CNC Ti',
     },
     description: {
       en: 'Low-volume titanium production via SLM: 10-1,000+ unit batches, zero tooling costs, ≥95% material utilization, multi-laser sync, SPC witness bar validation. AS9100D.',
@@ -599,6 +681,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'SLM을 통한 소량 티타늄 생산: 10-1,000+ 단위 배치, 제로 툴링 비용, ≥95% 재료 활용률, 멀티 레이저 동기화, SPC 위트니스 바 검증. AS9100D.',
       nl: 'Kleine serie titaniumproductie via SLM: 10-1.000+ stuks per batch, nul gereedschapskosten, ≥95% materiaalbenutting, multi-laser synchronisatie, SPC getuigenstaafvalidatie. AS9100D.',
       pl: 'Małoseryjna produkcja tytanu metodą SLM: partie 10-1,000+ sztuk, zerowe koszty oprzyrządowania, wykorzystanie materiału ≥95%, synchronizacja wielu laserów, walidacja próbkami SPC. AS9100D.',
+      ru: 'Мелкосерийное производство титана методом SLM: партии от 10 до 1000+ единиц, нулевые затраты на оснастку, использование материала ≥95%, многолазерная синхронизация, валидация по образцам SPC. AS9100D.',
+      ar: 'إنتاج التيتانيوم بكميات منخفضة عبر تقنية SLM: دفعات من 10 إلى 1000+ وحدة، تكاليف أدوات صفرية، استخدام مواد ≥95%، مزامنة متعددة الليزر، التحقق بعينات SPC. AS9100D.',
     },
   },
   '/titanium-fabrication-services': {
@@ -614,6 +698,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 판금 제작 서비스 | 용접 및 절단 | BOZE CNC Ti',
       nl: 'Titanium fabricagediensten | Lassen en snijden | BOZE CNC Ti',
       pl: 'Usługi Spawania i Cięcia Tytanu | Precyzyjna Obróbka | BOZE CNC Ti',
+      ru: 'Услуги по изготовлению титана | Сварка и резка | BOZE CNC Ti',
+      ar: 'خدمات تصنيع التيتانيوم | اللحام والقطع | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium fabrication: TIG/laser welding with full argon purge, CNC sheet metal profiling, industrial vessels and piping. AWS D1.6, ASME Sec IX, AS9100D.',
@@ -627,6 +713,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 판금 제작: 완전 아르곤 퍼지 TIG/레이저 용접, CNC 판금 프로파일링, 산업용 용기 및 배관. AWS D1.6, ASME Sec IX, AS9100D.',
       nl: 'Precisie titaniumfabricage: TIG/laserlassen met volledige argonzuivering, CNC-plaatbewerking, industriële vaten en leidingen. AWS D1.6, ASME Sec IX, AS9100D.',
       pl: 'Precyzyjne spawanie i cięcie tytanu: spawanie TIG/laserowe z pełnym osłoną argonową, profilowanie CNC blach, zbiorniki przemysłowe i rurociągi. AWS D1.6, ASME Sec IX, AS9100D.',
+      ru: 'Прецизионное изготовление титана: TIG/лазерная сварка с полной аргоновой защитой, профилирование листов на ЧПУ, промышленные емкости и трубопроводы. AWS D1.6, ASME Sec IX, AS9100D.',
+      ar: 'تصنيع دقيق للتيتانيوم: لحام TIG/ليزر مع تطهير كامل بالأرجون، تشكيل الصفائح باستخدام CNC، الأوعية والأنابيب الصناعية. AWS D1.6، ASME Sec IX، AS9100D.',
     },
   },
   '/titanium-fabrication-services/laser-cutting': {
@@ -642,6 +730,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 레이저 절단 서비스 | 시트 및 튜브 | BOZE CNC Ti',
       nl: 'Titanium lasersnijdiensten | Plaat en buis | BOZE CNC Ti',
       pl: 'Usługi Cięcia Laserowego Tytanu | Blachy i Rury | BOZE CNC Ti',
+      ru: 'Услуги лазерной резки титана | Лист и труба | BOZE CNC Ti',
+      ar: 'خدمات قطع التيتانيوم بالليزر | الصفائح والأنابيب | BOZE CNC Ti',
     },
     description: {
       en: 'Precision fiber laser cutting for titanium sheets and tubes: 3,000 x 1,500 mm sheet capacity, ø 20-220 mm tube, ±0.03 mm accuracy, 0.1 mm kerf, weld-ready edges.',
@@ -655,6 +745,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 시트 및 튜브 정밀 파이버 레이저 절단: 3,000 x 1,500 mm 시트 용량, ø 20-220 mm 튜브, ±0.03 mm 정밀도, 0.1 mm 커프, 용접 준비 완료 모서리.',
       nl: 'Precisievezellasersnijden voor titaniumplaten en -buizen: 3.000 x 1.500 mm plaatcapaciteit, ø 20-220 mm buis, ±0,03 mm nauwkeurigheid, 0,1 mm snede, lasklare randen.',
       pl: 'Precyzyjne cięcie laserem włóknowym blach i rur tytanowych: wydajność blach 3,000 x 1,500 mm, rury ø 20-220 mm, dokładność ±0.03 mm, szerokość cięcia 0.1 mm, krawędzie gotowe do spawania.',
+      ru: 'Прецизионная волоконно-лазерная резка титановых листов и труб: размер листа до 3000×1500 мм, труба Ø 20–220 мм, точность ±0,03 мм, ширина реза 0,1 мм, кромки готовы к сварке.',
+      ar: 'قطع دقيق بالليزر الليفي لصفائح وأنابيب التيتانيوم: سعة صفائح 3000 × 1500 مم، أنابيب بقطر 20-220 مم، دقة ±0.03 مم، عرض قطع 0.1 مم، حواف جاهزة للحام.',
     },
   },
   '/titanium-fabrication-services/waterjet-cutting': {
@@ -670,6 +762,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 워터젯 절단 서비스 | 정밀 절단 | BOZE CNC Ti',
       nl: 'Titanium waterjetsnijdiensten | Precisiesnijden | BOZE CNC Ti',
       pl: 'Usługi Cięcia Waterjet Tytanu | Precyzyjne Cięcie | BOZE CNC Ti',
+      ru: 'Услуги гидроабразивной резки титана | Прецизионная резка | BOZE CNC Ti',
+      ar: 'خدمات قطع التيتانيوم بنفث الماء | القطع الدقيق | BOZE CNC Ti',
     },
     description: {
       en: 'Precision abrasive waterjet cutting for titanium: 60,000 PSI, 120 mm thickness capacity, 3,000 x 2,000 mm bed, ±0.05 mm angular repeatability, zero HAZ.',
@@ -683,6 +777,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 정밀 연마재 워터젯 절단: 60,000 PSI, 120 mm 두께 용량, 3,000 x 2,000 mm 베드, ±0.05 mm 각도 반복성, HAZ 제로.',
       nl: 'Precisie abrasief waterjetsnijden voor titanium: 60.000 PSI, 120 mm diktecapaciteit, 3.000 x 2.000 mm bed, ±0,05 mm hoekherhaalnauwkeurigheid, nul HAZ.',
       pl: 'Precyzyjne cięcie wodą z dodatkiem ścierniwa tytanu: 60,000 PSI, wydajność grubości 120 mm, stół 3,000 x 2,000 mm, powtarzalność kątowa ±0.05 mm, zerowa strefa wpływu ciepła (HAZ).',
+      ru: 'Прецизионная гидроабразивная резка титана: 60 000 PSI, толщина до 120 мм, стол 3000×2000 мм, угловая повторяемость ±0,05 мм, нулевая зона термического влияния.',
+      ar: 'قطع دقيق بالتيتانيوم باستخدام الماء الكاشط: 60,000 PSI، سعة سمك 120 مم، سرير 3000 × 2000 مم، تكرار زاوي ±0.05 مم، منطقة خالية من التأثير الحراري.',
     },
   },
   '/titanium-fabrication-services/titanium-welding-assembly': {
@@ -698,6 +794,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 용접 및 조립 서비스 | 정밀 판금 제작 | BOZE CNC Ti',
       nl: 'Titanium las- en montagediensten | Precisiefabricage | BOZE CNC Ti',
       pl: 'Usługi Spawania i Montażu Tytanu | Precyzyjna Obróbka | BOZE CNC Ti',
+      ru: 'Услуги сварки и сборки титана | Прецизионное изготовление | BOZE CNC Ti',
+      ar: 'خدمات لحام وتجميع التيتانيوم | التصنيع الدقيق | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium welding and assembly: ultra-pure TIG, laser welding, multi-component system assembly with anti-galling and CMM verification. AWS D1.6, AS9100D.',
@@ -711,6 +809,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 용접 및 조립: 초고순도 TIG, 레이저 용접, 멀티 컴포넌트 시스템 조립, 소착 방지 및 CMM 검증. AWS D1.6, AS9100D.',
       nl: 'Precisie titaniumlassen en -montage: ultrazuiver TIG, laserlassen, montage van meerdere componentsystemen met anti-galling en CMM-verificatie. AWS D1.6, AS9100D.',
       pl: 'Precyzyjne spawanie i montaż tytanu: ultraczyste TIG, spawanie laserowe, montaż systemów wielokomponentowych z zabezpieczeniem przed zacieraniem i weryfikacją CMM. AWS D1.6, AS9100D.',
+      ru: 'Прецизионная сварка и сборка титана: сверхчистая TIG-сварка, лазерная сварка, сборка многокомпонентных систем с защитой от заедания и контролем на КИМ. AWS D1.6, AS9100D.',
+      ar: 'لحام وتجميع دقيق للتيتانيوم: لحام TIG فائق النقاء، لحام بالليزر، تجميع أنظمة متعددة المكونات مع منع الالتصاق والتحقق باستخدام CMM. AWS D1.6، AS9100D.',
     },
   },
   '/titanium-forming-heavy-manufacturing': {
@@ -726,6 +826,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 성형 및 중공업 제조 | 단조 및 압출 | BOZE CNC Ti',
       nl: 'Titaniumvorming & Zware Productie | Smeden & Extrusie | BOZE CNC Ti',
       pl: 'Formowanie i ciężka obróbka tytanu | Kucie i wyciskanie | BOZE CNC Ti',
+      ru: 'Формовка титана и тяжелое производство | Ковка и экструзия | BOZE CNC Ti',
+      ar: 'تشكيل التيتانيوم والتصنيع الثقيل | التشكيل بالطرق والبثق | BOZE CNC Ti',
     },
     description: {
       en: 'Heavy titanium forming and manufacturing: hot plate rolling, open/closed-die forging, large-scale assembly. 12,000 x 4,500 x 4,000 mm capacity, 50+ mm hot forming, 30 ton crane, AS9100D.',
@@ -739,6 +841,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '대형 티타늄 성형 및 제조: 열간 판재 롤링, 개방형/밀폐형 단조, 대형 조립. 최대 12,000 x 4,500 x 4,000 mm, 50mm 이상 열간 성형, 30톤 크레인, AS9100D 인증.',
       nl: 'Zware titaniumvorming en -productie: warm plaatwalsen, open/gesloten matrijssmeden, grootschalige assemblage. Capaciteit 12.000 x 4.500 x 4.000 mm, warmvormen >50 mm, 30 ton kraan, AS9100D.',
       pl: 'Ciężkie formowanie i produkcja tytanu: walcowanie blach na gorąco, kucie matrycowe otwarte/zamknięte, montaż wielkogabarytowy. Wydajność 12 000 x 4 500 x 4 000 mm, formowanie na gorąco powyżej 50 mm, dźwig 30 ton, AS9100D.',
+      ru: 'Тяжелая формовка и производство титана: горячая вальцовка листов, открытая/закрытая штамповка, крупногабаритная сборка. Размеры до 12 000 x 4 500 x 4 000 мм, горячая формовка от 50+ мм, кран 30 тонн, AS9100D.',
+      ar: 'التشكيل والتصنيع الثقيل للتيتانيوم: درفلة الألواح الساخنة، الطرق المفتوح/المغلق، التجميع واسع النطاق. سعة 12,000 × 4,500 × 4,000 مم، تشكيل ساخن بسمك 50+ مم، رافعة 30 طن، AS9100D.',
     },
   },
   '/titanium-forming-heavy-manufacturing/titanium-forging': {
@@ -754,6 +858,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 단조 서비스 | 밀폐형 및 개방형 단조 | BOZE CNC Ti',
       nl: 'Titaniumsmeedwerk | Gesloten & Open Matrijs | BOZE CNC Ti',
       pl: 'Usługi kucia tytanu | Kucie zamknięte i otwarte | BOZE CNC Ti',
+      ru: 'Услуги по ковке титана | Закрытая и открытая штамповка | BOZE CNC Ti',
+      ar: 'خدمات تشكيل التيتانيوم بالطرق | مغلق ومفتوح | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium forging: closed-die, open-die, and seamless rolled ring forging. 8,000 metric ton press, ø 2,500 mm rings, AMS 2631 Class AA, ≥95% equiaxed α+β.',
@@ -767,6 +873,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 단조: 밀폐형 단조, 개방형 단조, 무결환 압연. 8,000톤 프레스, 최대 ø 2,500 mm 링, AMS 2631 Class AA, 95% 이상 등축 α+β 조직.',
       nl: 'Precisie titaniumsmeedwerk: gesloten matrijs, open matrijs en naadloos gewalste ringsmeedwerk. 8.000 metrische ton pers, ø 2.500 mm ringen, AMS 2631 Klasse AA, ≥95% equiaxiaal α+β.',
       pl: 'Precyzyjne kucie tytanu: kucie matrycowe zamknięte, otwarte oraz walcowanie pierścieni bez szwu. Prasa 8 000 ton metrycznych, pierścienie ø 2 500 mm, AMS 2631 Class AA, ≥95% równoosiowa struktura α+β.',
+      ru: 'Прецизионная ковка титана: закрытая штамповка, открытая штамповка и бесшовная кольцевая прокатка. Пресс 8 000 метрических тонн, кольца ø 2 500 мм, AMS 2631 класс AA, ≥95% равноосная α+β.',
+      ar: 'تشكيل التيتانيوم بالطرق الدقيق: الطرق المغلق، المفتوح، والحلقات الملحومة غير الملحومة. مكبس 8,000 طن متري، حلقات بقطر 2,500 مم، AMS 2631 الفئة AA، ≥95% طور α+β متساوي المحاور.',
     },
   },
   '/titanium-forming-heavy-manufacturing/titanium-extrusion': {
@@ -782,6 +890,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 압출 서비스 | 복합 프로파일 | BOZE CNC Ti',
       nl: 'Titaniumextrusiediensten | Complexe Profielen | BOZE CNC Ti',
       pl: 'Usługi wyciskania tytanu | Profile złożone | BOZE CNC Ti',
+      ru: 'Услуги по экструзии титана | Сложные профили | BOZE CNC Ti',
+      ar: 'خدمات بثق التيتانيوم | مقاطع معقدة | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium extrusion: complex structural profiles, seamless heavy-wall tubes, multi-channel hollow shapes. 6,000 ton press, 12 m length, ø 350 mm envelope, AS9100D.',
@@ -795,6 +905,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 압출: 복합 구조 프로파일, 무봉제 중후벽 튜브, 다채널 중공 형상. 6,000톤 프레스, 최대 12m 길이, ø 350 mm 범위, AS9100D 인증.',
       nl: 'Precisie titaniumextrusie: complexe structurele profielen, naadloze zwaarwandige buizen, meerkanals holle vormen. 6.000 ton pers, 12 m lengte, ø 350 mm envelop, AS9100D.',
       pl: 'Precyzyjne wyciskanie tytanu: złożone profile konstrukcyjne, rury grubościenne bez szwu, wielokanałowe kształty drążone. Prasa 6 000 ton, długość 12 m, obwiednia ø 350 mm, AS9100D.',
+      ru: 'Прецизионная экструзия титана: сложные структурные профили, бесшовные толстостенные трубы, многоканальные полые формы. Пресс 6 000 тонн, длина 12 м, габарит ø 350 мм, AS9100D.',
+      ar: 'بثق التيتانيوم الدقيق: مقاطع هيكلية معقدة، أنابيب ثقيلة الجدار غير ملحومة، أشكال مجوفة متعددة القنوات. مكبس 6,000 طن، طول 12 م، محيط بقطر 350 مم، AS9100D.',
     },
   },
   '/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing': {
@@ -810,6 +922,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 원자재 준비 및 사이징 | BOZE CNC Ti',
       nl: 'Titanium Grondstofvoorbereiding & Afmetingen | BOZE CNC Ti',
       pl: 'Przygotowanie i wymiarowanie surowca tytanowego | BOZE CNC Ti',
+      ru: 'Подготовка и калибровка сырья из титана | BOZE CNC Ti',
+      ar: 'تحضير وتقطيع المواد الخام للتيتانيوم | BOZE CNC Ti',
     },
     description: {
       en: 'Titanium raw material preparation: heavy-duty CNC band sawing up to ø 800 mm, mechanical surface peeling, chemical decontamination. PMI validated, AS9100D.',
@@ -823,6 +937,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 원자재 준비: 최대 ø 800 mm 중공업용 CNC 밴드 톱 절단, 기계식 표면 피링, 화학적 오염 제거. PMI 검증, AS9100D 인증.',
       nl: 'Titanium grondstofvoorbereiding: zware CNC lintzagen tot ø 800 mm, mechanische oppervlaktepeeling, chemische decontaminatie. PMI gevalideerd, AS9100D.',
       pl: 'Przygotowanie surowca tytanowego: przemysłowe cięcie taśmowe CNC do ø 800 mm, mechaniczne obieranie powierzchni, chemiczne odkażanie. Walidacja PMI, AS9100D.',
+      ru: 'Подготовка сырья из титана: тяжелые ленточнопильные станки с ЧПУ до ø 800 мм, механическое удаление поверхностного слоя, химическое обеззараживание. PMI-верификация, AS9100D.',
+      ar: 'تحضير المواد الخام للتيتانيوم: نشر شريطي CNC ثقيل حتى قطر 800 مم، تقشير سطحي ميكانيكي، إزالة التلوث الكيميائي. معتمد PMI، AS9100D.',
     },
   },
   '/titanium-surface-treatment': {
@@ -838,6 +954,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 표면 처리 서비스 | 아노다이징 및 부동태화 | BOZE CNC Ti',
       nl: 'Titanium Oppervlaktebehandeling | Anodiseren & Passiveren | BOZE CNC Ti',
       pl: 'Usługi obróbki powierzchni tytanu | Anodowanie i pasywacja | BOZE CNC Ti',
+      ru: 'Услуги по обработке поверхности титана | Анодирование и пассивация | BOZE CNC Ti',
+      ar: 'خدمات معالجة سطح التيتانيوم | الأكسدة الأنودية والتخميل | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium surface treatment services: anodizing, micro-arc oxidation (MAO), acid pickling & passivation. AMS 2488, ISO 13485, ASTM F86 certified surface engineering.',
@@ -851,6 +969,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 표면 처리 서비스: 아노다이징, 마이크로아크 산화(MAO), 산세 및 부동태화. AMS 2488, ISO 13485, ASTM F86 인증 표면 엔지니어링.',
       nl: 'Precisie titanium oppervlaktebehandeling: anodiseren, micro-boogoxidatie (MAO), zuurbeitsen & passiveren. AMS 2488, ISO 13485, ASTM F86 gecertificeerde oppervlaktetechniek.',
       pl: 'Precyzyjne usługi obróbki powierzchni tytanu: anodowanie, mikroutlenianie łukowe (MAO), trawienie kwasowe i pasywacja. Inżynieria powierzchni certyfikowana AMS 2488, ISO 13485, ASTM F86.',
+      ru: 'Прецизионные услуги по обработке поверхности титана: анодирование, микродуговое оксидирование (МДО), кислотное травление и пассивация. Сертифицированная обработка поверхности по AMS 2488, ISO 13485, ASTM F86.',
+      ar: 'خدمات معالجة سطح التيتانيوم الدقيقة: الأكسدة الأنودية، الأكسدة بالقوس الدقيق (MAO)، التخليل الحمضي والتخميل. معتمد AMS 2488، ISO 13485، ASTM F86 لهندسة الأسطح.',
     },
   },
   '/titanium-surface-treatment/anodizing': {
@@ -866,6 +986,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 아노다이징 서비스 | AMS 2488 인증 | BOZE CNC Ti',
       nl: 'Titanium Anodiseerdiensten | AMS 2488 Gecertificeerd | BOZE CNC Ti',
       pl: 'Usługi anodowania tytanu | Certyfikat AMS 2488 | BOZE CNC Ti',
+      ru: 'Услуги по анодированию титана | Сертификат AMS 2488 | BOZE CNC Ti',
+      ar: 'خدمات أنودة التيتانيوم | معتمدة AMS 2488 | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. ISO 13485, AMS 2488D certified.',
@@ -879,6 +1001,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 아노다이징 서비스: AMS 2488 Type II 내마찰 아노다이징, Type III 무색소 컬러 코딩, 고순도 산 전처리. ISO 13485, AMS 2488D 인증.',
       nl: 'Precisie titanium anodiseerdiensten: AMS 2488 Type II anti-galling anodiseren, Type III pigmentvrij kleurcoderen en hoogzuivere zuurvoorbehandeling. ISO 13485, AMS 2488D gecertificeerd.',
       pl: 'Precyzyjne usługi anodowania tytanu: anodowanie przeciwzatarciowe AMS 2488 Type II, kodowanie kolorowe bez pigmentu Type III oraz oczyszczanie kwasem o wysokiej czystości. Certyfikat ISO 13485, AMS 2488D.',
+      ru: 'Прецизионные услуги по анодированию титана: антифрикционное анодирование AMS 2488 Type II, беcпигментная цветовая маркировка Type III и высокочистая кислотная предварительная обработка. Сертифицировано по ISO 13485, AMS 2488D.',
+      ar: 'خدمات أنودة التيتانيوم الدقيقة: أنودة من النوع الثاني AMS 2488 المضادة للالتصاق، وأنودة من النوع الثالث لترميز الألوان الخالي من الصبغات، ومعالجة مسبقة بحمض عالي النقاء. معتمدة ISO 13485 وAMS 2488D.',
     },
   },
   '/titanium-surface-treatment/chemical-passivation': {
@@ -894,6 +1018,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 화학 부동태화 서비스 | ASTM F86 | BOZE CNC Ti',
       nl: 'Titanium Chemisch Passiveren | ASTM F86 | BOZE CNC Ti',
       pl: 'Usługi chemicznej pasywacji tytanu | ASTM F86 | BOZE CNC Ti',
+      ru: 'Услуги по химической пассивации титана | ASTM F86 | BOZE CNC Ti',
+      ar: 'خدمات التخميل الكيميائي للتيتانيوم | ASTM F86 | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium chemical passivation services: nitric acid passivation, citric acid biocompatible lines, HF-HNO3 acid pickling. ASTM F86, ASTM A967, AMS 2700 certified.',
@@ -907,6 +1033,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 화학 부동태화 서비스: 질산 부동태화, 생체적합성 구연산 라인, HF-HNO3 산세. ASTM F86, ASTM A967, AMS 2700 인증.',
       nl: 'Precisie titanium chemisch passiveren: salpeterzuurpassivering, biocompatibele citroenzuurlijnen, HF-HNO3 zuurbeitsen. ASTM F86, ASTM A967, AMS 2700 gecertificeerd.',
       pl: 'Precyzyjne usługi chemicznej pasywacji tytanu: pasywacja kwasem azotowym, linie biokompatybilne z kwasem cytrynowym, trawienie HF-HNO3. Certyfikat ASTM F86, ASTM A967, AMS 2700.',
+      ru: 'Прецизионные услуги по химической пассивации титана: пассивация азотной кислотой, биосовместимые линии лимонной кислоты, кислотное травление HF-HNO3. Сертифицировано по ASTM F86, ASTM A967, AMS 2700.',
+      ar: 'خدمات التخميل الكيميائي الدقيقة للتيتانيوم: تخميل بحمض النيتريك، خطوط متوافقة حيوياً بحمض الستريك، تنظيف بحمض HF-HNO3. معتمدة ASTM F86 وASTM A967 وAMS 2700.',
     },
   },
   '/titanium-surface-treatment/polishing-sandblasting': {
@@ -922,6 +1050,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 폴리싱 및 샌드블라스팅 서비스 | BOZE CNC Ti',
       nl: 'Titanium Polijsten & Zandstralen | BOZE CNC Ti',
       pl: 'Usługi polerowania i piaskowania tytanu | BOZE CNC Ti',
+      ru: 'Услуги по полировке и пескоструйной обработке титана | BOZE CNC Ti',
+      ar: 'خدمات تلميع وسفع رملي للتيتانيوم | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium mechanical finishing: multi-stage mirror polishing down to Ra 0.01 µm and engineered abrasive sandblasting for medical-grade anchor pore grids. Zero-contamination certified.',
@@ -935,6 +1065,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 기계적 마감: Ra 0.01 µm까지 다단계 미러 폴리싱 및 의료용 앵커 포어 그리드를 위한 엔지니어드 연마 샌드블라스팅. 무오염 인증.',
       nl: 'Precisie titanium mechanische afwerking: meerfasig spiegelpolijsten tot Ra 0,01 µm en technisch abrasief zandstralen voor medische ankerporieroosters. Nulverontreiniging gecertificeerd.',
       pl: 'Precyzyjne wykończenie mechaniczne tytanu: wieloetapowe polerowanie lustrzane do Ra 0,01 µm oraz inżynieryjne piaskowanie ścierne dla medycznych siatek kotwiczących. Certyfikat zerowego zanieczyszczenia.',
+      ru: 'Прецизионная механическая обработка титана: многоступенчатая зеркальная полировка до Ra 0,01 мкм и инженерная абразивная пескоструйная обработка для создания медицинских анкерных решеток. Сертифицировано по стандарту нулевого загрязнения.',
+      ar: 'التشطيب الميكانيكي الدقيق للتيتانيوم: تلميع مرآة متعدد المراحل حتى خشونة Ra 0.01 ميكرومتر وسفع رملي كاشط هندسي لشبكات مسام الطبية. معتمد خالٍ من التلوث.',
     },
   },
   '/laser-marking-custom-logo': {
@@ -950,6 +1082,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 레이저 마킹 및 맞춤 로고 서비스 | BOZE CNC Ti',
       nl: 'Titanium Lasermarkeren & Aangepast Logo | BOZE CNC Ti',
       pl: 'Usługi znakowania laserowego tytanu i niestandardowych logo | BOZE CNC Ti',
+      ru: 'Услуги по лазерной маркировке и нанесению логотипов на титан | BOZE CNC Ti',
+      ar: 'خدمات الوسم بالليزر والشعارات المخصصة للتيتانيوم | BOZE CNC Ti',
     },
     description: {
       en: 'Precision titanium laser marking services: laser annealing, deep engraving, UID/DataMatrix serialization. MIL-STD-130, UDI compliant, ≤0.01 mm beam precision.',
@@ -963,6 +1097,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '정밀 티타늄 레이저 마킹 서비스: 레이저 어닐링, 딥 조각, UID/DataMatrix 시리얼라이제이션. MIL-STD-130, UDI 준수, ≤0.01 mm 빔 정밀도.',
       nl: 'Precisie titanium lasermarkeerdiensten: laser gloeien, diep graveren, UID/DataMatrix serialisatie. MIL-STD-130, UDI conform, ≤0,01 mm straalprecisie.',
       pl: 'Precyzyjne usługi znakowania laserowego tytanu: wyżarzanie laserowe, głębokie grawerowanie, serializacja UID/DataMatrix. Zgodność z MIL-STD-130, UDI, precyzja wiązki ≤0,01 mm.',
+      ru: 'Прецизионные услуги по лазерной маркировке титана: лазерный отжиг, глубокая гравировка, сериализация UID/DataMatrix. Соответствие MIL-STD-130, UDI, точность луча ≤0,01 мм.',
+      ar: 'خدمات الوسم بالليزر الدقيقة للتيتانيوم: التلدين بالليزر، النقش العميق، تسلسل UID/DataMatrix. متوافقة مع MIL-STD-130 وUDI، دقة شعاع ≤0.01 مم.',
     },
   },
   '/branded-custom-packaging-services': {
@@ -978,6 +1114,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '브랜드 맞춤 티타늄 포장 서비스 | BOZE CNC Ti',
       nl: 'Gemerkt & Aangepast Titanium Verpakkingsdiensten | BOZE CNC Ti',
       pl: 'Usługi niestandardowego pakowania tytanu z brandingiem | BOZE CNC Ti',
+      ru: 'Услуги по брендированной и индивидуальной упаковке титана | BOZE CNC Ti',
+      ar: 'خدمات التغليف المخصص والعلامات التجارية للتيتانيوم | BOZE CNC Ti',
     },
     description: {
       en: 'Industrial titanium packaging solutions: CNC foam milling, VCI marine corrosion barriers, ISPM-15 export crating. ISTA 2A/3A certified, ERP-linked traceability.',
@@ -991,6 +1129,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '산업용 티타늄 포장 솔루션: CNC 폼 밀링, VCI 해양 부식 방지, ISPM-15 수출용 크레이트. ISTA 2A/3A 인증, ERP 연동 추적성.',
       nl: 'Industriële titanium verpakkingsoplossingen: CNC schuimfrezen, VCI maritieme corrosiebarrières, ISPM-15 exportkratten. ISTA 2A/3A gecertificeerd, ERP-gekoppelde traceerbaarheid.',
       pl: 'Przemysłowe rozwiązania pakowania tytanu: frezowanie pianki CNC, morskie bariery antykorozyjne VCI, skrzynie eksportowe ISPM-15. Certyfikat ISTA 2A/3A, identyfikowalność zintegrowana z ERP.',
+      ru: 'Промышленные решения для упаковки титана: фрезерование пенопласта на станках с ЧПУ, морские антикоррозионные барьеры VCI, экспортная обрешетка ISPM-15. Сертифицировано по ISTA 2A/3A, отслеживаемость через ERP.',
+      ar: 'حلول تغليف التيتانيوم الصناعية: طحن رغوة CNC، حواجز التآكل البحرية VCI، صناديق التصدير ISPM-15. معتمدة ISTA 2A/3A، تتبع مرتبط بنظام ERP.',
     },
   },
   '/theme-demo': {
@@ -1006,6 +1146,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '테마 데모 | BOZE CNC Ti',
       nl: 'Thema Demo | BOZE CNC Ti',
       pl: 'Prezentacja motywu | BOZE CNC Ti',
+      ru: 'Тема Демо | BOZE CNC Ti',
+      ar: 'عرض النسخة التجريبية | BOZE CNC Ti',
     },
     description: {
       en: 'Interactive theme demonstration page showcasing all available color schemes for the BOZE CNC Ti website.',
@@ -1019,6 +1161,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE CNC Ti 웹사이트의 모든 가용 색상 스킴을 보여주는 대화형 테마 데모 페이지.',
       nl: 'Interactieve themademonstratiepagina met alle beschikbare kleurenschema\'s voor de BOZE CNC Ti website.',
       pl: 'Interaktywna strona demonstracyjna motywu prezentująca wszystkie dostępne schematy kolorystyczne witryny BOZE CNC Ti.',
+      ru: 'Интерактивная страница демонстрации темы, показывающая все доступные цветовые схемы для сайта BOZE CNC Ti.',
+      ar: 'صفحة عرض توضيحي تفاعلية للنسخة التجريبية تعرض جميع أنظمة الألوان المتاحة لموقع BOZE CNC Ti.',
     },
   },
   '/capabilities/certifications': {
@@ -1034,6 +1178,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 가공 제조 인증 | AS9100D 및 ISO 13485 | BOZE CNC Ti',
       nl: 'Productiecertificeringen voor Titaniumbewerking | AS9100D & ISO 13485 | BOZE CNC Ti',
       pl: 'Certyfikaty Produkcji Obróbki Tytanu | AS9100D i ISO 13485 | BOZE CNC Ti',
+      ru: 'Сертификаты производства титановых деталей | AS9100D и ISO 13485 | BOZE CNC Ti',
+      ar: 'شهادات تصنيع التيتانيوم باستخدام الحاسب الآلي | AS9100D و ISO 13485 | BOZE CNC Ti',
     },
     description: {
       en: 'Verify BOZE official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining.',
@@ -1047,6 +1193,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE의 공식 제조 자격 증명을 확인하세요. AS9100D(항공우주), ISO 13485(의료) 및 ISO 9001:2015 정밀 티타늄 CNC 가공에 대해 완전히 준수 및 감사 완료.',
       nl: 'Controleer de officiële productiecertificaten van BOZE. Volledig compliant en geaudit voor AS9100D (Luchtvaart), ISO 13485 (Medisch) en ISO 9001:2015 precisie titanium CNC-bewerking.',
       pl: 'Zweryfikuj oficjalne poświadczenia produkcyjne BOZE. W pełni zgodny i audytowany dla precyzyjnej obróbki CNC tytanu AS9100D (Lotnictwo), ISO 13485 (Medycyna) i ISO 9001:2015.',
+      ru: 'Проверьте официальные производственные сертификаты BOZE. Полное соответствие и аудит по стандартам AS9100D (авиакосмическая промышленность), ISO 13485 (медицина) и ISO 9001:2015 для прецизионной обработки титана на станках с ЧПУ.',
+      ar: 'تحقق من أوراق اعتماد BOZE الرسمية في التصنيع. متوافقة تمامًا وخاضعة للتدقيق وفقًا لمعايير AS9100D (الفضاء)، ISO 13485 (الطبية)، و ISO 9001:2015 لتصنيع التيتانيوم باستخدام الحاسب الآلي بدقة.',
     },
   },
   '/capabilities/traceability': {
@@ -1062,6 +1210,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 재료 추적성 및 DFARS 규정 준수 표준 | BOZE CNC Ti',
       nl: 'Titanium Materiaaltraceerbaarheid & DFARS-normen | BOZE CNC Ti',
       pl: 'Identyfikowalność Materiałów Tytanu i Standardy Zgodności DFARS | BOZE CNC Ti',
+      ru: 'Стандарты прослеживаемости титановых материалов и соответствия DFARS | BOZE CNC Ti',
+      ar: 'معايير تتبع المواد المصنوعة من التيتانيوم والامتثال لـ DFARS | BOZE CNC Ti',
     },
     description: {
       en: 'Explore BOZE unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation for aerospace, medical, and defense applications.',
@@ -1075,6 +1225,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE의 중단없는 재료 추적성 인프라를 살펴보세요. 100% EN 10204 3.1 밀 증명서 추적, DFARS 규정 준수, 항공우주, 의료 및 방산 응용 분야를 위한 10년 디지털 기록 보존.',
       nl: 'Ontdek de ononderbroken infrastructuur voor materiaaltraceerbaarheid van BOZE. 100% EN 10204 3.1 fabriekstestcertificaat tracking, DFARS-naleving en 10 jaar digitale bewaaring voor luchtvaart, medische en defensietoepassingen.',
       pl: 'Poznaj nieprzerwaną infrastrukturę identyfikowalności materiałów BOZE. 100% śledzenie certyfikatów młyna EN 10204 3.1, zgodność z DFARS i 10-letnie cyfrowe przechowywanie dla lotnictwa, medycyny i obronności.',
+      ru: 'Изучите инфраструктуру непрерывной прослеживаемости материалов BOZE. 100% отслеживание сертификатов EN 10204 3.1, соответствие DFARS и 10-летнее хранение цифровых записей для авиакосмических, медицинских и оборонных применений.',
+      ar: 'استكشف البنية التحتية لتتبع المواد غير المنقطعة من BOZE. تتبع 100% لشهادات المطاحن EN 10204 3.1، والامتثال لـ DFARS، وحفظ السجلات الرقمية لمدة 10 سنوات لتطبيقات الفضاء والطب والدفاع.',
     },
   },
   '/capabilities/inspection': {
@@ -1090,6 +1242,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 계측, 검사 및 테스트 서비스 | BOZE CNC Ti',
       nl: 'Titanium CNC Metrologie, Inspectie & Testdiensten | BOZE CNC Ti',
       pl: 'Metrologia CNC Tytanu, Inspekcja i Usługi Testowe | BOZE CNC Ti',
+      ru: 'Метрология, контроль и испытания титановых деталей на станках с ЧПУ | BOZE CNC Ti',
+      ar: 'خدمات القياس والفحص والاختبار باستخدام الحاسب الآلي للتيتانيوم | BOZE CNC Ti',
     },
     description: {
       en: 'In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis. ISO 17025 calibrated.',
@@ -1103,6 +1257,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 부품용 사내 검사 연구소 — CMM 계측, OES 재료 검증, FPI/UT 비파괴 검사, 표면 프로필로메트리, GD&T 치수 분석. ISO 17025 교정.',
       nl: 'Intern inspectielaboratorium voor titanium componenten — CMM-metrologie, OES-materiaalverificatie, FPI/UT niet-destructief onderzoek, oppervlakteprofilometrie en GD&T dimensionale analyse. ISO 17025 gekalibreerd.',
       pl: 'Wewnętrzne laboratorium kontrolne dla elementów tytanowych — metrologia CMM, weryfikacja materiałów OES, badania nieniszczące FPI/UT, profilometria powierzchni i analiza wymiarowa GD&T. Wzorcowanie ISO 17025.',
+      ru: 'Собственная испытательная лаборатория для титановых компонентов — КИМ метрология, верификация материалов методом OES, неразрушающий контроль FPI/UT, профилометрия поверхности и размерный анализ GD&T. Калибровка по ISO 17025.',
+      ar: 'مختبر فحص داخلي لمكونات التيتانيوم - قياس CMM، التحقق من المواد باستخدام OES، الاختبارات غير المدمرة FPI/UT، قياس خشونة السطح، وتحليل الأبعاد GD&T. معاير وفقًا لـ ISO 17025.',
     },
   },
   '/capabilities/quality': {
@@ -1118,6 +1274,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 가공 품질 보증 및 인증 표준 | BOZE CNC Ti',
       nl: 'Kwaliteitsborging en Certificeringsnormen voor Titaniumbewerking | BOZE CNC Ti',
       pl: 'Zapewnienie Jakości i Standardy Certyfikacji w Obróbce Tytanu | BOZE CNC Ti',
+      ru: 'Обеспечение качества и стандарты сертификации при обработке титана | BOZE CNC Ti',
+      ar: 'معايير ضمان الجودة والشهادات لتصنيع التيتانيوم باستخدام الحاسب الآلي | BOZE CNC Ti',
     },
     description: {
       en: 'Explore BOZE zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking for aerospace and medical applications.',
@@ -1131,6 +1289,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE의 무결점 티타늄 품질 관리 시스템을 살펴보세요. AS9100D 정렬, CMM 검사, EN 10204 3.1 재료 추적성, 항공우주 및 의료 응용 분야를 위한 완벽한 SPC 품질 추적.',
       nl: 'Ontdek het zero-defect titanium kwaliteitscontrolesysteem van BOZE. Met AS9100D-afstemming, CMM-inspectie, EN 10204 3.1 materiaaltraceerbaarheid en volledige SPC-kwaliteitsopvolging voor luchtvaart en medische toepassingen.',
       pl: 'Poznaj system kontroli jakości tytanu BOZE z zerową liczbą wad. Zgodność z AS9100D, kontrola CMM, identyfikowalność materiałów EN 10204 3.1 i pełne śledzenie jakości SPC dla zastosowań lotniczych i medycznych.',
+      ru: 'Изучите систему контроля качества титана с нулевым дефектом от BOZE. Включает соответствие AS9100D, контроль на КИМ, прослеживаемость материалов по EN 10204 3.1 и полное отслеживание качества SPC для авиакосмических и медицинских применений.',
+      ar: 'استكشف نظام مراقبة الجودة الخالي من العيوب من BOZE للتيتانيوم. يتضمن التوافق مع AS9100D، فحص CMM، تتبع المواد EN 10204 3.1، وتتبع الجودة الكامل SPC لتطبيقات الفضاء والطب.',
     },
   },
   '/capabilities/capacity': {
@@ -1146,6 +1306,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공 생산 능력 및 설비 확장 | BOZE CNC Ti',
       nl: 'Titanium CNC-bewerkingsproductiecapaciteit & Vlootschaling | BOZE CNC Ti',
       pl: 'Zdolność Produkcyjna Obróbki CNC Tytanu i Rozwój Floty | BOZE CNC Ti',
+      ru: 'Производственная мощность и масштабирование парка станков для титановой обработки с ЧПУ | BOZE CNC Ti',
+      ar: 'قدرة إنتاج التصنيع باستخدام الحاسب الآلي للتيتانيوم وتوسيع الأسطول | BOZE CNC Ti',
     },
     description: {
       en: 'Discover BOZE\'s scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production for aerospace, medical, and defense applications.',
@@ -1159,6 +1321,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE의 확장 가능한 티타늄 제조 처리량을 확인하세요. 연간 45,000개 이상의 부품 생산 능력, 월 8,500시간 이상의 스핀들 가동, 항공우주, 의료 및 방산 응용 분야를 위한 24/7 무인 자동 생산.',
       nl: 'Ontdek de schaalbare titaniumproductiedoorvoer van BOZE. Meer dan 45.000 onderdelen jaarcapaciteit, 8.500+ spindeluren per maand en 24/7 onbemande geautomatiseerde productie voor luchtvaart, medische en defensietoepassingen.',
       pl: 'Odkryj skalowalną przepustowość produkcji tytanu BOZE. Ponad 45 000 części rocznej zdolności produkcyjnej, 8 500+ miesięcznych godzin wrzeciona i całodobowa zautomatyzowana produkcja dla lotnictwa, medycyny i obronności.',
+      ru: 'Узнайте о масштабируемой производительности BOZE по обработке титана. Годовая мощность более 45 000 деталей, более 8 500 станко-часов в месяц и круглосуточное автоматизированное производство для аэрокосмической, медицинской и оборонной промышленности.',
+      ar: 'اكتشف قدرة BOZE القابلة للتوسع في تصنيع التيتانيوم. أكثر من 45,000 قطعة سنويًا، وأكثر من 8,500 ساعة تشغيل شهريًا، وإنتاج آلي على مدار الساعة لتطبيقات الطيران والطب والدفاع.',
     },
   },
   '/capabilities/engineering': {
@@ -1174,6 +1338,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 엔지니어링 지원 및 DFM 최적화 서비스 | BOZE CNC Ti',
       nl: 'Titanium Technische Ondersteuning & DFM Optimalisatie | BOZE CNC Ti',
       pl: 'Wsparcie Inżynieryjne Tytanu i Optymalizacja DFM | BOZE CNC Ti',
+      ru: 'Инженерная поддержка и услуги по оптимизации DFM для титановой обработки с ЧПУ | BOZE CNC Ti',
+      ar: 'دعم هندسة التيتانيوم وخدمات تحسين التصنيع من أجل التصنيع (DFM) | BOZE CNC Ti',
     },
     description: {
       en: 'Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering for aerospace and medical applications.',
@@ -1187,6 +1353,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 CNC 가공을 위한 전문 엔지니어링 컨설팅. 항공우주 및 의료 응용 분야를 위한 DFM 검토, 5축 CAM 시뮬레이션 및 비용 절감 가치 공학 전문.',
       nl: 'Deskundig technisch advies voor CNC-bewerking van titanium. Gespecialiseerd in DFM-beoordeling, 5-assige CAM-simulatie en kostenefficiëntie-engineering voor luchtvaart en medische toepassingen.',
       pl: 'Eksperckie doradztwo inżynieryjne w zakresie obróbki CNC tytanu. Specjalizacja w przeglądzie DFM, symulacji CAM 5-osiowej i inżynierii redukcji kosztów dla zastosowań lotniczych i medycznych.',
+      ru: 'Экспертная инженерная консультация по титановой обработке с ЧПУ. Специализация на анализе технологичности конструкции (DFM), 5-осевом CAM-моделировании и оптимизации стоимости для аэрокосмических и медицинских применений.',
+      ar: 'استشارات هندسية خبيرة لتصنيع التيتانيوم باستخدام الحاسب الآلي. متخصصون في مراجعة التصميم من أجل التصنيع (DFM)، ومحاكاة CAM خماسية المحاور، وهندسة القيمة لخفض التكاليف لتطبيقات الطيران والطب.',
     },
   },
   '/capabilities/manufacturing': {
@@ -1202,6 +1370,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '고급 티타늄 제조 역량 및 인프라 | BOZE CNC Ti',
       nl: 'Geavanceerde Titanium Productiecapaciteiten & Infrastructuur | BOZE CNC Ti',
       pl: 'Zaawansowane Zdolności Produkcyjne Tytanu i Infrastruktura | BOZE CNC Ti',
+      ru: 'Передовые производственные возможности и инфраструктура для титановой обработки | BOZE CNC Ti',
+      ar: 'قدرات متقدمة لتصنيع التيتانيوم والبنية التحتية | BOZE CNC Ti',
     },
     description: {
       en: 'Certified titanium precision manufacturing infrastructure. Specializing in micron-level CNC tolerances, 5-axis milling, Swiss turning, and full material traceability (MTR) for aerospace, medical, and defense applications.',
@@ -1215,6 +1385,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '인증된 티타늄 정밀 제조 인프라. 항공우주, 의료 및 방산 응용 분야를 위한 미크론 수준의 CNC 공차, 5축 밀링, 스위스 선반 가공 및 완전한 재료 추적성(MTR) 전문.',
       nl: 'Gecertificeerde titanium precisieproductie-infrastructuur. Gespecialiseerd in micron-niveau CNC-toleranties, 5-assig frezen, Swiss draaien en volledige materiaaltraceerbaarheid (MTR) voor luchtvaart, medische en defensietoepassingen.',
       pl: 'Certyfikowana infrastruktura precyzyjnej produkcji tytanu. Specjalizacja w tolerancjach CNC na poziomie mikronów, frezowaniu 5-osiowym, toczeniu szwajcarskim i pełnej identyfikowalności materiałów (MTR) dla zastosowań lotniczych, medycznych i obronnych.',
+      ru: 'Сертифицированная инфраструктура для прецизионной обработки титана. Специализация на допусках с ЧПУ на уровне микронов, 5-осевом фрезеровании, швейцарской токарной обработке и полной прослеживаемости материалов (MTR) для аэрокосмической, медицинской и оборонной промышленности.',
+      ar: 'بنية تحتية معتمدة لتصنيع التيتانيوم بدقة. متخصصون في تفاوتات CNC على مستوى الميكرون، والطحن خماسي المحاور، والخراطة السويسرية، وإمكانية التتبع الكامل للمواد (MTR) لتطبيقات الطيران والطب والدفاع.',
     },
   },
   '/industries/aerospace': {
@@ -1229,6 +1401,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '항공우주 티타늄 CNC 가공 | AS9100D 인증 공장',
       nl: 'Luchtvaart Titanium CNC-bewerking | AS9100D gecertificeerde fabriek',
       pl: 'Obróbka CNC Tytanu Lotniczego | Fabryka z certyfikatem AS9100D',
+      ru: 'Аэрокосмическая титановая обработка с ЧПУ | Сертифицированный завод AS9100D',
+      ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للطيران | مصنع معتمد AS9100D',
+      zh: ""
     },
     description: {
       en: 'AS9100D certified 5-axis CNC machining for Grade 5 titanium aerospace brackets. Full EN 10204 3.1 MTR material tracing, AS9102 First Article Inspection reports, and CMM dimensional validation per ASME Y14.5 GD&T.',
@@ -1241,6 +1416,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'AS9100D 인증 5축 CNC 가공으로 Grade 5 티타늄 항공우주 브래킷 제조. 전체 EN 10204 3.1 MTR 재료 추적, AS9102 초품 검사 보고서, ASME Y14.5 GD&T에 따른 CMM 치수 검증.',
       nl: 'AS9100D gecertificeerde 5-assige CNC-bewerking voor Grade 5 titanium luchtvaartbeugels. Volledige EN 10204 3.1 MTR materiaaltraceerbaarheid, AS9102 First Article Inspection rapporten en CMM dimensionale validatie volgens ASME Y14.5 GD&T.',
       pl: 'Obróbka CNC 5-osiowa z certyfikatem AS9100D dla wsporników lotniczych z tytanu Grade 5. Pełna identyfikowalność materiałów MTR EN 10204 3.1, raporty kontroli pierwszej sztuki AS9102 i walidacja wymiarowa CMM zgodnie z ASME Y14.5 GD&T.',
+      ru: 'Сертифицированное по AS9100D 5-осевое фрезерование с ЧПУ для аэрокосмических кронштейнов из титана Grade 5. Полная прослеживаемость материалов по EN 10204 3.1 MTR, отчеты первого изделия по AS9102 и размерная верификация на КИМ по ASME Y14.5 GD&T.',
+      ar: 'تصنيع باستخدام الحاسب الآلي خماسي المحاور معتمد AS9100D لأقواس التيتانيوم من الدرجة 5 في مجال الطيران. تتبع كامل للمواد وفقًا لمعيار EN 10204 3.1 MTR، وتقارير فحص القطعة الأولى AS9102، والتحقق البعدي باستخدام CMM وفقًا لمعيار ASME Y14.5 GD&T.',
+      zh: ""
     },
   },
   '/industries/medical': {
@@ -1255,6 +1433,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '의료용 티타늄 CNC 가공 | ISO 13485 인증 공장',
       nl: 'Medisch Titanium CNC-bewerking | ISO 13485 gecertificeerde fabriek',
       pl: 'Medyczna Obróbka CNC Tytanu | Fabryka z certyfikatem ISO 13485',
+      ru: 'Медицинская титановая обработка с ЧПУ | Сертифицированный завод ISO 13485',
+      ar: 'تصنيع التيتانيوم الطبي باستخدام الحاسب الآلي | مصنع معتمد ISO 13485',
+      zh: ""
     },
     description: {
       en: 'ISO 13485 certified CNC Swiss turning and 5-axis milling for Grade 23 Ti-6Al-4V ELI medical titanium bone screws and orthopedic implants. Zero-contamination ultrasonic cleaning process with full EN 10204 3.1 MTR material tracing.',
@@ -1267,6 +1448,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'ISO 13485 인증 CNC 스위스 선반 가공 및 5축 밀링으로 Grade 23 Ti-6Al-4V ELI 의료용 티타늄 뼈 나사 및 정형외과 임플란트 제조. 무오염 초음파 세척 공정, 전체 EN 10204 3.1 MTR 재료 추적성.',
       nl: 'ISO 13485 gecertificeerd CNC Swiss draaien en 5-assig frezen voor Grade 23 Ti-6Al-4V ELI medische titanium botschroeven en orthopedische implantaten. Vervuilingsvrij ultrasoon reinigingsproces met volledige EN 10204 3.1 MTR materiaaltraceerbaarheid.',
       pl: 'Obróbka CNC szwajcarska i frezowanie 5-osiowe z certyfikatem ISO 13485 dla śrub kostnych z tytanu Grade 23 Ti-6Al-4V ELI i implantów ortopedycznych. Proces czyszczenia ultradźwiękowego bez zanieczyszczeń z pełną identyfikowalnością materiałów MTR EN 10204 3.1.',
+      ru: 'Сертифицированная по ISO 13485 швейцарская токарная обработка с ЧПУ и 5-осевое фрезерование для медицинских винтов из титана Grade 23 Ti-6Al-4V ELI и ортопедических имплантатов. Ультразвуковая очистка с нулевым загрязнением и полная прослеживаемость материалов по EN 10204 3.1 MTR.',
+      ar: 'خراطة سويسرية وطحن خماسي المحاور باستخدام الحاسب الآلي معتمد ISO 13485 لبراغي العظام الطبية وزرعات العظام المصنوعة من التيتانيوم الطبي من الدرجة 23 Ti-6Al-4V ELI. عملية تنظيف بالموجات فوق الصوتية خالية من التلوث مع تتبع كامل للمواد وفقًا لمعيار EN 10204 3.1 MTR.',
+      zh: ""
     },
   },
   '/industries/uav-drones': {
@@ -1281,6 +1465,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'UAV 및 드론 티타늄 CNC 가공 | 경량 엔지니어링',
       nl: 'UAV & Drone Titanium CNC-bewerking | Lichtgewicht Engineering',
       pl: 'Obróbka CNC Tytanu dla UAV i Dronów | Lekka Inżynieria',
+      ru: 'Обработка титана для БПЛА и дронов на станках с ЧПУ | Легкие инженерные решения',
+      ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للطائرات بدون طيار | هندسة خفيفة الوزن',
+      zh: ""
     },
     description: {
       en: 'Custom 5-axis CNC machining for Grade 5 titanium drone gimbal mounts, structural rotor hubs, and payload hardware. Rigid weight-reduction thin-wall milling and dynamic balancing controls for extended flight endurance.',
@@ -1293,6 +1480,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'Grade 5 티타늄 드론 짐벌 마운트, 구조용 로터 허브 및 페이로드 하드웨어의 맞춤형 5축 CNC 가공. 박막 밀링을 통한 강체 경량화 및 동적 밸런싱 제어로 비행 내구성 연장.',
       nl: 'Op maat gemaakte 5-assige CNC-bewerking voor Grade 5 titanium drone-gimbalbeugels, structurele rotornaven en laadvermogenhardware. Stijve gewichtsvermindering door dunwandig frezen en dynamische balanceringsregeling voor verlengde vliegduur.',
       pl: 'Niestandardowa obróbka CNC 5-osiowa dla wsporników gimbali dronów z tytanu Grade 5, strukturalnych piast wirników i sprzętu ładunkowego. Sztywne odchudzanie przez frezowanie cienkościenne i dynamiczna kontrola równoważenia dla wydłużonego czasu lotu.',
+      ru: 'Индивидуальная 5-осевая обработка на станках с ЧПУ креплений подвеса для дронов, структурных втулок ротора и полезной нагрузки из титана Grade 5. Жесткое фрезерование тонкостенных деталей для снижения веса и контроль динамической балансировки для увеличения продолжительности полета.',
+      ar: 'تصنيع مخصص باستخدام الحاسب الآلي بخمسة محاور للتيتانيوم من الدرجة 5 لحوامل محاور الكاميرا للطائرات بدون طيار، ومحاور الدوار الهيكلية، ومعدات الحمولة. طحن الجدران الرقيقة لتقليل الوزن الصارم وتحكمات التوازن الديناميكي لتحسين مدة الطيران.',
+      zh: ""
     },
   },
   '/industries/ai-infrastructure': {
@@ -1307,6 +1497,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'AI 인프라 및 광통신 티타늄 CNC 가공',
       nl: 'AI-infrastructuur & optische communicatie Titanium CNC-bewerking',
       pl: 'Obróbka CNC Tytanu dla Infrastruktury AI i Komunikacji Optycznej',
+      ru: 'Обработка титана для ИИ-инфраструктуры и оптической связи на станках с ЧПУ',
+      ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للبنية التحتية للذكاء الاصطناعي والاتصالات البصرية',
+      zh: ""
     },
     description: {
       en: 'Custom precision CNC machining for 800G/1.6T optical transceiver housings, thin-wall EMI shielding components, and leak-proof data center liquid cooling manifolds. Thermal drift elimination via low-CTE titanium.',
@@ -1319,6 +1512,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '800G/1.6T 광 트랜시버 하우징, 박막 EMI 차폐 부품, 데이터센터 액체 냉각 매니폴드의 맞춤형 정밀 CNC 가공. 저CTE 티타늄을 통한 열 드리프트 제거.',
       nl: 'Op maat gemaakte precisie CNC-bewerking voor 800G/1.6T optische transceiverbehuizingen, dunwandige EMI-afschermingscomponenten en lekvrije vloeistofkoelingsverdelers voor datacenters. Eliminatie van thermische drift door titanium met lage CTE.',
       pl: 'Niestandardowa precyzyjna obróbka CNC dla obudów transceiverów optycznych 800G/1.6T, cienkościennych komponentów ekranowania EMI i szczelnych rozdzielaczy chłodzenia cieczą dla centrów danych. Eliminacja dryfu termicznego dzięki tytanowi o niskim CTE.',
+      ru: 'Индивидуальная прецизионная обработка на станках с ЧПУ корпусов оптических трансиверов 800G/1.6T, тонкостенных компонентов ЭМ-экранирования и герметичных коллекторов жидкостного охлаждения центров обработки данных. Устранение теплового дрейфа за счет титана с низким КТР.',
+      ar: 'تصنيع دقيق مخصص باستخدام الحاسب الآلي لأغلفة أجهزة الإرسال والاستقبال البصرية 800G/1.6T، ومكونات التدريع الكهرومغناطيسي ذات الجدران الرقيقة، ومشعبات التبريد السائل لمراكز البيانات المقاومة للتسرب. القضاء على الانجراف الحراري باستخدام التيتانيوم منخفض معامل التمدد الحراري.',
+      zh: ""
     },
   },
   '/industries/marine': {
@@ -1333,6 +1529,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '해양 및 수중 티타늄 CNC 가공 | 내식 엔지니어링',
       nl: 'Marine & Onderwater Titanium CNC-bewerking | Corrosiebestendige Techniek',
       pl: 'Obróbka CNC Tytanu Morskiego i Podwodnego | Inżynieria Antykorozyjna',
+      ru: 'Обработка титана для морской и подводной техники на станках с ЧПУ | Антикоррозийные решения',
+      ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للبحرية وتحت الماء | هندسة مقاومة التآكل',
+      zh: ""
     },
     description: {
       en: 'Precision custom CNC machining for Grade 2 and Grade 12 titanium subsea enclosures, marine fasteners, and oceanographic sensor components. Absolute chloride pitting resistance and crevice corrosion mitigation for deep-sea applications.',
@@ -1345,6 +1544,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'Grade 2 및 Grade 12 티타늄 수중 인클로저, 해양 체결구, 해양 센서 부품의 맞춤형 정밀 CNC 가공. 심해 응용 분야를 위한 절대적인 염화물 피팅 저항성 및 틈새 부식 완화.',
       nl: 'Precisie op maat gemaakte CNC-bewerking voor onderwaterbehuizingen van Grade 2 en Grade 12 titanium, maritieme bevestigingsmiddelen en oceanografische sensorcomponenten. Absolute chloride-pittingweerstand en spleetcorirosiebeperking voor diepzeetoepassingen.',
       pl: 'Precyzyjna niestandardowa obróbka CNC dla podwodnych obudów z tytanu Grade 2 i Grade 12, morskich elementów złącznych i komponentów czujników oceanograficznych. Absolutna odporność na wżery chlorkowe i ograniczenie korozji szczelinowej do zastosowań głębinowych.',
+      ru: 'Прецизионная индивидуальная обработка на станках с ЧПУ подводных корпусов, морских крепежных элементов и компонентов океанографических датчиков из титана Grade 2 и Grade 12. Абсолютная стойкость к хлоридной питтинговой коррозии и снижение щелевой коррозии для глубоководных применений.',
+      ar: 'تصنيع دقيق مخصص باستخدام الحاسب الآلي للتيتانيوم من الدرجة 2 والدرجة 12 لأغلفة تحت الماء، ومثبتات بحرية، ومكونات أجهزة استشعار أوقيانوغرافية. مقاومة مطلقة للتنقر الكلوريدي وتخفيف التآكل الشقي للتطبيقات في أعماق البحار.',
+      zh: ""
     },
   },
   '/industries/semiconductor': {
@@ -1359,6 +1561,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '반도체 장비 티타늄 CNC 가공 | 초정밀',
       nl: 'Halfgeleiderapparatuur Titanium CNC-bewerking | Ultra-precisie',
       pl: 'Obróbka CNC Tytanu dla Sprzętu Półprzewodnikowego | Ultra-Precyzja',
+      ru: 'Обработка титана для полупроводникового оборудования на станках с ЧПУ | Сверхточность',
+      ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي لمعدات أشباه الموصلات | فائقة الدقة',
+      zh: ""
     },
     description: {
       en: 'Custom sub-micron CNC machining for semiconductor wafer vacuum chambers, micro-hole gas showerheads, and UHV process components. Zero-particle cleanroom packaging and mirror-finish surface roughness Ra ≤ 0.1 µm.',
@@ -1371,6 +1576,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '반도체 웨이퍼 진공 챔버, 미세 홀 가스 샤워헤드, UHV 공정 부품의 맞춤형 서브미크론 CNC 가공. 제로 파티클 클린룸 포장, Ra ≤ 0.1 µm 미러 마감.',
       nl: 'Op maat gemaakte submicron CNC-bewerking voor vacuümkamers voor halfgeleiderwafers, microgaasgasdouchekoppen en UHV-procescomponenten. Nul-deeltjes cleanroomverpakking en spiegelafwerking met ruwheid Ra ≤ 0,1 µm.',
       pl: 'Niestandardowa obróbka CNC w skali submikronowej dla komór próżniowych płytek półprzewodnikowych, mikrootworowych głowic natryskowych gazu i komponentów procesowych UHV. Pakowanie w cleanroomie zerocząsteczkowym i wykończenie lustrzane o chropowatości Ra ≤ 0,1 µm.',
+      ru: 'Индивидуальная субмикронная обработка на станках с ЧПУ вакуумных камер для полупроводниковых пластин, газораспределительных головок с микроотверстиями и компонентов для сверхвысоковакуумных процессов. Упаковка в чистых помещениях с нулевым содержанием частиц и шероховатость поверхности зеркального качества Ra ≤ 0,1 мкм.',
+      ar: 'تصنيع مخصص باستخدام الحاسب الآلي بدقة دون الميكرون لغرف التفريغ لرقائق أشباه الموصلات، ورؤوس الدش ذات الثقوب الدقيقة للغاز، ومكونات عمليات التفريغ الفائق. تغليف خالٍ من الجسيمات في غرف نظيفة وخشونة سطح مرآة بمعامل Ra ≤ 0.1 ميكرومتر.',
+      zh: ""
     },
   },
   '/industries/energy': {
@@ -1385,6 +1593,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '에너지 및 원자력 인프라 티타늄 CNC 가공',
       nl: 'Energie- & nucleaire infrastructuur Titanium CNC-bewerking',
       pl: 'Obróbka CNC Tytanu dla Infrastruktury Energetycznej i Jądrowej',
+      ru: 'Обработка титана для энергетики и ядерной инфраструктуры на станках с ЧПУ',
+      ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للبنية التحتية للطاقة والنووية',
+      zh: ""
     },
     description: {
       en: 'Custom 5-axis CNC machining for titanium hydrogen compressor impellers, SMR nuclear control rod drive hardware, and high-pressure fluid power components. Complete hydrogen embrittlement mitigation with controlled shot peening fatigue enhancement.',
@@ -1397,6 +1608,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 수소 압축기 임펠러, SMR 원자로 제어봉 구동 장치 부품, 고압 유체 동력 부품의 맞춤형 5축 CNC 가공. 제어된 쇼트 피닝 피로 강화를 통한 완전한 수소 취성 완화.',
       nl: 'Op maat gemaakte 5-assige CNC-bewerking voor titanium waterstofcompressorwaaiers, SMR nucleaire regelstafaandrijvingscomponenten en hogedrukvloeistofcomponenten. Volledige waterstofbrosheidsbeperking met gecontroleerde shotpeening vermoeiingsverbetering.',
       pl: 'Niestandardowa obróbka CNC 5-osiowa dla wirników sprężarek wodorowych z tytanu, elementów napędu prętów sterowniczych reaktorów SMR i elementów układów wysokociśnieniowych. Całkowite ograniczenie kruchości wodorowej ze zwiększeniem odporności zmęczeniowej przez kontrolowane śrutowanie.',
+      ru: 'Индивидуальная 5-осевая обработка на станках с ЧПУ рабочих колес водородных компрессоров, приводов стержней управления ядерных реакторов SMR и компонентов гидравлических систем высокого давления из титана. Полное подавление водородного охрупчивания с помощью контролируемой дробеструйной обработки для повышения усталостной прочности.',
+      ar: 'تصنيع مخصص باستخدام الحاسب الآلي بخمسة محاور لدوافع ضواغط الهيدروجين المصنوعة من التيتانيوم، ومعدات تشغيل قضبان التحكم النووية للمفاعلات النووية الصغيرة، ومكونات الطاقة السائلة عالية الضغط. تخفيف كامل لهشاشة الهيدروجين مع تعزيز الإجهاد بالصدم الكروي المتحكم به.',
+      zh: ""
     },
   },
   '/industries/industrial-equipment': {
@@ -1411,6 +1625,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '산업 장비 및 자동화 티타늄 CNC 가공',
       nl: 'Industriële apparatuur & automatisering Titanium CNC-bewerking',
       pl: 'Obróbka CNC Tytanu dla Sprzętu Przemysłowego i Automatyki',
+      ru: 'Промышленное оборудование и автоматизация: титановая обработка с ЧПУ',
+      ar: 'التصنيع باستخدام الحاسب الآلي للتيتانيوم في المعدات الصناعية والأتمتة',
+      zh: ""
     },
     description: {
       en: 'Custom precision CNC machining for titanium ultrasonic welding horns and sonotrodes, high-pressure chemical reactor valves, and heavy-duty automation manifolds. Exceptional cyclic loading resistance and acoustic resonance optimization.',
@@ -1423,6 +1640,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: '티타늄 초음파 용접 혼과 소노트로드, 고압 화학 반응기 밸브, 산업용 자동화 매니폴드의 맞춤형 정밀 CNC 가공. 뛰어난 사이클 하중 저항성 및 음향 공진 최적화.',
       nl: 'Op maat gemaakte precisie CNC-bewerking voor titanium ultrasone lashoorns en sonotrodes, hogedruk chemische reactorafsluiters en zware automatiseringsverdelers. Uitzonderlijke weerstand tegen cyclische belasting en akoestische resonantie-optimalisatie.',
       pl: 'Niestandardowa precyzyjna obróbka CNC dla tytanowych rogów spawalniczych ultradźwiękowych i sonotrod, zaworów reaktorów chemicznych wysokociśnieniowych i ciężkich rozdzielaczy automatyki. Wyjątkowa odporność na obciążenia cykliczne i optymalizacja rezonansu akustycznego.',
+      ru: 'Прецизионная обработка с ЧПУ на заказ для титановых ультразвуковых сварочных рожков и сонотродов, клапанов химических реакторов высокого давления и коллекторов для тяжелой автоматизации. Исключительная устойчивость к циклическим нагрузкам и оптимизация акустического резонанса.',
+      ar: 'تصنيع دقيق باستخدام الحاسب الآلي للتيتانيوم لأبواق اللحام فوق الصوتي والسونوترودات، وصمامات المفاعلات الكيميائية عالية الضغط، ومشعبات الأتمتة الثقيلة. مقاومة استثنائية للأحمال الدورية وتحسين الرنين الصوتي.',
+      zh: ""
     },
   },
   '/about': {
@@ -1437,6 +1657,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE CNC-Ti 소개 | 우리의 이야기',
       nl: 'Over BOZE CNC-Ti | Ons Verhaal',
       pl: 'O BOZE CNC-Ti | Nasza Historia',
+      ru: 'О компании BOZE CNC-Ti | Наша история',
+      ar: 'حول BOZE CNC-Ti | قصتنا',
+      zh: ""
     },
     description: {
       en: 'BOZE CNC-Ti: Precision titanium CNC machining and OEM/ODM customization. From raw material to finished component — one integrated workflow.',
@@ -1449,6 +1672,9 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ko: 'BOZE CNC-Ti: 정밀 티타늄 CNC 가공 및 OEM/ODM 맞춤 제작. 원자재에서 완제품까지 — 통합 워크플로우.',
       nl: 'BOZE CNC-Ti: Precisie titanium CNC-bewerking en OEM/ODM-maatwerk. Van grondstof tot eindcomponent — één geïntegreerde workflow.',
       pl: 'BOZE CNC-Ti: Precyzyjna obróbka CNC tytanu i personalizacja OEM/ODM. Od surowca do gotowego komponentu — zintegrowany przepływ pracy.',
+      ru: 'BOZE CNC-Ti: прецизионная титановая обработка с ЧПУ и OEM/ODM-кастомизация. От сырья до готовой детали — единый интегрированный рабочий процесс.',
+      ar: 'BOZE CNC-Ti: تصنيع دقيق للتيتانيوم باستخدام الحاسب الآلي وتخصيص OEM/ODM. من المواد الخام إلى المكون النهائي — سير عمل متكامل.',
+      zh: ""
     },
   },
 };

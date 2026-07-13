@@ -77,7 +77,7 @@ async function main() {
   console.log('\nEN 样本:');
   let n = 0;
   for (const [kw, meta] of Object.entries(keywordMap)) {
-    if (!meta.href.match(/^\/(de|ja|fr|es|pt|it|ko|nl|pl)\//) && n < 8) {
+    if (!meta.href.match(/^\/(de|ja|fr|es|pt|it|ko|nl|pl|ru|ar)\//) && n < 8) {
       console.log(`  "${kw}" → ${meta.href}`);
       n++;
     }

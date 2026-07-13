@@ -19,6 +19,8 @@ import it from './translations/it.json';
 import ko from './translations/ko.json';
 import nl from './translations/nl.json';
 import pl from './translations/pl.json';
+import ru from './translations/ru.json';
+import ar from './translations/ar.json';
 
 export const LANGUAGES: Record<string, string> = {
   en: 'English',
@@ -31,10 +33,12 @@ export const LANGUAGES: Record<string, string> = {
   ko: '한국어',
   nl: 'Nederlands',
   pl: 'Polski',
+  ru: 'Русский',
+  ar: 'العربية',
 };
 
 export const DEFAULT_LANG = 'en';
 
 export type Lang = keyof typeof LANGUAGES;
 
-export const UI: Record<Lang, Record<string, string>> = { en, de, ja, fr, es, pt, it, ko, nl, pl };
+export const UI: Record<Lang, Record<string, string>> = { en, de, ja, fr, es, pt, it, ko, nl, pl, ru, ar };

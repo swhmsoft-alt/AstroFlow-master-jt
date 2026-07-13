@@ -188,7 +188,7 @@ async function main() {
   if (!langCode) {
     console.error('Usage: node scripts/translate-manufacturing-page.mjs <lang>');
     console.error('   en - just add English source keys');
-    console.error('   de|ja|fr|es|pt|it|ko|nl|pl - translate');
+    console.error('   de|ja|fr|es|pt|it|ko|nl|pl|ru|ar - translate');
     process.exit(1);
   }
 

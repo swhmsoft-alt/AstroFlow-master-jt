@@ -37,7 +37,7 @@ const IGNORE_PATTERNS = [
   /^\d+(\.\d+)?(px|rem|em|%|ms|s)?$/,  // 纯数值
   /^#[0-9a-f]{3,8}$/i,                 // 颜色值
   /^(true|false|null|undefined)$/,
-  /^(en|de|ja|fr|es|pt|it|ko|nl|pl)$/,// 语言代码
+  /^(en|de|ja|fr|es|pt|it|ko|nl|pl|ru|ar)$/,// 语言代码
   // 用户自定义忽略
   ...getAllArgs('--ignore').map(p => new RegExp(p)),
 ];

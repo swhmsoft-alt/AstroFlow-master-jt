@@ -18,7 +18,7 @@ const DIST = join(__dirname, '..', 'dist');
 
 // Languages (must match src/i18n/ui.ts)
 const LANGUAGES = [
-  'en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl',
+  'en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar',
 ];
 
 const SITEMAP_0 = join(DIST, 'sitemap-0.xml');

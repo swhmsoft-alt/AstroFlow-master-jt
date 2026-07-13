@@ -25,7 +25,7 @@ const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
 const MAX_KEYWORDS_PER_URL = 8;
 
-const SUPPORTED_LANGS = ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl'];
+const SUPPORTED_LANGS = ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'];
 const DEFAULT_LANG = 'en';
 
 // ── 1. Scan source content files ────────────────────────
@@ -489,7 +489,7 @@ async function main() {
 
         // Show language distribution
         const langCount = Object.entries(mergedKeywords).filter(([, url]) =>
-          lang === DEFAULT_LANG ? !url.match(/^\/(de|ja|fr|es|pt|it|ko|nl|pl)\//) : url.startsWith(`/${lang}/`)
+          lang === DEFAULT_LANG ? !url.match(/^\/(de|ja|fr|es|pt|it|ko|nl|pl|ru|ar)\//) : url.startsWith(`/${lang}/`)
         ).length;
         console.log(`     Total keywords for ${lang}: ${langCount}`);
       }
@@ -509,7 +509,7 @@ async function main() {
 
     for (const lang of SUPPORTED_LANGS) {
       const count = Object.entries(mergedKeywords).filter(([, url]) =>
-        lang === DEFAULT_LANG ? !url.match(/^\/(de|ja|fr|es|pt|it|ko|nl|pl)\//) : url.startsWith(`/${lang}/`)
+        lang === DEFAULT_LANG ? !url.match(/^\/(de|ja|fr|es|pt|it|ko|nl|pl|ru|ar)\//) : url.startsWith(`/${lang}/`)
       ).length;
       console.log(`  ${lang}: ${count} keywords`);
     }

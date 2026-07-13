@@ -32,13 +32,15 @@ export default defineConfig({
           ko: 'ko-KR',
           nl: 'nl-NL',
           pl: 'pl-PL',
+          ru: 'ru-RU',
+          ar: 'ar-SA',
         },
       },
     }),
   ],
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl'],
+    locales: ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'],
     routing: {
       prefixDefaultLocale: false,
     },

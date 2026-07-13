@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/rtl.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import { SITE } from '@config/site';
@@ -174,7 +175,7 @@ const ldJson = JSON.stringify(pageGraph);
 ---
 
 <!doctype html>
-<html lang={currentLang}>
+<html lang={currentLang} dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
