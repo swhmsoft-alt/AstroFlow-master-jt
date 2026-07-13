@@ -16,7 +16,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
   '/': {
     title: {
       en: 'BOZE CNC Ti | AS9100D Certified Titanium CNC Machining & Manufacturing',
-      de: 'BOZE CNC Ti | AS9100D-zertifizierte Titan-CNC-Bearbeitung & Fertigung',
+      de: 'Titan CNC-Bearbeitung und Fertigung für Luftfahrt, Medizintechnik und Industrie | BOZE',
       zh: 'BOZE CNC Ti | AS9100D认证钛合金CNC加工与制造',
       ja: 'BOZE CNC Ti | AS9100D認証取得 チタンCNC加工・製造',
       fr: 'BOZE CNC Ti | Usinage CNC du Titane Certifié AS9100D & Fabrication',
@@ -31,7 +31,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     },
     description: {
       en: 'End-to-end titanium manufacturing: precision CNC machining, additive manufacturing, fabrication, surface treatment. AS9100D & ISO 9001 certified. From prototype to production.',
-      de: 'Komplette Titan-Fertigung: Präzisions-CNC-Bearbeitung, additive Fertigung, Fügetechnik, Oberflächenbehandlung. AS9100D & ISO 9001 zertifiziert. Vom Prototyp bis zur Serie.',
+      de: 'Präzisions-CNC-Bearbeitung, additive Fertigung und Oberflächenbehandlung von Titan. AS9100D & ISO 9001 zertifiziert. Entwicklung · Prototyp · Vorserie · Serienfertigung aus einer Hand.',
       zh: '端到端钛合金制造：精密CNC加工、增材制造、焊接成型、表面处理。AS9100D与ISO 9001认证。从原型到批量生产。',
       ja: 'チタン製造のトータルソリューション：精密CNC加工、積層造形、板金加工、表面処理。AS9100D・ISO 9001認証取得。試作から量産まで対応。',
       fr: 'Fabrication complète du titane : usinage CNC de précision, fabrication additive, assemblage, traitement de surface. Certifié AS9100D & ISO 9001. Du prototype à la production.',

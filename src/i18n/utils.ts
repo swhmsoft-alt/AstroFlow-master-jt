@@ -61,16 +61,26 @@ export function useTranslations(lang: Lang): (key: string) => string {
 }
 
 /**
- * Prepend the language prefix to a canonical path.
+ * Like useTranslations, but returns null (instead of the raw key)
+ * when the key is missing in both the current language and the default.
  *
- * For default language (en with prefixDefaultLocale=false), returns path as-is.
- * For other languages, prepends /zh or /de.
+ * This is useful for conditional fallback logic in page frontmatter:
  *
- * Examples:
- *   localizePath('/services', 'en')  → '/services'
- *   localizePath('/services', 'zh')  → '/zh/services'
- *   localizePath('/', 'de')          → '/de/'
+ *   const tOrNull = useTOrNull(lang);
+ *   const h1 = tOrNull('hero.home.h1')
+ *     ?? FALLBACK_TEMPLATES[lang]?.h1
+ *     ?? heroEntry?.h1;
  */
+export function useTOrNull(lang: Lang): (key: string) => string | null {
+  return function tOrNull(key: string): string | null {
+    const val = UI[lang]?.[key];
+    if (val !== undefined) return val;
+    const fallback = UI[DEFAULT_LANG]?.[key];
+    if (fallback !== undefined) return fallback;
+    return null;
+  };
+}
+
 export function localizePath(path: string, lang: Lang): string {
   if (lang === DEFAULT_LANG) return path;
   const normalized = path.startsWith('/') ? path : `/${path}`;
