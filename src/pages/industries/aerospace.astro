@@ -1,6 +1,5 @@
 ---
 // src/pages/industries/aerospace.astro
-// Google AIO Entity-Aligned Page: AS9100D certified 5-axis CNC machining for Grade 5 titanium aerospace brackets with full MTR tracing
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import { HERO_CONFIG } from '../../config/hero';
@@ -15,16 +14,15 @@ const t = useTranslations(lang);
 ---
 
 <BaseLayout
-  title="Aerospace Titanium CNC Machining | AS9100D Certified Factory"
-  description="AS9100D certified 5-axis CNC machining for Grade 5 titanium aerospace brackets. Full EN 10204 3.1 MTR material tracing, AS9102 First Article Inspection reports, and CMM dimensional validation per ASME Y14.5 GD&T."
+  title={t('industries.aerospace.page.title')}
+  description={t('industries.aerospace.page.description')}
   pageType="industry-detail"
-  serviceName="Aerospace Titanium CNC Machining Services"
-  serviceCategory="Aerospace & Defense"
-  productName="Aerospace Titanium Brackets, Fasteners & Hydraulic Valve Stems"
-  productCategory="Aerospace Components"
+  serviceName={t('industries.aerospace.page.serviceName')}
+  serviceCategory={t('industries.aerospace.page.serviceCategory')}
+  productName={t('industries.aerospace.page.productName')}
+  productCategory={t('industries.aerospace.page.productCategory')}
   serviceHubKey="cnc-machining"
 >
-  <!-- Hero Section — Entity Root Connection -->
   <SubpageHero
     h1={HERO_CONFIG['/industries/aerospace'].h1}
     badge={HERO_CONFIG['/industries/aerospace'].badge}
@@ -35,18 +33,9 @@ const t = useTranslations(lang);
     compact={false}
   />
 
-  <!-- Section 1: 5-Axis CNC Machining + Grade 5 Ti + Aerospace Brackets Entity Link -->
   <AerospaceFiveAxisSection />
-
-  <!-- Section 2: Swiss Turning + Grade 19 Beta Ti + Aerospace Fasteners Entity Link -->
   <AerospaceSwissTurningSection />
-
-  <!-- Section 3: Material Traceability — EN 10204 3.1 MTR + Heat Number + AS9102 FAIR -->
   <AerospaceComplianceSection />
-
-  <!-- Section 4: CMM Metrology + ASME Y14.5 GD&T Dimensional Gating -->
   <AerospaceMetrologySection />
-
-  <!-- Section 5: Conversion CTA -->
   <AerospaceCtaSection />
 </BaseLayout>

@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // MarineCorrosionSection.astro
 // Entity cluster: Precision CNC Turning + Grade 12 Titanium (Ti-0.3Mo-0.8Ni) + Marine Fasteners & Valve Blocks
 // Technical depth: Crevice corrosion mitigation, chloride pitting, splash-zone resistance, Ra ≤ 0.4 µm
@@ -11,10 +14,10 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
-        Corrosion Mitigation
+        {t('industries.marine.corrosion.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Precision CNC Turning</span> — Grade 12 Titanium Marine Fasteners, Valve Blocks &amp; Crevice Corrosion Mitigation
+        <span style="color: var(--theme-primary);">{t('industries.marine.corrosion.title.main')}</span> — Grade 12 Titanium Marine Fasteners, Valve Blocks &amp; Crevice Corrosion Mitigation
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Specialized precision turning of Grade 12 Titanium (Ti-0.3Mo-0.8Ni) for marine fasteners, subsea valve blocks, and splash-zone hardware. Molybdenum and nickel alloying additions break the crevice corrosion chain at the chemical level, while Ra ≤ 0.4 µm thread finishes eliminate chloride pitting nucleation sites.

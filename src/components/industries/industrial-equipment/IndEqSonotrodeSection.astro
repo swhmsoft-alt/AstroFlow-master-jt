@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // IndEqSonotrodeSection.astro
 // Entity cluster: Multi-Axis CNC Milling & Turning + Grade 5 Titanium + Ultrasonic Welding Horns (Sonotrodes) + 20-40kHz Resonance
 // Technical depth: Cyclic loading, acoustic resonance optimization, ±0.005 mm symmetry
@@ -11,13 +14,13 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>
-        Ultrasonic Sonotrodes
+        {t('industries.indeq.sonotrode.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Multi-Axis CNC Milling &amp; Turning</span> — Ultrasonic Welding Horns, Sonotrodes &amp; 20-40kHz Acoustic Resonance Optimization
+        <span style="color: var(--theme-primary);">{t('industries.indeq.sonotrode.title.main')}</span> — {t('industries.indeq.sonotrode.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Precision-machined Grade 5 Titanium ultrasonic welding horns (sonotrodes) and acoustic boosters for 20-40 kHz industrial processing equipment. Ultra-precise 3D contour milling with symmetry tolerances held to ±0.005 mm prevents parasitic frequencies and uneven heating — maximizing fatigue life under extreme cyclic loading.
+        {t('industries.indeq.sonotrode.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -28,19 +31,19 @@
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Ultrasonic Sonotrode Manufacturing</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Multi-Axis CNC · Grade 5 Ti · 20-40 kHz</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.indeq.sonotrode.card1.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.indeq.sonotrode.card1.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Ultrasonic welding horns operate at 20,000 to 40,000 cycles per second — demanding exceptional material homogeneity and geometric precision. Grade 5 Titanium (Ti-6Al-4V) offers the ideal combination of high acoustic velocity, low acoustic loss, and fatigue strength. Our multi-axis CNC machining produces complex 3D sonotrode profiles with absolute symmetry — preventing parasitic vibration modes that cause uneven heating, energy loss, and premature failure.
+            {t('industries.indeq.sonotrode.card1.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.indeq.sonotrode.card1.implLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Symmetry tolerance ±0.005 mm — eliminates parasitic frequencies at 20-40 kHz operation</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Complex 3D contour milling of exponential/catenoidal horn profiles — optimizes acoustic gain</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>FEA-validated frequency tuning — resonant frequency verified within ±50 Hz of target</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.indeq.sonotrode.card1.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.indeq.sonotrode.card1.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.indeq.sonotrode.card2.item2')}</li>
           </ul>
         </div>
       </div>
@@ -51,34 +54,34 @@
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Acoustic Boosters &amp; Amplitude Transformers</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Multi-Axis CNC · Grade 5 Ti · Gain Optimization</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.indeq.sonotrode.card2.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.indeq.sonotrode.card2.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Ultrasonic booster horns and amplitude transformers must precisely match the acoustic impedance between converter and sonotrode — any dimensional error creates energy-reflecting nodes that reduce weld quality and overheat the stack. Our CNC milling and turning produces boosters with precisely tuned nodal mounting points and gain ratios, ensuring maximum energy transfer to the weld interface.
+            {t('industries.indeq.sonotrode.card2.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.indeq.sonotrode.card2.implLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Nodal mounting flange positioning ±0.01 mm — eliminates energy loss through mounting structure</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Gain ratio accuracy ±2% — consistent amplitude at weld tip across production lots</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Surface finish Ra ≤ 0.4 µm on acoustic surfaces — eliminates energy-damping micro-roughness</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.indeq.sonotrode.card2.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.indeq.sonotrode.card1.item3')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.indeq.sonotrode.card2.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Multi-Axis CNC Milling & Turning</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.indeq.sonotrode.entityLabel')}:</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.indeq.sonotrode.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Ultrasonic Sonotrodes</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.indeq.sonotrode.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">20-40 kHz Resonance</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.indeq.sonotrode.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Cyclic Loading</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.indeq.sonotrode.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Grade 5 Ti-6Al-4V</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.indeq.sonotrode.entity.4')}</span>
     </div>
   </div>
 </section>

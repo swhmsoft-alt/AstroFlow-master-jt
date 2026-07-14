@@ -13,6 +13,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.3",
     "@radix-ui/react-accordion": "^1.2.13",
@@ -33,7 +34,8 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rehype-auto-internal-links": "^0.1.0",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@reunmedia/astro-normalize-trailing-slash": "^0.1.1",

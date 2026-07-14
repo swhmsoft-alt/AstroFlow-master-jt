@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // EnergyFatigueSection.astro
 // Entity cluster: Controlled Shot Peening + Compressive Residual Stress + Fatigue Life +300%
 // Technical depth: Cyclical pressure spikes, crack propagation prevention, surface stress optimization
@@ -11,10 +14,10 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
-        Fatigue Life Optimization
+        {t('industries.energy.fatigue.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Controlled Shot Peening</span> — Compressive Residual Stress Layer for Up to 300% Fatigue Life Enhancement
+        <span style="color: var(--theme-primary);">{t('industries.energy.fatigue.title.main')}</span> — Compressive Residual Stress Layer for Up to 300% Fatigue Life Enhancement
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Post-machining controlled shot peening introduces deep compressive residual stress layers into titanium component surfaces — increasing fatigue life against cyclical pressure spikes by up to 300% and preventing crack propagation in hydrogen compressor impellers and nuclear CRDM components operating under extreme cyclic loading.

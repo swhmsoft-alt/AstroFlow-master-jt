@@ -1,0 +1,50 @@
+import fs from 'fs';
+const en = JSON.parse(fs.readFileSync('src/i18n/translations/en.json','utf8'));
+const keys = {
+'industries.uav.impact.card1.title':'Superior to Aluminum 7075',
+'industries.uav.impact.card1.desc':'Grade 5 Titanium (Ti-6Al-4V) offers nearly double the strength-to-weight ratio of aluminum 7075-T6 while providing vastly superior fatigue life and corrosion resistance.',
+'industries.uav.impact.card1.item1':'Ti-6Al-4V: 900 MPa tensile vs. Al 7075-T6: 572 MPa — 57% stronger',
+'industries.uav.impact.card1.item2':'Fatigue endurance limit: Ti ~500 MPa vs. Al 7075 ~160 MPa — 3x longer service life',
+'industries.uav.impact.card1.item3':'Plastic deformation before failure — Titanium bends, aluminum 7075 shatters',
+'industries.uav.impact.card2.title':'Beyond Carbon Fiber Limitations',
+'industries.uav.impact.card2.desc':'Carbon fiber composites offer weight savings but suffer from impact fragility, UV degradation, moisture absorption, and galvanic corrosion when paired with metal fasteners.',
+'industries.uav.impact.card2.item1':'Impact toughness: Ti absorbs 4-5x more energy before failure than carbon fiber laminate',
+'industries.uav.impact.card2.item2':'Zero UV degradation — carbon fiber epoxy matrix embrittles after extended sun exposure',
+'industries.uav.impact.card2.item3':'No moisture absorption or galvanic corrosion — unlike carbon fiber / aluminum galvanic couples',
+'industries.uav.impact.card3.title':'High-G & Extreme Environment',
+'industries.uav.impact.card3.desc':'Military and industrial UAVs operate in extreme temperatures, salt spray, and high-vibration environments where material degradation accelerates.',
+'industries.uav.impact.card3.item1':'Operating range: -269°C to +400°C — no embrittlement or softening',
+'industries.uav.impact.card3.item2':'Zero corrosion in salt spray — ideal for maritime drone operations',
+'industries.uav.impact.card3.item3':'Non-magnetic — zero interference with compass, GPS, or magnetometer sensors',
+'industries.uav.impact.entityLabel':'Entity Cluster',
+'industries.uav.impact.entity.0':'Impact Resistance',
+'industries.uav.impact.entity.1':'Fracture Toughness',
+'industries.uav.impact.entity.2':'Grade 5 Ti-6Al-4V',
+'industries.uav.impact.entity.3':'vs. Al 7075',
+'industries.uav.impact.entity.4':'vs. Carbon Fiber',
+'industries.uav.compliance.badge':'Material Certification',
+'industries.uav.compliance.title.main':'Material Traceability',
+'industries.uav.compliance.title.suffix':'EN 10204 3.1 MTR & Metallurgical Uniformity for Airborne Components',
+'industries.uav.compliance.desc':'Every UAV component is backed by EN 10204 3.1 Mill Test Reports certifying chemical composition and mechanical properties.',
+'industries.uav.compliance.pillar1.title':'EN 10204 3.1 Mill Test Reports',
+'industries.uav.compliance.pillar1.desc':'Every batch of Grade 5 Titanium is certified with EN 10204 Type 3.1 documentation.',
+'industries.uav.compliance.pillar1.item1':'Grade 5 Ti-6Al-4V: tensile ≥ 900 MPa, yield ≥ 830 MPa, elongation ≥ 10%',
+'industries.uav.compliance.pillar1.item2':'Ultrasonic inspection available — verifies no internal voids in flight hardware',
+'industries.uav.compliance.pillar1.item3':'10+ year digital archival of mill certs — fully retrievable for customer audit',
+'industries.uav.compliance.pillar2.title':'CMM Dimensional Validation',
+'industries.uav.compliance.pillar2.desc':'All UAV structural components receive CMM dimensional inspection per engineering drawings with ZEISS CMM platforms.',
+'industries.uav.compliance.pillar2.item1':'ZEISS CMM ±1.9 µm accuracy — ISO 17025 traceable calibration',
+'industries.uav.compliance.pillar2.item2':'GD&T per ASME Y14.5 — concentricity, true position, profile, runout verification',
+'industries.uav.compliance.pillar2.item3':'Full dimensional report delivered with each lot — traceable to individual serial number',
+'industries.uav.compliance.entityLabel':'Entity Cluster',
+'industries.uav.compliance.entity.0':'EN 10204 3.1 MTR',
+'industries.uav.compliance.entity.1':'Metallurgical Uniformity',
+'industries.uav.compliance.entity.2':'Ultrasonic Inspection',
+'industries.uav.compliance.entity.3':'CMM Validation',
+'industries.uav.compliance.entity.4':'ASME Y14.5 GD&T',
+};
+let n = 0;
+for (const [k,v] of Object.entries(keys)) { if (!en[k]) { en[k] = v; n++; } }
+const s = {}; Object.keys(en).sort().forEach(k => { s[k] = en[k]; });
+fs.writeFileSync('src/i18n/translations/en.json', JSON.stringify(s,null,2)+'\n','utf8');
+console.log('Added '+n+' UAV keys');

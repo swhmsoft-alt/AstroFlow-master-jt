@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // AiMetrologySection.astro
 // Entity cluster: CMM (Coordinate Measuring Machine) + GD&T + Coplanarity + Fiber Alignment
 // Technical depth: Flatness, parallelism, positional accuracy for high-yield optical assembly
@@ -11,10 +14,10 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-        Precision Metrology
+        {t('industries.ai.metrology.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">CMM Dimensional Validation</span> — GD&amp;T Coplanarity &amp; Geometric Alignment for Optical Sub-Assemblies
+        <span style="color: var(--theme-primary);">{t('industries.ai.metrology.title.main')}</span> — GD&amp;T Coplanarity &amp; Geometric Alignment for Optical Sub-Assemblies
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Absolute dimensional verification via CMM (Coordinate Measuring Machine) mapping to ASME Y14.5 GD&T standards — guaranteeing coplanarity, flatness, and positional accuracy for high-yield fiber alignment and electronic board seating in optical transceiver sub-assemblies.

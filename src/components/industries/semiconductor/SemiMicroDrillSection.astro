@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // SemiMicroDrillSection.astro
 // Entity cluster: CNC Micro-Drilling + Grade 5 Titanium + Gas Distribution Showerheads + Mirror Finish Ra ≤ 0.1 µm
 // Technical depth: Ø0.2mm micro-holes, electropolishing, particle accumulation prevention, CVD/ALD gas uniformity
@@ -11,10 +14,10 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>
-        Micro-Gas Delivery
+        {t('industries.semi.microdrill.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">CNC Micro-Drilling</span> — Gas Distribution Showerheads, Gas Box Components &amp; Mirror-Finish Ra ≤ 0.1 µm
+        <span style="color: var(--theme-primary);">{t('industries.semi.microdrill.title.main')}</span> — Gas Distribution Showerheads, Gas Box Components &amp; Mirror-Finish Ra ≤ 0.1 µm
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Ultra-fine CNC micro-drilling of Grade 5 Titanium gas distribution showerheads with hole diameters down to Ø0.2 mm. Combined with electropolishing to achieve inner diameter surface roughness Ra ≤ 0.1 µm — eliminating process gas turbulence and particle accumulation in CVD and ALD deposition systems.

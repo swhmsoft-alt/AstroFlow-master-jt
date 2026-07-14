@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // MarineCtaSection.astro
 // Conversion CTA for marine/subsea engineering component DFM analysis
 ---
@@ -10,11 +13,11 @@
     <div class="max-w-4xl mx-auto text-center">
       <div class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
-        Start Your Marine Project
+        {t('industries.marine.marinectasection.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         Ready for Corrosion-Resistant<br/>
-        <span style="color: var(--theme-primary);">Marine &amp; Subsea Titanium CNC Machining?</span>
+        <span style="color: var(--theme-primary);">{t('industries.marine.marinectasection.title.main')}</span>
       </h2>
       <p class="text-lg leading-relaxed mb-10 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
         Submit your subsea enclosure, pressure vessel, or marine fastener design files for a complimentary Design for Manufacturability (DFM) review. Our engineering team will evaluate your hydrostatic sealing, crevice corrosion, and material grade requirements and respond with a competitive quote within 24 hours.

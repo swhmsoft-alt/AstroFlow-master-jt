@@ -1,7 +1,8 @@
 ---
 // UavImpactSection.astro
-// Entity cluster: Impact Resistance + Fracture Toughness + Outperforming Al 7075 & Carbon Fiber
-// Technical depth: High-G deceleration, field impact survival, titanium vs. aluminum/carbon comparison
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.015]">
@@ -11,13 +12,13 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
-        Impact &amp; Fatigue Resistance
+        {t('industries.uav.impact.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Impact &amp; Fracture Toughness</span> — Grade 5 Titanium Outperforms Aluminum 7075 and Carbon Fiber
+        <span style="color: var(--theme-primary);">{t('industries.uav.impact.title.main')}</span> — {t('industries.uav.impact.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Titanium components evaluated for fracture toughness to withstand high-G deceleration events and field impacts without catastrophic failure — delivering superior durability over aluminum 7075 and carbon fiber alternatives in military and industrial drone applications.
+        {t('industries.uav.impact.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -27,14 +28,14 @@
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Superior to Aluminum 7075</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.uav.impact.card1.title')}</h3>
           <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Grade 5 Titanium (Ti-6Al-4V) offers nearly double the strength-to-weight ratio of aluminum 7075-T6 — while providing vastly superior fatigue life and corrosion resistance. In drone crash events, titanium components undergo plastic deformation rather than catastrophic fracture, preserving critical payloads.
+            {t('industries.uav.impact.card1.desc')}
           </p>
           <ul class="space-y-2">
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Ti-6Al-4V: 900 MPa tensile vs. Al 7075-T6: 572 MPa — 57% stronger</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Fatigue endurance limit: Ti ~500 MPa vs. Al 7075 ~160 MPa — 3x longer service life</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Plastic deformation before failure — Titanium bends, aluminum 7075 shatters</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.uav.impact.card1.item1')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.uav.impact.card1.item2')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.uav.impact.card1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -44,7 +45,7 @@
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" /></svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Beyond Carbon Fiber Limitations</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.uav.impact.card2.title')}</h3>
           <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
             While carbon fiber offers excellent stiffness-to-weight, its brittle failure mode and poor impact tolerance make it unsuitable for high-G crash scenarios and field-deployed UAVs. Titanium absorbs impact energy through plastic deformation without delamination or catastrophic shattering — critical for defense and industrial drones operating in uncontrolled environments.
           </p>
@@ -61,29 +62,29 @@
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">High-G &amp; Extreme Environment</h3>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.uav.impact.card3.title')}</h3>
           <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Military and industrial UAVs operate in extreme temperatures, salt spray, and high-vibration environments where material degradation accelerates. Grade 5 Titanium maintains its mechanical properties from -269°C cryogenic through 400°C — with zero corrosion in marine atmospheres and full resistance to de-icing fluids and hydraulic oils.
+            {t('industries.uav.impact.card3.desc')}
           </p>
           <ul class="space-y-2">
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Operating range: -269°C to +400°C — no embrittlement or softening in extreme environments</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Zero corrosion in salt spray — ideal for maritime drone operations</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Non-magnetic — zero interference with compass, GPS, or magnetometer sensors</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.uav.impact.card3.item1')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.uav.impact.card3.item2')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.uav.impact.card3.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Impact Resistance</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.uav.impact.entityLabel')}:</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.uav.impact.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Fracture Toughness</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.uav.impact.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Grade 5 Ti-6Al-4V</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.uav.impact.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">vs. Al 7075</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.uav.impact.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">vs. Carbon Fiber</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.uav.impact.entity.4')}</span>
     </div>
   </div>
 </section>

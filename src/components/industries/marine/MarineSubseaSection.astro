@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // MarineSubseaSection.astro
 // Entity cluster: Multi-Axis CNC Milling + Grade 2/Grade 5 Titanium + Subsea Enclosures & Pressure Vessels
 // Technical depth: Hydrostatic pressure resistance, O-ring sealing, ±0.01 mm position tolerance
@@ -11,10 +14,10 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        Subsea Pressure Vessels
+        {t('industries.marine.subsea.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Multi-Axis CNC Milling</span> — Subsea Enclosures, Pressure Vessels &amp; Acoustic Sensor Housings
+        <span style="color: var(--theme-primary);">{t('industries.marine.subsea.title.main')}</span> — Subsea Enclosures, Pressure Vessels &amp; Acoustic Sensor Housings
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Precision-machined titanium subsea enclosures and pressure vessels rated for kilometer-depth hydrostatic pressure. Multi-axis milling of thick-wall Grade 2 and Grade 5 Titanium eliminates mechanical stress concentration, ensuring O-ring sealing glands maintain absolute integrity under extreme underwater compression.

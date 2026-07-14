@@ -1,7 +1,7 @@
 ---
-// MedicalContaminationSection.astro
-// Entity cluster: Zero-Contamination Post-Processing + Ultrasonic Cleaning Lifecycle + Deionized Water + Bio-burden Control
-// Technical depth: Cutting fluid elimination, cytotoxicity threshold compliance, cleanroom protocols
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-[0.015]">
@@ -11,13 +11,13 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
-        Contamination Control
+        {t('industries.medical.contamination.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Zero-Contamination</span> Post-Processing — Ultrasonic Cleaning Lifecycle for Medical Implants
+        <span style="color: var(--theme-primary);">{t('industries.medical.contamination.title.main')}</span> {t('industries.medical.contamination.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Every medical-grade component undergoes an institutional ultrasonic cleaning lifecycle using deionized water to completely eliminate cutting fluids, machining residues, and particulate contamination — ensuring full compliance with cytotoxicity and bio-burden thresholds for surgical implant applications.
+        {t('industries.medical.contamination.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -27,14 +27,12 @@
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" /></svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Ultrasonic Cleaning Lifecycle</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            A multi-stage ultrasonic cleaning process using deionized water and medical-grade detergents — removing all cutting fluid residues, chip debris, and surface contaminants from machined bone screws, implants, and surgical instruments.
-          </p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.medical.contamination.pillar1.title')}</h3>
+          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('industries.medical.contamination.pillar1.desc')}</p>
           <ul class="space-y-2">
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Multi-stage ultrasonic bath with deionized water at controlled temperatures</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Complete removal of machining coolants, lubricants, and metallic micro-debris</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Final DI water rinse with resistivity monitoring — ensures zero ionic residue</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar1.item1')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar1.item2')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -42,16 +40,14 @@
         <div class="absolute top-0 left-0 w-1 h-full" style="background-color: var(--theme-primary); opacity: 0.3;"></div>
         <div class="p-6">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Bio-Burden &amp; Cytotoxicity Control</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Medical implant components must meet strict biological safety thresholds. Our validated cleaning protocols ensure bio-burden levels below 10 CFU and full compliance with ISO 10993 cytotoxicity requirements — eliminating risks of inflammatory response or implant rejection.
-          </p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.medical.contamination.pillar2.title')}</h3>
+          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('industries.medical.contamination.pillar2.desc')}</p>
           <ul class="space-y-2">
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Bio-burden control per ISO 11737 — bioburden count below 10 CFU per device</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Cytotoxicity testing per ISO 10993-5 — verified non-cytotoxic across all batches</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Dedicated cleaning line — no cross-contamination with non-medical production</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar2.item1')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar2.item2')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar2.item3')}</li>
           </ul>
         </div>
       </div>
@@ -59,31 +55,29 @@
         <div class="absolute top-0 left-0 w-1 h-full" style="background-color: var(--theme-primary); opacity: 0.3;"></div>
         <div class="p-6">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>
+            <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
           </div>
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Clean Packaging &amp; Delivery</h3>
-          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            After cleaning, medical components are packaged in controlled environments to maintain purity through transit. Individual sterile barrier packaging options available for direct-to-surgery delivery, eliminating secondary cleaning at the hospital.
-          </p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.medical.contamination.pillar3.title')}</h3>
+          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{t('industries.medical.contamination.pillar3.desc')}</p>
           <ul class="space-y-2">
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Individual Tyvek pouch packaging for clean-to-surgery delivery</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Lot-specific cleaning batch records for full process traceability</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Controlled-environment storage prior to dispatch — maintains certified cleanliness</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar3.item1')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar3.item2')}</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.medical.contamination.pillar3.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Ultrasonic Cleaning</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.medical.contamination.entityLabel')}:</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.medical.contamination.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Deionized Water</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.medical.contamination.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Zero-Contamination</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.medical.contamination.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">ISO 10993</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.medical.contamination.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Bio-Burden Control</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.medical.contamination.entity.4')}</span>
     </div>
   </div>
 </section>

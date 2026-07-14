@@ -1,6 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // SemiUHVSection.astro
-// Entity cluster: 5-Axis Ultra-Precision CNC Milling + Grade 2/5 Titanium + UHV Vacuum Chambers
+// Entity cluster: 5-Axis Ultra-Precision CNC Milling + Grade 2/5 Titanium + {t('industries.semi.uhv.badge')}
 // Technical depth: UHV 10^-9 Torr, outgassing mitigation, low vapor pressure, sealing flatness
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
@@ -14,7 +17,7 @@
         UHV Vacuum Chambers
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">5-Axis Ultra-Precision CNC Milling</span> — Wafer Processing Vacuum Chambers &amp; UHV Lithography Sub-Assemblies
+        <span style="color: var(--theme-primary);">{t('industries.semi.uhv.title.main')}</span> — Wafer Processing Vacuum Chambers &amp; UHV Lithography Sub-Assemblies
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         Ultra-precision 5-axis milling of Grade 2 and Grade 5 Titanium for semiconductor vacuum chambers and EUV/DUV lithography sub-assemblies. Titanium's inherently low vapor pressure and outgassing rate — combined with our sub-micron GD&T control — delivers sealing surfaces compatible with 10⁻⁹ Torr ultra-high vacuum environments.

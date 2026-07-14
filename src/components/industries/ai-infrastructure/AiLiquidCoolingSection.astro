@@ -1,4 +1,7 @@
 ---
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 // AiLiquidCoolingSection.astro
 // Entity cluster: Multi-Axis CNC Machining + Grade 5 Titanium + Liquid Cooling Manifolds & Quick-Disconnect Valves
 // Technical depth: Corrosion-free fluid channels, leak-proof sealing under thermal cycles, high-pressure rating
@@ -11,10 +14,10 @@
     <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
-        Data Center Liquid Cooling
+        {t('industries.ai.liquidcooling.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">Multi-Axis CNC Machining</span> — Liquid Cooling Manifolds, Cold Plates &amp; Quick-Disconnect Valves
+        <span style="color: var(--theme-primary);">{t('industries.ai.liquidcooling.title.main')}</span> — Liquid Cooling Manifolds, Cold Plates &amp; Quick-Disconnect Valves
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
         High-precision titanium liquid cooling manifolds and cold plates for AI GPU/ASIC clusters. Corrosion-free fluid channels machined from Grade 5 Titanium (Ti-6Al-4V) — engineered for leak-proof operation under relentless thermal cycling and high-pressure coolant flow in 24/7 data center environments.
