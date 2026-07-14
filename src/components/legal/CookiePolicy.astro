@@ -1,0 +1,78 @@
+---
+/**
+ * CookiePolicy.astro
+ * Comprehensive Cookie Policy page for BOZE CNC Ti (Bozhe Metal).
+ * GDPR-compliant cookie disclosure with granular tracking categories.
+ * Details use of Google Analytics 4, Microsoft Clarity, and advertising cookies.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const siteUrl = Astro.site || new URL('https://cnc.bozemetal.com');
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+---
+<section class="relative py-16 lg:py-20" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4" style="color: var(--theme-text);">{t('legal.cookie.title')}</h1>
+      <p class="text-sm mb-8" style="color: var(--theme-text); opacity: 0.55;">
+        <strong>{t('legal.lastUpdated')}:</strong> July 1, 2026 &nbsp;|&nbsp; <strong>{t('legal.effectiveDate')}:</strong> July 1, 2026
+      </p>
+      <div class="w-24 h-1 mb-8" style="background-color: var(--theme-primary);"></div>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.intro')}</p>
+
+      <!-- 1 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">1. {t('legal.cookie.section1Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section1Content')}</p>
+
+      <!-- 2: Cookie Categories Table -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">2. {t('legal.cookie.section2Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section2Intro')}</p>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm" style="color: var(--theme-text);">
+          <thead>
+            <tr style="background-color: var(--theme-surface);">
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.cookie.tableCategory')}</th>
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.cookie.tableProvider')}</th>
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.cookie.tablePurpose')}</th>
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.cookie.tableDuration')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="p-3 border-b"><strong>{t('legal.cookie.catEssential')}</strong></td><td class="p-3 border-b">BOZE CNC Ti</td><td class="p-3 border-b">{t('legal.cookie.catEssentialDesc')}</td><td class="p-3 border-b">{t('legal.cookie.catEssentialDur')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.cookie.catAnalytics')}</strong></td><td class="p-3 border-b">Google Analytics 4, Microsoft Clarity</td><td class="p-3 border-b">{t('legal.cookie.catAnalyticsDesc')}</td><td class="p-3 border-b">{t('legal.cookie.catAnalyticsDur')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.cookie.catMarketing')}</strong></td><td class="p-3 border-b">Google Ads, Bing Ads, LinkedIn</td><td class="p-3 border-b">{t('legal.cookie.catMarketingDesc')}</td><td class="p-3 border-b">{t('legal.cookie.catMarketingDur')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.cookie.catFunctional')}</strong></td><td class="p-3 border-b">HubSpot, Cloudflare</td><td class="p-3 border-b">{t('legal.cookie.catFunctionalDesc')}</td><td class="p-3 border-b">{t('legal.cookie.catFunctionalDur')}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">3. {t('legal.cookie.section3Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section3Content')}</p>
+
+      <!-- 4 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">4. {t('legal.cookie.section4Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section4Content')}</p>
+
+      <!-- 5 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">5. {t('legal.cookie.section5Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section5Content')}</p>
+
+      <!-- 6 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">6. {t('legal.cookie.section6Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section6Content')}</p>
+
+      <!-- 7 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">7. {t('legal.cookie.section7Title')}</h2>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">{t('legal.cookie.section7Content')}</p>
+      <div class="p-4 rounded-lg text-sm leading-relaxed mb-6" style="background-color: var(--theme-surface); border-left: 4px solid var(--theme-primary); color: var(--theme-text); opacity: 0.8;">
+        <strong>{t('legal.cookie.contactLabel')}:</strong><br />
+        Email: <a href="mailto:info@bozemetal.com" class="underline" style="color: var(--theme-primary);">info@bozemetal.com</a>
+      </div>
+
+      <p class="text-sm" style="color: var(--theme-text); opacity: 0.5;">{t('legal.cookie.outro')}</p>
+    </div>
+  </div>
+</section>

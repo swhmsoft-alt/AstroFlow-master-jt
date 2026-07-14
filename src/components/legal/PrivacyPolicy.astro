@@ -1,0 +1,135 @@
+---
+/**
+ * PrivacyPolicy.astro
+ * Comprehensive Privacy Policy page for BOZE CNC Ti (Bozhe Metal).
+ * Compliant with GDPR (EU), CCPA/CPRA (California), Google Ads/Bing Ads policies.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const siteUrl = Astro.site || new URL('https://cnc.bozemetal.com');
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+---
+<section class="relative py-16 lg:py-20" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4" style="color: var(--theme-text);">{t('legal.privacy.title')}</h1>
+      <p class="text-sm mb-8" style="color: var(--theme-text); opacity: 0.55;">
+        <strong>{t('legal.lastUpdated')}:</strong> July 1, 2026 &nbsp;|&nbsp; <strong>{t('legal.effectiveDate')}:</strong> July 1, 2026
+      </p>
+      <div class="w-24 h-1 mb-8" style="background-color: var(--theme-primary);"></div>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.intro')}</p>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.65;">{t('legal.privacy.intro2')}</p>
+
+      <!-- 1 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">1. {t('legal.privacy.section1Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section1Content')}</p>
+      <div class="p-4 mb-6 rounded-lg text-sm leading-relaxed" style="background-color: var(--theme-surface); border-left: 4px solid var(--theme-primary); color: var(--theme-text); opacity: 0.8;">
+        <strong>{t('legal.privacy.controllerLabel')}:</strong><br />
+        Bozhe Metal Titanium Technology Co., Ltd.<br />{t('footer.address')}<br />Email: info@bozemetal.com
+      </div>
+
+      <!-- 2 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">2. {t('legal.privacy.section2Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section2Intro')}</p>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm" style="color: var(--theme-text);">
+          <thead>
+            <tr style="background-color: var(--theme-surface);">
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.privacy.tableCategory')}</th>
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.privacy.tableExamples')}</th>
+              <th class="p-3 text-left font-semibold border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">{t('legal.privacy.tablePurpose')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="p-3 border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);"><strong>{t('legal.privacy.catIdentity')}</strong></td><td class="p-3 border-b">{t('legal.privacy.catIdentityEg')}</td><td class="p-3 border-b">{t('legal.privacy.catIdentityPurp')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.privacy.catTechnical')}</strong></td><td class="p-3 border-b">{t('legal.privacy.catTechnicalEg')}</td><td class="p-3 border-b">{t('legal.privacy.catTechnicalPurp')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.privacy.catCommercial')}</strong></td><td class="p-3 border-b">{t('legal.privacy.catCommercialEg')}</td><td class="p-3 border-b">{t('legal.privacy.catCommercialPurp')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.privacy.catFiles')}</strong></td><td class="p-3 border-b">{t('legal.privacy.catFilesEg')}</td><td class="p-3 border-b">{t('legal.privacy.catFilesPurp')}</td></tr>
+            <tr><td class="p-3 border-b"><strong>{t('legal.privacy.catComms')}</strong></td><td class="p-3 border-b">{t('legal.privacy.catCommsEg')}</td><td class="p-3 border-b">{t('legal.privacy.catCommsPurp')}</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 3 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">3. {t('legal.privacy.section3Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section3Content')}</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">
+        <li><strong>{t('legal.privacy.basisContract')}</strong> — {t('legal.privacy.basisContractDesc')}</li>
+        <li><strong>{t('legal.privacy.basisConsent')}</strong> — {t('legal.privacy.basisConsentDesc')}</li>
+        <li><strong>{t('legal.privacy.basisLegitimate')}</strong> — {t('legal.privacy.basisLegitimateDesc')}</li>
+        <li><strong>{t('legal.privacy.basisLegal')}</strong> — {t('legal.privacy.basisLegalDesc')}</li>
+      </ul>
+
+      <!-- 4 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">4. {t('legal.privacy.section4Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section4Content')}</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">
+        <li><strong>Google Analytics 4</strong> — {t('legal.privacy.thirdPartyGA')}</li>
+        <li><strong>Google Ads / Google Tag Manager</strong> — {t('legal.privacy.thirdPartyAds')}</li>
+        <li><strong>Microsoft Clarity / Bing Ads</strong> — {t('legal.privacy.thirdPartyClarity')}</li>
+        <li><strong>Cloudflare</strong> — CDN, DDoS protection &amp; caching</li>
+        <li><strong>HubSpot (CRM)</strong> — {t('legal.privacy.thirdPartyCRM')}</li>
+      </ul>
+
+      <!-- 5 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">5. {t('legal.privacy.section5Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section5Content')}</p>
+
+      <!-- 6 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">6. {t('legal.privacy.section6Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section6Content')}</p>
+
+      <!-- 7 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">7. {t('legal.privacy.section7Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section7Intro')}</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="p-4 rounded-lg" style="background-color: var(--theme-surface);">
+          <h3 class="text-sm font-semibold mb-2" style="color: var(--theme-text);">GDPR ({t('legal.privacy.rightsGDPR')})</h3>
+          <ul class="list-disc pl-4 space-y-1 text-sm" style="color: var(--theme-text); opacity: 0.7;">
+            <li>{t('legal.privacy.rightAccess')}</li><li>{t('legal.privacy.rightRectify')}</li>
+            <li>{t('legal.privacy.rightErase')}</li><li>{t('legal.privacy.rightPort')}</li>
+            <li>{t('legal.privacy.rightObject')}</li><li>{t('legal.privacy.rightRestrict')}</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-lg" style="background-color: var(--theme-surface);">
+          <h3 class="text-sm font-semibold mb-2" style="color: var(--theme-text);">CCPA/CPRA ({t('legal.privacy.rightsCCPA')})</h3>
+          <ul class="list-disc pl-4 space-y-1 text-sm" style="color: var(--theme-text); opacity: 0.7;">
+            <li>{t('legal.privacy.rightKnow')}</li><li>{t('legal.privacy.rightDelete')}</li>
+            <li>{t('legal.privacy.rightOptOut')}</li><li>{t('legal.privacy.rightCorrect')}</li>
+            <li>{t('legal.privacy.rightNondiscrim')}</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">
+        {t('legal.privacy.rightsExercise')} <a href="mailto:info@bozemetal.com" class="underline hover:opacity-100" style="color: var(--theme-primary);">info@bozemetal.com</a>.
+      </p>
+
+      <!-- 8 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">8. {t('legal.privacy.section8Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section8Content')}</p>
+
+      <!-- 9 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">9. {t('legal.privacy.section9Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section9Content')}</p>
+
+      <!-- 10 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">10. {t('legal.privacy.section10Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section10Content')}</p>
+      <div class="p-4 rounded-lg text-sm leading-relaxed mb-6" style="background-color: var(--theme-surface); border-left: 4px solid var(--theme-primary); color: var(--theme-text); opacity: 0.8;">
+        <strong>{t('legal.privacy.dpoLabel')}:</strong><br />Email: <a href="mailto:info@bozemetal.com" class="underline" style="color: var(--theme-primary);">info@bozemetal.com</a><br />{t('legal.privacy.dpoResponse')}
+      </div>
+
+      <!-- 11 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">11. {t('legal.privacy.section11Title')}</h2>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section11Content')}</p>
+
+      <!-- 12 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">12. {t('legal.privacy.section12Title')}</h2>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">{t('legal.privacy.section12Content')}</p>
+
+      <p class="text-sm" style="color: var(--theme-text); opacity: 0.5;">{t('legal.privacy.outro')}</p>
+    </div>
+  </div>
+</section>

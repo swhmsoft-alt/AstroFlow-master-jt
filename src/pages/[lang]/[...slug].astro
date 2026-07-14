@@ -21,6 +21,11 @@ import PremiumCTA from '../../components/home/PremiumCTA.astro';
 /* ── About 页面组件 ────────────────────────── */
 import AboutPage from '../../components/about/AboutPage.astro';
 
+/* ── Legal 页面组件 ────────────────────────── */
+import PrivacyPolicy from '../../components/legal/PrivacyPolicy.astro';
+import TermsOfService from '../../components/legal/TermsOfService.astro';
+import CookiePolicy from '../../components/legal/CookiePolicy.astro';
+
 /* ── Services 页面组件 ─────────────────────── */
 import ServiceMatrixGrid from '../../components/services/ServiceMatrixGrid.astro';
 import ComplianceRibbon from '../../components/services/ComplianceRibbon.astro';
@@ -101,7 +106,7 @@ import TitaniumKnowledgeBase from '../../components/resources/TitaniumKnowledgeB
 import TitaniumGradesGuide from '../../components/resources/TitaniumGradesGuide.astro';
 import DesignEngineeringGuide from '../../components/resources/DesignEngineeringGuide.astro';
 import ManufacturingInsights from '../../components/resources/ManufacturingInsights.astro';
-import IndustryApplications from '../../components/resources/IndustryApplications.astro';
+import ResourceIndustryApplications from '../../components/resources/IndustryApplications.astro';
 import CaseStudies from '../../components/resources/CaseStudies.astro';
 import FaqPage from '../../components/resources/FaqPage.astro';
 import DownloadsPage from '../../components/resources/DownloadsPage.astro';
@@ -234,6 +239,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'titanium-additive-manufacturing', 'titanium-cnc-machining-services',
     'titanium-fabrication-services', 'titanium-forming-heavy-manufacturing',
     'titanium-surface-treatment',
+    'privacy-policy', 'terms-of-service', 'cookie-policy',
   ];
   const deepSlugs: string[] = [
     'industries/aerospace',
@@ -341,13 +347,15 @@ const t = useTranslations(currentLang);
 const pageId = resolveContentId(slug);
 const { data: pageData } = await getLocalizedContent(pageId, currentLang);
 
-const isHome = !slug || slug === '';
+const isInvalidLang = !isSupportedLang(lang);
+const legalSlugs = ['privacy-policy', 'terms-of-service', 'cookie-policy'];
+const isLegalSlug = isInvalidLang && !slug && legalSlugs.includes(lang as string);
+
+const isHome = (!slug || slug === '') && !isLegalSlug;
 // Normalize slug for English URLs without language prefix
 // e.g. /titanium-cnc-machining-services/3-5-axis → lang='titanium-cnc-machining-services', slug='3-5-axis'
 // effectiveSlug reconstructs the full path for correct matching
-const effectiveSlug = (slug && lang && !isSupportedLang(lang)) ? `${lang}/${slug}` : (slug || '');
-
-const isInvalidLang = !isSupportedLang(lang);
+const effectiveSlug = (slug && lang && !isSupportedLang(lang)) ? `${lang}/${slug}` : isLegalSlug ? (lang as string) : (slug || '');
 const isServiceSubPage =
   effectiveSlug?.includes('titanium-additive-manufacturing/') ||
   effectiveSlug?.includes('titanium-cnc-machining-services/') ||
@@ -438,9 +446,9 @@ const subPageMeta: Record<string, { title: string; badge: string; subtitle: stri
   'polishing-sandblasting': { title:'Polishing & Sandblasting', badge:'Surface Treatment', subtitle:'Mechanical surface finishing.' },
 };
 
-function getSubPageKey(slugStr: string): string | null {
+function getSubPageKey(slugStr: string): string {
   const parts = slugStr.split('/');
-  return parts.length >= 2 ? parts[parts.length - 1] : null;
+  return parts.length >= 2 ? parts[parts.length - 1] : '';
 }
 
 let subMeta: { title: string; badge: string; subtitle: string } | null = null;
@@ -451,7 +459,7 @@ if (slug) {
 
 // Compute hero values (slug-based pages only) - heroEntry already declared above for home page
 // Build i18n translation keys based on HERO_CONFIG path
-const heroKey = effectiveSlug ? `hero.${slug.replace(/\//g, '.')}` : '';
+const heroKey = effectiveSlug ? `hero.${effectiveSlug.replace(/\//g, '.')}` : '';
 
 let pageH1: string | undefined;
 let pageBadge: string | undefined;
@@ -501,6 +509,30 @@ if (heroEntry) {
     <BaseLayout>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <AboutPage />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'privacy-policy' && (
+    <BaseLayout title={t('legal.privacy.title')} description={t('legal.privacy.intro')}>
+      <PrivacyPolicy />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'terms-of-service' && (
+    <BaseLayout title={t('legal.terms.title')} description={t('legal.terms.intro')}>
+      <TermsOfService />
+    </BaseLayout>
+  )
+}
+
+{
+  effectiveSlug === 'cookie-policy' && (
+    <BaseLayout title={t('legal.cookie.title')} description={t('legal.cookie.intro')}>
+      <CookiePolicy />
     </BaseLayout>
   )
 }
@@ -1172,7 +1204,7 @@ if (heroEntry) {
   effectiveSlug === 'resources/manufacturing-insights' && <ManufacturingInsights />
 }
 {
-  effectiveSlug === 'resources/industry-applications' && <IndustryApplications />
+  effectiveSlug === 'resources/industry-applications' && <ResourceIndustryApplications />
 }
 {
   effectiveSlug === 'resources/case-studies' && <CaseStudies />
@@ -1730,7 +1762,7 @@ if (heroEntry) {
 
 <!-- ===== 404 fallback ===== -->
 {
-  (isInvalidLang || (!isHome && !pageMetaKeys[slug || ''] && !subMeta && 
+  ((isInvalidLang && !isLegalSlug) || (!isHome && !pageMetaKeys[slug || ''] && !subMeta && 
   slug !== 'equipment' &&
   slug !== 'capabilities/manufacturing' &&
   slug !== 'capabilities/engineering' &&
@@ -1742,7 +1774,10 @@ if (heroEntry) {
   !(effectiveSlug?.startsWith('materials/grade-') || effectiveSlug?.startsWith('materials/ti-') || effectiveSlug?.startsWith('materials/astm-') || effectiveSlug?.startsWith('materials/ams-') || effectiveSlug?.startsWith('materials/iso-') || effectiveSlug?.startsWith('materials/mil-')) &&
   !effectiveSlug?.startsWith('equipment/') &&
   !effectiveSlug?.startsWith('industries/') &&
-  !effectiveSlug?.startsWith('resources/'))) && (
+  !effectiveSlug?.startsWith('resources/') &&
+  slug !== 'privacy-policy' &&
+  slug !== 'terms-of-service' &&
+  slug !== 'cookie-policy')) && !isLegalSlug && (
     <BaseLayout title="404 - Page Not Found">
       <div class="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
         <h1 class="mb-4 text-8xl font-bold text-theme-primary">404</h1>

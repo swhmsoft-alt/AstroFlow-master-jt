@@ -1,0 +1,90 @@
+---
+/**
+ * TermsOfService.astro
+ * Comprehensive Terms of Service page for BOZE CNC Ti (Bozhe Metal).
+ * Covers CNC manufacturing B2B-specific clauses: IP ownership, CAD confidentiality,
+ * warranty disclaimers, governing law, and dispute resolution.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const siteUrl = Astro.site || new URL('https://cnc.bozemetal.com');
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+---
+<section class="relative py-16 lg:py-20" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4" style="color: var(--theme-text);">{t('legal.terms.title')}</h1>
+      <p class="text-sm mb-8" style="color: var(--theme-text); opacity: 0.55;">
+        <strong>{t('legal.lastUpdated')}:</strong> July 1, 2026 &nbsp;|&nbsp; <strong>{t('legal.effectiveDate')}:</strong> July 1, 2026
+      </p>
+      <div class="w-24 h-1 mb-8" style="background-color: var(--theme-primary);"></div>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.intro')}</p>
+
+      <!-- 1 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">1. {t('legal.terms.section1Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section1Content')}</p>
+
+      <!-- 2 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">2. {t('legal.terms.section2Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section2Content')}</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">
+        <li>{t('legal.terms.section2Item1')}</li>
+        <li>{t('legal.terms.section2Item2')}</li>
+        <li>{t('legal.terms.section2Item3')}</li>
+      </ul>
+
+      <!-- 3: Intellectual Property & CAD Files (B2B Critical) -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">3. {t('legal.terms.section3Title')}</h2>
+      <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section3Intro')}</p>
+      <ul class="list-disc pl-6 space-y-2 mb-6 text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">
+        <li><strong>{t('legal.terms.ipOwnership')}</strong> — {t('legal.terms.ipOwnershipDesc')}</li>
+        <li><strong>{t('legal.terms.ipUseLicense')}</strong> — {t('legal.terms.ipUseLicenseDesc')}</li>
+        <li><strong>{t('legal.terms.ipConfidential')}</strong> — {t('legal.terms.ipConfidentialDesc')}</li>
+      </ul>
+
+      <!-- 4: Quotations & Pricing -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">4. {t('legal.terms.section4Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section4Content')}</p>
+
+      <!-- 5: Orders & Acceptance -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">5. {t('legal.terms.section5Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section5Content')}</p>
+
+      <!-- 6: Manufacturing Tolerances & Quality -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">6. {t('legal.terms.section6Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section6Content')}</p>
+
+      <!-- 7: Delivery & Shipping -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">7. {t('legal.terms.section7Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section7Content')}</p>
+
+      <!-- 8: Warranties & Disclaimers -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">8. {t('legal.terms.section8Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section8Content')}</p>
+
+      <!-- 9: Limitation of Liability -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">9. {t('legal.terms.section9Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section9Content')}</p>
+
+      <!-- 10: Confidentiality & NDA -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">10. {t('legal.terms.section10Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section10Content')}</p>
+
+      <!-- 11: Governing Law & Dispute Resolution -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">11. {t('legal.terms.section11Title')}</h2>
+      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section11Content')}</p>
+      <div class="p-4 rounded-lg text-sm leading-relaxed mb-6" style="background-color: var(--theme-surface); border-left: 4px solid var(--theme-primary); color: var(--theme-text); opacity: 0.8;">
+        <strong>{t('legal.terms.jurisdictionLabel')}:</strong><br />
+        {t('legal.terms.jurisdictionContent')}
+      </div>
+
+      <!-- 12 -->
+      <h2 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">12. {t('legal.terms.section12Title')}</h2>
+      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">{t('legal.terms.section12Content')}</p>
+
+      <p class="text-sm" style="color: var(--theme-text); opacity: 0.5;">{t('legal.terms.outro')}</p>
+    </div>
+  </div>
+</section>

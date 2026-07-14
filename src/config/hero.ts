@@ -13,6 +13,12 @@ export interface HeroEntry {
   subtitle?: string;
   /** Badge label (small tag above h1) */
   badge?: string;
+  /** Key metrics chips displayed below subtitle */
+  keyMetrics?: Array<{ value: string; label: string }>;
+  /** Entity badges displayed as chips below subtitle */
+  entityChips?: string[];
+  /** Force smaller/compact hero layout */
+  compact?: boolean;
 }
 
 export const HERO_CONFIG: Record<string, HeroEntry> = {
