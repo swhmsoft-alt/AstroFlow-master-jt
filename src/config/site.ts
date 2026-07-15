@@ -180,11 +180,11 @@ export const NAVIGATION: NavItem[] = [
           { name: 'FAQs', href: '/resources/faq' },
           { name: 'Downloads', href: '/resources/downloads' },
           { name: 'Blog', href: '/blog' },
+          { name: 'Products', href: '/products' },
         ],
       },
     ],
   },
-  { name: 'Products', href: '/products' },
 ];
 
 export const SOCIAL_LINKS = {
