@@ -16,10 +16,10 @@ const t = useTranslations(lang);
         {t('industries.semi.compliance.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        100% <span style="color: var(--theme-primary);">{t('industries.semi.compliance.title.main')}</span> �?EN 10204 3.1 MTR {t('industries.semi.compliance.title.suffix')}
+        <span style="color: var(--theme-primary);">{t('industries.semi.compliance.title.main')}</span>{t('industries.semi.compliance.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Every semiconductor component is backed by EN 10204 3.1 Mill Test Reports with laser-marked serialization �?certifying metallurgical homogeneity with zero internal inclusions to ensure consistent performance under aggressive fluorine and chlorine-based etch plasma bombardment.
+        {t('industries.semi.compliance.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -30,12 +30,12 @@ const t = useTranslations(lang);
           </div>
           <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.semi.compliance.pillar1.title')}</h3>
           <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Every titanium lot used in semiconductor components is certified with EN 10204 Type 3.1 documentation �?verifying chemical composition, mechanical properties, and metallurgical integrity. Each component receives a permanent laser-marked serial number linking it to its original certification, enabling full traceability through the semiconductor supply chain.
+            {t('industries.semi.compliance.pillar1.desc')}
           </p>
           <ul class="space-y-2">
             <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.semi.compliance.pillar1.item1')}</li>
             <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.semi.compliance.pillar1.item2')}</li>
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>10+ year digital archival �?fully retrievable for semiconductor equipment OEM audit</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.semi.compliance.pillar1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -46,10 +46,10 @@ const t = useTranslations(lang);
           </div>
           <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t('industries.semi.compliance.pillar2.title')}</h3>
           <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Semiconductor etch and deposition processes use aggressive fluorine (NF�? SF�? CF�? and chlorine (Cl�? BCl�? chemistries that rapidly degrade aluminum and stainless steel components. Titanium's stable TiO�?passivation layer provides inherent resistance to these chemistries �?and our strict material verification ensures zero inclusions that could act as etch-attack initiation sites.
+            {t('industries.semi.compliance.pillar2.desc')}
           </p>
           <ul class="space-y-2">
-            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>TiO�?passive layer resists F- and Cl- based plasma �?no flaking or particle generation</li>
+            <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.semi.compliance.pillar2.item1')}</li>
             <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.semi.compliance.pillar2.item2')}</li>
             <li class="flex items-start text-xs" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.semi.compliance.pillar2.item3')}</li>
           </ul>

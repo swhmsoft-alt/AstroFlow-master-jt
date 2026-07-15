@@ -17,10 +17,10 @@ const t = useTranslations(lang);
         {t('industries.energy.fatigue.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">{t('industries.energy.fatigue.title.main')}</span> — Compressive Residual Stress Layer for Up to 300% Fatigue Life Enhancement
+        <span style="color: var(--theme-primary);">{t('industries.energy.fatigue.title.main')}</span> {t('industries.energy.fatigue.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Post-machining controlled shot peening introduces deep compressive residual stress layers into titanium component surfaces — increasing fatigue life against cyclical pressure spikes by up to 300% and preventing crack propagation in hydrogen compressor impellers and nuclear CRDM components operating under extreme cyclic loading.
+        {t('industries.energy.fatigue.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -31,19 +31,19 @@ const t = useTranslations(lang);
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Surface Stress Engineering</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Controlled Shot Peening · +300% Fatigue Life</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.energy.fatigue.card1.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.energy.fatigue.card1.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Machining inevitably leaves tensile residual stresses on component surfaces — the initiation points for fatigue cracks under cyclic loading. Our controlled shot peening process bombards the surface with precision media at calibrated intensity, converting the tensile surface layer into deep compressive residual stress. This compressive layer physically prevents crack initiation and retards propagation, extending component fatigue life by up to 300% in hydrogen compressor and nuclear applications.
+            {t('industries.energy.fatigue.card1.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.energy.fatigue.techLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Controlled shot peening per SAE J443 — converts tensile surface to beneficial compressive stress</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Compressive depth 0.2-0.5 mm — physically blocks crack initiation at stress concentration points</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Almen strip intensity verification — documented peening parameters per component lot</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.fatigue.card1.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.fatigue.card1.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.fatigue.card1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -54,34 +54,34 @@ const t = useTranslations(lang);
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-6.36 6.36M12 3v18m0-18l5.66 5.66M12 3L6.34 8.66M12 21l-5.66-5.66M12 21l5.66-5.66M3 12h18" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Fatigue Validation Testing</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Cyclic Testing · Crack Propagation · S-N Curves</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.energy.fatigue.card2.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.energy.fatigue.card2.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Every energy-sector component benefits from validated fatigue performance. Our shot peening process is calibrated specifically for Grade 5 Titanium, with documented S-N curve improvement verified through rotating beam fatigue testing. Components operating under cyclical pressure spikes — hydrogen compressor impellers at 20,000+ RPM, CRDM drive shafts cycling under reactor power changes — achieve up to 3× longer service life.
+            {t('industries.energy.fatigue.card2.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.energy.fatigue.techLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Rotating beam fatigue testing (ASTM E466) — verifies S-N curve improvement post-peening</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Fatigue life improvement documented — up to 300% increase in cycles-to-failure at typical operating loads</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Non-destructive residual stress measurement (XRD) available — verify compressive layer depth</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.fatigue.card2.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.fatigue.card2.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.fatigue.card2.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Controlled Shot Peening</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.energy.fatigue.entityLabel')}</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.fatigue.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Compressive Residual Stress</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.fatigue.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">+300% Fatigue Life</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.fatigue.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">SAE J443</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.fatigue.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">XRD Verification</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.fatigue.entity.4')}</span>
     </div>
   </div>
 </section>

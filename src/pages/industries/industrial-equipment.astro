@@ -26,12 +26,22 @@ const t = useTranslations(lang);
 >
   <!-- Hero Section -->
   <SubpageHero
-    h1={HERO_CONFIG['/industries/industrial-equipment'].h1}
-    badge={HERO_CONFIG['/industries/industrial-equipment'].badge}
-    subtitle={HERO_CONFIG['/industries/industrial-equipment'].subtitle}
+    h1={t('industries.indeq.hero.title')}
+    badge={t('industries.indeq.herobadge')}
+    subtitle={t('industries.indeq.hero.subtitle')}
     badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-    keyMetrics={HERO_CONFIG['/industries/industrial-equipment'].keyMetrics}
-    entityChips={HERO_CONFIG['/industries/industrial-equipment'].entityChips}
+    keyMetrics={[
+      { value: "20-40kHz", label: t('industries.indeq.hero.keymetric1label') },
+      { value: "≤0.4um", label: t('industries.indeq.hero.keymetric2label') },
+      { value: "Grade 7", label: t('industries.indeq.hero.keymetric3label') }
+    ]}
+    entityChips={[
+      t('industries.indeq.hero.entitychip0'),
+      t('industries.indeq.hero.entitychip1'),
+      t('industries.indeq.hero.entitychip2'),
+      t('industries.indeq.hero.entitychip3'),
+      t('industries.indeq.hero.entitychip4')
+    ]}
     compact={false}
   />
 

@@ -17,10 +17,10 @@ const t = useTranslations(lang);
         {t('industries.energy.nuclear.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">{t('industries.energy.nuclear.title.main')}</span> — Control Rod Drive Mechanisms, Core Support Structures &amp; Supercritical Fluid Sealing
+        <span style="color: var(--theme-primary);">{t('industries.energy.nuclear.title.main')}</span> {t('industries.energy.nuclear.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Ultra-precision machining of nuclear-grade titanium for SMR (Small Modular Reactor) control rod drive mechanisms and core support structures — with position tolerances held to ±0.005 mm and supercritical fluid sealing surfaces that prevent any coolant leakage under neutron bombardment and high-temperature creep conditions.
+        {t('industries.energy.nuclear.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -31,19 +31,19 @@ const t = useTranslations(lang);
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">CRDM Components &amp; Reactor Internals</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Multi-Axis CNC · Grade 2/5 Ti · SMR Grade</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.energy.nuclear.card1.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.energy.nuclear.card1.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Control rod drive mechanisms (CRDM) demand absolute positional accuracy and smooth linear motion over decades of service — with zero tolerance for jamming or sticking under neutron irradiation. Our multi-axis CNC milling and Swiss turning produce CRDM guide tubes, drive shafts, and dashpot housings from nuclear-grade titanium, holding straightness and concentricity to ±0.005 mm. Grade 5's high-temperature creep resistance ensures dimensional stability through thousands of thermal cycles.
+            {t('industries.energy.nuclear.card1.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.energy.nuclear.techLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>CRDM straightness ≤ 0.005 mm over 1m length — critical for drop-time safety margins</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>High-temperature creep resistance verified — Grade 5 maintains dimensional stability at 300°C+ coolant temps</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Low neutron absorption cross-section — titanium minimizes reactivity penalty vs. stainless steel</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.nuclear.card1.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.nuclear.card1.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.nuclear.card1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -54,34 +54,34 @@ const t = useTranslations(lang);
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Supercritical Fluid Containment</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Precision Sealing · Zero Leakage · SMR Coolant</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.energy.nuclear.card2.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.energy.nuclear.card2.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            SMR coolant systems operate at supercritical pressures where even microscopic seal imperfections cause catastrophic leakage. Our precision-turned sealing surfaces achieve flatness and surface finish specifications that contain supercritical water and liquid metal coolants without permeation. Grade 2 titanium provides optimal corrosion resistance in primary coolant environments, while Grade 5 handles higher mechanical loads in pressure boundary applications.
+            {t('industries.energy.nuclear.card2.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.energy.nuclear.techLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Sealing surface flatness ≤ 0.005 mm per 100mm — contains supercritical water up to 250 bar</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Grade 2 titanium — zero corrosion in BWR/PWR primary coolant chemistry</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Full ASME BPVC Section III documentation available — nuclear QA traceability</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.nuclear.card2.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.nuclear.card2.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.energy.nuclear.card2.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Multi-Axis CNC + Swiss Turning</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.energy.nuclear.entityLabel')}</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.nuclear.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">CRDM Components</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.nuclear.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Nuclear SMR</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.nuclear.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Supercritical Sealing</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.nuclear.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">High-Temp Creep Resistance</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.energy.nuclear.entity.4')}</span>
     </div>
   </div>
 </section>
