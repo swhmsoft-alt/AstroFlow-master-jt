@@ -98,9 +98,11 @@ const seoEntry = SEO_CONFIG[canonicalPath];
 const seoTitleFromConfig = seoEntry?.title?.[currentLang];
 const seoDescFromConfig = seoEntry?.description?.[currentLang];
 
-// Priority: explicit prop > SEO_CONFIG > SITE defaults
-const title = explicitTitle || seoTitleFromConfig || SITE.title;
-const description = explicitDesc || seoDescFromConfig || SITE.description;
+// Priority: SEO_CONFIG (per-language) > explicit prop > SITE defaults
+// SEO_CONFIG has reliable per-language titles; explicit prop from t() may fall back to
+// the default language (English) when the translation key is missing in the target language.
+const title = seoTitleFromConfig || explicitTitle || SITE.title;
+const description = seoDescFromConfig || explicitDesc || SITE.description;
 
 // ── Computed SEO values ────────────────────────────────
 const siteUrl = SITE.url;
