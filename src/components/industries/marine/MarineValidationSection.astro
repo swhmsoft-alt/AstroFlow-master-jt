@@ -16,10 +16,10 @@ const t = useTranslations(lang);
         {t('industries.marine.validation.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">{t('industries.marine.validation.title.main')}</span> — Hydrostatic Pressure Testing &amp; O-Ring Seal Verification
+        <span style="color: var(--theme-primary);">{t('industries.marine.validation.title.main')}</span> — {t('industries.marine.validation.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Absolute dimensional control via CMM verification per ASME Y14.5 GD&T, paired with documented hydrostatic pressure testing. Every subsea enclosure and valve block is validated against strict sealing surface criteria to guarantee zero leakage at rated depth.
+        {t('industries.marine.validation.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -30,19 +30,19 @@ const t = useTranslations(lang);
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">CMM O-Ring Gland Verification</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">ZEISS CMM · ±1.9 µm · Seal Surface GD&T</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.marine.validation.card1.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.marine.validation.card1.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Subsea seal integrity begins with geometrically perfect O-ring glands. Our ZEISS CMM platforms measure groove depth, width, concentricity, and surface finish — ensuring every gland meets ASME Y14.5 GD&T specifications for compression set and extrusion gap control under hydrostatic load.
+            {t('industries.marine.validation.card1.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.marine.validation.card1.implLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>O-ring groove dimensions verified to ±0.01 mm — controls squeeze and extrusion gap</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Surface finish Ra ≤ 0.8 µm on all sealing faces — prevents leak paths under compression</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Full dimensional report per component — traceable verification for customer acceptance</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.validation.card1.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.validation.card1.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.validation.card1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -50,37 +50,37 @@ const t = useTranslations(lang);
         <div class="p-8">
           <div class="flex items-start mb-5">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>
+              <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Hydrostatic Pressure Testing</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Proof Pressure · Leak Rate · Certification</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.marine.validation.card2.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.marine.validation.card2.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Every subsea enclosure and pressure vessel can be hydrostatically tested to 1.5× rated working pressure — with documented proof of seal integrity before deployment. Our test procedures verify zero measurable leakage across all sealing interfaces, providing the certification required for mission-critical offshore and deep-sea installations.
+            {t('industries.marine.validation.card2.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.marine.validation.card2.implLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Hydrostatic proof test to 1.5× rated pressure — documented certification provided</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Helium leak testing available — sensitivity to < 1×10⁻⁹ mbar·L/s for critical assemblies</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Test certificates traceable to component serial number — full QA documentation package</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.validation.card2.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.validation.card2.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.validation.card2.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">CMM (Coordinate Measuring Machine)</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.marine.validation.entityLabel')}:</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.validation.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Hydrostatic Pressure Test</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.validation.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">O-Ring Gland GD&T</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.validation.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Helium Leak Test</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.validation.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">ASME Y14.5</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.validation.entity.4')}</span>
     </div>
   </div>
 </section>

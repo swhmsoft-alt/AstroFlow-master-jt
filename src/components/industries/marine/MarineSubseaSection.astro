@@ -17,10 +17,10 @@ const t = useTranslations(lang);
         {t('industries.marine.subsea.badge')}
       </div>
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">{t('industries.marine.subsea.title.main')}</span> — Subsea Enclosures, Pressure Vessels &amp; Acoustic Sensor Housings
+        <span style="color: var(--theme-primary);">{t('industries.marine.subsea.title.main')}</span> — {t('industries.marine.subsea.title.suffix')}
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Precision-machined titanium subsea enclosures and pressure vessels rated for kilometer-depth hydrostatic pressure. Multi-axis milling of thick-wall Grade 2 and Grade 5 Titanium eliminates mechanical stress concentration, ensuring O-ring sealing glands maintain absolute integrity under extreme underwater compression.
+        {t('industries.marine.subsea.desc')}
       </p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -31,19 +31,19 @@ const t = useTranslations(lang);
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Deep-Sea Pressure Vessels</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Multi-Axis CNC · Grade 2/5 Ti · Hydrostatic Rated</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.marine.subsea.card1.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.marine.subsea.card1.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Subsea instrumentation housings must withstand hydrostatic pressures exceeding 300 bar at 3,000-meter depths. Our multi-axis CNC milling centers machine thick-wall titanium enclosures with precision O-ring gland geometries — holding position tolerances to ±0.01 mm to prevent seal extrusion under compression. Grade 2 titanium provides optimal corrosion resistance for long-term submerged deployment.
+            {t('industries.marine.subsea.card1.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.marine.subsea.card1.implLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>O-ring gland tolerances ±0.01 mm — prevents extrusion at 300+ bar hydrostatic pressure</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Stress-relieved machining sequences — eliminates micro-distortion in thick-wall pressure boundaries</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Grade 2 pure titanium — exceptional seawater corrosion resistance with zero galvanic reaction</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.subsea.card1.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.subsea.card1.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.subsea.card1.item3')}</li>
           </ul>
         </div>
       </div>
@@ -51,37 +51,37 @@ const t = useTranslations(lang);
         <div class="p-8">
           <div class="flex items-start mb-5">
             <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+              <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold" style="color: var(--theme-text);">Acoustic Sensor &amp; Camera Housings</h3>
-              <span class="text-sm font-medium" style="color: var(--theme-primary);">Multi-Axis CNC · Grade 5 Ti · Acoustic Window Seats</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('industries.marine.subsea.card2.title')}</h3>
+              <span class="text-sm font-medium" style="color: var(--theme-primary);">{t('industries.marine.subsea.card2.subtitle')}</span>
             </div>
           </div>
           <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            Underwater acoustic sensors and camera modules require hermetic housings with precision-machined acoustic window seats and optical ports. Our multi-axis milling produces complex sealing geometries that maintain acoustic transparency while preventing seawater ingress at depth. Grade 5 Titanium provides the strength needed for thin-wall acoustic windows without sacrificing pressure rating.
+            {t('industries.marine.subsea.card2.desc')}
           </p>
           <div class="mx-0 h-px mb-6" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
-          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">Technical Implementation</span>
+          <span class="text-xs font-semibold uppercase tracking-widest mb-4 block" style="color: var(--theme-primary);">{t('industries.marine.subsea.card2.implLabel')}</span>
           <ul class="space-y-3">
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Acoustic window sealing surfaces machined to Ra 0.8 µm — optical clarity without pressure leak paths</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>Cable feed-through ports with tapered seal faces — rated for 6000m depth deployment</li>
-            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>100% hydrostatic pressure test verification available — documented proof of seal integrity</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.subsea.card2.item1')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.subsea.card2.item2')}</li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>{t('industries.marine.subsea.card2.item3')}</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="mt-12 flex flex-wrap items-center justify-center gap-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-primary);">Entity Cluster:</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Multi-Axis CNC Milling</span>
+      <span class="font-semibold" style="color: var(--theme-primary);">{t('industries.marine.subsea.entityLabel')}:</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.subsea.entity.0')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Subsea Enclosures</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.subsea.entity.1')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Pressure Vessels</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.subsea.entity.2')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Grade 2 Titanium</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.subsea.entity.3')}</span>
       <span class="text-xs">+</span>
-      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Hydrostatic Pressure</span>
+      <span class="px-3 py-1 rounded-full text-xs font-mono" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.marine.subsea.entity.4')}</span>
     </div>
   </div>
 </section>

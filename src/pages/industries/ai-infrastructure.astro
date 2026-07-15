@@ -26,12 +26,22 @@ const t = useTranslations(lang);
 >
   <!-- Hero Section -->
   <SubpageHero
-    h1={HERO_CONFIG['/industries/ai-infrastructure'].h1}
-    badge={HERO_CONFIG['/industries/ai-infrastructure'].badge}
-    subtitle={HERO_CONFIG['/industries/ai-infrastructure'].subtitle}
+    h1={['ko', 'nl'].includes(lang) ? t('industries.ai.hero.h1') : HERO_CONFIG['/industries/ai-infrastructure'].h1}
+    badge={['ko', 'nl'].includes(lang) ? t('industries.ai.hero.badge') : HERO_CONFIG['/industries/ai-infrastructure'].badge}
+    subtitle={['ko', 'nl'].includes(lang) ? t('industries.ai.hero.subtitle') : HERO_CONFIG['/industries/ai-infrastructure'].subtitle}
     badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-    keyMetrics={HERO_CONFIG['/industries/ai-infrastructure'].keyMetrics}
-    entityChips={HERO_CONFIG['/industries/ai-infrastructure'].entityChips}
+    keyMetrics={['ko', 'nl'].includes(lang) ? [
+      { value: t('industries.ai.hero.metric1.value'), label: t('industries.ai.hero.metric1.label') },
+      { value: t('industries.ai.hero.metric2.value'), label: t('industries.ai.hero.metric2.label') },
+      { value: t('industries.ai.hero.metric3.value'), label: t('industries.ai.hero.metric3.label') },
+    ] : HERO_CONFIG['/industries/ai-infrastructure'].keyMetrics}
+    entityChips={['ko', 'nl'].includes(lang) ? [
+      t('industries.ai.hero.chip0'),
+      t('industries.ai.hero.chip1'),
+      t('industries.ai.hero.chip2'),
+      t('industries.ai.hero.chip3'),
+      t('industries.ai.hero.chip4'),
+    ] : HERO_CONFIG['/industries/ai-infrastructure'].entityChips}
     compact={false}
   />
 
