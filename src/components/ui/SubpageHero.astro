@@ -32,6 +32,11 @@ interface Props {
   compact?: boolean;
 }
 
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
 const {
   title,
   highlight,
@@ -113,8 +118,8 @@ const subMaxWidth = isLongSubtitle ? 'max-w-5xl' : 'max-w-3xl';
           {isLongSubtitle && (
             <details class="group mt-2">
               <summary class="cursor-pointer text-sm font-semibold inline-flex items-center hover:opacity-80 transition-opacity" style="color: var(--theme-primary);">
-                <span class="group-open:hidden">Read more</span>
-                <span class="hidden group-open:inline">Show less</span>
+                <span class="group-open:hidden">{t('hero.read_more')}</span>
+                <span class="hidden group-open:inline">{t('hero.show_less')}</span>
                 <svg class="w-4 h-4 ml-1 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
