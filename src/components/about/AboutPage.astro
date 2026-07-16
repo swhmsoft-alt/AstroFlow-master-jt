@@ -57,6 +57,37 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
   </div>
 </section>
 
+<!-- Video Tour Section -->
+<section class="relative py-16 lg:py-20" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('about.video.tour')}
+        </h2>
+        <p class="text-base" style="color: var(--theme-text); opacity: 0.7;">
+          {t('about.video.subtitle')}
+        </p>
+      </div>
+      <div class="relative rounded-xl overflow-hidden shadow-2xl" style="background-color: #000;">
+        <video
+          controls
+          preload="metadata"
+          playsinline
+          poster="/uploads/boze-cnc-ti-about.mp4"
+          class="w-full h-auto max-h-[80vh]"
+          style="display: block;"
+        >
+          <source src="/uploads/boze-cnc-ti-about.mp4" type="video/mp4" />
+          <p style="color: #fff; padding: 2rem; text-align: center;">
+            {t('about.video.fallback')}
+          </p>
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Why Partner Section -->
 <section class="relative py-16 lg:py-20" style="background-color: var(--theme-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
