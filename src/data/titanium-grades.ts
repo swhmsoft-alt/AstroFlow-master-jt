@@ -1596,5 +1596,130 @@ export const GRADE_DATA: GradeMap = {
       { question: "What processing capabilities do you have for Ti-5553?", answer: "We offer precision forging, 5-axis CNC machining, and vacuum heat treatment (solution treat and age) for Ti-5553 components. Our AS9100D-compliant facility provides full material traceability, CMM dimensional verification, and NADCAP NDT inspection." }
     ],
     whyChooseUs: "BOZE CNC Ti is a precision manufacturer of Ti-5Al-5V-5Mo-3Cr (Ti-5553) high-strength beta titanium components for aerospace landing gear and structural applications. Our AS9100D-certified facility offers precision forging, 5-axis CNC machining, and vacuum heat treatment with full material traceability and NADCAP NDT inspection."
+  },
+
+
+  "ti-6211": {
+    key: "ti-6211",
+    name: "Ti-6211 – Ti-6Al-2Nb-1Ta-0.8Mo Marine Grade Titanium",
+    nameCn: "Ti-6Al-2Nb-1Ta-0.8Mo 深海工程钛合金",
+    uns: "UNS R56210",
+    tagline: "A near-alpha titanium alloy with exceptional marine environment stress corrosion cracking resistance, developed by the U.S. Navy for deep-sea submersible hulls and naval structural applications.",
+    badge: "Near-Alpha Alloy",
+    highlight: "Ti-6211",
+    subtitle: "Ti-6Al-2Nb-1Ta-0.8Mo (Ti-6211, UNS R56210), also known as Ti-621/0.8 — a near-alpha titanium alloy originally developed by the U.S. Navy for deep-submergence pressure hulls. Its unique Nb+Ta stabilizer system delivers exceptional stress corrosion cracking (SCC) resistance in seawater, superior fracture toughness, and excellent weldability for thick-section marine structures.",
+    pageTitle: "Ti-6211 Titanium (Ti-6Al-2Nb-1Ta-0.8Mo) | Marine & Deep-Sea Alloy Properties",
+    metaDescription: "Explore Ti-6211 (Ti-6Al-2Nb-1Ta-0.8Mo) near-alpha titanium alloy — the U.S. Navy-developed marine grade. Learn about its SCC resistance, fracture toughness, mechanical properties, applicable standards, welding, and deep-sea submersible applications.",
+    entityDefinition: {
+      title: "What is Ti-6211 Titanium (Ti-6Al-2Nb-1Ta-0.8Mo)?",
+      description: "Ti-6Al-2Nb-1Ta-0.8Mo, commonly referred to as Ti-6211 or Ti-621/0.8, is a near-alpha titanium alloy originally developed by the U.S. Navy in the 1950s–1960s for deep-submergence pressure hull applications. Its distinctive composition combines 6% aluminum (alpha stabilizer) with niobium (2%), tantalum (1%), and molybdenum (0.8%) — the Nb+Ta combination providing exceptional resistance to stress corrosion cracking (SCC) in marine environments. This alloy is renowned for its outstanding fracture toughness, excellent weldability for heavy sections, and robust performance under high hydrostatic pressure at ocean depths.",
+      classification: "Near-Alpha Titanium Alloy (α-rich)",
+      commonNames: ["Ti-6Al-2Nb-1Ta-0.8Mo", "Ti-6211", "Ti-621/0.8", "UNS R56210"],
+      keyCharacteristics: [
+        "Exceptional stress corrosion cracking (SCC) resistance in seawater and saline environments",
+        "Superior fracture toughness with high safety margins for pressure-critical applications",
+        "Excellent weldability — low crack sensitivity in heat-affected zones for thick-section welding",
+        "Good elevated-temperature strength and creep resistance",
+        "Excellent formability and machinability compared to beta-rich titanium alloys",
+        "Designed specifically for high-pressure deep-sea service conditions"
+      ]
+    },
+    conformsTo: {
+      title: "Applicable Standards",
+      description: "Ti-6211 titanium conforms to the following international material standards:",
+      items: [
+        "MIL-T-9047 — Titanium and Titanium Alloy Plate, Sheet, and Strip",
+        "AMS 4904 — Titanium Alloy Plate, Sheet, and Strip, Ti-6Al-2Nb-1Ta-0.8Mo",
+        "ASTM B265 — Sheet, Strip, and Plate (cross-reference)",
+        "ASTM B348 — Bars and Billets (cross-reference)",
+        "ASTM B381 — Forgings (cross-reference)",
+        "NACE MR0175 / ISO 15156 — Oilfield Equipment (marine service)",
+        "ABS (American Bureau of Shipping) — Marine Vessel and Submersible Rules",
+        "Naval Sea Systems Command (NAVSEA) — Submarine Pressure Hull Specifications"
+      ]
+    },
+    hasProperty: {
+      title: "Mechanical & Physical Properties",
+      description: "Typical room-temperature properties for Ti-6211 (annealed condition, unless noted):",
+      properties: [
+        { label: "Tensile Strength (min, annealed)", value: "895 MPa (130 ksi)" },
+        { label: "Yield Strength 0.2% Offset (min, annealed)", value: "828 MPa (120 ksi)" },
+        { label: "Elongation (min, annealed)", value: "10%" },
+        { label: "Reduction of Area", value: "25%" },
+        { label: "Density", value: "4.48 g/cm³ (0.162 lb/in³)" },
+        { label: "Elastic Modulus", value: "110 GPa (16.0 × 10⁶ psi)" },
+        { label: "Melting Point", value: "1,660°C (3,020°F)" },
+        { label: "Thermal Conductivity", value: "7.0 W/(m·K)" },
+        { label: "Fracture Toughness KIC (annealed)", value: "85–110 MPa√m" },
+        { label: "Stress Corrosion Cracking Threshold KISCC (seawater)", value: "≥ 60 MPa√m" },
+        { label: "Fatigue Strength (10⁷ cycles, R=0.1)", value: "450–520 MPa" },
+        { label: "Hardness", value: "≤ 36 HRC" },
+        { label: "Max Service Temperature", value: "400°C (750°F)" }
+      ]
+    },
+    processedBy: {
+      title: "Available Processing Methods",
+      description: "Ti-6211 can be processed using the following manufacturing techniques:",
+      items: [
+        "CNC machining — Good with sharp carbide tools, rigid setups, and adequate coolant flow",
+        "5-axis CNC machining — Suitable for complex pressure vessel components and submersible structures",
+        "Wire EDM — Ideal for precision cutouts and thick-section profiling",
+        "TIG welding — Excellent with matching filler metal; low HAZ crack sensitivity enables heavy-section welding",
+        "Laser beam welding — Good weld quality with proper joint design and inert gas shielding",
+        "Electron beam welding — Excellent for deep-penetration, narrow-HAZ welds in vacuum",
+        "Submerged arc welding — Applicable for very heavy plate sections in pressure hull fabrication",
+        "Vacuum annealing — At 700–800°C (1,300–1,475°F) to relieve residual stresses",
+        "Hot forming — At 800–900°C (1,475–1,650°F) for complex shapes",
+        "Forging — Alpha-beta forging at 950–1,050°C (1,740–1,920°F)",
+        "Hot isostatic pressing (HIP) — At 920°C / 100 MPa to eliminate internal porosity",
+      ]
+    },
+    manufacturedFrom: {
+      title: "Typical Products & Components",
+      description: "Ti-6211 is commonly fabricated into the following downstream products:",
+      items: [
+        "Deep-submergence pressure hulls — manned and unmanned submersible shells",
+        "Marine pressure vessels — hyperbaric chambers, deep-sea storage tanks, hydraulic cylinders",
+        "Naval ship structures — waterjet propulsion components, sonar domes, rudder assemblies",
+        "Submarine ballast and trim system components",
+        "Oceanographic instrument housings and sensor pods",
+        "Undersea pipeline connectors and riser systems",
+        "Offshore oil & gas subsea tree equipment",
+        "Thick-plate welded assemblies for critical marine structural applications",
+        "High-performance marine fastener systems — bolts, studs, and connectors",
+        "Additive manufacturing (3D printing) — spherical powder for complex deep-sea components"
+      ]
+    },
+    usedIn: {
+      title: "Primary Industries",
+      description: "Ti-6211 serves as a material of choice across these industries:",
+      items: [
+        "Defense & naval — Submarine structures, deep-submergence vehicles, naval ship components",
+        "Deep-sea exploration — Manned and ROV/AUV submersible hulls and pressure vessels",
+        "Ocean engineering — Offshore platforms, riser systems, subsea manifolds",
+        "Oil & gas — Subsea production trees, manifolds, high-pressure piping",
+        "Additive manufacturing — 3D printed deep-sea and aerospace components",
+        "Marine renewable energy — Tidal turbine structures, subsea power generation housings"
+      ]
+    },
+    alternativeTo: {
+      title: "Alternative Materials",
+      description: "Depending on application requirements, Ti-6211 may be substituted by:",
+      items: [
+        "Grade 5 (Ti-6Al-4V) — Higher strength but lower SCC resistance in seawater and reduced weldability for thick sections",
+        "Grade 23 (Ti-6Al-4V ELI) — Better low-temperature toughness but inferior seawater SCC resistance",
+        "Grade 9 (Ti-3Al-2.5V) — Better formability but lower strength and fracture toughness",
+        "Ti-6Al-2Sn-4Zr-2Mo (Grade 6242) — Higher-temperature creep resistance but not optimized for marine SCC performance",
+        "HY-80 / HY-100 Steel — Lower cost for pressure hulls but significantly heavier and susceptible to corrosion",
+        "Stainless Steel 316L — Lower cost for marine service but lower strength and fatigue life"
+      ]
+    },
+    faqs: [
+      { question: "What is Ti-6211 (Ti-6Al-2Nb-1Ta-0.8Mo) titanium alloy?", answer: "Ti-6211, also known as Ti-621/0.8, is a near-alpha titanium alloy developed by the U.S. Navy for deep-submergence pressure hulls. Its unique niobium + tantalum stabilizer system provides exceptional resistance to stress corrosion cracking in seawater, combined with outstanding fracture toughness and excellent weldability for thick-section marine structures." },
+      { question: "What makes Ti-6211 different from Grade 5 (Ti-6Al-4V) for marine applications?", answer: "While Grade 5 offers excellent general corrosion resistance, Ti-6211 is specifically formulated for the demanding conditions of deep-sea service. The Nb+Ta additions dramatically improve resistance to stress corrosion cracking (SCC) under sustained load in seawater — a critical failure risk for pressure vessels. Ti-6211 also exhibits superior fracture toughness (85–110 MPa√m) and significantly better weldability for thick-section welding." },
+      { question: "What welding processes are suitable for Ti-6211? Can you weld thick plates?", answer: "Ti-6211 is one of the most weldable high-strength titanium alloys. TIG, laser beam, and electron beam welding are all applicable. Its low crack sensitivity in the heat-affected zone makes it particularly suitable for heavy-section (50 mm+) plate welding required for pressure hull fabrication. Matching filler metal with strict inert gas shielding is essential for all welding operations." },
+      { question: "What machining capabilities do you have for Ti-6211 components?", answer: "We offer precision 5-axis CNC machining, CNC turning, and wire EDM for Ti-6211 components. Our DMG Mori and Mazak machining centers with high-pressure coolant systems can handle complex pressure vessel components and structural parts. CMM dimensional verification per AS9102 is available for all critical features." }
+    ],
+    whyChooseUs: "BOZE CNC Ti is a precision manufacturer of Ti-6211 (Ti-6Al-2Nb-1Ta-0.8Mo) near-alpha titanium components for defense, deep-sea exploration, and marine engineering applications. Our AS9100D-certified facility sources 100% certified Ti-6211 plate, bars, and forgings, and transforms them into complex pressure vessel components, structural assemblies, and subsea hardware using state-of-the-art 5-axis CNC machining centers, precision turning, advanced TIG/laser welding, and wire EDM. Every component is produced under AS9100D and ISO 9001:2015 quality systems with full material traceability from mill to finished part. Our engineering team provides 24-hour DFM review and competitive quoting, backed by decades of metallurgical expertise in near-alpha titanium processing for critical marine service."
   }
 };

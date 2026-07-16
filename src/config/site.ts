@@ -93,6 +93,7 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Grade 21 Beta Alloy', href: '/materials/grade-21' },
           { name: 'Grade 6242 Aerospace Ti', href: '/materials/grade-6242' },
           { name: 'Ti-5-5-5-3 High Strength', href: '/materials/ti-5553' },
+          { name: 'Ti-6211 Marine Grade (Ti-6Al-2Nb-1Ta-0.8Mo)', href: '/materials/ti-6211' },
           { name: 'Titanium Alloy Comparison', href: '/materials/#comparison' },
         ],
       },
