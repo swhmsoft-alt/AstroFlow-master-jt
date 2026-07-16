@@ -100,6 +100,16 @@ export function buildWebSite() {
   };
 }
 
+export function buildImageObject() {
+  return {
+    '@type': 'ImageObject',
+    '@id': LOGO_ID,
+    url: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
+    contentUrl: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
+    caption: 'BOZE CNC Ti',
+  };
+}
+
 export interface WebPageInput {
   name: string;
   description: string;
@@ -403,6 +413,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
 
   // 1. Organization & WebSite — every page
   graph.push(buildOrganization());
+  graph.push(buildImageObject());
   graph.push(buildWebSite());
 
   // 2. WebPage — every page

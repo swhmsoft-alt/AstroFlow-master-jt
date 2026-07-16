@@ -88,7 +88,7 @@ const defaultOgImage = `${siteUrl}/uploads/boze-1-en.png`;
 const seoImage = ogImage || defaultOgImage;
 const ogLocales: Record<string, string> = { en: 'en_US', de: 'de_DE', zh: 'zh_CN', ja: 'ja_JP', fr: 'fr_FR', es: 'es_ES', pt: 'pt_PT', it: 'it_IT', ko: 'ko_KR', nl: 'nl_NL', pl: 'pl_PL' };
 const ogLocale = ogLocales[currentLang] || 'en_US';
-const favicon = '/favicon.svg';
+const favicon = '/uploads/boze-cnc-ti-ico.png';
 const siteName = SITE.title;
 const cmsDefaultTheme = 'aerospace-precision';
 const fontStyle = 'inter';
@@ -137,6 +137,7 @@ const ldJson = JSON.stringify(pageGraph);
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
+<link rel="icon" type="image/png" href="/uploads/boze-cnc-ti-ico.png" />
 <link rel="canonical" href={canonicalUrl} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={seoImage} />
