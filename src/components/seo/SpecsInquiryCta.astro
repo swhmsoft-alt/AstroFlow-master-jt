@@ -1,0 +1,74 @@
+---
+/**
+ * src/components/seo/SpecsInquiryCta.astro
+ *
+ * 询盘 CTA 模块 — 内链蜘蛛网规则 3（全站转化收拢）的实现。
+ *
+ * 自动在 Specs 页和 Compare 页底部拼接指向 /contact/ 的 Call-to-Action。
+ * 确保整个内链网络的流量，最终高浓度地流向转化页，形成"半闭环"。
+ *
+ * 多语言安全：CTA 链接自动适配当前语种的 contact 页面。
+ *
+ * 使用方式：
+ *   <SpecsInquiryCta lang={currentLang} specName="Titanium Gr5" />
+ */
+
+import { getContactPath } from '../../utils/seo-linking';
+
+interface Props {
+  /** 当前页面语言代码 */
+  lang: string;
+  /** 规格名称（显示在 CTA 文案中） */
+  specName?: string;
+  /** 自定义 CTA 标题（优先级高于 specName 自动生成） */
+  ctaTitle?: string;
+  /** 自定义 CTA 描述 */
+  ctaDescription?: string;
+  /** 自定义按钮文本 */
+  buttonText?: string;
+}
+
+const {
+  lang,
+  specName = '',
+  ctaTitle,
+  ctaDescription,
+  buttonText = 'Request a Quote',
+} = Astro.props;
+
+const contactPath = getContactPath(lang);
+
+const title = ctaTitle || (specName
+  ? `Ready to Start Your ${specName} Project?`
+  : 'Ready to Start Your Project?'
+);
+
+const description = ctaDescription || (
+  specName
+    ? `Get an immediate engineering review and competitive pricing for ${specName} CNC machining. Our AS9100D-certified team responds within 48 hours.`
+    : 'Get an immediate engineering review and competitive pricing for your titanium CNC machining project. Our AS9100D-certified team responds within 48 hours.'
+);
+---
+
+<section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-2xl p-8 md:p-12 my-12">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">
+      {title}
+    </h2>
+    <p class="text-blue-100 text-lg mb-8 leading-relaxed">
+      {description}
+    </p>
+    <a
+      href={contactPath}
+      class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl text-lg"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      {buttonText}
+    </a>
+    <p class="text-blue-200 text-sm mt-4">
+      • 48h RFQ Response • DFM Analysis Included • ISO 9001:2015 & AS9100D Certified
+    </p>
+  </div>
+</section>

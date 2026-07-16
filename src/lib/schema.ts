@@ -18,17 +18,13 @@
  */
 
 import { SITE } from '@config/site';
-import { servicesHierarchyData, type ServiceNode } from '../data/services-schema';
 
 // ── Constants ─────────────────────────────────────────
 
 const SITEROOT = SITE.url;
 const ORG_ID     = `${SITEROOT}/#boze-org`;
 const WEBSITE_ID = `${SITEROOT}/#boze-website`;
-
-// Supported language keys (for ServiceNode lookups)
-type SupportedLang = 'en' | 'de' | 'ja' | 'fr' | 'es' | 'pt' | 'it' | 'ko' | 'nl' | 'pl';
-const FALLBACK_LANG = 'en' as const;
+const LOGO_ID    = `${SITEROOT}/#boze-logo`;
 
 // ── Page Type ─────────────────────────────────────────
 
@@ -43,29 +39,19 @@ export type PageType =
   | 'materials'
   | 'capabilities'
   | 'industries'
-  | 'industry-detail'
   | 'resources'
   | 'rfq'
   | 'generic';
 
 // ── Helpers ───────────────────────────────────────────
 
-/**
- * Recursively strip null / undefined / empty-string / empty-array / empty-object values.
- * Objects with an '@id' property are preserved as-is (they are entity references).
- */
+/** Recursively remove null / undefined / empty-string / empty-object values. */
 function clean(obj: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(obj)) {
-    // Remove null / undefined / empty string
     if (v == null) continue;
-    if (v === '') continue;
-
     if (Array.isArray(v)) {
-      // Recursively clean each element
-      const filtered = v
-        .map(x => (x != null && typeof x === 'object' && !(x as Record<string, unknown>)['@id'] ? clean(x as Record<string, unknown>) : x))
-        .filter(x => x != null && x !== '' && !(typeof x === 'object' && !('@id' in (x as object)) && Object.keys(x as Record<string, unknown>).length === 0));
+      const filtered = v.filter(x => x != null);
       if (filtered.length) out[k] = filtered;
     } else if (typeof v === 'object' && !('@id' in (v as object))) {
       const child = clean(v as Record<string, unknown>);
@@ -81,21 +67,12 @@ function clean(obj: Record<string, unknown>): Record<string, unknown> {
 
 export function buildOrganization() {
   return {
-    '@type': 'ManufacturingBusiness',
+    '@type': 'Organization',
     '@id': ORG_ID,
     name: 'BOZE CNC Ti',
-    legalName: 'Bozhe Metal Titanium Technology Co., Ltd.',
     url: SITEROOT,
-    logo: `${SITEROOT}/uploads/boze-logo-2.png`,
+    logo: { '@id': LOGO_ID },
     description: SITE.description,
-    knowsAbout: [
-      'Titanium CNC Machining',
-      'Aerospace Component Manufacturing',
-      'Medical Device Titanium Implants',
-      'Additive Manufacturing LPBF',
-      'Titanium Surface Treatment',
-    ],
-    areaServed: 'Worldwide',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+86-186-2391-9905',
@@ -110,56 +87,6 @@ export function buildOrganization() {
       'https://www.facebook.com/bozemetal',
     ],
   };
-}
-
-// ── Hierarchical Service Builder ───────────────────────
-
-/**
- * Safely resolve a language key from a LanguageDict.
- * Falls back to 'en' if the requested language is not available.
- */
-function resolveLang(dict: { en: string; [key: string]: string | undefined }, lang: string): string {
-  if (dict[lang]) return dict[lang]!;
-  return dict[FALLBACK_LANG] ?? '';
-}
-
-/**
- * Recursively build a nested Service entity with hasPart children.
- *
- * Each node uses its hardcoded @id for consistent Google Knowledge Graph merging.
- * The provider is always bound to the ManufacturingBusiness @id.
- * If node.material is present, a ProductMaterial sub-entity is emitted.
- *
- * @param node     ServiceNode from servicesHierarchyData
- * @param lang     Current page language (auto-fallback to 'en')
- */
-export function buildServiceHierarchy(node: ServiceNode, lang: string = FALLBACK_LANG): Record<string, unknown> {
-  const schema: Record<string, unknown> = {
-    '@type': 'Service',
-    '@id': node.id,
-    name: resolveLang(node.name, lang),
-    description: resolveLang(node.description, lang),
-    provider: { '@id': ORG_ID },
-  };
-
-  if (node.serviceType) {
-    schema.serviceType = node.serviceType;
-  }
-
-  // Material specification (e.g. Ti-6Al-4V powder for additive)
-  if (node.material) {
-    schema.material = {
-      '@type': 'ProductMaterial',
-      name: resolveLang(node.material, lang),
-    };
-  }
-
-  // Recursive hasPart — children inherit the same lang
-  if (node.hasPart && node.hasPart.length > 0) {
-    schema.hasPart = node.hasPart.map((child) => buildServiceHierarchy(child, lang));
-  }
-
-  return schema;
 }
 
 export function buildWebSite() {
@@ -248,17 +175,15 @@ export interface ServiceInput {
 }
 
 export function buildService(input: ServiceInput) {
-  const entity: Record<string, unknown> = {
+  return {
     '@type': 'Service',
     '@id': `${input.url}#service`,
     name: input.name,
     description: input.description,
     url: input.url,
     provider: { '@id': ORG_ID },
+    category: input.category,
   };
-  // Only add category if it has a truthy value
-  if (input.category) entity.category = input.category;
-  return entity;
 }
 
 export interface ProductInput {
@@ -315,9 +240,7 @@ export function buildItemList(input: ItemListInput) {
     name: input.name,
     url: input.url,
   };
-  if (input.numberOfItems != null && input.numberOfItems > 0) {
-    entity.numberOfItems = input.numberOfItems;
-  }
+  if (input.numberOfItems != null) entity.numberOfItems = input.numberOfItems;
   return entity;
 }
 
@@ -387,7 +310,6 @@ export function detectPageType(
  * @param seoConfig      SEO_CONFIG lookup (imported at call site)
  * @param siteUrl        base URL
  * @param currentLang    language code (for picking the right title)
- * @param homeLabel      localized "Home" label (from i18n system)
  * @returns              array of { name, item }
  */
 export function buildBreadcrumbItems(
@@ -395,10 +317,9 @@ export function buildBreadcrumbItems(
   seoConfig: Record<string, { title?: Record<string, string> }>,
   siteUrl: string,
   currentLang: string,
-  homeLabel = 'Home',
 ): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = [
-    { name: homeLabel, item: siteUrl },
+    { name: 'Home', item: siteUrl },
   ];
 
   if (canonicalPath === '/') return items;
@@ -470,29 +391,17 @@ export interface SchemaPageData {
  * Build the full @graph for a page.
  *
  * Every page always gets:
- *   ManufacturingBusiness  (@id: #boze-org)
- *   WebSite                (publisher → #boze-org)
- *   WebPage                (isPartOf → #boze-website)
- *   BreadcrumbList         (if items provided)
+ *   Organization  (@id: #boze-org)
+ *   WebSite       (publisher → #boze-org)
+ *   WebPage       (isPartOf → #boze-website)
+ *   BreadcrumbList (if items provided)
  *
  * Additional entities are added based on pageType.
- * If serviceHubKey is provided, a hierarchical Service entity with hasPart
- * children from servicesHierarchyData is appended to the graph.
- *
- * @param pageType         Detected or explicit page type
- * @param data             Page-specific schema data
- * @param serviceHubKey    Optional key into servicesHierarchyData (e.g. "cnc-machining", "master-service")
- * @param lang             Current page language (defaults to 'en')
  */
-export function buildPageGraph(
-  pageType: PageType,
-  data: SchemaPageData,
-  serviceHubKey?: string,
-  lang: string = FALLBACK_LANG,
-) {
+export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
   const graph: Record<string, unknown>[] = [];
 
-  // 1. ManufacturingBusiness & WebSite — every page
+  // 1. Organization & WebSite — every page
   graph.push(buildOrganization());
   graph.push(buildWebSite());
 
@@ -502,7 +411,7 @@ export function buildPageGraph(
     description: data.pageDescription,
     url: data.pageUrl,
     inLanguage: data.inLanguage,
-    datePublished: data.articleDatePublished || null,
+    datePublished: data.articleDatePublished ?? null,
   }));
 
   // 3. Breadcrumb
@@ -567,42 +476,10 @@ export function buildPageGraph(
       }
       break;
 
-    case 'industry-detail':
-      // Industry detail pages (e.g. /industries/aerospace) emit both a Service entity
-      // (describing the manufacturing service) and a Product entity (describing the
-      // specific components produced), creating a rich entity relationship graph
-      // aligned with Google AIO intent matching.
-      if (data.serviceName) {
-        graph.push(buildService({
-          name: data.serviceName,
-          description: data.serviceDescription ?? data.pageDescription,
-          url: data.pageUrl,
-          category: data.serviceCategory,
-        }));
-      }
-      if (data.productName) {
-        graph.push(buildProduct({
-          name: data.productName,
-          description: data.productDescription ?? data.pageDescription,
-          url: data.pageUrl,
-          image: data.productImage,
-          category: data.productCategory,
-          datePublished: data.productDatePublished,
-        }));
-      }
-      break;
-
     default:
       // 'home', 'materials', 'capabilities', 'industries', 'resources', 'rfq', 'generic'
       // already have Org + WebSite + WebPage + Breadcrumb
       break;
-  }
-
-  // 5. Hierarchical Service entity (zero-conflict — same @id as detail pages)
-  //    Only pushed when the page explicitly provides a serviceHubKey
-  if (serviceHubKey && servicesHierarchyData[serviceHubKey]) {
-    const serviceEntity = buildServiceHierarchy(servicesHierarchyData[serviceHubKey], lang);
-    graph.push(serviceEntity);
   }
 
   return clean({ '@context': 'https://schema.org', '@graph': graph });

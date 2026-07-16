@@ -1,0 +1,189 @@
+---
+/**
+ * src/pages/[...lang]/comparison/[...slug].astro
+ *
+ * Compare 材质对比页 — 内链蜘蛛网的"链状桥梁"。
+ *
+ * 内链规则 2（横向桥梁连接 Compare → Specs）：
+ *   - 加载 comparison 条目中声明的 comparedSpecs 数组
+ *   - 通过 getCollection('services') 解析每个 spec slug
+ *   - 自动渲染对比表格，表头生成 SEO 锚文本链接指向 Specs 页
+ *   - 锚文本规则：[Specs 页面 Title] + " CNC Machining Specifications"
+ *
+ * 内链规则 3（全站转化收拢）：
+ *   - 页面底部自动拼接询盘 CTA 模块
+ *
+ * 内链规则 4（多语言物理隔离）：
+ *   - 表头链接和 CTA 全部自动适配当前语种
+ *
+ * getStaticPaths 生成策略：
+ *   遍历所有 comparison 条目 + 所有语言。
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import BreadcrumbNav from '../../../components/seo/BreadcrumbNav.astro';
+import ComparisonTable from '../../../components/seo/ComparisonTable.astro';
+import SpecsInquiryCta from '../../../components/seo/SpecsInquiryCta.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { DEFAULT_LANG } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const comparisons = await getCollection('comparison');
+  const allServices = await getCollection('services');
+  const allLangs = ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'];
+
+  const paths: { params: { lang: string; slug: string }; props: Record<string, any> }[] = [];
+
+  for (const comp of comparisons) {
+    const isOriginal = !comp.data.lang;
+    const baseSlug = comp.id.replace(/\.md$/, '');
+
+    if (isOriginal) {
+      // 预加载 comparedSpecs 对应的 services 条目
+      const specEntries = comp.data.comparedSpecs.map((specSlug: string) => {
+        return allServices.find((s) => s.id.startsWith(specSlug) && !s.data.lang);
+      }).filter(Boolean);
+
+      // 默认语言
+      paths.push({
+        params: { lang: '', slug: baseSlug },
+        props: {
+          originalSlug: baseSlug,
+          lang: DEFAULT_LANG,
+          entryId: comp.id,
+          entryLang: DEFAULT_LANG,
+          comparedSpecsSlugs: comp.data.comparedSpecs,
+          specEntriesProps: specEntries.map((s: any) => ({
+            slug: s.id.replace(/\.md$/, ''),
+            title: s.data.title,
+            specs: s.data.specs,
+          })),
+        },
+      });
+
+      // 非默认语言
+      for (const langCode of allLangs) {
+        if (langCode === DEFAULT_LANG) continue;
+        const translationId = `${langCode}-${comp.id}`;
+
+        // 查找对应语言的 spec 条目
+        const localizedSpecs = comp.data.comparedSpecs.map((specSlug: string) => {
+          const localizedId = `${langCode}-${specSlug}.md`;
+          return allServices.find((s) => s.id === localizedId)
+            || allServices.find((s) => s.id.startsWith(specSlug) && !s.data.lang);
+        }).filter(Boolean);
+
+        paths.push({
+          params: { lang: langCode, slug: baseSlug },
+          props: {
+            originalSlug: baseSlug,
+            lang: langCode,
+            entryId: translationId,
+            entryLang: langCode,
+            comparedSpecsSlugs: comp.data.comparedSpecs,
+            specEntriesProps: localizedSpecs.map((s: any) => ({
+              slug: s.id.replace(/\.md$/, '').replace(/^[a-z]{2}-/, ''),
+              title: s.data.title,
+              specs: s.data.specs,
+            })),
+          },
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const {
+  originalSlug,
+  lang,
+  entryId,
+  comparedSpecsSlugs,
+  specEntriesProps,
+} = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const siteUrl = 'https://cnc.bozemetal.com';
+
+// 加载当前语言的 comparison entry
+const allComparisons = await getCollection('comparison');
+const entry = allComparisons.find((e) => e.id === entryId) || allComparisons.find((e) => e.id === `${originalSlug}.md`);
+
+if (!entry?.data) {
+  return Astro.redirect('/404', 404);
+}
+
+const entryData = entry.data;
+const pageTitle = entryData.seoTitle || entryData.title;
+const pageDescription = entryData.seoDescription || entryData.description;
+
+// 确保 spec 数据有效
+const validSpecsList = specEntriesProps && specEntriesProps.length >= 2
+  ? specEntriesProps
+  : [];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={
+    lang === DEFAULT_LANG
+      ? `${siteUrl}/comparison/${originalSlug}/`
+      : `${siteUrl}/${lang}/comparison/${originalSlug}/`
+  }
+>
+  <!-- 面包屑导航 -->
+  <BreadcrumbNav
+    lang={currentLang}
+    items={[
+      { label: 'Home', slug: '' },
+      { label: 'Material Comparison', slug: 'comparison', collection: 'comparison' },
+      { label: entryData.title, slug: '', isCurrent: true },
+    ]}
+    siteUrl={siteUrl}
+  />
+
+  <!-- Hero -->
+  <SubpageHero
+    h1={entryData.title}
+    badge="Material Comparison"
+    subtitle={entryData.description}
+    title={entryData.title}
+  />
+
+  <!-- Markdown 正文区 -->
+  <article class="max-w-4xl mx-auto px-4 py-8 prose prose-gray prose-lg">
+    <slot />
+  </article>
+
+  <!-- 对比表格（规则 2：横向桥梁连接 Compare → Specs） -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-6">Technical Specifications Comparison</h2>
+    {
+      validSpecsList.length >= 2 ? (
+        <ComparisonTable
+          lang={currentLang}
+          specsList={validSpecsList}
+        />
+      ) : (
+        <div class="text-center py-12 text-gray-400 bg-gray-50 rounded-xl">
+          <p class="text-lg font-medium mb-2">Comparison data not available</p>
+          <p class="text-sm">The specification data for one or more materials in this comparison could not be loaded.</p>
+        </div>
+      )
+    }
+  </section>
+
+  <!-- CTA（规则 3：全站转化收拢 → /contact/） -->
+  <div class="max-w-4xl mx-auto px-4">
+    <SpecsInquiryCta
+      lang={currentLang}
+      specName={comparedSpecsSlugs?.join(' vs ')}
+    />
+  </div>
+</BaseLayout>
+---

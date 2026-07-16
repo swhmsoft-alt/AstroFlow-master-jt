@@ -1,0 +1,175 @@
+---
+/**
+ * src/pages/[...lang]/applications/[...slug].astro
+ *
+ * Hub 行业应用页 — 内链蜘蛛网的"星状中心"。
+ *
+ * 功能：
+ *   - 自动加载 applications 集合中对应的 Markdown 条目
+ *   - 展示该行业下的所有 Specs 服务列表（通过 parentApplication 自动查找）
+ *   - 渲染 Hero、描述内容
+ *
+ * 多语言支持：
+ *   - 默认语言 (en) 直接匹配 slug
+ *   - 非默认语言匹配 `{lang}-{slug}` 文件名的翻译条目
+ *
+ * getStaticPaths 生成策略：
+ *   遍历所有 applications 条目 + 所有语言，生成完整路由表。
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import BreadcrumbNav from '../../../components/seo/BreadcrumbNav.astro';
+import SpecsInquiryCta from '../../../components/seo/SpecsInquiryCta.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { localizePath } from '../../../utils/seo-linking';
+import { DEFAULT_LANG, type Lang } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const applications = await getCollection('applications');
+  const services = await getCollection('services');
+  const allLangs = ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'];
+
+  const paths: { params: { lang: string; slug: string }; props: Record<string, any> }[] = [];
+
+  for (const app of applications) {
+    // 跳过翻译条目（它们通过 lang/originalSlug 在主条目中处理）
+    const isOriginal = !app.data.lang;
+
+    if (isOriginal) {
+      // 默认语言（无前缀）
+      paths.push({
+        params: { lang: '', slug: app.id.replace(/\.md$/, '') },
+        props: {
+          originalSlug: app.id.replace(/\.md$/, ''),
+          lang: DEFAULT_LANG,
+          entryId: app.id,
+          entryLang: DEFAULT_LANG,
+        },
+      });
+
+      // 非默认语言（有语言前缀）
+      for (const langCode of allLangs) {
+        if (langCode === DEFAULT_LANG) continue;
+        const translationId = `${langCode}-${app.id}`;
+        paths.push({
+          params: { lang: langCode, slug: app.id.replace(/\.md$/, '') },
+          props: {
+            originalSlug: app.id.replace(/\.md$/, ''),
+            lang: langCode,
+            entryId: translationId,
+            entryLang: langCode,
+          },
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const { originalSlug, lang, entryId, entryLang } = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+// 尝试加载对应语言的 entry
+const allApplications = await getCollection('applications');
+const entry = allApplications.find((e) => e.id === entryId) || allApplications.find((e) => e.id === `${originalSlug}.md`);
+const entryData = entry?.data;
+
+if (!entryData) {
+  return Astro.redirect('/404', 404);
+}
+
+// 获取当前行业下的所有 Specs 服务
+const allServices = await getCollection('services');
+const relatedServices = allServices.filter((s) => {
+  const sData = s.data;
+  // 检查 parentApplication 是否匹配（翻译条目检查 originalSlug 对应的主条目）
+  const matchesApplication = sData.parentApplication === originalSlug;
+  if (!matchesApplication) return false;
+  // 多语言过滤
+  if (lang === DEFAULT_LANG || lang === 'en') {
+    return !sData.lang || sData.lang === 'en';
+  }
+  return sData.lang === lang || !sData.lang;
+});
+
+const siteUrl = 'https://cnc.bozemetal.com';
+const pageTitle = entryData.seoTitle || entryData.title;
+const pageDescription = entryData.seoDescription || entryData.description;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={lang === DEFAULT_LANG ? `${siteUrl}/applications/${originalSlug}/` : `${siteUrl}/${lang}/applications/${originalSlug}/`}
+>
+  <!-- 面包屑导航 -->
+  <BreadcrumbNav
+    lang={currentLang}
+    items={[
+      { label: 'Home', slug: '' },
+      { label: 'Applications', slug: 'applications', collection: 'applications' },
+      { label: entryData.title, slug: '', isCurrent: true },
+    ]}
+    siteUrl={siteUrl}
+  />
+
+  <!-- Hero -->
+  <SubpageHero
+    h1={entryData.title}
+    badge={entryData.badge}
+    subtitle={entryData.description}
+    title={entryData.title}
+  />
+
+  <!-- 关联 Specs 服务列表 -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-8">Related Material Specifications</h2>
+    {
+      relatedServices.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            relatedServices.map((svc) => {
+              const svcSlug = svc.id.replace(/\.md$/, '').replace(/^[a-z]{2}-/, '');
+              const svcHref = localizePath(`/services/${svcSlug}/`, currentLang);
+              return (
+                <a
+                  href={svcHref}
+                  class="block p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-blue-300 transition-all group"
+                >
+                  <div class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-2">
+                    {svc.data.specCode}
+                  </div>
+                  <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                    {svc.data.title}
+                  </h3>
+                  <p class="text-sm text-gray-500 line-clamp-3">
+                    {svc.data.description}
+                  </p>
+                  <div class="mt-4 text-sm text-blue-600 font-medium group-hover:underline">
+                    View Specifications →
+                  </div>
+                </a>
+              );
+            })
+          }
+        </div>
+      ) : (
+        <p class="text-gray-400 text-center py-12">
+          No material specifications available for this application yet.
+        </p>
+      )
+    }
+  </section>
+
+  <!-- CTA -->
+  <SpecsInquiryCta
+    lang={currentLang}
+    specName={entryData.title}
+  />
+</BaseLayout>
+---

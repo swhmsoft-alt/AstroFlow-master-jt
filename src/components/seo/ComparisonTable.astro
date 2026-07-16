@@ -1,0 +1,119 @@
+---
+/**
+ * src/components/seo/ComparisonTable.astro
+ *
+ * 对比表格组件 — 内链蜘蛛网规则 2（横向桥梁连接 Compare → Specs）的实现核心。
+ *
+ * 功能：
+ *   1. 自动接收参与对比的 services 条目数据
+ *   2. 抽取所有参数的并集（Union）作为表格行
+ *   3. 表头自动转化为指向对应 Specs 页面的 SEO 锚文本链接
+ *     锚文本规则：[Specs 页面 Title] + " CNC Machining Specifications"
+ *   4. 缺失参数自动渲染为 "—"
+ *
+ * 多语言安全：表头链接自动 localize 到当前语种的 Specs 页。
+ *
+ * 使用方式：
+ *   <ComparisonTable
+ *     lang={currentLang}
+ *     specsList={[
+ *       { slug: "titanium-gr5", title: "Titanium Grade 5 (Ti-6Al-4V)", specs: [...] },
+ *       { slug: "titanium-gr23", title: "Titanium Grade 23 (Ti-6Al-4V ELI)", specs: [...] },
+ *     ]}
+ *   />
+ */
+
+import {
+  localizePath,
+  extractSpecsUnion,
+  findSpecValue,
+  buildComparisonAnchorText,
+} from '../../utils/seo-linking';
+
+interface SpecEntry {
+  slug: string;
+  title: string;
+  specs: { param: string; value: string }[];
+}
+
+interface Props {
+  /** 当前页面语言代码 */
+  lang: string;
+  /** 参与对比的 Specs 条目列表 */
+  specsList: SpecEntry[];
+}
+
+const { lang, specsList } = Astro.props;
+
+// 抽取所有参数的并集
+const allParams = extractSpecsUnion(specsList.map((s) => s.specs));
+
+// 为每个 Spec 生成锚文本
+const specLinks = specsList.map((spec) => ({
+  slug: spec.slug,
+  title: spec.title,
+  href: localizePath(`/services/${spec.slug}/`, lang),
+  anchorText: buildComparisonAnchorText(spec.title),
+}));
+---
+
+<div class="overflow-x-auto my-8 rounded-xl border border-gray-200 shadow-sm">
+  <table class="min-w-full divide-y divide-gray-200 text-sm">
+    <!-- 表头：自动生成 SEO 锚文本链接 -->
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider w-1/4">
+          Parameter
+        </th>
+        {
+          specLinks.map((spec) => (
+            <th scope="col" class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider">
+              <a
+                href={spec.href}
+                class="text-blue-600 hover:text-blue-800 hover:underline transition-colors"
+                title={`View ${spec.title} detailed specifications`}
+              >
+                {spec.anchorText}
+              </a>
+            </th>
+          ))
+        }
+      </tr>
+    </thead>
+
+    <!-- 表体：参数对比行 -->
+    <tbody class="bg-white divide-y divide-gray-200">
+      {
+        allParams.map((param, rowIndex) => (
+          <tr class={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+              {param}
+            </td>
+            {
+              specsList.map((spec) => {
+                const value = findSpecValue(param, spec.specs);
+                return (
+                  <td class="px-6 py-4 text-gray-700 whitespace-nowrap">
+                    {value}
+                  </td>
+                );
+              })
+            }
+          </tr>
+        ))
+      }
+
+      {/* 无参数时的回退状态 */}
+      {allParams.length === 0 && (
+        <tr>
+          <td
+            colspan={specsList.length + 1}
+            class="px-6 py-12 text-center text-gray-400"
+          >
+            No specification data available for comparison.
+          </td>
+        </tr>
+      )}
+    </tbody>
+  </table>
+</div>

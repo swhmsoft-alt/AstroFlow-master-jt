@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import type { GradeData } from '../../data/titanium-grades';
+import { getIndustrySlug } from '../../data/grade-link-maps';
 
 export interface Props {
   grade: GradeData;
@@ -35,11 +36,27 @@ const pfx = `materials.${gradeKey}.usedIn`;
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {grade.usedIn.items.map((item, i) => (
-        <div class="p-5 rounded-lg transition-all duration-200 hover:shadow-lg" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t(`${pfx}.items.${i}`)}</span>
-        </div>
-      ))}
+      {grade.usedIn.items.map((item, i) => {
+        const slug = getIndustrySlug(item);
+        const label = t(`${pfx}.items.${i}`);
+        // 取 " — " 之前的部分作为显示名，后面部分作为描述
+        const dashIndex = label.indexOf(' — ');
+        const industryName = dashIndex > 0 ? label.substring(0, dashIndex) : label;
+        const description = dashIndex > 0 ? label.substring(dashIndex) : '';
+        const href = slug ? `/industries/${slug}/` : null;
+
+        return (
+          <div class="p-5 rounded-lg transition-all duration-200 hover:shadow-lg" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            {href ? (
+              <a href={href} class="text-sm leading-relaxed hover:text-blue-600 transition-colors block" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                <span class="font-semibold" style="color: var(--theme-text);">{industryName}</span>{description}
+              </a>
+            ) : (
+              <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{label}</span>
+            )}
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>

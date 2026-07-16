@@ -1,0 +1,119 @@
+---
+/**
+ * src/components/seo/BreadcrumbNav.astro
+ *
+ * 自动面包屑导航组件 + JSON-LD BreadcrumbList Schema。
+ *
+ * 内链蜘蛛网规则 1（纵向单向收拢 Specs → Hub）的实现核心：
+ *   在 Specs 页头部自动渲染面包屑：
+ *     Home > [对应 Hub 页面名称] > 当前 Specs
+ *   将 Specs 的 PageRank 无损地向 Hub 汇聚。
+ *
+ * 使用方式：
+ *   <BreadcrumbNav
+ *     lang={currentLang}
+ *     items={[
+ *       { label: "Home", slug: "" },
+ *       { label: hubTitle, slug: hubSlug, collection: "applications" },
+ *       { label: specTitle, slug: "", isCurrent: true },
+ *     ]}
+ *     siteUrl="https://cnc.bozemetal.com"
+ *   />
+ *
+ * 多语言安全：所有链接通过 localizePath 自动适配当前语种。
+ */
+
+import {
+  buildBreadcrumbItems,
+  buildBreadcrumbLdJson,
+  type BreadcrumbItem,
+} from '../../utils/seo-linking';
+
+interface Props {
+  /** 当前页面语言代码 */
+  lang: string;
+  /** 面包屑层级列表（从首页到当前页） */
+  items: BreadcrumbItem[];
+  /** 站点根 URL */
+  siteUrl?: string;
+  /** 是否自动隐藏当前页链接（仅展示文本） */
+  hideCurrentLink?: boolean;
+}
+
+const {
+  lang,
+  items,
+  siteUrl = 'https://cnc.bozemetal.com',
+  hideCurrentLink = true,
+} = Astro.props;
+
+const enrichedItems = buildBreadcrumbItems(lang, items);
+const ldJson = buildBreadcrumbLdJson(enrichedItems, siteUrl);
+---
+
+<!-- JSON-LD Breadcrumb Schema -->
+<script type="application/ld+json" set:html={ldJson} />
+
+<!-- 视觉面包屑导航 -->
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol class="flex flex-wrap items-center gap-1 text-sm text-gray-500" itemscope itemtype="https://schema.org/BreadcrumbList">
+    {
+      enrichedItems.map((item, index) => {
+        const isLast = index === enrichedItems.length - 1;
+        return (
+          <li
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+            class="flex items-center gap-1"
+          >
+            {/* 分隔符（非首项） */}
+            {index > 0 && (
+              <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            )}
+
+            {/* 链接或纯文本 */}
+            {isLast ? (
+              <span
+                itemprop="name"
+                class="font-medium text-gray-900 truncate max-w-[200px]"
+                aria-current="page"
+              >
+                {item.label}
+              </span>
+            ) : item.href && item.href !== '#' ? (
+              <a
+                href={item.href}
+                itemprop="item"
+                class="hover:text-blue-600 transition-colors truncate max-w-[180px]"
+              >
+                <span itemprop="name">{item.label}</span>
+              </a>
+            ) : (
+              <span itemprop="name" class="truncate max-w-[180px]">
+                {item.label}
+              </span>
+            )}
+
+            {/* Schema position */}
+            <meta itemprop="position" content={String(index + 1)} />
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+<style>
+  /* 面包屑导航响应式适配 */
+  nav[aria-label="Breadcrumb"] {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav[aria-label="Breadcrumb"]::-webkit-scrollbar {
+    display: none;
+  }
+</style>

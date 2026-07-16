@@ -1,0 +1,196 @@
+---
+/**
+ * src/pages/[...lang]/services/[...slug].astro
+ *
+ * Specs 规格/材质详情页 — 内链蜘蛛网的"Spoke 节点"。
+ *
+ * 内链规则 1（纵向单向收拢 Specs → Hub）：
+ *   - 自动加载对应的 applications Hub 条目
+ *   - 渲染面包屑：Home > [对应 Hub 页面名称] > 当前 Specs
+ *   - 生成 JSON-LD Breadcrumb Schema
+ *
+ * 内链规则 3（全站转化收拢）：
+ *   - 页面底部自动拼接询盘 CTA 模块，链接到 /contact/
+ *
+ * 内链规则 4（多语言物理隔离）：
+ *   - 所有生成的链接自动适配当前语种
+ *
+ * getStaticPaths 生成策略：
+ *   遍历所有 services 条目 + 所有语言，加载关联的 Hub 信息。
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import BreadcrumbNav from '../../../components/seo/BreadcrumbNav.astro';
+import SpecsInquiryCta from '../../../components/seo/SpecsInquiryCta.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { DEFAULT_LANG } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  const applications = await getCollection('applications');
+  const allLangs = ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'];
+
+  const paths: { params: { lang: string; slug: string }; props: Record<string, any> }[] = [];
+
+  for (const svc of services) {
+    const isOriginal = !svc.data.lang;
+    const baseSlug = svc.id.replace(/\.md$/, '');
+
+    if (isOriginal) {
+      const parentAppSlug = svc.data.parentApplication;
+      const parentApp = applications.find((a) =>
+        a.id.startsWith(parentAppSlug) && !a.data.lang
+      );
+
+      // 默认语言（无前缀）
+      paths.push({
+        params: { lang: '', slug: baseSlug },
+        props: {
+          originalSlug: baseSlug,
+          lang: DEFAULT_LANG,
+          entryId: svc.id,
+          parentAppSlug,
+          parentAppTitle: parentApp?.data?.title || parentAppSlug,
+        },
+      });
+
+      // 非默认语言
+      for (const langCode of allLangs) {
+        if (langCode === DEFAULT_LANG) continue;
+        const translationId = `${langCode}-${svc.id}`;
+        const parentTransId = parentAppSlug ? `${langCode}-${parentAppSlug}.md` : null;
+        const parentAppTrans = parentTransId
+          ? applications.find((a) => a.id === parentTransId)
+          : undefined;
+
+        paths.push({
+          params: { lang: langCode, slug: baseSlug },
+          props: {
+            originalSlug: baseSlug,
+            lang: langCode,
+            entryId: translationId,
+            parentAppSlug,
+            parentAppTitle: parentAppTrans?.data?.title || parentApp?.data?.title || parentAppSlug,
+          },
+        });
+      }
+    }
+  }
+
+  return paths;
+}
+
+const {
+  originalSlug,
+  lang,
+  entryId,
+  parentAppSlug,
+  parentAppTitle,
+} = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const siteUrl = 'https://cnc.bozemetal.com';
+
+const allServices = await getCollection('services');
+const entry = allServices.find((e) => e.id === entryId) || allServices.find((e) => e.id === `${originalSlug}.md`);
+
+if (!entry?.data) {
+  return Astro.redirect('/404', 404);
+}
+
+const entryData = entry.data;
+const pageTitle = entryData.seoTitle || `${entryData.title} CNC Machining Specifications`;
+const pageDescription = entryData.seoDescription || entryData.description;
+const specsTable = entryData.specs && entryData.specs.length > 0;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={
+    lang === DEFAULT_LANG
+      ? `${siteUrl}/services/${originalSlug}/`
+      : `${siteUrl}/${lang}/services/${originalSlug}/`
+  }
+  pageType="service-detail"
+  serviceName={entryData.title}
+  serviceCategory={entryData.parentApplication}
+>
+  <!-- 面包屑导航（规则 1：纵向单向收拢 Specs → Hub） -->
+  <BreadcrumbNav
+    lang={currentLang}
+    items={[
+      { label: 'Home', slug: '' },
+      {
+        label: parentAppTitle,
+        slug: parentAppSlug,
+        collection: 'applications',
+      },
+      { label: entryData.title, slug: '', isCurrent: true },
+    ]}
+    siteUrl={siteUrl}
+  />
+
+  <!-- Hero -->
+  <SubpageHero
+    h1={entryData.title}
+    badge={entryData.specCode}
+    subtitle={entryData.description}
+    title={entryData.title}
+  />
+
+  <!-- 规格参数表 -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    {specsTable ? (
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider w-1/3">
+                Parameter
+              </th>
+              <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Value
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {
+              entryData.specs.map((spec, index) => (
+                <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                  <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {spec.param}
+                  </td>
+                  <td class="px-6 py-4 text-gray-700">
+                    {spec.value}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="text-center py-12 text-gray-400">
+        Detailed specifications for this material are being compiled.
+      </div>
+    )}
+  </section>
+
+  <!-- Markdown 正文内容 -->
+  <article class="max-w-4xl mx-auto px-4 py-8 prose prose-gray prose-lg">
+    <slot />
+  </article>
+
+  <!-- CTA（规则 3：全站转化收拢 → /contact/） -->
+  <div class="max-w-4xl mx-auto px-4">
+    <SpecsInquiryCta
+      lang={currentLang}
+      specName={entryData.title}
+    />
+  </div>
+</BaseLayout>
+---

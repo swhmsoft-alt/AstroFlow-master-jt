@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import type { GradeData } from '../../data/titanium-grades';
+import { getAlternativeGradeSlug } from '../../data/grade-link-maps';
 
 export interface Props {
   grade: GradeData;
@@ -35,14 +36,30 @@ const pfx = `materials.${gradeKey}.alternativeTo`;
     </div>
 
     <div class="space-y-3">
-      {grade.alternativeTo.items.map((item, i) => (
-        <div class="flex items-start p-4 rounded-lg transition-all duration-200" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-          <svg class="w-5 h-5 mt-0.5 mr-3 shrink-0" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-          </svg>
-          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t(`${pfx}.items.${i}`)}</span>
-        </div>
-      ))}
+      {grade.alternativeTo.items.map((item, i) => {
+        const label = t(`${pfx}.items.${i}`);
+        const slug = getAlternativeGradeSlug(label);
+        // 取 " — " 分隔：左侧为锚文本，右侧为描述
+        const dashIndex = label.indexOf(' — ');
+        const anchorText = dashIndex > 0 ? label.substring(0, dashIndex) : label;
+        const description = dashIndex > 0 ? label.substring(dashIndex) : '';
+        const href = slug ? `/materials/${slug}/` : null;
+
+        return (
+          <div class="flex items-start p-4 rounded-lg transition-all duration-200" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <svg class="w-5 h-5 mt-0.5 mr-3 shrink-0" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+            {href ? (
+              <a href={href} class="text-sm leading-relaxed hover:text-blue-600 transition-colors" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                <span class="font-semibold" style="color: var(--theme-primary);">{anchorText}</span>{description}
+              </a>
+            ) : (
+              <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{label}</span>
+            )}
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>

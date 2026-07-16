@@ -22,7 +22,7 @@ import { GRADE_DATA } from '../../data/titanium-grades';
 
 const lang = getLangFromUrl(Astro.url);
 const grade = GRADE_DATA['${key}'];
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com').href;
 ---
 
 <BaseLayout title={grade.pageTitle} description={grade.metaDescription} canonicalURL={canonicalURL}>

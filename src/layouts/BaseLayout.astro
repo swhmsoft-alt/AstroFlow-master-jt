@@ -3,62 +3,49 @@ import '../styles/global.css';
 import '../styles/rtl.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import { SITE } from '@config/site';
+import { SITE, NAVIGATION } from '@config/site';
 import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
-import {
-  detectPageType,
-  buildBreadcrumbItems,
-  buildPageGraph,
-  type PageType,
-} from '../lib/schema';
+import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType } from '../lib/schema';
+
+// Build path to label map from NAVIGATION for better breadcrumb names
+const NAV_LABEL_MAP: Record<string, string> = (() => {
+  const m: Record<string, string> = {};
+  function walk(items: any[]) {
+    for (const item of items) {
+      if (item.href) m[item.href.replace(/\/+$/, '')] = item.name;
+      if (item.children) {
+        for (const g of item.children) {
+          for (const c of g.items) {
+            if (c.href) m[c.href.replace(/\/+$/, '')] = c.name;
+          }
+        }
+      }
+    }
+  }
+  walk(NAVIGATION);
+  return m;
+})();
 
 interface Props {
   title?: string;
   description?: string;
   hideThemeSwitcher?: boolean;
-  /** SEO: Canonical URL override — defaults to current URL */
   canonicalURL?: string;
-  /** SEO: Open Graph / Twitter share image — defaults to brand OG image */
   ogImage?: string;
-  /** Article: publish date ISO string — enables article:published_time meta */
   pubDate?: string | null;
-  /** Article: author name — enables article:author meta */
   author?: string;
-  /** Article: tags array — enables article:tag meta */
   tags?: string[];
-
-  // ── Structured Data props ──
-  /** Explicit page type (required for dynamic routes) */
   pageType?: PageType;
-  /** Service name (service-detail pages) */
   serviceName?: string;
-  /** Service category */
   serviceCategory?: string;
-  /** Product name (product-detail pages) */
   productName?: string;
-  /** Product image URL */
   productImage?: string;
-  /** Product category */
   productCategory?: string;
-  /** Collection / listing name */
   collectionName?: string;
-  /** Collection item count */
   itemCount?: number;
-
-  // ── Hierarchical Service Schema props ──
-  /**
-   * Key into servicesHierarchyData to inject a nested Service entity with hasPart.
-   * Supported keys: "master-service", "cnc-machining", "additive", "fabrication", "forming", "surface"
-   *   "master-service" → /services (all 6 pillars as hasPart)
-   *   "cnc-machining"  → /titanium-cnc-machining-services
-   *   "additive"       → /titanium-additive-manufacturing
-   *   "fabrication"    → /titanium-fabrication-services
-   *   "forming"        → /titanium-forming-heavy-manufacturing
-   *   "surface"        → /titanium-surface-treatment
-   */
   serviceHubKey?: string;
 }
 
@@ -67,8 +54,8 @@ const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const alternateLinks = getAlternateLinks(currentPathname);
 
-const { 
-  title: explicitTitle, 
+const {
+  title: explicitTitle,
   description: explicitDesc,
   hideThemeSwitcher = false,
   canonicalURL,
@@ -87,47 +74,20 @@ const {
   serviceHubKey,
 } = Astro.props;
 
-// ── SEO Config auto-resolution ──────────────────────────
-// Remove language prefix to get canonical path for SEO lookup
-// Normalize: strip trailing slash (except for root path '/')
 const rawPath = removeLangPrefix(currentPathname);
 const canonicalPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
 const seoEntry = SEO_CONFIG[canonicalPath];
-
-// Language-specific SEO from config
 const seoTitleFromConfig = seoEntry?.title?.[currentLang];
 const seoDescFromConfig = seoEntry?.description?.[currentLang];
-
-// Priority: SEO_CONFIG (per-language) > explicit prop > SITE defaults
-// SEO_CONFIG has reliable per-language titles; explicit prop from t() may fall back to
-// the default language (English) when the translation key is missing in the target language.
 const title = seoTitleFromConfig || explicitTitle || SITE.title;
 const description = seoDescFromConfig || explicitDesc || SITE.description;
-
-// ── Computed SEO values ────────────────────────────────
 const siteUrl = SITE.url;
 const currentUrl = `${siteUrl}${currentPathname}`;
 const canonicalUrl = canonicalURL || currentUrl;
 const defaultOgImage = `${siteUrl}/uploads/boze-1-en.png`;
 const seoImage = ogImage || defaultOgImage;
-
-// Language → OG locale mapping (ISO 639-1 → BCP 47)
-const ogLocales: Record<string, string> = {
-  en: 'en_US',
-  de: 'de_DE',
-  zh: 'zh_CN',
-  ja: 'ja_JP',
-  fr: 'fr_FR',
-  es: 'es_ES',
-  pt: 'pt_PT',
-  it: 'it_IT',
-  ko: 'ko_KR',
-  nl: 'nl_NL',
-  pl: 'pl_PL',
-};
+const ogLocales: Record<string, string> = { en: 'en_US', de: 'de_DE', zh: 'zh_CN', ja: 'ja_JP', fr: 'fr_FR', es: 'es_ES', pt: 'pt_PT', it: 'it_IT', ko: 'ko_KR', nl: 'nl_NL', pl: 'pl_PL' };
 const ogLocale = ogLocales[currentLang] || 'en_US';
-
-// Static defaults (previously loaded from CMS collections)
 const favicon = '/favicon.svg';
 const siteName = SITE.title;
 const cmsDefaultTheme = 'aerospace-precision';
@@ -136,127 +96,94 @@ const fallbackFont = 'monospace';
 const fontConfig = getFontConfig(fontStyle);
 const fontUrl = getGoogleFontsUrl(fontConfig);
 const fontFamily = getCssFamily(fontConfig, fallbackFont);
-
-// ── Structured Data ─────────────────────────────────────
-// Detect page type (explicit prop wins → SEO_CONFIG → pathname fallback)
 const pageType = detectPageType(canonicalPath, explicitPageType);
-
-// Build breadcrumb items using SEO_CONFIG titles + localized "Home" label
 const homeLabel = t('blog.breadcrumb.home');
-const breadcrumbItems = buildBreadcrumbItems(canonicalPath, SEO_CONFIG, siteUrl, currentLang, homeLabel);
-
-// Build the full @graph for this page
-// Auto-derive serviceName from title for service-detail pages when not explicitly provided
+const breadcrumbRaw = buildBreadcrumbItems(canonicalPath, SEO_CONFIG, siteUrl, currentLang, homeLabel);
+const breadcrumbItems = breadcrumbRaw.map((item: { name: string; item: string }) => {
+  const p = item.item.replace(siteUrl, '').replace(/\/+$/, '');
+  const lbl = p ? NAV_LABEL_MAP[p] : undefined;
+  return lbl ? { ...item, name: lbl } : item;
+});
 const resolvedServiceName = serviceName ?? (pageType === 'service-detail' ? title : undefined);
-
 const schemaData = {
-  pageName: title,
-  pageDescription: description,
-  pageUrl: canonicalUrl,
-  inLanguage: ogLocale.replace('_', '-'),
-  breadcrumbItems,
-  // Pass through type-specific data
-  articleHeadline: explicitPageType === 'blog-post' ? title : undefined,
-  articleDescription: description,
-  articleAuthor: author,
-  articleDatePublished: pubDate ?? undefined,
-  serviceName: resolvedServiceName,
-  serviceDescription: resolvedServiceName ? description : undefined,
-  serviceCategory,
-  productName,
-  productDescription: productName ? description : undefined,
-  productImage,
-  productCategory,
-  productDatePublished: pubDate ?? null,
-  collectionName: collectionName ?? title,
-  itemCount,
+  pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
+  breadcrumbItems: breadcrumbRaw,
+  articleHeadline: explicitPageType === 'blog-post' ? title : undefined, articleDescription: description, articleAuthor: author,
+  articleDatePublished: pubDate ?? undefined, serviceName: resolvedServiceName, serviceDescription: resolvedServiceName ? description : undefined,
+  serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
+  productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount,
 };
-
 const pageGraph = buildPageGraph(pageType, schemaData, serviceHubKey, currentLang);
 const ldJson = JSON.stringify(pageGraph);
 ---
 
 <!doctype html>
 <html lang={currentLang} dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {favicon.endsWith('.svg') ? (
-      <link rel="icon" type="image/svg+xml" href={favicon} />
-    ) : favicon.endsWith('.png') ? (
-      <link rel="icon" type="image/png" href={favicon} />
-    ) : (
-      <link rel="icon" href={favicon} />
-    )}
-    <meta name="generator" content={Astro.generator} />
-    
-    <!-- Google Fonts — statically configured -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href={fontUrl} rel="stylesheet" />
-    
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:site_name" content={siteName} />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+{favicon.endsWith('.svg') ? <link rel="icon" type="image/svg+xml" href={favicon} /> : favicon.endsWith('.png') ? <link rel="icon" type="image/png" href={favicon} /> : <link rel="icon" href={favicon} />}
+<meta name="generator" content={Astro.generator} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href={fontUrl} rel="stylesheet" />
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={siteName} />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={seoImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={ogLocale} />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:image" content={seoImage} />
+{pubDate && <meta property="article:published_time" content={pubDate} />}
+{author && <meta property="article:author" content={author} />}
+{tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
+<script type="application/ld+json" set:html={ldJson} />
+{alternateLinks.map((link) => (<link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />))}
+<link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
+<script is:inline>(function(){var theme='aerospace-precision';document.documentElement.setAttribute('data-theme',theme);})();</script>
+</head>
+<body class="flex min-h-screen flex-col antialiased bg-theme-bg text-theme-text transition-colors duration-300" style={`font-family:${fontFamily};--font-primary:${fontFamily};--font-body:${fontFamily};--font-heading:${fontFamily};`}>
+<Header currentPathname={currentPathname} />
+<main class="flex-1">
+<slot />
 
-    <!-- ══ Canonical URL (prevents duplicate content) ════════ -->
-    <link rel="canonical" href={canonicalUrl} />
+<!-- Related links -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<div class="border-t pt-10" style="border-color:color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+<h3 class="text-lg font-semibold mb-6" style="color:var(--theme-text);">Explore More</h3>
+<div class="flex flex-wrap gap-3">
+<a href="/materials/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Material Specifications &rarr;</a>
+<a href="/industries/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Industry Applications &rarr;</a>
+<a href="/services/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">All Services &rarr;</a>
+<a href="/capabilities/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Capabilities &rarr;</a>
+</div>
+</div>
+</section>
 
-    <!-- ══ Open Graph — URL, Image, Locale ════════════════════ -->
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={seoImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content={ogLocale} />
+<!-- CTA -->
+<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<div class="rounded-2xl p-8 md:p-12 text-center" style="background:linear-gradient(135deg,var(--theme-primary) 0%,color-mix(in srgb,var(--theme-primary) 80%,black) 100%);">
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
+<p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">Get an immediate engineering review and competitive pricing. Our AS9100D-certified team responds within 48 hours.</p>
+<a href="/contact/" class="inline-flex items-center gap-2 bg-white font-semibold px-8 py-4 rounded-lg hover:opacity-90 transition-all shadow-lg text-lg" style="color:var(--theme-primary);">
+<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+Request a Quote
+</a>
+</div>
+</section>
 
-    <!-- ══ Twitter Card — URL & Image ═════════════════════════ -->
-    <meta name="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:image" content={seoImage} />
-
-    <!-- ══ Article Meta (blog posts only) ═════════════════════ -->
-    {pubDate && <meta property="article:published_time" content={pubDate} />}
-    {author && <meta property="article:author" content={author} />}
-    {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
-
-    <!-- ══ JSON-LD — Structured Data @graph (single block) ════ -->
-    <script type="application/ld+json" set:html={ldJson} />
-
-    <!-- ══ hreflang Alternate Links (i18n SEO) ═══════════════ -->
-    {alternateLinks.map((link) => (
-      <link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />
-    ))}
-    <link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
-
-    <!-- ═══════════════════════════════════════════════════════
-         THEME SYSTEM — FOUC Prevention (static default theme)
-         ═══════════════════════════════════════════════════════ -->
-    <script is:inline>
-      (function(){
-        var theme = 'aerospace-precision';
-        document.documentElement.setAttribute('data-theme', theme);
-      })();
-    </script>
-  </head>
-  <body
-    class="flex min-h-screen flex-col antialiased bg-theme-bg text-theme-text transition-colors duration-300"
-    style={`font-family: ${fontFamily}; --font-primary: ${fontFamily}; --font-body: ${fontFamily}; --font-heading: ${fontFamily};`}
-  >
-    <Header currentPathname={currentPathname} />
-    <main class="flex-1">
-      <slot />
-    </main>
-    <Footer />
-  </body>
+</main>
+<Footer />
+</body>
 </html>
