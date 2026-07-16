@@ -8,10 +8,10 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { value: '500', label: 'Global Clients', suffix: '+' },
-  { value: '50', label: 'Million Units Shipped', suffix: 'M+' },
-  { value: '99.9', label: 'On-Time Delivery', suffix: '%' },
-  { value: '15', label: 'Facilities Worldwide', suffix: '+' },
+  { value: '120', label: 'Advanced CNC Machining Centers', suffix: '+' },
+  { value: 'AS9100D', label: 'Aerospace-Grade Certified', suffix: '' },
+  { value: '< 48', label: 'Technical DFM & RFQ Response', suffix: 'h' },
+  { value: '5,000+', label: 'Monthly Titanium Output', suffix: ' pcs' },
 ];
 
 export default function AnimatedStats() {
