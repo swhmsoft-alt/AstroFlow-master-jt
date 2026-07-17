@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 
 /* ── Knowledge Base ── */
 
@@ -105,7 +105,7 @@ const PART_DB: PartProfile[] = [
     formReason: 'Seamless tube is standard for heat exchanger bundles. Mature sizes (OD 6-50mm), short lead time, controlled cost.',
     process: ['Tube sheet drilling', 'Tube end expansion / seal welding', 'Shell and channel welding'],
     tollServices: ['Deep hole drilling (tube sheet)', 'Automatic TIG welding (tube end)', 'Hydrostatic test', 'Pickling & passivation'],
-    pitfalls: ['Ti tube-to-sheet weld requires 99.999% argon; back-purge to prevent oxidation', 'Tube sheet hole tolerance H8 or better for expansion joint sealing' integrity'],
+    pitfalls: ['Ti tube-to-sheet weld requires 99.999% argon; back-purge to prevent oxidation', 'Tube sheet hole tolerance H8 or better for expansion joint sealing integrity'],
     specNote: 'ASTM B338 Gr2 seamless tube, Annealed, 100% hydrostatic test + eddy current (ET)',
     servicePage: '/titanium-fabrication-services/titanium-welding-assembly/',
     image: '🔥',
@@ -173,7 +173,7 @@ const PART_DB: PartProfile[] = [
     formReason: 'Wire is the only raw material form for springs. Direct coiling, high efficiency.',
     process: ['Automatic spring coiling', 'Precision end grinding', 'Solution + aging heat treatment', 'Surface shot peening'],
     tollServices: ['Vacuum heat treatment', 'Shot peening', 'Fatigue testing', 'Stiffness sorting'],
-    pitfalls: ['Spring design stress should be 40-50% of shear yield strength; do not use steel spring design rules', 'Post-coiling stress relief annealing mandatory; otherwise severe elastic relaxation'簧后必须进行去应力退火，否则Elastic relaxation严重'],
+    pitfalls: ['Spring design stress should be 40-50% of shear yield strength; do not use steel spring design rules', 'Post-coiling stress relief annealing mandatory; otherwise severe elastic relaxation'],
     specNote: 'AMS 4934 / ASTM B863 Gr9, solution+aged (STA)',
     servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
     image: '〰️',
