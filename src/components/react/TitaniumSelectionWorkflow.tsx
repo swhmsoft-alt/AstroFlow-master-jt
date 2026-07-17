@@ -619,18 +619,20 @@ export default function TitaniumSelectionWorkflow() {
     const a = ALLOYS.find(x => x.id === selectedAlloy);
     const f = FORMS.find(x => x.id === selectedForm);
     const g = GEOMETRIES.find(x => x.id === geometry);
-    const specLines = [
-      `Material: ${a?.name || 'TBD'}`,
-      `Standard: ${standard || 'TBD'}`,
-      `Form: ${f?.label || 'TBD'}`,
-      selectedForm === 'bar' ? `Size: ∅${dims.od + allowance * 2}mm (+${allowance}/-0) × ${dims.length + allowance * 2}mm` :
-      selectedForm === 'tube' ? `Size: ∅${dims.od + allowance * 2}mm × ${dims.wall || 0}mm wall × ${dims.length + allowance * 2}mm` :
-      `Size: ${(dims.width || 0) + allowance * 2}mm × ${(dims.thickness || 0) + allowance * 2}mm × ${(dims.length || 0) + allowance * 2}mm`,
-      `Condition: Annealed (A)`,
-      `Testing: UT Class A / MPI per ASTM E2375`,
-      `Certification: EN 10204 Type 3.1 / MTR`,
-      `Quantity: As per PO`,
-    ];
+
+    const sizeLine = (() => {
+      if (selectedForm === 'bar') return `Size: ∅${dims.od + allowance * 2}mm (+${allowance}/-0) × ${dims.length + allowance * 2}mm`;
+      if (selectedForm === 'tube') return `Size: ∅${dims.od + allowance * 2}mm × ${dims.wall || 0}mm wall × ${dims.length + allowance * 2}mm`;
+      const w = (dims.width || 0) + allowance * 2;
+      const t = (dims.thickness || 0) + allowance * 2;
+      const l = (dims.length || 0) + allowance * 2;
+      return `Size: ${w}mm × ${t}mm × ${l}mm`;
+    })();
+
+    const materialStr = a?.name || 'TBD';
+    const standardStr = standard || 'TBD';
+    const formStr = f?.label || 'TBD';
+    const geometryStr = g?.label || 'TBD';
 
     return (
       <div className="space-y-6">
@@ -638,35 +640,37 @@ export default function TitaniumSelectionWorkflow() {
         <p className="text-sm" style={{ color: 'color-mix(in srgb, var(--theme-text) 55%, transparent)' }}>Final material procurement specification generated from your selections.</p>
 
         <div className="p-6 rounded-xl" style={{ backgroundColor: 'var(--theme-surface)', border: '2px solid var(--theme-primary)' }}>
-          <h4 className="text-sm font-bold mb-4" style={{ color: 'var(--theme-primary)' }}>📋 MATERIAL PROCUREMENT SPECIFICATION</h4>
+          <h4 className="text-sm font-bold mb-4" style={{ color: 'var(--theme-primary)' }}>MATERIAL PROCUREMENT SPECIFICATION</h4>
           <div className="space-y-2">
-            {specLines.map((line, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <span style={{ color: 'var(--theme-primary)' }}>•</span>
-                <span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>{line}</span>
-              </div>
-            ))}
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Material: {materialStr}</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Standard: {standardStr}</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Form: {formStr}</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>{sizeLine}</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Condition: Annealed (A)</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Testing: UT Class A / MPI per ASTM E2375</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Certification: EN 10204 Type 3.1 / MTR</span></div>
+            <div className="flex items-start gap-2"><span style={{ color: 'var(--theme-primary)' }}>•</span><span className="text-sm font-mono" style={{ color: 'var(--theme-text)' }}>Quantity: As per PO</span></div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
           <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' }}>
             <div className="text-xs" style={{ color: 'color-mix(in srgb, var(--theme-text) 50%, transparent)' }}>Design Phase</div>
-            <div className="text-sm font-bold" style={{ color: 'var(--theme-text)' }}>{g?.label || 'TBD'}</div>
+            <div className="text-sm font-bold" style={{ color: 'var(--theme-text)' }}>{geometryStr}</div>
           </div>
           <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' }}>
             <div className="text-xs" style={{ color: 'color-mix(in srgb, var(--theme-text) 50%, transparent)' }}>Material Grade</div>
-            <div className="text-sm font-bold" style={{ color: 'var(--theme-text)' }}>{a?.name || 'TBD'}</div>
+            <div className="text-sm font-bold" style={{ color: 'var(--theme-text)' }}>{materialStr}</div>
           </div>
           <div className="p-4 rounded-xl" style={{ backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)' }}>
             <div className="text-xs" style={{ color: 'color-mix(in srgb, var(--theme-text) 50%, transparent)' }}>Procurement Form</div>
-            <div className="text-sm font-bold" style={{ color: 'var(--theme-text)' }}>{f?.label || 'TBD'}</div>
+            <div className="text-sm font-bold" style={{ color: 'var(--theme-text)' }}>{formStr}</div>
           </div>
         </div>
 
         <div className="flex gap-3 pt-4">
           <button onClick={() => setStep('utilization')} className="px-4 py-3 rounded-xl font-medium transition-all"
-            style={{ color: 'var(--theme-text)', border: '1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent)' }}>← Back</button>
+            style={{ color: 'var(--theme-text)', border: '1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent)' }}>Back</button>
           <button onClick={() => {
             setStep('env');
             setSelectedAlloy(null);
@@ -675,7 +679,7 @@ export default function TitaniumSelectionWorkflow() {
             setStandard('');
           }}
             className="px-6 py-3 rounded-xl font-semibold transition-all"
-            style={{ color: 'var(--theme-primary)', border: '1px solid var(--theme-primary)' }}>🔄 Start New Selection</button>
+            style={{ color: 'var(--theme-primary)', border: '1px solid var(--theme-primary)' }}>Start New Selection</button>
         </div>
       </div>
     );
