@@ -1,12 +1,19 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import SubpageHero from '../../components/ui/SubpageHero.astro';
-import TitaniumGradeFinder from '../../components/react/TitaniumGradeFinder';
-import ToleranceChecker from '../../components/react/ToleranceChecker';
-import WeightCalculator from '../../components/react/WeightCalculator';
-import SurfaceRoughnessComparator from '../../components/react/SurfaceRoughnessComparator';
-import GDTSymbolReference from '../../components/react/GDTSymbolReference';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import TitaniumGradeFinder from '../../../components/react/TitaniumGradeFinder';
+import ToleranceChecker from '../../../components/react/ToleranceChecker';
+import WeightCalculator from '../../../components/react/WeightCalculator';
+import SurfaceRoughnessComparator from '../../../components/react/SurfaceRoughnessComparator';
+import GDTSymbolReference from '../../../components/react/GDTSymbolReference';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const langCodes = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
+  return langCodes.map(lang => ({ params: { lang } }));
+}
+
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
@@ -15,19 +22,18 @@ const t = useTranslations(currentLang);
   title="Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti"
   description="Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference."
 >
-  <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          <a href={`/${currentLang}/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
             <span itemprop="name">{t('nav.home')}</span>
           </a>
           <meta itemprop="position" content="1" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/resources" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          <a href={`/${currentLang}/resources/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
             <span itemprop="name">{t('nav.resources')}</span>
           </a>
           <meta itemprop="position" content="2" />
@@ -41,7 +47,6 @@ const t = useTranslations(currentLang);
     </div>
   </nav>
 
-  <!-- Hero -->
   <SubpageHero
     h1="Engineering Tools & Calculators"
     badge="Interactive Tools"
@@ -50,7 +55,6 @@ const t = useTranslations(currentLang);
     compact={false}
   />
 
-  <!-- Quick Jump Navigation -->
   <section class="py-8" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-wrap gap-3 justify-center">
@@ -73,7 +77,6 @@ const t = useTranslations(currentLang);
     </div>
   </section>
 
-  <!-- Tool 1: Grade Finder -->
   <section id="grade-finder" class="py-16 scroll-mt-24" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
@@ -85,12 +88,8 @@ const t = useTranslations(currentLang);
     </div>
   </section>
 
-  <!-- Separator -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" />
-  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
 
-  <!-- Tool 2: Tolerance Checker -->
   <section id="tolerance-checker" class="py-16 scroll-mt-24" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
@@ -102,12 +101,8 @@ const t = useTranslations(currentLang);
     </div>
   </section>
 
-  <!-- Separator -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" />
-  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
 
-  <!-- Tool 3: Weight Calculator -->
   <section id="weight-calculator" class="py-16 scroll-mt-24" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
@@ -119,12 +114,8 @@ const t = useTranslations(currentLang);
     </div>
   </section>
 
-  <!-- Separator -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" />
-  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
 
-  <!-- Tool 4: Roughness Comparator -->
   <section id="roughness-comparator" class="py-16 scroll-mt-24" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
@@ -136,12 +127,8 @@ const t = useTranslations(currentLang);
     </div>
   </section>
 
-  <!-- Separator -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" />
-  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
 
-  <!-- Tool 5: GD&T Reference -->
   <section id="gdt-reference" class="py-16 scroll-mt-24" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">

@@ -1645,6 +1645,39 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       zh: ""
     },
   },
+  '/resources/engineering-tools': {
+    title: {
+      en: 'Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti',
+      de: 'Technische Werkzeuge & Rechner | Titanlegierungs-Finder, CNC-Toleranzprüfung | BOZE CNC Ti',
+      zh: '工程工具与计算器 | 钛合金牌号查询、CNC公差检测 | BOZE CNC Ti',
+      ja: 'エンジニアリングツール | チタン合金グレード検索、CNC公差チェッカー | BOZE CNC Ti',
+      fr: 'Outils techniques et calculateurs | Recherche de qualité de titane, vérification des tolérances CNC | BOZE CNC Ti',
+      es: 'Herramientas y calculadoras de ingeniería | Buscador de grados de titanio, verificador de tolerancias CNC | BOZE CNC Ti',
+      pt: 'Ferramentas e calculadoras de engenharia | Localizador de grau de titânio, verificador de tolerância CNC | BOZE CNC Ti',
+      it: 'Strumenti e calcolatori di ingegneria | Ricerca leghe di titanio, controllo tolleranze CNC | BOZE CNC Ti',
+      ko: '엔지니어링 도구 및 계산기 | 티타늄 등급 검색, CNC 공차 확인 | BOZE CNC Ti',
+      nl: 'Technische hulpmiddelen en rekenmachines | Titaniumkwaliteitzoeker, CNC-tolerantiecontrole | BOZE CNC Ti',
+      pl: 'Narzędzia i kalkulatory inżynieryjne | Wyszukiwarka gatunków tytanu, sprawdzanie tolerancji CNC | BOZE CNC Ti',
+      ru: 'Инженерные инструменты и калькуляторы | Поиск марки титана, проверка допусков ЧПУ | BOZE CNC Ti',
+      ar: 'أدوات الهندسة والحاسبات | البحث عن درجة التيتانيوم، فحص التفاوتات باستخدام الحاسب الآلي | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference.',
+      de: 'Interaktive technische Werkzeuge für die Titanfertigung: Legierungs-Finder, CNC-Toleranzprüfung, Gewichts- und Kostenschätzer, Oberflächenrauheitsvergleich und GD&T-Symbolreferenz.',
+      zh: '钛合金制造的交互式工程工具：牌号查询、CNC公差可行性检查、重量与成本估算、表面粗糙度对照以及GD&T符号参考。',
+      ja: 'チタン製造のためのインタラクティブエンジニアリングツール：合金グレード検索、CNC公差適合性チェッカー、重量・コスト見積もり、表面粗さ比較、GD&T記号リファレンス。',
+      fr: "Outils d'ingénierie interactifs pour la fabrication du titane : recherche de qualité, vérification de faisabilité des tolérances CNC, estimation du poids et des coûts, comparateur de rugosité de surface et référence des symboles GD&T.",
+      es: 'Herramientas de ingeniería interactivas para la fabricación de titanio: búsqueda de grados, verificación de tolerancias CNC, estimación de peso y coste, comparador de rugosidad superficial y referencia de símbolos GD&T.',
+      pt: 'Ferramentas de engenharia interativas para fabricação de titânio: localizador de grau, verificador de tolerância CNC, estimador de peso e custo, comparador de rugosidade superficial e referência de símbolos GD&T.',
+      it: 'Strumenti di ingegneria interattivi per la produzione di titanio: ricerca leghe, controllo tolleranze CNC, stima peso e costi, comparatore rugosità superficiale e riferimento simboli GD&T.',
+      ko: '티타늄 제조를 위한 대화형 엔지니어링 도구: 등급 검색, CNC 공차 적합성 확인, 중량 및 비용 추정, 표면 거칠기 비교, GD&T 기호 참조.',
+      nl: 'Interactieve technische hulpmiddelen voor titaniumproductie: kwaliteitszoeker, CNC-tolerantiecontrole, gewichts- en kostenschatter, oppervlakteruwheidsvergelijker en GD&T-symboolreferentie.',
+      pl: 'Interaktywne narzędzia inżynieryjne do produkcji tytanu: wyszukiwarka gatunków, sprawdzanie tolerancji CNC, kalkulator wagi i kosztów, porównywarka chropowatości powierzchni i odniesienie symboli GD&T.',
+      ru: 'Интерактивные инженерные инструменты для производства титана: поиск марки, проверка допусков ЧПУ, оценка веса и стоимости, сравнение шероховатости поверхности и справочник символов GD&T.',
+      ar: 'أدوات هندسية تفاعلية لتصنيع التيتانيوم: البحث عن الدرجة، فحص تفاوتات الحاسب الآلي، تقدير الوزن والتكلفة، مقارنة خشونة السطح ومرجع رموز GD&T.',
+      zh: ""
+    },
+  },
   '/about': {
     title: {
       en: 'About BOZE CNC-Ti | Our Story',
