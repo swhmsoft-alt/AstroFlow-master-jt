@@ -11,8 +11,8 @@ secondaryCta: Explore Solutions
 secondaryCtaLink: /services
 heroMediaType: video
 heroVideoUrl: /uploads/boze-cnc-ti.mp4
-heroImage: /uploads/small-cnc-bay-overhead.jpg
-heroImageAlt: Modern Titanium CNC Machining warehouse with advanced automation
+heroImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg
+heroImageAlt: Titanium CNC machining manufacturing facility with advanced equipment
 stats:
   - value: 500+
     label: Global Clients
