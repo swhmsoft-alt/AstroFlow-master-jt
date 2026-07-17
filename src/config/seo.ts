@@ -1629,6 +1629,14 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       en: 'End-to-end titanium material selection and form selection decision tool. From working environment analysis, alloy matching, geometry assessment, to procurement specification generation. 9-step integrated workflow.',
     },
   },
+  '/tools/reverse-manufacturing-engine': {
+    title: {
+      en: 'Titanium Reverse Manufacturing Engineering | AI Part-to-Spec Tool | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Knowledge-based reverse manufacturing engineering for titanium parts. Enter your finished component name, get expert-curated material grade, raw material form, processing services, and procurement specification matching.',
+    },
+  },
   '/about': {
     title: {
       en: 'About BOZE CNC-Ti | Our Story',
