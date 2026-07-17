@@ -8,6 +8,7 @@ import AlloyComparisonTable from '../components/materials/AlloyComparisonTable.a
 import MachiningKnowHow from '../components/materials/MachiningKnowHow.astro';
 import MaterialTraceability from '../components/materials/MaterialTraceability.astro';
 import TitaniumGradeFinder from '../components/react/TitaniumGradeFinder';
+import WeightCalculator from '../components/react/WeightCalculator';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -56,6 +57,21 @@ const t = useTranslations(currentLang);
         </p>
       </div>
       <TitaniumGradeFinder client:load />
+    </div>
+  </section>
+
+  <!-- Titanium Weight Calculator Tool -->
+  <section class="py-16" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          Titanium Weight & Cost Estimator
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Estimate part weight and raw material cost for common shapes — round bar, plate, tube, and rectangular bar across all titanium grades.
+        </p>
+      </div>
+      <WeightCalculator client:load />
     </div>
   </section>
 

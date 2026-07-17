@@ -7,6 +7,9 @@ import EngineeringSupport from '../components/capabilities/EngineeringSupport.as
 import QualityAndCertifications from '../components/capabilities/QualityAndCertifications.astro';
 import InspectionLabGrid from '../components/capabilities/InspectionLabGrid.astro';
 import TraceabilityFoundation from '../components/capabilities/TraceabilityFoundation.astro';
+import ToleranceChecker from '../components/react/ToleranceChecker';
+import SurfaceRoughnessComparator from '../components/react/SurfaceRoughnessComparator';
+import GDTSymbolReference from '../components/react/GDTSymbolReference';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -42,6 +45,51 @@ const t = useTranslations(currentLang);
     entityChips={HERO_CONFIG['/capabilities'].entityChips}
     compact={HERO_CONFIG['/capabilities'].compact}
   />
+
+  <!-- Tolerance Feasibility Checker Tool -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          CNC Tolerance Feasibility Checker
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Select a feature type and enter your tolerance requirement — instantly see if it falls within our standard, precision, or ultra-precision capability bands.
+        </p>
+      </div>
+      <ToleranceChecker client:load />
+    </div>
+  </section>
+
+  <!-- Surface Roughness Comparator Tool -->
+  <section class="py-16" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          Surface Roughness Comparator
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Compare surface finishes from mirror polish to as-rough — with Ra/Rz values, everyday object comparisons, and achievable processes.
+        </p>
+      </div>
+      <SurfaceRoughnessComparator client:load />
+    </div>
+  </section>
+
+  <!-- GD&T Symbol Reference Tool -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          GD&T Symbol Reference
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Interactive reference for ASME Y14.5 GD&T symbols — form, orientation, location, profile, and runout controls with tolerance zone explanations and application guidance.
+        </p>
+      </div>
+      <GDTSymbolReference client:load />
+    </div>
+  </section>
 
   <!-- 1. Capacity Dashboard -->
   <CapacityDashboard />
