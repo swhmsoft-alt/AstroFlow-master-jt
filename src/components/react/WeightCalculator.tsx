@@ -217,8 +217,8 @@ export default function WeightCalculator() {
                 <span className="text-xs" style={{ color: 'color-mix(in srgb, var(--theme-text) 50%, transparent)' }}>Volume</span>
                 <span className="text-sm font-bold font-mono" style={{ color: 'var(--theme-text)' }}>
                   {volumeMM > 1000
-                    ? `${(volumeCM / 1000).toFixed(3)} cm³`
-                    : `${volumeCM.toFixed(2)} mm³`
+                    ? `${volumeCM.toFixed(2)} cm³`
+                    : `${volumeMM.toFixed(2)} mm³`
                   }
                 </span>
               </div>
