@@ -7,6 +7,7 @@ import TitaniumStandardsSection from '../components/materials/TitaniumStandardsS
 import AlloyComparisonTable from '../components/materials/AlloyComparisonTable.astro';
 import MachiningKnowHow from '../components/materials/MachiningKnowHow.astro';
 import MaterialTraceability from '../components/materials/MaterialTraceability.astro';
+import TitaniumGradeFinder from '../components/react/TitaniumGradeFinder';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -42,6 +43,21 @@ const t = useTranslations(currentLang);
     entityChips={HERO_CONFIG['/materials'].entityChips}
     compact={HERO_CONFIG['/materials'].compact}
   />
+
+  <!-- Titanium Grade Finder Tool -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          Find the Right Titanium Grade
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Filter by strength, corrosion resistance, weldability, and more — instantly narrow down the best titanium alloy for your application.
+        </p>
+      </div>
+      <TitaniumGradeFinder client:load />
+    </div>
+  </section>
 
   <!-- Material Grade Matrix -->
   <MaterialGradeMatrix />
