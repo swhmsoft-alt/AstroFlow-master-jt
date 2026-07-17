@@ -67,25 +67,22 @@ const subTextSize = compact || (subtitle && subtitle.length > 200) ? 'text-lg md
 const subMaxWidth = isLongSubtitle ? 'max-w-5xl' : 'max-w-3xl';
 ---
 
-<section class="relative flex items-center overflow-hidden py-20 md:py-28 min-h-[360px]">
+<section class="relative flex items-center overflow-hidden py-20 md:py-28 min-h-[360px]" style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);">
   {backgroundImage ? (
-    <!-- Image Background -->
-    <div class="absolute inset-0">
-      <div class="absolute inset-0" style="background-image: url({backgroundImage}); background-size: cover; background-position: center;"></div>
-      <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-bg) 97%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 85%, transparent) 40%, color-mix(in srgb, var(--theme-bg) 50%, transparent) 100%);"></div>
-    </div>
-  ) : (
-    <!-- Gradient Background -->
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);">
-      <!-- Ambient background glow -->
-      <div class="absolute inset-0 opacity-20">
-        <div
-          class="absolute inset-0"
-          style="background: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 50%), radial-gradient(circle at 80% 50%, color-mix(in srgb, var(--theme-accent) 30%, transparent) 0%, transparent 50%);"
-        ></div>
-      </div>
-    </div>
-  )}
+    <!-- Image Background (overlaid on gradient) -->
+    <div class="absolute inset-0" style={`background-image: url(${backgroundImage}); background-size: cover; background-position: center;`}></div>
+  ) : null}
+  <!-- Gradient overlay on image -->
+  {backgroundImage ? (
+    <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-bg) 97%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 85%, transparent) 40%, color-mix(in srgb, var(--theme-bg) 50%, transparent) 100%);"></div>
+  ) : null}
+  <!-- Ambient background glow -->
+  <div class="absolute inset-0 opacity-20">
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at 20% 50%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 50%), radial-gradient(circle at 80% 50%, color-mix(in srgb, var(--theme-accent) 30%, transparent) 0%, transparent 50%);"
+    ></div>
+  </div>
 
   <div class="container mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center">
