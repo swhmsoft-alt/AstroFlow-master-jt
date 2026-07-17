@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TitaniumSelectionWorkflow from '../../components/react/TitaniumSelectionWorkflow';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+<BaseLayout title="Titanium Material Selection & Form Selection Tool | Grade to Procurement Spec | BOZE CNC Ti" description="End-to-end titanium material selection and form selection decision tool. From working environment analysis, alloy matching, geometry assessment, to procurement specification generation — 9-step integrated workflow.">
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/tools/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Engineering Tools</span></a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Material Selection Workflow</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+  <SubpageHero h1="Titanium Material Selection & Form Selection Workflow" badge="Integrated Decision Tool" subtitle="A 9-step guided workflow from product requirements to procurement specification. Covers working environment analysis, titanium alloy matching, raw material form selection, machining allowance, machinability assessment, cost estimation, and final PO generation." badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" compact={false} />
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-8 p-5 rounded-2xl flex flex-wrap gap-4 items-center justify-center" style="background-color: color-mix(in srgb, var(--theme-surface) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">Step 1-3: Material Selection</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">→</span>
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">Step 4-6: Form Selection</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">→</span>
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">Step 7-9: Evaluation</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">→</span>
+        <span class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full" style="background-color: var(--theme-primary); color: #fff;">PO Specification</span>
+      </div>
+      <TitaniumSelectionWorkflow client:load />
+      <div class="mt-12 p-6 rounded-2xl" style="background-color: color-mix(in srgb, var(--theme-surface) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">About This Integrated Workflow</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          <div><strong style="color: var(--theme-text);">Material Selection (Steps 1-3):</strong> Analyze the working environment — temperature, corrosive media, and loading conditions. The system recommends the optimal titanium alloy from 8 grades across CP, alpha-beta, and corrosion-resistant families.</div>
+          <div><strong style="color: var(--theme-text);">Form Selection (Steps 4-6):</strong> Based on your part geometry — shaft, housing, tube, complex 3D, or flat profile — the tool suggests the most cost-effective raw material form with proper machining allowance.</div>
+          <div><strong style="color: var(--theme-text);">Evaluation (Steps 7-9):</strong> Machinability assessment, material cost estimation, and supply chain lead time check. Final output is a complete procurement specification ready for PO issuance.</div>
+          <div><strong style="color: var(--theme-text);">Decision Logic:</strong> The recommendation engine uses a weighted scoring system based on alloy property databases. Results should be verified with our engineering team for critical applications.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

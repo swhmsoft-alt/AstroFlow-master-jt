@@ -1621,6 +1621,14 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       en: 'Interactive GD&T symbol reference for ASME Y14.5. Browse 13 symbols across Form, Orientation, Location, Profile, and Runout categories with tolerance zone descriptions.',
     },
   },
+  '/tools/titanium-selection-workflow': {
+    title: {
+      en: 'Titanium Material Selection & Form Selection Tool | Grade to Procurement Spec | BOZE CNC Ti',
+    },
+    description: {
+      en: 'End-to-end titanium material selection and form selection decision tool. From working environment analysis, alloy matching, geometry assessment, to procurement specification generation. 9-step integrated workflow.',
+    },
+  },
   '/about': {
     title: {
       en: 'About BOZE CNC-Ti | Our Story',
