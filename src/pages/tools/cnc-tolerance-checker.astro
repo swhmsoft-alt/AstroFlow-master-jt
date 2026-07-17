@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ToleranceChecker from '../../components/react/ToleranceChecker';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+<BaseLayout title="CNC Tolerance Feasibility Checker | Â±0.005mm Precision Calculator | BOZE CNC Ti" description="Interactive CNC tolerance checker for titanium machining. Select feature type â€?hole, position, flatness, concentricity â€?and instantly see if your tolerance falls within standard, precision, or ultra-precision bands.">
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/tools/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Engineering Tools</span></a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">CNC Tolerance Checker</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+  <SubpageHero h1="CNC Tolerance Feasibility Checker" badge="Manufacturing Capability Tool" subtitle="Instantly verify whether your design tolerances are achievable. Select from 9 feature types â€?hole diameter, true position, flatness, concentricity, surface finish, angularity, parallelism, thread pitch, and perpendicularity." badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" compact={false} />
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ToleranceChecker client:load />
+      <div class="mt-12 p-6 rounded-2xl" style="background-color: color-mix(in srgb, var(--theme-surface) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">About Our CNC Tolerance Capabilities</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          <div><strong style="color: var(--theme-text);">Standard (Â±0.1 mm):</strong> Readily achievable on all CNC equipment. Suitable for general industrial components, non-critical features, and prototype parts.</div>
+          <div><strong style="color: var(--theme-text);">Precision (Â±0.05 â€?0.01 mm):</strong> Achieved with careful toolpath planning and stable fixturing. Suitable for most aerospace and medical components.</div>
+          <div><strong style="color: var(--theme-text);">Ultra-Precision (Â±0.005 mm):</strong> Our highest capability tier. Requires temperature-controlled environment, specialized tooling, and 100% CMM inspection. Cpk â‰?1.67 on all critical features.</div>
+          <div><strong style="color: var(--theme-text);">Verification:</strong> All critical dimensions are verified with Zeiss CMM equipment. Full dimensional reports available with every shipment.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

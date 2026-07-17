@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TitaniumGradeFinder from '../../components/react/TitaniumGradeFinder';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+---
+<BaseLayout title="Titanium Grade Finder Tool | Compare Ti-6Al-4V, Grade 2, Grade 23 & More | BOZE CNC Ti" description="Interactive titanium grade finder â€?filter by strength, corrosion resistance, weldability, biocompatibility, and cost. Compare 12 titanium alloys including Grade 5, Grade 23 ELI, and Grade 2 CP-Ti.">
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/tools/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Engineering Tools</span></a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Titanium Grade Finder</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+  <SubpageHero h1="Titanium Grade Finder" badge="Material Selection Tool" subtitle="Quickly compare and select the optimal titanium alloy for your application. Filter by mechanical properties, corrosion resistance, weldability, biocompatibility, and relative cost." badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" compact={false} />
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <TitaniumGradeFinder client:load />
+      <div class="mt-12 p-6 rounded-2xl" style="background-color: color-mix(in srgb, var(--theme-surface) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">How to Select the Right Titanium Grade</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          <div><strong style="color: var(--theme-text);">Strength Requirements:</strong> Grade 5 (Ti-6Al-4V) and Grade 23 ELI offer the highest strength-to-weight ratio. Grade 2 CP-Ti is sufficient for low-stress applications.</div>
+          <div><strong style="color: var(--theme-text);">Corrosion Environment:</strong> Grade 7 (Ti-0.15Pd) provides the best corrosion resistance in reducing acid environments. Grade 12 offers a cost-effective alternative.</div>
+          <div><strong style="color: var(--theme-text);">Medical Applications:</strong> Grade 23 ELI (ASTM F136) is the standard for surgical implants. Grade 4 CP-Ti is used for dental and some orthopedic devices.</div>
+          <div><strong style="color: var(--theme-text);">Weldability:</strong> Grade 9 (Ti-3Al-2.5V) and CP grades offer excellent weldability. Beta alloys like Grade 19 require special procedures.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
