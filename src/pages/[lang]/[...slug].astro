@@ -494,6 +494,26 @@ if (heroEntry) {
 {
   isHome && !isInvalidLang && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <PremiumHero hero={heroData} />
       <ServicesOverview />
       <TechnicalCapabilities />
@@ -596,6 +616,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'materials' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.materials')}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -615,6 +655,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities')}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -634,6 +694,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/manufacturing' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.manufacturing')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <ManufacturingPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -685,6 +773,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/engineering' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.engineering')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <EngineeringPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -736,6 +852,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/capacity' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.capacity')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <CapacityPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -787,6 +931,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/quality' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.quality')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <QualityPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -839,6 +1011,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/inspection' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.inspection')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <InspectionPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -886,6 +1086,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/traceability' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.traceability')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <TraceabilityPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -933,6 +1161,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'capabilities/certifications' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/capabilities/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.capabilities')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.capabilities.certifications')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero h1={pageH1} badge={pageBadge} subtitle={pageSubtitle} />
       <CertificationsPage />
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -972,6 +1228,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'industries' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries')}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -999,6 +1275,34 @@ if (heroEntry) {
       productCategory="Aerospace Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.aerospace')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1029,6 +1333,34 @@ if (heroEntry) {
       productCategory="Medical Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.medical')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1059,6 +1391,34 @@ if (heroEntry) {
       productCategory="UAV Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.uavDrones')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1089,6 +1449,34 @@ if (heroEntry) {
       productCategory="AI Infrastructure Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.aiInfrastructure')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1119,6 +1507,34 @@ if (heroEntry) {
       productCategory="Marine Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.marine')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1149,6 +1565,34 @@ if (heroEntry) {
       productCategory="Semiconductor Equipment Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.semiconductor')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1179,6 +1623,34 @@ if (heroEntry) {
       productCategory="Energy Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.energy')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1209,6 +1681,34 @@ if (heroEntry) {
       productCategory="Industrial Components"
       serviceHubKey="cnc-machining"
     >
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/industries/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.industries')}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.industries.industrialEquipment')}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={heroEntry?.h1}
         badge={heroEntry?.badge}
@@ -1256,6 +1756,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'resources' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/resources/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{pageH1}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1275,6 +1803,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'rfq' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1293,6 +1841,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'documentation' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1311,6 +1879,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'facilities' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1327,6 +1915,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'use-cases' && !isHome && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1346,6 +1954,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-cnc-machining-services' && (
     <BaseLayout serviceHubKey="cnc-machining">
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1364,6 +1992,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-cnc-machining-services/3-5-axis-cnc-machining' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-cnc-machining-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-cnc-machining-services.h1') || 'titanium-cnc-machining-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1381,6 +2037,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-cnc-machining-services/cnc-milling-turning' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-cnc-machining-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-cnc-machining-services.h1') || 'titanium-cnc-machining-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1399,6 +2083,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-cnc-machining-services/wire-edm-machining' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-cnc-machining-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-cnc-machining-services.h1') || 'titanium-cnc-machining-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1417,6 +2129,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-cnc-machining-services/custom-industrial-components' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-cnc-machining-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-cnc-machining-services.h1') || 'titanium-cnc-machining-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1436,6 +2176,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-additive-manufacturing' && (
     <BaseLayout serviceHubKey="additive">
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1454,6 +2214,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-additive-manufacturing/3d-printing-slm' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-additive-manufacturing/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-additive-manufacturing.h1') || 'titanium-additive-manufacturing'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1472,6 +2260,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-additive-manufacturing/rapid-prototyping' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-additive-manufacturing/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-additive-manufacturing.h1') || 'titanium-additive-manufacturing'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1489,6 +2305,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-additive-manufacturing/low-volume-production' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-additive-manufacturing/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-additive-manufacturing.h1') || 'titanium-additive-manufacturing'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1509,6 +2353,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-fabrication-services' && (
     <BaseLayout serviceHubKey="fabrication">
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1527,6 +2391,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-fabrication-services/laser-cutting' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-fabrication-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-fabrication-services.h1') || 'titanium-fabrication-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1544,6 +2436,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-fabrication-services/waterjet-cutting' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-fabrication-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-fabrication-services.h1') || 'titanium-fabrication-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1561,6 +2481,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-fabrication-services/titanium-welding-assembly' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-fabrication-services/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-fabrication-services.h1') || 'titanium-fabrication-services'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1580,6 +2528,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-forming-heavy-manufacturing' && (
     <BaseLayout serviceHubKey="forming">
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1598,6 +2566,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-forming-heavy-manufacturing/titanium-forging' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-forming-heavy-manufacturing/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-forming-heavy-manufacturing.h1') || 'titanium-forming-heavy-manufacturing'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1615,6 +2611,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-forming-heavy-manufacturing/titanium-extrusion' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-forming-heavy-manufacturing/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-forming-heavy-manufacturing.h1') || 'titanium-forming-heavy-manufacturing'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1632,6 +2656,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-forming-heavy-manufacturing/raw-material-preparation-sizing' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-forming-heavy-manufacturing/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-forming-heavy-manufacturing.h1') || 'titanium-forming-heavy-manufacturing'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1651,6 +2703,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-surface-treatment' && (
     <BaseLayout serviceHubKey="surface">
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1669,6 +2741,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-surface-treatment/anodizing' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-surface-treatment/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-surface-treatment.h1') || 'titanium-surface-treatment'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1686,6 +2786,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-surface-treatment/chemical-passivation' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-surface-treatment/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-surface-treatment.h1') || 'titanium-surface-treatment'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1703,6 +2831,34 @@ if (heroEntry) {
 {
   effectiveSlug === 'titanium-surface-treatment/polishing-sandblasting' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <a href={localizePath('/titanium-surface-treatment/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{tH1('hero.titanium-surface-treatment.h1') || 'titanium-surface-treatment'}</span>
+              </a>
+              <meta itemprop="position" content="2" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="3" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1722,6 +2878,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'branded-custom-packaging-services' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1740,6 +2916,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'laser-marking-custom-logo' && (
     <BaseLayout>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         h1={pageH1}
         badge={pageBadge}
@@ -1760,6 +2956,26 @@ if (heroEntry) {
 {
   effectiveSlug === 'equipment' && (
     <BaseLayout title={t('equipment.list.pageTitle')} description={t('equipment.list.metaDescription')}>
+      <!-- Breadcrumb -->
+      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                <span itemprop="name">{t('nav.home')}</span>
+              </a>
+              <meta itemprop="position" content="1" />
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+
+              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.equipment')}</span>
+              <meta itemprop="position" content="2" />
+            </li>
+          </ol>
+        </div>
+      </nav>
       <SubpageHero
         title={t('equipment.list.hero.title')}
         highlight={t('equipment.list.hero.highlight')}
