@@ -179,6 +179,7 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Industry Applications', href: '/resources/industry-applications' },
           { name: 'Case Studies', href: '/resources/case-studies' },
           { name: 'FAQs', href: '/resources/faq' },
+          { name: 'Engineering Tools', href: '/resources/engineering-tools' },
           { name: 'Downloads', href: '/resources/downloads' },
           { name: 'Blog', href: '/blog' },
           { name: 'Products', href: '/products' },
