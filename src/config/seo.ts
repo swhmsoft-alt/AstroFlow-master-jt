@@ -1678,6 +1678,66 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       zh: ""
     },
   },
+  '/tools': {
+    title: {
+      en: 'Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti',
+      zh: '工程工具与计算器 | 钛合金牌号查询、CNC公差检测 | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference.',
+      zh: '钛合金制造的交互式工程工具：牌号查询、CNC公差可行性检查、重量与成本估算、表面粗糙度对照以及GD&T符号参考。',
+    },
+  },
+  '/tools/titanium-grade-finder': {
+    title: {
+      en: 'Titanium Grade Finder Tool | Compare Ti-6Al-4V, Grade 2, Grade 23 & More | BOZE CNC Ti',
+      zh: '钛合金牌号查询工具 | Ti-6Al-4V、Grade 2、Grade 23对比 | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Interactive titanium grade finder — filter by strength, corrosion resistance, weldability, biocompatibility, and cost. Compare 12 titanium alloys including Grade 5, Grade 23 ELI, and Grade 2 CP-Ti.',
+      zh: '交互式钛合金牌号查询工具 — 按强度、耐腐蚀性、可焊性、生物相容性和成本筛选。对比12种钛合金。',
+    },
+  },
+  '/tools/cnc-tolerance-checker': {
+    title: {
+      en: 'CNC Tolerance Feasibility Checker | ±0.005mm Precision Calculator | BOZE CNC Ti',
+      zh: 'CNC公差可行性检测 | ±0.005mm精度计算器 | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Interactive CNC tolerance checker for titanium machining. Select feature type — hole, position, flatness, concentricity — and instantly see if your tolerance falls within standard, precision, or ultra-precision bands.',
+      zh: 'CNC公差可行性检测工具 — 选择特征类型，输入公差值，即时判断是否在标准/精密/超精密能力范围内。',
+    },
+  },
+  '/tools/titanium-weight-calculator': {
+    title: {
+      en: 'Titanium Weight Calculator | Ti-6Al-4V Weight & Cost Estimator | BOZE CNC Ti',
+      zh: '钛合金重量计算器 | Ti-6Al-4V重量与成本估算 | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Calculate titanium part weight and raw material cost for round bar, plate, tube, and rectangular bar. Supports all grades including Grade 5, Grade 2, Grade 23, and Beta alloys.',
+      zh: '计算钛合金零件重量和原材料成本 — 圆棒、板材、管材、方棒。支持所有牌号。',
+    },
+  },
+  '/tools/surface-roughness-comparator': {
+    title: {
+      en: 'Surface Roughness Comparator | Ra Rz CNC Surface Finish Guide | BOZE CNC Ti',
+      zh: '表面粗糙度对照表 | Ra Rz CNC表面光洁度指南 | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Compare surface roughness from Ra 0.025 µm mirror finish to Ra 6.3 µm as-rough. Filter by machining process CNC milling, turning, grinding, EDM, and see application examples.',
+      zh: '对比Ra 0.025µm镜面加工到Ra 6.3µm粗加工的表面粗糙度。按工艺筛选。',
+    },
+  },
+  '/tools/gdt-symbol-reference': {
+    title: {
+      en: 'GD&T Symbol Reference | ASME Y14.5 Tolerance Guide | BOZE CNC Ti',
+      zh: 'GD&T符号参考 | ASME Y14.5公差指南 | BOZE CNC Ti',
+    },
+    description: {
+      en: 'Interactive GD&T symbol reference for ASME Y14.5. Browse 13 symbols across Form, Orientation, Location, Profile, and Runout categories with tolerance zone descriptions.',
+      zh: 'ASME Y14.5标准GD&T符号交互参考 — 形状、方向、位置、轮廓、跳动5大类13个符号。',
+    },
+  },
   '/about': {
     title: {
       en: 'About BOZE CNC-Ti | Our Story',

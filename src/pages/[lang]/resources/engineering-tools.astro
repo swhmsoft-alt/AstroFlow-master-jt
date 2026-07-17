@@ -1,12 +1,4 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SubpageHero from '../../../components/ui/SubpageHero.astro';
-import TitaniumGradeFinder from '../../../components/react/TitaniumGradeFinder';
-import ToleranceChecker from '../../../components/react/ToleranceChecker';
-import WeightCalculator from '../../../components/react/WeightCalculator';
-import SurfaceRoughnessComparator from '../../../components/react/SurfaceRoughnessComparator';
-import GDTSymbolReference from '../../../components/react/GDTSymbolReference';
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
@@ -14,129 +6,16 @@ export async function getStaticPaths() {
   return langCodes.map(lang => ({ params: { lang } }));
 }
 
-const currentLang = getLangFromUrl(Astro.url);
-const t = useTranslations(currentLang);
+const { lang } = Astro.params;
 ---
-
-<BaseLayout
-  title="Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti"
-  description="Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference."
->
-  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href={`/${currentLang}/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">{t('nav.home')}</span>
-          </a>
-          <meta itemprop="position" content="1" />
-          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href={`/${currentLang}/resources/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">{t('nav.resources')}</span>
-          </a>
-          <meta itemprop="position" content="2" />
-          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Engineering Tools</span>
-          <meta itemprop="position" content="3" />
-        </li>
-      </ol>
-    </div>
-  </nav>
-
-  <SubpageHero
-    h1="Engineering Tools & Calculators"
-    badge="Interactive Tools"
-    subtitle="Practical engineering tools for design, material selection, and manufacturing feasibility — all built for titanium component procurement and engineering teams."
-    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-    compact={false}
-  />
-
-  <section class="py-8" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="#grade-finder" class="px-4 py-2 text-sm font-medium rounded-xl transition-all"
-          style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
-        >🔬 Grade Finder</a>
-        <a href="#tolerance-checker" class="px-4 py-2 text-sm font-medium rounded-xl transition-all"
-          style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
-        >📐 Tolerance Checker</a>
-        <a href="#weight-calculator" class="px-4 py-2 text-sm font-medium rounded-xl transition-all"
-          style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
-        >⚖️ Weight Estimator</a>
-        <a href="#roughness-comparator" class="px-4 py-2 text-sm font-medium rounded-xl transition-all"
-          style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
-        >🔍 Roughness Comparator</a>
-        <a href="#gdt-reference" class="px-4 py-2 text-sm font-medium rounded-xl transition-all"
-          style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
-        >📏 GD&T Reference</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="grade-finder" class="py-16 scroll-mt-24" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="text-sm font-bold" style="color: var(--theme-primary);">Tool 1 of 5</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Titanium Grade Finder</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Filter by strength, corrosion resistance, weldability, and more — instantly narrow down the best titanium alloy for your application.</p>
-      </div>
-      <TitaniumGradeFinder client:load />
-    </div>
-  </section>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
-
-  <section id="tolerance-checker" class="py-16 scroll-mt-24" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="text-sm font-bold" style="color: var(--theme-primary);">Tool 2 of 5</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">CNC Tolerance Feasibility Checker</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Select a feature type and enter your tolerance requirement — instantly see if it falls within our standard, precision, or ultra-precision capability bands.</p>
-      </div>
-      <ToleranceChecker client:load />
-    </div>
-  </section>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
-
-  <section id="weight-calculator" class="py-16 scroll-mt-24" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="text-sm font-bold" style="color: var(--theme-primary);">Tool 3 of 5</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Titanium Weight & Cost Estimator</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Estimate part weight and raw material cost for common shapes — round bar, plate, tube, and rectangular bar across all titanium grades.</p>
-      </div>
-      <WeightCalculator client:load />
-    </div>
-  </section>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
-
-  <section id="roughness-comparator" class="py-16 scroll-mt-24" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="text-sm font-bold" style="color: var(--theme-primary);">Tool 4 of 5</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Surface Roughness Comparator</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Compare surface finishes from mirror polish to as-rough — with Ra/Rz values, everyday object comparisons, and achievable processes.</p>
-      </div>
-      <SurfaceRoughnessComparator client:load />
-    </div>
-  </section>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><hr style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);" /></div>
-
-  <section id="gdt-reference" class="py-16 scroll-mt-24" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <span class="text-sm font-bold" style="color: var(--theme-primary);">Tool 5 of 5</span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">GD&T Symbol Reference</h2>
-        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Interactive reference for ASME Y14.5 GD&T symbols — form, orientation, location, profile, and runout controls with tolerance zone explanations and application guidance.</p>
-      </div>
-      <GDTSymbolReference client:load />
-    </div>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=/${lang}/tools/`} />
+    <title>Engineering Tools — Redirect</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={`/${lang}/tools/`}>Engineering Tools</a>...</p>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const langCodes = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
+  return langCodes.map(lang => ({ params: { lang } }));
+}
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const tools = [
+  { href: `/tools/titanium-grade-finder/`, emoji: '🔬', name: 'Titanium Grade Finder', desc: 'Filter 12 titanium grades by strength, corrosion resistance, weldability, biocompatibility, and cost.' },
+  { href: `/tools/cnc-tolerance-checker/`, emoji: '📐', name: 'CNC Tolerance Checker', desc: 'Check if your tolerance requirements fall within standard, precision, or ultra-precision capability bands.' },
+  { href: `/tools/titanium-weight-calculator/`, emoji: '⚖️', name: 'Weight & Cost Estimator', desc: 'Calculate part weight and raw material cost for round bar, plate, tube, and rectangular bar.' },
+  { href: `/tools/surface-roughness-comparator/`, emoji: '🔍', name: 'Surface Roughness Comparator', desc: 'Compare Ra/Rz values from mirror polish to as-rough with everyday object comparisons.' },
+  { href: `/tools/gdt-symbol-reference/`, emoji: '📏', name: 'GD&T Symbol Reference', desc: 'Interactive reference for 13 ASME Y14.5 GD&T symbols with tolerance zone explanations.' },
+];
+---
+<BaseLayout
+  title="Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti"
+  description="Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference."
+>
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={`/${currentLang}/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Engineering Tools</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Engineering Tools & Calculators"
+    badge="Interactive Tools"
+    subtitle="Practical engineering tools for design, material selection, and manufacturing feasibility — all built for titanium component procurement and engineering teams."
+    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+    compact={false}
+  />
+
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map(tool => (
+          <a href={tool.href} class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <div class="text-3xl mb-3">{tool.emoji}</div>
+            <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{tool.name}</h3>
+            <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{tool.desc}</p>
+            <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
