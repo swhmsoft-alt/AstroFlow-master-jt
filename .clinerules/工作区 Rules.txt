@@ -1,0 +1,13 @@
+# [Workspace Environment & Engineering Constraints]
+
+1. Tech Stack Boundaries:
+   - Framework: Astro SSR/Static. All components, layouts, and pages must strictly adhere to Astro's standard component lifecycle and routing conventions.
+   - Environment: VS Code + Cline IDE extension environment. Always choose headless, scriptable tools over interactive terminal commands.
+
+2. Generic i18n & Translation Engineering Rules:
+   - Single Source of Truth: When handling localized text or translations, always locate and audit the primary fallback/source configuration file before propagating changes to secondary/localized variations.
+   - Structure Preservation: Retain exact JSON/TS key hierarchies, nested data types, and parameters. Never alter structural syntax during value translation or string replacement.
+
+3. Core Business & Architecture Standard Filters (Apply to ALL file edits):
+   - SEO & GEO Awareness: When writing or editing markup, frontend metadata, JSON-LD schemas, routing logic, or content strings, always ensure strict conformance to semantic SEO optimization, localized geographic entity (GEO) schema integrity, and search-engine indexability.
+   - Conversion & Lead Generation (Inquiry Focus): Ensure that any UI component, CTA element, middleware, or web-form logic prioritizes operational stability, optimal user conversion flows, and reliable inquiry processing.

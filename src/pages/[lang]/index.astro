@@ -6,6 +6,7 @@ import TechnicalCapabilities from '../../components/home/TechnicalCapabilities.a
 import MaterialMatrix from '../../components/home/MaterialMatrix.astro';
 import IndustryApplications from '../../components/home/IndustryApplications.astro';
 import EngineeringResources from '../../components/home/EngineeringResources.astro';
+import JapanTrustDashboard from '../../components/home/JapanTrustDashboard.astro';
 import PremiumCTA from '../../components/home/PremiumCTA.astro';
 import { getLangFromUrl, useTranslations, useTOrNull } from '../../i18n/utils';
 import { getCollection } from 'astro:content';
@@ -70,6 +71,7 @@ const heroData: Record<string, any> = {
   <PremiumHero hero={heroData} />
   <ServicesOverview />
   <TechnicalCapabilities />
+  <JapanTrustDashboard />
   <MaterialMatrix />
   <IndustryApplications />
   <EngineeringResources />
