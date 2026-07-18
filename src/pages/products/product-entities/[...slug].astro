@@ -33,7 +33,7 @@ const material = allMaterials.find(m => matSlug?.includes(m.slug) || m.slug?.inc
 
 // Load capabilities (linked, not duplicated)
 const allCaps = await getCollection('capabilities');
-const relatedCaps = allCaps.filter(c => data.relatedCapabilities?.some((rc: string) => c.slug.includes(rc.replace(/[^a-z0-9-]/g, ''))));
+const relatedCaps = allCaps.filter(c => c?.slug && data.relatedCapabilities?.some((rc: string) => c.slug.includes(rc.replace(/[^a-z0-9-]/g, ''))));
 
 // Related products
 const allProducts = await getCollection('product-entities');
