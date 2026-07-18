@@ -803,6 +803,92 @@ const PART_DB: PartProfile[] = [
     image: '🚴',
   },
 
+  {
+    keywords: ['anode', 'basket', 'electroplating', '电镀', 'anode basket', 'mesh', 'busbar', 'hook', 'titanium anode'],
+    industries: ['Electroplating', 'Chemical Processing', 'Wastewater Treatment'],
+    category: 'Electroplating Anode Baskets & Current Delivery Systems',
+    geometry: 'Expanded mesh or perforated sheet formed into rectangular baskets, with welded knife-edge hooks and stiffener ribs, bottom plates with fine perforations for sludge retention',
+    painPoints: ['Acid vapor corrosion in headspace above tanks', 'Crevice corrosion at hook-to-basket weld joints', 'Heavy anode pellet loading causing basket deformation', 'Copper ion contamination from corroded busbars', 'Galvanic corrosion at titanium-to-copper interfaces'],
+    alloyId: 'cp2',
+    alloyReason: 'Grade 2 (CP-Ti) is the industry standard for anode baskets due to its excellent weldability, formability, and instant passivation in mineral acids. Grade 7 (Pd alloy) for severe crevice corrosion zones. Copper-cored Ti busbars for high-amperage current delivery.',
+    formId: 'plate',
+    formReason: 'Expanded mesh or perforated sheet formed and welded into basket shapes. Copper-cored Ti busbars are explosively bonded or roll-bonded. All TIG welds must be argon-shielded with pure Ti filler wire.',
+    process: ['Expanded metal mesh production', 'TIG welding of basket seams and hooks', 'Laser or waterjet cutting of perforated bottom plates', 'Bend forming of stiffener ribs and gussets'],
+    tollServices: ['Weld color inspection (silver/gold acceptable; blue/purple = contamination)', 'Dimensional inspection', 'Load testing of hooks and welds', 'Material certification (EN 10204 3.1)'],
+    pitfalls: ['Weld zone must remain silver or light straw color — blue/purple indicates atmospheric contamination and embrittlement', 'Copper-cored Ti busbars require certified bond integrity to prevent delamination under thermal cycling'],
+    specNote: 'ASTM B265 Grade 2 sheet/mesh, TIG welded with ERTi-2 filler, 100% weld visual inspection + material cert',
+    servicePage: '/titanium-fabrication-services/titanium-welding-assembly/',
+    image: '📦',
+  },
+  {
+    keywords: ['rack', 'jig', 'fixture', 'PCB', 'plating', '挂具', '夹具', 'spline', 'contact', 'prong', 'clamp'],
+    industries: ['Electroplating', 'PCB Manufacturing', 'Consumer'],
+    category: 'Electroplating Racks, Jigs & PCB Fixtures',
+    geometry: 'Modular frame assemblies with spring-loaded spline contacts (V-prongs), thumb-screw clamps, high-density edge grips, and hollow square spline main bars for structural support',
+    painPoints: ['Spring tension loss from repeated clamping cycles', 'Acid entrapment in threaded joints causing crevice corrosion', 'Operator fatigue from heavy rack weight', 'Electrical shadowing on PCB edges', 'Contact burn marks from poor conductivity'],
+    alloyId: 'ta18',
+    alloyReason: 'Grade 9 (Ti-3Al-2.5V) is the standard for spring-loaded contacts due to its high yield strength and excellent spring-back properties. Grade 2 for structural frame components requiring weldability and low cost.',
+    formId: 'bar',
+    formReason: 'Bar/rod stock for spring contacts and splines. Sheet for clamp components. Wire for pin contacts. All spring contacts must be stress-relief annealed after forming to retain elasticity.',
+    process: ['Wire forming of V-prong spring contacts', 'CNC machining of thumb-screw clamps and brackets', 'TIG welding of frame assemblies', 'Stress-relief annealing of spring contacts'],
+    tollServices: ['Spring-back testing (1000+ cycle test)', 'CMM dimensional inspection of contact spacing', 'Electrical continuity testing', 'Weld integrity inspection'],
+    pitfalls: ['Spring contact tip radius must be 0.3-0.5mm for consistent PCB edge grip without damage', 'Threaded clamps must be coated with anti-galling compound (silver lube) to prevent Ti-Ti thread cold welding'],
+    specNote: 'ASTM B348 Grade 9 for springs / Grade 2 for frame, stress-relieved, 100% spring-back tested (1000 cycles)',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '🔧',
+  },
+  {
+    keywords: ['pipe', 'fitting', 'flange', 'elbow', 'tee', 'reducer', 'stub end', 'valve stem', 'strainer', '化工管件', '管道'],
+    industries: ['Chemical Processing', 'Electroplating', 'Wastewater Treatment', 'Oil & Gas'],
+    category: 'Chemical Pipe Fittings & Flow Control Components',
+    geometry: 'Seamless or welded fittings (elbows, tees, reducers, flanges) per ANSI/DIN standards, ball valve stems, perforated strainer baskets, spiral wound gasket inserts, U-bolts for pipe support',
+    painPoints: ['Crevice corrosion in threaded joints', 'Hydrodynamic erosion at turbulent flow transitions (tees/elbows)', 'Galvanic corrosion at pipe support contact points', 'Thread galling in NPT connections', 'Flow meter calibration drift from orifice plate corrosion'],
+    alloyId: 'cp2',
+    alloyReason: 'Grade 2 (CP-Ti) is the universal standard for chemical pipe fittings due to its excellent corrosion resistance across a wide pH range, good weldability, and moderate cost. Grade 5 for valve stems requiring high torsional strength.',
+    formId: 'tube',
+    formReason: 'Seamless tube for standard fittings (elbows, tees) via hot forming. Plate for flange fabrication. Bar stock for valve stems and threaded rods. All fittings must carry full material traceability.',
+    process: ['Hot forming of seamless tube into elbows/tees', 'CNC machining of flange faces and bolt holes', 'Thread cutting/rolling for NPT connections', 'Full UT wall thickness verification'],
+    tollServices: ['Hydrostatic pressure testing', 'PMI (positive material identification) verification', 'Dimensional inspection per ASME B16.5/B16.9', 'Material certification (EN 10204 3.1 / MTR)'],
+    pitfalls: ['Titanium pipe fittings require minimum 3mm wall thickness for threaded connections — thinner walls strip under torque', 'Flange face flatness must be <0.05mm for spiral wound gasket sealing at 150psi+', 'Thread galling prevention requires Teflon tape or Ti-specific anti-seize compound'],
+    specNote: 'ASTM B363 / ASME SB363 Grade 2, seamless, 100% hydrostatic tested + PMI verified, MTR traceable',
+    servicePage: '/titanium-fabrication-services/titanium-welding-assembly/',
+    image: '🏭',
+  },
+  {
+    keywords: ['tank', '槽', 'heater', '加热', 'immersion', 'coil', 'steam', 'sparger', 'educto', 'nozzle', 'thermowell', 'agitator'],
+    industries: ['Electroplating', 'Chemical Processing', 'Wastewater Treatment'],
+    category: 'Tank Internals, Heating & Agitation Systems',
+    geometry: 'Thin-wall tubular heater sheaths and steam coils, perforated sparger pipes, venturi eductor nozzles, thermowell sleeves, float switch balls, weir overflow plates',
+    painPoints: ['Thermal fatigue from steam cycling causing coil cracking', 'Pitting corrosion in stagnant chemical zones around heaters', 'Air bubble corrosion acceleration on submerged metal surfaces', 'Plastic nozzle erosion from high-velocity fluid', 'Sensor failure from aggressive chemical attack'],
+    alloyId: 'cp2',
+    alloyReason: 'Grade 2 (CP-Ti) thin-wall seamless tube for heater sheaths and steam coils provides excellent heat transfer with total corrosion immunity. Grade 5 for eductor nozzles requiring high erosion resistance.',
+    formId: 'tube',
+    formReason: 'Seamless thin-wall tube for heater sheaths and steam coils. Tube drilling for sparger pipes. CNC machining for nozzle orifices. Sheet metal forming for weir overflows.',
+    process: ['Tube bending of steam coils (mandrel bending to prevent collapse)', 'Laser/perforation drilling of sparger pipes', 'CNC machining of venturi nozzle profiles', 'TIG welding of tank mounting brackets'],
+    tollServices: ['Hydrostatic pressure testing of coils', 'Heat transfer verification', 'Flow rate testing of eductors', 'Dimensional inspection of mounting interfaces'],
+    pitfalls: ['Heater sheath tube wall thickness must be >1.2mm for electric immersion heaters to prevent pinhole failure under electrical stress', 'Steam coil U-bend radius must be >3x tube diameter to prevent wall thinning at the bend apex'],
+    specNote: 'ASTM B338 Grade 2 seamless tube (heater/coil) / ASTM B348 Grade 5 (nozzles), 100% pressure tested',
+    servicePage: '/titanium-fabrication-services/titanium-welding-assembly/',
+    image: '🌡️',
+  },
+  {
+    keywords: ['wastewater', '废水', 'filter', '过滤', 'electrocoagulation', 'MMO', 'sintered', 'filter press', 'pump', 'impeller', 'dosing', 'demister', 'sludge'],
+    industries: ['Wastewater Treatment', 'Chemical Processing', 'Electroplating'],
+    category: 'Wastewater Treatment & Environmental Engineering Hardware',
+    geometry: 'Sintered porous tubular/filter elements, filter press tie rods, pump impellers with complex curved vanes, shaft sleeves, sludge scraper blades, mist eliminator grid frames, orifice plates',
+    painPoints: ['Cavitation erosion of pump impellers in chemical slurry', 'Filter element blinding/clogging under back-pressure', 'Corrosion-fatigue of tie rods under hydraulic cycling', 'Flow meter calibration drift from orifice edge corrosion', 'Toxic acid mist carryover from corroded demister frames'],
+    alloyId: 'cp2',
+    alloyReason: 'Grade 2 (CP-Ti) for sintered filter elements, demister frames, and sludge scrapers. Grade 5 for pump impellers, tie rods, and shaft sleeves requiring high strength and cavitation resistance.',
+    formId: 'plate',
+    formReason: 'Ti powder metallurgy for sintered filters. Bar/forging stock for tie rods and shaft sleeves. Investment casting or CNC machining for pump impellers. Sheet fabrication for demister grids.',
+    process: ['Powder compaction + sintering for porous filter elements', 'CNC machining of impeller profiles (5-axis)', 'Thread rolling of tie rods', 'Sheet metal fabrication of demister frame grids'],
+    tollServices: ['Porosity testing of sintered filters (bubble point test)', 'Hydraulic pressure testing of tie rods', 'Impeller dynamic balancing', 'PMI verification of all material'],
+    pitfalls: ['Sintered Ti filter pore size distribution +-2um requires precise powder size control and sintering temperature profile', 'Filter press tie rods must be 100% UT inspected for subsurface flaws — failure under compression causes catastrophic press frame damage'],
+    specNote: 'ASTM B348 Grade 5 (tie rods/impellers) / ASTM B265 Grade 2 (filters/sheets), 100% PMI + pressure tested',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '🌍',
+  },
+
 ];
 
 /* ── Main Component ── */
@@ -887,6 +973,10 @@ export default function ReverseEngineerTool() {
               <option value="Oil & Gas">🛢️ Oil & Gas</option>
               <option value="Defense">🛡️ Defense / Military</option>
               <option value="Consumer">📱 Consumer Electronics</option>
+              <option value="Electroplating">📦 Electroplating / Surface Finishing</option>
+              <option value="Chemical Processing">🧪 Chemical Processing</option>
+              <option value="PCB Manufacturing">📺 PCB / Electronics Manufacturing</option>
+              <option value="Wastewater Treatment">🏔️ Wastewater & Environmental</option>
               <option value="Cycling">🚴 Cycling / Bicycle</option>
               <option value="Other">❓ Other / General</option>
             </select>
