@@ -1,67 +1,50 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+// Redirect /products/materials/{slug}/ → /materials/{slug}/
 import { getCollection } from 'astro:content';
-
 export const prerender = true;
+
+// Map new KG slugs to old material page slugs
+const SLUG_MAP: Record<string, string> = {
+  'grade-5-ti-6al-4v': 'grade-5',
+  'grade-23-ti-6al-4v-eli': 'grade-23',
+  'grade-1-cp-ti': 'grade-1',
+  'grade-2-cp-ti': 'grade-2',
+  'grade-3-cp-ti': 'grade-3',
+  'grade-4-cp-ti': 'grade-4',
+  'beta-c-ti-3al-8v-6cr-4mo-4zr': 'grade-19',
+  'gamma-tial-ti-48al-2cr-2nb': '',
+  'nitinol-ni-ti-shape-memory-alloy': '',
+  'grade-12-ti-03mo-08ni': '',
+  'grade-9-ti-3al-25v': 'grade-9',
+  'grade-7-ti-015pd': '',
+  'ti-1023-ti-10v-2fe-3al': 'ti-5553',
+  'ti-1100': '',
+  'ti-15v-3cr-3sn-3al': 'grade-21',
+  'ti-5al-25sn-eli': 'grade-6',
+  'ti-6242-ti-6al-2sn-4zr-2mo': 'grade-6242',
+  'ti-6246-ti-6al-2sn-4zr-6mo': '',
+  'ti-65-ti-6al-4sn-9zr-1mo-1w-03si': '',
+  'ti-6al-7nb-astm-f1295': '',
+};
 
 export async function getStaticPaths() {
   const entries = await getCollection('materials');
   return entries.map((entry) => ({
-    params: { slug: entry.slug || entry.id?.replace('.json','') || undefined },
-    props: { entry },
+    params: { slug: entry.slug || entry.id?.replace('.json','') || '' },
+    props: {},
   }));
 }
 
-const { entry } = Astro.props;
-const { data } = entry;
-const seoTitle = data.seoTitle || `${data.title} Titanium Alloy | Material Properties | BOZE CNC Ti`;
-const seoDesc = data.seoDescription || `${data.title} (${data.category}) titanium alloy properties: density ${data.density || 'N/A'}, tensile strength ${data.tensileStrength || 'N/A'}.`;
+const { slug } = Astro.params;
+const oldSlug = slug ? SLUG_MAP[slug] : '';
+const target = oldSlug ? `/materials/${oldSlug}/` : '/materials/';
 ---
-
-<BaseLayout title={seoTitle} description={seoDesc}>
-  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <ol class="flex items-center space-x-2 py-4 text-sm">
-        <li><a href="/" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Home</a> / </li>
-        <li><a href="/products" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Products</a> / </li>
-        <li><span class="font-semibold" style="color: var(--theme-text);">{data.title}</span></li>
-      </ol>
-    </div>
-  </nav>
-
-  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl">
-        <p class="text-sm font-semibold mb-2" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{data.category}</p>
-        <h1 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">{data.title}</h1>
-        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
-      </div>
-
-      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {[{label:'Density',val:data.density},{label:'Tensile Strength',val:data.tensileStrength},{label:'Yield Strength',val:data.yieldStrength},{label:'Elongation',val:data.elongation},{label:'Hardness',val:data.hardness},{label:'Modulus',val:data.modulus}].filter(i=>i.val).map(prop => (
-          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-            <p class="text-sm font-semibold" style="color: var(--theme-primary);">{prop.label}</p>
-            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{prop.val}</p>
-          </div>
-        ))}
-      </div>
-
-      {data.standards && data.standards.length > 0 && (
-        <div class="mt-8">
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Standards</h3>
-          <div class="flex flex-wrap gap-2">
-            {data.standards.map((s: string) => (
-              <span class="px-4 py-2 rounded-full text-sm border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">{s}</span>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  </section>
-
-  <section class="py-16" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">Request Quote for {data.title}</a>
-    </div>
-  </section>
-</BaseLayout>
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Redirecting...</title>
+<meta http-equiv="refresh" content="0; url={target}" />
+<link rel="canonical" href={target} /></head>
+<body>
+<script>window.location.href = '{target}';</script>
+<p>Redirecting to <a href={target}>{target}</a></p>
+</body>
+</html>

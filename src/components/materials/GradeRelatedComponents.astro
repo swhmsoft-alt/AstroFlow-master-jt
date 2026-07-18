@@ -1,0 +1,59 @@
+---
+import type { GradeData } from '../../data/titanium-grades';
+
+export interface Props {
+  grade: GradeData;
+}
+
+const { grade } = Astro.props as Props;
+
+// Normalize search names: check both the grade name and its aliases
+const searchTerms: string[] = [grade.name.toLowerCase()];
+if (grade.key) searchTerms.push(grade.key.toLowerCase().replace(/-/g, ' '));
+if (grade.aliases) searchTerms.push(...grade.aliases.map((a: string) => a.toLowerCase()));
+
+// Load from product-entities collection
+const { getCollection } = await import('astro:content');
+const allEntities = await getCollection('product-entities');
+
+const related = allEntities.filter(e => {
+  const m = (e.data.material || '').toLowerCase();
+  return searchTerms.some(t => m.includes(t));
+});
+
+const total = related.length;
+const limit = total > 6 ? 6 : total;
+const display = related.slice(0, limit);
+---
+
+{total > 0 && (
+  <section class="py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">Related Components</h2>
+      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+        {total} precision CNC machined components manufactured from {grade.name}
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {display.map((e) => {
+          const eslug = e.slug || e.id?.replace('.json','') || '';
+          return (
+            <a href={`/products/product-entities/${eslug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <h3 class="font-bold text-sm" style="color: var(--theme-text);">{e.data.title}</h3>
+              <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{e.data.function?.slice(0, 100) || e.data.description?.slice(0, 100)}</p>
+              {e.data.process && (
+                <span class="inline-block mt-2 text-[10px] px-2 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">{e.data.process}</span>
+              )}
+            </a>
+          );
+        })}
+      </div>
+      {total > limit && (
+        <div class="mt-8 text-center">
+          <a href={`/products/product-entities/?material=${grade.key || grade.name}`} class="inline-block px-6 py-3 rounded-lg font-medium transition-all" style="background: var(--theme-primary); color: white;">
+            View All {total} Components →
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
