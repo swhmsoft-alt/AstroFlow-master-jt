@@ -7,7 +7,7 @@ export const prerender = true;
 export async function getStaticPaths() {
   const entries = await getCollection('product-entities');
   return entries.map((entry) => ({
-    params: { slug: entry.slug || entry.id?.replace('.json','') || undefined },
+    params: { slug: entry.slug || entry.id?.replace(/\.(json|md)$/, '') || undefined },
     props: { entry },
   }));
 }
@@ -51,6 +51,15 @@ const relatedProducts = allProducts.filter(p => data.relatedProducts?.includes(p
 
 // FAQ
 const faqData = data.faq || [];
+
+// Load matching product spec for rich blueprint injection
+const allSpecs = await getCollection('product-specs');
+const specEntry = allSpecs.find(s => s.slug === entry.slug);
+let SpecContent;
+if (specEntry) {
+  const rendered = await specEntry.render();
+  SpecContent = rendered.Content;
+}
 
 // JSON-LD
 const schemaProduct = {
@@ -308,6 +317,17 @@ if (faqData.length > 0) {
             </a>
           ))}
         </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── RICH BLUEPRINT SPEC INJECTION ── -->
+  {specEntry && SpecContent && (
+    <section class="py-12 lg:py-16" style="background: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="prose prose-sm md:prose-base max-w-none" style="color: var(--theme-text);">
+          <SpecContent />
+        </article>
       </div>
     </section>
   )}

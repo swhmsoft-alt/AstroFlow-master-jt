@@ -164,6 +164,25 @@ const productEntitiesCollection = defineCollection({
     seoDescription: z.string().optional(),
     order: z.number().default(0),
     pubDate: z.string().optional(),
+    // Rich Blueprint Fields (optional)
+    sku: z.string().optional(),
+    titanium_grade: z.string().optional(),
+    titanium_type: z.string().optional(),
+    uns_number: z.string().optional(),
+    werkstoff_number: z.string().optional(),
+    density: z.string().optional(),
+    tensile_strength: z.string().optional(),
+    yield_strength: z.string().optional(),
+    elongation: z.string().optional(),
+    hardness: z.string().optional(),
+    modulus: z.string().optional(),
+    thermal_conductivity: z.string().optional(),
+    max_service_temp: z.string().optional(),
+    surface_finish: z.string().optional(),
+    manufacturing_process: z.string().optional(),
+    weight_reduction: z.string().optional(),
+    ndt_methods: z.string().optional(),
+    compliance: z.array(z.string()).optional(),
   }),
 });
 
@@ -234,6 +253,38 @@ const industriesCollection = defineCollection({
   }),
 });
 
+const productSpecsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    sku: z.string(),
+    category: z.string(),
+    system: z.string().optional(),
+    industry: z.string(),
+    titanium_grade: z.string(),
+    titanium_type: z.string(),
+    uns_number: z.string().optional(),
+    werkstoff_number: z.string().optional(),
+    density: z.string().optional(),
+    tensile_strength: z.string().optional(),
+    yield_strength: z.string().optional(),
+    elongation: z.string().optional(),
+    hardness: z.string().optional(),
+    modulus: z.string().optional(),
+    thermal_conductivity: z.string().optional(),
+    max_service_temp: z.string().optional(),
+    function: z.string().optional(),
+    aliases: z.array(z.string()).optional(),
+    standards: z.array(z.string()).optional(),
+    compliance: z.array(z.string()).optional(),
+    surface_finish: z.string().optional(),
+    manufacturing_process: z.string().optional(),
+    weight_reduction: z.string().optional(),
+    ndt_methods: z.string().optional(),
+    pubDate: z.string().optional(),
+  }),
+});
+
 export const collections = {
   pages: pagesCollection,
   products: productsCollection,
@@ -246,4 +297,5 @@ export const collections = {
   capabilities: capabilitiesCollection,
   standards: standardsCollection,
   industries: industriesCollection,
+  'product-specs': productSpecsCollection,
 };
