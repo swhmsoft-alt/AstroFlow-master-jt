@@ -1,4 +1,4 @@
-﻿import { useState, useMemo } from 'react';
+﻿﻿import { useState, useMemo } from 'react';
 
 /* ── Knowledge Base ── */
 
@@ -766,7 +766,7 @@ const PART_DB: PartProfile[] = [
     pitfalls: ['Rotor brake track thickness +-0.05mm for consistent pad wear — warp >0.1mm causes brake judder', 'Caliper piston Ti insert reduces heat transfer to brake fluid by 7x vs aluminum'],
     specNote: 'ASTM B348 Grade 5, rolled threads, T25 Torx, 100% MPI + pressure tested',
     servicePage: '/titanium-cnc-machining-services/cnc-milling-turning/',
-    image: '🛎️',
+    image: '🛑',
   },
   {
     keywords: ['bicycle', 'bike', 'mountain', 'suspension', 'shock', 'fork', 'pivot', 'linkage', 'derailleur hanger'],
