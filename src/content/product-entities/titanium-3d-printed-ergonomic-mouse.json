@@ -35,7 +35,32 @@
     "ASTM B348"
   ],
   "typicalRfqRequirements": [],
-  "faq": [],
+  "faq": [
+    {
+      "q": "Why use titanium for titanium 3d-printed ergonomic mouse?",
+      "a": "Grade 5 (Ti-6Al-4V) for watch bezels, phone mid-frames, keycaps, and mouse shells requiring high hardness and PVD coating compatibility. Beta-Ti (Ti-15-3-3-3) for foldable phone hinges and smart glasses temple arms requiring superelasticity with zero fatigue over 500k cycles. Grade 2 for earbud gril"
+    },
+    {
+      "q": "How is a titanium 3d-printed ergonomic mouse manufactured?",
+      "a": "A typical titanium 3d-printed ergonomic mouse is manufactured using CNC milling; Diamond-cut beveling; PVD coating (ISO 27874, Delta-E <=1.0); Oleophobic AFP nano-coating. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+    },
+    {
+      "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium 3d-printed ergonomic mouse?",
+      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+    },
+    {
+      "q": "What standards apply to titanium 3d-printed ergonomic mouse?",
+      "a": "Titanium 3D-Printed Ergonomic Mouse components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+    },
+    {
+      "q": "What are common failure modes for titanium 3d-printed ergonomic mouse?",
+      "a": "Common failure modes include PVD color batch consistency requires closed-loop gas mass-flow controller for N2/CH4 — manual gas valves cause visible tint shifts rejected by premium brands; Oleophobic coating thickness must be <1um — thicker layers create visible rainbow interference patterns on matte surfaces. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+    },
+    {
+      "q": "What surface treatments are available for titanium 3d-printed ergonomic mouse?",
+      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+    }
+  ],
   "relatedProducts": [],
   "relatedCapabilities": [
     "cnc-milling",
