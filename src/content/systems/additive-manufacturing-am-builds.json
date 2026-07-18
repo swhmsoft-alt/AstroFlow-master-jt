@@ -1,0 +1,24 @@
+{
+  "title": "Additive Manufacturing (AM) Builds",
+  "emoji": "🖨️",
+  "industry": "Aerospace & Defense",
+  "description": "Near-net-shape lattice/porous structures, organic contours, internal channels impossible with subtractive methods",
+  "designPrinciples": [
+    "Material: Grade 5 (Ti-6Al-4V) is the most common AM titanium alloy. Grade 23 ELI for medical implants requiring higher ductility and lower oxygen content.",
+    "Form: AM builds start from atomized metal powder (Grade 5 / Grade 23 powder). Substrate plates are standard bar/plate stock."
+  ],
+  "engineeringTrends": [
+    "Process: SLM/DMLS printing",
+    "Process: Stress relief annealing",
+    "Process: Support removal (EDM/machining)"
+  ],
+  "comparisonNotes": "Standards: ASTM F2924 (Grade 5) / ASTM F3001 (Grade 23 ELI), HIP + annealed, 100% CT scan + mechanical test coupons",
+  "productEntities": [],
+  "relatedCapabilities": [
+    "SLM/DMLS printing",
+    "Stress relief annealing",
+    "Support removal (EDM/machining)"
+  ],
+  "relatedMaterials": [],
+  "relatedStandards": []
+}

@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const systems = await getCollection('systems');
+  return systems.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const seoTitle = data.seoTitle || `${data.title} Titanium Components | System Overview | BOZE CNC Ti`;
+const seoDesc = data.seoDescription || `${data.description} Explore our titanium ${data.title.toLowerCase()} engineering knowledge, design principles, and manufacturing capabilities for ${data.industry}.`;
+
+// Load related product entities if referenced
+const allProducts = (await getCollection('product-entities')).filter(p => 
+  data.productEntities?.includes(p.slug)
+);
+const allCaps = (await getCollection('capabilities')).filter(c =>
+  data.relatedCapabilities?.includes(c.slug)
+);
+---
+
+<BaseLayout title={seoTitle} description={seoDesc}>
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Products</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={`/products/industries/${data.industry?.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{data.industry}</span>
+          </a>
+          <meta itemprop="position" content="3" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.emoji} {data.title}</span>
+          <meta itemprop="position" content="4" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <p class="text-sm font-semibold mb-2" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{data.industry}</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">{data.emoji} {data.title}</h1>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
+      </div>
+    </div>
+  </section>
+
+  {data.designPrinciples && data.designPrinciples.length > 0 && (
+    <section class="py-16" style="background: var(--theme-bg);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Design Principles</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {data.designPrinciples.map((p: string) => (
+            <div class="p-5 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <p style="color: var(--theme-text);">{p}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.engineeringTrends && data.engineeringTrends.length > 0 && (
+    <section class="py-16" style="background: var(--theme-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Engineering Trends</h2>
+        <ul class="space-y-3">
+          {data.engineeringTrends.map((t: string) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1 text-sm" style="color: var(--theme-primary);">▸</span>
+              <span style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {allProducts.length > 0 && (
+    <section class="py-16" style="background: var(--theme-bg);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Components in This System</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {allProducts.map((p) => (
+            <a href={`/products/product-entities/${p.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <h3 class="font-semibold" style="color: var(--theme-text);">{p.data.title}</h3>
+              <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.data.function?.slice(0, 100)}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {allCaps.length > 0 && (
+    <section class="py-16" style="background: var(--theme-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Related Capabilities</h2>
+        <div class="flex flex-wrap gap-3">
+          {allCaps.map((c) => (
+            <a href={`/products/capabilities/${c.slug}/`} class="px-4 py-2 rounded-full text-sm font-medium border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">
+              {c.data.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.comparisonNotes && (
+    <section class="py-16" style="background: var(--theme-bg);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Standards Reference</h2>
+        <div class="p-6 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.comparisonNotes}</p>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <p class="mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Need a custom {data.title.toLowerCase()} solution? Our engineering team can help.
+        </p>
+        <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
+          Request Quote for {data.title}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": data.title,
+    "description": data.description,
+    "category": data.industry,
+    "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" }
+  })} />
+</BaseLayout>

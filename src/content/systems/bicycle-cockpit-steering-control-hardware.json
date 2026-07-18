@@ -1,0 +1,24 @@
+{
+  "title": "Bicycle Cockpit, Steering & Control Hardware",
+  "emoji": "🚲",
+  "industry": "Cycling / Bicycle",
+  "description": "Precision fasteners M4-M6 with low-profile Torx heads, thin-wall tubular spacers, complex 3D-printed structural brackets, small-diameter pivot pins",
+  "designPrinciples": [
+    "Material: Grade 5 (Ti-6Al-4V) mandatory for all cockpit safety-critical fasteners (stem bolts, lever pivot pins). Grade 9 for non-structural fasteners. Never use aluminum for stem bolts.",
+    "Form: Bar stock for precision fasteners with rolled threads. 3D-printed (SLM) Grade 23 for custom stem bodies — zero material waste, optimized topology."
+  ],
+  "engineeringTrends": [
+    "Process: CNC turning of bolt heads and threads",
+    "Process: Thread rolling (all safety-critical bolts)",
+    "Process: SLM 3D printing of custom stem/adapter bodies"
+  ],
+  "comparisonNotes": "Standards: ASTM B348 Grade 5, rolled threads (DIN 13-1 / ISO 965-2, 6g tolerance), Torx T25 drive, 100% MPI crack + 6g Go/No-Go ring gauge, PVD coated per ISO 27874 (1.5um), ASTM F86 passivated + Class 100 UCN",
+  "productEntities": [],
+  "relatedCapabilities": [
+    "CNC turning of bolt heads and threads",
+    "Thread rolling (all safety-critical bolts)",
+    "SLM 3D printing of custom stem/adapter bodies"
+  ],
+  "relatedMaterials": [],
+  "relatedStandards": []
+}

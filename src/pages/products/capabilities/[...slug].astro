@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection('capabilities');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const seoTitle = data.seoTitle || `${data.title} | Titanium Manufacturing Capability | BOZE CNC Ti`;
+const seoDesc = data.seoDescription || `${data.description}. ${data.category} capability for precision CNC machined titanium components. AS9100D & ISO 9001 certified.`;
+---
+
+<BaseLayout title={seoTitle} description={seoDesc}>
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.title}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <p class="text-sm font-semibold mb-2" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{data.category}</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">{data.title}</h1>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {data.tolerance && (
+          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Tolerance</p>
+            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{data.tolerance}</p>
+          </div>
+        )}
+        {data.maxSize && (
+          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Max Size</p>
+            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{data.maxSize}</p>
+          </div>
+        )}
+        {data.surfaceFinish && (
+          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Surface Finish</p>
+            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{data.surfaceFinish}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Need {data.title} for Your Project?</h2>
+      <p class="mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Our engineering team can provide a competitive quote within 24 hours.</p>
+      <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">Request Quote</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,24 @@
+{
+  "title": "MRI-Compatible Cranial Fixation & Stereotactic Frames",
+  "emoji": "🧲",
+  "industry": "Medical Device",
+  "description": "Ring-shaped frame with 4-point pin fixation, adjustable arc/quadrant for probe targeting, vernier scales for coordinate positioning",
+  "designPrinciples": [
+    "Material: Grade 1 (CP-Ti) is non-magnetic and MRI-compatible, producing zero image artifact. Higher strength than plastics but without the magnetic susceptibility of steel or even Grade 5.",
+    "Form: Bar and plate stock for ring fabrication. Small diameter bar for fixation pins. All material must be certified MRI-safe (magnetic susceptibility <10^-5)."
+  ],
+  "engineeringTrends": [
+    "Process: CNC machining of ring and frame components",
+    "Process: Precision drilling of pin guides",
+    "Process: Coordinate measurement of fiducial markers"
+  ],
+  "comparisonNotes": "Standards: ASTM B348 Grade 1 CP-Ti, annealed, MRI compatibility certified, 100% coordinate inspection + passivated",
+  "productEntities": [],
+  "relatedCapabilities": [
+    "CNC machining of ring and frame components",
+    "Precision drilling of pin guides",
+    "Coordinate measurement of fiducial markers"
+  ],
+  "relatedMaterials": [],
+  "relatedStandards": []
+}

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection('standards');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+---
+
+<BaseLayout title={`${data.title} | ${data.organization} Standard | BOZE CNC Ti`} description={data.description}>
+  <nav class="border-b" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm">
+        <li><a href="/" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Home</a> / </li>
+        <li><a href="/products" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Products</a> / </li>
+        <li><span class="font-semibold" style="color: var(--theme-text);">{data.title}</span></li>
+      </ol>
+    </div>
+  </nav>
+  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold mb-2" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{data.organization} · {data.category}</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">{data.title}</h1>
+      <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
+    </div>
+  </section>
+  <section class="py-16" style="background: var(--theme-bg); text-align:center;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">Request Components per {data.title}</a>
+    </div>
+  </section>
+</BaseLayout>

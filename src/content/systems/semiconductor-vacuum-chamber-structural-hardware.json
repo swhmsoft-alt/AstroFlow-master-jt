@@ -1,0 +1,24 @@
+{
+  "title": "Semiconductor Vacuum Chamber Structural Hardware",
+  "emoji": "🌀",
+  "industry": "Semiconductor",
+  "description": "Precision-machined brackets, alignment dowel blocks, heavy-duty hinges, gas box manifold plates, cable guide links, turbo pump isolation saddles, heat shield spacers, 3D-printed cable routing pods",
+  "designPrinciples": [
+    "Material: Grade 5 (Ti-6Al-4V) for structural brackets, hinges, and saddles requiring high strength and low thermal conductivity. Grade 2 (CP-Ti) for non-structural plates and cable guides requiring zero outgass",
+    "Form: Bar/plate stock for structural components via CNC machining. SLM 3D printing for complex cable-routing pods and irregular bracket geometries to minimize material waste and lead time."
+  ],
+  "engineeringTrends": [
+    "Process: CNC milling/turning of brackets and alignment blocks",
+    "Process: SLM 3D printing of complex pod geometries",
+    "Process: Thread rolling of all fasteners"
+  ],
+  "comparisonNotes": "Standards: ASTM B348 Grade 5 / ASTM B265 Grade 2, electropolished, Class 100 UCN cleaned, MTC traceable to melt source",
+  "productEntities": [],
+  "relatedCapabilities": [
+    "CNC milling/turning of brackets and alignment blocks",
+    "SLM 3D printing of complex pod geometries",
+    "Thread rolling of all fasteners"
+  ],
+  "relatedMaterials": [],
+  "relatedStandards": []
+}
