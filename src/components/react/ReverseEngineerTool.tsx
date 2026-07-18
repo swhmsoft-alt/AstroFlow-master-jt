@@ -29,6 +29,7 @@ const ALLOYS: Record<string, string> = {
   'ta9': 'Grade 7 Ti-0.15Pd — Pd modified, strong acid resistant',
   'ta10': 'Grade 12 Ti-0.3Mo-0.8Ni — Mo-Ni modified, chemical grade',
   'ta18': 'Grade 9 Ti-3Al-2.5V — Medium strength, good formability',
+  'betac': 'Beta-C (Ti-3Al-8V-6Cr-4Mo-4Zr) — High-strength beta alloy, excellent spring properties, high fatigue life',
 
   'ti6242': 'Ti-6242 (Ti-6Al-2Sn-4Zr-2Mo) — Near-alpha, high-temp creep resistance up to 520C',
   'ti1100': 'Ti-1100 — Creep-resistant near-alpha alloy, service up to 600C',
@@ -716,6 +717,92 @@ const PART_DB: PartProfile[] = [
     image: '⌚',
   },
 
+  {
+    keywords: ['bicycle', 'bike', 'cycling', 'drivetrain', 'cassette', 'chainring', 'chain', 'derailleur', 'bottom bracket', 'pulley'],
+    industries: ['Cycling', 'Consumer'],
+    category: 'Bicycle Drivetrain & Drivetrain Hardware',
+    geometry: 'Precision-machined thin-profile toothed rings (cogs/chainrings), small-diameter pins/shafts, threaded fasteners with rolled threads, hollow spindles with bearing interfaces',
+    painPoints: ['Rotational inertia reduction', 'Wear resistance against chain rollers', 'Sweat/rainwater corrosion', 'Thread galling in aluminum frames', 'Fatigue under sprint torque 1500W+'],
+    alloyId: 'tc4',
+    alloyReason: 'Grade 5 (Ti-6Al-4V) provides ideal wear resistance, fatigue strength, and 40% weight saving vs steel for drivetrain components. Grade 9 for fasteners requiring cold heading.',
+    formId: 'bar',
+    formReason: 'CNC machining from plate/bar for cogs and chainrings. Swiss-type turning for pins and spindles. Rolled thread forming for bolts ensures continuous grain flow for fatigue safety.',
+    process: ['CNC machining of tooth profiles', 'Thread rolling of all fasteners', 'Swiss-type turning of spindles/pins', 'Anodizing/DLC coating'],
+    tollServices: ['CMM tooth profile inspection', 'Hardness testing', 'Fatigue testing (sprint load simulation)', 'MPI of threads'],
+    pitfalls: ['Chainring tooth profile must match chain roller diameter to +-0.05mm for silent shifting', 'BB spindle taper requires +-0.01mm concentricity for bearing preload accuracy'],
+    specNote: 'ASTM B348 Grade 5, STA, rolled threads, 100% dimensional + crack inspection',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '⚙️',
+  },
+  {
+    keywords: ['bicycle', 'bike', 'cycling', 'stem', 'handlebar', 'steerer', 'headset', 'cockpit', 'lever'],
+    industries: ['Cycling', 'Consumer'],
+    category: 'Bicycle Cockpit, Steering & Control Hardware',
+    geometry: 'Precision fasteners M4-M6 with low-profile Torx heads, thin-wall tubular spacers, complex 3D-printed structural brackets, small-diameter pivot pins',
+    painPoints: ['Safety-critical bolts under vibration and impact', 'Sweat corrosion attacking steel fasteners', 'Weight reduction for rotational/unsprung mass', 'Carbon steerer tube protection from over-tightening'],
+    alloyId: 'tc4',
+    alloyReason: 'Grade 5 (Ti-6Al-4V) mandatory for all cockpit safety-critical fasteners (stem bolts, lever pivot pins). Grade 9 for non-structural fasteners. Never use aluminum for stem bolts.',
+    formId: 'bar',
+    formReason: 'Bar stock for precision fasteners with rolled threads. 3D-printed (SLM) Grade 23 for custom stem bodies — zero material waste, optimized topology.',
+    process: ['CNC turning of bolt heads and threads', 'Thread rolling (all safety-critical bolts)', 'SLM 3D printing of custom stem/adapter bodies', 'Anodizing/DLC coating'],
+    tollServices: ['Torque-to-tension verification', 'CMM dimensional inspection', 'Fatigue testing (10^6 cycles at 10Nm)', 'Salt spray corrosion testing ASTM B117'],
+    pitfalls: ['Stem faceplate bolts require Torx T25 drive for consistent torque — never use hex', 'Thread rolling gives 30% higher fatigue strength vs cutting — mandatory for stem bolts'],
+    specNote: 'ASTM B348 Grade 5, rolled threads, Torx T25 drive, 100% MPI crack inspection, anodized',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '🚲',
+  },
+  {
+    keywords: ['bicycle', 'bike', 'brake', 'disc', 'rotor', 'caliper', 'piston', 'banjo'],
+    industries: ['Cycling', 'Consumer'],
+    category: 'Bicycle Braking System Components',
+    geometry: 'Thin disc rotors with vented/spider webs, precision-machined piston inserts, hollow banjo bolts with sealing washers, multi-position adapters',
+    painPoints: ['High thermal load up to 300C at rotor', 'Brake fluid overheating causing lever fade', 'Pad contamination from corroded pins', 'Weight on rotating unsprung mass', 'Thread galling in aluminum calipers'],
+    alloyId: 'tc4',
+    alloyReason: 'Grade 5 (Ti-6Al-4V) offers high shear strength for rotor bolts, low thermal conductivity (7 W/mK vs 105 for Al) to insulate brake fluid, excellent corrosion resistance.',
+    formId: 'plate',
+    formReason: 'Plate stock for rotor machining and adapter fabrication. Bar stock for bolts, piston inserts, and banjo fittings. All threads rolled for fatigue safety.',
+    process: ['CNC machining of rotor profile/brake track', 'Precision turning of piston Ti inserts', 'Thread rolling of all bolts and banjo fittings', 'Hard anodizing for rotors'],
+    tollServices: ['Shear strength testing of rotor bolts', 'Thermal imaging of brake track', 'Salt spray corrosion testing', 'Pressure testing of banjo bolt assemblies'],
+    pitfalls: ['Rotor brake track thickness +-0.05mm for consistent pad wear — warp >0.1mm causes brake judder', 'Caliper piston Ti insert reduces heat transfer to brake fluid by 7x vs aluminum'],
+    specNote: 'ASTM B348 Grade 5, rolled threads, T25 Torx, 100% MPI + pressure tested',
+    servicePage: '/titanium-cnc-machining-services/cnc-milling-turning/',
+    image: '🛎️',
+  },
+  {
+    keywords: ['bicycle', 'bike', 'mountain', 'suspension', 'shock', 'fork', 'pivot', 'linkage', 'derailleur hanger'],
+    industries: ['Cycling', 'Consumer'],
+    category: 'Bicycle Suspension, Frame Hardware & Linkage',
+    geometry: 'Large-diameter coil springs with variable rate winding, precision hollow axles with stepped bores, complex forged/machined linkage plates, small precision spacer sleeves',
+    painPoints: ['Unsprung mass reducing damper response', 'Pivot bearing preload consistency', 'Shock coil weight (steel is 500g+)', 'Linkage bolt fatigue under bottom-out loads', 'Derailleur hanger alignment for 12-speed'],
+    alloyId: 'tc4',
+    alloyReason: 'Grade 5 (Ti-6Al-4V) for axles, bolts, and hangers. Beta-C titanium for rear shock coils provides linear spring characteristics at 50% weight saving vs steel. Never use aluminum for pivot axles.',
+    formId: 'bar',
+    formReason: 'Bar stock for pivot axles and linkage hardware. Beta-C wire for shock coil winding. SLM 3D printing for custom hangers with optimized topology.',
+    process: ['CNC turning of pivot axles stepped diameters', 'CNC milling of linkage plates', 'Beta-C wire winding + shape setting for coils', 'SLM 3D printing of hangers/linkages'],
+    tollServices: ['Coaxiality measurement of pivot axles <0.02mm', 'Spring rate testing of shock coils', 'Fatigue testing 10^5 cycles', 'CMM alignment of hanger interface'],
+    pitfalls: ['Pivot axle to bearing fit must be H7/h6 transition fit — too tight binds, too loose causes frame creak', 'Derailleur hanger alignment tolerance +-0.1mm for perfect 12-speed indexing'],
+    specNote: 'ASTM B348 Grade 5 / Beta-C Ti wire, rolled threads, 100% dimensional + crack inspection',
+    servicePage: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/',
+    image: '🔩',
+  },
+  {
+    keywords: ['bicycle', 'bike', 'wheel', 'spoke', 'nipple', 'axle', 'pedal', 'saddle', 'seatpost', 'bottle cage'],
+    industries: ['Cycling', 'Consumer'],
+    category: 'Bicycle Wheels, Saddle, Pedals & Accessories',
+    geometry: 'Long thin wire 200-300mm, small hexagonal nipples with internal threading, hollow axles with cam mechanisms, thin-wall tubing for cages/rails, small cleat plates',
+    painPoints: ['Rotational mass 4x more impactful than frame mass', 'Spoke tensile fatigue under road vibration', 'Saddle rail corrosion from sweat/rain', 'Pedal spindle bending under sprint load', 'Bottle cage vibration cracking on gravel'],
+    alloyId: 'ta18',
+    alloyReason: 'Grade 9 (Ti-3Al-2.5V) is ideal for spokes — higher strength than CP-Ti, excellent cold drawability, 40% lighter than steel. Grade 5 for axles and pedal spindles.',
+    formId: 'wire',
+    formReason: 'Wire drawing for spokes and saddle rails. Bar stock for axles and pedal spindles. Tube forming for bottle cages.',
+    process: ['Wire drawing to precise diameter +-0.02mm', 'CNC swaging/j-bend forming of spoke ends', 'CNC turning of axle/spindle profiles', 'Ti tube bending + welding for bottle cages'],
+    tollServices: ['Spoke tensile testing each to 1200N', 'Axle bending fatigue testing 10^6 cycles', 'Saddle rail compression testing 200kg', 'Salt spray corrosion testing 100h ASTM B117'],
+    pitfalls: ['Spoke nipple thread requires MoS2 dry lubricant to prevent galling at 120kgf tension', 'Pedal spindle to crank thread must use anti-seize to prevent cold welding'],
+    specNote: 'ASTM B863 Grade 9 wire / ASTM B348 Grade 5 axles, 100% tensile tested spokes, anodized',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '🚴',
+  },
+
 ];
 
 /* ── Main Component ── */
@@ -800,6 +887,7 @@ export default function ReverseEngineerTool() {
               <option value="Oil & Gas">🛢️ Oil & Gas</option>
               <option value="Defense">🛡️ Defense / Military</option>
               <option value="Consumer">📱 Consumer Electronics</option>
+              <option value="Cycling">🚴 Cycling / Bicycle</option>
               <option value="Other">❓ Other / General</option>
             </select>
             <button
