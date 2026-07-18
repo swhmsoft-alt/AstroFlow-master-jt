@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+export const prerender = true;
+
+const materials = await getCollection('materials');
+
+// Categorize
+const categories = ['Commercially Pure', 'Alpha-Beta Alloy', 'Near-Alpha Alloy', 'Beta Alloy', 'Intermetallic', 'Shape Memory Alloy'];
+const grouped: Record<string, typeof materials> = {};
+for (const cat of categories) {
+  const items = materials.filter(m => m.data.category === cat);
+  if (items.length > 0) grouped[cat] = items;
+}
+
+const matSlug = (title: string) => title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+---
+
+<BaseLayout
+  title="Titanium Materials Library - 20 Alloys | BOZE CNC Ti"
+  description="Browse 20 titanium alloys including Grade 5 Ti-6Al-4V, Grade 23 ELI, Grade 2 CP-Ti, Nitinol, and Beta alloys. Complete mechanical property data."
+>
+  <nav class="border-b" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" style="font-weight:600;color:var(--theme-text);">Materials</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">Titanium Materials Library</h1>
+      <p class="text-lg mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        {materials.length} titanium alloys — from commercially pure grades for chemical processing to advanced beta alloys for aerospace and medical-grade ELI for implants.
+      </p>
+
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        {Object.keys(grouped).map(cat => {
+          const count = grouped[cat].length;
+          const short = {'Commercially Pure':'CP','Alpha-Beta Alloy':'Alpha-Beta','Near-Alpha Alloy':'Near-Alpha','Beta Alloy':'Beta','Intermetallic':'Intermetallic','Shape Memory Alloy':'Shape Memory'}[cat] || cat;
+          return (
+            <a href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`} class="px-4 py-2 text-sm font-medium rounded-full border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-text);">{short} ({count})</a>
+          );
+        })}
+      </div>
+
+      {Object.entries(grouped).map(([cat, items]) => (
+        <div id={cat.toLowerCase().replace(/\s+/g, '-')} class="mb-12">
+          <h2 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{cat}</h2>
+          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            {cat === 'Commercially Pure' ? 'Unalloyed titanium, excellent corrosion resistance and formability.' :
+             cat === 'Alpha-Beta Alloy' ? 'Workhorse alloys balancing strength, toughness, and weldability.' :
+             cat === 'Near-Alpha Alloy' ? 'High-temperature creep resistance for aerospace engines.' :
+             cat === 'Beta Alloy' ? 'Ultra-high strength, excellent spring-back for fasteners.' :
+             cat === 'Intermetallic' ? 'Lightweight, high-temperature capability for turbine applications.' :
+             cat === 'Shape Memory Alloy' ? 'Superelasticity and shape memory effect for medical devices.' : ''}
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {items.map((entry) => {
+              const d = entry.data;
+              const slug = matSlug(d.title);
+              return (
+                <a href={`/products/materials/${slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                  <h3 class="font-bold text-sm" style="color: var(--theme-text);">{d.title}</h3>
+                  <div class="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                    {d.density && <span>Density: {d.density}</span>}
+                    {d.tensileStrength && <span>Tensile: {d.tensileStrength}</span>}
+                    {d.yieldStrength && <span>Yield: {d.yieldStrength}</span>}
+                    {d.elongation && <span>Elong: {d.elongation}</span>}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org", "@type": "CollectionPage",
+    "name": "Titanium Materials Library",
+    "description": `${materials.length} titanium alloys with mechanical properties`
+  })} />
+</BaseLayout>
