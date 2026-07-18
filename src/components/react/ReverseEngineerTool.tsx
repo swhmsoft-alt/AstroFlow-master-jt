@@ -208,7 +208,7 @@ const PART_DB: PartProfile[] = [
     image: '🔊',
   },
   {
-    keywords: ['高尔夫', 'golf', 'head', 'club', 'face', 'bike', 'frame', 'bicycle', 'sports', '赛车'],
+    keywords: ['golf', 'golf club', 'head', 'club', 'face', 'sports', 'tennis', 'racket', 'bat', 'stick', '滑雪'],
     industries: ['Consumer', 'Automotive', 'Other'],
     category: 'Sports & Recreation Equipment',
     geometry: 'Thin-wall contoured shapes (golf club heads, bike frames, tennis racket frames), often with variable wall thickness',
