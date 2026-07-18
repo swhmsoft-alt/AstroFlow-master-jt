@@ -1311,4 +1311,22 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "Cyclic Load"
     ]
   },
+  '/products': {
+    h1: 'Precision CNC Titanium Components Library',
+    subtitle: 'Browse 260+ precision CNC machined titanium components across 60 engineering systems, 12 industries, and 20 alloys. Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications.',
+    badge: '260+ Components · 60 Systems · 12 Industries · 20 Materials',
+    keyMetrics: [
+      { "value": "260+", "label": "Components" },
+      { "value": "60", "label": "Systems" },
+      { "value": "12", "label": "Industries" },
+      { "value": "20", "label": "Materials" }
+    ],
+    entityChips: [
+      "Components",
+      "Systems",
+      "Materials",
+      "Capabilities",
+      "Industries"
+    ]
+  },
 };
