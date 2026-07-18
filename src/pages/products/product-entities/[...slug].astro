@@ -29,7 +29,17 @@ const system = allSystems.find(s => {
 // Try to find material page
 const allMaterials = await getCollection('materials');
 const matSlug = data.material?.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-const material = allMaterials.find(m => matSlug?.includes(m.slug) || m.slug?.includes('grade-5'));
+const matClean = data.material?.toLowerCase().replace(/[^a-z0-9]/g, '');
+const material = allMaterials.find(m => {
+  const mClean = m.data.title?.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (!matClean || !mClean) return false;
+  // Direct include check
+  if (matClean.includes(mClean) || mClean.includes(matClean)) return true;
+  // Token overlap: split into meaningful segments
+  const matTokens = matClean.split(/grade|ti|astm/).filter(Boolean);
+  const mTokens = mClean.split(/grade|ti|astm/).filter(Boolean);
+  return matTokens.some(t => t.length > 3 && mTokens.some(mt => mt.includes(t) || t.includes(mt)));
+});
 
 // Load capabilities (linked, not duplicated)
 const allCaps = await getCollection('capabilities');
