@@ -7,7 +7,7 @@ export const prerender = true;
 export async function getStaticPaths() {
   const entries = await getCollection('industries');
   return entries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.slug || entry.id?.replace('.json','') || undefined },
     props: { entry },
   }));
 }
