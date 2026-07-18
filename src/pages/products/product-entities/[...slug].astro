@@ -14,16 +14,35 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { data } = entry;
-const seoTitle = data.seoTitle || `${data.title} | ${data.material} | Titanium Component | BOZE CNC Ti`;
-const seoDesc = data.seoDescription || `${data.title} - ${data.function}. Manufactured from ${data.material} via ${(data.process || []).join(', ')}. AS9100D & ISO 9001 certified.`;
 
-// Load related
+const seoTitle = data.seoTitle || `${data.title} | ${data.material} | BOZE CNC Ti`;
+const seoDesc = data.seoDescription || `${data.title} — ${data.function}. Engineering specs, failure analysis, and manufacturing process. AS9100D & ISO 9001.`;
+
+// Load related entities (shared knowledge nodes)
 const allSystems = await getCollection('systems');
-const system = allSystems.find(s => s.slug === data.system?.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, ''));
-const allCaps = (await getCollection('capabilities')).filter(c => data.relatedCapabilities?.includes(c.slug));
-const allProducts = (await getCollection('product-entities')).filter(p => data.relatedProducts?.includes(p.slug));
+const systemSlug = data.system?.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+const system = allSystems.find(s => {
+  const expected = data.system?.toLowerCase().replace(/ & /g, '-').replace(/[/,()]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  return s.slug === expected;
+});
 
+// Try to find material page
+const allMaterials = await getCollection('materials');
+const matSlug = data.material?.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+const material = allMaterials.find(m => matSlug?.includes(m.slug) || m.slug?.includes('grade-5'));
+
+// Load capabilities (linked, not duplicated)
+const allCaps = await getCollection('capabilities');
+const relatedCaps = allCaps.filter(c => data.relatedCapabilities?.some((rc: string) => c.slug.includes(rc.replace(/[^a-z0-9-]/g, ''))));
+
+// Related products
+const allProducts = await getCollection('product-entities');
+const relatedProducts = allProducts.filter(p => data.relatedProducts?.includes(p.slug));
+
+// FAQ
 const faqData = data.faq || [];
+
+// JSON-LD
 const schemaProduct = {
   "@context": "https://schema.org",
   "@graph": [
@@ -33,15 +52,14 @@ const schemaProduct = {
       "description": data.function,
       "category": data.category,
       "material": data.material,
-      "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" }
+      "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" },
+      ...(system ? { "isRelatedTo": { "@type": "Product", "name": system.data.title } } : {})
     },
     {
       "@type": "HowTo",
-      "name": `How to Manufacture ${data.title}`,
-      "step": (data.process || []).map((p, i) => ({
-        "@type": "HowToStep",
-        "position": i + 1,
-        "text": p
+      "name": `Manufacturing ${data.title}`,
+      "step": (data.process || []).map((p: string, i: number) => ({
+        "@type": "HowToStep", "position": i + 1, "text": p
       }))
     }
   ]
@@ -49,9 +67,8 @@ const schemaProduct = {
 if (faqData.length > 0) {
   schemaProduct["@graph"].push({
     "@type": "FAQPage",
-    "mainEntity": faqData.map(f => ({
-      "@type": "Question",
-      "name": f.q,
+    "mainEntity": faqData.map((f: any) => ({
+      "@type": "Question", "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
     }))
   });
@@ -59,119 +76,180 @@ if (faqData.length > 0) {
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
-  <nav class="border-b" style="background: var(--theme-surface);">
+  <!-- Breadcrumb -->
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <ol class="flex items-center space-x-2 py-4 text-sm">
-        <li><a href="/" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Home</a> / </li>
-        <li><a href="/products" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Products</a> / </li>
-        <li><span class="font-semibold" style="color: var(--theme-text);">{data.title}</span></li>
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products/product-entities/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Component Library</span></a>
+          <meta itemprop="position" content="3" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" style="color: var(--theme-text); font-weight:600;">{data.title}</span>
+          <meta itemprop="position" content="4" />
+        </li>
       </ol>
     </div>
   </nav>
 
-  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
+  <!-- ── SECTION 1: Quick Spec Bar (lean, 70/30: 70% product-specific, 30% shared links) ── -->
+  <section class="py-10 lg:py-12" style="background: var(--theme-surface);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <div>
-          <h1 class="text-3xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">{data.title}</h1>
-          <p class="text-lg mb-8" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.function}</p>
-          
-          <table class="w-full text-sm">
-            <tbody>
-              <tr><td class="py-2 font-semibold" style="color: var(--theme-text);">Category</td><td style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.category}</td></tr>
-              <tr><td class="py-2 font-semibold" style="color: var(--theme-text);">Industry</td><td style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.industry}</td></tr>
-              <tr><td class="py-2 font-semibold" style="color: var(--theme-text);">Material</td><td style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.material}</td></tr>
-              <tr><td class="py-2 font-semibold" style="color: var(--theme-text);">Process</td><td style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{(data.process || []).join(', ')}</td></tr>
-              {data.surfaceTreatment && data.surfaceTreatment.length > 0 && (
-                <tr><td class="py-2 font-semibold" style="color: var(--theme-text);">Surface</td><td style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.surfaceTreatment.join(', ')}</td></tr>
-              )}
-              {data.standards && data.standards.length > 0 && (
-                <tr><td class="py-2 font-semibold" style="color: var(--theme-text);">Standards</td><td style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.standards.join(', ')}</td></tr>
-              )}
-            </tbody>
-          </table>
+      <div class="flex flex-wrap items-start gap-2 mb-3">
+        {system && (
+          <a href={`/products/systems/${system.slug}/`} class="text-xs font-semibold px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+            {data.industry} → {system.data.title}
+          </a>
+        )}
+        <span class="text-xs px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+          {data.category}
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">{data.title}</h1>
+      <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.function}</p>
+      
+      <!-- Quick Spec Bar — essential specs only -->
+      <div class="mt-6 flex flex-wrap gap-4 text-sm">
+        {data.material && (
+          <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Material</span>
+            <a href={material ? `/products/materials/${material.slug}/` : '#'} class="font-semibold" style="color: var(--theme-primary);">{data.material.replace(/^(\w+\s\w+)(.*)/, '$1')} →</a>
+          </div>
+        )}
+        {data.process?.[0] && (
+          <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Process</span>
+            <span class="font-semibold" style="color: var(--theme-text);">{data.process[0].split('(')[0].trim()}</span>
+          </div>
+        )}
+        {data.inspection?.[0] && (
+          <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Inspection</span>
+            <span class="font-semibold" style="color: var(--theme-text);">{data.inspection[0].split('(')[0].trim()}</span>
+          </div>
+        )}
+      </div>
+      <!-- Aliases -->
+      {data.aliases && data.aliases.length > 0 && (
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Also known as:</span>
+          {data.aliases.map((a: string) => (
+            <span class="text-xs px-2 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-text) 6%, transparent); color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{a}</span>
+          ))}
         </div>
-        <div class="p-8 rounded-2xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Why Titanium?</h2>
-          <p style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.alloyReason}</p>
-          
-          <h3 class="font-bold mt-6 mb-2" style="color: var(--theme-text);">Manufacturing Process</h3>
-          <ul class="space-y-1">
-            {(data.process || []).map((p: string) => (
-              <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                <span style="color: var(--theme-primary);">▸</span> {p}
-              </li>
-            ))}
-          </ul>
+      )}
+    </div>
+  </section>
 
-          {data.inspection && data.inspection.length > 0 && (
-            <>
-              <h3 class="font-bold mt-6 mb-2" style="color: var(--theme-text);">Inspection</h3>
-              <ul class="space-y-1">
-                {data.inspection.map((i: string) => (
-                  <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                    <span style="color: var(--theme-primary);">▸</span> {i}
-                  </li>
-                ))}
-              </ul>
-            </>
+  <!-- ── SECTION 2: Product-Specific Engineering Depth (70% unique) ── -->
+  <section class="py-12 lg:py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10">
+        <!-- Left: Engineering Challenges + Why Titanium -->
+        <div>
+          <!-- Why Titanium (product-specific, 2-3 sentences → link to material page) -->
+          <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Why Titanium</h2>
+          <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.alloyReason}</p>
+          {material && (
+            <a href={`/products/materials/${material.slug}/`} class="text-sm font-medium inline-flex items-center gap-1" style="color: var(--theme-primary);">
+              Full {data.material} specifications →
+            </a>
           )}
 
+          <!-- Engineering Challenges (product-specific) -->
           {data.commonFailures && data.commonFailures.length > 0 && (
-            <>
-              <h3 class="font-bold mt-6 mb-2" style="color: var(--theme-text);">Common Failures</h3>
-              <ul class="space-y-1">
-                {data.commonFailures.map((f: string) => (
+            <div class="mt-8">
+              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Engineering Challenges</h2>
+              <div class="space-y-4">
+                {data.commonFailures.slice(0, 3).map((f: string, i: number) => (
+                  <div class="p-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                    <div class="flex items-start gap-3">
+                      <span class="text-sm mt-0.5" style="color: var(--theme-primary);">{['①','②','③','④','⑤'][i]}</span>
+                      <div>
+                        <p class="text-sm" style="color: var(--theme-text);">{f}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <!-- Right: Manufacturing + Inspection (product-specific, linked to shared nodes) -->
+        <div>
+          <!-- Manufacturing Process (product-specific notes, not generic capability description) -->
+          <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Manufacturing Process</h2>
+          <ol class="space-y-3">
+            {data.process?.slice(0, 5).map((p: string, i: number) => {
+              const cap = relatedCaps.find(c => c.slug.includes(p.toLowerCase().split('(')[0].trim().replace(/[^a-z0-9-]/g, '')));
+              return (
+                <li class="flex items-start gap-3">
+                  <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{i + 1}</span>
+                  <div>
+                    <p class="text-sm font-semibold" style="color: var(--theme-text);">{p}</p>
+                    {cap && (
+                      <a href={`/products/capabilities/${cap.slug}/`} class="text-xs" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">Learn about {cap.data.title} →</a>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+
+          <!-- Inspection (product-specific) -->
+          {data.inspection && data.inspection.length > 0 && (
+            <div class="mt-8">
+              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Inspection & Quality</h2>
+              <ul class="space-y-2">
+                {data.inspection.slice(0, 4).map((i: string) => (
                   <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                    <span style="color: var(--theme-primary);">▸</span> {f}
+                    <span style="color: var(--theme-primary);">✓</span> {i}
                   </li>
                 ))}
               </ul>
-            </>
+            </div>
+          )}
+
+          <!-- Surface Treatment -->
+          {data.surfaceTreatment && data.surfaceTreatment.length > 0 && (
+            <div class="mt-8">
+              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Surface Treatment</h2>
+              <ul class="space-y-2">
+                {data.surfaceTreatment.slice(0, 3).map((s: string) => (
+                  <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                    <span style="color: var(--theme-primary);">▸</span> {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </div>
     </div>
   </section>
 
-  {allCaps.length > 0 && (
-    <section class="py-12" style="background: var(--theme-bg);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold mb-6" style="color: var(--theme-text);">Related Capabilities</h2>
-        <div class="flex flex-wrap gap-3">
-          {allCaps.map((c) => (
-            <a href={`/products/capabilities/${c.slug}/`} class="px-4 py-2 rounded-full text-sm border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">{c.data.title}</a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  {allProducts.length > 0 && (
-    <section class="py-12" style="background: var(--theme-surface);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold mb-6" style="color: var(--theme-text);">Related Components</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {allProducts.map((p) => (
-            <a href={`/products/product-entities/${p.slug}/`} class="block p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <h3 class="font-semibold" style="color: var(--theme-text);">{p.data.title}</h3>
-              <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.data.function?.slice(0, 100)}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
+  <!-- ── SECTION 3: FAQ (product-specific only) ── -->
   {faqData.length > 0 && (
-    <section class="py-16" style="background: var(--theme-bg);">
+    <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">FAQ</h2>
-        <div class="space-y-4">
+        <h2 class="text-xl font-bold mb-8" style="color: var(--theme-text);">FAQ — {data.title}</h2>
+        <div class="space-y-3">
           {faqData.map((item: {q:string, a:string}) => (
-            <details class="p-5 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <summary class="font-semibold cursor-pointer" style="color: var(--theme-text);">{item.q}</summary>
-              <p class="mt-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{item.a}</p>
+            <details class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <summary class="font-semibold cursor-pointer text-sm" style="color: var(--theme-text);">{item.q}</summary>
+              <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{item.a}</p>
             </details>
           ))}
         </div>
@@ -179,9 +257,61 @@ if (faqData.length > 0) {
     </section>
   )}
 
-  <section class="py-16 text-center" style="background: var(--theme-surface);">
+  <!-- ── SECTION 4: Shared Knowledge Links (30% — lean, no duplication) ── -->
+  <section class="py-10 border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">Request Quote for {data.title}</a>
+      <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Knowledge</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {data.material && material && (
+          <a href={`/products/materials/${material.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <p class="text-xs font-semibold" style="color: var(--theme-primary);">Material</p>
+            <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{data.material.replace(/\(.*\)/, '').trim()}</p>
+          </a>
+        )}
+        {relatedCaps.slice(0, 3).map(c => (
+          <a href={`/products/capabilities/${c.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <p class="text-xs font-semibold" style="color: var(--theme-primary);">Capability</p>
+            <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{c.data.title}</p>
+            <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{c.data.category}</p>
+          </a>
+        ))}
+        {system && (
+          <a href={`/products/systems/${system.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <p class="text-xs font-semibold" style="color: var(--theme-primary);">System</p>
+            <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{system.data.title}</p>
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5: Related Components (same system) ── -->
+  {relatedProducts.length > 0 && (
+    <section class="py-10" style="background: var(--theme-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Components</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          {relatedProducts.slice(0, 10).map(p => (
+            <a href={`/products/product-entities/${p.slug}/`} class="block p-3 rounded-xl border text-sm" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <p class="font-semibold leading-tight" style="color: var(--theme-text);">{p.data.title}</p>
+              <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{p.data.material?.split(' ').slice(0, 2).join(' ')}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── SECTION 6: CTA ── -->
+  <section class="py-12 text-center" style="background: var(--theme-bg);">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        Need a custom {data.title.toLowerCase()}? Send us your drawings — our engineering team responds within 24 hours.
+      </p>
+      <a href="/contact" class="inline-flex items-center px-6 py-3 text-sm font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
+        Request Quote for {data.title}
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
     </div>
   </section>
 
