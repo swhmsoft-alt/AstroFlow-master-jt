@@ -41,6 +41,7 @@ const ALLOYS: Record<string, string> = {
   'ti65': 'Ti-65 (Ti-6Al-4Sn-9Zr-1Mo-1W-0.3Si) — High-temp titanium for 600-650C service',
   'ti52sn': 'Ti-5Al-2.5Sn ELI — Near-alpha alloy, cryogenic grade, excellent low-temp toughness',
   'nitinol': 'Nitinol (Ni-Ti Shape Memory Alloy) — Superelastic, shape memory effect, high damping',
+  'ti67nb': 'Ti-6Al-7Nb (ASTM F1295) — Vanadium-free medical alloy, niobium-substituted, for pediatric and regulatory-critical implants',
 };
 
 const FORMS: Record<string, string> = {
@@ -1012,6 +1013,24 @@ const PART_DB: PartProfile[] = [
     specNote: 'AMS 4928 (Grade 5) / MIL-T-9046 (Grade 23 ELI), vacuum-annealed, 100% UT + hydrostatic tested + magnetic permeability <1.01, DNV/ABS certified',
     servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
     image: '🌊',
+  },
+
+  {
+    keywords: ['spine', '脊柱', 'trauma', '创伤', 'fracture', '骨折', 'intramedullary', '髓内', 'bone plate', '接骨板', 'pedicle', '椎弓根', 'cage', '融合器', 'nail', '钉', 'cannulated', '空心'],
+    industries: ['Medical Device'],
+    category: 'Trauma & Spine Fixation Hardware',
+    geometry: 'Intramedullary nails with proximal/distal locking holes, pedicle screw tulip heads for rod connection, interbody fusion cages with lattice architecture, craniofacial reconstruction mesh, cannulated bone screws with guidewire channels, polyaxial connection rods',
+    painPoints: ['Stress shielding from implant-to-bone stiffness mismatch causing osteopenia', 'Screw pullout in osteoporotic bone with low bone mineral density', 'MRI artifact generation from ferrous alloys obscuring post-op imaging', 'Fatigue fracture of nails under early patient weight-bearing protocol', 'Screw back-out from cyclic spinal loading causing loss of correction'],
+    alloyId: 'tc4eli',
+    alloyReason: 'Ti-6Al-4V ELI (ASTM F136 / ISO 5832-3) is mandatory for all permanent spinal and trauma implants. Oxygen <0.13%, iron <0.25% for maximum fracture toughness. Grade 9 (Ti-3Al-2.5V) for spinal rods requiring intraoperative bendability with spring-back. Ti-6Al-7Nb (ASTM F1295) for vanadium-free pediatric implants.',
+    formId: 'bar',
+    formReason: 'VAR-melted bar stock for nails and screws via gun-drilling + swiss turning. LPBF 3D printing for interbody cages with porous lattice. Precision sheet stamping + chemical etching for craniofacial mesh. Centerless ground bar for spinal rods.',
+    process: ['Vacuum arc remelting (VAR) of ELI-grade ingot', 'Gun-drilling of intramedullary nails + cannulated screws', 'LPBF 3D printing of porous fusion cages', 'Thread rolling of pedicle screws (never cut threads)', 'Passivation + Class 10,000 cleanroom ultrasonic wash'],
+    tollServices: ['100% dimensional inspection (CMM)', 'Mechanical testing per ASTM F543 (screw torque)', 'MRI artifact testing (3T phantom)', 'Surface roughness measurement (Ra 1.0-3.0um for osseointegration)', 'Sterilization validation (gamma/EtO)'],
+    pitfalls: ['Cannulated screw guidewire channel concentricity must be <0.1mm TIR to prevent wire binding during insertion', 'Pedicle screw tulip head must accept rods up to +-15 degrees angulation for multi-level constructs', 'Interbody cage porosity must be 60-80% with pore size 300-600um for optimal bone ingrowth — verified by micro-CT'],
+    specNote: 'ASTM F136 / ISO 5832-3 Ti-6Al-4V ELI, 100% dimensional + mechanical tested, cleanroom packed (ISO 7), MTC traceable to VAR ingot',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '🧱',
   },
 
 ];
