@@ -1051,6 +1051,41 @@ const PART_DB: PartProfile[] = [
     image: '⚡',
   },
 
+  {
+    keywords: ['smartwatch', 'watch', 'bezel', 'earbud', '耳塞', 'earphone', 'action camera', '运动相机', 'lens', 'keyboard', '键盘', 'keycap', 'SSD', 'enclosure', 'tray', 'SIM', 'sim卡', 'stylus', '触控笔', 'smart glasses', '眼镜', 'mouse', '鼠标'],
+    industries: ['Consumer'],
+    category: 'Premium Consumer Electronics & Wearables',
+    geometry: 'Thin-wall contoured watch bezels and smart glasses temple arms, precision micro-perforated earbud grilles, action camera lens protective bezels, artisan keycap bases with complex internal cavities, SSD armor enclosures, micro SIM tray ejector pins, stylus pen thin-wall tubes, 3D-printed ergonomic mouse shells with lattice structures',
+    painPoints: ['Skin oil smudging on matte titanium surfaces (fingerprint attraction)', 'PVD color inconsistency across production batches (Delta-E >1.0)', 'Thread galling when Ti fasteners mate with aluminum frames', 'Earwax/sweat acid corrosion on in-ear components', 'Drop impact damage to internal electronics from bezel deformation'],
+    alloyId: 'tc4',
+    alloyReason: 'Grade 5 (Ti-6Al-4V) for watch bezels, phone mid-frames, keycaps, and mouse shells requiring high hardness and PVD coating compatibility. Beta-Ti (Ti-15-3-3-3) for foldable phone hinges and smart glasses temple arms requiring superelasticity with zero fatigue over 500k cycles. Grade 2 for earbud grilles and SSD enclosures requiring cost-effective corrosion resistance.',
+    formId: 'bar',
+    formReason: 'Bar/plate stock for CNC-machined watch bezels and keycaps. MIM for complex foldable hinges. Precision chemical micro-etching for earbud grilles. Sheet stamping for SSD enclosures. SLM 3D printing for custom mouse shells. All visible parts must receive oleophobic nano-coating (water contact angle >110 deg, 5000-cycle steel wool test).',
+    process: ['CNC milling + diamond-cut beveling of watch bezels', 'Metal injection molding (MIM) of foldable hinges', 'Precision chemical micro-etching of earbud grilles', 'PVD coating with closed-loop gas mass-flow (Delta-E <=1.0)', 'Oleophobic nano-coating via electron beam evaporation'],
+    tollServices: ['Water contact angle measurement (>110 deg)', 'PVD color spectrophotometer audit (Delta-E <=1.0)', 'Steel wool abrasion test (5000 cycles)', 'Drop impact testing (1.5m onto concrete)', 'Folding cycle test (200k+ cycles for hinges)'],
+    pitfalls: ['PVD color batch consistency requires closed-loop gas mass-flow controller for N2/CH4 — manual gas valves cause visible tint shifts rejected by premium brands', 'Oleophobic coating thickness must be <1um — thicker layers create visible rainbow interference patterns on matte surfaces'],
+    specNote: 'ASTM B348 Grade 5 / Beta-Ti per customer, PVD coated per ISO 27874, oleophobic AFP nano-coating, 100% color spectrophotometer + drop impact tested',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '📱',
+  },
+  {
+    keywords: ['outdoor', '户外', 'backpack', '背包', 'crampon', '冰爪', 'knife', '刀', 'folding knife', 'water filter', '滤水', 'camping stove', '炉头', 'vacuum flask', '真空杯', 'ski', '滑雪', 'scuba', '潜水', 'fishing', '钓鱼', 'tent', '帐篷', 'tent stake', 'compass', '指南针'],
+    industries: ['Consumer', 'Other'],
+    category: 'High-End Outdoor & Adventure Gear',
+    geometry: 'Thin-wall seamless tube for backpack frames, precision stamped/die-cut spike plates for crampons, CNC-profiled folding knife framelock scales with integral lock bar, centerless-ground water filter pump rods, stamped/micro-perforated camping stove burner rings, deep-drawn vacuum flask inner liners, turned ski binding pins, wire-formed scuba D-rings, Swiss-turned fishing reel spindles, forged/tapered tent stakes, turned compass bezels',
+    painPoints: ['Sub-zero embrittlement of steel at -40C arctic conditions', 'Saltwater corrosion of gear for coastal/marine users', 'Weight penalty of steel on multi-day backpacking trips', 'String (knife blade) play from worn pivot bushings', 'Flavor contamination (metallic taste) from stainless steel water bottles'],
+    alloyId: 'tc4',
+    alloyReason: 'Grade 5 (Ti-6Al-4V) for crampons, knife scales, pump rods, ski binding pins, fishing reel spindles, and tent stakes — exceptional strength-to-weight, zero sub-zero embrittlement, and complete corrosion resistance. Grade 9 for backpack frame tubing requiring flexural compliance. Grade 1 for vacuum flask liners requiring deep drawability without cracking. Beta-Ti for carabiner gates requiring monolithic spring-arm design.',
+    formId: 'bar',
+    formReason: 'Seamless tube for backpack frames via bending + welding. Laser sheet cutting + die stamping for crampons. CNC profiling + surface blasting for knife scales. Centerless grinding for pump rods. Deep drawing for flask liners. Forged rod tapering for tent stakes.',
+    process: ['Seamless tube bending for backpack frames', 'Laser cutting + die stamping of crampon spikes', 'CNC profiling + frame lock milling for folding knives', 'Deep drawing of vacuum flask liners (Grade 1 Ti)', 'Forged rod tapering + tip forming for tent stakes'],
+    tollServices: ['Sub-zero impact testing (-40C Charpy)', 'Salt spray corrosion testing (1000h ASTM B117)', 'Drop/impact testing of knife lock-up', 'Flavor leaching test (ISO 10304 for metal ions)', 'Field durability testing (customer-specified)'],
+    pitfalls: ['Folding knife pivot bushing wear must be <0.05mm after 1000 cycles — Grade 5 Ti bushings last 10x longer than brass', 'Vacuum flask inner liner wall thickness must be >0.3mm for deep draw — thinner causes cracking at the radius corners'],
+    specNote: 'ASTM B348 Grade 5 / Grade 9 / Grade 1 per component, 100% dimensional + corrosion tested, passivated per ASTM F86',
+    servicePage: '/titanium-cnc-machining-services/custom-industrial-components/',
+    image: '🏔️',
+  },
+
 ];
 
 /* ── Main Component ── */
