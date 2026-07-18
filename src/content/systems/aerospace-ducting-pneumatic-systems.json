@@ -13,7 +13,11 @@
     "Process: TIG orbital welding"
   ],
   "comparisonNotes": "Standards: AMS 4934 Grade 9 seamless tube, annealed, 100% X-ray of welds + helium leak test",
-  "productEntities": [],
+  "productEntities": [
+    "titanium-bleed-air-duct",
+    "titanium-engine-pylon-bracket",
+    "titanium-environmental-control-duct"
+  ],
   "relatedCapabilities": [
     "CNC tube bending",
     "End forming / flaring",

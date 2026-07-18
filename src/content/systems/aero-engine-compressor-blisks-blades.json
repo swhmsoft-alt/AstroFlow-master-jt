@@ -13,7 +13,12 @@
     "Process: Contour inspection (CMM/bluelight)"
   ],
   "comparisonNotes": "Standards: AMS 4919 Ti-6242, forged + solution-treated + aged, 100% FPI + CT scan of aerofoils",
-  "productEntities": [],
+  "productEntities": [
+    "titanium-compressor-blade",
+    "titanium-compressor-blisk",
+    "titanium-compressor-casing-segment",
+    "titanium-lpt-blade-gamma-tial"
+  ],
   "relatedCapabilities": [
     "Isothermal die forging",
     "5-axis CNC milling of aerofoils",

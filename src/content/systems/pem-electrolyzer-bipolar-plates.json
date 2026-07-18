@@ -13,7 +13,10 @@
     "Process: PVD coating (Pt or Au)"
   ],
   "comparisonNotes": "Standards: ASTM B265 Grade 1 sheet, Pt-coated (0.5-2um), contact resistance <10 mohm.cm2@1N/cm2, 100% leak tested",
-  "productEntities": [],
+  "productEntities": [
+    "titanium-pem-bipolar-plate",
+    "titanium-pem-gas-diffusion-layer"
+  ],
   "relatedCapabilities": [
     "Sheet stamping / chemical etching of flow fields",
     "Laser cutting of port holes",
