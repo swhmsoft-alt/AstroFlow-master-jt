@@ -10,11 +10,12 @@
   "category": "Drivetrain Hardware",
   "function": "Chainring fixing bolt set (M6)",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 (Ti-6Al-4V) provides ideal wear resistance, fatigue strength, and 40% weight saving vs steel for drivetrain components. Grade 9 for fasteners requiring cold heading.",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
-    "CNC machining of tooth profile",
-    "Thread rolling",
-    "Swiss-type turning"
+    "Cold heading",
+    "Thread rolling (DIN 13-1, 6g)",
+    "Heat treatment (STA)",
+    "Passivation ASTM F86"
   ],
   "surfaceTreatment": [
     "Passivation ASTM F86"
@@ -24,8 +25,9 @@
     "Hardness testing"
   ],
   "commonFailures": [
-    "Chainring tooth profile must match chain roller diameter to +-0.05mm for silent shifting",
-    "BB spindle taper requires +-0.01mm concentricity for bearing preload accuracy"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -34,28 +36,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium chainring bolt?",
-      "a": "Grade 5 (Ti-6Al-4V) provides ideal wear resistance, fatigue strength, and 40% weight saving vs steel for drivetrain components. Grade 9 for fasteners requiring cold heading."
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium chainring bolt?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium chainring bolt manufactured?",
-      "a": "A typical titanium chainring bolt is manufactured using CNC machining of tooth profile; Thread rolling; Swiss-type turning. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium chainring bolt is manufactured using CNC machining of tooth profile; Thread rolling; Swiss-type turning. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium chainring bolt?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Cut (machined) threads (reduces fatigue life by 200% due to interrupted grain flow)."
     },
     {
       "q": "What standards apply to titanium chainring bolt?",
-      "a": "Titanium Chainring Bolt components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Chainring Bolt components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium chainring bolt?",
-      "a": "Common failure modes include Chainring tooth profile must match chain roller diameter to +-0.05mm for silent shifting; BB spindle taper requires +-0.01mm concentricity for bearing preload accuracy. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium chainring bolt?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium chainring bolt?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

@@ -10,7 +10,7 @@
   "category": "Wearable Hardware",
   "function": "Smart glasses hinged temple core arm (Beta-Ti)",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 (Ti-6Al-4V) for watch bezels, phone mid-frames, keycaps, and mouse shells requiring high hardness and PVD coating compatibility. Beta-Ti (Ti-15-3-3-3) for foldable phone hinges and smart glasses temple arms requiring superelasticity with zero fatigue over 500k cycles. Grade 2 for earbud gril",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
     "CNC milling",
     "Diamond-cut beveling",
@@ -27,8 +27,9 @@
     "Steel wool abrasion (5000 cycles)"
   ],
   "commonFailures": [
-    "PVD color batch consistency requires closed-loop gas mass-flow controller for N2/CH4 — manual gas valves cause visible tint shifts rejected by premium brands",
-    "Oleophobic coating thickness must be <1um — thicker layers create visible rainbow interference patterns on matte surfaces"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -37,28 +38,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium smart glasses temple arm?",
-      "a": "Grade 5 (Ti-6Al-4V) for watch bezels, phone mid-frames, keycaps, and mouse shells requiring high hardness and PVD coating compatibility. Beta-Ti (Ti-15-3-3-3) for foldable phone hinges and smart glasses temple arms requiring superelasticity with zero fatigue over 500k cycles. Grade 2 for earbud gril"
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium smart glasses temple arm?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium smart glasses temple arm manufactured?",
-      "a": "A typical titanium smart glasses temple arm is manufactured using CNC milling; Diamond-cut beveling; PVD coating (ISO 27874, Delta-E <=1.0); Oleophobic AFP nano-coating. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium smart glasses temple arm is manufactured using CNC milling; Diamond-cut beveling; PVD coating (ISO 27874, Delta-E <=1.0); Oleophobic AFP nano-coating. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium smart glasses temple arm?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Manual machining (lower precision, longer setup time)."
     },
     {
       "q": "What standards apply to titanium smart glasses temple arm?",
-      "a": "Titanium Smart Glasses Temple Arm components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Smart Glasses Temple Arm components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium smart glasses temple arm?",
-      "a": "Common failure modes include PVD color batch consistency requires closed-loop gas mass-flow controller for N2/CH4 — manual gas valves cause visible tint shifts rejected by premium brands; Oleophobic coating thickness must be <1um — thicker layers create visible rainbow interference patterns on matte surfaces. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium smart glasses temple arm?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium smart glasses temple arm?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

@@ -10,7 +10,7 @@
   "category": "Plating Rack",
   "function": "Spring-loaded spline contact (V-prong) for PCB rack",
   "material": "Grade 2 CP-Ti",
-  "alloyReason": "Grade 2 CP-Ti offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium plating rack spline.",
+  "alloyReason": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine components where corrosion resistance is the primary requirement.",
   "process": [
     "Expanded mesh forming",
     "TIG welding (ERTi-2)",
@@ -25,7 +25,11 @@
     "Dimensional check",
     "Electrical continuity test"
   ],
-  "commonFailures": [],
+  "commonFailures": [
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+  ],
   "designConsiderations": [],
   "standards": [
     "ASTM B348",
@@ -34,28 +38,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium plating rack spline?",
-      "a": "Grade 2 CP-Ti offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium plating rack spline."
+      "q": "Why use Grade 2 CP-Ti for titanium plating rack spline?",
+      "a": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine c"
     },
     {
       "q": "How is a titanium plating rack spline manufactured?",
-      "a": "A typical titanium plating rack spline is manufactured using Expanded mesh forming; TIG welding (ERTi-2); Sheet metal bending; CNC drilling. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium plating rack spline is manufactured using Expanded mesh forming; TIG welding (ERTi-2); Sheet metal bending; CNC drilling. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 2 CP-Ti for titanium plating rack spline?",
-      "a": "Stainless steel (corrosion risk), carbon steel (rapid rusting), plastic (low strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Laser welding (higher capital cost, limited wall thickness capability)."
     },
     {
       "q": "What standards apply to titanium plating rack spline?",
-      "a": "Titanium Plating Rack Spline components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Plating Rack Spline components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium plating rack spline?",
-      "a": "With proper material selection (Grade 5 Ti-6Al-4V) and manufacturing process control (thread rolling, heat treatment), titanium titanium plating rack spline components exhibit excellent fatigue life and corrosion resistance in service."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium plating rack spline?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium plating rack spline?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

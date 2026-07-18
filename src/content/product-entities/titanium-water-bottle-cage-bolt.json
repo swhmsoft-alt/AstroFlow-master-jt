@@ -10,12 +10,12 @@
   "category": "Accessories",
   "function": "M5x12mm bottle cage mounting frame screw",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 9 (Ti-3Al-2.5V) is ideal for spokes — higher strength than CP-Ti, excellent cold drawability, 40% lighter than steel. Grade 5 for axles and pedal spindles.",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
-    "Wire drawing",
-    "CNC swaging",
     "CNC turning",
-    "Thread rolling"
+    "Thread rolling (DIN 13-1, 6g)",
+    "Hex socket broaching",
+    "Passivation ASTM F86"
   ],
   "surfaceTreatment": [
     "Passivation ASTM F86"
@@ -25,8 +25,9 @@
     "Salt spray ASTM B117"
   ],
   "commonFailures": [
-    "Spoke nipple thread requires MoS2 dry lubricant to prevent galling at 120kgf tension",
-    "Pedal spindle to crank thread must use anti-seize to prevent cold welding"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -35,28 +36,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium water bottle cage bolt?",
-      "a": "Grade 9 (Ti-3Al-2.5V) is ideal for spokes — higher strength than CP-Ti, excellent cold drawability, 40% lighter than steel. Grade 5 for axles and pedal spindles."
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium water bottle cage bolt?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium water bottle cage bolt manufactured?",
-      "a": "A typical titanium water bottle cage bolt is manufactured using Wire drawing; CNC swaging; CNC turning; Thread rolling. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium water bottle cage bolt is manufactured using Wire drawing; CNC swaging; CNC turning; Thread rolling. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium water bottle cage bolt?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Centerless grinding from bar stock (higher material waste, longer lead time)."
     },
     {
       "q": "What standards apply to titanium water bottle cage bolt?",
-      "a": "Titanium Water Bottle Cage Bolt components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Water Bottle Cage Bolt components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium water bottle cage bolt?",
-      "a": "Common failure modes include Spoke nipple thread requires MoS2 dry lubricant to prevent galling at 120kgf tension; Pedal spindle to crank thread must use anti-seize to prevent cold welding. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium water bottle cage bolt?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium water bottle cage bolt?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

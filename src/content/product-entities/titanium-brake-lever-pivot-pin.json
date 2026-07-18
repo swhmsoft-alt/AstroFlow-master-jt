@@ -10,13 +10,14 @@
   "category": "Brake Control Hardware",
   "function": "Brake lever pivot pin for shift/brake lever assembly",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 (Ti-6Al-4V) offers high shear strength for rotor bolts, ultra-low thermal conductivity (7 W/mK vs 105 for Al) to insulate brake fluid — critical for preventing brake fade on long descents. Caliper piston Ti-inserts act as thermal barriers. All safety-critical bolts must use rolled threads (n",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
     "Hot forging",
     "CNC turning",
     "Thread rolling (DIN 13-1 / ISO 965-2, 6g)"
   ],
   "surfaceTreatment": [
+    "Hard anodizing (AMS 2488)",
     "Passivation ASTM F86"
   ],
   "inspection": [
@@ -26,8 +27,9 @@
     "Torque-to-tension verification"
   ],
   "commonFailures": [
-    "Rotor brake track thickness +-0.05mm for consistent pad wear — warp >0.1mm causes brake judder",
-    "Caliper piston Ti insert reduces heat transfer to brake fluid by 7x vs aluminum"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -36,28 +38,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium brake lever pivot pin?",
-      "a": "Grade 5 (Ti-6Al-4V) offers high shear strength for rotor bolts, ultra-low thermal conductivity (7 W/mK vs 105 for Al) to insulate brake fluid — critical for preventing brake fade on long descents. Caliper piston Ti-inserts act as thermal barriers. All safety-critical bolts must use rolled threads (n"
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium brake lever pivot pin?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium brake lever pivot pin manufactured?",
-      "a": "A typical titanium brake lever pivot pin is manufactured using Hot forging; CNC turning; Thread rolling (DIN 13-1 / ISO 965-2, 6g). Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium brake lever pivot pin is manufactured using Hot forging; CNC turning; Thread rolling (DIN 13-1 / ISO 965-2, 6g). BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium brake lever pivot pin?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium brake lever pivot pin?",
-      "a": "Titanium Brake Lever Pivot Pin components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Brake Lever Pivot Pin components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium brake lever pivot pin?",
-      "a": "Common failure modes include Rotor brake track thickness +-0.05mm for consistent pad wear — warp >0.1mm causes brake judder; Caliper piston Ti insert reduces heat transfer to brake fluid by 7x vs aluminum. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium brake lever pivot pin?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium brake lever pivot pin?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

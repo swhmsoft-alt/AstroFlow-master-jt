@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const entities = await getCollection('product-entities');
+const systems = await getCollection('systems');
+const industries = await getCollection('industries');
+
+// Group by industry for structured browsing
+const byIndustry: Record<string, { industry: any; systems: Record<string, any[]> }> = {};
+for (const e of entities) {
+  const ind = e.data.industry || 'Other';
+  if (!byIndustry[ind]) byIndustry[ind] = { industry: null, systems: {} };
+  const sys = e.data.system || 'General';
+  if (!byIndustry[ind].systems[sys]) byIndustry[ind].systems[sys] = [];
+  byIndustry[ind].systems[sys].push(e);
+}
+
+// Find industry metadata
+for (const ind of industries) {
+  if (byIndustry[ind.data.title]) byIndustry[ind.data.title].industry = ind;
+}
+
+const sortedIndustries = Object.entries(byIndustry).sort((a, b) => b[1].systems.length - a[1].systems.length);
+
+const totalEntities = entities.length;
+const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.system, true]))).length;
+---
+
+<BaseLayout
+  title="Titanium Component Library - 260+ Precision CNC Parts | BOZE CNC Ti"
+  description="Browse 260+ precision CNC machined titanium components across 12 industries. Aerospace, Medical, Cycling, Semiconductor, Chemical, Marine, and more. AS9100D & ISO 9001 certified."
+>
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Component Library</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">Titanium Component Library</h1>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {totalEntities} precision CNC machined titanium components across {totalSystems} engineering systems and 12 industries.
+          Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications.
+        </p>
+      </div>
+      <!-- Stats -->
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">
+        <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <p class="text-3xl font-bold" style="color: var(--theme-primary);">{totalEntities}</p>
+          <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Components</p>
+        </div>
+        <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <p class="text-3xl font-bold" style="color: var(--theme-primary);">{totalSystems}</p>
+          <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Systems</p>
+        </div>
+        <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <p class="text-3xl font-bold" style="color: var(--theme-primary);">{Object.keys(byIndustry).length}</p>
+          <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Industries</p>
+        </div>
+        <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <p class="text-3xl font-bold" style="color: var(--theme-primary);">20</p>
+          <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Materials</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="py-8" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-3 justify-center">
+        {Object.entries(byIndustry).map(([name, data]) => (
+          <a href={`#${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} class="px-4 py-2 rounded-full text-sm font-medium border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">
+            {name} ({Object.keys(data.systems).length} sys)
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Sections -->
+  {Object.entries(byIndustry).map(([indName, indData]) => {
+    const indSlug = indName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    return (
+      <section id={indSlug} class="py-12 lg:py-16" style="background: var(--theme-surface);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a href={`/products/industries/${indSlug}/`} class="inline-block mb-2">
+            <span class="text-sm font-semibold" style="color: var(--theme-primary);">{indName} →</span>
+          </a>
+          
+          {Object.entries(indData.systems).map(([sysName, sysEntities]) => {
+            const sysSlug = sysName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            return (
+              <div class="mb-10">
+                <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">
+                  {sysName}
+                  <span class="text-sm font-normal ml-2" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">({sysEntities.length} components)</span>
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                  {sysEntities.map((e: any) => {
+                    const func = e.data.function?.slice(0, 80) || '';
+                    return (
+                      <a href={`/products/product-entities/${e.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                        <h3 class="text-sm font-semibold leading-tight" style="color: var(--theme-text);">{e.data.title}</h3>
+                        <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{e.data.material?.split(' ').slice(0, 3).join(' ')}</p>
+                      </a>
+                    );
+                  })}
+                </div>
+                <a href={`/products/systems/${sysSlug}/`} class="inline-block mt-3 text-sm font-medium" style="color: var(--theme-primary);">
+                  View {sysName} System →
+                </a>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- CTA -->
+  <section class="py-16 text-center" style="background: var(--theme-bg);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Don't See Your Component?</h2>
+      <p class="mb-8" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Our engineering team can manufacture custom titanium components to your specifications. 
+        Send us your drawings for a quote within 24 hours.
+      </p>
+      <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
+        Submit RFQ
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Titanium Component Library",
+    "description": `${totalEntities} precision CNC machined titanium components across 12 industries.`,
+    "numberOfItems": totalEntities,
+    "about": { "@type": "Thing", "name": "Titanium Precision CNC Machined Components" }
+  })} />
+</BaseLayout>

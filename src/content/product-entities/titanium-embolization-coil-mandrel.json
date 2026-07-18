@@ -10,7 +10,7 @@
   "category": "Interventional",
   "function": "Embolization coil delivery mandrel (Nitinol)",
   "material": "Nitinol (ASTM F2063)",
-  "alloyReason": "Nitinol (Ni-Ti shape memory alloy) provides the unique superelasticity required for self-expanding stents and TAVI frames. The alloy undergoes martensitic transformation at body temperature.",
+  "alloyReason": "Nitinol (Nickel-Titanium Shape Memory Alloy, ASTM F2063) provides unique superelasticity and shape memory effect, enabling self-expanding stents, kink-resistant guidewires, and deployable medical devices. Its elastic recoverable strain (up to 8%) is orders of magnitude higher than any conventional metal.",
   "process": [
     "Laser micro-cutting",
     "Shape-setting heat treatment",
@@ -24,8 +24,9 @@
     "Fatigue testing (400M cycles)"
   ],
   "commonFailures": [
-    "Austenite finish temperature (Af) must be tuned to 25+-3C for self-expanding behavior at body temperature",
-    "Surface defects >5um after electropolishing can cause fatigue crack initiation"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -34,28 +35,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium embolization coil mandrel?",
-      "a": "Nitinol (Ni-Ti shape memory alloy) provides the unique superelasticity required for self-expanding stents and TAVI frames. The alloy undergoes martensitic transformation at body temperature."
+      "q": "Why use Nitinol (ASTM F2063) for titanium embolization coil mandrel?",
+      "a": "Nitinol (Nickel-Titanium Shape Memory Alloy, ASTM F2063) provides unique superelasticity and shape memory effect, enabling self-expanding stents, kink-resistant guidewires, and deployable medical devices. Its elastic recoverable strain (up to 8%) is "
     },
     {
       "q": "How is a titanium embolization coil mandrel manufactured?",
-      "a": "A typical titanium embolization coil mandrel is manufactured using Laser micro-cutting; Shape-setting heat treatment; Electropolishing. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium embolization coil mandrel is manufactured using Laser micro-cutting; Shape-setting heat treatment; Electropolishing. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Nitinol (ASTM F2063) for titanium embolization coil mandrel?",
-      "a": "Stainless steel (no superelasticity), polymer (insufficient strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Conventional machining (higher material waste, longer cycle time)."
     },
     {
       "q": "What standards apply to titanium embolization coil mandrel?",
-      "a": "Titanium Embolization Coil Mandrel components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Embolization Coil Mandrel components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium embolization coil mandrel?",
-      "a": "Common failure modes include Austenite finish temperature (Af) must be tuned to 25+-3C for self-expanding behavior at body temperature; Surface defects >5um after electropolishing can cause fatigue crack initiation. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium embolization coil mandrel?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium embolization coil mandrel?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

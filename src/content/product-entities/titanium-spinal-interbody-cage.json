@@ -10,13 +10,12 @@
   "category": "Spine Fixation",
   "function": "Lumbar interbody fusion cage with porous lattice",
   "material": "Ti-6Al-4V ELI (ASTM F136)",
-  "alloyReason": "Ti-6Al-4V ELI (ASTM F136 / ISO 5832-3) is mandatory for all permanent spinal and trauma implants. Oxygen <0.13%, iron <0.25% for maximum fracture toughness. Grade 9 (Ti-3Al-2.5V) for spinal rods requiring intraoperative bendability with spring-back. Ti-6Al-7Nb (ASTM F1295) for vanadium-free pediatri",
+  "alloyReason": "Ti-6Al-4V ELI (Extra Low Interstitials, ASTM F136 / ISO 5832-3) is the medical-grade standard for permanent implantable devices. Its lower oxygen (<0.13%) and iron (<0.25%) content provides superior fracture toughness and fatigue resistance compared to standard Grade 5, making it mandatory for orthopedic and spinal implants.",
   "process": [
-    "VAR melting",
-    "Closed-die hot forging",
-    "CNC swiss turning",
-    "Thread rolling",
-    "Passivation (ASTM F86)"
+    "CNC turning",
+    "Thread rolling (DIN 13-1, 6g)",
+    "Hex socket broaching",
+    "Passivation ASTM F86"
   ],
   "surfaceTreatment": [
     "Passivation ASTM F86"
@@ -28,9 +27,9 @@
     "Class 10,000 cleanroom packaging"
   ],
   "commonFailures": [
-    "Cannulated screw guidewire channel concentricity must be <0.1mm TIR to prevent wire binding during insertion",
-    "Pedicle screw tulip head must accept rods up to +-15 degrees angulation for multi-level constructs",
-    "Interbody cage porosity must be 60-80% with pore size 300-600um for optimal bone ingrowth — verified by micro-CT"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -39,28 +38,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium spinal interbody cage?",
-      "a": "Ti-6Al-4V ELI (ASTM F136 / ISO 5832-3) is mandatory for all permanent spinal and trauma implants. Oxygen <0.13%, iron <0.25% for maximum fracture toughness. Grade 9 (Ti-3Al-2.5V) for spinal rods requiring intraoperative bendability with spring-back. Ti-6Al-7Nb (ASTM F1295) for vanadium-free pediatri"
+      "q": "Why use Ti-6Al-4V ELI (ASTM F136) for titanium spinal interbody cage?",
+      "a": "Ti-6Al-4V ELI (Extra Low Interstitials, ASTM F136 / ISO 5832-3) is the medical-grade standard for permanent implantable devices. Its lower oxygen (<0.13%) and iron (<0.25%) content provides superior fracture toughness and fatigue resistance compared "
     },
     {
       "q": "How is a titanium spinal interbody cage manufactured?",
-      "a": "A typical titanium spinal interbody cage is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium spinal interbody cage is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Ti-6Al-4V ELI (ASTM F136) for titanium spinal interbody cage?",
-      "a": "Other materials such as steel or aluminum are significantly heavier and lack the corrosion resistance required for long-term service."
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium spinal interbody cage?",
-      "a": "Titanium Spinal Interbody Cage components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Spinal Interbody Cage components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium spinal interbody cage?",
-      "a": "Common failure modes include Cannulated screw guidewire channel concentricity must be <0.1mm TIR to prevent wire binding during insertion; Pedicle screw tulip head must accept rods up to +-15 degrees angulation for multi-level constructs. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium spinal interbody cage?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium spinal interbody cage?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

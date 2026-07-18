@@ -10,7 +10,7 @@
   "category": "Suspension Hardware",
   "function": "Suspension pivot bearing crush spacer sleeve",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Optimal material choice for Titanium Pivot Bearing Spacer Sleeve due to superior strength-to-weight ratio and corrosion resistance.",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
     "Hot forging",
     "CNC turning",
@@ -25,7 +25,11 @@
     "Salt spray ASTM B117",
     "Torque-to-tension verification"
   ],
-  "commonFailures": [],
+  "commonFailures": [
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+  ],
   "designConsiderations": [],
   "standards": [
     "ASTM B348"
@@ -33,28 +37,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium pivot bearing spacer sleeve?",
-      "a": "Optimal material choice for Titanium Pivot Bearing Spacer Sleeve due to superior strength-to-weight ratio and corrosion resistance."
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium pivot bearing spacer sleeve?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium pivot bearing spacer sleeve manufactured?",
-      "a": "A typical titanium pivot bearing spacer sleeve is manufactured using Hot forging; CNC turning; Thread rolling (DIN 13-1 / ISO 965-2, 6g). Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium pivot bearing spacer sleeve is manufactured using Hot forging; CNC turning; Thread rolling (DIN 13-1 / ISO 965-2, 6g). BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium pivot bearing spacer sleeve?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium pivot bearing spacer sleeve?",
-      "a": "Titanium Pivot Bearing Spacer Sleeve components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Pivot Bearing Spacer Sleeve components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium pivot bearing spacer sleeve?",
-      "a": "With proper material selection (Grade 5 Ti-6Al-4V) and manufacturing process control (thread rolling, heat treatment), titanium titanium pivot bearing spacer sleeve components exhibit excellent fatigue life and corrosion resistance in service."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium pivot bearing spacer sleeve?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium pivot bearing spacer sleeve?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

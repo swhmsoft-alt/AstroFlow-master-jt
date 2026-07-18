@@ -10,7 +10,7 @@
   "category": "Dental",
   "function": "Self-adjusting orthodontic archwire (Nitinol)",
   "material": "Nitinol (ASTM F2063)",
-  "alloyReason": "Grade 23 ELI (ASTM F136) is the standard for dental implants. Better fatigue performance than CP grades and essential for osseointegration. Never substitute industrial Grade 5.",
+  "alloyReason": "Nitinol (Nickel-Titanium Shape Memory Alloy, ASTM F2063) provides unique superelasticity and shape memory effect, enabling self-expanding stents, kink-resistant guidewires, and deployable medical devices. Its elastic recoverable strain (up to 8%) is orders of magnitude higher than any conventional metal.",
   "process": [
     "VAR melting",
     "Closed-die hot forging",
@@ -28,8 +28,9 @@
     "Class 10,000 cleanroom packaging"
   ],
   "commonFailures": [
-    "Internal hex drive tolerance +-0.02mm required for driver engagement",
-    "Surface contamination (Fe, Ni) must be <0.05% per ASTM F86"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -38,28 +39,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium orthodontic archwire?",
-      "a": "Grade 23 ELI (ASTM F136) is the standard for dental implants. Better fatigue performance than CP grades and essential for osseointegration. Never substitute industrial Grade 5."
+      "q": "Why use Nitinol (ASTM F2063) for titanium orthodontic archwire?",
+      "a": "Nitinol (Nickel-Titanium Shape Memory Alloy, ASTM F2063) provides unique superelasticity and shape memory effect, enabling self-expanding stents, kink-resistant guidewires, and deployable medical devices. Its elastic recoverable strain (up to 8%) is "
     },
     {
       "q": "How is a titanium orthodontic archwire manufactured?",
-      "a": "A typical titanium orthodontic archwire is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium orthodontic archwire is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Nitinol (ASTM F2063) for titanium orthodontic archwire?",
-      "a": "Stainless steel (no superelasticity), polymer (insufficient strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium orthodontic archwire?",
-      "a": "Titanium Orthodontic Archwire components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Orthodontic Archwire components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium orthodontic archwire?",
-      "a": "Common failure modes include Internal hex drive tolerance +-0.02mm required for driver engagement; Surface contamination (Fe, Ni) must be <0.05% per ASTM F86. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium orthodontic archwire?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium orthodontic archwire?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

@@ -10,7 +10,7 @@
   "category": "Pipe Fitting",
   "function": "NPT threaded pipe nipple",
   "material": "Grade 2 CP-Ti",
-  "alloyReason": "Grade 2 CP-Ti offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium threaded npt nipple.",
+  "alloyReason": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine components where corrosion resistance is the primary requirement.",
   "process": [
     "Seamless tube extrusion",
     "CNC machining",
@@ -18,6 +18,7 @@
     "Hydrostatic testing"
   ],
   "surfaceTreatment": [
+    "Pickling (HF+HNO3)",
     "Passivation ASTM F86"
   ],
   "inspection": [
@@ -26,7 +27,11 @@
     "Dimensional per ASME B16.9",
     "MTR (EN 10204 3.1)"
   ],
-  "commonFailures": [],
+  "commonFailures": [
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+  ],
   "designConsiderations": [],
   "standards": [
     "ASTM B348",
@@ -35,28 +40,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium threaded npt nipple?",
-      "a": "Grade 2 CP-Ti offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium threaded npt nipple."
+      "q": "Why use Grade 2 CP-Ti for titanium threaded npt nipple?",
+      "a": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine c"
     },
     {
       "q": "How is a titanium threaded npt nipple manufactured?",
-      "a": "A typical titanium threaded npt nipple is manufactured using Seamless tube extrusion; CNC machining; TIG welding (ERTi-2 filler); Hydrostatic testing. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium threaded npt nipple is manufactured using Seamless tube extrusion; CNC machining; TIG welding (ERTi-2 filler); Hydrostatic testing. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 2 CP-Ti for titanium threaded npt nipple?",
-      "a": "Stainless steel (corrosion risk), carbon steel (rapid rusting), plastic (low strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Laser welding (higher capital cost, limited wall thickness capability)."
     },
     {
       "q": "What standards apply to titanium threaded npt nipple?",
-      "a": "Titanium Threaded NPT Nipple components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Threaded NPT Nipple components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium threaded npt nipple?",
-      "a": "With proper material selection (Grade 5 Ti-6Al-4V) and manufacturing process control (thread rolling, heat treatment), titanium titanium threaded npt nipple components exhibit excellent fatigue life and corrosion resistance in service."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium threaded npt nipple?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium threaded npt nipple?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

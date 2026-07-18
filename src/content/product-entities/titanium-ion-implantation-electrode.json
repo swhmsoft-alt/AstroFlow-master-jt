@@ -10,7 +10,7 @@
   "category": "Ion Implant",
   "function": "Ion extraction electrode disk for implanter",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium ion implantation electrode.",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
     "Precision CNC turning",
     "Electropolishing",
@@ -18,7 +18,9 @@
     "Helium leak testing"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Passivation ASTM F86",
+    "Electropolishing",
+    "Class 10,000 cleanroom cleaning"
   ],
   "inspection": [
     "Helium leak test (1e-9 mbar.L/s)",
@@ -26,7 +28,11 @@
     "PMI verification",
     "Particle count (Class 100)"
   ],
-  "commonFailures": [],
+  "commonFailures": [
+    "Stress shielding from modulus mismatch between implant and bone",
+    "Wear debris generation at articulating surfaces",
+    "Loosening from inadequate osseointegration at bone-implant interface"
+  ],
   "designConsiderations": [],
   "standards": [
     "ASTM B348",
@@ -35,28 +41,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium ion implantation electrode?",
-      "a": "Grade 5 Ti-6Al-4V offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium ion implantation electrode."
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium ion implantation electrode?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium ion implantation electrode manufactured?",
-      "a": "A typical titanium ion implantation electrode is manufactured using Precision CNC turning; Electropolishing; Class 100 cleanroom cleaning; Helium leak testing. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium ion implantation electrode is manufactured using Precision CNC turning; Electropolishing; Class 100 cleanroom cleaning; Helium leak testing. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium ion implantation electrode?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Manual turning on conventional lathes (less consistent, higher rejection rate)."
     },
     {
       "q": "What standards apply to titanium ion implantation electrode?",
-      "a": "Titanium Ion Implantation Electrode components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Ion Implantation Electrode components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium ion implantation electrode?",
-      "a": "With proper material selection (Grade 5 Ti-6Al-4V) and manufacturing process control (thread rolling, heat treatment), titanium titanium ion implantation electrode components exhibit excellent fatigue life and corrosion resistance in service."
+      "a": "Common failure modes include Stress shielding from modulus mismatch between implant and bone. BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium ion implantation electrode?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium ion implantation electrode?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

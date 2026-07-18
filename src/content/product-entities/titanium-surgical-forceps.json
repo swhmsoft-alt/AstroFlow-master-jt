@@ -10,7 +10,7 @@
   "category": "Surgical Instruments",
   "function": "Microsurgical forceps handle (ophthalmic)",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 2 (CP-Ti) is widely used for surgical instruments due to its excellent corrosion resistance in autoclave environments and adequate strength. Grade 5 for high-stress instruments.",
+  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
   "process": [
     "VAR melting",
     "Closed-die hot forging",
@@ -19,7 +19,9 @@
     "Passivation (ASTM F86)"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Passivation ASTM F86",
+    "Electropolishing",
+    "Class 10,000 cleanroom cleaning"
   ],
   "inspection": [
     "100% CMM dimensional",
@@ -28,8 +30,9 @@
     "Class 10,000 cleanroom packaging"
   ],
   "commonFailures": [
-    "Titanium-titanium pivot joints require clearance of 0.02-0.05mm to prevent galling",
-    "Edge sharpness of scissors must be Ra<0.1um, requiring specialized grinding"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -38,28 +41,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium surgical forceps?",
-      "a": "Grade 2 (CP-Ti) is widely used for surgical instruments due to its excellent corrosion resistance in autoclave environments and adequate strength. Grade 5 for high-stress instruments."
+      "q": "Why use Grade 5 Ti-6Al-4V for titanium surgical forceps?",
+      "a": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely "
     },
     {
       "q": "How is a titanium surgical forceps manufactured?",
-      "a": "A typical titanium surgical forceps is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium surgical forceps is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 5 Ti-6Al-4V for titanium surgical forceps?",
-      "a": "Stainless steel (heavier, less fatigue life), aluminum (lower strength)"
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium surgical forceps?",
-      "a": "Titanium Surgical Forceps components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Surgical Forceps components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium surgical forceps?",
-      "a": "Common failure modes include Titanium-titanium pivot joints require clearance of 0.02-0.05mm to prevent galling; Edge sharpness of scissors must be Ra<0.1um, requiring specialized grinding. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium surgical forceps?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium surgical forceps?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

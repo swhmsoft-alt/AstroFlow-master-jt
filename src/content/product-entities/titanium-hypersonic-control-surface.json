@@ -10,7 +10,7 @@
   "category": "Missile Hardware",
   "function": "Hypersonic missile all-moving fin (Ti-65)",
   "material": "Ti-65",
-  "alloyReason": "Ti-65 offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium hypersonic control surface.",
+  "alloyReason": "Ti-65 high-temperature titanium alloy maintains structural strength up to 650C for hypersonic vehicle control surfaces and high-speed aerospace applications.",
   "process": [
     "Closed-die forging",
     "5-axis CNC machining",
@@ -26,7 +26,11 @@
     "Ultrasonic inspection",
     "CMM dimensional"
   ],
-  "commonFailures": [],
+  "commonFailures": [
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+  ],
   "designConsiderations": [],
   "standards": [
     "ASTM B348",
@@ -35,28 +39,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium hypersonic control surface?",
-      "a": "Ti-65 offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium hypersonic control surface."
+      "q": "Why use Ti-65 for titanium hypersonic control surface?",
+      "a": "Ti-65 high-temperature titanium alloy maintains structural strength up to 650C for hypersonic vehicle control surfaces and high-speed aerospace applications."
     },
     {
       "q": "How is a titanium hypersonic control surface manufactured?",
-      "a": "A typical titanium hypersonic control surface is manufactured using Closed-die forging; 5-axis CNC machining; Heat treatment (STA); Shot peening. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium hypersonic control surface is manufactured using Closed-die forging; 5-axis CNC machining; Heat treatment (STA); Shot peening. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Ti-65 for titanium hypersonic control surface?",
-      "a": "Other materials such as steel or aluminum are significantly heavier and lack the corrosion resistance required for long-term service."
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium hypersonic control surface?",
-      "a": "Titanium Hypersonic Control Surface components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Hypersonic Control Surface components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium hypersonic control surface?",
-      "a": "With proper material selection (Grade 5 Ti-6Al-4V) and manufacturing process control (thread rolling, heat treatment), titanium titanium hypersonic control surface components exhibit excellent fatigue life and corrosion resistance in service."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium hypersonic control surface?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium hypersonic control surface?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

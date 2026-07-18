@@ -10,7 +10,7 @@
   "category": "Pneumatic System",
   "function": "Engine bleed air duct (Grade 9 Ti tube)",
   "material": "Grade 9 Ti-3Al-2.5V",
-  "alloyReason": "Grade 9 Ti-3Al-2.5V offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium bleed air duct.",
+  "alloyReason": "Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting requiring a balance of strength and ductility.",
   "process": [
     "Closed-die forging",
     "5-axis CNC machining",
@@ -26,7 +26,11 @@
     "Ultrasonic inspection",
     "CMM dimensional"
   ],
-  "commonFailures": [],
+  "commonFailures": [
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+  ],
   "designConsiderations": [],
   "standards": [
     "ASTM B348",
@@ -35,28 +39,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium bleed air duct?",
-      "a": "Grade 9 Ti-3Al-2.5V offers the optimal balance of strength, corrosion resistance, and fatigue life for titanium bleed air duct."
+      "q": "Why use Grade 9 Ti-3Al-2.5V for titanium bleed air duct?",
+      "a": "Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting requiring a balance of strength and ductility."
     },
     {
       "q": "How is a titanium bleed air duct manufactured?",
-      "a": "A typical titanium bleed air duct is manufactured using Closed-die forging; 5-axis CNC machining; Heat treatment (STA); Shot peening. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium bleed air duct is manufactured using Closed-die forging; 5-axis CNC machining; Heat treatment (STA); Shot peening. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 9 Ti-3Al-2.5V for titanium bleed air duct?",
-      "a": "Other materials such as steel or aluminum are significantly heavier and lack the corrosion resistance required for long-term service."
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium bleed air duct?",
-      "a": "Titanium Bleed Air Duct components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Bleed Air Duct components are typically manufactured to ASTM B348, ASME. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium bleed air duct?",
-      "a": "With proper material selection (Grade 5 Ti-6Al-4V) and manufacturing process control (thread rolling, heat treatment), titanium titanium bleed air duct components exhibit excellent fatigue life and corrosion resistance in service."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium bleed air duct?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium bleed air duct?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],

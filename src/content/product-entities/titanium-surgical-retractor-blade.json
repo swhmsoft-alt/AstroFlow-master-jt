@@ -10,7 +10,7 @@
   "category": "Surgical Instruments",
   "function": "Lightweight surgical retractor blade",
   "material": "Grade 9 Ti-3Al-2.5V",
-  "alloyReason": "Grade 2 (CP-Ti) is widely used for surgical instruments due to its excellent corrosion resistance in autoclave environments and adequate strength. Grade 5 for high-stress instruments.",
+  "alloyReason": "Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting requiring a balance of strength and ductility.",
   "process": [
     "VAR melting",
     "Closed-die hot forging",
@@ -19,7 +19,9 @@
     "Passivation (ASTM F86)"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Passivation ASTM F86",
+    "Electropolishing",
+    "Class 10,000 cleanroom cleaning"
   ],
   "inspection": [
     "100% CMM dimensional",
@@ -28,8 +30,9 @@
     "Class 10,000 cleanroom packaging"
   ],
   "commonFailures": [
-    "Titanium-titanium pivot joints require clearance of 0.02-0.05mm to prevent galling",
-    "Edge sharpness of scissors must be Ra<0.1um, requiring specialized grinding"
+    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
+    "Thread damage from improper installation torque exceeding recommended values",
+    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
   ],
   "designConsiderations": [],
   "standards": [
@@ -38,28 +41,28 @@
   "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "Why use titanium for titanium surgical retractor blade?",
-      "a": "Grade 2 (CP-Ti) is widely used for surgical instruments due to its excellent corrosion resistance in autoclave environments and adequate strength. Grade 5 for high-stress instruments."
+      "q": "Why use Grade 9 Ti-3Al-2.5V for titanium surgical retractor blade?",
+      "a": "Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting requiring a balance of strength and ductility."
     },
     {
       "q": "How is a titanium surgical retractor blade manufactured?",
-      "a": "A typical titanium surgical retractor blade is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. Each step is critical to achieving the required mechanical properties and dimensional tolerances."
+      "a": "A typical titanium surgical retractor blade is manufactured using VAR melting; Closed-die hot forging; CNC swiss turning; Thread rolling. BOZE CNC Ti uses precision CNC equipment with strict process controls to ensure consistent quality and dimensional accuracy."
     },
     {
       "q": "What are the alternatives to Grade 9 Ti-3Al-2.5V for titanium surgical retractor blade?",
-      "a": "Other materials such as steel or aluminum are significantly heavier and lack the corrosion resistance required for long-term service."
+      "a": "Alternative materials include stainless steel (heavier, susceptible to corrosion) and aluminum (lower strength, shorter fatigue life). The alternative manufacturing method is Machining from solid billet (90%+ material waste, no grain flow optimization)."
     },
     {
       "q": "What standards apply to titanium surgical retractor blade?",
-      "a": "Titanium Surgical Retractor Blade components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply depending on the application and regulatory requirements."
+      "a": "Titanium Surgical Retractor Blade components are typically manufactured to ASTM B348. Additional customer-specific specifications may apply."
     },
     {
       "q": "What are common failure modes for titanium surgical retractor blade?",
-      "a": "Common failure modes include Titanium-titanium pivot joints require clearance of 0.02-0.05mm to prevent galling; Edge sharpness of scissors must be Ra<0.1um, requiring specialized grinding. Proper material selection, manufacturing process control, and inspection mitigate these risks."
+      "a": "Common failure modes include Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86). BOZE CNC Ti mitigates these through strict process control, proper material selection, and 100% inspection."
     },
     {
-      "q": "What surface treatments are available for titanium surgical retractor blade?",
-      "a": "Common surface treatments include Passivation ASTM F86. These enhance corrosion resistance, wear properties, and aesthetic appearance."
+      "q": "What is the typical lead time for custom titanium surgical retractor blade?",
+      "a": "Standard lead time is 2-4 weeks depending on quantity and complexity. Rush orders can be accommodated. Contact our sales team for specific delivery schedules."
     }
   ],
   "relatedProducts": [],
