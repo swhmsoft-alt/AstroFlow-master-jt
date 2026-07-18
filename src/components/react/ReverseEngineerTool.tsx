@@ -978,6 +978,24 @@ const PART_DB: PartProfile[] = [
     image: '🔍',
   },
 
+  {
+    keywords: ['flange', '法兰', 'washer', '垫圈', 'nut', '螺母', 'stud', '螺栓', 'lock washer', 'rain cap', 'exhaust', 'DIN', 'ASME', 'B16.5', 'industrial fastener'],
+    industries: ['Chemical Processing', 'Wastewater Treatment', 'Electroplating', 'Oil & Gas'],
+    category: 'Industrial Standard Fasteners, Flanges & Hardware',
+    geometry: 'ASME B16.5 blind flanges up to 24-inch, DIN 934 hex nuts M6-M30, M16-M24 fully threaded stud bolts up to 200mm, DIN 125 flat washers, serrated external tooth lock washers, exhaust stack rain cap flapper valves, custom slip-on flange collars',
+    painPoints: ['Thread galling of Ti nuts on Ti studs requiring anti-seize compounds', 'Washer cupping under high torque leading to preload relaxation', 'Galvanic corrosion at Ti-to-steel flange interfaces', 'Stud bolt stress-corrosion cracking from cut threads in chemical environments', 'Rain cap flapper hinge fatigue from continuous wind/gas cycling'],
+    alloyId: 'cp2',
+    alloyReason: 'Grade 2 CP-Ti for blind flanges, slip-on collars, and rain caps requiring formability and weldability. Grade 3 for hex nuts — optimal ductility/yield balance prevents thread galling. Grade 4 for flat washers and spring lock washers needing high surface hardness. Grade 5 for high-tensile stud bolts. Beta-C (Ti-15V-3Cr-3Sn-3Al) for serrated lock washers requiring massive spring-back elasticity.',
+    formId: 'bar',
+    formReason: 'Plate cutting for flanges and rain caps. Cold nut forming + precision tapping for hex nuts. Thread rolling from solution-treated rod stock for stud bolts. Precision stamping + tumble deburring for washers. Punch press stamping + vacuum hardening for serrated lock washers.',
+    process: ['Plate laser cutting + CNC drilling of flange bolt holes', 'Cold heading of hex nuts + CNC tapping', 'Thread rolling of stud bolts from STA rod stock', 'Precision stamping + vibratory deburring of flat/lock washers', 'Sheet metal stamp-bending + spot TIG welding of rain cap flappers'],
+    tollServices: ['PMI verification of all material', 'Hydrostatic pressure testing of flanged assemblies', 'Dimensional inspection per ASME B16.5 / DIN standards', 'Hardness testing (HRB/HRC) of washers', 'Salt spray corrosion testing (ASTM B117)'],
+    pitfalls: ['Cut threads on stud bolts create stress-corrosion crack initiation sites — rolled threads mandatory for chemical service', 'Serrated lock washer teeth must be induction-hardened to HRC 45+ to bite into Grade 5 flange faces', 'Rain cap flapper hinge pin must be Ti Grade 5 for wear resistance — Grade 2 wears through in <1 year of continuous cycling'],
+    specNote: 'ASTM B381 Grade 2 (flanges) / ASTM B348 Grade 3 (nuts) / Grade 5 (studs) per ASME B16.5, 100% PMI + dimensional inspected, MTC traceable',
+    servicePage: '/titanium-fabrication-services/titanium-welding-assembly/',
+    image: '🏭',
+  },
+
 ];
 
 /* ── Main Component ── */
