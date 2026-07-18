@@ -113,7 +113,7 @@ const allCaps = (await getCollection('capabilities')).filter(c =>
         <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Components in This System</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {allProducts.map((p) => (
-            <a href={`/products/product-entities/${p.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <a href={`/products/product-entities/${p?.slug || p?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
               <h3 class="font-semibold" style="color: var(--theme-text);">{p.data.title}</h3>
               <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.data.function?.slice(0, 100)}</p>
             </a>
@@ -129,7 +129,7 @@ const allCaps = (await getCollection('capabilities')).filter(c =>
         <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Related Capabilities</h2>
         <div class="flex flex-wrap gap-3">
           {allCaps.map((c) => (
-            <a href={`/products/capabilities/${c.slug}/`} class="px-4 py-2 rounded-full text-sm font-medium border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">
+            <a href={`/products/capabilities/${c?.slug || c?.id?.replace(".json","") || ""}/`} class="px-4 py-2 rounded-full text-sm font-medium border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">
               {c.data.title}
             </a>
           ))}

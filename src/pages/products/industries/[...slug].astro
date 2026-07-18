@@ -60,7 +60,7 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
         <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Engineering Systems</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {allSystems.map((s) => (
-            <a href={`/products/systems/${s.slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+            <a href={`/products/systems/${s.slug || s.id?.replace('.json','') || ''}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
               <h3 class="font-bold" style="color: var(--theme-text);">{s.data.emoji} {s.data.title}</h3>
               <p class="text-sm mt-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{s.data.description?.slice(0, 120)}</p>
             </a>

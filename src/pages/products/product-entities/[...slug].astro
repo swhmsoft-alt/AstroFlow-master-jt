@@ -108,7 +108,7 @@ if (faqData.length > 0) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-wrap items-start gap-2 mb-3">
         {system && (
-          <a href={`/products/systems/${system.slug}/`} class="text-xs font-semibold px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+          <a href={`/products/systems/${system?.slug || system?.id?.replace('.json','') || ''}/`} class="text-xs font-semibold px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
             {data.industry} → {system.data.title}
           </a>
         )}
@@ -124,7 +124,7 @@ if (faqData.length > 0) {
         {data.material && (
           <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Material</span>
-            <a href={material ? `/products/materials/${material.slug}/` : '#'} class="font-semibold" style="color: var(--theme-primary);">{data.material.replace(/^(\w+\s\w+)(.*)/, '$1')} →</a>
+            <a href={material ? `/products/materials/${material?.slug || material?.id?.replace(".json","") || ""}/` : '#'} class="font-semibold" style="color: var(--theme-primary);">{data.material.replace(/^(\w+\s\w+)(.*)/, '$1')} →</a>
           </div>
         )}
         {data.process?.[0] && (
@@ -162,7 +162,7 @@ if (faqData.length > 0) {
           <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Why Titanium</h2>
           <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.alloyReason}</p>
           {material && (
-            <a href={`/products/materials/${material.slug}/`} class="text-sm font-medium inline-flex items-center gap-1" style="color: var(--theme-primary);">
+            <a href={`/products/materials/${material?.slug || material?.id?.replace(".json","") || ""}/`} class="text-sm font-medium inline-flex items-center gap-1" style="color: var(--theme-primary);">
               Full {data.material} specifications →
             </a>
           )}
@@ -200,7 +200,7 @@ if (faqData.length > 0) {
                   <div>
                     <p class="text-sm font-semibold" style="color: var(--theme-text);">{p}</p>
                     {cap && (
-                      <a href={`/products/capabilities/${cap.slug}/`} class="text-xs" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">Learn about {cap.data.title} →</a>
+                      <a href={`/products/capabilities/${cap?.slug || cap?.id?.replace(".json","") || ""}/`} class="text-xs" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">Learn about {cap.data.title} →</a>
                     )}
                   </div>
                 </li>
@@ -263,20 +263,20 @@ if (faqData.length > 0) {
       <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Knowledge</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {data.material && material && (
-          <a href={`/products/materials/${material.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <a href={`/products/materials/${material?.slug || material?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <p class="text-xs font-semibold" style="color: var(--theme-primary);">Material</p>
             <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{data.material.replace(/\(.*\)/, '').trim()}</p>
           </a>
         )}
         {relatedCaps.slice(0, 3).map(c => (
-          <a href={`/products/capabilities/${c.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <a href={`/products/capabilities/${c?.slug || c?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <p class="text-xs font-semibold" style="color: var(--theme-primary);">Capability</p>
             <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{c.data.title}</p>
             <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{c.data.category}</p>
           </a>
         ))}
         {system && (
-          <a href={`/products/systems/${system.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <a href={`/products/systems/${system?.slug || system?.id?.replace('.json','') || ''}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <p class="text-xs font-semibold" style="color: var(--theme-primary);">System</p>
             <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{system.data.title}</p>
           </a>
@@ -292,7 +292,7 @@ if (faqData.length > 0) {
         <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Components</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {relatedProducts.slice(0, 10).map(p => (
-            <a href={`/products/product-entities/${p.slug}/`} class="block p-3 rounded-xl border text-sm" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <a href={`/products/product-entities/${p?.slug || p?.id?.replace(".json","") || ""}/`} class="block p-3 rounded-xl border text-sm" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
               <p class="font-semibold leading-tight" style="color: var(--theme-text);">{p.data.title}</p>
               <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{p.data.material?.split(' ').slice(0, 2).join(' ')}</p>
             </a>
