@@ -113,7 +113,7 @@ const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').r
               
               <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {indData.systems.map((sys: any) => {
-                  const slug = systemSlug(sys.data.title);
+                  const slug = sys.slug || sys.id?.replace('.json','') || systemSlug(sys.data.title);
                   const prodCount = sys.data.productEntities?.length || 0;
                   return (
                     <a href={`/products/systems/${slug}/`} class="group block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">

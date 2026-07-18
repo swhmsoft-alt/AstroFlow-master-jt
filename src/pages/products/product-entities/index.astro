@@ -18,6 +18,12 @@ for (const e of entities) {
   byIndustry[ind].systems[sys].push(e);
 }
 
+// Build system title → slug lookup
+const systemLookup: Record<string, string> = {};
+for (const sys of systems) {
+  systemLookup[sys.data.title] = sys.slug || sys.id?.replace('.json','') || '';
+}
+
 // Find industry metadata
 for (const ind of industries) {
   if (byIndustry[ind.data.title]) byIndustry[ind.data.title].industry = ind;
@@ -110,7 +116,7 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
           </a>
           
           {Object.entries(indData.systems).map(([sysName, sysEntities]) => {
-            const sysSlug = sysName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            const sysSlug = systemLookup[sysName] || sysName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
             return (
               <div class="mb-10">
                 <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">
@@ -121,7 +127,7 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
                   {sysEntities.map((e: any) => {
                     const func = e.data.function?.slice(0, 80) || '';
                     return (
-                      <a href={`/products/product-entities/${e.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                      <a href={`/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
                         <h3 class="text-sm font-semibold leading-tight" style="color: var(--theme-text);">{e.data.title}</h3>
                         <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{e.data.material?.split(' ').slice(0, 3).join(' ')}</p>
                       </a>
