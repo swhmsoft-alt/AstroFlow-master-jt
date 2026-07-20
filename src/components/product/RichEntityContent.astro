@@ -4,9 +4,10 @@
 
 export interface Props {
   SpecContent: any;
+  data: any;
 }
 
-const { SpecContent } = Astro.props;
+const { SpecContent, data } = Astro.props;
 ---
 
 <!-- TOC Navigation -->
@@ -20,6 +21,16 @@ const { SpecContent } = Astro.props;
   <a href="#knowledge-graph" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Knowledge Graph</a>
 </div>
 
+<!-- Also known as (aliases for SEO) -->
+{data.aliases && data.aliases.length > 0 && (
+  <div class="mt-4 flex flex-wrap gap-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+    <span class="font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Also known as:</span>
+    {data.aliases.map((a: string) => (
+      <span class="px-2 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-primary) 6%, transparent);">{a}</span>
+    ))}
+  </div>
+)}
+
 <!-- Blueprint Body Wrapper -->
 <section class="py-12 lg:py-16" style="background: var(--theme-surface); border-top: 2px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,3 +43,5 @@ const { SpecContent } = Astro.props;
     </article>
   </div>
 </section>
+
+

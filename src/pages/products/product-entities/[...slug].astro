@@ -80,16 +80,18 @@ const schemaProduct = {
     {
       "@type": "HowTo",
       "name": `Manufacturing ${data.title}`,
-      "step": (data.process || []).map((p: string, i: number) => ({
-        "@type": "HowToStep", "position": i + 1, "text": p
-      }))
+      "step": ((specEntry?.data?.manufacturing_process ? specEntry.data.manufacturing_process.split(', ') : (data.process || [])).map((p: string, i: number) => ({
+        "@type": "HowToStep", "position": i + 1, "text": p.trim()
+      })))
     }
   ]
 };
-if (faqData.length > 0) {
+// Use spec FAQ when available, fall back to JSON FAQ
+const schemaFaqData = specEntry?.data?.faq || faqData;
+if (schemaFaqData.length > 0) {
   schemaProduct["@graph"].push({
     "@type": "FAQPage",
-    "mainEntity": faqData.map((f: any) => ({
+    "mainEntity": schemaFaqData.map((f: any) => ({
       "@type": "Question", "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a }
     }))
@@ -125,7 +127,7 @@ if (faqData.length > 0) {
     </div>
   </nav>
 
-  {specEntry && <RichEntityContent SpecContent={SpecContent} />}
+  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} />}
 
 {!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} />}
 
@@ -188,4 +190,26 @@ if (faqData.length > 0) {
   </section>
 
   <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
+<script is:inline>
+(function() {
+  var headings = document.querySelectorAll('article.prose h2, article.prose h3');
+  var map = {
+    'supply': 'supply-chain',
+    'application': 'application',
+    'manufacturing': 'manufacturing',
+    'faq': 'faq-section',
+    'graph': 'knowledge-graph',
+    'specifications': 'tech-specs'
+  };
+  headings.forEach(function(h) {
+    var text = h.textContent.toLowerCase().trim();
+    for (var key in map) {
+      if (text.indexOf(key) === 0) {
+        h.id = map[key];
+        break;
+      }
+    }
+  });
+})();
+</script>
 </BaseLayout>
