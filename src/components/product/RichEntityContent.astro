@@ -86,53 +86,23 @@ const downstream: string[] = fm.downstream || [];
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">Complete Engineering Specification</h3>
     <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Detailed technical data for procurement, design, and quality engineering review.</p>
-    <article class="spec-section prose prose-sm md:prose-base max-w-none
-      prose-headings:font-bold prose-headings:tracking-tight
-      prose-a:text-[var(--theme-primary)]
-      prose-strong:text-[var(--theme-text)]
-      prose-code:text-[var(--theme-primary)]
-      prose-table:border-collapse prose-td:p-2 prose-th:p-2 prose-td:border prose-th:border
-      prose-h2:text-2xl prose-h2:mt-0 prose-h2:mb-3
-      prose-h3:text-base prose-h3:mt-4 prose-h3:mb-2 prose-h3:font-semibold
-      prose-p:text-sm prose-p:leading-relaxed prose-p:mb-2
-      prose-li:text-sm
-      prose-th:text-sm prose-th:font-semibold
-      prose-td:text-sm"
-      id="spec-body"
-      style="color: var(--theme-text); --tw-prose-body: var(--theme-text); --tw-prose-headings: var(--theme-text); --tw-prose-links: var(--theme-primary); --tw-prose-bold: var(--theme-text)">
-      {SpecContent && <SpecContent />}
-    </article>
-  </div>
-</section>
-
-<script is:inline>
-  (function() {
-    var article = document.getElementById('spec-body');
-    if (!article || !article.children.length) return;
-    var children = Array.from(article.children);
-    var cards = [];
-    var current = [];
-    children.forEach(function(el) {
-      if (el.tagName === 'H2') {
-        if (current.length > 0) { cards.push(current); current = []; }
-      }
-      current.push(el);
-    });
-    if (current.length > 0) cards.push(current);
-    if (cards.length <= 1) return;
-    article.innerHTML = '';
-    cards.forEach(function(card, i) {
-      var div = document.createElement('div');
-      div.className = 'rounded-xl p-5 md:p-6 mb-5 border';
-      div.style.background = i % 2 === 0
-        ? 'var(--theme-surface)'
-        : 'color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg))';
-      div.style.borderColor = 'color-mix(in srgb, var(--theme-primary) 8%, transparent)';
-      card.forEach(function(el, j) { if (j === 0 && el.tagName === 'H2') { el.style.borderLeft = '3px solid color-mix(in srgb, var(--theme-primary) 40%, transparent)'; el.style.paddingLeft = '0.75rem'; } div.appendChild(el); });
-      article.appendChild(div);
-    });
-  })();
-</script>
+    <div class="card-titanium p-6">
+      <article class="prose prose-sm md:prose-base max-w-none
+        prose-headings:font-bold prose-headings:tracking-tight
+        prose-a:text-[var(--theme-primary)]
+        prose-strong:text-[var(--theme-text)]
+        prose-code:text-[var(--theme-primary)]
+        prose-table:border-collapse prose-td:p-2 prose-th:p-2 prose-td:border prose-th:border
+        prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-l-[3px] prose-h2:border-[var(--theme-primary)] prose-h2:pl-4
+        prose-h3:text-base prose-h3:mt-5 prose-h3:mb-2 prose-h3:font-semibold
+        prose-p:text-sm prose-p:leading-relaxed prose-p:mb-3
+        prose-li:text-sm prose-li:my-1
+        prose-th:text-sm prose-th:font-semibold
+        prose-td:text-sm"
+        style="color: var(--theme-text); --tw-prose-body: var(--theme-text); --tw-prose-headings: var(--theme-text); --tw-prose-links: var(--theme-primary); --tw-prose-bold: var(--theme-text)">
+        {SpecContent && <SpecContent />}
+      </article>
+    </div>
 
 <!-- 5. Procurement Matrix — MOQ / Lead Times / Incoterms -->
 <ProcurementMatrix
