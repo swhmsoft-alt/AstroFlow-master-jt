@@ -1,4 +1,14 @@
----
+import { readFileSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// ===================================================================
+// 1. Rewrite RichEntityContent.astro with visual hero + prose body
+// ===================================================================
+const compPath = join(__dirname, '..', 'src', 'components', 'product', 'RichEntityContent.astro');
+const newComp = `---
 // Rich Entity Content — visual Hero + TOC + prose-styled blueprint body
 // Data from entity JSON + spec frontmatter
 
@@ -11,7 +21,7 @@ export interface Props {
 const { SpecContent, data, specEntry } = Astro.props;
 
 // Extract short material name for badge
-const shortMat = data.material?.replace(/(.*)/, '').trim() || 'Titanium';
+const shortMat = data.material?.replace(/\(.*\)/, '').trim() || 'Titanium';
 
 // Pick 3 key metrics for the visual cards, preferring spec frontmatter
 const metric1 = specEntry?.data?.titanium_grade || shortMat;
@@ -149,3 +159,23 @@ const categoryBadge = data.category || 'Component';
     </article>
   </div>
 </section>
+`;
+
+writeFileSync(compPath, newComp, 'utf-8');
+console.log('RichEntityContent.astro rewritten with visual hero + prose.');
+
+// ===================================================================
+// 2. Update main template to pass specEntry to RichEntityContent
+// ===================================================================
+const tmplPath = join(__dirname, '..', 'src', 'pages', 'products', 'product-entities', '[...slug].astro');
+let tmpl = readFileSync(tmplPath, 'utf-8');
+
+tmpl = tmpl.replace(
+  '<RichEntityContent SpecContent={SpecContent} data={data} />',
+  '<RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} />'
+);
+
+writeFileSync(tmplPath, tmpl, 'utf-8');
+console.log('Main template updated to pass specEntry.');
+
+console.log('Done.');

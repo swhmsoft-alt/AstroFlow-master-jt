@@ -127,7 +127,7 @@ if (schemaFaqData.length > 0) {
     </div>
   </nav>
 
-  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} />}
+  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} />}
 
 {!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} />}
 
