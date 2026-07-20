@@ -104,7 +104,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## Semantic Graph & Component Topology (The AI Search Optimization)
+## System Interconnectivity & Component Classification
 
 - **Primary Industrial Entity:** GasDeliveryFitting / UHVComponent
 - **Upstream System Integration:** UHV Gas Delivery System; Process Gas Cabinet & Manifold Assembly

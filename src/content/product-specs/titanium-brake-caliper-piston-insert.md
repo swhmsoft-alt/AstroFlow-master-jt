@@ -100,7 +100,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## Semantic Graph & Component Topology (The AI Search Optimization)
+## System Interconnectivity & Component Classification
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Bicycle Frame Assembly; Wheel & Suspension System

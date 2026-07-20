@@ -104,7 +104,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## Semantic Graph & Component Topology (The AI Search Optimization)
+## System Interconnectivity & Component Classification
 
 - **Primary Industrial Entity:** PlasmaChamberShield / SemiconductorConsumable
 - **Upstream System Integration:** Plasma Etch/Deposition Chamber Assembly; RF Generator & Matching Network

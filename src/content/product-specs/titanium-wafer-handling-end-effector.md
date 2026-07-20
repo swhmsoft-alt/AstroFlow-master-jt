@@ -104,7 +104,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## Semantic Graph & Component Topology (The AI Search Optimization)
+## System Interconnectivity & Component Classification
 
 - **Primary Industrial Entity:** WaferHandlingComponent / RobotEndEffector
 - **Upstream System Integration:** Semiconductor Process Module (PVD/CVD/Etch); Wafer Transfer Robot System

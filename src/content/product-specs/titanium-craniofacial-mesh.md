@@ -97,7 +97,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## Semantic Graph & Component Topology (The AI Search Optimization)
+## System Interconnectivity & Component Classification
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Medical Device
 - **Upstream System Integration:** Medical Device Assembly; Surgical Navigation System
