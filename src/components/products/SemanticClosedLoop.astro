@@ -15,6 +15,59 @@ interface Props {
 }
 
 const { productName, sku, material, unsNumber, upstream, downstream, industry, system } = Astro.props;
+
+// Escape string for JSON
+const esc = (s: string) => s.replace(/"/g, '\\"');
+const skuLower = sku.toLowerCase();
+const upStr = upstream.join('; ');
+const downStr = downstream.join('; ');
+
+// Build JSON-LD payload in frontmatter (avoids template literal issues in is:inline)
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "@id": `https://bozemetal.com/products/product-entities/${skuLower}/#product`,
+      "name": productName,
+      "sku": sku,
+      "material": material,
+      "category": industry,
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": `https://bozemetal.com/products/product-entities/${skuLower}/#topology`,
+      "name": "Industrial Component Topology",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Upstream Integration",
+          "description": upStr
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Downstream Interconnectivity",
+          "description": downStr
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": `https://bozemetal.com/products/product-entities/${skuLower}/#classification`,
+      "name": "Component Classification",
+      "hasDefinedTerm": [
+        { "@type": "DefinedTerm", "name": "Industry", "description": industry },
+        { "@type": "DefinedTerm", "name": "System", "description": system }
+      ]
+    }
+  ]
+}, null, 2);
 ---
 
 <!-- Human-Visible Topology Mapping for System Engineers -->
@@ -60,51 +113,5 @@ const { productName, sku, material, unsNumber, upstream, downstream, industry, s
   </div>
 </section>
 
-<!-- Machine-Readable Structured Graph Loop -->
-<script type="application/ld+json" is:inline>
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "@id": "https://bozemetal.com/products/product-entities/${sku.toLowerCase()}/#product",
-      "name": "${productName.replace(/"/g, '\\"')}",
-      "sku": "${sku}",
-      "material": "${material.replace(/"/g, '\\"')}",
-      "category": "${industry}",
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
-      "@type": "DefinedTermSet",
-      "@id": "https://bozemetal.com/products/product-entities/${sku.toLowerCase()}/#topology",
-      "name": "Industrial Component Topology",
-      "hasDefinedTerm": [
-        {
-          "@type": "DefinedTerm",
-          "name": "Upstream Integration",
-          "description": "${upstream.join('; ').replace(/"/g, '\\"')}"
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "Downstream Interconnectivity",
-          "description": "${downstream.join('; ').replace(/"/g, '\\"')}"
-        }
-      ]
-    },
-    {
-      "@type": "DefinedTermSet",
-      "@id": "https://bozemetal.com/products/product-entities/${sku.toLowerCase()}/#classification",
-      "name": "Component Classification",
-      "hasDefinedTerm": [
-        { "@type": "DefinedTerm", "name": "Industry", "description": "${industry}" },
-        { "@type": "DefinedTerm", "name": "System", "description": "${system}" }
-      ]
-    }
-  ]
-}
-</script>
+<!-- Machine-Readable Structured Graph Loop (built in frontmatter, injected as raw HTML) -->
+<script type="application/ld+json" set:html={jsonLd} />
