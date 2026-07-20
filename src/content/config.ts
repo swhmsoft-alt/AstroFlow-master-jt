@@ -282,6 +282,7 @@ const productSpecsCollection = defineCollection({
     weight_reduction: z.string().optional(),
     ndt_methods: z.string().optional(),
     pubDate: z.string().optional(),
+    supply_availability: z.string().optional(),
     // ── B2B Procurement & Semantic Fields ──
     moq: z.number().default(1),
     sampleLeadTime: z.string().default('3-5 Business Days'),
@@ -289,6 +290,10 @@ const productSpecsCollection = defineCollection({
     incoterms: z.string().default('EXW / FOB Shenzhen'),
     upstream: z.array(z.string()).default([]),
     downstream: z.array(z.string()).default([]),
+    faqs: z.array(z.object({
+      q: z.string(),
+      a: z.string(),
+    })).optional(),
   }),
 });
 

@@ -32,7 +32,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Mountain Bike Full-Suspension Linkage","Rear Shock Assembly"]
 downstream: ["Sealed Cartridge Bearings (6800/6900 Series)","DIN 912 Socket Head Cap Screws","Anti-Seize Compound"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Linkage Pivot Bolt
 **Suspension, Frame Hardware & Linkage | Optimized for Weight-Sensitive Cycling Applications**

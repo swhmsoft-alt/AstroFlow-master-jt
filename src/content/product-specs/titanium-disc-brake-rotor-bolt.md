@@ -32,7 +32,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Bicycle Frame Assembly","Wheel & Suspension System"]
 downstream: ["M4/M5/M6 Fastener Hardware","Stainless Steel Bearings","Aluminum Frame Components"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Disc Brake Rotor Bolt
 **Braking System Components | Optimized for Weight-Sensitive Cycling Applications**

@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Water Treatment Plant","Chemical Feed System"]
 downstream: ["EPDM Gaskets","CPVC Pipe Fittings","HDPE Concrete Tank Lining"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Pump Shaft Sleeve
 **Wastewater & Environmental Treatment Components | Optimized for Biocorrosion & Chemical Resistance**

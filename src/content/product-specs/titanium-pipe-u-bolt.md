@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Power Turbine Assembly","Thermal Management System"]
 downstream: ["Inconel 718 Blades","Steam Seal Carbon Rings","Wear Sleeves (Thermal Spray)"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Pipe U-Bolt
 **Nuclear, Hydrogen & Power Generation Components | Optimized for Extreme Environment Reliability**

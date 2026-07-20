@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Industrial Equipment Assembly","Manufacturing Line"]
 downstream: ["Metric Hardware Kit","Industrial Threadlocker","Stainless Tagging"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Hex Bolt (ISO 4014)
 **Standard Industrial Hardware & Fasteners | Optimized for Corrosion Resistance & Reliability**

@@ -34,7 +34,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Semiconductor Vacuum Process Chamber","Turbomolecular Pump Isolation System"]
 downstream: ["Viton/FKM O-Ring Seals (KF/ISO)","OFC Copper Gaskets (Conflat CF)","Anti-Seize Compound (UHV-Compatible","MoS₂-Free)"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Quartz Window Retainer
 **Sealing Rings & Chamber Compression Hardware | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**

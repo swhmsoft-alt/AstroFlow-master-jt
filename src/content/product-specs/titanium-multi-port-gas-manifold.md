@@ -34,7 +34,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["UHV Gas Delivery System","Process Gas Cabinet & Manifold Assembly"]
 downstream: ["OFHC Copper Gasket Seals (VCR/Conflat)","Ultra-High Purity (UHP) Ar/N₂ Supply Lines","Parker/Valex VCR Wrenches & Torque Tooling"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Multi-Port Gas Manifold
 **Gas Delivery Fittings & Manifolds | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**

@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Chemical Process Skid","Acid/Caustic Transfer System"]
 downstream: ["PP/PVDF Pipe Supports","PTFE Tape Sealant","304SS Corrosion Tags"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Stub End (Lap Joint)
 **Chemical Reactor & Piping System Components | Optimized for Corrosive Media up to 315°C**

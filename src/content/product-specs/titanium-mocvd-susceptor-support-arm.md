@@ -34,7 +34,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["MOCVD Reactor System","SiC-Coated Graphite Susceptor Assembly"]
 downstream: ["High-Purity MO Source Bubblers","EPI Wafer Carrier Trays","Thermocouple Feedback Probes"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium MOCVD Susceptor Support Arm
 **MOCVD Wafer Susceptor & Support Hardware | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**

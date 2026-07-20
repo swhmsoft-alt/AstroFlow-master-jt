@@ -34,7 +34,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Semiconductor Process Module (PVD/CVD/Etch)","Wafer Transfer Robot System"]
 downstream: ["Ceramic Wafer Guides & Pins","Vacuum Pick-and-Place End Effector Pads","Class 1 Cleanroom Storage FOUPs"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Wafer Handling End-Effector
 **Process Chamber Components | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**

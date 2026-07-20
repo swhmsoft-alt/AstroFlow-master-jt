@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Motorsport Vehicle Assembly","Performance Drivetrain"]
 downstream: ["ARP Chromoly Fasteners","Molykote M77 Assembly Lube","Safety Wire MS20995"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Ultrasonic Horn 20kHz
 **High-Performance Racing & Automotive Components | Optimized for Extreme RPM & Temperature**

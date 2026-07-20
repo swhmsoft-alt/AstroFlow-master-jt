@@ -32,7 +32,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Bicycle Handlebar & Stem Assembly","Steering Column / Fork Assembly"]
 downstream: ["Carbon Fiber Handlebar","Aluminum/Steel Stem","Torx T25 Driver Bit"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Stem Faceplate Bolt
 **Cockpit, Steering & Control Hardware | Optimized for Weight-Sensitive Cycling Applications**

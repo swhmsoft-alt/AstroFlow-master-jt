@@ -34,7 +34,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Optical Metrology / Inspection Tool","Laser Interferometer Positioning System"]
 downstream: ["Fused Silica Reference Mirrors","Piezo Actuator Drivers","ECLIPSE/Tooling-Ball Kinematic Mounts"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Lens Retaining Ring (Metrology)
 **Precision Instrumentation & Optical Metrology Components | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**

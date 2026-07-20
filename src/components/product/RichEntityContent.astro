@@ -7,6 +7,7 @@ import SpecificationTable from '../products/SpecificationTable.astro';
 import ProcurementMatrix from '../products/ProcurementMatrix.astro';
 import QualityComplianceWall from '../products/QualityComplianceWall.astro';
 import SemanticClosedLoop from '../products/SemanticClosedLoop.astro';
+import SpecBlock from '../products/SpecBlock.astro';
 import InquiryForm from '../react/InquiryForm.tsx';
 
 export interface Props {
@@ -23,6 +24,7 @@ const compliance: string[] = fm.compliance || [];
 const standards: string[] = fm.standards || [];
 const upstream: string[] = fm.upstream || [];
 const downstream: string[] = fm.downstream || [];
+const faqs = fm.faqs || [];
 ---
 
 <!-- 1. Product Hero — Visual + SKU + MOQ + RFQ -->
@@ -81,28 +83,37 @@ const downstream: string[] = fm.downstream || [];
   ndtMethods={fm.ndt_methods}
 />
 
-<!-- 4. Specification Body — prose-styled 6-section blueprint -->
-<section class="py-10 lg:py-12" style="background: var(--theme-surface);">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">Complete Engineering Specification</h3>
-    <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Detailed technical data for procurement, design, and quality engineering review.</p>
-    <div class="card-titanium p-6">
-      <article class="prose prose-sm md:prose-base max-w-none
-        prose-headings:font-bold prose-headings:tracking-tight
-        prose-a:text-[var(--theme-primary)]
-        prose-strong:text-[var(--theme-text)]
-        prose-code:text-[var(--theme-primary)]
-        prose-table:border-collapse prose-td:p-2 prose-th:p-2 prose-td:border prose-th:border
-        prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-l-[3px] prose-h2:border-[var(--theme-primary)] prose-h2:pl-4
-        prose-h3:text-base prose-h3:mt-5 prose-h3:mb-2 prose-h3:font-semibold
-        prose-p:text-sm prose-p:leading-relaxed prose-p:mb-3
-        prose-li:text-sm prose-li:my-1
-        prose-th:text-sm prose-th:font-semibold
-        prose-td:text-sm"
-        style="color: var(--theme-text); --tw-prose-body: var(--theme-text); --tw-prose-headings: var(--theme-text); --tw-prose-links: var(--theme-primary); --tw-prose-bold: var(--theme-text)">
-        {SpecContent && <SpecContent />}
-      </article>
-    </div>
+<!-- 4. Spec Block — Dark technical card (replaces prose) -->
+<SpecBlock
+  title={data.title}
+  sku={fm.sku || ''}
+  category={data.category}
+  industry={data.industry}
+  system={data.system}
+  titanium_grade={fm.titanium_grade || ''}
+  uns_number={fm.uns_number}
+  werkstoff_number={fm.werkstoff_number}
+  supply_availability={fm.supply_availability}
+  compliance={compliance}
+  standards={standards}
+  function={data.function}
+  density={fm.density}
+  tensile_strength={fm.tensile_strength}
+  yield_strength={fm.yield_strength}
+  elongation={fm.elongation}
+  hardness={fm.hardness}
+  modulus={fm.modulus}
+  thermal_conductivity={fm.thermal_conductivity}
+  max_service_temp={fm.max_service_temp}
+  surface_finish={fm.surface_finish}
+  tolerances={fm.tolerances}
+  ndt_methods={fm.ndt_methods}
+  manufacturing_process={fm.manufacturing_process}
+  weight_reduction={fm.weight_reduction}
+  upstream={upstream}
+  downstream={downstream}
+  faqs={faqs}
+/>
 
 <!-- 5. Procurement Matrix — MOQ / Lead Times / Incoterms -->
 <ProcurementMatrix

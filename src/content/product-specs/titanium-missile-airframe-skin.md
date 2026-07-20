@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Aerospace Vehicle Assembly","Structural Airframe"]
 downstream: ["Aerospace Fasteners NAS6704","MIL-PRF-7808 Lubricating Oil","Encapsulated Seals AMS7276"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Missile Airframe Skin
 **Aircraft & Defense Structural Components | Optimized for Extreme Temperature & Fatigue Loading**

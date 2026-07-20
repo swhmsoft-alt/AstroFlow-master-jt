@@ -30,7 +30,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["PCB Plating Line","Electrolytic Cell System"]
 downstream: ["Phosphor Bronze Contacts","PTFE Heater Sheaths","Polypropylene Filter Cartridges"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Plating Rack Spline
 **Electroplating & PCB Manufacturing Hardware | Optimized for Acid & Chlorine Resistance**

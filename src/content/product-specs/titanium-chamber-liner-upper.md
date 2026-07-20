@@ -34,7 +34,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Plasma Etch/Deposition Chamber Assembly","RF Generator & Matching Network"]
 downstream: ["Quartz Window & Viewport Assemblies","Ceramic Clamp Rings & Focus Rings","Argon Purge Gas Supply Lines"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Chamber Liner (Upper)
 **Plasma Chamber Liners, Shields & Thermal Hardware | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**

@@ -32,7 +32,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Bicycle Wheel Build Assembly","Hub & Axle System"]
 downstream: ["Brass/Nickel-Plated Nipples","Rim Tape & Tubeless Valves","Spoke Tension Meter"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Seatpost Collar Bolt
 **Wheels, Saddle, Pedals & Accessories | Optimized for Weight-Sensitive Cycling Applications**

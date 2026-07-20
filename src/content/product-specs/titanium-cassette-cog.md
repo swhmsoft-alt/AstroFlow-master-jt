@@ -32,7 +32,11 @@ bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
 upstream: ["Bicycle Drivetrain Assembly","Crankset & Bottom Bracket System"]
 downstream: ["11/12-Speed Chain","Derailleur Pulley Bearings","Threadlocker Compound (Loctite 242)"]
+supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
+
+
 
 # Titanium Cassette Cog
 **Drivetrain & Drivetrain Hardware | Optimized for Weight-Sensitive Cycling Applications**
