@@ -83,7 +83,7 @@ const faqs = fm.faqs || [];
   ndtMethods={fm.ndt_methods}
 />
 
-<!-- 4. Spec Block — Dark technical card (replaces prose) -->
+<!-- 4. Spec Block — Dark technical quick-scan card -->
 <SpecBlock
   title={data.title}
   sku={fm.sku || ''}
@@ -115,7 +115,31 @@ const faqs = fm.faqs || [];
   faqs={faqs}
 />
 
-<!-- 5. Procurement Matrix — MOQ / Lead Times / Incoterms -->
+<!-- 5. Deep Engineering Report — Prose body for technical due diligence -->
+<div style="background: var(--theme-surface);" class="py-10 lg:py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+      <span class="h-2 w-2 rounded-full" style="background: var(--theme-primary);"></span>
+      <span>Comprehensive Engineering Report &amp; Compliance Documentation</span>
+    </div>
+    <article class="spec-prose prose prose-sm md:prose-base max-w-none
+      prose-headings:font-bold prose-headings:tracking-tight
+      prose-a:text-[var(--theme-primary)]
+      prose-strong:text-[var(--theme-text)]
+      prose-table:border-collapse prose-td:p-3 prose-th:p-3 prose-td:border prose-th:border
+      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-l-[3px] prose-h2:border-[var(--theme-primary)] prose-h2:pl-4
+      prose-h3:text-base prose-h3:mt-5 prose-h3:mb-2 prose-h3:font-semibold
+      prose-p:text-sm prose-p:leading-relaxed prose-p:mb-3
+      prose-li:text-sm prose-li:my-1
+      prose-th:text-sm prose-th:font-semibold
+      prose-td:text-sm"
+      style="color: var(--theme-text); --tw-prose-body: var(--theme-text); --tw-prose-headings: var(--theme-text); --tw-prose-links: var(--theme-primary); --tw-prose-bold: var(--theme-text)">
+      {SpecContent && <SpecContent />}
+    </article>
+  </div>
+</div>
+
+<!-- 6. Procurement Matrix — MOQ / Lead Times / Incoterms -->
 <ProcurementMatrix
   moq={moq}
   sampleLeadTime={fm.sampleLeadTime || '3-5 Business Days'}
@@ -124,14 +148,14 @@ const faqs = fm.faqs || [];
   title={data.title}
 />
 
-<!-- 6. Quality Compliance Wall — Certifications Ledger -->
+<!-- 7. Quality Compliance Wall — Certifications Ledger -->
 <QualityComplianceWall
   title={data.title}
   compliance={compliance}
   standards={standards}
 />
 
-<!-- 7. Semantic Closed Loop — Topology + JSON-LD -->
+<!-- 8. Semantic Closed Loop — Topology + JSON-LD -->
 <SemanticClosedLoop
   productName={data.title}
   sku={fm.sku || ''}
@@ -143,7 +167,7 @@ const faqs = fm.faqs || [];
   system={data.system || ''}
 />
 
-<!-- 8. Inquiry Form — B2B Conversion (client:load) -->
+<!-- 9. Inquiry Form — B2B Conversion (client:load) -->
 <InquiryForm
   productTitle={data.title}
   productSku={fm.sku || ''}
