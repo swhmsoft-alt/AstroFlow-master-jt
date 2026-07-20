@@ -24,6 +24,12 @@ weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
 function: "Copper-cored titanium conductor busbar"
 aliases: ["Busbar","Conductor bar","Current bar"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["PCB Plating Line","Electrolytic Cell System"]
+downstream: ["Phosphor Bronze Contacts","PTFE Heater Sheaths","Polypropylene Filter Cartridges"]
 ---
 
 # Titanium Copper-Cored Busbar
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Electroplating  Surface Finishing
 - **Upstream System Integration:** PCB Plating Line; Electrolytic Cell System

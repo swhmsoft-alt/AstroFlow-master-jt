@@ -24,6 +24,12 @@ weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
 function: "Propellant tank clamp band (Ti-5Al-2.5Sn ELI)"
 aliases: ["Clamp band","Tank band","Collar"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Aerospace Vehicle Assembly","Structural Airframe"]
+downstream: ["Aerospace Fasteners NAS6704","MIL-PRF-7808 Lubricating Oil","Encapsulated Seals AMS7276"]
 ---
 
 # Titanium Cryogenic Tank Clamp Band
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Aerospace  Defense
 - **Upstream System Integration:** Aerospace Vehicle Assembly; Structural Airframe

@@ -28,6 +28,12 @@ particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film
 function: "Center-bored vented screw for UHV blind holes"
 aliases: ["Vented screw","UHV screw","Vacuum bolt"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Semiconductor Vacuum Process Chamber","Turbomolecular Pump Isolation System"]
+downstream: ["Viton/FKM O-Ring Seals (KF/ISO)","OFC Copper Gaskets (Conflat CF)","Anti-Seize Compound (UHV-Compatible","MoS₂-Free)"]
 ---
 
 # Titanium Vented Vacuum Screw
@@ -104,7 +110,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** SemiconductorComponent / PrecisionMachinedPart
 - **Upstream System Integration:** Semiconductor Vacuum Process Chamber; Turbomolecular Pump Isolation System

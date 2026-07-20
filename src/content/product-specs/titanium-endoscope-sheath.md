@@ -24,6 +24,12 @@ weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
 function: "Rigid endoscope outer protective sheath"
 aliases: ["Endoscope tube","Laparoscope sheath","Optical tube"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Medical Device Assembly","Surgical Navigation System"]
+downstream: ["Sterilization Tray & Wrap","Silicone Surgical Mats","ISO 13485 Packaging"]
 ---
 
 # Titanium Endoscope Sheath
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Medical Device
 - **Upstream System Integration:** Medical Device Assembly; Surgical Navigation System

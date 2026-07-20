@@ -24,6 +24,12 @@ weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
 function: "Ultrasonic food cutting guillotine blade"
 aliases: ["Cutting blade","Guillotine blade","Food cutter"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Motorsport Vehicle Assembly","Performance Drivetrain"]
+downstream: ["ARP Chromoly Fasteners","Molykote M77 Assembly Lube","Safety Wire MS20995"]
 ---
 
 # Titanium Ultrasonic Food Cutting Blade
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Automotive  Motorsports
 - **Upstream System Integration:** Motorsport Vehicle Assembly; Performance Drivetrain

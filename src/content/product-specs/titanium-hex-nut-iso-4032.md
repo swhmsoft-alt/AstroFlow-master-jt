@@ -24,6 +24,12 @@ weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
 function: "Heavy hex nut M12-M30 (Grade 2 CP-Ti)"
 aliases: ["Hex nut","Structural nut","Heavy hex nut"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Industrial Equipment Assembly","Manufacturing Line"]
+downstream: ["Metric Hardware Kit","Industrial Threadlocker","Stainless Tagging"]
 ---
 
 # Titanium Hex Nut (ISO 4032)
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** MechanicalFastener / IndustrialHardware
 - **Upstream System Integration:** Industrial Equipment Assembly; Manufacturing Line

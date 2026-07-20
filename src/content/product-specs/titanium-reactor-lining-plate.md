@@ -24,6 +24,12 @@ weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
 function: "Explosion-bonded PTA reactor lining plate (Gr 7 clad)"
 aliases: ["Lining plate","Clad plate","Reactor liner"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Chemical Process Skid","Acid/Caustic Transfer System"]
+downstream: ["PP/PVDF Pipe Supports","PTFE Tape Sealant","304SS Corrosion Tags"]
 ---
 
 # Titanium Reactor Lining Plate
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Chemical Processing
 - **Upstream System Integration:** Chemical Process Skid; Acid/Caustic Transfer System

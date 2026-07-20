@@ -24,6 +24,12 @@ weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
 function: "Ultrabook display hinge pivot shaft"
 aliases: ["Display hinge","Lid pivot","Screen hinge"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Consumer Device Enclosure Assembly","Internal Structural Skeleton"]
+downstream: ["Stainless Steel Spring Contacts","Micro Pogo Pin Connectors","UV-Cured Adhesive Assembly"]
 ---
 
 # Titanium Laptop Hinge Shaft
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Consumer Electronics
 - **Upstream System Integration:** Consumer Device Enclosure Assembly; Internal Structural Skeleton

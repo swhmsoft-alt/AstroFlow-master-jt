@@ -24,6 +24,12 @@ weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
 function: "Pump shaft protective wear sleeve (Grade 5)"
 aliases: ["Shaft sleeve","Wear sleeve","Pump sleeve"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Water Treatment Plant","Chemical Feed System"]
+downstream: ["EPDM Gaskets","CPVC Pipe Fittings","HDPE Concrete Tank Lining"]
 ---
 
 # Titanium Pump Shaft Sleeve
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Environmental Engineering
 - **Upstream System Integration:** Water Treatment Plant; Chemical Feed System

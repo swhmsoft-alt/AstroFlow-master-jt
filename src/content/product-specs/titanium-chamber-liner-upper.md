@@ -28,6 +28,12 @@ particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film
 function: "Upper chamber wall protective plasma liner"
 aliases: ["Chamber liner","Wall shield","Plasma liner"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Plasma Etch/Deposition Chamber Assembly","RF Generator & Matching Network"]
+downstream: ["Quartz Window & Viewport Assemblies","Ceramic Clamp Rings & Focus Rings","Argon Purge Gas Supply Lines"]
 ---
 
 # Titanium Chamber Liner (Upper)
@@ -104,7 +110,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PlasmaChamberShield / SemiconductorConsumable
 - **Upstream System Integration:** Plasma Etch/Deposition Chamber Assembly; RF Generator & Matching Network

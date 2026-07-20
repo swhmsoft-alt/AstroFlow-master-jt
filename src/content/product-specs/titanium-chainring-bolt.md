@@ -26,6 +26,12 @@ weight_reduction: "~45% vs steel (7.85 g/cm³)"
 function: "Chainring fixing bolt set (M6)"
 aliases: ["Chainring bolt","Crank bolt","Bolt set"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Bicycle Drivetrain Assembly","Crankset & Bottom Bracket System"]
+downstream: ["11/12-Speed Chain","Derailleur Pulley Bearings","Threadlocker Compound (Loctite 242)"]
 ---
 
 # Titanium Chainring Bolt
@@ -100,7 +106,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Bicycle Drivetrain Assembly; Crankset & Bottom Bracket System

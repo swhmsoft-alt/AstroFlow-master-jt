@@ -24,6 +24,12 @@ weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
 function: "Liquid hydrogen cryogenic flange bolt (Grade 23)"
 aliases: ["LH2 bolt","Cryogenic bolt","H2 flange bolt"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Power Turbine Assembly","Thermal Management System"]
+downstream: ["Inconel 718 Blades","Steam Seal Carbon Rings","Wear Sleeves (Thermal Spray)"]
 ---
 
 # Titanium Cryogenic H2 Flange Bolt
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Energy
 - **Upstream System Integration:** Power Turbine Assembly; Thermal Management System

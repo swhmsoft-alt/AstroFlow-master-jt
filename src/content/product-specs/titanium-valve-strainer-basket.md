@@ -24,6 +24,12 @@ weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
 function: "Perforated valve strainer basket"
 aliases: ["Strainer","Filter basket","Valve screen"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Power Turbine Assembly","Thermal Management System"]
+downstream: ["Inconel 718 Blades","Steam Seal Carbon Rings","Wear Sleeves (Thermal Spray)"]
 ---
 
 # Titanium Valve Strainer Basket
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** ValveComponent / FlowControl
 - **Upstream System Integration:** Power Turbine Assembly; Thermal Management System

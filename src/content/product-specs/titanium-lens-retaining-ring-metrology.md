@@ -28,6 +28,12 @@ particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film
 function: "Optical lens retaining ring for metrology tools"
 aliases: ["Lens ring","Optical ring","Retainer ring"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Optical Metrology / Inspection Tool","Laser Interferometer Positioning System"]
+downstream: ["Fused Silica Reference Mirrors","Piezo Actuator Drivers","ECLIPSE/Tooling-Ball Kinematic Mounts"]
 ---
 
 # Titanium Lens Retaining Ring (Metrology)
@@ -104,7 +110,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** SemiconductorComponent / PrecisionMachinedPart
 - **Upstream System Integration:** Optical Metrology / Inspection Tool; Laser Interferometer Positioning System

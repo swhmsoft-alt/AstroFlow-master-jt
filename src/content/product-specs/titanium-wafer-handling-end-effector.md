@@ -28,6 +28,12 @@ particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film
 function: "Robot end-effector vacuum pad for wafer handling"
 aliases: ["End-effector","Wafer pad","Vacuum gripper"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Semiconductor Process Module (PVD/CVD/Etch)","Wafer Transfer Robot System"]
+downstream: ["Ceramic Wafer Guides & Pins","Vacuum Pick-and-Place End Effector Pads","Class 1 Cleanroom Storage FOUPs"]
 ---
 
 # Titanium Wafer Handling End-Effector
@@ -104,7 +110,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** WaferHandlingComponent / RobotEndEffector
 - **Upstream System Integration:** Semiconductor Process Module (PVD/CVD/Etch); Wafer Transfer Robot System

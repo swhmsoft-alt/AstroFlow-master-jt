@@ -24,6 +24,12 @@ weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
 function: "Ball valve stem (Grade 5) for chemical valve"
 aliases: ["Valve stem","Ball stem","Valve shaft"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Chemical Process Skid","Acid/Caustic Transfer System"]
+downstream: ["PP/PVDF Pipe Supports","PTFE Tape Sealant","304SS Corrosion Tags"]
 ---
 
 # Titanium Ball Valve Stem
@@ -97,7 +103,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** ValveComponent / FlowControl
 - **Upstream System Integration:** Chemical Process Skid; Acid/Caustic Transfer System

@@ -26,6 +26,12 @@ weight_reduction: "~45% vs steel (7.85 g/cm³)"
 function: "Rear derailleur parallelogram linkage pivot pin"
 aliases: ["Derailleur pin","Pivot pin","Linkage pin"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Bicycle Handlebar & Stem Assembly","Steering Column / Fork Assembly"]
+downstream: ["Carbon Fiber Handlebar","Aluminum/Steel Stem","Torx T25 Driver Bit"]
 ---
 
 # Titanium Derailleur Pivot Pin
@@ -100,7 +106,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Bicycle Handlebar & Stem Assembly; Steering Column / Fork Assembly

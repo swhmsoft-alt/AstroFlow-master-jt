@@ -26,6 +26,12 @@ weight_reduction: "~45% vs steel (7.85 g/cm³)"
 function: "1-1/8 inch split crown race for fork interface"
 aliases: ["Crown race","Fork race","Headset race"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Bicycle Handlebar & Stem Assembly","Steering Column / Fork Assembly"]
+downstream: ["Carbon Fiber Handlebar","Aluminum/Steel Stem","Torx T25 Driver Bit"]
 ---
 
 # Titanium Headset Crown Race
@@ -99,16 +105,3 @@ pubDate: "2026-07-18"
 - **A3:** For M4 fasteners: 2.0-2.5 Nm; M5: 4.0-5.0 Nm; M6: 8.0-10.0 Nm (all values apply to lubricated threads with MoS�?anti-seize). Unlubricated torque values must be reduced by 15-20% to account for the higher coefficient of friction (μ �?0.18-0.22 dry vs 0.12-0.15 lubricated). These figures ensure the fastener operates within 60-70% of yield strength, preserving a 1.5x safety margin for dynamic loading. Always use a calibrated torque wrench (±3% accuracy) for installation; impact drivers are not recommended due to the risk of thread stripping and localized galling at the thread engagement zone.
 
 ---
-
-## System Interconnectivity & Component Classification
-
-- **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
-- **Upstream System Integration:** Bicycle Handlebar & Stem Assembly; Steering Column / Fork Assembly
-- **Downstream Consumables & Tooling:** Carbon Fiber Handlebar; Aluminum/Steel Stem; Torx T25 Driver Bit
-
-**Cross-Reference Classification:**
-- **Industry:** Cycling / Bicycle (High-Performance, Road, Mountain, Gravel, E-Bike)
-- **System:** Bicycle Cockpit, Steering & Control Hardware
-- **Material Classification:** Grade 5 Ti-6Al-4V �?UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Hot forging, CNC turning, Thread rolling (DIN 13-1 / ISO 965-2, 6g)
-- **Inspection Standards:** MPI crack detection; 6g Go/No-Go ring gauge; Salt spray ASTM B117; Torque-to-tension verification

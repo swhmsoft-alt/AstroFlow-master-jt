@@ -28,6 +28,12 @@ particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film
 function: "VCR female nut coupling for UHV gas lines"
 aliases: ["VCR nut","Female coupling","UHV nut"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["UHV Gas Delivery System","Process Gas Cabinet & Manifold Assembly"]
+downstream: ["OFHC Copper Gasket Seals (VCR/Conflat)","Ultra-High Purity (UHP) Ar/N₂ Supply Lines","Parker/Valex VCR Wrenches & Torque Tooling"]
 ---
 
 # Titanium VCR Female Nut
@@ -104,7 +110,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** GasDeliveryFitting / UHVComponent
 - **Upstream System Integration:** UHV Gas Delivery System; Process Gas Cabinet & Manifold Assembly

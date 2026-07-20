@@ -282,6 +282,13 @@ const productSpecsCollection = defineCollection({
     weight_reduction: z.string().optional(),
     ndt_methods: z.string().optional(),
     pubDate: z.string().optional(),
+    // ── B2B Procurement & Semantic Fields ──
+    moq: z.number().default(1),
+    sampleLeadTime: z.string().default('3-5 Business Days'),
+    bulkLeadTime: z.string().default('15-25 Business Days (Batch Dependent)'),
+    incoterms: z.string().default('EXW / FOB Shenzhen'),
+    upstream: z.array(z.string()).default([]),
+    downstream: z.array(z.string()).default([]),
   }),
 });
 

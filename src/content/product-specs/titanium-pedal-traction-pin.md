@@ -26,6 +26,12 @@ weight_reduction: "~45% vs steel (7.85 g/cm³)"
 function: "Flat pedal replaceable anti-slip traction pin"
 aliases: ["Traction pin","Pedal pin","Grip pin"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Bicycle Wheel Build Assembly","Hub & Axle System"]
+downstream: ["Brass/Nickel-Plated Nipples","Rim Tape & Tubeless Valves","Spoke Tension Meter"]
 ---
 
 # Titanium Pedal Traction Pin
@@ -100,7 +106,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Bicycle Wheel Build Assembly; Hub & Axle System

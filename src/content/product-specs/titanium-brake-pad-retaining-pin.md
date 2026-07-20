@@ -26,6 +26,12 @@ weight_reduction: "~45% vs steel (7.85 g/cm³)"
 function: "Brake pad retention spring pin for disc caliper"
 aliases: ["Pad pin","Brake pad clip","Retaining pin"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Bicycle Frame Assembly","Wheel & Suspension System"]
+downstream: ["M4/M5/M6 Fastener Hardware","Stainless Steel Bearings","Aluminum Frame Components"]
 ---
 
 # Titanium Brake Pad Retaining Pin
@@ -100,7 +106,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Bicycle Frame Assembly; Wheel & Suspension System

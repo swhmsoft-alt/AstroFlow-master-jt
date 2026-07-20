@@ -28,6 +28,12 @@ particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film
 function: "Wafer susceptor support arm for MOCVD reactor"
 aliases: ["Susceptor arm","Wafer support","Reactor arm"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["MOCVD Reactor System","SiC-Coated Graphite Susceptor Assembly"]
+downstream: ["High-Purity MO Source Bubblers","EPI Wafer Carrier Trays","Thermocouple Feedback Probes"]
 ---
 
 # Titanium MOCVD Susceptor Support Arm
@@ -104,7 +110,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** SemiconductorComponent / PrecisionMachinedPart
 - **Upstream System Integration:** MOCVD Reactor System; SiC-Coated Graphite Susceptor Assembly

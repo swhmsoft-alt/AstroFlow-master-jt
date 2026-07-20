@@ -26,6 +26,12 @@ weight_reduction: "~45% vs steel (7.85 g/cm³)"
 function: "Rear derailleur hanger dropout interface"
 aliases: ["RD hanger","Dropout","Mech hanger"]
 pubDate: "2026-07-18"
+moq: 1
+sampleLeadTime: "3-5 Business Days"
+bulkLeadTime: "15-25 Business Days (Batch Dependent)"
+incoterms: "EXW / FOB Shenzhen"
+upstream: ["Mountain Bike Full-Suspension Linkage","Rear Shock Assembly"]
+downstream: ["Sealed Cartridge Bearings (6800/6900 Series)","DIN 912 Socket Head Cap Screws","Anti-Seize Compound"]
 ---
 
 # Titanium Derailleur Hanger
@@ -100,7 +106,7 @@ pubDate: "2026-07-18"
 
 ---
 
-## System Interconnectivity & Component Classification
+
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Mountain Bike Full-Suspension Linkage; Rear Shock Assembly
