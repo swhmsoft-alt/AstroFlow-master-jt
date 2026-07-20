@@ -1,0 +1,46 @@
+---
+// src/components/products/ProcurementMatrix.astro
+// Targets: Procurement / Supply Chain Manager
+// Data source: specEntry.data (moq, sampleLeadTime, bulkLeadTime, incoterms)
+
+interface Props {
+  moq: number;
+  sampleLeadTime: string;
+  bulkLeadTime: string;
+  incoterms: string;
+  title: string;
+}
+
+const { moq, sampleLeadTime, bulkLeadTime, incoterms, title } = Astro.props;
+---
+
+<section class="py-10 lg:py-12" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));" id="procurement-matrix">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h3 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Commercial Logistics &amp; Procurement Framework</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- MOQ -->
+      <div class="p-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+        <span class="block text-[10px] uppercase tracking-wider font-semibold" style="color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Minimum Order (MOQ)</span>
+        <strong class="block text-xl mt-1" style="color: var(--theme-text);">{moq} Unit{moq !== 1 ? 's' : ''}</strong>
+      </div>
+      <!-- Sample Lead Time -->
+      <div class="p-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+        <span class="block text-[10px] uppercase tracking-wider font-semibold" style="color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Sample Evaluation</span>
+        <strong class="block text-xl mt-1" style="color: color-mix(in srgb, #10b981 80%, transparent);">{sampleLeadTime}</strong>
+      </div>
+      <!-- Bulk Lead Time -->
+      <div class="p-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+        <span class="block text-[10px] uppercase tracking-wider font-semibold" style="color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Mass Production Lead</span>
+        <strong class="block text-xl mt-1" style="color: var(--theme-text);">{bulkLeadTime}</strong>
+      </div>
+      <!-- Incoterms -->
+      <div class="p-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+        <span class="block text-[10px] uppercase tracking-wider font-semibold" style="color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Shipping Basis</span>
+        <strong class="block text-xl mt-1" style="color: var(--theme-text);">{incoterms}</strong>
+      </div>
+    </div>
+    <p class="text-xs mt-4" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+      Pricing and lead times for <strong style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{title}</strong> are batch-dependent. Contact our supply chain team for volume-based tiered pricing.
+    </p>
+  </div>
+</section>
