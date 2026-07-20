@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(167, 15%, 92%)"/>
+      <stop offset="100%" style="stop-color:hsl(167, 20%, 85%)"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.4)"/>
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.0)"/>
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.1)"/>
+    </linearGradient>
+  </defs>
+  <!-- 背景 -->
+  <rect width="1024" height="1024" fill="url(#bg)" rx="16"/>
+  <!-- 产品轮廓（抽象几何表示） -->
+  <rect x="204.8" y="153.6" width="614.4" height="512" rx="40.96" 
+        fill="none" stroke="hsl(167, 35%, 45%)" stroke-width="3" opacity="0.3"/>
+  <circle cx="512" cy="409.6" r="153.6" 
+          fill="none" stroke="hsl(167, 35%, 45%)" stroke-width="2" opacity="0.2"/>
+  <path d="M358.4 256 L665.6 563.2" stroke="hsl(167, 35%, 45%)" stroke-width="2" opacity="0.15"/>
+  <path d="M665.6 256 L358.4 563.2" stroke="hsl(167, 35%, 45%)" stroke-width="2" opacity="0.15"/>
+  <!-- 光泽层 -->
+  <rect width="1024" height="1024" fill="url(#shine)" rx="16"/>
+  <!-- 产品名称 -->
+  <text x="512" y="798.72" text-anchor="middle" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="51.2" font-weight="600" 
+        fill="hsl(167, 35%, 45%)">Titanium Liquid Level Float</text>
+  <!-- 材质信息 -->
+  <text x="512" y="870.4" text-anchor="middle" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="25.6" 
+        fill="#999">Grade 2 CP-Ti</text>
+  <!-- 底部水印 -->
+  <text x="512" y="962.56" text-anchor="middle" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="18.432" fill="#bbb">
+    BOZE CNC Ti · Precision Titanium Component
+  </text>
+  <!-- 齿轮/CNC 装饰图标 -->
+  <g transform="translate(870.4,153.6) scale(0.3072)" opacity="0.12">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="hsl(167, 35%, 45%)" stroke-width="8"/>
+    <line x1="42" y1="0" x2="58" y2="0" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="36.373066958946424" y1="20.999999999999996" x2="50.229473419497445" y2="28.999999999999996" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="21.000000000000004" y1="36.373066958946424" x2="29.000000000000007" y2="50.22947341949744" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="2.5717582782094417e-15" y1="42" x2="3.5514757175273244e-15" y2="58" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-20.99999999999999" y1="36.373066958946424" x2="-28.999999999999986" y2="50.229473419497445" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-36.373066958946424" y1="20.999999999999996" x2="-50.229473419497445" y2="28.999999999999996" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-42" y1="5.143516556418883e-15" x2="-58" y2="7.102951435054649e-15" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-36.373066958946424" y1="-21.000000000000004" x2="-50.22947341949744" y2="-29.000000000000007" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-21.000000000000018" y1="-36.37306695894642" x2="-29.000000000000025" y2="-50.22947341949743" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-7.715274834628325e-15" y1="-42" x2="-1.0654427152581972e-14" y2="-58" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="21.000000000000004" y1="-36.373066958946424" x2="29.000000000000007" y2="-50.22947341949744" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="36.37306695894641" y1="-21.000000000000018" x2="50.229473419497424" y2="-29.000000000000025" stroke="hsl(167, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

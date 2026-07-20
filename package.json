@@ -9,6 +9,9 @@
     "build": "npx astro build && node scripts/split-sitemap.mjs && node scripts/postbuild.js",
     "preview": "astro preview",
     "optimize:images": "node scripts/optimize-images.js",
+    "generate:product-images": "node scripts/generate-product-images.mjs --provider placeholder",
+    "generate:product-images:openai": "node scripts/generate-product-images.mjs --provider openai",
+    "generate:product-images:dry": "node scripts/generate-product-images.mjs --dry-run",
     "deploy": "npx astro build && node scripts/split-sitemap.mjs && node scripts/deploy-basic-ftp.js",
     "astro": "astro"
   },
