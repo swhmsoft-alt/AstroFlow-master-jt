@@ -164,11 +164,6 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "Compliance Docs"
     ]
   },
-  '/products': {
-    h1: 'Our Products',
-    subtitle: 'High-precision CNC machined components for aerospace, medical, automotive, and industrial applications. Certified quality, global delivery.',
-    badge: 'Precision Manufacturing',
-  },
   '/rfq': {
     h1: 'Request a Quote',
     subtitle: 'Submit your engineering RFQ for titanium CNC machining, additive manufacturing, fabrication, or surface treatment. Get a formal quote within 24-48 hours. Secure CAD upload.',

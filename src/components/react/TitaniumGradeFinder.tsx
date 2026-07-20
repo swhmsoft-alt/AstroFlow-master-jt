@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Check, FlaskConical, ShieldCheck, HeartPulse, Wrench, Thermometer, Gauge, Weight, DollarSign } from 'lucide-react';
+import { Search, FlaskConical, HeartPulse, ShieldCheck, Wrench, Thermometer, Gauge, Weight, DollarSign } from 'lucide-react';
 
 interface Grade {
   id: string;

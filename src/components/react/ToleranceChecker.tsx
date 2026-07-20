@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Ruler, CheckCircle2, XCircle, AlertTriangle, Info, Gauge, CircleDot, Move3d, Paintbrush, Wrench, Cog, Drill, Rotate3d } from 'lucide-react';
+import { Ruler, CheckCircle2, XCircle, Info, Gauge, CircleDot, Move3d, Paintbrush, Wrench, Cog, Drill, Rotate3d } from 'lucide-react';
 
 interface ToleranceFeature {
   id: string;
