@@ -1,0 +1,73 @@
+---
+// src/components/products/SpecificationTable.astro
+// B2B Technical Specifications Matrix from spec frontmatter data
+
+interface Props {
+  sku: string;
+  unsNumber?: string;
+  werkstoffNumber?: string;
+  standards: string[];
+  tensileStrength?: string;
+  yieldStrength?: string;
+  elongation?: string;
+  hardness?: string;
+  density?: string;
+  modulus?: string;
+  thermalConductivity?: string;
+  maxServiceTemp?: string;
+  surfaceFinish?: string;
+  tolerances?: string;
+  ndtMethods?: string;
+}
+
+const { sku, unsNumber, werkstoffNumber, standards, tensileStrength, yieldStrength, elongation, hardness, density, modulus, thermalConductivity, maxServiceTemp, surfaceFinish, tolerances, ndtMethods } = Astro.props;
+
+interface Row { param: string; value: string; standard: string; style: string; }
+const r: Row[] = [];
+const altStyle = 'color-mix(in srgb, var(--theme-bg) 50%, var(--theme-surface))';
+function add(p: string, v: string, s: string) {
+  r.push({ param: p, value: v, standard: s, style: r.length % 2 === 1 ? altStyle : 'transparent' });
+}
+add('Component SKU', sku, 'Manufacturing identifier');
+if (unsNumber) add('UNS Number', unsNumber, 'Unified Numbering System');
+if (werkstoffNumber) add('Werkstoff Number', werkstoffNumber, 'DIN EN Material Number');
+if (standards.length > 0) add('International Standards', standards.join(', '), 'Manufacturing & material testing compliance');
+if (tensileStrength) add('Tensile Strength ($R_m$)', tensileStrength, 'Mechanical minimum per ASTM');
+if (yieldStrength) add('Yield Strength ($R_{p0.2}$)', yieldStrength, 'Structural load boundary');
+if (elongation) add('Elongation ($A_5$)', elongation, 'Ductility for forming/assembly');
+if (hardness) add('Hardness', hardness, 'Machinability & wear resistance');
+if (density) add('Density & Weight Profile', density, 'Design engineering benchmark');
+if (modulus) add('Modulus of Elasticity', modulus, 'Stiffness & deflection');
+if (thermalConductivity) add('Thermal Conductivity', thermalConductivity, 'Thermal management');
+if (maxServiceTemp) add('Max Continuous Service Temp', maxServiceTemp, 'Safe operating envelope');
+if (surfaceFinish) add('Surface Finish', surfaceFinish, 'Corrosion / leakage protection');
+if (tolerances) add('Dimensional Tolerances', tolerances, 'Assembly interchangeability');
+if (ndtMethods) add('NDT & Inspection', ndtMethods, 'Verification per ISO/IEC');
+---
+
+<section class="py-10 lg:py-12" style="background: var(--theme-bg);" id="tech-specs">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">Technical Specifications Matrix</h3>
+    <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Mechanical, dimensional, and material properties for procurement engineering review.</p>
+    <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+      <table class="w-full text-sm">
+        <thead>
+          <tr style="background: var(--theme-surface);">
+            <th class="text-left px-4 py-3 font-semibold text-xs uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">Technical Parameter</th>
+            <th class="text-left px-4 py-3 font-semibold text-xs uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">Specification Value</th>
+            <th class="text-left px-4 py-3 font-semibold text-xs uppercase tracking-wider hidden md:table-cell" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">Associated Standard</th>
+          </tr>
+        </thead>
+        <tbody>
+          {r.map((row) => (
+            <tr style={`background: ${row.style}`}>
+              <td class="px-4 py-2.5 font-medium" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 5%, transparent);">{row.param}</td>
+              <td class="px-4 py-2.5" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 5%, transparent);">{row.value}</td>
+              <td class="px-4 py-2.5 text-xs hidden md:table-cell" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 5%, transparent);">{row.standard}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
