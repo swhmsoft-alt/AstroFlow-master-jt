@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Medical Device Assembly","Surgical Navigation System"]
 downstream: ["Sterilization Tray & Wrap","Silicone Surgical Mats","ISO 13485 Packaging"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Orthodontic Archwire
 **Surgical & Implantable Medical Components | Optimized for Biocompatibility & MRI Compatibility**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Nitinol (ASTM F2063) (UNS R56400 / W.Nr. 3.7165) — Nitinol (Nickel-Titanium Shape Memory Alloy, ASTM F2063) provides unique superelasticity and shape memory effect, enabling self-expanding stents, kink-resistant guidewires, and deployable medical devi...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Dental | Medical Device Industry Classification |
-| **Material Designation** | Nitinol (ASTM F2063) — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for forming and assembly |
-| **Hardness** | HRC 36 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.43 g/cm³ | 45% weight reduction vs steel (7.85 g/cm³) |
-| **Modulus of Elasticity** | 114 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | 100% CMM dimensional; Mechanical testing per ASTM F543; MRI artifact (3T phantom); Class 10,000 cleanroom packaging | Ultrasonic Cleaning validation; Dimensional CMM per ISO 10360; PMI per ASTM E1476; 100% visual per ISO 14971 |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium orthodontic archwire batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium orthodontic archwire?
-- **A1:** Titanium Orthodontic Archwire is designed for self-adjusting orthodontic archwire (nitinol). The Nitinol (ASTM F2063) grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium orthodontic archwire manufactured?
-- **A2:** Titanium Orthodontic Archwire is manufactured using VAR melting. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What surface treatment for bone-contacting surfaces?
-- **A3:** Cementless fixation: Type II anodizing (AMS 2488) produces 0.5-2.0 µm porous oxide for osseointegration. Cemented: Ra 1.0-2.0 µm blasted. Articulating: polished to Ra ≤ 0.05 µm. All surfaces ASTM F86 passivated.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Medical Device
-- **Upstream System Integration:** Medical Device Assembly; Surgical Navigation System
-- **Downstream Consumables & Tooling:** Sterilization Tray & Wrap; Silicone Surgical Mats; ISO 13485 Packaging
-
-**Cross-Reference Classification:**
-- **Industry:** Medical Device
-- **System:** Dental Implants & Prosthetics
-- **Material Classification:** Nitinol (ASTM F2063) — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** VAR melting, Closed-die hot forging, CNC swiss turning, Thread rolling, Passivation (ASTM F86)
-- **Inspection Standards:** 100% CMM dimensional; Mechanical testing per ASTM F543; MRI artifact (3T phantom); Class 10,000 cleanroom packaging

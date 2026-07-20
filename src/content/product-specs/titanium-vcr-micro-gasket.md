@@ -35,10 +35,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["UHV Gas Delivery System","Process Gas Cabinet & Manifold Assembly"]
 downstream: ["OFHC Copper Gasket Seals (VCR/Conflat)","Ultra-High Purity (UHP) Ar/N₂ Supply Lines","Parker/Valex VCR Wrenches & Torque Tooling"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium VCR Micro-Gasket
 **Gas Delivery Fittings & Manifolds | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**
@@ -47,29 +44,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / SEMI F1 / ISO 9001:2015 / AS9100D
 - **Material:** Grade 2 CP-Ti (UHP Melt) (UNS R50400 / W.Nr. 3.7035) — Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical p...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Gas Delivery / Gas Delivery Fittings & Manifolds | Semiconductor Equipment Industry (SEMI) |
-| **Material Designation** | Grade 2 CP-Ti (UHP Melt) — Commercially Pure Titanium (Ultra-High Purity Melt) | **UNS R50400 / W.Nr. 3.7035** |
-| **International Standards** | Conforms to ASTM B348 UHP / SEMI F1 / ASME BPE | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 345 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 275 MPa | Guarantees structural load boundaries for vacuum/pressure |
-| **Elongation ($A5$)** | Min. 20% | Ensures ductility for thread forming & seal compression |
-| **Hardness** | HRB 80 | Optimum for thread rolling & sealing surface integrity |
-| **Density & Weight Profile** | 4.51 g/cm³ | ~42% lighter than 316L Stainless Steel (8.0 g/cm³) |
-| **Modulus of Elasticity** | 105 GPa | High stiffness-to-weight ratio reduces vibration in robot motion |
-| **Thermal Conductivity** | 16.4 W/m·K | Critical thermal isolation for plasma chamber hardware |
-| **Outgassing Rate** | <1.0e-11 Torr·L/s·cm² | Meets XHV requirements for UHV process chambers |
-| **Dimensional Tolerances** | ISO 2768-f (Fine) for sealing faces / ISO 2768-m for general | Guarantees leak-free sealing and component interchangeability |
-| **Surface Finish (Roughness)** | Ra ≤ 0.2 µm (electropolished sealing surface) | Electropolished UHP surface for minimal particle entrapment |
-| **Surface Treatment** | Passivation ASTM F86 | SEMI F1 / ASTM F86 compliant |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope under RF plasma heating |
-| **NDT & Inspection** | Helium leak test (1e-9 mbar.L/s); Surface roughness (Ra<0.2um); PMI verification; Particle count (Class 100) | Helium Mass Spectrometry Leak Detection per ASTM E493 (<1e-9 mbar·L/s); Particle Count Verification per SEMI E98 (Class 100); Surface Profilometry per ISO 4287 (Ra verification); Positive Material Identification (PMI) via XRF per ASTM E1476; Dimensional verification via CMM per ISO 10360 |
 
 ---
 
@@ -100,30 +74,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress & Surface Integrity Control:** Every titanium vcr micro-gasket batch undergoes: (1) **Vacuum stress-relieving annealing** at 600-700°C for 1.5-3 hours under argon (O₂ < 10 ppm) to eliminate machining-induced residual tensile stresses; (2) **Electropolishing** (per SEMI F1) removing 10-20 µm of the mechanically deformed surface layer, exposing a clean, inclusion-free subsurface with Ra < 0.2 µm; (3) **Passivation** (ASTM F86: 20-30 vol% HNO₃, 30 min at 50°C) to restore the stoichiometric $TiO_2$ barrier layer. Sealing surfaces (Conflat knife-edges, VCR sealing faces) are produced via **single-point diamond turning** (SPDT) achieving Ra < 0.1 µm with form accuracy < 1 µm — eliminating the need for lapping or polishing compounds that introduce embedded particle contamination risks.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium vcr micro-gasket?
-- **A1:** Titanium VCR Micro-Gasket is designed for titanium micro-gasket for vcr knife-edge seal. The Grade 2 CP-Ti (UHP Melt) grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium vcr micro-gasket manufactured?
-- **A2:** Titanium VCR Micro-Gasket is manufactured using Precision CNC turning. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What is the recommended bake-out temperature and torque for UHV sealing components?
-- **A3:** For Conflat (CF) knife-edge seals: bake-out up to 300°C with torque of 18-22 Nm for DN40CF, 25-30 Nm for DN63CF. For VCR face seal fittings: M8×1.0 gland nut torque = 14-18 Nm (lubricated with UHV-compatible MoS₂-free anti-seize). For KF/ISO centering ring clamps: hand-tight + 1/8 turn (no tools). All threaded semiconductor hardware must be installed with calibrated torque wrenches (±2% accuracy). Thermal cycling validation per SEMI S2 is recommended after bake-out to verify leak integrity below 1 × 10⁻⁹ mbar·L/s.
-
----
-
-
-
-- **Primary Industrial Entity:** GasDeliveryFitting / UHVComponent
-- **Upstream System Integration:** UHV Gas Delivery System; Process Gas Cabinet & Manifold Assembly
-- **Downstream Consumables & Tooling:** OFHC Copper Gasket Seals (VCR/Conflat); Ultra-High Purity (UHP) Ar/N₂ Supply Lines; Parker/Valex VCR Wrenches & Torque Tooling
-
-**Cross-Reference Classification:**
-- **Industry:** Semiconductor (Wafer Fabrication, Etch, CVD, PVD, Metrology, MOCVD)
-- **System:** UHV Gas Delivery Fittings & Manifolds
-- **Material Classification:** Grade 2 CP-Ti (UHP Melt) — UNS R50400 / W.Nr. 3.7035
-- **Manufacturing Processes:** Precision CNC turning, Electropolishing, Class 100 cleanroom cleaning, Helium leak testing
-- **Cleanroom Classification:** ISO Class 100 (ISO 5) per SEMI E98
-- **Leak Integrity:** <1 × 10⁻⁹ mbar·L/s He (100% tested)

@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Power Turbine Assembly","Thermal Management System"]
 downstream: ["Inconel 718 Blades","Steam Seal Carbon Rings","Wear Sleeves (Thermal Spray)"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Pipe U-Bolt
 **Nuclear, Hydrogen & Power Generation Components | Optimized for Extreme Environment Reliability**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Pipe Support | Energy Industry Classification |
-| **Material Designation** | Grade 5 Ti-6Al-4V — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for forming and assembly |
-| **Hardness** | HRC 36 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.43 g/cm³ | 45% weight reduction vs steel (7.85 g/cm³) |
-| **Modulus of Elasticity** | 114 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Pickling (HF+HNO3); Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | Hydrostatic pressure test; PMI verification; Dimensional per ASME B16.9; MTR (EN 10204 3.1) | UT per ASTM A388; PMI per ASTM E1476; 100% dimensional CMM; Hydrostatic test per ASME Section VIII |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium pipe u-bolt batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What torque should I use for titanium pipe u-bolt?
-- **A1:** Recommended installation torque depends on thread size and lubrication. For M5 titanium fasteners: 4-5 Nm (dry), 3-4 Nm (with anti-seize). Always use titanium-compatible anti-seize compound to prevent galling (cold welding) of threads.
-
-### Q2: How is titanium pipe u-bolt manufactured?
-- **A2:** Titanium Pipe U-Bolt is manufactured using Cold heading. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What material for PEM electrolyzer bipolar plates?
-- **A3:** Grade 2 CP-Ti with 0.5-1.0 µm Pt coating (sputtered). Contact resistance <10 µΩ·cm² per DOE targets. Corrosion <0.1 µA/cm² at 2V in 80°C H₂SO₄. Service life >40,000h. Alternative: 2-3 µm TiN PVD.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Energy
-- **Upstream System Integration:** Power Turbine Assembly; Thermal Management System
-- **Downstream Consumables & Tooling:** Inconel 718 Blades; Steam Seal Carbon Rings; Wear Sleeves (Thermal Spray)
-
-**Cross-Reference Classification:**
-- **Industry:** Energy
-- **System:** Valves / Fluid Control Components
-- **Material Classification:** Grade 5 Ti-6Al-4V — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Cold heading, Thread rolling (DIN 13-1, 6g), Heat treatment (STA), Passivation ASTM F86
-- **Inspection Standards:** Hydrostatic pressure test; PMI verification; Dimensional per ASME B16.9; MTR (EN 10204 3.1)

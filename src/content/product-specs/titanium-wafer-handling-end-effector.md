@@ -35,10 +35,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Semiconductor Process Module (PVD/CVD/Etch)","Wafer Transfer Robot System"]
 downstream: ["Ceramic Wafer Guides & Pins","Vacuum Pick-and-Place End Effector Pads","Class 1 Cleanroom Storage FOUPs"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Wafer Handling End-Effector
 **Process Chamber Components | Optimized for UHV & Plasma-Enhanced Semiconductor Processes**
@@ -47,29 +44,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / SEMI F1 / ISO 9001:2015 / AS9100D
 - **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Wafer Handling / Process Chamber Components | Semiconductor Equipment Industry (SEMI) |
-| **Material Designation** | Grade 5 Ti-6Al-4V — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries for vacuum/pressure |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for thread forming & seal compression |
-| **Hardness** | HRC 36 | Optimum for thread rolling & sealing surface integrity |
-| **Density & Weight Profile** | 4.43 g/cm³ | ~45% lighter than 316L stainless steel vacuum fittings |
-| **Modulus of Elasticity** | 114 GPa | High stiffness-to-weight ratio reduces vibration in robot motion |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical thermal isolation for plasma chamber hardware |
-| **Outgassing Rate** | 1.1e-10 Torr·L/s·cm² | Meets XHV requirements for UHV process chambers |
-| **Dimensional Tolerances** | ISO 2768-f (Fine) for sealing faces / ISO 2768-m for general | Guarantees leak-free sealing and component interchangeability |
-| **Surface Finish (Roughness)** | Ra ≤ 0.2 µm (wafer contact zone) | Optimized for plasma erosion resistance or UHV seal integrity |
-| **Surface Treatment** | Passivation ASTM F86 | SEMI F1 / ASTM F86 compliant |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope under RF plasma heating |
-| **NDT & Inspection** | Helium leak test (1e-9 mbar.L/s); Surface roughness (Ra<0.2um); PMI verification; Particle count (Class 100) | Helium Mass Spectrometry Leak Detection per ASTM E493 (<1e-9 mbar·L/s); Particle Count Verification per SEMI E98 (Class 100); Surface Profilometry per ISO 4287 (Ra verification); Positive Material Identification (PMI) via XRF per ASTM E1476; Dimensional verification via CMM per ISO 10360 |
 
 ---
 
@@ -100,30 +74,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress & Surface Integrity Control:** Every titanium wafer handling end-effector batch undergoes: (1) **Vacuum stress-relieving annealing** at 600-700°C for 1.5-3 hours under argon (O₂ < 10 ppm) to eliminate machining-induced residual tensile stresses; (2) **Electropolishing** (per SEMI F1) removing 10-20 µm of the mechanically deformed surface layer, exposing a clean, inclusion-free subsurface with Ra < 0.2 µm; (3) **Passivation** (ASTM F86: 20-30 vol% HNO₃, 30 min at 50°C) to restore the stoichiometric $TiO_2$ barrier layer. Sealing surfaces (Conflat knife-edges, VCR sealing faces) are produced via **single-point diamond turning** (SPDT) achieving Ra < 0.1 µm with form accuracy < 1 µm — eliminating the need for lapping or polishing compounds that introduce embedded particle contamination risks.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium wafer handling end-effector?
-- **A1:** Titanium Wafer Handling End-Effector is designed for robot end-effector vacuum pad for wafer handling. The Grade 5 Ti-6Al-4V grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium wafer handling end-effector manufactured?
-- **A2:** Titanium Wafer Handling End-Effector is manufactured using Precision CNC turning. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What is the recommended bake-out temperature and torque for UHV sealing components?
-- **A3:** For Conflat (CF) knife-edge seals: bake-out up to 300°C with torque of 18-22 Nm for DN40CF, 25-30 Nm for DN63CF. For VCR face seal fittings: M8×1.0 gland nut torque = 14-18 Nm (lubricated with UHV-compatible MoS₂-free anti-seize). For KF/ISO centering ring clamps: hand-tight + 1/8 turn (no tools). All threaded semiconductor hardware must be installed with calibrated torque wrenches (±2% accuracy). Thermal cycling validation per SEMI S2 is recommended after bake-out to verify leak integrity below 1 × 10⁻⁹ mbar·L/s.
-
----
-
-
-
-- **Primary Industrial Entity:** WaferHandlingComponent / RobotEndEffector
-- **Upstream System Integration:** Semiconductor Process Module (PVD/CVD/Etch); Wafer Transfer Robot System
-- **Downstream Consumables & Tooling:** Ceramic Wafer Guides & Pins; Vacuum Pick-and-Place End Effector Pads; Class 1 Cleanroom Storage FOUPs
-
-**Cross-Reference Classification:**
-- **Industry:** Semiconductor (Wafer Fabrication, Etch, CVD, PVD, Metrology, MOCVD)
-- **System:** Semiconductor Process Chamber Components
-- **Material Classification:** Grade 5 Ti-6Al-4V — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Precision CNC turning, Electropolishing, Class 100 cleanroom cleaning, Helium leak testing
-- **Cleanroom Classification:** ISO Class 100 (ISO 5) per SEMI E98
-- **Leak Integrity:** <1 × 10⁻⁹ mbar·L/s He (100% tested)

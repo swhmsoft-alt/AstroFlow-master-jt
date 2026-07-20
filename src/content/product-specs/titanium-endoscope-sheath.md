@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Medical Device Assembly","Surgical Navigation System"]
 downstream: ["Sterilization Tray & Wrap","Silicone Surgical Mats","ISO 13485 Packaging"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Endoscope Sheath
 **Surgical & Implantable Medical Components | Optimized for Biocompatibility & MRI Compatibility**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 9 Ti-3Al-2.5V (UNS R56320 / W.Nr. 3.7195) — Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting re...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Surgical Instruments | Medical Device Industry Classification |
-| **Material Designation** | Grade 9 Ti-3Al-2.5V — Titanium Alloy | **UNS R56320 / W.Nr. 3.7195** |
-| **International Standards** | Conforms to ASTM B348 / AMS 4934 / ASTM B863 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 620 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 483 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 15% | Ensures ductility for forming and assembly |
-| **Hardness** | HRC 32 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.48 g/cm³ | 42% weight reduction vs 316L Stainless Steel (8.0 g/cm³) |
-| **Modulus of Elasticity** | 100 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 7.8 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | 100% CMM dimensional; Mechanical testing per ASTM F543; MRI artifact (3T phantom); Class 10,000 cleanroom packaging | Ultrasonic Cleaning validation; Dimensional CMM per ISO 10360; PMI per ASTM E1476; 100% visual per ISO 14971 |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium endoscope sheath batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium endoscope sheath?
-- **A1:** Titanium Endoscope Sheath is designed for rigid endoscope outer protective sheath. The Grade 9 Ti-3Al-2.5V grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium endoscope sheath manufactured?
-- **A2:** Titanium Endoscope Sheath is manufactured using VAR melting. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What surface treatment for bone-contacting surfaces?
-- **A3:** Cementless fixation: Type II anodizing (AMS 2488) produces 0.5-2.0 µm porous oxide for osseointegration. Cemented: Ra 1.0-2.0 µm blasted. Articulating: polished to Ra ≤ 0.05 µm. All surfaces ASTM F86 passivated.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Medical Device
-- **Upstream System Integration:** Medical Device Assembly; Surgical Navigation System
-- **Downstream Consumables & Tooling:** Sterilization Tray & Wrap; Silicone Surgical Mats; ISO 13485 Packaging
-
-**Cross-Reference Classification:**
-- **Industry:** Medical Device
-- **System:** Surgical Instruments
-- **Material Classification:** Grade 9 Ti-3Al-2.5V — UNS R56320 / W.Nr. 3.7195
-- **Manufacturing Processes:** VAR melting, Closed-die hot forging, CNC swiss turning, Thread rolling, Passivation (ASTM F86)
-- **Inspection Standards:** 100% CMM dimensional; Mechanical testing per ASTM F543; MRI artifact (3T phantom); Class 10,000 cleanroom packaging

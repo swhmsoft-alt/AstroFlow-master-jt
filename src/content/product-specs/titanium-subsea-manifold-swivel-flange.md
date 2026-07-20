@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Marine Platform Assembly","Subsea Production System"]
 downstream: ["FKM O-Ring Seals","CuNi Hydraulic Lines","ROV Hot-Stab Tooling"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Subsea Manifold Swivel Flange
 **Deep-Sea & Subsea Engineering Components | Optimized for Seawater Immersion up to 6000m Depth**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 5 Ti-6Al-4V ELI (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Oil & Gas | Marine & Offshore Industry Classification |
-| **Material Designation** | Grade 5 Ti-6Al-4V ELI — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for forming and assembly |
-| **Hardness** | HRC 36 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.43 g/cm³ | 45% weight reduction vs steel (7.85 g/cm³) |
-| **Modulus of Elasticity** | 114 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | Ultrasonic inspection; FPI; Hydrostatic pressure test; Magnetic permeability (mu<1.01) | Hydrostatic pressure test per API 6A; Dye Penetrant (PT) per ASTM E1417; Ultrasonic wall thickness per ASTM A578; 100% CMM |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium subsea manifold swivel flange batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What pressure rating for titanium subsea manifold swivel flange?
-- **A1:** Pressure rating depends on grade, wall thickness, and temperature. Grade 2 CP-Ti pipe fittings are typically rated to Class 150 (285 psi) or Class 300 (740 psi) per ASME B16.5/B16.9. Higher ratings available with Grade 5.
-
-### Q2: How is titanium subsea manifold swivel flange manufactured?
-- **A2:** Titanium Subsea Manifold Swivel Flange is manufactured using Ring forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What torque values for subsea bolted connections?
-- **A3:** M16 = 150-180 Nm, M20 = 290-330 Nm, M24 = 500-560 Nm (lubricated Cu anti-seize per NORSOK M-001). Use 316L or Inconel 625 nuts. RTV sealant per API 6A.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Marine  Offshore
-- **Upstream System Integration:** Marine Platform Assembly; Subsea Production System
-- **Downstream Consumables & Tooling:** FKM O-Ring Seals; CuNi Hydraulic Lines; ROV Hot-Stab Tooling
-
-**Cross-Reference Classification:**
-- **Industry:** Marine & Offshore
-- **System:** Deepwater Drilling Risers & Components
-- **Material Classification:** Grade 5 Ti-6Al-4V ELI — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Ring forging, CNC machining, TIG welding, Hydrostatic testing
-- **Inspection Standards:** Ultrasonic inspection; FPI; Hydrostatic pressure test; Magnetic permeability (mu<1.01)

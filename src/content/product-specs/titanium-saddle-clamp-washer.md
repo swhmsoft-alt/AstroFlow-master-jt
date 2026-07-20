@@ -33,10 +33,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Bicycle Wheel Build Assembly","Hub & Axle System"]
 downstream: ["Brass/Nickel-Plated Nipples","Rim Tape & Tubeless Valves","Spoke Tension Meter"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Saddle Clamp Washer
 **Wheels, Saddle, Pedals & Accessories | Optimized for Weight-Sensitive Cycling Applications**
@@ -45,28 +42,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015
 - **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Seat Hardware / Wheels, Saddle, Pedals & Accessories | Cycling / Bicycle Industry Classification |
-| **Material Designation** | Grade 5 Ti-6Al-4V — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for thread forming & bending |
-| **Hardness** | HRC 36 | Consistent machinability & wear resistance |
-| **Density & Weight Profile** | 4.43 g/cm³ | ~45% vs steel (7.85 g/cm³) |
-| **Modulus of Elasticity** | 114 GPa | Determines stiffness & deflection under load |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical for brake heat management & welding |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees tight interchangeability in assemblies |
-| **Surface Finish (Roughness)** | Ra ≤ 0.8 µm | Specified for optimal fatigue life and corrosion resistance |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / AMS 2488 compliant |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | Tensile testing; Salt spray ASTM B117 | Ultrasonic Testing (UT) per ASTM A388; Liquid Penetrant Inspection (LPI) per ASTM E1417; Dimensional verification via CMM |
 
 ---
 
@@ -96,29 +71,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium saddle clamp washer batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium saddle clamp washer?
-- **A1:** Titanium Saddle Clamp Washer is designed for saddle cradle half-round tilt adjustment washer. The Grade 5 Ti-6Al-4V grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium saddle clamp washer manufactured?
-- **A2:** Titanium Saddle Clamp Washer is manufactured using Wire drawing. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What is the maximum installation torque for threaded variants?
-- **A3:** For M4 fasteners: 2.0-2.5 Nm; M5: 4.0-5.0 Nm; M6: 8.0-10.0 Nm (all values apply to lubricated threads with MoS₂ anti-seize). Unlubricated torque values must be reduced by 15-20% to account for the higher coefficient of friction (μ ≈ 0.18-0.22 dry vs 0.12-0.15 lubricated). These figures ensure the fastener operates within 60-70% of yield strength, preserving a 1.5x safety margin for dynamic loading. Always use a calibrated torque wrench (±3% accuracy) for installation; impact drivers are not recommended due to the risk of thread stripping and localized galling at the thread engagement zone.
-
----
-
-
-
-- **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
-- **Upstream System Integration:** Bicycle Wheel Build Assembly; Hub & Axle System
-- **Downstream Consumables & Tooling:** Brass/Nickel-Plated Nipples; Rim Tape & Tubeless Valves; Spoke Tension Meter
-
-**Cross-Reference Classification:**
-- **Industry:** Cycling / Bicycle (High-Performance, Road, Mountain, Gravel, E-Bike)
-- **System:** Bicycle Wheels, Saddle, Pedals & Accessories
-- **Material Classification:** Grade 5 Ti-6Al-4V — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Wire drawing, CNC swaging, CNC turning, Thread rolling
-- **Inspection Standards:** Tensile testing; Salt spray ASTM B117

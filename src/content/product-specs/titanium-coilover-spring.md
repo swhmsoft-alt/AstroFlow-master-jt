@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Motorsport Vehicle Assembly","Performance Drivetrain"]
 downstream: ["ARP Chromoly Fasteners","Molykote M77 Assembly Lube","Safety Wire MS20995"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Coilover Spring
 **High-Performance Racing & Automotive Components | Optimized for Extreme RPM & Temperature**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Suspension | Automotive & Motorsports Industry Classification |
-| **Material Designation** | Grade 5 Ti-6Al-4V — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for forming and assembly |
-| **Hardness** | HRC 36 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.43 g/cm³ | 45% weight reduction vs steel (7.85 g/cm³) |
-| **Modulus of Elasticity** | 114 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | MPI crack test; Tensile testing; Dimensional CMM | MPI crack detection per ASTM E1444; Dimensional CMM; Tensile testing per ASTM E8; Salt spray ASTM B117 |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium coilover spring batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium coilover spring?
-- **A1:** Titanium Coilover Spring is designed for high-performance racing coil suspension spring (beta-c). The Grade 5 Ti-6Al-4V grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium coilover spring manufactured?
-- **A2:** Titanium Coilover Spring is manufactured using Hot forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What torque for titanium wheel studs and lug nuts?
-- **A3:** M12×1.5 = 80-90 Nm, M14×1.5 = 100-115 Nm (lubricated Molykote M77). Use steel or Ti mating nuts only — never aluminum. Re-torque after first heat cycle. Thread rolling required per SAE J429.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Automotive  Motorsports
-- **Upstream System Integration:** Motorsport Vehicle Assembly; Performance Drivetrain
-- **Downstream Consumables & Tooling:** ARP Chromoly Fasteners; Molykote M77 Assembly Lube; Safety Wire MS20995
-
-**Cross-Reference Classification:**
-- **Industry:** Automotive & Motorsports
-- **System:** Racing Suspension Rods, Linkages & Hardware
-- **Material Classification:** Grade 5 Ti-6Al-4V — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Hot forging, CNC machining, Thread rolling, DLC coating
-- **Inspection Standards:** MPI crack test; Tensile testing; Dimensional CMM

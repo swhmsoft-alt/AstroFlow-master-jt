@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Medical Device Assembly","Surgical Navigation System"]
 downstream: ["Sterilization Tray & Wrap","Silicone Surgical Mats","ISO 13485 Packaging"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Pacemaker Enclosure
 **Surgical & Implantable Medical Components | Optimized for Biocompatibility & MRI Compatibility**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 2 CP-Ti (UNS R50400 / W.Nr. 3.7035) — Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical p...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Implantable Device | Medical Device Industry Classification |
-| **Material Designation** | Grade 2 CP-Ti — Commercially Pure Titanium | **UNS R50400 / W.Nr. 3.7035** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / ISO 5832-2 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 345 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 275 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 20% | Ensures ductility for forming and assembly |
-| **Hardness** | HRB 80 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.51 g/cm³ | 42% weight reduction vs 316L Stainless Steel (8.0 g/cm³) |
-| **Modulus of Elasticity** | 105 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 16.4 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86; Electropolishing; Class 10,000 cleanroom cleaning | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | 100% CMM dimensional; Mechanical testing per ASTM F543; MRI artifact (3T phantom); Class 10,000 cleanroom packaging | Ultrasonic Cleaning validation; Dimensional CMM per ISO 10360; PMI per ASTM E1476; 100% visual per ISO 14971 |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium pacemaker enclosure batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What standards apply to titanium pacemaker enclosure?
-- **A1:** Titanium Pacemaker Enclosure is manufactured to ASTM F136 / ISO 5832-3 (Ti-6Al-4V ELI) or ASTM F1295 (Ti-6Al-7Nb) for medical implants. This requires oxygen <0.13%, iron <0.25%, and 100% traceability with MTC per batch.
-
-### Q2: How is titanium pacemaker enclosure manufactured?
-- **A2:** Titanium Pacemaker Enclosure is manufactured using VAR melting. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What surface treatment for bone-contacting surfaces?
-- **A3:** Cementless fixation: Type II anodizing (AMS 2488) produces 0.5-2.0 µm porous oxide for osseointegration. Cemented: Ra 1.0-2.0 µm blasted. Articulating: polished to Ra ≤ 0.05 µm. All surfaces ASTM F86 passivated.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Medical Device
-- **Upstream System Integration:** Medical Device Assembly; Surgical Navigation System
-- **Downstream Consumables & Tooling:** Sterilization Tray & Wrap; Silicone Surgical Mats; ISO 13485 Packaging
-
-**Cross-Reference Classification:**
-- **Industry:** Medical Device
-- **System:** Medical Implants
-- **Material Classification:** Grade 2 CP-Ti — UNS R50400 / W.Nr. 3.7035
-- **Manufacturing Processes:** VAR melting, Closed-die hot forging, CNC swiss turning, Thread rolling, Passivation (ASTM F86)
-- **Inspection Standards:** 100% CMM dimensional; Mechanical testing per ASTM F543; MRI artifact (3T phantom); Class 10,000 cleanroom packaging

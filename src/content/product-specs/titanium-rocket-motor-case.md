@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Aerospace Vehicle Assembly","Structural Airframe"]
 downstream: ["Aerospace Fasteners NAS6704","MIL-PRF-7808 Lubricating Oil","Encapsulated Seals AMS7276"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Rocket Motor Case
 **Aircraft & Defense Structural Components | Optimized for Extreme Temperature & Fatigue Loading**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Missile Hardware | Aerospace & Defense Industry Classification |
-| **Material Designation** | Grade 5 Ti-6Al-4V — Titanium Alloy | **UNS R56400 / W.Nr. 3.7165** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / AMS 4928 / ISO 5832-3 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 895 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 828 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 10% | Ensures ductility for forming and assembly |
-| **Hardness** | HRC 36 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.43 g/cm³ | 45% weight reduction vs steel (7.85 g/cm³) |
-| **Modulus of Elasticity** | 114 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 6.7 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | FPI (fluorescent penetrant); X-ray / CT inspection; Ultrasonic inspection; CMM dimensional | Ultrasonic Testing (UT) per AMS 2630 Class A; MPI per ASTM E1444; Dimensional CMM per AS9102 |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium rocket motor case batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium rocket motor case?
-- **A1:** Titanium Rocket Motor Case is designed for solid rocket motor case section ring. The Grade 5 Ti-6Al-4V grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium rocket motor case manufactured?
-- **A2:** Titanium Rocket Motor Case is manufactured using Closed-die forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What anti-galling treatment for aerospace threaded fasteners?
-- **A3:** Silver plating per AMS 2410 (0.01-0.02 mm) or MoS₂ dry-film per MIL-PRF-46010. Lubricated torque per NASM 1312-7. Torque reduction: 20-25% vs dry. Thread rolling per AMS 4993 mandatory.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Aerospace  Defense
-- **Upstream System Integration:** Aerospace Vehicle Assembly; Structural Airframe
-- **Downstream Consumables & Tooling:** Aerospace Fasteners NAS6704; MIL-PRF-7808 Lubricating Oil; Encapsulated Seals AMS7276
-
-**Cross-Reference Classification:**
-- **Industry:** Aerospace & Defense
-- **System:** Missile & Rocket Motor Hardware
-- **Material Classification:** Grade 5 Ti-6Al-4V — UNS R56400 / W.Nr. 3.7165
-- **Manufacturing Processes:** Closed-die forging, 5-axis CNC machining, Heat treatment (STA), Shot peening
-- **Inspection Standards:** FPI (fluorescent penetrant); X-ray / CT inspection; Ultrasonic inspection; CMM dimensional

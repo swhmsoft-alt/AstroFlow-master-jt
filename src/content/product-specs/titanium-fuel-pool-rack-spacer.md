@@ -31,10 +31,7 @@ incoterms: "EXW / FOB Shenzhen"
 upstream: ["Power Turbine Assembly","Thermal Management System"]
 downstream: ["Inconel 718 Blades","Steam Seal Carbon Rings","Wear Sleeves (Thermal Spray)"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
-
 ---
-
-
 
 # Titanium Fuel Pool Rack Spacer
 **Nuclear, Hydrogen & Power Generation Components | Optimized for Extreme Environment Reliability**
@@ -43,27 +40,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
 - **Material:** Grade 2 CP-Ti (UNS R50400 / W.Nr. 3.7035) — Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical p...
-
----
-
-## Technical Specifications Matrix (The Engineering Gate)
-
-| Technical Parameter | Specification Value | Associated Industrial Standard |
-| :--- | :--- | :--- |
-| **Component Category** | Nuclear Hardware | Energy Industry Classification |
-| **Material Designation** | Grade 2 CP-Ti — Commercially Pure Titanium | **UNS R50400 / W.Nr. 3.7035** |
-| **International Standards** | Conforms to ASTM B348 / ASME SB348 / ISO 5832-2 | Full manufacturing and material testing compliance |
-| **Tensile Strength ($R_m$)** | Min. 345 MPa | Conforms to standard mechanical minima |
-| **Yield Strength ($R_{p0.2}$)** | Min. 275 MPa | Guarantees structural load boundaries |
-| **Elongation ($A5$)** | Min. 20% | Ensures ductility for forming and assembly |
-| **Hardness** | HRB 80 | Consistent machinability and wear resistance |
-| **Density & Weight Profile** | 4.51 g/cm³ | 42% weight reduction vs 316L Stainless Steel (8.0 g/cm³) |
-| **Modulus of Elasticity** | 105 GPa | Determines stiffness and deflection under load |
-| **Thermal Conductivity** | 16.4 W/m·K | Critical for thermal management in service |
-| **Dimensional Tolerances** | ISO 2768-m (Medium) / Threads: Class 6g (DIN 13-1 / ISO 965-2) | Guarantees interchangeability in assemblies |
-| **Surface Treatment** | Passivation ASTM F86 | ASTM F86 / Industry-specific standard |
-| **Max Continuous Service Temp** | 315°C (continuous) | Safe operating envelope verified |
-| **NDT & Inspection** | Hydrostatic pressure test; PMI verification; Dimensional per ASME B16.9; MTR (EN 10204 3.1) | UT per ASTM A388; PMI per ASTM E1476; 100% dimensional CMM; Hydrostatic test per ASME Section VIII |
 
 ---
 
@@ -93,29 +69,3 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **Residual Stress Mitigation:** Every titanium fuel pool rack spacer batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
-
-## Technical FAQ for System Engineers
-
-### Q1: What is the typical application for titanium fuel pool rack spacer?
-- **A1:** Titanium Fuel Pool Rack Spacer is designed for nuclear fuel storage rack spacer grid. The Grade 2 CP-Ti grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
-
-### Q2: How is titanium fuel pool rack spacer manufactured?
-- **A2:** Titanium Fuel Pool Rack Spacer is manufactured using Seamless tube extrusion. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
-
-### Q3: What material for PEM electrolyzer bipolar plates?
-- **A3:** Grade 2 CP-Ti with 0.5-1.0 µm Pt coating (sputtered). Contact resistance <10 µΩ·cm² per DOE targets. Corrosion <0.1 µA/cm² at 2V in 80°C H₂SO₄. Service life >40,000h. Alternative: 2-3 µm TiN PVD.
-
----
-
-
-
-- **Primary Industrial Entity:** PrecisionMachinedComponent / Energy
-- **Upstream System Integration:** Power Turbine Assembly; Thermal Management System
-- **Downstream Consumables & Tooling:** Inconel 718 Blades; Steam Seal Carbon Rings; Wear Sleeves (Thermal Spray)
-
-**Cross-Reference Classification:**
-- **Industry:** Energy
-- **System:** Nuclear Power & Hydrogen Energy Infrastructure
-- **Material Classification:** Grade 2 CP-Ti — UNS R50400 / W.Nr. 3.7035
-- **Manufacturing Processes:** Seamless tube extrusion, CNC machining, TIG welding (ERTi-2 filler)
-- **Inspection Standards:** Hydrostatic pressure test; PMI verification; Dimensional per ASME B16.9; MTR (EN 10204 3.1)
