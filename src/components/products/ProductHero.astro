@@ -14,9 +14,10 @@ interface Props {
   density?: string;
   tensile_strength?: string;
   yield_strength?: string;
+  materialSlug?: string;
 }
 
-const { title, sku, moq, material, function: fn, category, industry, compliance, density, tensile_strength, yield_strength } = Astro.props;
+const { title, sku, moq, material, function: fn, category, industry, compliance, density, tensile_strength, yield_strength, materialSlug } = Astro.props;
 const matShort = material.replace(/\(.*\)/, '').trim();
 ---
 
@@ -42,7 +43,11 @@ const matShort = material.replace(/\(.*\)/, '').trim();
         <div class="flex flex-wrap gap-3">
           <div class="card-titanium px-4 py-2">
             <span class="text-[10px] font-semibold uppercase block" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);">Material</span>
-            <strong class="text-sm" style="color: var(--theme-text);">{matShort}</strong>
+            {materialSlug ? (
+              <a href={`/materials/${materialSlug}/`} class="text-sm font-bold" style="color: var(--theme-primary); text-decoration: underline; text-underline-offset: 2px;">{matShort} &rarr;</a>
+            ) : (
+              <strong class="text-sm" style="color: var(--theme-text);">{matShort}</strong>
+            )}
           </div>
           <div class="card-titanium px-4 py-2">
             <span class="text-[10px] font-semibold uppercase block" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);">MOQ</span>

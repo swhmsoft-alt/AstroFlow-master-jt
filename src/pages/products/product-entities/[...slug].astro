@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LegacyEntityContent from '../../../components/product/LegacyEntityContent.astro';
 import RichEntityContent from '../../../components/product/RichEntityContent.astro';
@@ -42,6 +42,48 @@ const material = allMaterials.find(m => {
   const mTokens = mClean.split(/grade|ti|astm/).filter(Boolean);
   return matTokens.some(t => t.length > 3 && mTokens.some(mt => mt.includes(t) || t.includes(mt)));
 });
+
+// Better matching: prefer direct title inclusion, avoid false positives
+const materialBetter = allMaterials.find(m => {
+  const mTitle = m.data.title?.toLowerCase() || '';
+  const matLower = data.material?.toLowerCase() || '';
+  // Direct title match (preferred)
+  if (matLower.includes(mTitle) || mTitle.includes(matLower)) return true;
+  // Strong token overlap (ratio >0.4, ignoring very short tokens)
+  const mSearch = mTitle.replace(/[^a-z0-9]/g, '');
+  const matSearch = matLower.replace(/[^a-z0-9]/g, '');
+  const matTokens = matSearch.split(/grade|ti|astm|al/).filter(Boolean).filter(t => t.length > 3);
+  const mTokens = mSearch.split(/grade|ti|astm|al/).filter(Boolean).filter(t => t.length > 3);
+  return matTokens.some(t => mTokens.some(mt => {
+    const longer = t.length >= mt.length ? t : mt;
+    const shorter = t.length >= mt.length ? mt : t;
+    return longer.includes(shorter) && shorter.length / longer.length > 0.4;
+  }));
+});
+
+
+// Use better matched material (prefer direct title match over fuzzy)
+const bestMatchedMaterial = materialBetter || material;
+
+// Material slug mapping: content slug → material page slug (direct link, no redirect)
+const MATERIAL_SLUG_MAP: Record<string, string> = {
+  'grade-5-ti-6al-4v': 'grade-5',
+  'grade-23-ti-6al-4v-eli': 'grade-23',
+  'grade-1-cp-ti': 'grade-1',
+  'grade-2-cp-ti': 'grade-2',
+  'grade-3-cp-ti': 'grade-3',
+  'grade-4-cp-ti': 'grade-4',
+  'beta-c-ti-3al-8v-6cr-4mo-4zr': 'grade-19',
+  'grade-9-ti-3al-25v': 'grade-9',
+  'ti-1023-ti-10v-2fe-3al': 'ti-5553',
+  'ti-15v-3cr-3sn-3al': 'grade-21',
+  'ti-5al-25sn-eli': 'grade-6',
+  'ti-6242-ti-6al-2sn-4zr-2mo': 'grade-6242',
+};
+const matContentSlug = bestMatchedMaterial?.slug || bestMatchedMaterial?.id?.replace('.json', '') || '';
+const materialPageSlug = MATERIAL_SLUG_MAP[matContentSlug] || matContentSlug;
+
+
 
 // Load capabilities (linked, not duplicated)
 const allCaps = await getCollection('capabilities');
@@ -127,7 +169,7 @@ if (schemaFaqData.length > 0) {
     </div>
   </nav>
 
-  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} />}
+  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} materialSlug={materialPageSlug} />}
 
 {!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} />}
 
@@ -137,7 +179,7 @@ if (schemaFaqData.length > 0) {
       <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Knowledge</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {data.material && material && (
-          <a href={`/products/materials/${material?.slug || material?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <a href={`/products/materials/${bestMatchedMaterial?.slug || bestMatchedMaterial?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <p class="text-xs font-semibold" style="color: var(--theme-primary);">Material</p>
             <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{data.material.replace(/\(.*\)/, '').trim()}</p>
           </a>

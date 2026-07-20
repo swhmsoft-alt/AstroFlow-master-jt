@@ -34,9 +34,10 @@ interface Props {
   downstream?: string[];
   industry_label?: string;
   faqs?: FAQ[];
+  materialSlug?: string;
 }
 
-const { title, sku, category, industry, system, titanium_grade, uns_number, werkstoff_number, supply_availability, compliance, standards, function: fn, density, tensile_strength, yield_strength, elongation, hardness, modulus, thermal_conductivity, max_service_temp, surface_finish, tolerances, ndt_methods, manufacturing_process, weight_reduction, upstream, downstream, industry_label, faqs } = Astro.props;
+const { title, sku, category, industry, system, titanium_grade, uns_number, werkstoff_number, supply_availability, compliance, standards, function: fn, density, tensile_strength, yield_strength, elongation, hardness, modulus, thermal_conductivity, max_service_temp, surface_finish, tolerances, ndt_methods, manufacturing_process, weight_reduction, upstream, downstream, industry_label, faqs, materialSlug } = Astro.props;
 
 interface Row { label: string; value: string; ctx: string; }
 const rows: Row[] = [];
@@ -79,7 +80,7 @@ if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standard
     <!-- 2. Material Summary -->
     <div class="mb-5 rounded-lg border border-sky-900/50 bg-sky-950/20 p-3 md:p-4">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-semibold text-sky-300 mb-1 text-sm">
-        <span>Material Grade: {titanium_grade}</span>
+        <span>Material Grade: {materialSlug ? <a href={`/materials/${materialSlug}/`} class="text-sky-300 underline underline-offset-2 hover:text-sky-200">{titanium_grade}</a> : <span>{titanium_grade}</span>}</span>
         {(uns_number || werkstoff_number) && (
           <span class="font-mono text-xs text-sky-400/80">{[uns_number, werkstoff_number].filter(Boolean).join(' / ')}</span>
         )}

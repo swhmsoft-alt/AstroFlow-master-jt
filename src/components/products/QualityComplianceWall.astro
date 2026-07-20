@@ -7,9 +7,41 @@ interface Props {
   title: string;
   compliance: string[];
   standards: string[];
+  materialSlug?: string;
 }
 
-const { title, compliance, standards } = Astro.props;
+const { title, compliance, standards, materialSlug } = Astro.props;
+
+// Known material standard slugs for linking
+const STANDARD_SLUGS: Record<string, string> = {
+  'ASTM B348': 'astm-b348',
+  'ASTM B265': 'astm-b265',
+  'ASTM B381': 'astm-b381',
+  'ASTM B338': 'astm-b338',
+  'ASTM B861': 'astm-b861',
+  'ASTM F136': 'astm-f136',
+  'ASTM F67': 'astm-f67',
+  'ASTM F86': 'astm-f86',
+  'ASTM F2924': 'astm-f2924',
+  'ASTM F3001': 'astm-f3001',
+  'ISO 5832-3': 'iso-5832-3',
+  'ISO 5832-11': 'iso-5832-11',
+  'AMS 4911': 'ams-4911',
+  'AMS 4928': 'ams-4928',
+  'AMS 4943': 'ams-4943',
+  'AMS 4944': 'ams-4944',
+  'AMS 2488': 'ams-2488',
+  'MIL-T-9047': 'mil-t-9047',
+};
+
+// Helper: render standard name as link if known slug exists
+function renderStandard(name: string): string {
+  const slug = STANDARD_SLUGS[name];
+  if (slug) {
+    return `<a href="/materials/${slug}/" class="underline underline-offset-2" style="color: var(--theme-primary);">${name}</a>`;
+  }
+  return name;
+}
 
 // Build certification entries from data
 const allCerts: { name: string; standard: string; status: string }[] = [];
@@ -52,7 +84,7 @@ if (allCerts.length === 0) {
         <div class="card-titanium p-3 flex items-center justify-between">
           <div>
             <h4 class="font-medium text-sm" style="color: var(--theme-text);">{cert.name}</h4>
-            <p class="text-xs mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">{cert.standard}</p>
+            <p class="text-xs mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);" set:html={renderStandard(cert.standard)}></p>
           </div>
           <span class="text-[10px] font-semibold px-2 py-1 rounded-full" style="background: color-mix(in srgb, #10b981 12%, transparent); color: color-mix(in srgb, #10b981 90%, transparent);">{cert.status}</span>
         </div>

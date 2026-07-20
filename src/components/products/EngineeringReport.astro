@@ -19,9 +19,10 @@ interface Props {
   modulus?: string;
   manufacturing_process?: string;
   weight_reduction?: string;
+  materialSlug?: string;
 }
 
-const { title, sku, category, industry, titanium_grade, uns_number, werkstoff_number, compliance, standards, density, tensile_strength, yield_strength, thermal_conductivity, modulus, manufacturing_process, weight_reduction } = Astro.props;
+const { title, sku, category, industry, titanium_grade, uns_number, werkstoff_number, compliance, standards, density, tensile_strength, yield_strength, thermal_conductivity, modulus, manufacturing_process, weight_reduction, materialSlug } = Astro.props;
 ---
 
 <div class="py-10 lg:py-12" style="background: var(--theme-surface);">
