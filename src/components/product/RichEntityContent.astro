@@ -98,25 +98,41 @@ const downstream: string[] = fm.downstream || [];
       prose-li:text-sm
       prose-th:text-sm prose-th:font-semibold
       prose-td:text-sm"
+      id="spec-body"
       style="color: var(--theme-text); --tw-prose-body: var(--theme-text); --tw-prose-headings: var(--theme-text); --tw-prose-links: var(--theme-primary); --tw-prose-bold: var(--theme-text)">
       {SpecContent && <SpecContent />}
     </article>
   </div>
 </section>
 
-<style is:global>
-  /* Visual section divider between each h2 chapter */
-  .spec-section h2:not(:first-of-type) {
-    border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);
-    padding-top: 1.25rem;
-    margin-top: 2rem !important;
-  }
-  /* Tables get rounded corners */
-  .spec-section table {
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-</style>
+<script is:inline>
+  (function() {
+    var article = document.getElementById('spec-body');
+    if (!article || !article.children.length) return;
+    var children = Array.from(article.children);
+    var cards = [];
+    var current = [];
+    children.forEach(function(el) {
+      if (el.tagName === 'H2') {
+        if (current.length > 0) { cards.push(current); current = []; }
+      }
+      current.push(el);
+    });
+    if (current.length > 0) cards.push(current);
+    if (cards.length <= 1) return;
+    article.innerHTML = '';
+    cards.forEach(function(card, i) {
+      var div = document.createElement('div');
+      div.className = 'rounded-xl p-5 md:p-6 mb-5 border';
+      div.style.background = i % 2 === 0
+        ? 'var(--theme-surface)'
+        : 'color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg))';
+      div.style.borderColor = 'color-mix(in srgb, var(--theme-primary) 8%, transparent)';
+      card.forEach(function(el) { div.appendChild(el); });
+      article.appendChild(div);
+    });
+  })();
+</script>
 
 <!-- 5. Procurement Matrix — MOQ / Lead Times / Incoterms -->
 <ProcurementMatrix
