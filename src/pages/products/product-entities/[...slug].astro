@@ -54,7 +54,8 @@ const faqData = data.faq || [];
 
 // Load matching product spec for rich blueprint injection
 const allSpecs = await getCollection('product-specs');
-const specEntry = allSpecs.find(s => s.slug === entry.slug);
+const specSlug = entry.slug || entry.id?.replace(/\.(json|md)$/, '').split('/').pop();
+const specEntry = allSpecs.find(s => s.slug === specSlug);
 let SpecContent;
 if (specEntry) {
   const rendered = await specEntry.render();
