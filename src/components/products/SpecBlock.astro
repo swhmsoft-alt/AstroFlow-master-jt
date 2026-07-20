@@ -1,7 +1,6 @@
 ---
 // src/components/products/SpecBlock.astro
-// B2B Technical Spec Block — replaces prose rendering of complete spec
-// Full dark card layout from structured frontmatter data
+// B2B Technical Spec Block — quick-scan dark card
 
 interface FAQ { q: string; a: string; }
 
@@ -39,14 +38,13 @@ interface Props {
 
 const { title, sku, category, industry, system, titanium_grade, uns_number, werkstoff_number, supply_availability, compliance, standards, function: fn, density, tensile_strength, yield_strength, elongation, hardness, modulus, thermal_conductivity, max_service_temp, surface_finish, tolerances, ndt_methods, manufacturing_process, weight_reduction, upstream, downstream, industry_label, faqs } = Astro.props;
 
-// Build parameter rows for table
 interface Row { label: string; value: string; ctx: string; }
 const rows: Row[] = [];
 function add(label: string, value: string, ctx: string) { rows.push({ label, value, ctx }); }
 if (standards && standards.length > 0) add('International Compliance', standards.join(', '), `Conforms to ${industry} standards`);
 if (tensile_strength) add('Tensile Strength ($R_m$)', tensile_strength, 'Mechanical minimum requirement');
 if (yield_strength) add('Yield Strength ($R_{p0.2}$)', yield_strength, 'Structural load boundary');
-if (elongation || hardness) add(`Elongation & Hardness`, `${elongation || '—'} / ${hardness || '—'}`, 'Ductility & wear resistance');
+if (elongation || hardness) add('Elongation & Hardness', `${elongation || '—'} / ${hardness || '—'}`, 'Ductility & wear resistance');
 if (density) add('Density & Weight Profile', density, weight_reduction ? `${weight_reduction}` : 'Weight benchmark');
 if (modulus) add('Modulus of Elasticity', modulus, 'Stiffness & deflection');
 if (tolerances) add('Tolerances & Thread Class', tolerances, 'Threads: Class 6g (DIN 13-1)');
@@ -54,123 +52,119 @@ if (surface_finish || max_service_temp) add('Surface Finish & Max Temp', [surfac
 if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standards');
 ---
 
-<div class="my-6 rounded-xl border border-slate-700/80 bg-slate-900/90 p-5 text-slate-200 shadow-lg backdrop-blur-sm font-sans text-xs">
-  
-  <!-- 1. Header & Quick Status -->
-  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-4">
-    <div>
-      <div class="flex items-center gap-2 mb-1">
-        <span class="px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase bg-sky-950 text-sky-400 border border-sky-800/60 rounded">
-          {category}
-        </span>
-        <span class="text-[11px] font-mono text-slate-400">SKU: {sku}</span>
-      </div>
-      <h3 class="text-lg font-bold text-white tracking-tight">{title}</h3>
-    </div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="my-6 rounded-xl border border-slate-700/80 bg-slate-900/90 p-5 md:p-6 text-slate-200 shadow-lg backdrop-blur-sm">
 
-    <div class="flex flex-wrap items-center gap-1.5 sm:justify-end">
-      {supply_availability && (
-        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> {supply_availability}
-        </span>
-      )}
-      {compliance?.slice(0, 4).map(item => (
-        <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-mono text-[10px]">{item}</span>
-      ))}
-    </div>
-  </div>
-
-  <!-- 2. Material Quick Summary -->
-  <div class="mb-5 rounded-lg border border-sky-900/50 bg-sky-950/20 p-3 text-slate-300">
-    <div class="flex items-center justify-between font-semibold text-sky-300 mb-1">
-      <span>Material Grade: {titanium_grade}</span>
-      {(uns_number || werkstoff_number) && (
-        <span class="font-mono text-[11px] text-sky-400/80">{[uns_number, werkstoff_number].filter(Boolean).join(' / ')}</span>
-      )}
-    </div>
-    {fn && (
-      <p class="text-[11px] leading-relaxed text-slate-400">{fn}</p>
-    )}
-  </div>
-
-  <!-- 3. Technical Specifications Matrix -->
-  {rows.length > 0 && (
-    <div class="mb-5">
-      <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Technical Specifications Matrix
+    <!-- 1. Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-5">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="px-2 py-0.5 text-xs font-semibold tracking-wide uppercase bg-sky-950 text-sky-400 border border-sky-800/60 rounded">{category}</span>
+          <span class="text-xs font-mono text-slate-400">SKU: {sku}</span>
+        </div>
+        <h3 class="text-lg md:text-xl font-bold text-white tracking-tight">{title}</h3>
       </div>
-      <div class="overflow-x-auto rounded-lg border border-slate-800">
-        <table class="w-full text-left text-[11px] border-collapse">
-          <thead class="bg-slate-800/80 text-slate-300 font-semibold uppercase text-[10px] tracking-wider">
-            <tr>
-              <th class="p-2.5 border-b border-slate-700/80">Technical Parameter</th>
-              <th class="p-2.5 border-b border-slate-700/80 text-sky-300 font-mono">Specification Value</th>
-              <th class="p-2.5 border-b border-slate-700/80">Associated Standard & Context</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-800/60 bg-slate-900/50">
-            {rows.map(row => (
-              <tr class="hover:bg-slate-800/40">
-                <td class="p-2.5 font-medium text-slate-200">{row.label}</td>
-                <td class="p-2.5 font-mono text-sky-300">{row.value}</td>
-                <td class="p-2.5 text-slate-400">{row.ctx}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  )}
-
-  <!-- 4. Quality & Manufacturing (双列) -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
-    <div class="p-3 rounded-lg border border-slate-800 bg-slate-950/40">
-      <div class="font-semibold text-slate-200 mb-1.5 flex items-center gap-1.5">
-        <span class="text-sky-400">📜</span> Quality & Traceability Gate
-      </div>
-      <ul class="space-y-1.5 text-[11px] text-slate-400 leading-relaxed">
-        <li>• <strong class="text-slate-300">100% Traceability:</strong> Mill Test Certificate (EN 10204 3.1) with heat analysis & mechanical testing.</li>
-        {ndt_methods && <li>• <strong class="text-slate-300">NDT Verification:</strong> {ndt_methods}.</li>}
-        {compliance && <li>• <strong class="text-slate-300">Compliance:</strong> {compliance.filter(c => c.includes('REACH') || c.includes('RoHS')).join(', ') || 'REACH & RoHS 3'} certified. FAI AS9102 available.</li>}
-      </ul>
-    </div>
-
-    <div class="p-3 rounded-lg border border-slate-800 bg-slate-950/40">
-      <div class="font-semibold text-slate-200 mb-1.5 flex items-center gap-1.5">
-        <span class="text-sky-400">⚙️</span> CNC & Stress Relief Controls
-      </div>
-      <ul class="space-y-1.5 text-[11px] text-slate-400 leading-relaxed">
-        {manufacturing_process && <li>• <strong class="text-slate-300">Process:</strong> {manufacturing_process}.</li>}
-        <li>• <strong class="text-slate-300">Thermal Stress Relief:</strong> Post-machining vacuum annealing (540-675°C under Argon) reduces distortion risk &gt;70%.</li>
-        <li>• <strong class="text-slate-300">Rolled Threads:</strong> Thread rolling (not cutting) increases fatigue limits by 30-50%.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 5. FAQ -->
-  {faqs && faqs.length > 0 && (
-    <div class="mb-4">
-      <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Engineering FAQ
-      </div>
-      <div class="space-y-2">
-        {faqs.map(faq => (
-          <details class="group rounded-md border border-slate-800 bg-slate-950/30 p-2.5 transition-colors hover:border-slate-700">
-            <summary class="font-medium text-slate-300 cursor-pointer flex justify-between items-center text-[11px]">
-              <span>Q: {faq.q}</span>
-              <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p class="mt-2 text-[11px] text-slate-400 border-t border-slate-800/80 pt-2 leading-relaxed">{faq.a}</p>
-          </details>
+      <div class="flex flex-wrap items-center gap-1.5 sm:justify-end">
+        {supply_availability && (
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> {supply_availability}
+          </span>
+        )}
+        {compliance?.slice(0, 4).map(item => (
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 text-xs">{item}</span>
         ))}
       </div>
     </div>
-  )}
 
-  <!-- 6. Bottom Metadata -->
-  <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-500 font-mono">
-    {upstream && upstream.length > 0 && <div>Integration: {upstream.join(' / ')}</div>}
-    {downstream && downstream.length > 0 && <div>Downstream: {downstream.join(' / ')}</div>}
+    <!-- 2. Material Summary -->
+    <div class="mb-5 rounded-lg border border-sky-900/50 bg-sky-950/20 p-3 md:p-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-semibold text-sky-300 mb-1 text-sm">
+        <span>Material Grade: {titanium_grade}</span>
+        {(uns_number || werkstoff_number) && (
+          <span class="font-mono text-xs text-sky-400/80">{[uns_number, werkstoff_number].filter(Boolean).join(' / ')}</span>
+        )}
+      </div>
+      {fn && <p class="text-sm leading-relaxed text-slate-400">{fn}</p>}
+    </div>
+
+    <!-- 3. Spec Table -->
+    {rows.length > 0 && (
+      <div class="mb-5">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Technical Specifications Matrix
+        </div>
+        <div class="overflow-x-auto rounded-lg border border-slate-800">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead class="bg-slate-800/80 text-slate-300 font-semibold uppercase text-xs tracking-wider">
+              <tr>
+                <th class="p-2.5 md:p-3 border-b border-slate-700/80">Technical Parameter</th>
+                <th class="p-2.5 md:p-3 border-b border-slate-700/80 text-sky-300">Specification Value</th>
+                <th class="p-2.5 md:p-3 border-b border-slate-700/80 hidden sm:table-cell">Associated Standard & Context</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 bg-slate-900/50">
+              {rows.map(row => (
+                <tr class="hover:bg-slate-800/40">
+                  <td class="p-2.5 md:p-3 font-medium text-slate-200 text-sm">{row.label}</td>
+                  <td class="p-2.5 md:p-3 text-sky-300 text-sm">{row.value}</td>
+                  <td class="p-2.5 md:p-3 text-slate-400 text-sm hidden sm:table-cell">{row.ctx}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )}
+
+    <!-- 4. Quality & Manufacturing -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+      <div class="p-3 md:p-4 rounded-lg border border-slate-800 bg-slate-950/40">
+        <div class="font-semibold text-slate-200 mb-2 flex items-center gap-1.5 text-sm">
+          <span class="text-sky-400">📜</span> Quality & Traceability Gate
+        </div>
+        <ul class="space-y-1.5 text-sm text-slate-400 leading-relaxed">
+          <li>• <strong class="text-slate-300">100% Traceability:</strong> Mill Test Certificate (EN 10204 3.1) with heat analysis & mechanical testing.</li>
+          {ndt_methods && <li>• <strong class="text-slate-300">NDT Verification:</strong> {ndt_methods}.</li>}
+          {compliance && <li>• <strong class="text-slate-300">Compliance:</strong> {compliance.filter(c => c.includes('REACH') || c.includes('RoHS')).join(', ') || 'REACH & RoHS 3'} certified. FAI AS9102 available.</li>}
+        </ul>
+      </div>
+      <div class="p-3 md:p-4 rounded-lg border border-slate-800 bg-slate-950/40">
+        <div class="font-semibold text-slate-200 mb-2 flex items-center gap-1.5 text-sm">
+          <span class="text-sky-400">⚙️</span> CNC & Stress Relief Controls
+        </div>
+        <ul class="space-y-1.5 text-sm text-slate-400 leading-relaxed">
+          {manufacturing_process && <li>• <strong class="text-slate-300">Process:</strong> {manufacturing_process}.</li>}
+          <li>• <strong class="text-slate-300">Thermal Stress Relief:</strong> Post-machining vacuum annealing (540-675°C under Argon) reduces distortion risk &gt;70%.</li>
+          <li>• <strong class="text-slate-300">Rolled Threads:</strong> Thread rolling (not cutting) increases fatigue limits by 30-50%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 5. FAQ -->
+    {faqs && faqs.length > 0 && (
+      <div class="mb-4">
+        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Engineering FAQ
+        </div>
+        <div class="space-y-2">
+          {faqs.map(faq => (
+            <details class="group rounded-md border border-slate-800 bg-slate-950/30 p-3 transition-colors hover:border-slate-700">
+              <summary class="font-medium text-slate-300 cursor-pointer flex justify-between items-center text-sm">
+                <span>Q: {faq.q}</span>
+                <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="mt-2 text-sm text-slate-400 border-t border-slate-800/80 pt-2 leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- 6. Bottom Metadata -->
+    <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+      {upstream && upstream.length > 0 && <div>Integration: {upstream.join(' / ')}</div>}
+      {downstream && downstream.length > 0 && <div>Downstream: {downstream.join(' / ')}</div>}
+    </div>
+
   </div>
-
 </div>
