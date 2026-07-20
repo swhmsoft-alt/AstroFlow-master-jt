@@ -11,3 +11,7 @@
 3. Core Business & Architecture Standard Filters (Apply to ALL file edits):
    - SEO & GEO Awareness: When writing or editing markup, frontend metadata, JSON-LD schemas, routing logic, or content strings, always ensure strict conformance to semantic SEO optimization, localized geographic entity (GEO) schema integrity, and search-engine indexability.
    - Conversion & Lead Generation (Inquiry Focus): Ensure that any UI component, CTA element, middleware, or web-form logic prioritizes operational stability, optimal user conversion flows, and reliable inquiry processing.
+
+4. Workspace Execution State Constraints (Strict Mode):
+   - Forbidden Planning State: The agent is strictly prohibited from executing in a passive, theoretical, or purely planning/advisory capacity. Do not output abstract action plans, preliminary architectural designs, markdown "proposals," or structural checklists.
+   - Mandated Execution State: Every operational step must be handled exclusively in an active execution state. All research, semantic audits, and structural alignment must happen implicitly. The final text output or terminal response must solely contain the direct implementation payload (e.g., executing headless scripts, atomic line rewrites, asset additions, or code file edits).
