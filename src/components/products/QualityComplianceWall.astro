@@ -37,20 +37,19 @@ if (standards && standards.length > 0) {
   });
 }
 
-// Ensure at least one entry
 if (allCerts.length === 0) {
   allCerts.push({ name: 'Material Test Certificate (MTC)', standard: 'EN 10204 3.1', status: 'Verified' });
   allCerts.push({ name: 'Environmental Compliance', standard: 'REACH / RoHS 3', status: 'Verified' });
 }
 ---
 
-<section class="py-10 lg:py-12" style="background: var(--theme-surface);" id="compliance-wall">
+<div class="py-10 lg:py-12" style="background: var(--theme-surface);" id="compliance-wall">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">Regulatory &amp; Quality Assurance Ledger</h3>
     <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Verifiable certifications for <strong style="color: var(--theme-text);">{title}</strong></p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       {allCerts.map((cert) => (
-        <div class="flex items-center justify-between p-3 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+        <div class="card-titanium p-3 flex items-center justify-between">
           <div>
             <h4 class="font-medium text-sm" style="color: var(--theme-text);">{cert.name}</h4>
             <p class="text-xs mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">{cert.standard}</p>
@@ -60,4 +59,4 @@ if (allCerts.length === 0) {
       ))}
     </div>
   </div>
-</section>
+</div>

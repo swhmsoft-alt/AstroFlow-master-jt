@@ -45,14 +45,14 @@ if (tolerances) add('Dimensional Tolerances', tolerances, 'Assembly interchangea
 if (ndtMethods) add('NDT & Inspection', ndtMethods, 'Verification per ISO/IEC');
 ---
 
-<section class="py-10 lg:py-12" style="background: var(--theme-bg);" id="tech-specs">
+<div class="py-10 lg:py-12" style="background: var(--theme-bg);" id="tech-specs">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">Technical Specifications Matrix</h3>
     <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Mechanical, dimensional, and material properties for procurement engineering review.</p>
-    <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="card-titanium overflow-hidden">
       <table class="w-full text-sm">
         <thead>
-          <tr style="background: var(--theme-surface);">
+          <tr>
             <th class="text-left px-4 py-3 font-semibold text-xs uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">Technical Parameter</th>
             <th class="text-left px-4 py-3 font-semibold text-xs uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">Specification Value</th>
             <th class="text-left px-4 py-3 font-semibold text-xs uppercase tracking-wider hidden md:table-cell" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">Associated Standard</th>
@@ -70,4 +70,4 @@ if (ndtMethods) add('NDT & Inspection', ndtMethods, 'Verification per ISO/IEC');
       </table>
     </div>
   </div>
-</section>
+</div>
