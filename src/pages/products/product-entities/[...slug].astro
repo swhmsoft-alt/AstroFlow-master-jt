@@ -125,7 +125,7 @@ if (faqData.length > 0) {
     </div>
   </nav>
 
-  {specEntry && <RichEntityContent data={data} system={system} SpecContent={SpecContent} />}
+  {specEntry && <RichEntityContent SpecContent={SpecContent} />}
 
 {!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} />}
 
@@ -170,17 +170,6 @@ if (faqData.length > 0) {
             </a>
           ))}
         </div>
-      </div>
-    </section>
-  )}
-
-  <!-- ── RICH BLUEPRINT SPEC INJECTION ── -->
-  {specEntry && SpecContent && (
-    <section class="py-12 lg:py-16" style="background: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <article class="prose prose-sm md:prose-base max-w-none" style="color: var(--theme-text);">
-          <SpecContent />
-        </article>
       </div>
     </section>
   )}

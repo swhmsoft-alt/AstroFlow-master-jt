@@ -1,43 +1,26 @@
 ---
-// Rich Entity Content — shown when rich spec exists
-// Contains: enhanced hero with TOC, then the full blueprint body
+// Rich Entity Content — adds TOC navigation + blueprint body wrapper
+// The hero (title, function, badges) is always shown by the main template.
 
 export interface Props {
-  data: any;
-  system: any;
   SpecContent: any;
 }
 
-const { data, system, SpecContent } = Astro.props;
-const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
+const { SpecContent } = Astro.props;
 ---
 
-<section class="py-10 lg:py-12" style="background: var(--theme-surface);">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-wrap items-start gap-2 mb-3">
-      {system && (
-        <a href={`/products/systems/${sysSlug}/`} class="text-xs font-semibold px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
-          {data.industry} &rarr; {system.data.title}
-        </a>
-      )}
-      <span class="text-xs px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-        {data.category}
-      </span>
-    </div>
-    <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">{data.title}</h1>
-    <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.function}</p>
-    <div class="mt-6 flex flex-wrap gap-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-      <span class="font-semibold" style="color: var(--theme-text);">Jump to:</span>
-      <a href="#tech-specs" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Specifications</a>
-      <a href="#supply-chain" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Compliance</a>
-      <a href="#application" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Applications</a>
-      <a href="#manufacturing" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Manufacturing</a>
-      <a href="#faq-section" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">FAQ</a>
-      <a href="#knowledge-graph" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Knowledge Graph</a>
-    </div>
-  </div>
-</section>
+<!-- TOC Navigation -->
+<div class="mt-6 flex flex-wrap gap-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+  <span class="font-semibold" style="color: var(--theme-text);">Jump to:</span>
+  <a href="#tech-specs" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Specifications</a>
+  <a href="#supply-chain" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Compliance</a>
+  <a href="#application" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Applications</a>
+  <a href="#manufacturing" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Manufacturing</a>
+  <a href="#faq-section" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">FAQ</a>
+  <a href="#knowledge-graph" class="px-2.5 py-1 rounded-full border transition-colors" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">Knowledge Graph</a>
+</div>
 
+<!-- Blueprint Body Wrapper -->
 <section class="py-12 lg:py-16" style="background: var(--theme-surface); border-top: 2px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-8 pb-6 border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
