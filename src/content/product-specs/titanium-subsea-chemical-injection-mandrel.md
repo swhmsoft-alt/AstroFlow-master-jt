@@ -36,7 +36,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium subsea chemical injection mandrel. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
 - **Non-Destructive Testing (NDT):** Components undergo Hydrostatic pressure test per API 6A; Dye Penetrant (PT) per ASTM E1417; Ultrasonic wall thickness per ASTM A578; 100% CMM to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
@@ -66,7 +66,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In marine & offshore applications, titanium subsea chemical injection mandrel is exposed to continuous seawater immersion, hydrostatic pressure up to 600 bar (6000m depth), and highly corrosive chloride environments. Titanium provides complete immunity to crevice corrosion and pitting in seawater up to 315°C, unlike 316L which pits above 10°C in stagnant seawater. The material's low thermal conductivity (6.7 W/m·K) provides critical thermal isolation and dimensional stability.
 
@@ -76,7 +76,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (6.7 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
@@ -84,20 +84,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What is the typical application for titanium subsea chemical injection mandrel?
+### Q1: What is the typical application for titanium subsea chemical injection mandrel?
 - **A1:** Titanium Subsea Chemical Injection Mandrel is designed for subsea chemical injection mandrel orifice (grade 7). The Grade 5 Ti-6Al-4V ELI grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
 
-#### Q2: How is titanium subsea chemical injection mandrel manufactured?
+### Q2: How is titanium subsea chemical injection mandrel manufactured?
 - **A2:** Titanium Subsea Chemical Injection Mandrel is manufactured using Ring forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What torque values for subsea bolted connections?
+### Q3: What torque values for subsea bolted connections?
 - **A3:** M16 = 150-180 Nm, M20 = 290-330 Nm, M24 = 500-560 Nm (lubricated Cu anti-seize per NORSOK M-001). Use 316L or Inconel 625 nuts. RTV sealant per API 6A.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Marine  Offshore
 - **Upstream System Integration:** Marine Platform Assembly; Subsea Production System

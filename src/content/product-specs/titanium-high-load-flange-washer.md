@@ -40,7 +40,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -63,7 +63,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from VAR-melted ingot to finished titanium high-load flange washer. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition (Fe, O, C, N, H within ASTM B348 limits for Grade 5 Ti-6Al-4V) and destructive mechanical testing results. UHP melt sources are certified with trace element analysis at ppb level for semiconductor process gas compatibility.
 - **Non-Destructive Testing (NDT):** Helium Mass Spectrometry Leak Detection per ASTM E493 (<1e-9 mbar·L/s); Particle Count Verification per SEMI E98 (Class 100); Surface Profilometry per ISO 4287 (Ra verification); Positive Material Identification (PMI) via XRF per ASTM E1476; Dimensional verification via CMM per ISO 10360. Helium leak testing is performed on 100% of production using calibrated mass spectrometer leak detectors (sensitivity: 1 × 10⁻¹¹ mbar·L/s).
@@ -73,7 +73,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Plasma Erosion Resistance:** In semiconductor process environments, titanium high-load flange washer is exposed to highly corrosive halogen-based plasmas (CF₄, SF₆, Cl₂, HBr), reactive radical species, and condensable byproducts. Titanium's native $TiO_2$ passive layer (thickness 2-5 nm, self-healing within 100 ms of oxygen exposure) provides exceptional resistance to fluorine and chlorine radical attack — sputter yield is 2-3x lower than 316L stainless steel and 5x lower than aluminum in inductively coupled plasma (ICP) conditions at 13.56 MHz RF bias. This translates to dramatically reduced particle generation (<1 particle/wafer pass per SEMI M51) and extended component lifetime (3-5× versus anodized aluminum in dielectric etch applications).
 
@@ -83,7 +83,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (6.7 W/m·K — approximately 10% of aluminum) and high chemical reactivity demand strict CNC parameter controls. Our semiconductor-grade machining strategy employs: (a) **Cutting speed** $V_c$ = 35-55 m/min for roughing, 55-75 m/min for finishing using sub-micron grain carbide inserts (K10-K15 grade) with diamond-like carbon (DLC) coating for chemical inertness; (b) **Feed rate** $f$ = 0.05-0.12 mm/rev with trochoidal tool paths to maintain constant chip engagement below 0.05 mm — preventing work-hardened surface layers that trap particles; (c) **High-pressure coolant** (>80 bar / 1200 psi) using deionized water-based synthetic fluid (pH 8.5-9.5) to eliminate iron contamination risk from chlorine-based coolants; (d) **Ultra-precision spindle** with <0.5 µm TIR runout and active thermal compensation to maintain micron-level tolerances on critical sealing surfaces.
 
@@ -91,20 +91,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What pressure rating for titanium high-load flange washer?
+### Q1: What pressure rating for titanium high-load flange washer?
 - **A1:** Pressure rating depends on grade, wall thickness, and temperature. Grade 2 CP-Ti pipe fittings are typically rated to Class 150 (285 psi) or Class 300 (740 psi) per ASME B16.5/B16.9. Higher ratings available with Grade 5.
 
-#### Q2: How is titanium high-load flange washer manufactured?
+### Q2: How is titanium high-load flange washer manufactured?
 - **A2:** Titanium High-Load Flange Washer is manufactured using Precision CNC turning. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What is the recommended bake-out temperature and torque for UHV sealing components?
+### Q3: What is the recommended bake-out temperature and torque for UHV sealing components?
 - **A3:** For Conflat (CF) knife-edge seals: bake-out up to 300°C with torque of 18-22 Nm for DN40CF, 25-30 Nm for DN63CF. For VCR face seal fittings: M8×1.0 gland nut torque = 14-18 Nm (lubricated with UHV-compatible MoS₂-free anti-seize). For KF/ISO centering ring clamps: hand-tight + 1/8 turn (no tools). All threaded semiconductor hardware must be installed with calibrated torque wrenches (±2% accuracy). Thermal cycling validation per SEMI S2 is recommended after bake-out to verify leak integrity below 1 × 10⁻⁹ mbar·L/s.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** SemiconductorComponent / PrecisionMachinedPart
 - **Upstream System Integration:** Semiconductor Vacuum Process Chamber; Turbomolecular Pump Isolation System

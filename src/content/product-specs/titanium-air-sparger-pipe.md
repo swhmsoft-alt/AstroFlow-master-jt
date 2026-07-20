@@ -36,7 +36,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium air sparger pipe. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
 - **Non-Destructive Testing (NDT):** Components undergo PMI per ASTM E1476; Dimensional CMM; Thickness gauge verification; 100% visual inspection to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
@@ -66,7 +66,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In electroplating & surface finishing applications, titanium air sparger pipe is exposed to continuous immersion in sulfuric acid (10-25% H₂SO₄ at 60°C), chromic acid (100-300 g/L CrO₃), and chlorine gas environments. Titanium provides zero measurable corrosion vs 316L which pits within weeks. The material's low thermal conductivity (16.4 W/m·K) provides critical thermal isolation and dimensional stability.
 
@@ -76,7 +76,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (16.4 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
@@ -84,20 +84,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What pressure rating for titanium air sparger pipe?
+### Q1: What pressure rating for titanium air sparger pipe?
 - **A1:** Pressure rating depends on grade, wall thickness, and temperature. Grade 2 CP-Ti pipe fittings are typically rated to Class 150 (285 psi) or Class 300 (740 psi) per ASME B16.5/B16.9. Higher ratings available with Grade 5.
 
-#### Q2: How is titanium air sparger pipe manufactured?
+### Q2: How is titanium air sparger pipe manufactured?
 - **A2:** Titanium Air Sparger Pipe is manufactured using Seamless tube extrusion. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What cleaning procedure for titanium jigs returning from production?
+### Q3: What cleaning procedure for titanium jigs returning from production?
 - **A3:** 1. Rinse DI water (60°C), 2. Immerse in 10% HNO₃ + 2% HF for 2-5 min at 25°C, 3. DI water rinse (18 MΩ·cm), 4. Hot air dry (80°C). Never use HCl or FeCl₃. Inspect monthly.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Electroplating  Surface Finishing
 - **Upstream System Integration:** PCB Plating Line; Electrolytic Cell System

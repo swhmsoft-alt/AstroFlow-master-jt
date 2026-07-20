@@ -36,7 +36,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium hex bolt (iso 4014). Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
 - **Non-Destructive Testing (NDT):** Components undergo MPI per ASTM E1444; 6g Go/No-Go ring gauge; Tensile testing per ASTM E8; Dimensional CMM to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
@@ -66,7 +66,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In general industrial applications, titanium hex bolt (iso 4014) is exposed to general industrial environments including humid factory conditions, mild chemical exposure, and outdoor weather. Titanium eliminates the need for periodic coating, painting, or galvanizing maintenance. The material's low thermal conductivity (6.7 W/m·K) provides critical thermal isolation and dimensional stability.
 
@@ -76,7 +76,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (6.7 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
@@ -84,20 +84,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What torque should I use for titanium hex bolt (iso 4014)?
+### Q1: What torque should I use for titanium hex bolt (iso 4014)?
 - **A1:** Recommended installation torque depends on thread size and lubrication. For M5 titanium fasteners: 4-5 Nm (dry), 3-4 Nm (with anti-seize). Always use titanium-compatible anti-seize compound to prevent galling (cold welding) of threads.
 
-#### Q2: How is titanium hex bolt (iso 4014) manufactured?
+### Q2: How is titanium hex bolt (iso 4014) manufactured?
 - **A2:** Titanium Hex Bolt (ISO 4014) is manufactured using Cold heading. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What anti-seize for titanium industrial fasteners?
+### Q3: What anti-seize for titanium industrial fasteners?
 - **A3:** Nickel-based (Never-Seez NSWT-7100) or copper-based (Loctite C5-A). Avoid MoS₂ in oxygen service. Food-grade: Ni-free PTFE paste. Torque factor: 0.75-0.85 of steel lubricated values.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** MechanicalFastener / IndustrialHardware
 - **Upstream System Integration:** Industrial Equipment Assembly; Manufacturing Line

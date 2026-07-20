@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LegacyEntityContent from '../../../components/product/LegacyEntityContent.astro';
+import RichEntityContent from '../../../components/product/RichEntityContent.astro';
 import { getCollection } from 'astro:content';
 
 export const prerender = true;
@@ -123,161 +125,11 @@ if (faqData.length > 0) {
     </div>
   </nav>
 
-  <!-- ── SECTION 1: Quick Spec Bar (lean, 70/30: 70% product-specific, 30% shared links) ── -->
-  <section class="py-10 lg:py-12" style="background: var(--theme-surface);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap items-start gap-2 mb-3">
-        {system && (
-          <a href={`/products/systems/${system?.slug || system?.id?.replace('.json','') || ''}/`} class="text-xs font-semibold px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
-            {data.industry} → {system.data.title}
-          </a>
-        )}
-        <span class="text-xs px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-          {data.category}
-        </span>
-      </div>
-      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">{data.title}</h1>
-      <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.function}</p>
-      
-      <!-- Quick Spec Bar — essential specs only -->
-      <div class="mt-6 flex flex-wrap gap-4 text-sm">
-        {data.material && (
-          <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Material</span>
-            <a href={material ? `/products/materials/${material?.slug || material?.id?.replace(".json","") || ""}/` : '#'} class="font-semibold" style="color: var(--theme-primary);">{data.material.replace(/^(\w+\s\w+)(.*)/, '$1')} →</a>
-          </div>
-        )}
-        {data.process?.[0] && (
-          <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Process</span>
-            <span class="font-semibold" style="color: var(--theme-text);">{data.process[0].split('(')[0].trim()}</span>
-          </div>
-        )}
-        {data.inspection?.[0] && (
-          <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Inspection</span>
-            <span class="font-semibold" style="color: var(--theme-text);">{data.inspection[0].split('(')[0].trim()}</span>
-          </div>
-        )}
-      </div>
-      <!-- Aliases -->
-      {data.aliases && data.aliases.length > 0 && (
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Also known as:</span>
-          {data.aliases.map((a: string) => (
-            <span class="text-xs px-2 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-text) 6%, transparent); color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{a}</span>
-          ))}
-        </div>
-      )}
-    </div>
-  </section>
+  {specEntry && <RichEntityContent data={data} system={system} SpecContent={SpecContent} />}
 
-  <!-- ── SECTION 2: Product-Specific Engineering Depth (70% unique) ── -->
-  <section class="py-12 lg:py-16" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-10">
-        <!-- Left: Engineering Challenges + Why Titanium -->
-        <div>
-          <!-- Why Titanium (product-specific, 2-3 sentences → link to material page) -->
-          <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Why Titanium</h2>
-          <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.alloyReason}</p>
-          {material && (
-            <a href={`/products/materials/${material?.slug || material?.id?.replace(".json","") || ""}/`} class="text-sm font-medium inline-flex items-center gap-1" style="color: var(--theme-primary);">
-              Full {data.material} specifications →
-            </a>
-          )}
+{!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} />}
 
-          <!-- Engineering Challenges (product-specific) -->
-          {data.commonFailures && data.commonFailures.length > 0 && (
-            <div class="mt-8">
-              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Engineering Challenges</h2>
-              <div class="space-y-4">
-                {data.commonFailures.slice(0, 3).map((f: string, i: number) => (
-                  <div class="p-4 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-                    <div class="flex items-start gap-3">
-                      <span class="text-sm mt-0.5" style="color: var(--theme-primary);">{['①','②','③','④','⑤'][i]}</span>
-                      <div>
-                        <p class="text-sm" style="color: var(--theme-text);">{f}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-        <!-- Right: Manufacturing + Inspection (product-specific, linked to shared nodes) -->
-        <div>
-          <!-- Manufacturing Process (product-specific notes, not generic capability description) -->
-          <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Manufacturing Process</h2>
-          <ol class="space-y-3">
-            {data.process?.slice(0, 5).map((p: string, i: number) => {
-              const cap = relatedCaps.find(c => c.slug.includes(p.toLowerCase().split('(')[0].trim().replace(/[^a-z0-9-]/g, '')));
-              return (
-                <li class="flex items-start gap-3">
-                  <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{i + 1}</span>
-                  <div>
-                    <p class="text-sm font-semibold" style="color: var(--theme-text);">{p}</p>
-                    {cap && (
-                      <a href={`/products/capabilities/${cap?.slug || cap?.id?.replace(".json","") || ""}/`} class="text-xs" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">Learn about {cap.data.title} →</a>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-
-          <!-- Inspection (product-specific) -->
-          {data.inspection && data.inspection.length > 0 && (
-            <div class="mt-8">
-              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Inspection & Quality</h2>
-              <ul class="space-y-2">
-                {data.inspection.slice(0, 4).map((i: string) => (
-                  <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                    <span style="color: var(--theme-primary);">✓</span> {i}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <!-- Surface Treatment -->
-          {data.surfaceTreatment && data.surfaceTreatment.length > 0 && (
-            <div class="mt-8">
-              <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Surface Treatment</h2>
-              <ul class="space-y-2">
-                {data.surfaceTreatment.slice(0, 3).map((s: string) => (
-                  <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                    <span style="color: var(--theme-primary);">▸</span> {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SECTION 3: FAQ (product-specific only) ── -->
-  {faqData.length > 0 && (
-    <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold mb-8" style="color: var(--theme-text);">FAQ — {data.title}</h2>
-        <div class="space-y-3">
-          {faqData.map((item: {q:string, a:string}) => (
-            <details class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-              <summary class="font-semibold cursor-pointer text-sm" style="color: var(--theme-text);">{item.q}</summary>
-              <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{item.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  <!-- ── SECTION 4: Shared Knowledge Links (30% — lean, no duplication) ── -->
+  <!-- ── SECTION 4: Shared Knowledge Links<!-- ── SECTION 4: Shared Knowledge Links (30% — lean, no duplication) ── -->
   <section class="py-10 border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Knowledge</h2>

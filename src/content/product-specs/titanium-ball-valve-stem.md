@@ -36,7 +36,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium ball valve stem. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
 - **Non-Destructive Testing (NDT):** Components undergo Hydrostatic test per ASME B31.3; PMI per ASTM E1476; Dimensional CMM; 100% wall thickness UT per ASTM A578 to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
@@ -66,7 +66,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In chemical processing applications, titanium ball valve stem is exposed to continuous exposure to wet chlorine gas, oxidizing acids (HNO₃ > 65%), seawater brine, and organic acids at temperatures up to 315°C. Titanium's TiO₂ layer maintains corrosion rates below 0.025 mm/year. The material's low thermal conductivity (16.4 W/m·K) provides critical thermal isolation and dimensional stability.
 
@@ -76,7 +76,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (16.4 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
@@ -84,20 +84,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What pressure rating for titanium ball valve stem?
+### Q1: What pressure rating for titanium ball valve stem?
 - **A1:** Pressure rating depends on grade, wall thickness, and temperature. Grade 2 CP-Ti pipe fittings are typically rated to Class 150 (285 psi) or Class 300 (740 psi) per ASME B16.5/B16.9. Higher ratings available with Grade 5.
 
-#### Q2: How is titanium ball valve stem manufactured?
+### Q2: How is titanium ball valve stem manufactured?
 - **A2:** Titanium Ball Valve Stem is manufactured using Seamless tube extrusion. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What gasket for titanium flanges in reducing acid service?
+### Q3: What gasket for titanium flanges in reducing acid service?
 - **A3:** Expanded PTFE (ePTFE) per ASME B16.20. >200°C: flexible graphite with 316L inner ring. Metallic RTJ gaskets in titanium R-24 for Class 1500+. Torque per ASME PCC-1.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** ValveComponent / FlowControl
 - **Upstream System Integration:** Chemical Process Skid; Acid/Caustic Transfer System

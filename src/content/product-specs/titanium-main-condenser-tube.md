@@ -36,7 +36,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium main condenser tube. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
 - **Non-Destructive Testing (NDT):** Components undergo UT per ASTM A388; PMI per ASTM E1476; 100% dimensional CMM; Hydrostatic test per ASME Section VIII to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
@@ -66,7 +66,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In energy applications, titanium main condenser tube is exposed to hydrogen embrittlement environments (H₂ gas at >100 bar), nuclear radiation (neutron flux > 10¹² n/cm²·s), and supercritical CO₂ power cycles. Titanium's TiO₂ layer provides hydrogen barrier with H pickup < 0.002 wt%. The material's low thermal conductivity (16.4 W/m·K) provides critical thermal isolation and dimensional stability.
 
@@ -76,7 +76,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (16.4 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
@@ -84,20 +84,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What is the typical application for titanium main condenser tube?
+### Q1: What is the typical application for titanium main condenser tube?
 - **A1:** Titanium Main Condenser Tube is designed for nuclear main condenser seamless cooling tube. The Grade 2 CP-Ti grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
 
-#### Q2: How is titanium main condenser tube manufactured?
+### Q2: How is titanium main condenser tube manufactured?
 - **A2:** Titanium Main Condenser Tube is manufactured using Seamless tube extrusion. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What material for PEM electrolyzer bipolar plates?
+### Q3: What material for PEM electrolyzer bipolar plates?
 - **A3:** Grade 2 CP-Ti with 0.5-1.0 µm Pt coating (sputtered). Contact resistance <10 µΩ·cm² per DOE targets. Corrosion <0.1 µA/cm² at 2V in 80°C H₂SO₄. Service life >40,000h. Alternative: 2-3 µm TiN PVD.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Energy
 - **Upstream System Integration:** Power Turbine Assembly; Thermal Management System

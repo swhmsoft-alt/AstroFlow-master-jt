@@ -36,7 +36,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -57,7 +57,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium craniofacial mesh. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
 - **Non-Destructive Testing (NDT):** Components undergo Ultrasonic Cleaning validation; Dimensional CMM per ISO 10360; PMI per ASTM E1476; 100% visual per ISO 14971 to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
@@ -66,7 +66,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In medical device applications, titanium craniofacial mesh is exposed to medical implant and surgical instrument applications where the component must survive cyclic physiological loading, repeated autoclave sterilization (134°C, >200 cycles), and direct tissue contact. Titanium's TiO₂ passive layer provides complete biocompatibility (ISO 10993-4) with zero nickel ion release. The material's low thermal conductivity (16.4 W/m·K) provides critical thermal isolation and dimensional stability.
 
@@ -76,7 +76,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (16.4 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
@@ -84,20 +84,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What is the typical application for titanium craniofacial mesh?
+### Q1: What is the typical application for titanium craniofacial mesh?
 - **A1:** Titanium Craniofacial Mesh is designed for reconstruction mesh for craniofacial repair (cp-ti). The Grade 2 CP-Ti grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application.
 
-#### Q2: How is titanium craniofacial mesh manufactured?
+### Q2: How is titanium craniofacial mesh manufactured?
 - **A2:** Titanium Craniofacial Mesh is manufactured using VAR melting. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What surface treatment for bone-contacting surfaces?
+### Q3: What surface treatment for bone-contacting surfaces?
 - **A3:** Cementless fixation: Type II anodizing (AMS 2488) produces 0.5-2.0 µm porous oxide for osseointegration. Cemented: Ra 1.0-2.0 µm blasted. Articulating: polished to Ra ≤ 0.05 µm. All surfaces ASTM F86 passivated.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** PrecisionMachinedComponent / Medical Device
 - **Upstream System Integration:** Medical Device Assembly; Surgical Navigation System

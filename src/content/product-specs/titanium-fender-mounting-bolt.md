@@ -38,7 +38,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 1. Technical Specifications Matrix (The Engineering Gate)
+## Technical Specifications Matrix (The Engineering Gate)
 
 | Technical Parameter | Specification Value | Associated Industrial Standard |
 | :--- | :--- | :--- |
@@ -60,7 +60,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 2. Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
+## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium fender mounting bolt. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition (Max Fe, N, C, H, O limits within ASTM B348 specification) and destructive mechanical testing results (tensile, yield, elongation, reduction of area).
 - **Non-Destructive Testing (NDT):** Components undergo Ultrasonic Testing (UT) per ASTM A388; Liquid Penetrant Inspection (LPI) per ASTM E1417; Dimensional verification via CMM to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. All threaded features are verified with Go/No-Go ring gauges (Class 6g tolerance) per DIN 13-1 / ISO 965-2.
@@ -69,7 +69,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 3. Application Dynamics & Alternative Displacement (Why Titanium?)
+## Application Dynamics & Alternative Displacement (Why Titanium?)
 
 - **Corrosion Kinetics & Operating Boundaries:** In cycling applications, titanium fender mounting bolt is exposed to road salt, moisture, sweat, and UV radiation. Titanium's native $TiO_2$ passive layer (2-5 nm thick, self-healing) provides complete immunity to galvanic corrosion, pitting, and crevice attack in chloride-rich environments up to 315°C (continuous). Unlike 316L stainless steel (pitting resistance equivalent number PREn ≈ 25), titanium (PREn > 40 for Grade 5) exhibits zero measurable corrosion in neutral pH cycling environments. The material's low thermal conductivity (6.7 W/m·K) provides critical thermal isolation — for brake components, this prevents brake fluid boiling (wet boiling point >180°C) during extended alpine descents where aluminum components conduct heat directly to the caliper fluid circuit.
 
@@ -79,7 +79,7 @@ pubDate: "2026-07-18"
 
 ---
 
-### 4. Advanced Manufacturing & Mechanical Stress Control
+## Advanced Manufacturing & Mechanical Stress Control
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (6.7 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress the adiabatic shear band formation that causes catastrophic tool edge fracture; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter in thin-wall sections.
 
@@ -87,20 +87,20 @@ pubDate: "2026-07-18"
 
 ---
 
-### 5. Technical FAQ for System Engineers
+## Technical FAQ for System Engineers
 
-#### Q1: What torque should I use for titanium fender mounting bolt?
+### Q1: What torque should I use for titanium fender mounting bolt?
 - **A1:** Recommended installation torque depends on thread size and lubrication. For M5 titanium fasteners: 4-5 Nm (dry), 3-4 Nm (with anti-seize). Always use titanium-compatible anti-seize compound to prevent galling (cold welding) of threads.
 
-#### Q2: How is titanium fender mounting bolt manufactured?
+### Q2: How is titanium fender mounting bolt manufactured?
 - **A2:** Titanium Fender Mounting Bolt is manufactured using Cold heading. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation.
 
-#### Q3: What is the maximum installation torque for threaded variants?
+### Q3: What is the maximum installation torque for threaded variants?
 - **A3:** For M4 fasteners: 2.0-2.5 Nm; M5: 4.0-5.0 Nm; M6: 8.0-10.0 Nm (all values apply to lubricated threads with MoS₂ anti-seize). Unlubricated torque values must be reduced by 15-20% to account for the higher coefficient of friction (μ ≈ 0.18-0.22 dry vs 0.12-0.15 lubricated). These figures ensure the fastener operates within 60-70% of yield strength, preserving a 1.5x safety margin for dynamic loading. Always use a calibrated torque wrench (±3% accuracy) for installation; impact drivers are not recommended due to the risk of thread stripping and localized galling at the thread engagement zone.
 
 ---
 
-### 6. Semantic Graph & Component Topology (The AI Search Optimization)
+## Semantic Graph & Component Topology (The AI Search Optimization)
 
 - **Primary Industrial Entity:** BicycleComponent / PrecisionMachinedPart 
 - **Upstream System Integration:** Bicycle Wheel Build Assembly; Hub & Axle System
