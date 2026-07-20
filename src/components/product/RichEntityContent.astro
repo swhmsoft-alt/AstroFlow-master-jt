@@ -86,14 +86,14 @@ const downstream: string[] = fm.downstream || [];
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">Complete Engineering Specification</h3>
     <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Detailed technical data for procurement, design, and quality engineering review.</p>
-    <article class="prose prose-sm md:prose-base max-w-none
+    <article class="spec-section prose prose-sm md:prose-base max-w-none
       prose-headings:font-bold prose-headings:tracking-tight
       prose-a:text-[var(--theme-primary)]
       prose-strong:text-[var(--theme-text)]
       prose-code:text-[var(--theme-primary)]
       prose-table:border-collapse prose-td:p-2 prose-th:p-2 prose-td:border prose-th:border
-      prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-4
-      prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3
+      prose-h2:text-lg prose-h2:mt-0 prose-h2:mb-4
+      prose-h3:text-base prose-h3:mt-5 prose-h3:mb-2
       prose-p:text-sm prose-p:leading-relaxed
       prose-li:text-sm
       prose-th:text-sm prose-th:font-semibold
@@ -103,6 +103,20 @@ const downstream: string[] = fm.downstream || [];
     </article>
   </div>
 </section>
+
+<style is:global>
+  /* Visual section divider between each h2 chapter */
+  .spec-section h2:not(:first-of-type) {
+    border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);
+    padding-top: 1.25rem;
+    margin-top: 2rem !important;
+  }
+  /* Tables get rounded corners */
+  .spec-section table {
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+</style>
 
 <!-- 5. Procurement Matrix — MOQ / Lead Times / Incoterms -->
 <ProcurementMatrix
