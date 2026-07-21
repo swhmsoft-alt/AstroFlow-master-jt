@@ -10,7 +10,7 @@
   "category": "Pneumatic System",
   "function": "Engine bleed air duct (Grade 9 Ti tube)",
   "material": "Grade 9 Ti-3Al-2.5V",
-  "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this pneumatic system application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by engine bleed air duct (grade 9 ti tube) and fat life requirements.",
+  "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for Titanium Bleed Air Duct where intermediate strength between CP titanium and Ti-6Al-4V is needed with superior cold formability. Its 620 MPa tensile strength with 20% elongation enables 30% weight reduction versus steel while allowing tube bending and flaring without intermediate annealing — critical for Engine bleed air duct (Grade 9 Ti tube) requiring complex-formed geometries. This rationale is driven by engine bleed air duct (grade 9 ti tube) and fat life requirements.",
   "process": [
     "5-axis CNC roughing for pneumatic system geometry",
     "Heat treatment (STA) with Class 6g gauge",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Bleed Air Duct suitable for Engine bleed air duct (Grade 9 Ti tube)?",
-      "a": "Titanium Bleed Air Duct uses Grade 9 Ti-3Al-2.5V because its yield strength, fatigue endurance, and corrosion resistance directly address pneumatic system operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What corrosion protection is needed for Titanium Bleed Air Duct in aerospace environments?",
+      "a": "Grade 9 Ti-3Al-2.5V naturally forms a protective TiO₂ passive layer that requires no additional coating for corrosion resistance in standard aerospace environments. For engine bleed air exposed to hydraulic fluids (Skydrol), de-icing fluids, or marine atmosphere, the passive layer is sufficient. However, galvanic isolation from carbon fiber composites (via fiberglass ply or PTFE sleeve) is required to prevent hydrogen embrittlement."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Bleed Air Duct?",
-      "a": "Standard machining tolerance for Titanium Bleed Air Duct is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for engine bleed air requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Bleed Air Duct orders?",
+      "a": "Standard lead time for Titanium Bleed Air Duct is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Bleed Air Duct require any post-machining surface treatment?",
-      "a": "Yes. engine bleed air components require Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service — tailored for engine bleed air application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Bleed Air Duct shipments?",
-      "a": "Each shipment of Titanium Bleed Air Duct includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet engine bleed air specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Bleed duct / Bleed air line pneumatic system components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Bleed Air Duct?",
+      "a": "Each Titanium Bleed Air Duct shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for engine bleed air."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "aerospace-defense"
   ],
   "seoTitle": "Titanium Bleed Air Duct - Grade 9 Ti-3Al-2.5V | CNC Pneumatic System | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Bleed Air Duct - Engine bleed air duct (Grade 9 Ti tube). Manufactured from Grade 9 Ti-3Al-2.5V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "AS9100D precision machined Titanium Bleed Air Duct for aerospace assemblies. Engine bleed air duct (Grade 9 Ti tube). Grade 9 Ti-3Al-2.5V. AMS 4928 compliant. Full AS9102 FAI available.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-bleed-air-duct.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-bleed-air-duct.svg",
       "alt": "Grade 5 Titanium CNC Titanium Bleed Air Duct"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 9 Ti-3Al-2.5V for engine bleed air",
+    "manufacturing": "AS9100D-Certified Manufacturing Process",
+    "inspection": "NDT & Material Verification per AS9102",
+    "application": "Grade 9 Ti-3Al-2.5V Selection Rationale for engine bleed air",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Bleed Air Duct is an AS9100D-certified engine bleed air component designed for Engine bleed air duct (Grade 9 Ti tube). Machined from Grade 9 Ti-3Al-2.5V per AMS specifications, it delivers the damage tolerance, fatigue life, and material traceability required for flight-critical aerospace assemblies."
 }

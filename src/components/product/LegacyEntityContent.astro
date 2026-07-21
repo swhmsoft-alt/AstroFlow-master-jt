@@ -53,7 +53,7 @@ const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-10">
       <div>
-        <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Why Titanium</h2>
+        <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">{data.sectionTitles?.whyTitanium || 'Why Titanium'}</h2>
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
           {data.alloyReason}
         </p>
@@ -79,7 +79,7 @@ const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
       <div>
         {data.process && data.process.length > 0 && (
           <div>
-            <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Manufacturing Process</h2>
+            <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">{data.sectionTitles?.manufacturing || 'Manufacturing Process'}</h2>
             <ol class="space-y-3">
               {data.process.slice(0, 4).map((p: string, i: number) => {
                 const cap = allCaps.find(c => c?.slug && p?.replace(/[^a-z0-9-]/g, '').toLowerCase().includes(c.slug.substring(0, 15)));
@@ -101,7 +101,7 @@ const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
         )}
         {data.inspection && data.inspection.length > 0 && (
           <div class="mt-8">
-            <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">Inspection &amp; Quality</h2>
+            <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">{data.sectionTitles?.inspection || 'Inspection &amp; Quality'}</h2>
             <ul class="space-y-2">
               {data.inspection.slice(0, 4).map((i: string) => (
                 <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">

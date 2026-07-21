@@ -10,7 +10,7 @@
   "category": "Implantable Device",
   "function": "Permanent pacemaker outer hermetic enclosure",
   "material": "Grade 2 CP-Ti",
-  "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this implantable device application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by permanent pacemaker outer hermetic enclosure and service environment demands.",
+  "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for Titanium Pacemaker Enclosure where formability and corrosion resistance are prioritized over absolute strength. With 40% elongation and excellent weldability, Grade 2 CP-Ti forms a stable TiO₂ passive film that provides immunity to pitting in chloride environments up to 260°C. Its 345 MPa yield strength with 30% elongation makes it ideal for Permanent pacemaker outer hermetic enclosure requiring cold forming or bending without cracking. This rationale is driven by permanent pacemaker outer hermetic enclosure and service environment demands.",
   "process": [
     "CNC swiss turning for implantable device geometry",
     "Cryogenic deburring with SPC sampling",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Pacemaker Enclosure suitable for Permanent pacemaker outer hermetic enclosure?",
-      "a": "Titanium Pacemaker Enclosure uses Grade 2 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address implantable device operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "Is Titanium Pacemaker Enclosure MRI-safe or MRI-conditional?",
+      "a": "Grade 2 CP-Ti is non-ferromagnetic (magnetic susceptibility 1.00005 × 10⁻⁶ cgs) and generates negligible MRI artifact compared to 316L stainless steel. Titanium Pacemaker Enclosure is classified as MR-Conditional under ASTM F2052/F2213 testing at 1.5T and 3.0T field strengths. Specific absorption rates remain within safe limits for permanent pacemaker outer configurations."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Pacemaker Enclosure?",
-      "a": "Standard machining tolerance for Titanium Pacemaker Enclosure is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for permanent pacemaker outer requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Pacemaker Enclosure orders?",
+      "a": "Standard lead time for Titanium Pacemaker Enclosure is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Pacemaker Enclosure require any post-machining surface treatment?",
-      "a": "Yes. permanent pacemaker outer components require Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish — tailored for permanent pacemaker outer application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Pacemaker Enclosure shipments?",
-      "a": "Each shipment of Titanium Pacemaker Enclosure includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet permanent pacemaker outer specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Pacemaker case / IPG housing implantable device components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Pacemaker Enclosure?",
+      "a": "Each Titanium Pacemaker Enclosure shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for permanent pacemaker outer."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "medical-device"
   ],
   "seoTitle": "Titanium Pacemaker Enclosure - Grade 2 CP-Ti | CNC Implantable Device | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Pacemaker Enclosure - Permanent pacemaker outer hermetic enclosure. Manufactured from Grade 2 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Medical-grade precision CNC machined Titanium Pacemaker Enclosure for surgical instruments. Permanent pacemaker outer hermetic enclosure. Manufactured from Grade 2 CP-Ti. ISO 13485/9001 certified. Full EN 10204 3.1 material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-pacemaker-enclosure.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-pacemaker-enclosure.svg",
       "alt": "Grade 5 Titanium CNC Titanium Pacemaker Enclosure"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 2 CP-Ti for permanent pacemaker outer",
+    "manufacturing": "Surgical-Grade Manufacturing Process",
+    "inspection": "Biocompatibility & Dimensional Inspection",
+    "application": "Grade 2 CP-Ti Selection Rationale for permanent pacemaker outer",
+    "quality": "Biocompatibility & Process Validation"
+  },
+  "sceneDescription": "Titanium Pacemaker Enclosure is a precision-manufactured permanent pacemaker outer component designed for Permanent pacemaker outer hermetic enclosure. Fabricated from Grade 2 CP-Ti, this component meets the stringent requirements of sterile surgical environments including corrosion resistance to bodily fluids, compatibility with repeated autoclave cycles, and non-magnetic properties for MRI compatibility."
 }

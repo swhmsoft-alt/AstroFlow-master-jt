@@ -10,7 +10,7 @@
   "category": "Hydrogen Hardware",
   "function": "PEM electrolyzer bipolar plate (Grade 1, Pt-coated)",
   "material": "Grade 1 CP-Ti (Pt-coated)",
-  "alloyReason": "Pt-coated Grade 1 CP-Ti (UNS R50250) is engineered for this hydrogen hardware electrochemical application where Pt cladding (2.5um min) provides catalytic activity while the Grade 1 substrate delivers max ductility (24% elong). This rationale is driven by pem electrolyzer bipolar plate (grade 1, pt-coated) and fat life requirements.",
+  "alloyReason": "Pt-coated Grade 1 CP-Ti (UNS R50250) is engineered for Titanium PEM Bipolar Plate in electrochemical applications where platinum cladding (2.5 µm minimum) provides catalytic surface activity while the ultra-ductile Grade 1 substrate (24% elongation) withstands thermal cycling without delamination. The Pt/Ti interface forms a diffusion bond at >50 MPa peel strength, ensuring long-term service in PEM electrolyzer bipolar plate (Grade 1, Pt-coated). This rationale is driven by pem electrolyzer bipolar plate (grade 1, pt-coated) and fat life requirements.",
   "process": [
     "Closed-die forging net shape for hydrogen hardware geometry",
     "CNC precision machining with SPC sampling",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium PEM Bipolar Plate suitable for PEM electrolyzer bipolar plate (Grade 1, Pt-coated)?",
-      "a": "Titanium PEM Bipolar Plate uses Grade 1 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address hydrogen hardware operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What downhole temperature rating does Titanium PEM Bipolar Plate have?",
+      "a": "Grade 1 CP-Ti maintains >90% of room-temperature tensile and yield strength at 200°C and >80% at 300°C. Titanium PEM Bipolar Plate is suitable for pem electrolyzer bipolar in geothermal (HDR/EGS) wells up to 300°C with appropriate consideration of creep in threaded connections. Above 300°C, dedicated creep testing per ASTM E139 is recommended for design life validation."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium PEM Bipolar Plate?",
-      "a": "Standard machining tolerance for Titanium PEM Bipolar Plate is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for pem electrolyzer bipolar requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium PEM Bipolar Plate orders?",
+      "a": "Standard lead time for Titanium PEM Bipolar Plate is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium PEM Bipolar Plate require any post-machining surface treatment?",
-      "a": "Yes. pem electrolyzer bipolar components require Thermal oxidation 700C 2h in air to grow controlled 300nm TiO2 barrier layer for H2 permeation reduction — tailored for pem electrolyzer bipolar application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium PEM Bipolar Plate shipments?",
-      "a": "Each shipment of Titanium PEM Bipolar Plate includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet pem electrolyzer bipolar specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Bipolar plate / PEM plate hydrogen hardware components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium PEM Bipolar Plate?",
+      "a": "Each Titanium PEM Bipolar Plate shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for pem electrolyzer bipolar."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "energy"
   ],
   "seoTitle": "Titanium PEM Bipolar Plate - Grade 1 CP-Ti | CNC Hydrogen Hardware | BOZE",
-  "seoDescription": "Precision CNC machined Titanium PEM Bipolar Plate - PEM electrolyzer bipolar plate (Grade 1, Pt-coated). Manufactured from Grade 1 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Precision machined Titanium PEM Bipolar Plate for energy industry equipment. PEM electrolyzer bipolar plate (Grade 1, Pt-coated). Grade 1 CP-Ti. NACE MR0175 compliant. Downhole and geothermal service rated.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-pem-bipolar-plate.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-pem-bipolar-plate.svg",
       "alt": "Grade 5 Titanium CNC Titanium PEM Bipolar Plate"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Grade 1 CP-Ti Downhole Material Rationale for pem electrolyzer bipolar",
+    "manufacturing": "Energy-Grade Manufacturing Process",
+    "inspection": "NACE & Sour Service Inspection",
+    "application": "Grade 1 CP-Ti Selection Rationale for pem electrolyzer bipolar",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium PEM Bipolar Plate is a pem electrolyzer bipolar component precision-manufactured from Grade 1 CP-Ti for PEM electrolyzer bipolar plate (Grade 1, Pt-coated). The combination of high specific strength, excellent corrosion resistance, and reliable fatigue performance makes it the optimal material choice for this component."
 }

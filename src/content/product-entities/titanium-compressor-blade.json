@@ -10,7 +10,7 @@
   "category": "Engine Component",
   "function": "Axial compressor rotor blade",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this engine component application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by axial compressor rotor blade and service environment demands.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is mandated for Titanium Compressor Blade because its specific strength (290 kN·m/kg) outperforms 4340 steel by 55% and 7075 aluminum by 35% at temperatures up to 400°C. The duplex alpha+beta microstructure provides damage tolerance against high-cycle vibration spectra typical of airframe structures. Its fatigue crack growth rate (da/dN ~2×10^-8 m/cycle at ΔK=20 MPa√m) enables safe-life design for Axial compressor rotor blade. This rationale is driven by axial compressor rotor blade and service environment demands.",
   "process": [
     "5-axis CNC roughing for engine component geometry",
     "Heat treatment (STA) with Class 6g gauge",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Compressor Blade suitable for Axial compressor rotor blade?",
-      "a": "Titanium Compressor Blade uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address engine component operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What corrosion protection is needed for Titanium Compressor Blade in aerospace environments?",
+      "a": "Grade 5 Ti-6Al-4V naturally forms a protective TiO₂ passive layer that requires no additional coating for corrosion resistance in standard aerospace environments. For axial compressor rotor exposed to hydraulic fluids (Skydrol), de-icing fluids, or marine atmosphere, the passive layer is sufficient. However, galvanic isolation from carbon fiber composites (via fiberglass ply or PTFE sleeve) is required to prevent hydrogen embrittlement."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Compressor Blade?",
-      "a": "Standard machining tolerance for Titanium Compressor Blade is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for axial compressor rotor requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Compressor Blade orders?",
+      "a": "Standard lead time for Titanium Compressor Blade is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Compressor Blade require any post-machining surface treatment?",
-      "a": "Yes. axial compressor rotor components require Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service — tailored for axial compressor rotor application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Compressor Blade shipments?",
-      "a": "Each shipment of Titanium Compressor Blade includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet axial compressor rotor specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Compressor blade / Rotor blade engine component components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Compressor Blade?",
+      "a": "Each Titanium Compressor Blade shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for axial compressor rotor."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "aerospace-defense"
   ],
   "seoTitle": "Titanium Compressor Blade - Grade 5 Ti-6Al-4V | CNC Engine Component | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Compressor Blade - Axial compressor rotor blade. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "AS9100D precision machined Titanium Compressor Blade for aerospace assemblies. Axial compressor rotor blade. Grade 5 Ti-6Al-4V. AMS 4928 compliant. Full AS9102 FAI available.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-compressor-blade.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-compressor-blade.svg",
       "alt": "Grade 5 Titanium CNC Titanium Compressor Blade"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for axial compressor rotor",
+    "manufacturing": "AS9100D-Certified Manufacturing Process",
+    "inspection": "NDT & Material Verification per AS9102",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for axial compressor rotor",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Compressor Blade is an AS9100D-certified axial compressor rotor component designed for Axial compressor rotor blade. Machined from Grade 5 Ti-6Al-4V per AMS specifications, it delivers the damage tolerance, fatigue life, and material traceability required for flight-critical aerospace assemblies."
 }

@@ -12,6 +12,11 @@ interface Props {
   manufacturing_process?: string;
   weight_reduction?: string;
   materialSlug?: string;
+  sectionTitles?: { // Optional overrides for section headings
+    application?: string;
+    quality?: string;
+    manufacturing?: string;
+  };
 }
 
 // Safe string helpers — avoid toLowerCase on undefined
@@ -53,6 +58,11 @@ const applicationDescs = [
 const ndt = ndtMethods[h % ndtMethods.length];
 const qs = qualityStatements[h % qualityStatements.length];
 const ad = applicationDescs[h % applicationDescs.length];
+
+// Section titles (with overrides from product data)
+const sectionApplication = t.sectionTitles?.application || `Product Description &amp; Application`;
+const sectionQuality = t.sectionTitles?.quality || `Quality Assurance &amp; Material Traceability`;
+const sectionManufacturing = t.sectionTitles?.manufacturing || `Manufacturing Process`;
 ---
 
 <div class="py-10 lg:py-12" style="background: var(--theme-surface);">
@@ -67,7 +77,7 @@ const ad = applicationDescs[h % applicationDescs.length];
     <!-- ===== §1: Product Description & Application ===== -->
     <section class="mb-10 border-b pb-8" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
       <h2 class="text-xl font-bold mb-4 flex items-center gap-2" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">§</span> Product Description &amp; Application
+        <span style="color: var(--theme-primary);">§</span> {sectionApplication}
       </h2>
       <div class="grid md:grid-cols-2 gap-4">
         <div class="card-titanium p-4">
@@ -91,7 +101,7 @@ const ad = applicationDescs[h % applicationDescs.length];
     <!-- ===== §2: Quality Assurance & NDT ===== -->
     <section class="mb-10 border-b pb-8" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
       <h2 class="text-xl font-bold mb-4 flex items-center gap-2" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">§</span> Quality Assurance &amp; Material Traceability
+        <span style="color: var(--theme-primary);">§</span> {sectionQuality}
       </h2>
       <div class="grid md:grid-cols-2 gap-4">
         <div class="card-titanium p-4">
@@ -109,7 +119,7 @@ const ad = applicationDescs[h % applicationDescs.length];
     {manufacturing_process && (
     <section class="mb-10 border-b pb-8" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
       <h2 class="text-xl font-bold mb-4 flex items-center gap-2" style="color: var(--theme-text);">
-        <span style="color: var(--theme-primary);">§</span> Manufacturing Process
+        <span style="color: var(--theme-primary);">§</span> {sectionManufacturing}
       </h2>
       <div class="card-titanium p-4">
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">

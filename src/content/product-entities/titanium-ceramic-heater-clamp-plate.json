@@ -10,7 +10,7 @@
   "category": "Chamber Shield",
   "function": "Ceramic heater core clamping plate",
   "material": "Grade 2 CP-Ti (Bead Blasted)",
-  "alloyReason": "Bead-blasted Grade 2 CP-Ti (UNS R50400) is chosen for this chamber shield component where controlled Ra 3.2-6.3um roughness improves coating adhesion. The 345 MPa yield with 30% elongation provides ductility while maintaining corrosion resistance. This rationale is driven by ceramic heater core clamping plate and specific design requirements.",
+  "alloyReason": "Bead-blasted Grade 2 CP-Ti (UNS R50400) is chosen for Titanium Ceramic Heater Clamp Plate where controlled surface roughness (Ra 3.2-6.3 µm) improves adhesion of applied coatings or bonding agents. The 345 MPa yield with 30% elongation provides sufficient ductility for forming operations while maintaining the excellent corrosion resistance characteristic of CP titanium. This surface preparation is tailored for Ceramic heater core clamping plate. This rationale is driven by ceramic heater core clamping plate and specific design requirements.",
   "process": [
     "Cleanroom CNC Class 100 for chamber shield geometry",
     "Electropolish Ra <0.25um at 200W fiber laser",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Ceramic Heater Clamp Plate suitable for Ceramic heater core clamping plate?",
-      "a": "Titanium Ceramic Heater Clamp Plate uses Grade 2 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address chamber shield operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What is the magnetic permeability of Titanium Ceramic Heater Clamp Plate?",
+      "a": "Grade 2 CP-Ti has a magnetic permeability µ < 1.0001 (effectively non-magnetic), essential for ceramic heater core in electron beam lithography, ion implantation, and SEM/EDX tool chambers where magnetic materials would deflect charged particle beams. Permeability is verified per ASTM A342 for each production batch."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Ceramic Heater Clamp Plate?",
-      "a": "Standard machining tolerance for Titanium Ceramic Heater Clamp Plate is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for ceramic heater core requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Ceramic Heater Clamp Plate orders?",
+      "a": "Standard lead time for Titanium Ceramic Heater Clamp Plate is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Ceramic Heater Clamp Plate require any post-machining surface treatment?",
-      "a": "Yes. ceramic heater core components require Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1 — tailored for ceramic heater core application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Ceramic Heater Clamp Plate shipments?",
-      "a": "Each shipment of Titanium Ceramic Heater Clamp Plate includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet ceramic heater core specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Heater clamp / Ceramic clamp chamber shield components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Ceramic Heater Clamp Plate?",
+      "a": "Each Titanium Ceramic Heater Clamp Plate shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for ceramic heater core."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "semiconductor"
   ],
   "seoTitle": "Titanium Ceramic Heater Clamp Plate - Grade 2 CP-Ti | CNC Chamber Shield | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Ceramic Heater Clamp Plate - Ceramic heater core clamping plate. Manufactured from Grade 2 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Ultra-clean precision machined Titanium Ceramic Heater Clamp Plate for semiconductor processing equipment. Ceramic heater core clamping plate. Grade 2 CP-Ti with Class 100 cleanroom processing. Particle count verified.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-ceramic-heater-clamp-plate.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-ceramic-heater-clamp-plate.svg",
       "alt": "Grade 5 Titanium CNC Titanium Ceramic Heater Clamp Plate"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Grade 2 CP-Ti Selection for ceramic heater core",
+    "manufacturing": "Cleanroom Manufacturing & Finishing Process",
+    "inspection": "UHV Particle & Surface Contamination Verification",
+    "application": "Grade 2 CP-Ti Selection Rationale for ceramic heater core",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Ceramic Heater Clamp Plate is an ultra-clean ceramic heater core component designed for Ceramic heater core clamping plate. Manufactured from Grade 2 CP-Ti with Class 100 cleanroom protocols, it provides the non-magnetic, low-outgassing, and particle-free performance essential for wafer fabrication environments."
 }

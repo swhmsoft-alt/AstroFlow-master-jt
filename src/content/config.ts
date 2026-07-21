@@ -183,6 +183,21 @@ const productEntitiesCollection = defineCollection({
     weight_reduction: z.string().optional(),
     ndt_methods: z.string().optional(),
     compliance: z.array(z.string()).optional(),
+    // Image fields
+    image: z.string().optional(),
+    gallery: z.array(z.object({
+      image: z.string(),
+      alt: z.string().optional(),
+    })).optional(),
+    // SEO & content differentiation fields
+    sectionTitles: z.object({
+      whyTitanium: z.string().optional(),
+      manufacturing: z.string().optional(),
+      inspection: z.string().optional(),
+      application: z.string().optional(),
+      quality: z.string().optional(),
+    }).optional(),
+    sceneDescription: z.string().optional(),
   }),
 });
 

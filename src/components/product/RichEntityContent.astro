@@ -26,7 +26,8 @@ const compliance: string[] = fm.compliance || [];
 const standards: string[] = fm.standards || [];
 const upstream: string[] = fm.upstream || [];
 const downstream: string[] = fm.downstream || [];
-const faqs = fm.faqs || [];
+// FAQ: prefer specEntry data, fall back to product-entities JSON data
+const faqs = (fm.faqs && fm.faqs.length > 0) ? fm.faqs : (data.faq || []);
 ---
 
 <!-- 1. Product Hero — Visual + SKU + MOQ + RFQ -->
@@ -139,7 +140,11 @@ const faqs = fm.faqs || [];
   manufacturing_process={fm.manufacturing_process}
   weight_reduction={fm.weight_reduction}
   materialSlug={materialSlug}
-
+  sectionTitles={{
+    application: data.sectionTitles?.whyTitanium || data.title,
+    quality: data.sectionTitles?.inspection,
+    manufacturing: data.sectionTitles?.manufacturing,
+  }}
 />
 
 <!-- 6. Procurement Matrix — MOQ / Lead Times / Incoterms -->

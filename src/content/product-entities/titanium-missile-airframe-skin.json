@@ -10,7 +10,7 @@
   "category": "Missile Hardware",
   "function": "Missile body skin panel",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this missile hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by missile body skin panel and fat life requirements.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is mandated for Titanium Missile Airframe Skin because its specific strength (290 kN·m/kg) outperforms 4340 steel by 55% and 7075 aluminum by 35% at temperatures up to 400°C. The duplex alpha+beta microstructure provides damage tolerance against high-cycle vibration spectra typical of airframe structures. Its fatigue crack growth rate (da/dN ~2×10^-8 m/cycle at ΔK=20 MPa√m) enables safe-life design for Missile body skin panel. This rationale is driven by missile body skin panel and fat life requirements.",
   "process": [
     "5-axis CNC roughing for missile hardware geometry",
     "Heat treatment (STA) for net-shape tolerance",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Missile Airframe Skin suitable for Missile body skin panel?",
-      "a": "Titanium Missile Airframe Skin uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address missile hardware operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "Does Titanium Missile Airframe Skin meet AMS specifications?",
+      "a": "Titanium Missile Airframe Skin is manufactured from Grade 5 Ti-6Al-4V per AMS 4928 (bar/rod) or AMS 4911 (sheet/plate) with mechanical property verification at room and elevated temperature. Heat treatment per AMS 2801 (solution treat 925-980°C + age 510-540°C) provides STA condition properties. All processing is documented per AS9102 FAI requirements for missile body skin."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Missile Airframe Skin?",
-      "a": "Standard machining tolerance for Titanium Missile Airframe Skin is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for missile body skin requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Missile Airframe Skin orders?",
+      "a": "Standard lead time for Titanium Missile Airframe Skin is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Missile Airframe Skin require any post-machining surface treatment?",
-      "a": "Yes. missile body skin components require Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service — tailored for missile body skin application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Missile Airframe Skin shipments?",
-      "a": "Each shipment of Titanium Missile Airframe Skin includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet missile body skin specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Missile skin / Airframe panel missile hardware components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Missile Airframe Skin?",
+      "a": "Each Titanium Missile Airframe Skin shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for missile body skin."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "aerospace-defense"
   ],
   "seoTitle": "Titanium Missile Airframe Skin - Grade 5 Ti-6Al-4V | CNC Missile Hardware | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Missile Airframe Skin - Missile body skin panel. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "AS9100D precision machined Titanium Missile Airframe Skin for aerospace assemblies. Missile body skin panel. Grade 5 Ti-6Al-4V. AMS 4928 compliant. Full AS9102 FAI available.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-missile-airframe-skin.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-missile-airframe-skin.svg",
       "alt": "Grade 5 Titanium CNC Titanium Missile Airframe Skin"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for missile body skin",
+    "manufacturing": "AS9100D-Certified Manufacturing Process",
+    "inspection": "NDT & Material Verification per AS9102",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for missile body skin",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Missile Airframe Skin is an AS9100D-certified missile body skin component designed for Missile body skin panel. Machined from Grade 5 Ti-6Al-4V per AMS specifications, it delivers the damage tolerance, fatigue life, and material traceability required for flight-critical aerospace assemblies."
 }

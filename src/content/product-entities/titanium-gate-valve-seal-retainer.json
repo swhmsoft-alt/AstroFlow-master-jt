@@ -10,7 +10,7 @@
   "category": "Chamber Hardware",
   "function": "Gate valve dynamic seal retainer ring",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this chamber hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by gate valve dynamic seal retainer ring and fat life requirements.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is specified for Titanium Gate Valve Seal Retainer because its non-magnetic permeability (µ <1.0001) eliminates interference with electron beam trajectories in vacuum processing chambers. The low sputter yield of Ti (0.3 atoms/ion at 500eV Ar+) compared to Al (1.2) reduces cross-contamination in thin-film deposition tools. Matched thermal expansion (8.6 µm/m°C) with ceramic end-effectors prevents particle generation during thermal cycling — critical for Gate valve dynamic seal retainer ring. This rationale is driven by gate valve dynamic seal retainer ring and fat life requirements.",
   "process": [
     "Cleanroom CNC Class 100 for chamber hardware geometry",
     "Electropolish Ra <0.25um for net-shape tolerance",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Gate Valve Seal Retainer suitable for Gate valve dynamic seal retainer ring?",
-      "a": "Titanium Gate Valve Seal Retainer uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address chamber hardware operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What particle generation specifications apply to Titanium Gate Valve Seal Retainer?",
+      "a": "Titanium Gate Valve Seal Retainer is manufactured and cleaned to Class 100 cleanroom standards per ISO 14644-1. Surface particle count is verified to <0.1 particles/cm² at ≥0.3 µm size per SEMI M51. For gate valve dynamic in wafer handling, electropolished surfaces (Ra <0.25 µm) minimize particle trapping. DI water rinse + N₂ blow-dry final cleaning is standard."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Gate Valve Seal Retainer?",
-      "a": "Standard machining tolerance for Titanium Gate Valve Seal Retainer is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for gate valve dynamic requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Gate Valve Seal Retainer orders?",
+      "a": "Standard lead time for Titanium Gate Valve Seal Retainer is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Gate Valve Seal Retainer require any post-machining surface treatment?",
-      "a": "Yes. gate valve dynamic components require Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1 — tailored for gate valve dynamic application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Gate Valve Seal Retainer shipments?",
-      "a": "Each shipment of Titanium Gate Valve Seal Retainer includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet gate valve dynamic specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Seal retainer / Valve retainer chamber hardware components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Gate Valve Seal Retainer?",
+      "a": "Each Titanium Gate Valve Seal Retainer shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for gate valve dynamic."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "semiconductor"
   ],
   "seoTitle": "Titanium Gate Valve Seal Retainer - Grade 5 Ti-6Al-4V | CNC Chamber Hardware | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Gate Valve Seal Retainer - Gate valve dynamic seal retainer ring. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Ultra-clean precision machined Titanium Gate Valve Seal Retainer for semiconductor processing equipment. Gate valve dynamic seal retainer ring. Grade 5 Ti-6Al-4V with Class 100 cleanroom processing. Particle count verified.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-gate-valve-seal-retainer.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-gate-valve-seal-retainer.svg",
       "alt": "Grade 5 Titanium CNC Titanium Gate Valve Seal Retainer"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Grade 5 Ti-6Al-4V Selection for gate valve dynamic",
+    "manufacturing": "Cleanroom Manufacturing & Finishing Process",
+    "inspection": "UHV Particle & Surface Contamination Verification",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for gate valve dynamic",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Gate Valve Seal Retainer is an ultra-clean gate valve dynamic component designed for Gate valve dynamic seal retainer ring. Manufactured from Grade 5 Ti-6Al-4V with Class 100 cleanroom protocols, it provides the non-magnetic, low-outgassing, and particle-free performance essential for wafer fabrication environments."
 }

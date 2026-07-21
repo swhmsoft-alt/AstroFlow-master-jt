@@ -10,7 +10,7 @@
   "category": "Deep Sea",
   "function": "Deep-sea camera/sensor pressure housing",
   "material": "Grade 5 Ti-6Al-4V ELI",
-  "alloyReason": "Ti-6Al-4V ELI (Grade 23, UNS R56401) is mandated for this deep sea application where ELI elements (O <=0.13%, Fe <=0.25%) provide superior fracture toughness (KIC >100 MPa-m0.5) and fatigue resistance vs standard Grade 5. This rationale is driven by deep-sea camera/sensor pressure housing and fat life requirements.",
+  "alloyReason": "Grade 23 Ti-6Al-4V ELI (UNS R56401) is mandated for Titanium Underwater Camera Housing where extra-low interstitial elements (O ≤0.13%, Fe ≤0.25%) provide superior fracture toughness (KIC >100 MPa√m) and fatigue crack growth resistance compared to standard Grade 5. The controlled oxygen content reduces susceptibility to strain-rate embrittlement, making it the preferred choice for Deep-sea camera/sensor pressure housing in safety-critical applications. This rationale is driven by deep-sea camera/sensor pressure housing and fat life requirements.",
   "process": [
     "Ring forging radial-axial for deep sea geometry",
     "CNC turn-bore operation for net-shape tolerance",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Underwater Camera Housing suitable for Deep-sea camera/sensor pressure housing?",
-      "a": "Titanium Underwater Camera Housing uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address deep sea operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "How does Titanium Underwater Camera Housing perform in deep-sea pressure environments?",
+      "a": "Titanium Underwater Camera Housing fabricated from Grade 5 Ti-6Al-4V is suitable for full-ocean-depth operation (11,000 m, 110 MPa external pressure). With 830 MPa yield strength and spherical/cylindrical collapse pressure margins >2× for deepsea camerasensor pressure, titanium's strength-to-weight ratio provides the deepest diving capability per unit mass of any structural metal. Buckling analysis per API 1111 is provided for each design."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Underwater Camera Housing?",
-      "a": "Standard machining tolerance for Titanium Underwater Camera Housing is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for deepsea camerasensor pressure requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Underwater Camera Housing orders?",
+      "a": "Standard lead time for Titanium Underwater Camera Housing is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Underwater Camera Housing require any post-machining surface treatment?",
-      "a": "Yes. deepsea camerasensor pressure components require Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater — tailored for deepsea camerasensor pressure application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Underwater Camera Housing shipments?",
-      "a": "Each shipment of Titanium Underwater Camera Housing includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet deepsea camerasensor pressure specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Camera housing / Sensor canister deep sea components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Underwater Camera Housing?",
+      "a": "Each Titanium Underwater Camera Housing shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for deepsea camerasensor pressure."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "marine-offshore"
   ],
   "seoTitle": "Titanium Underwater Camera Housing - Grade 5 Ti-6Al-4V | CNC Deep Sea | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Underwater Camera Housing - Deep-sea camera/sensor pressure housing. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Marine-grade precision machined Titanium Underwater Camera Housing for subsea and offshore applications. Deep-sea camera/sensor pressure housing. Grade 5 Ti-6Al-4V. Corrosion resistant in seawater. NORSOK/MILS spec compliant.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-underwater-camera-housing.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-underwater-camera-housing.svg",
       "alt": "Grade 5 Titanium CNC Titanium Underwater Camera Housing"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for deepsea camerasensor pressure",
+    "manufacturing": "Marine-Grade Fabrication Process",
+    "inspection": "Hydrostatic & NDT Verification",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for deepsea camerasensor pressure",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Underwater Camera Housing is a marine-grade deepsea camerasensor pressure component designed for Deep-sea camera/sensor pressure housing. Fabricated from Grade 5 Ti-6Al-4V, it provides immunity to seawater corrosion, chloride stress corrosion cracking, and biofouling — eliminating the need for cathodic protection in submerged service."
 }

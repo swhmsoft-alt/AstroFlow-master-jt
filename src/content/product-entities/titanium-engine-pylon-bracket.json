@@ -10,7 +10,7 @@
   "category": "Engine Component",
   "function": "Engine mounting pylon bracket/lug",
   "material": "Grade 9 Ti-3Al-2.5V",
-  "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this engine component application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by engine mounting pylon bracket/lug and service environment demands.",
+  "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for Titanium Engine Pylon Bracket where intermediate strength between CP titanium and Ti-6Al-4V is needed with superior cold formability. Its 620 MPa tensile strength with 20% elongation enables 30% weight reduction versus steel while allowing tube bending and flaring without intermediate annealing — critical for Engine mounting pylon bracket/lug requiring complex-formed geometries. This rationale is driven by engine mounting pylon bracket/lug and service environment demands.",
   "process": [
     "5-axis CNC roughing for engine component geometry",
     "Heat treatment (STA) at 200W fiber laser",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Engine Pylon Bracket suitable for Engine mounting pylon bracket/lug?",
-      "a": "Titanium Engine Pylon Bracket uses Grade 9 Ti-3Al-2.5V because its yield strength, fatigue endurance, and corrosion resistance directly address engine component operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What material traceability standards does Titanium Engine Pylon Bracket comply with?",
+      "a": "Titanium Engine Pylon Bracket provides full material traceability per AS9100 Rev D with EN 10204 Type 3.1 documentation. Each component is marked with heat code, batch number, and serial number. First Article Inspection (FAI) per AS9102 is available with dimensional, material, and process verification — mandatory for engine mounting pylon in flight-critical assemblies."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Engine Pylon Bracket?",
-      "a": "Standard machining tolerance for Titanium Engine Pylon Bracket is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for engine mounting pylon requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Engine Pylon Bracket orders?",
+      "a": "Standard lead time for Titanium Engine Pylon Bracket is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Engine Pylon Bracket require any post-machining surface treatment?",
-      "a": "Yes. engine mounting pylon components require Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service — tailored for engine mounting pylon application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Engine Pylon Bracket shipments?",
-      "a": "Each shipment of Titanium Engine Pylon Bracket includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet engine mounting pylon specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Pylon bracket / Engine mount engine component components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Engine Pylon Bracket?",
+      "a": "Each Titanium Engine Pylon Bracket shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for engine mounting pylon."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "aerospace-defense"
   ],
   "seoTitle": "Titanium Engine Pylon Bracket - Grade 9 Ti-3Al-2.5V | CNC Engine Component | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Engine Pylon Bracket - Engine mounting pylon bracket/lug. Manufactured from Grade 9 Ti-3Al-2.5V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "AS9100D precision machined Titanium Engine Pylon Bracket for aerospace assemblies. Engine mounting pylon bracket/lug. Grade 9 Ti-3Al-2.5V. AMS 4928 compliant. Full AS9102 FAI available.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-engine-pylon-bracket.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-engine-pylon-bracket.svg",
       "alt": "Grade 5 Titanium CNC Titanium Engine Pylon Bracket"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 9 Ti-3Al-2.5V for engine mounting pylon",
+    "manufacturing": "AS9100D-Certified Manufacturing Process",
+    "inspection": "NDT & Material Verification per AS9102",
+    "application": "Grade 9 Ti-3Al-2.5V Selection Rationale for engine mounting pylon",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Engine Pylon Bracket is an AS9100D-certified engine mounting pylon component designed for Engine mounting pylon bracket/lug. Machined from Grade 9 Ti-3Al-2.5V per AMS specifications, it delivers the damage tolerance, fatigue life, and material traceability required for flight-critical aerospace assemblies."
 }

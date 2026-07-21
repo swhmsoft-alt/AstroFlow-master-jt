@@ -10,7 +10,7 @@
   "category": "Wheel Hardware",
   "function": "Quick-release thru-axle shaft for wheel retention",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this wheel hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by quick-release thru-axle shaft for wheel retention and service environment demands.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is specified for Titanium Thru-Axle because its 900+ MPa tensile strength allows thin-wall tube shaping without buckling, critical for lightweight frame and component structures. The alpha-beta microstructure delivers 45% higher specific strength than 4140 chromoly steel, translating directly to gram-level weight savings where it matters. Its high-cycle fatigue endurance limit (>500 MPa @10^7 cycles) matches the pedaling load spectrum of Quick-release thru-axle shaft for wheel retention. This rationale is driven by quick-release thru-axle shaft for wheel retention and service environment demands.",
   "process": [
     "CNC turning Swiss-type for wheel hardware geometry",
     "Thread rolling DIN 13-1 6g with Class 6g gauge",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Thru-Axle suitable for Quick-release thru-axle shaft for wheel retention?",
-      "a": "Titanium Thru-Axle uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address wheel hardware operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "Does Titanium Thru-Axle require special assembly or anti-seize?",
+      "a": "Yes. Titanium-to-titanium threaded interfaces on Titanium Thru-Axle are susceptible to galling (cold welding) during assembly. Application of MoS₂ or copper-based anti-seize compound to all threaded contact surfaces is mandatory. Lubricated installation torque values are typically 15-20% lower than dry values. Thread engagement should not exceed 3× thread diameter."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Thru-Axle?",
-      "a": "Standard machining tolerance for Titanium Thru-Axle is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for quickrelease thruaxle shaft requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Thru-Axle orders?",
+      "a": "Standard lead time for Titanium Thru-Axle is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Thru-Axle require any post-machining surface treatment?",
-      "a": "Yes. quickrelease thruaxle shaft components require Bead blasting 120 grit Al2O3 for matte finish Ra 1.6-3.2um followed by passive oxide stabilization in DI water — tailored for quickrelease thruaxle shaft application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Thru-Axle shipments?",
-      "a": "Each shipment of Titanium Thru-Axle includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet quickrelease thruaxle shaft specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Thru axle / Quick release wheel hardware components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Thru-Axle?",
+      "a": "Each Titanium Thru-Axle shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for quickrelease thruaxle shaft."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "cycling---bicycle"
   ],
   "seoTitle": "Titanium Thru-Axle - Grade 5 Ti-6Al-4V | CNC Wheel Hardware | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Thru-Axle - Quick-release thru-axle shaft for wheel retention. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Lightweight precision CNC machined Titanium Thru-Axle for bicycle components. Quick-release thru-axle shaft for wheel retention. Grade 5 Ti-6Al-4V. ISO 4210 fatigue tested. 40-45% weight saving vs steel.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-thru-axle.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-thru-axle.svg",
       "alt": "Grade 5 Titanium CNC Titanium Thru-Axle"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for quickrelease thruaxle shaft",
+    "manufacturing": "Lightweight Component Manufacturing Process",
+    "inspection": "Fatigue & Dimensional Inspection Protocol",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for quickrelease thruaxle shaft",
+    "quality": "Fatigue Life & Thread Integrity Verification"
+  },
+  "sceneDescription": "Titanium Thru-Axle is a lightweight quickrelease thruaxle shaft component engineered for Quick-release thru-axle shaft for wheel retention. Forged and CNC machined from Grade 5 Ti-6Al-4V, it achieves 40-45% weight savings versus steel while maintaining the fatigue life required for demanding cycling applications. Threaded interfaces are designed to prevent galling in outdoor environments."
 }

@@ -10,7 +10,7 @@
   "category": "Surgical Instruments",
   "function": "Microsurgical forceps handle (ophthalmic)",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this surgical instruments application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by microsurgical forceps handle (ophthalmic) and specific design requirements.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is selected for Titanium Surgical Forceps based on its demonstrated biocompatibility per ISO 10993 and corrosion resistance in physiological saline environments. With 900+ MPa tensile and elastic modulus (114 GPa) closer to bone than 316L stainless, stress shielding is minimized at implant-bone interfaces. The stable TiO2 passive film (2-5nm) repassivates within 0.1s if scratched in vivo, critical for Microsurgical forceps handle (ophthalmic). This rationale is driven by microsurgical forceps handle (ophthalmic) and specific design requirements.",
   "process": [
     "CNC swiss turning for surgical instruments geometry",
     "Cryogenic deburring for net-shape tolerance",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Surgical Forceps suitable for Microsurgical forceps handle (ophthalmic)?",
-      "a": "Titanium Surgical Forceps uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address surgical instruments operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What biocompatibility standards does Titanium Surgical Forceps comply with?",
+      "a": "Titanium Surgical Forceps is manufactured from Grade 5 Ti-6Al-4V which meets ISO 10993 biocompatibility requirements including cytotoxicity, sensitization, and irritation testing. The material's long clinical history in surgical and implantable devices provides documented biocompatibility data. All processing chemicals are selected to avoid leachables that could affect microsurgical forceps handle performance."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Surgical Forceps?",
-      "a": "Standard machining tolerance for Titanium Surgical Forceps is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for microsurgical forceps handle requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Surgical Forceps orders?",
+      "a": "Standard lead time for Titanium Surgical Forceps is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Surgical Forceps require any post-machining surface treatment?",
-      "a": "Yes. microsurgical forceps handle components require Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish — tailored for microsurgical forceps handle application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Surgical Forceps shipments?",
-      "a": "Each shipment of Titanium Surgical Forceps includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet microsurgical forceps handle specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Forceps / Micro forceps surgical instruments components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Surgical Forceps?",
+      "a": "Each Titanium Surgical Forceps shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for microsurgical forceps handle."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "medical-device"
   ],
   "seoTitle": "Titanium Surgical Forceps - Grade 5 Ti-6Al-4V | CNC Surgical Instruments | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Surgical Forceps - Microsurgical forceps handle (ophthalmic). Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Medical-grade precision CNC machined Titanium Surgical Forceps for surgical instruments. Microsurgical forceps handle (ophthalmic). Manufactured from Grade 5 Ti-6Al-4V. ISO 13485/9001 certified. Full EN 10204 3.1 material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-surgical-forceps.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-surgical-forceps.svg",
       "alt": "Grade 5 Titanium CNC Titanium Surgical Forceps"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for microsurgical forceps handle",
+    "manufacturing": "Surgical-Grade Manufacturing Process",
+    "inspection": "Biocompatibility & Dimensional Inspection",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for microsurgical forceps handle",
+    "quality": "Biocompatibility & Process Validation"
+  },
+  "sceneDescription": "Titanium Surgical Forceps is a precision-manufactured microsurgical forceps handle component designed for Microsurgical forceps handle (ophthalmic). Fabricated from Grade 5 Ti-6Al-4V, this component meets the stringent requirements of sterile surgical environments including corrosion resistance to bodily fluids, compatibility with repeated autoclave cycles, and non-magnetic properties for MRI compatibility."
 }

@@ -10,7 +10,7 @@
   "category": "Dental",
   "function": "Self-adjusting orthodontic archwire (Nitinol)",
   "material": "Nitinol (ASTM F2063)",
-  "alloyReason": "Nitinol (ASTM F2063) is specified for this dental self-expanding application where 55-60Ni wt% delivers superelastic recovery up to 8% at body temp. Af temperature is set 10-15C below operating temp for complete austenitic transformation. This rationale is driven by self-adjusting orthodontic archwire (nitinol) and service environment demands.",
+  "alloyReason": "Nitinol (ASTM F2063, 55-60 wt% Ni) is specified for Titanium Orthodontic Archwire where superelastic recovery up to 8% strain at body temperature enables self-expanding or self-centering functionality. The austenite finish temperature (A_f) is set 10-15°C below operating temperature to ensure complete martensite-to-austenite transformation. This shape memory behavior is uniquely suited for Self-adjusting orthodontic archwire (Nitinol) requiring reversible deformation. This rationale is driven by self-adjusting orthodontic archwire (nitinol) and service environment demands.",
   "process": [
     "CNC swiss turning for dental geometry",
     "Cryogenic deburring with SPC sampling",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Orthodontic Archwire suitable for Self-adjusting orthodontic archwire (Nitinol)?",
-      "a": "Titanium Orthodontic Archwire uses Nitinol because its yield strength, fatigue endurance, and corrosion resistance directly address dental operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "Is Titanium Orthodontic Archwire MRI-safe or MRI-conditional?",
+      "a": "Nitinol is non-ferromagnetic (magnetic susceptibility 1.00005 × 10⁻⁶ cgs) and generates negligible MRI artifact compared to 316L stainless steel. Titanium Orthodontic Archwire is classified as MR-Conditional under ASTM F2052/F2213 testing at 1.5T and 3.0T field strengths. Specific absorption rates remain within safe limits for selfadjusting orthodontic archwire configurations."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Orthodontic Archwire?",
-      "a": "Standard machining tolerance for Titanium Orthodontic Archwire is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for selfadjusting orthodontic archwire requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Orthodontic Archwire orders?",
+      "a": "Standard lead time for Titanium Orthodontic Archwire is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Orthodontic Archwire require any post-machining surface treatment?",
-      "a": "Yes. selfadjusting orthodontic archwire components require Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish — tailored for selfadjusting orthodontic archwire application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Orthodontic Archwire shipments?",
-      "a": "Each shipment of Titanium Orthodontic Archwire includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet selfadjusting orthodontic archwire specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Braces wire / Archwire dental components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Orthodontic Archwire?",
+      "a": "Each Titanium Orthodontic Archwire shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for selfadjusting orthodontic archwire."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "medical-device"
   ],
   "seoTitle": "Titanium Orthodontic Archwire - Nitinol | CNC Dental | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Orthodontic Archwire - Self-adjusting orthodontic archwire (Nitinol). Manufactured from Nitinol. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Medical-grade precision CNC machined Titanium Orthodontic Archwire for surgical instruments. Self-adjusting orthodontic archwire (Nitinol). Manufactured from Nitinol. ISO 13485/9001 certified. Full EN 10204 3.1 material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-orthodontic-archwire.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-orthodontic-archwire.svg",
       "alt": "Grade 5 Titanium CNC Titanium Orthodontic Archwire"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Nitinol for selfadjusting orthodontic archwire",
+    "manufacturing": "Surgical-Grade Manufacturing Process",
+    "inspection": "Biocompatibility & Dimensional Inspection",
+    "application": "Nitinol Selection Rationale for selfadjusting orthodontic archwire",
+    "quality": "Biocompatibility & Process Validation"
+  },
+  "sceneDescription": "Titanium Orthodontic Archwire is a precision-manufactured selfadjusting orthodontic archwire component designed for Self-adjusting orthodontic archwire (Nitinol). Fabricated from Nitinol, this component meets the stringent requirements of sterile surgical environments including corrosion resistance to bodily fluids, compatibility with repeated autoclave cycles, and non-magnetic properties for MRI compatibility."
 }

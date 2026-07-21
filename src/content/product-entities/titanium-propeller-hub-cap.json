@@ -10,7 +10,7 @@
   "category": "Propulsion",
   "function": "Quiet-running submarine propeller hub cap",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this propulsion application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by quiet-running submarine propeller hub cap and service environment demands.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is used for Titanium Propeller Hub Cap where immunity to seawater pitting corrosion (no critical pitting temperature up to 260°C) is mandatory. Unlike super-duplex stainless steels, Ti-6Al-4V suffers no chloride stress corrosion cracking in marine environments even at elevated temperatures. Its yield strength (830 MPa) enables 40% wall thickness reduction vs 316L for equivalent pressure ratings, directly reducing subsea component mass — critical for Quiet-running submarine propeller hub cap. This rationale is driven by quiet-running submarine propeller hub cap and service environment demands.",
   "process": [
     "Ring forging radial-axial for propulsion geometry",
     "CNC turn-bore operation with Class 6g gauge",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Propeller Hub Cap suitable for Quiet-running submarine propeller hub cap?",
-      "a": "Titanium Propeller Hub Cap uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address propulsion operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "Is Titanium Propeller Hub Cap compatible with subsea cathodic protection systems?",
+      "a": "Grade 5 Ti-6Al-4V does not require cathodic protection (CP) in seawater. If CP is present from adjacent steel structures Titanium Propeller Hub Cap will not suffer hydrogen embrittlement at potentials more negative than -1050 mV (Ag/AgCl). However, direct electrical connection to aluminum anodes should be avoided for quietrunning submarine propeller as overprotection (>-1100 mV) can cause hydride formation."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Propeller Hub Cap?",
-      "a": "Standard machining tolerance for Titanium Propeller Hub Cap is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for quietrunning submarine propeller requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Propeller Hub Cap orders?",
+      "a": "Standard lead time for Titanium Propeller Hub Cap is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Propeller Hub Cap require any post-machining surface treatment?",
-      "a": "Yes. quietrunning submarine propeller components require Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater — tailored for quietrunning submarine propeller application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Propeller Hub Cap shipments?",
-      "a": "Each shipment of Titanium Propeller Hub Cap includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet quietrunning submarine propeller specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Hub cap / Propeller cap propulsion components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Propeller Hub Cap?",
+      "a": "Each Titanium Propeller Hub Cap shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for quietrunning submarine propeller."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "marine-offshore"
   ],
   "seoTitle": "Titanium Propeller Hub Cap - Grade 5 Ti-6Al-4V | CNC Propulsion | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Propeller Hub Cap - Quiet-running submarine propeller hub cap. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "Marine-grade precision machined Titanium Propeller Hub Cap for subsea and offshore applications. Quiet-running submarine propeller hub cap. Grade 5 Ti-6Al-4V. Corrosion resistant in seawater. NORSOK/MILS spec compliant.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-propeller-hub-cap.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-propeller-hub-cap.svg",
       "alt": "Grade 5 Titanium CNC Titanium Propeller Hub Cap"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for quietrunning submarine propeller",
+    "manufacturing": "Marine-Grade Fabrication Process",
+    "inspection": "Hydrostatic & NDT Verification",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for quietrunning submarine propeller",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Propeller Hub Cap is a marine-grade quietrunning submarine propeller component designed for Quiet-running submarine propeller hub cap. Fabricated from Grade 5 Ti-6Al-4V, it provides immunity to seawater corrosion, chloride stress corrosion cracking, and biofouling — eliminating the need for cathodic protection in submerged service."
 }

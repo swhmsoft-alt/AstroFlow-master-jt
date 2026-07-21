@@ -10,7 +10,7 @@
   "category": "Landing Gear",
   "function": "Main landing gear shock strut forging",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this landing gear application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by main landing gear shock strut forging and fat life requirements.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is mandated for Titanium Landing Gear Strut because its specific strength (290 kN·m/kg) outperforms 4340 steel by 55% and 7075 aluminum by 35% at temperatures up to 400°C. The duplex alpha+beta microstructure provides damage tolerance against high-cycle vibration spectra typical of airframe structures. Its fatigue crack growth rate (da/dN ~2×10^-8 m/cycle at ΔK=20 MPa√m) enables safe-life design for Main landing gear shock strut forging. This rationale is driven by main landing gear shock strut forging and fat life requirements.",
   "process": [
     "5-axis CNC roughing for landing gear geometry",
     "Heat treatment (STA) with SPC sampling",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Landing Gear Strut suitable for Main landing gear shock strut forging?",
-      "a": "Titanium Landing Gear Strut uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address landing gear operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What fatigue life can Titanium Landing Gear Strut achieve under flight load spectra?",
+      "a": "Titanium Landing Gear Strut designed to safe-life criteria per MIL-STD-1530 demonstrates minimum 10⁵ flight cycles for main landing gear at 75% of yield strength. The fatigue crack growth rate in Grade 5 Ti-6Al-4V follows da/dN = 2.2×10⁻⁸ (ΔK)³·² m/cycle in air, with a threshold ΔKth of approximately 5.5 MPa√m. Crack growth predictions use AFGROW or NASGRO with validated material data."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Landing Gear Strut?",
-      "a": "Standard machining tolerance for Titanium Landing Gear Strut is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for main landing gear requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Landing Gear Strut orders?",
+      "a": "Standard lead time for Titanium Landing Gear Strut is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Landing Gear Strut require any post-machining surface treatment?",
-      "a": "Yes. main landing gear components require Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service — tailored for main landing gear application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Landing Gear Strut shipments?",
-      "a": "Each shipment of Titanium Landing Gear Strut includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet main landing gear specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Landing gear / Shock strut landing gear components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Landing Gear Strut?",
+      "a": "Each Titanium Landing Gear Strut shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for main landing gear."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "aerospace-defense"
   ],
   "seoTitle": "Titanium Landing Gear Strut - Grade 5 Ti-6Al-4V | CNC Landing Gear | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Landing Gear Strut - Main landing gear shock strut forging. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "AS9100D precision machined Titanium Landing Gear Strut for aerospace assemblies. Main landing gear shock strut forging. Grade 5 Ti-6Al-4V. AMS 4928 compliant. Full AS9102 FAI available.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-landing-gear-strut.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-landing-gear-strut.svg",
       "alt": "Grade 5 Titanium CNC Titanium Landing Gear Strut"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for main landing gear",
+    "manufacturing": "AS9100D-Certified Manufacturing Process",
+    "inspection": "NDT & Material Verification per AS9102",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for main landing gear",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Landing Gear Strut is an AS9100D-certified main landing gear component designed for Main landing gear shock strut forging. Machined from Grade 5 Ti-6Al-4V per AMS specifications, it delivers the damage tolerance, fatigue life, and material traceability required for flight-critical aerospace assemblies."
 }

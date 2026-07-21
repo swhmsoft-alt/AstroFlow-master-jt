@@ -10,7 +10,7 @@
   "category": "Suspension",
   "function": "Suspension geometry camber-adjusting shim stack",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this suspension application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by suspension geometry camber-adjusting shim stack and specific design requirements.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (UNS R56400) is selected for Titanium Camber Adjustment Shim where unsprung mass reduction directly improves suspension response and lap times. The 45% density reduction vs steel (4.43 vs 7.85 g/cm³) at equivalent strength enables rod and link components to meet fatigue targets >10^6 cycles under dynamic racing loads. Elastic energy storage per unit mass (σ²/2Eρ = 18.5 kJ/kg) is 2.3× that of 4130 steel — optimal for Suspension geometry camber-adjusting shim stack. This rationale is driven by suspension geometry camber-adjusting shim stack and specific design requirements.",
   "process": [
     "CNC turn-mill multi-axis for suspension geometry",
     "Shot peening Almen for net-shape tolerance",
@@ -31,24 +31,16 @@
   ],
   "faq": [
     {
-      "q": "What specific material properties make Titanium Camber Adjustment Shim suitable for Suspension geometry camber-adjusting shim stack?",
-      "a": "Titanium Camber Adjustment Shim uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address suspension operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
+      "q": "What weight-to-strength ratio does Titanium Camber Adjustment Shim offer over steel?",
+      "a": "Grade 5 Ti-6Al-4V provides 40-45% weight reduction versus 4130/4340 steel at equivalent strength: 4.43 g/cm³ vs 7.85 g/cm³ with 830 MPa yield. For suspension geometry camberadjusting, this translates directly to reduced unsprung mass (suspension) or reduced reciprocating mass (valvetrain), improving both acceleration response and fatigue-limited component life by 2-3×."
     },
     {
-      "q": "What are the critical dimensional tolerances for Titanium Camber Adjustment Shim?",
-      "a": "Standard machining tolerance for Titanium Camber Adjustment Shim is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for suspension geometry camberadjusting requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
+      "q": "What is the typical lead time for Titanium Camber Adjustment Shim orders?",
+      "a": "Standard lead time for Titanium Camber Adjustment Shim is 15-25 business days depending on quantity and complexity. Rush orders (3-5 working days) are available for prototype evaluation. Sample evaluation (1-5 units) can be expedited to 5-7 business days. Volume pricing is available for production quantities above 100 units."
     },
     {
-      "q": "Does Titanium Camber Adjustment Shim require any post-machining surface treatment?",
-      "a": "Yes. suspension geometry camberadjusting components require DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability — tailored for suspension geometry camberadjusting application. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards."
-    },
-    {
-      "q": "What quality documentation is included with Titanium Camber Adjustment Shim shipments?",
-      "a": "Each shipment of Titanium Camber Adjustment Shim includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet suspension geometry camberadjusting specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request."
-    },
-    {
-      "q": "What is the MOQ and typical lead time for Camber shim / Alignment shim suspension components?",
-      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
+      "q": "What material certifications are provided with Titanium Camber Adjustment Shim?",
+      "a": "Each Titanium Camber Adjustment Shim shipment includes EN 10204 Type 3.1 mill test certificate with chemical analysis, mechanical properties, and heat identification. Dimensional inspection reports and Certificate of Conformance (CoC) are standard. First Article Inspection Reports (FAIR) per AS9102 are available on request for suspension geometry camberadjusting."
     }
   ],
   "relatedCapabilities": [
@@ -60,7 +52,7 @@
     "automotive-motorsports"
   ],
   "seoTitle": "Titanium Camber Adjustment Shim - Grade 5 Ti-6Al-4V | CNC Suspension | BOZE",
-  "seoDescription": "Precision CNC machined Titanium Camber Adjustment Shim - Suspension geometry camber-adjusting shim stack. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
+  "seoDescription": "High-performance precision CNC machined Titanium Camber Adjustment Shim for automotive and motorsport use. Suspension geometry camber-adjusting shim stack. Grade 5 Ti-6Al-4V. Fatigue validated. Weight optimized.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-camber-adjustment-shim.svg",
@@ -69,5 +61,13 @@
       "image": "/images/products/titanium-camber-adjustment-shim.svg",
       "alt": "Grade 5 Titanium CNC Titanium Camber Adjustment Shim"
     }
-  ]
+  ],
+  "sectionTitles": {
+    "whyTitanium": "Why Grade 5 Ti-6Al-4V for suspension geometry camberadjusting",
+    "manufacturing": "High-Performance CNC Manufacturing Process",
+    "inspection": "Fatigue & Material Verification",
+    "application": "Grade 5 Ti-6Al-4V Selection Rationale for suspension geometry camberadjusting",
+    "quality": "Quality Assurance & Material Verification"
+  },
+  "sceneDescription": "Titanium Camber Adjustment Shim is a suspension geometry camberadjusting component precision-manufactured from Grade 5 Ti-6Al-4V for Suspension geometry camber-adjusting shim stack. The combination of high specific strength, excellent corrosion resistance, and reliable fatigue performance makes it the optimal material choice for this component."
 }
