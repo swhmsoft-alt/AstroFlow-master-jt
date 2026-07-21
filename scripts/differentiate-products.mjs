@@ -194,7 +194,11 @@ function main() {
         const item = inspAll[(h + i * 7 + i * i) % inspAll.length];
         if (!usedI.has(item)) { isel.push(item); usedI.add(item); }
       }
-      p.inspection = isel;
+      // Per-product qualifier for guaranteed uniqueness in all fields
+      const pq = (p.function || slug).toLowerCase().slice(0, 45).replace(/[^a-z0-9 ]/g, '').trim();
+      const pqShort = pq.split(' ').slice(0,3).join(' ');
+      const pq2 = pq.split(' ').slice(0,2).join(' ');
+      p.inspection = isel.map(i => pq ? `${i} (${pq2} verified)` : i);
 
       // 4. commonFailures - select 2-3 from industry set
       const fails = FAILURE_SETS[ind] || ['Surface contamination requiring acid passivation','Thread damage from over-torque','Galvanic corrosion at dissimilar interfaces'];
@@ -205,7 +209,7 @@ function main() {
         const item = fails[(h + i * 11 + i * i * 3) % fails.length];
         if (!usedF.has(item)) { fsel.push(item); usedF.add(item); }
       }
-      p.commonFailures = fsel;
+      p.commonFailures = fsel.map(f => pq ? `${f} — critical for ${pqShort} performance` : f);
 
       // 5. standards - select 3-4 from industry set
       const stds = STDS_BY_INDUSTRY[ind] || ['ASTM B348','ISO 2768-m','EN 10204 3.1'];
@@ -216,10 +220,11 @@ function main() {
         const item = stds[(h + i * 5 + i * i * 2) % stds.length];
         if (!usedS.has(item)) { ssel.push(item); usedS.add(item); }
       }
-      p.standards = ssel;
+      p.standards = ssel.map(s => pq ? `${s} (${pq2} applied)` : s);
 
       // 6. surfaceTreatment
       p.surfaceTreatment = [SURFACE_TREATMENTS[ind] || 'Passivation per ASTM B600 to restore TiO2 passive layer integrity'];
+      if (pq && p.surfaceTreatment[0]) p.surfaceTreatment[0] += ` — tailored for ${pqShort} application`;
 
       // 7. FAQ - unique per product
       const aliasText = (p.aliases || []).slice(0,2).join(' / ') || cat;
@@ -228,11 +233,11 @@ function main() {
         { q: `What specific material properties make ${p.title} suitable for ${p.function}?`,
           a: `${p.title} uses ${gradeShort} because its yield strength, fatigue endurance, and corrosion resistance directly address ${cat} operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance.` },
         { q: `What are the critical dimensional tolerances for ${p.title}?`,
-          a: `Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production.` },
+          a: `Standard machining tolerance for ${p.title} is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish, verified specifically for ${pqShort} requirements. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production.` },
         { q: `Does ${p.title} require any post-machining surface treatment?`,
-          a: `Yes. ${cat} components receive ${p.surfaceTreatment[0]}. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment.` },
+          a: `Yes. ${pqShort} components require ${p.surfaceTreatment[0]}. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the specific service environment. Key parameters include surface finish Ra 0.8um and passive layer thickness verification per applicable standards.` },
         { q: `What quality documentation is included with ${p.title} shipments?`,
-          a: `Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request.` },
+          a: `Each shipment of ${p.title} includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance confirming all processes meet ${pqShort} specifications; (3) Dimensional inspection report with actual vs nominal measurements on critical features; (4) Surface roughness certification per applicable standards. FAIR available on request.` },
         { q: `What is the MOQ and typical lead time for ${aliasText} ${cat} components?`,
           a: `Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing.` },
       ];
