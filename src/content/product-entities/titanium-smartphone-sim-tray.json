@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this phone hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by smartphone sim card / nvme tray and fat life requirements.",
   "process": [
     "CNC milling HSM 30k RPM for phone hardware geometry",
-    "Tumble finish ceramic media",
-    "PVD TiN/TiCN coating",
-    "Optical Keyence inspection"
+    "Tumble finish ceramic media with 0.5mm corner radius",
+    "PVD TiN/TiCN coating with 0.5mm corner radius",
+    "Optical Keyence inspection with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "PVD TiAlN coating (2-3um, HV2500 hardness) for scratch resistance and uniform gunmetal aesthetic finish"
   ],
   "inspection": [
-    "Keyence vision inspection",
-    "Keyence vision inspection",
     "Keyence vision inspection"
   ],
   "commonFailures": [
-    "Anodic color shift DE >2.0 from inconsistent bath temp - requires ±1C electrolyte control during PVD",
     "Anodic color shift DE >2.0 from inconsistent bath temp - requires ±1C electrolyte control during PVD"
   ],
   "standards": [
-    "ASTM B348",
-    "ASTM B348",
     "ASTM B348"
   ],
   "faq": [

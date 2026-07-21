@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this plating rack application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by spring-loaded spline contact (v-prong) for pcb rack and service environment demands.",
   "process": [
     "CNC machining CP Ti for plating rack geometry",
-    "TIG welding Ti filler",
-    "Pickling and passivation",
-    "Continuity test <1 mOhm"
+    "TIG welding Ti filler with SPC sampling",
+    "Pickling and passivation with SPC sampling",
+    "Continuity test <1 mOhm with SPC sampling"
   ],
   "surfaceTreatment": [
     "Platinum cladding 2.5um minimum via electrodeposition for stable catalytic surface in electrochemical cells"
   ],
   "inspection": [
-    "Adhesion tape ASTM D3359",
-    "Adhesion tape ASTM D3359",
     "Adhesion tape ASTM D3359"
   ],
   "commonFailures": [
-    "Contact burn at rack hook from insufficient clamp - resolved by BeCu spring contact 5N minimum force",
     "Contact burn at rack hook from insufficient clamp - resolved by BeCu spring contact 5N minimum force"
   ],
   "standards": [
-    "ISO 9227 NSS",
-    "ISO 9227 NSS",
     "ISO 9227 NSS"
   ],
   "faq": [

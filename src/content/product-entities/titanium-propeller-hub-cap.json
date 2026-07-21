@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this propulsion application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by quiet-running submarine propeller hub cap and service environment demands.",
   "process": [
     "Ring forging radial-axial for propulsion geometry",
-    "CNC turn-bore operation",
-    "TIG welding autogenous",
-    "Hydrostatic pressure test"
+    "CNC turn-bore operation with Class 6g gauge",
+    "TIG welding autogenous with Class 6g gauge",
+    "Hydrostatic pressure test with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater"
   ],
   "inspection": [
-    "PMI positive material ID",
-    "PMI positive material ID",
     "PMI positive material ID"
   ],
   "commonFailures": [
-    "Erosion-corrosion at pipe bend <3D radius - remedied by +2mm wall thickness in directional change zones",
     "Erosion-corrosion at pipe bend <3D radius - remedied by +2mm wall thickness in directional change zones"
   ],
   "standards": [
-    "NORSOK M-001",
-    "NORSOK M-001",
     "NORSOK M-001"
   ],
   "faq": [

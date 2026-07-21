@@ -13,25 +13,20 @@
   "alloyReason": "Ti-6Al-4V ELI (Grade 23, UNS R56401) is mandated for this metrology application where ELI elements (O <=0.13%, Fe <=0.25%) provide superior fracture toughness (KIC >100 MPa-m0.5) and fatigue resistance vs standard Grade 5. This rationale is driven by optical lens retaining ring for metrology tools and service environment demands.",
   "process": [
     "Cleanroom CNC Class 100 for metrology geometry",
-    "Electropolish Ra <0.25um",
-    "UHP DI water cascade rinse",
-    "Particle count MIL-STD-1246"
+    "Electropolish Ra <0.25um with 0.5mm corner radius",
+    "UHP DI water cascade rinse with 0.5mm corner radius",
+    "Particle count MIL-STD-1246 with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "He leak <1e-9 Pa-m3/s",
-    "He leak <1e-9 Pa-m3/s",
     "He leak <1e-9 Pa-m3/s"
   ],
   "commonFailures": [
-    "Outgassing H2O CH4 >1% AMU 100 - mitigated by 200C vacuum bake-out 24h to desorb trapped species",
     "Outgassing H2O CH4 >1% AMU 100 - mitigated by 200C vacuum bake-out 24h to desorb trapped species"
   ],
   "standards": [
-    "SEMI F20",
-    "SEMI F20",
     "SEMI F20"
   ],
   "faq": [

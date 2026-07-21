@@ -13,25 +13,20 @@
   "alloyReason": "ASTM F136 Ti-6Al-4V ELI is specified for this dental implant-grade component where controlled interstitials deliver high fatigue strength (>600 MPa @10^7 cyc) and corrosion resistance for permanent implantable devices. This rationale is driven by custom multi-unit angled dental abutment and service environment demands.",
   "process": [
     "CNC swiss turning for dental geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with Class 6g gauge",
+    "Ultrasonic clean Class 10k with Class 6g gauge",
+    "Sterile packaging with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Sterility SAL 10^-6",
-    "Sterility SAL 10^-6",
     "Sterility SAL 10^-6"
   ],
   "commonFailures": [
-    "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86",
     "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86"
   ],
   "standards": [
-    "ISO 14971",
-    "ISO 14971",
     "ISO 14971"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this electrochemical application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by mixed metal oxide coated substrate mesh/plate and service environment demands.",
   "process": [
     "CNC machining from plate for electrochemical geometry",
-    "TIG welding all-position",
-    "Passivation DI rinse",
-    "DPI inspection"
+    "TIG welding all-position with 0.5mm corner radius",
+    "Passivation DI rinse with 0.5mm corner radius",
+    "DPI inspection with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Pickling HF-HNO3 bath + passivation to restore passive film integrity on welded/seamed process surfaces"
   ],
   "inspection": [
-    "Hydrostatic pressure test",
-    "Hydrostatic pressure test",
     "Hydrostatic pressure test"
   ],
   "commonFailures": [
-    "Weld zone preferential attack in chlorinated water - controlled by post-weld pickling and proper filler selection",
     "Weld zone preferential attack in chlorinated water - controlled by post-weld pickling and proper filler selection"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

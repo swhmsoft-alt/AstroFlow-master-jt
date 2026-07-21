@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this surgical instruments application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by microsurgical forceps handle (ophthalmic) and specific design requirements.",
   "process": [
     "CNC swiss turning for surgical instruments geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring for net-shape tolerance",
+    "Ultrasonic clean Class 10k for net-shape tolerance",
+    "Sterile packaging for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Surface profilometry Ra 0.4um",
-    "Surface profilometry Ra 0.4um",
     "Surface profilometry Ra 0.4um"
   ],
   "commonFailures": [
-    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces",
     "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces"
   ],
   "standards": [
-    "ISO 5832-3",
-    "ISO 5832-3",
     "ISO 5832-3"
   ],
   "faq": [

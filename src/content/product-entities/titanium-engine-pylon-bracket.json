@@ -13,25 +13,20 @@
   "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this engine component application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by engine mounting pylon bracket/lug and service environment demands.",
   "process": [
     "5-axis CNC roughing for engine component geometry",
-    "Heat treatment (STA)",
-    "Wire EDM contour profiling",
-    "CMM per AS9102"
+    "Heat treatment (STA) at 200W fiber laser",
+    "Wire EDM contour profiling at 200W fiber laser",
+    "CMM per AS9102 at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "Eddy current surface scan",
-    "Eddy current surface scan",
     "Eddy current surface scan"
   ],
   "commonFailures": [
-    "SCC in chloride-rich marine atmosphere - controlled by bake-out 300C + corrosion-inhibiting primer",
     "SCC in chloride-rich marine atmosphere - controlled by bake-out 300C + corrosion-inhibiting primer"
   ],
   "standards": [
-    "NAS 6600",
-    "NAS 6600",
     "NAS 6600"
   ],
   "faq": [

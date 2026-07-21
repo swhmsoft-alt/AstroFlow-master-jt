@@ -13,25 +13,20 @@
   "alloyReason": "Ti-6Al-4V ELI (Grade 23, UNS R56401) is mandated for this oil & gas application where ELI elements (O <=0.13%, Fe <=0.25%) provide superior fracture toughness (KIC >100 MPa-m0.5) and fatigue resistance vs standard Grade 5. This rationale is driven by subsea chemical injection mandrel orifice (grade 7) and fat life requirements.",
   "process": [
     "Ring forging radial-axial for oil & gas geometry",
-    "CNC turn-bore operation",
-    "TIG welding autogenous",
-    "Hydrostatic pressure test"
+    "CNC turn-bore operation at 200W fiber laser",
+    "TIG welding autogenous at 200W fiber laser",
+    "Hydrostatic pressure test at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater"
   ],
   "inspection": [
-    "DPI dye penetrant",
-    "DPI dye penetrant",
     "DPI dye penetrant"
   ],
   "commonFailures": [
-    "HE from over-protection below -0.85V vs Ag/AgCl - controlled by anode current density limiter circuit",
     "HE from over-protection below -0.85V vs Ag/AgCl - controlled by anode current density limiter circuit"
   ],
   "standards": [
-    "NORSOK M-001",
-    "NORSOK M-001",
     "NORSOK M-001"
   ],
   "faq": [

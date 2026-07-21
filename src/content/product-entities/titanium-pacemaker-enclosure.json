@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this implantable device application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by permanent pacemaker outer hermetic enclosure and service environment demands.",
   "process": [
     "CNC swiss turning for implantable device geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with SPC sampling",
+    "Ultrasonic clean Class 10k with SPC sampling",
+    "Sterile packaging with SPC sampling"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Mech test ASTM per std",
-    "Mech test ASTM per std",
     "Mech test ASTM per std"
   ],
   "commonFailures": [
-    "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86",
     "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86"
   ],
   "standards": [
-    "ASTM F86",
-    "ASTM F86",
     "ASTM F86"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this craniofacial application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by reconstruction mesh for craniofacial repair (cp-ti) and specific design requirements.",
   "process": [
     "CNC swiss turning for craniofacial geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with 0.5mm corner radius",
+    "Ultrasonic clean Class 10k with 0.5mm corner radius",
+    "Sterile packaging with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "CMM Zeiss CONTURA",
-    "CMM Zeiss CONTURA",
     "CMM Zeiss CONTURA"
   ],
   "commonFailures": [
-    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces",
     "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces"
   ],
   "standards": [
-    "ASTM F136",
-    "ASTM F136",
     "ASTM F136"
   ],
   "faq": [

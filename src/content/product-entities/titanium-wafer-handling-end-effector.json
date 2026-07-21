@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this wafer handling application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by robot end-effector vacuum pad for wafer handling and fat life requirements.",
   "process": [
     "Cleanroom CNC Class 100 for wafer handling geometry",
-    "Electropolish Ra <0.25um",
-    "UHP DI water cascade rinse",
-    "Particle count MIL-STD-1246"
+    "Electropolish Ra <0.25um at 200W fiber laser",
+    "UHP DI water cascade rinse at 200W fiber laser",
+    "Particle count MIL-STD-1246 at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "AFM surface roughness",
-    "AFM surface roughness",
     "AFM surface roughness"
   ],
   "commonFailures": [
-    "Virtual leak from dead-leg threaded connections - remedied by VCR/Swagelok face-seal fittings",
     "Virtual leak from dead-leg threaded connections - remedied by VCR/Swagelok face-seal fittings"
   ],
   "standards": [
-    "SEMI F20",
-    "SEMI F20",
     "SEMI F20"
   ],
   "faq": [

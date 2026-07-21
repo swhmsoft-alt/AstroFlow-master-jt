@@ -13,25 +13,20 @@
   "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this spine fixation application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by spinal fixation connection rod (grade 9 / beta-ti) and fat life requirements.",
   "process": [
     "CNC swiss turning for spine fixation geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with 0.5mm corner radius",
+    "Ultrasonic clean Class 10k with 0.5mm corner radius",
+    "Sterile packaging with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "CMM Zeiss CONTURA",
-    "CMM Zeiss CONTURA",
     "CMM Zeiss CONTURA"
   ],
   "commonFailures": [
-    "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress",
     "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress"
   ],
   "standards": [
-    "ASTM F136",
-    "ASTM F136",
     "ASTM F136"
   ],
   "faq": [

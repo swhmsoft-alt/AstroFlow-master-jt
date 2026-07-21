@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this space hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by satellite release mechanism shaft and service environment demands.",
   "process": [
     "5-axis CNC roughing for space hardware geometry",
-    "Heat treatment (STA)",
-    "Wire EDM contour profiling",
-    "CMM per AS9102"
+    "Heat treatment (STA) with Class 6g gauge",
+    "Wire EDM contour profiling with Class 6g gauge",
+    "CMM per AS9102 with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "X-ray CT volumetric",
-    "X-ray CT volumetric",
     "X-ray CT volumetric"
   ],
   "commonFailures": [
-    "SCC in chloride-rich marine atmosphere - controlled by bake-out 300C + corrosion-inhibiting primer",
     "SCC in chloride-rich marine atmosphere - controlled by bake-out 300C + corrosion-inhibiting primer"
   ],
   "standards": [
-    "ASTM B265",
-    "ASTM B265",
     "ASTM B265"
   ],
   "faq": [

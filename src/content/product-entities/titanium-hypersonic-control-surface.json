@@ -13,25 +13,20 @@
   "alloyReason": "Ti-65 near-alpha Ti alloy is engineered for this missile hardware high-temperature aero engine application capable of sustained operation at 600C - 100C above Ti-6Al-4V limits. Silicide precipitation provides creep resistance below 0.1% strain at 300 MPa/600C. This rationale is driven by hypersonic missile all-moving fin (ti-65) and service environment demands.",
   "process": [
     "5-axis CNC roughing for missile hardware geometry",
-    "Heat treatment (STA)",
-    "Wire EDM contour profiling",
-    "CMM per AS9102"
+    "Heat treatment (STA) with SPC sampling",
+    "Wire EDM contour profiling with SPC sampling",
+    "CMM per AS9102 with SPC sampling"
   ],
   "surfaceTreatment": [
     "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "CMM AS9102 dimensional",
-    "CMM AS9102 dimensional",
     "CMM AS9102 dimensional"
   ],
   "commonFailures": [
-    "SCC in chloride-rich marine atmosphere - controlled by bake-out 300C + corrosion-inhibiting primer",
     "SCC in chloride-rich marine atmosphere - controlled by bake-out 300C + corrosion-inhibiting primer"
   ],
   "standards": [
-    "MIL-T-9047",
-    "MIL-T-9047",
     "MIL-T-9047"
   ],
   "faq": [

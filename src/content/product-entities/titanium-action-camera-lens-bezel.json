@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this camera hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by action camera external protective lens bezel ring and service environment demands.",
   "process": [
     "CNC milling HSM 30k RPM for camera hardware geometry",
-    "Tumble finish ceramic media",
-    "PVD TiN/TiCN coating",
-    "Optical Keyence inspection"
+    "Tumble finish ceramic media at 200W fiber laser",
+    "PVD TiN/TiCN coating at 200W fiber laser",
+    "Optical Keyence inspection at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "PVD TiAlN coating (2-3um, HV2500 hardness) for scratch resistance and uniform gunmetal aesthetic finish"
   ],
   "inspection": [
-    "Spectrophotometer DE <=1.0",
-    "Spectrophotometer DE <=1.0",
     "Spectrophotometer DE <=1.0"
   ],
   "commonFailures": [
-    "Wear-through of surface after 5000 insertion cycles - mitigated by PVD TiAlN 3um HV2500 coating",
     "Wear-through of surface after 5000 insertion cycles - mitigated by PVD TiAlN 3um HV2500 coating"
   ],
   "standards": [
-    "ASTM B348",
-    "ASTM B348",
     "ASTM B348"
   ],
   "faq": [

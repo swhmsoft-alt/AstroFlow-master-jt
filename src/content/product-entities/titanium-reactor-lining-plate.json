@@ -13,25 +13,20 @@
   "alloyReason": "Grade 12 Ti-0.3Mo-0.8Ni (UNS R53400) is selected for this reactor hardware chemical processing application where HCl/H2SO4 resistance up to 200C is required beyond CP grades. Mo+Ni stabilize the passive film in crevice conditions. This rationale is driven by explosion-bonded pta reactor lining plate (gr 7 clad) and specific design requirements.",
   "process": [
     "Hot forming plate rolling for reactor hardware geometry",
-    "CNC corrosion allowance",
-    "TIG welding Grade 2",
-    "Hydrostatic shell test"
+    "CNC corrosion allowance with Class 6g gauge",
+    "TIG welding Grade 2 with Class 6g gauge",
+    "Hydrostatic shell test with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Pickling + passivation per ASTM B600 to restore TiO2 passive layer integrity after welding or hot forming"
   ],
   "inspection": [
-    "UT corrosion thickness",
-    "UT corrosion thickness",
     "UT corrosion thickness"
   ],
   "commonFailures": [
-    "Crevice under gasket seating surface - mitigated by raised-face flange 0.5mm step replacing full-face gasket",
     "Crevice under gasket seating surface - mitigated by raised-face flange 0.5mm step replacing full-face gasket"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

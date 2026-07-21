@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this tank hardware application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by perforated air agitation sparger pipe and specific design requirements.",
   "process": [
     "CNC machining CP Ti for tank hardware geometry",
-    "TIG welding Ti filler",
-    "Pickling and passivation",
-    "Continuity test <1 mOhm"
+    "TIG welding Ti filler with 0.5mm corner radius",
+    "Pickling and passivation with 0.5mm corner radius",
+    "Continuity test <1 mOhm with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Platinum cladding 2.5um minimum via electrodeposition for stable catalytic surface in electrochemical cells"
   ],
   "inspection": [
-    "XRF coating thickness",
-    "XRF coating thickness",
     "XRF coating thickness"
   ],
   "commonFailures": [
-    "Uneven coating from current density variation - corrected by auxiliary anode 50mm from cathode",
     "Uneven coating from current density variation - corrected by auxiliary anode 50mm from cathode"
   ],
   "standards": [
-    "ISO 9227 NSS",
-    "ISO 9227 NSS",
     "ISO 9227 NSS"
   ],
   "faq": [

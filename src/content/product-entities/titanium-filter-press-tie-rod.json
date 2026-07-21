@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this filtration application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by filter press high-tensile tie rod (grade 5) and fat life requirements.",
   "process": [
     "CNC machining from plate for filtration geometry",
-    "TIG welding all-position",
-    "Passivation DI rinse",
-    "DPI inspection"
+    "TIG welding all-position with SPC sampling",
+    "Passivation DI rinse with SPC sampling",
+    "DPI inspection with SPC sampling"
   ],
   "surfaceTreatment": [
     "Pickling HF-HNO3 bath + passivation to restore passive film integrity on welded/seamed process surfaces"
   ],
   "inspection": [
-    "UT thickness scan",
-    "UT thickness scan",
     "UT thickness scan"
   ],
   "commonFailures": [
-    "Biofouling accumulation on stagnant surfaces - reduced by smooth surface finish Ra <0.8um and regular CIP",
     "Biofouling accumulation on stagnant surfaces - reduced by smooth surface finish Ra <0.8um and regular CIP"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

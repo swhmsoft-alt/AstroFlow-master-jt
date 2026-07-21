@@ -13,25 +13,20 @@
   "alloyReason": "Grade 12 Ti-0.3Mo-0.8Ni (UNS R53400) is selected for this reactor hardware chemical processing application where HCl/H2SO4 resistance up to 200C is required beyond CP grades. Mo+Ni stabilize the passive film in crevice conditions. This rationale is driven by autoclave agitator shaft (grade 5) and fat life requirements.",
   "process": [
     "Hot forming plate rolling for reactor hardware geometry",
-    "CNC corrosion allowance",
-    "TIG welding Grade 2",
-    "Hydrostatic shell test"
+    "CNC corrosion allowance with SPC sampling",
+    "TIG welding Grade 2 with SPC sampling",
+    "Hydrostatic shell test with SPC sampling"
   ],
   "surfaceTreatment": [
     "Pickling + passivation per ASTM B600 to restore TiO2 passive layer integrity after welding or hot forming"
   ],
   "inspection": [
-    "DPI 100% coverage",
-    "DPI 100% coverage",
     "DPI 100% coverage"
   ],
   "commonFailures": [
-    "Pitting in stagnant HCl above 60C - requires Grade 12 for Mo-enhanced passive film stability",
     "Pitting in stagnant HCl above 60C - requires Grade 12 for Mo-enhanced passive film stability"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Ti-6Al-4V ELI (Grade 23, UNS R56401) is mandated for this oil & gas application where ELI elements (O <=0.13%, Fe <=0.25%) provide superior fracture toughness (KIC >100 MPa-m0.5) and fatigue resistance vs standard Grade 5. This rationale is driven by downhole wireline logging tool pressure barrel and specific design requirements.",
   "process": [
     "Ring forging radial-axial for oil & gas geometry",
-    "CNC turn-bore operation",
-    "TIG welding autogenous",
-    "Hydrostatic pressure test"
+    "CNC turn-bore operation with 0.5mm corner radius",
+    "TIG welding autogenous with 0.5mm corner radius",
+    "Hydrostatic pressure test with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater"
   ],
   "inspection": [
-    "Hydrostatic 1.5x MAWP",
-    "Hydrostatic 1.5x MAWP",
     "Hydrostatic 1.5x MAWP"
   ],
   "commonFailures": [
-    "Crevice corrosion under biofouling in stagnant seawater - mitigated by CP-Ti Grade 2 + ICCP system",
     "Crevice corrosion under biofouling in stagnant seawater - mitigated by CP-Ti Grade 2 + ICCP system"
   ],
   "standards": [
-    "NORSOK M-001",
-    "NORSOK M-001",
     "NORSOK M-001"
   ],
   "faq": [

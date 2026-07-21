@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this wastewater application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by clarifier sludge scraper blade and specific design requirements.",
   "process": [
     "CNC machining from plate for wastewater geometry",
-    "TIG welding all-position",
-    "Passivation DI rinse",
-    "DPI inspection"
+    "TIG welding all-position with Class 6g gauge",
+    "Passivation DI rinse with Class 6g gauge",
+    "DPI inspection with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Pickling HF-HNO3 bath + passivation to restore passive film integrity on welded/seamed process surfaces"
   ],
   "inspection": [
-    "PMI material verification",
-    "PMI material verification",
     "PMI material verification"
   ],
   "commonFailures": [
-    "Crevice corrosion under gasket in wet service - mitigated by raised-face flange design per ASME B16.5",
     "Crevice corrosion under gasket in wet service - mitigated by raised-face flange design per ASME B16.5"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

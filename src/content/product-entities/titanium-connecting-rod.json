@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this engine component application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by high-rpm engine connecting rod and specific design requirements.",
   "process": [
     "CNC turn-mill multi-axis for engine component geometry",
-    "Shot peening Almen",
-    "Black oxide/DLC coating",
-    "CMM SPC dimensional check"
+    "Shot peening Almen with 0.5mm corner radius",
+    "Black oxide/DLC coating with 0.5mm corner radius",
+    "CMM SPC dimensional check with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability"
   ],
   "inspection": [
-    "CMM SPC dimension",
-    "CMM SPC dimension",
     "CMM SPC dimension"
   ],
   "commonFailures": [
-    "Fatigue crack at thread-shank transition - prevented by larger fillet R0.5->1.5mm + cold rolling",
     "Fatigue crack at thread-shank transition - prevented by larger fillet R0.5->1.5mm + cold rolling"
   ],
   "standards": [
-    "ISO 26262",
-    "ISO 26262",
     "ISO 26262"
   ],
   "faq": [

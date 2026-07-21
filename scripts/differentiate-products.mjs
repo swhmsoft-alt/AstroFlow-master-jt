@@ -179,27 +179,43 @@ function main() {
 
       // 2. process - pick from industry set
       const procs = PROCESS_SETS[ind] || ['CNC machining','Deburring','Surface treatment','Inspection'];
-      p.process = procs.map((pr, i) => i === 0 ? `${pr} for ${cat} geometry` : pr);
+      p.process = procs.map((pr, i) => {
+        if (i === 0) return `${pr} for ${cat} geometry`;
+        const opts = ["with 0.5mm corner radius","to Ra 0.4um spec","with SPC sampling","per ISO 2768-m","at 200W fiber laser","with PVD color verify","for net-shape tolerance","post-DMLS finishing","with Class 6g gauge","to print spec"];
+        return `${pr} ${opts[(h + i * 13) % opts.length]}`;
+      });
 
       // 3. inspection - select 3-4 from industry set
       const inspAll = INSPECT_SETS[ind] || ['CMM dimensional','Surface roughness','Visual inspection'];
       const ic = 3 + (h % 2);
       const isel = [];
-      for (let i = 0; i < ic && i < inspAll.length; i++) isel.push(inspAll[(h + i*7) % inspAll.length]);
+      const usedI = new Set();
+      for (let i = 0; i < ic * 5 && isel.length < ic; i++) {
+        const item = inspAll[(h + i * 7 + i * i) % inspAll.length];
+        if (!usedI.has(item)) { isel.push(item); usedI.add(item); }
+      }
       p.inspection = isel;
 
       // 4. commonFailures - select 2-3 from industry set
       const fails = FAILURE_SETS[ind] || ['Surface contamination requiring acid passivation','Thread damage from over-torque','Galvanic corrosion at dissimilar interfaces'];
       const fc = 2 + (h % 2);
       const fsel = [];
-      for (let i = 0; i < fc && i < fails.length; i++) fsel.push(fails[(h + i*11) % fails.length]);
+      const usedF = new Set();
+      for (let i = 0; i < fc * 5 && fsel.length < fc; i++) {
+        const item = fails[(h + i * 11 + i * i * 3) % fails.length];
+        if (!usedF.has(item)) { fsel.push(item); usedF.add(item); }
+      }
       p.commonFailures = fsel;
 
       // 5. standards - select 3-4 from industry set
       const stds = STDS_BY_INDUSTRY[ind] || ['ASTM B348','ISO 2768-m','EN 10204 3.1'];
       const sc = 3 + (h % 2);
       const ssel = [];
-      for (let i = 0; i < sc && i < stds.length; i++) ssel.push(stds[(h + i*5) % stds.length]);
+      const usedS = new Set();
+      for (let i = 0; i < sc * 5 && ssel.length < sc; i++) {
+        const item = stds[(h + i * 5 + i * i * 2) % stds.length];
+        if (!usedS.has(item)) { ssel.push(item); usedS.add(item); }
+      }
       p.standards = ssel;
 
       // 6. surfaceTreatment

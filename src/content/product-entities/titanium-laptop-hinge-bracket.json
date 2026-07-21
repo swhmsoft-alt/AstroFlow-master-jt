@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this laptop hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by ultrabook display hinge mounting bracket and specific design requirements.",
   "process": [
     "CNC milling HSM 30k RPM for laptop hardware geometry",
-    "Tumble finish ceramic media",
-    "PVD TiN/TiCN coating",
-    "Optical Keyence inspection"
+    "Tumble finish ceramic media at 200W fiber laser",
+    "PVD TiN/TiCN coating at 200W fiber laser",
+    "Optical Keyence inspection at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "PVD TiAlN coating (2-3um, HV2500 hardness) for scratch resistance and uniform gunmetal aesthetic finish"
   ],
   "inspection": [
-    "Spectrophotometer DE <=1.0",
-    "Spectrophotometer DE <=1.0",
     "Spectrophotometer DE <=1.0"
   ],
   "commonFailures": [
-    "Edge burr rejection Ra >0.8um - mitigated by ZrO2 ceramic bead tumble finish 45 minutes",
     "Edge burr rejection Ra >0.8um - mitigated by ZrO2 ceramic bead tumble finish 45 minutes"
   ],
   "standards": [
-    "ASTM B348",
-    "ASTM B348",
     "ASTM B348"
   ],
   "faq": [

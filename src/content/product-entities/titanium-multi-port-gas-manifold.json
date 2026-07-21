@@ -13,25 +13,20 @@
   "alloyReason": "UHP melted Grade 2 Ti (UNS R50400, interstitials <500 ppm O2) is specified for this gas delivery semiconductor component where metal contamination below 1e10 at/cm2 is mandatory. VAR+ESR double-melt reduces inclusions by 3 orders of magnitude. This rationale is driven by monoblock multi-port gas mixing manifold and specific design requirements.",
   "process": [
     "Cleanroom CNC Class 100 for gas delivery geometry",
-    "Electropolish Ra <0.25um",
-    "UHP DI water cascade rinse",
-    "Particle count MIL-STD-1246"
+    "Electropolish Ra <0.25um with 0.5mm corner radius",
+    "UHP DI water cascade rinse with 0.5mm corner radius",
+    "Particle count MIL-STD-1246 with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "He leak <1e-9 Pa-m3/s",
-    "He leak <1e-9 Pa-m3/s",
     "He leak <1e-9 Pa-m3/s"
   ],
   "commonFailures": [
-    "Metal particle shedding >1e10 at/cm2 - eliminated by UHP VAR+ESR double-melt + electropolished ID",
     "Metal particle shedding >1e10 at/cm2 - eliminated by UHP VAR+ESR double-melt + electropolished ID"
   ],
   "standards": [
-    "SEMI F20",
-    "SEMI F20",
     "SEMI F20"
   ],
   "faq": [

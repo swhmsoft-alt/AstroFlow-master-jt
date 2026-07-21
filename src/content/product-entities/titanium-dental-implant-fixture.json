@@ -13,25 +13,20 @@
   "alloyReason": "Grade 4 CP-Ti (UNS R50700) is used for this dental component where max CP strength (550 MPa tensile) is needed while retaining corrosion resistance and biocompatibility. Higher oxygen (0.40% max) provides solid-solution strengthening. This rationale is driven by endosseous dental implant fixture screw (grade 4) and service environment demands.",
   "process": [
     "CNC swiss turning for dental geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with Class 6g gauge",
+    "Ultrasonic clean Class 10k with Class 6g gauge",
+    "Sterile packaging with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Sterility SAL 10^-6",
-    "Sterility SAL 10^-6",
     "Sterility SAL 10^-6"
   ],
   "commonFailures": [
-    "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86",
     "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86"
   ],
   "standards": [
-    "ISO 14971",
-    "ISO 14971",
     "ISO 14971"
   ],
   "faq": [

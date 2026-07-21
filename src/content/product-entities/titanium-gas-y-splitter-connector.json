@@ -13,25 +13,20 @@
   "alloyReason": "UHP melted Grade 2 Ti (UNS R50400, interstitials <500 ppm O2) is specified for this gas delivery semiconductor component where metal contamination below 1e10 at/cm2 is mandatory. VAR+ESR double-melt reduces inclusions by 3 orders of magnitude. This rationale is driven by y-shaped forged gas splitting connector and fat life requirements.",
   "process": [
     "Cleanroom CNC Class 100 for gas delivery geometry",
-    "Electropolish Ra <0.25um",
-    "UHP DI water cascade rinse",
-    "Particle count MIL-STD-1246"
+    "Electropolish Ra <0.25um for net-shape tolerance",
+    "UHP DI water cascade rinse for net-shape tolerance",
+    "Particle count MIL-STD-1246 for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "Particle count MIL-STD-1246",
-    "Particle count MIL-STD-1246",
     "Particle count MIL-STD-1246"
   ],
   "commonFailures": [
-    "Virtual leak from dead-leg threaded connections - remedied by VCR/Swagelok face-seal fittings",
     "Virtual leak from dead-leg threaded connections - remedied by VCR/Swagelok face-seal fittings"
   ],
   "standards": [
-    "SEMI F20",
-    "SEMI F20",
     "SEMI F20"
   ],
   "faq": [

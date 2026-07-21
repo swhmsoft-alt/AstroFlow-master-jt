@@ -13,25 +13,20 @@
   "alloyReason": "Nitinol (ASTM F2063) is specified for this cardiovascular self-expanding application where 55-60Ni wt% delivers superelastic recovery up to 8% at body temp. Af temperature is set 10-15C below operating temp for complete austenitic transformation. This rationale is driven by self-expanding cardiovascular stent (nitinol) and specific design requirements.",
   "process": [
     "CNC swiss turning for cardiovascular geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring for net-shape tolerance",
+    "Ultrasonic clean Class 10k for net-shape tolerance",
+    "Sterile packaging for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Surface profilometry Ra 0.4um",
-    "Surface profilometry Ra 0.4um",
     "Surface profilometry Ra 0.4um"
   ],
   "commonFailures": [
-    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces",
     "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces"
   ],
   "standards": [
-    "ISO 5832-3",
-    "ISO 5832-3",
     "ISO 5832-3"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "ASTM F136 Ti-6Al-4V ELI is specified for this orthopedic joints implant-grade component where controlled interstitials deliver high fatigue strength (>600 MPa @10^7 cyc) and corrosion resistance for permanent implantable devices. This rationale is driven by total hip replacement femoral stem and specific design requirements.",
   "process": [
     "CNC swiss turning for orthopedic joints geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with SPC sampling",
+    "Ultrasonic clean Class 10k with SPC sampling",
+    "Sterile packaging with SPC sampling"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Mech test ASTM per std",
-    "Mech test ASTM per std",
     "Mech test ASTM per std"
   ],
   "commonFailures": [
-    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces",
     "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces"
   ],
   "standards": [
-    "ASTM F86",
-    "ASTM F86",
     "ASTM F86"
   ],
   "faq": [

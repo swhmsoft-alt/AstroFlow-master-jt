@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this surgical instruments application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by laparoscopic stapler anvil plate and fat life requirements.",
   "process": [
     "CNC swiss turning for surgical instruments geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring at 200W fiber laser",
+    "Ultrasonic clean Class 10k at 200W fiber laser",
+    "Sterile packaging at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Cleanliness ISO 14971",
-    "Cleanliness ISO 14971",
     "Cleanliness ISO 14971"
   ],
   "commonFailures": [
-    "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress",
     "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress"
   ],
   "standards": [
-    "ASTM B348",
-    "ASTM B348",
     "ASTM B348"
   ],
   "faq": [

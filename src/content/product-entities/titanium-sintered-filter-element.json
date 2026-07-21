@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this filtration application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by sintered titanium porous filter element and specific design requirements.",
   "process": [
     "CNC machining from plate for filtration geometry",
-    "TIG welding all-position",
-    "Passivation DI rinse",
-    "DPI inspection"
+    "TIG welding all-position for net-shape tolerance",
+    "Passivation DI rinse for net-shape tolerance",
+    "DPI inspection for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Pickling HF-HNO3 bath + passivation to restore passive film integrity on welded/seamed process surfaces"
   ],
   "inspection": [
-    "DPI dye penetrant",
-    "DPI dye penetrant",
     "DPI dye penetrant"
   ],
   "commonFailures": [
-    "Crevice corrosion under gasket in wet service - mitigated by raised-face flange design per ASME B16.5",
     "Crevice corrosion under gasket in wet service - mitigated by raised-face flange design per ASME B16.5"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

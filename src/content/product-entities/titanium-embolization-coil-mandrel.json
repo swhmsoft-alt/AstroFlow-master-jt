@@ -13,25 +13,20 @@
   "alloyReason": "Nitinol (ASTM F2063) is specified for this interventional self-expanding application where 55-60Ni wt% delivers superelastic recovery up to 8% at body temp. Af temperature is set 10-15C below operating temp for complete austenitic transformation. This rationale is driven by embolization coil delivery mandrel (nitinol) and specific design requirements.",
   "process": [
     "CNC swiss turning for interventional geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring at 200W fiber laser",
+    "Ultrasonic clean Class 10k at 200W fiber laser",
+    "Sterile packaging at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Cleanliness ISO 14971",
-    "Cleanliness ISO 14971",
     "Cleanliness ISO 14971"
   ],
   "commonFailures": [
-    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces",
     "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces"
   ],
   "standards": [
-    "ASTM B348",
-    "ASTM B348",
     "ASTM B348"
   ],
   "faq": [

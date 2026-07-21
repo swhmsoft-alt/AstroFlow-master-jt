@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this hydrogen hardware application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by sintered titanium flame arrestor micro-porous disc and fat life requirements.",
   "process": [
     "Closed-die forging net shape for hydrogen hardware geometry",
-    "CNC precision machining",
-    "TIG welding all positions",
-    "DPI dye penetrant inspect"
+    "CNC precision machining with SPC sampling",
+    "TIG welding all positions with SPC sampling",
+    "DPI dye penetrant inspect with SPC sampling"
   ],
   "surfaceTreatment": [
     "Thermal oxidation 700C 2h in air to grow controlled 300nm TiO2 barrier layer for H2 permeation reduction"
   ],
   "inspection": [
-    "Hydrostatic pressure test",
-    "Hydrostatic pressure test",
     "Hydrostatic pressure test"
   ],
   "commonFailures": [
-    "Irradiation embrittlement in flux >1e18 n/cm2 - mitigated by fine equiaxed alpha (ASTM 8+) microstructure",
     "Irradiation embrittlement in flux >1e18 n/cm2 - mitigated by fine equiaxed alpha (ASTM 8+) microstructure"
   ],
   "standards": [
-    "ASME BPVC III",
-    "ASME BPVC III",
     "ASME BPVC III"
   ],
   "faq": [

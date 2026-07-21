@@ -13,25 +13,20 @@
   "alloyReason": "Ti-5Al-2.5Sn ELI (UNS R54521) is specified for this cryogenic hardware cryogenic application where alpha-phase stability down to -253C is critical. Al+Sn solid-solution strengthening avoids embrittlement at LH2 temperatures maintaining 800 MPa tensile. This rationale is driven by propellant tank clamp band (ti-5al-2.5sn eli) and specific design requirements.",
   "process": [
     "5-axis CNC roughing for cryogenic hardware geometry",
-    "Heat treatment (STA)",
-    "Wire EDM contour profiling",
-    "CMM per AS9102"
+    "Heat treatment (STA) at 200W fiber laser",
+    "Wire EDM contour profiling at 200W fiber laser",
+    "CMM per AS9102 at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "Eddy current surface scan",
-    "Eddy current surface scan",
     "Eddy current surface scan"
   ],
   "commonFailures": [
-    "HCF crack initiation at bolt hole edge - requires cold expansion 0.6% interference for compressive residual stress",
     "HCF crack initiation at bolt hole edge - requires cold expansion 0.6% interference for compressive residual stress"
   ],
   "standards": [
-    "NAS 6600",
-    "NAS 6600",
     "NAS 6600"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this pneumatic system application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by engine bleed air duct (grade 9 ti tube) and fat life requirements.",
   "process": [
     "5-axis CNC roughing for pneumatic system geometry",
-    "Heat treatment (STA)",
-    "Wire EDM contour profiling",
-    "CMM per AS9102"
+    "Heat treatment (STA) with Class 6g gauge",
+    "Wire EDM contour profiling with Class 6g gauge",
+    "CMM per AS9102 with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "X-ray CT volumetric",
-    "X-ray CT volumetric",
     "X-ray CT volumetric"
   ],
   "commonFailures": [
-    "Fretting fatigue at dovetail interface - mitigated by shot peen Almen 0.008A + dry-film lubricant coating",
     "Fretting fatigue at dovetail interface - mitigated by shot peen Almen 0.008A + dry-film lubricant coating"
   ],
   "standards": [
-    "ASTM B265",
-    "ASTM B265",
     "ASTM B265"
   ],
   "faq": [

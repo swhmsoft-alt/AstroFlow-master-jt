@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this propulsion application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by waterjet propulsion inducer impeller and specific design requirements.",
   "process": [
     "Ring forging radial-axial for propulsion geometry",
-    "CNC turn-bore operation",
-    "TIG welding autogenous",
-    "Hydrostatic pressure test"
+    "CNC turn-bore operation with SPC sampling",
+    "TIG welding autogenous with SPC sampling",
+    "Hydrostatic pressure test with SPC sampling"
   ],
   "surfaceTreatment": [
     "Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater"
   ],
   "inspection": [
-    "MPI magnetic particle",
-    "MPI magnetic particle",
     "MPI magnetic particle"
   ],
   "commonFailures": [
-    "Crevice corrosion under biofouling in stagnant seawater - mitigated by CP-Ti Grade 2 + ICCP system",
     "Crevice corrosion under biofouling in stagnant seawater - mitigated by CP-Ti Grade 2 + ICCP system"
   ],
   "standards": [
-    "NORSOK M-001",
-    "NORSOK M-001",
     "NORSOK M-001"
   ],
   "faq": [

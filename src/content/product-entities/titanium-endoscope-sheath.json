@@ -13,25 +13,20 @@
   "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this surgical instruments application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by rigid endoscope outer protective sheath and fat life requirements.",
   "process": [
     "CNC swiss turning for surgical instruments geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring for net-shape tolerance",
+    "Ultrasonic clean Class 10k for net-shape tolerance",
+    "Sterile packaging for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Surface profilometry Ra 0.4um",
-    "Surface profilometry Ra 0.4um",
     "Surface profilometry Ra 0.4um"
   ],
   "commonFailures": [
-    "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress",
     "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress"
   ],
   "standards": [
-    "ISO 5832-3",
-    "ISO 5832-3",
     "ISO 5832-3"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this wastewater application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by mist eliminator demister grid frame and fat life requirements.",
   "process": [
     "CNC machining from plate for wastewater geometry",
-    "TIG welding all-position",
-    "Passivation DI rinse",
-    "DPI inspection"
+    "TIG welding all-position for net-shape tolerance",
+    "Passivation DI rinse for net-shape tolerance",
+    "DPI inspection for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Pickling HF-HNO3 bath + passivation to restore passive film integrity on welded/seamed process surfaces"
   ],
   "inspection": [
-    "DPI dye penetrant",
-    "DPI dye penetrant",
     "DPI dye penetrant"
   ],
   "commonFailures": [
-    "Biofouling accumulation on stagnant surfaces - reduced by smooth surface finish Ra <0.8um and regular CIP",
     "Biofouling accumulation on stagnant surfaces - reduced by smooth surface finish Ra <0.8um and regular CIP"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this surgical instruments application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by microsurgical scissors central pivot pin and fat life requirements.",
   "process": [
     "CNC swiss turning for surgical instruments geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with SPC sampling",
+    "Ultrasonic clean Class 10k with SPC sampling",
+    "Sterile packaging with SPC sampling"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "Mech test ASTM per std",
-    "Mech test ASTM per std",
     "Mech test ASTM per std"
   ],
   "commonFailures": [
-    "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress",
     "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress"
   ],
   "standards": [
-    "ASTM F86",
-    "ASTM F86",
     "ASTM F86"
   ],
   "faq": [

@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this missile hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by missile body skin panel and fat life requirements.",
   "process": [
     "5-axis CNC roughing for missile hardware geometry",
-    "Heat treatment (STA)",
-    "Wire EDM contour profiling",
-    "CMM per AS9102"
+    "Heat treatment (STA) for net-shape tolerance",
+    "Wire EDM contour profiling for net-shape tolerance",
+    "CMM per AS9102 for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "Fluorescent penetrant FPI",
-    "Fluorescent penetrant FPI",
     "Fluorescent penetrant FPI"
   ],
   "commonFailures": [
-    "Fretting fatigue at dovetail interface - mitigated by shot peen Almen 0.008A + dry-film lubricant coating",
     "Fretting fatigue at dovetail interface - mitigated by shot peen Almen 0.008A + dry-film lubricant coating"
   ],
   "standards": [
-    "AMS 2634",
-    "AMS 2634",
     "AMS 2634"
   ],
   "faq": [

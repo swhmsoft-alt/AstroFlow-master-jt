@@ -14,25 +14,20 @@
   "alloyReason": "ASTM F136 Ti-6Al-4V ELI is specified for this trauma fixation implant-grade component where controlled interstitials deliver high fatigue strength (>600 MPa @10^7 cyc) and corrosion resistance for permanent implantable devices. This rationale is driven by cortical/cancellous locking compression bone screw and service environment demands.",
   "process": [
     "CNC swiss turning for trauma fixation geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with 0.5mm corner radius",
+    "Ultrasonic clean Class 10k with 0.5mm corner radius",
+    "Sterile packaging with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "CMM Zeiss CONTURA",
-    "CMM Zeiss CONTURA",
     "CMM Zeiss CONTURA"
   ],
   "commonFailures": [
-    "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86",
     "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86"
   ],
   "standards": [
-    "ASTM F136",
-    "ASTM F136",
     "ASTM F136"
   ],
   "faq": [

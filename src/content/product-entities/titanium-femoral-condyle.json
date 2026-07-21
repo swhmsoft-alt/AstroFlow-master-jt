@@ -13,25 +13,20 @@
   "alloyReason": "Ti-6Al-7Nb (ASTM F1295) is selected as Ni-free alternative for this orthopedic joints implant, replacing V with Nb to eliminate cytotoxicity while maintaining 900 MPa tensile equivalent to Ti-6Al-4V. This rationale is driven by total knee femoral condyle component (ti-6al-7nb) and service environment demands.",
   "process": [
     "CNC swiss turning for orthopedic joints geometry",
-    "Cryogenic deburring",
-    "Ultrasonic clean Class 10k",
-    "Sterile packaging"
+    "Cryogenic deburring with 0.5mm corner radius",
+    "Ultrasonic clean Class 10k with 0.5mm corner radius",
+    "Sterile packaging with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "CMM Zeiss CONTURA",
-    "CMM Zeiss CONTURA",
     "CMM Zeiss CONTURA"
   ],
   "commonFailures": [
-    "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86",
     "Fe contamination from machining - requires acid passivation 20-30% HNO3, 30min @50C per ASTM F86"
   ],
   "standards": [
-    "ASTM F136",
-    "ASTM F136",
     "ASTM F136"
   ],
   "faq": [

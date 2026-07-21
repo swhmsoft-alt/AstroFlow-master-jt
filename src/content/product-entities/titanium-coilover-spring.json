@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this suspension application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by high-performance racing coil suspension spring (beta-c) and specific design requirements.",
   "process": [
     "CNC turn-mill multi-axis for suspension geometry",
-    "Shot peening Almen",
-    "Black oxide/DLC coating",
-    "CMM SPC dimensional check"
+    "Shot peening Almen with SPC sampling",
+    "Black oxide/DLC coating with SPC sampling",
+    "CMM SPC dimensional check with SPC sampling"
   ],
   "surfaceTreatment": [
     "DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability"
   ],
   "inspection": [
-    "Hardness traverse HRC",
-    "Hardness traverse HRC",
     "Hardness traverse HRC"
   ],
   "commonFailures": [
-    "Fatigue crack at thread-shank transition - prevented by larger fillet R0.5->1.5mm + cold rolling",
     "Fatigue crack at thread-shank transition - prevented by larger fillet R0.5->1.5mm + cold rolling"
   ],
   "standards": [
-    "ISO 26262",
-    "ISO 26262",
     "ISO 26262"
   ],
   "faq": [

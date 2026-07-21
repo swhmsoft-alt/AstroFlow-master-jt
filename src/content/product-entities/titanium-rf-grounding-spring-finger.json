@@ -13,25 +13,20 @@
   "alloyReason": "Bead-blasted Grade 2 CP-Ti (UNS R50400) is chosen for this chamber shield component where controlled Ra 3.2-6.3um roughness improves coating adhesion. The 345 MPa yield with 30% elongation provides ductility while maintaining corrosion resistance. This rationale is driven by rf grounding spring contact finger (nitinol) and service environment demands.",
   "process": [
     "Cleanroom CNC Class 100 for chamber shield geometry",
-    "Electropolish Ra <0.25um",
-    "UHP DI water cascade rinse",
-    "Particle count MIL-STD-1246"
+    "Electropolish Ra <0.25um with Class 6g gauge",
+    "UHP DI water cascade rinse with Class 6g gauge",
+    "Particle count MIL-STD-1246 with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "Metal <1e10 at/cm2",
-    "Metal <1e10 at/cm2",
     "Metal <1e10 at/cm2"
   ],
   "commonFailures": [
-    "Outgassing H2O CH4 >1% AMU 100 - mitigated by 200C vacuum bake-out 24h to desorb trapped species",
     "Outgassing H2O CH4 >1% AMU 100 - mitigated by 200C vacuum bake-out 24h to desorb trapped species"
   ],
   "standards": [
-    "SEMI F20",
-    "SEMI F20",
     "SEMI F20"
   ],
   "faq": [

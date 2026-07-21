@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this pipe support application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by heavy-duty u-bolt for titanium pipe support and service environment demands.",
   "process": [
     "Closed-die forging net shape for pipe support geometry",
-    "CNC precision machining",
-    "TIG welding all positions",
-    "DPI dye penetrant inspect"
+    "CNC precision machining with Class 6g gauge",
+    "TIG welding all positions with Class 6g gauge",
+    "DPI dye penetrant inspect with Class 6g gauge"
   ],
   "surfaceTreatment": [
     "Thermal oxidation 700C 2h in air to grow controlled 300nm TiO2 barrier layer for H2 permeation reduction"
   ],
   "inspection": [
-    "PMI XRF alloy verify",
-    "PMI XRF alloy verify",
     "PMI XRF alloy verify"
   ],
   "commonFailures": [
-    "H2 permeation at >100 bar pressure - reduced by ALD alumina barrier 0.5um on gas-wetted surfaces",
     "H2 permeation at >100 bar pressure - reduced by ALD alumina barrier 0.5um on gas-wetted surfaces"
   ],
   "standards": [
-    "ASME BPVC III",
-    "ASME BPVC III",
     "ASME BPVC III"
   ],
   "faq": [

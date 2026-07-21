@@ -13,25 +13,20 @@
   "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this valve component application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by perforated valve strainer basket and service environment demands.",
   "process": [
     "Closed-die forging net shape for valve component geometry",
-    "CNC precision machining",
-    "TIG welding all positions",
-    "DPI dye penetrant inspect"
+    "CNC precision machining with 0.5mm corner radius",
+    "TIG welding all positions with 0.5mm corner radius",
+    "DPI dye penetrant inspect with 0.5mm corner radius"
   ],
   "surfaceTreatment": [
     "Thermal oxidation 700C 2h in air to grow controlled 300nm TiO2 barrier layer for H2 permeation reduction"
   ],
   "inspection": [
-    "UT volumetric full matrix",
-    "UT volumetric full matrix",
     "UT volumetric full matrix"
   ],
   "commonFailures": [
-    "H2 permeation at >100 bar pressure - reduced by ALD alumina barrier 0.5um on gas-wetted surfaces",
     "H2 permeation at >100 bar pressure - reduced by ALD alumina barrier 0.5um on gas-wetted surfaces"
   ],
   "standards": [
-    "ASME BPVC III",
-    "ASME BPVC III",
     "ASME BPVC III"
   ],
   "faq": [

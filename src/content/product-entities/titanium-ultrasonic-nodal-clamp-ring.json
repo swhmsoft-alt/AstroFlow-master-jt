@@ -13,25 +13,20 @@
   "alloyReason": "Triaxially forged Grade 5 Ti-6Al-4V (Triaxially Forged) (UNS R56400) is specified for this ultrasonic tooling component where isotropic properties are mandatory. The 3D forging eliminates texture directionality, delivering uniform 950 MPa tensile in all orientations under multi-axial stress. This rationale is driven by stack clamping nodal ring flange (grade 4) and service environment demands.",
   "process": [
     "CNC turn-mill multi-axis for ultrasonic tooling geometry",
-    "Shot peening Almen",
-    "Black oxide/DLC coating",
-    "CMM SPC dimensional check"
+    "Shot peening Almen for net-shape tolerance",
+    "Black oxide/DLC coating for net-shape tolerance",
+    "CMM SPC dimensional check for net-shape tolerance"
   ],
   "surfaceTreatment": [
     "DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability"
   ],
   "inspection": [
-    "MPI magnetic particle",
-    "MPI magnetic particle",
     "MPI magnetic particle"
   ],
   "commonFailures": [
-    "Brinelling of Al housing from steel insert - resolved by steel-backed bronze bushing SAE 841 0.05mm interfer",
     "Brinelling of Al housing from steel insert - resolved by steel-backed bronze bushing SAE 841 0.05mm interfer"
   ],
   "standards": [
-    "ISO 26262",
-    "ISO 26262",
     "ISO 26262"
   ],
   "faq": [

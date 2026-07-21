@@ -13,25 +13,20 @@
   "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this pipe fitting application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by class 150/300 blind flange for chemical piping and fat life requirements.",
   "process": [
     "Hot forming plate rolling for pipe fitting geometry",
-    "CNC corrosion allowance",
-    "TIG welding Grade 2",
-    "Hydrostatic shell test"
+    "CNC corrosion allowance at 200W fiber laser",
+    "TIG welding Grade 2 at 200W fiber laser",
+    "Hydrostatic shell test at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Pickling + passivation per ASTM B600 to restore TiO2 passive layer integrity after welding or hot forming"
   ],
   "inspection": [
-    "Bubble leak vacuum box",
-    "Bubble leak vacuum box",
     "Bubble leak vacuum box"
   ],
   "commonFailures": [
-    "Pitting in stagnant HCl above 60C - requires Grade 12 for Mo-enhanced passive film stability",
     "Pitting in stagnant HCl above 60C - requires Grade 12 for Mo-enhanced passive film stability"
   ],
   "standards": [
-    "ASME B31.3",
-    "ASME B31.3",
     "ASME B31.3"
   ],
   "faq": [

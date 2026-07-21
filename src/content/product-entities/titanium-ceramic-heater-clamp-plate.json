@@ -13,25 +13,20 @@
   "alloyReason": "Bead-blasted Grade 2 CP-Ti (UNS R50400) is chosen for this chamber shield component where controlled Ra 3.2-6.3um roughness improves coating adhesion. The 345 MPa yield with 30% elongation provides ductility while maintaining corrosion resistance. This rationale is driven by ceramic heater core clamping plate and specific design requirements.",
   "process": [
     "Cleanroom CNC Class 100 for chamber shield geometry",
-    "Electropolish Ra <0.25um",
-    "UHP DI water cascade rinse",
-    "Particle count MIL-STD-1246"
+    "Electropolish Ra <0.25um at 200W fiber laser",
+    "UHP DI water cascade rinse at 200W fiber laser",
+    "Particle count MIL-STD-1246 at 200W fiber laser"
   ],
   "surfaceTreatment": [
     "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "AFM surface roughness",
-    "AFM surface roughness",
     "AFM surface roughness"
   ],
   "commonFailures": [
-    "Metal particle shedding >1e10 at/cm2 - eliminated by UHP VAR+ESR double-melt + electropolished ID",
     "Metal particle shedding >1e10 at/cm2 - eliminated by UHP VAR+ESR double-melt + electropolished ID"
   ],
   "standards": [
-    "SEMI F20",
-    "SEMI F20",
     "SEMI F20"
   ],
   "faq": [
