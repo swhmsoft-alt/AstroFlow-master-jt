@@ -1,4 +1,4 @@
----
+﻿---
 title: "Titanium Cryogenic H2 Flange Bolt"
 sku: "TI-EN-HYD-H2FLAN"
 category: "Hydrogen Hardware"
@@ -46,7 +46,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ## Supply Chain, Traceability & Quality Compliance (The Procurement Gate)
 
 - **Material Traceability (EN 10204 3.1):** Every production batch is 100% traceable from raw ingot to finished titanium cryogenic h2 flange bolt. Shipments include a complete **EN 10204 3.1 Mill Test Certificate (MTC)** detailing heat analysis chemical composition and destructive mechanical testing results per ASTM B348 specification.
-- **Non-Destructive Testing (NDT):** Components undergo UT per ASTM A388; PMI per ASTM E1476; 100% dimensional CMM; Hydrostatic test per ASME Section VIII to guarantee zero sub-surface voids, micro-cracks, or structural anomalies. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
+- **Non-Destructive Testing (NDT):** Components undergo CMM per ISO 10360 and surface profilometry per ISO 4287. Threaded features verified with Go/No-Go ring gauges (Class 6g) per DIN 13-1 / ISO 965-2.
 - **Environmental Compliance:** 100% compliant with **REACH Regulation (EC No 1907/2006)** and **RoHS 3 Directive (2015/863/EU)**. Certificate of Conformity (CoC) issued with every shipment.
 - **Quality Management:** Manufactured in ISO 9001:2015 and AS9100D-certified facilities. First Article Inspection (FAI) reports available upon request per AS9102.
 
@@ -54,7 +54,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 
 ## Application Dynamics & Alternative Displacement (Why Titanium?)
 
-- **Corrosion Kinetics & Operating Boundaries:** In energy applications, titanium cryogenic h2 flange bolt is exposed to hydrogen embrittlement environments (H₂ gas at >100 bar), nuclear radiation (neutron flux > 10¹² n/cm²·s), and supercritical CO₂ power cycles. Titanium's TiO₂ layer provides hydrogen barrier with H pickup < 0.002 wt%. The material's low thermal conductivity (16.4 W/m·K) provides critical thermal isolation and dimensional stability.
+- **Corrosion Kinetics & Operating Boundaries:** In energy applications for titanium cryogenic h2 flange bolt, titanium cryogenic h2 flange bolt is exposed to hydrogen embrittlement environments (H₂ gas at >100 bar), nuclear radiation (neutron flux > 10¹² n/cm²·s), and supercritical CO₂ power cycles. Titanium's TiO₂ layer provides hydrogen barrier with H pickup < 0.002 wt%. The material's low thermal conductivity (16.4 W/m·K) provides critical thermal isolation and dimensional stability.
 
 - **Galvanic Isolation & Material Compatibility:** For PEM electrolyzer bipolar plates, titanium provides <10 µΩ·cm² contact resistance with Pt-coated surface. The TiO₂ layer prevents metallic ion contamination of the proton exchange membrane. The TiO₂ passive layer is maintained via ASTM F86 passivation (20-30% HNO₃ bath, 30 min at 50°C) which removes iron contamination and restores the full oxide barrier.
 
@@ -66,6 +66,6 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 
 - **CNC Tooling & Execution Strategy:** Titanium's low thermal conductivity (16.4 W/m·K — approximately 10% of aluminum) and high chemical reactivity require strict CNC parameter controls to prevent work-hardening and tool failure. Our machining strategy employs: (a) **Cutting speed** $V_c$ = 40-60 m/min for roughing, 60-80 m/min for finishing using grade K313 cemented carbide inserts with TiAlN PVD coating; (b) **Feed rate** $f$ = 0.08-0.15 mm/rev maintaining constant chip load to avoid work-hardening zones; (c) **High-pressure flood coolant** (>70 bar / 1000 psi) directed at the cutting interface to suppress adiabatic shear band formation; (d) **Rigid setups** with minimum tool overhang (<3:1 ratio) to eliminate deflection-induced taper and chatter.
 
-- **Residual Stress Mitigation:** Every titanium cryogenic h2 flange bolt batch undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
+- **Residual Stress Mitigation:** Every titanium cryogenic h2 flange bolt production run undergoes post-machining vacuum stress-relieving annealing at 540-675°C for 1-2 hours under argon atmosphere (O₂ < 50 ppm) to eliminate residual tensile stresses induced by CNC material removal. This thermal cycle reduces microstructural distortion risk by >70% and prevents premature **stress corrosion cracking (SCC)** during field service. All threaded features are produced via **thread rolling** (not thread cutting), which induces compressive residual stresses at the thread root and maintains uninterrupted grain flow — increasing fatigue strength by 30-50% compared to cut threads. ISO 965-2 Class 6g tolerance is verified with calibrated Go/No-Go ring gauges on 100% of production.
 
 ---
