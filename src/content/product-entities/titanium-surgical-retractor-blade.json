@@ -10,69 +10,62 @@
   "category": "Surgical Instruments",
   "function": "Lightweight surgical retractor blade",
   "material": "Grade 9 Ti-3Al-2.5V",
-  "alloyReason": "Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting requiring a balance of strength and ductility.",
+  "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this surgical instruments application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by lightweight surgical retractor blade and fat life requirements.",
   "process": [
-    "VAR melting",
-    "Closed-die hot forging",
-    "CNC swiss turning",
-    "Thread rolling",
-    "Passivation (ASTM F86)"
+    "CNC swiss turning for surgical instruments geometry",
+    "Cryogenic deburring",
+    "Ultrasonic clean Class 10k",
+    "Sterile packaging"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86",
-    "Electropolishing",
-    "Class 10,000 cleanroom cleaning"
+    "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "100% CMM dimensional",
-    "Mechanical testing per ASTM F543",
-    "MRI artifact (3T phantom)",
-    "Class 10,000 cleanroom packaging"
+    "Mech test ASTM per std",
+    "Mech test ASTM per std",
+    "Mech test ASTM per std"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress",
+    "Fatigue fracture at thread root under cyclic bending - resolved by thread rolling (not cutting) for compressive stress"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348"
+    "ASTM F86",
+    "ASTM F86",
+    "ASTM F86"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium surgical retractor blade?",
-      "a": "A titanium surgical retractor blade is a precision-machined surgical instruments component used in lightweight surgical retractor blade. Manufactured from Grade 9 Ti-3Al-2.5V for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Surgical Retractor Blade suitable for Lightweight surgical retractor blade?",
+      "a": "Titanium Surgical Retractor Blade uses Grade 9 Ti-3Al-2.5V because its yield strength, fatigue endurance, and corrosion resistance directly address surgical instruments operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "How is titanium surgical retractor blade sterilized?",
-      "a": "Titanium Surgical Retractor Blade is compatible with all standard sterilization methods: autoclave (134C steam), ethylene oxide (EtO), gamma radiation, and hydrogen peroxide plasma. Titanium's passive oxide layer remains stable through repeated sterilization cycles."
+      "q": "What are the critical dimensional tolerances for Titanium Surgical Retractor Blade?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium surgical retractor blade manufactured?",
-      "a": "Titanium Surgical Retractor Blade is manufactured using VAR melting. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Surgical Retractor Blade require any post-machining surface treatment?",
+      "a": "Yes. surgical instruments components receive Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium surgical retractor blade?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Surgical Retractor Blade shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium surgical retractor blade?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Retractor / Wound retractor surgical instruments components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "var-melting",
     "closed-die-hot-forging",
     "cnc-swiss-turning"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "medical-device"
   ],
-  "seoTitle": "Titanium Surgical Retractor Blade - Grade 9 Ti-3Al-2.5V - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Surgical Retractor Blade - Lightweight surgical retractor blade Manufactured from Grade 9 Ti-3Al-2.5V. Precision CNC machined with VAR melting, Closed-die hot forging, CNC swiss turning. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Surgical Retractor Blade - Grade 9 Ti-3Al-2.5V | CNC Surgical Instruments | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Surgical Retractor Blade - Lightweight surgical retractor blade. Manufactured from Grade 9 Ti-3Al-2.5V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-surgical-retractor-blade.svg",

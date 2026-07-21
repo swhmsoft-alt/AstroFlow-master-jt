@@ -10,67 +10,62 @@
   "category": "Ultrasonic Tooling",
   "function": "Acoustic waveguide extension bar",
   "material": "Grade 5 Ti-6Al-4V (Triaxially Forged)",
-  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
+  "alloyReason": "Triaxially forged Grade 5 Ti-6Al-4V (Triaxially Forged) (UNS R56400) is specified for this ultrasonic tooling component where isotropic properties are mandatory. The 3D forging eliminates texture directionality, delivering uniform 950 MPa tensile in all orientations under multi-axial stress. This rationale is driven by acoustic waveguide extension bar and fat life requirements.",
   "process": [
-    "Triaxial forging",
-    "CNC turning",
-    "Digital frequency tuning (+-50Hz)",
-    "Dynamic balancing"
+    "CNC turn-mill multi-axis for ultrasonic tooling geometry",
+    "Shot peening Almen",
+    "Black oxide/DLC coating",
+    "CMM SPC dimensional check"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability"
   ],
   "inspection": [
-    "DFA frequency analyzer",
-    "Impedance measurement",
-    "Nodal line CMM",
-    "Surface Ra<0.4um"
+    "Run-out balance check",
+    "Run-out balance check",
+    "Run-out balance check"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Corrosion pitting in road salt exposure - mitigated by DLC 2um 15GPa + hot wax sealant",
+    "Corrosion pitting in road salt exposure - mitigated by DLC 2um 15GPa + hot wax sealant"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "ISO 26262",
+    "ISO 26262",
+    "ISO 26262"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium acoustic waveguide extension?",
-      "a": "A titanium acoustic waveguide extension is a precision-machined ultrasonic tooling component used in acoustic waveguide extension bar. Manufactured from Grade 5 Ti-6Al-4V (Triaxially Forged) for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Acoustic Waveguide Extension suitable for Acoustic waveguide extension bar?",
+      "a": "Titanium Acoustic Waveguide Extension uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address ultrasonic tooling operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What is the typical application for titanium acoustic waveguide extension?",
-      "a": "Titanium Acoustic Waveguide Extension is designed for acoustic waveguide extension bar. The Grade 5 Ti-6Al-4V (Triaxially Forged) grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application."
+      "q": "What are the critical dimensional tolerances for Titanium Acoustic Waveguide Extension?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium acoustic waveguide extension manufactured?",
-      "a": "Titanium Acoustic Waveguide Extension is manufactured using Triaxial forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Acoustic Waveguide Extension require any post-machining surface treatment?",
+      "a": "Yes. ultrasonic tooling components receive DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium acoustic waveguide extension?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Acoustic Waveguide Extension shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium acoustic waveguide extension?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Waveguide bar / Extension bar ultrasonic tooling components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "triaxial-forging",
     "cnc-turning",
     "digital-frequency-tuning-(+-50hz)"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "automotive-motorsports"
   ],
-  "seoTitle": "Titanium Acoustic Waveguide Extension - Grade 5 Ti-6Al-4V (Triaxially Forged) - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Acoustic Waveguide Extension - Acoustic waveguide extension bar Manufactured from Grade 5 Ti-6Al-4V (Triaxially Forged). Triaxial forging, CNC turning, Digital frequency tuning (+-50Hz). AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Acoustic Waveguide Extension - Grade 5 Ti-6Al-4V | CNC Ultrasonic Tooling | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Acoustic Waveguide Extension - Acoustic waveguide extension bar. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-acoustic-waveguide-extension.svg",

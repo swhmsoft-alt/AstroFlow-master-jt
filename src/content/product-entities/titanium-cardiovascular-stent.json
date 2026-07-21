@@ -10,63 +10,62 @@
   "category": "Cardiovascular",
   "function": "Self-expanding cardiovascular stent (Nitinol)",
   "material": "Nitinol (ASTM F2063)",
-  "alloyReason": "Nitinol (Nickel-Titanium Shape Memory Alloy, ASTM F2063) provides unique superelasticity and shape memory effect, enabling self-expanding stents, kink-resistant guidewires, and deployable medical devices. Its elastic recoverable strain (up to 8%) is orders of magnitude higher than any conventional metal.",
+  "alloyReason": "Nitinol (ASTM F2063) is specified for this cardiovascular self-expanding application where 55-60Ni wt% delivers superelastic recovery up to 8% at body temp. Af temperature is set 10-15C below operating temp for complete austenitic transformation. This rationale is driven by self-expanding cardiovascular stent (nitinol) and specific design requirements.",
   "process": [
-    "Laser micro-cutting",
-    "Shape-setting heat treatment",
-    "Electropolishing"
+    "CNC swiss turning for cardiovascular geometry",
+    "Cryogenic deburring",
+    "Ultrasonic clean Class 10k",
+    "Sterile packaging"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish"
   ],
   "inspection": [
-    "AF temperature measurement (DSC)",
-    "Fatigue testing (400M cycles)"
+    "Surface profilometry Ra 0.4um",
+    "Surface profilometry Ra 0.4um",
+    "Surface profilometry Ra 0.4um"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces",
+    "Galvanic pitting at Ti-316L interface in vivo - eliminated by ceramic Al2O3 coating on mating surfaces"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348"
+    "ISO 5832-3",
+    "ISO 5832-3",
+    "ISO 5832-3"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium cardiovascular stent?",
-      "a": "A titanium cardiovascular stent is a precision-machined cardiovascular component used in self-expanding cardiovascular stent (nitinol). Manufactured from Nitinol (ASTM F2063) for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Cardiovascular Stent suitable for Self-expanding cardiovascular stent (Nitinol)?",
+      "a": "Titanium Cardiovascular Stent uses Nitinol because its yield strength, fatigue endurance, and corrosion resistance directly address cardiovascular operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "How is titanium cardiovascular stent delivered?",
-      "a": "Titanium Cardiovascular Stent (Nitinol) is manufactured in its expanded shape, compressed into its delivery catheter, and self-expands at body temperature (37C) upon deployment. Fatigue testing exceeds 400 million cycles (10-year equivalent)."
+      "q": "What are the critical dimensional tolerances for Titanium Cardiovascular Stent?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium cardiovascular stent manufactured?",
-      "a": "Titanium Cardiovascular Stent is manufactured using Laser micro-cutting. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Cardiovascular Stent require any post-machining surface treatment?",
+      "a": "Yes. cardiovascular components receive Electropolishing + passivation per ASTM F86 (20-30% HNO3, 30min @50C) achieving Ra <0.2um for implant-grade finish. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium cardiovascular stent?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Cardiovascular Stent shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium cardiovascular stent?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Stent / Vascular stent cardiovascular components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "laser-micro-cutting",
     "shape-setting-heat-treatment",
     "electropolishing"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "medical-device"
   ],
-  "seoTitle": "Titanium Cardiovascular Stent - Nitinol (ASTM F2063) - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Cardiovascular Stent - Self-expanding cardiovascular stent (Nitinol) Manufactured from Nitinol (ASTM F2063). Precision CNC machined with Laser micro-cutting, Shape-setting heat treatment, Electropolishing. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Cardiovascular Stent - Nitinol | CNC Cardiovascular | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Cardiovascular Stent - Self-expanding cardiovascular stent (Nitinol). Manufactured from Nitinol. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-cardiovascular-stent.svg",

@@ -10,68 +10,62 @@
   "category": "Pipe Fitting",
   "function": "Slip-on flange for low-pressure chemical ducting",
   "material": "Grade 2 CP-Ti",
-  "alloyReason": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine components where corrosion resistance is the primary requirement.",
+  "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this pipe fitting application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by slip-on flange for low-pressure chemical ducting and fat life requirements.",
   "process": [
-    "Seamless tube extrusion",
-    "CNC machining",
-    "TIG welding (ERTi-2 filler)",
-    "Hydrostatic testing"
+    "Hot forming plate rolling for pipe fitting geometry",
+    "CNC corrosion allowance",
+    "TIG welding Grade 2",
+    "Hydrostatic shell test"
   ],
   "surfaceTreatment": [
-    "Pickling (HF+HNO3)",
-    "Passivation ASTM F86"
+    "Pickling + passivation per ASTM B600 to restore TiO2 passive layer integrity after welding or hot forming"
   ],
   "inspection": [
-    "Hydrostatic pressure test",
-    "PMI verification",
-    "Dimensional per ASME B16.9",
-    "MTR (EN 10204 3.1)"
+    "DPI 100% coverage",
+    "DPI 100% coverage",
+    "DPI 100% coverage"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Pitting in stagnant HCl above 60C - requires Grade 12 for Mo-enhanced passive film stability",
+    "Pitting in stagnant HCl above 60C - requires Grade 12 for Mo-enhanced passive film stability"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "ASME B31.3",
+    "ASME B31.3",
+    "ASME B31.3"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium slip-on flange?",
-      "a": "A titanium slip-on flange is a precision-machined pipe fitting component used in slip-on flange for low-pressure chemical ducting. Manufactured from Grade 2 CP-Ti for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Slip-On Flange suitable for Slip-on flange for low-pressure chemical ducting?",
+      "a": "Titanium Slip-On Flange uses Grade 2 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address pipe fitting operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What pressure rating for titanium slip-on flange?",
-      "a": "Pressure rating depends on grade, wall thickness, and temperature. Grade 2 CP-Ti pipe fittings are typically rated to Class 150 (285 psi) or Class 300 (740 psi) per ASME B16.5/B16.9. Higher ratings available with Grade 5."
+      "q": "What are the critical dimensional tolerances for Titanium Slip-On Flange?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium slip-on flange manufactured?",
-      "a": "Titanium Slip-On Flange is manufactured using Seamless tube extrusion. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Slip-On Flange require any post-machining surface treatment?",
+      "a": "Yes. pipe fitting components receive Pickling + passivation per ASTM B600 to restore TiO2 passive layer integrity after welding or hot forming. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium slip-on flange?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Slip-On Flange shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium slip-on flange?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Slip-on flange / SO flange pipe fitting components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "seamless-tube-extrusion",
     "cnc-machining",
     "tig-welding-(erti-2-filler)"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "chemical-processing"
   ],
-  "seoTitle": "Titanium Slip-On Flange - Grade 2 CP-Ti - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Slip-On Flange - Slip-on flange for low-pressure chemical ducting Manufactured from Grade 2 CP-Ti. Seamless tube extrusion, CNC machining, TIG welding (ERTi-2 filler). AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Slip-On Flange - Grade 2 CP-Ti | CNC Pipe Fitting | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Slip-On Flange - Slip-on flange for low-pressure chemical ducting. Manufactured from Grade 2 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-slip-on-flange.svg",

@@ -10,67 +10,62 @@
   "category": "Deep Sea",
   "function": "Autonomous underwater vehicle propeller shaft",
   "material": "Grade 5 Ti-6Al-4V ELI",
-  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
+  "alloyReason": "Ti-6Al-4V ELI (Grade 23, UNS R56401) is mandated for this deep sea application where ELI elements (O <=0.13%, Fe <=0.25%) provide superior fracture toughness (KIC >100 MPa-m0.5) and fatigue resistance vs standard Grade 5. This rationale is driven by autonomous underwater vehicle propeller shaft and specific design requirements.",
   "process": [
-    "Ring forging",
-    "CNC machining",
-    "TIG welding",
-    "Hydrostatic testing"
+    "Ring forging radial-axial for deep sea geometry",
+    "CNC turn-bore operation",
+    "TIG welding autogenous",
+    "Hydrostatic pressure test"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater"
   ],
   "inspection": [
-    "Ultrasonic inspection",
-    "FPI",
-    "Hydrostatic pressure test",
-    "Magnetic permeability (mu<1.01)"
+    "Hydrostatic 1.5x MAWP",
+    "Hydrostatic 1.5x MAWP",
+    "Hydrostatic 1.5x MAWP"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Crevice corrosion under biofouling in stagnant seawater - mitigated by CP-Ti Grade 2 + ICCP system",
+    "Crevice corrosion under biofouling in stagnant seawater - mitigated by CP-Ti Grade 2 + ICCP system"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "NORSOK M-001",
+    "NORSOK M-001",
+    "NORSOK M-001"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium auv propeller shaft?",
-      "a": "A titanium auv propeller shaft is a precision-machined deep sea component used in autonomous underwater vehicle propeller shaft. Manufactured from Grade 5 Ti-6Al-4V ELI for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium AUV Propeller Shaft suitable for Autonomous underwater vehicle propeller shaft?",
+      "a": "Titanium AUV Propeller Shaft uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address deep sea operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What is the typical application for titanium auv propeller shaft?",
-      "a": "Titanium AUV Propeller Shaft is designed for autonomous underwater vehicle propeller shaft. The Grade 5 Ti-6Al-4V ELI grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application."
+      "q": "What are the critical dimensional tolerances for Titanium AUV Propeller Shaft?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium auv propeller shaft manufactured?",
-      "a": "Titanium AUV Propeller Shaft is manufactured using Ring forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium AUV Propeller Shaft require any post-machining surface treatment?",
+      "a": "Yes. deep sea components receive Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium auv propeller shaft?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium AUV Propeller Shaft shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium auv propeller shaft?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for AUV shaft / Underwater shaft deep sea components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "ring-forging",
     "cnc-machining",
     "tig-welding"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "marine-offshore"
   ],
-  "seoTitle": "Titanium AUV Propeller Shaft - Grade 5 Ti-6Al-4V ELI - Precision CNC Titanium Component",
-  "seoDescription": "Titanium AUV Propeller Shaft - Autonomous underwater vehicle propeller shaft Manufactured from Grade 5 Ti-6Al-4V ELI. Ring forging, CNC machining, TIG welding. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium AUV Propeller Shaft - Grade 5 Ti-6Al-4V | CNC Deep Sea | BOZE",
+  "seoDescription": "Precision CNC machined Titanium AUV Propeller Shaft - Autonomous underwater vehicle propeller shaft. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-auv-propeller-shaft.svg",

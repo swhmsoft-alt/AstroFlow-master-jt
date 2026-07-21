@@ -10,67 +10,62 @@
   "category": "Pneumatic System",
   "function": "Engine bleed air duct (Grade 9 Ti tube)",
   "material": "Grade 9 Ti-3Al-2.5V",
-  "alloyReason": "Ti-3Al-2.5V (Grade 9) offers higher strength than CP grades with excellent cold formability, weldability, and corrosion resistance. It is ideal for tubing, bicycle components, and aerospace ducting requiring a balance of strength and ductility.",
+  "alloyReason": "Grade 9 Ti-3Al-2.5V (UNS R56320) is specified for this pneumatic system application needing intermediate strength between CP and Ti-6Al-4V with superior cold formability. Its 620 MPa tensile with 20% elongation provides 30% weight reduction vs steel. This rationale is driven by engine bleed air duct (grade 9 ti tube) and fat life requirements.",
   "process": [
-    "Closed-die forging",
-    "5-axis CNC machining",
+    "5-axis CNC roughing for pneumatic system geometry",
     "Heat treatment (STA)",
-    "Shot peening"
+    "Wire EDM contour profiling",
+    "CMM per AS9102"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service"
   ],
   "inspection": [
-    "FPI (fluorescent penetrant)",
-    "X-ray / CT inspection",
-    "Ultrasonic inspection",
-    "CMM dimensional"
+    "X-ray CT volumetric",
+    "X-ray CT volumetric",
+    "X-ray CT volumetric"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Fretting fatigue at dovetail interface - mitigated by shot peen Almen 0.008A + dry-film lubricant coating",
+    "Fretting fatigue at dovetail interface - mitigated by shot peen Almen 0.008A + dry-film lubricant coating"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "ASTM B265",
+    "ASTM B265",
+    "ASTM B265"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium bleed air duct?",
-      "a": "A titanium bleed air duct is a precision-machined pneumatic system component used in engine bleed air duct (grade 9 ti tube). Manufactured from Grade 9 Ti-3Al-2.5V for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Bleed Air Duct suitable for Engine bleed air duct (Grade 9 Ti tube)?",
+      "a": "Titanium Bleed Air Duct uses Grade 9 Ti-3Al-2.5V because its yield strength, fatigue endurance, and corrosion resistance directly address pneumatic system operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What is the typical application for titanium bleed air duct?",
-      "a": "Titanium Bleed Air Duct is designed for engine bleed air duct (grade 9 ti tube). The Grade 9 Ti-3Al-2.5V grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application."
+      "q": "What are the critical dimensional tolerances for Titanium Bleed Air Duct?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium bleed air duct manufactured?",
-      "a": "Titanium Bleed Air Duct is manufactured using Closed-die forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Bleed Air Duct require any post-machining surface treatment?",
+      "a": "Yes. pneumatic system components receive Shot peening Almen 0.008-0.012A inducing compressive residual stress for extended HCF life in aerospace service. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium bleed air duct?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Bleed Air Duct shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium bleed air duct?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Bleed duct / Bleed air line pneumatic system components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "closed-die-forging",
     "5-axis-cnc-machining",
     "heat-treatment-(sta)"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "aerospace-defense"
   ],
-  "seoTitle": "Titanium Bleed Air Duct - Grade 9 Ti-3Al-2.5V - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Bleed Air Duct - Engine bleed air duct (Grade 9 Ti tube) Manufactured from Grade 9 Ti-3Al-2.5V. Closed-die forging, 5-axis CNC machining, Heat treatment (STA). AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Bleed Air Duct - Grade 9 Ti-3Al-2.5V | CNC Pneumatic System | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Bleed Air Duct - Engine bleed air duct (Grade 9 Ti tube). Manufactured from Grade 9 Ti-3Al-2.5V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-bleed-air-duct.svg",

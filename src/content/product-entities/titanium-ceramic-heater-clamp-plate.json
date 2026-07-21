@@ -10,67 +10,62 @@
   "category": "Chamber Shield",
   "function": "Ceramic heater core clamping plate",
   "material": "Grade 2 CP-Ti (Bead Blasted)",
-  "alloyReason": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine components where corrosion resistance is the primary requirement.",
+  "alloyReason": "Bead-blasted Grade 2 CP-Ti (UNS R50400) is chosen for this chamber shield component where controlled Ra 3.2-6.3um roughness improves coating adhesion. The 345 MPa yield with 30% elongation provides ductility while maintaining corrosion resistance. This rationale is driven by ceramic heater core clamping plate and specific design requirements.",
   "process": [
-    "Precision CNC turning",
-    "Electropolishing",
-    "Class 100 cleanroom cleaning",
-    "Helium leak testing"
+    "Cleanroom CNC Class 100 for chamber shield geometry",
+    "Electropolish Ra <0.25um",
+    "UHP DI water cascade rinse",
+    "Particle count MIL-STD-1246"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "Helium leak test (1e-9 mbar.L/s)",
-    "Surface roughness (Ra<0.2um)",
-    "PMI verification",
-    "Particle count (Class 100)"
+    "AFM surface roughness",
+    "AFM surface roughness",
+    "AFM surface roughness"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Metal particle shedding >1e10 at/cm2 - eliminated by UHP VAR+ESR double-melt + electropolished ID",
+    "Metal particle shedding >1e10 at/cm2 - eliminated by UHP VAR+ESR double-melt + electropolished ID"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "SEMI F20",
+    "SEMI F20",
+    "SEMI F20"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium ceramic heater clamp plate?",
-      "a": "A titanium ceramic heater clamp plate is a precision-machined chamber shield component used in ceramic heater core clamping plate. Manufactured from Grade 2 CP-Ti (Bead Blasted) for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Ceramic Heater Clamp Plate suitable for Ceramic heater core clamping plate?",
+      "a": "Titanium Ceramic Heater Clamp Plate uses Grade 2 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address chamber shield operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What is the typical application for titanium ceramic heater clamp plate?",
-      "a": "Titanium Ceramic Heater Clamp Plate is designed for ceramic heater core clamping plate. The Grade 2 CP-Ti (Bead Blasted) grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application."
+      "q": "What are the critical dimensional tolerances for Titanium Ceramic Heater Clamp Plate?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium ceramic heater clamp plate manufactured?",
-      "a": "Titanium Ceramic Heater Clamp Plate is manufactured using Precision CNC turning. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Ceramic Heater Clamp Plate require any post-machining surface treatment?",
+      "a": "Yes. chamber shield components receive Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium ceramic heater clamp plate?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Ceramic Heater Clamp Plate shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium ceramic heater clamp plate?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Heater clamp / Ceramic clamp chamber shield components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "precision-cnc-turning",
     "electropolishing",
     "class-100-cleanroom-cleaning"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "semiconductor"
   ],
-  "seoTitle": "Titanium Ceramic Heater Clamp Plate - Grade 2 CP-Ti (Bead Blasted) - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Ceramic Heater Clamp Plate - Ceramic heater core clamping plate Manufactured from Grade 2 CP-Ti (Bead Blasted). Precision CNC turning, Electropolishing, Class 100 cleanroom cleaning. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Ceramic Heater Clamp Plate - Grade 2 CP-Ti | CNC Chamber Shield | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Ceramic Heater Clamp Plate - Ceramic heater core clamping plate. Manufactured from Grade 2 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-ceramic-heater-clamp-plate.svg",

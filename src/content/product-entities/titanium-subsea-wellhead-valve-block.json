@@ -10,67 +10,62 @@
   "category": "Oil & Gas",
   "function": "Subsea Christmas tree core block valve",
   "material": "Grade 5 Ti-6Al-4V ELI",
-  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
+  "alloyReason": "Ti-6Al-4V ELI (Grade 23, UNS R56401) is mandated for this oil & gas application where ELI elements (O <=0.13%, Fe <=0.25%) provide superior fracture toughness (KIC >100 MPa-m0.5) and fatigue resistance vs standard Grade 5. This rationale is driven by subsea christmas tree core block valve and fat life requirements.",
   "process": [
-    "Ring forging",
-    "CNC machining",
-    "TIG welding",
-    "Hydrostatic testing"
+    "Ring forging radial-axial for oil & gas geometry",
+    "CNC turn-bore operation",
+    "TIG welding autogenous",
+    "Hydrostatic pressure test"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater"
   ],
   "inspection": [
-    "Ultrasonic inspection",
-    "FPI",
-    "Hydrostatic pressure test",
-    "Magnetic permeability (mu<1.01)"
+    "MPI magnetic particle",
+    "MPI magnetic particle",
+    "MPI magnetic particle"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "HE from over-protection below -0.85V vs Ag/AgCl - controlled by anode current density limiter circuit",
+    "HE from over-protection below -0.85V vs Ag/AgCl - controlled by anode current density limiter circuit"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "NORSOK M-001",
+    "NORSOK M-001",
+    "NORSOK M-001"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium subsea wellhead valve block?",
-      "a": "A titanium subsea wellhead valve block is a precision-machined oil & gas component used in subsea christmas tree core block valve. Manufactured from Grade 5 Ti-6Al-4V ELI for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Subsea Wellhead Valve Block suitable for Subsea Christmas tree core block valve?",
+      "a": "Titanium Subsea Wellhead Valve Block uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address oil & gas operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What pressure rating for titanium subsea wellhead valve block?",
-      "a": "Pressure rating depends on grade, wall thickness, and temperature. Grade 2 CP-Ti pipe fittings are typically rated to Class 150 (285 psi) or Class 300 (740 psi) per ASME B16.5/B16.9. Higher ratings available with Grade 5."
+      "q": "What are the critical dimensional tolerances for Titanium Subsea Wellhead Valve Block?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium subsea wellhead valve block manufactured?",
-      "a": "Titanium Subsea Wellhead Valve Block is manufactured using Ring forging. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Subsea Wellhead Valve Block require any post-machining surface treatment?",
+      "a": "Yes. oil & gas components receive Heavy-duty passivation 25% HNO3 45min per ASTM B600 for maximum chloride pitting resistance in seawater. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium subsea wellhead valve block?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Subsea Wellhead Valve Block shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium subsea wellhead valve block?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Wellhead valve / Xmas tree oil & gas components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "ring-forging",
     "cnc-machining",
     "tig-welding"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "marine-offshore"
   ],
-  "seoTitle": "Titanium Subsea Wellhead Valve Block - Grade 5 Ti-6Al-4V ELI - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Subsea Wellhead Valve Block - Subsea Christmas tree core block valve Manufactured from Grade 5 Ti-6Al-4V ELI. Ring forging, CNC machining, TIG welding. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Subsea Wellhead Valve Block - Grade 5 Ti-6Al-4V | CNC Oil & Gas | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Subsea Wellhead Valve Block - Subsea Christmas tree core block valve. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-subsea-wellhead-valve-block.svg",

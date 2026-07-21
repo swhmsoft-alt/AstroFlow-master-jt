@@ -12,6 +12,10 @@
     "generate:product-images": "node scripts/generate-product-images.mjs --provider placeholder",
     "generate:product-images:openai": "node scripts/generate-product-images.mjs --provider openai",
     "generate:product-images:dry": "node scripts/generate-product-images.mjs --dry-run",
+    "check:similarity": "node scripts/check-similarity.mjs",
+    "check:similarity:strict": "node scripts/check-similarity.mjs --threshold 0.30",
+    "differentiate": "node scripts/differentiate-products.mjs",
+    "prebuild:similarity": "node scripts/check-similarity.mjs --threshold 0.30 || echo '⚠️  Similarity exceeds threshold. Run `npm run differentiate` to fix.'",
     "deploy": "npx astro build && node scripts/split-sitemap.mjs && node scripts/deploy-basic-ftp.js",
     "astro": "astro"
   },

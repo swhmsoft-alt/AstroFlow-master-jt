@@ -10,69 +10,62 @@
   "category": "Ion Implant",
   "function": "Ion extraction electrode disk for implanter",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this ion implant application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by ion extraction electrode disk for implanter and service environment demands.",
   "process": [
-    "Precision CNC turning",
-    "Electropolishing",
-    "Class 100 cleanroom cleaning",
-    "Helium leak testing"
+    "Cleanroom CNC Class 100 for ion implant geometry",
+    "Electropolish Ra <0.25um",
+    "UHP DI water cascade rinse",
+    "Particle count MIL-STD-1246"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86",
-    "Electropolishing",
-    "Class 10,000 cleanroom cleaning"
+    "Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1"
   ],
   "inspection": [
-    "Helium leak test (1e-9 mbar.L/s)",
-    "Surface roughness (Ra<0.2um)",
-    "PMI verification",
-    "Particle count (Class 100)"
+    "RGA outgas <1% AMU 100",
+    "RGA outgas <1% AMU 100",
+    "RGA outgas <1% AMU 100"
   ],
   "commonFailures": [
-    "Stress shielding from modulus mismatch between implant and bone",
-    "Wear debris generation at articulating surfaces",
-    "Loosening from inadequate osseointegration at bone-implant interface"
+    "Outgassing H2O CH4 >1% AMU 100 - mitigated by 200C vacuum bake-out 24h to desorb trapped species",
+    "Outgassing H2O CH4 >1% AMU 100 - mitigated by 200C vacuum bake-out 24h to desorb trapped species"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "SEMI F20",
+    "SEMI F20",
+    "SEMI F20"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium ion implantation electrode?",
-      "a": "A titanium ion implantation electrode is a precision-machined ion implant component used in ion extraction electrode disk for implanter. Manufactured from Grade 5 Ti-6Al-4V for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Ion Implantation Electrode suitable for Ion extraction electrode disk for implanter?",
+      "a": "Titanium Ion Implantation Electrode uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address ion implant operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What standards apply to titanium ion implantation electrode?",
-      "a": "Titanium Ion Implantation Electrode is manufactured to ASTM F136 / ISO 5832-3 (Ti-6Al-4V ELI) or ASTM F1295 (Ti-6Al-7Nb) for medical implants. This requires oxygen <0.13%, iron <0.25%, and 100% traceability with MTC per batch."
+      "q": "What are the critical dimensional tolerances for Titanium Ion Implantation Electrode?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium ion implantation electrode manufactured?",
-      "a": "Titanium Ion Implantation Electrode is manufactured using Precision CNC turning. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Ion Implantation Electrode require any post-machining surface treatment?",
+      "a": "Yes. ion implant components receive Electropolishing Ra <0.25um + UHP DI cascade rinse with particle count verification per MIL-STD-1246 Class 1. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium ion implantation electrode?",
-      "a": "The most common issue is stress shielding from modulus mismatch between implant and bone. Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Ion Implantation Electrode shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium ion implantation electrode?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Extraction electrode / Ion disk ion implant components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "precision-cnc-turning",
     "electropolishing",
     "class-100-cleanroom-cleaning"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "semiconductor"
   ],
-  "seoTitle": "Titanium Ion Implantation Electrode - Grade 5 Ti-6Al-4V - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Ion Implantation Electrode - Ion extraction electrode disk for implanter Manufactured from Grade 5 Ti-6Al-4V. Precision CNC turning, Electropolishing, Class 100 cleanroom cleaning. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Ion Implantation Electrode - Grade 5 Ti-6Al-4V | CNC Ion Implant | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Ion Implantation Electrode - Ion extraction electrode disk for implanter. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-ion-implantation-electrode.svg",

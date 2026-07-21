@@ -10,66 +10,62 @@
   "category": "Anode System",
   "function": "Expanded mesh anode basket for electroplating",
   "material": "Grade 2 CP-Ti",
-  "alloyReason": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine components where corrosion resistance is the primary requirement.",
+  "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this anode system application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by expanded mesh anode basket for electroplating and fat life requirements.",
   "process": [
-    "Expanded mesh forming",
-    "TIG welding (ERTi-2)",
-    "Sheet metal bending",
-    "CNC drilling"
+    "CNC machining CP Ti for anode system geometry",
+    "TIG welding Ti filler",
+    "Pickling and passivation",
+    "Continuity test <1 mOhm"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Platinum cladding 2.5um minimum via electrodeposition for stable catalytic surface in electrochemical cells"
   ],
   "inspection": [
-    "Weld color inspection",
-    "Dimensional check",
-    "Electrical continuity test"
+    "Adhesion tape ASTM D3359",
+    "Adhesion tape ASTM D3359",
+    "Adhesion tape ASTM D3359"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Precious metal drag-out >15% on complex racks - minimized by robotic extract 0.5m/min + air knife",
+    "Precious metal drag-out >15% on complex racks - minimized by robotic extract 0.5m/min + air knife"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "ISO 9227 NSS",
+    "ISO 9227 NSS",
+    "ISO 9227 NSS"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium anode basket (expanded mesh)?",
-      "a": "A titanium anode basket (expanded mesh) is a precision-machined anode system component used in expanded mesh anode basket for electroplating. Manufactured from Grade 2 CP-Ti for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Anode Basket (Expanded Mesh) suitable for Expanded mesh anode basket for electroplating?",
+      "a": "Titanium Anode Basket (Expanded Mesh) uses Grade 2 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address anode system operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What is the typical application for titanium anode basket (expanded mesh)?",
-      "a": "Titanium Anode Basket (Expanded Mesh) is designed for expanded mesh anode basket for electroplating. The Grade 2 CP-Ti grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application."
+      "q": "What are the critical dimensional tolerances for Titanium Anode Basket (Expanded Mesh)?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium anode basket (expanded mesh) manufactured?",
-      "a": "Titanium Anode Basket (Expanded Mesh) is manufactured using Expanded mesh forming. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Anode Basket (Expanded Mesh) require any post-machining surface treatment?",
+      "a": "Yes. anode system components receive Platinum cladding 2.5um minimum via electrodeposition for stable catalytic surface in electrochemical cells. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium anode basket (expanded mesh)?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Anode Basket (Expanded Mesh) shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium anode basket (expanded mesh)?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Anode basket / Mesh basket anode system components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "expanded-mesh-forming",
     "tig-welding-(erti-2)",
     "sheet-metal-bending"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "electroplating-surface-finishing"
   ],
-  "seoTitle": "Titanium Anode Basket (Expanded Mesh) - Grade 2 CP-Ti - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Anode Basket (Expanded Mesh) - Expanded mesh anode basket for electroplating Manufactured from Grade 2 CP-Ti. Expanded mesh forming, TIG welding (ERTi-2), Sheet metal bending. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Anode Basket (Expanded Mesh) - Grade 2 CP-Ti | CNC Anode System | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Anode Basket (Expanded Mesh) - Expanded mesh anode basket for electroplating. Manufactured from Grade 2 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-anode-basket-expanded-mesh.svg",

@@ -10,66 +10,62 @@
   "category": "Suspension",
   "function": "M12x1.25 high-tensile suspension pivot hub bolt (Ti-1023)",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this suspension application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by m12x1.25 high-tensile suspension pivot hub bolt (ti-1023) and fat life requirements.",
   "process": [
-    "Cold heading",
-    "Thread rolling (DIN 13-1, 6g)",
-    "Heat treatment (STA)",
-    "Passivation ASTM F86"
+    "CNC turn-mill multi-axis for suspension geometry",
+    "Shot peening Almen",
+    "Black oxide/DLC coating",
+    "CMM SPC dimensional check"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability"
   ],
   "inspection": [
-    "MPI crack test",
-    "Tensile testing",
-    "Dimensional CMM"
+    "MPI magnetic particle",
+    "MPI magnetic particle",
+    "MPI magnetic particle"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Corrosion pitting in road salt exposure - mitigated by DLC 2um 15GPa + hot wax sealant",
+    "Corrosion pitting in road salt exposure - mitigated by DLC 2um 15GPa + hot wax sealant"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "ISO 26262",
+    "ISO 26262",
+    "ISO 26262"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium hub bolt (m12)?",
-      "a": "A titanium hub bolt (m12) is a precision-machined suspension component used in m12x1.25 high-tensile suspension pivot hub bolt (ti-1023). Manufactured from Grade 5 Ti-6Al-4V for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Hub Bolt (M12) suitable for M12x1.25 high-tensile suspension pivot hub bolt (Ti-1023)?",
+      "a": "Titanium Hub Bolt (M12) uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address suspension operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What torque should I use for titanium hub bolt (m12)?",
-      "a": "Recommended installation torque depends on thread size and lubrication. For M5 titanium fasteners: 4-5 Nm (dry), 3-4 Nm (with anti-seize). Always use titanium-compatible anti-seize compound to prevent galling (cold welding) of threads."
+      "q": "What are the critical dimensional tolerances for Titanium Hub Bolt (M12)?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium hub bolt (m12) manufactured?",
-      "a": "Titanium Hub Bolt (M12) is manufactured using Cold heading. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Hub Bolt (M12) require any post-machining surface treatment?",
+      "a": "Yes. suspension components receive DLC coating 2um, 15GPa hardness, 0.1mu friction coefficient applied to wear surfaces for extended durability. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium hub bolt (m12)?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Hub Bolt (M12) shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium hub bolt (m12)?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Hub bolt / Wheel bearing bolt suspension components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "hot-forging",
     "cnc-machining",
     "thread-rolling"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "automotive-motorsports"
   ],
-  "seoTitle": "Titanium Hub Bolt (M12) - Grade 5 Ti-6Al-4V - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Hub Bolt (M12) - M12x1.25 high-tensile suspension pivot hub bolt (Ti-1023) Manufactured from Grade 5 Ti-6Al-4V. Hot forging, CNC machining, Thread rolling. AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Hub Bolt (M12) - Grade 5 Ti-6Al-4V | CNC Suspension | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Hub Bolt (M12) - M12x1.25 high-tensile suspension pivot hub bolt (Ti-1023). Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-hub-bolt-m12.svg",

@@ -10,66 +10,62 @@
   "category": "Nuclear Hardware",
   "function": "Nuclear main condenser seamless cooling tube",
   "material": "Grade 2 CP-Ti",
-  "alloyReason": "Grade 2 Commercially Pure Titanium provides excellent corrosion resistance in chemical environments, good formability and weldability, and moderate strength. It is the standard material for chemical processing equipment, heat exchangers, and marine components where corrosion resistance is the primary requirement.",
+  "alloyReason": "Grade 2 CP-Ti (UNS R50400) is selected for this nuclear hardware application prioritizing formability and corrosion resistance over strength. With 40% elongation and excellent weldability, its natural TiO2 passivation provides immunity to pitting in chlorides up to 260C. This rationale is driven by nuclear main condenser seamless cooling tube and fat life requirements.",
   "process": [
-    "Seamless tube extrusion",
-    "CNC machining",
-    "TIG welding (ERTi-2 filler)"
+    "Closed-die forging net shape for nuclear hardware geometry",
+    "CNC precision machining",
+    "TIG welding all positions",
+    "DPI dye penetrant inspect"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Thermal oxidation 700C 2h in air to grow controlled 300nm TiO2 barrier layer for H2 permeation reduction"
   ],
   "inspection": [
-    "Hydrostatic pressure test",
-    "PMI verification",
-    "Dimensional per ASME B16.9",
-    "MTR (EN 10204 3.1)"
+    "PMI XRF alloy verify",
+    "PMI XRF alloy verify",
+    "PMI XRF alloy verify"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Irradiation embrittlement in flux >1e18 n/cm2 - mitigated by fine equiaxed alpha (ASTM 8+) microstructure",
+    "Irradiation embrittlement in flux >1e18 n/cm2 - mitigated by fine equiaxed alpha (ASTM 8+) microstructure"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348",
-    "ASME"
+    "ASME BPVC III",
+    "ASME BPVC III",
+    "ASME BPVC III"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium main condenser tube?",
-      "a": "A titanium main condenser tube is a precision-machined nuclear hardware component used in nuclear main condenser seamless cooling tube. Manufactured from Grade 2 CP-Ti for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Main Condenser Tube suitable for Nuclear main condenser seamless cooling tube?",
+      "a": "Titanium Main Condenser Tube uses Grade 2 CP-Ti because its yield strength, fatigue endurance, and corrosion resistance directly address nuclear hardware operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What is the typical application for titanium main condenser tube?",
-      "a": "Titanium Main Condenser Tube is designed for nuclear main condenser seamless cooling tube. The Grade 2 CP-Ti grade is selected to provide the optimal balance of strength, fatigue life, and environmental resistance for this specific application."
+      "q": "What are the critical dimensional tolerances for Titanium Main Condenser Tube?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium main condenser tube manufactured?",
-      "a": "Titanium Main Condenser Tube is manufactured using Seamless tube extrusion. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Main Condenser Tube require any post-machining surface treatment?",
+      "a": "Yes. nuclear hardware components receive Thermal oxidation 700C 2h in air to grow controlled 300nm TiO2 barrier layer for H2 permeation reduction. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium main condenser tube?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Main Condenser Tube shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium main condenser tube?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Condenser tube / Steam condenser nuclear hardware components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "seamless-tube-extrusion",
     "cnc-machining",
     "tig-welding-(erti-2-filler)"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "energy"
   ],
-  "seoTitle": "Titanium Main Condenser Tube - Grade 2 CP-Ti - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Main Condenser Tube - Nuclear main condenser seamless cooling tube Manufactured from Grade 2 CP-Ti. Seamless tube extrusion, CNC machining, TIG welding (ERTi-2 filler). AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Main Condenser Tube - Grade 2 CP-Ti | CNC Nuclear Hardware | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Main Condenser Tube - Nuclear main condenser seamless cooling tube. Manufactured from Grade 2 CP-Ti. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-main-condenser-tube.svg",

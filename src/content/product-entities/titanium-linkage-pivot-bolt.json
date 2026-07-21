@@ -10,66 +10,62 @@
   "category": "Suspension Hardware",
   "function": "Suspension linkage pivot bolt set",
   "material": "Grade 5 Ti-6Al-4V",
-  "alloyReason": "Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is 45% better than steel, making it the most widely used titanium alloy in aerospace, medical, and industrial applications.",
+  "alloyReason": "Grade 5 Ti-6Al-4V (Grade 5, UNS R56400) was selected for this suspension hardware application because its 900+ MPa tensile enables thin-wall lightweighting under cyclic loading. The alpha-beta microstructure provides 45% higher specific strength than 4140 steel, critical for weight-sensitive designs. Its 6.7 W/mK thermal conductivity simplifies thermal management. This rationale is driven by suspension linkage pivot bolt set and fat life requirements.",
   "process": [
-    "Cold heading",
-    "Thread rolling (DIN 13-1, 6g)",
-    "Heat treatment (STA)",
-    "Passivation ASTM F86"
+    "CNC turning Swiss-type for suspension hardware geometry",
+    "Thread rolling DIN 13-1 6g",
+    "Vibratory deburring",
+    "Go/No-Go ring gauging"
   ],
   "surfaceTreatment": [
-    "Passivation ASTM F86"
+    "Bead blasting 120 grit Al2O3 for matte finish Ra 1.6-3.2um followed by passive oxide stabilization in DI water"
   ],
   "inspection": [
-    "MPI crack detection",
-    "6g Go/No-Go ring gauge",
-    "Salt spray ASTM B117",
-    "Torque-to-tension verification"
+    "Fatigue ISO 4210 cycling",
+    "Fatigue ISO 4210 cycling",
+    "Fatigue ISO 4210 cycling"
   ],
   "commonFailures": [
-    "Surface contamination from iron pickup during machining requiring acid passivation (ASTM F86)",
-    "Thread damage from improper installation torque exceeding recommended values",
-    "Galvanic corrosion at interface with dissimilar metals in electrolyte environments"
+    "Fatigue failure at head tube junction - mitigated by smooth weld radius >=5mm + post-weld shot peening",
+    "Fatigue failure at head tube junction - mitigated by smooth weld radius >=5mm + post-weld shot peening"
   ],
-  "designConsiderations": [],
   "standards": [
-    "ASTM B348"
+    "ISO 965-2",
+    "ISO 965-2",
+    "ISO 965-2"
   ],
-  "typicalRfqRequirements": [],
   "faq": [
     {
-      "q": "What is a titanium linkage pivot bolt?",
-      "a": "A titanium linkage pivot bolt is a precision-machined suspension hardware component used in suspension linkage pivot bolt set. Manufactured from Grade 5 Ti-6Al-4V for optimal strength, corrosion resistance, and weight savings."
+      "q": "What specific material properties make Titanium Linkage Pivot Bolt suitable for Suspension linkage pivot bolt set?",
+      "a": "Titanium Linkage Pivot Bolt uses Grade 5 Ti-6Al-4V because its yield strength, fatigue endurance, and corrosion resistance directly address suspension hardware operational demands. The alloy's specific strength enables mass reduction without section compromise, while the TiO2 passivation ensures long-term environmental resistance."
     },
     {
-      "q": "What torque should I use for titanium linkage pivot bolt?",
-      "a": "Recommended installation torque depends on thread size and lubrication. For M5 titanium fasteners: 4-5 Nm (dry), 3-4 Nm (with anti-seize). Always use titanium-compatible anti-seize compound to prevent galling (cold welding) of threads."
+      "q": "What are the critical dimensional tolerances for Titanium Linkage Pivot Bolt?",
+      "a": "Standard machining tolerance is +/-0.05mm (ISO 2768-m). Functional mating surfaces are held to +/-0.025mm with Ra 0.8um finish. Threaded features conform to ISO 965-2 Class 6g, verified with calibrated Go/No-Go ring gauges on 100% of production."
     },
     {
-      "q": "How is titanium linkage pivot bolt manufactured?",
-      "a": "Titanium Linkage Pivot Bolt is manufactured using Cold heading. Critical process controls include tool path optimization, coolant temperature management, and dimensional verification at each operation."
+      "q": "Does Titanium Linkage Pivot Bolt require any post-machining surface treatment?",
+      "a": "Yes. suspension hardware components receive Bead blasting 120 grit Al2O3 for matte finish Ra 1.6-3.2um followed by passive oxide stabilization in DI water. This restores the natural TiO2 passive layer removed during machining and provides the required surface properties for the service environment."
     },
     {
-      "q": "What is the most common issue with titanium linkage pivot bolt?",
-      "a": "The most common issue is surface contamination from iron pickup during machining requiring acid passivation (astm f86). Mitigation includes proper process control, material certification, and adherence to recommended installation procedures and torque values."
+      "q": "What quality documentation is included with Titanium Linkage Pivot Bolt shipments?",
+      "a": "Each shipment includes: (1) EN 10204 Type 3.1 MTR with full chemical analysis and mechanical properties; (2) Certificate of Conformance; (3) Dimensional inspection report with actual vs nominal measurements; (4) Surface roughness certification on critical features. FAIR available on request."
     },
     {
-      "q": "What is the lead time for titanium linkage pivot bolt?",
-      "a": "Standard lead time: 2-4 weeks depending on quantity and complexity. Rush orders available. Contact our team with your drawing and quantity for an accurate delivery quote."
+      "q": "What is the MOQ and typical lead time for Linkage bolt / Pivot screw suspension hardware components?",
+      "a": "Standard MOQ: 1 unit for prototype evaluation. Production lead time: 15-25 business days depending on quantity. Rush orders (3-5 days) available. Contact our supply chain team for volume-based tiered pricing."
     }
   ],
-  "relatedProducts": [],
   "relatedCapabilities": [
     "hot-forging",
     "cnc-turning",
     "thread-rolling-(din-13-1-iso-965-2,-6g)"
   ],
-  "relatedMaterials": [],
   "relatedIndustries": [
     "cycling---bicycle"
   ],
-  "seoTitle": "Titanium Linkage Pivot Bolt - Grade 5 Ti-6Al-4V - Precision CNC Titanium Component",
-  "seoDescription": "Titanium Linkage Pivot Bolt - Suspension linkage pivot bolt set Manufactured from Grade 5 Ti-6Al-4V. Precision CNC machined with Hot forging, CNC turning, Thread rolling (DIN 13-1 / ISO 965-2, 6g). AS9100D & ISO 9001 certified.",
+  "seoTitle": "Titanium Linkage Pivot Bolt - Grade 5 Ti-6Al-4V | CNC Suspension Hardware | BOZE",
+  "seoDescription": "Precision CNC machined Titanium Linkage Pivot Bolt - Suspension linkage pivot bolt set. Manufactured from Grade 5 Ti-6Al-4V. ISO 9001:2015 certified. DFM analysis, FAIR reports, full material traceability.",
   "order": 0,
   "pubDate": "2026-07-18",
   "image": "/images/products/titanium-linkage-pivot-bolt.svg",
