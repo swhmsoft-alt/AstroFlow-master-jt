@@ -16,11 +16,11 @@ hardness: "HRC 36"
 modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "CNC milling, Diamond-cut beveling, PVD coating (ISO 27874, Delta-E <=1.0), Oleophobic AFP nano-coating"
-weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
+standards: ["ASTM B348","ISO 9001"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
+surface_finish: "Bead blasted matte Ra 1.6-3.2um + passivation"
+manufacturing_process: "CNC turning, heat treatment, surface grinding, passivation, dimensional check"
+weight_reduction: "40% mass reduction vs standard steel components with same load rating"
 function: "Custom 3D-printed ergonomic mouse top shell (SLM)"
 aliases: ["Mouse shell","Gaming mouse","Ergonomic mouse body"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Consumer Device Enclosure Assembly","Internal Structural Skeleton"]
-downstream: ["Stainless Steel Spring Contacts","Micro Pogo Pin Connectors","UV-Cured Adhesive Assembly"]
+upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
+downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -39,7 +39,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-CE-INP-PRINTE
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
-- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of surface durability targets for this specific application. Its strength-to-weight ratio is...
 
 ---
 

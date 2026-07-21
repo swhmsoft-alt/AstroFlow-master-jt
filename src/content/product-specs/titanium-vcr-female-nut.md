@@ -17,13 +17,13 @@ modulus: "105 GPa"
 thermal_conductivity: "16.4 W/m·K"
 max_service_temp: "315°C (continuous)"
 outgassing_rate: "<1.0e-11 Torr·L/s·cm²"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "SEMI F1", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
+standards: ["ISO 2768-m","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","AS9100D"]
+surface_finish: "Electropolishing Ra <0.4um + passivation"
 surface_roughness: "Ra ≤ 0.2 µm (electropolished sealing surface)"
 ndt_methods: "Helium Mass Spectrometry Leak Detection per ASTM E493 (<1e-9 mbar·L/s); Particle Count Verification per SEMI E98 (Class 100); Surface Profilometry per ISO 4287 (Ra verification); Positive Material Identification (PMI) via XRF per ASTM E1476; Dimensional verification via CMM per ISO 10360"
-manufacturing_process: "Cold heading, Thread rolling (DIN 13-1, 6g), Heat treatment (STA), Passivation ASTM F86"
-weight_reduction: "~42% lighter than 316L Stainless Steel (8.0 g/cm³)"
+manufacturing_process: "CNC milling, secondary deburring, bead blast finish, final CMM inspection"
+weight_reduction: "Up to 55% weight savings compared to stainless steel alternatives"
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "VCR female nut coupling for UHV gas lines"
 aliases: ["VCR nut","Female coupling","UHV nut"]
@@ -32,8 +32,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["UHV Gas Delivery System","Process Gas Cabinet & Manifold Assembly"]
-downstream: ["OFHC Copper Gasket Seals (VCR/Conflat)","Ultra-High Purity (UHP) Ar/N₂ Supply Lines","Parker/Valex VCR Wrenches & Torque Tooling"]
+upstream: ["Device Enclosure Subassembly","Internal Frame Structure"]
+downstream: ["Assembly Hardware Pack","Alignment Dowel Set","Locking Mechanism"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

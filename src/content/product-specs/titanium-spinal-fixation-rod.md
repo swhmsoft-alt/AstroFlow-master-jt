@@ -17,10 +17,10 @@ modulus: "100 GPa"
 thermal_conductivity: "7.8 W/m·K"
 max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "VAR melting, Closed-die hot forging, CNC swiss turning, Thread rolling, Passivation (ASTM F86)"
-weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","ISO 9001:2015"]
+surface_finish: "Passivation ASTM F86 (20-30% HNO3, 30min @50C)"
+manufacturing_process: "CNC precision machining, vacuum stress relief, thread rolling, surface passivation"
+weight_reduction: "35-45% lighter than steel equivalents at equivalent section modulus"
 function: "Spinal fixation connection rod (Grade 9 / Beta-Ti)"
 aliases: ["Spinal rod","Fixation rod","Connector rod"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Medical Device Assembly","Surgical Navigation System"]
-downstream: ["Sterilization Tray & Wrap","Silicone Surgical Mats","ISO 13485 Packaging"]
+upstream: ["Primary Assembly Integration","Subsystem Mounting Interface"]
+downstream: ["Fastener Kit A","Sealing Gasket","Protective Cover"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

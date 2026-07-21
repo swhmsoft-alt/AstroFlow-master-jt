@@ -16,13 +16,13 @@ hardness: "HRC 36"
 modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015"]
-surface_finish: "Passivation ASTM F86"
+standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
+surface_finish: "Tumble finished Ra 0.8um + passivation"
 surface_roughness: "Ra ≤ 0.8 µm"
 ndt_methods: "Ultrasonic Testing (UT) per ASTM A388; Liquid Penetrant Inspection (LPI) per ASTM E1417; Dimensional verification via CMM"
-manufacturing_process: "CNC machining of tooth profile, Thread rolling, Swiss-type turning"
-weight_reduction: "~45% vs steel (7.85 g/cm³)"
+manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, optical gauging"
+weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 function: "Lightweight cassette sprocket cog"
 aliases: ["Cassette sprocket","Rear cog","Gear"]
 pubDate: "2026-07-18"
@@ -30,8 +30,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Bicycle Drivetrain Assembly","Crankset & Bottom Bracket System"]
-downstream: ["11/12-Speed Chain","Derailleur Pulley Bearings","Threadlocker Compound (Loctite 242)"]
+upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
+downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -41,7 +41,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-CYC-DRIV-TITANI
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015
-- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of wear resistance criteria for this specific application. Its strength-to-weight ratio is...
 
 ---
 

@@ -16,11 +16,11 @@ hardness: "HRC 32"
 modulus: "100 GPa"
 thermal_conductivity: "7.8 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "Closed-die forging, 5-axis CNC machining, Heat treatment (STA), Shot peening"
-weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
+standards: ["ISO 2768-m","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","AS9100D"]
+surface_finish: "Electropolishing Ra <0.4um + passivation"
+manufacturing_process: "CNC milling, secondary deburring, bead blast finish, final CMM inspection"
+weight_reduction: "Up to 55% weight savings compared to stainless steel alternatives"
 function: "ECS ducting for cabin pressurization"
 aliases: ["ECS duct","A/C duct","Cabin air duct"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Aerospace Vehicle Assembly","Structural Airframe"]
-downstream: ["Aerospace Fasteners NAS6704","MIL-PRF-7808 Lubricating Oil","Encapsulated Seals AMS7276"]
+upstream: ["Device Enclosure Subassembly","Internal Frame Structure"]
+downstream: ["Assembly Hardware Pack","Alignment Dowel Set","Locking Mechanism"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

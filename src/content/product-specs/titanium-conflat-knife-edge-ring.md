@@ -17,13 +17,13 @@ modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
 outgassing_rate: "1.1e-10 Torr·L/s·cm²"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "SEMI F1", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
+standards: ["ISO 2768-m","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","AS9100D"]
+surface_finish: "Electropolishing Ra <0.4um + passivation"
 surface_roughness: "Ra ≤ 0.2 µm (electropolished sealing surface)"
 ndt_methods: "Helium Mass Spectrometry Leak Detection per ASTM E493 (<1e-9 mbar·L/s); Particle Count Verification per SEMI E98 (Class 100); Surface Profilometry per ISO 4287 (Ra verification); Positive Material Identification (PMI) via XRF per ASTM E1476; Dimensional verification via CMM per ISO 10360"
-manufacturing_process: "Precision CNC turning, Electropolishing, Class 100 cleanroom cleaning, Helium leak testing"
-weight_reduction: "~45% lighter than 316L stainless steel vacuum fittings"
+manufacturing_process: "CNC milling, secondary deburring, bead blast finish, final CMM inspection"
+weight_reduction: "Up to 55% weight savings compared to stainless steel alternatives"
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "Conflat flange knife-edge sealing ring"
 aliases: ["CF ring","Knife edge","Conflat seal"]
@@ -32,8 +32,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Semiconductor Vacuum Process Chamber","Turbomolecular Pump Isolation System"]
-downstream: ["Viton/FKM O-Ring Seals (KF/ISO)","OFC Copper Gaskets (Conflat CF)","Anti-Seize Compound (UHV-Compatible","MoS₂-Free)"]
+upstream: ["Device Enclosure Subassembly","Internal Frame Structure"]
+downstream: ["Assembly Hardware Pack","Alignment Dowel Set","Locking Mechanism"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -43,7 +43,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-SEM-CHA-KNIFEE
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / SEMI F1 / ISO 9001:2015 / AS9100D
-- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of cyclic load envelope for this specific application. Its strength-to-weight ratio is...
 
 ---
 

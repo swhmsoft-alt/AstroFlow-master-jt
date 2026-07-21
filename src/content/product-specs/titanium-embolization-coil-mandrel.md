@@ -16,11 +16,11 @@ hardness: "HRC 36"
 modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "Laser micro-cutting, Shape-setting heat treatment, Electropolishing"
-weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
+standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
+surface_finish: "Tumble finished Ra 0.8um + passivation"
+manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, optical gauging"
+weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 function: "Embolization coil delivery mandrel (Nitinol)"
 aliases: ["Coil pusher","Embolization wire","Detachment wire"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Medical Device Assembly","Surgical Navigation System"]
-downstream: ["Sterilization Tray & Wrap","Silicone Surgical Mats","ISO 13485 Packaging"]
+upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
+downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

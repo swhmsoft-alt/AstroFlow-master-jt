@@ -17,13 +17,13 @@ modulus: "105 GPa"
 thermal_conductivity: "16.4 W/m·K"
 max_service_temp: "315°C (continuous)"
 outgassing_rate: "<5.0e-11 Torr·L/s·cm²"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "SEMI F1", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
+standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
+surface_finish: "Tumble finished Ra 0.8um + passivation"
 surface_roughness: "Ra ≤ 0.8 µm (plasma face bead blasted) / Ra ≤ 0.4 µm (mounting interface)"
 ndt_methods: "Helium Mass Spectrometry Leak Detection per ASTM E493 (<1e-9 mbar·L/s); Particle Count Verification per SEMI E98 (Class 100); Surface Profilometry per ISO 4287 (Ra verification); Positive Material Identification (PMI) via XRF per ASTM E1476; Dimensional verification via CMM per ISO 10360"
-manufacturing_process: "Precision CNC turning, Electropolishing, Class 100 cleanroom cleaning, Helium leak testing"
-weight_reduction: "~42% lighter than 316L Stainless Steel (8.0 g/cm³)"
+manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, optical gauging"
+weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "Ceramic heater core clamping plate"
 aliases: ["Heater clamp","Ceramic clamp","Pedestal plate"]
@@ -32,8 +32,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Plasma Etch/Deposition Chamber Assembly","RF Generator & Matching Network"]
-downstream: ["Quartz Window & Viewport Assemblies","Ceramic Clamp Rings & Focus Rings","Argon Purge Gas Supply Lines"]
+upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
+downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

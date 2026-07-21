@@ -16,13 +16,13 @@ hardness: "HRC 36"
 modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015"]
-surface_finish: "Passivation ASTM F86"
+standards: ["ASTM B348","ISO 9001"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
+surface_finish: "Bead blasted matte Ra 1.6-3.2um + passivation"
 surface_roughness: "Ra ≤ 0.8 µm"
 ndt_methods: "Magnetic Particle Inspection (MPI) per ASTM E1444; Dimensional verification via CMM per ISO 10360"
-manufacturing_process: "Hot forging, CNC turning, Thread rolling (DIN 13-1 / ISO 965-2, 6g)"
-weight_reduction: "~45% vs steel (7.85 g/cm³)"
+manufacturing_process: "CNC turning, heat treatment, surface grinding, passivation, dimensional check"
+weight_reduction: "40% mass reduction vs standard steel components with same load rating"
 function: "Shift lever handlebar clamp band"
 aliases: ["Clamp band","Shifter clamp","Lever mount band"]
 pubDate: "2026-07-18"
@@ -30,8 +30,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Bicycle Handlebar & Stem Assembly","Steering Column / Fork Assembly"]
-downstream: ["Carbon Fiber Handlebar","Aluminum/Steel Stem","Torx T25 Driver Bit"]
+upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
+downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -41,7 +41,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-CYC-SHIF-LEVERC
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015
-- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of surface durability targets for this specific application. Its strength-to-weight ratio is...
 
 ---
 

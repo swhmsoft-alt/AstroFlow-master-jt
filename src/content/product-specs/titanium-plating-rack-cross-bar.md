@@ -16,11 +16,11 @@ hardness: "HRB 80"
 modulus: "105 GPa"
 thermal_conductivity: "16.4 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "Expanded mesh forming, TIG welding (ERTi-2), Sheet metal bending, CNC drilling"
-weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
+standards: ["MIL-STD-810H","ASTM B117"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m"]
+surface_finish: "PVD TiAlN coating (2-3um, HV2500)"
+manufacturing_process: "5-axis CNC contouring, electropolishing, ultrasonic clean, vision inspection"
+weight_reduction: "Weight optimized through topology analysis - 30% lighter than baseline"
 function: "Cross-bar support bracket for plating rack frame"
 aliases: ["Cross bar","Support bracket","Rack frame"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["PCB Plating Line","Electrolytic Cell System"]
-downstream: ["Phosphor Bronze Contacts","PTFE Heater Sheaths","Polypropylene Filter Cartridges"]
+upstream: ["Platform Interface Plate","System Integration Frame"]
+downstream: ["Retention Clip Assembly","Compression Spring Set","Installation Tool"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

@@ -16,11 +16,11 @@ hardness: "HRB 80"
 modulus: "105 GPa"
 thermal_conductivity: "16.4 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "Seamless tube extrusion, CNC machining, TIG welding (ERTi-2 filler)"
-weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
+standards: ["ISO 2768-m","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","AS9100D"]
+surface_finish: "Electropolishing Ra <0.4um + passivation"
+manufacturing_process: "CNC milling, secondary deburring, bead blast finish, final CMM inspection"
+weight_reduction: "Up to 55% weight savings compared to stainless steel alternatives"
 function: "Emergency core cooling system valve stem"
 aliases: ["ECCS stem","Safety valve","Core cooling valve"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Power Turbine Assembly","Thermal Management System"]
-downstream: ["Inconel 718 Blades","Steam Seal Carbon Rings","Wear Sleeves (Thermal Spray)"]
+upstream: ["Device Enclosure Subassembly","Internal Frame Structure"]
+downstream: ["Assembly Hardware Pack","Alignment Dowel Set","Locking Mechanism"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

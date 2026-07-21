@@ -16,11 +16,11 @@ hardness: "HRB 80"
 modulus: "105 GPa"
 thermal_conductivity: "16.4 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Pickling (HF+HNO3); Passivation ASTM F86"
-manufacturing_process: "Seamless tube extrusion, CNC machining, TIG welding (ERTi-2 filler), Hydrostatic testing"
-weight_reduction: "42% weight reduction vs 316L Stainless Steel (8.0 g/cm³)"
+standards: ["ASTM B348","ISO 9001"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
+surface_finish: "Bead blasted matte Ra 1.6-3.2um + passivation"
+manufacturing_process: "CNC turning, heat treatment, surface grinding, passivation, dimensional check"
+weight_reduction: "40% mass reduction vs standard steel components with same load rating"
 function: "Slip-on flange for low-pressure chemical ducting"
 aliases: ["Slip-on flange","SO flange","Lap joint flange"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Chemical Process Skid","Acid/Caustic Transfer System"]
-downstream: ["PP/PVDF Pipe Supports","PTFE Tape Sealant","304SS Corrosion Tags"]
+upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
+downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 

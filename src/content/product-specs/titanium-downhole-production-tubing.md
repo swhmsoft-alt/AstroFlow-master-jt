@@ -16,11 +16,11 @@ hardness: "HRC 36"
 modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "Ring forging, CNC machining, TIG welding, Hydrostatic testing"
-weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
+standards: ["ISO 2768-m","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","AS9100D"]
+surface_finish: "Electropolishing Ra <0.4um + passivation"
+manufacturing_process: "CNC milling, secondary deburring, bead blast finish, final CMM inspection"
+weight_reduction: "Up to 55% weight savings compared to stainless steel alternatives"
 function: "Downhole production tubing liner joint (Grade 28)"
 aliases: ["Tubing joint","Production tube","Liner"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Marine Platform Assembly","Subsea Production System"]
-downstream: ["FKM O-Ring Seals","CuNi Hydraulic Lines","ROV Hot-Stab Tooling"]
+upstream: ["Device Enclosure Subassembly","Internal Frame Structure"]
+downstream: ["Assembly Hardware Pack","Alignment Dowel Set","Locking Mechanism"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -39,7 +39,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-MRN-OIL-DOWNHO
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
-- **Material:** Grade 5 Ti-6Al-4V ELI (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V ELI (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of cyclic load envelope for this specific application. Its strength-to-weight ratio is...
 
 ---
 

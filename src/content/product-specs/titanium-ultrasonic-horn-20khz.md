@@ -16,11 +16,11 @@ hardness: "HRC 36"
 modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
-standards: ["ASTM B348","ASME"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015", "AS9100D"]
-surface_finish: "Passivation ASTM F86"
-manufacturing_process: "Triaxial forging, CNC turning, Digital frequency tuning (+-50Hz), Dynamic balancing"
-weight_reduction: "45% weight reduction vs steel (7.85 g/cm³)"
+standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
+compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
+surface_finish: "Tumble finished Ra 0.8um + passivation"
+manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, optical gauging"
+weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 function: "20kHz cylindrical ultrasonic welding horn (sonotrode)"
 aliases: ["Sonotrode","Welding horn","20kHz horn"]
 pubDate: "2026-07-18"
@@ -28,8 +28,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Motorsport Vehicle Assembly","Performance Drivetrain"]
-downstream: ["ARP Chromoly Fasteners","Molykote M77 Assembly Lube","Safety Wire MS20995"]
+upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
+downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -39,7 +39,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-AUTO-ULT-ULTRAS
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015 / AS9100D
-- **Material:** Grade 5 Ti-6Al-4V (Triaxially Forged) (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V (Triaxially Forged) (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of wear resistance criteria for this specific application. Its strength-to-weight ratio is...
 
 ---
 

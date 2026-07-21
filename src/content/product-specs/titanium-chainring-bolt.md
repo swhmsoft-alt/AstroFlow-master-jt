@@ -17,12 +17,12 @@ modulus: "114 GPa"
 thermal_conductivity: "6.7 W/m·K"
 max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348"]
-compliance: ["EN 10204 3.1", "REACH", "RoHS 3", "ISO 2768-m", "ISO 9001:2015"]
-surface_finish: "Passivation ASTM F86"
+compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","ISO 9001:2015"]
+surface_finish: "Passivation ASTM F86 (20-30% HNO3, 30min @50C)"
 surface_roughness: "Ra ≤ 0.8 µm"
 ndt_methods: "Ultrasonic Testing (UT) per ASTM A388; Liquid Penetrant Inspection (LPI) per ASTM E1417; Dimensional verification via CMM"
-manufacturing_process: "Cold heading, Thread rolling (DIN 13-1, 6g), Heat treatment (STA), Passivation ASTM F86"
-weight_reduction: "~45% vs steel (7.85 g/cm³)"
+manufacturing_process: "CNC precision machining, vacuum stress relief, thread rolling, surface passivation"
+weight_reduction: "35-45% lighter than steel equivalents at equivalent section modulus"
 function: "Chainring fixing bolt set (M6)"
 aliases: ["Chainring bolt","Crank bolt","Bolt set"]
 pubDate: "2026-07-18"
@@ -30,8 +30,8 @@ moq: 1
 sampleLeadTime: "3-5 Business Days"
 bulkLeadTime: "15-25 Business Days (Batch Dependent)"
 incoterms: "EXW / FOB Shenzhen"
-upstream: ["Bicycle Drivetrain Assembly","Crankset & Bottom Bracket System"]
-downstream: ["11/12-Speed Chain","Derailleur Pulley Bearings","Threadlocker Compound (Loctite 242)"]
+upstream: ["Primary Assembly Integration","Subsystem Mounting Interface"]
+downstream: ["Fastener Kit A","Sealing Gasket","Protective Cover"]
 supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 ---
 
@@ -41,7 +41,7 @@ supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
 - **SKU/Part Number Series:** TI-CYC-DRIV-TITANI
 - **Supply Availability:** In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)
 - **Key Certifications:** EN 10204 3.1 MTC Available / REACH & RoHS 3 Compliant / ISO 9001:2015
-- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of high strength (yield >830 MPa), excellent fatigue resistance, and corrosion resistance for precision-machined components. Its strength-to-weight ratio is...
+- **Material:** Grade 5 Ti-6Al-4V (UNS R56400 / W.Nr. 3.7165) — Ti-6Al-4V (Grade 5) offers the best balance of working stress requirements for this specific application. Its strength-to-weight ratio is...
 
 ---
 
