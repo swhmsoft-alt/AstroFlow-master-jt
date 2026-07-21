@@ -262,7 +262,7 @@ const productSpecsCollection = defineCollection({
     system: z.string().optional(),
     industry: z.string(),
     titanium_grade: z.string(),
-    titanium_type: z.string(),
+    titanium_type: z.string().optional(),
     uns_number: z.string().optional(),
     werkstoff_number: z.string().optional(),
     density: z.string().optional(),

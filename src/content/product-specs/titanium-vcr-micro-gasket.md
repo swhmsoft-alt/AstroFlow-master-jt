@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium VCR Micro-Gasket"
 sku: "TI-SEM-GAS-VCRMIC"
 category: "Gas Delivery"
 system: "UHV Gas Delivery Fittings & Manifolds"
 industry: "Semiconductor"
 titanium_grade: "Grade 2 CP-Ti (UHP Melt)"
-titanium_type: "Commercially Pure Titanium (Ultra-High Purity Melt)"
-uns_number: "UNS R50400"
-werkstoff_number: "W.Nr. 3.7035"
-density: "4.51 g/cm³"
-tensile_strength: "Min. 345 MPa"
-yield_strength: "Min. 275 MPa"
-elongation: "Min. 20%"
-hardness: "HRB 80"
-modulus: "105 GPa"
-thermal_conductivity: "16.4 W/m·K"
-max_service_temp: "315°C (continuous)"
 outgassing_rate: "<1.0e-11 Torr·L/s·cm²"
 standards: ["ASTM B348","ISO 9001"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
@@ -27,14 +16,10 @@ weight_reduction: "40% mass reduction vs standard steel components with same loa
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "Titanium micro-gasket for VCR knife-edge seal"
 aliases: ["VCR gasket","Seal ring","UHV gasket"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
 downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium VCR Micro-Gasket

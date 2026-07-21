@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium High-Load Flange Washer"
 sku: "TI-SEM-CHA-LOADFL"
 category: "Chamber Hardware"
 system: "UHV Sealing Rings & Chamber Compression Hardware"
 industry: "Semiconductor"
 titanium_grade: "Grade 5 Ti-6Al-4V"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56400"
-werkstoff_number: "W.Nr. 3.7165"
-density: "4.43 g/cm³"
-tensile_strength: "Min. 895 MPa"
-yield_strength: "Min. 828 MPa"
-elongation: "Min. 10%"
-hardness: "HRC 36"
-modulus: "114 GPa"
-thermal_conductivity: "6.7 W/m·K"
-max_service_temp: "315°C (continuous)"
 outgassing_rate: "1.1e-10 Torr·L/s·cm²"
 standards: ["ASTM B348","ISO 9001"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
@@ -27,14 +16,10 @@ weight_reduction: "40% mass reduction vs standard steel components with same loa
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "High-load washer for vacuum flange bolting"
 aliases: ["Flange washer","Vacuum washer","Load washer"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
 downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium High-Load Flange Washer

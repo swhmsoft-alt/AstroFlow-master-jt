@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Surgical Retractor Blade"
 sku: "TI-MD-SUR-SURGIC"
 category: "Surgical Instruments"
 system: "Surgical Instruments"
 industry: "Medical Device"
 titanium_grade: "Grade 9 Ti-3Al-2.5V"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56320"
-werkstoff_number: "W.Nr. 3.7195"
-density: "4.48 g/cm³"
-tensile_strength: "Min. 620 MPa"
-yield_strength: "Min. 483 MPa"
-elongation: "Min. 15%"
-hardness: "HRC 32"
-modulus: "100 GPa"
-thermal_conductivity: "7.8 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348","ISO 9001"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
 surface_finish: "Bead blasted matte Ra 1.6-3.2um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC turning, heat treatment, surface grinding, passivati
 weight_reduction: "40% mass reduction vs standard steel components with same load rating"
 function: "Lightweight surgical retractor blade"
 aliases: ["Retractor","Wound retractor","Tissue retractor"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
 downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Surgical Retractor Blade

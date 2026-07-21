@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Spinal Fixation Rod"
 sku: "TI-MD-SPI-SPINAL"
 category: "Spine Fixation"
 system: "Trauma & Spine Fixation Hardware"
 industry: "Medical Device"
 titanium_grade: "Grade 9 Ti-3Al-2.5V"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56320"
-werkstoff_number: "W.Nr. 3.7195"
-density: "4.48 g/cm³"
-tensile_strength: "Min. 620 MPa"
-yield_strength: "Min. 483 MPa"
-elongation: "Min. 15%"
-hardness: "HRC 32"
-modulus: "100 GPa"
-thermal_conductivity: "7.8 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","ISO 9001:2015"]
 surface_finish: "Passivation ASTM F86 (20-30% HNO3, 30min @50C)"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC precision machining, vacuum stress relief, thread ro
 weight_reduction: "35-45% lighter than steel equivalents at equivalent section modulus"
 function: "Spinal fixation connection rod (Grade 9 / Beta-Ti)"
 aliases: ["Spinal rod","Fixation rod","Connector rod"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Primary Assembly Integration","Subsystem Mounting Interface"]
 downstream: ["Fastener Kit A","Sealing Gasket","Protective Cover"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Spinal Fixation Rod

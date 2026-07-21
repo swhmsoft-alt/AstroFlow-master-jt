@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Cryogenic Tank Clamp Band"
 sku: "TI-AERO-CRY-TANKCL"
 category: "Cryogenic Hardware"
 system: "Cryogenic Propellant Tank Hardware"
 industry: "Aerospace & Defense"
 titanium_grade: "Ti-5Al-2.5Sn ELI"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56400"
-werkstoff_number: "W.Nr. 3.7165"
-density: "4.43 g/cm³"
-tensile_strength: "Min. 895 MPa"
-yield_strength: "Min. 828 MPa"
-elongation: "Min. 10%"
-hardness: "HRC 36"
-modulus: "114 GPa"
-thermal_conductivity: "6.7 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
 compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
 surface_finish: "Tumble finished Ra 0.8um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, op
 weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 function: "Propellant tank clamp band (Ti-5Al-2.5Sn ELI)"
 aliases: ["Clamp band","Tank band","Collar"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
 downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Cryogenic Tank Clamp Band

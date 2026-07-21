@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Ball Valve Stem"
 sku: "TI-CHEM-VAL-BALLVA"
 category: "Valve Component"
 system: "Chemical Pipe Fittings & Flow Control Components"
 industry: "Chemical Processing"
 titanium_grade: "Grade 2 CP-Ti"
-titanium_type: "Commercially Pure Titanium"
-uns_number: "UNS R50400"
-werkstoff_number: "W.Nr. 3.7035"
-density: "4.51 g/cm³"
-tensile_strength: "Min. 345 MPa"
-yield_strength: "Min. 275 MPa"
-elongation: "Min. 20%"
-hardness: "HRB 80"
-modulus: "105 GPa"
-thermal_conductivity: "16.4 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["MIL-STD-810H","ASTM B117"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m"]
 surface_finish: "PVD TiAlN coating (2-3um, HV2500)"
@@ -23,14 +12,10 @@ manufacturing_process: "5-axis CNC contouring, electropolishing, ultrasonic clea
 weight_reduction: "Weight optimized through topology analysis - 30% lighter than baseline"
 function: "Ball valve stem (Grade 5) for chemical valve"
 aliases: ["Valve stem","Ball stem","Valve shaft"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Platform Interface Plate","System Integration Frame"]
 downstream: ["Retention Clip Assembly","Compression Spring Set","Installation Tool"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Ball Valve Stem

@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Catalyst Basket Mesh Liner"
 sku: "TI-CHEM-REA-BASKET"
 category: "Reactor Hardware"
 system: "Chemical Reactor Internals & Agitators"
 industry: "Chemical Processing"
 titanium_grade: "Grade 12 Ti-0.3Mo-0.8Ni"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56400"
-werkstoff_number: "W.Nr. 3.7165"
-density: "4.43 g/cm³"
-tensile_strength: "Min. 895 MPa"
-yield_strength: "Min. 828 MPa"
-elongation: "Min. 10%"
-hardness: "HRC 36"
-modulus: "114 GPa"
-thermal_conductivity: "6.7 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
 compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
 surface_finish: "Tumble finished Ra 0.8um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, op
 weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 function: "Woven mesh liner for catalyst basket"
 aliases: ["Catalyst basket","Mesh liner","Catalyst screen"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
 downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Catalyst Basket Mesh Liner

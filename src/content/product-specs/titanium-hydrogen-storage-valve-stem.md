@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Hydrogen Storage Valve Stem"
 sku: "TI-EN-HYD-STORAG"
 category: "Hydrogen Hardware"
 system: "Nuclear Power & Hydrogen Energy Infrastructure"
 industry: "Energy"
 titanium_grade: "Grade 2 CP-Ti"
-titanium_type: "Commercially Pure Titanium"
-uns_number: "UNS R50400"
-werkstoff_number: "W.Nr. 3.7035"
-density: "4.51 g/cm³"
-tensile_strength: "Min. 345 MPa"
-yield_strength: "Min. 275 MPa"
-elongation: "Min. 20%"
-hardness: "HRB 80"
-modulus: "105 GPa"
-thermal_conductivity: "16.4 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","ISO 9001:2015"]
 surface_finish: "Passivation ASTM F86 (20-30% HNO3, 30min @50C)"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC precision machining, vacuum stress relief, thread ro
 weight_reduction: "35-45% lighter than steel equivalents at equivalent section modulus"
 function: "High-pressure hydrogen valve stem (Grade 23 ELI)"
 aliases: ["H2 valve stem","Hydrogen valve","Storage valve"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Primary Assembly Integration","Subsystem Mounting Interface"]
 downstream: ["Fastener Kit A","Sealing Gasket","Protective Cover"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Hydrogen Storage Valve Stem

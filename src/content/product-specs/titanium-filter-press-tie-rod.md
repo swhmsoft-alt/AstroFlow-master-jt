@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Filter Press Tie Rod"
 sku: "TI-ENV-FIL-PRESST"
 category: "Filtration"
 system: "Wastewater Treatment & Environmental Engineering Hardware"
 industry: "Environmental Engineering"
 titanium_grade: "Grade 2 CP-Ti"
-titanium_type: "Commercially Pure Titanium"
-uns_number: "UNS R50400"
-werkstoff_number: "W.Nr. 3.7035"
-density: "4.51 g/cm³"
-tensile_strength: "Min. 345 MPa"
-yield_strength: "Min. 275 MPa"
-elongation: "Min. 20%"
-hardness: "HRB 80"
-modulus: "105 GPa"
-thermal_conductivity: "16.4 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348","ISO 9001"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
 surface_finish: "Bead blasted matte Ra 1.6-3.2um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC turning, heat treatment, surface grinding, passivati
 weight_reduction: "40% mass reduction vs standard steel components with same load rating"
 function: "Filter press high-tensile tie rod (Grade 5)"
 aliases: ["Tie rod","Press rod","Hydraulic tie bar"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
 downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Filter Press Tie Rod

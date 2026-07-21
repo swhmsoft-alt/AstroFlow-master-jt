@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Hub Bolt (M12)"
 sku: "TI-AUTO-SUS-HUBBOL"
 category: "Suspension"
 system: "Racing Suspension Rods, Linkages & Hardware"
 industry: "Automotive & Motorsports"
 titanium_grade: "Grade 5 Ti-6Al-4V"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56400"
-werkstoff_number: "W.Nr. 3.7165"
-density: "4.43 g/cm³"
-tensile_strength: "Min. 895 MPa"
-yield_strength: "Min. 828 MPa"
-elongation: "Min. 10%"
-hardness: "HRC 36"
-modulus: "114 GPa"
-thermal_conductivity: "6.7 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ISO 2768-m","MIL-STD-810H"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","AS9100D"]
 surface_finish: "Electropolishing Ra <0.4um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC milling, secondary deburring, bead blast finish, fin
 weight_reduction: "Up to 55% weight savings compared to stainless steel alternatives"
 function: "M12x1.25 high-tensile suspension pivot hub bolt (Ti-1023)"
 aliases: ["Hub bolt","Wheel bearing bolt","Knuckle bolt"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Device Enclosure Subassembly","Internal Frame Structure"]
 downstream: ["Assembly Hardware Pack","Alignment Dowel Set","Locking Mechanism"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Hub Bolt (M12)

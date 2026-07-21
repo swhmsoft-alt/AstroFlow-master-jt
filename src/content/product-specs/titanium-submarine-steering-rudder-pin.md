@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Submarine Steering Rudder Pin"
 sku: "TI-MRN-PRO-STEERI"
 category: "Propulsion"
 system: "Submarine & Naval Propulsion Components"
 industry: "Marine & Offshore"
 titanium_grade: "Grade 5 Ti-6Al-4V"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56400"
-werkstoff_number: "W.Nr. 3.7165"
-density: "4.43 g/cm³"
-tensile_strength: "Min. 895 MPa"
-yield_strength: "Min. 828 MPa"
-elongation: "Min. 10%"
-hardness: "HRC 36"
-modulus: "114 GPa"
-thermal_conductivity: "6.7 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ASTM B348","ISO 9001"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","AS9100D","ISO 9001:2015"]
 surface_finish: "Bead blasted matte Ra 1.6-3.2um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC turning, heat treatment, surface grinding, passivati
 weight_reduction: "40% mass reduction vs standard steel components with same load rating"
 function: "Marine steering rudder actuator pivot pin"
 aliases: ["Rudder pin","Steering pin","Actuator pin"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Mechanical Subsystem A","Structural Carrier Assembly"]
 downstream: ["Mounting Bracket Kit","Threaded Insert Set","Torque Specification Tag"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Submarine Steering Rudder Pin

@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Lens Retaining Ring (Metrology)"
 sku: "TI-SEM-MET-RETAIN"
 category: "Metrology"
 system: "Precision Instrumentation & Optical Metrology Components"
 industry: "Semiconductor"
 titanium_grade: "Grade 5 Ti-6Al-4V ELI"
-titanium_type: "Titanium Alloy"
-uns_number: "UNS R56400"
-werkstoff_number: "W.Nr. 3.7165"
-density: "4.43 g/cm³"
-tensile_strength: "Min. 895 MPa"
-yield_strength: "Min. 828 MPa"
-elongation: "Min. 10%"
-hardness: "HRC 36"
-modulus: "114 GPa"
-thermal_conductivity: "6.7 W/m·K"
-max_service_temp: "315°C (continuous)"
 outgassing_rate: "1.1e-10 Torr·L/s·cm²"
 standards: ["ASTM B348"]
 compliance: ["EN 10204 3.1","REACH","RoHS 3","ISO 2768-m","ISO 9001:2015"]
@@ -27,14 +16,10 @@ weight_reduction: "35-45% lighter than steel equivalents at equivalent section m
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "Optical lens retaining ring for metrology tools"
 aliases: ["Lens ring","Optical ring","Retainer ring"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Primary Assembly Integration","Subsystem Mounting Interface"]
 downstream: ["Fastener Kit A","Sealing Gasket","Protective Cover"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Lens Retaining Ring (Metrology)

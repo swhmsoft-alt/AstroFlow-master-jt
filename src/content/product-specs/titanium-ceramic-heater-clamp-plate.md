@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Ceramic Heater Clamp Plate"
 sku: "TI-SEM-CHA-HEATER"
 category: "Chamber Shield"
 system: "Plasma Chamber Liners, Shields & Thermal Hardware"
 industry: "Semiconductor"
 titanium_grade: "Grade 2 CP-Ti (Bead Blasted)"
-titanium_type: "Commercially Pure Titanium (Bead-Blasted Surface)"
-uns_number: "UNS R50400"
-werkstoff_number: "W.Nr. 3.7035"
-density: "4.51 g/cm³"
-tensile_strength: "Min. 345 MPa"
-yield_strength: "Min. 275 MPa"
-elongation: "Min. 20%"
-hardness: "HRB 80"
-modulus: "105 GPa"
-thermal_conductivity: "16.4 W/m·K"
-max_service_temp: "315°C (continuous)"
 outgassing_rate: "<5.0e-11 Torr·L/s·cm²"
 standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
 compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
@@ -27,14 +16,10 @@ weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivale
 particle_control: "ISO Class 100 (ISO 5) Cleanroom; Double-bagged UHP nylon film"
 function: "Ceramic heater core clamping plate"
 aliases: ["Heater clamp","Ceramic clamp","Pedestal plate"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
 downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Ceramic Heater Clamp Plate

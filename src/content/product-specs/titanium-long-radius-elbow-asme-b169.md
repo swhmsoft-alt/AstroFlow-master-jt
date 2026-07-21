@@ -1,21 +1,10 @@
-﻿---
+---
 title: "Titanium Long Radius Elbow (ASME B16.9)"
 sku: "TI-CHEM-PIP-ELBOWA"
 category: "Pipe Fitting"
 system: "Chemical Pipe Fittings & Flow Control Components"
 industry: "Chemical Processing"
 titanium_grade: "Grade 2 CP-Ti"
-titanium_type: "Commercially Pure Titanium"
-uns_number: "UNS R50400"
-werkstoff_number: "W.Nr. 3.7035"
-density: "4.51 g/cm³"
-tensile_strength: "Min. 345 MPa"
-yield_strength: "Min. 275 MPa"
-elongation: "Min. 20%"
-hardness: "HRB 80"
-modulus: "105 GPa"
-thermal_conductivity: "16.4 W/m·K"
-max_service_temp: "315°C (continuous)"
 standards: ["ISO 2768-m","ASTM B348","MIL-STD-810H"]
 compliance: ["EN 10204 3.1","AS9100D","ISO 9001:2015","REACH","RoHS 3"]
 surface_finish: "Tumble finished Ra 0.8um + passivation"
@@ -23,14 +12,10 @@ manufacturing_process: "CNC swiss turning, diamond-cut beveling, PVD coating, op
 weight_reduction: "Typical 45% weight reduction over AISI 4140 steel at equivalent yield strength"
 function: "90-degree seamless long radius elbow"
 aliases: ["Elbow","90 deg bend","Tube bend"]
-pubDate: "2026-07-18"
 moq: 1
-sampleLeadTime: "3-5 Business Days"
-bulkLeadTime: "15-25 Business Days (Batch Dependent)"
-incoterms: "EXW / FOB Shenzhen"
 upstream: ["Main Housing Assembly","Secondary Structure Carrier"]
 downstream: ["Spacer Washer Kit","Thread Locker Application","Calibration Certificate"]
-supply_availability: "In-Stock / Custom OEM Blueprint Fabrication (MOQ: 1 pc)"
+
 ---
 
 # Titanium Long Radius Elbow (ASME B16.9)
