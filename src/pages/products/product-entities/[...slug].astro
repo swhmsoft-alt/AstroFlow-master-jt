@@ -25,7 +25,8 @@ const allSystems = await getCollection('systems');
 const systemSlug = data.system?.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
 const system = allSystems.find(s => {
   const expected = data.system?.toLowerCase().replace(/ & /g, '-').replace(/[/,()]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-  return s.slug === expected;
+  const sid = s.slug || s.id?.replace('.json', '') || '';
+  return sid === expected;
 });
 
 // Try to find material page
@@ -87,11 +88,17 @@ const materialPageSlug = MATERIAL_SLUG_MAP[matContentSlug] || matContentSlug;
 
 // Load capabilities (linked, not duplicated)
 const allCaps = await getCollection('capabilities');
-const relatedCaps = allCaps.filter(c => c?.slug && data.relatedCapabilities?.some((rc: string) => c.slug.includes(rc.replace(/[^a-z0-9-]/g, ''))));
+const relatedCaps = allCaps.filter(c => {
+  const cid = c?.slug || c?.id?.replace('.json', '') || '';
+  return cid && data.relatedCapabilities?.some((rc: string) => cid.includes(rc.replace(/[^a-z0-9-]/g, '')));
+});
 
 // Related products
 const allProducts = await getCollection('product-entities');
-const relatedProducts = allProducts.filter(p => data.relatedProducts?.includes(p.slug));
+const relatedProducts = allProducts.filter(p => {
+  const pid = p.slug || p.id?.replace('.json', '') || '';
+  return data.relatedProducts?.includes(pid);
+});
 
 // FAQ
 const faqData = data.faq || [];

@@ -25,12 +25,14 @@ const seoTitle = data.seoTitle || `${data.title} Titanium Components | System Ov
 const seoDesc = data.seoDescription || `${data.description} Explore our titanium ${data.title.toLowerCase()} engineering knowledge, design principles, and manufacturing capabilities for ${data.industry}.`;
 
 // Load related product entities if referenced
-const allProducts = (await getCollection('product-entities')).filter(p => 
-  data.productEntities?.includes(p.slug)
-);
-const allCaps = (await getCollection('capabilities')).filter(c =>
-  data.relatedCapabilities?.includes(c.slug)
-);
+const allProducts = (await getCollection('product-entities')).filter(p => {
+  const pid = p.slug || p.id?.replace('.json', '') || '';
+  return data.productEntities?.includes(pid);
+});
+const allCaps = (await getCollection('capabilities')).filter(c => {
+  const cid = c.slug || c.id?.replace('.json', '') || '';
+  return data.relatedCapabilities?.includes(cid);
+});
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
