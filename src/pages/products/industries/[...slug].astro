@@ -19,6 +19,16 @@ const { data } = entry;
 const allSystems = (await getCollection('systems')).filter(s =>
   s.data.industry === data.title
 );
+// Load product entities for this industry, grouped by system
+const allEntities = (await getCollection('product-entities')).filter(e =>
+  e.data.industry === data.title
+);
+const entitiesBySystem: Record<string, typeof allEntities> = {};
+for (const e of allEntities) {
+  const sys = e.data.system || 'General';
+  if (!entitiesBySystem[sys]) entitiesBySystem[sys] = [];
+  entitiesBySystem[sys].push(e);
+}
 const seoTitle = data.seoTitle || `${data.title} Titanium Components | Industry Overview | BOZE CNC Ti`;
 const seoDesc = data.seoDescription || `${data.description} Explore our titanium manufacturing capabilities for the ${data.title} industry.`;
 ---
@@ -59,12 +69,36 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Engineering Systems</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {allSystems.map((s) => (
-            <a href={`/products/systems/${s.slug || s.id?.replace('.json','') || ''}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <h3 class="font-bold" style="color: var(--theme-text);">{s.data.emoji} {s.data.title}</h3>
-              <p class="text-sm mt-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{s.data.description?.slice(0, 120)}</p>
-            </a>
-          ))}
+          {allSystems.map((s) => {
+            const sysEntities = entitiesBySystem[s.data.title] || [];
+            return (
+              <div class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <a href={`/products/systems/${s.slug || s.id?.replace('.json','') || ''}/`} class="block">
+                  <h3 class="font-bold" style="color: var(--theme-text);">{s.data.emoji} {s.data.title}</h3>
+                  <p class="text-sm mt-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{s.data.description?.slice(0, 100)}</p>
+                </a>
+                {sysEntities.length > 0 && (
+                  <div class="mt-3 pt-3 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                    <p class="text-xs mb-2" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                      {sysEntities.length} component{sysEntities.length > 1 ? 's' : ''}
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {sysEntities.slice(0, 5).map((e) => (
+                        <a href={`/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/`} class="text-xs px-2 py-1 rounded transition-all" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);" onmouseover="this.style.background='color-mix(in srgb, var(--theme-primary) 18%, transparent)'" onmouseout="this.style.background='color-mix(in srgb, var(--theme-primary) 8%, transparent)'">
+                          {e.data.title}
+                        </a>
+                      ))}
+                      {sysEntities.length > 5 && (
+                        <a href={`/products/systems/${s.slug || s.id?.replace('.json','') || ''}/`} class="text-xs px-2 py-1 rounded" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                          +{sysEntities.length - 5} more
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -75,4 +109,52 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
       <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">Request Quote for {data.title} Components</a>
     </div>
   </section>
+
+  <!-- Knowledge Graph: Semantic relationships -->
+  <section class="py-12" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-lg font-bold mb-6 text-center" style="color: var(--theme-text);">Knowledge Graph</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div class="block p-4 rounded-xl border text-center" itemscope itemtype="https://schema.org/Product" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);" itemprop="name">{data.title}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Industry</p>
+          <meta itemprop="numberOfItems" content="{allSystems.length}" />
+        </div>
+        <a href="/products/industries/{entry.slug || entry.id?.replace('.json','') || ''}/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);">🗄️ Systems</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allSystems.length} total</p>
+        </a>
+        <a href="/products/product-entities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);">🔩 Components</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allEntities.length} parts</p>
+        </a>
+        <a href="/products/capabilities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);">⚙️ Capabilities</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">See all</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON-LD: Semantic Industry → Systems → Components hierarchy -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${data.title} Titanium Components`,
+    "description": data.description,
+    "about": { "@type": "Thing", "name": `Titanium ${data.title}` },
+    "hasPart": allSystems.map(s => ({
+      "@type": "Product",
+      "name": s.data.title,
+      "description": s.data.description,
+      "category": data.title,
+      "hasVariant": (entitiesBySystem[s.data.title] || []).map(e => ({
+        "@type": "Product",
+        "name": e.data.title,
+        "description": e.data.function,
+        "category": s.data.title,
+        "material": e.data.material
+      }))
+    }))
+  })} />
 </BaseLayout>

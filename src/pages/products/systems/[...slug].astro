@@ -24,15 +24,14 @@ for (const ind of allIndustries) {
 const seoTitle = data.seoTitle || `${data.title} Titanium Components | System Overview | BOZE CNC Ti`;
 const seoDesc = data.seoDescription || `${data.description} Explore our titanium ${data.title.toLowerCase()} engineering knowledge, design principles, and manufacturing capabilities for ${data.industry}.`;
 
-// Load related product entities if referenced
-const allProducts = (await getCollection('product-entities')).filter(p => {
-  const pid = p.slug || p.id?.replace('.json', '') || '';
-  return data.productEntities?.includes(pid);
-});
-const allCaps = (await getCollection('capabilities')).filter(c => {
-  const cid = c.slug || c.id?.replace('.json', '') || '';
-  return data.relatedCapabilities?.includes(cid);
-});
+// Load related product entities by matching their declared system field
+const allProducts = (await getCollection('product-entities')).filter(p =>
+  p.data.system === data.title
+);
+// Load related capabilities by matching their declared title field
+const allCaps = (await getCollection('capabilities')).filter(c =>
+  data.relatedCapabilities?.includes(c.data.title)
+);
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
@@ -164,12 +163,49 @@ const allCaps = (await getCollection('capabilities')).filter(c => {
     </div>
   </section>
 
+  <!-- Knowledge Graph: Semantic relationships -->
+  <section class="py-12" style="background: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-lg font-bold mb-6 text-center" style="color: var(--theme-text);">Knowledge Graph</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <a href={`/products/industries/${industrySlug[data.industry] || ''}/`} class="block p-4 rounded-xl border text-center" itemprop="isPartOf" itemscope itemtype="https://schema.org/Product" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);" itemprop="name">{data.industry}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Industry</p>
+        </a>
+        <div class="block p-4 rounded-xl border text-center" itemscope itemtype="https://schema.org/Product" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);" itemprop="name">{data.emoji} {data.title}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">System</p>
+          <meta itemprop="numberOfItems" content="{allProducts.length}" />
+        </div>
+        <a href="/products/product-entities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <p class="text-sm font-semibold" style="color: var(--theme-text);">🔩 Components</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allProducts.length} parts</p>
+        </a>
+        {allCaps.length > 0 && (
+          <a href="/products/capabilities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <p class="text-sm font-semibold" style="color: var(--theme-text);">⚙️ Capabilities</p>
+            <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allCaps.length} related</p>
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON-LD: Semantic Product → hasVariant (components) + isPartOf (industry) -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Product",
     "name": data.title,
     "description": data.description,
     "category": data.industry,
-    "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" }
+    "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" },
+    "isPartOf": { "@type": "Product", "name": data.industry },
+    "hasVariant": allProducts.map(p => ({
+      "@type": "Product",
+      "name": p.data.title,
+      "description": p.data.function,
+      "material": p.data.material,
+      "category": data.title
+    }))
   })} />
 </BaseLayout>

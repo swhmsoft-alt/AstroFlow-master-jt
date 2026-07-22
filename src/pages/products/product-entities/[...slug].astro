@@ -23,11 +23,7 @@ const seoDesc = data.seoDescription || `${data.title} — ${data.function}. Engi
 // Load related entities (shared knowledge nodes)
 const allSystems = await getCollection('systems');
 const systemSlug = data.system?.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-const system = allSystems.find(s => {
-  const expected = data.system?.toLowerCase().replace(/ & /g, '-').replace(/[/,()]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-  const sid = s.slug || s.id?.replace('.json', '') || '';
-  return sid === expected;
-});
+const system = allSystems.find(s => s.data.title === data.system);
 
 // Try to find material page
 const allMaterials = await getCollection('materials');
@@ -133,7 +129,7 @@ const schemaProduct = {
         "availability": "https://schema.org/InStock",
         "priceValidUntil": "2027-12-31"
       },
-      ...(system ? { "isRelatedTo": { "@type": "Product", "name": system.data.title } } : {})
+      ...(system ? { "isRelatedTo": { "@type": "Product", "name": system.data.title }, "isPartOf": { "@type": "Product", "name": data.industry } } : { "isPartOf": { "@type": "Product", "name": data.industry } })
     },
     {
       "@type": "HowTo",
