@@ -14,6 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, '..');
 const distDir = path.join(root, 'dist');
+const publicDir = path.join(root, 'public');
 
 const RASTER_EXT = new Set(['.jpg', '.jpeg', '.png']);
 const WEBP_QUALITY = 82;
@@ -34,6 +35,30 @@ async function collectFiles(dir, extensions) {
     }
   }
   return results;
+}
+
+/**
+ * Recursively copy a directory (source → dest), optionally overwriting existing files.
+ */
+async function copyDir(src, dest, overwrite = true) {
+  const entries = await fs.readdir(src, { withFileTypes: true });
+  await fs.mkdir(dest, { recursive: true });
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+    if (entry.isDirectory()) {
+      await copyDir(srcPath, destPath, overwrite);
+    } else if (overwrite) {
+      await fs.copyFile(srcPath, destPath);
+    } else {
+      try {
+        await fs.access(destPath);
+        // File exists, skip
+      } catch {
+        await fs.copyFile(srcPath, destPath);
+      }
+    }
+  }
 }
 
 /**
@@ -105,6 +130,19 @@ async function main() {
   console.log('═══════════════════════════════════════════');
   console.log('  Global Post-build Image Optimization');
   console.log('═══════════════════════════════════════════\n');
+
+  // 0. Ensure dist/images exists by syncing from public/ (build may not copy it)
+  const publicImagesDir = path.join(publicDir, 'images');
+  const distImagesDir = path.join(distDir, 'images');
+  try {
+    await fs.access(publicImagesDir);
+    await fs.mkdir(distImagesDir, { recursive: true });
+    // Copy public/images/ → dist/images/ recursively, only if file doesn't exist in dist
+    await copyDir(publicImagesDir, distImagesDir, false);
+    console.log('  Synced public/images/ → dist/images/\n');
+  } catch {
+    // public/images/ doesn't exist, skip
+  }
 
   // 1. Collect all raster images in dist/
   console.log(`Scanning ${distDir} for raster images...\n`);

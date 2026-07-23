@@ -14,7 +14,7 @@ import {
 interface UseCase {
   industry: string;
   iconName: string;
-  image: { src: string; [key: string]: any };
+  image?: string | { src: string; [key: string]: any };
   challenge: string;
   solution: string;
   results: string[];
@@ -102,12 +102,15 @@ export default function UseCaseTabs({ useCases }: Props) {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                 {/* Image Section */}
                 <div className="lg:col-span-5 relative h-64 lg:h-auto overflow-hidden">
+                  {useCase.image && (
                   <img
-                    src={useCase.image.src}
+                    src={typeof useCase.image === 'string' ? useCase.image : useCase.image.src}
                     alt={useCase.industry}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     loading="lazy"
+                    onerror="this.style.display='none'"
                   />
+                  )}
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 80%, transparent), color-mix(in srgb, var(--theme-bg) 40%, transparent))' }}></div>
                   <div className="absolute top-6 left-6">
                     <div className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg"

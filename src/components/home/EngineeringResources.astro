@@ -1,8 +1,5 @@
 ---
 import Img from '@components/ui/Image.astro';
-import techImg from '@assets/photo-1460925895917-afdab827c52f.jpg';
-import gradesImg from '@assets/photo-1550751827-4bd374c3f58b.jpg';
-import caseStudyImg from '@assets/photo-1450101499163-c8848c66ca85.jpg';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -22,21 +19,21 @@ const resources: Resource[] = [
     title: t('home.resources.res0.title'),
     category: t('home.resources.res0.category'),
     description: t('home.resources.res0.desc'),
-    image: techImg,
+    
     href: localizePath('/resources', currentLang)
   },
   {
     title: t('home.resources.res1.title'),
     category: t('home.resources.res1.category'),
     description: t('home.resources.res1.desc'),
-    image: gradesImg,
+    
     href: localizePath('/resources', currentLang)
   },
   {
     title: t('home.resources.res2.title'),
     category: t('home.resources.res2.category'),
     description: t('home.resources.res2.desc'),
-    image: caseStudyImg,
+    
     href: localizePath('/resources', currentLang)
   }
 ];

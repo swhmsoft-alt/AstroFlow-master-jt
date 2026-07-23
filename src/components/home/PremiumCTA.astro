@@ -1,7 +1,6 @@
 ---
 import Img from '@components/ui/Image.astro';
 import Button from '../ui/Button.astro';
-import warehouseBgImg from '@assets/photo-1553413077-190dd305871c.jpg';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 
 const currentLang = getLangFromUrl(Astro.url);
@@ -12,7 +11,7 @@ const t = useTranslations(currentLang);
   <!-- Background Image -->
   <div class="absolute inset-0">
     <Img 
-      src={warehouseBgImg}
+      src={undefined}
       alt={t('home.premiumcta.modern_warehouse_operations')}
       class="w-full h-full object-cover"
       widths={[480,768,1024,1600,2070]}

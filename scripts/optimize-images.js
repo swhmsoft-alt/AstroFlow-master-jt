@@ -1,9 +1,11 @@
 /**
- * Global Pre-build Image Optimization Pipeline
+ * Pre-build Image Optimization Pipeline
  * 
- * Scans the entire project (excluding node_modules, dist, .git) for all raster images,
- * compress in-place and generate WebP derivatives alongside originals.
- * No hardcoded directories — finds images everywhere, automatically.
+ * Scans src/ and public/ for raster images (JPG, PNG) and generates
+ * WebP companions alongside the originals.
+ * 
+ * SAFE: Never modifies or deletes original files.
+ * If the script is interrupted, no data loss occurs.
  */
 import fs from 'fs/promises';
 import path from 'path';
@@ -25,84 +27,62 @@ const WEBP_QUALITY = 82;
 async function scanImages(dir) {
   const results = [];
   const entries = await fs.readdir(dir, { withFileTypes: true });
-  
   for (const entry of entries) {
     if (EXCLUDE_DIRS.has(entry.name)) continue;
-    
     const fullPath = path.join(dir, entry.name);
-    
     if (entry.isDirectory()) {
       results.push(...await scanImages(fullPath));
     } else {
       const ext = path.extname(entry.name).toLowerCase();
-      if (IMAGE_EXT.has(ext)) {
-        results.push(fullPath);
-      }
+      if (IMAGE_EXT.has(ext)) results.push(fullPath);
     }
   }
-  
   return results;
 }
 
 /**
- * Derive a safe WebP file path next to the original.
+ * Generate a WebP file alongside the original. Never touches the original.
+ * If WebP already exists and is newer than the source, skip it.
  */
-function webpPathFor(filePath) {
+async function generateWebP(filePath) {
   const ext = path.extname(filePath);
-  return filePath.slice(0, -ext.length) + '.webp';
-}
-
-/**
- * Compress a raster image in-place and generate a WebP companion.
- */
-async function processImage(filePath) {
-  const statBefore = await fs.stat(filePath);
-  const ext = path.extname(filePath).toLowerCase();
-  const base = path.basename(filePath);
+  const base = path.basename(filePath, ext);
   const dir = path.dirname(filePath);
-  const tmpPath = path.join(dir, `.tmp_${base}`);
-  const webpPath = webpPathFor(filePath);
+  const webpPath = path.join(dir, `${base}.webp`);
 
-  // Step 1: In-place compression (original format, smaller bytes)
-  if (ext === '.jpg' || ext === '.jpeg') {
-    await sharp(filePath)
-      .jpeg({ quality: WEBP_QUALITY, mozjpeg: true })
-      .toFile(tmpPath);
-  } else if (ext === '.png') {
-    await sharp(filePath)
-      .png({ compressionLevel: 9, palette: true, colors: 256 })
-      .toFile(tmpPath);
+  // Skip if WebP already exists and is newer than the source
+  try {
+    const srcStat = await fs.stat(filePath);
+    try {
+      const webpStat = await fs.stat(webpPath);
+      if (webpStat.mtimeMs >= srcStat.mtimeMs) {
+        return { base, skipped: true, originalBytes: srcStat.size, webpBytes: webpStat.size };
+      }
+    } catch {
+      // WebP doesn't exist, proceed
+    }
+  } catch {
+    // Source doesn't exist (shouldn't happen), skip
+    return { base, skipped: true, originalBytes: 0, webpBytes: 0 };
   }
 
-  const compressedStat = await fs.stat(tmpPath);
-  const saving = ((1 - compressedStat.size / statBefore.size) * 100).toFixed(1);
+  const stat = await fs.stat(filePath);
+  const originalBytes = stat.size;
 
-  // Replace original with compressed
-  await fs.unlink(filePath);
-  await fs.rename(tmpPath, filePath);
-
-  // Step 2: Generate WebP alongside (uses the newly compressed source)
   await sharp(filePath)
     .webp({ quality: WEBP_QUALITY, effort: 4 })
     .toFile(webpPath);
 
   const webpStat = await fs.stat(webpPath);
 
-  return {
-    base,
-    originalBytes: statBefore.size,
-    compressedBytes: compressedStat.size,
-    webpBytes: webpStat.size,
-    savingPct: saving,
-  };
+  return { base, skipped: false, originalBytes, webpBytes: webpStat.size };
 }
 
 async function main() {
   console.log('═══════════════════════════════════════════');
-  console.log('  Global Pre-build Image Optimization');
+  console.log('  Pre-build WebP Generation (safe mode)');
+  console.log('  Originals are NEVER modified or deleted');
   console.log('═══════════════════════════════════════════\n');
-
-  console.log(`Scanning ${SCAN_DIRS.join(', ')}/ for images...\n`);
 
   // Collect images from all configured scan directories
   const imageFiles = [];
@@ -117,46 +97,50 @@ async function main() {
       console.log(`  ${scanDir}/: (not found, skipped)`);
     }
   }
-  
+
   if (imageFiles.length === 0) {
-    console.log('No raster images found. Nothing to do.\n');
+    console.log('\nNo raster images found. Nothing to do.\n');
     return;
   }
 
-  console.log(`Found ${imageFiles.length} images\n`);
+  console.log(`\nProcessing ${imageFiles.length} images...\n`);
 
   let totalOriginal = 0;
-  let totalCompressed = 0;
   let totalWebp = 0;
-  let processed = 0;
-  let errors = 0;
+  let generated = 0;
+  let skipped = 0;
 
   for (const fp of imageFiles) {
     try {
-      const result = await processImage(fp);
-      totalOriginal += result.originalBytes;
-      totalCompressed += result.compressedBytes;
-      totalWebp += result.webpBytes;
-      processed++;
-
-      const ext = path.extname(fp).toLowerCase();
-      const rel = path.relative(root, fp);
-      console.log(`  ✓ ${rel}`);
-      console.log(`      ${ext}: ${(result.originalBytes / 1024 / 1024).toFixed(2)}MB → ${(result.compressedBytes / 1024 / 1024).toFixed(2)}MB  (-${result.savingPct}%)`);
-      console.log(`      .webp: ${(result.webpBytes / 1024 / 1024).toFixed(2)}MB  (-${((1 - result.webpBytes / result.originalBytes) * 100).toFixed(1)}%)`);
+      const result = await generateWebP(fp);
+      if (result.skipped) {
+        skipped++;
+        if (result.originalBytes > 0) {
+          // WebP already up-to-date
+          totalOriginal += result.originalBytes;
+          totalWebp += result.webpBytes;
+        }
+      } else {
+        generated++;
+        totalOriginal += result.originalBytes;
+        totalWebp += result.webpBytes;
+        const rel = path.relative(root, fp);
+        const saving = ((1 - result.webpBytes / result.originalBytes) * 100).toFixed(1);
+        console.log(`  \u2713 ${rel}`);
+        console.log(`      .webp: ${(result.webpBytes / 1024 / 1024).toFixed(2)}MB  (-${saving}%)`);
+      }
     } catch (e) {
-      errors++;
-      console.error(`  ✗ ${path.relative(root, fp)}: ${e.message}`);
+      console.error(`  \u2717 ${path.relative(root, fp)}: ${e.message}`);
     }
   }
 
-  console.log(`\n─── Summary ───`);
-  console.log(`  Images processed: ${processed}  (${errors ? errors + ' errors' : '0 errors'})`);
-  console.log(`  Original total:   ${(totalOriginal / 1024 / 1024).toFixed(2)} MB`);
-  console.log(`  Compressed:       ${(totalCompressed / 1024 / 1024).toFixed(2)} MB  (-${((1 - totalCompressed / totalOriginal) * 100).toFixed(1)}%)`);
-  console.log(`  WebP total:       ${(totalWebp / 1024 / 1024).toFixed(2)} MB  (-${((1 - totalWebp / totalOriginal) * 100).toFixed(1)}%)`);
-  console.log('');
-  console.log('Completed.');
+  console.log(`\n─── Summary (safe mode — originals preserved) ───`);
+  console.log(`  Generated: ${generated}  |  Already up-to-date: ${skipped}`);
+  console.log(`  Original total: ${(totalOriginal / 1024 / 1024).toFixed(2)} MB`);
+  if (totalWebp > 0) {
+    console.log(`  WebP total:     ${(totalWebp / 1024 / 1024).toFixed(2)} MB  (-${((1 - totalWebp / totalOriginal) * 100).toFixed(1)}%)`);
+  }
+  console.log('\nCompleted.');
 }
 
 main().catch(err => { console.error(err); process.exit(1); });

@@ -7,25 +7,14 @@ import TestimonialCard from '@components/ui/TestimonialCard.astro';
 import UseCaseTabs from '@components/react/UseCaseTabs';
 import StatsCards from '@components/react/StatsCards';
 
-import ecommerceImg from '@assets/photo-1558618666-fcd25c85cd64.jpg';
-import healthcareImg from '@assets/photo-1518770660439-4636190af475.jpg';
-import automotiveImg from '@assets/photo-1565043589221-1a6fd9ae45c7.jpg';
-import technologyImg from '@assets/photo-1558494949-ef010cbdcc31.jpg';
-import consumerGoodsImg from '@assets/photo-1552664730-d307ca884978.jpg';
-import foodBeverageImg from '@assets/photo-1559839734-2b71ea197ec2.jpg';
 
-import testimonial1Img from '@assets/photo-1494790108377-be9c29b29330.jpg';
-import testimonial2Img from '@assets/photo-1438761681033-6461ffad8d80.jpg';
-import testimonial3Img from '@assets/photo-1507003211169-0a1dd7228f2d.jpg';
 
-import ctaBgImg from '@assets/photo-1542838132-92c53300491e.jpg';
 
 const useCases:any[] = [
   {
     industry: 'E-Commerce & Retail',
     iconName: 'ShoppingCart',
-    image: ecommerceImg,
-    challenge: 'Managing high-volume orders during peak seasons with tight delivery windows and customer expectations for fast, accurate fulfillment.',
+        challenge: 'Managing high-volume orders during peak seasons with tight delivery windows and customer expectations for fast, accurate fulfillment.',
     solution: 'Scalable warehousing with automated order processing, same-day shipping capabilities, and integrated returns management.',
     results: [
       '40% reduction in order processing time',
@@ -37,8 +26,7 @@ const useCases:any[] = [
   {
     industry: 'Healthcare & Pharmaceuticals',
     iconName: 'HeartPulse',
-    image: healthcareImg,
-    challenge: 'Strict regulatory compliance requirements, cold chain integrity, and temperature-sensitive inventory management with zero margin for error.',
+        challenge: 'Strict regulatory compliance requirements, cold chain integrity, and temperature-sensitive inventory management with zero margin for error.',
     solution: 'FDA-registered facilities, temperature-controlled storage, real-time monitoring, and comprehensive chain of custody documentation.',
     results: [
       '100% regulatory compliance',
@@ -50,7 +38,7 @@ const useCases:any[] = [
   {
     industry: 'Automotive & Industrial',
     iconName: 'Car',
-    image: automotiveImg,
+    
     challenge: 'Just-in-time manufacturing requirements, complex supply chains, and need for precise inventory management to prevent production line stoppages.',
     solution: 'VMI programs, sequenced delivery systems, kanban replenishment, and integrated supplier networks for lean manufacturing support.',
     results: [
@@ -63,8 +51,7 @@ const useCases:any[] = [
   {
     industry: 'Technology & Electronics',
     iconName: 'Laptop',
-    image: technologyImg,
-    challenge: 'Secure handling of high-value electronics, efficient reverse Titanium CNC Machining for returns, and rapid product lifecycle management.',
+        challenge: 'Secure handling of high-value electronics, efficient reverse Titanium CNC Machining for returns, and rapid product lifecycle management.',
     solution: 'ESD-protected environments, secure chain of custody, streamlined returns processing, and asset recovery programs.',
     results: [
       'Zero security incidents',
@@ -76,8 +63,7 @@ const useCases:any[] = [
   {
     industry: 'Consumer Goods',
     iconName: 'Package',
-    image: consumerGoodsImg,
-    challenge: 'Managing diverse product portfolios with varying shelf lives, promotional campaigns, and seasonal demand fluctuations.',
+        challenge: 'Managing diverse product portfolios with varying shelf lives, promotional campaigns, and seasonal demand fluctuations.',
     solution: 'Multi-client warehousing, FEFO inventory management, promotional labeling services, and demand-driven distribution.',
     results: [
       '35% improvement in stock turnover',
@@ -89,8 +75,7 @@ const useCases:any[] = [
   {
     industry: 'Food & Beverage',
     iconName: 'UtensilsCrossed',
-    image: foodBeverageImg,
-    challenge: 'Maintaining food safety standards, managing perishables, and ensuring compliance with HACCP and FDA regulations.',
+        challenge: 'Maintaining food safety standards, managing perishables, and ensuring compliance with HACCP and FDA regulations.',
     solution: 'FSMA-compliant facilities, temperature-zoned warehousing, lot tracking, and specialized refrigerated transport.',
     results: [
       '100% food safety compliance',
@@ -106,21 +91,21 @@ const testimonials:any[] = [
     quote: "AstroFlow's automated warehousing solution transformed our e-commerce operations. We reduced order processing time by 40% and achieved 99.5% accuracy. Their same-day shipping capabilities helped us compete with industry giants.",
     name: "Sarah Mitchell",
     role: "VP Operations, TechRetail",
-    image: testimonial1Img,
+    
     ringColor: "ring-blue-200"
   },
   {
     quote: "Their FDA-compliant cold chain Titanium CNC Machining is exceptional. We've maintained 100% regulatory compliance with zero temperature excursions. The real-time monitoring and complete audit trails give us complete confidence.",
     name: "Dr. James Chen",
     role: "Director, PharmaLogistics",
-    image: testimonial2Img,
+    
     ringColor: "ring-teal-200"
   },
   {
     quote: "Just-in-time delivery with 99.8% on-time performance and zero production stoppages. Their strategic distribution centers and predictive inventory management cut our inventory costs by 50%.",
     name: "Robert Johnson",
     role: "Operations Manager, AutoParts Co.",
-    image: testimonial3Img,
+    
     ringColor: "ring-blue-200"
   }
 ];
@@ -212,7 +197,7 @@ const t = useTranslations(lang);
     <!-- Background Image -->
     <div class="absolute inset-0">
       <img 
-        src={ctaBgImg.src}
+        src={undefined}
         alt={t('use-cases.astro.useCases.modern_warehouse_operations_2')}
         class="w-full h-full object-cover"
       />

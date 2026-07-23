@@ -5,30 +5,27 @@ import TestimonialCard from '../ui/TestimonialCard.astro';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
-import testimonial1Img from '@assets/photo-1494790108377-be9c29b29330.jpg';
-import testimonial2Img from '@assets/photo-1507003211169-0a1dd7228f2d.jpg';
-import testimonial3Img from '@assets/photo-1438761681033-6461ffad8d80.jpg';
 
 const testimonials= [
   {
     quote: t('home.testimonials.t0.quote'),
     name: t('home.testimonials.t0.name'),
     role: t('home.testimonials.t0.role'),
-    image: testimonial1Img,
+    
     ringColor: "ring-[var(--theme-primary)]/30"
   },
   {
     quote: t('home.testimonials.t1.quote'),
     name: t('home.testimonials.t1.name'),
     role: t('home.testimonials.t1.role'),
-    image: testimonial2Img,
+    
     ringColor: "ring-[var(--theme-primary)]/30"
   },
   {
     quote: t('home.testimonials.t2.quote'),
     name: t('home.testimonials.t2.name'),
     role: t('home.testimonials.t2.role'),
-    image: testimonial3Img,
+    
     ringColor: "ring-[var(--theme-primary)]/30"
   }
 ];

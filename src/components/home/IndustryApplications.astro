@@ -1,9 +1,5 @@
 ---
 import Img from '@components/ui/Image.astro';
-import aerospaceImg from '@assets/photo-1451187580459-43490279c0fa.jpg';
-import medicalImg from '@assets/photo-1518770660439-4636190af475.jpg';
-import automotiveImg from '@assets/photo-1565043589221-1a6fd9ae45c7.jpg';
-import marineImg from '@assets/photo-1558618666-fcd25c85cd64.jpg';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -24,7 +20,7 @@ const industries: Industry[] = [
     title: t('home.industries.ind0.title'),
     subtitle: t('home.industries.ind0.subtitle'),
     description: t('home.industries.ind0.desc'),
-    image: aerospaceImg,
+    
     href: localizePath('/industries/aerospace', currentLang),
     accent: "var(--theme-primary)"
   },
@@ -32,7 +28,7 @@ const industries: Industry[] = [
     title: t('home.industries.ind1.title'),
     subtitle: t('home.industries.ind1.subtitle'),
     description: t('home.industries.ind1.desc'),
-    image: medicalImg,
+    
     href: localizePath('/industries/medical', currentLang),
     accent: "var(--theme-accent)"
   },
@@ -40,7 +36,7 @@ const industries: Industry[] = [
     title: t('home.industries.ind2.title'),
     subtitle: t('home.industries.ind2.subtitle'),
     description: t('home.industries.ind2.desc'),
-    image: automotiveImg,
+    
     href: localizePath('/industries/industrial-equipment', currentLang),
     accent: "var(--theme-primary)"
   },
@@ -48,7 +44,7 @@ const industries: Industry[] = [
     title: t('home.industries.ind3.title'),
     subtitle: t('home.industries.ind3.subtitle'),
     description: t('home.industries.ind3.desc'),
-    image: marineImg,
+    
     href: localizePath('/industries/marine', currentLang),
     accent: "var(--theme-accent)"
   }

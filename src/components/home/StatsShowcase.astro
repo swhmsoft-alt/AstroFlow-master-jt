@@ -2,7 +2,6 @@
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import Img from '@components/ui/Image.astro';
 import AnimatedStats from '../react/AnimatedStats';
-import logisticsNetworkImg from '@assets/photo-1578575437130-527eed3abbec.jpg';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -12,7 +11,7 @@ const t = useTranslations(currentLang);
   <!-- Background -->
   <div class="absolute inset-0">
     <Img 
-      src={logisticsNetworkImg}
+      src={undefined}
       alt={t('home.statsshowcase.global_titanium_cnc_machining_network')}
       class="w-full h-full object-cover"
       widths={[480,768,1024,1600,2070]}

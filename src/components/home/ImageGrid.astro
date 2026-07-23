@@ -2,11 +2,6 @@
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import ImageReveal from '@components/react/ImageReveal';
 import Img from '@components/ui/Image.astro';
-import warehouseImg from '@assets/photo-1566576721346-d4a3b4eaeb55.jpg';
-import fleetImg from '@assets/photo-1601584115197-04ecc0da31d7.jpg';
-import manufacturingImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
-import commandCenterImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
-import distributionImg from '@assets/photo-1586528116311-ad8dd3c8310d.jpg';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -32,7 +27,7 @@ const t = useTranslations(currentLang);
         <ImageReveal client:load delay={0}>
           <div class="relative h-full group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <Img 
-              src={warehouseImg}
+              src={undefined}
               alt={t('home.imageGrid.item0.title')}
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               widths={[480,768,1024,1200]}
@@ -50,7 +45,7 @@ const t = useTranslations(currentLang);
       <ImageReveal client:load delay={0.1}>
         <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <Img 
-            src={fleetImg}
+            src={undefined}
             alt={t('home.imageGrid.item1.title')}
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             widths={[480,768,1024,1200]}
@@ -67,7 +62,7 @@ const t = useTranslations(currentLang);
       <ImageReveal client:load delay={0.2}>
         <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <Img 
-            src={manufacturingImg}
+            src={undefined}
             alt={t('home.imageGrid.item2.title')}
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             widths={[480,768,1024,1200]}
@@ -85,7 +80,7 @@ const t = useTranslations(currentLang);
         <ImageReveal client:load delay={0.3}>
           <div class="lg:col-span-2 relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <Img 
-              src={commandCenterImg}
+              src={undefined}
               alt={t('home.imageGrid.item3.title')}
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               widths={[480,768,1024,1200]}
@@ -103,7 +98,7 @@ const t = useTranslations(currentLang);
         <ImageReveal client:load delay={0.4}>
           <div class="relative h-64 lg:h-auto group overflow-hidden rounded-2xl shadow-xl" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <Img 
-              src={distributionImg}
+              src="/images/photo-1586528116311-ad8dd3c8310d.webp"
               alt={t('home.imageGrid.item4.title')}
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               widths={[480,768,1024,1200]}

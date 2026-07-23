@@ -2,10 +2,6 @@
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import Img from '@components/ui/Image.astro';
 
-import discoveryImg from '@assets/photo-1454165804603-c6d57bc86b40.jpg';
-import implementationImg from '@assets/photo-1522071820081-009f0129c71c.jpg';
-import optimizationImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
-import supportGrowthImg from '@assets/photo-1552664730-d307ca884978.jpg';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -23,28 +19,28 @@ const steps = [
     number: 1,
     title: t('home.workflow.step0.title'),
     description: t('home.workflow.step0.desc'),
-    image: discoveryImg,
+    
     alt: t('home.workflow.step0.title')
   },
   {
     number: 2,
     title: t('home.workflow.step1.title'),
     description: t('home.workflow.step1.desc'),
-    image: implementationImg,
+    
     alt: t('home.workflow.step1.title')
   },
   {
     number: 3,
     title: t('home.workflow.step2.title'),
     description: t('home.workflow.step2.desc'),
-    image: optimizationImg,
+    
     alt: t('home.workflow.step2.title')
   },
   {
     number: 4,
     title: t('home.workflow.step3.title'),
     description: t('home.workflow.step3.desc'),
-    image: supportGrowthImg,
+    
     alt: t('home.workflow.step3.title')
   }
 ];

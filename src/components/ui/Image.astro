@@ -1,42 +1,69 @@
 ---
-import { Image as AstroImage } from 'astro:assets';
+/**
+ * Universal Image Component
+ * 
+ * Accepts string URL paths — never uses compile-time imports.
+ * Image loading failures are handled at runtime (browser-side),
+ * so deleting an image file will NEVER break the build.
+ *
+ * Fallback chain:
+ *   original → fallbackExt → display:none (via onerror handler)
+ *
+ * Props:
+ *   src           - image URL path (string). Required.
+ *   alt           - alt text. Default ''.
+ *   class         - CSS class string.
+ *   fallbackExt   - fallback extension to try on error. Default '.svg'.
+ *   loading       - loading strategy. Default 'lazy'.
+ *   widths        - responsive widths (used for srcset). Default [480,768,1024,1600,2070].
+ *   sizes         - sizes attribute. Default '100vw'.
+ *   priority      - eager load if true. Default false.
+ *   decoding      - decoding hint. Default 'async'.
+ *   style         - inline style object.
+ *   width         - explicit width attribute.
+ *   height        - explicit height attribute.
+ */
 
-export let src: any;
+export let src: string | undefined | null;
 export let alt: string = '';
 export let className: string = '';
+export let fallbackExt: string = '.svg';
+export let loading: 'lazy' | 'eager' = 'lazy';
 export let widths: number[] = [480, 768, 1024, 1600, 2070];
-export let placeholder: 'blur' | 'dominant-color' | 'none' = 'dominant-color';
 export let sizes: string = '100vw';
 export let priority: boolean = false;
-export let decoding: 'async' | 'auto' | 'sync' | null | undefined = 'async';
-export let srcSet: string | undefined;
-export let fetchpriority: 'high' | undefined;
+export let decoding: 'async' | 'auto' | 'sync' = 'async';
+export let style: string | undefined;
+export let width: string | undefined;
+export let height: string | undefined;
 
 const hasSrc = src !== undefined && src !== null && src !== '';
-const isString = typeof src === 'string';
-const useNativeImage = isString && hasSrc;
-const imageClass = className;
+const ext = hasSrc ? (src!.match(/\.\w+$/) || [''])[0].toLowerCase() : '';
+const baseSrc = hasSrc && ext ? src!.slice(0, -ext.length) : src;
+
+// Generate srcset for responsive images (only when src has a recognizable extension)
+const srcsetStr = hasSrc && ['.jpg','.jpeg','.png','.webp','.avif'].includes(ext)
+  ? widths.map(w => `${baseSrc}_w${w}.webp ${w}w`).join(', ')
+  : undefined;
 ---
 
-{useNativeImage ? (
+{hasSrc ? (
   <img
     src={src}
     alt={alt}
-    class={imageClass}
-    loading={priority ? 'eager' : 'lazy'}
+    class={className}
+    loading={priority ? 'eager' : loading}
     decoding={decoding}
     sizes={sizes}
-    srcset={srcSet}
-    fetchpriority={priority ? 'high' : undefined}
-  />
-) : src ? (
-  <AstroImage
-    src={src}
-    alt={alt}
-    class={imageClass}
-    widths={widths}
-    sizes={sizes}
-    decoding={decoding}
-    fetchpriority={priority ? 'high' : undefined}
+    srcset={srcsetStr}
+    width={width}
+    height={height}
+    style={style}
+    onerror={`this.onerror=function(){
+var s=this.src;
+var fb='${fallbackExt}';
+if(fb && s.lastIndexOf(fb)!==s.length-fb.length){this.src=s.replace(/\\.\\w+$/,fb)}
+else{this.style.display='none'}
+}`.trim()}
   />
 ) : null}

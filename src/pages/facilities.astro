@@ -8,14 +8,7 @@ import Img from '@components/ui/Image.astro';
 import ImageReveal from '../components/react/ImageReveal';
 import FacilityStats from '../components/react/FacilityStats';
 
-import northAmericanHubImg from '@assets/photo-1486406146926-c627a92ad1ab.jpg';
-import westCoastDistributionImg from '@assets/photo-1522071820081-009f0129c71c.jpg';
-import eastCoastOperationsImg from '@assets/photo-1607082349566-187342175e2f.jpg';
-import southernManufacturingCenterImg from '@assets/photo-1581091226825-a6a2a5aee158.jpg';
-import midwestColdStorageImg from '@assets/photo-1550751827-4bd374c3f58b.jpg';
-import southeastDistributionImg from '@assets/photo-1551288049-bebda4e38f71.jpg';
 
-import ctaBgImg from '@assets/photo-1451187580459-43490279c0fa.jpg';
 
 const facilities = [
   {
@@ -24,8 +17,7 @@ const facilities = [
     address: '1234 Industrial Boulevard, Chicago, IL 60609',
     type: 'Distribution & Manufacturing',
     size: '500,000 sq ft',
-    image: northAmericanHubImg,
-    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
     </svg>`,
     phone: '+1 (312) 555-0100',
@@ -47,8 +39,7 @@ const facilities = [
     address: '5678 Portside Drive, Los Angeles, CA 90040',
     type: 'Port Titanium CNC Machining & Warehousing',
     size: '350,000 sq ft',
-    image: westCoastDistributionImg,
-    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>`,
     phone: '+1 (323) 555-0200',
@@ -70,8 +61,7 @@ const facilities = [
     address: '9012 Commerce Way, Newark, NJ 07114',
     type: 'Distribution & Value-Added Services',
     size: '400,000 sq ft',
-    image: eastCoastOperationsImg,
-    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
     </svg>`,
     phone: '+1 (973) 555-0300',
@@ -93,8 +83,7 @@ const facilities = [
     address: '3456 Manufacturing Parkway, Houston, TX 77001',
     type: 'Manufacturing & Assembly',
     size: '300,000 sq ft',
-    image: southernManufacturingCenterImg,
-    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
     </svg>`,
     phone: '+1 (713) 555-0400',
@@ -116,8 +105,7 @@ const facilities = [
     address: '7890 Cold Chain Avenue, Minneapolis, MN 55401',
     type: 'Refrigerated & Frozen Storage',
     size: '250,000 sq ft',
-    image: midwestColdStorageImg,
-    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
     </svg>`,
     phone: '+1 (612) 555-0500',
@@ -139,8 +127,7 @@ const facilities = [
     address: '2345 Titanium CNC Machining Boulevard, Atlanta, GA 30301',
     type: 'Distribution & Transportation Hub',
     size: '450,000 sq ft',
-    image: southeastDistributionImg,
-    icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        icon: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
     </svg>`,
     phone: '+1 (404) 555-0600',
@@ -416,7 +403,7 @@ const t = useTranslations(currentLang);
     <!-- Background Image -->
     <div class="absolute inset-0">
       <Img 
-        src={ctaBgImg}
+        src={undefined}
         alt={t('facilities.astro.facilities.modern_facilities_infrastructure')}
         class="w-full h-full object-cover"
         widths={[480,768,1024,1600,2070]}
