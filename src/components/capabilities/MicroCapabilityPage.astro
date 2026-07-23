@@ -1,0 +1,594 @@
+---
+/**
+ * src/components/capabilities/MicroCapabilityPage.astro
+ *
+ * Micro-Capability Page Template — 面向 445 项极细分钛合金加工能力的标准落地页。
+ *
+ * 7 大模块结构（Programmatic SEO 友好）：
+ *   1. Hero + Quick Specs Grid
+ *   2. Process Comparison (Why Titanium + Why This Process)
+ *   3. Engineering Capabilities Matrix
+ *   4. Applications & Entity Mapping (auto-resolved from product-entities)
+ *   5. Secondary Operations & Downstream
+ *   6. Quality Assurance & Inspection
+ *   7. RFQ / DFM CAD Upload CTA
+ *
+ * 设计原则：
+ *   - 所有工程参数从 capabilities 数据注入（可选字段均 fallback 到无头渲染）
+ *   - 关联产品实体通过 getCollection 自动反查 product-entities
+ *   - 多语言：模板 UI 文字通过 useTranslations 注入，工程参数保持英文
+ */
+
+import SubpageHero from '../ui/SubpageHero.astro';
+import SpecsInquiryCta from '../seo/SpecsInquiryCta.astro';
+import BreadcrumbNav from '../seo/BreadcrumbNav.astro';
+import { localizePath } from '../../utils/seo-linking';
+import type { Lang } from '../../i18n/ui';
+import type { CollectionEntry } from 'astro:content';
+
+export type CapabilityEntry = CollectionEntry<'capabilities'>;
+export type ProductEntityEntry = CollectionEntry<'product-entities'>;
+
+interface SpecItem {
+  label: string;
+  value: string;
+}
+
+interface ProcessComparisonRow {
+  dimension: string;
+  laser: string;
+  waterjet: string;
+}
+
+interface DownstreamProcess {
+  name: string;
+  description: string;
+}
+
+interface EntityLink {
+  title: string;
+  slug: string;
+  material?: string;
+  industry?: string;
+}
+
+interface Props {
+  /** 当前能力条目 */
+  capability: CapabilityEntry;
+  /** 关联的产品实体列表（通过 relatedCapabilities 反查） */
+  relatedEntities: EntityLink[];
+  /** 当前语言代码 */
+  lang: Lang;
+  /** 多语言翻译函数 */
+  t: (key: string) => string;
+  /** 站点 URL */
+  siteUrl?: string;
+  /** 是否隐藏面包屑（父路由已提供时使用） */
+  hideBreadcrumb?: boolean;
+  /** 主题模式: 'default'（Tailwind）| 'products'（CSS 变量） */
+  theme?: 'default' | 'products';
+  /** 是否隐藏 CTA 询盘模块 */
+  hideCta?: boolean;
+}
+
+const {
+  capability,
+  relatedEntities = [],
+  lang,
+  t,
+  siteUrl = 'https://cnc.bozemetal.com',
+  hideBreadcrumb = false,
+  hideCta = false,
+  theme = 'default',
+} = Astro.props;
+
+const data = capability.data;
+const slug = capability.id.replace(/\.json$/, '');
+const title = data.seoTitle || `${data.title} | Titanium CNC Machining Capability | BOZE`;
+const description = data.seoDescription || data.description;
+
+// ── 构建面包屑 ──
+const breadcrumbItems = [
+  { label: t('capabilities.breadcrumb.home'), slug: '' },
+  { label: t('capabilities.breadcrumb.capabilities'), slug: 'capabilities' },
+  { label: data.title, slug: '', isCurrent: true },
+];
+
+// ── Module 1: Quick Specs ──
+const quickSpecs: SpecItem[] = [];
+if (data.titaniumGrades && data.titaniumGrades.length > 0) {
+  quickSpecs.push({ label: t('capabilities.specs.grades'), value: data.titaniumGrades.join(', ') });
+}
+if (data.thicknessRange) {
+  quickSpecs.push({ label: t('capabilities.specs.thickness'), value: data.thicknessRange });
+}
+if (data.minHoleRatio) {
+  quickSpecs.push({ label: t('capabilities.specs.minHoleRatio'), value: data.minHoleRatio });
+}
+if (data.cuttingTolerance) {
+  quickSpecs.push({ label: t('capabilities.specs.cuttingTolerance'), value: data.cuttingTolerance });
+}
+if (data.tolerance) {
+  quickSpecs.push({ label: t('capabilities.specs.tolerance'), value: data.tolerance });
+}
+if (data.maxSize) {
+  quickSpecs.push({ label: t('capabilities.specs.maxSize'), value: data.maxSize });
+}
+if (data.surfaceFinish) {
+  quickSpecs.push({ label: t('capabilities.specs.surfaceFinish'), value: data.surfaceFinish });
+}
+
+// ── Module 4: Entity chips for SubpageHero ──
+const entityChips = relatedEntities.map((e) => e.title);
+
+// ── FAQ：优先用数据中的；没有则自动生成 ──
+const faqs = data.faqs && data.faqs.length > 0 ? data.faqs : (() => {
+  const list: { q: string; a: string }[] = [];
+  if (data.titaniumGrades && data.titaniumGrades.length > 0) {
+    list.push({
+      q: `What titanium grades are suitable for ${data.title}?`,
+      a: `${data.title} can be performed on ${data.titaniumGrades.slice(0, 4).join(', ')}${data.titaniumGrades.length > 4 ? ', and other grades' : ''}. The specific grade selection depends on the required mechanical properties, corrosion resistance, and end-use application requirements.`,
+    });
+  }
+  if (data.tolerance || data.cuttingTolerance) {
+    list.push({
+      q: `What tolerances can be achieved with ${data.title}?`,
+      a: `Typical achievable tolerances for ${data.title} are ${data.cuttingTolerance || data.tolerance}. Tighter tolerances may be possible depending on part geometry, material condition, and quantity. Our engineering team reviews each project to determine the optimal tolerance-cost balance.`,
+    });
+  }
+  if (data.qualityStandards && data.qualityStandards.length > 0) {
+    list.push({
+      q: `What quality certifications apply to ${data.title}?`,
+      a: `All ${data.title} operations are performed under ${data.qualityStandards.slice(0, 3).join(', ')} certified quality management systems. Full traceability documentation, material certifications (EN 10204 3.1), and inspection reports are provided with each shipment.`,
+    });
+  }
+  list.push({
+    q: `What is the typical lead time for ${data.title} projects?`,
+    a: `Lead times for ${data.title} vary by complexity and quantity. Prototype quantities (1-10 units) can typically be completed in 3-7 business days. Production quantities require 15-25 business days. Rush orders are available for qualifying projects. Contact our sales team for a specific timeline.`,
+  });
+  list.push({
+    q: `Can you provide DFM feedback for my ${data.title} design?`,
+    a: `Yes. We provide free Design for Manufacturability (DFM) analysis for all new projects. Simply upload your CAD file (STEP, DXF, or DWG format) and our engineering team will review your design and provide optimization suggestions within 24 hours.`,
+  });
+  return list;
+})();
+---
+
+<div class:list={['capability-micro-page', theme === 'products' ? 'theme-products' : '']}>
+
+{!hideBreadcrumb && (
+  <BreadcrumbNav
+    lang={lang}
+    items={breadcrumbItems}
+    siteUrl={siteUrl}
+  />
+)}
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 1: Hero + Quick Specs Grid                              -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<SubpageHero
+  title={title}
+  h1={data.title}
+  subtitle={data.description}
+  badge={data.category}
+  keyMetrics={quickSpecs.length > 0 ? quickSpecs : undefined}
+  entityChips={theme !== 'products' && entityChips.length > 0 ? entityChips.slice(0, 6) : undefined}
+/>
+
+{/* 在 products 模式下手动渲染 chips（避免 SubpageHero 内联样式颜色问题） */}
+{theme === 'products' && entityChips.length > 0 && (
+  <div class="flex flex-wrap justify-center gap-2 mt-5 px-4">
+    {entityChips.slice(0, 6).map((chip) => (
+      <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full chip-entity">
+        {chip}
+      </span>
+    ))}
+  </div>
+)}
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 1b: What Is This Capability?                            -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="max-w-7xl mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+      What is {data.title}?
+    </h2>
+    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+      <p>{data.description}</p>
+      {data.capabilitiesDescription && (
+        <p class="mt-4">{data.capabilitiesDescription}</p>
+      )}
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 2: Process Comparison & Technical Advantages            -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="max-w-7xl mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+      {t('capabilities.processComparison.title')}
+    </h2>
+
+    {data.processDescription && (
+      <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+        {data.processDescription}
+      </p>
+    )}
+
+    {data.processComparison && data.processComparison.length > 0 && (
+      <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+          <thead class="bg-gray-50">
+            <tr>
+              <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider w-1/3">
+                {t('capabilities.processComparison.dimension')}
+              </th>
+              <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">
+                {t('capabilities.processComparison.laser')}
+              </th>
+              <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-emerald-700 uppercase tracking-wider">
+                {t('capabilities.processComparison.waterjet')}
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {data.processComparison.map((row, index) => (
+              <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                  {row.dimension}
+                </td>
+                <td class="px-6 py-4 text-gray-700">
+                  {row.laser}
+                </td>
+                <td class="px-6 py-4 text-gray-700">
+                  {row.waterjet}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+
+    {!data.processComparison && (
+      <p class="text-gray-400 italic">
+        {t('capabilities.processComparison.empty')}
+      </p>
+    )}
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 3: Engineering Capabilities Matrix                       -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+<section class="bg-gray-50 py-12">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        {t('capabilities.engineering.title')}
+      </h2>
+
+      {data.capabilitiesDescription && (
+        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+          {data.capabilitiesDescription}
+        </p>
+      )}
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Hole Types -->
+        {data.holeTypes && data.holeTypes.length > 0 && (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12a7.5 7.5 0 1115 0 7.5 7.5 0 01-15 0z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{t('capabilities.engineering.holeTypes')}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {data.holeTypes.map((ht) => (
+                <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-700 border border-blue-100">
+                  {ht}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Heat Control -->
+        {data.heatControl && (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{t('capabilities.engineering.heatControl')}</h3>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">{data.heatControl}</p>
+          </div>
+        )}
+
+        <!-- Flatness Control -->
+        {data.flatnessControl && (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9l10.5-3m0 6.553l3 1.5-10.5 3-10.5 3 1.5-3m6.75-3l3-1.5" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{t('capabilities.engineering.flatnessControl')}</h3>
+            </div>
+            <p class="text-sm text-gray-600 leading-relaxed">{data.flatnessControl}</p>
+          </div>
+        )}
+
+        <!-- Materials supported -->
+        {data.materials && data.materials.length > 0 && (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{t('capabilities.engineering.materials')}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {data.materials.map((m) => (
+                <span class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-purple-50 text-purple-700 border border-purple-100">
+                  {m}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Tolerance -->
+        {data.tolerance && (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{t('capabilities.specs.tolerance')}</h3>
+            </div>
+            <p class="text-lg font-bold text-amber-700">{data.tolerance}</p>
+          </div>
+        )}
+
+        <!-- Max Size -->
+        {data.maxSize && (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-cyan-100 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">{t('capabilities.specs.maxSize')}</h3>
+            </div>
+            <p class="text-lg font-bold text-cyan-700">{data.maxSize}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 4: Applications & Entity Mapping                         -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+{relatedEntities.length > 0 && (
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        {t('capabilities.applications.title')}
+      </h2>
+      <p class="text-gray-600 mb-8">
+        {t('capabilities.applications.description')}
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {relatedEntities.map((entity) => (
+          <a
+            href={localizePath(`/products/${entity.slug}`, lang)}
+            class="group block bg-white rounded-xl p-5 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+              {entity.title}
+            </h3>
+            {entity.material && (
+              <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full bg-gray-100 text-gray-700 chip-entity">
+                {entity.material}
+              </span>
+            )}
+            {entity.industry && (
+              <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium rounded-full bg-blue-50 text-blue-700 ml-2 chip-entity">
+                {entity.industry}
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 5: Secondary Operations & Downstream                    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+{data.downstreamProcesses && data.downstreamProcesses.length > 0 && (
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          {t('capabilities.downstream.title')}
+        </h2>
+        <p class="text-gray-600 mb-8">
+          {t('capabilities.downstream.description')}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {data.downstreamProcesses.map((dp) => (
+            <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+              <h3 class="font-semibold text-gray-900 mb-2">{dp.name}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{dp.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 6: Quality Assurance & Inspection                        -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+{(data.inspectionItems && data.inspectionItems.length > 0) || (data.qualityStandards && data.qualityStandards.length > 0) ? (
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        {t('capabilities.quality.title')}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {data.inspectionItems && data.inspectionItems.length > 0 && (
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {t('capabilities.quality.inspectionItems')}
+            </h3>
+            <ul class="space-y-2">
+              {data.inspectionItems.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {data.qualityStandards && data.qualityStandards.length > 0 && (
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+              {t('capabilities.quality.standards')}
+            </h3>
+            <ul class="space-y-2">
+              {data.qualityStandards.map((std) => (
+                <li class="flex items-start gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-blue-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                  </svg>
+                  {std}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+) : null}
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 7a: FAQ (Frequently Asked Questions)                    -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+{faqs.length > 0 && (
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq, i) => (
+          <details class="group border border-gray-200 rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer bg-white hover:bg-gray-50 transition-colors">
+              <span class="font-semibold text-gray-900 pr-4">{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-400 shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-4 text-gray-600 leading-relaxed">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- Module 7b: RFQ / DFM CAD Upload CTA                            -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+{!hideCta && (
+<SpecsInquiryCta
+  lang={lang}
+  specName={data.title}
+  ctaTitle={data.ctaTitle || undefined}
+  ctaDescription={data.ctaDescription || undefined}
+  buttonText={data.ctaButtonText || t('capabilities.cta.buttonText')}
+   />
+)}
+
+</div>
+
+<style is:global>
+  /* ── Products 主题 CSS 覆盖 ── */
+  .theme-products .bg-gray-50 { background: var(--theme-bg) !important; }
+  .theme-products .bg-white { background: var(--theme-surface) !important; }
+  .theme-products .text-gray-900,
+  .theme-products .text-gray-800 { color: var(--theme-text) !important; }
+  .theme-products .text-gray-700,
+  .theme-products .text-gray-600,
+  .theme-products .text-gray-500 { color: color-mix(in srgb, var(--theme-text) 60%, transparent) !important; }
+  .theme-products .border-gray-100,
+  .theme-products .border-gray-200 { border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent) !important; }
+  .theme-products .shadow-sm { box-shadow: none !important; }
+  .theme-products .shadow { box-shadow: none !important; }
+  .theme-products .hover\:shadow-md:hover { box-shadow: none !important; }
+  .theme-products .hover\:shadow-lg:hover { box-shadow: none !important; }
+  .theme-products .hover\:shadow-xl:hover { box-shadow: none !important; }
+  .theme-products .hover\:border-blue-300:hover { border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent) !important; }
+  .theme-products .hover\:text-blue-600:hover { color: var(--theme-primary) !important; }
+  .theme-products .text-blue-600 { color: var(--theme-primary) !important; }
+  .theme-products .text-blue-700 { color: var(--theme-primary) !important; }
+  .theme-products .bg-blue-50 { background: color-mix(in srgb, var(--theme-primary) 8%, transparent) !important; }
+  .theme-products .bg-blue-100 { background: color-mix(in srgb, var(--theme-primary) 12%, transparent) !important; }
+  .theme-products .border-blue-100 { border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent) !important; }
+  .theme-products .rounded-xl { border-radius: 0.75rem; }
+  /* Products 主题 chips */
+  .theme-products .chip-entity {
+    background: color-mix(in srgb, var(--theme-primary) 10%, transparent) !important;
+    color: var(--theme-primary) !important;
+    border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent) !important;
+  }
+  /* Products 主题 FAQ details/summary */
+  .theme-products details {
+    background: var(--theme-surface) !important;
+  }
+  .theme-products details summary {
+    background: var(--theme-surface) !important;
+  }
+  .theme-products details summary:hover {
+    background: var(--theme-bg) !important;
+  }
+</style>

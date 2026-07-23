@@ -6,6 +6,7 @@ import { getCollection } from 'astro:content';
 
 export const prerender = true;
 
+const capabilities = await getCollection('capabilities');
 const systems = await getCollection('systems');
 const industries = await getCollection('industries');
 const entities = await getCollection('product-entities');
@@ -28,6 +29,7 @@ for (const ind of industries) {
 
 const totalSystems = systems.length;
 const totalEntities = entities.length;
+const totalCapabilities = capabilities.length;
 const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').replace(/[/,()]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
 ---
 
@@ -63,7 +65,11 @@ const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').r
   <!-- Stats Bar -->
   <section class="py-8" style="background: var(--theme-bg); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+        <a href="/products/capabilities/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalCapabilities}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Capabilities</p>
+        </a>
         <a href="/products/product-entities/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
           <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalEntities}</p>
           <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Components</p>

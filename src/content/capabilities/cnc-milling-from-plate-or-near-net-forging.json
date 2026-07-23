@@ -1,9 +1,99 @@
 {
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
+  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
+  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "processComparison": [
+    {
+      "dimension": "Machining Strategy",
+      "laser": "N/A — chip-cutting process using multi-axis CNC",
+      "waterjet": "N/A — abrasive waterjet for rough profiling only"
+    },
+    {
+      "dimension": "Achievable Tolerance",
+      "laser": "±0.005 mm (precision turning/milling)",
+      "waterjet": "±0.1 mm (profile roughing)"
+    },
+    {
+      "dimension": "Surface Finish",
+      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
+      "waterjet": "Ra 3.2–6.3 µm as-cut"
+    },
+    {
+      "dimension": "Material Removal Rate",
+      "laser": "Moderate — optimized via CAM toolpath strategies",
+      "waterjet": "High — suitable for bulk material removal"
+    },
+    {
+      "dimension": "Tool Wear (Ti machining)",
+      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
+      "waterjet": "No tool wear; garnet abrasive consumed"
+    }
+  ],
+  "processDescription": "Precision CNC machining of cnc milling plate titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "holeTypes": [
+    "Drilled holes",
+    "Threaded holes",
+    "Counterbore / countersink",
+    "Tapered holes",
+    "Custom milled pockets"
+  ],
+  "heatControl": "CNC machining of cnc milling plate uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
+  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for cnc milling plate components. Multi-step roughing/finishing passes minimize distortion.",
+  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for cnc milling plate production.",
+  "downstreamProcesses": [
+    {
+      "name": "Deburring & Edge Finishing",
+      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+    },
+    {
+      "name": "Dimensional Inspection (CMM)",
+      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+    },
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+    },
+    {
+      "name": "Surface Treatment",
+      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
+    },
+    {
+      "name": "Thread Rolling",
+      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+    }
+  ],
+  "inspectionItems": [
+    "Dimensional inspection (caliper / micrometer / CMM)",
+    "Surface finish measurement (Ra / Rz per ISO 4287)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Visual inspection per ASTM E10 / ISO 17637",
+    "CMM full 3D inspection (GD&T per ASME Y14.5)",
+    "Surface roughness measurement (Ra/Rz)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "AS9100D — Aerospace Quality Management"
+  ],
+  "ctaTitle": "Need Precision Cnc Milling Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "CNC milling from plate (or near-net forging)",
   "aliases": [],
   "category": "Machining",
   "description": "CNC milling from plate (or near-net forging) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "CNC milling from plate (or near-net forging) | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision machining of CNC milling from plate (or near-net forging) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

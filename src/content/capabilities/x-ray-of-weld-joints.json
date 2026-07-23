@@ -1,9 +1,98 @@
 {
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "0.5 mm – 25.0 mm (weldable range)",
+  "minHoleRatio": "N/A",
+  "cuttingTolerance": "N/A — welding tolerance ±0.5 mm typical",
+  "processComparison": [
+    {
+      "dimension": "Process Method",
+      "laser": "Laser beam welding (LBW) — keyhole or conduction mode",
+      "waterjet": "N/A — waterjet not used for welding"
+    },
+    {
+      "dimension": "Heat Input",
+      "laser": "Low — minimal distortion; narrow HAZ",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Shielding Gas",
+      "laser": "Argon (99.999%) back-purge + trailing shield required for Ti",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Weld Speed",
+      "laser": "Up to 5 m/min for thin sections",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Joint Types",
+      "laser": "Butt, lap, fillet, edge, T-joint",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Precision TIG, MIG, and laser welding of x-ray weld joints titanium assemblies. Full inert gas shielding prevents oxidation and ensures metallurgically sound welds meeting ASME Section IX requirements.",
+  "holeTypes": [
+    "N/A — welding is a joining process"
+  ],
+  "heatControl": "TIG/MIG/laser welding of x-ray weld joints requires inert gas shielding (argon or helium) on both face and back sides to prevent atmospheric contamination and embrittlement of the weld zone.",
+  "flatnessControl": "Weld fixtures and sequenced welding patterns control distortion for x-ray weld joints assemblies. Post-weld stress relief available.",
+  "capabilitiesDescription": "Our welding facility includes automatic orbital TIG, pulsed MIG, and fiber laser welding systems with cleanroom-class shielding for x-ray weld joints.",
+  "downstreamProcesses": [
+    {
+      "name": "Weld Inspection (NDT)",
+      "description": "X-ray, ultrasonic, or dye penetrant inspection per ASME Section V."
+    },
+    {
+      "name": "Weld Map Documentation",
+      "description": "Full traceability documentation for every weld including operator ID, parameters, and inspection results."
+    },
+    {
+      "name": "Post-Weld Heat Treatment",
+      "description": "Stress relief annealing in vacuum furnace to restore mechanical properties."
+    },
+    {
+      "name": "Deburring & Edge Finishing",
+      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+    },
+    {
+      "name": "Dimensional Inspection (CMM)",
+      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+    },
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+    }
+  ],
+  "inspectionItems": [
+    "Visual weld inspection per AWS D1.1 / ISO 5817",
+    "Dye penetrant inspection (PT) per ASTM E1417",
+    "Radiographic inspection (RT) per ASTM E1742",
+    "Weld color classification (silver/gold acceptable; blue/purple rejected)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ASME Section IX — Welding Qualifications",
+    "AWS D1.1/D1.6 — Structural Welding"
+  ],
+  "ctaTitle": "Need Precision X-Ray Weld Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "X-ray of weld joints",
   "aliases": [],
   "category": "Welding",
   "description": "X-ray of weld joints capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "X-ray of weld joints | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision welding of X-ray of weld joints titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

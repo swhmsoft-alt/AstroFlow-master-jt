@@ -1,0 +1,146 @@
+---
+/**
+ * src/pages/[lang]/capabilities/[...slug].astro
+ *
+ * Micro-Capability 能力详情页 — 445 项极细分钛合金加工能力的标准落地页路由。
+ *
+ * 内链规则：
+ *   - 面包屑：Home > Capabilities > [能力名称]
+ *   - Module 4 自动加载关联 product-entities（通过 relatedCapabilities 反查）
+ *   - Module 7 统一收拢询盘
+ *
+ * getStaticPaths 生成策略：
+ *   遍历所有 capabilities 条目，为每个条目生成 12 语种路径。
+ *   关联实体通过 product-entities 的 relatedCapabilities 字段反查。
+ */
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import MicroCapabilityPage from '../../../components/capabilities/MicroCapabilityPage.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import { DEFAULT_LANG, LANGUAGES } from '../../../i18n/ui';
+import type { Lang } from '../../../i18n/ui';
+import type { CollectionEntry } from 'astro:content';
+
+type CapabilityEntry = CollectionEntry<'capabilities'>;
+type ProductEntityEntry = CollectionEntry<'product-entities'>;
+
+export async function getStaticPaths() {
+  const capabilities = await getCollection('capabilities');
+  const productEntities = await getCollection('product-entities');
+
+  // 预构建 product-entities 反向索引: capability-slug → entity slugs
+  const capabilityToEntities = new Map<string, string[]>();
+  for (const entity of productEntities) {
+    const relatedCaps = entity.data.relatedCapabilities;
+    if (relatedCaps && Array.isArray(relatedCaps)) {
+      for (const capSlug of relatedCaps) {
+        const normalizedCapSlug = capSlug.toLowerCase().replace(/\.json$/, '');
+        if (!capabilityToEntities.has(normalizedCapSlug)) {
+          capabilityToEntities.set(normalizedCapSlug, []);
+        }
+        capabilityToEntities.get(normalizedCapSlug)!.push(entity.id.replace(/\.json$/, ''));
+      }
+    }
+  }
+
+  const allLangs = Object.keys(LANGUAGES);
+  const paths: {
+    params: { lang: string; slug: string };
+    props: Record<string, any>;
+  }[] = [];
+
+  for (const cap of capabilities) {
+    const baseSlug = cap.id.replace(/\.json$/, '');
+
+    // 只对原始（非翻译）条目生成路径
+    // capabilities 目前都是 JSON data 格式，无多语言翻译，直接复用英文 slug
+
+    // 默认语言（无前缀路径）
+    paths.push({
+      params: { lang: '', slug: baseSlug },
+      props: {
+        originalSlug: baseSlug,
+        lang: DEFAULT_LANG,
+        entryId: cap.id,
+        relatedEntitySlugs: capabilityToEntities.get(baseSlug) || [],
+      },
+    });
+
+    // 非默认语言
+    for (const langCode of allLangs) {
+      if (langCode === DEFAULT_LANG) continue;
+      paths.push({
+        params: { lang: langCode, slug: baseSlug },
+        props: {
+          originalSlug: baseSlug,
+          lang: langCode,
+          entryId: cap.id,
+          relatedEntitySlugs: capabilityToEntities.get(baseSlug) || [],
+        },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const {
+  originalSlug,
+  lang,
+  entryId,
+  relatedEntitySlugs = [],
+} = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(currentLang);
+const siteUrl = 'https://cnc.bozemetal.com';
+
+// 加载能力数据
+const allCapabilities = await getCollection('capabilities');
+const entry = allCapabilities.find((e) => e.id === entryId);
+const entryData = entry?.data;
+
+if (!entryData) {
+  return Astro.redirect('/404', 404);
+}
+
+// 加载关联的产品实体
+const allProductEntities = await getCollection('product-entities');
+const relatedEntities = relatedEntitySlugs
+  .map((slug: string) => allProductEntities.find((e) => e.id === `${slug}.json` || e.id === slug))
+  .filter(Boolean)
+  .map((e: ProductEntityEntry) => ({
+    title: e.data.title,
+    slug: e.id.replace(/\.json$/, ''),
+    material: (e.data as any).material || undefined,
+    industry: (e.data as any).industry || undefined,
+  }));
+
+const pageTitle = entryData.seoTitle || `${entryData.title} | Titanium CNC Machining | BOZE`;
+const pageDescription = entryData.seoDescription || entryData.description;
+
+// 构建能力索引路径（用于面包屑）
+const capabilitiesIndexPath = lang === DEFAULT_LANG ? '/capabilities/' : `/${lang}/capabilities/`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={
+    lang === DEFAULT_LANG
+      ? `${siteUrl}/capabilities/${originalSlug}/`
+      : `${siteUrl}/${lang}/capabilities/${originalSlug}/`
+  }
+  pageType="capabilities"
+  serviceName={entryData.title}
+  serviceCategory={entryData.category}
+>
+  <MicroCapabilityPage
+    capability={entry}
+    relatedEntities={relatedEntities}
+    lang={currentLang}
+    t={t}
+    siteUrl={siteUrl}
+  />
+</BaseLayout>

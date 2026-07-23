@@ -1,9 +1,74 @@
 {
+  "titaniumGrades": [
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 23 (ELI)"
+  ],
+  "thicknessRange": "Up to 300 mm (wire EDM); up to 200 mm (sinker EDM)",
+  "minHoleRatio": "0.02 mm minimum wire diameter; 0.1 mm minimum hole (sinker)",
+  "cuttingTolerance": "±0.002 mm (wire EDM) / ±0.005 mm (sinker EDM)",
+  "processComparison": [
+    {
+      "dimension": "EDM Type",
+      "laser": "Wire EDM / Sinker EDM / Hole drilling EDM",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Surface Finish",
+      "laser": "Ra 0.2–0.8 µm (wire); Ra 1.6 µm (sinker)",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Heat Affected Zone",
+      "laser": "Re-cast layer 1–5 µm; removable by post-processing",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Taper Capability",
+      "laser": "±30° (wire EDM with 5-axis control)",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Precision EDM services for support removal edm titanium components. Wire EDM achieves ±0.002 mm tolerance for intricate profiles, while sinker EDM handles blind cavities and complex 3D geometries.",
+  "holeTypes": [
+    "Tapered holes",
+    "Micro-holes",
+    "Blind cavities",
+    "Keyway slots"
+  ],
+  "heatControl": "Deionized water dielectric (wire EDM) or hydrocarbon oil (sinker EDM) with temperature control for support removal edm.",
+  "flatnessControl": "Multi-pass cutting strategy minimizes distortion. Stress relief recommended for pre-hardened materials.",
+  "capabilitiesDescription": "5-axis wire EDM and CNC sinker EDM systems for support removal edm with submerged and flushing capabilities.",
+  "downstreamProcesses": [
+    {
+      "name": "Re-cast Layer Removal",
+      "description": "Chemical etching or electropolishing to remove EDM re-cast layer."
+    },
+    {
+      "name": "Surface Finishing",
+      "description": "Polishing or micro-blasting to achieve specified surface finish."
+    }
+  ],
+  "inspectionItems": [
+    "Dimensional inspection (CMM / vision system)",
+    "Surface finish measurement (Ra/Rz)",
+    "Re-cast layer thickness verification (microsection)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "ctaTitle": "Need Precision Support Removal Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Support removal (EDM/machining)",
   "aliases": [],
   "category": "EDM",
   "description": "Support removal (EDM/machining) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Support removal (EDM/machining) | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision edm of Support removal (EDM/machining) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

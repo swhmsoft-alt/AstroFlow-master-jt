@@ -1,9 +1,82 @@
 {
+  "titaniumGrades": [
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 23 (Ti-6Al-4V ELI)",
+    "Grade 1",
+    "Grade 2"
+  ],
+  "thicknessRange": "Build volume: up to Ø300 mm × 400 mm (SLM/DMLS)",
+  "minHoleRatio": "0.2 mm minimum feature size; 0.05 mm layer thickness",
+  "cuttingTolerance": "±0.05 mm (as-built) / ±0.005 mm (post-machined)",
+  "processComparison": [
+    {
+      "dimension": "Build Method",
+      "laser": "Laser powder bed fusion (LPBF/SLM/DMLS)",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Layer Thickness",
+      "laser": "20–60 µm",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Surface Finish",
+      "laser": "Ra 6–12 µm as-built; Ra 0.4 µm post-processed",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Complexity",
+      "laser": "Unlimited — lattice structures, internal channels, organic geometries",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Metal additive manufacturing of slm 3d printing titanium components using laser powder bed fusion (LPBF/SLM/DMLS). Capable of producing complex geometries impossible with conventional subtractive methods.",
+  "holeTypes": [
+    "Conformal cooling channels",
+    "Lattice structures",
+    "Organic/ergonomic geometries"
+  ],
+  "heatControl": "Inert atmosphere (argon) with controlled oxygen <1000 ppm during slm 3d printing build process.",
+  "flatnessControl": "Stress relief annealing before substrate removal prevents distortion of thin-walled features.",
+  "capabilitiesDescription": "Multiple SLM/DMLS systems for slm 3d printing with full process parameter development and mechanical property validation.",
+  "downstreamProcesses": [
+    {
+      "name": "Support Removal",
+      "description": "EDM or CNC machining to remove build supports."
+    },
+    {
+      "name": "Hot Isostatic Pressing (HIP)",
+      "description": "HIP cycle to eliminate internal porosity and improve fatigue properties."
+    },
+    {
+      "name": "CNC Finishing",
+      "description": "5-axis CNC machining of critical mating surfaces to final tolerance."
+    }
+  ],
+  "inspectionItems": [
+    "Build report (layer-by-layer parameter logging)",
+    "Dimensional inspection (CT scan / CMM)",
+    "Density measurement (Archimedes method / CT)",
+    "Mechanical testing (as-built and heat-treated)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ASTM F2924 — Ti-6Al-4V for AM",
+    "ASTM F3001 — Ti-6Al-4V ELI for AM",
+    "ISO/ASTM 52900 — Additive Manufacturing General Principles"
+  ],
+  "ctaTitle": "Need Precision Slm 3D Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "SLM 3D printing of flex-stay plates with argon shielding",
   "aliases": [],
   "category": "Additive Manufacturing",
   "description": "SLM 3D printing of flex-stay plates with argon shielding capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "SLM 3D printing of flex-stay plates with argon shielding | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision additive manufacturing of SLM 3D printing of flex-stay plates with argon shielding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

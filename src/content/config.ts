@@ -237,6 +237,42 @@ const capabilitiesCollection = defineCollection({
     relatedInspection: z.array(z.string()).optional(),
     seoTitle: z.string().optional(),
     seoDescription: z.string().optional(),
+    // ── Module 1: Hero Quick Specs ──
+    titaniumGrades: z.array(z.string()).optional(),
+    thicknessRange: z.string().optional(),
+    minHoleRatio: z.string().optional(),
+    cuttingTolerance: z.string().optional(),
+    // ── Module 2: Process Comparison ──
+    processComparison: z.array(z.object({
+      dimension: z.string(),
+      laser: z.string(),
+      waterjet: z.string(),
+    })).optional(),
+    processDescription: z.string().optional(),
+    // ── Module 3: Engineering Capabilities ──
+    holeTypes: z.array(z.string()).optional(),
+    heatControl: z.string().optional(),
+    flatnessControl: z.string().optional(),
+    capabilitiesDescription: z.string().optional(),
+    // ── Module 4: Entity Mapping (auto-resolved from product-entities) ──
+    relatedEntities: z.array(z.string()).optional(),
+    // ── Module 5: Downstream / Secondary Operations ──
+    downstreamProcesses: z.array(z.object({
+      name: z.string(),
+      description: z.string(),
+    })).optional(),
+    // ── Module 6: Quality Assurance ──
+    inspectionItems: z.array(z.string()).optional(),
+    qualityStandards: z.array(z.string()).optional(),
+    // ── Module 7: CTA ──
+    ctaTitle: z.string().optional(),
+    ctaDescription: z.string().optional(),
+    ctaButtonText: z.string().optional(),
+    // ── FAQ ──
+    faqs: z.array(z.object({
+      q: z.string(),
+      a: z.string(),
+    })).optional(),
   }),
 });
 

@@ -1,9 +1,142 @@
 {
-  "title": "Waterjet / laser cutting of profiles",
-  "aliases": [],
+  "title": "Waterjet / Laser Cutting of Profiles",
+  "aliases": [
+    "Profile cutting",
+    "Waterjet profile cutting",
+    "Laser profile cutting"
+  ],
   "category": "Laser Processing",
-  "description": "Waterjet / laser cutting of profiles capability for titanium components",
-  "materials": [],
-  "industries": [],
-  "relatedInspection": []
+  "description": "High-precision laser and waterjet profile cutting for titanium structural components. Capable of producing complex perimeter contours, internal cutouts, and edge preparations from sheet, plate, and tube stock with minimal heat-affected zone (HAZ) controlled through inert gas shielding.",
+  "materials": [
+    "Grade 1 CP-Ti (UNS R50250)",
+    "Grade 2 CP-Ti (UNS R50400)",
+    "Grade 5 Ti-6Al-4V (UNS R56400)",
+    "Grade 7 Ti-0.15Pd (UNS R52400)",
+    "Grade 9 Ti-3Al-2.5V (UNS R56320)",
+    "Grade 23 Ti-6Al-4V ELI (UNS R56407)"
+  ],
+  "industries": [
+    "aerospace",
+    "medical-device",
+    "chemical-processing",
+    "marine-subsea",
+    "energy"
+  ],
+  "relatedInspection": [
+    "dimensional-inspection-cmm",
+    "visual-weld-inspection",
+    "surface-roughness-measurement"
+  ],
+  "tolerance": "±0.05 mm (laser) / ±0.1 mm (waterjet)",
+  "maxSize": "3000 mm × 1500 mm (laser) / 6000 mm × 3000 mm (waterjet)",
+  "surfaceFinish": "Ra 1.6 µm (laser, post-deburring) / Ra 3.2 µm (waterjet, as-cut)",
+  "seoTitle": "Waterjet & Laser Cutting of Titanium Profiles | Precision Profile Cutting | BOZE",
+  "seoDescription": "Precision waterjet and laser cutting of titanium profiles for aerospace, medical, and industrial applications. Grade 2, Grade 5 Ti-6Al-4V profile cutting with ±0.05 mm tolerance. ISO 9001:2015 & AS9100D certified.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "0.5 mm – 25.0 mm",
+  "minHoleRatio": "1:1 (diameter-to-thickness ratio for laser)",
+  "cuttingTolerance": "±0.05 mm (Laser) / ±0.1 mm (Waterjet)",
+  "processComparison": [
+    {
+      "dimension": "Suitable Thickness",
+      "laser": "Thin sheets < 3 mm for high-speed production; up to 12 mm with high-power fiber laser",
+      "waterjet": "Thin to thick plates 0.5 mm – 25 mm+; no thickness limitation for abrasive waterjet"
+    },
+    {
+      "dimension": "Heat Affected Zone (HAZ)",
+      "laser": "Minimal HAZ with N₂/Ar assist gas to prevent titanium oxidation and discoloration",
+      "waterjet": "No HAZ — cold cutting process, zero thermal stress or metallurgical alteration"
+    },
+    {
+      "dimension": "Micro-Perforation Density",
+      "laser": "Excellent for high-density, small-hole arrays; hole diameter ≥ 0.5 mm achievable",
+      "waterjet": "Suitable for larger perforations (> 2 mm); lower density due to nozzle kerf width"
+    },
+    {
+      "dimension": "Edge Quality",
+      "laser": "Requires deburring or acid pickling for dross removal on thicker sections",
+      "waterjet": "Smooth, burr-free edge finish; no secondary cleaning required"
+    },
+    {
+      "dimension": "Cutting Speed (3 mm Ti)",
+      "laser": "Up to 6 m/min — significantly faster for thin sections",
+      "waterjet": "Approx. 0.5–1.5 m/min — slower but more versatile across thicknesses"
+    },
+    {
+      "dimension": "Material Compatibility",
+      "laser": "All titanium grades; reflective alloys require care with fiber laser settings",
+      "waterjet": "All titanium grades + composites, plastics, ceramics; no material reflectivity issues"
+    }
+  ],
+  "processDescription": "Profile cutting of titanium requires careful process selection based on material thickness, geometry complexity, and end-use requirements. Laser cutting offers superior speed and precision for thin to medium sections with tight tolerances, while waterjet cutting excels in thicker sections and applications where zero thermal impact is critical — such as weld-prepped edges for critical aerospace or pressure vessel assemblies.",
+  "holeTypes": [
+    "Round holes",
+    "Slot / oblong holes",
+    "Square / rectangular cutouts",
+    "Custom micro-perforation patterns",
+    "Keyhole profiles",
+    "Tapered edge preparations (bevel cutting)"
+  ],
+  "heatControl": "Laser cutting utilizes high-purity nitrogen (99.999%) or argon coaxial assist gas to shield the cut zone from atmospheric oxygen, preventing the alpha-case formation and blue/white discoloration typical of titanium oxidation above 600°C. Waterjet cutting requires no thermal control — the room-temperature water stream eliminates any heat-related concerns entirely.",
+  "flatnessControl": "Thin-gauge titanium profiles (< 2 mm) may experience residual stress release during cutting. Post-cut stress relief (vacuum annealing at 540–650°C for CP grades) and precision roller leveling are available to maintain flatness within 0.5 mm/m.",
+  "capabilitiesDescription": "Our facility combines 6 kW fiber laser cutting systems (4 m × 2 m bed) with 60,000 psi abrasive waterjet systems (6 m × 3 m bed), enabling us to cut titanium profiles from prototype quantities to high-volume production across all standard and custom titanium alloys.",
+  "relatedEntities": [
+    "titanium-anode-basket-bottom-plate",
+    "titanium-chamber-liner-upper",
+    "titanium-concentric-reducer",
+    "titanium-blind-flange-asme-b165",
+    "titanium-stub-end-lap-joint",
+    "titanium-weld-neck-flange"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "Deburring & Edge Finishing",
+      "description": "Mechanical deburring (wheel brush, drag finishing) or chemical deburring for laser-cut edges to remove dross and achieve uniform edge radius."
+    },
+    {
+      "name": "Pickling & Passivation",
+      "description": "Nitric-hydrofluoric acid bath (ASTM B600) removes light oxidation from laser-cut edges and restores uniform corrosion-resistant passive layer."
+    },
+    {
+      "name": "CNC Edge Milling & Drilling",
+      "description": "4/5-axis CNC machining of mounting bolt holes, flange faces, and precision edge profiles on cut blanks."
+    },
+    {
+      "name": "TIG Welding & Assembly",
+      "description": "Automatic orbital TIG welding of profile-joined assemblies with ERTi-2 or ERTi-5 filler wire; weld map documentation included."
+    },
+    {
+      "name": "Dimensional Inspection (CMM)",
+      "description": "Full 3D CMM inspection of profile geometry, hole positions, and edge contour compliance within ±0.02 mm."
+    },
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for sensitive aerospace and medical applications."
+    }
+  ],
+  "inspectionItems": [
+    "Profile dimensional measurement (optical comparator / CMM)",
+    "Edge quality assessment (burr height, edge radius per ISO 13715)",
+    "Surface contamination test (white glove / Ferroxyl test for free iron)",
+    "Dye penetrant inspection (PT) per ASTM E1417 for edge surface cracks",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Flatness measurement per ASTM E29"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ASTM B381 — Titanium and Titanium Alloy Forgings",
+    "AMS 2631 — Ultrasonic Inspection for Wrought Titanium"
+  ],
+  "ctaTitle": "Need Titanium Profiles Cut to Precision?",
+  "ctaDescription": "Upload your DXF/DWG/STEP file for a free DFM analysis and competitive quote. Our engineering team reviews every profile cutting project within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
 }

@@ -1,172 +1,159 @@
 ---
+/**
+ * src/pages/products/capabilities/[...slug].astro
+ *
+ * 产品生态中的微能力详情页（英文）。
+ * 复用 MicroCapabilityPage 7 模块模板，同时保留产品生态特有的
+ * 交叉引用：相关产品实体、系统、同类别能力。
+ */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BreadcrumbNav from '../../../components/seo/BreadcrumbNav.astro';
+import MicroCapabilityPage from '../../../components/capabilities/MicroCapabilityPage.astro';
 import { getCollection } from 'astro:content';
+import { DEFAULT_LANG } from '../../../i18n/ui';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
   const entries = await getCollection('capabilities');
   return entries.map((entry) => ({
-    params: { slug: entry.id.replace(/\.[^/.]+$/, '').replace(/^.*[\/\\]/, '') },
+    params: { slug: entry.id.replace(/\.[^/.]+$/, '').replace(/^.*[\\/\\\\]/, '') },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { data } = entry;
+const slug = entry.id.replace(/\.json$/i, '').replace(/^.*[\\/\\\\]/, '');
 
 const seoTitle = data.seoTitle || `${data.title} | Titanium Manufacturing Capability | BOZE CNC Ti`;
 const seoDesc = data.seoDescription || `${data.description}. ${data.category} capability for precision CNC machined titanium components. AS9100D & ISO 9001 certified.`;
 
-// ── Resolve related data ──
-const currentSlug = entry.id.replace(/\.json$/i, '').replace(/^.*[\\\/]/, '');
-const currentSlugNorm = currentSlug.toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+// ── Resolve related product-entities & systems ──
+const currentSlugNorm = slug.toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
 
-// Load all collections for cross-referencing
 const allEntities = await getCollection('product-entities');
 const allSystems = await getCollection('systems');
 const allCapabilities = await getCollection('capabilities');
 
-// Find product entities that reference this capability
+const matchFn = (rc: string) => {
+  const n = rc.toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  return n.includes(currentSlugNorm) || currentSlugNorm.includes(n);
+};
+
 const relatedProducts = allEntities.filter((e) =>
-  (e.data.relatedCapabilities || []).some((rc: string) => {
-    const rcNorm = (rc as string).toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    return rcNorm.includes(currentSlugNorm) || currentSlugNorm.includes(rcNorm);
-  })
-);
+  (e.data.relatedCapabilities || []).some(matchFn)
+).slice(0, 30);
 
-// Find systems that reference this capability
 const relatedSystems = allSystems.filter((s) =>
-  (s.data.relatedCapabilities || []).some((rc: string) => {
-    const rcNorm = (rc as string).toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    return rcNorm.includes(currentSlugNorm) || currentSlugNorm.includes(rcNorm);
-  })
-);
-
-// Find related capabilities (same category, excluding self)
-const sameCategoryCaps = allCapabilities.filter(
-  (c) => c.data.category === data.category && c.id.replace(/\.json$/i, '').replace(/^.*[\\\/]/, '') !== currentSlug
+  (s.data.relatedCapabilities || []).some(matchFn)
 ).slice(0, 12);
 
-// Slug helpers
+const sameCategoryCaps = allCapabilities.filter(
+  (c) => c.data.category === data.category &&
+    c.id.replace(/\.json$/i, '').replace(/^.*[\\/\\\\]/, '') !== slug
+).slice(0, 12);
+
 const entitySlug = (title: string) =>
   title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
 const sysSlug = (title: string) =>
   title.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+
+// ── Build relatedEntities for MicroCapabilityPage ──
+// 优先用 product-entities 反向引用；不足时用 enriched JSON 的 relatedEntities 补充
+const enrichedRelatedSlugs: string[] = (data as any).relatedEntities || [];
+let relatedEntities: { title: string; slug: string; material?: string; industry?: string }[];
+
+if (relatedProducts.length >= 3) {
+  // 反向引用足够 → 用它
+  relatedEntities = relatedProducts.map((p) => ({
+    title: p.data.title,
+    slug: entitySlug(p.data.title),
+    material: (p.data as any).material,
+    industry: (p.data as any).industry,
+  }));
+} else if (enrichedRelatedSlugs.length > 0) {
+  // 反向引用不足 → 用 enriched 数据的 relatedEntities 字段
+  relatedEntities = enrichedRelatedSlugs
+    .map((s: string) => {
+      const found = allEntities.find((e) => {
+        const eSlug = e.id.replace(/\.json$/i, '').replace(/^.*[\\/]/, '');
+        return eSlug === s || e.data.title.toLowerCase().replace(/[^a-z0-9-]/g, '').includes(s.replace(/[^a-z0-9-]/g, ''));
+      });
+      if (!found) return null;
+      return {
+        title: found.data.title,
+        slug: entitySlug(found.data.title),
+        material: (found.data as any).material,
+        industry: (found.data as any).industry,
+      };
+    })
+    .filter(Boolean) as { title: string; slug: string; material?: string; industry?: string }[];
+} else {
+  relatedEntities = [];
+}
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
-  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
-          <meta itemprop="position" content="1" />
-          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
-          <meta itemprop="position" content="2" />
-          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/products/capabilities/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Capabilities</span></a>
-          <meta itemprop="position" content="3" />
-          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.title}</span>
-          <meta itemprop="position" content="4" />
-        </li>
-      </ol>
-    </div>
-  </nav>
+  <!-- Products-specific breadcrumb -->
+  <BreadcrumbNav
+    lang="en"
+    items={[
+      { label: 'Home', slug: '' },
+      { label: 'Products', slug: 'products' },
+      { label: 'Capabilities', slug: 'products/capabilities' },
+      { label: data.title, slug: '', isCurrent: true },
+    ]}
+    siteUrl="https://cnc.bozemetal.com"
+  />
 
-  <!-- Hero -->
-  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl">
-        <p class="text-sm font-semibold mb-2" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{data.category}</p>
-        <h1 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">{data.title}</h1>
-        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
-        <!-- Stats row -->
-        <div class="mt-6 flex flex-wrap gap-6 text-sm">
-          {relatedProducts.length > 0 && (
-            <span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-              <strong style="color: var(--theme-primary);">{relatedProducts.length}</strong> products
-            </span>
-          )}
-          {relatedSystems.length > 0 && (
-            <span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-              <strong style="color: var(--theme-primary);">{relatedSystems.length}</strong> systems
-            </span>
-          )}
-        </div>
-      </div>
+  <!-- ═══ Module 1–7: MicroCapabilityPage Template ═══ -->
+  <MicroCapabilityPage
+    capability={entry}
+    relatedEntities={relatedEntities}
+    lang={DEFAULT_LANG}
+    hideBreadcrumb={true}
+    hideCta={true}
+    theme="products"
+    t={(key: string) => {
+      const map: Record<string, string> = {
+        'capabilities.breadcrumb.home': 'Home',
+        'capabilities.breadcrumb.capabilities': 'Capabilities',
+        'capabilities.specs.grades': 'Common Grades',
+        'capabilities.specs.thickness': 'Thickness Range',
+        'capabilities.specs.minHoleRatio': 'Min Hole/Thickness Ratio',
+        'capabilities.specs.cuttingTolerance': 'Cutting Tolerance',
+        'capabilities.specs.tolerance': 'Tolerance',
+        'capabilities.specs.maxSize': 'Max Part Size',
+        'capabilities.specs.surfaceFinish': 'Surface Finish',
+        'capabilities.processComparison.title': 'Process Comparison: Laser vs. Waterjet',
+        'capabilities.processComparison.dimension': 'Evaluation Dimension',
+        'capabilities.processComparison.laser': 'Laser Cutting',
+        'capabilities.processComparison.waterjet': 'Waterjet Cutting',
+        'capabilities.processComparison.empty': 'Process comparison data is being compiled for this capability.',
+        'capabilities.engineering.title': 'Engineering Capabilities & Limits',
+        'capabilities.engineering.holeTypes': 'Hole Types Supported',
+        'capabilities.engineering.heatControl': 'Heat Control Measures',
+        'capabilities.engineering.flatnessControl': 'Flatness & Stress Relief',
+        'capabilities.engineering.materials': 'Materials Supported',
+        'capabilities.applications.title': 'Typical Applications & Components',
+        'capabilities.applications.description': 'This process is used to manufacture the following titanium components.',
+        'capabilities.downstream.title': 'Secondary Operations & Downstream Processing',
+        'capabilities.downstream.description': 'Enhance your component with our integrated downstream services:',
+        'capabilities.quality.title': 'Quality Assurance & Inspection',
+        'capabilities.quality.inspectionItems': 'Inspection Items',
+        'capabilities.quality.standards': 'Quality Standards & Certifications',
+        'capabilities.cta.buttonText': 'Request a Quote',
+      };
+      return map[key] || key;
+    }}
+    siteUrl="https://cnc.bozemetal.com"
+  />
 
-      <!-- Spec cards -->
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        {data.tolerance && (
-          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Tolerance</p>
-            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{data.tolerance}</p>
-          </div>
-        )}
-        {data.maxSize && (
-          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Max Size</p>
-            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{data.maxSize}</p>
-          </div>
-        )}
-        {data.surfaceFinish && (
-          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Surface Finish</p>
-            <p class="text-lg font-bold mt-1" style="color: var(--theme-text);">{data.surfaceFinish}</p>
-          </div>
-        )}
-        {data.materials && data.materials.length > 0 && (
-          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-            <p class="text-sm font-semibold" style="color: var(--theme-primary);">Materials</p>
-            <p class="text-base font-bold mt-1" style="color: var(--theme-text);">{data.materials.join(', ')}</p>
-          </div>
-        )}
-      </div>
-    </div>
-  </section>
+  <!-- ═══ 产品生态专属区块：Systems + Same-Category Capabilities ═══ -->
 
-  <!-- Related Products -->
-  {relatedProducts.length > 0 && (
-    <section class="py-16" style="background: var(--theme-bg);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">Products Using This Capability</h2>
-        <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-          {relatedProducts.length} product entities that require {data.title} in their manufacturing process.
-        </p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {relatedProducts.slice(0, 30).map((p) => {
-            const pd = p.data;
-            const slug = entitySlug(pd.title);
-            return (
-              <a href={`/products/product-entities/${slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-                <p class="text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">{pd.industry || ''}</p>
-                <h3 class="font-bold text-sm mt-1" style="color: var(--theme-text);">{pd.title}</h3>
-                <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{pd.material}{pd.function ? ` �?${pd.function.slice(0, 80)}` : ''}</p>
-              </a>
-            );
-          })}
-        </div>
-        {relatedProducts.length > 30 && (
-          <p class="text-center mt-6 text-sm" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-            + {relatedProducts.length - 30} more products
-          </p>
-        )}
-      </div>
-    </section>
-  )}
-
-  <!-- Related Systems -->
   {relatedSystems.length > 0 && (
-    <section class="py-16" style="background: var(--theme-surface);">
+    <section class="py-16" style="background: var(--theme-bg);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">Systems Requiring This Capability</h2>
         <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
@@ -175,11 +162,11 @@ const sysSlug = (title: string) =>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {relatedSystems.map((s) => {
             const sd = s.data;
-            const slug = sysSlug(sd.title);
-            const count = sd.productEntities?.length || 0;
+            const slug_s = sysSlug(sd.title);
+            const count = (sd as any).productEntities?.length || 0;
             return (
-              <a href={`/products/systems/${slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-                <p class="text-xl mb-1">{sd.emoji || '🔧'}</p>
+              <a href={`/products/systems/${slug_s}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <p class="text-xl mb-1">{(sd as any).emoji || '🔧'}</p>
                 <h3 class="font-bold text-sm" style="color: var(--theme-text);">{sd.title}</h3>
                 <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{sd.description?.slice(0, 100)}</p>
                 {count > 0 && <p class="text-[10px] mt-2" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);">{count} components</p>}
@@ -191,22 +178,21 @@ const sysSlug = (title: string) =>
     </section>
   )}
 
-  <!-- Related Capabilities (same category) -->
   {sameCategoryCaps.length > 0 && (
-    <section class="py-16" style="background: var(--theme-bg);">
+    <section class="py-16" style="background: var(--theme-surface);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">Related {data.category} Capabilities</h2>
         <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
           Other capabilities in the same category.
         </p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {sameCategoryCaps.map((c) => {
             const cd = c.data;
-            const slug = c.id.replace(/\.json$/i, '').replace(/^.*[\\\/]/, '');
+            const cSlug = c.id.replace(/\.json$/i, '').replace(/^.*[\\/\\\\]/, '');
             return (
-              <a href={`/products/capabilities/${slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <a href={`/products/capabilities/${cSlug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
                 <h3 class="font-bold text-sm" style="color: var(--theme-text);">{cd.title}</h3>
-                <p class="text-xs mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">{cd.description?.slice(0, 80)}</p>
+                <p class="text-xs mt-1 line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{cd.description?.slice(0, 120)}</p>
               </a>
             );
           })}
@@ -214,22 +200,4 @@ const sysSlug = (title: string) =>
       </div>
     </section>
   )}
-
-  <!-- CTA -->
-  <section class="py-16" style="background: var(--theme-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Need {data.title} for Your Project?</h2>
-      <p class="mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Our engineering team can provide a competitive quote within 24 hours.</p>
-      <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">Request Quote</a>
-    </div>
-  </section>
-
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": data.title,
-    "description": data.description,
-    "category": data.category,
-    "audience": { "@type": "BusinessAudience" }
-  })} />
 </BaseLayout>

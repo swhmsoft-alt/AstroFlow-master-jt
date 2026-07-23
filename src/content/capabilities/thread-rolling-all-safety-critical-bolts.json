@@ -1,9 +1,81 @@
 {
+  "titaniumGrades": [
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 23 (ELI)"
+  ],
+  "thicknessRange": "M2 – M24 thread diameters; custom sizes available",
+  "minHoleRatio": "N/A",
+  "cuttingTolerance": "Thread pitch tolerance: Class 2A/3A (UN) / 6g/6h (metric)",
+  "processComparison": [
+    {
+      "dimension": "Threading Method",
+      "laser": "Thread cutting / thread milling",
+      "waterjet": "Thread rolling (cold forming)"
+    },
+    {
+      "dimension": "Fatigue Strength",
+      "laser": "Standard (cut threads)",
+      "waterjet": "Superior (rolled threads — compressive residual stress)"
+    },
+    {
+      "dimension": "Production Speed",
+      "laser": "Moderate (single-point or tap)",
+      "waterjet": "High (die rolling)"
+    },
+    {
+      "dimension": "Material Utilization",
+      "laser": "Some material removed",
+      "waterjet": "Near-net shape, no material loss"
+    }
+  ],
+  "processDescription": "Precision fastener manufacturing for thread rolling all titanium threaded components. Thread rolling produces superior fatigue strength compared to thread cutting by inducing compressive residual stresses in the thread root.",
+  "holeTypes": [
+    "Standard threads (UN/UNF/Metric)",
+    "Custom thread forms",
+    "Self-locking threads"
+  ],
+  "heatControl": "Coolant and speed control prevent work-hardening during thread rolling all threading operations.",
+  "flatnessControl": "Head flatness and perpendicularity controlled within 0.05 mm per fastener standards.",
+  "capabilitiesDescription": "Dedicated fastener manufacturing cell with automatic screw machines, thread rollers, and CNC lathes for thread rolling all production.",
+  "downstreamProcesses": [
+    {
+      "name": "Thread Inspection",
+      "description": "Go/no-go gauge inspection; thread micrometer verification; optical thread comparison."
+    },
+    {
+      "name": "Mechanical Testing",
+      "description": "Tensile proof load testing; hardness testing; torque-to-tension verification."
+    },
+    {
+      "name": "Surface Treatment",
+      "description": "Passivation, anodizing, or PVD coating for corrosion resistance and appearance."
+    }
+  ],
+  "inspectionItems": [
+    "Thread gauge inspection (Go/No-Go per ASME B1.1)",
+    "Dimensional inspection (head height, shank diameter, overall length)",
+    "Hardness testing (Rockwell / Vickers)",
+    "Proof load testing per ASTM F606"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ASME B1.1 — Unified Inch Screw Threads",
+    "ASTM F606 — Standard Test Methods for Fasteners",
+    "ISO 898-1 — Mechanical Properties of Fasteners"
+  ],
+  "ctaTitle": "Need Precision Thread Rolling Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Thread rolling (all safety-critical bolts)",
   "aliases": [],
   "category": "Fastener Manufacturing",
   "description": "Thread rolling (all safety-critical bolts) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Thread rolling (all safety-critical bolts) | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision fastener manufacturing of Thread rolling (all safety-critical bolts) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

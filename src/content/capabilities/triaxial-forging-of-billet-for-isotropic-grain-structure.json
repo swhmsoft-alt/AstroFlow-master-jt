@@ -1,9 +1,80 @@
 {
+  "titaniumGrades": [
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 23 (ELI)",
+    "Grade 9"
+  ],
+  "thicknessRange": "Up to 500 kg ingot/billet",
+  "minHoleRatio": "N/A",
+  "cuttingTolerance": "±1.0 mm (as-forged) / ±0.05 mm (post-CNC)",
+  "processComparison": [
+    {
+      "dimension": "Forging Method",
+      "laser": "Open die / closed die / isothermal",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Temperature Range",
+      "laser": "Beta transus ±50°C (850–1050°C for Ti)",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Grain Structure",
+      "laser": "Controlled recrystallization for equiaxed alpha-beta",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Mechanical Properties",
+      "laser": "Superior to cast/machined — aligned grain flow",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Titanium forging services for triaxial forging billet using open-die, closed-die, and isothermal forging processes. Controlled thermal-mechanical processing optimizes grain structure and mechanical properties.",
+  "holeTypes": [
+    "N/A"
+  ],
+  "heatControl": "Precise temperature control (±10°C) during triaxial forging billet forging to maintain beta-phase control and prevent grain growth.",
+  "flatnessControl": "Post-forge normalization and straightening within 1 mm/m.",
+  "capabilitiesDescription": "Press capacity up to 3000 ton with induction heating and programmable forging manipulators for triaxial forging billet.",
+  "downstreamProcesses": [
+    {
+      "name": "Heat Treatment",
+      "description": "Solution treatment and aging (STA) for alpha-beta alloys."
+    },
+    {
+      "name": "CNC Machining",
+      "description": "Post-forge machining to final dimensions and surface finish."
+    },
+    {
+      "name": "NDT Inspection",
+      "description": "Ultrasonic inspection (UT) per AMS 2631 for internal soundness."
+    }
+  ],
+  "inspectionItems": [
+    "Dimensional inspection (as-forged)",
+    "Ultrasonic inspection (UT) for internal defects",
+    "Metallographic examination (grain flow verification)",
+    "Mechanical testing (tensile, yield, elongation)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "AMS 2631 — Ultrasonic Inspection of Wrought Titanium",
+    "ASTM B381 — Titanium Forgings",
+    "AMS 4928 — Titanium Alloy Bars and Forgings"
+  ],
+  "ctaTitle": "Need Precision Triaxial Forging Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Triaxial forging of billet for isotropic grain structure",
   "aliases": [],
   "category": "Forging",
   "description": "Triaxial forging of billet for isotropic grain structure capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Triaxial forging of billet for isotropic grain structure | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision forging of Triaxial forging of billet for isotropic grain structure titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

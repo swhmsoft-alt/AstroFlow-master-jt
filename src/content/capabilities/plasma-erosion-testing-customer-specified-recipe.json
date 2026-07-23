@@ -1,9 +1,84 @@
 {
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "All sizes accommodated",
+  "minHoleRatio": "N/A",
+  "cuttingTolerance": "Measurement resolution: ±0.001 mm (CMM) / ±0.1 µm (optical)",
+  "processComparison": [
+    {
+      "dimension": "Detection Method",
+      "laser": "Laser profilometry / structured light scanning",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Resolution",
+      "laser": "0.001 mm (laser scanning); 0.1 µm (white light interferometry)",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Surface Requirement",
+      "laser": "Reflective or matte surfaces acceptable",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Inspection Speed",
+      "laser": "High — full-field scanning in seconds",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Portability",
+      "laser": "Portable laser trackers available for on-site inspection",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Comprehensive inspection services for plasma erosion testing titanium components, including dimensional metrology, NDT, and material verification with full traceability documentation.",
+  "holeTypes": [
+    "Inspection is a measurement/verification process"
+  ],
+  "heatControl": "All inspection performed in temperature-controlled metrology lab (20±1°C) to eliminate thermal expansion errors.",
+  "flatnessControl": "Granite surface plates (Grade 00) used as datum references for flatness measurement.",
+  "capabilitiesDescription": "Our metrology lab is equipped with CMM (ZEISS), vision systems, laser scanners, ultrasonic flaw detectors, and tensile/ hardness testers for plasma erosion testing.",
+  "downstreamProcesses": [
+    {
+      "name": "Inspection Report Package",
+      "description": "Full FAIR (AS9102) with dimensional report, material certs, and NDT results."
+    },
+    {
+      "name": "Certificate of Conformance",
+      "description": "Signed CoC with all applicable standards and specification compliance noted."
+    }
+  ],
+  "inspectionItems": [
+    "CMM full 3D inspection (GD&T per ASME Y14.5)",
+    "Surface roughness measurement (Ra/Rz/Rmax)",
+    "Hardness testing (Rockwell / Vickers / Brinell)",
+    "Non-destructive testing (UT / PT / MT / RT as required)",
+    "Material certification verification (EN 10204 3.1/3.2)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ISO/IEC 17025 — Metrology Lab Standards",
+    "AS9102 — First Article Inspection",
+    "NADCAP — NDT Accreditation"
+  ],
+  "ctaTitle": "Need Precision Plasma Erosion Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Plasma erosion testing (customer-specified recipe)",
   "aliases": [],
   "category": "Inspection",
   "description": "Plasma erosion testing (customer-specified recipe) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Plasma erosion testing (customer-specified recipe) | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision inspection of Plasma erosion testing (customer-specified recipe) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

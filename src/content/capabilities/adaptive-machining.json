@@ -1,9 +1,87 @@
 {
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Varies by specific process",
+  "minHoleRatio": "Per engineering specification",
+  "cuttingTolerance": "±0.01 mm to ±0.1 mm depending on process",
+  "processComparison": [
+    {
+      "dimension": "Process Control",
+      "laser": "SPC-monitored with real-time process parameters logging",
+      "waterjet": "Job-specific work instructions with inline quality checks"
+    },
+    {
+      "dimension": "Tolerance Capability",
+      "laser": "±0.01 mm typical for precision operations",
+      "waterjet": "±0.1 mm typical for general operations"
+    },
+    {
+      "dimension": "Documentation",
+      "laser": "Full batch traceability with MTR/CoC",
+      "waterjet": "Inspection reports on request"
+    },
+    {
+      "dimension": "Volume Flexibility",
+      "laser": "Prototype to high-volume production",
+      "waterjet": "Prototype to medium-volume batches"
+    }
+  ],
+  "processDescription": "Professional manufacturing service for adaptive machining titanium components, combining process expertise with quality control systems to deliver consistent results.",
+  "holeTypes": [
+    "Round holes",
+    "Slot holes",
+    "Custom geometry cutouts"
+  ],
+  "heatControl": "Process-specific heat management protocols are applied for adaptive machining to prevent titanium oxidation and maintain material properties.",
+  "flatnessControl": "Precision fixturing and post-process stress relief ensure flatness requirements are met for adaptive machining.",
+  "capabilitiesDescription": "Our integrated manufacturing facility handles adaptive machining with full traceability, SPC monitoring, and certified quality management.",
+  "downstreamProcesses": [
+    {
+      "name": "Deburring & Edge Finishing",
+      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+    },
+    {
+      "name": "Dimensional Inspection (CMM)",
+      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+    },
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+    },
+    {
+      "name": "Quality Documentation",
+      "description": "Full inspection reports, material certifications, and certificate of conformance included."
+    }
+  ],
+  "inspectionItems": [
+    "Dimensional inspection (caliper / micrometer / CMM)",
+    "Surface finish measurement (Ra / Rz per ISO 4287)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Visual inspection per ASTM E10 / ISO 17637",
+    "Process parameter verification (SPC charts)",
+    "First article inspection per AS9102"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "ctaTitle": "Need Precision Adaptive Machining Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Adaptive machining",
   "aliases": [],
   "category": "General Manufacturing",
   "description": "Adaptive machining capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Adaptive machining | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision general manufacturing of Adaptive machining titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

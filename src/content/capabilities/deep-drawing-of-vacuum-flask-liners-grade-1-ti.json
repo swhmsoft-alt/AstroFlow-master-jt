@@ -1,9 +1,77 @@
 {
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7"
+  ],
+  "thicknessRange": "0.3 mm – 6.0 mm sheet/plate",
+  "minHoleRatio": "1.5:1 (bend radius-to-thickness minimum)",
+  "cuttingTolerance": "±0.2 mm (formed geometry)",
+  "processComparison": [
+    {
+      "dimension": "Forming Method",
+      "laser": "Press brake / stamping / hydroforming",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Springback Control",
+      "laser": "Over-bend compensation based on titanium grade",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Tooling",
+      "laser": "Custom die sets or universal press brake tooling",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Heat Assistance",
+      "laser": "Hot forming (300–600°C) for complex geometries",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Precision forming of deep drawing vacuum titanium components using press brake, stamping, and hydroforming methods with controlled springback compensation.",
+  "holeTypes": [
+    "N/A — forming is a deformation process"
+  ],
+  "heatControl": "Hot forming performed at 300–600°C to reduce springback and improve formability of deep drawing vacuum.",
+  "flatnessControl": "Post-form stress relief and precision leveling ensure flatness within 0.3 mm/m.",
+  "capabilitiesDescription": "Equipped with CNC press brakes (up to 500 ton), stamping presses, and hydroforming systems for deep drawing vacuum.",
+  "downstreamProcesses": [
+    {
+      "name": "Laser/Waterjet Trimming",
+      "description": "Precision trimming of formed blanks to net shape."
+    },
+    {
+      "name": "Deburring",
+      "description": "Edge finishing of formed edges to remove burrs and achieve smooth radius."
+    },
+    {
+      "name": "Stress Relief Annealing",
+      "description": "Vacuum annealing to relieve cold-work stresses from forming operations."
+    }
+  ],
+  "inspectionItems": [
+    "Bend angle measurement (protractor / CMM)",
+    "Springback verification",
+    "Surface inspection (cracking / orange peel)",
+    "Thickness measurement (thinning check)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "ctaTitle": "Need Precision Deep Drawing Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Deep drawing of vacuum flask liners (Grade 1 Ti)",
   "aliases": [],
   "category": "Forming",
   "description": "Deep drawing of vacuum flask liners (Grade 1 Ti) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Deep drawing of vacuum flask liners (Grade 1 Ti) | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision forming of Deep drawing of vacuum flask liners (Grade 1 Ti) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }

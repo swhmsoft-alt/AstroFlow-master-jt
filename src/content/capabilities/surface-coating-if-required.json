@@ -1,9 +1,94 @@
 {
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "All thicknesses — surface treatment is independent of substrate thickness",
+  "minHoleRatio": "N/A",
+  "cuttingTolerance": "N/A",
+  "processComparison": [
+    {
+      "dimension": "Process Type",
+      "laser": "Laser marking/engraving for surface identification",
+      "waterjet": "N/A — waterjet not used for surface treatment"
+    },
+    {
+      "dimension": "Surface Finish Achieved",
+      "laser": "Ra 0.05–0.4 µm (laser polishing)",
+      "waterjet": "Ra 3.2–6.3 µm (abrasive surface preparation)"
+    },
+    {
+      "dimension": "Coating/Conversion",
+      "laser": "Laser cladding for wear-resistant coatings",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Treatment Depth",
+      "laser": "Surface-level (microns to mm for cladding)",
+      "waterjet": "Surface-level (abrasion only)"
+    },
+    {
+      "dimension": "Heat Impact",
+      "laser": "Localized heating; minimal bulk thermal effect",
+      "waterjet": "No heat; cold process"
+    }
+  ],
+  "processDescription": "Professional surface treatment services for surface coating if titanium components, including anodizing, passivation, electropolishing, and coatings to enhance corrosion resistance, wear properties, and aesthetic appearance.",
+  "holeTypes": [
+    "N/A — surface treatment is a finishing process"
+  ],
+  "heatControl": "Temperature-controlled process baths and fixturing ensure uniform treatment of surface coating if without altering the substrate's mechanical properties.",
+  "flatnessControl": "No significant flatness change expected during surface coating if processing. Pre-treatment flatness is preserved.",
+  "capabilitiesDescription": "Our surface treatment line includes Type II/III anodizing (AMS 2488), chemical passivation (ASTM B600), electropolishing, PVD coating, and laser engraving for surface coating if.",
+  "downstreamProcesses": [
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Class 10 cleanroom packaging for contamination-sensitive finished surfaces."
+    },
+    {
+      "name": "Quality Inspection",
+      "description": "Coating thickness measurement, adhesion testing (tape test), and color verification."
+    },
+    {
+      "name": "Deburring & Edge Finishing",
+      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+    },
+    {
+      "name": "Dimensional Inspection (CMM)",
+      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+    },
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+    }
+  ],
+  "inspectionItems": [
+    "Coating thickness measurement (eddy current / XRF)",
+    "Adhesion test (tape test per ASTM D3359)",
+    "Color uniformity inspection (visual / spectrophotometer)",
+    "Surface contamination test (white glove / Ferroxyl)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "AMS 2488 — Titanium Anodizing",
+    "ASTM B600 — Passivation of Titanium"
+  ],
+  "ctaTitle": "Need Precision Surface Coating Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review",
   "title": "Surface coating (if required)",
   "aliases": [],
   "category": "Surface Treatment",
   "description": "Surface coating (if required) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": []
+  "relatedInspection": [],
+  "seoTitle": "Surface coating (if required) | Titanium CNC Machining | BOZE",
+  "seoDescription": "Precision surface treatment of Surface coating (if required) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
 }
