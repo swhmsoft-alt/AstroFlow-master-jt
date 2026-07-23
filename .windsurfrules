@@ -1,0 +1,29 @@
+## 全局UI规范（所有页面类任务最高优先级强制执行）
+1. 开发/修改任何页面前，必须先遍历项目现有UI组件库；布局、卡片、标准区块、正文排版类需求，100%优先复用已有组件（Grid/Card/Section/Prose等），禁止手写重复功能的原生标签+自定义类名。
+2. 绝对禁止创建无对应CSS定义的自定义类名；禁止自行实现网格布局、卡片容器、标准内容区块、正文排版等已有组件覆盖的基础UI能力。
+3. 所有正文文本区块必须统一使用Prose组件包裹，禁止裸写h2/h3/p标签脱离设计系统。
+4. 页面局部差异化样式仅可写在当前页面的私有<style>块内，必须沿用项目现有设计Token，禁止硬编码颜色、间距、字号等基础样式值。
+规则覆盖范围与效果
+全场景生效：不管是 RFQ 页、材料页、服务页还是后续新增的任何页面，只要涉及页面布局与样式，全部强制遵守。
+精准打根因：直接卡死「自创无定义类名、绕过现有组件、裸文本无排版」三个核心问题，和这次 RFQ 页面的所有报错点一一对应。
+不束缚开发：仅约束 UI 实现方式，完全不限制新增页面、新增路由、扩展业务功能，正常开发不受任何影响。
+
+## 补充规则
+
+### 5. 设计 Token 引用约束
+私有<style>块内的样式值必须引用项目预定义的设计 Token（CSS 自定义属性，如 --color-* / --spacing-* / --font-* / --radius-* 等），禁止硬编码任意颜色值（#xxx / rgb() / hsl()）、间距值（px / rem / em）、字号值（px / rem）、圆角值、阴影值。必须先查阅项目根目录下的设计 Token 定义文件（如 tailwind.config.* / tokens.css / theme 目录）确认可用 Token 后再书写样式。
+
+### 6. 响应式断点规则
+所有布局、间距、字号、栅格变更必须使用项目预定义的响应式断点前缀（如 sm: / md: / lg: / xl: 等），禁止自行书写 @media (max-width:xxxpx) / @media (min-width:xxxpx) 等硬编码媒体查询。断点值以项目 tailwind.config / tokens 中定义的为准，除特殊场景（如打印样式 print）外不得新增自定义断点。
+
+### 7. 图片与图标资源规范
+- 图标：必须使用项目统一的图标组件（如 astro-icon / 特定 SVG Icon 组件），禁止内联原始 SVG 标签或使用 img 引用图标文件。
+- 图片：必须使用项目统一的 Image / Picture 组件（如 @astrojs/image 或项目中已有的封装），并始终指定 width / height / alt 属性，禁止直接书写 <img> 原生标签。
+- 所有图片资源需放置在项目约定的 assets 目录下，禁止将图片文件散落在页面目录中。
+
+### 8. 自动化 lint 自检配套
+在 package.json 的 scripts 中增加以下 npm script（需项目已有 lint 基础设施）：
+```json
+"check:ui-rules": "astro check && eslint --rule '{no-inline-svg: error, no-raw-img: error, no-hardcode-color: warn}' src/pages/ src/components/"
+```
+开发者提交代码前应执行 npm run check:ui-rules 进行自检，CI 流程也应包含此步骤以拦截违规代码合入主分支。
