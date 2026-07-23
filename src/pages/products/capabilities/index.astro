@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+export const prerender = true;
+
+const allCapabilities = await getCollection('capabilities');
+const allEntities = await getCollection('product-entities');
+const allSystems = await getCollection('systems');
+
+// Count product entities & systems per capability slug
+const capEntityCount: Record<string, number> = {};
+const capSystemCount: Record<string, number> = {};
+for (const entity of allEntities) {
+  for (const rc of (entity.data.relatedCapabilities || [])) {
+    const norm = (rc as string).toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    capEntityCount[norm] = (capEntityCount[norm] || 0) + 1;
+  }
+}
+for (const sys of allSystems) {
+  for (const rc of (sys.data.relatedCapabilities || [])) {
+    const norm = (rc as string).toLowerCase().replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    capSystemCount[norm] = (capSystemCount[norm] || 0) + 1;
+  }
+}
+
+// Group by category
+const categoryOrder = [
+  'Machining', 'EDM', 'Additive Manufacturing', 'Laser Processing',
+  'Surface Treatment', 'Welding', 'Forming', 'Forging', 'Fastener Manufacturing',
+  'Heat Treatment',
+  'Inspection', 'General Manufacturing',
+];
+const grouped: Record<string, typeof allCapabilities> = {};
+for (const cap of allCapabilities) {
+  const cat = cap.data.category || 'Other';
+  if (!grouped[cat]) grouped[cat] = [];
+  grouped[cat].push(cap);
+}
+const sortedCats = Object.keys(grouped).sort((a, b) => {
+  const ai = categoryOrder.indexOf(a);
+  const bi = categoryOrder.indexOf(b);
+  return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+});
+
+const totalCaps = allCapabilities.length;
+
+// Derive URL-safe slug from a capability entry (collection type: 'data')
+const capSlug = (entry: typeof allCapabilities[number]) =>
+  entry.id.replace(/\.json$/i, '').replace(/^.*[\\\/]/, '');
+---
+
+<BaseLayout
+  title="445 Titanium Manufacturing Capabilities – CNC, Surface Treatment, Inspection | BOZE CNC Ti"
+  description={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001.`}
+>
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" style="font-weight:600;color:var(--theme-text);">Capabilities</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">
+        {totalCaps} Titanium Manufacturing Capabilities
+      </h1>
+      <p class="text-lg mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        From 5-axis CNC milling to surface roughening/coating — every step of titanium component production covered.
+        {allEntities.length}+ product entities across {allSystems.length}+ systems reference these capabilities.
+      </p>
+
+      <!-- Category Anchor Navigation -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        {sortedCats.map(cat => {
+          const count = grouped[cat].length;
+          return (
+            <a href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`} class="px-4 py-2 text-sm font-medium rounded-full border transition-all"
+              style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-text);">
+              {cat} ({count})
+            </a>
+          );
+        })}
+      </div>
+
+      {sortedCats.map(cat => (
+        <div id={cat.toLowerCase().replace(/\s+/g, '-')} class="mb-12">
+          <h2 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{cat}</h2>
+          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            {cat === 'Machining' ? 'CNC milling, turning, Swiss-type, and multi-axis machining for complex titanium geometries.' :
+             cat === 'Surface Treatment' ? 'Anodizing, PVD coating, bead blasting, passivation, and surface roughening for corrosion resistance and aesthetics.' :
+             cat === 'Inspection' ? 'CMM, UT, X-ray, surface roughness, tensile testing, and dimensional validation to AS9100 standards.' :
+             cat === 'Welding' ? 'TIG, MIG, orbital, and laser welding of titanium assemblies with full weld integrity inspection.' :
+             cat === 'EDM' ? 'Wire EDM and sinker EDM for titanium components requiring burr-free edges and tight tolerances.' :
+             cat === 'Additive Manufacturing' ? 'SLM/DMLS 3D printing for complex titanium geometries with minimal material waste.' :
+             cat === 'Laser Processing' ? 'Laser cutting, marking, welding, and surface texturing for precision titanium parts.' :
+             cat === 'Forging' ? 'Closed-die and open-die forging of titanium billets for superior grain flow and mechanical properties.' :
+             cat === 'Forming' ? 'Bend forming, superplastic forming, tube bending, and hot forming of titanium sheet and tube.' :
+             cat === 'Heat Treatment' ? 'Vacuum annealing, stress relieving, and aging treatments for titanium alloys.' :
+             cat === 'Fastener Manufacturing' ? 'Thread rolling, cold heading, CNC turning of bolts, nuts, and custom fasteners.' :
+             cat === 'General Manufacturing' ? 'Assembly, cleaning, packaging, and value-added manufacturing services.' :
+             ''}
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {grouped[cat].map((entry) => {
+              const d = entry.data;
+              const slug = capSlug(entry);
+              const eCount = capEntityCount[slug] || 0;
+              const sCount = capSystemCount[slug] || 0;
+              return (
+                <a href={`/products/capabilities/${slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                  <h3 class="font-bold text-sm" style="color: var(--theme-text);">{d.title}</h3>
+                  <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                    {d.description?.slice(0, 100)}
+                  </p>
+                  <div class="mt-2 flex gap-2 text-[10px]" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">
+                    {eCount > 0 && <span>{eCount} products</span>}
+                    {sCount > 0 && <span>{sCount} systems</span>}
+                    {d.tolerance && <span>⌀ {d.tolerance}</span>}
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org", "@type": "CollectionPage",
+    "name": "Titanium Manufacturing Capabilities",
+    "description": `${totalCaps} precision manufacturing capabilities for titanium components`
+  })} />
+</BaseLayout>

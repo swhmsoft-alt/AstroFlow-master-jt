@@ -311,6 +311,13 @@ const logoSubtext = t('header.logoSubtext');
     </div>
 
     <!-- Mobile Menu Button -->
-    <MobileMenu client:idle />
+    <MobileMenu
+      client:idle
+      toggleMenuLabel={t('react.mobilemenu.toggle_menu')}
+      navigationMenuLabel={t('react.mobilemenu.navigation_menu')}
+      mainNavigationMenuLabel={t('react.mobilemenu.main_navigation_menu')}
+      closeMenuLabel={t('react.mobilemenu.close_menu')}
+      requestQuoteLabel={t('hero.cta')}
+    />
   </nav>
 </header>

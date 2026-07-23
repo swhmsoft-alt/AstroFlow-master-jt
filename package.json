@@ -1,14 +1,15 @@
 {
-  "name": "astroflow",
+"name": "astroflow",
   "type": "module",
   "version": "0.0.1",
   "description": "Modern Astro.js template for logistics and manufacturing companies",
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "npx astro build && node scripts/split-sitemap.mjs && node scripts/postbuild.js",
-    "preview": "astro preview",
     "optimize:images": "node scripts/optimize-images.js",
+    "postbuild:images": "node scripts/postbuild-images.mjs",
+    "build": "npm run optimize:images && npx astro build && node scripts/split-sitemap.mjs && node scripts/postbuild.js && npm run postbuild:images",
+    "preview": "astro preview",
     "generate:product-images": "node scripts/generate-product-images.mjs --provider placeholder",
     "generate:product-images:openai": "node scripts/generate-product-images.mjs --provider openai",
     "generate:product-images:dry": "node scripts/generate-product-images.mjs --dry-run",
@@ -16,7 +17,7 @@
     "check:similarity:strict": "node scripts/check-similarity.mjs --threshold 0.30",
     "differentiate": "node scripts/differentiate-products.mjs",
     "prebuild:similarity": "node scripts/check-similarity.mjs --threshold 0.30 || echo '⚠️  Similarity exceeds threshold. Run `npm run differentiate` to fix.'",
-    "deploy": "npx astro build && node scripts/split-sitemap.mjs && node scripts/deploy-basic-ftp.js",
+    "deploy": "npm run build && node scripts/deploy-basic-ftp.js",
     "astro": "astro"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.0",
+    "astro-compress": "^2.4.1",
     "basic-ftp": "^6.0.1",
     "cookie-parser": "^1.4.7",
     "esbuild": "^0.25.12",
