@@ -92,6 +92,7 @@ const productImageAlt = explicitAlt || `${title} — ${matShort} Product Renderi
 this.onerror=function(){
   var s=this.src;
   if(s.indexOf('.png')>-1){this.src=s.replace('.png','.svg')}
+  else if(s.indexOf('.webp')>-1){this.src=s.replace('.webp','.svg')}
   else{this.style.display='none'}
 }`.trim()}
           />

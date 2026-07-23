@@ -4,7 +4,6 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import normalizeTrailingSlash from '@reunmedia/astro-normalize-trailing-slash';
-import compress from 'astro-compress';
 import { rehypeAutoInternalLinksI18n } from './src/lib/rehype-auto-internal-links-i18n';
 
 // https://astro.build
@@ -37,24 +36,6 @@ export default defineConfig({
           ar: 'ar-SA',
         },
       },
-    }),
-    // Post-build compression of HTML/CSS/JS/SVG
-    compress({
-      CSS: { engine: 'csso' },
-      HTML: {
-        'html-minifier-terser': {
-          removeComments: true,
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeAttributeQuotes: false,
-          removeEmptyAttributes: true,
-          minifyJS: false, // JS already minified via Vite
-          minifyCSS: false, // CSS already minified via Vite
-        },
-      },
-      JavaScript: { engine: 'terser' },
-      SVG: { engine: 'svgo' },
-      Image: false, // Image handled separately by postbuild-images.mjs
     }),
   ],
   i18n: {
@@ -176,10 +157,7 @@ export default defineConfig({
     build: {
       rollupOptions: {
         output: {
-          // Split heavy dialog/scroll-lock dependencies into separate vendor chunk
-          // to prevent 10.8 MB MobileMenu.js bundle
           manualChunks(id) {
-            // Radix UI dialog and its heavy transitive dependencies
             if (id.includes('node_modules/react-remove-scroll') ||
                 id.includes('node_modules/@radix-ui/react-dialog') ||
                 id.includes('node_modules/react-style-singleton') ||
@@ -202,18 +180,15 @@ export default defineConfig({
                 id.includes('node_modules/tslib')) {
               return 'vendor-dialog';
             }
-            // Split motion (framer-motion successor) - used by ImageReveal
             if (id.includes('node_modules/motion') ||
                 id.includes('node_modules/framer-motion') ||
                 id.includes('node_modules/motion-dom') ||
                 id.includes('node_modules/motion-utils')) {
               return 'vendor-motion';
             }
-            // Split lucide-react icons
             if (id.includes('node_modules/lucide-react')) {
               return 'vendor-icons';
             }
-            // Split React itself into a stable vendor chunk
             if (id.includes('node_modules/react-dom') ||
                 id.includes('node_modules/scheduler')) {
               return 'vendor-react';
