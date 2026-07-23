@@ -46,19 +46,19 @@ export async function getStaticPaths() {
 
   const allLangs = Object.keys(LANGUAGES);
   const paths: {
-    params: { lang: string; slug: string };
+    params: { lang?: string; slug: string };
     props: Record<string, any>;
   }[] = [];
 
   for (const cap of capabilities) {
     const baseSlug = cap.id.replace(/\.json$/, '');
 
-    // 默认语言（无前缀）
+    // 默认语言（无前缀）— 对 rest parameter 传 undefined
     paths.push({
-      params: { lang: '', slug: baseSlug },
+      params: { slug: baseSlug },
       props: {
         originalSlug: baseSlug,
-        lang: DEFAULT_LANG,
+        lang: DEFAULT_LANG as string,
         entryId: cap.id,
         relatedEntitySlugs: capabilityToEntities.get(baseSlug) || [],
       },
