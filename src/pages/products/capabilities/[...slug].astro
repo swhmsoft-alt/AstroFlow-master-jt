@@ -1,4 +1,4 @@
----
+﻿---
 /**
  * src/pages/products/capabilities/[...slug].astro
  *
@@ -68,7 +68,7 @@ if (relatedProducts.length >= 3) {
   // 反向引用足够 → 用它
   relatedEntities = relatedProducts.map((p) => ({
     title: p.data.title,
-    slug: entitySlug(p.data.title),
+    slug: p.slug || p.id?.replace('.json','') || '',
     material: (p.data as any).material,
     industry: (p.data as any).industry,
   }));
@@ -83,7 +83,7 @@ if (relatedProducts.length >= 3) {
       if (!found) return null;
       return {
         title: found.data.title,
-        slug: entitySlug(found.data.title),
+        slug: found.slug || found.id?.replace('.json','') || '',
         material: (found.data as any).material,
         industry: (found.data as any).industry,
       };
@@ -144,6 +144,8 @@ if (relatedProducts.length >= 3) {
         'capabilities.quality.inspectionItems': 'Inspection Items',
         'capabilities.quality.standards': 'Quality Standards & Certifications',
         'capabilities.cta.buttonText': 'Request a Quote',
+        'capabilities.comparison.singleTitle': 'Technical Specifications & Capabilities',
+        'capabilities.comparison.specLabel': 'Specification / Value',
       };
       return map[key] || key;
     }}
