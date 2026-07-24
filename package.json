@@ -1,4 +1,4 @@
-{
+﻿{
 "name": "astroflow",
   "type": "module",
   "version": "0.0.1",
@@ -18,6 +18,7 @@
     "differentiate": "node scripts/differentiate-products.mjs",
     "prebuild:similarity": "node scripts/check-similarity.mjs --threshold 0.30 || echo '⚠️  Similarity exceeds threshold. Run `npm run differentiate` to fix.'",
     "deploy": "set NODE_OPTIONS=--max-old-space-size=4096 && npm run build && node scripts/deploy-basic-ftp.js",
+    "deploy:inc": "node scripts/deploy-incremental-ftp.js",
     "astro": "astro"
   },
   "dependencies": {
@@ -52,3 +53,4 @@
     "glob": "^13.0.6"
   }
 }
+
