@@ -1,4 +1,4 @@
----
+﻿---
 /**
  * src/components/capabilities/MicroCapabilityPage.astro
  *
@@ -152,6 +152,7 @@ const faqs = data.faqs && data.faqs.length > 0 ? data.faqs : (() => {
   });
   return list;
 })();
+
 ---
 
 <div class:list={['capability-micro-page', theme === 'products' ? 'theme-products' : '']}>
@@ -205,12 +206,12 @@ const faqs = data.faqs && data.faqs.length > 0 ? data.faqs : (() => {
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════ -->
-<!-- Module 2: Process Comparison & Technical Advantages            -->
+<!-- Module 2: Engineering Parameters (generic, no hardcoded names)   -->
 <!-- ════════════════════════════════════════════════════════════════ -->
 <section class="max-w-7xl mx-auto px-4 py-12">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-      {t('capabilities.processComparison.title')}
+      Engineering Parameters & Capabilities
     </h2>
 
     {data.processDescription && (
@@ -219,44 +220,51 @@ const faqs = data.faqs && data.faqs.length > 0 ? data.faqs : (() => {
       </p>
     )}
 
-    {data.processComparison && data.processComparison.length > 0 && (
+    {data.processComparison && data.processComparison.length > 0 && (() => {
+      const hasTwoCols = data.processComparison.some((r: any) =>
+        r.waterjet && r.waterjet !== 'N/A' && r.waterjet !== '' && r.laser !== r.waterjet);
+      return (
       <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
         <table class="min-w-full divide-y divide-gray-200 text-sm">
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider w-1/3">
-                {t('capabilities.processComparison.dimension')}
+                Parameter
               </th>
               <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-blue-700 uppercase tracking-wider">
-                {t('capabilities.processComparison.laser')}
+                {hasTwoCols ? 'Primary Method' : 'Specification'}
               </th>
-              <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-emerald-700 uppercase tracking-wider">
-                {t('capabilities.processComparison.waterjet')}
-              </th>
+              {hasTwoCols && (
+                <th scope="col" class="px-6 py-4 text-left text-xs font-semibold text-emerald-700 uppercase tracking-wider">
+                  Alternative Method
+                </th>
+              )}
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            {data.processComparison.map((row, index) => (
+            {data.processComparison.map((row: any, index: number) => (
               <tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                   {row.dimension}
                 </td>
                 <td class="px-6 py-4 text-gray-700">
-                  {row.laser}
+                  {row.laser || row.waterjet || row.dimension}
                 </td>
-                <td class="px-6 py-4 text-gray-700">
-                  {row.waterjet}
-                </td>
+                {hasTwoCols && (
+                  <td class="px-6 py-4 text-gray-700">
+                    {row.waterjet}
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
-    )}
+      </div>);
+    })()}
 
     {!data.processComparison && (
       <p class="text-gray-400 italic">
-        {t('capabilities.processComparison.empty')}
+        Technical specifications for this capability are available upon request.
       </p>
     )}
   </div>
@@ -401,7 +409,7 @@ const faqs = data.faqs && data.faqs.length > 0 ? data.faqs : (() => {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {relatedEntities.map((entity) => (
           <a
-            href={localizePath(`/products/${entity.slug}`, lang)}
+            href={localizePath(`/products/product-entities/${entity.slug}`, lang)}
             class="group block bg-white rounded-xl p-5 border border-gray-200 hover:border-blue-300 hover:shadow-md transition-all"
           >
             <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
