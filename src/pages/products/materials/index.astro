@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
 export const prerender = true;
 
@@ -14,28 +13,8 @@ for (const cat of categories) {
   if (items.length > 0) grouped[cat] = items;
 }
 
-const matSlug = (title: string) => {
-  const slug = title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-  // Map new KG slug to old material page slug
-  const SLUG_MAP: Record<string, string> = {
-    'grade-5-ti-6al-4v': 'grade-5',
-    'grade-23-ti-6al-4v-eli': 'grade-23',
-    'grade-1-cp-ti': 'grade-1',
-    'grade-2-cp-ti': 'grade-2',
-    'grade-3-cp-ti': 'grade-3',
-    'grade-4-cp-ti': 'grade-4',
-    'beta-c-ti-3al-8v-6cr-4mo-4zr': 'grade-19',
-    'grade-9-ti-3al-25v': 'grade-9',
-    'ti-1023-ti-10v-2fe-3al': 'ti-5553',
-    'ti-15v-3cr-3sn-3al': 'grade-21',
-    'ti-5al-25sn-eli': 'grade-6',
-    'ti-6242-ti-6al-2sn-4zr-2mo': 'grade-6242',
-  };
-  return SLUG_MAP[slug] || slug;
-};
+const matSlug = (title: string) => title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
 ---
-
-
 
 <BaseLayout
   title="Titanium Materials Library - 20 Alloys | BOZE CNC Ti"
@@ -62,11 +41,12 @@ const matSlug = (title: string) => {
     </div>
   </nav>
 
-  <SubpageHero
-    h1="Titanium Materials Library"
-    badge={`${materials.length} Alloys`}
-    subtitle={`${materials.length} titanium alloys — from commercially pure grades for chemical processing to advanced beta alloys for aerospace and medical-grade ELI for implants.`}
-  />
+  <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">Titanium Materials Library</h1>
+      <p class="text-lg mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        {materials.length} titanium alloys — from commercially pure grades for chemical processing to advanced beta alloys for aerospace and medical-grade ELI for implants.
+      </p>
 
       <!-- Category Tabs -->
       <div class="flex flex-wrap gap-2 mb-8">
@@ -95,7 +75,7 @@ const matSlug = (title: string) => {
               const d = entry.data;
               const slug = matSlug(d.title);
               return (
-                <a href={`/materials/${slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <a href={`/products/materials/${slug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
                   <h3 class="font-bold text-sm" style="color: var(--theme-text);">{d.title}</h3>
                   <div class="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
                     {d.density && <span>Density: {d.density}</span>}
@@ -118,4 +98,3 @@ const matSlug = (title: string) => {
     "description": `${materials.length} titanium alloys with mechanical properties`
   })} />
 </BaseLayout>
-

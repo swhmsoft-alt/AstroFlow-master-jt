@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
 
 export const prerender = true;
@@ -19,12 +18,6 @@ for (const e of entities) {
   byIndustry[ind].systems[sys].push(e);
 }
 
-// Build system title 鈫?slug lookup
-const systemLookup: Record<string, string> = {};
-for (const sys of systems) {
-  systemLookup[sys.data.title] = sys.slug || sys.id?.replace('.json','') || '';
-}
-
 // Find industry metadata
 for (const ind of industries) {
   if (byIndustry[ind.data.title]) byIndustry[ind.data.title].industry = ind;
@@ -35,7 +28,6 @@ const sortedIndustries = Object.entries(byIndustry).sort((a, b) => b[1].systems.
 const totalEntities = entities.length;
 const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.system, true]))).length;
 ---
-
 
 <BaseLayout
   title="Titanium Component Library - 260+ Precision CNC Parts | BOZE CNC Ti"
@@ -62,12 +54,16 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
     </div>
   </nav>
 
-  <SubpageHero
-    h1="Titanium Component Library"
-    badge={`${totalEntities} Precision Parts`}
-    subtitle={`${totalEntities} precision CNC machined titanium components across ${totalSystems} engineering systems and 12 industries. Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications.`}
-  />
-
+  <!-- Hero -->
+  <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4" style="color: var(--theme-text);">Titanium Component Library</h1>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {totalEntities} precision CNC machined titanium components across {totalSystems} engineering systems and 12 industries.
+          Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications.
+        </p>
+      </div>
       <!-- Stats -->
       <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">
         <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
@@ -79,7 +75,7 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
           <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Systems</p>
         </div>
         <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-3xl font-bold" style="color: var(--theme-primary);">{industries.length}</p>
+          <p class="text-3xl font-bold" style="color: var(--theme-primary);">{Object.keys(byIndustry).length}</p>
           <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Industries</p>
         </div>
         <div class="p-5 rounded-xl border text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
@@ -110,11 +106,11 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
       <section id={indSlug} class="py-12 lg:py-16" style="background: var(--theme-surface);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <a href={`/products/industries/${indSlug}/`} class="inline-block mb-2">
-            <span class="text-sm font-semibold" style="color: var(--theme-primary);">{indName} 鈫?/span>
+            <span class="text-sm font-semibold" style="color: var(--theme-primary);">{indName} →</span>
           </a>
           
           {Object.entries(indData.systems).map(([sysName, sysEntities]) => {
-            const sysSlug = systemLookup[sysName] || sysName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            const sysSlug = sysName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
             return (
               <div class="mb-10">
                 <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">
@@ -125,7 +121,7 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
                   {sysEntities.map((e: any) => {
                     const func = e.data.function?.slice(0, 80) || '';
                     return (
-                      <a href={`/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                      <a href={`/products/product-entities/${e.slug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
                         <h3 class="text-sm font-semibold leading-tight" style="color: var(--theme-text);">{e.data.title}</h3>
                         <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{e.data.material?.split(' ').slice(0, 3).join(' ')}</p>
                       </a>
@@ -133,7 +129,8 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
                   })}
                 </div>
                 <a href={`/products/systems/${sysSlug}/`} class="inline-block mt-3 text-sm font-medium" style="color: var(--theme-primary);">
-                  View {sysName} System 鈫?                </a>
+                  View {sysName} System →
+                </a>
               </div>
             );
           })}
@@ -167,8 +164,3 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
     "about": { "@type": "Thing", "name": "Titanium Precision CNC Machined Components" }
   })} />
 </BaseLayout>
-
-
-
-
-
