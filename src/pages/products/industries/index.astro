@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
@@ -28,12 +28,6 @@ const sorted = [...industries].sort((a, b) =>
   (indOrder[a.data.title] || 99) - (indOrder[b.data.title] || 99));
 ---
 
-<SubpageHero
-  h1="Industries Served"
-  badge={`${total} Sectors`}
-  subtitle={`${total} industries where our precision titanium components are used. Each sector has unique engineering requirements — from aerospace-grade fatigue life to medical-grade biocompatibility.`}
-/>
-
 <BaseLayout
   title="Industries Served - Titanium Components for 12 Sectors | BOZE CNC Ti"
   description="Titanium precision components for Aerospace, Medical, Semiconductor, Chemical, Cycling, Marine, Energy, and more. AS9100D & ISO 9001 certified."
@@ -59,6 +53,12 @@ const sorted = [...industries].sort((a, b) =>
     </div>
   </nav>
 
+  <SubpageHero
+    h1="Industries Served"
+    badge={`${total} Sectors`}
+    subtitle={`${total} industries where our precision titanium components are used. Each sector has unique engineering requirements — from aerospace-grade fatigue life to medical-grade biocompatibility.`}
+  />
+
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {sorted.map((entry) => {
@@ -68,9 +68,9 @@ const sorted = [...industries].sort((a, b) =>
           const prodCountThis = sysCount[d.title] || 0;
           return (
             <a href={`/products/industries/${slug}/`} class="group block p-6 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-              <p class="text-2xl mb-2">{['✈️','🏥','💻','🧪','🚴','⚡','🚢','📱','🏎️','⚡','🌍','🔩'][indOrder[d.title]-1] || '🏭'}</p>
+              <p class="text-2xl mb-2">{['鉁堬笍','馃彞','馃捇','馃И','馃毚','鈿?,'馃殺','馃摫','馃弾锔?,'鈿?,'馃實','馃敥'][indOrder[d.title]-1] || '馃彮'}</p>
               <h2 class="text-lg font-bold mb-1 group-hover" style="color: var(--theme-text);">{d.title}</h2>
-              <p class="text-xs mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{sysCountThis} systems · {prodCountThis} components</p>
+              <p class="text-xs mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{sysCountThis} systems 路 {prodCountThis} components</p>
               <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{d.description?.slice(0, 120)}</p>
               {d.applications && d.applications.length > 0 && (
                 <div class="mt-3 flex flex-wrap gap-1.5">

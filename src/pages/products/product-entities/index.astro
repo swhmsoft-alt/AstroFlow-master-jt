@@ -35,11 +35,6 @@ const sortedIndustries = Object.entries(byIndustry).sort((a, b) => b[1].systems.
 const totalEntities = entities.length;
 const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.system, true]))).length;
 ---
-<SubpageHero
-  h1="Titanium Component Library"
-  badge={`${totalEntities} Precision Parts`}
-  subtitle={`${totalEntities} precision CNC machined titanium components across ${totalSystems} engineering systems and 12 industries. Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications.`}
-/>
 
 
 <BaseLayout
@@ -66,6 +61,12 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
       </ol>
     </div>
   </nav>
+
+  <SubpageHero
+    h1="Titanium Component Library"
+    badge={`${totalEntities} Precision Parts`}
+    subtitle={`${totalEntities} precision CNC machined titanium components across ${totalSystems} engineering systems and 12 industries. Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications.`}
+  />
 
       <!-- Stats -->
       <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">

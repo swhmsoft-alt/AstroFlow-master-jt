@@ -42,12 +42,7 @@ const totalEntities = allEntities.length;
 const sysSlug = (entry: typeof allSystems[number]) =>
   entry.slug || entry.id?.replace('.json','') || entry.id.replace(/^.*[\/]/, '').replace(/.json$/i, '');
 ---
-  <SubpageHero
-    h1="Engineering Systems"
-    badge={`${totalSystems} Systems`}
-    subtitle={`${totalSystems} engineering systems organizing ${totalEntities} precision titanium components across ${allIndustries.length} industries. Each system represents a functional grouping of components that work together in a specific application domain.`}
-  />
-
+  
 
 <BaseLayout
   title="Engineering Systems – Titanium Component Systems | BOZE CNC Ti"
@@ -73,6 +68,12 @@ const sysSlug = (entry: typeof allSystems[number]) =>
       </ol>
     </div>
   </nav>
+
+  <SubpageHero
+    h1="Engineering Systems"
+    badge={`${totalSystems} Systems`}
+    subtitle={`${totalSystems} engineering systems organizing ${totalEntities} precision titanium components across ${allIndustries.length} industries. Each system represents a functional grouping of components that work together in a specific application domain.`}
+  />
 
 
   <!-- Jump links by industry -->

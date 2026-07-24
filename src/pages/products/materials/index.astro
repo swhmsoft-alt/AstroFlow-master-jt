@@ -34,11 +34,7 @@ const matSlug = (title: string) => {
   return SLUG_MAP[slug] || slug;
 };
 ---
-<SubpageHero
-  h1="Titanium Materials Library"
-  badge={`${materials.length} Alloys`}
-  subtitle={`${materials.length} titanium alloys — from commercially pure grades for chemical processing to advanced beta alloys for aerospace and medical-grade ELI for implants.`}
-/>
+
 
 
 <BaseLayout
@@ -66,12 +62,11 @@ const matSlug = (title: string) => {
     </div>
   </nav>
 
-  <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">Titanium Materials Library</h1>
-      <p class="text-lg mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-        {materials.length} titanium alloys 鈥?from commercially pure grades for chemical processing to advanced beta alloys for aerospace and medical-grade ELI for implants.
-      </p>
+  <SubpageHero
+    h1="Titanium Materials Library"
+    badge={`${materials.length} Alloys`}
+    subtitle={`${materials.length} titanium alloys — from commercially pure grades for chemical processing to advanced beta alloys for aerospace and medical-grade ELI for implants.`}
+  />
 
       <!-- Category Tabs -->
       <div class="flex flex-wrap gap-2 mb-8">
