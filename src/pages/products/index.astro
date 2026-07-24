@@ -74,12 +74,12 @@ const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').r
           <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalEntities}</p>
           <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Components</p>
         </a>
-        <a href="#systems" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+        <a href="/products/systems/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
           <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalSystems}</p>
           <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Systems</p>
         </a>
         <a href="/products/industries/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{Object.keys(byIndustry).length}</p>
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{industries.length}</p>
           <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Industries</p>
         </a>
         <a href="/products/materials/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">

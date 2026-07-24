@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const allSystems = await getCollection('systems');
+const allIndustries = await getCollection('industries');
+const allEntities = await getCollection('product-entities');
+
+// Count product entities per system
+const entityCount: Record<string, number> = {};
+for (const e of allEntities) {
+  const sys = e.data.system || 'General';
+  entityCount[sys] = (entityCount[sys] || 0) + 1;
+}
+
+// Build industry title to slug lookup
+const industrySlug: Record<string, string> = {};
+for (const ind of allIndustries) {
+  industrySlug[ind.data.title] = ind.slug || ind.id?.replace('.json','') || '';
+}
+
+// Group systems by industry
+const byIndustry: Record<string, typeof allSystems> = {};
+for (const sys of allSystems) {
+  const ind = sys.data.industry || 'Other';
+  if (!byIndustry[ind]) byIndustry[ind] = [];
+  byIndustry[ind].push(sys);
+}
+
+// Sort industries by system count (most first)
+const sortedIndustries = Object.entries(byIndustry).sort(
+  (a, b) => b[1].length - a[1].length
+);
+
+const totalSystems = allSystems.length;
+const totalEntities = allEntities.length;
+
+// Derive URL-safe slug from a system entry
+const sysSlug = (entry: typeof allSystems[number]) =>
+  entry.slug || entry.id?.replace('.json','') || entry.id.replace(/^.*[\/]/, '').replace(/.json$/i, '');
+---
+  <SubpageHero
+    h1="Engineering Systems"
+    badge={`${totalSystems} Systems`}
+    subtitle={`${totalSystems} engineering systems organizing ${totalEntities} precision titanium components across ${allIndustries.length} industries. Each system represents a functional grouping of components that work together in a specific application domain.`}
+  />
+
+
+<BaseLayout
+  title="Engineering Systems – Titanium Component Systems | BOZE CNC Ti"
+  description={`${totalSystems} engineering systems organized across industries — chemical reactor internals, aerospace ducting, medical implants, semiconductor chambers, and more. AS9100D & ISO 9001.`}
+>
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" style="font-weight:600;color:var(--theme-text);">Engineering Systems</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+
+  <!-- Jump links by industry -->
+  <section class="py-6" style="background: var(--theme-bg); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-2">
+        {sortedIndustries.map(([indName, systems]) => {
+          const indSlug = industrySlug[indName] || indName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+          const count = systems.length;
+          return (
+            <a href={`#${indSlug}`} class="px-3 py-1.5 rounded-full text-xs font-medium border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-text);">
+              {indName} ({count})
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+  <!-- Systems by Industry -->
+  {sortedIndustries.map(([indName, systems]) => {
+    const indSlug = industrySlug[indName] || indName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    return (
+      <section id={indSlug} class="py-12 lg:py-16" style="background: var(--theme-surface);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <a href={`/products/industries/${indSlug}/`} class="inline-block mb-2">
+            <span class="text-sm font-semibold" style="color: var(--theme-primary);">{indName} →</span>
+          </a>
+          <h2 class="text-xl font-bold mb-6" style="color: var(--theme-text);">Systems ({systems.length})</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {systems.map((entry) => {
+              const d = entry.data;
+              const slug = sysSlug(entry);
+              const eCount = entityCount[d.title] || 0;
+              return (
+                <a href={`/products/systems/${slug}/`} class="block p-5 rounded-xl border transition-all hover:scale-[1.02]" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                  <div class="flex items-start gap-3">
+                    <span class="text-xl shrink-0 mt-0.5">{d.emoji || '🔧'}</span>
+                    <div>
+                      <h3 class="font-bold text-sm" style="color: var(--theme-text);">{d.title}</h3>
+                      <p class="text-xs mt-1 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                        {d.description?.slice(0, 120)}
+                      </p>
+                      <div class="mt-2 flex gap-2 text-[10px]" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">
+                        {eCount > 0 && <span>{eCount} components</span>}
+                        {d.relatedCapabilities?.length > 0 && <span>{d.relatedCapabilities.length} processes</span>}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    );
+  })}
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Engineering Systems - Titanium Component Systems",
+    "description": `${totalSystems} engineering systems organizing ${totalEntities} precision titanium components across ${allIndustries.length} industries.`
+  })} />
+</BaseLayout>
+

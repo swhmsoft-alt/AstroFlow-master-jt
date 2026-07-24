@@ -120,7 +120,7 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
           <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Industry</p>
           <meta itemprop="numberOfItems" content="{allSystems.length}" />
         </div>
-        <a href="/products/industries/{entry.slug || entry.id?.replace('.json','') || ''}/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <a href="/products/systems/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
           <p class="text-sm font-semibold" style="color: var(--theme-text);">🗄️ Systems</p>
           <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allSystems.length} total</p>
         </a>

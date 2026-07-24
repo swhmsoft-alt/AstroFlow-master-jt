@@ -1,5 +1,6 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
 export const prerender = true;
 
@@ -49,9 +50,15 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
   entry.id.replace(/\.json$/i, '').replace(/^.*[\\\/]/, '');
 ---
 
+<SubpageHero
+  h1="Manufacturing Capabilities"
+  badge={`${totalCaps} Processes`}
+  subtitle={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001 certified.`}
+/>
+
 <BaseLayout
-  title="445 Titanium Manufacturing Capabilities – CNC, Surface Treatment, Inspection | BOZE CNC Ti"
-  description={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001.`}
+  title="445 Titanium Manufacturing Capabilities 鈥?CNC, Surface Treatment, Inspection | BOZE CNC Ti"
+  description={`${totalCaps} precision manufacturing capabilities for titanium components 鈥?CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001.`}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,7 +87,7 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
         {totalCaps} Titanium Manufacturing Capabilities
       </h1>
       <p class="text-lg mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-        From 5-axis CNC milling to surface roughening/coating — every step of titanium component production covered.
+        From 5-axis CNC milling to surface roughening/coating 鈥?every step of titanium component production covered.
         {allEntities.length}+ product entities across {allSystems.length}+ systems reference these capabilities.
       </p>
 
@@ -130,7 +137,7 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
                   <div class="mt-2 flex gap-2 text-[10px]" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">
                     {eCount > 0 && <span>{eCount} products</span>}
                     {sCount > 0 && <span>{sCount} systems</span>}
-                    {d.tolerance && <span>⌀ {d.tolerance}</span>}
+                    {d.tolerance && <span>鈱€ {d.tolerance}</span>}
                   </div>
                 </a>
               );
@@ -147,3 +154,4 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
     "description": `${totalCaps} precision manufacturing capabilities for titanium components`
   })} />
 </BaseLayout>
+

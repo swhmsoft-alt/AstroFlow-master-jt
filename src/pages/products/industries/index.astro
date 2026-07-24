@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
 export const prerender = true;
 
@@ -27,6 +28,12 @@ const sorted = [...industries].sort((a, b) =>
   (indOrder[a.data.title] || 99) - (indOrder[b.data.title] || 99));
 ---
 
+<SubpageHero
+  h1="Industries Served"
+  badge={`${total} Sectors`}
+  subtitle={`${total} industries where our precision titanium components are used. Each sector has unique engineering requirements — from aerospace-grade fatigue life to medical-grade biocompatibility.`}
+/>
+
 <BaseLayout
   title="Industries Served - Titanium Components for 12 Sectors | BOZE CNC Ti"
   description="Titanium precision components for Aerospace, Medical, Semiconductor, Chemical, Cycling, Marine, Energy, and more. AS9100D & ISO 9001 certified."
@@ -52,12 +59,7 @@ const sorted = [...industries].sort((a, b) =>
     </div>
   </nav>
 
-  <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">Industries Served</h1>
-      <p class="text-lg mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-        {total} industries where our precision titanium components are used. Each sector has unique engineering requirements — from aerospace-grade fatigue life to medical-grade biocompatibility.
-      </p>
+
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {sorted.map((entry) => {
           const d = entry.data;
@@ -81,8 +83,6 @@ const sorted = [...industries].sort((a, b) =>
           );
         })}
       </div>
-    </div>
-  </section>
 
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org", "@type": "CollectionPage",
