@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const entities = await getCollection('product-entities');
+const systems = await getCollection('systems');
+const industries = await getCollection('industries');
+const capabilities = await getCollection('capabilities');
+
+// Build lookup maps
+const systemTitles = new Set(systems.map(s => s.data.title));
+const industryNames = [...new Set(entities.map(e => e.data.industry).filter(Boolean))].sort();
+const materialNames = [...new Set(entities.map(e => e.data.material).filter(Boolean))].sort();
+
+// Entity slug function
+const entitySlug = (title: string) =>
+  title.toLowerCase()
+    .replace(/ & /g, '-')
+    .replace(/[/,()]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+---
+
+<BaseLayout
+  title="Precision CNC Titanium Component Library — 260+ Parts | BOZE CNC Ti"
+  description="Browse 260+ precision CNC machined titanium components across 12 industries, 60 systems, and 20 alloys. Each part includes material grade, manufacturing process, and inspection criteria."
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products & Components</span></a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Component Library</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <SubpageHero
+    h1="Precision CNC Titanium Component Library"
+    badge={`${entities.length} Components · ${industryNames.length} Industries · ${materialNames.length} Alloys`}
+    subtitle={`Complete catalog of ${entities.length} precision CNC machined titanium components. Each entry includes material grade, manufacturing process, surface treatment, inspection criteria, and application-specific engineering notes.`}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={[
+      { value: `${entities.length}`, label: 'Components' },
+      { value: `${industryNames.length}`, label: 'Industries' },
+      { value: `${materialNames.length}`, label: 'Titanium Alloys' },
+    ]}
+  />
+
+  <!-- Search and Filter Bar -->
+  <section class="py-8" style="background: var(--theme-surface); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            id="entity-search"
+            type="text"
+            placeholder="Search components by name, function, or material..."
+            class="w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm transition-all"
+            style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+          />
+        </div>
+        <select id="filter-industry" class="px-4 py-2.5 rounded-xl border text-sm" style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <option value="">All Industries</option>
+          {industryNames.map(name => <option value={name}>{name}</option>)}
+        </select>
+        <select id="filter-material" class="px-4 py-2.5 rounded-xl border text-sm" style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <option value="">All Materials</option>
+          {materialNames.map(name => <option value={name}>{name}</option>)}
+        </select>
+      </div>
+      <div id="entity-status" class="text-center mt-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        Showing all {entities.length} components
+      </div>
+    </div>
+  </section>
+
+  <!-- Component Grid -->
+  <section class="py-10" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="entity-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {entities.map(e => {
+          const slug = entitySlug(e.data.title);
+          return (
+            <div
+              class="entity-card p-4 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);"
+              data-industry={e.data.industry || ''}
+              data-material={e.data.material || ''}
+              data-title={e.data.title.toLowerCase()}
+              data-function={(e.data.function || '').toLowerCase()}
+            >
+              <div class="flex items-start gap-3">
+                <span class="text-lg mt-0.5 shrink-0">⚙️</span>
+                <div class="min-w-0 flex-1">
+                  <h3 class="font-semibold text-sm leading-snug" style="color: var(--theme-text);">
+                    <a href={`/products/component-library/${slug}`} class="hover:underline">{e.data.title}</a>
+                  </h3>
+                  {e.data.function && (
+                    <p class="text-xs mt-1 line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                      {e.data.function}
+                    </p>
+                  )}
+                  <div class="flex flex-wrap gap-1.5 mt-2">
+                    {e.data.material && (
+                      <span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                        {e.data.material}
+                      </span>
+                    )}
+                    {e.data.industry && (
+                      <span class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--theme-accent) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                        {e.data.industry}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- No results -->
+      <div id="entity-no-results" class="hidden text-center py-16">
+        <span class="text-4xl block mb-4">🔍</span>
+        <p class="text-lg font-semibold" style="color: var(--theme-text);">No components found</p>
+        <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Try adjusting your search or filters</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side Filter Script -->
+  <script is:inline>
+    (function() {
+      'use strict';
+      const searchInput = document.getElementById('entity-search');
+      const filterIndustry = document.getElementById('filter-industry');
+      const filterMaterial = document.getElementById('filter-material');
+      const statusEl = document.getElementById('entity-status');
+      const noResultsEl = document.getElementById('entity-no-results');
+
+      if (!searchInput || !filterIndustry || !filterMaterial) return;
+
+      function filterEntities() {
+        const query = (searchInput.value || '').toLowerCase().trim();
+        const industry = filterIndustry.value;
+        const material = filterMaterial.value;
+        const cards = document.querySelectorAll('.entity-card');
+        let visibleCount = 0;
+        const totalCount = cards.length;
+
+        cards.forEach(function(card) {
+          const title = (card.getAttribute('data-title') || '');
+          const func = (card.getAttribute('data-function') || '');
+          const cardIndustry = card.getAttribute('data-industry') || '';
+          const cardMaterial = card.getAttribute('data-material') || '';
+
+          const matchQuery = !query || title.indexOf(query) !== -1 || func.indexOf(query) !== -1;
+          const matchIndustry = !industry || cardIndustry === industry;
+          const matchMaterial = !material || cardMaterial === material;
+
+          const show = matchQuery && matchIndustry && matchMaterial;
+          card.style.display = show ? '' : 'none';
+          if (show) visibleCount++;
+        });
+
+        if (statusEl) {
+          if (query || industry || material) {
+            statusEl.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' components';
+          } else {
+            statusEl.textContent = 'Showing all ' + totalCount + ' components';
+          }
+        }
+
+        if (noResultsEl) {
+          noResultsEl.classList.toggle('hidden', visibleCount > 0);
+        }
+      }
+
+      searchInput.addEventListener('input', filterEntities);
+      filterIndustry.addEventListener('change', filterEntities);
+      filterMaterial.addEventListener('change', filterEntities);
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  #entity-search:focus {
+    outline: none;
+    border-color: var(--theme-primary) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-primary) 15%, transparent);
+  }
+  #filter-industry:focus, #filter-material:focus {
+    outline: none;
+    border-color: var(--theme-primary) !important;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

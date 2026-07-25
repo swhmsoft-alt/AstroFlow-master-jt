@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
-import { HERO_CONFIG } from '../../config/hero';
 import { getCollection } from 'astro:content';
 
 export const prerender = true;
 
+// ── Collect ALL data ──────────────────────────────────────────────
 const capabilities = await getCollection('capabilities');
 const systems = await getCollection('systems');
 const industries = await getCollection('industries');
 const entities = await getCollection('product-entities');
 
-// Group systems by industry
+// ── Group systems by industry ─────────────────────────────────────
 const byIndustry: Record<string, { industry: any; systems: any[]; total: number }> = {};
 for (const sys of systems) {
   const indName = sys.data.industry || 'Other';
@@ -19,25 +19,102 @@ for (const sys of systems) {
   byIndustry[indName].systems.push(sys);
   byIndustry[indName].total += sys.data.productEntities?.length || 0;
 }
-// Sort industries by system count (most first)
-const sortedIndustries = Object.entries(byIndustry).sort((a, b) => b[1].systems.length - a[1].systems.length);
 
-// Find industry metadata
+// Link industry metadata from industry collection
 for (const ind of industries) {
   if (byIndustry[ind.data.title]) byIndustry[ind.data.title].industry = ind;
 }
 
+// Sort industries by system count (most first)
+const sortedIndustries = Object.entries(byIndustry).sort((a, b) => b[1].systems.length - a[1].systems.length);
+
+// ── Global totals ─────────────────────────────────────────────────
 const totalSystems = systems.length;
 const totalEntities = entities.length;
 const totalCapabilities = capabilities.length;
-const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').replace(/[/,()]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+const totalIndustries = sortedIndustries.length;
+
+// ── Helper: slugify a system title ────────────────────────────────
+const systemSlug = (title: string) =>
+  title.toLowerCase()
+    .replace(/ & /g, '-')
+    .replace(/[/,()]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+
+// ── Build search index (serialized as JSON for client-side search) ─
+const searchIndex = systems.map(sys => ({
+  title: sys.data.title,
+  industry: sys.data.industry || 'Other',
+  description: (sys.data.description || '').substring(0, 120),
+  slug: systemSlug(sys.data.title),
+  emoji: sys.data.emoji || '🔧',
+  entityCount: sys.data.productEntities?.length || 0,
+}));
+
+// ── Theme Clusters: Group systems by manufacturing process type ───
+const processClusters: Record<string, { label: string; icon: string; systems: any[] }> = {
+  'additive': { label: 'Additive Manufacturing', icon: '🖨️', systems: [] },
+  'cnc': { label: 'CNC Machining & Turning', icon: '🔧', systems: [] },
+  'fabrication': { label: 'Fabrication & Welding', icon: '🛠️', systems: [] },
+  'forming': { label: 'Forming & Forging', icon: '⚒️', systems: [] },
+  'surface': { label: 'Surface Treatment & Finishing', icon: '🔬', systems: [] },
+  'semiconductor': { label: 'Semiconductor & UHV', icon: '💎', systems: [] },
+  'medical': { label: 'Medical & Implant', icon: '🏥', systems: [] },
+  'precision': { label: 'Precision & Instrumentation', icon: '📐', systems: [] },
+};
+
+// Simple keyword-based clustering based on system title/description
+for (const sys of systems) {
+  const t = (sys.data.title + ' ' + (sys.data.description || '')).toLowerCase();
+  const ind = (sys.data.industry || '').toLowerCase();
+
+  if (t.includes('additive') || t.includes('am build') || t.includes('slm') || t.includes('dmls') || t.includes('3d print')) {
+    processClusters['additive'].systems.push(sys);
+  } else if (ind.includes('semiconductor') || t.includes('vacuum') || t.includes('uhv') || t.includes('wafer') || t.includes('chamber') || t.includes('mocvd')) {
+    processClusters['semiconductor'].systems.push(sys);
+  } else if (ind.includes('medical') || t.includes('implant') || t.includes('surgical') || t.includes('stent') || t.includes('dental') || t.includes('trauma') || t.includes('cranial') || t.includes('neuro')) {
+    processClusters['medical'].systems.push(sys);
+  } else if (t.includes('instrument') || t.includes('optical') || t.includes('metrology') || t.includes('precision') || t.includes('gauge')) {
+    processClusters['precision'].systems.push(sys);
+  } else if (t.includes('weld') || t.includes('duct') || t.includes('pipe') || t.includes('tube') || t.includes('tank') || t.includes('vessel') || t.includes('assembly') || t.includes('fabricat') || t.includes('heat exchanger') || t.includes('sheet')) {
+    processClusters['fabrication'].systems.push(sys);
+  } else if (t.includes('forg') || t.includes('extrusion') || t.includes('forming') || t.includes('heavy')) {
+    processClusters['forming'].systems.push(sys);
+  } else if (t.includes('anodiz') || t.includes('passivat') || t.includes('polish') || t.includes('sandblast') || t.includes('coating') || t.includes('surface') || t.includes('electroplating')) {
+    processClusters['surface'].systems.push(sys);
+  } else {
+    processClusters['cnc'].systems.push(sys);
+  }
+}
+
+// ── Industry icons mapping ────────────────────────────────────────
+const industryIcons: Record<string, string> = {
+  'Aerospace & Defense': '✈️',
+  'Medical Device': '🏥',
+  'Semiconductor': '💎',
+  'Consumer Electronics': '📱',
+  'Cycling / Bicycle': '🚲',
+  'Automotive & Motorsports': '🚗',
+  'Energy': '⚡',
+  'Marine & Offshore': '🚢',
+  'Electroplating & Surface Finishing': '🔋',
+  'Chemical Processing': '🏭',
+  'Chemical': '🧪',
+  'General Industrial': '⚙️',
+  'Environmental Engineering': '🌍',
+  'Oil & Gas': '🛢️',
+};
 ---
 
 <BaseLayout
-  title="Precision CNC Titanium Components — 260+ Parts Across 12 Industries | BOZE CNC Ti"
-  description="Browse 260+ precision CNC machined titanium components organized across 60 engineering systems and 12 industries. Aerospace, Medical, Cycling, Semiconductor, Chemical, Marine. AS9100D & ISO 9001."
+  title="Precision CNC Titanium Components & Systems — 445 Capabilities · 260 Components · 60 Systems · 12 Industries | BOZE CNC Ti"
+  description="Browse 445+ manufacturing capabilities, 260 precision CNC machined titanium components, 60 engineering systems, 12 industries, and 20 titanium alloys. Aerospace, Medical, Semiconductor, Automotive, Marine. AS9100D & ISO 9001."
 >
-  <!-- Breadcrumb -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Breadcrumb                                                     -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
@@ -54,122 +131,277 @@ const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').r
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Hero Section                                                   -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
   <SubpageHero
-    h1={HERO_CONFIG['/products'].h1}
-    badge="260+ Components · 60 Systems · 12 Industries · 20 Materials"
-    subtitle={HERO_CONFIG['/products'].subtitle}
+    h1="Precision CNC Titanium Components & Systems Library"
+    badge={`${totalIndustries} Industries · ${totalSystems} Systems · ${totalEntities} Components · ${totalCapabilities} Capabilities · 20 Materials`}
+    subtitle="Browse {totalEntities}+ precision CNC machined titanium components across {totalSystems} engineering systems, {totalIndustries} industries, and 20 titanium alloys. Each component includes material grade, manufacturing process, inspection criteria, and engineering specifications."
     badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={[
+      { value: `${totalIndustries}`, label: 'Industries' },
+      { value: `${totalSystems}`, label: 'Systems' },
+      { value: `${totalEntities}`, label: 'Components' },
+      { value: `${totalCapabilities}`, label: 'Capabilities' },
+      { value: `20`, label: 'Materials' },
+    ]}
+    entityChips={[
+      'CNC Machining', 'Additive Manufacturing', 'Fabrication', 'Surface Treatment',
+      'Forming & Forging', 'Medical Implants', 'Aerospace', 'Semiconductor',
+    ]}
   />
 
-  <!-- Stats Bar -->
-  <section class="py-8" style="background: var(--theme-bg); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Quick Navigation Cards (5 Knowledge Graph Gateways)             -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-12" style="background: var(--theme-bg); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
-        <a href="/products/capabilities/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalCapabilities}</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Capabilities</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+        <!-- Industries -->
+        <a href="/products/industries" class="group block p-6 rounded-xl border-2 transition-all duration-300 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">🏭</div>
+          <h3 class="font-bold text-sm" style="color: var(--theme-text);">Industries</h3>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{totalIndustries} sectors served</p>
+          <span class="inline-flex items-center text-xs font-semibold mt-3 group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+            Browse all <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </span>
         </a>
-        <a href="/products/product-entities/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalEntities}</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Components</p>
+
+        <!-- Systems -->
+        <a href="/products/systems" class="group block p-6 rounded-xl border-2 transition-all duration-300 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">🔧</div>
+          <h3 class="font-bold text-sm" style="color: var(--theme-text);">Systems</h3>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{totalSystems} engineering systems</p>
+          <span class="inline-flex items-center text-xs font-semibold mt-3 group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+            Browse all <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </span>
         </a>
-        <a href="/products/systems/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalSystems}</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Systems</p>
+
+        <!-- Components -->
+        <a href="/products/product-entities" class="group block p-6 rounded-xl border-2 transition-all duration-300 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">⚙️</div>
+          <h3 class="font-bold text-sm" style="color: var(--theme-text);">Components</h3>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{totalEntities} precision parts</p>
+          <span class="inline-flex items-center text-xs font-semibold mt-3 group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+            Browse all <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </span>
         </a>
-        <a href="/products/industries/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{industries.length}</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Industries</p>
+
+        <!-- Capabilities -->
+        <a href="/products/capabilities" class="group block p-6 rounded-xl border-2 transition-all duration-300 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">🔩</div>
+          <h3 class="font-bold text-sm" style="color: var(--theme-text);">Capabilities</h3>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{totalCapabilities} manufacturing processes</p>
+          <span class="inline-flex items-center text-xs font-semibold mt-3 group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+            Browse all <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </span>
         </a>
-        <a href="/products/materials/" class="block p-4 rounded-xl border text-center transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-          <p class="text-2xl font-bold" style="color: var(--theme-primary);">20</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Materials</p>
+
+        <!-- Materials -->
+        <a href="/products/materials" class="group block p-6 rounded-xl border-2 transition-all duration-300 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">🧪</div>
+          <h3 class="font-bold text-sm" style="color: var(--theme-text);">Materials</h3>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">20 titanium alloys</p>
+          <span class="inline-flex items-center text-xs font-semibold mt-3 group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+            Browse all <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Systems by Industry -->
-  <section id="systems" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Search & Filter Section                                        -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-10" style="background: var(--theme-surface); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-6">
+        <h2 class="text-xl font-bold" style="color: var(--theme-text);">🔍 Find Engineering Systems</h2>
+        <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Search by name, description, or filter by industry</p>
+      </div>
+
+      <!-- Search input -->
+      <div class="flex flex-col sm:flex-row gap-3 max-w-3xl mx-auto">
+        <div class="relative flex-1">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            id="system-search"
+            type="text"
+            placeholder="Search systems... (e.g. 'blade', 'valve', 'implant')"
+            class="w-full pl-10 pr-4 py-3 rounded-xl border text-sm transition-all"
+            style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+          />
+        </div>
+        <select
+          id="industry-filter"
+          class="px-4 py-3 rounded-xl border text-sm"
+          style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <option value="">All Industries</option>
+          {sortedIndustries.map(([indName]) => (
+            <option value={indName}>{industryIcons[indName] || ''} {indName}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- Search results count -->
+      <div id="search-status" class="text-center mt-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        Showing all {totalSystems} systems
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Engineering Systems by Industry (ALL industries, ALL systems)  -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-12" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold mb-3" style="color: var(--theme-text);">Engineering Systems by Industry</h2>
-        <p style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          Each system contains a complete set of titanium components with material specifications, manufacturing processes, inspection criteria, and engineering failure analysis.
+      <h2 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">Engineering Systems by Industry</h2>
+      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+        Each system contains a complete set of titanium components with material specifications, manufacturing processes, inspection criteria, and engineering failure analysis. <strong>{totalSystems} total systems</strong> across all industries.
+      </p>
+
+      <div id="systems-container">
+        {sortedIndustries.map(([indName, { industry: indMeta, systems: indSystems, total: indTotal }]) => (
+          <div class="industry-group mb-10" data-industry={indName}>
+            <!-- Industry Header -->
+            <div class="flex items-center justify-between mb-4 pb-3" style="border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">{industryIcons[indName] || '🏭'}</span>
+                <div>
+                  <h3 class="text-lg font-bold" style="color: var(--theme-text);">{indName}</h3>
+                  <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                    {indSystems.length} system{(indSystems.length !== 1) ? 's' : ''} · {indTotal} component{(indTotal !== 1) ? 's' : ''}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- System Cards -->
+            <div class="systems-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {indSystems.map((sys) => {
+                const slug = systemSlug(sys.data.title);
+                return (
+                  <a
+                    href={`/products/systems/${slug}`}
+                    class="group block p-4 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                    style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);"
+                    data-search-title={sys.data.title.toLowerCase()}
+                    data-search-desc={(sys.data.description || '').toLowerCase()}
+                  >
+                    <div class="flex items-start gap-3">
+                      <span class="text-xl mt-0.5 shrink-0">{sys.data.emoji || '🔧'}</span>
+                      <div class="min-w-0">
+                        <h4 class="font-semibold text-sm leading-snug group-hover:underline" style="color: var(--theme-text);">{sys.data.title}</h4>
+                        <p class="text-xs mt-1 line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                          {(sys.data.description || '').substring(0, 100)}{(sys.data.description || '').length > 100 ? '...' : ''}
+                        </p>
+                        <div class="flex items-center gap-2 mt-2">
+                          <span class="inline-flex items-center text-xs px-2 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                            {(sys.data.productEntities?.length || 0)} part{(sys.data.productEntities?.length !== 1) ? 's' : ''}
+                          </span>
+                          {(sys.data.relatedCapabilities?.length || 0) > 0 && (
+                            <span class="inline-flex items-center text-xs px-2 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--theme-accent) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                              {(sys.data.relatedCapabilities || []).length} capabilities
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- No results message -->
+      <div id="no-results" class="hidden text-center py-16">
+        <span class="text-4xl block mb-4">🔍</span>
+        <p class="text-lg font-semibold" style="color: var(--theme-text);">No systems found</p>
+        <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Try a different search term or clear the filters</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Theme Clusters — Cross-Industry Process Clustering              -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-12" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold" style="color: var(--theme-text);">🧩 Cross-Industry Theme Clusters</h2>
+        <p class="text-sm mt-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+          Systems grouped by manufacturing process and application domain — discover related technologies across different industries
         </p>
       </div>
 
-      <div class="space-y-16">
-        {sortedIndustries.map(([indName, indData]) => {
-          const indSlug = indName.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-          return (
-            <div>
-              <div class="flex items-center justify-between mb-6">
-                <div>
-                  <h3 class="text-xl font-bold" style="color: var(--theme-text);">{indName}</h3>
-                  <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-                    {indData.systems.length} systems · {indData.total} components
-                  </p>
-                </div>
-                <a href={`/products/industries/${indSlug}/`} class="text-sm font-medium flex items-center gap-1" style="color: var(--theme-primary);">
-                  View all →
-                </a>
-              </div>
-              
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {indData.systems.map((sys: any) => {
-                  const slug = sys.slug || sys.id?.replace('.json','') || systemSlug(sys.data.title);
-                  const prodCount = sys.data.productEntities?.length || 0;
-                  return (
-                    <a href={`/products/systems/${slug}/`} class="group block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-                      <div class="flex items-start justify-between">
-                        <div class="text-2xl mb-2">{sys.data.emoji || '🔧'}</div>
-                        {prodCount > 0 && (
-                          <span class="text-xs px-2 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{prodCount} parts</span>
-                        )}
-                      </div>
-                      <h4 class="font-semibold text-sm leading-tight group-hover" style="color: var(--theme-text);">{sys.data.title}</h4>
-                      <p class="text-xs mt-2 line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-                        {sys.data.description?.slice(0, 100) || 'Precision titanium components'}
-                      </p>
-                    </a>
-                  );
-                })}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {Object.entries(processClusters).filter(([, cluster]) => cluster.systems.length > 0).map(([key, cluster]) => (
+          <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-2xl">{cluster.icon}</span>
+              <div>
+                <h3 class="font-bold text-sm" style="color: var(--theme-text);">{cluster.label}</h3>
+                <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{cluster.systems.length} systems</p>
               </div>
             </div>
-          );
-        })}
+            <ul class="space-y-1.5">
+              {cluster.systems.slice(0, 5).map(sys => (
+                <li>
+                  <a href={`/products/systems/${systemSlug(sys.data.title)}`} class="text-xs flex items-center gap-2 py-1 px-2 rounded-lg transition-colors hover:opacity-80" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                    <span>{sys.data.emoji || '🔧'}</span>
+                    <span class="truncate">{sys.data.title}</span>
+                  </a>
+                </li>
+              ))}
+              {cluster.systems.length > 5 && (
+                <li class="text-xs font-semibold pt-1" style="color: var(--theme-primary);">+ {cluster.systems.length - 5} more</li>
+              )}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Quick Links: Knowledge Graph -->
-  <section class="py-12" style="background: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h3 class="text-lg font-bold mb-6 text-center" style="color: var(--theme-text);">Knowledge Graph</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-        <a href="/products/product-entities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);">🔩 Component Library</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">All {totalEntities} parts</p>
-        </a>
-        <a href="/products/materials/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);">🧪 Materials</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">20 alloys</p>
-        </a>
-        <a href="/products/capabilities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);">⚙️ Capabilities</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">446 processes</p>
-        </a>
-        <a href="/products/industries/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);">🏭 Industries</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">12 sectors</p>
-        </a>
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Stats Summary Bar                                               -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-10" style="background: var(--theme-bg);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="text-center p-4 rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface));">
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalIndustries}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Industries</p>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface));">
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalSystems}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Systems</p>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface));">
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalEntities}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Components</p>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface));">
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">{totalCapabilities}</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Capabilities</p>
+        </div>
+        <div class="text-center p-4 rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface));">
+          <p class="text-2xl font-bold" style="color: var(--theme-primary);">20</p>
+          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Materials</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- CTA: Custom Component Request                                   -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
   <section class="py-16 text-center" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
       <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">Need a Custom Component?</h3>
@@ -183,13 +415,129 @@ const systemSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').r
     </div>
   </section>
 
-  <!-- Structured Data -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Hidden data element: total systems count for client-side JS   -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <span id="total-systems-data" style="display:none;" data-total={totalSystems}></span>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Client-side Search & Filter Script (pure JS, no framework)    -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <script is:inline>
+    (function() {
+      'use strict';
+      const searchInput = document.getElementById('system-search');
+      const industryFilter = document.getElementById('industry-filter');
+      const statusEl = document.getElementById('search-status');
+      const noResultsEl = document.getElementById('no-results');
+
+      if (!searchInput || !industryFilter) return;
+
+      function filterSystems() {
+        const query = (searchInput.value || '').toLowerCase().trim();
+        const industry = industryFilter.value;
+        const groups = document.querySelectorAll('.industry-group');
+        let visibleCardsCount = 0;
+        let totalCardsCount = 0;
+
+        groups.forEach(function(group) {
+          const groupIndustry = group.getAttribute('data-industry');
+          const cards = group.querySelectorAll('.systems-grid > a');
+          const industryMatch = !industry || groupIndustry === industry;
+          let groupHasVisible = false;
+
+          cards.forEach(function(card) {
+            totalCardsCount++;
+            const title = (card.getAttribute('data-search-title') || '').toLowerCase();
+            const desc = (card.getAttribute('data-search-desc') || '').toLowerCase();
+            const queryMatch = !query || title.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
+            const show = industryMatch && queryMatch;
+            card.style.display = show ? '' : 'none';
+            if (show) { groupHasVisible = true; visibleCardsCount++; }
+          });
+
+          if (!industryMatch) {
+            group.style.display = 'none';
+          } else if (query && !groupHasVisible) {
+            group.style.display = 'none';
+          } else {
+            group.style.display = '';
+          }
+        });
+
+        // Update status text
+        if (statusEl) {
+          if (query || industry) {
+            statusEl.textContent = 'Showing ' + visibleCardsCount + ' of ' + totalCardsCount + ' systems';
+          } else {
+            statusEl.textContent = 'Showing all ' + totalCardsCount + ' systems';
+          }
+        }
+
+        // Toggle no-results message
+        if (noResultsEl) {
+          noResultsEl.classList.toggle('hidden', visibleCardsCount > 0);
+        }
+      }
+
+      searchInput.addEventListener('input', filterSystems);
+      industryFilter.addEventListener('change', filterSystems);
+    })();
+  </script>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Structured Data (JSON-LD)                                      -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Precision CNC Titanium Components",
-    "description": `${totalEntities} titanium components across ${totalSystems} engineering systems and 12 industries.`,
+    "name": "Precision CNC Titanium Components & Systems Library",
+    "description": `${totalEntities} titanium components across ${totalSystems} engineering systems, ${totalIndustries} industries, 445 capabilities, and 20 titanium alloys.`,
     "numberOfItems": totalEntities,
-    "about": { "@type": "Thing", "name": "Titanium Precision Components" }
+    "about": [
+      { "@type": "Thing", "name": "Titanium Precision Components" },
+      { "@type": "Thing", "name": "CNC Machining Capabilities" },
+      { "@type": "Thing", "name": "Titanium Manufacturing Systems" }
+    ],
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": sortedIndustries.map(([indName, { systems: indSystems }], idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "item": {
+          "@type": "DefinedTermSet",
+          "name": indName,
+          "hasDefinedTerm": indSystems.map(sys => ({
+            "@type": "DefinedTerm",
+            "name": sys.data.title
+          }))
+        }
+      }))
+    }
   })} />
 </BaseLayout>
+
+<style>
+  /* Search input focus state */
+  #system-search:focus {
+    outline: none;
+    border-color: var(--theme-primary) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-primary) 15%, transparent);
+  }
+  #industry-filter:focus {
+    outline: none;
+    border-color: var(--theme-primary) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-primary) 15%, transparent);
+  }
+  /* Truncation for system descriptions */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* Smooth transition for industry groups */
+  .industry-group {
+    transition: opacity 0.2s ease;
+  }
+</style>
