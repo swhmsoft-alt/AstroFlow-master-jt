@@ -88,6 +88,21 @@ const isVideo = hero.heroMediaType === 'video' && hero.heroVideoUrl;
         {hero.description}
       </p>
       
+      <!-- Brand Bar — BOZE CNC-Ti identity -->
+      <div class="flex flex-wrap items-center gap-2 mb-8 px-4 py-3 rounded-lg border" style="background-color: color-mix(in srgb, var(--theme-primary) 6%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <span class="text-sm font-bold tracking-wide" style="color: var(--theme-primary); letter-spacing: 0.05em;">BOZE CNC-Ti</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">|</span>
+        <span class="text-xs font-medium" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Baoji BOZE Metal Products Co., Ltd</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">·</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Precision Titanium Manufacturing</span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">·</span>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">AS9100D</span>
+          <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">ISO 13485</span>
+          <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">ISO 9001</span>
+        </div>
+      </div>
+      
       <!-- CTA Buttons with aerospace orange -->
       <div class="flex flex-col sm:flex-row gap-4 mb-12">
         <a href={hero.primaryCtaLink} class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all" style="background-color: var(--theme-primary); color: var(--theme-text);" onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 85%, black)'; this.style.boxShadow='0 0 25px color-mix(in srgb, var(--theme-primary) 50%, transparent)'" onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''">
