@@ -84,24 +84,6 @@ function findKeyProps(properties: any[] | undefined): { tensile?: string; yield?
   return result;
 }
 
-// Simplify long system names for display
-const SYS_SHORT: Record<string, string> = {
-  "Aerospace Structural Components & Airframe Hardware": "Aerospace Structures",
-  "Medical Implants & Surgical Instruments": "Medical Implants",
-  "Consumer & Lifestyle Products": "Consumer & Lifestyle",
-  "Premium Consumer Electronics & Wearables": "Consumer Electronics",
-  "Automotive Performance & Racing Components": "Automotive & Racing",
-  "Marine & Subsea Engineering Components": "Marine & Subsea",
-  "Oil & Gas Downhole & Production Hardware": "Oil & Gas",
-  "Chemical Processing & Industrial Equipment": "Chemical Processing",
-  "Semiconductor & Vacuum Processing Hardware": "Semiconductor",
-  "Defense & Ordnance Components": "Defense & Ordnance",
-  "Nuclear & Advanced Energy Systems": "Nuclear & Energy",
-  "Sports & Recreation Equipment": "Sports & Recreation",
-  "Optical & Precision Instrumentation": "Optical Instruments",
-  "Additive Manufacturing & 3D Printing": "Additive Mfg",
-};
-
 const materials = await getCollection('materials');
 const refMap = buildMaterialRef(materials);
 
@@ -148,46 +130,11 @@ const catDesc: Record<string, string> = {
 };
 ---
 
-<style>
-  .mat-card {
-    background-color: var(--theme-bg);
-    border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);
-    transition: border-color 300ms, box-shadow 300ms;
-  }
-  .mat-card:hover {
-    box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 12%, transparent);
-  }
-  .mat-card:hover .mat-card-title {
-    color: var(--theme-primary);
-  }
-  .mat-card-title {
-    color: var(--theme-text);
-    transition: color 300ms;
-  }
-  .mat-list-dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .cat-tab {
-    background: color-mix(in srgb, var(--theme-bg) 100%, transparent);
-    border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);
-    color: var(--theme-text);
-    transition: border-color 300ms, color 300ms;
-  }
-  .cat-tab:hover {
-    border-color: var(--theme-primary);
-    color: var(--theme-primary);
-  }
-</style>
-
 <BaseLayout
   title="Titanium Materials Library - {enriched.length} Alloys | BOZE CNC Ti"
   description="Browse {enriched.length} titanium alloys with matched systems and components. Complete mechanical property data."
 >
-  <nav class="border-b" style="background: var(--theme-surface);">
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -219,142 +166,74 @@ const catDesc: Record<string, string> = {
       <div class="flex flex-wrap gap-2 mb-8">
         {Object.keys(grouped).map(cat => {
           const count = grouped[cat].length;
+          const color = catColor[cat] || 'var(--theme-primary)';
           return (
-            <a href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`} class="cat-tab px-4 py-2 text-sm font-medium rounded-full border">
-              {catShort[cat]} ({count})
-            </a>
+            <a href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`}
+              class="px-4 py-2 text-sm font-medium rounded-full border transition-all"
+              style="background: color-mix(in srgb, var(--theme-bg) 100%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-text);"
+              onmouseover="this.style.borderColor='{color}'; this.style.color='{color}'"
+              onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.color='var(--theme-text)'"
+            >{catShort[cat]} ({count})</a>
           );
         })}
       </div>
 
       <!-- Material Groups -->
       {Object.entries(grouped).map(([cat, items]) => (
-        <div id={cat.toLowerCase().replace(/\s+/g, '-')} class="mb-16 last:mb-0">
-          <!-- Category Header -->
-          <div class="flex items-center gap-3 mb-6">
-            <div class="w-1.5 h-8 rounded-full" style="background: {catColor[cat]};"></div>
-            <div>
-              <h2 class="text-2xl font-bold" style="color: var(--theme-text);">{cat}</h2>
-              <p class="text-sm mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{catDesc[cat]}</p>
-            </div>
-            <span class="ml-auto text-xs font-semibold px-3 py-1.5 rounded-full" style="background: color-mix(in srgb, {catColor[cat]} 12%, transparent); color: {catColor[cat]};">{items.length} {items.length === 1 ? 'alloy' : 'alloys'}</span>
-          </div>
+        <div id={cat.toLowerCase().replace(/\s+/g, '-')} class="mb-12">
+          <h2 class="text-xl font-bold mb-1" style="color: var(--theme-text);">{cat}</h2>
+          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{catDesc[cat]}</p>
 
-          <!-- Card Grid -->
-          <div class="grid sm:grid-cols-2 gap-5">
+          <!-- Card Grid — aligned with capabilities page -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {(items as any[]).map((entry: any) => {
               const d = entry.data;
               const grade = entry.grade;
               const gradeKey = entry.gradeKey;
               const ref = entry.ref;
               const props = entry.props;
-
               const href = gradeKey ? `/materials/${gradeKey}/` : `/products/materials/${entry.id}/`;
-
               const keyChar = grade?.entityDefinition?.keyCharacteristics?.[0] || null;
               const sysCount = ref.systems.size;
               const compCount = ref.components.length;
               const accentColor = catColor[cat] || 'var(--theme-primary)';
 
-              // Build system & component lists (max 4 shown)
-              const sysList = [...ref.systems].slice(0, 4);
-              const sysMore = sysCount - 4;
-              const compList = ref.components.slice(0, 4);
-              const compMore = compCount - 4;
-
               return (
-                <a href={href} class="mat-card group relative rounded-xl p-6">
-                  <!-- Top row: badge + title -->
-                  <div class="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                      <span class="inline-block text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md mb-2"
-                        style="background: color-mix(in srgb, {accentColor} 12%, transparent); color: {accentColor};"
-                      >{catShort[cat]}</span>
-                      <h3 class="mat-card-title text-base font-bold leading-snug">{d.title}</h3>
-                    </div>
-                    <svg class="w-5 h-5 mt-1 shrink-0 transition-all group-hover:translate-x-0.5" style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                <a href={href} class="block p-5 rounded-xl border transition-all"
+                  style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);"
+                >
+                  <!-- Category Badge -->
+                  <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-2"
+                    style="background: color-mix(in srgb, {accentColor} 12%, transparent); color: {accentColor};"
+                  >{catShort[cat]}</span>
+
+                  <!-- Title — text-sm bold per capabilities standard -->
+                  <h3 class="font-bold text-sm leading-snug" style="color: var(--theme-text);">{d.title}</h3>
+
+                  <!-- Key characteristic — compact single line -->
+                  {keyChar && (
+                    <p class="text-xs mt-1 leading-relaxed italic" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                      "{keyChar.slice(0, 90)}{keyChar.length > 90 ? '...' : ''}"
+                    </p>
+                  )}
+
+                  <!-- Stats badges — text-[10px] per capabilities standard -->
+                  <div class="mt-2 flex flex-wrap gap-x-2 gap-y-0.5 text-[10px]" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">
+                    {sysCount > 0 && <span>{sysCount} system{sysCount !== 1 ? 's' : ''}</span>}
+                    {compCount > 0 && <span>{compCount} component{compCount !== 1 ? 's' : ''}</span>}
                   </div>
 
-                  <!-- Key characteristic -->
-                  {keyChar && (
-                    <div class="relative pl-4 mb-4 border-l-2" style="border-color: color-mix(in srgb, {accentColor} 30%, transparent);">
-                      <p class="text-xs leading-relaxed italic" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-                        "{keyChar}"
-                      </p>
-                    </div>
-                  )}
-
-                  <!-- Systems list -->
-                  {sysList.length > 0 && (
-                    <div class="mb-3">
-                      <div class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: {accentColor};">Systems ({sysCount})</div>
-                      <ul class="space-y-1">
-                        {sysList.map((s: string) => (
-                          <li class="flex items-center gap-1.5 text-xs leading-tight" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-                            <span class="mat-list-dot" style="background: {accentColor};"></span>
-                            {SYS_SHORT[s] || s.replace(/&/g, 'and')}
-                          </li>
-                        ))}
-                        {sysMore > 0 && (
-                          <li class="text-xs font-medium" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);">+{sysMore} more</li>
-                        )}
-                      </ul>
-                    </div>
-                  )}
-
-                  <!-- Components list -->
-                  {compList.length > 0 && (
-                    <div class="mb-4">
-                      <div class="text-xs font-bold uppercase tracking-wider mb-1.5" style="color: {accentColor};">Components ({compCount})</div>
-                      <ul class="space-y-1">
-                        {compList.map((c: string) => {
-                          const display = c.replace(/^titanium\s*/i, '').replace(/\b(titanium)\b/gi, '').replace(/^\s*-\s*/, '').trim() || c;
-                          return (
-                            <li class="flex items-center gap-1.5 text-xs leading-tight" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
-                              <span class="mat-list-dot" style="background: color-mix(in srgb, {accentColor} 60%, transparent);"></span>
-                              {display}
-                            </li>
-                          );
-                        })}
-                        {compMore > 0 && (
-                          <li class="text-xs font-medium" style="color: color-mix(in srgb, var(--theme-primary) 50%, transparent);">+{compMore} more</li>
-                        )}
-                      </ul>
-                    </div>
-                  )}
-
-                  <!-- Key property specs -->
-                  <div class="grid grid-cols-2 gap-x-3 gap-y-1 text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-                    {props.tensile && (
-                      <span><span class="font-medium" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Tensile:</span> {props.tensile}</span>
-                    )}
-                    {props.yield && (
-                      <span><span class="font-medium" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Yield:</span> {props.yield}</span>
-                    )}
-                    {props.other.slice(0, 2).map((p: any) => (
-                      <span><span class="font-medium" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{p.label.split('(')[0].trim().replace(/\s\(min\).*$/, '')}:</span> {p.value}</span>
+                  <!-- Key property specs — compact -->
+                  <div class="mt-1 text-[10px] leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">
+                    {props.tensile && <span><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Tensile:</span> {props.tensile}</span>}
+                    {props.tensile && props.yield && <span class="mx-1" style="color: color-mix(in srgb, var(--theme-text) 20%, transparent);">|</span>}
+                    {props.yield && <span><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Yield:</span> {props.yield}</span>}
+                    {!props.tensile && !props.yield && grade?.hasProperty?.properties?.slice(0, 2).map((p: any) => (
+                      <span><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.label.split('(')[0].trim()}:</span> {p.value}</span>
                     ))}
                     {/* Fallback for materials without GRADE_DATA */}
-                    {!grade && d.tensileStrength && <span><span class="font-medium">Tensile:</span> {d.tensileStrength}</span>}
-                    {!grade && d.yieldStrength && <span><span class="font-medium">Yield:</span> {d.yieldStrength}</span>}
-                    {!grade && !props.tensile && !d.tensileStrength && (
-                      <>
-                        <span><span class="font-medium">Density:</span> {d.density || '—'}</span>
-                        <span><span class="font-medium">Elong:</span> {d.elongation || '—'}</span>
-                      </>
-                    )}
-                  </div>
-
-                  <!-- Bottom CTA -->
-                  <div class="mt-4 pt-3 border-t flex items-center text-xs font-semibold transition-all"
-                    style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: {accentColor};"
-                  >
-                    <span>View Details</span>
-                    <svg class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    {!grade && d.tensileStrength && <span>Tensile: {d.tensileStrength}</span>}
+                    {!grade && d.yieldStrength && <span>Yield: {d.yieldStrength}</span>}
                   </div>
                 </a>
               );
