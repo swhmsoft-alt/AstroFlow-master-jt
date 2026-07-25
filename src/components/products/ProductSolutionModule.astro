@@ -1,0 +1,143 @@
+---
+/* ── Product Solution Module ── */
+/* Renders a technical decision-making solution block on system pages  */
+/* Sourced from the Reverse Manufacturing Engineering knowledge base    */
+
+import type { SolutionContent } from '../../data/match-system-to-solution';
+
+interface Props {
+  solution: SolutionContent;
+}
+
+const { solution } = Astro.props as Props;
+const p = solution;
+---
+
+<!-- ═══ Solution Module ═══ -->
+<section class="py-16" style="background: var(--theme-bg);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto" style="background: var(--theme-surface); border-radius: 1.5rem; border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); padding: 2rem;">
+
+      <!-- Header -->
+      <div class="flex items-center gap-4 mb-8">
+        <span class="text-4xl">{p.image}</span>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold" style="color: var(--theme-text);">Engineering Solution Blueprint</h2>
+          <p class="text-sm font-medium mt-1" style="color: var(--theme-primary);">{p.category}</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.industries.join(' · ')}</p>
+        </div>
+        {p.matchedFromKB && (
+          <span class="ml-auto text-xs px-3 py-1 rounded-full hidden sm:inline-flex" style="background: color-mix(in srgb, #22c55e 12%, transparent); color: #22c55e; font-weight: 500;">
+            ✓ Knowledge Base Match
+          </span>
+        )}
+      </div>
+
+      <!-- 1. Part Feature Analysis -->
+      <div class="mb-6">
+        <h3 class="text-base font-bold mb-2 flex items-center gap-2" style="color: var(--theme-text);">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background: var(--theme-primary); color: white;">1</span>
+          Part Feature Analysis
+        </h3>
+        <p class="text-sm leading-relaxed ml-8" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{p.geometry}</p>
+        {p.painPoints.length > 0 && (
+          <ul class="mt-2 ml-8 space-y-1">
+            {p.painPoints.map((pt) => (
+              <li class="text-sm flex items-start gap-2" style="color: color-mix(in srgb, #ef4444, 75%);">
+                <span class="shrink-0">⚠️</span>
+                <span>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <!-- 2. Material Selection Rationale -->
+      <div class="mb-6">
+        <h3 class="text-base font-bold mb-2 flex items-center gap-2" style="color: var(--theme-text);">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background: var(--theme-primary); color: white;">2</span>
+          Material Selection Rationale
+        </h3>
+        <div class="ml-8">
+          <p class="text-sm font-semibold mb-1" style="color: var(--theme-primary);">{p.alloyName}</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{p.alloyReason}</p>
+        </div>
+      </div>
+
+      <!-- 3. Form Selection Rationale -->
+      <div class="mb-6">
+        <h3 class="text-base font-bold mb-2 flex items-center gap-2" style="color: var(--theme-text);">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background: var(--theme-primary); color: white;">3</span>
+          Form Selection Rationale
+        </h3>
+        <div class="ml-8">
+          <p class="text-sm font-semibold mb-1" style="color: var(--theme-primary);">{p.formName}</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{p.formReason}</p>
+        </div>
+      </div>
+
+      <!-- 4. Manufacturing Process & Services -->
+      <div class="mb-6">
+        <h3 class="text-base font-bold mb-2 flex items-center gap-2" style="color: var(--theme-text);">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background: var(--theme-primary); color: white;">4</span>
+          Manufacturing Process & Services
+        </h3>
+        <div class="ml-8 space-y-3">
+          {p.process.length > 0 && (
+            <div>
+              <p class="text-xs font-medium mb-1.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Core Processes:</p>
+              <div class="flex flex-wrap gap-1.5">
+                {p.process.map((pr) => (
+                  <span class="px-2.5 py-1 text-xs rounded-lg" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">{pr}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {p.tollServices.length > 0 && (
+            <div>
+              <p class="text-xs font-medium mb-1.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Toll Processing Services:</p>
+              <div class="flex flex-wrap gap-1.5">
+                {p.tollServices.map((ts) => (
+                  <span class="px-2.5 py-1 text-xs rounded-lg" style="background: color-mix(in srgb, #22c55e 10%, transparent); color: #22c55e;">{ts}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {p.pitfalls.length > 0 && (
+            <div>
+              <p class="text-xs font-medium mb-1.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Process Pitfalls:</p>
+              <ul class="space-y-1">
+                {p.pitfalls.map((pf) => (
+                  <li class="text-xs flex items-start gap-1.5" style="color: color-mix(in srgb, #ef4444, 70%);">
+                    <span>⚠️</span>
+                    <span>{pf}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- 5. Procurement Specifications -->
+      <div class="mb-6">
+        <h3 class="text-base font-bold mb-2 flex items-center gap-2" style="color: var(--theme-text);">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold" style="background: var(--theme-primary); color: white;">5</span>
+          Procurement Specifications
+        </h3>
+        <p class="text-sm ml-8 font-semibold" style="color: var(--theme-primary);">{p.specNote}</p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="mt-8 pt-6 border-t flex flex-col sm:flex-row gap-3 items-center justify-center" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <a href={p.servicePage} class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg transition-all hover:scale-105" style="color: var(--theme-primary); border: 1px solid var(--theme-primary);">
+          View Related Services →
+        </a>
+        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg text-white transition-all hover:scale-105" style="background-color: var(--theme-primary);">
+          📩 Get Formal Quote
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

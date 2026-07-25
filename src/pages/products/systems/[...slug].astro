@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import ProductSolutionModule from '../../../components/products/ProductSolutionModule.astro';
+import { getSolutionForSystem } from '../../../data/match-system-to-solution';
 
 export const prerender = true;
 
@@ -94,6 +96,20 @@ const faqItems = [
 const sysIntro = data.description
   ? `${data.emoji} ${data.title} represents a complete system of precision titanium components engineered for ${data.industry} applications. ${data.description} The system integrates ${allProducts.length} distinct component types manufactured through ${allCaps.length} specialized processes.`
   : `${data.emoji} ${data.title} is a precision titanium system serving the ${data.industry} sector, comprising ${allProducts.length} component types.`;
+
+// ── Solution Module content ──
+const solutionContent = getSolutionForSystem({
+  title: data.title,
+  emoji: data.emoji,
+  industry: data.industry,
+  description: data.description,
+  designPrinciples: data.designPrinciples,
+  engineeringTrends: data.engineeringTrends,
+  comparisonNotes: data.comparisonNotes,
+  productEntities: data.productEntities,
+  relatedCapabilities: data.relatedCapabilities,
+  relatedStandards: data.relatedStandards,
+});
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
@@ -202,6 +218,9 @@ const sysIntro = data.description
       </div>
     </section>
   ) : null}
+
+  <!-- ═══ M3.5: Engineering Solution Blueprint (from knowledge base) ═══ -->
+  <ProductSolutionModule solution={solutionContent} />
 
   <!-- ═══ M4: Manufacturing Workflow (from capabilities + processes) ═══ -->
   {allCaps.length > 0 && (
