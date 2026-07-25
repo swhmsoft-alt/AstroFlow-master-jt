@@ -9,6 +9,7 @@ import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
 import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType } from '../lib/schema';
+import BrandAbout from '@components/home/BrandAbout.astro';
 
 // Build path to label map from NAVIGATION for better breadcrumb names
 const NAV_LABEL_MAP: Record<string, string> = (() => {
@@ -160,30 +161,7 @@ const ldJson = JSON.stringify(pageGraph);
 <main class="flex-1">
 <slot />
 
-<!-- Related links -->
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-<div class="border-t pt-10" style="border-color:color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-<h3 class="text-lg font-semibold mb-6" style="color:var(--theme-text);">Explore More</h3>
-<div class="flex flex-wrap gap-3">
-<a href="/materials/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Material Specifications &rarr;</a>
-<a href="/industries/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Industry Applications &rarr;</a>
-<a href="/services/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">All Services &rarr;</a>
-<a href="/capabilities/" class="inline-flex items-center px-4 py-2 text-sm rounded-lg transition-all hover:shadow-md" style="background-color:var(--theme-surface);color:var(--theme-text);border:1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">Capabilities &rarr;</a>
-</div>
-</div>
-</section>
-
-<!-- CTA -->
-<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-<div class="rounded-2xl p-8 md:p-12 text-center" style="background:linear-gradient(135deg,var(--theme-primary) 0%,color-mix(in srgb,var(--theme-primary) 80%,black) 100%);">
-<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-<p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">Get an immediate engineering review and competitive pricing. Our AS9100D-certified team responds within 48 hours.</p>
-<a href="/contact/" class="inline-flex items-center gap-2 bg-white font-semibold px-8 py-4 rounded-lg hover:opacity-90 transition-all shadow-lg text-lg" style="color:var(--theme-primary);">
-<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-Request a Quote
-</a>
-</div>
-</section>
+<BrandAbout />
 
 </main>
 <Footer />
