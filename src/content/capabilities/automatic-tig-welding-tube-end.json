@@ -1,4 +1,7 @@
 {
+  "title": "Automatic TIG welding (tube end)",
+  "category": "Welding",
+  "description": "Automatic TIG welding (tube end) capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,92 +10,86 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "0.5 mm – 25.0 mm (weldable range)",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "N/A — welding tolerance ±0.5 mm typical",
+  "thicknessRange": "0.5 mm – 12.0 mm weldable",
+  "cuttingTolerance": "Weld distortion: +0.5 mm typical; +0.1 mm with fixture",
+  "tolerance": "Weld distortion: +0.5 mm typical; +0.1 mm with fixture",
+  "maxSize": "",
+  "surfaceFinish": "Silver/gold weld color per AMS 4901; blue = oxidation rejection",
   "processComparison": [
     {
-      "dimension": "Process Method",
-      "laser": "Laser beam welding (LBW) — keyhole or conduction mode",
-      "waterjet": "N/A — waterjet not used for welding"
-    },
-    {
       "dimension": "Heat Input",
-      "laser": "Low — minimal distortion; narrow HAZ",
+      "laser": "Low — narrow HAZ (1–3 mm)",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Shielding Gas",
-      "laser": "Argon (99.999%) back-purge + trailing shield required for Ti",
+      "dimension": "Shielding",
+      "laser": "Argon face + trailing shield + backup purge",
       "waterjet": "N/A"
     },
     {
       "dimension": "Weld Speed",
-      "laser": "Up to 5 m/min for thin sections",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Joint Types",
-      "laser": "Butt, lap, fillet, edge, T-joint",
+      "laser": "100–300 mm/min (manual); 1000 mm/min (orbital)",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision TIG, MIG, and laser welding of automatic tig welding titanium assemblies. Full inert gas shielding prevents oxidation and ensures metallurgically sound welds meeting ASME Section IX requirements.",
+  "processDescription": "Gas Tungsten Arc Welding (GTAW/TIG) for titanium uses a non-consumable tungsten electrode with argon shielding at the torch face, trailing shield, and backup purge. Titanium's reactivity above 600°C demands complete oxygen exclusion until the weld zone cools below 300°C, specifically for tube. Precision tube for Chemical, Aerospace, Medical present unique challenges: Wall thickness uniformity (±0.05 mm) over long lengths. Internal surface finish Ra < 0.8 µm for fluid flow. Bent tube ovality control.",
   "holeTypes": [
-    "N/A — welding is a joining process"
+    "N/A"
   ],
-  "heatControl": "TIG/MIG/laser welding of automatic tig welding requires inert gas shielding (argon or helium) on both face and back sides to prevent atmospheric contamination and embrittlement of the weld zone.",
-  "flatnessControl": "Weld fixtures and sequenced welding patterns control distortion for automatic tig welding assemblies. Post-weld stress relief available.",
-  "capabilitiesDescription": "Our welding facility includes automatic orbital TIG, pulsed MIG, and fiber laser welding systems with cleanroom-class shielding for automatic tig welding.",
+  "heatControl": "Triple-shield argon protection: torch nozzle, trailing shield (10–20 L/min), and backup purge. Interpass temperature monitored with IR pyrometer; max 120°C between passes.",
+  "flatnessControl": "Welding fixture with copper backup bars for heat sinking. Sequenced stitch welding pattern to balance thermal stresses.",
+  "capabilitiesDescription": "Certified welding capability for Automatic TIG welding (tube end), with full inert gas shielding, weld procedure qualification, and operator certification.",
+  "typicalApplications": [
+    "Heat exchanger tubes",
+    "Hydraulic lines",
+    "Structural tubes",
+    "Catheter tubes"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Weld Inspection (NDT)",
-      "description": "X-ray, ultrasonic, or dye penetrant inspection per ASME Section V."
+      "name": "Dye Penetrant Inspection",
+      "description": "PT per ASTM E1417 for weld surface defects."
     },
     {
-      "name": "Weld Map Documentation",
-      "description": "Full traceability documentation for every weld including operator ID, parameters, and inspection results."
+      "name": "Weld Color Inspection",
+      "description": "Classification per AMS 4901: silver/gold acceptable; blue/purple rejected."
     },
     {
-      "name": "Post-Weld Heat Treatment",
-      "description": "Stress relief annealing in vacuum furnace to restore mechanical properties."
+      "name": "Tube Bending",
+      "description": "Tube Bending for automatic tig welding (tube end) components."
     },
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Weld Preparation (End Bevelling)",
+      "description": "Weld Preparation (End Bevelling) for automatic tig welding (tube end) components."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
-    },
-    {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Hydrostatic Pressure Test",
+      "description": "Hydrostatic Pressure Test for automatic tig welding (tube end) components."
     }
   ],
   "inspectionItems": [
-    "Visual weld inspection per AWS D1.1 / ISO 5817",
-    "Dye penetrant inspection (PT) per ASTM E1417",
-    "Radiographic inspection (RT) per ASTM E1742",
-    "Weld color classification (silver/gold acceptable; blue/purple rejected)"
+    "Automatic TIG welding (tube end) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417",
+    "Biocompatibility validation per ISO 10993"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ASME Section IX — Welding Qualifications",
-    "AWS D1.1/D1.6 — Structural Welding"
+    "ISO 13485 — Medical Device Quality Management"
   ],
-  "ctaTitle": "Need Precision Automatic Tig Components?",
+  "relatedEntities": [
+    "titanium-bleed-air-duct",
+    "titanium-uhp-hydrogen-tube-fitting"
+  ],
+  "seoTitle": "Automatic TIG welding (tube end) | Precision Titanium Welding | BOZE",
+  "seoDescription": "Automatic TIG welding (tube end) for Chemical, Aerospace, Medical applications. Precision titanium component manufacturing with Weld distortion: +0.5 mm typical; +0.1 mm with fixture. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Tube Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Automatic TIG welding (tube end)",
   "aliases": [],
-  "category": "Welding",
-  "description": "Automatic TIG welding (tube end) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Automatic TIG welding (tube end) | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision welding of Automatic TIG welding (tube end) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

@@ -1,42 +1,49 @@
 {
+  "title": "Isothermal die forging",
+  "category": "Forging",
+  "description": "Isothermal die forging capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)",
-    "Grade 9"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "Up to 500 kg ingot/billet",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "±1.0 mm (as-forged) / ±0.05 mm (post-CNC)",
+  "thicknessRange": "Up to 500 kg ingot/billet; press capacity 3000 ton",
+  "cuttingTolerance": "+1.0 mm (as-forged) / +0.05 mm (post-CNC)",
+  "tolerance": "+1.0 mm (as-forged) / +0.05 mm (post-CNC)",
+  "maxSize": "",
+  "surfaceFinish": "As-forged scale; machined surfaces available",
   "processComparison": [
     {
-      "dimension": "Forging Method",
-      "laser": "Open die / closed die / isothermal",
+      "dimension": "Method",
+      "laser": "Closed-die / open-die / isothermal",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Temperature Range",
-      "laser": "Beta transus ±50°C (850–1050°C for Ti)",
+      "dimension": "Temperature",
+      "laser": "850–1050°C (below beta transus)",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Grain Structure",
-      "laser": "Controlled recrystallization for equiaxed alpha-beta",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Mechanical Properties",
-      "laser": "Superior to cast/machined — aligned grain flow",
+      "dimension": "Grain Flow",
+      "laser": "Aligned with component contour",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Titanium forging services for isothermal die forging using open-die, closed-die, and isothermal forging processes. Controlled thermal-mechanical processing optimizes grain structure and mechanical properties.",
+  "processDescription": "Closed-die forging of titanium uses shaped dies to compress heated billet into a net-shape or near-net-shape component. The process aligns grain flow with the component contour, producing superior mechanical properties compared to machined-from-bar stock, specifically for titanium components. Precision titanium components  present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
     "N/A"
   ],
-  "heatControl": "Precise temperature control (±10°C) during isothermal die forging forging to maintain beta-phase control and prevent grain growth.",
-  "flatnessControl": "Post-forge normalization and straightening within 1 mm/m.",
-  "capabilitiesDescription": "Press capacity up to 3000 ton with induction heating and programmable forging manipulators for isothermal die forging.",
+  "heatControl": "Induction heating with +10°C uniformity across the billet. Beta transus control (995°C for Ti-6Al-4V) to optimize alpha-beta microstructure.",
+  "flatnessControl": "Post-forge normalization at 700°C for CP grades. Straightening within 1 mm/m for long components.",
+  "capabilitiesDescription": "Hydraulic and mechanical press capability for Isothermal die forging, with induction heating, die temperature control, and grain flow optimization.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
       "name": "Heat Treatment",
@@ -44,37 +51,42 @@
     },
     {
       "name": "CNC Machining",
-      "description": "Post-forge machining to final dimensions and surface finish."
+      "description": "Post-forge machining to final dimensions."
     },
     {
       "name": "NDT Inspection",
-      "description": "Ultrasonic inspection (UT) per AMS 2631 for internal soundness."
+      "description": "Ultrasonic inspection (UT) per AMS 2631."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for isothermal die forging components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for isothermal die forging components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for isothermal die forging components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (as-forged)",
-    "Ultrasonic inspection (UT) for internal defects",
-    "Metallographic examination (grain flow verification)",
-    "Mechanical testing (tensile, yield, elongation)"
+    "Isothermal die forging specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2631 — Ultrasonic Inspection of Wrought Titanium",
-    "ASTM B381 — Titanium Forgings",
-    "AMS 4928 — Titanium Alloy Bars and Forgings"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Isothermal Die Components?",
+  "relatedEntities": [],
+  "seoTitle": "Isothermal die forging | Precision Titanium Forging | BOZE",
+  "seoDescription": "Isothermal die forging for General applications. Precision titanium component manufacturing with +1.0 mm (as-forged) / +0.05 mm (post-CNC). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Isothermal die forging?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Isothermal die forging",
   "aliases": [],
-  "category": "Forging",
-  "description": "Isothermal die forging capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Isothermal die forging | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision forging of Isothermal die forging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

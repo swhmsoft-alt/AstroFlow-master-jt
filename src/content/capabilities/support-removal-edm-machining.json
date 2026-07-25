@@ -1,74 +1,82 @@
 {
+  "title": "Support removal (EDM/machining)",
+  "category": "EDM",
+  "description": "Support removal (EDM/machining) capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "Up to 300 mm (wire EDM); up to 200 mm (sinker EDM)",
-  "minHoleRatio": "0.02 mm minimum wire diameter; 0.1 mm minimum hole (sinker)",
-  "cuttingTolerance": "±0.002 mm (wire EDM) / ±0.005 mm (sinker EDM)",
+  "thicknessRange": "Up to Ø600 mm × 400 mm",
+  "cuttingTolerance": "±0.01 mm (positional) / ±0.02 mm (contour)",
+  "tolerance": "±0.01 mm (positional) / ±0.02 mm (contour)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.8 µm (standard) / Ra 0.2 µm (precision)",
   "processComparison": [
     {
-      "dimension": "EDM Type",
-      "laser": "Wire EDM / Sinker EDM / Hole drilling EDM",
-      "waterjet": "N/A"
+      "dimension": "Kinematics",
+      "laser": "Full 5-axis simultaneous interpolation",
+      "waterjet": "3+2 positional indexing"
     },
     {
       "dimension": "Surface Finish",
-      "laser": "Ra 0.2–0.8 µm (wire); Ra 1.6 µm (sinker)",
-      "waterjet": "N/A"
+      "laser": "Ra 0.8 µm standard; Ra 0.2 µm with finishing pass",
+      "waterjet": "Ra 1.6–6.3 µm"
     },
     {
-      "dimension": "Heat Affected Zone",
-      "laser": "Re-cast layer 1–5 µm; removable by post-processing",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Taper Capability",
-      "laser": "±30° (wire EDM with 5-axis control)",
-      "waterjet": "N/A"
+      "dimension": "Tool Access",
+      "laser": "Unrestricted — tool can approach from any angle",
+      "waterjet": "Limited — each setup indexes the part"
     }
   ],
-  "processDescription": "Precision EDM services for support removal edm titanium components. Wire EDM achieves ±0.002 mm tolerance for intricate profiles, while sinker EDM handles blind cavities and complex 3D geometries.",
+  "processDescription": "5-axis CNC milling centers provide simultaneous multi-axis interpolation for complex titanium components. The ability to tilt the tool relative to the workpiece surface maintains optimal chip load and extends tool life, which is critical for difficult-to-machine titanium alloys.",
   "holeTypes": [
-    "Tapered holes",
-    "Micro-holes",
-    "Blind cavities",
-    "Keyway slots"
+    "Coolant passages",
+    "Threaded holes at compound angles",
+    "Counterbored fastener holes"
   ],
-  "heatControl": "Deionized water dielectric (wire EDM) or hydrocarbon oil (sinker EDM) with temperature control for support removal edm.",
-  "flatnessControl": "Multi-pass cutting strategy minimizes distortion. Stress relief recommended for pre-hardened materials.",
-  "capabilitiesDescription": "5-axis wire EDM and CNC sinker EDM systems for support removal edm with submerged and flushing capabilities.",
+  "heatControl": "High-pressure coolant-through-spindle (50–70 bar) with coated carbide tooling. Adaptive trochoidal milling paths reduce radial engagement to control heat generation.",
+  "flatnessControl": "Stress-relieved raw material and sequenced roughing/finishing passes. Heat-sink fixturing for thin-wall sections minimizes thermal distortion.",
+  "capabilitiesDescription": "Precision machining capability for Support removal (EDM/machining), utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Re-cast Layer Removal",
-      "description": "Chemical etching or electropolishing to remove EDM re-cast layer."
+      "name": "Deburring",
+      "description": "Manual or robotic deburring of sharp edges and thread protection."
     },
     {
-      "name": "Surface Finishing",
-      "description": "Polishing or micro-blasting to achieve specified surface finish."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for support removal (EDM/machining) components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for support removal (EDM/machining) components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (CMM / vision system)",
-    "Surface finish measurement (Ra/Rz)",
-    "Re-cast layer thickness verification (microsection)"
+    "Support removal (EDM/machining) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Support Removal Components?",
+  "relatedEntities": [],
+  "seoTitle": "Support removal (EDM/machining) | Precision Titanium EDM | BOZE",
+  "seoDescription": "Support removal (EDM/machining) for General applications. Precision titanium component manufacturing with ±0.01 mm (positional) / ±0.02 mm (contour). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Support removal (EDM/machining)?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Support removal (EDM/machining)",
   "aliases": [],
-  "category": "EDM",
-  "description": "Support removal (EDM/machining) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Support removal (EDM/machining) | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision edm of Support removal (EDM/machining) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

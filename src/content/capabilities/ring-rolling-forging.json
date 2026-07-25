@@ -1,42 +1,50 @@
 {
+  "title": "Ring rolling / forging",
+  "category": "Forging",
+  "description": "Ring rolling / forging capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)",
-    "Grade 9"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "Up to 500 kg ingot/billet",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "±1.0 mm (as-forged) / ±0.05 mm (post-CNC)",
+  "thicknessRange": "Up to 500 kg ingot/billet; press capacity 3000 ton",
+  "cuttingTolerance": "+1.0 mm (as-forged) / +0.05 mm (post-CNC)",
+  "tolerance": "+1.0 mm (as-forged) / +0.05 mm (post-CNC)",
+  "maxSize": "",
+  "surfaceFinish": "As-forged scale; machined surfaces available",
   "processComparison": [
     {
-      "dimension": "Forging Method",
-      "laser": "Open die / closed die / isothermal",
+      "dimension": "Method",
+      "laser": "Closed-die / open-die / isothermal",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Temperature Range",
-      "laser": "Beta transus ±50°C (850–1050°C for Ti)",
+      "dimension": "Temperature",
+      "laser": "850–1050°C (below beta transus)",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Grain Structure",
-      "laser": "Controlled recrystallization for equiaxed alpha-beta",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Mechanical Properties",
-      "laser": "Superior to cast/machined — aligned grain flow",
+      "dimension": "Grain Flow",
+      "laser": "Aligned with component contour",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Titanium forging services for ring rolling forging using open-die, closed-die, and isothermal forging processes. Controlled thermal-mechanical processing optimizes grain structure and mechanical properties.",
+  "processDescription": "Closed-die forging of titanium uses shaped dies to compress heated billet into a net-shape or near-net-shape component. The process aligns grain flow with the component contour, producing superior mechanical properties compared to machined-from-bar stock, specifically for ring. Precision ring for General, Aerospace present unique challenges: Roundness tolerance ±0.01 mm on large diameter rings (> 300 mm). Heat treatment distortion management.",
   "holeTypes": [
     "N/A"
   ],
-  "heatControl": "Precise temperature control (±10°C) during ring rolling forging forging to maintain beta-phase control and prevent grain growth.",
-  "flatnessControl": "Post-forge normalization and straightening within 1 mm/m.",
-  "capabilitiesDescription": "Press capacity up to 3000 ton with induction heating and programmable forging manipulators for ring rolling forging.",
+  "heatControl": "Induction heating with +10°C uniformity across the billet. Beta transus control (995°C for Ti-6Al-4V) to optimize alpha-beta microstructure.",
+  "flatnessControl": "Post-forge normalization at 700°C for CP grades. Straightening within 1 mm/m for long components.",
+  "capabilitiesDescription": "Hydraulic and mechanical press capability for Ring rolling / forging, with induction heating, die temperature control, and grain flow optimization.",
+  "typicalApplications": [
+    "Seal rings",
+    "Snap rings",
+    "Retaining rings",
+    "Bearing races"
+  ],
   "downstreamProcesses": [
     {
       "name": "Heat Treatment",
@@ -44,37 +52,42 @@
     },
     {
       "name": "CNC Machining",
-      "description": "Post-forge machining to final dimensions and surface finish."
+      "description": "Post-forge machining to final dimensions."
     },
     {
       "name": "NDT Inspection",
-      "description": "Ultrasonic inspection (UT) per AMS 2631 for internal soundness."
+      "description": "Ultrasonic inspection (UT) per AMS 2631."
+    },
+    {
+      "name": "OD/ID Grinding",
+      "description": "OD/ID Grinding for ring rolling / forging components."
+    },
+    {
+      "name": "Dye Penetrant Inspection",
+      "description": "Dye Penetrant Inspection for ring rolling / forging components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (as-forged)",
-    "Ultrasonic inspection (UT) for internal defects",
-    "Metallographic examination (grain flow verification)",
-    "Mechanical testing (tensile, yield, elongation)"
+    "Ring rolling / forging specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2631 — Ultrasonic Inspection of Wrought Titanium",
-    "ASTM B381 — Titanium Forgings",
-    "AMS 4928 — Titanium Alloy Bars and Forgings"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Ring Rolling Components?",
+  "relatedEntities": [
+    "titanium-split-ring-quick-flange",
+    "titanium-centering-ring-kf-iso"
+  ],
+  "seoTitle": "Ring rolling / forging | Precision Titanium Forging | BOZE",
+  "seoDescription": "Ring rolling / forging for General, Aerospace applications. Precision titanium component manufacturing with +1.0 mm (as-forged) / +0.05 mm (post-CNC). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Ring Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Ring rolling / forging",
   "aliases": [],
-  "category": "Forging",
-  "description": "Ring rolling / forging capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Ring rolling / forging | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision forging of Ring rolling / forging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

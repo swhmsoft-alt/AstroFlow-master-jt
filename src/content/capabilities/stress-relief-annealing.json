@@ -1,80 +1,88 @@
 {
+  "title": "Stress relief annealing",
+  "category": "Heat Treatment",
+  "description": "Stress relief annealing capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)",
-    "Grade 9"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "All section sizes; furnace capacity: Ø600 mm × 1200 mm",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Temperature control: ±5°C; ramp rate: 1–20°C/min programmable",
+  "thicknessRange": "Furnace: Ø600 × 1200 mm; up to 500 kg load",
+  "cuttingTolerance": "Temperature: +5°C uniformity; ramp 1–20°C/min",
+  "tolerance": "Temperature: +5°C uniformity; ramp 1–20°C/min",
+  "maxSize": "",
+  "surfaceFinish": "No oxidation (vacuum < 10⁻⁵ torr); bright surface retained",
   "processComparison": [
     {
-      "dimension": "Furnace Type",
-      "laser": "Vacuum furnace (10⁻⁵ torr)",
+      "dimension": "Atmosphere",
+      "laser": "Vacuum < 10⁻⁵ torr",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Temperature Range",
-      "laser": "300°C – 1200°C programmable",
+      "dimension": "Cooling",
+      "laser": "Inert gas fan cooling (2 bar Ar); oil/water quench",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Atmosphere Control",
-      "laser": "Vacuum / inert gas (Ar) backfill",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Quench Media",
-      "laser": "Inert gas fan cooling / oil / water",
+      "dimension": "Max Temp",
+      "laser": "1200°C (beta solution treatment)",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision heat treatment services for stress relief annealing titanium components in vacuum furnaces with programmable temperature profiles and inert gas cooling.",
+  "processDescription": "Vacuum heat treatment of titanium in a controlled environment prevents oxygen/nitrogen pickup that causes alpha-case embrittlement. Programmable temperature profiles with inert gas fan cooling enable solution treatment, aging, stress relief, and annealing in a single cycle, specifically for titanium components. Precision titanium components present unique challenges: balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) is optimized for each feature.",
   "holeTypes": [
     "N/A"
   ],
-  "heatControl": "Vacuum furnace with ±5°C uniformity and programmable ramp/soak/cool cycles for stress relief annealing.",
-  "flatnessControl": "Vacuum fixturing and controlled cooling rates minimize distortion during heat treatment cycles.",
-  "capabilitiesDescription": "State-of-the-art vacuum heat treatment facility with quench capabilities for stress relief annealing titanium alloys.",
+  "heatControl": "Graphite heating elements with molybdenum radiation shields. Partial pressure argon backfill during cooling for uniform thermal distribution.",
+  "flatnessControl": "Ceramic or titanium fixtures maintain component geometry during thermal cycling. A controlled cooling rate minimizes thermal gradient distortion.",
+  "capabilitiesDescription": "Vacuum heat treatment capability for Stress relief annealing, with programmable temperature profiling, inert gas cooling, and metallographic verification.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
       "name": "Hardness Testing",
-      "description": "Post-treatment hardness verification (Rockwell / Vickers / Brinell)."
+      "description": "Rockwell C or Vickers hardness verification post-treatment."
     },
     {
       "name": "Metallographic Analysis",
-      "description": "Microstructure examination; grain size measurement per ASTM E112."
+      "description": "Microstructure examination per ASTM E112."
     },
     {
-      "name": "Mechanical Testing",
-      "description": "Tensile, yield, elongation testing to verify heat treatment results."
+      "name": "Deburring",
+      "description": "Deburring for stress relief annealing components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for stress relief annealing components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for stress relief annealing components."
     }
   ],
   "inspectionItems": [
-    "Temperature chart review and certification",
-    "Hardness testing (as-treated)",
-    "Visual inspection for surface condition (oxidation, cracking)",
-    "Dimensional check (distortion measurement)"
+    "Stress relief annealing specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2750 — Pyrometry (Furnace Survey)",
-    "AMS 2801 — Heat Treatment of Titanium Alloys",
-    "ASTM E8 — Tension Testing of Metallic Materials"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Stress Relief Components?",
+  "relatedEntities": [],
+  "seoTitle": "Stress relief annealing | Precision Titanium Heat Treatment | BOZE",
+  "seoDescription": "Stress relief annealing for General applications. Precision titanium component manufacturing with Temperature: +5°C uniformity; ramp 1–20°C/min. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Stress relief annealing?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Stress relief annealing",
   "aliases": [],
-  "category": "Heat Treatment",
-  "description": "Stress relief annealing capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Stress relief annealing | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision heat treatment of Stress relief annealing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

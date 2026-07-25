@@ -1,4 +1,7 @@
 {
+  "title": "Laser cutting + die stamping of crampon spikes",
+  "category": "Laser Processing",
+  "description": "Laser cutting + die stamping of crampon spikes capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,91 +10,88 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "0.5 mm – 25.0 mm",
-  "minHoleRatio": "1:1 (diameter-to-thickness ratio)",
-  "cuttingTolerance": "±0.05 mm (Laser) / ±0.1 mm (Waterjet)",
+  "thicknessRange": "0.2 mm – 15.0 mm (fiber laser)",
+  "cuttingTolerance": "±0.05 mm (thin sheet < 3 mm) / ±0.1 mm (plate 3–12 mm)",
+  "tolerance": "±0.05 mm (thin sheet < 3 mm) / ±0.1 mm (plate 3–12 mm)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 1.6 µm (post-deburring)",
   "processComparison": [
     {
-      "dimension": "Suitable Thickness",
-      "laser": "Thin to medium sections up to 12 mm with fiber laser; optimal < 3 mm for high speed",
-      "waterjet": "0.5 mm to 25 mm+; no practical thickness limit with abrasive waterjet"
+      "dimension": "Cut Speed (3 mm Ti)",
+      "laser": "Up to 6 m/min",
+      "waterjet": "0.5–1.5 m/min"
     },
     {
-      "dimension": "Heat Affected Zone (HAZ)",
-      "laser": "Minimal HAZ with N₂/Ar assist gas preventing titanium oxidation",
-      "waterjet": "No HAZ — cold cutting process, zero thermal distortion"
+      "dimension": "Kerf Width",
+      "laser": "0.1–0.3 mm",
+      "waterjet": "0.7–1.2 mm"
     },
     {
-      "dimension": "Edge Quality",
-      "laser": "Requires deburring for dross removal on thicker sections",
-      "waterjet": "Smooth, burr-free edge; no secondary cleaning required"
+      "dimension": "HAZ",
+      "laser": "0.05–0.15 mm with N₂ assist",
+      "waterjet": "Zero HAZ (cold cut)"
     },
     {
-      "dimension": "Cutting Speed (3 mm Ti)",
-      "laser": "Up to 6 m/min for thin sections",
-      "waterjet": "0.5–1.5 m/min; slower but more versatile"
-    },
-    {
-      "dimension": "Material Compatibility",
-      "laser": "All titanium grades; reflective alloys require careful fiber laser tuning",
-      "waterjet": "All titanium grades + composites, ceramics; no reflectivity issues"
+      "dimension": "Max Thickness",
+      "laser": "15 mm (fiber laser)",
+      "waterjet": "100 mm+"
     }
   ],
-  "processDescription": "High-precision laser and waterjet cutting of laser cutting die for titanium components. Capable of producing complex geometries, internal cutouts, and edge preparations with ±0.05 mm laser tolerance and zero HAZ via waterjet process.",
+  "processDescription": "Fiber laser cutting of titanium uses a focused 1 µm wavelength beam to melt and expel material through a coaxial assist gas jet. The narrow (0.1–0.3 mm) and small heat-affected zone make it suitable for precision profiles in sheet and thin-plate titanium components, specifically for pin. Precision pin for Fastener, Medical present unique challenges: Cylindrical OD tolerance ±0.005 mm with chamfer/radius control. Tight straightness (< 0.02 mm over 50 mm) for press-fit applications.",
   "holeTypes": [
-    "Round holes",
-    "Slot / oblong holes",
-    "Custom contour cutouts",
-    "Edge preparations (bevels)"
+    "Round holes (≥ 0.5 mm diameter)",
+    "Slots / oblongs",
+    "Micro-perforation arrays"
   ],
-  "heatControl": "For laser cutting of laser cutting die, high-purity nitrogen or argon coaxial assist gas shields the cut zone from atmospheric oxygen, preventing alpha-case formation and discoloration. Waterjet cutting eliminates thermal concerns entirely.",
-  "flatnessControl": "Post-cutting stress relief (vacuum annealing) and precision leveling available for laser cutting die components requiring flatness within 0.5 mm/m.",
-  "capabilitiesDescription": "Our facility combines multi-kilowatt fiber laser cutting systems with high-pressure abrasive waterjet systems, enabling us to process laser cutting die from prototype to production volumes.",
+  "heatControl": "Coaxial N₂ (99.999%) assist gas at 12–20 bar prevents titanium oxidation by displacing oxygen. Laser power modulation controls heat input to minimize HAZ to 0.05–0.15 mm.",
+  "flatnessControl": "Thin-gauge titanium (< 2 mm) may release residual stress during cutting, causing distortion. Vacuum annealing stress relief at 540–650°C and roller leveling available.",
+  "capabilitiesDescription": "Laser processing capability for Laser cutting + die stamping of crampon spikes, with precision beam delivery, gas assist systems, and process monitoring for repeatable quality.",
+  "typicalApplications": [
+    "Cotter pins",
+    "Hinge pins",
+    "Pivot pins",
+    "K-wires (orthopedic)"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
-    },
-    {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
-    },
-    {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Deburring",
+      "description": "Drag finishing or chemical deburring to remove laser-cut dross."
     },
     {
       "name": "Pickling & Passivation",
-      "description": "Nitric-hydrofluoric acid bath (ASTM B600) removes light oxidation from laser-cut edges and restores passive layer."
+      "description": "Nitric-HF acid bath (ASTM B600) to remove heat tint."
     },
     {
-      "name": "CNC Machining",
-      "description": "4/5-axis CNC milling/drilling for mounting holes, flange faces, and precision features on cut blanks."
+      "name": "Centerless Grinding",
+      "description": "Centerless Grinding for laser cutting + die stamping of crampon spikes components."
+    },
+    {
+      "name": "Chamfering",
+      "description": "Chamfering for laser cutting + die stamping of crampon spikes components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
+    "Laser cutting + die stamping of crampon spikes specific dimensional verification (CMM / vision)",
     "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "Edge quality assessment (burr height per ISO 13715)",
-    "Dye penetrant inspection (PT) per ASTM E1417"
+    "Biocompatibility validation per ISO 10993"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ISO 13485 — Medical Device Quality Management"
   ],
-  "ctaTitle": "Need Precision Laser Cutting Components?",
+  "relatedEntities": [
+    "titanium-cotter-pin-din-94",
+    "titanium-derailleur-pivot-pin"
+  ],
+  "seoTitle": "Laser cutting + die stamping of crampon spikes | Precision Titanium Laser Processing | BOZE",
+  "seoDescription": "Laser cutting + die stamping of crampon spikes for Fastener, Medical applications. Precision titanium component manufacturing with ±0.05 mm (thin sheet < 3 mm) / ±0.1 mm (plate 3–12 mm). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Pin Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Laser cutting + die stamping of crampon spikes",
   "aliases": [],
-  "category": "Laser Processing",
-  "description": "Laser cutting + die stamping of crampon spikes capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Laser cutting + die stamping of crampon spikes | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision laser processing of Laser cutting + die stamping of crampon spikes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

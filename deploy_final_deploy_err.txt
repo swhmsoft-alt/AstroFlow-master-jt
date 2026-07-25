@@ -1,0 +1,46 @@
+使用“1”个参数调用“Substring”时发生异常:“startIndex 不能大于字符串长度。
+参数名: startIndex”
+所在位置 C:\Users\Administrator\Desktop\AstroFlow-master-jt\scripts\deploy-curl-upload.ps1:33 字符: 5
++     $relativePath = $file.FullName.Substring($localRoot.Length + 1).R ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentOutOfRangeException
+ 
+使用“1”个参数调用“GetDirectoryName”时发生异常:“路径的形式不合法。”
+所在位置 C:\Users\Administrator\Desktop\AstroFlow-master-jt\scripts\deploy-curl-upload.ps1:35 字符: 5
++     $dirPath = [System.IO.Path]::GetDirectoryName($relativePath).Repl ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+ 
+使用“1”个参数调用“Substring”时发生异常:“startIndex 不能大于字符串长度。
+参数名: startIndex”
+所在位置 C:\Users\Administrator\Desktop\AstroFlow-master-jt\scripts\deploy-curl-upload.ps1:33 字符: 5
++     $relativePath = $file.FullName.Substring($localRoot.Length + 1).R ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentOutOfRangeException
+ 
+使用“1”个参数调用“GetDirectoryName”时发生异常:“路径的形式不合法。”
+所在位置 C:\Users\Administrator\Desktop\AstroFlow-master-jt\scripts\deploy-curl-upload.ps1:35 字符: 5
++     $dirPath = [System.IO.Path]::GetDirectoryName($relativePath).Repl ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentException
+ 
+使用“1”个参数调用“Substring”时发生异常:“startIndex 不能大于字符串长度。
+参数名: startIndex”
+所在位置 C:\Users\Administrator\Desktop\AstroFlow-master-jt\scripts\deploy-curl-upload.ps1:33 字符: 5
++     $relativePath = $file.FullName.Substring($localRoot.Length + 1).R ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentOutOfRangeException
+ 
+使用“1”个参数调用“Substring”时发生异常:“startIndex 不能大于字符串长度。
+参数名: startIndex”
+所在位置 C:\Users\Administrator\Desktop\AstroFlow-master-jt\scripts\deploy-curl-upload.ps1:33 字符: 5
++     $relativePath = $file.FullName.Substring($localRoot.Length + 1).R ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : ArgumentOutOfRangeException
+ 

@@ -1,0 +1,95 @@
+{
+  "title": "SLM 3D printing of complex pod geometries",
+  "category": "Additive Manufacturing",
+  "description": "Selective laser melting of complex titanium pod housings with internal lattice structures.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Build: Ø300 × 400 mm; layer 20–60 µm",
+  "cuttingTolerance": "+0.05 mm (as-built) / +0.005 mm (post-machined)",
+  "tolerance": "+0.05 mm (as-built) / +0.005 mm (post-machined)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 6–12 µm (as-built) / Ra 0.4 µm (post-processed)",
+  "processComparison": [
+    {
+      "dimension": "Technology",
+      "laser": "Laser powder bed fusion (LPBF/SLM/DMLS)",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Min Feature",
+      "laser": "0.2 mm wall / 0.05 mm layer height",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Porosity",
+      "laser": "< 0.5% as-built; < 0.01% after HIP",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Properties",
+      "laser": "≥ 98% of wrought with proper heat treatment",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Selective Laser Melting (SLM/DMLS) builds titanium components layer-by-layer from metal powder using a fiber laser. Internal lattice structures, conformal cooling channels, and organic geometries are achievable that are unattainable with manufacturing.",
+  "holeTypes": [
+    "Conformal cooling channels",
+    "Lattice structures (diamond, gyroid)",
+    "Organic geometries"
+  ],
+  "heatControl": "Build chamber inerted with argon to < 1000 ppm O₂. Build plate preheated to 200°C to reduce thermal gradients between layers.",
+  "flatnessControl": "Stress relief annealing (540°C / 2 hr) before substrate removal. HIP for critical aerospace/medical components to eliminate internal porosity.",
+  "capabilitiesDescription": "Our facility is equipped to handle slm 3d printing of complex pod geometries with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "Support Removal",
+      "description": "EDM or CNC machining to remove build supports from substrate plate."
+    },
+    {
+      "name": "Hot Isostatic Pressing (HIP)",
+      "description": "HIP at 920°C / 100 MPa to close internal porosity."
+    },
+    {
+      "name": "CNC Finish Machining",
+      "description": "5-axis CNC machining of critical mating surfaces."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for slm 3d printing of complex pod geometries components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for slm 3d printing of complex pod geometries components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for slm 3d printing of complex pod geometries components."
+    }
+  ],
+  "inspectionItems": [
+    "SLM 3D printing of complex pod geometries specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [],
+  "seoTitle": "SLM 3D printing of complex pod geometries | Precision Titanium Additive Manufacturing | BOZE",
+  "seoDescription": "SLM 3D printing of complex pod geometries for General applications. Complex titanium component manufacturing with +0.05 mm (as-built) / +0.005 mm (post-machined). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision SLM 3D printing?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

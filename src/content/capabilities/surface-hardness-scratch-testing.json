@@ -1,4 +1,7 @@
 {
+  "title": "Surface hardness / scratch testing",
+  "category": "Inspection",
+  "description": "Surface hardness / scratch testing capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,78 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "All sizes accommodated",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Measurement resolution: ±0.001 mm (CMM) / ±0.1 µm (optical)",
+  "thicknessRange": "Tank: 1200 × 800 × 600 mm; all part sizes",
+  "cuttingTolerance": "Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change",
+  "tolerance": "Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change",
+  "maxSize": "",
+  "surfaceFinish": "Retains substrate finish; matte to satin appearance",
   "processComparison": [
     {
-      "dimension": "Detection Method",
-      "laser": "Laser profilometry / structured light scanning",
+      "dimension": "Coating",
+      "laser": "Electrochemical oxide conversion; not a deposit",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Resolution",
-      "laser": "0.001 mm (laser scanning); 0.1 µm (white light interferometry)",
+      "dimension": "Thickness",
+      "laser": "Type II: 0.5–5 µm / Type III: 5–25 µm",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Surface Requirement",
-      "laser": "Reflective or matte surfaces acceptable",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Inspection Speed",
-      "laser": "High — full-field scanning in seconds",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Portability",
-      "laser": "Portable laser trackers available for on-site inspection",
+      "dimension": "Colors",
+      "laser": "Gold (15V), blue (40V), green (70V), purple (90V)",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Comprehensive inspection services for surface hardness scratch titanium components, including dimensional metrology, NDT, and material verification with full traceability documentation.",
+  "processDescription": "Titanium anodizing (AMS 2488) grows a controlled oxide layer through electrochemical conversion in an electrolyte bath. Type II produces interference colors (gold, blue, purple, green) for identification and cosmetics. Type III (hard anodizing) produces a thicker, abrasion-resistant oxide, specifically for titanium components. Precision titanium components present unique challenges: balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) is optimized for each feature.",
   "holeTypes": [
-    "Inspection is a measurement/verification process"
+    "N/A"
   ],
-  "heatControl": "All inspection performed in temperature-controlled metrology lab (20±1°C) to eliminate thermal expansion errors.",
-  "flatnessControl": "Granite surface plates (Grade 00) used as datum references for flatness measurement.",
-  "capabilitiesDescription": "Our metrology lab is equipped with CMM (ZEISS), vision systems, laser scanners, ultrasonic flaw detectors, and tensile/ hardness testers for surface hardness scratch.",
+  "heatControl": "Electrolyte bath at 20–24°C (Type II) or –5–0°C (Type III). Voltage ramp is programmed to prevent localized overheating and burning.",
+  "flatnessControl": "No dimensional change—surface conversion only. Pre-treatment finish is preserved through the process.",
+  "capabilitiesDescription": "NDT and dimensional inspection service for Surface hardness / scratch testing, performed by certified technicians per applicable standards.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Inspection Report Package",
-      "description": "Full FAIR (AS9102) with dimensional report, material certs, and NDT results."
+      "name": "Sealing",
+      "description": "Hot water or nickel acetate sealing is used to close micro-porosity."
     },
     {
-      "name": "Certificate of Conformance",
-      "description": "Signed CoC with all applicable standards and specification compliance noted."
+      "name": "Laser Marking",
+      "description": "Post-anodize laser marking for UDI or part ID on the oxide layer."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for surface hardness and scratch testing components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for surface hardness and scratch testing of components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for surface hardness and scratch testing of components."
     }
   ],
   "inspectionItems": [
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz/Rmax)",
-    "Hardness testing (Rockwell / Vickers / Brinell)",
-    "Non-destructive testing (UT / PT / MT / RT as required)",
-    "Material certification verification (EN 10204 3.1/3.2)"
+    "Surface hardness / scratch testing specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ISO/IEC 17025 — Metrology Lab Standards",
-    "AS9102 — First Article Inspection",
-    "NADCAP — NDT Accreditation"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Surface Hardness Components?",
+  "relatedEntities": [],
+  "seoTitle": "Surface hardness / scratch testing | Precision Titanium Inspection | BOZE",
+  "seoDescription": "Surface hardness / scratch testing for General applications. Precision titanium component manufacturing with Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Surface hardness /?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Surface hardness / scratch testing",
   "aliases": [],
-  "category": "Inspection",
-  "description": "Surface hardness / scratch testing capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Surface hardness / scratch testing | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision inspection of Surface hardness / scratch testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

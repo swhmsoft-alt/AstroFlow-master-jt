@@ -1,4 +1,7 @@
 {
+  "title": "Electropolishing + Class 100 ultrasonic cleaning",
+  "category": "Surface Treatment",
+  "description": "Electropolishing + Class 100 ultrasonic cleaning capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,88 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "All thicknesses — surface treatment is independent of substrate thickness",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "N/A",
+  "thicknessRange": "Tank: Ø400 × 500 mm",
+  "cuttingTolerance": "No dimensional change",
+  "tolerance": "No dimensional change",
+  "maxSize": "",
+  "surfaceFinish": "Cleaned surface; no mechanical alteration",
   "processComparison": [
     {
-      "dimension": "Process Type",
-      "laser": "Laser marking/engraving for surface identification",
-      "waterjet": "N/A — waterjet not used for surface treatment"
+      "dimension": "Mechanism",
+      "laser": "Cavitation implosion dislodges contaminants",
+      "waterjet": "Pressure spray washing"
     },
     {
-      "dimension": "Surface Finish Achieved",
-      "laser": "Ra 0.05–0.4 µm (laser polishing)",
-      "waterjet": "Ra 3.2–6.3 µm (abrasive surface preparation)"
+      "dimension": "Penetration",
+      "laser": "Blind holes, threads, internal passages",
+      "waterjet": "Line-of-sight only"
     },
     {
-      "dimension": "Coating/Conversion",
-      "laser": "Laser cladding for wear-resistant coatings",
+      "dimension": "Frequency",
+      "laser": "25 kHz (heavy) / 40 kHz (general) / 130 kHz (delicate)",
       "waterjet": "N/A"
-    },
-    {
-      "dimension": "Treatment Depth",
-      "laser": "Surface-level (microns to mm for cladding)",
-      "waterjet": "Surface-level (abrasion only)"
-    },
-    {
-      "dimension": "Heat Impact",
-      "laser": "Localized heating; minimal bulk thermal effect",
-      "waterjet": "No heat; cold process"
     }
   ],
-  "processDescription": "Professional surface treatment services for electropolishing class 100 titanium components, including anodizing, passivation, electropolishing, and coatings to enhance corrosion resistance, wear properties, and aesthetic appearance.",
+  "processDescription": "Ultrasonic cleaning uses high-frequency (25–130 kHz) sound waves to create cavitation bubbles in a cleaning solution. The implosion of these bubbles on the titanium surface dislodges contaminants (oil, chips, polishing compound) from blind holes, threads, and complex internal features, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. optimized for each feature.",
   "holeTypes": [
-    "N/A — surface treatment is a finishing process"
+    "N/A"
   ],
-  "heatControl": "Temperature-controlled process baths and fixturing ensure uniform treatment of electropolishing class 100 without altering the substrate's mechanical properties.",
-  "flatnessControl": "No significant flatness change expected during electropolishing class 100 processing. Pre-treatment flatness is preserved.",
-  "capabilitiesDescription": "Our surface treatment line includes Type II/III anodizing (AMS 2488), chemical passivation (ASTM B600), electropolishing, PVD coating, and laser engraving for electropolishing class 100.",
+  "heatControl": "Solution at 50–70°C for optimal cavitation. Sequential wash-rinse-dry with DI water final rinse.",
+  "flatnessControl": "No mechanical force applied — dimensional stability maintained.",
+  "capabilitiesDescription": "Surface engineering capability for Electropolishing + Class 100 ultrasonic cleaning, with process control, bath chemistry monitoring, and batch consistency validation.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 cleanroom packaging for contamination-sensitive finished surfaces."
-    },
-    {
-      "name": "Quality Inspection",
-      "description": "Coating thickness measurement, adhesion testing (tape test), and color verification."
-    },
-    {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
-    },
-    {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "HEPA Drying",
+      "description": "HEPA-filtered hot air drying in Class 100 environment."
     },
     {
       "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "description": "Double-bagged in Class 10/100 with VCI lining."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for electropolishing + class 100 ultrasonic cleaning components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for electropolishing + class 100 ultrasonic cleaning components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for electropolishing + class 100 ultrasonic cleaning components."
     }
   ],
   "inspectionItems": [
-    "Coating thickness measurement (eddy current / XRF)",
-    "Adhesion test (tape test per ASTM D3359)",
-    "Color uniformity inspection (visual / spectrophotometer)",
-    "Surface contamination test (white glove / Ferroxyl)"
+    "Electropolishing + Class 100 ultrasonic cleaning specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2488 — Titanium Anodizing",
-    "ASTM B600 — Passivation of Titanium"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Electropolishing Class Components?",
+  "relatedEntities": [],
+  "seoTitle": "Electropolishing + Class 100 ultrasonic cleaning | Precision Titanium Surface Treatment | BOZE",
+  "seoDescription": "Electropolishing + Class 100 ultrasonic cleaning for General applications. Precision titanium component manufacturing with No dimensional change. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Electropolishing + Class?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Electropolishing + Class 100 ultrasonic cleaning",
   "aliases": [],
-  "category": "Surface Treatment",
-  "description": "Electropolishing + Class 100 ultrasonic cleaning capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Electropolishing + Class 100 ultrasonic cleaning | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision surface treatment of Electropolishing + Class 100 ultrasonic cleaning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

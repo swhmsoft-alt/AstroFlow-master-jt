@@ -1,4 +1,7 @@
 {
+  "title": "Thread milling of connector ports",
+  "category": "Machining",
+  "description": "Thread milling of connector ports capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,80 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "M2 – M24 thread diameters",
+  "cuttingTolerance": "Thread pitch: Class 2A/3A (UN) / 6g/6h (metric)",
+  "tolerance": "Thread pitch: Class 2A/3A (UN) / 6g/6h (metric)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.4–0.8 µm on rolled threads",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
+      "dimension": "Method",
+      "laser": "Cold-forming: material displaced, not removed",
+      "waterjet": "Thread cutting / milling"
     },
     {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
+      "dimension": "Fatigue Strength",
+      "laser": "30–50% higher than cut threads",
+      "waterjet": "Standard (notch-sensitive)"
     },
     {
       "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
-    },
-    {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "laser": "Ra 0.4–0.8 µm; work-hardened",
+      "waterjet": "Ra 1.6–3.2 µm"
     }
   ],
-  "processDescription": "Precision CNC machining of thread milling connector titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "Thread rolling cold-forms threads by displacing material between two reciprocating or rotary dies, rather than cutting it away. Compressive residual stress at the thread root increases fatigue strength by 30–50% compared to cut threads, specifically for titanium components. Precision titanium components present unique challenges: balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) is optimized for each feature.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "UN/UNF/Metric threads per ASME B1.1",
+    "Custom thread forms"
   ],
-  "heatControl": "CNC machining of thread milling connector uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for thread milling connector components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for thread milling connector production.",
+  "heatControl": "Cold forming process — no heat generated. Water-soluble lubricant applied to dies for galling prevention on titanium.",
+  "flatnessControl": "Head flatness and perpendicularity within 0.05 mm per fastener standards. Die alignment verified with optical setup microscope.",
+  "capabilitiesDescription": "Precision machining capability for Thread of connector ports, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Thread Inspection",
+      "description": "Go/no-go gauge inspection per ASME B1.1."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Proof Load Testing",
+      "description": "Tensile proof load tested per ASTM F606."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Deburring",
+      "description": "Deburring for thread milling of connector port components."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for thread milling of connector port components."
     },
     {
-      "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for thread milling of connector port components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "Thread milling of connector ports specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Thread Milling Components?",
+  "relatedEntities": [],
+  "seoTitle": "Thread milling of connector ports | Precision Titanium Machining | BOZE",
+  "seoDescription": "Thread milling of connector ports for General applications. Precision titanium component manufacturing with Thread pitch: Class 2A/3A (UN) / 6g/6h (metric). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Thread milling of?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Thread milling of connector ports",
   "aliases": [],
-  "category": "Machining",
-  "description": "Thread milling of connector ports capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Thread milling of connector ports | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of Thread milling of connector ports titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

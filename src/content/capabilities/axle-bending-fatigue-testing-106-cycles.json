@@ -1,4 +1,7 @@
 {
+  "title": "Axle bending fatigue testing 10^6 cycles",
+  "category": "Welding",
+  "description": "Axle bending fatigue testing 10^6 cycles capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,92 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "0.5 mm – 25.0 mm (weldable range)",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "N/A — welding tolerance ±0.5 mm typical",
+  "thicknessRange": "CMM envelope: 1200 × 1000 × 800 mm",
+  "cuttingTolerance": "Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360",
+  "tolerance": "Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360",
+  "maxSize": "",
+  "surfaceFinish": "Contact or non-contact (laser/white light) scanning",
   "processComparison": [
     {
-      "dimension": "Process Method",
-      "laser": "Laser beam welding (LBW) — keyhole or conduction mode",
-      "waterjet": "N/A — waterjet not used for welding"
-    },
-    {
-      "dimension": "Heat Input",
-      "laser": "Low — minimal distortion; narrow HAZ",
+      "dimension": "Probe Type",
+      "laser": "Touch-trigger / scanning / non-contact laser",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Shielding Gas",
-      "laser": "Argon (99.999%) back-purge + trailing shield required for Ti",
+      "dimension": "Uncertainty",
+      "laser": "+(1.0 + L/300) µm per ISO 10360",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Weld Speed",
-      "laser": "Up to 5 m/min for thin sections",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Joint Types",
-      "laser": "Butt, lap, fillet, edge, T-joint",
+      "dimension": "GD&T",
+      "laser": "Full: form, orientation, location, runout",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision TIG, MIG, and laser welding of axle bending fatigue titanium assemblies. Full inert gas shielding prevents oxidation and ensures metallurgically sound welds meeting ASME Section IX requirements.",
+  "processDescription": "Coordinate Measuring Machine (CMM) inspection provides quantitative dimensional verification of titanium components against GD&T specifications per ASME Y14.5. Touch-trigger probes, scanning heads, and non-contact laser sensors accommodate geometries from simple prismatic to complex freeform surfaces.",
   "holeTypes": [
-    "N/A — welding is a joining process"
+    "N/A"
   ],
-  "heatControl": "TIG/MIG/laser welding of axle bending fatigue requires inert gas shielding (argon or helium) on both face and back sides to prevent atmospheric contamination and embrittlement of the weld zone.",
-  "flatnessControl": "Weld fixtures and sequenced welding patterns control distortion for axle bending fatigue assemblies. Post-weld stress relief available.",
-  "capabilitiesDescription": "Our welding facility includes automatic orbital TIG, pulsed MIG, and fiber laser welding systems with cleanroom-class shielding for axle bending fatigue.",
+  "heatControl": "Temperature-controlled metrology lab at 20+1°C. Components stabilized on granite surface plate for minimum 4 hours before measurement.",
+  "flatnessControl": "Granite surface plate Grade 00 (flatness < 1 µm/m) as reference datum.",
+  "capabilitiesDescription": "Certified welding capability for Axle bending fatigue testing 10^6 cycles, with full inert gas shielding, weld procedure qualification, and operator certification.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Weld Inspection (NDT)",
-      "description": "X-ray, ultrasonic, or dye penetrant inspection per ASME Section V."
+      "name": "Inspection Report",
+      "description": "Full FAIR (AS9102) with graphical pass/fail color map."
     },
     {
-      "name": "Weld Map Documentation",
-      "description": "Full traceability documentation for every weld including operator ID, parameters, and inspection results."
+      "name": "CoC",
+      "description": "Certificate of Conformance with material certification traceability."
     },
     {
-      "name": "Post-Weld Heat Treatment",
-      "description": "Stress relief annealing in vacuum furnace to restore mechanical properties."
+      "name": "Deburring",
+      "description": "Deburring for axle bending fatigue testing 10^6 cycles components."
     },
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for axle bending fatigue testing 10^6 cycles components."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
-    },
-    {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for axle bending fatigue testing 10^6 cycles components."
     }
   ],
   "inspectionItems": [
-    "Visual weld inspection per AWS D1.1 / ISO 5817",
-    "Dye penetrant inspection (PT) per ASTM E1417",
-    "Radiographic inspection (RT) per ASTM E1742",
-    "Weld color classification (silver/gold acceptable; blue/purple rejected)"
+    "Axle bending fatigue testing 10^6 cycles specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ASME Section IX — Welding Qualifications",
-    "AWS D1.1/D1.6 — Structural Welding"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Axle Bending Components?",
+  "relatedEntities": [],
+  "seoTitle": "Axle bending fatigue testing 10^6 cycles | Precision Titanium Welding | BOZE",
+  "seoDescription": "Axle bending fatigue testing 10^6 cycles for General applications. Precision titanium component manufacturing with Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Axle bending fatigue?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Axle bending fatigue testing 10^6 cycles",
   "aliases": [],
-  "category": "Welding",
-  "description": "Axle bending fatigue testing 10^6 cycles capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Axle bending fatigue testing 10^6 cycles | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision welding of Axle bending fatigue testing 10^6 cycles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

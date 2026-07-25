@@ -3,7 +3,7 @@ import '../styles/global.css';
 import '../styles/rtl.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import { SITE, NAVIGATION } from '@config/site';
+import { SITE, NAVIGATION, type NavItem } from '@config/site';
 import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
@@ -13,7 +13,7 @@ import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType } f
 // Build path to label map from NAVIGATION for better breadcrumb names
 const NAV_LABEL_MAP: Record<string, string> = (() => {
   const m: Record<string, string> = {};
-  function walk(items: any[]) {
+  function walk(items: NavItem[]) {
     for (const item of items) {
       if (item.href) m[item.href.replace(/\/+$/, '')] = item.name;
       if (item.children) {
@@ -130,13 +130,14 @@ const ldJson = JSON.stringify(pageGraph);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={siteName} />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
 <link rel="icon" type="image/png" href="/uploads/boze-cnc-ti-ico.png" />
 <link rel="canonical" href={canonicalUrl} />
 <meta property="og:url" content={canonicalUrl} />

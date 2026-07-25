@@ -1,81 +1,93 @@
 {
+  "title": "Thread rolling of pedicle screws (never cut threads)",
+  "category": "Fastener Manufacturing",
+  "description": "Thread rolling of pedicle screws (never cut threads) capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "M2 – M24 thread diameters; custom sizes available",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Thread pitch tolerance: Class 2A/3A (UN) / 6g/6h (metric)",
+  "thicknessRange": "M2 – M24 thread diameters",
+  "cuttingTolerance": "Class 3A thread fit; +0.005 mm on shank diameter",
+  "tolerance": "Class 3A thread fit; +0.005 mm on shank diameter",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.4 µm on thread",
   "processComparison": [
     {
-      "dimension": "Threading Method",
-      "laser": "Thread cutting / thread milling",
-      "waterjet": "Thread rolling (cold forming)"
+      "dimension": "Method",
+      "laser": "Cold-forming: material displaced, not removed",
+      "waterjet": "Thread cutting / milling"
     },
     {
       "dimension": "Fatigue Strength",
-      "laser": "Standard (cut threads)",
-      "waterjet": "Superior (rolled threads — compressive residual stress)"
+      "laser": "30–50% higher than cut threads",
+      "waterjet": "Standard (notch-sensitive)"
     },
     {
-      "dimension": "Production Speed",
-      "laser": "Moderate (single-point or tap)",
-      "waterjet": "High (die rolling)"
-    },
-    {
-      "dimension": "Material Utilization",
-      "laser": "Some material removed",
-      "waterjet": "Near-net shape, no material loss"
+      "dimension": "Surface Finish",
+      "laser": "Ra 0.4–0.8 µm; work-hardened",
+      "waterjet": "Ra 1.6–3.2 µm"
     }
   ],
-  "processDescription": "Precision fastener manufacturing for thread rolling pedicle titanium threaded components. Thread rolling produces superior fatigue strength compared to thread cutting by inducing compressive residual stresses in the thread root.",
+  "processDescription": "Thread rolling cold-forms threads by displacing material between two reciprocating or rotary dies, rather than cutting it away. Compressive residual stress at the thread root increases fatigue strength by 30–50% compared to cut threads, specifically for screws. Precision screws for fasteners present unique challenges: thread form accuracy per ASME B1.1 with Class 3A fit. Micro-screws (< M2) require Swiss turning with CBN tooling.",
   "holeTypes": [
-    "Standard threads (UN/UNF/Metric)",
-    "Custom thread forms",
-    "Self-locking threads"
+    "UN/UNF/Metric threads per ASME B1.1",
+    "Custom thread forms"
   ],
-  "heatControl": "Coolant and speed control prevent work-hardening during thread rolling pedicle threading operations.",
-  "flatnessControl": "Head flatness and perpendicularity controlled within 0.05 mm per fastener standards.",
-  "capabilitiesDescription": "Dedicated fastener manufacturing cell with automatic screw machines, thread rollers, and CNC lathes for thread rolling pedicle production.",
+  "heatControl": "Cold forming process — no heat generated. Water-soluble lubricant applied to dies for galling prevention on titanium.",
+  "flatnessControl": "Head flatness and perpendicularity within 0.05 mm per fastener standards. Die alignment verified with optical setup microscope.",
+  "capabilitiesDescription": "Fastener manufacturing capability for Thread rolling of pedicle screws (never cut threads), with cold forming, thread rolling, and 100% dimensional inspection.",
+  "typicalApplications": [
+    "Cap screws",
+    "Set screws",
+    "Micro-screws for electronics",
+    "Bone screws"
+  ],
   "downstreamProcesses": [
     {
       "name": "Thread Inspection",
-      "description": "Go/no-go gauge inspection; thread micrometer verification; optical thread comparison."
+      "description": "Go/no-go gauge inspection per ASME B1.1."
     },
     {
-      "name": "Mechanical Testing",
-      "description": "Tensile proof load testing; hardness testing; torque-to-tension verification."
+      "name": "Proof Load Testing",
+      "description": "Tensile proof load per ASTM F606."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Passivation, anodizing, or PVD coating for corrosion resistance and appearance."
+      "name": "Thread Rolling",
+      "description": "Thread rolling for thread rolling of pedicle screw components (threads are never cut)."
+    },
+    {
+      "name": "Passivation",
+      "description": "Passivation for thread rolling of pedicle screw components (threads are never cut)."
+    },
+    {
+      "name": "Go/No-Go Gauge Inspection",
+      "description": "Go/No-Go Gauge Inspection for thread rolling of pedicle screw components (never cut threads)."
     }
   ],
   "inspectionItems": [
-    "Thread gauge inspection (Go/No-Go per ASME B1.1)",
-    "Dimensional inspection (head height, shank diameter, overall length)",
-    "Hardness testing (Rockwell / Vickers)",
-    "Proof load testing per ASTM F606"
+    "Thread rolling of pedicle screws (never cut threads) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ASME B1.1 — Unified Inch Screw Threads",
-    "ASTM F606 — Standard Test Methods for Fasteners",
-    "ISO 898-1 — Mechanical Properties of Fasteners"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Thread Rolling Components?",
+  "relatedEntities": [
+    "titanium-socket-head-cap-screw-iso-4762",
+    "titanium-count ersunk-screw-iso-10642"
+  ],
+  "seoTitle": "Thread rolling of pedicle screws (never cut threads) | Precision Titanium Fastener Manufacturing | BOZE",
+  "seoDescription": "Thread rolling of pedicle screws (never cut threads) for Fastener applications. Precision titanium component manufacturing with Class 3A thread fit; +0.005 mm on shank diameter. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Screw Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Thread rolling of pedicle screws (never cut threads)",
   "aliases": [],
-  "category": "Fastener Manufacturing",
-  "description": "Thread rolling of pedicle screws (never cut threads) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Thread rolling of pedicle screws (never cut threads) | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision fastener manufacturing of Thread rolling of pedicle screws (never cut threads) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

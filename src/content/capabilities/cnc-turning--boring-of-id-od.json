@@ -1,4 +1,7 @@
 {
+  "title": "CNC turning & boring of ID/OD",
+  "category": "Machining",
+  "description": "CNC turning & boring of ID/OD capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,71 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "Up to 400 mm diameter x 1000 mm length",
+  "cuttingTolerance": "+0.01 mm (diameter)",
+  "tolerance": "+0.01 mm (diameter)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.4-1.6 um",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
-    },
-    {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
-    },
-    {
-      "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
-    },
-    {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "dimension": "Setup",
+      "laser": "Single setup with live tooling",
+      "waterjet": "Multiple ops required"
     }
   ],
-  "processDescription": "Precision CNC machining of cnc turning boring titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "CNC turning of titanium on multi-axis lathes produces cylindrical components with precision diameters and surface finishes. Live tooling enables milling and drilling in the same setup, specifically for ring. Precision ring for General, Aerospace present unique challenges: Roundness tolerance ±0.01 mm on large diameter rings (> 300 mm). Heat treatment distortion management.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "Bored holes",
+    "Threaded IDs and ODs"
   ],
-  "heatControl": "CNC machining of cnc turning boring uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for cnc turning boring components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for cnc turning boring production.",
+  "heatControl": "High-pressure coolant-through-tool for chip breaking and heat evacuation.",
+  "flatnessControl": "Steady rests for long slender parts. Stress-relieved stock recommended.",
+  "capabilitiesDescription": "Precision machining capability for CNC turning & boring of ID/OD, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Seal rings",
+    "Snap rings",
+    "Retaining rings",
+    "Bearing races"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Deburring",
+      "description": "Manual or robotic edge finishing."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Heat Treatment",
+      "description": "Heat Treatment for cnc turning & boring of id/od components."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "OD/ID Grinding",
+      "description": "OD/ID Grinding for cnc turning & boring of id/od components."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
-    },
-    {
-      "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "name": "Dye Penetrant Inspection",
+      "description": "Dye Penetrant Inspection for cnc turning & boring of id/od components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
+    "CNC turning & boring of ID/OD specific dimensional verification (CMM / vision)",
     "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Cnc Turning Components?",
+  "relatedEntities": [
+    "titanium-split-ring-quick-flange",
+    "titanium-centering-ring-kf-iso"
+  ],
+  "seoTitle": "CNC turning & boring of ID/OD | Precision Titanium Machining | BOZE",
+  "seoDescription": "CNC turning & boring of ID/OD for General, Aerospace applications. Precision titanium component manufacturing with +0.01 mm (diameter). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Ring Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "CNC turning & boring of ID/OD",
   "aliases": [],
-  "category": "Machining",
-  "description": "CNC turning & boring of ID/OD capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "CNC turning & boring of ID/OD | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of CNC turning & boring of ID/OD titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

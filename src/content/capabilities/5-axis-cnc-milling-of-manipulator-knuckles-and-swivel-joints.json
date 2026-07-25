@@ -1,4 +1,7 @@
 {
+  "title": "5-axis CNC milling of manipulator knuckles and swivel joints",
+  "category": "Machining",
+  "description": "5-axis CNC milling of manipulator knuckles and swivel joints capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,73 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "Up to Ø600 mm × 400 mm",
+  "cuttingTolerance": "±0.01 mm (positional) / ±0.02 mm (contour)",
+  "tolerance": "±0.01 mm (positional) / ±0.02 mm (contour)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.8 µm (standard) / Ra 0.2 µm (precision)",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
-    },
-    {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
+      "dimension": "Kinematics",
+      "laser": "Full 5-axis simultaneous interpolation",
+      "waterjet": "3+2 positional indexing"
     },
     {
       "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
+      "laser": "Ra 0.8 µm standard; Ra 0.2 µm with finishing pass",
+      "waterjet": "Ra 1.6–6.3 µm"
     },
     {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "dimension": "Tool Access",
+      "laser": "Unrestricted — tool can approach from any angle",
+      "waterjet": "Limited — each setup indexes the part"
     }
   ],
-  "processDescription": "Precision CNC machining of 5-axis cnc milling titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "5-axis CNC milling centers provide simultaneous multi-axis interpolation for complex titanium components. The ability to tilt the tool relative to the workpiece surface maintains optimal chip load and extends tool life, critical for difficult-to-machine titanium alloys.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "Coolant passages",
+    "Threaded holes at compound angles",
+    "Counterbored fastener holes"
   ],
-  "heatControl": "CNC machining of 5-axis cnc milling uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for 5-axis cnc milling components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for 5-axis cnc milling production.",
+  "heatControl": "High-pressure coolant-through-spindle (50–70 bar) with coated carbide tooling. Adaptive trochoidal milling paths reduce radial engagement to control heat generation.",
+  "flatnessControl": "Stress-relieved raw material and sequenced roughing/finishing passes. Heat-sink fixturing for thin-wall sections minimizes thermal distortion.",
+  "capabilitiesDescription": "Precision machining capability for 5-axis CNC milling of manipulator knuckles and swivel joints, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Deburring",
+      "description": "Manual or robotic deburring of sharp edges and thread protection."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for 5-axis cnc milling of manipulator knuckles and swivel joints components."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
-    },
-    {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
-    },
-    {
-      "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for 5-axis cnc milling of manipulator knuckles and swivel joints components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "5-axis CNC milling of manipulator knuckles and swivel joints specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision 5-Axis Cnc Components?",
+  "relatedEntities": [],
+  "seoTitle": "5-axis CNC milling of manipulator knuckles and swivel joints | Precision Titanium Machining | BOZE",
+  "seoDescription": "5-axis CNC milling of manipulator knuckles and swivel joints for General applications. Precision titanium component manufacturing with ±0.01 mm (positional) / ±0.02 mm (contour). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision 5-axis CNC milling?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "5-axis CNC milling of manipulator knuckles and swivel joints",
   "aliases": [],
-  "category": "Machining",
-  "description": "5-axis CNC milling of manipulator knuckles and swivel joints capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "5-axis CNC milling of manipulator knuckles and swivel joints | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of 5-axis CNC milling of manipulator knuckles and swivel joints titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

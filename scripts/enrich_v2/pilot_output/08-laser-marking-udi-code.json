@@ -1,0 +1,85 @@
+{
+  "title": "Laser marking (UDI code)",
+  "category": "Laser Processing",
+  "description": "Fiber laser marking of UDI codes and DataMatrix on titanium components for traceability.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "All thicknesses — surface process only",
+  "cuttingTolerance": "Marking depth: 5–50 µm; line width 0.05–0.5 mm",
+  "tolerance": "Marking depth: 5–50 µm; line width 0.05–0.5 mm",
+  "maxSize": "",
+  "surfaceFinish": "Contrast: dark/white depending on laser parameters",
+  "processComparison": [
+    {
+      "dimension": "Marking Method",
+      "laser": "Surface oxidation / micro-engraving",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Depth",
+      "laser": "5–50 µm (engraving mode)",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Readability",
+      "laser": "High contrast; permanent; readable after anodizing",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Speed",
+      "laser": "Up to 10,000 characters/min (galvo scanner)",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Fiber laser marking on titanium produces high-contrast, permanent identification marks by controlled surface oxidation or micro-engraving. UDI codes, serial numbers, 2D DataMatrix codes, and logos are marked without into the material, preserving structural integrity, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
+  "holeTypes": [
+    "N/A"
+  ],
+  "heatControl": "Pulsed nanosecond fiber laser with galvo scanner. Marking depth controlled by pulse energy and repetition rate; no bulk heating of the component.",
+  "flatnessControl": "Non-contact process — no mechanical force applied. Focal distance maintained within ±0.5 mm across marking field via autofocus.",
+  "capabilitiesDescription": "Our facility is equipped to handle laser marking (udi code) with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "Contrast Verification",
+      "description": "Barcode/DataMatrix grade verification per ISO/IEC 15415."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for laser marking (udi code) components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for laser marking (udi code) components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for laser marking (udi code) components."
+    }
+  ],
+  "inspectionItems": [
+    "Laser marking (UDI code) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [],
+  "seoTitle": "Laser marking (UDI code) | Precision Titanium Laser Processing | BOZE",
+  "seoDescription": "Laser marking (UDI code) for General applications. Precision titanium component manufacturing with Marking depth: 5–50 µm; line width 0.05–0.5 mm. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Laser marking (UDI?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

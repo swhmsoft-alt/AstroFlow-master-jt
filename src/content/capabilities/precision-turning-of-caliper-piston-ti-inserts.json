@@ -1,4 +1,7 @@
 {
+  "title": "Precision turning of caliper piston Ti-inserts",
+  "category": "Machining",
+  "description": "Precision turning of caliper piston Ti-inserts capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,82 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "Ø0.5 mm – Ø32 mm bar stock; up to 200 mm length",
+  "cuttingTolerance": "±0.005 mm (diameter) / ±0.01 mm (length)",
+  "tolerance": "±0.005 mm (diameter) / ±0.01 mm (length)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.2–0.8 µm as-turned",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
+      "dimension": "Bar Support",
+      "laser": "Guide bushing supports stock at tool contact point",
+      "waterjet": "Chuck-only — no bushing"
     },
     {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
+      "dimension": "L:D Ratio",
+      "laser": "Up to 20:1 without chatter",
+      "waterjet": "< 4:1 typical"
     },
     {
-      "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
-    },
-    {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "dimension": "Cycle Time",
+      "laser": "Single op — mill, drill, turn simultaneously",
+      "waterjet": "Multiple ops, longer cycle"
     }
   ],
-  "processDescription": "Precision CNC machining of precision turning caliper titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "Swiss-type automatic lathes use a sliding headstock and fixed guide bushing to machine slender titanium components. The guide bushing supports the bar stock immediately behind the cutting tool, eliminating deflection for high length-to-diameter ratios.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "Cross-drilled holes",
+    "Eccentric bores",
+    "Threaded holes (internal/external)",
+    "Hexagonal/star drives"
   ],
-  "heatControl": "CNC machining of precision turning caliper uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for precision turning caliper components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for precision turning caliper production.",
+  "heatControl": "Synchronized guide bushing with high-pressure oil coolant. Tool engagement is distributed across multiple axes simultaneously, spreading thermal load.",
+  "flatnessControl": "Guide bushing support eliminates deflection for L:D ratios up to 20:1. Straightness within 0.005 mm over 100 mm length.",
+  "capabilitiesDescription": "Precision machining capability for Precision turning of caliper piston Ti-inserts, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
-    },
-    {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
-    },
-    {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
-    },
-    {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
-    },
-    {
       "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "description": "Cold-forming of threads for superior fatigue performance."
+    },
+    {
+      "name": "Centerless Grinding",
+      "description": "OD grinding for precision diameters (±0.002 mm)."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for precision turning of caliper piston ti-inserts components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for precision turning of caliper piston ti-inserts components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for precision turning of caliper piston ti-inserts components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "Precision turning of caliper piston Ti-inserts specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Precision Turning Components?",
+  "relatedEntities": [],
+  "seoTitle": "Precision turning of caliper piston Ti-inserts | Precision Titanium Machining | BOZE",
+  "seoDescription": "Precision turning of caliper piston Ti-inserts for General applications. Precision titanium component manufacturing with ±0.005 mm (diameter) / ±0.01 mm (length). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Precision turning of?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Precision turning of caliper piston Ti-inserts",
   "aliases": [],
-  "category": "Machining",
-  "description": "Precision turning of caliper piston Ti-inserts capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Precision turning of caliper piston Ti-inserts | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of Precision turning of caliper piston Ti-inserts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

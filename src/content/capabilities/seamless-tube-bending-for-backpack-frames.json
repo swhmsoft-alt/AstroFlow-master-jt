@@ -1,77 +1,95 @@
 {
+  "title": "Seamless tube bending for backpack frames",
+  "category": "Forming",
+  "description": "Seamless tube bending for backpack frames capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 7"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
   "thicknessRange": "0.3 mm – 6.0 mm sheet/plate",
-  "minHoleRatio": "1.5:1 (bend radius-to-thickness minimum)",
-  "cuttingTolerance": "±0.2 mm (formed geometry)",
+  "cuttingTolerance": "+0.2 mm (bend position) / +0.5° (bend angle)",
+  "tolerance": "+0.2 mm (bend position) / +0.5° (bend angle)",
+  "maxSize": "",
+  "surfaceFinish": "No surface damage with polyurethane tooling",
   "processComparison": [
     {
-      "dimension": "Forming Method",
-      "laser": "Press brake / stamping / hydroforming",
+      "dimension": "Method",
+      "laser": "CNC press brake with air bending / bottoming",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Springback Control",
-      "laser": "Over-bend compensation based on titanium grade",
+      "dimension": "Springback (Gr5)",
+      "laser": "10–20° depending on R/T ratio",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Tooling",
-      "laser": "Custom die sets or universal press brake tooling",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Heat Assistance",
-      "laser": "Hot forming (300–600°C) for complex geometries",
+      "dimension": "Min Bend R",
+      "laser": "2×T (Grade 2) / 3×T (Grade 5)",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision forming of seamless tube bending titanium components using press brake, stamping, and hydroforming methods with controlled springback compensation.",
+  "processDescription": "Press brake forming of titanium sheet uses CNC-controlled backgauges and variable-radius tooling to produce precision bends. Titanium's high springback (10–20° for Grade 5) requires over-bend compensation calculated from the specific alloy's elastic modulus, specifically for tube. Precision tube for chemical, aerospace, and medical applications presents unique challenges: wall thickness uniformity (±0.05 mm) over long lengths, internal surface finish Ra < 0.8 µm for fluid flow, and bent tube ovality control.",
   "holeTypes": [
-    "N/A — forming is a deformation process"
+    "N/A"
   ],
-  "heatControl": "Hot forming performed at 300–600°C to reduce springback and improve formability of seamless tube bending.",
-  "flatnessControl": "Post-form stress relief and precision leveling ensure flatness within 0.3 mm/m.",
-  "capabilitiesDescription": "Equipped with CNC press brakes (up to 500 ton), stamping presses, and hydroforming systems for seamless tube bending.",
+  "heatControl": "Hot forming at 300–600°C for complex bends using resistance-heated tooling. Temperature controlled to +10°C across the bend line.",
+  "flatnessControl": "Post-form stress relief at 540°C for CP grades. Multi-stage forming with intermediate stress relief for tight radii.",
+  "capabilitiesDescription": "Metal forming capability for Seamless tube bending for backpack frames, with CNC press brake, die design, and springback compensation for titanium alloys.",
+  "typicalApplications": [
+    "Heat exchanger tubes",
+    "Hydraulic lines",
+    "Structural tubes",
+    "Catheter tubes"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Laser/Waterjet Trimming",
-      "description": "Precision trimming of formed blanks to net shape."
+      "name": "Stress Relief",
+      "description": "Vacuum annealing to relieve cold-work stresses."
     },
     {
-      "name": "Deburring",
-      "description": "Edge finishing of formed edges to remove burrs and achieve smooth radius."
+      "name": "Laser Trimming",
+      "description": "Fiber laser cutting of formed blanks to net shape."
     },
     {
-      "name": "Stress Relief Annealing",
-      "description": "Vacuum annealing to relieve cold-work stresses from forming operations."
+      "name": "Tube Bending",
+      "description": "Tube bending for seamless tube bending of backpack frame components."
+    },
+    {
+      "name": "Weld Preparation (End Bevelling)",
+      "description": "Weld preparation (end bevelling) for seamless tube bending of backpack frame components."
+    },
+    {
+      "name": "Hydrostatic Pressure Test",
+      "description": "Hydrostatic pressure test for seamless tube bending for backpack frame components."
     }
   ],
   "inspectionItems": [
-    "Bend angle measurement (protractor / CMM)",
-    "Springback verification",
-    "Surface inspection (cracking / orange peel)",
-    "Thickness measurement (thinning check)"
+    "Seamless tube bending for backpack frames specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417",
+    "Biocompatibility validation per ISO 10993"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
+    "ISO 13485 — Medical Device Quality Management"
   ],
-  "ctaTitle": "Need Precision Seamless Tube Components?",
+  "relatedEntities": [
+    "titanium-bleed-air-duct",
+    "titanium-uhp-hydrogen-tube-fitting"
+  ],
+  "seoTitle": "Seamless tube bending for backpack frames | Precision Titanium Forming | BOZE",
+  "seoDescription": "Seamless tube bending for backpack frames for Chemical, Aerospace, Medical applications. Precision titanium component manufacturing with +0.2 mm (bend position) / +0.5° (bend angle). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Tube Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Seamless tube bending for backpack frames",
   "aliases": [],
-  "category": "Forming",
-  "description": "Seamless tube bending for backpack frames capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Seamless tube bending for backpack frames | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision forming of Seamless tube bending for backpack frames titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

@@ -1,0 +1,32 @@
+[2m15:25:13[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+
+Auto-generating collections for folders in "src/content/" that are not defined as collections.
+This is deprecated, so you should define these collections yourself in "src/content.config.ts".
+The following collections have been auto-generated: [32mcapabilities_bak_v1[39m, [32msemantic-industries[39m, [32msemantic-materials[39m, [32msemantic-products[39m, [32msemantic-services[39m, [32mservices[39m
+
+[2m15:25:13[22m [34m[content][39m Syncing content
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\semantic-industries"
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\semantic-services"
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\services"
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\semantic-products"
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\semantic-materials"
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\capabilities_bak_v1"
+[33m[1m15:25:13[22m [WARN] [glob-loader][39m No files found matching "**/*{.json,.yaml,.yml,.toml},!**/_*/**/*{.json,.yaml,.yml,.toml},!**/_*{.json,.yaml,.yml,.toml}" in directory "src\content\standards"
+[2m15:25:13[22m [34m[content][39m Synced content
+[2m15:25:13[22m [34m[types][39m Generated [2m551ms[22m
+[2m15:25:13[22m [34m[build][39m output: [34m"static"[39m
+[2m15:25:13[22m [34m[build][39m mode: [34m"static"[39m
+[2m15:25:13[22m [34m[build][39m directory: [34mC:\Users\Administrator\Desktop\AstroFlow-master-jt\dist\[39m
+[2m15:25:13[22m [34m[build][39m Collecting build info...
+[2m15:25:13[22m [34m[build][39m [32m✓ Completed in 588ms.[39m
+[2m15:25:17[22m [34m[build][39m Building static entrypoints...
+[31m[1m15:25:18[22m [ERROR] [vite][39m [31m✗[39m Build failed in 923ms
+Expected "]" but found "馃殺"
+  [1mLocation:[22m
+    [4mC:/Users/Administrator/Desktop/AstroFlow-master-jt/src/pages/products/industries/index.astro:59:331[24m
+  [1mStack trace:[22m
+[2m    at failureErrorWithLog (C:\Users\Administrator\Desktop\AstroFlow-master-jt\node_modules\esbuild\lib\main.js:1467:15)
+    at responseCallbacks.<computed> (C:\Users\Administrator\Desktop\AstroFlow-master-jt\node_modules\esbuild\lib\main.js:603:9)
+    at Socket.readFromStdout (C:\Users\Administrator\Desktop\AstroFlow-master-jt\node_modules\esbuild\lib\main.js:581:7)
+    at addChunk (node:internal/streams/readable:559:12)
+    at Readable.push (node:internal/streams/readable:390:5)[22m

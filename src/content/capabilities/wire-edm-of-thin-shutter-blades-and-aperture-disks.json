@@ -1,74 +1,88 @@
 {
+  "title": "Wire EDM of thin shutter blades and aperture disks",
+  "category": "EDM",
+  "description": "Wire EDM of thin shutter blades and aperture disks capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "Up to 300 mm (wire EDM); up to 200 mm (sinker EDM)",
-  "minHoleRatio": "0.02 mm minimum wire diameter; 0.1 mm minimum hole (sinker)",
-  "cuttingTolerance": "±0.002 mm (wire EDM) / ±0.005 mm (sinker EDM)",
+  "thicknessRange": "Up to 300 mm (wire); up to 200 mm cavity depth (sinker)",
+  "cuttingTolerance": "+0.002 mm (positional) / +0.003 mm (profile)",
+  "tolerance": "+0.002 mm (positional) / +0.003 mm (profile)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.2–0.8 µm (multi-pass wire); Ra 1.6 µm (sinker)",
   "processComparison": [
     {
-      "dimension": "EDM Type",
-      "laser": "Wire EDM / Sinker EDM / Hole drilling EDM",
-      "waterjet": "N/A"
+      "dimension": "Min Internal Corner R",
+      "laser": "0.015 mm (wire radius)",
+      "waterjet": "0.5 mm (milling)"
     },
     {
-      "dimension": "Surface Finish",
-      "laser": "Ra 0.2–0.8 µm (wire); Ra 1.6 µm (sinker)",
-      "waterjet": "N/A"
+      "dimension": "Taper Angle",
+      "laser": "+30° (5-axis wire EDM)",
+      "waterjet": "0° (straight cut)"
     },
     {
-      "dimension": "Heat Affected Zone",
-      "laser": "Re-cast layer 1–5 µm; removable by post-processing",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Taper Capability",
-      "laser": "±30° (wire EDM with 5-axis control)",
-      "waterjet": "N/A"
+      "dimension": "Re-cast Layer",
+      "laser": "1–5 µm; removable by etching",
+      "waterjet": "No re-cast layer"
     }
   ],
-  "processDescription": "Precision EDM services for wire edm thin titanium components. Wire EDM achieves ±0.002 mm tolerance for intricate profiles, while sinker EDM handles blind cavities and complex 3D geometries.",
+  "processDescription": "Wire EDM uses a continuously traveling brass or coated wire electrode under precision CNC control to erode titanium along a programmed path. Submerged in deionized water dielectric, the process cuts intricate profiles and sharp internal corners that are impossible with conventional methods, specifically for thin walls. Thin walls for aerospace present unique challenges: wall thickness < 1 mm is prone to chatter and deflection. Negative tool rake and reduced radial engagement (5%) are required. Vacuum fixturing or wax/pitch potting is used for stability.",
   "holeTypes": [
-    "Tapered holes",
-    "Micro-holes",
-    "Blind cavities",
-    "Keyway slots"
+    "Tapered through-holes",
+    "Micro-holes Ø0.1 mm (sinker)",
+    "Keyway slots",
+    "Sharp internal corners"
   ],
-  "heatControl": "Deionized water dielectric (wire EDM) or hydrocarbon oil (sinker EDM) with temperature control for wire edm thin.",
-  "flatnessControl": "Multi-pass cutting strategy minimizes distortion. Stress relief recommended for pre-hardened materials.",
-  "capabilitiesDescription": "5-axis wire EDM and CNC sinker EDM systems for wire edm thin with submerged and flushing capabilities.",
+  "heatControl": "Deionized water dielectric with < 5 µS/cm conductivity and temperature control (±0.5°C). Multi-pass roughing to finishing with decreasing energy settings.",
+  "flatnessControl": "Multi-pass cutting strategy and stress-relieved material for thin-walled components. Anti-vibration wire tensioning for tall cuts up to 300 mm.",
+  "capabilitiesDescription": "Wire and sinker EDM capability for Wire EDM of thin shutter blades and aperture disks, achieving burr-free results with multi-pass finishing strategy and submerged machining.",
+  "typicalApplications": [
+    "Thin-walled sleeves",
+    "Cylinders < 1 mm wall",
+    "Aerodynamic fairings"
+  ],
   "downstreamProcesses": [
     {
       "name": "Re-cast Layer Removal",
-      "description": "Chemical etching or electropolishing to remove EDM re-cast layer."
+      "description": "Chemical etching or electropolishing to remove the 1–5 µm re-cast layer."
     },
     {
-      "name": "Surface Finishing",
-      "description": "Polishing or micro-blasting to achieve specified surface finish."
+      "name": "Surface Polishing",
+      "description": "Micro-blasting or CNC polishing to achieve Ra < 0.4 µm."
+    },
+    {
+      "name": "Stress Relief",
+      "description": "Stress relief for wire EDM of thin shutter blades and aperture disk components."
+    },
+    {
+      "name": "CMM Inspection on Reference Fixture",
+      "description": "CMM inspection on reference fixture for wire EDM of thin shutter blades and aperture disk components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (CMM / vision system)",
-    "Surface finish measurement (Ra/Rz)",
-    "Re-cast layer thickness verification (microsection)"
+    "Wire EDM of thin shutter blades and aperture disks specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Wire Edm Components?",
+  "relatedEntities": [],
+  "seoTitle": "Wire EDM of thin shutter blades and aperture disks | Precision Titanium EDM | BOZE",
+  "seoDescription": "Wire EDM of thin shutter blades and aperture disks for Aerospace applications. Thin titanium component manufacturing with +0.002 mm (positional) / +0.003 mm (profile). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Thin Wall Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Wire EDM of thin shutter blades and aperture disks",
   "aliases": [],
-  "category": "EDM",
-  "description": "Wire EDM of thin shutter blades and aperture disks capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Wire EDM of thin shutter blades and aperture disks | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision edm of Wire EDM of thin shutter blades and aperture disks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

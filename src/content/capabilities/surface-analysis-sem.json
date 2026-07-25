@@ -1,4 +1,7 @@
 {
+  "title": "Surface analysis (SEM)",
+  "category": "General Manufacturing",
+  "description": "Surface analysis (SEM) capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,81 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Varies by specific process",
-  "minHoleRatio": "Per engineering specification",
-  "cuttingTolerance": "±0.01 mm to ±0.1 mm depending on process",
+  "thicknessRange": "Tank: 1200 × 800 × 600 mm; all part sizes",
+  "cuttingTolerance": "Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change",
+  "tolerance": "Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change",
+  "maxSize": "",
+  "surfaceFinish": "Retains substrate finish; matte to satin appearance",
   "processComparison": [
     {
-      "dimension": "Process Control",
-      "laser": "SPC-monitored with real-time process parameters logging",
-      "waterjet": "Job-specific work instructions with inline quality checks"
+      "dimension": "Coating",
+      "laser": "Electrochemical oxide conversion; not a deposit",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Tolerance Capability",
-      "laser": "±0.01 mm typical for precision operations",
-      "waterjet": "±0.1 mm typical for general operations"
+      "dimension": "Thickness",
+      "laser": "Type II: 0.5–5 µm / Type III: 5–25 µm",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Documentation",
-      "laser": "Full batch traceability with MTR/CoC",
-      "waterjet": "Inspection reports on request"
-    },
-    {
-      "dimension": "Volume Flexibility",
-      "laser": "Prototype to high-volume production",
-      "waterjet": "Prototype to medium-volume batches"
+      "dimension": "Colors",
+      "laser": "Gold (15V), blue (40V), green (70V), purple (90V)",
+      "waterjet": "N/A"
     }
   ],
-  "processDescription": "Professional manufacturing service for surface analysis sem titanium components, combining process expertise with quality control systems to deliver consistent results.",
+  "processDescription": "Titanium anodizing (AMS 2488) grows a controlled oxide layer through electrochemical conversion in an electrolyte bath. Type II produces interference colors (gold, blue, purple, green) for identification and cosmetics. Type III (hard anodizing) produces a thicker, abrasion-resistant oxide, specifically for titanium components. Precision titanium components present unique challenges: balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) is optimized for each feature.",
   "holeTypes": [
-    "Round holes",
-    "Slot holes",
-    "Custom geometry cutouts"
+    "N/A"
   ],
-  "heatControl": "Process-specific heat management protocols are applied for surface analysis sem to prevent titanium oxidation and maintain material properties.",
-  "flatnessControl": "Precision fixturing and post-process stress relief ensure flatness requirements are met for surface analysis sem.",
-  "capabilitiesDescription": "Our integrated manufacturing facility handles surface analysis sem with full traceability, SPC monitoring, and certified quality management.",
+  "heatControl": "Electrolyte bath at 20–24°C (Type II) or –5–0°C (Type III). Voltage ramp programmed to prevent localized overheating and burning.",
+  "flatnessControl": "No dimensional change—surface conversion only. Pre-treatment finish is preserved through the process.",
+  "capabilitiesDescription": "Integrated manufacturing capability for Surface analysis (SEM), supported by in-house QC, material certification, and engineering review.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Sealing",
+      "description": "Hot water or nickel acetate sealing is used to close micro-porosity."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Laser Marking",
+      "description": "Post-anodize laser marking for UDI or part ID on the oxide layer."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Deburring",
+      "description": "Deburring for surface analysis (SEM) components."
     },
     {
-      "name": "Quality Documentation",
-      "description": "Full inspection reports, material certifications, and certificate of conformance included."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for surface analysis (SEM) components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for SEM surface analysis components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "Process parameter verification (SPC charts)",
-    "First article inspection per AS9102"
+    "Surface analysis (SEM) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Surface Analysis Components?",
+  "relatedEntities": [],
+  "seoTitle": "Surface analysis (SEM) | Precision Titanium General Manufacturing | BOZE",
+  "seoDescription": "Surface analysis (SEM) for General applications. Precision titanium component manufacturing with Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Surface analysis (SEM)?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Surface analysis (SEM)",
   "aliases": [],
-  "category": "General Manufacturing",
-  "description": "Surface analysis (SEM) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Surface analysis (SEM) | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision general manufacturing of Surface analysis (SEM) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

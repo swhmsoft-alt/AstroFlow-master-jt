@@ -1,0 +1,92 @@
+﻿---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+export const prerender = true;
+
+const industries = await getCollection('industries');
+const allSystems = await getCollection('systems');
+
+// Count systems per industry
+const sysCount: Record<string, number> = {};
+for (const sys of allSystems) {
+  const ind = sys.data.industry || 'Other';
+  sysCount[ind] = (sysCount[ind] || 0) + (sys.data.productEntities?.length || 0);
+}
+
+const industrySlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+const total = industries.length;
+const totalSystems = allSystems.length;
+
+const indOrder: Record<string, number> = {
+  'Aerospace & Defense': 1, 'Medical Device': 2, 'Semiconductor': 3,
+  'Chemical Processing': 4, 'Cycling / Bicycle': 5, 'Energy': 6,
+  'Marine & Offshore': 7, 'Consumer Electronics': 8, 'Automotive & Motorsports': 9,
+  'Electroplating & Surface Finishing': 10, 'Environmental Engineering': 11, 'General Industrial': 12,
+};
+const sorted = [...industries].sort((a, b) =>
+  (indOrder[a.data.title] || 99) - (indOrder[b.data.title] || 99));
+---
+
+<SubpageHero
+  h1="Industries Served"
+  badge={`${total} Sectors`}
+  subtitle={`${total} industries where our precision titanium components are used. Each sector has unique engineering requirements 鈥?from aerospace-grade fatigue life to medical-grade biocompatibility.`}
+/>
+
+<BaseLayout
+  title="Industries Served - Titanium Components for 12 Sectors | BOZE CNC Ti"
+  description="Titanium precision components for Aerospace, Medical, Semiconductor, Chemical, Cycling, Marine, Energy, and more. AS9100D & ISO 9001 certified."
+>
+  <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
+          <meta itemprop="position" content="2" />
+          <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"> / </span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" style="font-weight:600;color:var(--theme-text);">Industries</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {sorted.map((entry) => {
+          const d = entry.data;
+          const slug = industrySlug(d.title);
+          const sysCountThis = allSystems.filter(s => s.data.industry === d.title).length;
+          const prodCountThis = sysCount[d.title] || 0;
+          return (
+            <a href={`/products/industries/${slug}/`} class="group block p-6 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <p class="text-2xl mb-2">{['鉁堬笍','馃彞','馃捇','馃И','馃毚','鈿?,'馃殺','馃摫','馃弾锔?,'鈿?,'馃實','馃敥'][indOrder[d.title]-1] || '馃彮'}</p>
+              <h2 class="text-lg font-bold mb-1 group-hover" style="color: var(--theme-text);">{d.title}</h2>
+              <p class="text-xs mb-3" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{sysCountThis} systems 路 {prodCountThis} components</p>
+              <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{d.description?.slice(0, 120)}</p>
+              {d.applications && d.applications.length > 0 && (
+                <div class="mt-3 flex flex-wrap gap-1.5">
+                  {d.applications.slice(0, 3).map((a: string) => (
+                    <span class="text-[10px] px-2 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">{a}</span>
+                  ))}
+                </div>
+              )}
+            </a>
+          );
+        })}
+      </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org", "@type": "CollectionPage",
+    "name": "Industries Served - Titanium Components",
+    "description": `${total} industries for precision titanium components`
+  })} />
+</BaseLayout>

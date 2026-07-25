@@ -1,4 +1,7 @@
 {
+  "title": "Plate laser cutting + CNC drilling of flange bolt holes",
+  "category": "Machining",
+  "description": "Plate laser cutting + CNC drilling of flange bolt holes capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,91 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "0.2 mm – 15.0 mm (fiber laser)",
+  "cuttingTolerance": "+0.05 mm (bolt PCD) / +0.02 mm (face flatness)",
+  "tolerance": "+0.05 mm (bolt PCD) / +0.02 mm (face flatness)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.8 µm (gasket face)",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
+      "dimension": "Cut Speed (3 mm Ti)",
+      "laser": "Up to 6 m/min",
+      "waterjet": "0.5–1.5 m/min"
     },
     {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
+      "dimension": "Kerf Width",
+      "laser": "0.1–0.3 mm",
+      "waterjet": "0.7–1.2 mm"
     },
     {
-      "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
+      "dimension": "HAZ",
+      "laser": "0.05–0.15 mm with N₂ assist",
+      "waterjet": "Zero HAZ (cold cut)"
     },
     {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "dimension": "Max Thickness",
+      "laser": "15 mm (fiber laser)",
+      "waterjet": "100 mm+"
     }
   ],
-  "processDescription": "Precision CNC machining of plate laser cutting titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "Fiber laser cutting of titanium uses a focused 1 µm wavelength beam to melt and expel material through a coaxial assist gas jet. The narrow (0.1–0.3 mm) and small heat-affected zone make it suitable for precision profiles in sheet and thin-plate titanium components, specifically for flange. Precision flange for Aerospace, Chemical, Oil & Gas present unique challenges: Large diameter (up to 600 mm) with bolt hole pattern PCD tolerance ±0.1 mm. Face flatness critical for seal integrity.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "Round holes (≥ 0.5 mm diameter)",
+    "Slots / oblongs",
+    "Micro-perforation arrays"
   ],
-  "heatControl": "CNC machining of plate laser cutting uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for plate laser cutting components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for plate laser cutting production.",
+  "heatControl": "Coaxial N₂ (99.999%) assist gas at 12–20 bar prevents titanium oxidation by displacing oxygen. Laser power modulation controls heat input to minimize HAZ to 0.05–0.15 mm.",
+  "flatnessControl": "Face flatness critical for seal integrity. Sequenced bolt-hole drilling pattern (opposite poles) prevents flange warpage.",
+  "capabilitiesDescription": "Precision machining capability for Plate laser cutting + CNC drilling of flange bolt holes, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Pipe flanges",
+    "Vacuum flanges (ConFlat)",
+    "Blind flanges",
+    "Weld neck flanges"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Deburring",
+      "description": "Drag finishing or chemical deburring to remove laser-cut dross."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Pickling & Passivation",
+      "description": "Nitric-HF acid bath (ASTM B600) to remove heat tint."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "CNC Drilling of Bolt Holes",
+      "description": "CNC Drilling of Bolt Holes for plate laser cutting + cnc drilling of flange bolt holes components."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
+      "name": "Face Milling",
+      "description": "Face Milling for plate laser cutting + cnc drilling of flange bolt holes components."
     },
     {
-      "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "name": "Hydrostatic Pressure Test",
+      "description": "Hydrostatic Pressure Test for plate laser cutting + cnc drilling of flange bolt holes components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
+    "Plate laser cutting + CNC drilling of flange bolt holes specific dimensional verification (CMM / vision)",
     "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Plate Laser Components?",
+  "relatedEntities": [
+    "titanium-conflat-knife-edge-ring",
+    "titanium-blind-flange-asme-b165"
+  ],
+  "seoTitle": "Plate laser cutting + CNC drilling of flange bolt holes | Precision Titanium Machining | BOZE",
+  "seoDescription": "Plate laser cutting + CNC drilling of flange bolt holes for Aerospace, Chemical, Oil & Gas applications. Precision titanium component manufacturing with +0.05 mm (bolt PCD) / +0.02 mm (face flatness). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Flange Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Plate laser cutting + CNC drilling of flange bolt holes",
   "aliases": [],
-  "category": "Machining",
-  "description": "Plate laser cutting + CNC drilling of flange bolt holes capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Plate laser cutting + CNC drilling of flange bolt holes | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of Plate laser cutting + CNC drilling of flange bolt holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

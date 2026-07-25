@@ -1,77 +1,93 @@
 {
+  "title": "Precision stamping + vibratory deburring of flat/lock washers",
+  "category": "Forming",
+  "description": "Precision stamping + vibratory deburring of flat/lock washers capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 7"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
   "thicknessRange": "0.3 mm – 6.0 mm sheet/plate",
-  "minHoleRatio": "1.5:1 (bend radius-to-thickness minimum)",
-  "cuttingTolerance": "±0.2 mm (formed geometry)",
+  "cuttingTolerance": "+0.2 mm (bend position) / +0.5° (bend angle)",
+  "tolerance": "+0.2 mm (bend position) / +0.5° (bend angle)",
+  "maxSize": "",
+  "surfaceFinish": "No surface damage with polyurethane tooling",
   "processComparison": [
     {
-      "dimension": "Forming Method",
-      "laser": "Press brake / stamping / hydroforming",
+      "dimension": "Method",
+      "laser": "CNC press brake with air bending / bottoming",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Springback Control",
-      "laser": "Over-bend compensation based on titanium grade",
+      "dimension": "Springback (Gr5)",
+      "laser": "10–20° depending on R/T ratio",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Tooling",
-      "laser": "Custom die sets or universal press brake tooling",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Heat Assistance",
-      "laser": "Hot forming (300–600°C) for complex geometries",
+      "dimension": "Min Bend R",
+      "laser": "2×T (Grade 2) / 3×T (Grade 5)",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision forming of precision stamping vibratory titanium components using press brake, stamping, and hydroforming methods with controlled springback compensation.",
+  "processDescription": "Press brake forming of titanium sheet uses CNC-controlled backgauges and variable-radius tooling to produce precision bends. Titanium's high springback (10–20° for Grade 5) requires over-bend compensation calculated from the specific alloy's elastic modulus.",
   "holeTypes": [
-    "N/A — forming is a deformation process"
+    "N/A"
   ],
-  "heatControl": "Hot forming performed at 300–600°C to reduce springback and improve formability of precision stamping vibratory.",
-  "flatnessControl": "Post-form stress relief and precision leveling ensure flatness within 0.3 mm/m.",
-  "capabilitiesDescription": "Equipped with CNC press brakes (up to 500 ton), stamping presses, and hydroforming systems for precision stamping vibratory.",
+  "heatControl": "Hot forming at 300–600°C for complex bends using resistance-heated tooling. Temperature controlled +10°C across the bend line.",
+  "flatnessControl": "Post-form stress relief at 540°C for CP grades. Multi-stage forming with intermediate stress relief for tight radii.",
+  "capabilitiesDescription": "Metal forming capability for Precision stamping + vibratory deburring of flat/lock washers, with CNC press brake, die design, and springback compensation for titanium alloys.",
+  "typicalApplications": [
+    "Seal rings",
+    "Snap rings",
+    "Retaining rings",
+    "Bearing races"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Laser/Waterjet Trimming",
-      "description": "Precision trimming of formed blanks to net shape."
+      "name": "Stress Relief",
+      "description": "Vacuum annealing to relieve cold-work stresses."
     },
     {
-      "name": "Deburring",
-      "description": "Edge finishing of formed edges to remove burrs and achieve smooth radius."
+      "name": "Laser Trimming",
+      "description": "Fiber laser cutting of formed blanks to net shape."
     },
     {
-      "name": "Stress Relief Annealing",
-      "description": "Vacuum annealing to relieve cold-work stresses from forming operations."
+      "name": "Heat Treatment",
+      "description": "Heat Treatment for precision stamping + vibratory deburring of flat/lock washers components."
+    },
+    {
+      "name": "OD/ID Grinding",
+      "description": "OD/ID Grinding for precision stamping + vibratory deburring of flat/lock washers components."
+    },
+    {
+      "name": "Dye Penetrant Inspection",
+      "description": "Dye Penetrant Inspection for precision stamping + vibratory deburring of flat/lock washers components."
     }
   ],
   "inspectionItems": [
-    "Bend angle measurement (protractor / CMM)",
-    "Springback verification",
-    "Surface inspection (cracking / orange peel)",
-    "Thickness measurement (thinning check)"
+    "Precision stamping + vibratory deburring of flat/lock washers specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Precision Stamping Components?",
+  "relatedEntities": [
+    "titanium-split-ring-quick-flange",
+    "titanium-centering-ring-kf-iso"
+  ],
+  "seoTitle": "Precision stamping + vibratory deburring of flat/lock washers | Precision Titanium Forming | BOZE",
+  "seoDescription": "Precision stamping + vibratory deburring of flat/lock washers for General, Aerospace applications. Precision titanium component manufacturing with +0.2 mm (bend position) / +0.5° (bend angle). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Ring Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Precision stamping + vibratory deburring of flat/lock washers",
   "aliases": [],
-  "category": "Forming",
-  "description": "Precision stamping + vibratory deburring of flat/lock washers capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Precision stamping + vibratory deburring of flat/lock washers | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision forming of Precision stamping + vibratory deburring of flat/lock washers titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

@@ -1,80 +1,93 @@
 {
+  "title": "Hot forging + vacuum annealing of valve stems and bolts",
+  "category": "Forging",
+  "description": "Hot forging + vacuum annealing of valve stems and bolts capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)",
-    "Grade 9"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "Up to 500 kg ingot/billet",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "±1.0 mm (as-forged) / ±0.05 mm (post-CNC)",
+  "thicknessRange": "Furnace: Ø600 × 1200 mm; up to 500 kg load",
+  "cuttingTolerance": "+0.01 mm (seat) / +0.02 mm (stem)",
+  "tolerance": "+0.01 mm (seat) / +0.02 mm (stem)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.2 µm (sealing surface)",
   "processComparison": [
     {
-      "dimension": "Forging Method",
-      "laser": "Open die / closed die / isothermal",
+      "dimension": "Atmosphere",
+      "laser": "Vacuum < 10⁻⁵ torr",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Temperature Range",
-      "laser": "Beta transus ±50°C (850–1050°C for Ti)",
+      "dimension": "Cooling",
+      "laser": "Inert gas fan cooling (2 bar Ar); oil/water quench",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Grain Structure",
-      "laser": "Controlled recrystallization for equiaxed alpha-beta",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Mechanical Properties",
-      "laser": "Superior to cast/machined — aligned grain flow",
+      "dimension": "Max Temp",
+      "laser": "1200°C (beta solution treatment)",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Titanium forging services for hot forging vacuum using open-die, closed-die, and isothermal forging processes. Controlled thermal-mechanical processing optimizes grain structure and mechanical properties.",
+  "processDescription": "Vacuum heat treatment of titanium in a controlled environment prevents oxygen/nitrogen pickup that causes alpha-case embrittlement. Programmable temperature profiles with inert gas fan cooling enable solution treatment, aging, stress relief, and annealing in a single cycle, specifically for valve. Precision valve for Semiconductor present unique challenges: Seat leakage Class VI (ANSI FCI 70-2) requires lapped sealing surfaces. Stem straightness ±0.02 mm over 500 mm.",
   "holeTypes": [
     "N/A"
   ],
-  "heatControl": "Precise temperature control (±10°C) during hot forging vacuum forging to maintain beta-phase control and prevent grain growth.",
-  "flatnessControl": "Post-forge normalization and straightening within 1 mm/m.",
-  "capabilitiesDescription": "Press capacity up to 3000 ton with induction heating and programmable forging manipulators for hot forging vacuum.",
+  "heatControl": "Graphite heating elements with molybdenum radiation shields. Partial pressure argon backfill during cooling for uniform thermal distribution.",
+  "flatnessControl": "Ceramic or titanium fixtures maintain component geometry during thermal cycling. Controlled cooling rate minimizes thermal gradient distortion.",
+  "capabilitiesDescription": "Hydraulic and mechanical press capability for Hot forging + vacuum annealing of valve stems and bolts, with induction heating, die temperature control, and grain flow optimization.",
+  "typicalApplications": [
+    "Ball valves",
+    "Gate valves",
+    "Check valves",
+    "Needle valves",
+    "Pressure relief valves"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Heat Treatment",
-      "description": "Solution treatment and aging (STA) for alpha-beta alloys."
+      "name": "Hardness Testing",
+      "description": "Rockwell C or Vickers hardness verification post-treatment."
     },
     {
-      "name": "CNC Machining",
-      "description": "Post-forge machining to final dimensions and surface finish."
+      "name": "Metallographic Analysis",
+      "description": "Microstructure examination per ASTM E112."
     },
     {
-      "name": "NDT Inspection",
-      "description": "Ultrasonic inspection (UT) per AMS 2631 for internal soundness."
+      "name": "Lapping (Seat)",
+      "description": "Lapping (Seat) for hot forging + vacuum annealing of valve stems and bolts components."
+    },
+    {
+      "name": "Hydrostatic Test",
+      "description": "Hydrostatic Test for hot forging + vacuum annealing of valve stems and bolts components."
+    },
+    {
+      "name": "Helium Leak Test",
+      "description": "Helium Leak Test for hot forging + vacuum annealing of valve stems and bolts components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (as-forged)",
-    "Ultrasonic inspection (UT) for internal defects",
-    "Metallographic examination (grain flow verification)",
-    "Mechanical testing (tensile, yield, elongation)"
+    "Hot forging + vacuum annealing of valve stems and bolts specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2631 — Ultrasonic Inspection of Wrought Titanium",
-    "ASTM B381 — Titanium Forgings",
-    "AMS 4928 — Titanium Alloy Bars and Forgings"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Hot Forging Components?",
+  "relatedEntities": [
+    "titanium-ball-valve-stem",
+    "titanium-eccs-valve-stem"
+  ],
+  "seoTitle": "Hot forging + vacuum annealing of valve stems and bolts | Precision Titanium Forging | BOZE",
+  "seoDescription": "Hot forging + vacuum annealing of valve stems and bolts for Semiconductor applications. Precision titanium component manufacturing with +0.01 mm (seat) / +0.02 mm (stem). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Valve Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Hot forging + vacuum annealing of valve stems and bolts",
   "aliases": [],
-  "category": "Forging",
-  "description": "Hot forging + vacuum annealing of valve stems and bolts capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Hot forging + vacuum annealing of valve stems and bolts | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision forging of Hot forging + vacuum annealing of valve stems and bolts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

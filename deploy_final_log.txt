@@ -1,0 +1,4861 @@
+   ✓ dist/ exists with 46 items.
+🔌 Connecting to ftp.safetiparts.com...
+Connected to 40.160.1.205:21 (No encryption)
+< 220---------- Welcome to Pure-FTPd [privsep] [TLS] ----------
+220-You are user number 2 of 50 allowed.
+220-Local time is now 03:32. Server port: 21.
+220-This is a private system - No anonymous login
+220-IPv6 connections are also welcome on this server.
+220 You will be disconnected after 15 minutes of inactivity.
+
+> OPTS UTF8 ON
+< 504 Unknown command
+
+Login security: No encryption
+> USER bozecncti@cnc.bozemetal.com
+< 331 User bozecncti@cnc.bozemetal.com OK. Password required
+
+> PASS ###
+< 230 OK. Current restricted directory is /
+
+> FEAT
+< 211-Extensions supported:
+ UTF8
+ EPRT
+ IDLE
+ MDTM
+ SIZE
+ MFMT
+ REST STREAM
+ MLST type*;size*;sizd*;modify*;UNIX.mode*;UNIX.uid*;UNIX.gid*;unique*;
+ MLSD
+ PRET
+ AUTH TLS
+ PBSZ
+ PROT
+ TVFS
+ ESTA
+ PASV
+ EPSV
+ ESTP
+211 End.
+
+> TYPE I
+< 200 TYPE is now 8-bit binary
+
+> STRU F
+< 200 F OK
+
+> OPTS UTF8 ON
+< 504 Unknown command
+
+> OPTS MLST type;size;modify;unique;unix.mode;unix.owner;unix.group;unix.ownername;unix.groupname;
+< 200  MLST OPTS type;size;sizd;modify;UNIX.mode;UNIX.uid;UNIX.gid;unique;
+
+🔒 Upgrading to TLS...
+Deprecated call using send(command, flag) with boolean flag to ignore errors. Use sendIgnoringError(command).
+> AUTH
+< 500 This security scheme is not implemented
+
+Deprecated call using send(command, flag) with boolean flag to ignore errors. Use sendIgnoringError(command).
+> PBSZ
+< 503 PBSZ=0
+
+Deprecated call using send(command, flag) with boolean flag to ignore errors. Use sendIgnoringError(command).
+> PROT
+< 503 PROT must be preceded by a successful PBSZ command
+
+✅ Connected successfully (FTPS with encrypted data)
+> CWD /
+< 250 OK. Current directory is /
+
+📂 Changed to remote: /
+📤 Uploading files...
+> PWD
+< 257 "/" is your current location
+
+Trying to find optimal transfer strategy...
+> EPSV
+< 229 Extended Passive mode OK (|||54888|)
+
+Optimal transfer strategy found.
+> STOR .htaccess
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54888 (No encryption)
+< 226-File successfully transferred
+226 0.253 seconds (measured here), 0.83 Kbytes per second
+
+> EPSV
+< 229 Extended Passive mode OK (|||55362|)
+
+> STOR 404.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55362 (No encryption)
+< 226-File successfully transferred
+226 1.033 seconds (measured here), 85.30 Kbytes per second
+
+> MKD about
+< 550 Can't create directory: File exists
+
+> CWD about
+< 250 OK. Current directory is /about
+
+> EPSV
+< 229 Extended Passive mode OK (|||53684|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53684 (No encryption)
+< 226-File successfully transferred
+226 2.228 seconds (measured here), 48.07 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /
+
+> MKD ar
+< 550 Can't create directory: File exists
+
+> CWD ar
+< 250 OK. Current directory is /ar
+
+> MKD about
+< 550 Can't create directory: File exists
+
+> CWD about
+< 250 OK. Current directory is /ar/about
+
+> EPSV
+< 229 Extended Passive mode OK (|||53428|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53428 (No encryption)
+< 226-File successfully transferred
+226 1.561 seconds (measured here), 70.83 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar
+
+> MKD blog
+< 550 Can't create directory: File exists
+
+> CWD blog
+< 250 OK. Current directory is /ar/blog
+
+> MKD aerospace-titanium-full-process-supply
+< 550 Can't create directory: File exists
+
+> CWD aerospace-titanium-full-process-supply
+< 250 OK. Current directory is /ar/blog/aerospace-titanium-full-process-supply
+
+> EPSV
+< 229 Extended Passive mode OK (|||49245|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49245 (No encryption)
+< 226-File successfully transferred
+226 1.032 seconds (measured here), 125.01 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/blog
+
+> MKD custom-titanium-machining-contract-manufacturer-china-rfq-preparation
+< 550 Can't create directory: File exists
+
+> CWD custom-titanium-machining-contract-manufacturer-china-rfq-preparation
+< 250 OK. Current directory is /ar/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation
+
+> EPSV
+< 229 Extended Passive mode OK (|||56839|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56839 (No encryption)
+< 226-File successfully transferred
+226 1.051 seconds (measured here), 114.63 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/blog
+
+> EPSV
+< 229 Extended Passive mode OK (|||56322|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56322 (No encryption)
+< 226-File successfully transferred
+226 0.993 seconds (measured here), 103.16 Kbytes per second
+
+> MKD titanium-cnc-machining-services
+< 550 Can't create directory: File exists
+
+> CWD titanium-cnc-machining-services
+< 250 OK. Current directory is /ar/blog/titanium-cnc-machining-services
+
+> EPSV
+< 229 Extended Passive mode OK (|||56938|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56938 (No encryption)
+< 226-File successfully transferred
+226 1.009 seconds (measured here), 131.20 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/blog
+
+> MKD welcome-to-boze-cnc-blog
+< 550 Can't create directory: File exists
+
+> CWD welcome-to-boze-cnc-blog
+< 250 OK. Current directory is /ar/blog/welcome-to-boze-cnc-blog
+
+> EPSV
+< 229 Extended Passive mode OK (|||55049|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55049 (No encryption)
+< 226-File successfully transferred
+226 1.045 seconds (measured here), 104.72 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/blog
+
+> CDUP
+< 250 OK. Current directory is /ar
+
+> MKD branded-custom-packaging-services
+< 550 Can't create directory: File exists
+
+> CWD branded-custom-packaging-services
+< 250 OK. Current directory is /ar/branded-custom-packaging-services
+
+> EPSV
+< 229 Extended Passive mode OK (|||51626|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51626 (No encryption)
+< 226-File successfully transferred
+226 1.023 seconds (measured here), 133.02 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar
+
+> MKD capabilities
+< 550 Can't create directory: File exists
+
+> CWD capabilities
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 100-crack-detection
+< 550 Can't create directory: File exists
+
+> CWD 100-crack-detection
+< 250 OK. Current directory is /ar/capabilities/100-crack-detection
+
+> EPSV
+< 229 Extended Passive mode OK (|||58888|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58888 (No encryption)
+< 226-File successfully transferred
+226 1.022 seconds (measured here), 117.66 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 100-dimensional-inspection-cmm
+< 550 Can't create directory: File exists
+
+> CWD 100-dimensional-inspection-cmm
+< 250 OK. Current directory is /ar/capabilities/100-dimensional-inspection-cmm
+
+> EPSV
+< 229 Extended Passive mode OK (|||58336|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58336 (No encryption)
+< 226-File successfully transferred
+226 1.269 seconds (measured here), 96.00 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 100-eddy-current-testing-ect-of-condenser-tubes
+< 550 Can't create directory: File exists
+
+> CWD 100-eddy-current-testing-ect-of-condenser-tubes
+< 250 OK. Current directory is /ar/capabilities/100-eddy-current-testing-ect-of-condenser-tubes
+
+> EPSV
+< 229 Extended Passive mode OK (|||63493|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63493 (No encryption)
+< 226-File successfully transferred
+226 1.020 seconds (measured here), 122.06 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 31-mtc-with-var-ingot-traceability-per-asme-section-viii
+< 550 Can't create directory: File exists
+
+> CWD 31-mtc-with-var-ingot-traceability-per-asme-section-viii
+< 250 OK. Current directory is /ar/capabilities/31-mtc-with-var-ingot-traceability-per-asme-section-viii
+
+> EPSV
+< 229 Extended Passive mode OK (|||61308|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61308 (No encryption)
+< 226-File successfully transferred
+226 1.302 seconds (measured here), 94.14 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 3d-cmm-inspection
+< 550 Can't create directory: File exists
+
+> CWD 3d-cmm-inspection
+< 250 OK. Current directory is /ar/capabilities/3d-cmm-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||60574|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60574 (No encryption)
+< 226-File successfully transferred
+226 1.006 seconds (measured here), 120.23 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 3d-cmm-inspection-of-spherical-bearing-housing-bores
+< 550 Can't create directory: File exists
+
+> CWD 3d-cmm-inspection-of-spherical-bearing-housing-bores
+< 250 OK. Current directory is /ar/capabilities/3d-cmm-inspection-of-spherical-bearing-housing-bores
+
+> EPSV
+< 229 Extended Passive mode OK (|||50560|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50560 (No encryption)
+< 226-File successfully transferred
+226 1.046 seconds (measured here), 118.24 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 4-5-axis-cnc-milling
+< 550 Can't create directory: File exists
+
+> CWD 4-5-axis-cnc-milling
+< 250 OK. Current directory is /ar/capabilities/4-5-axis-cnc-milling
+
+> EPSV
+< 229 Extended Passive mode OK (|||61290|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61290 (No encryption)
+< 226-File successfully transferred
+226 1.298 seconds (measured here), 93.47 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-cnc-contour-milling
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-cnc-contour-milling
+< 250 OK. Current directory is /ar/capabilities/5-axis-cnc-contour-milling
+
+> EPSV
+< 229 Extended Passive mode OK (|||57562|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57562 (No encryption)
+< 226-File successfully transferred
+226 1.036 seconds (measured here), 118.54 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-cnc-machining-of-blades
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-cnc-machining-of-blades
+< 250 OK. Current directory is /ar/capabilities/5-axis-cnc-machining-of-blades
+
+> EPSV
+< 229 Extended Passive mode OK (|||59068|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59068 (No encryption)
+< 226-File successfully transferred
+226 1.487 seconds (measured here), 82.94 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-cnc-milling-of-aerofoils
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-cnc-milling-of-aerofoils
+< 250 OK. Current directory is /ar/capabilities/5-axis-cnc-milling-of-aerofoils
+
+> EPSV
+< 229 Extended Passive mode OK (|||61478|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61478 (No encryption)
+< 226-File successfully transferred
+226 1.042 seconds (measured here), 117.69 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-cnc-milling-of-clevis-brackets
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-cnc-milling-of-clevis-brackets
+< 250 OK. Current directory is /ar/capabilities/5-axis-cnc-milling-of-clevis-brackets
+
+> EPSV
+< 229 Extended Passive mode OK (|||55046|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55046 (No encryption)
+< 226-File successfully transferred
+226 1.023 seconds (measured here), 120.08 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-cnc-milling-of-manipulator-knuckles-and-swivel-joints
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-cnc-milling-of-manipulator-knuckles-and-swivel-joints
+< 250 OK. Current directory is /ar/capabilities/5-axis-cnc-milling-of-manipulator-knuckles-and-swivel-joints
+
+> EPSV
+< 229 Extended Passive mode OK (|||52372|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52372 (No encryption)
+< 226-File successfully transferred
+226 1.029 seconds (measured here), 120.20 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-machining-center
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-machining-center
+< 250 OK. Current directory is /ar/capabilities/5-axis-machining-center
+
+> EPSV
+< 229 Extended Passive mode OK (|||57548|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57548 (No encryption)
+< 226-File successfully transferred
+226 0.996 seconds (measured here), 123.18 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-milling-of-faces
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-milling-of-faces
+< 250 OK. Current directory is /ar/capabilities/5-axis-milling-of-faces
+
+> EPSV
+< 229 Extended Passive mode OK (|||62984|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62984 (No encryption)
+< 226-File successfully transferred
+226 1.567 seconds (measured here), 78.23 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 5-axis-simultaneous-cnc-milling
+< 550 Can't create directory: File exists
+
+> CWD 5-axis-simultaneous-cnc-milling
+< 250 OK. Current directory is /ar/capabilities/5-axis-simultaneous-cnc-milling
+
+> EPSV
+< 229 Extended Passive mode OK (|||63484|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63484 (No encryption)
+< 226-File successfully transferred
+226 1.072 seconds (measured here), 114.81 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD 7-stage-uhp-cleanroom-wash-for-hydrogen-fuel-cell-components
+< 550 Can't create directory: File exists
+
+> CWD 7-stage-uhp-cleanroom-wash-for-hydrogen-fuel-cell-components
+< 250 OK. Current directory is /ar/capabilities/7-stage-uhp-cleanroom-wash-for-hydrogen-fuel-cell-components
+
+> EPSV
+< 229 Extended Passive mode OK (|||57464|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57464 (No encryption)
+< 226-File successfully transferred
+226 1.017 seconds (measured here), 121.70 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD accelerated-aging-test-1000h
+< 550 Can't create directory: File exists
+
+> CWD accelerated-aging-test-1000h
+< 250 OK. Current directory is /ar/capabilities/accelerated-aging-test-1000h
+
+> EPSV
+< 229 Extended Passive mode OK (|||52087|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52087 (No encryption)
+< 226-File successfully transferred
+226 1.306 seconds (measured here), 93.23 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD adaptive-machining
+< 550 Can't create directory: File exists
+
+> CWD adaptive-machining
+< 250 OK. Current directory is /ar/capabilities/adaptive-machining
+
+> EPSV
+< 229 Extended Passive mode OK (|||56398|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56398 (No encryption)
+< 226-File successfully transferred
+226 1.526 seconds (measured here), 79.44 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD af-temperature-measurement-dsc
+< 550 Can't create directory: File exists
+
+> CWD af-temperature-measurement-dsc
+< 250 OK. Current directory is /ar/capabilities/af-temperature-measurement-dsc
+
+> EPSV
+< 229 Extended Passive mode OK (|||65377|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65377 (No encryption)
+< 226-File successfully transferred
+226 1.019 seconds (measured here), 118.71 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD anodizing
+< 550 Can't create directory: File exists
+
+> CWD anodizing
+< 250 OK. Current directory is /ar/capabilities/anodizing
+
+> EPSV
+< 229 Extended Passive mode OK (|||61186|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61186 (No encryption)
+< 226-File successfully transferred
+226 1.502 seconds (measured here), 80.48 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD anodizing-ams-2488
+< 550 Can't create directory: File exists
+
+> CWD anodizing-ams-2488
+< 250 OK. Current directory is /ar/capabilities/anodizing-ams-2488
+
+> EPSV
+< 229 Extended Passive mode OK (|||64447|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64447 (No encryption)
+< 226-File successfully transferred
+226 1.231 seconds (measured here), 98.75 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD anodizing-colors
+< 550 Can't create directory: File exists
+
+> CWD anodizing-colors
+< 250 OK. Current directory is /ar/capabilities/anodizing-colors
+
+> EPSV
+< 229 Extended Passive mode OK (|||60892|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60892 (No encryption)
+< 226-File successfully transferred
+226 1.020 seconds (measured here), 119.00 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD anodizing-dlc-coating
+< 550 Can't create directory: File exists
+
+> CWD anodizing-dlc-coating
+< 250 OK. Current directory is /ar/capabilities/anodizing-dlc-coating
+
+> EPSV
+< 229 Extended Passive mode OK (|||51119|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51119 (No encryption)
+< 226-File successfully transferred
+226 1.119 seconds (measured here), 108.69 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD assembly--riveting
+< 550 Can't create directory: File exists
+
+> CWD assembly--riveting
+< 250 OK. Current directory is /ar/capabilities/assembly--riveting
+
+> EPSV
+< 229 Extended Passive mode OK (|||56402|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56402 (No encryption)
+< 226-File successfully transferred
+226 1.045 seconds (measured here), 115.04 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD automatic-spring-coiling
+< 550 Can't create directory: File exists
+
+> CWD automatic-spring-coiling
+< 250 OK. Current directory is /ar/capabilities/automatic-spring-coiling
+
+> EPSV
+< 229 Extended Passive mode OK (|||50563|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50563 (No encryption)
+< 226-File successfully transferred
+226 1.038 seconds (measured here), 116.23 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD automatic-swiss-turning
+< 550 Can't create directory: File exists
+
+> CWD automatic-swiss-turning
+< 250 OK. Current directory is /ar/capabilities/automatic-swiss-turning
+
+> EPSV
+< 229 Extended Passive mode OK (|||62137|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62137 (No encryption)
+< 226-File successfully transferred
+226 1.039 seconds (measured here), 117.45 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD automatic-tig-welding-tube-end
+< 550 Can't create directory: File exists
+
+> CWD automatic-tig-welding-tube-end
+< 250 OK. Current directory is /ar/capabilities/automatic-tig-welding-tube-end
+
+> EPSV
+< 229 Extended Passive mode OK (|||59522|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59522 (No encryption)
+< 226-File successfully transferred
+226 1.066 seconds (measured here), 115.85 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD axle-bending-fatigue-testing-106-cycles
+< 550 Can't create directory: File exists
+
+> CWD axle-bending-fatigue-testing-106-cycles
+< 250 OK. Current directory is /ar/capabilities/axle-bending-fatigue-testing-106-cycles
+
+> EPSV
+< 229 Extended Passive mode OK (|||49265|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49265 (No encryption)
+< 226-File successfully transferred
+226 1.006 seconds (measured here), 121.55 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD ballistic-testing-per-nij-mil-std
+< 550 Can't create directory: File exists
+
+> CWD ballistic-testing-per-nij-mil-std
+< 250 OK. Current directory is /ar/capabilities/ballistic-testing-per-nij-mil-std
+
+> EPSV
+< 229 Extended Passive mode OK (|||55298|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55298 (No encryption)
+< 226-File successfully transferred
+226 1.337 seconds (measured here), 91.22 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD batch-testing-mechanical--metallographic
+< 550 Can't create directory: File exists
+
+> CWD batch-testing-mechanical--metallographic
+< 250 OK. Current directory is /ar/capabilities/batch-testing-mechanical--metallographic
+
+> EPSV
+< 229 Extended Passive mode OK (|||62106|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62106 (No encryption)
+< 226-File successfully transferred
+226 1.675 seconds (measured here), 73.07 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD bead-blasting-anodizing-pvd
+< 550 Can't create directory: File exists
+
+> CWD bead-blasting-anodizing-pvd
+< 250 OK. Current directory is /ar/capabilities/bead-blasting-anodizing-pvd
+
+> EPSV
+< 229 Extended Passive mode OK (|||63582|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63582 (No encryption)
+< 226-File successfully transferred
+226 1.032 seconds (measured here), 118.37 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD bead-blasting-of-plasma-facing-surfaces
+< 550 Can't create directory: File exists
+
+> CWD bead-blasting-of-plasma-facing-surfaces
+< 250 OK. Current directory is /ar/capabilities/bead-blasting-of-plasma-facing-surfaces
+
+> EPSV
+< 229 Extended Passive mode OK (|||63735|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63735 (No encryption)
+< 226-File successfully transferred
+226 1.081 seconds (measured here), 113.54 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD bend-forming-of-stiffener-ribs-and-gussets
+< 550 Can't create directory: File exists
+
+> CWD bend-forming-of-stiffener-ribs-and-gussets
+< 250 OK. Current directory is /ar/capabilities/bend-forming-of-stiffener-ribs-and-gussets
+
+> EPSV
+< 229 Extended Passive mode OK (|||55714|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55714 (No encryption)
+< 226-File successfully transferred
+226 1.015 seconds (measured here), 120.81 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD beta-c-wire-cold-coiling--shot-peening--preset-for-shock-springs
+< 550 Can't create directory: File exists
+
+> CWD beta-c-wire-cold-coiling--shot-peening--preset-for-shock-springs
+< 250 OK. Current directory is /ar/capabilities/beta-c-wire-cold-coiling--shot-peening--preset-for-shock-springs
+
+> EPSV
+< 229 Extended Passive mode OK (|||61149|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61149 (No encryption)
+< 226-File successfully transferred
+226 1.220 seconds (measured here), 101.06 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD capacity
+< 550 Can't create directory: File exists
+
+> CWD capacity
+< 250 OK. Current directory is /ar/capabilities/capacity
+
+> EPSV
+< 229 Extended Passive mode OK (|||62319|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62319 (No encryption)
+< 226-File successfully transferred
+226 1.039 seconds (measured here), 126.56 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD caseback-threading
+< 550 Can't create directory: File exists
+
+> CWD caseback-threading
+< 250 OK. Current directory is /ar/capabilities/caseback-threading
+
+> EPSV
+< 229 Extended Passive mode OK (|||53714|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53714 (No encryption)
+< 226-File successfully transferred
+226 1.039 seconds (measured here), 117.15 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cbn-tool-finishing
+< 550 Can't create directory: File exists
+
+> CWD cbn-tool-finishing
+< 250 OK. Current directory is /ar/capabilities/cbn-tool-finishing
+
+> EPSV
+< 229 Extended Passive mode OK (|||52556|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52556 (No encryption)
+< 226-File successfully transferred
+226 1.792 seconds (measured here), 67.01 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD center-boring-of-vented-vacuum-screws
+< 550 Can't create directory: File exists
+
+> CWD center-boring-of-vented-vacuum-screws
+< 250 OK. Current directory is /ar/capabilities/center-boring-of-vented-vacuum-screws
+
+> EPSV
+< 229 Extended Passive mode OK (|||54057|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54057 (No encryption)
+< 226-File successfully transferred
+226 12.618 seconds (measured here), 9.63 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD centerless-grinding--dlc-coating-of-actuator-piston-rods
+< 550 Can't create directory: File exists
+
+> CWD centerless-grinding--dlc-coating-of-actuator-piston-rods
+< 250 OK. Current directory is /ar/capabilities/centerless-grinding--dlc-coating-of-actuator-piston-rods
+
+> EPSV
+< 229 Extended Passive mode OK (|||59430|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59430 (No encryption)
+< 226-File successfully transferred
+226 1.068 seconds (measured here), 115.84 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD centerless-grinding-of-core-taper
+< 550 Can't create directory: File exists
+
+> CWD centerless-grinding-of-core-taper
+< 250 OK. Current directory is /ar/capabilities/centerless-grinding-of-core-taper
+
+> EPSV
+< 229 Extended Passive mode OK (|||64076|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64076 (No encryption)
+< 226-File successfully transferred
+226 1.074 seconds (measured here), 113.69 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD certifications
+< 550 Can't create directory: File exists
+
+> CWD certifications
+< 250 OK. Current directory is /ar/capabilities/certifications
+
+> EPSV
+< 229 Extended Passive mode OK (|||63376|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63376 (No encryption)
+< 226-File successfully transferred
+226 1.114 seconds (measured here), 117.81 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD charpy-impact-at-20c
+< 550 Can't create directory: File exists
+
+> CWD charpy-impact-at-20c
+< 250 OK. Current directory is /ar/capabilities/charpy-impact-at-20c
+
+> EPSV
+< 229 Extended Passive mode OK (|||58997|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58997 (No encryption)
+< 226-File successfully transferred
+226 1.283 seconds (measured here), 93.76 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD charpy-impact-testing-at-253c
+< 550 Can't create directory: File exists
+
+> CWD charpy-impact-testing-at-253c
+< 250 OK. Current directory is /ar/capabilities/charpy-impact-testing-at-253c
+
+> EPSV
+< 229 Extended Passive mode OK (|||58687|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58687 (No encryption)
+< 226-File successfully transferred
+226 1.032 seconds (measured here), 117.90 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD charpy-impact-testing-at-253c-for-lh2-cryogenic-hardware
+< 550 Can't create directory: File exists
+
+> CWD charpy-impact-testing-at-253c-for-lh2-cryogenic-hardware
+< 250 OK. Current directory is /ar/capabilities/charpy-impact-testing-at-253c-for-lh2-cryogenic-hardware
+
+> EPSV
+< 229 Extended Passive mode OK (|||57511|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57511 (No encryption)
+< 226-File successfully transferred
+226 1.027 seconds (measured here), 120.04 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD chemical-etching-of-diaphragm-profiles
+< 550 Can't create directory: File exists
+
+> CWD chemical-etching-of-diaphragm-profiles
+< 250 OK. Current directory is /ar/capabilities/chemical-etching-of-diaphragm-profiles
+
+> EPSV
+< 229 Extended Passive mode OK (|||56810|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56810 (No encryption)
+< 226-File successfully transferred
+226 1.520 seconds (measured here), 79.90 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD class-10-cleanroom-packaging
+< 550 Can't create directory: File exists
+
+> CWD class-10-cleanroom-packaging
+< 250 OK. Current directory is /ar/capabilities/class-10-cleanroom-packaging
+
+> EPSV
+< 229 Extended Passive mode OK (|||53640|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53640 (No encryption)
+< 226-File successfully transferred
+226 1.092 seconds (measured here), 111.52 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cleaning--packaging-class-8-cleanroom
+< 550 Can't create directory: File exists
+
+> CWD cleaning--packaging-class-8-cleanroom
+< 250 OK. Current directory is /ar/capabilities/cleaning--packaging-class-8-cleanroom
+
+> EPSV
+< 229 Extended Passive mode OK (|||62308|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62308 (No encryption)
+< 226-File successfully transferred
+226 1.026 seconds (measured here), 119.44 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cleaning--passivation
+< 550 Can't create directory: File exists
+
+> CWD cleaning--passivation
+< 250 OK. Current directory is /ar/capabilities/cleaning--passivation
+
+> EPSV
+< 229 Extended Passive mode OK (|||60480|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60480 (No encryption)
+< 226-File successfully transferred
+226 1.305 seconds (measured here), 92.91 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cleanroom-packaging-class-100
+< 550 Can't create directory: File exists
+
+> CWD cleanroom-packaging-class-100
+< 250 OK. Current directory is /ar/capabilities/cleanroom-packaging-class-100
+
+> EPSV
+< 229 Extended Passive mode OK (|||55098|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55098 (No encryption)
+< 226-File successfully transferred
+226 1.058 seconds (measured here), 115.28 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD closed-die-forging
+< 550 Can't create directory: File exists
+
+> CWD closed-die-forging
+< 250 OK. Current directory is /ar/capabilities/closed-die-forging
+
+> EPSV
+< 229 Extended Passive mode OK (|||56822|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56822 (No encryption)
+< 226-File successfully transferred
+226 1.490 seconds (measured here), 90.24 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-alignment-of-hanger-interface
+< 550 Can't create directory: File exists
+
+> CWD cmm-alignment-of-hanger-interface
+< 250 OK. Current directory is /ar/capabilities/cmm-alignment-of-hanger-interface
+
+> EPSV
+< 229 Extended Passive mode OK (|||58835|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58835 (No encryption)
+< 226-File successfully transferred
+226 1.011 seconds (measured here), 120.58 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-blade-profiling
+< 550 Can't create directory: File exists
+
+> CWD cmm-blade-profiling
+< 250 OK. Current directory is /ar/capabilities/cmm-blade-profiling
+
+> EPSV
+< 229 Extended Passive mode OK (|||53189|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53189 (No encryption)
+< 226-File successfully transferred
+226 7.454 seconds (measured here), 16.32 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-contour-inspection--02mm
+< 550 Can't create directory: File exists
+
+> CWD cmm-contour-inspection--02mm
+< 250 OK. Current directory is /ar/capabilities/cmm-contour-inspection--02mm
+
+> EPSV
+< 229 Extended Passive mode OK (|||64335|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64335 (No encryption)
+< 226-File successfully transferred
+226 11.586 seconds (measured here), 10.50 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-dimensional-inspection
+< 550 Can't create directory: File exists
+
+> CWD cmm-dimensional-inspection
+< 250 OK. Current directory is /ar/capabilities/cmm-dimensional-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||64973|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64973 (No encryption)
+< 226-File successfully transferred
+226 1.034 seconds (measured here), 117.49 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-dimensional-inspection--001mm
+< 550 Can't create directory: File exists
+
+> CWD cmm-dimensional-inspection--001mm
+< 250 OK. Current directory is /ar/capabilities/cmm-dimensional-inspection--001mm
+
+> EPSV
+< 229 Extended Passive mode OK (|||59903|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59903 (No encryption)
+< 226-File successfully transferred
+226 1.037 seconds (measured here), 117.68 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-dimensional-inspection-of-contact-spacing
+< 550 Can't create directory: File exists
+
+> CWD cmm-dimensional-inspection-of-contact-spacing
+< 250 OK. Current directory is /ar/capabilities/cmm-dimensional-inspection-of-contact-spacing
+
+> EPSV
+< 229 Extended Passive mode OK (|||49849|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49849 (No encryption)
+< 226-File successfully transferred
+226 1.040 seconds (measured here), 117.90 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-inspection
+< 550 Can't create directory: File exists
+
+> CWD cmm-inspection
+< 250 OK. Current directory is /ar/capabilities/cmm-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||50303|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50303 (No encryption)
+< 226-File successfully transferred
+226 1.054 seconds (measured here), 114.56 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-inspection--0001mm-for-critical-features
+< 550 Can't create directory: File exists
+
+> CWD cmm-inspection--0001mm-for-critical-features
+< 250 OK. Current directory is /ar/capabilities/cmm-inspection--0001mm-for-critical-features
+
+> EPSV
+< 229 Extended Passive mode OK (|||51161|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51161 (No encryption)
+< 226-File successfully transferred
+226 0.997 seconds (measured here), 123.07 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-tooth-profile-inspection
+< 550 Can't create directory: File exists
+
+> CWD cmm-tooth-profile-inspection
+< 250 OK. Current directory is /ar/capabilities/cmm-tooth-profile-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||59936|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59936 (No encryption)
+< 226-File successfully transferred
+226 1.388 seconds (measured here), 87.61 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cmm-vision-inspection
+< 550 Can't create directory: File exists
+
+> CWD cmm-vision-inspection
+< 250 OK. Current directory is /ar/capabilities/cmm-vision-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||53978|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53978 (No encryption)
+< 226-File successfully transferred
+226 1.247 seconds (measured here), 97.23 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-cutting-profile-cutting
+< 550 Can't create directory: File exists
+
+> CWD cnc-cutting-profile-cutting
+< 250 OK. Current directory is /ar/capabilities/cnc-cutting-profile-cutting
+
+> EPSV
+< 229 Extended Passive mode OK (|||65493|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65493 (No encryption)
+< 226-File successfully transferred
+226 1.009 seconds (measured here), 120.69 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-gun-drilling--centerless-grinding-of-pivot-axles
+< 550 Can't create directory: File exists
+
+> CWD cnc-gun-drilling--centerless-grinding-of-pivot-axles
+< 250 OK. Current directory is /ar/capabilities/cnc-gun-drilling--centerless-grinding-of-pivot-axles
+
+> EPSV
+< 229 Extended Passive mode OK (|||60141|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60141 (No encryption)
+< 226-File successfully transferred
+226 1.034 seconds (measured here), 119.06 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-bores-and-attachment-holes
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-bores-and-attachment-holes
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-bores-and-attachment-holes
+
+> EPSV
+< 229 Extended Passive mode OK (|||52468|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52468 (No encryption)
+< 226-File successfully transferred
+226 1.269 seconds (measured here), 96.65 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-clamping-plates-and-brackets
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-clamping-plates-and-brackets
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-clamping-plates-and-brackets
+
+> EPSV
+< 229 Extended Passive mode OK (|||54271|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54271 (No encryption)
+< 226-File successfully transferred
+226 1.037 seconds (measured here), 119.00 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-critical-surfaces
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-critical-surfaces
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-critical-surfaces
+
+> EPSV
+< 229 Extended Passive mode OK (|||65305|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65305 (No encryption)
+< 226-File successfully transferred
+226 1.020 seconds (measured here), 119.78 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-flange-faces-and-bolt-holes
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-flange-faces-and-bolt-holes
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-flange-faces-and-bolt-holes
+
+> EPSV
+< 229 Extended Passive mode OK (|||54696|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54696 (No encryption)
+< 226-File successfully transferred
+226 1.751 seconds (measured here), 70.61 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-impeller-profiles-5-axis
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-impeller-profiles-5-axis
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-impeller-profiles-5-axis
+
+> EPSV
+< 229 Extended Passive mode OK (|||56301|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56301 (No encryption)
+< 226-File successfully transferred
+226 1.039 seconds (measured here), 119.51 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-mating-flanges
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-mating-flanges
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-mating-flanges
+
+> EPSV
+< 229 Extended Passive mode OK (|||53185|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53185 (No encryption)
+< 226-File successfully transferred
+226 1.031 seconds (measured here), 119.09 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-ring-and-frame-components
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-ring-and-frame-components
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-ring-and-frame-components
+
+> EPSV
+< 229 Extended Passive mode OK (|||59665|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59665 (No encryption)
+< 226-File successfully transferred
+226 1.014 seconds (measured here), 121.70 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-rotor-profile-brake-track
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-rotor-profile-brake-track
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-rotor-profile-brake-track
+
+> EPSV
+< 229 Extended Passive mode OK (|||58143|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58143 (No encryption)
+< 226-File successfully transferred
+226 1.030 seconds (measured here), 119.04 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-threaded-couplings
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-threaded-couplings
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-threaded-couplings
+
+> EPSV
+< 229 Extended Passive mode OK (|||51093|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51093 (No encryption)
+< 226-File successfully transferred
+226 1.016 seconds (measured here), 120.22 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-thumb-screw-clamps-and-brackets
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-thumb-screw-clamps-and-brackets
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-thumb-screw-clamps-and-brackets
+
+> EPSV
+< 229 Extended Passive mode OK (|||50326|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50326 (No encryption)
+< 226-File successfully transferred
+226 1.045 seconds (measured here), 118.28 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-tooth-profiles
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-tooth-profiles
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-tooth-profiles
+
+> EPSV
+< 229 Extended Passive mode OK (|||52788|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52788 (No encryption)
+< 226-File successfully transferred
+226 1.017 seconds (measured here), 119.89 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-machining-of-venturi-nozzle-profiles
+< 550 Can't create directory: File exists
+
+> CWD cnc-machining-of-venturi-nozzle-profiles
+< 250 OK. Current directory is /ar/capabilities/cnc-machining-of-venturi-nozzle-profiles
+
+> EPSV
+< 229 Extended Passive mode OK (|||65222|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65222 (No encryption)
+< 226-File successfully transferred
+226 1.067 seconds (measured here), 115.60 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling--diamond-cut-beveling-of-watch-bezels
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling--diamond-cut-beveling-of-watch-bezels
+< 250 OK. Current directory is /ar/capabilities/cnc-milling--diamond-cut-beveling-of-watch-bezels
+
+> EPSV
+< 229 Extended Passive mode OK (|||61726|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61726 (No encryption)
+< 226-File successfully transferred
+226 1.487 seconds (measured here), 83.14 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling-from-plate-or-near-net-forging
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling-from-plate-or-near-net-forging
+< 250 OK. Current directory is /ar/capabilities/cnc-milling-from-plate-or-near-net-forging
+
+> EPSV
+< 229 Extended Passive mode OK (|||61908|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61908 (No encryption)
+< 226-File successfully transferred
+226 1.012 seconds (measured here), 122.12 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling-of-ergonomic-contours
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling-of-ergonomic-contours
+< 250 OK. Current directory is /ar/capabilities/cnc-milling-of-ergonomic-contours
+
+> EPSV
+< 229 Extended Passive mode OK (|||63397|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63397 (No encryption)
+< 226-File successfully transferred
+226 1.050 seconds (measured here), 116.29 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling-of-face-sole
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling-of-face-sole
+< 250 OK. Current directory is /ar/capabilities/cnc-milling-of-face-sole
+
+> EPSV
+< 229 Extended Passive mode OK (|||58441|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58441 (No encryption)
+< 226-File successfully transferred
+226 1.034 seconds (measured here), 117.57 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling-of-lugs-and-crown-guards
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling-of-lugs-and-crown-guards
+< 250 OK. Current directory is /ar/capabilities/cnc-milling-of-lugs-and-crown-guards
+
+> EPSV
+< 229 Extended Passive mode OK (|||52287|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52287 (No encryption)
+< 226-File successfully transferred
+226 1.017 seconds (measured here), 120.20 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling-turning-of-brackets-and-alignment-blocks
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling-turning-of-brackets-and-alignment-blocks
+< 250 OK. Current directory is /ar/capabilities/cnc-milling-turning-of-brackets-and-alignment-blocks
+
+> EPSV
+< 229 Extended Passive mode OK (|||58795|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58795 (No encryption)
+< 226-File successfully transferred
+226 1.013 seconds (measured here), 121.03 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-milling-turning-of-susceptor-and-arms
+< 550 Can't create directory: File exists
+
+> CWD cnc-milling-turning-of-susceptor-and-arms
+< 250 OK. Current directory is /ar/capabilities/cnc-milling-turning-of-susceptor-and-arms
+
+> EPSV
+< 229 Extended Passive mode OK (|||57753|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57753 (No encryption)
+< 226-File successfully transferred
+226 1.523 seconds (measured here), 79.84 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-multi-spindle-turning
+< 550 Can't create directory: File exists
+
+> CWD cnc-multi-spindle-turning
+< 250 OK. Current directory is /ar/capabilities/cnc-multi-spindle-turning
+
+> EPSV
+< 229 Extended Passive mode OK (|||64352|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64352 (No encryption)
+< 226-File successfully transferred
+226 1.014 seconds (measured here), 119.89 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-pocket-milling-for-weight-reduction
+< 550 Can't create directory: File exists
+
+> CWD cnc-pocket-milling-for-weight-reduction
+< 250 OK. Current directory is /ar/capabilities/cnc-pocket-milling-for-weight-reduction
+
+> EPSV
+< 229 Extended Passive mode OK (|||60631|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60631 (No encryption)
+< 226-File successfully transferred
+226 1.054 seconds (measured here), 116.20 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-profiling--frame-lock-milling-for-folding-knives
+< 550 Can't create directory: File exists
+
+> CWD cnc-profiling--frame-lock-milling-for-folding-knives
+< 250 OK. Current directory is /ar/capabilities/cnc-profiling--frame-lock-milling-for-folding-knives
+
+> EPSV
+< 229 Extended Passive mode OK (|||52128|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52128 (No encryption)
+< 226-File successfully transferred
+226 1.341 seconds (measured here), 91.90 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-profiling-of-impeller-blades
+< 550 Can't create directory: File exists
+
+> CWD cnc-profiling-of-impeller-blades
+< 250 OK. Current directory is /ar/capabilities/cnc-profiling-of-impeller-blades
+
+> EPSV
+< 229 Extended Passive mode OK (|||56111|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56111 (No encryption)
+< 226-File successfully transferred
+226 1.275 seconds (measured here), 96.36 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-swaging-j-bend-forming-of-spoke-ends
+< 550 Can't create directory: File exists
+
+> CWD cnc-swaging-j-bend-forming-of-spoke-ends
+< 250 OK. Current directory is /ar/capabilities/cnc-swaging-j-bend-forming-of-spoke-ends
+
+> EPSV
+< 229 Extended Passive mode OK (|||54801|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54801 (No encryption)
+< 226-File successfully transferred
+226 1.269 seconds (measured here), 96.46 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-tube-bending
+< 550 Can't create directory: File exists
+
+> CWD cnc-tube-bending
+< 250 OK. Current directory is /ar/capabilities/cnc-tube-bending
+
+> EPSV
+< 229 Extended Passive mode OK (|||58717|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58717 (No encryption)
+< 226-File successfully transferred
+226 1.023 seconds (measured here), 120.12 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning--boring-of-id-od
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning--boring-of-id-od
+< 250 OK. Current directory is /ar/capabilities/cnc-turning--boring-of-id-od
+
+> EPSV
+< 229 Extended Passive mode OK (|||53553|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53553 (No encryption)
+< 226-File successfully transferred
+226 1.002 seconds (measured here), 121.25 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning--milling-of-housing
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning--milling-of-housing
+< 250 OK. Current directory is /ar/capabilities/cnc-turning--milling-of-housing
+
+> EPSV
+< 229 Extended Passive mode OK (|||54541|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54541 (No encryption)
+< 226-File successfully transferred
+226 1.034 seconds (measured here), 117.68 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning--nodal-profile-milling-of-sonotrode
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning--nodal-profile-milling-of-sonotrode
+< 250 OK. Current directory is /ar/capabilities/cnc-turning--nodal-profile-milling-of-sonotrode
+
+> EPSV
+< 229 Extended Passive mode OK (|||61887|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61887 (No encryption)
+< 226-File successfully transferred
+226 0.992 seconds (measured here), 122.94 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-boring-of-rings
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-boring-of-rings
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-boring-of-rings
+
+> EPSV
+< 229 Extended Passive mode OK (|||60548|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60548 (No encryption)
+< 226-File successfully transferred
+226 2.265 seconds (measured here), 53.53 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-axle-spindle-profiles
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-axle-spindle-profiles
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-axle-spindle-profiles
+
+> EPSV
+< 229 Extended Passive mode OK (|||56319|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56319 (No encryption)
+< 226-File successfully transferred
+226 1.031 seconds (measured here), 118.52 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-bolt-heads-and-threads
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-bolt-heads-and-threads
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-bolt-heads-and-threads
+
+> EPSV
+< 229 Extended Passive mode OK (|||57768|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57768 (No encryption)
+< 226-File successfully transferred
+226 0.994 seconds (measured here), 122.00 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-case-profile
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-case-profile
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-case-profile
+
+> EPSV
+< 229 Extended Passive mode OK (|||58950|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58950 (No encryption)
+< 226-File successfully transferred
+226 0.996 seconds (measured here), 121.81 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-pushrods-and-droplinks
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-pushrods-and-droplinks
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-pushrods-and-droplinks
+
+> EPSV
+< 229 Extended Passive mode OK (|||49689|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49689 (No encryption)
+< 226-File successfully transferred
+226 1.506 seconds (measured here), 80.53 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-ring-profiles-and-knife-edges
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-ring-profiles-and-knife-edges
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-ring-profiles-and-knife-edges
+
+> EPSV
+< 229 Extended Passive mode OK (|||55192|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55192 (No encryption)
+< 226-File successfully transferred
+226 1.019 seconds (measured here), 120.07 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-valve-stems
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-valve-stems
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-valve-stems
+
+> EPSV
+< 229 Extended Passive mode OK (|||60088|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60088 (No encryption)
+< 226-File successfully transferred
+226 1.027 seconds (measured here), 117.84 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cnc-turning-of-vcr-male-female-components
+< 550 Can't create directory: File exists
+
+> CWD cnc-turning-of-vcr-male-female-components
+< 250 OK. Current directory is /ar/capabilities/cnc-turning-of-vcr-male-female-components
+
+> EPSV
+< 229 Extended Passive mode OK (|||62511|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62511 (No encryption)
+< 226-File successfully transferred
+226 1.043 seconds (measured here), 116.55 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD coating-if-required
+< 550 Can't create directory: File exists
+
+> CWD coating-if-required
+< 250 OK. Current directory is /ar/capabilities/coating-if-required
+
+> EPSV
+< 229 Extended Passive mode OK (|||65404|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65404 (No encryption)
+< 226-File successfully transferred
+226 2.069 seconds (measured here), 58.76 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD coaxiality-measurement-of-pivot-axles-002mm
+< 550 Can't create directory: File exists
+
+> CWD coaxiality-measurement-of-pivot-axles-002mm
+< 250 OK. Current directory is /ar/capabilities/coaxiality-measurement-of-pivot-axles-002mm
+
+> EPSV
+< 229 Extended Passive mode OK (|||50114|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50114 (No encryption)
+< 226-File successfully transferred
+226 0.997 seconds (measured here), 122.22 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cold-heading-of-hex-nuts--cnc-tapping
+< 550 Can't create directory: File exists
+
+> CWD cold-heading-of-hex-nuts--cnc-tapping
+< 250 OK. Current directory is /ar/capabilities/cold-heading-of-hex-nuts--cnc-tapping
+
+> EPSV
+< 229 Extended Passive mode OK (|||57462|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57462 (No encryption)
+< 226-File successfully transferred
+226 1.054 seconds (measured here), 117.14 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cold-hot-heading-forming
+< 550 Can't create directory: File exists
+
+> CWD cold-hot-heading-forming
+< 250 OK. Current directory is /ar/capabilities/cold-hot-heading-forming
+
+> EPSV
+< 229 Extended Passive mode OK (|||62023|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62023 (No encryption)
+< 226-File successfully transferred
+226 1.799 seconds (measured here), 67.56 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD concentricity-measurement
+< 550 Can't create directory: File exists
+
+> CWD concentricity-measurement
+< 250 OK. Current directory is /ar/capabilities/concentricity-measurement
+
+> EPSV
+< 229 Extended Passive mode OK (|||55153|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55153 (No encryption)
+< 226-File successfully transferred
+226 1.050 seconds (measured here), 114.84 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD contact-resistance-measurement-cnt-method
+< 550 Can't create directory: File exists
+
+> CWD contact-resistance-measurement-cnt-method
+< 250 OK. Current directory is /ar/capabilities/contact-resistance-measurement-cnt-method
+
+> EPSV
+< 229 Extended Passive mode OK (|||51143|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51143 (No encryption)
+< 226-File successfully transferred
+226 7.984 seconds (measured here), 15.24 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD contact-resistance-testing
+< 550 Can't create directory: File exists
+
+> CWD contact-resistance-testing
+< 250 OK. Current directory is /ar/capabilities/contact-resistance-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||64428|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64428 (No encryption)
+< 226-File successfully transferred
+226 1.012 seconds (measured here), 120.04 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD continuous-cold-tube-pilgering-for-condenser-tubes
+< 550 Can't create directory: File exists
+
+> CWD continuous-cold-tube-pilgering-for-condenser-tubes
+< 250 OK. Current directory is /ar/capabilities/continuous-cold-tube-pilgering-for-condenser-tubes
+
+> EPSV
+< 229 Extended Passive mode OK (|||58249|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58249 (No encryption)
+< 226-File successfully transferred
+226 0.991 seconds (measured here), 124.63 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD contour-inspection-cmm-bluelight
+< 550 Can't create directory: File exists
+
+> CWD contour-inspection-cmm-bluelight
+< 250 OK. Current directory is /ar/capabilities/contour-inspection-cmm-bluelight
+
+> EPSV
+< 229 Extended Passive mode OK (|||58626|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58626 (No encryption)
+< 226-File successfully transferred
+226 1.047 seconds (measured here), 116.40 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD coordinate-accuracy-verification--01mm
+< 550 Can't create directory: File exists
+
+> CWD coordinate-accuracy-verification--01mm
+< 250 OK. Current directory is /ar/capabilities/coordinate-accuracy-verification--01mm
+
+> EPSV
+< 229 Extended Passive mode OK (|||55806|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55806 (No encryption)
+< 226-File successfully transferred
+226 0.995 seconds (measured here), 122.18 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD coordinate-measurement-of-fiducial-markers
+< 550 Can't create directory: File exists
+
+> CWD coordinate-measurement-of-fiducial-markers
+< 250 OK. Current directory is /ar/capabilities/coordinate-measurement-of-fiducial-markers
+
+> EPSV
+< 229 Extended Passive mode OK (|||49946|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49946 (No encryption)
+< 226-File successfully transferred
+226 1.041 seconds (measured here), 117.81 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD corrosion-testing
+< 550 Can't create directory: File exists
+
+> CWD corrosion-testing
+< 250 OK. Current directory is /ar/capabilities/corrosion-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||59064|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59064 (No encryption)
+< 226-File successfully transferred
+226 1.018 seconds (measured here), 118.80 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD corrosion-testing-potentiodynamic
+< 550 Can't create directory: File exists
+
+> CWD corrosion-testing-potentiodynamic
+< 250 OK. Current directory is /ar/capabilities/corrosion-testing-potentiodynamic
+
+> EPSV
+< 229 Extended Passive mode OK (|||52815|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52815 (No encryption)
+< 226-File successfully transferred
+226 1.270 seconds (measured here), 96.06 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD creep-testing
+< 550 Can't create directory: File exists
+
+> CWD creep-testing
+< 250 OK. Current directory is /ar/capabilities/creep-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||65023|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65023 (No encryption)
+< 226-File successfully transferred
+226 1.045 seconds (measured here), 115.50 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD crimping--loading-into-delivery-system
+< 550 Can't create directory: File exists
+
+> CWD crimping--loading-into-delivery-system
+< 250 OK. Current directory is /ar/capabilities/crimping--loading-into-delivery-system
+
+> EPSV
+< 229 Extended Passive mode OK (|||56661|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56661 (No encryption)
+< 226-File successfully transferred
+226 1.307 seconds (measured here), 93.55 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cryogenic-dimensional-inspection
+< 550 Can't create directory: File exists
+
+> CWD cryogenic-dimensional-inspection
+< 250 OK. Current directory is /ar/capabilities/cryogenic-dimensional-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||61214|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61214 (No encryption)
+< 226-File successfully transferred
+226 1.055 seconds (measured here), 115.46 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cryogenic-polishing-for-medical-sonotrodes
+< 550 Can't create directory: File exists
+
+> CWD cryogenic-polishing-for-medical-sonotrodes
+< 250 OK. Current directory is /ar/capabilities/cryogenic-polishing-for-medical-sonotrodes
+
+> EPSV
+< 229 Extended Passive mode OK (|||55949|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55949 (No encryption)
+< 226-File successfully transferred
+226 1.548 seconds (measured here), 79.90 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cryogenic-proof-testing
+< 550 Can't create directory: File exists
+
+> CWD cryogenic-proof-testing
+< 250 OK. Current directory is /ar/capabilities/cryogenic-proof-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||62250|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62250 (No encryption)
+< 226-File successfully transferred
+226 1.047 seconds (measured here), 115.86 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cryogenic-testing-196c
+< 550 Can't create directory: File exists
+
+> CWD cryogenic-testing-196c
+< 250 OK. Current directory is /ar/capabilities/cryogenic-testing-196c
+
+> EPSV
+< 229 Extended Passive mode OK (|||51711|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51711 (No encryption)
+< 226-File successfully transferred
+226 1.020 seconds (measured here), 118.93 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD ct-scanning-internal-defect-detection
+< 550 Can't create directory: File exists
+
+> CWD ct-scanning-internal-defect-detection
+< 250 OK. Current directory is /ar/capabilities/ct-scanning-internal-defect-detection
+
+> EPSV
+< 229 Extended Passive mode OK (|||49497|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49497 (No encryption)
+< 226-File successfully transferred
+226 1.044 seconds (measured here), 116.22 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD custom-fabrication-to-drawing
+< 550 Can't create directory: File exists
+
+> CWD custom-fabrication-to-drawing
+< 250 OK. Current directory is /ar/capabilities/custom-fabrication-to-drawing
+
+> EPSV
+< 229 Extended Passive mode OK (|||51424|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51424 (No encryption)
+< 226-File successfully transferred
+226 1.024 seconds (measured here), 118.88 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cycle-testing-200000-cycles
+< 550 Can't create directory: File exists
+
+> CWD cycle-testing-200000-cycles
+< 250 OK. Current directory is /ar/capabilities/cycle-testing-200000-cycles
+
+> EPSV
+< 229 Extended Passive mode OK (|||53120|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53120 (No encryption)
+< 226-File successfully transferred
+226 1.801 seconds (measured here), 67.52 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD cylindrical-centerless-grinding
+< 550 Can't create directory: File exists
+
+> CWD cylindrical-centerless-grinding
+< 250 OK. Current directory is /ar/capabilities/cylindrical-centerless-grinding
+
+> EPSV
+< 229 Extended Passive mode OK (|||56751|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56751 (No encryption)
+< 226-File successfully transferred
+226 0.992 seconds (measured here), 122.96 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD debinding--sintering
+< 550 Can't create directory: File exists
+
+> CWD debinding--sintering
+< 250 OK. Current directory is /ar/capabilities/debinding--sintering
+
+> EPSV
+< 229 Extended Passive mode OK (|||55331|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55331 (No encryption)
+< 226-File successfully transferred
+226 1.061 seconds (measured here), 113.84 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD deburring-edge-rounding
+< 550 Can't create directory: File exists
+
+> CWD deburring-edge-rounding
+< 250 OK. Current directory is /ar/capabilities/deburring-edge-rounding
+
+> EPSV
+< 229 Extended Passive mode OK (|||54571|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54571 (No encryption)
+< 226-File successfully transferred
+226 0.995 seconds (measured here), 121.51 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD deep-drawing-of-vacuum-flask-liners-grade-1-ti
+< 550 Can't create directory: File exists
+
+> CWD deep-drawing-of-vacuum-flask-liners-grade-1-ti
+< 250 OK. Current directory is /ar/capabilities/deep-drawing-of-vacuum-flask-liners-grade-1-ti
+
+> EPSV
+< 229 Extended Passive mode OK (|||59537|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59537 (No encryption)
+< 226-File successfully transferred
+226 1.024 seconds (measured here), 120.01 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD deep-hole-boring-of-multi-port-manifolds
+< 550 Can't create directory: File exists
+
+> CWD deep-hole-boring-of-multi-port-manifolds
+< 250 OK. Current directory is /ar/capabilities/deep-hole-boring-of-multi-port-manifolds
+
+> EPSV
+< 229 Extended Passive mode OK (|||57458|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57458 (No encryption)
+< 226-File successfully transferred
+226 2.045 seconds (measured here), 59.59 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD deep-hole-drilling-tube-sheet
+< 550 Can't create directory: File exists
+
+> CWD deep-hole-drilling-tube-sheet
+< 250 OK. Current directory is /ar/capabilities/deep-hole-drilling-tube-sheet
+
+> EPSV
+< 229 Extended Passive mode OK (|||50903|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50903 (No encryption)
+< 226-File successfully transferred
+226 1.091 seconds (measured here), 112.89 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD deep-hole-gun-drilling-of-gas-manifold-blocks
+< 550 Can't create directory: File exists
+
+> CWD deep-hole-gun-drilling-of-gas-manifold-blocks
+< 250 OK. Current directory is /ar/capabilities/deep-hole-gun-drilling-of-gas-manifold-blocks
+
+> EPSV
+< 229 Extended Passive mode OK (|||58927|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58927 (No encryption)
+< 226-File successfully transferred
+226 1.049 seconds (measured here), 117.00 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD deep-hole-gun-drilling-of-pressure-housings
+< 550 Can't create directory: File exists
+
+> CWD deep-hole-gun-drilling-of-pressure-housings
+< 250 OK. Current directory is /ar/capabilities/deep-hole-gun-drilling-of-pressure-housings
+
+> EPSV
+< 229 Extended Passive mode OK (|||55657|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55657 (No encryption)
+< 226-File successfully transferred
+226 1.038 seconds (measured here), 118.47 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD digital-frequency-analysis-dfa-tuning-to--50hz-target
+< 550 Can't create directory: File exists
+
+> CWD digital-frequency-analysis-dfa-tuning-to--50hz-target
+< 250 OK. Current directory is /ar/capabilities/digital-frequency-analysis-dfa-tuning-to--50hz-target
+
+> EPSV
+< 229 Extended Passive mode OK (|||60236|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60236 (No encryption)
+< 226-File successfully transferred
+226 1.026 seconds (measured here), 119.32 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-certification
+< 550 Can't create directory: File exists
+
+> CWD dimensional-certification
+< 250 OK. Current directory is /ar/capabilities/dimensional-certification
+
+> EPSV
+< 229 Extended Passive mode OK (|||58414|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58414 (No encryption)
+< 226-File successfully transferred
+226 1.304 seconds (measured here), 92.47 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-certification-of-bolt-circle-patterns
+< 550 Can't create directory: File exists
+
+> CWD dimensional-certification-of-bolt-circle-patterns
+< 250 OK. Current directory is /ar/capabilities/dimensional-certification-of-bolt-circle-patterns
+
+> EPSV
+< 229 Extended Passive mode OK (|||64278|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64278 (No encryption)
+< 226-File successfully transferred
+226 1.020 seconds (measured here), 119.67 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-certification-with-full-traceability
+< 550 Can't create directory: File exists
+
+> CWD dimensional-certification-with-full-traceability
+< 250 OK. Current directory is /ar/capabilities/dimensional-certification-with-full-traceability
+
+> EPSV
+< 229 Extended Passive mode OK (|||64952|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64952 (No encryption)
+< 226-File successfully transferred
+226 0.999 seconds (measured here), 122.11 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-inspection
+< 550 Can't create directory: File exists
+
+> CWD dimensional-inspection
+< 250 OK. Current directory is /ar/capabilities/dimensional-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||49638|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49638 (No encryption)
+< 226-File successfully transferred
+226 0.996 seconds (measured here), 121.72 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-inspection-of-mating-surfaces
+< 550 Can't create directory: File exists
+
+> CWD dimensional-inspection-of-mating-surfaces
+< 250 OK. Current directory is /ar/capabilities/dimensional-inspection-of-mating-surfaces
+
+> EPSV
+< 229 Extended Passive mode OK (|||62673|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62673 (No encryption)
+< 226-File successfully transferred
+226 1.043 seconds (measured here), 117.37 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-inspection-of-mounting-interfaces
+< 550 Can't create directory: File exists
+
+> CWD dimensional-inspection-of-mounting-interfaces
+< 250 OK. Current directory is /ar/capabilities/dimensional-inspection-of-mounting-interfaces
+
+> EPSV
+< 229 Extended Passive mode OK (|||49402|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49402 (No encryption)
+< 226-File successfully transferred
+226 1.015 seconds (measured here), 120.88 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-inspection-per-asme-b165-b169
+< 550 Can't create directory: File exists
+
+> CWD dimensional-inspection-per-asme-b165-b169
+< 250 OK. Current directory is /ar/capabilities/dimensional-inspection-per-asme-b165-b169
+
+> EPSV
+< 229 Extended Passive mode OK (|||52526|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:52526 (No encryption)
+< 226-File successfully transferred
+226 1.022 seconds (measured here), 119.82 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-inspection-per-asme-b165-din-standards
+< 550 Can't create directory: File exists
+
+> CWD dimensional-inspection-per-asme-b165-din-standards
+< 250 OK. Current directory is /ar/capabilities/dimensional-inspection-per-asme-b165-din-standards
+
+> EPSV
+< 229 Extended Passive mode OK (|||65295|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65295 (No encryption)
+< 226-File successfully transferred
+226 1.092 seconds (measured here), 112.66 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dimensional-sorting
+< 550 Can't create directory: File exists
+
+> CWD dimensional-sorting
+< 250 OK. Current directory is /ar/capabilities/dimensional-sorting
+
+> EPSV
+< 229 Extended Passive mode OK (|||57721|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57721 (No encryption)
+< 226-File successfully transferred
+226 0.993 seconds (measured here), 121.07 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dlc-coating-for-wear-resistance
+< 550 Can't create directory: File exists
+
+> CWD dlc-coating-for-wear-resistance
+< 250 OK. Current directory is /ar/capabilities/dlc-coating-for-wear-resistance
+
+> EPSV
+< 229 Extended Passive mode OK (|||58282|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58282 (No encryption)
+< 226-File successfully transferred
+226 1.041 seconds (measured here), 117.49 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dlc-coating-wear-resistance
+< 550 Can't create directory: File exists
+
+> CWD dlc-coating-wear-resistance
+< 250 OK. Current directory is /ar/capabilities/dlc-coating-wear-resistance
+
+> EPSV
+< 229 Extended Passive mode OK (|||58871|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58871 (No encryption)
+< 226-File successfully transferred
+226 2.718 seconds (measured here), 44.90 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD drilling-of-bolt-holes-with-jig
+< 550 Can't create directory: File exists
+
+> CWD drilling-of-bolt-holes-with-jig
+< 250 OK. Current directory is /ar/capabilities/drilling-of-bolt-holes-with-jig
+
+> EPSV
+< 229 Extended Passive mode OK (|||57669|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57669 (No encryption)
+< 226-File successfully transferred
+226 1.255 seconds (measured here), 97.11 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD drilling-of-mounting-holes
+< 550 Can't create directory: File exists
+
+> CWD drilling-of-mounting-holes
+< 250 OK. Current directory is /ar/capabilities/drilling-of-mounting-holes
+
+> EPSV
+< 229 Extended Passive mode OK (|||55969|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55969 (No encryption)
+< 226-File successfully transferred
+226 1.015 seconds (measured here), 119.80 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD drilling-tapping
+< 550 Can't create directory: File exists
+
+> CWD drilling-tapping
+< 250 OK. Current directory is /ar/capabilities/drilling-tapping
+
+> EPSV
+< 229 Extended Passive mode OK (|||59063|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59063 (No encryption)
+< 226-File successfully transferred
+226 1.011 seconds (measured here), 120.47 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD drop-impact-testing-15m-onto-concrete
+< 550 Can't create directory: File exists
+
+> CWD drop-impact-testing-15m-onto-concrete
+< 250 OK. Current directory is /ar/capabilities/drop-impact-testing-15m-onto-concrete
+
+> EPSV
+< 229 Extended Passive mode OK (|||50415|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50415 (No encryption)
+< 226-File successfully transferred
+226 1.026 seconds (measured here), 119.19 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD drop-impact-testing-of-knife-lock-up
+< 550 Can't create directory: File exists
+
+> CWD drop-impact-testing-of-knife-lock-up
+< 250 OK. Current directory is /ar/capabilities/drop-impact-testing-of-knife-lock-up
+
+> EPSV
+< 229 Extended Passive mode OK (|||61951|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61951 (No encryption)
+< 226-File successfully transferred
+226 1.032 seconds (measured here), 118.29 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD drop-testing-mil-std-810
+< 550 Can't create directory: File exists
+
+> CWD drop-testing-mil-std-810
+< 250 OK. Current directory is /ar/capabilities/drop-testing-mil-std-810
+
+> EPSV
+< 229 Extended Passive mode OK (|||49715|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49715 (No encryption)
+< 226-File successfully transferred
+226 1.014 seconds (measured here), 119.70 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dust-ingress-testing
+< 550 Can't create directory: File exists
+
+> CWD dust-ingress-testing
+< 250 OK. Current directory is /ar/capabilities/dust-ingress-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||63028|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63028 (No encryption)
+< 226-File successfully transferred
+226 1.011 seconds (measured here), 119.77 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dynamic-balancing
+< 550 Can't create directory: File exists
+
+> CWD dynamic-balancing
+< 250 OK. Current directory is /ar/capabilities/dynamic-balancing
+
+> EPSV
+< 229 Extended Passive mode OK (|||55978|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55978 (No encryption)
+< 226-File successfully transferred
+226 1.280 seconds (measured here), 93.82 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dynamic-balancing-for-rotary-horns
+< 550 Can't create directory: File exists
+
+> CWD dynamic-balancing-for-rotary-horns
+< 250 OK. Current directory is /ar/capabilities/dynamic-balancing-for-rotary-horns
+
+> EPSV
+< 229 Extended Passive mode OK (|||63611|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63611 (No encryption)
+< 226-File successfully transferred
+226 1.046 seconds (measured here), 115.80 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD dynamic-balancing-test
+< 550 Can't create directory: File exists
+
+> CWD dynamic-balancing-test
+< 250 OK. Current directory is /ar/capabilities/dynamic-balancing-test
+
+> EPSV
+< 229 Extended Passive mode OK (|||49294|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49294 (No encryption)
+< 226-File successfully transferred
+226 1.034 seconds (measured here), 117.35 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD eb-laser-welding-of-rib-skin-assembly
+< 550 Can't create directory: File exists
+
+> CWD eb-laser-welding-of-rib-skin-assembly
+< 250 OK. Current directory is /ar/capabilities/eb-laser-welding-of-rib-skin-assembly
+
+> EPSV
+< 229 Extended Passive mode OK (|||56334|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56334 (No encryption)
+< 226-File successfully transferred
+226 1.042 seconds (measured here), 116.99 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD eb-welding-of-hull-seams-under-vacuum
+< 550 Can't create directory: File exists
+
+> CWD eb-welding-of-hull-seams-under-vacuum
+< 250 OK. Current directory is /ar/capabilities/eb-welding-of-hull-seams-under-vacuum
+
+> EPSV
+< 229 Extended Passive mode OK (|||50693|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50693 (No encryption)
+< 226-File successfully transferred
+226 1.027 seconds (measured here), 118.25 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD eddy-current-inspection
+< 550 Can't create directory: File exists
+
+> CWD eddy-current-inspection
+< 250 OK. Current directory is /ar/capabilities/eddy-current-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||54798|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54798 (No encryption)
+< 226-File successfully transferred
+226 1.045 seconds (measured here), 116.05 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD electrical-continuity-testing
+< 550 Can't create directory: File exists
+
+> CWD electrical-continuity-testing
+< 250 OK. Current directory is /ar/capabilities/electrical-continuity-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||64846|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64846 (No encryption)
+< 226-File successfully transferred
+226 1.016 seconds (measured here), 119.72 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD electrochemical-polishing
+< 550 Can't create directory: File exists
+
+> CWD electrochemical-polishing
+< 250 OK. Current directory is /ar/capabilities/electrochemical-polishing
+
+> EPSV
+< 229 Extended Passive mode OK (|||50850|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50850 (No encryption)
+< 226-File successfully transferred
+226 1.000 seconds (measured here), 121.98 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD electropolishing
+< 550 Can't create directory: File exists
+
+> CWD electropolishing
+< 250 OK. Current directory is /ar/capabilities/electropolishing
+
+> EPSV
+< 229 Extended Passive mode OK (|||54430|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54430 (No encryption)
+< 226-File successfully transferred
+226 1.523 seconds (measured here), 95.45 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD electropolishing--class-100-ultrasonic-cleaning
+< 550 Can't create directory: File exists
+
+> CWD electropolishing--class-100-ultrasonic-cleaning
+< 250 OK. Current directory is /ar/capabilities/electropolishing--class-100-ultrasonic-cleaning
+
+> EPSV
+< 229 Extended Passive mode OK (|||61025|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61025 (No encryption)
+< 226-File successfully transferred
+226 1.030 seconds (measured here), 119.45 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD electropolishing-of-all-vacuum-facing-surfaces
+< 550 Can't create directory: File exists
+
+> CWD electropolishing-of-all-vacuum-facing-surfaces
+< 250 OK. Current directory is /ar/capabilities/electropolishing-of-all-vacuum-facing-surfaces
+
+> EPSV
+< 229 Extended Passive mode OK (|||49318|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49318 (No encryption)
+< 226-File successfully transferred
+226 1.036 seconds (measured here), 118.89 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD electropolishing-of-all-wetted-surfaces
+< 550 Can't create directory: File exists
+
+> CWD electropolishing-of-all-wetted-surfaces
+< 250 OK. Current directory is /ar/capabilities/electropolishing-of-all-wetted-surfaces
+
+> EPSV
+< 229 Extended Passive mode OK (|||56637|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56637 (No encryption)
+< 226-File successfully transferred
+226 1.509 seconds (measured here), 81.33 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD end-forming-flaring
+< 550 Can't create directory: File exists
+
+> CWD end-forming-flaring
+< 250 OK. Current directory is /ar/capabilities/end-forming-flaring
+
+> EPSV
+< 229 Extended Passive mode OK (|||59009|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59009 (No encryption)
+< 226-File successfully transferred
+226 1.295 seconds (measured here), 93.75 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD engineering
+< 550 Can't create directory: File exists
+
+> CWD engineering
+< 250 OK. Current directory is /ar/capabilities/engineering
+
+> EPSV
+< 229 Extended Passive mode OK (|||62751|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62751 (No encryption)
+< 226-File successfully transferred
+226 1.022 seconds (measured here), 134.41 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD expanded-metal-mesh-production
+< 550 Can't create directory: File exists
+
+> CWD expanded-metal-mesh-production
+< 250 OK. Current directory is /ar/capabilities/expanded-metal-mesh-production
+
+> EPSV
+< 229 Extended Passive mode OK (|||55346|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55346 (No encryption)
+< 226-File successfully transferred
+226 1.261 seconds (measured here), 95.87 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fatigue-testing
+< 550 Can't create directory: File exists
+
+> CWD fatigue-testing
+< 250 OK. Current directory is /ar/capabilities/fatigue-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||62044|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62044 (No encryption)
+< 226-File successfully transferred
+226 1.031 seconds (measured here), 117.17 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fatigue-testing-105-cycles
+< 550 Can't create directory: File exists
+
+> CWD fatigue-testing-105-cycles
+< 250 OK. Current directory is /ar/capabilities/fatigue-testing-105-cycles
+
+> EPSV
+< 229 Extended Passive mode OK (|||49762|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49762 (No encryption)
+< 226-File successfully transferred
+226 1.025 seconds (measured here), 118.58 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fatigue-testing-106-cycles-at-10nm
+< 550 Can't create directory: File exists
+
+> CWD fatigue-testing-106-cycles-at-10nm
+< 250 OK. Current directory is /ar/capabilities/fatigue-testing-106-cycles-at-10nm
+
+> EPSV
+< 229 Extended Passive mode OK (|||51905|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51905 (No encryption)
+< 226-File successfully transferred
+226 1.029 seconds (measured here), 118.65 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fatigue-testing-accelerated-400m-cycles
+< 550 Can't create directory: File exists
+
+> CWD fatigue-testing-accelerated-400m-cycles
+< 250 OK. Current directory is /ar/capabilities/fatigue-testing-accelerated-400m-cycles
+
+> EPSV
+< 229 Extended Passive mode OK (|||53701|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53701 (No encryption)
+< 226-File successfully transferred
+226 1.024 seconds (measured here), 119.53 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fatigue-testing-of-release-mechanisms-1000-cycles
+< 550 Can't create directory: File exists
+
+> CWD fatigue-testing-of-release-mechanisms-1000-cycles
+< 250 OK. Current directory is /ar/capabilities/fatigue-testing-of-release-mechanisms-1000-cycles
+
+> EPSV
+< 229 Extended Passive mode OK (|||62612|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62612 (No encryption)
+< 226-File successfully transferred
+226 1.304 seconds (measured here), 94.35 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fatigue-testing-sprint-load-simulation
+< 550 Can't create directory: File exists
+
+> CWD fatigue-testing-sprint-load-simulation
+< 250 OK. Current directory is /ar/capabilities/fatigue-testing-sprint-load-simulation
+
+> EPSV
+< 229 Extended Passive mode OK (|||64745|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64745 (No encryption)
+< 226-File successfully transferred
+226 1.036 seconds (measured here), 118.02 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD field-durability-testing-customer-specified
+< 550 Can't create directory: File exists
+
+> CWD field-durability-testing-customer-specified
+< 250 OK. Current directory is /ar/capabilities/field-durability-testing-customer-specified
+
+> EPSV
+< 229 Extended Passive mode OK (|||62311|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62311 (No encryption)
+< 226-File successfully transferred
+226 1.022 seconds (measured here), 119.95 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD flavor-leaching-test-iso-10304-for-metal-ions
+< 550 Can't create directory: File exists
+
+> CWD flavor-leaching-test-iso-10304-for-metal-ions
+< 250 OK. Current directory is /ar/capabilities/flavor-leaching-test-iso-10304-for-metal-ions
+
+> EPSV
+< 229 Extended Passive mode OK (|||53205|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53205 (No encryption)
+< 226-File successfully transferred
+226 0.998 seconds (measured here), 123.01 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD flow-rate-testing-of-eductors
+< 550 Can't create directory: File exists
+
+> CWD flow-rate-testing-of-eductors
+< 250 OK. Current directory is /ar/capabilities/flow-rate-testing-of-eductors
+
+> EPSV
+< 229 Extended Passive mode OK (|||51695|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51695 (No encryption)
+< 226-File successfully transferred
+226 1.308 seconds (measured here), 93.02 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD flow-testing
+< 550 Can't create directory: File exists
+
+> CWD flow-testing
+< 250 OK. Current directory is /ar/capabilities/flow-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||56942|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56942 (No encryption)
+< 226-File successfully transferred
+226 1.018 seconds (measured here), 118.43 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD flow-testing-cooled-blades
+< 550 Can't create directory: File exists
+
+> CWD flow-testing-cooled-blades
+< 250 OK. Current directory is /ar/capabilities/flow-testing-cooled-blades
+
+> EPSV
+< 229 Extended Passive mode OK (|||56775|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56775 (No encryption)
+< 226-File successfully transferred
+226 1.047 seconds (measured here), 116.61 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fluorescent-penetrant-inspection-fpi
+< 550 Can't create directory: File exists
+
+> CWD fluorescent-penetrant-inspection-fpi
+< 250 OK. Current directory is /ar/capabilities/fluorescent-penetrant-inspection-fpi
+
+> EPSV
+< 229 Extended Passive mode OK (|||54474|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54474 (No encryption)
+< 226-File successfully transferred
+226 1.038 seconds (measured here), 117.64 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD folding-cycle-test-200k-cycles-for-hinges
+< 550 Can't create directory: File exists
+
+> CWD folding-cycle-test-200k-cycles-for-hinges
+< 250 OK. Current directory is /ar/capabilities/folding-cycle-test-200k-cycles-for-hinges
+
+> EPSV
+< 229 Extended Passive mode OK (|||61175|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61175 (No encryption)
+< 226-File successfully transferred
+226 1.284 seconds (measured here), 95.49 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD forged-rod-tapering--tip-forming-for-tent-stakes
+< 550 Can't create directory: File exists
+
+> CWD forged-rod-tapering--tip-forming-for-tent-stakes
+< 250 OK. Current directory is /ar/capabilities/forged-rod-tapering--tip-forming-for-tent-stakes
+
+> EPSV
+< 229 Extended Passive mode OK (|||59805|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59805 (No encryption)
+< 226-File successfully transferred
+226 1.555 seconds (measured here), 79.18 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD fpi-fluorescent-penetrant-inspection
+< 550 Can't create directory: File exists
+
+> CWD fpi-fluorescent-penetrant-inspection
+< 250 OK. Current directory is /ar/capabilities/fpi-fluorescent-penetrant-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||56279|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56279 (No encryption)
+< 226-File successfully transferred
+226 1.278 seconds (measured here), 95.56 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD full-length-ut-inspection
+< 550 Can't create directory: File exists
+
+> CWD full-length-ut-inspection
+< 250 OK. Current directory is /ar/capabilities/full-length-ut-inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||54104|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54104 (No encryption)
+< 226-File successfully transferred
+226 1.001 seconds (measured here), 121.26 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD full-scale-tension-testing
+< 550 Can't create directory: File exists
+
+> CWD full-scale-tension-testing
+< 250 OK. Current directory is /ar/capabilities/full-scale-tension-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||61868|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61868 (No encryption)
+< 226-File successfully transferred
+226 0.992 seconds (measured here), 122.44 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD full-ut-wall-thickness-verification
+< 550 Can't create directory: File exists
+
+> CWD full-ut-wall-thickness-verification
+< 250 OK. Current directory is /ar/capabilities/full-ut-wall-thickness-verification
+
+> EPSV
+< 229 Extended Passive mode OK (|||49276|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49276 (No encryption)
+< 226-File successfully transferred
+226 1.349 seconds (measured here), 89.84 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD function-testing
+< 550 Can't create directory: File exists
+
+> CWD function-testing
+< 250 OK. Current directory is /ar/capabilities/function-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||62714|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62714 (No encryption)
+< 226-File successfully transferred
+226 1.024 seconds (measured here), 118.06 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD gas-chromatography-for-hydrogen-embrittlement-certification-h125ppm
+< 550 Can't create directory: File exists
+
+> CWD gas-chromatography-for-hydrogen-embrittlement-certification-h125ppm
+< 250 OK. Current directory is /ar/capabilities/gas-chromatography-for-hydrogen-embrittlement-certification-h125ppm
+
+> EPSV
+< 229 Extended Passive mode OK (|||64225|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64225 (No encryption)
+< 226-File successfully transferred
+226 1.307 seconds (measured here), 94.38 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD gun-drilling-of-intramedullary-nails--cannulated-screws
+< 550 Can't create directory: File exists
+
+> CWD gun-drilling-of-intramedullary-nails--cannulated-screws
+< 250 OK. Current directory is /ar/capabilities/gun-drilling-of-intramedullary-nails--cannulated-screws
+
+> EPSV
+< 229 Extended Passive mode OK (|||61953|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61953 (No encryption)
+< 226-File successfully transferred
+226 0.998 seconds (measured here), 123.80 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hardness-testing
+< 550 Can't create directory: File exists
+
+> CWD hardness-testing
+< 250 OK. Current directory is /ar/capabilities/hardness-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||59962|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59962 (No encryption)
+< 226-File successfully transferred
+226 1.008 seconds (measured here), 119.85 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hardness-testing-hrb-hrc-of-washers
+< 550 Can't create directory: File exists
+
+> CWD hardness-testing-hrb-hrc-of-washers
+< 250 OK. Current directory is /ar/capabilities/hardness-testing-hrb-hrc-of-washers
+
+> EPSV
+< 229 Extended Passive mode OK (|||63782|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63782 (No encryption)
+< 226-File successfully transferred
+226 1.012 seconds (measured here), 120.66 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hardness-testing-hrc
+< 550 Can't create directory: File exists
+
+> CWD hardness-testing-hrc
+< 250 OK. Current directory is /ar/capabilities/hardness-testing-hrc
+
+> EPSV
+< 229 Extended Passive mode OK (|||55054|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55054 (No encryption)
+< 226-File successfully transferred
+226 1.020 seconds (measured here), 118.80 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD heat-transfer-verification
+< 550 Can't create directory: File exists
+
+> CWD heat-transfer-verification
+< 250 OK. Current directory is /ar/capabilities/heat-transfer-verification
+
+> EPSV
+< 229 Extended Passive mode OK (|||59445|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59445 (No encryption)
+< 226-File successfully transferred
+226 1.032 seconds (measured here), 118.01 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD heat-treatment
+< 550 Can't create directory: File exists
+
+> CWD heat-treatment
+< 250 OK. Current directory is /ar/capabilities/heat-treatment
+
+> EPSV
+< 229 Extended Passive mode OK (|||55966|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55966 (No encryption)
+< 226-File successfully transferred
+226 1.262 seconds (measured here), 103.40 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD heat-treatment-sta
+< 550 Can't create directory: File exists
+
+> CWD heat-treatment-sta
+< 250 OK. Current directory is /ar/capabilities/heat-treatment-sta
+
+> EPSV
+< 229 Extended Passive mode OK (|||58426|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58426 (No encryption)
+< 226-File successfully transferred
+226 1.012 seconds (measured here), 119.85 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD heat-treatment-to-optimize-hardness
+< 550 Can't create directory: File exists
+
+> CWD heat-treatment-to-optimize-hardness
+< 250 OK. Current directory is /ar/capabilities/heat-treatment-to-optimize-hardness
+
+> EPSV
+< 229 Extended Passive mode OK (|||58742|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58742 (No encryption)
+< 226-File successfully transferred
+226 1.274 seconds (measured here), 95.97 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-leak-detection
+< 550 Can't create directory: File exists
+
+> CWD helium-leak-detection
+< 250 OK. Current directory is /ar/capabilities/helium-leak-detection
+
+> EPSV
+< 229 Extended Passive mode OK (|||55782|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55782 (No encryption)
+< 226-File successfully transferred
+226 1.028 seconds (measured here), 116.99 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-leak-testing
+< 550 Can't create directory: File exists
+
+> CWD helium-leak-testing
+< 250 OK. Current directory is /ar/capabilities/helium-leak-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||59139|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59139 (No encryption)
+< 226-File successfully transferred
+226 0.998 seconds (measured here), 121.31 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-leak-testing-1x10-10-mbarl-s
+< 550 Can't create directory: File exists
+
+> CWD helium-leak-testing-1x10-10-mbarl-s
+< 250 OK. Current directory is /ar/capabilities/helium-leak-testing-1x10-10-mbarl-s
+
+> EPSV
+< 229 Extended Passive mode OK (|||62946|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62946 (No encryption)
+< 226-File successfully transferred
+226 1.036 seconds (measured here), 117.88 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-leak-testing-1x10-9-mbarl-s
+< 550 Can't create directory: File exists
+
+> CWD helium-leak-testing-1x10-9-mbarl-s
+< 250 OK. Current directory is /ar/capabilities/helium-leak-testing-1x10-9-mbarl-s
+
+> EPSV
+< 229 Extended Passive mode OK (|||54344|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54344 (No encryption)
+< 226-File successfully transferred
+226 1.012 seconds (measured here), 120.67 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-leak-testing-of-electronic-canisters
+< 550 Can't create directory: File exists
+
+> CWD helium-leak-testing-of-electronic-canisters
+< 250 OK. Current directory is /ar/capabilities/helium-leak-testing-of-electronic-canisters
+
+> EPSV
+< 229 Extended Passive mode OK (|||63651|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63651 (No encryption)
+< 226-File successfully transferred
+226 1.569 seconds (measured here), 78.06 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-leak-testing-of-hydrogen-components-1x10-9-mbarl-s
+< 550 Can't create directory: File exists
+
+> CWD helium-leak-testing-of-hydrogen-components-1x10-9-mbarl-s
+< 250 OK. Current directory is /ar/capabilities/helium-leak-testing-of-hydrogen-components-1x10-9-mbarl-s
+
+> EPSV
+< 229 Extended Passive mode OK (|||54920|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54920 (No encryption)
+< 226-File successfully transferred
+226 1.017 seconds (measured here), 121.41 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD helium-mass-spectrometer-leak-test
+< 550 Can't create directory: File exists
+
+> CWD helium-mass-spectrometer-leak-test
+< 250 OK. Current directory is /ar/capabilities/helium-mass-spectrometer-leak-test
+
+> EPSV
+< 229 Extended Passive mode OK (|||63227|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:63227 (No encryption)
+< 226-File successfully transferred
+226 1.070 seconds (measured here), 114.02 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD high-precision-grinding
+< 550 Can't create directory: File exists
+
+> CWD high-precision-grinding
+< 250 OK. Current directory is /ar/capabilities/high-precision-grinding
+
+> EPSV
+< 229 Extended Passive mode OK (|||59789|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:59789 (No encryption)
+< 226-File successfully transferred
+226 1.509 seconds (measured here), 80.49 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD high-temperature
+< 550 Can't create directory: File exists
+
+> CWD high-temperature
+< 250 OK. Current directory is /ar/capabilities/high-temperature
+
+> EPSV
+< 229 Extended Passive mode OK (|||49486|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49486 (No encryption)
+< 226-File successfully transferred
+226 1.483 seconds (measured here), 81.29 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD high-temperature-wind-tunnel-testing
+< 550 Can't create directory: File exists
+
+> CWD high-temperature-wind-tunnel-testing
+< 250 OK. Current directory is /ar/capabilities/high-temperature-wind-tunnel-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||49216|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49216 (No encryption)
+< 226-File successfully transferred
+226 1.039 seconds (measured here), 117.48 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hip-densification
+< 550 Can't create directory: File exists
+
+> CWD hip-densification
+< 250 OK. Current directory is /ar/capabilities/hip-densification
+
+> EPSV
+< 229 Extended Passive mode OK (|||64546|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64546 (No encryption)
+< 226-File successfully transferred
+226 1.013 seconds (measured here), 118.45 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-forging--thread-rolling-of-all-rotor--caliper-bolts
+< 550 Can't create directory: File exists
+
+> CWD hot-forging--thread-rolling-of-all-rotor--caliper-bolts
+< 250 OK. Current directory is /ar/capabilities/hot-forging--thread-rolling-of-all-rotor--caliper-bolts
+
+> EPSV
+< 229 Extended Passive mode OK (|||57139|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57139 (No encryption)
+< 226-File successfully transferred
+226 1.313 seconds (measured here), 94.48 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-forging--thread-rolling-of-linkage-bolts
+< 550 Can't create directory: File exists
+
+> CWD hot-forging--thread-rolling-of-linkage-bolts
+< 250 OK. Current directory is /ar/capabilities/hot-forging--thread-rolling-of-linkage-bolts
+
+> EPSV
+< 229 Extended Passive mode OK (|||61114|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61114 (No encryption)
+< 226-File successfully transferred
+226 1.026 seconds (measured here), 120.09 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-forging--vacuum-annealing-of-valve-stems-and-bolts
+< 550 Can't create directory: File exists
+
+> CWD hot-forging--vacuum-annealing-of-valve-stems-and-bolts
+< 250 OK. Current directory is /ar/capabilities/hot-forging--vacuum-annealing-of-valve-stems-and-bolts
+
+> EPSV
+< 229 Extended Passive mode OK (|||49481|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49481 (No encryption)
+< 226-File successfully transferred
+226 1.028 seconds (measured here), 119.91 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-forming-of-curved-panels
+< 550 Can't create directory: File exists
+
+> CWD hot-forming-of-curved-panels
+< 250 OK. Current directory is /ar/capabilities/hot-forming-of-curved-panels
+
+> EPSV
+< 229 Extended Passive mode OK (|||62668|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62668 (No encryption)
+< 226-File successfully transferred
+226 1.006 seconds (measured here), 120.99 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-forming-of-seamless-tube-into-elbows-tees
+< 550 Can't create directory: File exists
+
+> CWD hot-forming-of-seamless-tube-into-elbows-tees
+< 250 OK. Current directory is /ar/capabilities/hot-forming-of-seamless-tube-into-elbows-tees
+
+> EPSV
+< 229 Extended Passive mode OK (|||53735|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53735 (No encryption)
+< 226-File successfully transferred
+226 1.055 seconds (measured here), 117.69 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-forming-of-skin-panels
+< 550 Can't create directory: File exists
+
+> CWD hot-forming-of-skin-panels
+< 250 OK. Current directory is /ar/capabilities/hot-forming-of-skin-panels
+
+> EPSV
+< 229 Extended Passive mode OK (|||65067|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65067 (No encryption)
+< 226-File successfully transferred
+226 1.027 seconds (measured here), 118.43 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-heading--vacuum-aging-of-beta-hub-bolts
+< 550 Can't create directory: File exists
+
+> CWD hot-heading--vacuum-aging-of-beta-hub-bolts
+< 250 OK. Current directory is /ar/capabilities/hot-heading--vacuum-aging-of-beta-hub-bolts
+
+> EPSV
+< 229 Extended Passive mode OK (|||53597|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53597 (No encryption)
+< 226-File successfully transferred
+226 1.013 seconds (measured here), 120.18 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hot-isostatic-pressing-hip
+< 550 Can't create directory: File exists
+
+> CWD hot-isostatic-pressing-hip
+< 250 OK. Current directory is /ar/capabilities/hot-isostatic-pressing-hip
+
+> EPSV
+< 229 Extended Passive mode OK (|||49439|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49439 (No encryption)
+< 226-File successfully transferred
+226 1.041 seconds (measured here), 115.92 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydraulic-pressure-testing-of-tie-rods
+< 550 Can't create directory: File exists
+
+> CWD hydraulic-pressure-testing-of-tie-rods
+< 250 OK. Current directory is /ar/capabilities/hydraulic-pressure-testing-of-tie-rods
+
+> EPSV
+< 229 Extended Passive mode OK (|||64496|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:64496 (No encryption)
+< 226-File successfully transferred
+226 1.034 seconds (measured here), 118.20 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-burst-testing
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-burst-testing
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-burst-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||61156|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61156 (No encryption)
+< 226-File successfully transferred
+226 1.532 seconds (measured here), 79.26 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-pressure-testing
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-pressure-testing
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-pressure-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||65276|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65276 (No encryption)
+< 226-File successfully transferred
+226 1.032 seconds (measured here), 117.82 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-pressure-testing-of-coils
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-pressure-testing-of-coils
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-pressure-testing-of-coils
+
+> EPSV
+< 229 Extended Passive mode OK (|||55579|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55579 (No encryption)
+< 226-File successfully transferred
+226 0.996 seconds (measured here), 122.53 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-pressure-testing-of-flanged-assemblies
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-pressure-testing-of-flanged-assemblies
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-pressure-testing-of-flanged-assemblies
+
+> EPSV
+< 229 Extended Passive mode OK (|||56388|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56388 (No encryption)
+< 226-File successfully transferred
+226 2.368 seconds (measured here), 51.97 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-pressure-testing-to-125x-rated-depth
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-pressure-testing-to-125x-rated-depth
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-pressure-testing-to-125x-rated-depth
+
+> EPSV
+< 229 Extended Passive mode OK (|||51382|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51382 (No encryption)
+< 226-File successfully transferred
+226 1.021 seconds (measured here), 120.29 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-pressure-testing-to-15x-rated-pressure
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-pressure-testing-to-15x-rated-pressure
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-pressure-testing-to-15x-rated-pressure
+
+> EPSV
+< 229 Extended Passive mode OK (|||57418|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57418 (No encryption)
+< 226-File successfully transferred
+226 1.045 seconds (measured here), 117.70 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-proof-testing
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-proof-testing
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-proof-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||60061|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60061 (No encryption)
+< 226-File successfully transferred
+226 1.029 seconds (measured here), 117.94 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-test
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-test
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-test
+
+> EPSV
+< 229 Extended Passive mode OK (|||49600|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49600 (No encryption)
+< 226-File successfully transferred
+226 1.015 seconds (measured here), 119.15 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD hydrostatic-testing
+< 550 Can't create directory: File exists
+
+> CWD hydrostatic-testing
+< 250 OK. Current directory is /ar/capabilities/hydrostatic-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||55809|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55809 (No encryption)
+< 226-File successfully transferred
+226 1.064 seconds (measured here), 113.76 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD impact-testing-at-cryogenic-temperature
+< 550 Can't create directory: File exists
+
+> CWD impact-testing-at-cryogenic-temperature
+< 250 OK. Current directory is /ar/capabilities/impact-testing-at-cryogenic-temperature
+
+> EPSV
+< 229 Extended Passive mode OK (|||65344|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65344 (No encryption)
+< 226-File successfully transferred
+226 0.995 seconds (measured here), 122.91 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD impedance-frequency-analysis
+< 550 Can't create directory: File exists
+
+> CWD impedance-frequency-analysis
+< 250 OK. Current directory is /ar/capabilities/impedance-frequency-analysis
+
+> EPSV
+< 229 Extended Passive mode OK (|||49564|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:49564 (No encryption)
+< 226-File successfully transferred
+226 1.093 seconds (measured here), 110.57 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD impeller-dynamic-balancing
+< 550 Can't create directory: File exists
+
+> CWD impeller-dynamic-balancing
+< 250 OK. Current directory is /ar/capabilities/impeller-dynamic-balancing
+
+> EPSV
+< 229 Extended Passive mode OK (|||55629|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:55629 (No encryption)
+< 226-File successfully transferred
+226 1.017 seconds (measured here), 119.02 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> EPSV
+< 229 Extended Passive mode OK (|||62072|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:62072 (No encryption)
+< 226-File successfully transferred
+226 1.044 seconds (measured here), 142.41 Kbytes per second
+
+> MKD inspection
+< 550 Can't create directory: File exists
+
+> CWD inspection
+< 250 OK. Current directory is /ar/capabilities/inspection
+
+> EPSV
+< 229 Extended Passive mode OK (|||61079|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61079 (No encryption)
+< 226-File successfully transferred
+226 1.087 seconds (measured here), 127.38 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD investment-casting
+< 550 Can't create directory: File exists
+
+> CWD investment-casting
+< 250 OK. Current directory is /ar/capabilities/investment-casting
+
+> EPSV
+< 229 Extended Passive mode OK (|||57549|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57549 (No encryption)
+< 226-File successfully transferred
+226 1.023 seconds (measured here), 117.43 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD investment-casting-alternative
+< 550 Can't create directory: File exists
+
+> CWD investment-casting-alternative
+< 250 OK. Current directory is /ar/capabilities/investment-casting-alternative
+
+> EPSV
+< 229 Extended Passive mode OK (|||51505|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:51505 (No encryption)
+< 226-File successfully transferred
+226 1.120 seconds (measured here), 107.99 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD isothermal-die-forging
+< 550 Can't create directory: File exists
+
+> CWD isothermal-die-forging
+< 250 OK. Current directory is /ar/capabilities/isothermal-die-forging
+
+> EPSV
+< 229 Extended Passive mode OK (|||53648|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53648 (No encryption)
+< 226-File successfully transferred
+226 1.054 seconds (measured here), 115.30 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD keyway-broaching
+< 550 Can't create directory: File exists
+
+> CWD keyway-broaching
+< 250 OK. Current directory is /ar/capabilities/keyway-broaching
+
+> EPSV
+< 229 Extended Passive mode OK (|||65529|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65529 (No encryption)
+< 226-File successfully transferred
+226 1.299 seconds (measured here), 92.36 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD kink-resistance-testing
+< 550 Can't create directory: File exists
+
+> CWD kink-resistance-testing
+< 250 OK. Current directory is /ar/capabilities/kink-resistance-testing
+
+> EPSV
+< 229 Extended Passive mode OK (|||53956|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53956 (No encryption)
+< 226-File successfully transferred
+226 1.058 seconds (measured here), 114.59 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD knife-edge-profile-inspection-optical-microscopy
+< 550 Can't create directory: File exists
+
+> CWD knife-edge-profile-inspection-optical-microscopy
+< 250 OK. Current directory is /ar/capabilities/knife-edge-profile-inspection-optical-microscopy
+
+> EPSV
+< 229 Extended Passive mode OK (|||50869|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:50869 (No encryption)
+< 226-File successfully transferred
+226 1.056 seconds (measured here), 117.31 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-cutting--die-stamping-of-crampon-spikes
+< 550 Can't create directory: File exists
+
+> CWD laser-cutting--die-stamping-of-crampon-spikes
+< 250 OK. Current directory is /ar/capabilities/laser-cutting--die-stamping-of-crampon-spikes
+
+> EPSV
+< 229 Extended Passive mode OK (|||65293|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65293 (No encryption)
+< 226-File successfully transferred
+226 1.022 seconds (measured here), 121.91 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-cutting-of-port-holes
+< 550 Can't create directory: File exists
+
+> CWD laser-cutting-of-port-holes
+< 250 OK. Current directory is /ar/capabilities/laser-cutting-of-port-holes
+
+> EPSV
+< 229 Extended Passive mode OK (|||61627|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:61627 (No encryption)
+< 226-File successfully transferred
+226 1.146 seconds (measured here), 106.68 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-engraving-marking
+< 550 Can't create directory: File exists
+
+> CWD laser-engraving-marking
+< 250 OK. Current directory is /ar/capabilities/laser-engraving-marking
+
+> EPSV
+< 229 Extended Passive mode OK (|||65096|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:65096 (No encryption)
+< 226-File successfully transferred
+226 1.062 seconds (measured here), 114.68 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-marking
+< 550 Can't create directory: File exists
+
+> CWD laser-marking
+< 250 OK. Current directory is /ar/capabilities/laser-marking
+
+> EPSV
+< 229 Extended Passive mode OK (|||54518|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:54518 (No encryption)
+< 226-File successfully transferred
+226 1.498 seconds (measured here), 80.70 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-marking-traceability-code
+< 550 Can't create directory: File exists
+
+> CWD laser-marking-traceability-code
+< 250 OK. Current directory is /ar/capabilities/laser-marking-traceability-code
+
+> EPSV
+< 229 Extended Passive mode OK (|||53412|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53412 (No encryption)
+< 226-File successfully transferred
+226 1.023 seconds (measured here), 119.33 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-marking-udi-code
+< 550 Can't create directory: File exists
+
+> CWD laser-marking-udi-code
+< 250 OK. Current directory is /ar/capabilities/laser-marking-udi-code
+
+> EPSV
+< 229 Extended Passive mode OK (|||57608|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57608 (No encryption)
+< 226-File successfully transferred
+226 1.031 seconds (measured here), 117.89 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-micro-cutting-of-tube
+< 550 Can't create directory: File exists
+
+> CWD laser-micro-cutting-of-tube
+< 250 OK. Current directory is /ar/capabilities/laser-micro-cutting-of-tube
+
+> EPSV
+< 229 Extended Passive mode OK (|||57023|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:57023 (No encryption)
+< 226-File successfully transferred
+226 1.015 seconds (measured here), 122.30 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-micro-drilling-of-orifice-disks
+< 550 Can't create directory: File exists
+
+> CWD laser-micro-drilling-of-orifice-disks
+< 250 OK. Current directory is /ar/capabilities/laser-micro-drilling-of-orifice-disks
+
+> EPSV
+< 229 Extended Passive mode OK (|||56293|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:56293 (No encryption)
+< 226-File successfully transferred
+226 1.023 seconds (measured here), 120.32 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-or-waterjet-cutting-of-perforated-bottom-plates
+< 550 Can't create directory: File exists
+
+> CWD laser-or-waterjet-cutting-of-perforated-bottom-plates
+< 250 OK. Current directory is /ar/capabilities/laser-or-waterjet-cutting-of-perforated-bottom-plates
+
+> EPSV
+< 229 Extended Passive mode OK (|||60358|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:60358 (No encryption)
+< 226-File successfully transferred
+226 1.296 seconds (measured here), 95.51 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-perforation-drilling-of-sparger-pipes
+< 550 Can't create directory: File exists
+
+> CWD laser-perforation-drilling-of-sparger-pipes
+< 250 OK. Current directory is /ar/capabilities/laser-perforation-drilling-of-sparger-pipes
+
+> EPSV
+< 229 Extended Passive mode OK (|||58096|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58096 (No encryption)
+< 226-File successfully transferred
+226 1.008 seconds (measured here), 121.71 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-plasma-cutting-of-plate
+< 550 Can't create directory: File exists
+
+> CWD laser-plasma-cutting-of-plate
+< 250 OK. Current directory is /ar/capabilities/laser-plasma-cutting-of-plate
+
+> EPSV
+< 229 Extended Passive mode OK (|||53337|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:53337 (No encryption)
+< 226-File successfully transferred
+226 1.273 seconds (measured here), 96.69 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD laser-waterjet-cutting
+< 550 Can't create directory: File exists
+
+> CWD laser-waterjet-cutting
+< 250 OK. Current directory is /ar/capabilities/laser-waterjet-cutting
+
+> EPSV
+< 229 Extended Passive mode OK (|||58457|)
+
+> STOR index.html
+< 150 Accepted data connection
+
+Uploading to 40.160.1.205:58457 (No encryption)
+< 226-File successfully transferred
+226 1.039 seconds (measured here), 116.96 Kbytes per second
+
+> CDUP
+< 250 OK. Current directory is /ar/capabilities
+
+> MKD left-right-hand-thread-rolling-on-multi-axis-roller
+< 550 Can't create directory: File exists
+
+> CWD left-right-hand-thread-rolling-on-multi-axis-roller
+< 250 OK. Current directory is /ar/capabilities/left-right-hand-thread-rolling-on-multi-axis-roller
+
+> CWD /
+< 250 OK. Current directory is /
+
+❌ Deploy failed: ENOENT: no such file or directory, scandir 'C:\Users\Administrator\Desktop\AstroFlow-master-jt\dist\ar\capabilities\left-right-hand-thread-rolling-on-multi-axis-roller'

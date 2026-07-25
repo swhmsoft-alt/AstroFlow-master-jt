@@ -1,81 +1,88 @@
 {
+  "title": "Thread gauge inspection",
+  "category": "Fastener Manufacturing",
+  "description": "Thread gauge inspection capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "M2 – M24 thread diameters; custom sizes available",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Thread pitch tolerance: Class 2A/3A (UN) / 6g/6h (metric)",
+  "thicknessRange": "CMM envelope: 1200 × 1000 × 800 mm",
+  "cuttingTolerance": "Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360",
+  "tolerance": "Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360",
+  "maxSize": "",
+  "surfaceFinish": "Contact or non-contact (laser/white light) scanning",
   "processComparison": [
     {
-      "dimension": "Threading Method",
-      "laser": "Thread cutting / thread milling",
-      "waterjet": "Thread rolling (cold forming)"
+      "dimension": "Probe Type",
+      "laser": "Touch-trigger / scanning / non-contact laser",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Fatigue Strength",
-      "laser": "Standard (cut threads)",
-      "waterjet": "Superior (rolled threads — compressive residual stress)"
+      "dimension": "Uncertainty",
+      "laser": "+(1.0 + L/300) µm per ISO 10360",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Production Speed",
-      "laser": "Moderate (single-point or tap)",
-      "waterjet": "High (die rolling)"
-    },
-    {
-      "dimension": "Material Utilization",
-      "laser": "Some material removed",
-      "waterjet": "Near-net shape, no material loss"
+      "dimension": "GD&T",
+      "laser": "Full: form, orientation, location, runout",
+      "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision fastener manufacturing for thread gauge inspection titanium threaded components. Thread rolling produces superior fatigue strength compared to thread cutting by inducing compressive residual stresses in the thread root.",
+  "processDescription": "Coordinate Measuring Machine (CMM) inspection provides quantitative dimensional verification of titanium components against GD&T specifications per ASME Y14.5. Touch-trigger probes, scanning heads, and non-contact laser sensors accommodate geometries from simple prismatic to complex freeform surfaces.",
   "holeTypes": [
-    "Standard threads (UN/UNF/Metric)",
-    "Custom thread forms",
-    "Self-locking threads"
+    "N/A"
   ],
-  "heatControl": "Coolant and speed control prevent work-hardening during thread gauge inspection threading operations.",
-  "flatnessControl": "Head flatness and perpendicularity controlled within 0.05 mm per fastener standards.",
-  "capabilitiesDescription": "Dedicated fastener manufacturing cell with automatic screw machines, thread rollers, and CNC lathes for thread gauge inspection production.",
+  "heatControl": "Temperature-controlled metrology lab at 20±1°C. Components stabilized on granite surface plate for a minimum of 4 hours before measurement.",
+  "flatnessControl": "Granite surface plate Grade 00 (flatness < 1 µm/m) as reference datum.",
+  "capabilitiesDescription": "NDT and dimensional inspection service for Thread gauge inspection, performed by certified technicians per applicable standards.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Thread Inspection",
-      "description": "Go/no-go gauge inspection; thread micrometer verification; optical thread comparison."
+      "name": "Inspection Report",
+      "description": "Full FAIR (AS9102) with graphical pass/fail color map."
     },
     {
-      "name": "Mechanical Testing",
-      "description": "Tensile proof load testing; hardness testing; torque-to-tension verification."
+      "name": "CoC",
+      "description": "Certificate of Conformance with material certification traceability."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Passivation, anodizing, or PVD coating for corrosion resistance and appearance."
+      "name": "Deburring",
+      "description": "Deburring for thread gauge inspection components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for thread gauge inspection components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for thread gauge inspection components."
     }
   ],
   "inspectionItems": [
-    "Thread gauge inspection (Go/No-Go per ASME B1.1)",
-    "Dimensional inspection (head height, shank diameter, overall length)",
-    "Hardness testing (Rockwell / Vickers)",
-    "Proof load testing per ASTM F606"
+    "Thread gauge inspection specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ASME B1.1 — Unified Inch Screw Threads",
-    "ASTM F606 — Standard Test Methods for Fasteners",
-    "ISO 898-1 — Mechanical Properties of Fasteners"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Thread Gauge Components?",
+  "relatedEntities": [],
+  "seoTitle": "Thread gauge inspection | Precision Titanium Fastener Manufacturing | BOZE",
+  "seoDescription": "Thread gauge inspection for General applications. Precision titanium component manufacturing with Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Thread gauge inspection?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Thread gauge inspection",
   "aliases": [],
-  "category": "Fastener Manufacturing",
-  "description": "Thread gauge inspection capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Thread gauge inspection | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision fastener manufacturing of Thread gauge inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

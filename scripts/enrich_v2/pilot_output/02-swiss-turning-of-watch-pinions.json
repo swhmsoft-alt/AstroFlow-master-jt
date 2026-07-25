@@ -1,0 +1,91 @@
+{
+  "title": "Swiss turning of watch pinions",
+  "category": "Machining",
+  "description": "High-precision Swiss-type turning of miniature watch pinions and horological components.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Ø0.5 mm – Ø32 mm bar stock; up to 200 mm length",
+  "cuttingTolerance": "+0.01 mm (case diameter) / +0.005 mm (crystal seat)",
+  "tolerance": "+0.01 mm (case diameter) / +0.005 mm (crystal seat)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.1 µm (mirror polish)",
+  "processComparison": [
+    {
+      "dimension": "Bar Support",
+      "laser": "Guide bushing supports stock at tool contact point",
+      "waterjet": "Chuck-only — no bushing"
+    },
+    {
+      "dimension": "L:D Ratio",
+      "laser": "Up to 20:1 without chatter",
+      "waterjet": "< 4:1 typical"
+    },
+    {
+      "dimension": "Cycle Time",
+      "laser": "Single op — mill, drill, turn simultaneously",
+      "waterjet": "Multiple ops, longer cycle"
+    }
+  ],
+  "processDescription": "Swiss-type automatic lathes use a sliding headstock and fixed guide bushing to machine slender titanium components. The guide bushing supports the bar stock immediately behind the cutting tool, eliminating deflection for high length-to-diameter ratios, specifically for watch case. Precision watch case for Watchmaking present unique challenges: Cosmetic surface finish (mirror polish, brush, or bead blast) with sub-mm feature detail. Material traceability from mill to finished case.",
+  "holeTypes": [
+    "Cross-drilled holes",
+    "Eccentric bores",
+    "Threaded holes (internal/external)",
+    "Hexagonal/star drives"
+  ],
+  "heatControl": "Minimal heat generation due to fine finishing passes. Air blast for chip clearing sufficient; coolant not required for cosmetic finishing passes.",
+  "flatnessControl": "Guide bushing support eliminates deflection for L:D ratios up to 20:1. Straightness within 0.005 mm over 100 mm length.",
+  "capabilitiesDescription": "Our facility is equipped to handle swiss turning of watch pinions with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Dive watch cases",
+    "Dress watch cases",
+    "Smartwatch cases",
+    "Watch bezels"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "Thread Rolling",
+      "description": "Cold-forming of threads for superior fatigue performance."
+    },
+    {
+      "name": "Centerless Grinding",
+      "description": "OD grinding for precision diameters (±0.002 mm)."
+    },
+    {
+      "name": "CNC Engraving (Logo/Text)",
+      "description": "CNC Engraving (Logo/Text) for swiss turning of watch pinions components."
+    },
+    {
+      "name": "PVD Coating",
+      "description": "PVD Coating for swiss turning of watch pinions components."
+    },
+    {
+      "name": "Water Resistance Testing",
+      "description": "Water Resistance Testing for swiss turning of watch pinions components."
+    }
+  ],
+  "inspectionItems": [
+    "Swiss turning of watch pinions specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [
+    "titanium-dive-watch-case",
+    "titanium-smartwatch-bezel"
+  ],
+  "seoTitle": "Swiss turning of watch pinions | Precision Titanium Machining | BOZE",
+  "seoDescription": "Swiss turning of watch pinions for Watchmaking applications. Precision titanium component manufacturing with +0.01 mm (case diameter) / +0.005 mm (crystal seat). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Watch Case Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

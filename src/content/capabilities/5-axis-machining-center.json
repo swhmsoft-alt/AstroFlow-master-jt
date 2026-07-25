@@ -1,4 +1,7 @@
 {
+  "title": "5-axis machining center",
+  "category": "General Manufacturing",
+  "description": "5-axis machining center capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,81 +10,86 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Varies by specific process",
-  "minHoleRatio": "Per engineering specification",
-  "cuttingTolerance": "±0.01 mm to ±0.1 mm depending on process",
+  "thicknessRange": "Up to Ø800 mm × 500 mm (5-axis envelope)",
+  "cuttingTolerance": "±0.005 mm (positioning) / ±0.01 mm (contour)",
+  "tolerance": "±0.005 mm (positioning) / ±0.01 mm (contour)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.4–0.8 µm (machined) / Ra 0.05 µm (polished)",
   "processComparison": [
     {
-      "dimension": "Process Control",
-      "laser": "SPC-monitored with real-time process parameters logging",
-      "waterjet": "Job-specific work instructions with inline quality checks"
+      "dimension": "Axes Simultaneous",
+      "laser": "5 axes (X/Y/Z + A/C rotary)",
+      "waterjet": "3+2 axes (positional)"
     },
     {
-      "dimension": "Tolerance Capability",
-      "laser": "±0.01 mm typical for precision operations",
-      "waterjet": "±0.1 mm typical for general operations"
+      "dimension": "Best For",
+      "laser": "Blisk, impeller, turbine blade, complex bracket",
+      "waterjet": "Prismatic mill-turn parts"
     },
     {
-      "dimension": "Documentation",
-      "laser": "Full batch traceability with MTR/CoC",
-      "waterjet": "Inspection reports on request"
+      "dimension": "Surface Finish (Ti)",
+      "laser": "Ra 0.4 µm with small-step finishing",
+      "waterjet": "Ra 1.6–3.2 µm"
     },
     {
-      "dimension": "Volume Flexibility",
-      "laser": "Prototype to high-volume production",
-      "waterjet": "Prototype to medium-volume batches"
+      "dimension": "Cycle Time",
+      "laser": "30–70% faster than 3+2 for complex surfaces",
+      "waterjet": "Faster for simple prismatic features"
     }
   ],
-  "processDescription": "Professional manufacturing service for 5-axis machining center titanium components, combining process expertise with quality control systems to deliver consistent results.",
+  "processDescription": "Simultaneous 5-axis CNC milling enables complex freeform geometries to be machined in a single setup, eliminating positional errors from multiple fixtures. The rotary A and C axes provide full access to undercut features and compound-angle surfaces while maintaining optimal tool engagement angles for titanium, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
-    "Round holes",
-    "Slot holes",
-    "Custom geometry cutouts"
+    "Freeform 3D contoured holes",
+    "Compound-angle coolant passages",
+    "Threaded holes in non-orthogonal faces"
   ],
-  "heatControl": "Process-specific heat management protocols are applied for 5-axis machining center to prevent titanium oxidation and maintain material properties.",
-  "flatnessControl": "Precision fixturing and post-process stress relief ensure flatness requirements are met for 5-axis machining center.",
-  "capabilitiesDescription": "Our integrated manufacturing facility handles 5-axis machining center with full traceability, SPC monitoring, and certified quality management.",
+  "heatControl": "Through-spindle coolant at 70 bar with cryogenic CO₂ assist. Tool engagement angles continuously optimized by CAM to avoid work-hardening of Ti-6Al-4V.",
+  "flatnessControl": "Roughing/finishing strategy with 10% radial engagement and adaptive trochoidal toolpaths. Post-process CMM verification ensures flatness within 0.005 mm over 200 mm.",
+  "capabilitiesDescription": "Precision machining capability for 5-axis machining center, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "CMM 5-Axis Inspection",
+      "description": "Full 5-axis CMM inspection with scanning probes for profile tolerance verification per ASME Y14.5."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Surface Finishing",
+      "description": "CNC polishing or micro-blasting to achieve specified Ra on aerodynamic surfaces."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Deburring",
+      "description": "Deburring for 5-axis machining center components."
     },
     {
-      "name": "Quality Documentation",
-      "description": "Full inspection reports, material certifications, and certificate of conformance included."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for 5-axis machining center components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for 5-axis machining center components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "Process parameter verification (SPC charts)",
-    "First article inspection per AS9102"
+    "5-axis machining center specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision 5-Axis Machining Components?",
+  "relatedEntities": [],
+  "seoTitle": "5-axis machining center | Precision Titanium General Manufacturing | BOZE",
+  "seoDescription": "5-axis machining center for General applications. Precision titanium component manufacturing with ±0.005 mm (positioning) / ±0.01 mm (contour). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision 5-axis machining center?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "5-axis machining center",
   "aliases": [],
-  "category": "General Manufacturing",
-  "description": "5-axis machining center capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "5-axis machining center | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision general manufacturing of 5-axis machining center titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

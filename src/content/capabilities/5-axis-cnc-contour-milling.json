@@ -1,4 +1,7 @@
 {
+  "title": "5-axis CNC contour milling",
+  "category": "Machining",
+  "description": "5-axis CNC contour milling capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,86 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "Up to Ø800 mm × 500 mm (5-axis envelope)",
+  "cuttingTolerance": "±0.005 mm (positioning) / ±0.01 mm (contour)",
+  "tolerance": "±0.005 mm (positioning) / ±0.01 mm (contour)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.4–0.8 µm (machined) / Ra 0.05 µm (polished)",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
+      "dimension": "Axes Simultaneous",
+      "laser": "5 axes (X/Y/Z + A/C rotary)",
+      "waterjet": "3+2 axes (positional)"
     },
     {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
+      "dimension": "Best For",
+      "laser": "Blisk, impeller, turbine blade, complex bracket",
+      "waterjet": "Prismatic mill-turn parts"
     },
     {
-      "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
+      "dimension": "Surface Finish (Ti)",
+      "laser": "Ra 0.4 µm with small-step finishing",
+      "waterjet": "Ra 1.6–3.2 µm"
     },
     {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "dimension": "Cycle Time",
+      "laser": "30–70% faster than 3+2 for complex surfaces",
+      "waterjet": "Faster for simple prismatic features"
     }
   ],
-  "processDescription": "Precision CNC machining of 5-axis cnc contour titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "Simultaneous 5-axis CNC milling enables complex freeform geometries to be machined in a single setup, eliminating positional errors from multiple fixtures. The rotary A and C axes provide full access to undercut features and compound-angle surfaces while maintaining optimal tool engagement angles for titanium, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "Freeform 3D contoured holes",
+    "Compound-angle coolant passages",
+    "Threaded holes in non-orthogonal faces"
   ],
-  "heatControl": "CNC machining of 5-axis cnc contour uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for 5-axis cnc contour components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for 5-axis cnc contour production.",
+  "heatControl": "Through-spindle coolant at 70 bar with cryogenic CO₂ assist. Tool engagement angles continuously optimized by CAM to avoid work-hardening of Ti-6Al-4V.",
+  "flatnessControl": "Roughing/finishing strategy with 10% radial engagement and adaptive trochoidal toolpaths. Post-process CMM verification ensures flatness within 0.005 mm over 200 mm.",
+  "capabilitiesDescription": "Precision machining capability for 5-axis CNC contour milling, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "CMM 5-Axis Inspection",
+      "description": "Full 5-axis CMM inspection with scanning probes for profile tolerance verification per ASME Y14.5."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Surface Finishing",
+      "description": "CNC polishing or micro-blasting to achieve specified Ra on aerodynamic surfaces."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Deburring",
+      "description": "Deburring for 5-axis cnc contour milling components."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for 5-axis cnc contour milling components."
     },
     {
-      "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for 5-axis cnc contour milling components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "5-axis CNC contour milling specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision 5-Axis Cnc Components?",
+  "relatedEntities": [],
+  "seoTitle": "5-axis CNC contour milling | Precision Titanium Machining | BOZE",
+  "seoDescription": "5-axis CNC contour milling for General applications. Precision titanium component manufacturing with ±0.005 mm (positioning) / ±0.01 mm (contour). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision 5-axis CNC contour?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "5-axis CNC contour milling",
   "aliases": [],
-  "category": "Machining",
-  "description": "5-axis CNC contour milling capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "5-axis CNC contour milling | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of 5-axis CNC contour milling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

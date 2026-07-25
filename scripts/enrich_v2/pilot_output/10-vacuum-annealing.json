@@ -1,0 +1,84 @@
+{
+  "title": "Vacuum annealing",
+  "category": "Heat Treatment",
+  "description": "Vacuum annealing of titanium components for stress relief and microstructure optimization.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Furnace: Ø600 × 1200 mm; up to 500 kg load",
+  "cuttingTolerance": "Temperature: +5°C uniformity; ramp 1–20°C/min",
+  "tolerance": "Temperature: +5°C uniformity; ramp 1–20°C/min",
+  "maxSize": "",
+  "surfaceFinish": "No oxidation (vacuum < 10⁻⁵ torr); bright surface retained",
+  "processComparison": [
+    {
+      "dimension": "Atmosphere",
+      "laser": "Vacuum < 10⁻⁵ torr",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Cooling",
+      "laser": "Inert gas fan cooling (2 bar Ar); oil/water quench",
+      "waterjet": "N/A"
+    },
+    {
+      "dimension": "Max Temp",
+      "laser": "1200°C (beta solution treatment)",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Vacuum heat treatment of titanium in a controlled environment prevents oxygen/nitrogen pickup that causes alpha-case embrittlement. Programmable temperature profiles with inert gas fan cooling enable solution treatment, aging, stress relief, and annealing in a single cycle, specifically for titanium components. Precision titanium components for Semiconductor present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
+  "holeTypes": [
+    "N/A"
+  ],
+  "heatControl": "Graphite heating elements with molybdenum radiation shields. Partial pressure argon backfill during cooling for uniform thermal distribution.",
+  "flatnessControl": "Ceramic or titanium fixtures maintain component geometry during thermal cycling. Controlled cooling rate minimizes thermal gradient distortion.",
+  "capabilitiesDescription": "Our facility is equipped to handle vacuum annealing with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "Hardness Testing",
+      "description": "Rockwell C or Vickers hardness verification post-treatment."
+    },
+    {
+      "name": "Metallographic Analysis",
+      "description": "Microstructure examination per ASTM E112."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for vacuum annealing components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for vacuum annealing components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for vacuum annealing components."
+    }
+  ],
+  "inspectionItems": [
+    "Vacuum annealing specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [],
+  "seoTitle": "Vacuum annealing | Precision Titanium Heat Treatment | BOZE",
+  "seoDescription": "Vacuum annealing for Semiconductor applications. Precision titanium component manufacturing with Temperature: +5°C uniformity; ramp 1–20°C/min. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Vacuum annealing?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

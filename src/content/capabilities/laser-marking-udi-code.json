@@ -1,4 +1,7 @@
 {
+  "title": "Laser marking (UDI code)",
+  "category": "Laser Processing",
+  "description": "Laser marking (UDI code) capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,91 +10,80 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "0.5 mm – 25.0 mm",
-  "minHoleRatio": "1:1 (diameter-to-thickness ratio)",
-  "cuttingTolerance": "±0.05 mm (Laser) / ±0.1 mm (Waterjet)",
+  "thicknessRange": "All thicknesses — surface process only",
+  "cuttingTolerance": "Marking depth: 5–50 µm; line width 0.05–0.5 mm",
+  "tolerance": "Marking depth: 5–50 µm; line width 0.05–0.5 mm",
+  "maxSize": "",
+  "surfaceFinish": "Contrast: dark/white depending on laser parameters",
   "processComparison": [
     {
-      "dimension": "Suitable Thickness",
-      "laser": "Thin to medium sections up to 12 mm with fiber laser; optimal < 3 mm for high speed",
-      "waterjet": "0.5 mm to 25 mm+; no practical thickness limit with abrasive waterjet"
+      "dimension": "Marking Method",
+      "laser": "Surface oxidation / micro-engraving",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Heat Affected Zone (HAZ)",
-      "laser": "Minimal HAZ with N₂/Ar assist gas preventing titanium oxidation",
-      "waterjet": "No HAZ — cold cutting process, zero thermal distortion"
+      "dimension": "Depth",
+      "laser": "5–50 µm (engraving mode)",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Edge Quality",
-      "laser": "Requires deburring for dross removal on thicker sections",
-      "waterjet": "Smooth, burr-free edge; no secondary cleaning required"
+      "dimension": "Readability",
+      "laser": "High contrast; permanent; readable after anodizing",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Cutting Speed (3 mm Ti)",
-      "laser": "Up to 6 m/min for thin sections",
-      "waterjet": "0.5–1.5 m/min; slower but more versatile"
-    },
-    {
-      "dimension": "Material Compatibility",
-      "laser": "All titanium grades; reflective alloys require careful fiber laser tuning",
-      "waterjet": "All titanium grades + composites, ceramics; no reflectivity issues"
+      "dimension": "Speed",
+      "laser": "Up to 10,000 characters/min (galvo scanner)",
+      "waterjet": "N/A"
     }
   ],
-  "processDescription": "High-precision laser and waterjet cutting of laser marking udi for titanium components. Capable of producing complex geometries, internal cutouts, and edge preparations with ±0.05 mm laser tolerance and zero HAZ via waterjet process.",
+  "processDescription": "Fiber laser marking on titanium produces high-contrast, permanent identification marks by controlled surface oxidation or micro-engraving. UDI codes, serial numbers, 2D DataMatrix codes, and logos are marked without into the material, preserving structural integrity, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
-    "Round holes",
-    "Slot / oblong holes",
-    "Custom contour cutouts",
-    "Edge preparations (bevels)"
+    "N/A"
   ],
-  "heatControl": "For laser cutting of laser marking udi, high-purity nitrogen or argon coaxial assist gas shields the cut zone from atmospheric oxygen, preventing alpha-case formation and discoloration. Waterjet cutting eliminates thermal concerns entirely.",
-  "flatnessControl": "Post-cutting stress relief (vacuum annealing) and precision leveling available for laser marking udi components requiring flatness within 0.5 mm/m.",
-  "capabilitiesDescription": "Our facility combines multi-kilowatt fiber laser cutting systems with high-pressure abrasive waterjet systems, enabling us to process laser marking udi from prototype to production volumes.",
+  "heatControl": "Pulsed nanosecond fiber laser with galvo scanner. Marking depth controlled by pulse energy and repetition rate; no bulk heating of the component.",
+  "flatnessControl": "Non-contact process — no mechanical force applied. Focal distance maintained within ±0.5 mm across marking field via autofocus.",
+  "capabilitiesDescription": "Laser processing capability for Laser marking (UDI code), with precision beam delivery, gas assist systems, and process monitoring for repeatable quality.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Contrast Verification",
+      "description": "Barcode/DataMatrix grade verification per ISO/IEC 15415."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Deburring",
+      "description": "Deburring for laser marking (udi code) components."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for laser marking (udi code) components."
     },
     {
-      "name": "Pickling & Passivation",
-      "description": "Nitric-hydrofluoric acid bath (ASTM B600) removes light oxidation from laser-cut edges and restores passive layer."
-    },
-    {
-      "name": "CNC Machining",
-      "description": "4/5-axis CNC milling/drilling for mounting holes, flange faces, and precision features on cut blanks."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for laser marking (udi code) components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "Edge quality assessment (burr height per ISO 13715)",
-    "Dye penetrant inspection (PT) per ASTM E1417"
+    "Laser marking (UDI code) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Laser Marking Components?",
+  "relatedEntities": [],
+  "seoTitle": "Laser marking (UDI code) | Precision Titanium Laser Processing | BOZE",
+  "seoDescription": "Laser marking (UDI code) for General applications. Precision titanium component manufacturing with Marking depth: 5–50 µm; line width 0.05–0.5 mm. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Laser marking (UDI?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Laser marking (UDI code)",
   "aliases": [],
-  "category": "Laser Processing",
-  "description": "Laser marking (UDI code) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Laser marking (UDI code) | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision laser processing of Laser marking (UDI code) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

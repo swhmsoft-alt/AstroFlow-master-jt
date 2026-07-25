@@ -1,81 +1,93 @@
 {
+  "title": "Caseback threading",
+  "category": "Fastener Manufacturing",
+  "description": "Caseback threading capability for titanium components",
   "titaniumGrades": [
+    "Grade 1",
     "Grade 2",
     "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (ELI)"
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "M2 – M24 thread diameters; custom sizes available",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Thread pitch tolerance: Class 2A/3A (UN) / 6g/6h (metric)",
+  "thicknessRange": "M2 – M24 thread diameters",
+  "cuttingTolerance": "+0.01 mm (case diameter) / +0.005 mm (crystal seat)",
+  "tolerance": "+0.01 mm (case diameter) / +0.005 mm (crystal seat)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.1 µm (mirror polish)",
   "processComparison": [
     {
-      "dimension": "Threading Method",
-      "laser": "Thread cutting / thread milling",
-      "waterjet": "Thread rolling (cold forming)"
+      "dimension": "Method",
+      "laser": "Cold-forming: material displaced, not removed",
+      "waterjet": "Thread cutting / milling"
     },
     {
       "dimension": "Fatigue Strength",
-      "laser": "Standard (cut threads)",
-      "waterjet": "Superior (rolled threads — compressive residual stress)"
+      "laser": "30–50% higher than cut threads",
+      "waterjet": "Standard (notch-sensitive)"
     },
     {
-      "dimension": "Production Speed",
-      "laser": "Moderate (single-point or tap)",
-      "waterjet": "High (die rolling)"
-    },
-    {
-      "dimension": "Material Utilization",
-      "laser": "Some material removed",
-      "waterjet": "Near-net shape, no material loss"
+      "dimension": "Surface Finish",
+      "laser": "Ra 0.4–0.8 µm; work-hardened",
+      "waterjet": "Ra 1.6–3.2 µm"
     }
   ],
-  "processDescription": "Precision fastener manufacturing for caseback threading titanium threaded components. Thread rolling produces superior fatigue strength compared to thread cutting by inducing compressive residual stresses in the thread root.",
+  "processDescription": "Thread rolling cold-forms threads by displacing material between two reciprocating or rotary dies, rather than cutting it away. Compressive residual stress at the thread root increases fatigue strength by 30–50% compared to cut threads, specifically for watch case. Precision watch case for Watchmaking, Consumer present unique challenges: Cosmetic surface finish (mirror polish, brush, or bead blast) with sub-mm feature detail. Material traceability from mill to finished case.",
   "holeTypes": [
-    "Standard threads (UN/UNF/Metric)",
-    "Custom thread forms",
-    "Self-locking threads"
+    "UN/UNF/Metric threads per ASME B1.1",
+    "Custom thread forms"
   ],
-  "heatControl": "Coolant and speed control prevent work-hardening during caseback threading threading operations.",
-  "flatnessControl": "Head flatness and perpendicularity controlled within 0.05 mm per fastener standards.",
-  "capabilitiesDescription": "Dedicated fastener manufacturing cell with automatic screw machines, thread rollers, and CNC lathes for caseback threading production.",
+  "heatControl": "Minimal heat generation due to fine finishing passes. Air blast for chip clearing sufficient; coolant not required for cosmetic finishing passes.",
+  "flatnessControl": "Head flatness and perpendicularity within 0.05 mm per fastener standards. Die alignment verified with optical setup microscope.",
+  "capabilitiesDescription": "Fastener manufacturing capability for Caseback threading, with cold forming, thread rolling, and 100% dimensional inspection.",
+  "typicalApplications": [
+    "Dive watch cases",
+    "Dress watch cases",
+    "Smartwatch cases",
+    "Watch bezels"
+  ],
   "downstreamProcesses": [
     {
       "name": "Thread Inspection",
-      "description": "Go/no-go gauge inspection; thread micrometer verification; optical thread comparison."
+      "description": "Go/no-go gauge inspection per ASME B1.1."
     },
     {
-      "name": "Mechanical Testing",
-      "description": "Tensile proof load testing; hardness testing; torque-to-tension verification."
+      "name": "Proof Load Testing",
+      "description": "Tensile proof load per ASTM F606."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Passivation, anodizing, or PVD coating for corrosion resistance and appearance."
+      "name": "CNC Engraving (Logo/Text)",
+      "description": "CNC Engraving (Logo/Text) for caseback threading components."
+    },
+    {
+      "name": "PVD Coating",
+      "description": "PVD Coating for caseback threading components."
+    },
+    {
+      "name": "Water Resistance Testing",
+      "description": "Water Resistance Testing for caseback threading components."
     }
   ],
   "inspectionItems": [
-    "Thread gauge inspection (Go/No-Go per ASME B1.1)",
-    "Dimensional inspection (head height, shank diameter, overall length)",
-    "Hardness testing (Rockwell / Vickers)",
-    "Proof load testing per ASTM F606"
+    "Caseback threading specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ASME B1.1 — Unified Inch Screw Threads",
-    "ASTM F606 — Standard Test Methods for Fasteners",
-    "ISO 898-1 — Mechanical Properties of Fasteners"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Caseback Threading Components?",
+  "relatedEntities": [
+    "titanium-dive-watch-case",
+    "titanium-smartwatch-bezel"
+  ],
+  "seoTitle": "Caseback threading | Precision Titanium Fastener Manufacturing | BOZE",
+  "seoDescription": "Caseback threading for Watchmaking, Consumer applications. Precision titanium component manufacturing with +0.01 mm (case diameter) / +0.005 mm (crystal seat). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Watch Case Components?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Caseback threading",
   "aliases": [],
-  "category": "Fastener Manufacturing",
-  "description": "Caseback threading capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Caseback threading | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision fastener manufacturing of Caseback threading titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

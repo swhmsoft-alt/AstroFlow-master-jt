@@ -1,0 +1,17 @@
+Unable to read C:\Users\Administrator\Desktop\AstroFlow-master-jt\package.json
+  [1mLocation:[22m
+    [4mC:\Users\Administrator\Desktop\AstroFlow-master-jt\node_modules\vitefu\src\index.js:41:11[24m
+  [1mStack trace:[22m
+[2m    at file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/vitefu/src/index.js:41:11
+    at async createVite (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/core/create-vite.js:64:27)
+    at async AstroBuilder.run (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/core/build/index.js:186:23)
+    at async build (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/cli/build/index.js:29:3)
+    at async cli (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/cli/index.js:238:5)[22m
+  [1mCaused by:[22m
+[2m  Unexpected token '﻿', "﻿{
+"name":"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at async crawlFrameworkPkgs (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/vitefu/src/index.js:40:19)
+    at async AstroBuilder.setup (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/core/build/index.js:82:24)
+    at async build (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/core/build/index.js:45:3)
+    at async runCommand (file:///C:/Users/Administrator/Desktop/AstroFlow-master-jt/node_modules/astro/dist/cli/index.js:210:7)[22m

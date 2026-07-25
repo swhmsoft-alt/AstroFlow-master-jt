@@ -1,4 +1,7 @@
 {
+  "title": "Water pressure testing (to rated depth x 1.25 safety factor)",
+  "category": "Inspection",
+  "description": "Water pressure testing (to rated depth x 1.25 safety factor) capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,78 +10,81 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "All sizes accommodated",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Measurement resolution: ±0.001 mm (CMM) / ±0.1 µm (optical)",
+  "thicknessRange": "0.5 mm - 100 mm+",
+  "cuttingTolerance": "+0.1 mm",
+  "tolerance": "+0.1 mm",
+  "maxSize": "",
+  "surfaceFinish": "Ra 3.2-6.3 um as-cut",
   "processComparison": [
     {
-      "dimension": "Detection Method",
-      "laser": "Laser profilometry / structured light scanning",
-      "waterjet": "N/A"
+      "dimension": "Cutting Mechanism",
+      "laser": "High-pressure water + garnet abrasive",
+      "waterjet": "Focused laser beam melts/vaporizes"
     },
     {
-      "dimension": "Resolution",
-      "laser": "0.001 mm (laser scanning); 0.1 µm (white light interferometry)",
-      "waterjet": "N/A"
+      "dimension": "HAZ",
+      "laser": "Zero - cold cutting",
+      "waterjet": "0.05-0.15 mm with N2 assist"
     },
     {
-      "dimension": "Surface Requirement",
-      "laser": "Reflective or matte surfaces acceptable",
-      "waterjet": "N/A"
+      "dimension": "Max Thickness",
+      "laser": "100 mm+ (abrasive waterjet)",
+      "waterjet": "15 mm (fiber laser)"
     },
     {
-      "dimension": "Inspection Speed",
-      "laser": "High — full-field scanning in seconds",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Portability",
-      "laser": "Portable laser trackers available for on-site inspection",
-      "waterjet": "N/A"
+      "dimension": "Kerf Width",
+      "laser": "0.7-1.2 mm",
+      "waterjet": "0.1-0.3 mm"
     }
   ],
-  "processDescription": "Comprehensive inspection services for water pressure testing titanium components, including dimensional metrology, NDT, and material verification with full traceability documentation.",
+  "processDescription": "Abrasive waterjet cutting of titanium uses a high-pressure stream of water mixed with garnet abrasive to erode material. The cold-cutting process produces zero heat-affected zone, making it ideal for titanium grades sensitive to thermal cracking, particularly for titanium components. Precision titanium components present unique challenges: balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) is optimized for each feature.",
   "holeTypes": [
-    "Inspection is a measurement/verification process"
+    "Large cutouts",
+    "Thick plate piercing"
   ],
-  "heatControl": "All inspection performed in temperature-controlled metrology lab (20±1°C) to eliminate thermal expansion errors.",
-  "flatnessControl": "Granite surface plates (Grade 00) used as datum references for flatness measurement.",
-  "capabilitiesDescription": "Our metrology lab is equipped with CMM (ZEISS), vision systems, laser scanners, ultrasonic flaw detectors, and tensile/ hardness testers for water pressure testing.",
+  "heatControl": "No heat generated - room temperature waterjet stream. HAZ-free process preserves titanium microstructure.",
+  "flatnessControl": "No thermal distortion. Flatness depends on incoming stock condition.",
+  "capabilitiesDescription": "NDT and dimensional inspection service for Water pressure testing (to rated depth x 1.25 safety factor), performed by certified technicians per applicable standards.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Inspection Report Package",
-      "description": "Full FAIR (AS9102) with dimensional report, material certs, and NDT results."
+      "name": "Drying",
+      "description": "Hot air drying to remove residual moisture from cut surfaces."
     },
     {
-      "name": "Certificate of Conformance",
-      "description": "Signed CoC with all applicable standards and specification compliance noted."
+      "name": "Deburring",
+      "description": "Deburring components for water pressure testing (to rated depth x 1.25 safety factor)."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for water pressure testing (to rated depth × 1.25 safety factor) components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for water pressure testing of components (to rated depth × 1.25 safety factor)."
     }
   ],
   "inspectionItems": [
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz/Rmax)",
-    "Hardness testing (Rockwell / Vickers / Brinell)",
-    "Non-destructive testing (UT / PT / MT / RT as required)",
-    "Material certification verification (EN 10204 3.1/3.2)"
+    "Water pressure testing (to rated depth x 1.25 safety factor) specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ISO/IEC 17025 — Metrology Lab Standards",
-    "AS9102 — First Article Inspection",
-    "NADCAP — NDT Accreditation"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Water Pressure Components?",
+  "relatedEntities": [],
+  "seoTitle": "Water pressure testing (to rated depth x 1.25 safety factor) | Precision Titanium Inspection | BOZE",
+  "seoDescription": "Water pressure testing (to rated depth x 1.25 safety factor) for General applications. Precision titanium component manufacturing with +0.1 mm. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Water pressure testing?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Water pressure testing (to rated depth x 1.25 safety factor)",
   "aliases": [],
-  "category": "Inspection",
-  "description": "Water pressure testing (to rated depth x 1.25 safety factor) capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Water pressure testing (to rated depth x 1.25 safety factor) | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision inspection of Water pressure testing (to rated depth x 1.25 safety factor) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

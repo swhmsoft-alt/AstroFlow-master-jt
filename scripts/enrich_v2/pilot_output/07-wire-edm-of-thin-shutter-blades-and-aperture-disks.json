@@ -1,0 +1,84 @@
+{
+  "title": "Wire EDM of thin shutter blades and aperture disks",
+  "category": "EDM",
+  "description": "Wire electrical discharge machining of thin titanium shutter blades and precision aperture disks.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Up to 300 mm (wire); up to 200 mm cavity depth (sinker)",
+  "cuttingTolerance": "+0.002 mm (positional) / +0.003 mm (profile)",
+  "tolerance": "+0.002 mm (positional) / +0.003 mm (profile)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.2–0.8 µm (multi-pass wire); Ra 1.6 µm (sinker)",
+  "processComparison": [
+    {
+      "dimension": "Min Internal Corner R",
+      "laser": "0.015 mm (wire radius)",
+      "waterjet": "0.5 mm (milling)"
+    },
+    {
+      "dimension": "Taper Angle",
+      "laser": "+30° (5-axis wire EDM)",
+      "waterjet": "0° (straight cut)"
+    },
+    {
+      "dimension": "Re-cast Layer",
+      "laser": "1–5 µm; removable by etching",
+      "waterjet": "No re-cast layer"
+    }
+  ],
+  "processDescription": "Wire EDM uses a continuously traveling brass or coated wire electrode under precision CNC control to erode titanium along a programmed path. Submerged in deionized water dielectric, the process cuts intricate profiles and sharp internal corners that are impossible with conventional specifically for thin wall. Thin thin wall for Aerospace present unique challenges: Wall thickness < 1 mm prone to chatter and deflection. Negative tool rake and reduced radial engagement (5%) required. Vacuum fixturing or wax/pitch potting for stability.",
+  "holeTypes": [
+    "Tapered through-holes",
+    "Micro-holes Ø0.1 mm (sinker)",
+    "Keyway slots",
+    "Sharp internal corners"
+  ],
+  "heatControl": "Deionized water dielectric with < 5 µS/cm conductivity and temperature control (+0.5°C). Multi-pass roughing to finishing with decreasing energy settings.",
+  "flatnessControl": "Multi-pass cutting strategy and stress-relieved material for thin-walled components. Anti-vibration wire tensioning for tall cuts up to 300 mm.",
+  "capabilitiesDescription": "Our facility is equipped to handle wire edm of thin shutter blades and aperture disks with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Thin-walled sleeves",
+    "Cylinders < 1 mm wall",
+    "Aerodynamic fairings"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "Re-cast Layer Removal",
+      "description": "Chemical etching or electropolishing to remove 1–5 µm re-cast layer."
+    },
+    {
+      "name": "Surface Polishing",
+      "description": "Micro-blasting or CNC polishing to achieve Ra < 0.4 µm."
+    },
+    {
+      "name": "Stress Relief",
+      "description": "Stress Relief for wire edm of thin shutter blades and aperture disks components."
+    },
+    {
+      "name": "CMM Inspection on Reference Fixture",
+      "description": "CMM Inspection on Reference Fixture for wire edm of thin shutter blades and aperture disks components."
+    }
+  ],
+  "inspectionItems": [
+    "Wire EDM of thin shutter blades and aperture disks specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [],
+  "seoTitle": "Wire EDM of thin shutter blades and aperture disks | Precision Titanium EDM | BOZE",
+  "seoDescription": "Wire EDM of thin shutter blades and aperture disks for Aerospace applications. Thin titanium component manufacturing with +0.002 mm (positional) / +0.003 mm (profile). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Thin Wall Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

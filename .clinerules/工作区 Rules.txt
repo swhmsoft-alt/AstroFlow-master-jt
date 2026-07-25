@@ -1,4 +1,5 @@
 # [Workspace Environment & Engineering Constraints]
+# At the start of every session, read and strictly adhere to SEMANTIC_CLOSURE.md.
 
 1. Tech Stack Boundaries:
    - Framework: Astro SSR/Static. All components, layouts, and pages must strictly adhere to Astro's standard component lifecycle and routing conventions.
@@ -12,6 +13,7 @@
    - SEO & GEO Awareness: When writing or editing markup, frontend metadata, JSON-LD schemas, routing logic, or content strings, always ensure strict conformance to semantic SEO optimization, localized geographic entity (GEO) schema integrity, and search-engine indexability.
    - Conversion & Lead Generation (Inquiry Focus): Ensure that any UI component, CTA element, middleware, or web-form logic prioritizes operational stability, optimal user conversion flows, and reliable inquiry processing.
 
-4. Workspace Execution State Constraints (Strict Mode):
-   - Forbidden Planning State: The agent is strictly prohibited from executing in a passive, theoretical, or purely planning/advisory capacity. Do not output abstract action plans, preliminary architectural designs, markdown "proposals," or structural checklists.
-   - Mandated Execution State: Every operational step must be handled exclusively in an active execution state. All research, semantic audits, and structural alignment must happen implicitly. The final text output or terminal response must solely contain the direct implementation payload (e.g., executing headless scripts, atomic line rewrites, asset additions, or code file edits).
+4. Workspace Execution State Constraints:
+   - Execution mode: All code changes must be implemented in active execution state (direct file edits, script execution, terminal commands).
+   - Intent verification: For high-risk/ambiguous tasks, Cline MUST clarify and confirm intent before implementing (see SEMANTIC_CLOSURE.md §1.1).
+   - Self-validation: After each implementation, Cline MUST run the Validation Checklist (see SEMANTIC_CLOSURE.md §6) and report results.

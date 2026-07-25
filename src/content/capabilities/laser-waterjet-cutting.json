@@ -1,4 +1,7 @@
 {
+  "title": "Laser / waterjet cutting",
+  "category": "Laser Processing",
+  "description": "Laser / waterjet cutting capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,91 +10,81 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "0.5 mm – 25.0 mm",
-  "minHoleRatio": "1:1 (diameter-to-thickness ratio)",
-  "cuttingTolerance": "±0.05 mm (Laser) / ±0.1 mm (Waterjet)",
+  "thicknessRange": "0.5 mm - 100 mm+",
+  "cuttingTolerance": "+0.1 mm",
+  "tolerance": "+0.1 mm",
+  "maxSize": "",
+  "surfaceFinish": "Ra 3.2-6.3 um as-cut",
   "processComparison": [
     {
-      "dimension": "Suitable Thickness",
-      "laser": "Thin to medium sections up to 12 mm with fiber laser; optimal < 3 mm for high speed",
-      "waterjet": "0.5 mm to 25 mm+; no practical thickness limit with abrasive waterjet"
+      "dimension": "Cutting Mechanism",
+      "laser": "High-pressure water + garnet abrasive",
+      "waterjet": "Focused laser beam melts/vaporizes"
     },
     {
-      "dimension": "Heat Affected Zone (HAZ)",
-      "laser": "Minimal HAZ with N₂/Ar assist gas preventing titanium oxidation",
-      "waterjet": "No HAZ — cold cutting process, zero thermal distortion"
+      "dimension": "HAZ",
+      "laser": "Zero - cold cutting",
+      "waterjet": "0.05-0.15 mm with N2 assist"
     },
     {
-      "dimension": "Edge Quality",
-      "laser": "Requires deburring for dross removal on thicker sections",
-      "waterjet": "Smooth, burr-free edge; no secondary cleaning required"
+      "dimension": "Max Thickness",
+      "laser": "100 mm+ (abrasive waterjet)",
+      "waterjet": "15 mm (fiber laser)"
     },
     {
-      "dimension": "Cutting Speed (3 mm Ti)",
-      "laser": "Up to 6 m/min for thin sections",
-      "waterjet": "0.5–1.5 m/min; slower but more versatile"
-    },
-    {
-      "dimension": "Material Compatibility",
-      "laser": "All titanium grades; reflective alloys require careful fiber laser tuning",
-      "waterjet": "All titanium grades + composites, ceramics; no reflectivity issues"
+      "dimension": "Kerf Width",
+      "laser": "0.7-1.2 mm",
+      "waterjet": "0.1-0.3 mm"
     }
   ],
-  "processDescription": "High-precision laser and waterjet cutting of laser waterjet cutting for titanium components. Capable of producing complex geometries, internal cutouts, and edge preparations with ±0.05 mm laser tolerance and zero HAZ via waterjet process.",
+  "processDescription": "Abrasive waterjet cutting of titanium uses a high-pressure stream of water mixed with garnet abrasive to erode material. The cold-cutting process produces zero heat-affected zone, ideal for titanium grades sensitive to thermal cracking, specifically for titanium components. Precision titanium components  present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
-    "Round holes",
-    "Slot / oblong holes",
-    "Custom contour cutouts",
-    "Edge preparations (bevels)"
+    "Large cutouts",
+    "Thick plate piercing"
   ],
-  "heatControl": "For laser cutting of laser waterjet cutting, high-purity nitrogen or argon coaxial assist gas shields the cut zone from atmospheric oxygen, preventing alpha-case formation and discoloration. Waterjet cutting eliminates thermal concerns entirely.",
-  "flatnessControl": "Post-cutting stress relief (vacuum annealing) and precision leveling available for laser waterjet cutting components requiring flatness within 0.5 mm/m.",
-  "capabilitiesDescription": "Our facility combines multi-kilowatt fiber laser cutting systems with high-pressure abrasive waterjet systems, enabling us to process laser waterjet cutting from prototype to production volumes.",
+  "heatControl": "No heat generated - room temperature waterjet stream. HAZ-free process preserves titanium microstructure.",
+  "flatnessControl": "No thermal distortion. Flatness depends on incoming stock condition.",
+  "capabilitiesDescription": "Laser processing capability for Laser / waterjet cutting, with precision beam delivery, gas assist systems, and process monitoring for repeatable quality.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Drying",
+      "description": "Hot air drying to remove residual moisture from cut surfaces."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Deburring",
+      "description": "Deburring for laser / waterjet cutting components."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for laser / waterjet cutting components."
     },
     {
-      "name": "Pickling & Passivation",
-      "description": "Nitric-hydrofluoric acid bath (ASTM B600) removes light oxidation from laser-cut edges and restores passive layer."
-    },
-    {
-      "name": "CNC Machining",
-      "description": "4/5-axis CNC milling/drilling for mounting holes, flange faces, and precision features on cut blanks."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for laser / waterjet cutting components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "Edge quality assessment (burr height per ISO 13715)",
-    "Dye penetrant inspection (PT) per ASTM E1417"
+    "Laser / waterjet cutting specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
     "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Laser Waterjet Components?",
+  "relatedEntities": [],
+  "seoTitle": "Laser / waterjet cutting | Precision Titanium Laser Processing | BOZE",
+  "seoDescription": "Laser / waterjet cutting for General applications. Precision titanium component manufacturing with +0.1 mm. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Laser / waterjet?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Laser / waterjet cutting",
   "aliases": [],
-  "category": "Laser Processing",
-  "description": "Laser / waterjet cutting capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Laser / waterjet cutting | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision laser processing of Laser / waterjet cutting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

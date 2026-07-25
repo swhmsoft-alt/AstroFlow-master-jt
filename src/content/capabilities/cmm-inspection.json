@@ -1,4 +1,7 @@
 {
+  "title": "CMM inspection",
+  "category": "Inspection",
+  "description": "CMM inspection capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,78 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "All sizes accommodated",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "Measurement resolution: ±0.001 mm (CMM) / ±0.1 µm (optical)",
+  "thicknessRange": "CMM envelope: 1200 × 1000 × 800 mm",
+  "cuttingTolerance": "Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360",
+  "tolerance": "Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360",
+  "maxSize": "",
+  "surfaceFinish": "Contact or non-contact (laser/white light) scanning",
   "processComparison": [
     {
-      "dimension": "Detection Method",
-      "laser": "Laser profilometry / structured light scanning",
+      "dimension": "Probe Type",
+      "laser": "Touch-trigger / scanning / non-contact laser",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Resolution",
-      "laser": "0.001 mm (laser scanning); 0.1 µm (white light interferometry)",
+      "dimension": "Uncertainty",
+      "laser": "+(1.0 + L/300) µm per ISO 10360",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Surface Requirement",
-      "laser": "Reflective or matte surfaces acceptable",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Inspection Speed",
-      "laser": "High — full-field scanning in seconds",
-      "waterjet": "N/A"
-    },
-    {
-      "dimension": "Portability",
-      "laser": "Portable laser trackers available for on-site inspection",
+      "dimension": "GD&T",
+      "laser": "Full: form, orientation, location, runout",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Comprehensive inspection services for cmm inspection titanium components, including dimensional metrology, NDT, and material verification with full traceability documentation.",
+  "processDescription": "Coordinate Measuring Machine (CMM) inspection provides quantitative dimensional verification of titanium components against GD&T specifications per ASME Y14.5. Touch-trigger probes, scanning heads, and non-contact laser sensors accommodate geometries from simple prismatic to complex freeform surfaces.",
   "holeTypes": [
-    "Inspection is a measurement/verification process"
+    "N/A"
   ],
-  "heatControl": "All inspection performed in temperature-controlled metrology lab (20±1°C) to eliminate thermal expansion errors.",
-  "flatnessControl": "Granite surface plates (Grade 00) used as datum references for flatness measurement.",
-  "capabilitiesDescription": "Our metrology lab is equipped with CMM (ZEISS), vision systems, laser scanners, ultrasonic flaw detectors, and tensile/ hardness testers for cmm inspection.",
+  "heatControl": "Temperature-controlled metrology lab at 20+1°C. Components stabilized on granite surface plate for minimum 4 hours before measurement.",
+  "flatnessControl": "Granite surface plate Grade 00 (flatness < 1 µm/m) as reference datum.",
+  "capabilitiesDescription": "NDT and dimensional inspection service for CMM inspection, performed by certified technicians per applicable standards.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Inspection Report Package",
-      "description": "Full FAIR (AS9102) with dimensional report, material certs, and NDT results."
+      "name": "Inspection Report",
+      "description": "Full FAIR (AS9102) with graphical pass/fail color map."
     },
     {
-      "name": "Certificate of Conformance",
-      "description": "Signed CoC with all applicable standards and specification compliance noted."
+      "name": "CoC",
+      "description": "Certificate of Conformance with material certification traceability."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for cmm inspection components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for cmm inspection components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for cmm inspection components."
     }
   ],
   "inspectionItems": [
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz/Rmax)",
-    "Hardness testing (Rockwell / Vickers / Brinell)",
-    "Non-destructive testing (UT / PT / MT / RT as required)",
-    "Material certification verification (EN 10204 3.1/3.2)"
+    "CMM inspection specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ISO/IEC 17025 — Metrology Lab Standards",
-    "AS9102 — First Article Inspection",
-    "NADCAP — NDT Accreditation"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Cmm Inspection Components?",
+  "relatedEntities": [],
+  "seoTitle": "CMM inspection | Precision Titanium Inspection | BOZE",
+  "seoDescription": "CMM inspection for General applications. Precision titanium component manufacturing with Measurement uncertainty: +(1.0 + L/300) µm per ISO 10360. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision CMM inspection?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "CMM inspection",
   "aliases": [],
-  "category": "Inspection",
-  "description": "CMM inspection capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "CMM inspection | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision inspection of CMM inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

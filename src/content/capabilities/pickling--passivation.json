@@ -1,4 +1,7 @@
 {
+  "title": "Pickling & passivation",
+  "category": "Surface Treatment",
+  "description": "Pickling & passivation capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,88 +10,75 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "All thicknesses — surface treatment is independent of substrate thickness",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "N/A",
+  "thicknessRange": "Tank: 1200 × 800 × 600 mm",
+  "cuttingTolerance": "No dimensional change; removes < 1 µm contamination",
+  "tolerance": "No dimensional change; removes < 1 µm contamination",
+  "maxSize": "",
+  "surfaceFinish": "Strips discoloration; restores uniform matte appearance",
   "processComparison": [
     {
-      "dimension": "Process Type",
-      "laser": "Laser marking/engraving for surface identification",
-      "waterjet": "N/A — waterjet not used for surface treatment"
-    },
-    {
-      "dimension": "Surface Finish Achieved",
-      "laser": "Ra 0.05–0.4 µm (laser polishing)",
-      "waterjet": "Ra 3.2–6.3 µm (abrasive surface preparation)"
-    },
-    {
-      "dimension": "Coating/Conversion",
-      "laser": "Laser cladding for wear-resistant coatings",
+      "dimension": "Mechanism",
+      "laser": "Chemical dissolution of contaminants in acid bath",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Treatment Depth",
-      "laser": "Surface-level (microns to mm for cladding)",
-      "waterjet": "Surface-level (abrasion only)"
+      "dimension": "Material Removed",
+      "laser": "< 1 µm (contaminant layer only)",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Heat Impact",
-      "laser": "Localized heating; minimal bulk thermal effect",
-      "waterjet": "No heat; cold process"
+      "dimension": "Standards",
+      "laser": "ASTM B600 / AMS 2700",
+      "waterjet": "N/A"
     }
   ],
-  "processDescription": "Professional surface treatment services for pickling passivation titanium components, including anodizing, passivation, electropolishing, and coatings to enhance corrosion resistance, wear properties, and aesthetic appearance.",
+  "processDescription": "Chemical passivation of titanium per ASTM B600 removes surface contamination (embedded iron, heat tint) and restores the natural passive oxide layer. The nitric-hydrofluoric acid bath preferentially dissolves contaminant particles without attacking the base titanium, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. optimized for each feature.",
   "holeTypes": [
-    "N/A — surface treatment is a finishing process"
+    "N/A"
   ],
-  "heatControl": "Temperature-controlled process baths and fixturing ensure uniform treatment of pickling passivation without altering the substrate's mechanical properties.",
-  "flatnessControl": "No significant flatness change expected during pickling passivation processing. Pre-treatment flatness is preserved.",
-  "capabilitiesDescription": "Our surface treatment line includes Type II/III anodizing (AMS 2488), chemical passivation (ASTM B600), electropolishing, PVD coating, and laser engraving for pickling passivation.",
+  "heatControl": "Solution at 50–60°C with acid concentration monitored by titration. Parts fully immersed with agitation for uniform exposure.",
+  "flatnessControl": "Chemical process — no mechanical force. Dimensional stability maintained.",
+  "capabilitiesDescription": "Surface engineering capability for Pickling & passivation, with process control, bath chemistry monitoring, and batch consistency validation.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 cleanroom packaging for contamination-sensitive finished surfaces."
+      "name": "Surface Inspection",
+      "description": "Ferroxyl test to verify absence of free iron contamination."
     },
     {
-      "name": "Quality Inspection",
-      "description": "Coating thickness measurement, adhesion testing (tape test), and color verification."
+      "name": "Deburring",
+      "description": "Deburring for pickling & passivation components."
     },
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for pickling & passivation components."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
-    },
-    {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for pickling & passivation components."
     }
   ],
   "inspectionItems": [
-    "Coating thickness measurement (eddy current / XRF)",
-    "Adhesion test (tape test per ASTM D3359)",
-    "Color uniformity inspection (visual / spectrophotometer)",
-    "Surface contamination test (white glove / Ferroxyl)"
+    "Pickling & passivation specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2488 — Titanium Anodizing",
-    "ASTM B600 — Passivation of Titanium"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Pickling Passivation Components?",
+  "relatedEntities": [],
+  "seoTitle": "Pickling & passivation | Precision Titanium Surface Treatment | BOZE",
+  "seoDescription": "Pickling & passivation for General applications. Precision titanium component manufacturing with No dimensional change; removes < 1 µm contamination. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Pickling & passivation?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Pickling & passivation",
   "aliases": [],
-  "category": "Surface Treatment",
-  "description": "Pickling & passivation capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Pickling & passivation | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision surface treatment of Pickling & passivation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

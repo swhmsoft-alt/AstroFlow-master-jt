@@ -1,0 +1,84 @@
+{
+  "title": "Ultrasonic cleaning",
+  "category": "General Manufacturing",
+  "description": "Industrial ultrasonic cleaning of titanium components to remove process contaminants.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Tank: Ø400 × 500 mm",
+  "cuttingTolerance": "No dimensional change",
+  "tolerance": "No dimensional change",
+  "maxSize": "",
+  "surfaceFinish": "Cleaned surface; no mechanical alteration",
+  "processComparison": [
+    {
+      "dimension": "Mechanism",
+      "laser": "Cavitation implosion dislodges contaminants",
+      "waterjet": "Pressure spray washing"
+    },
+    {
+      "dimension": "Penetration",
+      "laser": "Blind holes, threads, internal passages",
+      "waterjet": "Line-of-sight only"
+    },
+    {
+      "dimension": "Frequency",
+      "laser": "25 kHz (heavy) / 40 kHz (general) / 130 kHz (delicate)",
+      "waterjet": "N/A"
+    }
+  ],
+  "processDescription": "Ultrasonic cleaning uses high-frequency (25–130 kHz) sound waves to create cavitation bubbles in a cleaning solution. The implosion of these bubbles on the titanium surface dislodges contaminants (oil, chips, polishing compound) from blind holes, threads, and complex internal features, specifically for titanium components. Precision titanium components present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. optimized for each feature.",
+  "holeTypes": [
+    "N/A"
+  ],
+  "heatControl": "Solution at 50–70°C for optimal cavitation. Sequential wash-rinse-dry with DI water final rinse.",
+  "flatnessControl": "No mechanical force applied — dimensional stability maintained.",
+  "capabilitiesDescription": "Our facility is equipped to handle ultrasonic cleaning with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "HEPA Drying",
+      "description": "HEPA-filtered hot air drying in Class 100 environment."
+    },
+    {
+      "name": "Cleanroom Packaging",
+      "description": "Double-bagged in Class 10/100 with VCI lining."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for ultrasonic cleaning components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for ultrasonic cleaning components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for ultrasonic cleaning components."
+    }
+  ],
+  "inspectionItems": [
+    "Ultrasonic cleaning specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [],
+  "seoTitle": "Ultrasonic cleaning | Precision Titanium General Manufacturing | BOZE",
+  "seoDescription": "Ultrasonic cleaning for General applications. Precision titanium component manufacturing with No dimensional change. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Ultrasonic cleaning?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

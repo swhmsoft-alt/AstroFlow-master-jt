@@ -1,4 +1,7 @@
 {
+  "title": "Precision grinding of root form",
+  "category": "Machining",
+  "description": "Precision grinding of root form capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,93 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "Up to Ø500 mm × 1000 mm (turning) / 1200 mm × 800 mm (milling)",
-  "minHoleRatio": "0.5 mm minimum hole diameter (drilling)",
-  "cuttingTolerance": "±0.005 mm (turning) / ±0.01 mm (milling)",
+  "thicknessRange": "0.3 mm – 6.0 mm sheet/plate",
+  "cuttingTolerance": "+0.2 mm (bend position) / +0.5° (bend angle)",
+  "tolerance": "+0.2 mm (bend position) / +0.5° (bend angle)",
+  "maxSize": "",
+  "surfaceFinish": "No surface damage with polyurethane tooling",
   "processComparison": [
     {
-      "dimension": "Machining Strategy",
-      "laser": "N/A — chip-cutting process using multi-axis CNC",
-      "waterjet": "N/A — abrasive waterjet for rough profiling only"
+      "dimension": "Method",
+      "laser": "CNC press brake with air bending / bottoming",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Achievable Tolerance",
-      "laser": "±0.005 mm (precision turning/milling)",
-      "waterjet": "±0.1 mm (profile roughing)"
+      "dimension": "Springback (Gr5)",
+      "laser": "10–20° depending on R/T ratio",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Surface Finish",
-      "laser": "Ra 0.4–1.6 µm as-machined; Ra 0.05 µm with polishing",
-      "waterjet": "Ra 3.2–6.3 µm as-cut"
-    },
-    {
-      "dimension": "Material Removal Rate",
-      "laser": "Moderate — optimized via CAM toolpath strategies",
-      "waterjet": "High — suitable for bulk material removal"
-    },
-    {
-      "dimension": "Tool Wear (Ti machining)",
-      "laser": "Carbide/PCD tooling required; Ti is work-hardening",
-      "waterjet": "No tool wear; garnet abrasive consumed"
+      "dimension": "Min Bend R",
+      "laser": "2×T (Grade 2) / 3×T (Grade 5)",
+      "waterjet": "N/A"
     }
   ],
-  "processDescription": "Precision CNC machining of precision grinding root titanium components using 3/4/5-axis machining centers. Capable of tight tolerances and complex geometries for mission-critical applications.",
+  "processDescription": "Press brake forming of titanium sheet uses CNC-controlled backgauges and variable-radius tooling to produce precision bends. Titanium's high springback (10–20° for Grade 5) requires over-bend compensation calculated from the specific alloy's elastic modulus, specifically for titanium components. Precision titanium components  present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
-    "Drilled holes",
-    "Threaded holes",
-    "Counterbore / countersink",
-    "Tapered holes",
-    "Custom milled pockets"
+    "N/A"
   ],
-  "heatControl": "CNC machining of precision grinding root uses high-pressure coolant-through-spindle systems (70 bar) to manage heat generation at the cutting interface, preventing work-hardening and maintaining dimensional stability.",
-  "flatnessControl": "Precision fixturing and stress-relief cycles ensure flatness within 0.005 mm for precision grinding root components. Multi-step roughing/finishing passes minimize distortion.",
-  "capabilitiesDescription": "Our machine shop is equipped with 35+ CNC machining centers including 5-axis simultaneous, Swiss-type, and multi-tasking machines for precision grinding root production.",
+  "heatControl": "Hot forming at 300–600°C for complex bends using resistance-heated tooling. Temperature controlled +10°C across the bend line.",
+  "flatnessControl": "Post-form stress relief at 540°C for CP grades. Multi-stage forming with intermediate stress relief for tight radii.",
+  "capabilitiesDescription": "Precision machining capability for Precision grinding of root form, utilizing multi-axis CNC centers with in-process inspection and SPC quality control.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Stress Relief",
+      "description": "Vacuum annealing to relieve cold-work stresses."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Laser Trimming",
+      "description": "Fiber laser cutting of formed blanks to net shape."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Deburring",
+      "description": "Deburring for precision grinding of root form components."
     },
     {
-      "name": "Surface Treatment",
-      "description": "Anodizing (AMS 2488), passivation, or electropolishing for corrosion resistance and aesthetic finish."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for precision grinding of root form components."
     },
     {
-      "name": "Thread Rolling",
-      "description": "Cold-forming of threads for superior fatigue strength compared to thread cutting."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for precision grinding of root form components."
     }
   ],
   "inspectionItems": [
-    "Dimensional inspection (caliper / micrometer / CMM)",
-    "Surface finish measurement (Ra / Rz per ISO 4287)",
-    "Material grade verification (PMI / OES spectrometer)",
-    "Visual inspection per ASTM E10 / ISO 17637",
-    "CMM full 3D inspection (GD&T per ASME Y14.5)",
-    "Surface roughness measurement (Ra/Rz)"
+    "Precision grinding of root form specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AS9100D — Aerospace Quality Management"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Precision Grinding Components?",
+  "relatedEntities": [],
+  "seoTitle": "Precision grinding of root form | Precision Titanium Machining | BOZE",
+  "seoDescription": "Precision grinding of root form for General applications. Precision titanium component manufacturing with +0.2 mm (bend position) / +0.5° (bend angle). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Precision grinding of?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Precision grinding of root form",
   "aliases": [],
-  "category": "Machining",
-  "description": "Precision grinding of root form capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Precision grinding of root form | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision machining of Precision grinding of root form titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

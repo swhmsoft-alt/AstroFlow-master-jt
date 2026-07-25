@@ -1,4 +1,7 @@
 {
+  "title": "Electrochemical polishing",
+  "category": "Surface Treatment",
+  "description": "Electrochemical polishing capability for titanium components",
   "titaniumGrades": [
     "Grade 1",
     "Grade 2",
@@ -7,88 +10,79 @@
     "Grade 9",
     "Grade 23"
   ],
-  "thicknessRange": "All thicknesses — surface treatment is independent of substrate thickness",
-  "minHoleRatio": "N/A",
-  "cuttingTolerance": "N/A",
+  "thicknessRange": "Tank: 1200 × 800 × 600 mm; all part sizes",
+  "cuttingTolerance": "Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change",
+  "tolerance": "Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change",
+  "maxSize": "",
+  "surfaceFinish": "Retains substrate finish; matte to satin appearance",
   "processComparison": [
     {
-      "dimension": "Process Type",
-      "laser": "Laser marking/engraving for surface identification",
-      "waterjet": "N/A — waterjet not used for surface treatment"
-    },
-    {
-      "dimension": "Surface Finish Achieved",
-      "laser": "Ra 0.05–0.4 µm (laser polishing)",
-      "waterjet": "Ra 3.2–6.3 µm (abrasive surface preparation)"
-    },
-    {
-      "dimension": "Coating/Conversion",
-      "laser": "Laser cladding for wear-resistant coatings",
+      "dimension": "Coating",
+      "laser": "Electrochemical oxide conversion; not a deposit",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Treatment Depth",
-      "laser": "Surface-level (microns to mm for cladding)",
-      "waterjet": "Surface-level (abrasion only)"
+      "dimension": "Thickness",
+      "laser": "Type II: 0.5–5 µm / Type III: 5–25 µm",
+      "waterjet": "N/A"
     },
     {
-      "dimension": "Heat Impact",
-      "laser": "Localized heating; minimal bulk thermal effect",
-      "waterjet": "No heat; cold process"
+      "dimension": "Colors",
+      "laser": "Gold (15V), blue (40V), green (70V), purple (90V)",
+      "waterjet": "N/A"
     }
   ],
-  "processDescription": "Professional surface treatment services for electrochemical polishing titanium components, including anodizing, passivation, electropolishing, and coatings to enhance corrosion resistance, wear properties, and aesthetic appearance.",
+  "processDescription": "Titanium anodizing (AMS 2488) grows a controlled oxide layer through electrochemical conversion in an electrolyte bath. Type II produces interference colors (gold, blue, purple, green) for identification and cosmetics. Type III (hard anodizing) produces a thicker, abrasion-resistant oxide, specifically for titanium components. Precision titanium components for Chemical Processing present unique challenges: Balancing dimensional accuracy with cost per part. Process selection (mill vs. turn vs. EDM vs. laser) optimized for each feature.",
   "holeTypes": [
-    "N/A — surface treatment is a finishing process"
+    "N/A"
   ],
-  "heatControl": "Temperature-controlled process baths and fixturing ensure uniform treatment of electrochemical polishing without altering the substrate's mechanical properties.",
-  "flatnessControl": "No significant flatness change expected during electrochemical polishing processing. Pre-treatment flatness is preserved.",
-  "capabilitiesDescription": "Our surface treatment line includes Type II/III anodizing (AMS 2488), chemical passivation (ASTM B600), electropolishing, PVD coating, and laser engraving for electrochemical polishing.",
+  "heatControl": "Electrolyte bath at 20–24°C (Type II) or –5–0°C (Type III). Voltage ramp programmed to prevent localized overheating and burning.",
+  "flatnessControl": "No dimensional change — surface conversion only. Pre-treatment finish is preserved through the process.",
+  "capabilitiesDescription": "Surface engineering capability for Electrochemical polishing, with process control, bath chemistry monitoring, and batch consistency validation.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 cleanroom packaging for contamination-sensitive finished surfaces."
+      "name": "Sealing",
+      "description": "Hot water or nickel acetate sealing to close micro-porosity."
     },
     {
-      "name": "Quality Inspection",
-      "description": "Coating thickness measurement, adhesion testing (tape test), and color verification."
+      "name": "Laser Marking",
+      "description": "Post-anodize laser marking for UDI or part ID on oxide layer."
     },
     {
-      "name": "Deburring & Edge Finishing",
-      "description": "Mechanical or thermal deburring to remove sharp edges and achieve uniform edge radius per engineering specification."
+      "name": "Deburring",
+      "description": "Deburring for electrochemical polishing components."
     },
     {
-      "name": "Dimensional Inspection (CMM)",
-      "description": "Full 3D coordinate measuring machine inspection for geometric dimensioning and tolerancing (GD&T) verification."
+      "name": "Dimensional Inspection",
+      "description": "Dimensional Inspection for electrochemical polishing components."
     },
     {
-      "name": "Cleanroom Packaging",
-      "description": "Class 10 / Class 100 cleanroom packaging with VCI anti-corrosion lining for contamination-sensitive components."
+      "name": "Surface Treatment as Required",
+      "description": "Surface Treatment as Required for electrochemical polishing components."
     }
   ],
   "inspectionItems": [
-    "Coating thickness measurement (eddy current / XRF)",
-    "Adhesion test (tape test per ASTM D3359)",
-    "Color uniformity inspection (visual / spectrophotometer)",
-    "Surface contamination test (white glove / Ferroxyl)"
+    "Electrochemical polishing specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "AMS 2488 — Titanium Anodizing",
-    "ASTM B600 — Passivation of Titanium"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Electrochemical Polishing Components?",
+  "relatedEntities": [],
+  "seoTitle": "Electrochemical polishing | Precision Titanium Surface Treatment | BOZE",
+  "seoDescription": "Electrochemical polishing for Chemical Processing applications. Precision titanium component manufacturing with Coating: 0.5–5 µm (Type II) / 5–25 µm (Type III); no dimensional change. ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Electrochemical polishing?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "Electrochemical polishing",
   "aliases": [],
-  "category": "Surface Treatment",
-  "description": "Electrochemical polishing capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "Electrochemical polishing | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision surface treatment of Electrochemical polishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

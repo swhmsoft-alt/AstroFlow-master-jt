@@ -1,82 +1,99 @@
 {
+  "title": "SLM/DMLS printing",
+  "category": "Additive Manufacturing",
+  "description": "SLM/DMLS printing capability for titanium components",
   "titaniumGrades": [
-    "Grade 5 (Ti-6Al-4V)",
-    "Grade 23 (Ti-6Al-4V ELI)",
     "Grade 1",
-    "Grade 2"
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
   ],
-  "thicknessRange": "Build volume: up to Ø300 mm × 400 mm (SLM/DMLS)",
-  "minHoleRatio": "0.2 mm minimum feature size; 0.05 mm layer thickness",
-  "cuttingTolerance": "±0.05 mm (as-built) / ±0.005 mm (post-machined)",
+  "thicknessRange": "Build: Ø300 × 400 mm; layer 20–60 µm",
+  "cuttingTolerance": "+0.05 mm (as-built) / +0.005 mm (post-machined)",
+  "tolerance": "+0.05 mm (as-built) / +0.005 mm (post-machined)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 6–12 µm (as-built) / Ra 0.4 µm (post-processed)",
   "processComparison": [
     {
-      "dimension": "Build Method",
+      "dimension": "Technology",
       "laser": "Laser powder bed fusion (LPBF/SLM/DMLS)",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Layer Thickness",
-      "laser": "20–60 µm",
+      "dimension": "Min Feature",
+      "laser": "0.2 mm wall / 0.05 mm layer height",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Surface Finish",
-      "laser": "Ra 6–12 µm as-built; Ra 0.4 µm post-processed",
+      "dimension": "Porosity",
+      "laser": "< 0.5% as-built; < 0.01% after HIP",
       "waterjet": "N/A"
     },
     {
-      "dimension": "Complexity",
-      "laser": "Unlimited — lattice structures, internal channels, organic geometries",
+      "dimension": "Properties",
+      "laser": "≥ 98% of wrought with proper heat treatment",
       "waterjet": "N/A"
     }
   ],
-  "processDescription": "Metal additive manufacturing of slm dmls printing titanium components using laser powder bed fusion (LPBF/SLM/DMLS). Capable of producing complex geometries impossible with conventional subtractive methods.",
+  "processDescription": "Selective Laser Melting (SLM/DMLS) builds titanium components layer-by-layer from metal powder using a fiber laser. Internal lattice structures, conformal cooling channels, and organic geometries are achievable that are unattainable with conventional manufacturing.",
   "holeTypes": [
     "Conformal cooling channels",
-    "Lattice structures",
-    "Organic/ergonomic geometries"
+    "Lattice structures (diamond, gyroid)",
+    "Organic geometries"
   ],
-  "heatControl": "Inert atmosphere (argon) with controlled oxygen <1000 ppm during slm dmls printing build process.",
-  "flatnessControl": "Stress relief annealing before substrate removal prevents distortion of thin-walled features.",
-  "capabilitiesDescription": "Multiple SLM/DMLS systems for slm dmls printing with full process parameter development and mechanical property validation.",
+  "heatControl": "Build chamber inerted with argon to < 1000 ppm O₂. Build plate preheated to 200°C to reduce thermal gradients between layers.",
+  "flatnessControl": "Stress relief annealing (540°C / 2 hr) before substrate removal. HIP for critical aerospace/medical components to eliminate internal porosity.",
+  "capabilitiesDescription": "Metal additive manufacturing capability for SLM/DMLS printing, with powder traceability, parameter development, and post-processing integration.",
+  "typicalApplications": [
+    "Custom machined parts",
+    "Prototype components",
+    "Replacement parts"
+  ],
   "downstreamProcesses": [
     {
       "name": "Support Removal",
-      "description": "EDM or CNC machining to remove build supports."
+      "description": "EDM or CNC machining to remove build supports from the substrate plate."
     },
     {
       "name": "Hot Isostatic Pressing (HIP)",
-      "description": "HIP cycle to eliminate internal porosity and improve fatigue properties."
+      "description": "HIP at 920°C / 100 MPa to close internal porosity."
     },
     {
-      "name": "CNC Finishing",
-      "description": "5-axis CNC machining of critical mating surfaces to final tolerance."
+      "name": "CNC Finish Machining",
+      "description": "5-axis CNC machining of critical mating surfaces."
+    },
+    {
+      "name": "Deburring",
+      "description": "Deburring for SLM/DMLS printing components."
+    },
+    {
+      "name": "Dimensional Inspection",
+      "description": "Dimensional inspection for SLM/DMLS printed components."
+    },
+    {
+      "name": "Surface Treatment as Required",
+      "description": "Surface treatment as required for SLM/DMLS printed components."
     }
   ],
   "inspectionItems": [
-    "Build report (layer-by-layer parameter logging)",
-    "Dimensional inspection (CT scan / CMM)",
-    "Density measurement (Archimedes method / CT)",
-    "Mechanical testing (as-built and heat-treated)"
+    "SLM/DMLS printing specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)"
   ],
   "qualityStandards": [
     "ISO 9001:2015 — Quality Management System",
     "AS9100D — Aerospace Quality Management",
-    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard",
-    "ASTM F2924 — Ti-6Al-4V for AM",
-    "ASTM F3001 — Ti-6Al-4V ELI for AM",
-    "ISO/ASTM 52900 — Additive Manufacturing General Principles"
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
   ],
-  "ctaTitle": "Need Precision Slm Dmls Components?",
+  "relatedEntities": [],
+  "seoTitle": "SLM/DMLS printing | Precision Titanium Additive Manufacturing | BOZE",
+  "seoDescription": "SLM/DMLS printing for General applications. Precision titanium component manufacturing with +0.05 mm (as-built) / +0.005 mm (post-machined). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision SLM/DMLS printing?",
   "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
   "ctaButtonText": "Submit Your CAD for Review",
-  "title": "SLM/DMLS printing",
   "aliases": [],
-  "category": "Additive Manufacturing",
-  "description": "SLM/DMLS printing capability for titanium components",
   "materials": [],
   "industries": [],
-  "relatedInspection": [],
-  "seoTitle": "SLM/DMLS printing | Titanium CNC Machining | BOZE",
-  "seoDescription": "Precision additive manufacturing of SLM/DMLS printing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D."
+  "relatedInspection": []
 }

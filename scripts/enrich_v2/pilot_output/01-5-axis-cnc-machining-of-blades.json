@@ -1,0 +1,96 @@
+{
+  "title": "5-axis CNC machining of blades",
+  "category": "Machining",
+  "description": "5-axis CNC machining of titanium blades for aerospace turbine and compressor applications.",
+  "titaniumGrades": [
+    "Grade 1",
+    "Grade 2",
+    "Grade 5 (Ti-6Al-4V)",
+    "Grade 7",
+    "Grade 9",
+    "Grade 23"
+  ],
+  "thicknessRange": "Up to Ø800 mm × 500 mm (5-axis envelope)",
+  "cuttingTolerance": "+0.02 mm (profile) / +0.05 mm (position)",
+  "tolerance": "+0.02 mm (profile) / +0.05 mm (position)",
+  "maxSize": "",
+  "surfaceFinish": "Ra 0.4 µm on aerofoil",
+  "processComparison": [
+    {
+      "dimension": "Axes Simultaneous",
+      "laser": "5 axes (X/Y/Z + A/C rotary)",
+      "waterjet": "3+2 axes (positional)"
+    },
+    {
+      "dimension": "Best For",
+      "laser": "Blisk, impeller, turbine blade, complex bracket",
+      "waterjet": "Prismatic mill-turn parts"
+    },
+    {
+      "dimension": "Surface Finish (Ti)",
+      "laser": "Ra 0.4 µm with small-step finishing",
+      "waterjet": "Ra 1.6–3.2 µm"
+    },
+    {
+      "dimension": "Cycle Time",
+      "laser": "30–70% faster than 3+2 for complex surfaces",
+      "waterjet": "Faster for simple prismatic features"
+    }
+  ],
+  "processDescription": "Simultaneous 5-axis CNC milling enables complex freeform geometries to be machined in a single setup, eliminating positional errors from multiple fixtures. The rotary A and C axes provide full access to undercut features and compound-angle surfaces while maintaining optimal tool engagement angles for titanium, specifically for blade. Precision blade for Aerospace present unique challenges: Thin-walled aerofoil sections (0.5–3 mm) are prone to chatter and deflection during machining. Profile tolerance of ±0.05 mm over 500 mm length requires adaptive toolpath strategies.",
+  "holeTypes": [
+    "Freeform 3D contoured holes",
+    "Compound-angle coolant passages",
+    "Threaded holes in non-orthogonal faces"
+  ],
+  "heatControl": "Thin aerofoil sections generate heat rapidly due to continuous tool engagement. High-pressure coolant (70 bar) directed at the cutting zone with through-tool cooling for deep cavities.",
+  "flatnessControl": "Thin aerofoil sections (< 1 mm) prone to distortion during machining. Fixturing with vacuum or wax potting; stress relief between roughing and finishing passes.",
+  "capabilitiesDescription": "Our facility is equipped to handle 5-axis cnc machining of blades with full process control, SPC monitoring, and certified quality management.",
+  "typicalApplications": [
+    "Turbine engine fan blades",
+    "Compressor blades",
+    "Propeller blades",
+    "Gas turbine buckets"
+  ],
+  "downstreamProcesses": [
+    {
+      "name": "CMM 5-Axis Inspection",
+      "description": "Full 5-axis CMM inspection with scanning probes for profile tolerance verification per ASME Y14.5."
+    },
+    {
+      "name": "Surface Finishing",
+      "description": "CNC polishing or micro-blasting to achieve specified Ra on aerodynamic surfaces."
+    },
+    {
+      "name": "Leading Edge Polishing",
+      "description": "Leading Edge Polishing for 5-axis cnc machining of blades components."
+    },
+    {
+      "name": "Shot Peening",
+      "description": "Shot Peening for 5-axis cnc machining of blades components."
+    },
+    {
+      "name": "Fluorescent Penetrant Inspection",
+      "description": "Fluorescent Penetrant Inspection for 5-axis cnc machining of blades components."
+    }
+  ],
+  "inspectionItems": [
+    "5-axis CNC machining of blades specific dimensional verification (CMM / vision)",
+    "Material grade verification (PMI / OES spectrometer)",
+    "Fluorescent Penetrant Inspection (FPI) per ASTM E1417"
+  ],
+  "qualityStandards": [
+    "ISO 9001:2015 — Quality Management System",
+    "AS9100D — Aerospace Quality Management",
+    "ASTM B265 — Titanium Strip, Sheet, and Plate Standard"
+  ],
+  "relatedEntities": [
+    "titanium-compressor-blade",
+    "titanium-compressor-blisk"
+  ],
+  "seoTitle": "5-axis CNC machining of blades | Precision Titanium Machining | BOZE",
+  "seoDescription": "5-axis CNC machining of blades for Aerospace applications. Precision titanium component manufacturing with +0.02 mm (profile) / +0.05 mm (position). ISO 9001:2015 & AS9100D certified.",
+  "ctaTitle": "Need Precision Blade Components?",
+  "ctaDescription": "Upload your CAD file (DXF/DWG/STEP) for a free DFM analysis and competitive quote. Our engineering team responds within 24 hours.",
+  "ctaButtonText": "Submit Your CAD for Review"
+}

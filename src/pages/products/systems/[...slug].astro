@@ -7,7 +7,7 @@ export const prerender = true;
 export async function getStaticPaths() {
   const systems = await getCollection('systems');
   return systems.map((entry) => ({
-    params: { slug: entry.slug || entry.id?.replace('.json','') || undefined },
+    params: { slug: entry.slug || entry.id?.replace('.json','') || '' },
     props: { entry },
   }));
 }
@@ -15,76 +15,209 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { data } = entry;
 
-// Load industries for breadcrumb slug
+// Load industries for breadcrumb
 const allIndustries = await getCollection('industries');
 const industrySlug: Record<string, string> = {};
 for (const ind of allIndustries) {
   industrySlug[ind.data.title] = ind.slug || ind.id?.replace('.json','') || '';
 }
-const seoTitle = data.seoTitle || `${data.title} Titanium Components | System Overview | BOZE CNC Ti`;
-const seoDesc = data.seoDescription || `${data.description} Explore our titanium ${data.title.toLowerCase()} engineering knowledge, design principles, and manufacturing capabilities for ${data.industry}.`;
 
-// Load related product entities by matching their declared system field
+// ── Load related data ──
 const allProducts = (await getCollection('product-entities')).filter(p =>
   p.data.system === data.title
 );
-// Load related capabilities by matching their declared title field
 const allCaps = (await getCollection('capabilities')).filter(c =>
   data.relatedCapabilities?.includes(c.data.title)
 );
+
+// ── Derived data ──
+const seoTitle = data.seoTitle || `${data.title} | Titanium System | BOZE CNC Ti`;
+const seoDesc = data.seoDescription || `${data.description} Explore our titanium ${data.title} components, manufacturing processes, engineering standards, and applications in ${data.industry}.`;
+
+// Collect unique materials from products
+const uniqueMaterials = [...new Set(allProducts.map(p => p.data.material).filter(Boolean))];
+
+// Collect unique standards from products + system
+const uniqueStandards = [...new Set([
+  ...(data.relatedStandards || []),
+  ...allProducts.flatMap(p => p.data.standards || [])
+])].slice(0, 8);
+
+// Collect unique processes from products
+const uniqueProcesses = [...new Set(allProducts.flatMap(p => p.data.process || []))];
+
+// Collect industries from products
+const uniqueProductIndustries = [...new Set(allProducts.map(p => p.data.industry).filter(Boolean))];
+
+// Unique key specs from products
+const keySpecs = allProducts.slice(0, 6).map(p => ({
+  title: p.data.title,
+  material: p.data.material,
+  process: (p.data.process || []).slice(0, 2).join(', '),
+  function: p.data.function?.slice(0, 80),
+  standards: (p.data.standards || []).slice(0, 2).join(', '),
+}));
+
+// Generate FAQ items unique to this system
+const faqItems = [
+  {
+    q: `What titanium grades are used in ${data.title} systems?`,
+    a: uniqueMaterials.length > 0
+      ? `${data.title} components are manufactured from ${uniqueMaterials.slice(0, 5).join(', ')}. The specific grade is selected based on mechanical property requirements, corrosion resistance needs, and ${data.industry} industry regulations.`
+      : `${data.title} components are manufactured from titanium grades selected for their specific functional requirements, including Grade 2, Grade 5 (Ti-6Al-4V), and Grade 23 ELI as applicable.`,
+  },
+  {
+    q: `What manufacturing processes are used for ${data.title}?`,
+    a: uniqueProcesses.length > 0
+      ? `The ${data.title} system components are produced using ${uniqueProcesses.slice(0, 6).join(', ')}. Each process is selected and qualified to meet the specific dimensional, metallurgical, and surface requirements of each component within the system.`
+      : `${data.title} components are manufactured using processes selected for each component's specific geometry, tolerance, and volume requirements.`,
+  },
+  {
+    q: `What quality standards apply to ${data.title} components?`,
+    a: uniqueStandards.length > 0
+      ? `${data.title} components are manufactured to ${uniqueStandards.slice(0, 5).join(', ')} and other applicable specifications. Full material traceability, dimensional inspection reports, and certificates of conformance are provided with each shipment.`
+      : `All ${data.title} components are manufactured under ISO 9001:2015 and AS9100D certified quality management systems.`,
+  },
+  {
+    q: `What industries use ${data.title}?`,
+    a: uniqueProductIndustries.length > 0
+      ? `${data.title} systems are deployed in ${[...new Set([data.industry, ...uniqueProductIndustries])].join(', ')} applications. Each industry has specific regulatory and performance requirements that drive material selection and process qualification.`
+      : `${data.title} systems serve the ${data.industry} industry, with components engineered to meet sector-specific regulatory and performance standards.`,
+  },
+  {
+    q: `Can you provide DFM feedback for ${data.title} designs?`,
+    a: `Yes. Our engineering team provides free Design for Manufacturability (DFM) analysis for ${data.title} projects. Upload your CAD file (STEP, DXF, or DWG format) and our team will review your design within 24 hours.`,
+  },
+];
+
+// ── System introduction text ──
+const sysIntro = data.description
+  ? `${data.emoji} ${data.title} represents a complete system of precision titanium components engineered for ${data.industry} applications. ${data.description} The system integrates ${allProducts.length} distinct component types manufactured through ${allCaps.length} specialized processes.`
+  : `${data.emoji} ${data.title} is a precision titanium system serving the ${data.industry} sector, comprising ${allProducts.length} component types.`;
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
+  <!-- Breadcrumb -->
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">Home</span>
-          </a>
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/products" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">Products</span>
-          </a>
+          <a href="/products" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products</span></a>
           <meta itemprop="position" content="2" />
-          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href={`/products/industries/${industrySlug[data.industry] || ''}`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">{data.industry}</span>
-          </a>
-          <meta itemprop="position" content="3" />
-          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.emoji} {data.title}</span>
-          <meta itemprop="position" content="4" />
         </li>
       </ol>
     </div>
   </nav>
 
+  <!-- ═══ M1: Hero (enhanced) ═══ -->
   <section class="py-16 lg:py-20" style="background: var(--theme-surface);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl">
         <p class="text-sm font-semibold mb-2" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{data.industry}</p>
         <h1 class="text-3xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">{data.emoji} {data.title}</h1>
-        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
+        <p class="text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.description}</p>
+        <!-- Quick Specs Grid -->
+        <div class="flex flex-wrap gap-3 mt-6">
+          {allProducts.length > 0 && (
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+              {allProducts.length} Components
+            </span>
+          )}
+          {uniqueMaterials.length > 0 && (
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+              {uniqueMaterials.length} Materials
+            </span>
+          )}
+          {allCaps.length > 0 && (
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+              {allCaps.length} Processes
+            </span>
+          )}
+          {uniqueStandards.length > 0 && (
+            <span class="inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+              {uniqueStandards.length} Standards
+            </span>
+          )}
+        </div>
       </div>
     </div>
   </section>
 
-  {data.designPrinciples && data.designPrinciples.length > 0 && (
+  <!-- ═══ M2: System Overview (What Is This System) ═══ -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: var(--theme-text);">What is {data.title}?</h2>
+        <p class="text-lg leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{sysIntro}</p>
+        {uniqueProcesses.length > 0 && (
+          <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Key manufacturing processes for this system include {uniqueProcesses.slice(0, 5).join(', ')}, each selected and qualified to meet component-specific requirements.
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ M3: Engineering & Design Principles ═══ -->
+  {(data.designPrinciples && data.designPrinciples.length > 0) || data.comparisonNotes ? (
+    <section class="py-16" style="background: var(--theme-surface);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8" style="color: var(--theme-text);">Engineering & Design Principles</h2>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div>
+            {data.designPrinciples && data.designPrinciples.length > 0 && (
+              <div class="space-y-4">
+                {data.designPrinciples.map((p: string) => (
+                  <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                    <p style="color: var(--theme-text);">{p}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div>
+            {data.comparisonNotes && (
+              <div class="p-6 rounded-xl border h-full" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <h3 class="font-semibold mb-3" style="color: var(--theme-text);">Standards & Material Specifications</h3>
+                <p style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.comparisonNotes}</p>
+              </div>
+            )}
+            {uniqueStandards.length > 0 && !data.comparisonNotes && (
+              <div class="p-6 rounded-xl border h-full" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <h3 class="font-semibold mb-3" style="color: var(--theme-text);">Applicable Standards</h3>
+                <div class="flex flex-wrap gap-2">
+                  {uniqueStandards.map((s: string) => (
+                    <span class="inline-flex px-2.5 py-1 text-xs font-medium rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">{s}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  ) : null}
+
+  <!-- ═══ M4: Manufacturing Workflow (from capabilities + processes) ═══ -->
+  {allCaps.length > 0 && (
     <section class="py-16" style="background: var(--theme-bg);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Design Principles</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          {data.designPrinciples.map((p: string) => (
-            <div class="p-5 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <p style="color: var(--theme-text);">{p}</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-8" style="color: var(--theme-text);">Manufacturing Process Flow</h2>
+        <div class="space-y-4">
+          {allCaps.slice(0, 8).map((c, i: number) => (
+            <div class="flex items-start gap-4 p-5 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <span class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style="background: var(--theme-primary); color: white;">{i + 1}</span>
+              <div>
+                <a href={`/products/capabilities/${c.id?.replace('.json','') || c.slug || ''}/`} class="font-semibold hover:underline" style="color: var(--theme-text);">{c.data.title}</a>
+                {c.data.processDescription && (
+                  <p class="text-sm mt-1 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{c.data.processDescription.slice(0, 150)}</p>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -92,120 +225,102 @@ const allCaps = (await getCollection('capabilities')).filter(c =>
     </section>
   )}
 
-  {data.engineeringTrends && data.engineeringTrends.length > 0 && (
+  <!-- ═══ M5: Components & Specifications ═══ -->
+  <section class="py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: var(--theme-text);">Components in This System</h2>
+      {keySpecs.length > 0 ? (
+        <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <table class="min-w-full text-sm">
+            <thead>
+              <tr style="background: var(--theme-bg);">
+                <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">Component</th>
+                <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">Material</th>
+                <th class="px-4 py-3 text-left font-semibold hidden md:table-cell" style="color: var(--theme-text);">Process</th>
+                <th class="px-4 py-3 text-left font-semibold hidden lg:table-cell" style="color: var(--theme-text);">Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              {keySpecs.map((spec) => (
+                <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                  <td class="px-4 py-3 font-medium" style="color: var(--theme-text);">{spec.title}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{spec.material || '-'}</td>
+                  <td class="px-4 py-3 hidden md:table-cell" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{spec.process || '-'}</td>
+                  <td class="px-4 py-3 hidden lg:table-cell text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{spec.function || ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {allProducts.map((p) => (
+            <a href={`/products/product-entities/${p.slug || p.id?.replace('.json','') || ''}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <h3 class="font-semibold" style="color: var(--theme-text);">{p.data.title}</h3>
+              {p.data.material && <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">{p.data.material}</p>}
+              {p.data.function && <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.data.function.slice(0, 100)}</p>}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ═══ M6: FAQ ═══ -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faqItems.map((faq) => (
+            <details class="group rounded-xl border overflow-hidden" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <summary class="flex items-center justify-between px-5 py-4 cursor-pointer" style="background: var(--theme-surface);">
+                <span class="font-semibold pr-4 text-sm" style="color: var(--theme-text);">{faq.q}</span>
+                <svg class="w-4 h-4 shrink-0 group-open:rotate-180 transition-transform" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-5 pb-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ M7: Engineering Trends ═══ -->
+  {data.engineeringTrends && data.engineeringTrends.length > 0 ? (
     <section class="py-16" style="background: var(--theme-surface);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Engineering Trends</h2>
-        <ul class="space-y-3">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: var(--theme-text);">Engineering Trends</h2>
+        <ul class="space-y-3 max-w-3xl">
           {data.engineeringTrends.map((t: string) => (
-            <li class="flex items-start gap-3">
-              <span class="mt-1 text-sm" style="color: var(--theme-primary);">▸</span>
+            <li class="flex items-start gap-3 p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <span class="mt-0.5 text-sm font-bold" style="color: var(--theme-primary);">▸</span>
               <span style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t}</span>
             </li>
           ))}
         </ul>
       </div>
     </section>
-  )}
+  ) : null}
 
-  {allProducts.length > 0 && (
-    <section class="py-16" style="background: var(--theme-bg);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Components in This System</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {allProducts.map((p) => (
-            <a href={`/products/product-entities/${p?.slug || p?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <h3 class="font-semibold" style="color: var(--theme-text);">{p.data.title}</h3>
-              <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{p.data.function?.slice(0, 100)}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
+  <!-- ═══ M8: Related Capabilities (CTA) ═══ -->
   {allCaps.length > 0 && (
-    <section class="py-16" style="background: var(--theme-surface);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">Related Capabilities</h2>
-        <div class="flex flex-wrap gap-3">
-          {allCaps.map((c) => (
-            <a href={`/products/capabilities/${c?.slug || c?.id?.replace(".json","") || ""}/`} class="px-4 py-2 rounded-full text-sm font-medium border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">
-              {c.data.title}
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
-  {data.comparisonNotes && (
     <section class="py-16" style="background: var(--theme-bg);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Standards Reference</h2>
-        <div class="p-6 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.comparisonNotes}</p>
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--theme-text);">Related Manufacturing Capabilities</h2>
+          <p class="mb-6" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">These specialized processes support {data.title} component manufacturing.</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            {allCaps.map((c) => (
+              <a href={`/products/capabilities/${c.id?.replace('.json','') || c.slug || ''}/`} class="px-4 py-2 rounded-full text-sm font-medium border transition-all hover:scale-105" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-text);">
+                {c.data.title}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   )}
-
-  <section class="py-16" style="background: var(--theme-surface);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <p class="mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-          Need a custom {data.title.toLowerCase()} solution? Our engineering team can help.
-        </p>
-        <a href="/contact" class="inline-flex items-center px-8 py-4 font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
-          Request Quote for {data.title}
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Knowledge Graph: Semantic relationships -->
-  <section class="py-12" style="background: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h3 class="text-lg font-bold mb-6 text-center" style="color: var(--theme-text);">Knowledge Graph</h3>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
-        <a href={`/products/industries/${industrySlug[data.industry] || ''}/`} class="block p-4 rounded-xl border text-center" itemprop="isPartOf" itemscope itemtype="https://schema.org/Product" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);" itemprop="name">{data.industry}</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Industry</p>
-        </a>
-        <div class="block p-4 rounded-xl border text-center" itemscope itemtype="https://schema.org/Product" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);" itemprop="name">{data.emoji} {data.title}</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">System</p>
-          <meta itemprop="numberOfItems" content="{allProducts.length}" />
-        </div>
-        <a href="/products/product-entities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-          <p class="text-sm font-semibold" style="color: var(--theme-text);">🔩 Components</p>
-          <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allProducts.length} parts</p>
-        </a>
-        {allCaps.length > 0 && (
-          <a href="/products/capabilities/" class="block p-4 rounded-xl border text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-            <p class="text-sm font-semibold" style="color: var(--theme-text);">⚙️ Capabilities</p>
-            <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{allCaps.length} related</p>
-          </a>
-        )}
-      </div>
-    </div>
-  </section>
-
-  <!-- JSON-LD: Semantic Product → hasVariant (components) + isPartOf (industry) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": data.title,
-    "description": data.description,
-    "category": data.industry,
-    "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" },
-    "isPartOf": { "@type": "Product", "name": data.industry },
-    "hasVariant": allProducts.map(p => ({
-      "@type": "Product",
-      "name": p.data.title,
-      "description": p.data.function,
-      "material": p.data.material,
-      "category": data.title
-    }))
-  })} />
 </BaseLayout>
