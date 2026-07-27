@@ -1,4 +1,4 @@
-/**
+﻿/**
  * SEO Configuration — Centralized management for all fixed pages.
  *
  * Usage: SEO_CONFIG is auto-resolved by BaseLayout.astro.
@@ -6,8 +6,8 @@
  * title/description are defined per language.
  */
 export interface SeoEntry {
-  title?: { en: string; de: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string; ru: string; ar: string };
-  description?: { en: string; de: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string; ru: string; ar: string };
+  title?: { en: string; de: string; zh: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string; ru: string; ar: string };
+  description?: { en: string; de: string; zh: string; ja: string; fr: string; es: string; pt: string; it: string; ko: string; nl: string; pl: string; ru: string; ar: string };
   /** Override OG image for this page (relative to site URL) */
   ogImage?: string;
 }
@@ -16,7 +16,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
   '/': {
     title: {
       en: 'BOZE CNC Ti | AS9100D Certified Titanium CNC Machining & Manufacturing',
-      de: 'Titan CNC-Bearbeitung und Fertigung für Luftfahrt, Medizintechnik und Industrie | BOZE',
+      de: 'BOZE CNC Ti | AS9100D-zertifizierte Titan-CNC-Bearbeitung & Fertigung',
+      zh: 'BOZE CNC Ti | AS9100D认证钛合金CNC加工与制造',
       ja: 'BOZE CNC Ti | AS9100D認証取得 チタンCNC加工・製造',
       fr: 'BOZE CNC Ti | Usinage CNC du Titane Certifié AS9100D & Fabrication',
       es: 'BOZE CNC Ti | Mecanizado CNC de Titanio Certificado AS9100D y Fabricación',
@@ -30,7 +31,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     },
     description: {
       en: 'End-to-end titanium manufacturing: precision CNC machining, additive manufacturing, fabrication, surface treatment. AS9100D & ISO 9001 certified. From prototype to production.',
-      de: 'Präzisions-CNC-Bearbeitung, additive Fertigung und Oberflächenbehandlung von Titan. AS9100D & ISO 9001 zertifiziert. Entwicklung · Prototyp · Vorserie · Serienfertigung aus einer Hand.',
+      de: 'Komplette Titan-Fertigung: Präzisions-CNC-Bearbeitung, additive Fertigung, Fügetechnik, Oberflächenbehandlung. AS9100D & ISO 9001 zertifiziert. Vom Prototyp bis zur Serie.',
+      zh: '端到端钛合金制造：精密CNC加工、增材制造、焊接成型、表面处理。AS9100D与ISO 9001认证。从原型到批量生产。',
       ja: 'チタン製造のトータルソリューション：精密CNC加工、積層造形、板金加工、表面処理。AS9100D・ISO 9001認証取得。試作から量産まで対応。',
       fr: 'Fabrication complète du titane : usinage CNC de précision, fabrication additive, assemblage, traitement de surface. Certifié AS9100D & ISO 9001. Du prototype à la production.',
       es: 'Fabricación integral de titanio: mecanizado CNC de precisión, fabricación aditiva, soldadura y tratamiento de superficies. Certificado AS9100D e ISO 9001. Desde prototipos hasta producción.',
@@ -47,6 +49,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Manufacturing Services | BOZE CNC Ti',
       de: ' Titan-Fertigungsdienstleistungen | BOZE CNC Ti',
+      zh: '钛合金CNC加工服务 | 精密制造 | BOZE CNC Ti',
       ja: 'チタン製造サービス | BOZE CNC Ti',
       fr: 'Services de fabrication de titane | BOZE CNC Ti',
       es: 'Servicios de fabricación de titanio | BOZE CNC Ti',
@@ -61,6 +64,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'End-to-end titanium manufacturing solutions from rapid prototyping to high-volume precision CNC machining and heavy industrial fabrication. AS9100D & ISO 9001 certified.',
       de: 'Komplette Titan-Fertigungslösungen vom Rapid Prototyping bis zur hochvolumigen Präzisions-CNC-Bearbeitung und schweren Industriefertigung. AS9100D & ISO 9001 zertifiziert.',
+      zh: '端到端钛合金制造解决方案：从快速原型到高批量精密CNC加工及重型工业焊接成型。AS9100D与ISO 9001认证。',
       ja: '試作から量産、精密CNC加工、大型産業機器製造まで対応するチタン製造のトータルソリューション。AS9100D・ISO 9001認証取得。',
       fr: 'Solutions complètes de fabrication du titane, du prototypage rapide à l\'usinage CNC de précision en grands volumes et à la fabrication industrielle lourde. Certifié AS9100D & ISO 9001.',
       es: 'Soluciones integrales de fabricación de titanio, desde prototipado rápido hasta mecanizado CNC de precisión de alto volumen y fabricación industrial pesada. Certificado AS9100D e ISO 9001.',
@@ -77,6 +81,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Grades & Materials Engineering Guide | BOZE CNC Ti',
       de: 'Titanlegierungen & Werkstofftechnik-Leitfaden | BOZE CNC Ti',
+      zh: '钛合金牌号与材料工程指南 | BOZE CNC Ti',
       ja: 'チタン材質・材料工学ガイド | BOZE CNC Ti',
       fr: 'Guide des Nuances de Titane & Ingénierie des Matériaux | BOZE CNC Ti',
       es: 'Guía de Ingeniería de Grados y Materiales de Titanio | BOZE CNC Ti',
@@ -91,6 +96,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Comprehensive titanium grades reference: Grade 1-23 CP titanium, Ti-6Al-4V, Ti-6Al-4V ELI. Mechanical properties, corrosion resistance, and application guidance for procurement engineers.',
       de: 'Umfassendes Nachschlagewerk zu Titanlegierungen: Grade 1-23 CP-Titan, Ti-6Al-4V, Ti-6Al-4V ELI. Mechanische Eigenschaften, Korrosionsbeständigkeit und Anwendungsberatung für Einkaufsingenieure.',
+      zh: '全面钛合金牌号参考：Grade 1-23 CP钛、Ti-6Al-4V、Ti-6Al-4V ELI。力学性能、耐腐蚀性及采购工程师应用指导。',
       ja: 'チタン材質の総合リファレンス：Grade 1-23 CPチタン、Ti-6Al-4V、Ti-6Al-4V ELI。機械的特性、耐食性、調達エンジニア向け用途選定ガイド。',
       fr: 'Référence complète des nuances de titane : titane CP Grade 1-23, Ti-6Al-4V, Ti-6Al-4V ELI. Propriétés mécaniques, résistance à la corrosion et conseils d\'application pour les ingénieurs achats.',
       es: 'Referencia completa de grados de titanio: Grado 1-23 CP, Ti-6Al-4V, Ti-6Al-4V ELI. Propiedades mecánicas, resistencia a la corrosión y asesoramiento de aplicación para ingenieros de compras.',
@@ -107,6 +113,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Technical Capabilities | CNC Precision & Manufacturing Engineering | BOZE CNC Ti',
       de: 'Technische Fähigkeiten | CNC-Präzision & Fertigungstechnik | BOZE CNC Ti',
+      zh: '技术能力 | CNC精密与制造工程 | BOZE CNC Ti',
       ja: '技術能力 | CNC精密加工・製造エンジニアリング | BOZE CNC Ti',
       fr: 'Capacités Techniques | Précision CNC & Ingénierie de Fabrication | BOZE CNC Ti',
       es: 'Capacidades Técnicas | Ingeniería de Precisión y Fabricación CNC | BOZE CNC Ti',
@@ -121,6 +128,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'AS9100D & ISO 9001 certified precision manufacturing infrastructure: micron-level CNC tolerancing, SLM additive manufacturing, CMM inspection, full material traceability.',
       de: 'AS9100D & ISO 9001 zertifizierte Präzisionsfertigungsinfrastruktur: mikrometergenaue CNC-Toleranzen, SLM-Additive Fertigung, CMM-Prüfung, vollständige Materialrückverfolgbarkeit.',
+      zh: 'AS9100D与ISO 9001认证精密制造基础设施：微米级CNC公差、SLM增材制造、CMM检测、全材料可追溯性。',
       ja: 'AS9100D・ISO 9001認証取得の精密製造インフラ：ミクロンレベルのCNC公差、SLM積層造形、CMM検査、完全な材料トレーサビリティ。',
       fr: 'Infrastructure de fabrication de précision certifiée AS9100D & ISO 9001 : tolérances CNC au micron, fabrication additive SLM, inspection CMM, traçabilité complète des matériaux.',
       es: 'Infraestructura de fabricación de precisión certificada AS9100D e ISO 9001: tolerancias CNC a nivel de micras, fabricación aditiva SLM, inspección CMM y trazabilidad total de materiales.',
@@ -137,6 +145,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Industry Solutions | Aerospace Medical & Industrial Titanium Applications',
       de: 'Branchenlösungen | Luftfahrt, Medizin & Industrie Titananwendungen',
+      zh: '行业解决方案 | 航空航天、医疗及工业钛合金应用',
       ja: '産業ソリューション | 航空宇宙・医療・産業用チタン用途',
       fr: 'Solutions par Secteur | Applications du Titane pour l\'Aérospatial, le Médical & l\'Industrie',
       es: 'Soluciones Industriales | Aplicaciones de Titanio para Aeroespacial, Médico e Industrial',
@@ -151,6 +160,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Engineered titanium solutions for aerospace, medical, UAV/drones, marine, semiconductor, and energy industries. AS9100D certified precision components.',
       de: 'Maßgeschneiderte Titanlösungen für Luftfahrt, Medizin, UAV/Drohnen, Marine, Halbleiter und Energiebranche. AS9100D-zertifizierte Präzisionskomponenten.',
+      zh: '为航空航天、医疗、无人机、船舶、半导体及能源行业定制的钛合金解决方案。AS9100D认证精密部件。',
       ja: '航空宇宙、医療、UAV/ドローン、海洋、半導体、エネルギー産業向けのエンジニアリングチタンソリューション。AS9100D認証取得の精密部品。',
       fr: 'Solutions en titane sur mesure pour les secteurs aérospatial, médical, UAV/drones, maritime, semi-conducteurs et énergétique. Composants de précision certifiés AS9100D.',
       es: 'Soluciones de titanio diseñadas para las industrias aeroespacial, médica, UAV/drones, marina, semiconductores y energética. Componentes de precisión certificados AS9100D.',
@@ -167,6 +177,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Technical Resources Library | Titanium Engineering Guides & Downloads | BOZE CNC Ti',
       de: 'Technische Ressourcenbibliothek | Titan-Engineering-Leitfäden & Downloads | BOZE CNC Ti',
+      zh: '技术资源库 | 钛合金工程指南与下载 | BOZE CNC Ti',
       ja: '技術リソースライブラリ | チタンエンジニアリングガイド・ダウンロード | BOZE CNC Ti',
       fr: 'Bibliothèque de Ressources Techniques | Guides & Téléchargements Titane | BOZE CNC Ti',
       es: 'Biblioteca de Recursos Técnicos | Guías de Ingeniería de Titanio y Descargas | BOZE CNC Ti',
@@ -181,6 +192,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Comprehensive technical documentation, engineering guides, whitepapers, CAD resources, and FAQs for titanium manufacturing professionals.',
       de: 'Umfassende technische Dokumentation, Engineering-Leitfäden, Whitepaper, CAD-Ressourcen und FAQs für Fachleute der Titanfertigung.',
+      zh: '全面的技术文档、工程指南、白皮书、CAD资源及钛合金制造专业人员常见问题解答。',
       ja: 'チタン製造プロフェッショナル向けの総合技術文書、エンジニアリングガイド、ホワイトペーパー、CADリソース、FAQ。',
       fr: 'Documentation technique complète, guides d\'ingénierie, livres blancs, ressources CAO et FAQ pour les professionnels de la fabrication du titane.',
       es: 'Documentación técnica completa, guías de ingeniería, documentos técnicos, recursos CAD y preguntas frecuentes para profesionales de la fabricación de titanio.',
@@ -197,6 +209,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Precision CNC Machined Titanium Products | B2B Manufacturing | BOZE CNC Ti',
       de: 'Präzisions-CNC-gefräste Titanprodukte | B2B-Fertigung | BOZE CNC Ti',
+      zh: '精密CNC加工钛合金产品 | B2B制造 | BOZE CNC Ti',
       ja: '精密CNC加工チタン製品 | B2B製造 | BOZE CNC Ti',
       fr: 'Produits en Titane Usinés CNC de Précision | Fabrication B2B | BOZE CNC Ti',
       es: 'Productos de Titanio Mecanizados con Precisión CNC | Fabricación B2B | BOZE CNC Ti',
@@ -211,6 +224,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Browse our catalog of precision CNC machined titanium components. Custom manufacturing available for aerospace, medical, and industrial applications.',
       de: 'Entdecken Sie unseren Katalog präzisions-CNC-gefräster Titan-Komponenten. Kundenspezifische Fertigung für Luftfahrt, Medizin und Industrie.',
+      zh: '浏览我们的精密CNC加工钛合金部件目录。可定制制造，适用于航空航天、医疗及工业应用。',
       ja: '精密CNC加工チタン部品のカタログ。航空宇宙、医療、産業用途向けのカスタム製造に対応。',
       fr: 'Parcourez notre catalogue de composants en titane usinés CNC de précision. Fabrication sur mesure disponible pour les applications aérospatiales, médicales et industrielles.',
       es: 'Explore nuestro catálogo de componentes de titanio mecanizados con precisión CNC. Fabricación personalizada disponible para aplicaciones aeroespaciales, médicas e industriales.',
@@ -227,6 +241,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Request a Quote | Titanium CNC Machining RFQ | BOZE CNC Ti',
       de: 'Angebot anfordern | Titan-CNC-Bearbeitung RFQ | BOZE CNC Ti',
+      zh: '索取报价 | 钛合金CNC加工RFQ | BOZE CNC Ti',
       ja: '見積依頼 | チタンCNC加工RFQ | BOZE CNC Ti',
       fr: 'Demande de Devis | RFQ Usinage CNC du Titane | BOZE CNC Ti',
       es: 'Solicitar Cotización | RFQ de Mecanizado CNC de Titanio | BOZE CNC Ti',
@@ -241,6 +256,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Submit your engineering RFQ for titanium CNC machining, additive manufacturing, fabrication, or surface treatment. Get a formal quote within 24-48 hours. Secure CAD upload.',
       de: 'Reichen Sie Ihre technische RFQ für Titan-CNC-Bearbeitung, additive Fertigung, Fügetechnik oder Oberflächenbehandlung ein. Erhalten Sie ein formelles Angebot innerhalb von 24-48 Stunden. Sicherer CAD-Upload.',
+      zh: '提交您的钛合金CNC加工、增材制造、焊接成型或表面处理工程RFQ。24-48小时内获得正式报价。安全CAD上传。',
       ja: 'チタンCNC加工、積層造形、板金加工、表面処理のエンジニアリングRFQを提出。24～48時間以内に正式見積を提供。安全なCADアップロード対応。',
       fr: 'Soumettez votre RFQ d\'ingénierie pour l\'usinage CNC du titane, la fabrication additive, l\'assemblage ou le traitement de surface. Obtenez un devis formel sous 24 à 48 heures. Téléchargement sécurisé de fichiers CAO.',
       es: 'Envíe su RFQ de ingeniería para mecanizado CNC de titanio, fabricación aditiva, soldadura o tratamiento de superficies. Obtenga una cotización formal en 24-48 horas. Carga segura de CAD.',
@@ -257,6 +273,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium CNC Machining Blog | Manufacturing Insights | BOZE CNC Ti',
       de: 'Titan-CNC-Bearbeitungs-Blog | Fertigungs-Einblicke | BOZE CNC Ti',
+      zh: '钛合金CNC加工博客 | 制造洞察 | BOZE CNC Ti',
       ja: 'チタンCNC加工ブログ | 製造インサイト | BOZE CNC Ti',
       fr: 'Blog Usinage CNC du Titane | Insights de Fabrication | BOZE CNC Ti',
       es: 'Blog de Mecanizado CNC de Titanio | Perspectivas de Fabricación | BOZE CNC Ti',
@@ -271,6 +288,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Expert insights on CNC machining, titanium manufacturing, material science, and industry best practices. Stay informed with the latest from BOZE CNC Ti.',
       de: 'Expertenwissen zu CNC-Bearbeitung, Titanfertigung, Werkstoffwissenschaft und Branchen-Best Practices. Bleiben Sie informiert mit den neuesten Beiträgen von BOZE CNC Ti.',
+      zh: '关于CNC加工、钛合金制造、材料科学及行业最佳实践的专家见解。随时了解BOZE CNC Ti的最新动态。',
       ja: 'CNC加工、チタン製造、材料科学、業界のベストプラクティスに関する専門家の知見。BOZE CNC Tiの最新情報をお届けします。',
       fr: 'Expertise sur l\'usinage CNC, la fabrication du titane, la science des matériaux et les meilleures pratiques industrielles. Restez informé avec les dernières actualités de BOZE CNC Ti.',
       es: 'Información experta sobre mecanizado CNC, fabricación de titanio, ciencia de materiales y mejores prácticas de la industria. Manténgase informado con las últimas novedades de BOZE CNC Ti.',
@@ -287,6 +305,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Documentation Center | Technical Guides & Resources | BOZE CNC Ti',
       de: 'Dokumentationszentrum | Technische Leitfäden & Ressourcen | BOZE CNC Ti',
+      zh: '文档中心 | 技术指南与资源 | BOZE CNC Ti',
       ja: 'ドキュメントセンター | 技術ガイド・リソース | BOZE CNC Ti',
       fr: 'Centre de Documentation | Guides Techniques & Ressources | BOZE CNC Ti',
       es: 'Centro de Documentación | Guías Técnicas y Recursos | BOZE CNC Ti',
@@ -301,6 +320,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Access comprehensive documentation, technical guides, compliance certificates, and resources for titanium CNC machining operations.',
       de: 'Zugriff auf umfassende Dokumentation, technische Leitfäden, Konformitätszertifikate und Ressourcen für Titan-CNC-Bearbeitungsvorgänge.',
+      zh: '获取全面的文档、技术指南、合规证书及钛合金CNC加工运营资源。',
       ja: 'チタンCNC加工業務に関する総合ドキュメント、技術ガイド、コンプライアンス証明書、リソースにアクセス。',
       fr: 'Accédez à la documentation complète, aux guides techniques, aux certificats de conformité et aux ressources pour les opérations d\'usinage CNC du titane.',
       es: 'Acceda a documentación completa, guías técnicas, certificados de cumplimiento y recursos para operaciones de mecanizado CNC de titanio.',
@@ -317,6 +337,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium CNC Machining Use Cases | Industry Applications | BOZE CNC Ti',
       de: 'Titan-CNC-Bearbeitung Anwendungsfälle | Branchenanwendungen | BOZE CNC Ti',
+      zh: '钛合金CNC加工用例 | 行业应用 | BOZE CNC Ti',
       ja: 'チタンCNC加工のユースケース | 産業用途 | BOZE CNC Ti',
       fr: 'Cas d\'Usage Usinage CNC du Titane | Applications Industrielles | BOZE CNC Ti',
       es: 'Casos de Uso de Mecanizado CNC de Titanio | Aplicaciones Industriales | BOZE CNC Ti',
@@ -331,6 +352,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Real-world use cases and application examples of titanium CNC machining across aerospace, medical, automotive, and industrial sectors.',
       de: 'Reale Anwendungsfälle und Beispiele für Titan-CNC-Bearbeitung in Luftfahrt, Medizin, Automobil und Industrie.',
+      zh: '钛合金CNC加工在航空航天、医疗、汽车及工业领域的真实用例与应用实例。',
       ja: '航空宇宙、医療、自動車、産業分野におけるチタンCNC加工の実践的なユースケースとアプリケーション事例。',
       fr: 'Cas d\'usage concrets et exemples d\'application de l\'usinage CNC du titane dans les secteurs aérospatial, médical, automobile et industriel.',
       es: 'Casos de uso reales y ejemplos de aplicación del mecanizado CNC de titanio en los sectores aeroespacial, médico, automotriz e industrial.',
@@ -347,6 +369,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Our Manufacturing Facilities | ISO 9001 & AS9100D Certified | BOZE CNC Ti',
       de: 'Unsere Fertigungsanlagen | ISO 9001 & AS9100D zertifiziert | BOZE CNC Ti',
+      zh: '我们的制造设施 | ISO 9001与AS9100D认证 | BOZE CNC Ti',
       ja: '製造設備 | ISO 9001・AS9100D認証取得 | BOZE CNC Ti',
       fr: 'Nos Installations de Fabrication | Certifié ISO 9001 & AS9100D | BOZE CNC Ti',
       es: 'Nuestras Instalaciones de Fabricación | Certificado ISO 9001 y AS9100D | BOZE CNC Ti',
@@ -361,6 +384,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'State-of-the-art titanium manufacturing facilities with multi-axis CNC machining centers, SLM additive manufacturing, and CMM inspection labs.',
       de: 'Modernste Titan-Fertigungsanlagen mit mehrachsigen CNC-Bearbeitungszentren, SLM-Additive Fertigung und CMM-Prüflaboren.',
+      zh: '最先进的钛合金制造设施，配备多轴CNC加工中心、SLM增材制造及CMM检测实验室。',
       ja: '多軸CNC加工センター、SLM積層造形、CMM検査ラボを備えた最新鋭のチタン製造設備。',
       fr: 'Installations de fabrication de titane de pointe avec centres d\'usinage CNC multi-axes, fabrication additive SLM et laboratoires d\'inspection CMM.',
       es: 'Instalaciones de fabricación de titanio de última generación con centros de mecanizado CNC multieje, fabricación aditiva SLM y laboratorios de inspección CMM.',
@@ -377,6 +401,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium CNC Machining Services | Precision Milling & Turning | BOZE CNC Ti',
       de: 'Titan-CNC-Bearbeitungsdienstleistungen | Präzisionsfräsen & Drehen | BOZE CNC Ti',
+      zh: '钛合金CNC加工服务 | 精密铣削与车削 | BOZE CNC Ti',
       ja: 'チタンCNC加工サービス | 精密フライス加工・旋盤加工 | BOZE CNC Ti',
       fr: 'Services d\'Usinage CNC du Titane | Fraisage & Tournage de Précision | BOZE CNC Ti',
       es: 'Servicios de Mecanizado CNC de Titanio | Fresado y Torneado de Precisión | BOZE CNC Ti',
@@ -391,6 +416,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium CNC machining services: 3/5-axis milling, turning, wire EDM, and custom industrial components. Aerospace-grade tolerances down to ±0.005 mm.',
       de: 'Präzisions-Titan-CNC-Bearbeitungsdienstleistungen: 3/5-Achsen-Fräsen, Drehen, Drahterodieren und kundenspezifische Industriekomponenten. Luftfahrttoleranzen bis zu ±0,005 mm.',
+      zh: '精密钛合金CNC加工服务：3/5轴铣削、车削、线切割EDM及定制工业部件。航空航天级公差低至±0.005 mm。',
       ja: '精密チタンCNC加工サービス：3/5軸フライス加工、旋盤加工、ワイヤーEDM、カスタム産業部品。航空宇宙グレードの公差±0.005 mm。',
       fr: 'Services d\'usinage CNC de précision du titane : fraisage 3/5 axes, tournage, électroérosion à fil et composants industriels sur mesure. Tolérances de qualité aérospatiale jusqu\'à ±0.005 mm.',
       es: 'Servicios de mecanizado CNC de titanio de precisión: fresado de 3/5 ejes, torneado, electroerosión por hilo y componentes industriales personalizados. Tolerancias de calidad aeroespacial de hasta ±0.005 mm.',
@@ -407,6 +433,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: '3/5-Axis CNC Machining for Titanium | Multi-Axis Precision | BOZE CNC Ti',
       de: '3/5-Achsen-CNC-Bearbeitung für Titan | Mehrachs-Präzision | BOZE CNC Ti',
+      zh: '钛合金3/5轴CNC加工 | 多轴精密 | BOZE CNC Ti',
       ja: 'チタンの3/5軸CNC加工 | 多軸精密加工 | BOZE CNC Ti',
       fr: 'Usinage CNC 3/5 Axes pour le Titane | Précision Multi-Axes | BOZE CNC Ti',
       es: 'Mecanizado CNC de 3/5 Ejes para Titanio | Precisión Multieje | BOZE CNC Ti',
@@ -421,6 +448,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision 3/4-axis and simultaneous 5-axis CNC machining for titanium: complex geometries, single-setup accuracy, aerospace-grade tolerances ±0.005 mm.',
       de: 'Präzisions-3/4-Achsen- und simultane 5-Achsen-CNC-Bearbeitung für Titan: komplexe Geometrien, Genauigkeit in einer Aufspannung, Luftfahrttoleranzen ±0,005 mm.',
+      zh: '精密3/4轴及同步5轴CNC钛合金加工：复杂几何形状、单次装夹精度、航空航天级公差±0.005 mm。',
       ja: 'チタンの精密3/4軸および同時5軸CNC加工：複雑形状、単一セットアップ精度、航空宇宙グレード公差±0.005 mm。',
       fr: 'Usinage CNC de précision 3/4 axes et 5 axes simultanés pour le titane : géométries complexes, précision en un seul serrage, tolérances de qualité aérospatiale ±0.005 mm.',
       es: 'Mecanizado CNC de precisión de 3/4 ejes y 5 ejes simultáneos para titanio: geometrías complejas, precisión en una sola configuración, tolerancias de calidad aeroespacial de ±0.005 mm.',
@@ -437,6 +465,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'CNC Milling & Turning for Titanium | Precision Machining | BOZE CNC Ti',
       de: 'CNC-Fräsen & Drehen für Titan | Präzisionsbearbeitung | BOZE CNC Ti',
+      zh: '钛合金CNC铣削与车削 | 精密加工 | BOZE CNC Ti',
       ja: 'チタンのCNCフライス加工・旋盤加工 | 精密加工 | BOZE CNC Ti',
       fr: 'Fraisage & Tournage CNC pour le Titane | Usinage de Précision | BOZE CNC Ti',
       es: 'Fresado y Torneado CNC para Titanio | Mecanizado de Precisión | BOZE CNC Ti',
@@ -451,6 +480,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision CNC turning, milling, and turn-mill multi-tasking for titanium: bone screws, prismatic components, complete single-setup parts. Tolerances ±0.005 mm.',
       de: 'Präzisions-CNC-Drehen, Fräsen und Dreh-Fräs-Bearbeitung für Titan: Knochenschrauben, prismatische Komponenten, komplette Teile in einer Aufspannung. Toleranzen ±0,005 mm.',
+      zh: '精密CNC车削、铣削及车铣复合加工：骨螺钉、棱柱部件、完整单次装夹零件。公差±0.005 mm。',
       ja: 'チタンの精密CNC旋盤加工、フライス加工、旋盤・フライス複合加工：骨ネジ、プリズム部品、単一セットアップ完成部品。公差±0.005 mm。',
       fr: 'Tournage, fraisage et tournage-fraisage multitâche de précision pour le titane : vis à os, composants prismatiques, pièces complètes en un seul serrage. Tolérances ±0.005 mm.',
       es: 'Torneado, fresado y torneado-fresado multitarea CNC de precisión para titanio: tornillos óseos, componentes prismáticos, piezas completas en una sola configuración. Tolerancias de ±0.005 mm.',
@@ -467,6 +497,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Wire EDM Machining for Titanium | Precision EDM | BOZE CNC Ti',
       de: 'Drahterodieren für Titan | Präzisions-EDM | BOZE CNC Ti',
+      zh: '钛合金线切割EDM加工 | 精密EDM | BOZE CNC Ti',
       ja: 'チタンのワイヤーEDM加工 | 精密放電加工 | BOZE CNC Ti',
       fr: 'Usinage par Électroérosion à Fil pour le Titane | EDM de Précision | BOZE CNC Ti',
       es: 'Mecanizado por Electroerosión por Hilo para Titanio | EDM de Precisión | BOZE CNC Ti',
@@ -481,6 +512,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision wire EDM machining for titanium: zero mechanical stress, sharp internal corners (ø 0.1 mm wire), hardened alloy cutting, ±0.002 mm accuracy, Ra 0.25 µm finish.',
       de: 'Präzisions-Drahterodieren für Titan: null mechanische Spannung, scharfe Innencken (ø 0,1 mm Draht), Schneiden gehärteter Legierungen, ±0,002 mm Genauigkeit, Ra 0,25 µm Oberfläche.',
+      zh: '精密线切割EDM钛合金加工：零机械应力、尖锐内角（ø 0.1 mm线径）、硬化合金切割、±0.002 mm精度、Ra 0.25 µm表面光洁度。',
       ja: 'チタンの精密ワイヤーEDM加工：機械的応力ゼロ、鋭い内角（ø 0.1 mmワイヤー）、焼入れ合金切断、±0.002 mm精度、Ra 0.25 µm仕上げ。',
       fr: 'Usinage par électroérosion à fil de précision pour le titane : contrainte mécanique nulle, angles internes vifs (fil ø 0.1 mm), coupe d\'alliages trempés, précision ±0.002 mm, finition Ra 0.25 µm.',
       es: 'Mecanizado por electroerosión por hilo de precisión para titanio: tensión mecánica cero, esquinas internas afiladas (hilo de ø 0.1 mm), corte de aleaciones endurecidas, precisión de ±0.002 mm, acabado Ra 0.25 µm.',
@@ -497,6 +529,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Custom Titanium Industrial Components | CNC Machining | BOZE CNC Ti',
       de: 'Kundenspezifische Titan-Industriekomponenten | CNC-Bearbeitung | BOZE CNC Ti',
+      zh: '定制钛合金工业部件 | CNC加工 | BOZE CNC Ti',
       ja: 'カスタムチタン産業部品 | CNC加工 | BOZE CNC Ti',
       fr: 'Composants Industriels en Titane sur Mesure | Usinage CNC | BOZE CNC Ti',
       es: 'Componentes Industriales de Titanio Personalizados | Mecanizado CNC | BOZE CNC Ti',
@@ -511,6 +544,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Custom titanium industrial components: complex structural assemblies, high-vacuum chambers, fluid manifolds, and precision micro-components. AS9100D quality.',
       de: 'Kundenspezifische Titan-Industriekomponenten: komplexe Strukturbaugruppen, Hochvakuumkammern, Fluidverteiler und Präzisions-Mikrokomponenten. AS9100D-Qualität.',
+      zh: '定制钛合金工业部件：复杂结构组件、高真空腔体、流体歧管及精密微型部件。AS9100D质量。',
       ja: 'カスタムチタン産業部品：複雑な構造アセンブリ、高真空チャンバー、流体マニホールド、精密マイクロ部品。AS9100D品質。',
       fr: 'Composants industriels en titane sur mesure : assemblages structuraux complexes, chambres à vide poussé, blocs fluidiques et micro-composants de précision. Qualité AS9100D.',
       es: 'Componentes industriales de titanio personalizados: conjuntos estructurales complejos, cámaras de alto vacío, colectores de fluidos y microcomponentes de precisión. Calidad AS9100D.',
@@ -527,6 +561,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Additive Manufacturing | SLM/DMLS 3D Printing | BOZE CNC Ti',
       de: 'Titan-Additive Fertigung | SLM/DMLS 3D-Druck | BOZE CNC Ti',
+      zh: '钛合金增材制造 | SLM/DMLS 3D打印 | BOZE CNC Ti',
       ja: 'チタン積層造形 | SLM/DMLS 3Dプリント | BOZE CNC Ti',
       fr: 'Fabrication Additive Titane | Impression 3D SLM/DMLS | BOZE CNC Ti',
       es: 'Fabricación Aditiva de Titanio | Impresión 3D SLM/DMLS | BOZE CNC Ti',
@@ -541,6 +576,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Industrial titanium additive manufacturing: SLM/DMLS 3D printing, rapid prototyping in 3-5 days, low-volume production. Full-density Ti-6Al-4V, ASTM F2924, AS9100D.',
       de: 'Industrielle Titan-Additive Fertigung: SLM/DMLS 3D-Druck, Rapid Prototyping in 3-5 Tagen, Kleinserienproduktion. Vollständig dichtes Ti-6Al-4V, ASTM F2924, AS9100D.',
+      zh: '工业钛合金增材制造：SLM/DMLS 3D打印、3-5天快速原型、小批量生产。全密度Ti-6Al-4V，ASTM F2924，AS9100D。',
       ja: '産業用チタン積層造形：SLM/DMLS 3Dプリント、3～5日での試作、少量生産。完全密度Ti-6Al-4V、ASTM F2924、AS9100D。',
       fr: 'Fabrication additive industrielle du titane : impression 3D SLM/DMLS, prototypage rapide en 3 à 5 jours, production en petite série. Ti-6Al-4V pleine densité, ASTM F2924, AS9100D.',
       es: 'Fabricación aditiva industrial de titanio: impresión 3D SLM/DMLS, prototipado rápido en 3-5 días, producción de bajo volumen. Ti-6Al-4V de densidad completa, ASTM F2924, AS9100D.',
@@ -557,6 +593,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'SLM/DMLS 3D Printing for Titanium | Metal Additive | BOZE CNC Ti',
       de: 'SLM/DMLS 3D-Druck für Titan | Metall-Additive | BOZE CNC Ti',
+      zh: '钛合金SLM/DMLS 3D打印 | 金属增材 | BOZE CNC Ti',
       ja: 'チタンのSLM/DMLS 3Dプリント | 金属積層造形 | BOZE CNC Ti',
       fr: 'Impression 3D SLM/DMLS pour le Titane | Additif Métallique | BOZE CNC Ti',
       es: 'Impresión 3D SLM/DMLS para Titanio | Aditivo Metálico | BOZE CNC Ti',
@@ -571,6 +608,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Industrial SLM/DMLS 3D printing for titanium: Yb-fiber laser, 20-60 µm layer thickness, ≥99.5% density, 950-1,050 MPa tensile strength. ASTM F2924, AS9100D.',
       de: 'Industrieller SLM/DMLS 3D-Druck für Titan: Yb-Faserlaser, 20-60 µm Schichtdicke, ≥99,5 % Dichte, 950-1.050 MPa Zugfestigkeit. ASTM F2924, AS9100D.',
+      zh: '工业SLM/DMLS 3D打印钛合金：Yb光纤激光、20-60 µm层厚、≥99.5%密度、950-1,050 MPa抗拉强度。ASTM F2924，AS9100D。',
       ja: 'チタンの産業用SLM/DMLS 3Dプリント：Ybファイバーレーザー、20～60 µm積層厚、≥99.5%密度、950～1,050 MPa引張強度。ASTM F2924、AS9100D。',
       fr: 'Impression 3D SLM/DMLS industrielle pour le titane : laser Yb-fibre, épaisseur de couche 20-60 µm, densité ≥99.5%, résistance à la traction 950-1,050 MPa. ASTM F2924, AS9100D.',
       es: 'Impresión 3D SLM/DMLS industrial para titanio: láser de fibra de Yb, espesor de capa de 20-60 µm, densidad ≥99.5%, resistencia a la tracción de 950-1,050 MPa. ASTM F2924, AS9100D.',
@@ -587,6 +625,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Rapid Prototyping | 3D Printing Services | BOZE CNC Ti',
       de: 'Titan-Rapid-Prototyping | 3D-Druck-Dienstleistungen | BOZE CNC Ti',
+      zh: '钛合金快速原型 | 3D打印服务 | BOZE CNC Ti',
       ja: 'チタンラピッドプロトタイピング | 3Dプリントサービス | BOZE CNC Ti',
       fr: 'Prototypage Rapide Titane | Services d\'Impression 3D | BOZE CNC Ti',
       es: 'Prototipado Rápido de Titanio | Servicios de Impresión 3D | BOZE CNC Ti',
@@ -601,6 +640,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Titanium rapid prototyping via SLM: 3-5 day lead time, single-unit MOQ, ≥99.5% density, 950-1,050 MPa tensile strength. Zero tooling cost design iterations.',
       de: 'Titan-Rapid-Prototyping mittels SLM: 3-5 Tage Lieferzeit, Einzelstück-MOQ, ≥99,5 % Dichte, 950-1.050 MPa Zugfestigkeit. Null Werkzeugkosten für Designiterationen.',
+      zh: '通过SLM实现钛合金快速原型：3-5天交货期、单件MOQ、≥99.5%密度、950-1,050 MPa抗拉强度。零模具成本设计迭代。',
       ja: 'SLMによるチタンラピッドプロトタイピング：3～5日リードタイム、1個からのMOQ、≥99.5%密度、950～1,050 MPa引張強度。金型不要の設計反復。',
       fr: 'Prototypage rapide du titane par SLM : délai de 3 à 5 jours, MOQ d\'une unité, densité ≥99.5%, résistance à la traction 950-1,050 MPa. Itérations de conception sans coût d\'outillage.',
       es: 'Prototipado rápido de titanio mediante SLM: plazo de entrega de 3-5 días, MOQ de una sola unidad, densidad ≥99.5%, resistencia a la tracción de 950-1,050 MPa. Iteraciones de diseño sin costo de utillaje.',
@@ -617,6 +657,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Low-Volume Titanium Production | Additive Manufacturing | BOZE CNC Ti',
       de: 'Kleinserien-Titanproduktion | Additive Fertigung | BOZE CNC Ti',
+      zh: '小批量钛合金生产 | 增材制造 | BOZE CNC Ti',
       ja: 'チタン少量生産 | 積層造形 | BOZE CNC Ti',
       fr: 'Production Titane en Petite Série | Fabrication Additive | BOZE CNC Ti',
       es: 'Producción de Titanio de Bajo Volumen | Fabricación Aditiva | BOZE CNC Ti',
@@ -631,6 +672,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Low-volume titanium production via SLM: 10-1,000+ unit batches, zero tooling costs, ≥95% material utilization, multi-laser sync, SPC witness bar validation. AS9100D.',
       de: 'Kleinserien-Titanproduktion mittels SLM: 10-1.000+ Stück Chargen, null Werkzeugkosten, ≥95 % Materialausnutzung, Multi-Laser-Synchronisation, SPC-Prüfstabvalidierung. AS9100D.',
+      zh: '通过SLM实现小批量钛合金生产：10-1,000+件批次、零模具成本、≥95%材料利用率、多激光同步、SPC见证棒验证。AS9100D。',
       ja: 'SLMによるチタン少量生産：10～1,000個以上のバッチ、金型費ゼロ、≥95%材料利用率、マルチレーザー同期、SPCウィットネスバー検証。AS9100D。',
       fr: 'Production de titane en petite série par SLM : lots de 10 à 1 000+ unités, zéro coût d\'outillage, utilisation matière ≥95%, synchronisation multi-laser, validation par éprouvette SPC. AS9100D.',
       es: 'Producción de titanio de bajo volumen mediante SLM: lotes de 10 a más de 1,000 unidades, sin costos de utillaje, utilización de material ≥95%, sincronización multiláser, validación con probetas testigo SPC. AS9100D.',
@@ -647,6 +689,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Fabrication Services | Welding & Cutting | BOZE CNC Ti',
       de: 'Titan-Fügetechnik-Dienstleistungen | Schweißen & Schneiden | BOZE CNC Ti',
+      zh: '钛合金焊接成型服务 | 焊接与切割 | BOZE CNC Ti',
       ja: 'チタン板金加工サービス | 溶接・切断 | BOZE CNC Ti',
       fr: 'Services de Fabrication du Titane | Soudage & Découpe | BOZE CNC Ti',
       es: 'Servicios de Fabricación de Titanio | Soldadura y Corte | BOZE CNC Ti',
@@ -661,6 +704,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium fabrication: TIG/laser welding with full argon purge, CNC sheet metal profiling, industrial vessels and piping. AWS D1.6, ASME Sec IX, AS9100D.',
       de: 'Präzisions-Titan-Fügetechnik: TIG/Laser-Schweißen mit vollständiger Argon-Spülung, CNC-Blechprofilierung, Industriebehälter und Rohrleitungen. AWS D1.6, ASME Sec IX, AS9100D.',
+      zh: '精密钛合金焊接成型：全氩气保护TIG/激光焊接、CNC钣金轮廓加工、工业容器与管道。AWS D1.6、ASME Sec IX、AS9100D。',
       ja: '精密チタン板金加工：完全アルゴンパージによるTIG/レーザー溶接、CNC板金プロファイリング、産業用容器・配管。AWS D1.6、ASME Sec IX、AS9100D。',
       fr: 'Fabrication de précision du titane : soudage TIG/laser avec purge argon complète, profilage CNC de tôles, cuves et tuyauteries industrielles. AWS D1.6, ASME Sec IX, AS9100D.',
       es: 'Fabricación de precisión de titanio: soldadura TIG/láser con purga completa de argón, perfilado CNC de chapa, recipientes y tuberías industriales. AWS D1.6, ASME Sección IX, AS9100D.',
@@ -677,6 +721,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Laser Cutting Services | Sheet & Tube | BOZE CNC Ti',
       de: 'Titan-Laserschneiden | Blech & Rohr | BOZE CNC Ti',
+      zh: '钛合金激光切割服务 | 板材与管材 | BOZE CNC Ti',
       ja: 'チタンレーザー切断サービス | 板・管 | BOZE CNC Ti',
       fr: 'Services de Découpe Laser du Titane | Tôle & Tube | BOZE CNC Ti',
       es: 'Servicios de Corte por Láser de Titanio | Chapa y Tubo | BOZE CNC Ti',
@@ -691,6 +736,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision fiber laser cutting for titanium sheets and tubes: 3,000 x 1,500 mm sheet capacity, ø 20-220 mm tube, ±0.03 mm accuracy, 0.1 mm kerf, weld-ready edges.',
       de: 'Präzisions-Faserlaserschneiden für Titanbleche und -rohre: 3.000 x 1.500 mm Blechkapazität, ø 20-220 mm Rohr, ±0,03 mm Genauigkeit, 0,1 mm Schnittfuge, schweißbereite Kanten.',
+      zh: '精密光纤激光切割钛合金板材与管材：3,000 x 1,500 mm板材能力、ø 20-220 mm管材、±0.03 mm精度、0.1 mm切缝、可焊接边缘。',
       ja: 'チタン板・管の精密ファイバーレーザー切断：3,000×1,500 mm板対応、ø 20～220 mm管、±0.03 mm精度、0.1 mmカーフ、溶接可能エッジ。',
       fr: 'Découpe laser fibre de précision pour tôles et tubes en titane : capacité tôle 3 000 x 1 500 mm, tube ø 20-220 mm, précision ±0.03 mm, largeur de saignée 0.1 mm, bords prêts à souder.',
       es: 'Corte por láser de fibra de precisión para chapas y tubos de titanio: capacidad de chapa de 3,000 x 1,500 mm, tubo de ø 20-220 mm, precisión de ±0.03 mm, ancho de corte de 0.1 mm, bordes listos para soldar.',
@@ -707,6 +753,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Waterjet Cutting Services | Precision Cutting | BOZE CNC Ti',
       de: 'Titan-Wasserstrahlschneiden | Präzisionsschneiden | BOZE CNC Ti',
+      zh: '钛合金水刀切割服务 | 精密切割 | BOZE CNC Ti',
       ja: 'チタンウォータージェット切断サービス | 精密切断 | BOZE CNC Ti',
       fr: 'Services de Découpe au Jet d\'Eau du Titane | Découpe de Précision | BOZE CNC Ti',
       es: 'Servicios de Corte por Chorro de Agua de Titanio | Corte de Precisión | BOZE CNC Ti',
@@ -721,6 +768,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision abrasive waterjet cutting for titanium: 60,000 PSI, 120 mm thickness capacity, 3,000 x 2,000 mm bed, ±0.05 mm angular repeatability, zero HAZ.',
       de: 'Präzisions-Abrasivwasserstrahlschneiden für Titan: 60.000 PSI, 120 mm Dicke, 3.000 x 2.000 mm Tisch, ±0,05 mm Winkelwiederholgenauigkeit, null Wärmeeinflusszone.',
+      zh: '精密磨料水刀切割钛合金：60,000 PSI、120 mm厚度能力、3,000 x 2,000 mm工作台、±0.05 mm角度重复性、零HAZ。',
       ja: 'チタンの精密アブレシブウォータージェット切断：60,000 PSI、120 mm厚対応、3,000×2,000 mmベッド、±0.05 mm角度再現性、HAZゼロ。',
       fr: 'Découpe au jet d\'eau abrasif de précision pour le titane : 60 000 PSI, capacité d\'épaisseur 120 mm, table 3 000 x 2 000 mm, répétabilité angulaire ±0.05 mm, ZAT nulle.',
       es: 'Corte por chorro de agua abrasivo de precisión para titanio: 60,000 PSI, capacidad de espesor de 120 mm, mesa de 3,000 x 2,000 mm, repetibilidad angular de ±0.05 mm, sin ZAC.',
@@ -737,6 +785,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Welding & Assembly Services | Precision Fabrication | BOZE CNC Ti',
       de: 'Titan-Schweißen & Montage | Präzisions-Fügetechnik | BOZE CNC Ti',
+      zh: '钛合金焊接与组装服务 | 精密焊接成型 | BOZE CNC Ti',
       ja: 'チタン溶接・組立サービス | 精密板金加工 | BOZE CNC Ti',
       fr: 'Services de Soudage & Assemblage du Titane | Fabrication de Précision | BOZE CNC Ti',
       es: 'Servicios de Soldadura y Ensamblaje de Titanio | Fabricación de Precisión | BOZE CNC Ti',
@@ -751,6 +800,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium welding and assembly: ultra-pure TIG, laser welding, multi-component system assembly with anti-galling and CMM verification. AWS D1.6, AS9100D.',
       de: 'Präzisions-Titan-Schweißen und Montage: ultrareines TIG, Laserschweißen, Mehrkomponenten-Systemmontage mit Anti-Galling und CMM-Verifikation. AWS D1.6, AS9100D.',
+      zh: '精密钛合金焊接与组装：超纯TIG、激光焊接、多组件系统组装，含防咬合处理及CMM验证。AWS D1.6、AS9100D。',
       ja: '精密チタン溶接・組立：超高純度TIG、レーザー溶接、耐焼付き処理とCMM検証による多部品システム組立。AWS D1.6、AS9100D。',
       fr: 'Soudage et assemblage de précision du titane : TIG ultra-pur, soudage laser, assemblage de systèmes multi-composants avec traitement anti-grippage et vérification CMM. AWS D1.6, AS9100D.',
       es: 'Soldadura y ensamblaje de precisión de titanio: TIG de ultra pureza, soldadura láser, ensamblaje de sistemas multicomponente con verificación antiagarrotamiento y CMM. AWS D1.6, AS9100D.',
@@ -767,6 +817,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Forming & Heavy Manufacturing | Forging & Extrusion | BOZE CNC Ti',
       de: 'Titanum-Umformung & Schwerindustrie | Schmieden & Strangpressen | BOZE CNC Ti',
+      zh: '钛材成型与重型制造 | 锻造与挤压 | BOZE CNC Ti',
       ja: 'チタン成形・重量加工 | 鍛造・押出 | BOZE CNC Ti',
       fr: 'Formage et fabrication lourde du titane | Forgeage et extrusion | BOZE CNC Ti',
       es: 'Conformado de Titanio y Manufactura Pesada | Forja y Extrusión | BOZE CNC Ti',
@@ -781,6 +832,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Heavy titanium forming and manufacturing: hot plate rolling, open/closed-die forging, large-scale assembly. 12,000 x 4,500 x 4,000 mm capacity, 50+ mm hot forming, 30 ton crane, AS9100D.',
       de: 'Schwere Titanumformung und -fertigung: Warmblechwalzen, Freiform- und Gesenkschmieden, Großbaugruppen. Kapazität 12.000 x 4.500 x 4.000 mm, Warmumformung ab 50 mm, 30-t-Kran, AS9100D.',
+      zh: '重型钛材成型与制造：热轧板、开式/闭式模锻、大型组装。加工能力达12,000 x 4,500 x 4,000 mm，热成型厚度50+ mm，配备30吨起重机，AS9100D认证。',
       ja: '重量チタン成形・製造：熱間板曲げ、開放型/密閉型鍛造、大規模組立。対応寸法12,000×4,500×4,000 mm、50 mm以上の熱間成形、30トンクレーン、AS9100D認証。',
       fr: 'Formage et fabrication lourde du titane : laminage à chaud de tôles, forgeage libre et en matrice, assemblage grande échelle. Capacité 12 000 x 4 500 x 4 000 mm, formage à chaud > 50 mm, pont roulant 30 t, AS9100D.',
       es: 'Conformado y manufactura pesada de titanio: laminado de placas en caliente, forja abierta/cerrada, ensamblaje a gran escala. Capacidad de 12.000 x 4.500 x 4.000 mm, conformado en caliente de 50+ mm, grúa de 30 toneladas, AS9100D.',
@@ -797,6 +849,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Forging Services | Closed & Open Die | BOZE CNC Ti',
       de: 'Titanschmiededienstleistungen | Gesenk- & Freiformschmieden | BOZE CNC Ti',
+      zh: '钛材锻造服务 | 闭式与开式模锻 | BOZE CNC Ti',
       ja: 'チタン鍛造サービス | 密閉型・開放型 | BOZE CNC Ti',
       fr: 'Services de forgeage du titane | Matrice fermée et libre | BOZE CNC Ti',
       es: 'Servicios de Forja de Titanio | Forja Cerrada y Abierta | BOZE CNC Ti',
@@ -811,6 +864,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium forging: closed-die, open-die, and seamless rolled ring forging. 8,000 metric ton press, ø 2,500 mm rings, AMS 2631 Class AA, ≥95% equiaxed α+β.',
       de: 'Präzisionsschmieden von Titan: Gesenkschmieden, Freiformschmieden und nahtloses Ringwalzen. 8.000-t-Presse, Ringe bis ø 2.500 mm, AMS 2631 Klasse AA, ≥95 % globular α+β.',
+      zh: '精密钛材锻造：闭式模锻、开式模锻及无缝轧制环锻。8,000公吨压力机，环件直径ø 2,500 mm，符合AMS 2631 Class AA标准，等轴α+β相含量≥95%。',
       ja: '精密チタン鍛造：密閉型鍛造、開放型鍛造、シームレス圧延リング鍛造。8,000メートルトンプレス、リング径ø2,500 mm、AMS 2631 Class AA、等軸α+β組織95%以上。',
       fr: 'Forgeage de précision du titane : matrice fermée, libre et bagues laminées sans soudure. Presse de 8 000 tonnes métriques, bagues ø 2 500 mm, AMS 2631 Classe AA, α+β équiaxe ≥ 95 %.',
       es: 'Forja de precisión de titanio: forja cerrada, abierta y anillos laminados sin costura. Prensa de 8.000 toneladas métricas, anillos de ø 2.500 mm, AMS 2631 Clase AA, α+β equiaxial ≥95%.',
@@ -827,6 +881,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Extrusion Services | Complex Profiles | BOZE CNC Ti',
       de: 'Titanstrangpressdienstleistungen | Komplexe Profile | BOZE CNC Ti',
+      zh: '钛材挤压服务 | 复杂型材 | BOZE CNC Ti',
       ja: 'チタン押出サービス | 複雑形状プロファイル | BOZE CNC Ti',
       fr: 'Services d\'extrusion du titane | Profilés complexes | BOZE CNC Ti',
       es: 'Servicios de Extrusión de Titanio | Perfiles Complejos | BOZE CNC Ti',
@@ -841,6 +896,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium extrusion: complex structural profiles, seamless heavy-wall tubes, multi-channel hollow shapes. 6,000 ton press, 12 m length, ø 350 mm envelope, AS9100D.',
       de: 'Präzisionsstrangpressen von Titan: komplexe Strukturprofile, nahtlose dickwandige Rohre, mehrkanalige Hohlprofile. 6.000-t-Presse, Länge 12 m, Hüllkreis ø 350 mm, AS9100D.',
+      zh: '精密钛材挤压：复杂结构型材、无缝厚壁管、多通道空心型材。6,000吨挤压机，长度12 m，包络直径ø 350 mm，AS9100D认证。',
       ja: '精密チタン押出：複雑構造プロファイル、シームレス厚肉チューブ、多チャンネル中空形状。6,000トンプレス、長さ12 m、包絡径ø350 mm、AS9100D認証。',
       fr: 'Extrusion de précision du titane : profilés structuraux complexes, tubes épais sans soudure, formes creuses multi-canaux. Presse de 6 000 t, longueur 12 m, enveloppe ø 350 mm, AS9100D.',
       es: 'Extrusión de precisión de titanio: perfiles estructurales complejos, tubos de pared gruesa sin costura, formas huecas multicanal. Prensa de 6.000 toneladas, longitud de 12 m, envolvente de ø 350 mm, AS9100D.',
@@ -857,6 +913,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Raw Material Preparation & Sizing | BOZE CNC Ti',
       de: 'Titan-Rohmaterialvorbereitung & -Zuschnitt | BOZE CNC Ti',
+      zh: '钛材原材料准备与定尺 | BOZE CNC Ti',
       ja: 'チタン原材料準備・サイジング | BOZE CNC Ti',
       fr: 'Préparation et dimensionnement des matières premières titane | BOZE CNC Ti',
       es: 'Preparación y Dimensionado de Materia Prima de Titanio | BOZE CNC Ti',
@@ -871,6 +928,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Titanium raw material preparation: heavy-duty CNC band sawing up to ø 800 mm, mechanical surface peeling, chemical decontamination. PMI validated, AS9100D.',
       de: 'Titan-Rohmaterialvorbereitung: CNC-Schwerlastbandsägen bis ø 800 mm, mechanisches Schälen, chemische Dekontamination. PMI-geprüft, AS9100D.',
+      zh: '钛材原材料准备：重型CNC带锯切割，最大直径ø 800 mm；机械表面剥皮；化学去污。PMI验证，AS9100D认证。',
       ja: 'チタン原材料準備：ø800 mmまでの大型CNCバンドソー切断、機械的表面皮剥き、化学的除染。PMI検証済み、AS9100D認証。',
       fr: 'Préparation des matières premières titane : sciage à ruban CNC lourd jusqu\'à ø 800 mm, pelage mécanique de surface, décontamination chimique. Validé PMI, AS9100D.',
       es: 'Preparación de materia prima de titanio: corte con sierra de cinta CNC de servicio pesado hasta ø 800 mm, pelado mecánico de superficies, descontaminación química. Validado con PMI, AS9100D.',
@@ -887,6 +945,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Surface Treatment Services | Anodizing & Passivation | BOZE CNC Ti',
       de: 'Titan-Oberflächenbehandlungen | Eloxieren & Passivieren | BOZE CNC Ti',
+      zh: '钛材表面处理服务 | 阳极氧化与钝化 | BOZE CNC Ti',
       ja: 'チタン表面処理サービス | 陽極酸化・不動態化 | BOZE CNC Ti',
       fr: 'Services de traitement de surface du titane | Anodisation et passivation | BOZE CNC Ti',
       es: 'Servicios de Tratamiento de Superficies de Titanio | Anodizado y Pasivación | BOZE CNC Ti',
@@ -901,6 +960,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium surface treatment services: anodizing, micro-arc oxidation (MAO), acid pickling & passivation. AMS 2488, ISO 13485, ASTM F86 certified surface engineering.',
       de: 'Präzise Titan-Oberflächenbehandlungen: Eloxieren, Mikrolichtbogenoxidation (MAO), Beizen & Passivieren. AMS 2488, ISO 13485, ASTM F86 zertifizierte Oberflächentechnik.',
+      zh: '精密钛材表面处理服务：阳极氧化、微弧氧化（MAO）、酸洗与钝化。符合AMS 2488、ISO 13485、ASTM F86认证的表面工程。',
       ja: '精密チタン表面処理サービス：陽極酸化、マイクロアーク酸化（MAO）、酸洗・不動態化。AMS 2488、ISO 13485、ASTM F86認証の表面エンジニアリング。',
       fr: 'Services de traitement de surface de précision du titane : anodisation, oxydation micro-arc (MAO), décapage acide et passivation. Ingénierie de surface certifiée AMS 2488, ISO 13485, ASTM F86.',
       es: 'Servicios de precisión para tratamiento de superficies de titanio: anodizado, oxidación por microarco (MAO), decapado ácido y pasivación. Ingeniería de superficies certificada según AMS 2488, ISO 13485, ASTM F86.',
@@ -917,6 +977,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Anodizing Services | AMS 2488 Certified | BOZE CNC Ti',
       de: 'Titan-Eloxalservice | AMS 2488 zertifiziert | BOZE CNC Ti',
+      zh: '钛材阳极氧化服务 | AMS 2488认证 | BOZE CNC Ti',
       ja: 'チタン陽極酸化サービス | AMS 2488認証 | BOZE CNC Ti',
       fr: 'Services d\'anodisation du titane | Certifié AMS 2488 | BOZE CNC Ti',
       es: 'Servicios de Anodizado de Titanio | Certificado AMS 2488 | BOZE CNC Ti',
@@ -931,6 +992,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. ISO 13485, AMS 2488D certified.',
       de: 'Präzises Titan-Eloxieren: AMS 2488 Type II (Antifress-Eloxieren), Type III (pigmentfreie Farbcodierung) und hochreine Säurevorbehandlung. ISO 13485, AMS 2488D zertifiziert.',
+      zh: '精密钛材阳极氧化服务：AMS 2488 Type II防咬合阳极氧化、Type III无色素颜色编码及高纯度酸预处理。ISO 13485、AMS 2488D认证。',
       ja: '精密チタン陽極酸化サービス：AMS 2488 Type II耐焼付き陽極酸化、Type III無着色色分け、高純度酸前処理。ISO 13485、AMS 2488D認証。',
       fr: 'Services d\'anodisation de précision du titane : anodisation anti-grippage AMS 2488 Type II, codage couleur sans pigment Type III, prétraitement acide haute pureté. Certifié ISO 13485, AMS 2488D.',
       es: 'Servicios de precisión de anodizado de titanio: anodizado antiagarrotamiento AMS 2488 Tipo II, codificación por color sin pigmento Tipo III y pretratamiento ácido de alta pureza. Certificado ISO 13485, AMS 2488D.',
@@ -947,6 +1009,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Chemical Passivation Services | ASTM F86 | BOZE CNC Ti',
       de: 'Titan-Chemischpassivierung | ASTM F86 | BOZE CNC Ti',
+      zh: '钛材化学钝化服务 | ASTM F86 | BOZE CNC Ti',
       ja: 'チタン化学不動態化サービス | ASTM F86 | BOZE CNC Ti',
       fr: 'Services de passivation chimique du titane | ASTM F86 | BOZE CNC Ti',
       es: 'Servicios de Pasivación Química de Titanio | ASTM F86 | BOZE CNC Ti',
@@ -961,6 +1024,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium chemical passivation services: nitric acid passivation, citric acid biocompatible lines, HF-HNO3 acid pickling. ASTM F86, ASTM A967, AMS 2700 certified.',
       de: 'Präzise chemische Passivierung von Titan: Salpetersäurepassivierung, biokompatible Citronensäurelinien, HF-HNO3-Beizen. ASTM F86, ASTM A967, AMS 2700 zertifiziert.',
+      zh: '精密钛材化学钝化服务：硝酸钝化、柠檬酸生物相容性生产线、HF-HNO3酸洗。ASTM F86、ASTM A967、AMS 2700认证。',
       ja: '精密チタン化学不動態化サービス：硝酸不動態化、クエン酸生体適合ライン、HF-HNO3酸洗。ASTM F86、ASTM A967、AMS 2700認証。',
       fr: 'Services de passivation chimique de précision du titane : passivation à l\'acide nitrique, lignes biocompatibles à l\'acide citrique, décapage HF-HNO3. Certifié ASTM F86, ASTM A967, AMS 2700.',
       es: 'Servicios de precisión de pasivación química de titanio: pasivación con ácido nítrico, líneas biocompatibles de ácido cítrico, decapado ácido HF-HNO3. Certificado ASTM F86, ASTM A967, AMS 2700.',
@@ -977,6 +1041,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Polishing & Sandblasting Services | BOZE CNC Ti',
       de: 'Titan-Polieren & Sandstrahlen | BOZE CNC Ti',
+      zh: '钛材抛光与喷砂服务 | BOZE CNC Ti',
       ja: 'チタン研磨・サンドブラストサービス | BOZE CNC Ti',
       fr: 'Services de polissage et sablage du titane | BOZE CNC Ti',
       es: 'Servicios de Pulido y Chorro de Arena de Titanio | BOZE CNC Ti',
@@ -991,6 +1056,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium mechanical finishing: multi-stage mirror polishing down to Ra 0.01 µm and engineered abrasive sandblasting for medical-grade anchor pore grids. Zero-contamination certified.',
       de: 'Präzise mechanische Titanendbearbeitung: mehrstufiges Spiegelpolieren bis Ra 0,01 µm und definiertes Abrasivstrahlen für medizintechnische Ankerporenstrukturen. Null-Kontamination zertifiziert.',
+      zh: '精密钛材机械精加工：多级镜面抛光至Ra 0.01 µm，以及工程化磨料喷砂，用于医疗级锚定孔格。零污染认证。',
       ja: '精密チタン機械仕上げ：Ra 0.01 µmまでの多段鏡面研磨、医療用アンカーポアグリッド向けエンジニアリングサンドブラスト。ゼロコンタミネーション認証。',
       fr: 'Finition mécanique de précision du titane : polissage miroir multi-étapes jusqu\'à Ra 0,01 µm et sablage abrasif contrôlé pour grilles d\'ancrage poreuses de qualité médicale. Certifié sans contamination.',
       es: 'Acabado mecánico de precisión de titanio: pulido espejo multietapa hasta Ra 0.01 µm y chorro de arena abrasivo diseñado para rejillas de poros de anclaje de grado médico. Certificado de contaminación cero.',
@@ -1007,6 +1073,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Laser Marking & Custom Logo Services | BOZE CNC Ti',
       de: 'Titan-Lasermarkierung & Logoservice | BOZE CNC Ti',
+      zh: '钛材激光打标与定制标识服务 | BOZE CNC Ti',
       ja: 'チタンレーザーマーキング・カスタムロゴサービス | BOZE CNC Ti',
       fr: 'Marquage laser et logo personnalisé sur titane | BOZE CNC Ti',
       es: 'Servicios de Marcado Láser y Logotipo Personalizado de Titanio | BOZE CNC Ti',
@@ -1021,6 +1088,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Precision titanium laser marking services: laser annealing, deep engraving, UID/DataMatrix serialization. MIL-STD-130, UDI compliant, ≤0.01 mm beam precision.',
       de: 'Präzise Titan-Lasermarkierung: Laseranlassen, Tiefengravur, UID/DataMatrix-Serialisierung. MIL-STD-130, UDI-konform, Strahlpräzision ≤0,01 mm.',
+      zh: '精密钛材激光打标服务：激光退火、深度雕刻、UID/DataMatrix序列化。符合MIL-STD-130、UDI标准，光束精度≤0.01 mm。',
       ja: '精密チタンレーザーマーキングサービス：レーザーアニーリング、深彫り、UID/DataMatrixシリアル化。MIL-STD-130、UDI準拠、ビーム精度≤0.01 mm。',
       fr: 'Services de marquage laser de précision du titane : recuit laser, gravure profonde, sérialisation UID/DataMatrix. Conforme MIL-STD-130, UDI, précision du faisceau ≤ 0,01 mm.',
       es: 'Servicios de precisión de marcado láser de titanio: recocido láser, grabado profundo, serialización UID/DataMatrix. Cumple con MIL-STD-130, UDI, precisión de haz ≤0.01 mm.',
@@ -1037,6 +1105,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Branded & Custom Titanium Packaging Services | BOZE CNC Ti',
       de: 'Marken- & Sonderverpackungen für Titan | BOZE CNC Ti',
+      zh: '品牌定制钛材包装服务 | BOZE CNC Ti',
       ja: 'ブランド・カスタムチタン梱包サービス | BOZE CNC Ti',
       fr: 'Services d\'emballage personnalisé et de marque pour titane | BOZE CNC Ti',
       es: 'Servicios de Empaque Personalizado y de Marca para Titanio | BOZE CNC Ti',
@@ -1051,6 +1120,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Industrial titanium packaging solutions: CNC foam milling, VCI marine corrosion barriers, ISPM-15 export crating. ISTA 2A/3A certified, ERP-linked traceability.',
       de: 'Industrielle Titanverpackungslösungen: CNC-Schaumfräsen, VCI-Korrosionsschutz für Seetransport, ISPM-15-Exportkisten. ISTA 2A/3A zertifiziert, ERP-verknüpfte Rückverfolgbarkeit.',
+      zh: '工业钛材包装解决方案：CNC泡沫铣削、VCI海洋防腐蚀屏障、ISPM-15出口板条箱。ISTA 2A/3A认证，ERP关联可追溯性。',
       ja: '産業用チタン梱包ソリューション：CNCフォーム切削、VCI海洋腐食バリア、ISPM-15輸出用木箱。ISTA 2A/3A認証、ERP連動トレーサビリティ。',
       fr: 'Solutions d\'emballage industriel pour titane : fraisage CNC de mousse, barrières anticorrosion marines VCI, caisses d\'exportation ISPM-15. Certifié ISTA 2A/3A, traçabilité liée à l\'ERP.',
       es: 'Soluciones de empaque industrial para titanio: fresado CNC de espuma, barreras anticorrosión marinas VCI, embalaje de exportación ISPM-15. Certificado ISTA 2A/3A, trazabilidad vinculada a ERP.',
@@ -1067,6 +1137,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Theme Demo | BOZE CNC Ti',
       de: 'Theme-Demo | BOZE CNC Ti',
+      zh: '主题演示 | BOZE CNC Ti',
       ja: 'テーマデモ | BOZE CNC Ti',
       fr: 'Démo du thème | BOZE CNC Ti',
       es: 'Demostración de Tema | BOZE CNC Ti',
@@ -1081,6 +1152,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Interactive theme demonstration page showcasing all available color schemes for the BOZE CNC Ti website.',
       de: 'Interaktive Theme-Demoseite mit allen verfügbaren Farbschemata der BOZE CNC Ti-Website.',
+      zh: '交互式主题演示页面，展示BOZE CNC Ti网站所有可用配色方案。',
       ja: 'BOZE CNC Tiウェブサイトで利用可能な全カラースキームを表示するインタラクティブなテーマデモページ。',
       fr: 'Page de démonstration interactive du thème présentant tous les jeux de couleurs disponibles pour le site BOZE CNC Ti.',
       es: 'Página interactiva de demostración de temas que muestra todos los esquemas de color disponibles para el sitio web de BOZE CNC Ti.',
@@ -1097,6 +1169,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Machining Manufacturing Certifications | AS9100D & ISO 13485 | BOZE CNC Ti',
       de: 'Titanbearbeitungs-Zertifizierungen | AS9100D & ISO 13485 | BOZE CNC Ti',
+      zh: '钛合金加工制造认证 | AS9100D与ISO 13485 | BOZE CNC Ti',
       ja: 'チタン加工製造認証 | AS9100DおよびISO 13485 | BOZE CNC Ti',
       fr: 'Certifications de Fabrication d\'Usinage du Titane | AS9100D & ISO 13485 | BOZE CNC Ti',
       es: 'Certificaciones de Fabricación de Mecanizado de Titanio | AS9100D e ISO 13485 | BOZE CNC Ti',
@@ -1111,6 +1184,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Verify BOZE official manufacturing credentials. Fully compliant and audited for AS9100D (Aerospace), ISO 13485 (Medical), and ISO 9001:2015 precision titanium CNC machining.',
       de: 'Überprüfen Sie BOZE offizielle Fertigungsnachweise. Vollständig konform und auditiert für AS9100D (Luftfahrt), ISO 13485 (Medizin) und ISO 9001:2015 Präzisions-Titan-CNC-Bearbeitung.',
+      zh: '验证BOZE的官方制造资质。完全合规并通过AS9100D（航空航天）、ISO 13485（医疗）和ISO 9001:2015精密钛合金CNC加工审计。',
       ja: 'BOZEの公式製造資格を確認。AS9100D（航空宇宙）、ISO 13485（医療）、ISO 9001:2015精密チタンCNC加工の完全準拠・監査済み。',
       fr: 'Vérifiez les références de fabrication officielles de BOZE. Entièrement conforme et audité pour l\'usinage CNC de précision du titane AS9100D (Aérospatial), ISO 13485 (Médical) et ISO 9001:2015.',
       es: 'Verifique las credenciales de fabricación oficiales de BOZE. Totalmente conforme y auditado para mecanizado CNC de precisión de titanio AS9100D (Aeroespacial), ISO 13485 (Médico) e ISO 9001:2015.',
@@ -1127,6 +1201,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Material Traceability & DFARS Compliance Standards | BOZE CNC Ti',
       de: 'Titan-Materialrückverfolgbarkeit & DFARS-Konformitätsstandards | BOZE CNC Ti',
+      zh: '钛合金材料可追溯性与DFARS合规标准 | BOZE CNC Ti',
       ja: 'チタン材料トレーサビリティとDFARSコンプライアンス基準 | BOZE CNC Ti',
       fr: 'Traçabilité des Matériaux Titane & Normes de Conformité DFARS | BOZE CNC Ti',
       es: 'Trazabilidad de Materiales de Titanio y Estándares de Cumplimiento DFARS | BOZE CNC Ti',
@@ -1141,6 +1216,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Explore BOZE unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation for aerospace, medical, and defense applications.',
       de: 'Entdecken Sie BOZE ununterbrochene Materialrückverfolgbarkeitsinfrastruktur. 100% EN 10204 3.1 Werkszeugnisverfolgung, DFARS-Konformität und 10-jährige digitale Aufbewahrung für Luftfahrt, Medizin und Verteidigung.',
+      zh: '探索BOZE不间断的材料可追溯性基础设施。100% EN 10204 3.1质保书追踪、DFARS合规以及面向航空航天、医疗和国防应用的10年数字记录保存。',
       ja: 'BOZEの途切れない材料トレーサビリティインフラをご覧ください。100% EN 10204 3.1ミル試験証明書追跡、DFARS準拠、航空宇宙、医療、防衛向けの10年間デジタル記録保存。',
       fr: 'Découvrez l\'infrastructure de traçabilité des matériaux ininterrompue de BOZE. Suivi 100% des certificats d\'usine EN 10204 3.1, conformité DFARS et conservation numérique de 10 ans pour les applications aérospatiales, médicales et de défense.',
       es: 'Explore la infraestructura de trazabilidad de materiales ininterrumpida de BOZE. Seguimiento 100% de certificados de fábrica EN 10204 3.1, cumplimiento DFARS y conservación digital de 10 años para aplicaciones aeroespaciales, médicas y de defensa.',
@@ -1157,6 +1233,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium CNC Metrology, Inspection & Testing Services | BOZE CNC Ti',
       de: 'Titan-CNC-Messtechnik, Prüfung & Testdienstleistungen | BOZE CNC Ti',
+      zh: '钛合金CNC计量、检测与测试服务 | BOZE CNC Ti',
       ja: 'チタンCNC計測・検査・試験サービス | BOZE CNC Ti',
       fr: 'Métrologie CNC du Titane, Inspection & Services de Test | BOZE CNC Ti',
       es: 'Metrología CNC de Titanio, Inspección y Servicios de Prueba | BOZE CNC Ti',
@@ -1171,6 +1248,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'In-house inspection laboratory for titanium components — CMM metrology, OES material verification, FPI/UT non-destructive testing, surface profilometry, and GD&T dimensional analysis. ISO 17025 calibrated.',
       de: 'Hauseigenes Prüflabor für Titanbauteile — CMM-Messtechnik, OES-Materialverifizierung, FPI/UT-zerstörungsfreie Prüfung, Oberflächenprofilometrie und GD&T-Maßanalyse. ISO 17025 kalibriert.',
+      zh: '内部检测实验室，专注于钛合金部件——CMM计量、OES材料验证、FPI/UT无损检测、表面轮廓测量和GD&T尺寸分析。ISO 17025校准。',
       ja: 'チタン部品の社内検査ラボラトリー — CMM計測、OES材料検証、FPI/UT非破壊検査、表面プロフィロメトリー、GD&T寸法解析。ISO 17025校正済み。',
       fr: 'Laboratoire d\'inspection interne pour les composants en titane — métrologie CMM, vérification des matériaux par OES, essais non destructifs FPI/UT, profilométrie de surface et analyse dimensionnelle GD&T. Étalonné ISO 17025.',
       es: 'Laboratorio de inspección interno para componentes de titanio — metrología CMM, verificación de materiales OES, ensayos no destructivos FPI/UT, perfilometría de superficie y análisis dimensional GD&T. Calibrado ISO 17025.',
@@ -1187,6 +1265,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Machining Quality Assurance & Certification Standards | BOZE CNC Ti',
       de: 'Qualitätssicherung & Zertifizierungsstandards für die Titanbearbeitung | BOZE CNC Ti',
+      zh: '钛合金加工质量保证与认证标准 | BOZE CNC Ti',
       ja: 'チタン加工の品質保証と認証基準 | BOZE CNC Ti',
       fr: 'Assurance Qualité et Normes de Certification pour l\'Usinage du Titane | BOZE CNC Ti',
       es: 'Aseguramiento de Calidad y Estándares de Certificación en Mecanizado de Titanio | BOZE CNC Ti',
@@ -1201,6 +1280,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Explore BOZE zero-defect titanium quality control system. Featuring AS9100D alignment, CMM inspection, EN 10204 3.1 material traceability, and complete SPC quality tracking for aerospace and medical applications.',
       de: 'Entdecken Sie BOZE Null-Fehler-Titan-Qualitätskontrollsystem. Mit AS9100D-Ausrichtung, CMM-Prüfung, EN 10204 3.1 Materialrückverfolgbarkeit und vollständiger SPC-Qualitätsverfolgung für Luftfahrt und Medizintechnik.',
+      zh: '探索BOZE的零缺陷钛合金质量控制体系。具备AS9100D合规、CMM检测、EN 10204 3.1材料可追溯性以及完整的SPC质量追踪能力，服务于航空航天和医疗应用。',
       ja: 'BOZEのゼロ欠陥チタン品質管理システムをご覧ください。AS9100D準拠、CMM検査、EN 10204 3.1材料トレーサビリティ、完全なSPC品質追跡に対応。航空宇宙および医療用途向け。',
       fr: 'Découvrez le système de contrôle qualité zéro défaut du titane de BOZE. Avec alignement AS9100D, inspection CMM, traçabilité des matériaux EN 10204 3.1 et suivi qualité SPC complet pour les applications aérospatiales et médicales.',
       es: 'Explore el sistema de control de calidad de titanio con cero defectos de BOZE. Con alineación AS9100D, inspección CMM, trazabilidad de materiales EN 10204 3.1 y seguimiento de calidad SPC completo para aplicaciones aeroespaciales y médicas.',
@@ -1217,6 +1297,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium CNC Machining Production Capacity & Scaling Fleet | BOZE CNC Ti',
       de: 'Titan-CNC-Bearbeitungs-Produktionskapazität & Flottenausbau | BOZE CNC Ti',
+      zh: '钛合金CNC加工产能与规模化机群 | BOZE CNC Ti',
       ja: 'チタンCNC加工の生産能力とスケーリング体制 | BOZE CNC Ti',
       fr: 'Capacité de Production d\'Usinage CNC du Titane & Parc Machine | BOZE CNC Ti',
       es: 'Capacidad de Producción de Mecanizado CNC de Titanio y Flota | BOZE CNC Ti',
@@ -1231,6 +1312,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Discover BOZE\'s scalable titanium manufacturing throughput. Over 45,000 parts annual capacity, 8,500+ monthly spindle hours, and 24/7 lights-out automated production for aerospace, medical, and defense applications.',
       de: 'Entdecken Sie BOZE\'s skalierbaren Titan-Fertigungsdurchsatz. Über 45.000 Teile Jahreskapazität, 8.500+ monatliche Spindelstunden und 24/7 automatisierte Licht-aus-Produktion für Luftfahrt, Medizin und Verteidigung.',
+      zh: '了解BOZE可扩展的钛合金制造吞吐能力。年产能超过45,000件，月轴时8,500+小时，24/7无人值守自动化生产，服务于航空航天、医疗和国防应用。',
       ja: 'BOZEのスケーラブルなチタン製造スループットをご覧ください。年間45,000部品以上の生産能力、月間8,500時間以上の主軸稼働、24時間365日の無人自動生産に対応。航空宇宙、医療、防衛用途。',
       fr: 'Découvrez le débit de fabrication évolutif du titane de BOZE. Plus de 45 000 pièces de capacité annuelle, 8 500+ heures de broche mensuelles et une production automatisée 24/7 sans surveillance pour les applications aérospatiales, médicales et de défense.',
       es: 'Descubra el rendimiento de fabricación de titanio escalable de BOZE. Más de 45,000 piezas de capacidad anual, más de 8,500 horas de husillo mensuales y producción automatizada 24/7 sin supervisión para aplicaciones aeroespaciales, médicas y de defensa.',
@@ -1247,6 +1329,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Titanium Engineering Support & DFM Optimization Services | BOZE CNC Ti',
       de: 'Titan-Engineering-Support & DFM-Optimierung | BOZE CNC Ti',
+      zh: '钛合金工程支持与可制造性设计优化服务 | BOZE CNC Ti',
       ja: 'チタンエンジニアリングサポート＆DFM最適化 | BOZE CNC Ti',
       fr: 'Support d\'Ingénierie Titane & Optimisation DFM | BOZE CNC Ti',
       es: 'Soporte de Ingeniería de Titanio y Optimización DFM | BOZE CNC Ti',
@@ -1261,6 +1344,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Expert engineering consultation for titanium CNC machining. Specializing in Design for Manufacturing (DFM) review, 5-axis CAM simulation, and cost-out value engineering for aerospace and medical applications.',
       de: 'Fachkundige Ingenieurberatung für die CNC-Bearbeitung von Titan. Spezialisiert auf Design for Manufacturing (DFM)-Prüfung, 5-Achsen-CAM-Simulation und wertsteigernde Kostensenkungstechnik für Luftfahrt und Medizintechnik.',
+      zh: '钛合金CNC加工的专业工程咨询。专注于可制造性设计（DFM）审查、五轴CAM仿真以及航空航天和医疗应用的成本优化价值工程。',
       ja: 'チタンCNC加工の専門エンジニアリングコンサルテーション。航空宇宙および医療向けのDFM（設計の製造適合性）レビュー、5軸CAMシミュレーション、コストアウトVEを専門としています。',
       fr: 'Consultation d\'ingénierie experte pour l\'usinage CNC du titane. Spécialisée dans la revue DFM, la simulation CAM 5 axes et l\'ingénierie de réduction des coûts pour les applications aérospatiales et médicales.',
       es: 'Consulta de ingeniería experta para mecanizado CNC de titanio. Especializada en revisión DFM, simulación CAM de 5 ejes e ingeniería de reducción de costos para aplicaciones aeroespaciales y médicas.',
@@ -1277,6 +1361,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     title: {
       en: 'Advanced Titanium Manufacturing Capabilities & Infrastructure | BOZE CNC Ti',
       de: 'Erweiterte Titan-Fertigungsfähigkeiten & Infrastruktur | BOZE CNC Ti',
+      zh: '先进钛合金制造能力与基础设施 | BOZE CNC Ti',
       ja: '先進的なチタン製造能力とインフラ | BOZE CNC Ti',
       fr: 'Capacités de Fabrication Avancée du Titane & Infrastructure | BOZE CNC Ti',
       es: 'Capacidades Avanzadas de Fabricación de Titanio e Infraestructura | BOZE CNC Ti',
@@ -1291,6 +1376,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
     description: {
       en: 'Certified titanium precision manufacturing infrastructure. Specializing in micron-level CNC tolerances, 5-axis milling, Swiss turning, and full material traceability (MTR) for aerospace, medical, and defense applications.',
       de: 'Zertifizierte Titan-Präzisionsfertigungsinfrastruktur. Spezialisiert auf mikrometerfeine CNC-Toleranzen, 5-Achsen-Fräsen, Swiss-Drehen und vollständige Materialrückverfolgbarkeit (MTR) für Luftfahrt, Medizintechnik und Verteidigung.',
+      zh: '认证的钛合金精密制造基础设施。专注于微米级CNC公差、五轴铣削、走心机车削以及航空航天、医疗和国防应用的完整材料可追溯性（MTR）。',
       ja: '認定を受けたチタン精密加工インフラ。航空宇宙、医療、防衛用途向けのミクロンレベルのCNC公差、5軸加工、スイス旋削、完全な材料トレーサビリティ（MTR）を専門としています。',
       fr: 'Infrastructure certifiée de fabrication de précision du titane. Spécialisée dans les tolérances CNC au micron, le fraisage 5 axes, le tournage suisse et la traçabilité complète des matériaux (MTR) pour les applications aérospatiales, médicales et de défense.',
       es: 'Infraestructura certificada de fabricación de precisión de titanio. Especializada en tolerancias CNC a nivel de micras, fresado de 5 ejes, torneado suizo y trazabilidad total de materiales (MTR) para aplicaciones aeroespaciales, médicas y de defensa.',
@@ -1317,6 +1403,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu Lotniczego | Fabryka z certyfikatem AS9100D',
       ru: 'Аэрокосмическая титановая обработка с ЧПУ | Сертифицированный завод AS9100D',
       ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للطيران | مصنع معتمد AS9100D',
+      zh: ""
     },
     description: {
       en: 'AS9100D certified 5-axis CNC machining for Grade 5 titanium aerospace brackets. Full EN 10204 3.1 MTR material tracing, AS9102 First Article Inspection reports, and CMM dimensional validation per ASME Y14.5 GD&T.',
@@ -1331,6 +1418,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC 5-osiowa z certyfikatem AS9100D dla wsporników lotniczych z tytanu Grade 5. Pełna identyfikowalność materiałów MTR EN 10204 3.1, raporty kontroli pierwszej sztuki AS9102 i walidacja wymiarowa CMM zgodnie z ASME Y14.5 GD&T.',
       ru: 'Сертифицированное по AS9100D 5-осевое фрезерование с ЧПУ для аэрокосмических кронштейнов из титана Grade 5. Полная прослеживаемость материалов по EN 10204 3.1 MTR, отчеты первого изделия по AS9102 и размерная верификация на КИМ по ASME Y14.5 GD&T.',
       ar: 'تصنيع باستخدام الحاسب الآلي خماسي المحاور معتمد AS9100D لأقواس التيتانيوم من الدرجة 5 في مجال الطيران. تتبع كامل للمواد وفقًا لمعيار EN 10204 3.1 MTR، وتقارير فحص القطعة الأولى AS9102، والتحقق البعدي باستخدام CMM وفقًا لمعيار ASME Y14.5 GD&T.',
+      zh: ""
     },
   },
   '/industries/medical': {
@@ -1347,6 +1435,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Medyczna Obróbka CNC Tytanu | Fabryka z certyfikatem ISO 13485',
       ru: 'Медицинская титановая обработка с ЧПУ | Сертифицированный завод ISO 13485',
       ar: 'تصنيع التيتانيوم الطبي باستخدام الحاسب الآلي | مصنع معتمد ISO 13485',
+      zh: ""
     },
     description: {
       en: 'ISO 13485 certified CNC Swiss turning and 5-axis milling for Grade 23 Ti-6Al-4V ELI medical titanium bone screws and orthopedic implants. Zero-contamination ultrasonic cleaning process with full EN 10204 3.1 MTR material tracing.',
@@ -1361,6 +1450,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC szwajcarska i frezowanie 5-osiowe z certyfikatem ISO 13485 dla śrub kostnych z tytanu Grade 23 Ti-6Al-4V ELI i implantów ortopedycznych. Proces czyszczenia ultradźwiękowego bez zanieczyszczeń z pełną identyfikowalnością materiałów MTR EN 10204 3.1.',
       ru: 'Сертифицированная по ISO 13485 швейцарская токарная обработка с ЧПУ и 5-осевое фрезерование для медицинских винтов из титана Grade 23 Ti-6Al-4V ELI и ортопедических имплантатов. Ультразвуковая очистка с нулевым загрязнением и полная прослеживаемость материалов по EN 10204 3.1 MTR.',
       ar: 'خراطة سويسرية وطحن خماسي المحاور باستخدام الحاسب الآلي معتمد ISO 13485 لبراغي العظام الطبية وزرعات العظام المصنوعة من التيتانيوم الطبي من الدرجة 23 Ti-6Al-4V ELI. عملية تنظيف بالموجات فوق الصوتية خالية من التلوث مع تتبع كامل للمواد وفقًا لمعيار EN 10204 3.1 MTR.',
+      zh: ""
     },
   },
   '/industries/uav-drones': {
@@ -1377,6 +1467,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu dla UAV i Dronów | Lekka Inżynieria',
       ru: 'Обработка титана для БПЛА и дронов на станках с ЧПУ | Легкие инженерные решения',
       ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للطائرات بدون طيار | هندسة خفيفة الوزن',
+      zh: ""
     },
     description: {
       en: 'Custom 5-axis CNC machining for Grade 5 titanium drone gimbal mounts, structural rotor hubs, and payload hardware. Rigid weight-reduction thin-wall milling and dynamic balancing controls for extended flight endurance.',
@@ -1391,6 +1482,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Niestandardowa obróbka CNC 5-osiowa dla wsporników gimbali dronów z tytanu Grade 5, strukturalnych piast wirników i sprzętu ładunkowego. Sztywne odchudzanie przez frezowanie cienkościenne i dynamiczna kontrola równoważenia dla wydłużonego czasu lotu.',
       ru: 'Индивидуальная 5-осевая обработка на станках с ЧПУ креплений подвеса для дронов, структурных втулок ротора и полезной нагрузки из титана Grade 5. Жесткое фрезерование тонкостенных деталей для снижения веса и контроль динамической балансировки для увеличения продолжительности полета.',
       ar: 'تصنيع مخصص باستخدام الحاسب الآلي بخمسة محاور للتيتانيوم من الدرجة 5 لحوامل محاور الكاميرا للطائرات بدون طيار، ومحاور الدوار الهيكلية، ومعدات الحمولة. طحن الجدران الرقيقة لتقليل الوزن الصارم وتحكمات التوازن الديناميكي لتحسين مدة الطيران.',
+      zh: ""
     },
   },
   '/industries/ai-infrastructure': {
@@ -1407,6 +1499,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu dla Infrastruktury AI i Komunikacji Optycznej',
       ru: 'Обработка титана для ИИ-инфраструктуры и оптической связи на станках с ЧПУ',
       ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للبنية التحتية للذكاء الاصطناعي والاتصالات البصرية',
+      zh: ""
     },
     description: {
       en: 'Custom precision CNC machining for 800G/1.6T optical transceiver housings, thin-wall EMI shielding components, and leak-proof data center liquid cooling manifolds. Thermal drift elimination via low-CTE titanium.',
@@ -1421,6 +1514,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Niestandardowa precyzyjna obróbka CNC dla obudów transceiverów optycznych 800G/1.6T, cienkościennych komponentów ekranowania EMI i szczelnych rozdzielaczy chłodzenia cieczą dla centrów danych. Eliminacja dryfu termicznego dzięki tytanowi o niskim CTE.',
       ru: 'Индивидуальная прецизионная обработка на станках с ЧПУ корпусов оптических трансиверов 800G/1.6T, тонкостенных компонентов ЭМ-экранирования и герметичных коллекторов жидкостного охлаждения центров обработки данных. Устранение теплового дрейфа за счет титана с низким КТР.',
       ar: 'تصنيع دقيق مخصص باستخدام الحاسب الآلي لأغلفة أجهزة الإرسال والاستقبال البصرية 800G/1.6T، ومكونات التدريع الكهرومغناطيسي ذات الجدران الرقيقة، ومشعبات التبريد السائل لمراكز البيانات المقاومة للتسرب. القضاء على الانجراف الحراري باستخدام التيتانيوم منخفض معامل التمدد الحراري.',
+      zh: ""
     },
   },
   '/industries/marine': {
@@ -1437,6 +1531,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu Morskiego i Podwodnego | Inżynieria Antykorozyjna',
       ru: 'Обработка титана для морской и подводной техники на станках с ЧПУ | Антикоррозийные решения',
       ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للبحرية وتحت الماء | هندسة مقاومة التآكل',
+      zh: ""
     },
     description: {
       en: 'Precision custom CNC machining for Grade 2 and Grade 12 titanium subsea enclosures, marine fasteners, and oceanographic sensor components. Absolute chloride pitting resistance and crevice corrosion mitigation for deep-sea applications.',
@@ -1451,6 +1546,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Precyzyjna niestandardowa obróbka CNC dla podwodnych obudów z tytanu Grade 2 i Grade 12, morskich elementów złącznych i komponentów czujników oceanograficznych. Absolutna odporność na wżery chlorkowe i ograniczenie korozji szczelinowej do zastosowań głębinowych.',
       ru: 'Прецизионная индивидуальная обработка на станках с ЧПУ подводных корпусов, морских крепежных элементов и компонентов океанографических датчиков из титана Grade 2 и Grade 12. Абсолютная стойкость к хлоридной питтинговой коррозии и снижение щелевой коррозии для глубоководных применений.',
       ar: 'تصنيع دقيق مخصص باستخدام الحاسب الآلي للتيتانيوم من الدرجة 2 والدرجة 12 لأغلفة تحت الماء، ومثبتات بحرية، ومكونات أجهزة استشعار أوقيانوغرافية. مقاومة مطلقة للتنقر الكلوريدي وتخفيف التآكل الشقي للتطبيقات في أعماق البحار.',
+      zh: ""
     },
   },
   '/industries/semiconductor': {
@@ -1467,6 +1563,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu dla Sprzętu Półprzewodnikowego | Ultra-Precyzja',
       ru: 'Обработка титана для полупроводникового оборудования на станках с ЧПУ | Сверхточность',
       ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي لمعدات أشباه الموصلات | فائقة الدقة',
+      zh: ""
     },
     description: {
       en: 'Custom sub-micron CNC machining for semiconductor wafer vacuum chambers, micro-hole gas showerheads, and UHV process components. Zero-particle cleanroom packaging and mirror-finish surface roughness Ra ≤ 0.1 µm.',
@@ -1481,6 +1578,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Niestandardowa obróbka CNC w skali submikronowej dla komór próżniowych płytek półprzewodnikowych, mikrootworowych głowic natryskowych gazu i komponentów procesowych UHV. Pakowanie w cleanroomie zerocząsteczkowym i wykończenie lustrzane o chropowatości Ra ≤ 0,1 µm.',
       ru: 'Индивидуальная субмикронная обработка на станках с ЧПУ вакуумных камер для полупроводниковых пластин, газораспределительных головок с микроотверстиями и компонентов для сверхвысоковакуумных процессов. Упаковка в чистых помещениях с нулевым содержанием частиц и шероховатость поверхности зеркального качества Ra ≤ 0,1 мкм.',
       ar: 'تصنيع مخصص باستخدام الحاسب الآلي بدقة دون الميكرون لغرف التفريغ لرقائق أشباه الموصلات، ورؤوس الدش ذات الثقوب الدقيقة للغاز، ومكونات عمليات التفريغ الفائق. تغليف خالٍ من الجسيمات في غرف نظيفة وخشونة سطح مرآة بمعامل Ra ≤ 0.1 ميكرومتر.',
+      zh: ""
     },
   },
   '/industries/energy': {
@@ -1497,6 +1595,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu dla Infrastruktury Energetycznej i Jądrowej',
       ru: 'Обработка титана для энергетики и ядерной инфраструктуры на станках с ЧПУ',
       ar: 'تصنيع التيتانيوم باستخدام الحاسب الآلي للبنية التحتية للطاقة والنووية',
+      zh: ""
     },
     description: {
       en: 'Custom 5-axis CNC machining for titanium hydrogen compressor impellers, SMR nuclear control rod drive hardware, and high-pressure fluid power components. Complete hydrogen embrittlement mitigation with controlled shot peening fatigue enhancement.',
@@ -1511,6 +1610,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Niestandardowa obróbka CNC 5-osiowa dla wirników sprężarek wodorowych z tytanu, elementów napędu prętów sterowniczych reaktorów SMR i elementów układów wysokociśnieniowych. Całkowite ograniczenie kruchości wodorowej ze zwiększeniem odporności zmęczeniowej przez kontrolowane śrutowanie.',
       ru: 'Индивидуальная 5-осевая обработка на станках с ЧПУ рабочих колес водородных компрессоров, приводов стержней управления ядерных реакторов SMR и компонентов гидравлических систем высокого давления из титана. Полное подавление водородного охрупчивания с помощью контролируемой дробеструйной обработки для повышения усталостной прочности.',
       ar: 'تصنيع مخصص باستخدام الحاسب الآلي بخمسة محاور لدوافع ضواغط الهيدروجين المصنوعة من التيتانيوم، ومعدات تشغيل قضبان التحكم النووية للمفاعلات النووية الصغيرة، ومكونات الطاقة السائلة عالية الضغط. تخفيف كامل لهشاشة الهيدروجين مع تعزيز الإجهاد بالصدم الكروي المتحكم به.',
+      zh: ""
     },
   },
   '/industries/industrial-equipment': {
@@ -1527,6 +1627,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Obróbka CNC Tytanu dla Sprzętu Przemysłowego i Automatyki',
       ru: 'Промышленное оборудование и автоматизация: титановая обработка с ЧПУ',
       ar: 'التصنيع باستخدام الحاسب الآلي للتيتانيوم في المعدات الصناعية والأتمتة',
+      zh: ""
     },
     description: {
       en: 'Custom precision CNC machining for titanium ultrasonic welding horns and sonotrodes, high-pressure chemical reactor valves, and heavy-duty automation manifolds. Exceptional cyclic loading resistance and acoustic resonance optimization.',
@@ -1541,100 +1642,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'Niestandardowa precyzyjna obróbka CNC dla tytanowych rogów spawalniczych ultradźwiękowych i sonotrod, zaworów reaktorów chemicznych wysokociśnieniowych i ciężkich rozdzielaczy automatyki. Wyjątkowa odporność na obciążenia cykliczne i optymalizacja rezonansu akustycznego.',
       ru: 'Прецизионная обработка с ЧПУ на заказ для титановых ультразвуковых сварочных рожков и сонотродов, клапанов химических реакторов высокого давления и коллекторов для тяжелой автоматизации. Исключительная устойчивость к циклическим нагрузкам и оптимизация акустического резонанса.',
       ar: 'تصنيع دقيق باستخدام الحاسب الآلي للتيتانيوم لأبواق اللحام فوق الصوتي والسونوترودات، وصمامات المفاعلات الكيميائية عالية الضغط، ومشعبات الأتمتة الثقيلة. مقاومة استثنائية للأحمال الدورية وتحسين الرنين الصوتي.',
-    },
-  },
-  '/resources/engineering-tools': {
-    title: {
-      en: 'Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti',
-      de: 'Technische Werkzeuge & Rechner | Titanlegierungs-Finder, CNC-Toleranzprüfung | BOZE CNC Ti',
-      ja: 'エンジニアリングツール | チタン合金グレード検索、CNC公差チェッカー | BOZE CNC Ti',
-      fr: 'Outils techniques et calculateurs | Recherche de qualité de titane, vérification des tolérances CNC | BOZE CNC Ti',
-      es: 'Herramientas y calculadoras de ingeniería | Buscador de grados de titanio, verificador de tolerancias CNC | BOZE CNC Ti',
-      pt: 'Ferramentas e calculadoras de engenharia | Localizador de grau de titânio, verificador de tolerância CNC | BOZE CNC Ti',
-      it: 'Strumenti e calcolatori di ingegneria | Ricerca leghe di titanio, controllo tolleranze CNC | BOZE CNC Ti',
-      ko: '엔지니어링 도구 및 계산기 | 티타늄 등급 검색, CNC 공차 확인 | BOZE CNC Ti',
-      nl: 'Technische hulpmiddelen en rekenmachines | Titaniumkwaliteitzoeker, CNC-tolerantiecontrole | BOZE CNC Ti',
-      pl: 'Narzędzia i kalkulatory inżynieryjne | Wyszukiwarka gatunków tytanu, sprawdzanie tolerancji CNC | BOZE CNC Ti',
-      ru: 'Инженерные инструменты и калькуляторы | Поиск марки титана, проверка допусков ЧПУ | BOZE CNC Ti',
-      ar: 'أدوات الهندسة والحاسبات | البحث عن درجة التيتانيوم، فحص التفاوتات باستخدام الحاسب الآلي | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference.',
-      de: 'Interaktive technische Werkzeuge für die Titanfertigung: Legierungs-Finder, CNC-Toleranzprüfung, Gewichts- und Kostenschätzer, Oberflächenrauheitsvergleich und GD&T-Symbolreferenz.',
-      ja: 'チタン製造のためのインタラクティブエンジニアリングツール：合金グレード検索、CNC公差適合性チェッカー、重量・コスト見積もり、表面粗さ比較、GD&T記号リファレンス。',
-      fr: "Outils d'ingénierie interactifs pour la fabrication du titane : recherche de qualité, vérification de faisabilité des tolérances CNC, estimation du poids et des coûts, comparateur de rugosité de surface et référence des symboles GD&T.",
-      es: 'Herramientas de ingeniería interactivas para la fabricación de titanio: búsqueda de grados, verificación de tolerancias CNC, estimación de peso y coste, comparador de rugosidad superficial y referencia de símbolos GD&T.',
-      pt: 'Ferramentas de engenharia interativas para fabricação de titânio: localizador de grau, verificador de tolerância CNC, estimador de peso e custo, comparador de rugosidade superficial e referência de símbolos GD&T.',
-      it: 'Strumenti di ingegneria interattivi per la produzione di titanio: ricerca leghe, controllo tolleranze CNC, stima peso e costi, comparatore rugosità superficiale e riferimento simboli GD&T.',
-      ko: '티타늄 제조를 위한 대화형 엔지니어링 도구: 등급 검색, CNC 공차 적합성 확인, 중량 및 비용 추정, 표면 거칠기 비교, GD&T 기호 참조.',
-      nl: 'Interactieve technische hulpmiddelen voor titaniumproductie: kwaliteitszoeker, CNC-tolerantiecontrole, gewichts- en kostenschatter, oppervlakteruwheidsvergelijker en GD&T-symboolreferentie.',
-      pl: 'Interaktywne narzędzia inżynieryjne do produkcji tytanu: wyszukiwarka gatunków, sprawdzanie tolerancji CNC, kalkulator wagi i kosztów, porównywarka chropowatości powierzchni i odniesienie symboli GD&T.',
-      ru: 'Интерактивные инженерные инструменты для производства титана: поиск марки, проверка допусков ЧПУ, оценка веса и стоимости, сравнение шероховатости поверхности и справочник символов GD&T.',
-      ar: 'أدوات هندسية تفاعلية لتصنيع التيتانيوم: البحث عن الدرجة، فحص تفاوتات الحاسب الآلي، تقدير الوزن والتكلفة، مقارنة خشونة السطح ومرجع رموز GD&T.',
-    },
-  },
-  '/tools': {
-    title: {
-      en: 'Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference.',
-    },
-  },
-  '/tools/titanium-grade-finder': {
-    title: {
-      en: 'Titanium Grade Finder Tool | Compare Ti-6Al-4V, Grade 2, Grade 23 & More | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Interactive titanium grade finder — filter by strength, corrosion resistance, weldability, biocompatibility, and cost. Compare 12 titanium alloys including Grade 5, Grade 23 ELI, and Grade 2 CP-Ti.',
-    },
-  },
-  '/tools/cnc-tolerance-checker': {
-    title: {
-      en: 'CNC Tolerance Feasibility Checker | ±0.005mm Precision Calculator | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Interactive CNC tolerance checker for titanium machining. Select feature type — hole, position, flatness, concentricity — and instantly see if your tolerance falls within standard, precision, or ultra-precision bands.',
-    },
-  },
-  '/tools/titanium-weight-calculator': {
-    title: {
-      en: 'Titanium Weight Calculator | Ti-6Al-4V Weight & Cost Estimator | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Calculate titanium part weight and raw material cost for round bar, plate, tube, and rectangular bar. Supports all grades including Grade 5, Grade 2, Grade 23, and Beta alloys.',
-    },
-  },
-  '/tools/surface-roughness-comparator': {
-    title: {
-      en: 'Surface Roughness Comparator | Ra Rz CNC Surface Finish Guide | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Compare surface roughness from Ra 0.025 µm mirror finish to Ra 6.3 µm as-rough. Filter by machining process CNC milling, turning, grinding, EDM, and see application examples.',
-    },
-  },
-  '/tools/gdt-symbol-reference': {
-    title: {
-      en: 'GD&T Symbol Reference | ASME Y14.5 Tolerance Guide | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Interactive GD&T symbol reference for ASME Y14.5. Browse 13 symbols across Form, Orientation, Location, Profile, and Runout categories with tolerance zone descriptions.',
-    },
-  },
-  '/tools/titanium-selection-workflow': {
-    title: {
-      en: 'Titanium Material Selection & Form Selection Tool | Grade to Procurement Spec | BOZE CNC Ti',
-    },
-    description: {
-      en: 'End-to-end titanium material selection and form selection decision tool. From working environment analysis, alloy matching, geometry assessment, to procurement specification generation. 9-step integrated workflow.',
-    },
-  },
-  '/tools/reverse-manufacturing-engine': {
-    title: {
-      en: 'Titanium Reverse Manufacturing Engineering | AI Part-to-Spec Tool | BOZE CNC Ti',
-    },
-    description: {
-      en: 'Knowledge-based reverse manufacturing engineering for titanium parts. Enter your finished component name, get expert-curated material grade, raw material form, processing services, and procurement specification matching.',
+      zh: ""
     },
   },
   '/about': {
@@ -1651,6 +1659,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'O BOZE CNC-Ti | Nasza Historia',
       ru: 'О компании BOZE CNC-Ti | Наша история',
       ar: 'حول BOZE CNC-Ti | قصتنا',
+      zh: ""
     },
     description: {
       en: 'BOZE CNC-Ti: Precision titanium CNC machining and OEM/ODM customization. From raw material to finished component — one integrated workflow.',
@@ -1665,1788 +1674,8 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       pl: 'BOZE CNC-Ti: Precyzyjna obróbka CNC tytanu i personalizacja OEM/ODM. Od surowca do gotowego komponentu — zintegrowany przepływ pracy.',
       ru: 'BOZE CNC-Ti: прецизионная титановая обработка с ЧПУ и OEM/ODM-кастомизация. От сырья до готовой детали — единый интегрированный рабочий процесс.',
       ar: 'BOZE CNC-Ti: تصنيع دقيق للتيتانيوم باستخدام الحاسب الآلي وتخصيص OEM/ODM. من المواد الخام إلى المكون النهائي — سير عمل متكامل.',
+      zh: ""
     },
   },
-
-// ── Capability Pages (auto-generated) ──
-  '/capabilities/100-crack-detection': {
-    title: { en: '100% crack detection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of 100% crack detection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/100-dimensional-inspection-cmm': {
-    title: { en: '100% dimensional inspection (CMM) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of 100% dimensional inspection (CMM) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/100-eddy-current-testing-ect-of-condenser-tubes': {
-    title: { en: '100% eddy current testing (ECT) of condenser tubes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of 100% eddy current testing (ECT) of condenser tubes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/31-mtc-with-var-ingot-traceability-per-asme-section-viii': {
-    title: { en: '3.1 MTC with VAR ingot traceability per ASME Section VIII | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of 3.1 MTC with VAR ingot traceability per ASME Section VIII titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/3d-cmm-inspection-of-spherical-bearing-housing-bores': {
-    title: { en: '3D CMM inspection of spherical bearing housing bores | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of 3D CMM inspection of spherical bearing housing bores titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/3d-cmm-inspection': {
-    title: { en: '3D CMM inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of 3D CMM inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/4-5-axis-cnc-milling': {
-    title: { en: '4/5-axis CNC milling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 4/5-axis CNC milling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-cnc-contour-milling': {
-    title: { en: '5-axis CNC contour milling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis CNC contour milling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-cnc-machining-of-blades': {
-    title: { en: '5-axis CNC machining of blades | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis CNC machining of blades titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-cnc-milling-of-aerofoils': {
-    title: { en: '5-axis CNC milling of aerofoils | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis CNC milling of aerofoils titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-cnc-milling-of-clevis-brackets': {
-    title: { en: '5-axis CNC milling of clevis brackets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis CNC milling of clevis brackets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-cnc-milling-of-manipulator-knuckles-and-swivel-joints': {
-    title: { en: '5-axis CNC milling of manipulator knuckles and swivel joints | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis CNC milling of manipulator knuckles and swivel joints titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-machining-center': {
-    title: { en: '5-axis machining center | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of 5-axis machining center titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-milling-of-faces': {
-    title: { en: '5-axis milling of faces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis milling of faces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/5-axis-simultaneous-cnc-milling': {
-    title: { en: '5-axis simultaneous CNC milling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of 5-axis simultaneous CNC milling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/7-stage-uhp-cleanroom-wash-for-hydrogen-fuel-cell-components': {
-    title: { en: '7-stage UHP cleanroom wash for hydrogen fuel cell components | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of 7-stage UHP cleanroom wash for hydrogen fuel cell components titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/accelerated-aging-test-1000h': {
-    title: { en: 'Accelerated aging test (1000h) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Accelerated aging test (1000h) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/adaptive-machining': {
-    title: { en: 'Adaptive machining | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Adaptive machining titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/af-temperature-measurement-dsc': {
-    title: { en: 'AF temperature measurement (DSC) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of AF temperature measurement (DSC) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/anodizing-ams-2488': {
-    title: { en: 'Anodizing (AMS 2488) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Anodizing (AMS 2488) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/anodizing-colors': {
-    title: { en: 'Anodizing (colors) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Anodizing (colors) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/anodizing-dlc-coating': {
-    title: { en: 'Anodizing/DLC coating | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Anodizing/DLC coating titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/anodizing': {
-    title: { en: 'Anodizing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Anodizing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/assembly--riveting': {
-    title: { en: 'Assembly & riveting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Assembly & riveting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/automatic-spring-coiling': {
-    title: { en: 'Automatic spring coiling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Automatic spring coiling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/automatic-swiss-turning': {
-    title: { en: 'Automatic Swiss turning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Automatic Swiss turning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/automatic-tig-welding-tube-end': {
-    title: { en: 'Automatic TIG welding (tube end) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Automatic TIG welding (tube end) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/axle-bending-fatigue-testing-106-cycles': {
-    title: { en: 'Axle bending fatigue testing 10^6 cycles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Axle bending fatigue testing 10^6 cycles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ballistic-testing-per-nij-mil-std': {
-    title: { en: 'Ballistic testing (per NIJ/MIL-STD) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Ballistic testing (per NIJ/MIL-STD) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/batch-testing-mechanical--metallographic': {
-    title: { en: 'Batch testing (mechanical + metallographic) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Batch testing (mechanical + metallographic) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/bead-blasting-anodizing-pvd': {
-    title: { en: 'Bead blasting / anodizing / PVD | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Bead blasting / anodizing / PVD titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/bead-blasting-of-plasma-facing-surfaces': {
-    title: { en: 'Bead blasting of plasma-facing surfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Bead blasting of plasma-facing surfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/bend-forming-of-stiffener-ribs-and-gussets': {
-    title: { en: 'Bend forming of stiffener ribs and gussets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Bend forming of stiffener ribs and gussets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/beta-c-wire-cold-coiling--shot-peening--preset-for-shock-springs': {
-    title: { en: 'Beta-C wire cold coiling + shot peening + preset for shock springs | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Beta-C wire cold coiling + shot peening + preset for shock springs titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/caseback-threading': {
-    title: { en: 'Caseback threading | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Caseback threading titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cbn-tool-finishing': {
-    title: { en: 'CBN tool finishing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of CBN tool finishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/center-boring-of-vented-vacuum-screws': {
-    title: { en: 'Center-boring of vented vacuum screws | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Center-boring of vented vacuum screws titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/centerless-grinding--dlc-coating-of-actuator-piston-rods': {
-    title: { en: 'Centerless grinding + DLC coating of actuator piston rods | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Centerless grinding + DLC coating of actuator piston rods titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/centerless-grinding-of-core-taper': {
-    title: { en: 'Centerless grinding of core taper | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Centerless grinding of core taper titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/charpy-impact-at-20c': {
-    title: { en: 'Charpy impact at -20C | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Charpy impact at -20C titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/charpy-impact-testing-at-253c-for-lh2-cryogenic-hardware': {
-    title: { en: 'Charpy impact testing at -253C for LH2 cryogenic hardware | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Charpy impact testing at -253C for LH2 cryogenic hardware titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/charpy-impact-testing-at-253c': {
-    title: { en: 'Charpy impact testing at -253C | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Charpy impact testing at -253C titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/chemical-etching-of-diaphragm-profiles': {
-    title: { en: 'Chemical etching of diaphragm profiles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Chemical etching of diaphragm profiles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/class-10-cleanroom-packaging': {
-    title: { en: 'Class 10 cleanroom packaging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Class 10 cleanroom packaging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cleaning--packaging-class-8-cleanroom': {
-    title: { en: 'Cleaning & packaging (Class 8 cleanroom) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Cleaning & packaging (Class 8 cleanroom) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cleaning--passivation': {
-    title: { en: 'Cleaning & passivation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Cleaning & passivation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cleanroom-packaging-class-100': {
-    title: { en: 'Cleanroom packaging (Class 100) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Cleanroom packaging (Class 100) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/closed-die-forging': {
-    title: { en: 'Closed-die forging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forging of Closed-die forging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-alignment-of-hanger-interface': {
-    title: { en: 'CMM alignment of hanger interface | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM alignment of hanger interface titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-blade-profiling': {
-    title: { en: 'CMM blade profiling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM blade profiling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-contour-inspection--02mm': {
-    title: { en: 'CMM contour inspection (+-0.2mm) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM contour inspection (+-0.2mm) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-dimensional-inspection--001mm': {
-    title: { en: 'CMM dimensional inspection (+-0.01mm) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM dimensional inspection (+-0.01mm) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-dimensional-inspection-of-contact-spacing': {
-    title: { en: 'CMM dimensional inspection of contact spacing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM dimensional inspection of contact spacing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-dimensional-inspection': {
-    title: { en: 'CMM dimensional inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM dimensional inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-inspection--0001mm-for-critical-features': {
-    title: { en: 'CMM inspection (+-0.001mm for critical features) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM inspection (+-0.001mm for critical features) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-inspection': {
-    title: { en: 'CMM inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-tooth-profile-inspection': {
-    title: { en: 'CMM tooth profile inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM tooth profile inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cmm-vision-inspection': {
-    title: { en: 'CMM / vision inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of CMM / vision inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-cutting-profile-cutting': {
-    title: { en: 'CNC cutting / profile cutting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC cutting / profile cutting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-gun-drilling--centerless-grinding-of-pivot-axles': {
-    title: { en: 'CNC gun drilling + centerless grinding of pivot axles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC gun drilling + centerless grinding of pivot axles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-bores-and-attachment-holes': {
-    title: { en: 'CNC machining of bores and attachment holes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of bores and attachment holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-clamping-plates-and-brackets': {
-    title: { en: 'CNC machining of clamping plates and brackets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of clamping plates and brackets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-critical-surfaces': {
-    title: { en: 'CNC machining of critical surfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of critical surfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-flange-faces-and-bolt-holes': {
-    title: { en: 'CNC machining of flange faces and bolt holes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of flange faces and bolt holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-impeller-profiles-5-axis': {
-    title: { en: 'CNC machining of impeller profiles (5-axis) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of impeller profiles (5-axis) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-mating-flanges': {
-    title: { en: 'CNC machining of mating flanges | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of mating flanges titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-ring-and-frame-components': {
-    title: { en: 'CNC machining of ring and frame components | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of ring and frame components titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-rotor-profile-brake-track': {
-    title: { en: 'CNC machining of rotor profile/brake track | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of rotor profile/brake track titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-threaded-couplings': {
-    title: { en: 'CNC machining of threaded couplings | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of threaded couplings titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-thumb-screw-clamps-and-brackets': {
-    title: { en: 'CNC machining of thumb-screw clamps and brackets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of thumb-screw clamps and brackets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-tooth-profiles': {
-    title: { en: 'CNC machining of tooth profiles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of tooth profiles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-machining-of-venturi-nozzle-profiles': {
-    title: { en: 'CNC machining of venturi nozzle profiles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC machining of venturi nozzle profiles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling--diamond-cut-beveling-of-watch-bezels': {
-    title: { en: 'CNC milling + diamond-cut beveling of watch bezels | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling + diamond-cut beveling of watch bezels titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling-from-plate-or-near-net-forging': {
-    title: { en: 'CNC milling from plate (or near-net forging) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling from plate (or near-net forging) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling-of-ergonomic-contours': {
-    title: { en: 'CNC milling of ergonomic contours | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling of ergonomic contours titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling-of-face-sole': {
-    title: { en: 'CNC milling of face/sole | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling of face/sole titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling-of-lugs-and-crown-guards': {
-    title: { en: 'CNC milling of lugs and crown guards | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling of lugs and crown guards titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling-turning-of-brackets-and-alignment-blocks': {
-    title: { en: 'CNC milling/turning of brackets and alignment blocks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling/turning of brackets and alignment blocks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-milling-turning-of-susceptor-and-arms': {
-    title: { en: 'CNC milling / turning of susceptor and arms | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC milling / turning of susceptor and arms titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-multi-spindle-turning': {
-    title: { en: 'CNC multi-spindle turning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC multi-spindle turning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-pocket-milling-for-weight-reduction': {
-    title: { en: 'CNC pocket milling for weight reduction | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC pocket milling for weight reduction titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-profiling--frame-lock-milling-for-folding-knives': {
-    title: { en: 'CNC profiling + frame lock milling for folding knives | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC profiling + frame lock milling for folding knives titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-profiling-of-impeller-blades': {
-    title: { en: 'CNC profiling of impeller blades | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC profiling of impeller blades titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-swaging-j-bend-forming-of-spoke-ends': {
-    title: { en: 'CNC swaging/j-bend forming of spoke ends | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC swaging/j-bend forming of spoke ends titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-tube-bending': {
-    title: { en: 'CNC tube bending | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC tube bending titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning--boring-of-id-od': {
-    title: { en: 'CNC turning & boring of ID/OD | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning & boring of ID/OD titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning--milling-of-housing': {
-    title: { en: 'CNC turning & milling of housing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning & milling of housing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning--nodal-profile-milling-of-sonotrode': {
-    title: { en: 'CNC turning + nodal profile milling of sonotrode | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning + nodal profile milling of sonotrode titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-boring-of-rings': {
-    title: { en: 'CNC turning/boring of rings | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning/boring of rings titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-axle-spindle-profiles': {
-    title: { en: 'CNC turning of axle/spindle profiles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of axle/spindle profiles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-bolt-heads-and-threads': {
-    title: { en: 'CNC turning of bolt heads and threads | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of bolt heads and threads titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-case-profile': {
-    title: { en: 'CNC turning of case profile | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of case profile titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-pushrods-and-droplinks': {
-    title: { en: 'CNC turning of pushrods and droplinks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of pushrods and droplinks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-ring-profiles-and-knife-edges': {
-    title: { en: 'CNC turning of ring profiles and knife-edges | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of ring profiles and knife-edges titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-valve-stems': {
-    title: { en: 'CNC turning of valve stems | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of valve stems titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cnc-turning-of-vcr-male-female-components': {
-    title: { en: 'CNC turning of VCR male/female components | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of CNC turning of VCR male/female components titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/coating-if-required': {
-    title: { en: 'Coating (if required) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Coating (if required) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/coaxiality-measurement-of-pivot-axles-002mm': {
-    title: { en: 'Coaxiality measurement of pivot axles <0.02mm | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Coaxiality measurement of pivot axles <0.02mm titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cold-heading-of-hex-nuts--cnc-tapping': {
-    title: { en: 'Cold heading of hex nuts + CNC tapping | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Cold heading of hex nuts + CNC tapping titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cold-hot-heading-forming': {
-    title: { en: 'Cold / hot heading forming | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Cold / hot heading forming titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/concentricity-measurement': {
-    title: { en: 'Concentricity measurement | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Concentricity measurement titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/contact-resistance-measurement-cnt-method': {
-    title: { en: 'Contact resistance measurement (CNT method) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Contact resistance measurement (CNT method) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/contact-resistance-testing': {
-    title: { en: 'Contact resistance testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Contact resistance testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/continuous-cold-tube-pilgering-for-condenser-tubes': {
-    title: { en: 'Continuous cold tube pilgering for condenser tubes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Continuous cold tube pilgering for condenser tubes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/contour-inspection-cmm-bluelight': {
-    title: { en: 'Contour inspection (CMM/bluelight) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Contour inspection (CMM/bluelight) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/coordinate-accuracy-verification--01mm': {
-    title: { en: 'Coordinate accuracy verification (+-0.1mm) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Coordinate accuracy verification (+-0.1mm) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/coordinate-measurement-of-fiducial-markers': {
-    title: { en: 'Coordinate measurement of fiducial markers | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Coordinate measurement of fiducial markers titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/corrosion-testing-potentiodynamic': {
-    title: { en: 'Corrosion testing (potentiodynamic) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Corrosion testing (potentiodynamic) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/corrosion-testing': {
-    title: { en: 'Corrosion testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Corrosion testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/creep-testing': {
-    title: { en: 'Creep testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Creep testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/crimping--loading-into-delivery-system': {
-    title: { en: 'Crimping & loading into delivery system | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Crimping & loading into delivery system titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cryogenic-dimensional-inspection': {
-    title: { en: 'Cryogenic dimensional inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Cryogenic dimensional inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cryogenic-polishing-for-medical-sonotrodes': {
-    title: { en: 'Cryogenic polishing for medical sonotrodes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Cryogenic polishing for medical sonotrodes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cryogenic-proof-testing': {
-    title: { en: 'Cryogenic proof testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Cryogenic proof testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cryogenic-testing-196c': {
-    title: { en: 'Cryogenic testing (-196C) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Cryogenic testing (-196C) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ct-scanning-internal-defect-detection': {
-    title: { en: 'CT scanning (internal defect detection) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of CT scanning (internal defect detection) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/custom-fabrication-to-drawing': {
-    title: { en: 'Custom fabrication to drawing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Custom fabrication to drawing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cycle-testing-200000-cycles': {
-    title: { en: 'Cycle testing (200,000 cycles) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Cycle testing (200,000 cycles) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/cylindrical-centerless-grinding': {
-    title: { en: 'Cylindrical / centerless grinding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Cylindrical / centerless grinding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/debinding--sintering': {
-    title: { en: 'Debinding & sintering | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Debinding & sintering titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/deburring-edge-rounding': {
-    title: { en: 'Deburring / edge rounding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Deburring / edge rounding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/deep-drawing-of-vacuum-flask-liners-grade-1-ti': {
-    title: { en: 'Deep drawing of vacuum flask liners (Grade 1 Ti) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Deep drawing of vacuum flask liners (Grade 1 Ti) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/deep-hole-boring-of-multi-port-manifolds': {
-    title: { en: 'Deep-hole boring of multi-port manifolds | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Deep-hole boring of multi-port manifolds titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/deep-hole-drilling-tube-sheet': {
-    title: { en: 'Deep hole drilling (tube sheet) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Deep hole drilling (tube sheet) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/deep-hole-gun-drilling-of-gas-manifold-blocks': {
-    title: { en: 'Deep-hole gun drilling of gas manifold blocks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Deep-hole gun drilling of gas manifold blocks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/deep-hole-gun-drilling-of-pressure-housings': {
-    title: { en: 'Deep-hole gun drilling of pressure housings | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Deep-hole gun drilling of pressure housings titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/digital-frequency-analysis-dfa-tuning-to--50hz-target': {
-    title: { en: 'Digital frequency analysis (DFA) tuning to +-50Hz target | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Digital frequency analysis (DFA) tuning to +-50Hz target titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-certification-of-bolt-circle-patterns': {
-    title: { en: 'Dimensional certification of bolt circle patterns | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dimensional certification of bolt circle patterns titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-certification-with-full-traceability': {
-    title: { en: 'Dimensional certification with full traceability | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dimensional certification with full traceability titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-certification': {
-    title: { en: 'Dimensional certification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dimensional certification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-inspection-of-mating-surfaces': {
-    title: { en: 'Dimensional inspection of mating surfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Dimensional inspection of mating surfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-inspection-of-mounting-interfaces': {
-    title: { en: 'Dimensional inspection of mounting interfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Dimensional inspection of mounting interfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-inspection-per-asme-b165-b169': {
-    title: { en: 'Dimensional inspection per ASME B16.5/B16.9 | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Dimensional inspection per ASME B16.5/B16.9 titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-inspection-per-asme-b165-din-standards': {
-    title: { en: 'Dimensional inspection per ASME B16.5 / DIN standards | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Dimensional inspection per ASME B16.5 / DIN standards titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-inspection': {
-    title: { en: 'Dimensional inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Dimensional inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dimensional-sorting': {
-    title: { en: 'Dimensional sorting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dimensional sorting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dlc-coating-for-wear-resistance': {
-    title: { en: 'DLC coating for wear resistance | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of DLC coating for wear resistance titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dlc-coating-wear-resistance': {
-    title: { en: 'DLC coating (wear resistance) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of DLC coating (wear resistance) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/drilling-of-bolt-holes-with-jig': {
-    title: { en: 'Drilling of bolt holes with jig | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Drilling of bolt holes with jig titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/drilling-of-mounting-holes': {
-    title: { en: 'Drilling of mounting holes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Drilling of mounting holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/drilling-tapping': {
-    title: { en: 'Drilling / tapping | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Drilling / tapping titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/drop-impact-testing-15m-onto-concrete': {
-    title: { en: 'Drop impact testing (1.5m onto concrete) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Drop impact testing (1.5m onto concrete) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/drop-impact-testing-of-knife-lock-up': {
-    title: { en: 'Drop/impact testing of knife lock-up | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Drop/impact testing of knife lock-up titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/drop-testing-mil-std-810': {
-    title: { en: 'Drop testing (MIL-STD-810) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Drop testing (MIL-STD-810) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dust-ingress-testing': {
-    title: { en: 'Dust ingress testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Dust ingress testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dynamic-balancing-for-rotary-horns': {
-    title: { en: 'Dynamic balancing for rotary horns | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dynamic balancing for rotary horns titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dynamic-balancing-test': {
-    title: { en: 'Dynamic balancing test | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dynamic balancing test titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/dynamic-balancing': {
-    title: { en: 'Dynamic balancing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Dynamic balancing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/eb-laser-welding-of-rib-skin-assembly': {
-    title: { en: 'EB / laser welding of rib-skin assembly | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of EB / laser welding of rib-skin assembly titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/eb-welding-of-hull-seams-under-vacuum': {
-    title: { en: 'EB welding of hull seams under vacuum | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of EB welding of hull seams under vacuum titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/eddy-current-inspection': {
-    title: { en: 'Eddy current inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Eddy current inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/electrical-continuity-testing': {
-    title: { en: 'Electrical continuity testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Electrical continuity testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/electrochemical-polishing': {
-    title: { en: 'Electrochemical polishing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Electrochemical polishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/electropolishing--class-100-ultrasonic-cleaning': {
-    title: { en: 'Electropolishing + Class 100 ultrasonic cleaning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Electropolishing + Class 100 ultrasonic cleaning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/electropolishing-of-all-vacuum-facing-surfaces': {
-    title: { en: 'Electropolishing of all vacuum-facing surfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Electropolishing of all vacuum-facing surfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/electropolishing-of-all-wetted-surfaces': {
-    title: { en: 'Electropolishing of all wetted surfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Electropolishing of all wetted surfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/electropolishing': {
-    title: { en: 'Electropolishing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Electropolishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/end-forming-flaring': {
-    title: { en: 'End forming / flaring | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of End forming / flaring titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/expanded-metal-mesh-production': {
-    title: { en: 'Expanded metal mesh production | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Expanded metal mesh production titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fatigue-testing-105-cycles': {
-    title: { en: 'Fatigue testing 10^5 cycles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Fatigue testing 10^5 cycles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fatigue-testing-106-cycles-at-10nm': {
-    title: { en: 'Fatigue testing (10^6 cycles at 10Nm) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Fatigue testing (10^6 cycles at 10Nm) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fatigue-testing-accelerated-400m-cycles': {
-    title: { en: 'Fatigue testing (accelerated 400M cycles) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Fatigue testing (accelerated 400M cycles) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fatigue-testing-of-release-mechanisms-1000-cycles': {
-    title: { en: 'Fatigue testing of release mechanisms (1000+ cycles) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Fatigue testing of release mechanisms (1000+ cycles) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fatigue-testing-sprint-load-simulation': {
-    title: { en: 'Fatigue testing (sprint load simulation) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Fatigue testing (sprint load simulation) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fatigue-testing': {
-    title: { en: 'Fatigue testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Fatigue testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/field-durability-testing-customer-specified': {
-    title: { en: 'Field durability testing (customer-specified) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Field durability testing (customer-specified) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/flavor-leaching-test-iso-10304-for-metal-ions': {
-    title: { en: 'Flavor leaching test (ISO 10304 for metal ions) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Flavor leaching test (ISO 10304 for metal ions) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/flow-rate-testing-of-eductors': {
-    title: { en: 'Flow rate testing of eductors | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Flow rate testing of eductors titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/flow-testing-cooled-blades': {
-    title: { en: 'Flow testing (cooled blades) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Flow testing (cooled blades) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/flow-testing': {
-    title: { en: 'Flow testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Flow testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fluorescent-penetrant-inspection-fpi': {
-    title: { en: 'Fluorescent penetrant inspection (FPI) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Fluorescent penetrant inspection (FPI) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/folding-cycle-test-200k-cycles-for-hinges': {
-    title: { en: 'Folding cycle test (200k+ cycles for hinges) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Folding cycle test (200k+ cycles for hinges) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/forged-rod-tapering--tip-forming-for-tent-stakes': {
-    title: { en: 'Forged rod tapering + tip forming for tent stakes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Forged rod tapering + tip forming for tent stakes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/fpi-fluorescent-penetrant-inspection': {
-    title: { en: 'FPI (fluorescent penetrant inspection) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of FPI (fluorescent penetrant inspection) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/full-length-ut-inspection': {
-    title: { en: 'Full-length UT inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Full-length UT inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/full-scale-tension-testing': {
-    title: { en: 'Full-scale tension testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Full-scale tension testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/full-ut-wall-thickness-verification': {
-    title: { en: 'Full UT wall thickness verification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Full UT wall thickness verification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/function-testing': {
-    title: { en: 'Function testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Function testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/gas-chromatography-for-hydrogen-embrittlement-certification-h125ppm': {
-    title: { en: 'Gas chromatography for hydrogen embrittlement certification (H<125ppm) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Gas chromatography for hydrogen embrittlement certification (H<125ppm) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/gun-drilling-of-intramedullary-nails--cannulated-screws': {
-    title: { en: 'Gun-drilling of intramedullary nails + cannulated screws | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Gun-drilling of intramedullary nails + cannulated screws titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hardness-testing-hrb-hrc-of-washers': {
-    title: { en: 'Hardness testing (HRB/HRC) of washers | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hardness testing (HRB/HRC) of washers titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hardness-testing-hrc': {
-    title: { en: 'Hardness testing (HRC) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hardness testing (HRC) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hardness-testing': {
-    title: { en: 'Hardness testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hardness testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/heat-transfer-verification': {
-    title: { en: 'Heat transfer verification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Heat transfer verification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/heat-treatment-sta': {
-    title: { en: 'Heat treatment (STA) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Heat treatment (STA) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/heat-treatment-to-optimize-hardness': {
-    title: { en: 'Heat treatment to optimize hardness | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Heat treatment to optimize hardness titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/heat-treatment': {
-    title: { en: 'Heat treatment | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Heat treatment titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-leak-detection': {
-    title: { en: 'Helium leak detection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Helium leak detection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-leak-testing-1x10-10-mbarl-s': {
-    title: { en: 'Helium leak testing (1x10^-10 mbar.L/s) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Helium leak testing (1x10^-10 mbar.L/s) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-leak-testing-1x10-9-mbarl-s': {
-    title: { en: 'Helium leak testing (1x10^-9 mbar.L/s) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Helium leak testing (1x10^-9 mbar.L/s) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-leak-testing-of-electronic-canisters': {
-    title: { en: 'Helium leak testing of electronic canisters | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Helium leak testing of electronic canisters titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-leak-testing-of-hydrogen-components-1x10-9-mbarl-s': {
-    title: { en: 'Helium leak testing of hydrogen components (1x10^-9 mbar.L/s) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Helium leak testing of hydrogen components (1x10^-9 mbar.L/s) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-leak-testing': {
-    title: { en: 'Helium leak testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Helium leak testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/helium-mass-spectrometer-leak-test': {
-    title: { en: 'Helium mass spectrometer leak test | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Helium mass spectrometer leak test titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/high-precision-grinding': {
-    title: { en: 'High-precision grinding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of High-precision grinding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/high-temperature-wind-tunnel-testing': {
-    title: { en: 'High-temperature wind tunnel testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of High-temperature wind tunnel testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/high-temperature': {
-    title: { en: 'High-temperature氧化防护涂层 | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of High-temperature氧化防护涂层 titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hip-densification': {
-    title: { en: 'HIP densification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of HIP densification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-forging--thread-rolling-of-all-rotor--caliper-bolts': {
-    title: { en: 'Hot forging + thread rolling of all rotor & caliper bolts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Hot forging + thread rolling of all rotor & caliper bolts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-forging--thread-rolling-of-linkage-bolts': {
-    title: { en: 'Hot forging + thread rolling of linkage bolts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Hot forging + thread rolling of linkage bolts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-forging--vacuum-annealing-of-valve-stems-and-bolts': {
-    title: { en: 'Hot forging + vacuum annealing of valve stems and bolts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forging of Hot forging + vacuum annealing of valve stems and bolts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-forming-of-curved-panels': {
-    title: { en: 'Hot forming of curved panels | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Hot forming of curved panels titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-forming-of-seamless-tube-into-elbows-tees': {
-    title: { en: 'Hot forming of seamless tube into elbows/tees | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Hot forming of seamless tube into elbows/tees titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-forming-of-skin-panels': {
-    title: { en: 'Hot forming of skin panels | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Hot forming of skin panels titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-heading--vacuum-aging-of-beta-hub-bolts': {
-    title: { en: 'Hot heading + vacuum aging of beta hub bolts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Hot heading + vacuum aging of beta hub bolts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hot-isostatic-pressing-hip': {
-    title: { en: 'Hot isostatic pressing (HIP) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Hot isostatic pressing (HIP) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydraulic-pressure-testing-of-tie-rods': {
-    title: { en: 'Hydraulic pressure testing of tie rods | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydraulic pressure testing of tie rods titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-burst-testing': {
-    title: { en: 'Hydrostatic burst testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic burst testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-pressure-testing-of-coils': {
-    title: { en: 'Hydrostatic pressure testing of coils | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic pressure testing of coils titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-pressure-testing-of-flanged-assemblies': {
-    title: { en: 'Hydrostatic pressure testing of flanged assemblies | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic pressure testing of flanged assemblies titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-pressure-testing-to-125x-rated-depth': {
-    title: { en: 'Hydrostatic pressure testing to 1.25x rated depth | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic pressure testing to 1.25x rated depth titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-pressure-testing-to-15x-rated-pressure': {
-    title: { en: 'Hydrostatic pressure testing to 1.5x rated pressure | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic pressure testing to 1.5x rated pressure titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-pressure-testing': {
-    title: { en: 'Hydrostatic pressure testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic pressure testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-proof-testing': {
-    title: { en: 'Hydrostatic proof testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic proof testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-test': {
-    title: { en: 'Hydrostatic test | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Hydrostatic test titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/hydrostatic-testing': {
-    title: { en: 'Hydrostatic testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Hydrostatic testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/impact-testing-at-cryogenic-temperature': {
-    title: { en: 'Impact testing at cryogenic temperature | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Impact testing at cryogenic temperature titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/impedance-frequency-analysis': {
-    title: { en: 'Impedance / frequency analysis | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Impedance / frequency analysis titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/impeller-dynamic-balancing': {
-    title: { en: 'Impeller dynamic balancing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Impeller dynamic balancing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/investment-casting-alternative': {
-    title: { en: 'Investment casting (alternative) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Investment casting (alternative) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/investment-casting': {
-    title: { en: 'Investment casting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Investment casting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/isothermal-die-forging': {
-    title: { en: 'Isothermal die forging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forging of Isothermal die forging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/keyway-broaching': {
-    title: { en: 'Keyway broaching | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Keyway broaching titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/kink-resistance-testing': {
-    title: { en: 'Kink resistance testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Kink resistance testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/knife-edge-profile-inspection-optical-microscopy': {
-    title: { en: 'Knife-edge profile inspection (optical microscopy) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Knife-edge profile inspection (optical microscopy) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-cutting--die-stamping-of-crampon-spikes': {
-    title: { en: 'Laser cutting + die stamping of crampon spikes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser cutting + die stamping of crampon spikes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-cutting-of-port-holes': {
-    title: { en: 'Laser cutting of port holes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser cutting of port holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-engraving-marking': {
-    title: { en: 'Laser engraving (marking) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser engraving (marking) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-marking-traceability-code': {
-    title: { en: 'Laser marking (traceability code) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser marking (traceability code) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-marking-udi-code': {
-    title: { en: 'Laser marking (UDI code) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser marking (UDI code) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-marking': {
-    title: { en: 'Laser marking | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser marking titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-micro-cutting-of-tube': {
-    title: { en: 'Laser micro-cutting of tube | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser micro-cutting of tube titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-micro-drilling-of-orifice-disks': {
-    title: { en: 'Laser micro-drilling of orifice disks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser micro-drilling of orifice disks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-or-waterjet-cutting-of-perforated-bottom-plates': {
-    title: { en: 'Laser or waterjet cutting of perforated bottom plates | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser or waterjet cutting of perforated bottom plates titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-perforation-drilling-of-sparger-pipes': {
-    title: { en: 'Laser/perforation drilling of sparger pipes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser/perforation drilling of sparger pipes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-plasma-cutting-of-plate': {
-    title: { en: 'Laser / plasma cutting of plate | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser / plasma cutting of plate titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/laser-waterjet-cutting': {
-    title: { en: 'Laser / waterjet cutting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Laser / waterjet cutting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/left-right-hand-thread-rolling-on-multi-axis-roller': {
-    title: { en: 'Left/right hand thread rolling on multi-axis roller | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Left/right hand thread rolling on multi-axis roller titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/load-testing-of-hooks-and-welds': {
-    title: { en: 'Load testing of hooks and welds | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Load testing of hooks and welds titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/lpbf-3d-printing-of-porous-fusion-cages': {
-    title: { en: 'LPBF 3D printing of porous fusion cages | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision additive manufacturing of LPBF 3D printing of porous fusion cages titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/magnetic-field-testing': {
-    title: { en: 'Magnetic field testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Magnetic field testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/magnetic-particle-inspection-mpi-of-all-threaded-parts': {
-    title: { en: 'Magnetic particle inspection (MPI) of all threaded parts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Magnetic particle inspection (MPI) of all threaded parts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/magnetic-particle-inspection-mpi': {
-    title: { en: 'Magnetic particle inspection (MPI) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Magnetic particle inspection (MPI) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/magnetic-permeability-test-mu-100001': {
-    title: { en: 'Magnetic permeability test (mu <1.00001) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Magnetic permeability test (mu <1.00001) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/magnetic-permeability-testing-mu-101': {
-    title: { en: 'Magnetic permeability testing (mu <1.01) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Magnetic permeability testing (mu <1.01) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/magnetic-permeability-testing': {
-    title: { en: 'Magnetic permeability testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Magnetic permeability testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/material-certification-en-10204-31-mtr': {
-    title: { en: 'Material certification (EN 10204 3.1 / MTR) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Material certification (EN 10204 3.1 / MTR) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/material-certification-en-10204-31': {
-    title: { en: 'Material certification (EN 10204 3.1) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Material certification (EN 10204 3.1) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/material-certification': {
-    title: { en: 'Material certification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Material certification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/material-traceability-per-nasa-sp-r-0022': {
-    title: { en: 'Material traceability per NASA SP-R-0022 | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Material traceability per NASA SP-R-0022 titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/mechanical-testing-per-astm-f543-screw-torque': {
-    title: { en: 'Mechanical testing per ASTM F543 (screw torque) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Mechanical testing per ASTM F543 (screw torque) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/metal-injection-molding-mim-of-foldable-hinges': {
-    title: { en: 'Metal injection molding (MIM) of foldable hinges | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Metal injection molding (MIM) of foldable hinges titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/metal-injection-molding-mim': {
-    title: { en: 'Metal injection molding (MIM) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Metal injection molding (MIM) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/metallographic-evaluation': {
-    title: { en: 'Metallographic evaluation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Metallographic evaluation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/micro-ct-of-flame-arrestor-pore-structure': {
-    title: { en: 'Micro-CT of flame arrestor pore structure | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Micro-CT of flame arrestor pore structure titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/mirror-polishing-of-piston-thermal-barrier-faces': {
-    title: { en: 'Mirror polishing of piston thermal barrier faces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Mirror polishing of piston thermal barrier faces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/mpi-of-threads': {
-    title: { en: 'MPI of threads | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of MPI of threads titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/mri-artifact-testing-3t-phantom': {
-    title: { en: 'MRI artifact testing (3T phantom) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of MRI artifact testing (3T phantom) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/oleophobic-nano-coating-via-electron-beam-evaporation': {
-    title: { en: 'Oleophobic nano-coating via electron beam evaporation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Oleophobic nano-coating via electron beam evaporation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/outgassing-rate-measurement-astm-e595': {
-    title: { en: 'Outgassing rate measurement (ASTM E595) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Outgassing rate measurement (ASTM E595) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/outgassing-test-astm-e595': {
-    title: { en: 'Outgassing test (ASTM E595) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Outgassing test (ASTM E595) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/oxidation-testing': {
-    title: { en: 'Oxidation testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Oxidation testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/particle-count-certification': {
-    title: { en: 'Particle count certification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Particle count certification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/particle-count-testing': {
-    title: { en: 'Particle count testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Particle count testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/passivation--class-10-cleanroom-assembly': {
-    title: { en: 'Passivation + Class 10 cleanroom assembly | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Passivation + Class 10 cleanroom assembly titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/passivation--class-10000-cleanroom-ultrasonic-wash': {
-    title: { en: 'Passivation + Class 10,000 cleanroom ultrasonic wash | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Passivation + Class 10,000 cleanroom ultrasonic wash titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/passivation--cleaning': {
-    title: { en: 'Passivation & cleaning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Passivation & cleaning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/passivation-astm-f86': {
-    title: { en: 'Passivation (ASTM F86) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Passivation (ASTM F86) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/passivation': {
-    title: { en: 'Passivation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Passivation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pickling--passivation': {
-    title: { en: 'Pickling & passivation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Pickling & passivation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pickling-to-remove-oxide-scale': {
-    title: { en: 'Pickling to remove oxide scale | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Pickling to remove oxide scale titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/plasma-erosion-testing-customer-specified-recipe': {
-    title: { en: 'Plasma erosion testing (customer-specified recipe) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Plasma erosion testing (customer-specified recipe) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/plate-laser-cutting--cnc-drilling-of-flange-bolt-holes': {
-    title: { en: 'Plate laser cutting + CNC drilling of flange bolt holes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Plate laser cutting + CNC drilling of flange bolt holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pmi-positive-material-identification-verification': {
-    title: { en: 'PMI (positive material identification) verification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of PMI (positive material identification) verification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pmi-verification-of-all-material': {
-    title: { en: 'PMI verification of all material | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of PMI verification of all material titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/porosity-testing-of-sintered-filters-bubble-point-test': {
-    title: { en: 'Porosity testing of sintered filters (bubble point test) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Porosity testing of sintered filters (bubble point test) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/powder-characterization': {
-    title: { en: 'Powder characterization | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Powder characterization titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/powder-compaction--sintering-for-porous-filter-elements': {
-    title: { en: 'Powder compaction + sintering for porous filter elements | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Powder compaction + sintering for porous filter elements titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/powder-sintering-of-flame-arrestor-porous-disks': {
-    title: { en: 'Powder sintering of flame arrestor porous disks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Powder sintering of flame arrestor porous disks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-boring-of-bearing-journals': {
-    title: { en: 'Precision boring of bearing journals | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Precision boring of bearing journals titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-boring-of-wafer-pockets': {
-    title: { en: 'Precision boring of wafer pockets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Precision boring of wafer pockets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-chemical-micro-etching-of-earbud-grilles': {
-    title: { en: 'Precision chemical micro-etching of earbud grilles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Precision chemical micro-etching of earbud grilles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-drilling-of-gas-holes': {
-    title: { en: 'Precision drilling of gas holes | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Precision drilling of gas holes titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-drilling-of-pin-guides': {
-    title: { en: 'Precision drilling of pin guides | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Precision drilling of pin guides titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-end-grinding': {
-    title: { en: 'Precision end grinding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Precision end grinding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-forging': {
-    title: { en: 'Precision forging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forging of Precision forging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-grinding-of-root-form': {
-    title: { en: 'Precision grinding of root form | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Precision grinding of root form titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-honing-of-bearing-surface': {
-    title: { en: 'Precision honing of bearing surface | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Precision honing of bearing surface titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-stamping--vibratory-deburring-of-flat-lock-washers': {
-    title: { en: 'Precision stamping + vibratory deburring of flat/lock washers | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Precision stamping + vibratory deburring of flat/lock washers titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/precision-turning-of-caliper-piston-ti-inserts': {
-    title: { en: 'Precision turning of caliper piston Ti-inserts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Precision turning of caliper piston Ti-inserts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pressure-test': {
-    title: { en: 'Pressure test | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Pressure test titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pressure-testing-of-banjo-bolt-assemblies': {
-    title: { en: 'Pressure testing of banjo bolt assemblies | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Pressure testing of banjo bolt assemblies titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pressure-testing-seal-integrity': {
-    title: { en: 'Pressure testing (seal integrity) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Pressure testing (seal integrity) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pressure-testing': {
-    title: { en: 'Pressure testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Pressure testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pt-ut-inspection': {
-    title: { en: 'PT/UT inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of PT/UT inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ptfe-bonding-insert-molding': {
-    title: { en: 'PTFE bonding / insert molding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of PTFE bonding / insert molding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ptfe-hydrophilic-coating-application': {
-    title: { en: 'PTFE / hydrophilic coating application | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of PTFE / hydrophilic coating application titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pvd-coating-pt-or-au': {
-    title: { en: 'PVD coating (Pt or Au) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of PVD coating (Pt or Au) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pvd-coating-with-closed-loop-gas-mass-flow-delta-e-10': {
-    title: { en: 'PVD coating with closed-loop gas mass-flow (Delta-E <=1.0) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of PVD coating with closed-loop gas mass-flow (Delta-E <=1.0) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pvd-color-spectrophotometer-audit-delta-e-10': {
-    title: { en: 'PVD color spectrophotometer audit (Delta-E <=1.0) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of PVD color spectrophotometer audit (Delta-E <=1.0) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/pvd-dlc-coating': {
-    title: { en: 'PVD / DLC coating | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of PVD / DLC coating titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/radial-force-testing': {
-    title: { en: 'Radial force testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Radial force testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ring-rolling-forging': {
-    title: { en: 'Ring rolling / forging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forging of Ring rolling / forging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/saddle-rail-compression-testing-200kg': {
-    title: { en: 'Saddle rail compression testing 200kg | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Saddle rail compression testing 200kg titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/salt-spray-corrosion-testing-1000h-astm-b117': {
-    title: { en: 'Salt spray corrosion testing (1000h ASTM B117) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Salt spray corrosion testing (1000h ASTM B117) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/salt-spray-corrosion-testing-100h-astm-b117': {
-    title: { en: 'Salt spray corrosion testing 100h ASTM B117 | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Salt spray corrosion testing 100h ASTM B117 titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/salt-spray-corrosion-testing-astm-b117': {
-    title: { en: 'Salt spray corrosion testing ASTM B117 | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Salt spray corrosion testing ASTM B117 titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/salt-spray-corrosion-testing': {
-    title: { en: 'Salt spray corrosion testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Salt spray corrosion testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/seal-face-grinding-lapping': {
-    title: { en: 'Seal face grinding/lapping | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Seal face grinding/lapping titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/seamless-tube-bending-for-backpack-frames': {
-    title: { en: 'Seamless tube bending for backpack frames | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Seamless tube bending for backpack frames titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/shape-setting-heat-treatment': {
-    title: { en: 'Shape-setting heat treatment | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Shape-setting heat treatment titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/shape-setting-of-distal-tip': {
-    title: { en: 'Shape-setting of distal tip | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Shape-setting of distal tip titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/shear-strength-testing-of-rotor-bolts': {
-    title: { en: 'Shear strength testing of rotor bolts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Shear strength testing of rotor bolts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sheet-metal-fabrication-of-demister-frame-grids': {
-    title: { en: 'Sheet metal fabrication of demister frame grids | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Sheet metal fabrication of demister frame grids titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sheet-metal-stamp-bending--spot-tig-welding-of-rain-cap-flappers': {
-    title: { en: 'Sheet metal stamp-bending + spot TIG welding of rain cap flappers | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Sheet metal stamp-bending + spot TIG welding of rain cap flappers titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sheet-stamping-chemical-etching-of-flow-fields': {
-    title: { en: 'Sheet stamping / chemical etching of flow fields | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Sheet stamping / chemical etching of flow fields titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/shell-and-channel-welding': {
-    title: { en: 'Shell and channel welding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Shell and channel welding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/shot-peening': {
-    title: { en: 'Shot peening | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Shot peening titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/single-point-diamond-turning-of-sealing-surfaces': {
-    title: { en: 'Single-point diamond turning of sealing surfaces | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Single-point diamond turning of sealing surfaces titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/slm-3d-printing-of-complex-pod-geometries': {
-    title: { en: 'SLM 3D printing of complex pod geometries | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision additive manufacturing of SLM 3D printing of complex pod geometries titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/slm-3d-printing-of-custom-stem-adapter-bodies': {
-    title: { en: 'SLM 3D printing of custom stem/adapter bodies | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision additive manufacturing of SLM 3D printing of custom stem/adapter bodies titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/slm-3d-printing-of-flat-mount-brake-adapters': {
-    title: { en: 'SLM 3D printing of flat-mount brake adapters | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision additive manufacturing of SLM 3D printing of flat-mount brake adapters titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/slm-3d-printing-of-flex-stay-plates-with-argon-shielding': {
-    title: { en: 'SLM 3D printing of flex-stay plates with argon shielding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision additive manufacturing of SLM 3D printing of flex-stay plates with argon shielding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/slm-dmls-printing': {
-    title: { en: 'SLM/DMLS printing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision additive manufacturing of SLM/DMLS printing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/solution--aging-heat-treatment': {
-    title: { en: 'Solution + aging heat treatment | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Solution + aging heat treatment titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/solution-treatment--aging': {
-    title: { en: 'Solution treatment + aging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Solution treatment + aging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/spoke-tensile-testing-each-to-1200n': {
-    title: { en: 'Spoke tensile testing each to 1200N | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Spoke tensile testing each to 1200N titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/spring-back-testing-1000-cycle-test': {
-    title: { en: 'Spring-back testing (1000+ cycle test) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Spring-back testing (1000+ cycle test) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/spring-rate-testing-of-shock-coils': {
-    title: { en: 'Spring rate testing of shock coils | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Spring rate testing of shock coils titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/static--dynamic-balancing': {
-    title: { en: 'Static & dynamic balancing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Static & dynamic balancing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/steel-wool-abrasion-test-5000-cycles': {
-    title: { en: 'Steel wool abrasion test (5000 cycles) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Steel wool abrasion test (5000 cycles) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sterile-packaging': {
-    title: { en: 'Sterile packaging | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Sterile packaging titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sterilization-eto': {
-    title: { en: 'Sterilization (EtO) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Sterilization (EtO) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sterilization-validation-gamma-eto': {
-    title: { en: 'Sterilization validation (gamma/EtO) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Sterilization validation (gamma/EtO) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sterilization-validation': {
-    title: { en: 'Sterilization validation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Sterilization validation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/stiffness-sorting': {
-    title: { en: 'Stiffness sorting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Stiffness sorting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/straightening': {
-    title: { en: 'Straightening | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Straightening titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/stress-relief-annealing-of-spring-contacts': {
-    title: { en: 'Stress-relief annealing of spring contacts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Stress-relief annealing of spring contacts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/stress-relief-annealing': {
-    title: { en: 'Stress relief annealing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Stress relief annealing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/stress-relief-heat-treatment': {
-    title: { en: 'Stress relief heat treatment | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Stress relief heat treatment titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/sub-zero-impact-testing-40c-charpy': {
-    title: { en: 'Sub-zero impact testing (-40C Charpy) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Sub-zero impact testing (-40C Charpy) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/superplastic-forming-of-spherical-hull-segments': {
-    title: { en: 'Superplastic forming of spherical hull segments | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Superplastic forming of spherical hull segments titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/support-removal-edm-machining': {
-    title: { en: 'Support removal (EDM/machining) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision edm of Support removal (EDM/machining) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-analysis-sem': {
-    title: { en: 'Surface analysis (SEM) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface analysis (SEM) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-anodizing-optional': {
-    title: { en: 'Surface anodizing (optional) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface anodizing (optional) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-anodizing-painting': {
-    title: { en: 'Surface anodizing / painting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface anodizing / painting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-anodizing-pvd-coating': {
-    title: { en: 'Surface anodizing / PVD coating | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface anodizing / PVD coating titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-blasting-passivation': {
-    title: { en: 'Surface blasting / passivation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface blasting / passivation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-coating-if-required': {
-    title: { en: 'Surface coating (if required) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface coating (if required) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-coating': {
-    title: { en: 'Surface coating | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface coating titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-enhancement-shot-peening': {
-    title: { en: 'Surface enhancement (shot peening) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface enhancement (shot peening) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-finish-measurement': {
-    title: { en: 'Surface finish measurement | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface finish measurement titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-finishing': {
-    title: { en: 'Surface finishing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface finishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-hardness-scratch-testing': {
-    title: { en: 'Surface hardness / scratch testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Surface hardness / scratch testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-polishing': {
-    title: { en: 'Surface polishing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface polishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-preparation--painting': {
-    title: { en: 'Surface preparation & painting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface preparation & painting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughening-coating': {
-    title: { en: 'Surface roughening / coating | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface roughening / coating titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-inspection-ra02um': {
-    title: { en: 'Surface roughness inspection (Ra<0.2um) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Surface roughness inspection (Ra<0.2um) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-measurement-of-bead-blasted-surface-ra-3-6um': {
-    title: { en: 'Surface roughness measurement of bead-blasted surface (Ra 3-6um) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface roughness measurement of bead-blasted surface (Ra 3-6um) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-measurement-ra-10-30um-for-osseointegration': {
-    title: { en: 'Surface roughness measurement (Ra 1.0-3.0um for osseointegration) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface roughness measurement (Ra 1.0-3.0um for osseointegration) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-measurement-ra005um-on-knife-edge': {
-    title: { en: 'Surface roughness measurement (Ra<0.05um on knife-edge) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface roughness measurement (Ra<0.05um on knife-edge) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-measurement-ra04um': {
-    title: { en: 'Surface roughness measurement (Ra<0.4um) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface roughness measurement (Ra<0.4um) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-measurement-ra08um': {
-    title: { en: 'Surface roughness measurement (Ra<0.8um) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface roughness measurement (Ra<0.8um) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-roughness-measurement': {
-    title: { en: 'Surface roughness measurement | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface roughness measurement titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-shot-peening': {
-    title: { en: 'Surface shot peening | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface shot peening titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-texturing-sla-tps-coating': {
-    title: { en: 'Surface texturing (SLA/TPS coating) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface texturing (SLA/TPS coating) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-treatment-anodizing': {
-    title: { en: 'Surface treatment (anodizing) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision surface treatment of Surface treatment (anodizing) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/surface-treatment': {
-    title: { en: 'Surface treatment | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Surface treatment titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/swiss-type-automatic-turning': {
-    title: { en: 'Swiss-type automatic turning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Swiss-type automatic turning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/swiss-type-precision-turning': {
-    title: { en: 'Swiss-type precision turning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Swiss-type precision turning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/swiss-type-turning-of-spindles-pins': {
-    title: { en: 'Swiss-type turning of spindles/pins | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Swiss-type turning of spindles/pins titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tensile-fracture-toughness-testing': {
-    title: { en: 'Tensile/fracture toughness testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Tensile/fracture toughness testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tensile-testing-at-cryogenic-temperature': {
-    title: { en: 'Tensile testing at cryogenic temperature | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Tensile testing at cryogenic temperature titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tensile-testing-per-lot': {
-    title: { en: 'Tensile testing per lot | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Tensile testing per lot titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tensile-testing': {
-    title: { en: 'Tensile testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Tensile testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thermal-cycling-test-20c-to-150c': {
-    title: { en: 'Thermal cycling test (-20C to +150C) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Thermal cycling test (-20C to +150C) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thermal-imaging-bond-line-integrity': {
-    title: { en: 'Thermal imaging (bond line integrity) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Thermal imaging (bond line integrity) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thermal-imaging-of-brake-track': {
-    title: { en: 'Thermal imaging of brake track | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Thermal imaging of brake track titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-cutting-rolling-for-npt-connections': {
-    title: { en: 'Thread cutting/rolling for NPT connections | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread cutting/rolling for NPT connections titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-gauge-inspection': {
-    title: { en: 'Thread gauge inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread gauge inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-insert-installation': {
-    title: { en: 'Thread insert installation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread insert installation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-milling-of-connector-ports': {
-    title: { en: 'Thread milling of connector ports | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Thread milling of connector ports titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-all-safety-critical-bolts': {
-    title: { en: 'Thread rolling (all safety-critical bolts) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling (all safety-critical bolts) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-forming': {
-    title: { en: 'Thread rolling / forming | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling / forming titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-of-all-fasteners': {
-    title: { en: 'Thread rolling of all fasteners | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling of all fasteners titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-of-pedicle-screws-never-cut-threads': {
-    title: { en: 'Thread rolling of pedicle screws (never cut threads) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling of pedicle screws (never cut threads) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-of-stud-bolts-from-sta-rod-stock': {
-    title: { en: 'Thread rolling of stud bolts from STA rod stock | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling of stud bolts from STA rod stock titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-of-tie-rods': {
-    title: { en: 'Thread rolling of tie rods | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling of tie rods titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling-whirling': {
-    title: { en: 'Thread rolling / whirling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling / whirling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/thread-rolling': {
-    title: { en: 'Thread rolling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision fastener manufacturing of Thread rolling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ti-tube-bending--welding-for-bottle-cages': {
-    title: { en: 'Ti tube bending + welding for bottle cages | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Ti tube bending + welding for bottle cages titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-eb-welding-of-case-sections': {
-    title: { en: 'TIG / EB welding of case sections | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG / EB welding of case sections titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-mig-welding': {
-    title: { en: 'TIG/MIG welding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG/MIG welding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-orbital-welding': {
-    title: { en: 'TIG orbital welding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG orbital welding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-welding-of-assemblies': {
-    title: { en: 'TIG welding of assemblies | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG welding of assemblies titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-welding-of-basket-seams-and-hooks': {
-    title: { en: 'TIG welding of basket seams and hooks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG welding of basket seams and hooks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-welding-of-built-up-propellers': {
-    title: { en: 'TIG welding of built-up propellers | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG welding of built-up propellers titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-welding-of-frame-assemblies': {
-    title: { en: 'TIG welding of frame assemblies | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG welding of frame assemblies titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-welding-of-shield-assemblies-back-side-only-to-avoid-weld-spatter-on-plasma-face': {
-    title: { en: 'TIG welding of shield assemblies (back-side only to avoid weld spatter on plasma face) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG welding of shield assemblies (back-side only to avoid weld spatter on plasma face) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tig-welding-of-tank-mounting-brackets': {
-    title: { en: 'TIG welding of tank mounting brackets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of TIG welding of tank mounting brackets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/torque-response-testing': {
-    title: { en: 'Torque response testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Torque response testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/torque-to-tension-verification': {
-    title: { en: 'Torque-to-tension verification | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Torque-to-tension verification titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/torsion-testing': {
-    title: { en: 'Torsion testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Torsion testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/torsional-rigidity-testing': {
-    title: { en: 'Torsional rigidity testing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Torsional rigidity testing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/triaxial-forging-of-billet-for-isotropic-grain-structure': {
-    title: { en: 'Triaxial forging of billet for isotropic grain structure | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forging of Triaxial forging of billet for isotropic grain structure titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tube-bending-of-steam-coils-mandrel-bending-to-prevent-collapse': {
-    title: { en: 'Tube bending of steam coils (mandrel bending to prevent collapse) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Tube bending of steam coils (mandrel bending to prevent collapse) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tube-end-expansion-seal-welding': {
-    title: { en: 'Tube end expansion / seal welding | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Tube end expansion / seal welding titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tube-rolling--longitudinal-seam-welding-for-large-diameters': {
-    title: { en: 'Tube rolling & longitudinal seam welding (for large diameters) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Tube rolling & longitudinal seam welding (for large diameters) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/tube-sheet-drilling': {
-    title: { en: 'Tube sheet drilling | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Tube sheet drilling titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultra-precision-cnc-turning-milling-micron-tolerance': {
-    title: { en: 'Ultra-precision CNC turning/milling (micron tolerance) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision machining of Ultra-precision CNC turning/milling (micron tolerance) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultra-sonic-cleaning-in-class-10': {
-    title: { en: 'Ultra-sonic cleaning in Class 10 | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Ultra-sonic cleaning in Class 10 titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultra-sonic-cleaning': {
-    title: { en: 'Ultra-sonic cleaning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Ultra-sonic cleaning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultrasonic-cleaning': {
-    title: { en: 'Ultrasonic cleaning | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Ultrasonic cleaning titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultrasonic-inspection-of-clevis-brackets': {
-    title: { en: 'Ultrasonic inspection of clevis brackets | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Ultrasonic inspection of clevis brackets titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultrasonic-inspection-ut': {
-    title: { en: 'Ultrasonic inspection (UT) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Ultrasonic inspection (UT) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/ultrasonic-thickness-mapping-of-pressure-hulls': {
-    title: { en: 'Ultrasonic thickness mapping of pressure hulls | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Ultrasonic thickness mapping of pressure hulls titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vacuum-annealing': {
-    title: { en: 'Vacuum annealing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Vacuum annealing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vacuum-arc-remelting-var-of-eli-grade-ingot': {
-    title: { en: 'Vacuum arc remelting (VAR) of ELI-grade ingot | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Vacuum arc remelting (VAR) of ELI-grade ingot titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vacuum-arc-remelting-var-of-eli-grade-ingots': {
-    title: { en: 'Vacuum-arc remelting (VAR) of ELI-grade ingots | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Vacuum-arc remelting (VAR) of ELI-grade ingots titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vacuum-brazing-if-required': {
-    title: { en: 'Vacuum brazing (if required) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Vacuum brazing (if required) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vacuum-brazing': {
-    title: { en: 'Vacuum brazing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Vacuum brazing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vacuum-heat-treatment': {
-    title: { en: 'Vacuum heat treatment | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision heat treatment of Vacuum heat treatment titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/vibratory-finishing': {
-    title: { en: 'Vibratory finishing | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Vibratory finishing titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/viv-fatigue-analysis': {
-    title: { en: 'VIV fatigue analysis | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of VIV fatigue analysis titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/water-contact-angle-measurement-110-deg': {
-    title: { en: 'Water contact angle measurement (>110 deg) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Water contact angle measurement (>110 deg) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/water-pressure-testing-to-rated-depth-x-125-safety-factor': {
-    title: { en: 'Water pressure testing (to rated depth x 1.25 safety factor) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of Water pressure testing (to rated depth x 1.25 safety factor) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/waterjet-abrasive-cutting': {
-    title: { en: 'Waterjet / abrasive cutting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Waterjet / abrasive cutting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/waterjet-cutting': {
-    title: { en: 'Waterjet cutting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Waterjet cutting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/waterjet-laser-cutting-of-band-profiles': {
-    title: { en: 'Waterjet / laser cutting of band profiles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Waterjet / laser cutting of band profiles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/waterjet-laser-cutting-of-liner-profiles': {
-    title: { en: 'Waterjet/laser cutting of liner profiles | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision laser processing of Waterjet/laser cutting of liner profiles titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/waterjet-laser-cutting-of-profiles': {
-    title: { en: 'Waterjet & Laser Cutting of Titanium Profiles | Precision Profile Cutting | BOZE' },
-    description: { en: 'Precision waterjet and laser cutting of titanium profiles for aerospace, medical, and industrial applications. Grade 2, Grade 5 Ti-6Al-4V profile cutting with ±0.05 mm tolerance. ISO 9001:2015 & AS9100D certified.' },
-  },
-  '/capabilities/wear-measurement': {
-    title: { en: 'Wear measurement | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Wear measurement titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/weight-sorting': {
-    title: { en: 'Weight sorting | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Weight sorting titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/weld-color-inspection-silver-gold-acceptable-blue-purple--contamination': {
-    title: { en: 'Weld color inspection (silver/gold acceptable; blue/purple = contamination) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Weld color inspection (silver/gold acceptable; blue/purple = contamination) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/weld-integrity-inspection': {
-    title: { en: 'Weld integrity inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Weld integrity inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/weld-map-documentation': {
-    title: { en: 'Weld map documentation | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of Weld map documentation titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/wire-drawing--straightening': {
-    title: { en: 'Wire drawing & straightening | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Wire drawing & straightening titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/wire-drawing-to-precise-diameter--002mm': {
-    title: { en: 'Wire drawing to precise diameter +-0.02mm | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision forming of Wire drawing to precise diameter +-0.02mm titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/wire-edm-of-bearing-retainer-rings-from-cold-rolled-beta-strip': {
-    title: { en: 'Wire EDM of bearing retainer rings from cold-rolled beta strip | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision edm of Wire EDM of bearing retainer rings from cold-rolled beta strip titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/wire-edm-of-thin-shutter-blades-and-aperture-disks': {
-    title: { en: 'Wire EDM of thin shutter blades and aperture disks | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision edm of Wire EDM of thin shutter blades and aperture disks titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/wire-forming-of-v-prong-spring-contacts': {
-    title: { en: 'Wire forming of V-prong spring contacts | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision general manufacturing of Wire forming of V-prong spring contacts titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/x-ray-ct-inspection': {
-    title: { en: 'X-ray / CT inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of X-ray / CT inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/x-ray-inspection-for-welds': {
-    title: { en: 'X-ray inspection (for welds) | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of X-ray inspection (for welds) titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/x-ray-inspection': {
-    title: { en: 'X-ray inspection | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision inspection of X-ray inspection titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
-  '/capabilities/x-ray-of-weld-joints': {
-    title: { en: 'X-ray of weld joints | Titanium CNC Machining | BOZE' },
-    description: { en: 'Precision welding of X-ray of weld joints titanium components. Grade 2, Ti-6Al-4V processing with certified quality. ISO 9001:2015 & AS9100D.' },
-  },
 };
+
