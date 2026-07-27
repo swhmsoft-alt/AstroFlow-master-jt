@@ -9,7 +9,7 @@ export const prerender = true;
 export async function getStaticPaths() {
   const entries = await getCollection('product-entities');
   return entries.map((entry) => ({
-    params: { slug: entry.slug || entry.id?.replace(/\.(json|md)$/, '') || undefined },
+    params: { slug: entry.slug || entry.id?.replace(/\.(json|md)$/, '') || '' },
     props: { entry },
   }));
 }
