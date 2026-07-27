@@ -1,9 +1,9 @@
 // Site configuration
 export const SITE = {
-  title: 'BOZE CNC Ti',
-  description: 'Leading provider of optimized Titanium CNC Machining and manufacturing solutions with state-of-the-art facilities and industry expertise.',
+  title: 'Boze Titanium Manufacturing Center',
+  description: 'Boze Titanium Manufacturing Center, operated by Baoji Boze Metal Products Co., Ltd., provides precision titanium manufacturing services including CNC machining, additive manufacturing, fabrication and finishing under AS9100D and ISO 13485 quality systems.',
   url: 'https://cnc.bozemetal.com',
-  author: 'BOZE CNC Ti',
+  author: 'Boze Titanium Manufacturing Center',
 } as const;
 
 export interface NavItem {

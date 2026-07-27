@@ -21,9 +21,10 @@ import { SITE } from '@config/site';
 
 // ── Constants ─────────────────────────────────────────
 
+const MAIN_SITE = 'https://www.bozemetal.com';
 const SITEROOT = SITE.url;
-const ORG_ID     = `${SITEROOT}/#boze-org`;
-const WEBSITE_ID = `${SITEROOT}/#boze-website`;
+const ORG_ID     = `${MAIN_SITE}/#organization`;
+const WEBSITE_ID = `${SITEROOT}/#website`;
 const LOGO_ID    = `${SITEROOT}/#boze-logo`;
 
 // ── Page Type ─────────────────────────────────────────
@@ -69,22 +70,20 @@ export function buildOrganization() {
   return {
     '@type': 'Organization',
     '@id': ORG_ID,
-    name: 'BOZE CNC Ti',
-    url: SITEROOT,
+    name: 'Baoji Boze Metal Products Co., Ltd.',
+    legalName: 'Baoji Boze Metal Products Co., Ltd.',
+    alternateName: ['Boze Metal', 'Boze CNC Ti'],
+    url: MAIN_SITE,
     logo: { '@id': LOGO_ID },
-    description: SITE.description,
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+86-186-2391-9905',
-      contactType: 'sales',
-      availableLanguage: [
-        'English', 'Deutsch', '日本語', 'Français', 'Español',
-        'Português', 'Italiano', '한국어', 'Nederlands', 'Polski',
-      ],
+    brand: {
+      '@type': 'Brand',
+      name: 'Boze CNC Ti',
     },
     sameAs: [
-      'https://www.linkedin.com/company/bozemetal',
-      'https://www.facebook.com/bozemetal',
+      'https://www.linkedin.com/in/baoji-boze-metal-products-co-ltd-25a0923aa',
+      'https://www.facebook.com/titaniummachinedparts/',
+      'https://www.instagram.com/boze.metal.products.company/',
+      'https://www.youtube.com/@boze-666',
     ],
   };
 }
@@ -93,7 +92,7 @@ export function buildWebSite() {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
-    name: 'BOZE CNC Ti',
+    name: 'Boze Titanium Manufacturing Center',
     url: SITEROOT,
     description: SITE.description,
     publisher: { '@id': ORG_ID },
@@ -106,7 +105,7 @@ export function buildImageObject() {
     '@id': LOGO_ID,
     url: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
     contentUrl: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
-    caption: 'BOZE CNC Ti',
+    caption: 'Boze CNC Ti - Boze Titanium Manufacturing Center',
   };
 }
 

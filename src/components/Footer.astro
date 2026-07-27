@@ -18,7 +18,7 @@ const navKeyByHref: Record<string, string> = {
 };
 
 const logoImage = '/uploads/boze-cnc-ti-ico.png';
-const logoAlt = 'Site Logo';
+const logoAlt = 'Boze CNC Ti - Boze Titanium Manufacturing Center';
 const logoText = 'BOZE CNC Ti';
 const logoSubtext = t('header.logoSubtext');
 const siteName = SITE.title;
@@ -238,9 +238,13 @@ const siteDescription = SITE.description;
     <div class="mt-16 pt-8" style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
       <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
         <p class="text-sm" style="color: var(--theme-text); opacity: 0.55;">
-          &copy; {new Date().getFullYear()} {siteName}. {t('footer.allRights')}
+          &copy; {new Date().getFullYear()} Boze Titanium Manufacturing Center. Operated by Baoji Boze Metal Products Co., Ltd. All Rights Reserved.
         </p>
         <div class="flex items-center space-x-6 text-sm">
+          <a href="https://www.bozemetal.com/" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            Parent Company: Boze Metal
+          </a>
+          <span style="color: var(--theme-text); opacity: 0.3;">•</span>
           <a href={localizePath('/privacy-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
             {t('footer.privacyPolicy')}
           </a>
