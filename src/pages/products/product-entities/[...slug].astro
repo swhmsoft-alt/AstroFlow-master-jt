@@ -124,10 +124,9 @@ const schemaProduct = {
       "brand": { "@type": "Brand", "name": "BOZE" },
       "offers": {
         "@type": "Offer",
-        "price": "0",
+        "price": "Inquire",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
+        "availability": "https://schema.org/InStock"
       },
       ...(system ? { "isRelatedTo": { "@type": "Product", "name": system.data.title }, "isPartOf": { "@type": "Product", "name": data.industry } } : { "isPartOf": { "@type": "Product", "name": data.industry } })
     },
