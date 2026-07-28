@@ -53,8 +53,8 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
 
 
 <BaseLayout
-  title="445 Titanium Manufacturing Capabilities 鈥?CNC, Surface Treatment, Inspection | BOZE CNC Ti"
-  description={`${totalCaps} precision manufacturing capabilities for titanium components 鈥?CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001.`}
+  title="445 Titanium Manufacturing Capabilities — CNC, Surface Treatment, Inspection | BOZE CNC Ti"
+  description={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001.`}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,7 +132,7 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
                   <div class="mt-2 flex gap-2 text-[10px]" style="color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">
                     {eCount > 0 && <span>{eCount} products</span>}
                     {sCount > 0 && <span>{sCount} systems</span>}
-                    {d.tolerance && <span>鈱€ {d.tolerance}</span>}
+                    {d.tolerance && <span>{d.tolerance}</span>}
                   </div>
                 </a>
               );
