@@ -93,8 +93,9 @@ export function buildWebSite() {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
     name: 'Boze Titanium Manufacturing Center',
+    alternateName: 'Boze CNC Ti Manufacturing Hub',
     url: SITEROOT,
-    description: SITE.description,
+    description: 'Precision Titanium Manufacturing & CNC Machining Services',
     publisher: { '@id': ORG_ID },
   };
 }
@@ -113,269 +114,194 @@ export interface WebPageInput {
   name: string;
   description: string;
   url: string;
-  inLanguage?: string;
+  inLanguage: string;
   datePublished?: string | null;
 }
 
 export function buildWebPage(input: WebPageInput) {
-  const entity: Record<string, unknown> = {
+  const { name, description, url, inLanguage, datePublished } = input;
+  return {
     '@type': 'WebPage',
-    '@id': input.url,
-    url: input.url,
-    name: input.name,
-    description: input.description,
+    '@id': url,
+    url,
+    name,
+    description,
     isPartOf: { '@id': WEBSITE_ID },
+    inLanguage,
+    ...(datePublished ? { datePublished } : {}),
   };
-  if (input.inLanguage) entity.inLanguage = input.inLanguage;
-  if (input.datePublished) entity.datePublished = input.datePublished;
-  return entity;
 }
 
 export interface BreadcrumbItem {
+  position: number;
   name: string;
   item: string;
 }
 
 export function buildBreadcrumbList(items: BreadcrumbItem[]) {
-  const lastUrl = items[items.length - 1]?.item ?? SITEROOT;
   return {
     '@type': 'BreadcrumbList',
-    '@id': `${lastUrl}#breadcrumb`,
-    itemListElement: items.map((entry, i) => ({
+    '@id': `${SITEROOT}/#breadcrumb`,
+    itemListElement: items.map((item) => ({
       '@type': 'ListItem',
-      position: i + 1,
-      name: entry.name,
-      item: entry.item,
+      position: item.position,
+      name: item.name,
+      item: item.item,
     })),
   };
 }
 
-export interface ArticleInput {
+// ── Additional Entity Builders ────────────────────────
+
+export function buildCollectionPage(input: { name: string; description: string; url: string }) {
+  return {
+    '@type': 'CollectionPage',
+    '@id': input.url,
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    isPartOf: { '@id': WEBSITE_ID },
+  };
+}
+
+export function buildItemList(input: { name: string; url: string; numberOfItems?: number }) {
+  return {
+    '@type': 'ItemList',
+    '@id': `${input.url}#item-list`,
+    name: input.name,
+    url: input.url,
+    ...(input.numberOfItems != null ? { numberOfItems: input.numberOfItems } : {}),
+    mainEntityOfPage: { '@id': input.url },
+  };
+}
+
+export function buildService(input: {
+  name: string;
+  description: string;
+  url: string;
+  category?: string;
+}) {
+  return {
+    '@type': 'Service',
+    '@id': input.url,
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    provider: { '@id': ORG_ID },
+    ...(input.category ? { category: input.category } : {}),
+  };
+}
+
+export function buildProduct(input: {
+  name: string;
+  description: string;
+  url: string;
+  image?: string;
+  category?: string;
+  datePublished?: string | null;
+}) {
+  return {
+    '@type': 'Product',
+    '@id': input.url,
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    ...(input.image ? { image: input.image } : {}),
+    ...(input.category ? { category: input.category } : {}),
+    ...(input.datePublished ? { datePublished: input.datePublished } : {}),
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      price: 'Inquire',
+      priceCurrency: 'USD',
+    },
+  };
+}
+
+export function buildArticle(input: {
   headline: string;
   description: string;
   url: string;
   author: string;
   datePublished: string;
   image?: string;
-  mainEntityOfPage: string;
-}
-
-export function buildArticle(input: ArticleInput) {
-  const entity: Record<string, unknown> = {
+  mainEntityOfPage?: string;
+}) {
+  return {
     '@type': 'Article',
-    '@id': `${input.url}#article`,
+    '@id': input.url,
     headline: input.headline,
     description: input.description,
     url: input.url,
     author: { '@type': 'Person', name: input.author },
-    publisher: { '@id': ORG_ID },
-    mainEntityOfPage: { '@id': input.mainEntityOfPage },
     datePublished: input.datePublished,
-  };
-  if (input.image) entity.image = input.image;
-  return entity;
-}
-
-export interface ServiceInput {
-  name: string;
-  description: string;
-  url: string;
-  category?: string;
-}
-
-export function buildService(input: ServiceInput) {
-  return {
-    '@type': 'Service',
-    '@id': `${input.url}#service`,
-    name: input.name,
-    description: input.description,
-    url: input.url,
-    provider: { '@id': ORG_ID },
-    category: input.category,
+    publisher: { '@id': ORG_ID },
+    mainEntityOfPage: { '@id': input.mainEntityOfPage || input.url },
+    ...(input.image ? { image: input.image } : {}),
   };
 }
 
-export interface ProductInput {
-  name: string;
-  description: string;
-  url: string;
-  image?: string;
-  category?: string;
-  datePublished?: string | null;
-}
+// ── Page type detection ───────────────────────────────
 
-export function buildProduct(input: ProductInput) {
-  const entity: Record<string, unknown> = {
-    '@type': 'Product',
-    '@id': `${input.url}#product`,
-    name: input.name,
-    description: input.description,
-    url: input.url,
-    manufacturer: { '@id': ORG_ID },
-  };
-  if (input.image) entity.image = input.image;
-  if (input.category) entity.category = input.category;
-  if (input.datePublished) entity.datePublished = input.datePublished;
-  return entity;
-}
-
-export interface CollectionInput {
-  name: string;
-  description: string;
-  url: string;
-}
-
-export function buildCollectionPage(input: CollectionInput) {
-  return {
-    '@type': 'CollectionPage',
-    '@id': `${input.url}#collection`,
-    name: input.name,
-    description: input.description,
-    url: input.url,
-    isPartOf: { '@id': WEBSITE_ID },
-  };
-}
-
-export interface ItemListInput {
-  name: string;
-  url: string;
-  numberOfItems?: number;
-}
-
-export function buildItemList(input: ItemListInput) {
-  const entity: Record<string, unknown> = {
-    '@type': 'ItemList',
-    '@id': `${input.url}#itemlist`,
-    name: input.name,
-    url: input.url,
-  };
-  if (input.numberOfItems != null) entity.numberOfItems = input.numberOfItems;
-  return entity;
-}
-
-// ── Page-type lookup ──────────────────────────────────
-
-/**
- * Static map: canonical paths whose page type is known at build time.
- * Dynamic routes (blog/[...slug], products/[...slug]) rely on an explicit prop.
- */
-const DIRECT_TYPE: Record<string, PageType> = {
-  '/':                          'home',
-  '/services':                  'services-hub',
-  '/materials':                 'materials',
-  '/capabilities':              'capabilities',
-  '/industries':                'industries',
-  '/resources':                 'resources',
-  '/products':                  'products-hub',
-  '/blog':                      'blog-index',
-  '/rfq':                       'rfq',
-  '/documentation':             'generic',
-  '/use-cases':                 'generic',
-  '/facilities':                'generic',
-  '/theme-demo':                'generic',
-};
-
-/** Service-category hub paths (overview of sub-services). */
-const SERVICE_HUBS = new Set([
-  '/titanium-cnc-machining-services',
-  '/titanium-additive-manufacturing',
-  '/titanium-fabrication-services',
-  '/titanium-forming-heavy-manufacturing',
-  '/titanium-surface-treatment',
-]);
-
-/** Service-detail pages live under a hub path + '/'. */
-const SERVICE_DETAIL_PREFIXES = [...SERVICE_HUBS].map(p => p + '/');
-
-/** Standalone service-deep pages that aren't under a hub prefix. */
-const STANDALONE_SERVICES = new Set([
-  '/branded-custom-packaging-services',
-  '/laser-marking-custom-logo',
-]);
-
-export function detectPageType(
-  canonicalPath: string,
-  explicit?: PageType,
-): PageType {
-  if (explicit) return explicit;
-
-  const direct = DIRECT_TYPE[canonicalPath];
-  if (direct) return direct;
-
-  if (SERVICE_HUBS.has(canonicalPath)) return 'services-hub';
-  if (STANDALONE_SERVICES.has(canonicalPath)) return 'service-detail';
-  if (SERVICE_DETAIL_PREFIXES.some(p => canonicalPath.startsWith(p))) return 'service-detail';
-
+export function detectPageType(path: string): PageType {
+  if (path === '/' || path === '') return 'home';
+  if (path.startsWith('/services')) return path.split('/').filter(Boolean).length > 1 ? 'service-detail' : 'services-hub';
+  if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
+  if (path.startsWith('/blog') && path.split('/').filter(Boolean).length > 1) return 'blog-post';
+  if (path.startsWith('/blog')) return 'blog-index';
+  if (path.startsWith('/materials')) return 'materials';
+  if (path.startsWith('/capabilities')) return 'capabilities';
+  if (path.startsWith('/industries')) return 'industries';
+  if (path.startsWith('/resources')) return 'resources';
+  if (path.startsWith('/rfq') || path.startsWith('/contact')) return 'rfq';
   return 'generic';
 }
 
-// ── Breadcrumb generator ──────────────────────────────
+// ── Breadcrumb builder ────────────────────────────────
 
-/**
- * Build breadcrumb items for a canonical path.
- * Uses SEO_CONFIG titles when available; falls back to humanising the slug segment.
- *
- * @param canonicalPath  e.g. "/titanium-cnc-machining-services/cnc-milling-turning"
- * @param seoConfig      SEO_CONFIG lookup (imported at call site)
- * @param siteUrl        base URL
- * @param currentLang    language code (for picking the right title)
- * @returns              array of { name, item }
- */
 export function buildBreadcrumbItems(
-  canonicalPath: string,
-  seoConfig: Record<string, { title?: Record<string, string> }>,
+  path: string,
+  seoConfig: Record<string, any>,
   siteUrl: string,
-  currentLang: string,
+  lang: string,
+  homeLabel: string,
 ): BreadcrumbItem[] {
   const items: BreadcrumbItem[] = [
-    { name: 'Home', item: siteUrl },
+    { position: 1, name: homeLabel, item: siteUrl },
   ];
 
-  if (canonicalPath === '/') return items;
-
-  // Split into segments: ['services'] or ['titanium-cnc-machining-services', 'cnc-milling-turning']
-  const segments = canonicalPath.split('/').filter(Boolean);
+  const segments = path.split('/').filter(Boolean);
   let accumulated = '';
 
   for (const seg of segments) {
-    accumulated += '/' + seg;
+    accumulated += `/${seg}`;
     const entry = seoConfig[accumulated];
-    // Prefer SEO_CONFIG title for this language; fall back to humanised segment
-    const label = entry?.title?.[currentLang] ?? humaniseSlug(seg);
+    const name = entry?.title?.[lang] || entry?.name || seg.replace(/-/g, ' ');
     items.push({
-      name: label,
-      item: `${siteUrl}${accumulated}`,
+      position: items.length + 1,
+      name,
+      item: `${siteUrl}${accumulated}/`,
     });
   }
 
   return items;
 }
 
-/** Convert kebab-case slug to readable text: "cnc-milling-turning" → "CNC Milling Turning" */
-function humaniseSlug(slug: string): string {
-  return slug
-    .split('-')
-    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(' ');
-}
-
-// ── Graph Composition ─────────────────────────────────
+// ── SchemaPageData ────────────────────────────────────
 
 export interface SchemaPageData {
-  // Page basics (always available)
   pageName: string;
   pageDescription: string;
   pageUrl: string;
   inLanguage?: string;
 
-  // Breadcrumb (auto-generated in BaseLayout — can be overridden)
   breadcrumbItems?: BreadcrumbItem[];
 
-  // Article (blog posts)
+  // Article / blog
   articleHeadline?: string;
   articleDescription?: string;
   articleAuthor?: string;
-  articleDatePublished?: string;
+  articleDatePublished?: string | null;
   articleImage?: string;
 
   // Service
