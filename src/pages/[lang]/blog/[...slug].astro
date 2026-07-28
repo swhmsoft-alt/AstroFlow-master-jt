@@ -2,64 +2,74 @@
 /**
  * [lang]/blog/[...slug].astro
  *
- * Multi-language blog article page.
- * Loads translated content from blogTranslations collection (if available)
- * or falls back to English blog collection.
+ * Per-language blog article page.
+ * Routes are generated ONLY from existing blog-translations entries.
+ * Each language is fully independent — no English fallback.
+ * Hreflang alternates are filtered to only include languages
+ * that actually have a translation for this slug.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
-import { LANGUAGES, DEFAULT_LANG } from '../../../i18n/ui';
-import { getBlogPost } from '../../../lib/blog-i18n';
+import { DEFAULT_LANG } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
-  const englishPosts = (await getCollection('blog')).filter(p => !p.slug.includes('/'));
-  const langCodes = Object.keys(LANGUAGES).filter(l => l !== DEFAULT_LANG);
-  const paths = [];
+  const allTranslations = await getCollection('blog-translations');
 
-  for (const lang of langCodes) {
-    for (const post of englishPosts) {
+  // Group translations by originalSlug to know available languages per article
+  const slugMap = new Map<string, { lang: string }[]>();
+  for (const t of allTranslations) {
+    const slug = t.data.originalSlug;
+    if (!slugMap.has(slug)) {
+      slugMap.set(slug, []);
+    }
+    slugMap.get(slug)!.push({ lang: t.data.lang });
+  }
+
+  const paths = [];
+  for (const [slug, entries] of slugMap) {
+    // availableLangs = all languages that have this slug translated
+    const availableLangs = entries.map(e => e.lang);
+    for (const entry of entries) {
       paths.push({
-        params: { lang, slug: post.slug },
+        params: { lang: entry.lang, slug },
+        props: { availableLangs },
       });
     }
   }
-
   return paths;
 }
 
 const { slug } = Astro.params;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const { availableLangs = [] } = Astro.props;
 
-// Try to find translation entry first
+// Load the translation entry for this language
 const allTranslations = await getCollection('blog-translations');
-const translationEntry = lang !== DEFAULT_LANG
-  ? allTranslations.find(t => t.data.lang === lang && t.data.originalSlug === slug)
-  : undefined;
+const translationEntry = allTranslations.find(
+  t => t.data.lang === lang && t.data.originalSlug === slug
+);
 
-// Find the English post for fallback
-const englishPosts = await getCollection('blog');
-const engPost = englishPosts.find(p => p.slug === slug && !p.slug.includes('/'));
-
-if (!engPost) {
+// If no translation exists for this language, 404
+if (!translationEntry) {
   return Astro.redirect('/404');
 }
 
-// Determine which entry to render and what data to use
-let renderEntry: any;
-let data: any;
-
-if (translationEntry) {
-  renderEntry = translationEntry;
-  data = translationEntry.data;
-} else {
-  renderEntry = engPost;
-  data = engPost.data;
-}
+const renderEntry = translationEntry;
+const data = translationEntry.data;
 
 const { Content, headings } = await renderEntry.render();
+
+// Build filtered alternate links: only include languages that have this article
+const filteredAlternateLinks = [
+  // English version (handled by src/pages/blog/[...slug].astro)
+  { lang: DEFAULT_LANG, href: `/blog/${slug}` },
+  // Each non-English language that has a translation for this slug
+  ...availableLangs
+    .filter((l: string) => l !== DEFAULT_LANG)
+    .map((l: string) => ({ lang: l, href: `/${l}/blog/${slug}` })),
+];
 
 const tocHeadings = headings.filter((h: any) => h.depth === 2);
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
@@ -75,6 +85,7 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
   author={data.author}
   tags={tags.length > 0 ? tags : undefined}
   ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
+  alternateLinks={filteredAlternateLinks}
 >
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label={t('blog.Slug].breadcrumb')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">

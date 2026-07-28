@@ -3,10 +3,12 @@
  *
  * Uses two collections:
  *  - 'blog' (English source files in src/content/blog/)
- *  - 'blogTranslations' (translated files in src/content/blog-translations/{lang}-{slug}.md)
+ *  - 'blog-translations' (translated files in src/content/blog-translations/{lang}-{slug}.md)
  *
- * Translated files have frontmatter fields: lang, originalSlug, plus translated title/description etc.
- * When no translation exists, falls back to the English source.
+ * EACH LANGUAGE'S BLOG IS NOW FULLY INDEPENDENT.
+ * - English posts come ONLY from the 'blog' collection.
+ * - Non-English posts come ONLY from the 'blog-translations' collection (filtered by lang).
+ * - NO fallback to English when a translation doesn't exist.
  */
 
 import { getCollection, type CollectionEntry } from 'astro:content';
@@ -21,7 +23,6 @@ const SUPPORTED_LANGS = new Set(Object.keys(LANGUAGES));
  * Extract the original slug from a blog-translations slug (format: "{lang}-{slug}").
  */
 function parseTranslationSlug(translationSlug: string): { lang: string; originalSlug: string } {
-  // Slugs are like "de-welcome-to-boze-cnc-blog"
   const langCodes = Array.from(SUPPORTED_LANGS).sort((a, b) => b.length - a.length);
   for (const code of langCodes) {
     if (translationSlug.startsWith(code + '-')) {
@@ -33,8 +34,9 @@ function parseTranslationSlug(translationSlug: string): { lang: string; original
 
 /**
  * Get all blog posts for a specific language.
- * For 'en', returns top-level English posts.
- * For other languages, returns translated posts if available, falling back to English.
+ * For 'en', returns top-level English posts from the 'blog' collection.
+ * For other languages, returns translated posts from 'blog-translations' ONLY.
+ * No fallback to English.
  */
 export async function getBlogPosts(lang: string): Promise<BlogPost[]> {
   const allEnglish = await getCollection('blog');
@@ -45,78 +47,66 @@ export async function getBlogPosts(lang: string): Promise<BlogPost[]> {
       .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
   }
 
-  // For non-English: get translations and map them to "virtual" posts
+  // For non-English: return ONLY translations for this language (no English fallback)
   const allTranslations = await getCollection('blog-translations');
   const langTranslations = allTranslations.filter(t => t.data.lang === lang);
 
-  // Create a map: originalSlug -> translation
-  const translationMap = new Map<string, BlogTranslation>();
-  for (const t of langTranslations) {
-    translationMap.set(t.data.originalSlug, t);
-  }
-
-  // For each English post, return translation if available, otherwise English
-  const result: BlogPost[] = [];
-  for (const eng of allEnglish) {
-    if (eng.slug.includes('/')) continue; // Skip nested (non-top-level)
-    
-    const translation = translationMap.get(eng.slug);
-    if (translation) {
-      // Create a "virtual" post that uses translation data but keeps English slug
-      const virtualPost: BlogPost = {
-        ...eng,
-        data: {
-          ...eng.data,
-          title: translation.data.title,
-          description: translation.data.description,
-          category: translation.data.category || eng.data.category,
-          tags: translation.data.tags && translation.data.tags.length > 0
-            ? translation.data.tags
-            : eng.data.tags,
-        },
-      };
-      result.push(virtualPost);
-    } else {
-      result.push(eng);
-    }
-  }
+  // Map translation entries to BlogPost-compatible objects
+  const result: BlogPost[] = langTranslations.map(t => ({
+    ...t,
+    slug: t.data.originalSlug,
+    data: {
+      title: t.data.title,
+      description: t.data.description,
+      pubDate: t.data.pubDate,
+      author: t.data.author,
+      category: t.data.category,
+      tags: t.data.tags ?? [],
+      coverImage: t.data.coverImage,
+      coverImageAlt: t.data.coverImageAlt,
+      featured: t.data.featured,
+    },
+  })) as unknown as BlogPost[];
 
   return result.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 }
 
 /**
  * Get a single blog post for a specific language.
- * Returns the translated post if available, otherwise the English post.
+ * For 'en', returns the English post from the 'blog' collection.
+ * For other languages, returns the translated post from 'blog-translations' ONLY.
+ * Returns undefined if no post exists for that language.
  */
 export async function getBlogPost(lang: string, slug: string): Promise<BlogPost | undefined> {
-  const allEnglish = await getCollection('blog');
-  const engPost = allEnglish.find(p => p.slug === slug && !p.slug.includes('/'));
-  if (!engPost) return undefined;
+  if (lang === DEFAULT_LANG) {
+    const allEnglish = await getCollection('blog');
+    const engPost = allEnglish.find(p => p.slug === slug && !p.slug.includes('/'));
+    return engPost || undefined;
+  }
 
-  if (lang === DEFAULT_LANG) return engPost;
-
-  // Try to find a translation
+  // For non-English: look up translation directly (no English fallback)
   const allTranslations = await getCollection('blog-translations');
   const translation = allTranslations.find(
     t => t.data.lang === lang && t.data.originalSlug === slug
   );
 
-  if (translation) {
-    return {
-      ...engPost,
-      data: {
-        ...engPost.data,
-        title: translation.data.title,
-        description: translation.data.description,
-        category: translation.data.category || engPost.data.category,
-        tags: translation.data.tags && translation.data.tags.length > 0
-          ? translation.data.tags
-          : engPost.data.tags,
-      },
-    };
-  }
+  if (!translation) return undefined;
 
-  return engPost;
+  return {
+    ...translation,
+    slug: translation.data.originalSlug,
+    data: {
+      title: translation.data.title,
+      description: translation.data.description,
+      pubDate: translation.data.pubDate,
+      author: translation.data.author,
+      category: translation.data.category,
+      tags: translation.data.tags ?? [],
+      coverImage: translation.data.coverImage,
+      coverImageAlt: translation.data.coverImageAlt,
+      featured: translation.data.featured,
+    },
+  } as unknown as BlogPost;
 }
 
 /**
@@ -127,8 +117,6 @@ export function getTranslationContent(
   engPost: BlogPost,
   translation?: BlogTranslation
 ): { Content: BlogPost['render'] extends Promise<infer T> ? T['Content'] : never; headings: any[] } {
-  // This function is not async - the Content component comes from post.render()
-  // We handle the translation rendering in the route pages
   return null as any;
 }
 
@@ -140,10 +128,13 @@ export function getOriginalSlug(prefixedSlug: string): string {
 }
 
 /**
- * Check if a blog post translation exists for a given language.
+ * Check if a blog post exists for a given language and slug.
  */
 export async function hasTranslation(lang: string, slug: string): Promise<boolean> {
-  if (lang === DEFAULT_LANG) return true;
+  if (lang === DEFAULT_LANG) {
+    const allEnglish = await getCollection('blog');
+    return allEnglish.some(p => p.slug === slug && !p.slug.includes('/'));
+  }
   const allTranslations = await getCollection('blog-translations');
   return allTranslations.some(t => t.data.lang === lang && t.data.originalSlug === slug);
 }

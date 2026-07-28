@@ -53,7 +53,7 @@ interface Props {
 const currentPathname = Astro.url.pathname;
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
-const alternateLinks = getAlternateLinks(currentPathname);
+const defaultAlternateLinks = getAlternateLinks(currentPathname);
 
 const {
   title: explicitTitle,
@@ -73,6 +73,7 @@ const {
   collectionName,
   itemCount,
   serviceHubKey,
+  alternateLinks: explicitAlternateLinks,
 } = Astro.props;
 
 const rawPath = removeLangPrefix(currentPathname);
@@ -105,6 +106,8 @@ const breadcrumbItems = breadcrumbRaw.map((item: { name: string; item: string })
   const lbl = p ? NAV_LABEL_MAP[p] : undefined;
   return lbl ? { ...item, name: lbl } : item;
 });
+const alternateLinks = explicitAlternateLinks || defaultAlternateLinks;
+
 const resolvedServiceName = serviceName ?? (pageType === 'service-detail' ? title : undefined);
 const schemaData = {
   pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
@@ -153,6 +156,7 @@ const ldJson = JSON.stringify(pageGraph);
 {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 <script type="application/ld+json" set:html={ldJson} />
 {alternateLinks.map((link) => (<link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />))}
+{/* hreflang alternates — from prop if provided (blog overrides), otherwise auto-generated */}
 <link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
 <script is:inline>(function(){var theme='aerospace-precision';document.documentElement.setAttribute('data-theme',theme);})();</script>
 </head>
