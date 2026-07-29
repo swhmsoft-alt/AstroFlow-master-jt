@@ -2,7 +2,7 @@
 title: "Titanium Work Hardening: How to Avoid �?Causes, Effects, and Process Control in CNC Machining"
 slug: titanium-work-hardening-how-to-avoid
 description: An engineering analysis of work hardening in titanium CNC machining �?how strain-induced subsurface hardening develops during cutting, why it accelerates tool wear and affects part quality, and what process parameters control hardened layer depth.
-pubDate: 2026-07-30
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Work Hardening, Manufacturing Engineering, Cutting Tools, Surface Integrity]

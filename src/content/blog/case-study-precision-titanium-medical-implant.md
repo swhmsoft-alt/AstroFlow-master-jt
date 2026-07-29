@@ -1,8 +1,8 @@
 ---
-title: Case Study — Precision Titanium Medical Implant Component Production
+title: Case Study �?Precision Titanium Medical Implant Component Production
 slug: case-study-precision-titanium-medical-implant
-description: A case study of producing a precision titanium medical implant component — material specification and certification requirements, machining process validation for ISO 13485 compliance, surface finish and cleanliness verification, and first article inspection results.
-pubDate: 2026-08-27
+description: A case study of producing a precision titanium medical implant component �?material specification and certification requirements, machining process validation for ISO 13485 compliance, surface finish and cleanliness verification, and first article inspection results.
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Case Studies
 tags: [Case Study, Medical Implant, Grade 23 Titanium, ISO 13485, Precision Machining]
@@ -19,7 +19,7 @@ The component was a femoral hip stem component machined from Ti-6Al-4V ELI per A
 
 The production process was developed under ISO 13485, requiring validation of all production processes. The validation included a process capability study for the taper machining operation, which demonstrated a Cpk of 1.45 based on 50 consecutive components. The tool life study established a maximum of 25 components per tool for the taper machining operation.
 
-The cleaning process validation included challenge testing with artificially contaminated components to verify that the validated cleaning parameters removed machining residues to the required level. The cleaning process parameters — time, temperature, cleaning agent concentration, and ultrasonic power — were documented in the process specification.
+The cleaning process validation included challenge testing with artificially contaminated components to verify that the validated cleaning parameters removed machining residues to the required level. The cleaning process parameters �?time, temperature, cleaning agent concentration, and ultrasonic power �?were documented in the process specification.
 
 ## Machining approach
 

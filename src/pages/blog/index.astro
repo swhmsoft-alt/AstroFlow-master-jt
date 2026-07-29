@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import { HERO_CONFIG } from '../../config/hero';
 import type { CollectionEntry } from 'astro:content';
@@ -16,7 +15,44 @@ type BlogPost = CollectionEntry<'blog'>;
 const sorted: BlogPost[] = await getBlogPosts('en');
 
 const featured = sorted.find(p => p.data.featured);
-const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
+const nonFeatured = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
+
+// Group by category — ordered by B2B buyer's journey
+const CATEGORY_ORDER = [
+  'Titanium CNC Machining Services',
+  'Design Engineering',
+  'Materials Engineering',
+  'Manufacturing Problems',
+  'Quality and Standards',
+  'Applications and Processes',
+  'Case Studies',
+  'Procurement Guides',
+];
+
+const CATEGORY_ICONS: Record<string, string> = {
+  'Titanium CNC Machining Services': 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  'Design Engineering': 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
+  'Materials Engineering': 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
+  'Manufacturing Problems': 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z',
+  'Quality and Standards': 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  'Applications and Processes': 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+  'Case Studies': 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
+  'Procurement Guides': 'M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H12V.512A9.025 9.025 0 0120.488 9z',
+};
+
+// Build grouped map
+const grouped = new Map<string, BlogPost[]>();
+for (const post of nonFeatured) {
+  const cat = post.data.category || 'Uncategorized';
+  if (!grouped.has(cat)) grouped.set(cat, []);
+  grouped.get(cat)!.push(post);
+}
+
+const MAX_VISIBLE = 4;
+const sectionIds: Record<string, string> = {};
+for (const cat of CATEGORY_ORDER) {
+  sectionIds[cat] = cat.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
 ---
 
 <BaseLayout
@@ -60,49 +96,31 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
           </span>
         </div>
         <a href={localizePath(`/blog/${featured.slug}`, lang)} class="group block max-w-4xl mx-auto">
-          <div class="rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 grid grid-cols-1 md:grid-cols-2" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <div class="relative h-64 md:h-full min-h-[280px] overflow-hidden" style="background: color-mix(in srgb, var(--theme-text) 10%, var(--theme-surface));">
-
-              {featured.data.coverImage ? (
-                <img
-                  src={featured.data.coverImage}
-                  alt={featured.data.coverImageAlt || featured.data.title}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(to bottom right, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, white));">
-                  <svg class="w-20 h-20" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                  </svg>
-                </div>
-              )}
-              <div class="absolute inset-0 md:hidden" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 40%, transparent), transparent);"></div>
-            </div>
-            <div class="p-8 lg:p-10 flex flex-col justify-center">
-              {featured.data.category && (
-                <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full mb-3 w-fit" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">
-                  {featured.data.category}
-                </span>
-              )}
-              <h2 class="text-2xl lg:text-3xl font-bold mb-3 transition-colors" style="color: var(--theme-text);" onmouseover="this.style.color='var(--theme-primary)'" onmouseout="this.style.color='var(--theme-text)'">
-                {featured.data.title}
-              </h2>
-              <p class="mb-4 leading-relaxed line-clamp-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                {featured.data.description}
-              </p>
-              <div class="flex items-center justify-between mt-auto">
-                <div class="flex items-center space-x-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-                  <span>{featured.data.author}</span>
-                  <span style="color: color-mix(in srgb, var(--theme-text) 30%, transparent);">|</span>
-                  <time datetime={featured.data.pubDate.toISOString()}>
-                    {new Date(featured.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </time>
-                </div>
-                <span class="inline-flex items-center font-semibold text-sm group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
-                  {t('blog.readMore')}
-                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          <div class="rounded-2xl overflow-hidden transition-all duration-300 group-hover:shadow-2xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            {featured.data.coverImage && (
+              <div class="relative overflow-hidden aspect-[21/9]">
+                <img src={featured.data.coverImage} alt={featured.data.coverImageAlt || featured.data.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" width="1200" height="514" />
+              </div>
+            )}
+            <div class="p-8 md:p-10">
+              <div class="flex items-center gap-3 mb-4">
+                {featured.data.category && (
+                  <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{featured.data.category}</span>
+                )}
+                <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                  {new Date(featured.data.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                 </span>
               </div>
+              <h2 class="text-2xl md:text-3xl font-bold mb-3 group-hover:text-[var(--theme-primary)] transition-colors" style="color: var(--theme-text);">
+                {featured.data.title}
+              </h2>
+              <p class="text-base leading-relaxed mb-6 line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                {featured.data.description}
+              </p>
+              <span class="inline-flex items-center font-semibold text-sm group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+                {t('blog.readMore')}
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
             </div>
           </div>
         </a>
@@ -110,77 +128,107 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
     </section>
   )}
 
-  <!-- Recent Posts Grid -->
-  <section class="py-16" style="background: color-mix(in srgb, var(--theme-text) 3%, var(--theme-surface));">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">
-          {t('blog.latest.title')}
-        </h2>
-        <p class="max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          {t('blog.latest.subtitle')}
-        </p>
-      </div>
+  <!-- Category Navigation Bar -->
+  <nav class="sticky top-20 z-40 py-3 overflow-x-auto border-y" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);" aria-label="Article categories">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 min-w-max">
+      {CATEGORY_ORDER.filter(cat => grouped.has(cat)).map(cat => (
+        <a
+          href={`#${sectionIds[cat]}`}
+          class="whitespace-nowrap px-3 py-1.5 text-xs font-semibold rounded-full transition-all border"
+          style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+          onmouseover="this.style.color='var(--theme-primary)'; this.style.borderColor='var(--theme-primary)'; this.style.background='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+          onmouseout="this.style.color='color-mix(in srgb, var(--theme-text) 65%, transparent)'; this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.background='transparent'"
+        >
+          {cat}
+          <span class="ml-1.5 opacity-60">({grouped.get(cat)!.length})</span>
+        </a>
+      ))}
+    </div>
+  </nav>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recent.map((post: BlogPost) => {
-          const { data, slug } = post;
-          const tags = data.tags || [];
-          return (
-            <a href={localizePath(`/blog/${slug}`, lang)} class="group block">
-              <div class="rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-                <div class="relative h-48 overflow-hidden" style="background: color-mix(in srgb, var(--theme-text) 10%, var(--theme-surface));">
-                  {data.coverImage ? (
-                    <img
-                      src={data.coverImage}
-                      alt={data.coverImageAlt || data.title}
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(to bottom right, color-mix(in srgb, var(--theme-primary) 20%, transparent), color-mix(in srgb, var(--theme-primary) 10%, transparent));">
-                      <svg class="w-12 h-12" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                      </svg>
-                    </div>
-                  )}
-                  {data.featured && (
-                    <div class="absolute top-3 right-3">
-                      <span class="inline-flex items-center px-2.5 py-1 text-xs font-bold rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 80%, transparent); backdrop-filter: blur(4px); color: var(--theme-text);">
-                        {t('blog.featuredBadge')}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div class="p-6 flex flex-col flex-1" style="background: var(--theme-surface);">
-                  {data.category && (
-                    <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded-full mb-3 w-fit" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">
-                      {data.category}
-                    </span>
-                  )}
-                  <h3 class="text-lg font-bold mb-2 transition-colors" style="color: var(--theme-text);" onmouseover="this.style.color='var(--theme-primary)'" onmouseout="this.style.color='var(--theme-text)'">
-                    {data.title}
-                  </h3>
-                  <p class="text-sm line-clamp-3 mb-4 leading-relaxed flex-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-                    {data.description}
-                  </p>
-                  <div class="flex items-center justify-between pt-4" style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-                    <div class="flex items-center space-x-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-                      <time datetime={data.pubDate.toISOString()}>
-                        {new Date(data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </time>
-                    </div>
-                    <span class="inline-flex items-center font-semibold text-xs group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
-                      {t('blog.readMore')}
-                      <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                    </span>
+  <!-- Category Sections -->
+  <div class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+      {CATEGORY_ORDER.filter(cat => grouped.has(cat)).map(cat => {
+        const posts = grouped.get(cat)!;
+        const hasMore = posts.length > MAX_VISIBLE;
+        const icon = CATEGORY_ICONS[cat];
+        return (
+          <section id={sectionIds[cat]} class="scroll-mt-32">
+            <!-- Section Header -->
+            <div class="flex items-center justify-between mb-8">
+              <div class="flex items-center gap-3">
+                {icon && (
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                    <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={icon} />
+                    </svg>
                   </div>
+                )}
+                <div>
+                  <h2 class="text-xl md:text-2xl font-bold" style="color: var(--theme-text);">{cat}</h2>
+                  <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{posts.length} article{posts.length > 1 ? 's' : ''}</p>
                 </div>
               </div>
-            </a>
-          );
-        })}
-      </div>
+            </div>
+
+            <!-- Article Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {posts.slice(0, MAX_VISIBLE).map(post => (
+                <a
+                  href={localizePath(`/blog/${post.slug}`, lang)}
+                  class="group rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col"
+                  style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"
+                >
+                  {post.data.coverImage && (
+                    <div class="relative overflow-hidden aspect-[16/10]">
+                      <img
+                        src={post.data.coverImage}
+                        alt={post.data.coverImageAlt || post.data.title}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        width="400" height="250" loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <div class="p-4 flex flex-col flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-[10px]" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                        {new Date(post.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                    </div>
+                    <h3 class="text-sm font-bold mb-1.5 transition-colors group-hover:text-[var(--theme-primary)] line-clamp-2" style="color: var(--theme-text);">
+                      {post.data.title}
+                    </h3>
+                    <p class="text-xs leading-relaxed line-clamp-2 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+                      {post.data.description}
+                    </p>
+                    <div class="mt-3 flex items-center gap-1 text-xs font-medium transition-all group-hover:gap-2" style="color: var(--theme-primary);">
+                      {t('blog.readMore')}
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {hasMore && (
+              <div class="mt-6 text-center">
+                <a
+                  href={`#${sectionIds[cat]}`}
+                  class="inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold rounded-xl transition-all border"
+                  style="color: var(--theme-primary); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, transparent);"
+                  onmouseover="this.style.background='color-mix(in srgb, var(--theme-primary) 12%, transparent)'"
+                  onmouseout="this.style.background='color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
+                >
+                  View all {posts.length} articles
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </a>
+              </div>
+            )}
+          </section>
+        );
+      })}
 
       {sorted.length === 0 && (
         <div class="text-center py-20">
@@ -192,10 +240,10 @@ const recent = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
         </div>
       )}
     </div>
-  </section>
+  </div>
 
   <!-- CTA -->
-  <section class="relative py-24 overflow-hidden" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-primary) 90%, var(--theme-bg)), color-mix(in srgb, var(--theme-accent) 90%, var(--theme-bg)));">
+  <section class="relative py-24 overflow-hidden" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0" style="background: radial-gradient(circle at 30% 50%, var(--theme-primary) 0%, transparent 50%), radial-gradient(circle at 70% 50%, var(--theme-accent) 0%, transparent 50%);"></div>
     </div>

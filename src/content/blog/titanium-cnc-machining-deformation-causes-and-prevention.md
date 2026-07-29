@@ -2,7 +2,7 @@
 title: "Titanium CNC Machining Deformation: Causes and Prevention"
 slug: titanium-cnc-machining-deformation-causes-and-prevention
 description: An engineering analysis of why titanium parts deform during CNC machining �?thermal expansion from low thermal diffusivity, mechanical springback from low elastic modulus, residual stress redistribution in thin-wall features, and fixturing and toolpath strategies that maintain dimensional stability.
-pubDate: 2026-07-31
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Deformation, Manufacturing Engineering, Thin Wall Machining, Precision Machining]

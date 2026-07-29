@@ -1,8 +1,8 @@
 ---
-title: Titanium CNC Machining RFQ Checklist — What to Include in Your Request for Quote
+title: Titanium CNC Machining RFQ Checklist �?What to Include in Your Request for Quote
 slug: titanium-cnc-machining-rfq-checklist
-description: A practical checklist for preparing RFQ packages for titanium CNC machined components — the information suppliers need to provide accurate quotes, common RFQ omissions that lead to pricing variations, and how complete specifications improve quote comparison and reduce post-award changes.
-pubDate: 2026-08-30
+description: A practical checklist for preparing RFQ packages for titanium CNC machined components �?the information suppliers need to provide accurate quotes, common RFQ omissions that lead to pricing variations, and how complete specifications improve quote comparison and reduce post-award changes.
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Procurement Guides
 tags: [RFQ Checklist, CNC Machining Quote, Procurement, Supplier Quotation, Titanium Machining]
@@ -17,9 +17,9 @@ A well-prepared RFQ package for titanium CNC machined components reduces the ris
 
 The material specification should include the alloy designation, the applicable standard, the condition, and any supplementary requirements. A complete material specification for a Ti-6Al-4V component would read "Ti-6Al-4V per ASTM B348, Grade 5, annealed" or "Ti-6Al-4V ELI per ASTM F136, Grade 23, annealed."
 
-The material product form should be specified — plate, bar, forging, or near-net shape. If the component can be machined from multiple product forms, the RFQ should specify which form is preferred or allow the supplier to propose the most cost-effective option.
+The material product form should be specified �?plate, bar, forging, or near-net shape. If the component can be machined from multiple product forms, the RFQ should specify which form is preferred or allow the supplier to propose the most cost-effective option.
 
-Any supplementary material requirements should be included — ultrasonic inspection, fracture toughness testing, or additional chemical analysis. These requirements add to material cost and lead time.
+Any supplementary material requirements should be included �?ultrasonic inspection, fracture toughness testing, or additional chemical analysis. These requirements add to material cost and lead time.
 
 ## Drawing and model requirements
 
@@ -31,7 +31,7 @@ The drawing should specify the surface finish requirements for each surface or s
 
 ## Quality requirements
 
-The quality requirements should be specified in the RFQ to allow the supplier to include the inspection time and cost in the quote. The RFQ should specify the inspection documentation required — first article inspection report, material certifications, in-process inspection records, and final inspection report.
+The quality requirements should be specified in the RFQ to allow the supplier to include the inspection time and cost in the quote. The RFQ should specify the inspection documentation required �?first article inspection report, material certifications, in-process inspection records, and final inspection report.
 
 The inspection sampling plan should be specified if the requirement differs from the supplier's standard practice. For aerospace components, 100 percent inspection of critical features is typical for the first production lot.
 

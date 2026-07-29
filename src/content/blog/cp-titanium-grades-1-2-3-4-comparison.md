@@ -1,8 +1,8 @@
 ---
-title: CP Titanium Grades 1-4 Comparison — Selecting Commercially Pure Titanium
+title: CP Titanium Grades 1-4 Comparison �?Selecting Commercially Pure Titanium
 slug: cp-titanium-grades-1-2-3-4-comparison
-description: A practical comparison of commercially pure titanium grades 1 through 4 — how oxygen content controls strength and ductility, typical applications for each grade, and selection criteria based on formability, corrosion resistance, and cost requirements.
-pubDate: 2026-08-11
+description: A practical comparison of commercially pure titanium grades 1 through 4 �?how oxygen content controls strength and ductility, typical applications for each grade, and selection criteria based on formability, corrosion resistance, and cost requirements.
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Materials Engineering
 tags: [CP Titanium, Commercially Pure Titanium, Grade 2 Titanium, Material Selection, Corrosion Resistance]
@@ -11,11 +11,11 @@ coverImageAlt: Commercially pure titanium stock material for industrial applicat
 featured: false
 ---
 
-Commercially pure titanium grades 1 through 4 are distinguished primarily by their oxygen content, which controls the strength and ductility of the material. Unlike alloyed titanium grades, CP titanium cannot be strengthened by heat treatment — its mechanical properties are determined by the interstitial element content and the degree of cold work. The selection between CP grades is driven by the balance between strength requirements and formability. For context on how CP grades compare to alloyed grades in the broader titanium family, see the [titanium grades complete guide](/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/).
+Commercially pure titanium grades 1 through 4 are distinguished primarily by their oxygen content, which controls the strength and ductility of the material. Unlike alloyed titanium grades, CP titanium cannot be strengthened by heat treatment �?its mechanical properties are determined by the interstitial element content and the degree of cold work. The selection between CP grades is driven by the balance between strength requirements and formability. For context on how CP grades compare to alloyed grades in the broader titanium family, see the [titanium grades complete guide](/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/).
 
 ## How oxygen content determines grade and properties
 
-The four CP grades are defined by their maximum oxygen content. Grade 1 allows 0.18 percent oxygen maximum. Grade 2 allows 0.25 percent. Grade 3 allows 0.35 percent. Grade 4 allows 0.40 percent. Oxygen strengthens titanium by solid-solution mechanism — oxygen atoms in the crystal lattice impede dislocation movement, increasing strength and reducing ductility.
+The four CP grades are defined by their maximum oxygen content. Grade 1 allows 0.18 percent oxygen maximum. Grade 2 allows 0.25 percent. Grade 3 allows 0.35 percent. Grade 4 allows 0.40 percent. Oxygen strengthens titanium by solid-solution mechanism �?oxygen atoms in the crystal lattice impede dislocation movement, increasing strength and reducing ductility.
 
 The progression is continuous and predictable. Grade 1 has the lowest strength, approximately 240 MPa tensile, and the highest ductility, with elongation of 24 percent. Grade 4 has the highest strength among CP grades, approximately 550 MPa tensile, with elongation of 15 percent. Each grade increases in strength by approximately 50 to 70 MPa over the previous grade while ductility decreases correspondingly.
 
@@ -23,7 +23,7 @@ Grade 2 is the most widely used CP grade because it offers the best practical ba
 
 ## Typical applications by grade
 
-Grade 2 is the standard CP grade for chemical processing equipment, heat exchangers, piping systems, marine components, and architectural applications. It is also the most available CP grade in all product forms — plate, sheet, bar, tube, and wire. Its corrosion resistance in seawater, chlorides, and most industrial chemicals is excellent.
+Grade 2 is the standard CP grade for chemical processing equipment, heat exchangers, piping systems, marine components, and architectural applications. It is also the most available CP grade in all product forms �?plate, sheet, bar, tube, and wire. Its corrosion resistance in seawater, chlorides, and most industrial chemicals is excellent.
 
 Grade 1 is used for applications requiring maximum formability, such as deep-drawn components, severe bends, and complex sheet metal parts. It is also specified for components that will be extensively cold worked, where the higher ductility reduces the risk of cracking during forming.
 
@@ -52,7 +52,7 @@ CP grades have excellent formability, particularly at elevated temperatures. Gra
 
 ---
 
-<!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
-Fig 1 — CP grade strength-ductility trade-off: A bar chart showing tensile strength and elongation for Grades 1 through 4, demonstrating the inverse relationship controlled by oxygen content. Supports queries about differences between CP titanium grades and selection criteria.
-Fig 2 — Typical applications by CP grade: A matrix with the four grades on one axis and application categories (chemical processing, marine, medical, industrial, forming-intensive) on the other, showing which grade is typically selected for each category. Supports queries about which CP grade to use for specific applications.
+<!-- VISUAL CONTENT BRIEF (for content planning only �?NOT rendered on page)
+Fig 1 �?CP grade strength-ductility trade-off: A bar chart showing tensile strength and elongation for Grades 1 through 4, demonstrating the inverse relationship controlled by oxygen content. Supports queries about differences between CP titanium grades and selection criteria.
+Fig 2 �?Typical applications by CP grade: A matrix with the four grades on one axis and application categories (chemical processing, marine, medical, industrial, forming-intensive) on the other, showing which grade is typically selected for each category. Supports queries about which CP grade to use for specific applications.
 -->

@@ -2,7 +2,7 @@
 title: "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining"
 slug: titanium-surface-finish-achieving-ra-04um
 description: An engineering analysis of surface finish generation in titanium CNC machining �?how tool geometry, cutting parameters, and coolant strategy interact to determine achievable Ra values, the difference between roughness and surface integrity, and practical approaches for meeting aerospace and medical finish specifications.
-pubDate: 2026-08-01
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Surface Finish, Surface Roughness, Precision Machining, Manufacturing Engineering]

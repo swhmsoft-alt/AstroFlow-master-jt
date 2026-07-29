@@ -1,8 +1,8 @@
 ---
 title: Titanium Welding Challenges and Best Practices for CNC Machined Assemblies
 slug: titanium-welding-challenges-best-practices
-description: An engineering analysis of titanium welding for machined assemblies — weld joint design for titanium, inert gas shielding requirements, distortion control in welded assemblies, post-weld heat treatment considerations, and interface management between machining and welding operations.
-pubDate: 2026-08-20
+description: An engineering analysis of titanium welding for machined assemblies �?weld joint design for titanium, inert gas shielding requirements, distortion control in welded assemblies, post-weld heat treatment considerations, and interface management between machining and welding operations.
+pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Applications and Processes
 tags: [Titanium Welding, TIG Welding, Welded Assemblies, Aerospace Welding, Manufacturing Engineering]
@@ -23,7 +23,7 @@ The weld joint location should be selected to minimize the effect of weld distor
 
 ## Inert gas shielding requirements
 
-Titanium welding requires inert gas shielding to protect the molten weld pool and the heat-affected zone from atmospheric contamination. The shielding gas — typically argon or argon-helium mixtures — is applied to the weld zone through the torch nozzle, a trailing shield that follows the weld, and backup shielding that protects the underside of the weld.
+Titanium welding requires inert gas shielding to protect the molten weld pool and the heat-affected zone from atmospheric contamination. The shielding gas �?typically argon or argon-helium mixtures �?is applied to the weld zone through the torch nozzle, a trailing shield that follows the weld, and backup shielding that protects the underside of the weld.
 
 The shielding effectiveness is verified by the color of the weld and heat-affected zone after welding. A bright silver color indicates adequate shielding. Light straw or gold indicates slight contamination that is acceptable for some applications. Blue or purple indicates significant contamination, and gray or white indicates severe contamination that requires the weld to be removed and rewelded.
 
@@ -51,8 +51,8 @@ Welding sequence planning should prioritize welds that are near critical machine
 
 | Material thickness | Weld joint | Shielding gas | Pre-weld preparation | Post-weld treatment |
 |-------------------|------------|---------------|---------------------|-------------------|
-| 1.0–3.0 mm | Square butt, 1.0–1.5 mm gap | Argon, 15–20 L/min | Chemical clean, solvent degrease | Stress relief if required |
-| 3.0–6.0 mm | Single-V, 60° included angle | Argon, 20–25 L/min | Machine joint prep, chemical clean | Stress relief required |
-| 6.0–12.0 mm | Double-V, 60° included angle | Argon-He mix, 25–30 L/min | Machine joint prep, chemical clean | Stress relief required, NDE after |
+| 1.0�?.0 mm | Square butt, 1.0�?.5 mm gap | Argon, 15�?0 L/min | Chemical clean, solvent degrease | Stress relief if required |
+| 3.0�?.0 mm | Single-V, 60° included angle | Argon, 20�?5 L/min | Machine joint prep, chemical clean | Stress relief required |
+| 6.0�?2.0 mm | Double-V, 60° included angle | Argon-He mix, 25�?0 L/min | Machine joint prep, chemical clean | Stress relief required, NDE after |
 
 ---
