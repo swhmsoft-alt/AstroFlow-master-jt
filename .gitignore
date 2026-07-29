@@ -1,5 +1,43 @@
-.history/
+# ── Dependencies ──────────────────────────────────
+node_modules/
+
+# ── Build output ──────────────────────────────────
+dist/
+
+# ── Astro cache ──────────────────────────────────
+.astro/
+
+# ── Environment ───────────────────────────────────
+.env
+.env.production
+.env.local
+
+# ── IDE / Editor ─────────────────────────────────
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS files ─────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Logs ──────────────────────────────────────────
+*.log
+npm-debug.log*
+build_log.txt
+build*.txt
+deploy*.txt
+deploy*.log
+
+# ── Temp scripts (root-level scratch files) ──────
+_*.mjs
+_*.js
+_*.py
+_*.ps1
+_*.cjs
 fixer*.cjs
 fixer.ps1
 fixer.py
@@ -9,8 +47,26 @@ ck.js
 c
 deploy.bat
 deploy.mjs
-*.log
-.env.production
-node_modules/
-dist/
-.astro/
+temp*.py
+temp*.html
+temp*.md
+tmp/
+
+# ── History / Backup ──────────────────────────────
+.history/
+*.bak
+*.bak4
+*.v2bak
+*.svcbak
+*.safe
+backup_*
+
+# ── Reports / Output ──────────────────────────────
+output/
+i18n-report.json
+*.csv
+*.txt
+
+# ── Uploads / large binaries (keep in .gitignore) ─
+public/uploads/*.webp
+public/uploads/boze-tmc-*

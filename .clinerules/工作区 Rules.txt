@@ -28,3 +28,10 @@
     - Execution mode: All code changes must be implemented in active execution state (direct file edits, script execution, terminal commands).
     - Intent verification: For high-risk/ambiguous tasks, Cline MUST clarify and confirm intent before implementing (see SEMANTIC_CLOSURE.md §1.1).
     - Self-validation: After each implementation, Cline MUST run the Validation Checklist (see SEMANTIC_CLOSURE.md §6) and report results.
+
+6. Temp File Self-Cleanup (CRITICAL — Task Completion Requirement):
+    - Cline MUST delete ALL temporary scripts, test files, scratch files, and any file it created during the session that is NOT part of the final application codebase.
+    - This includes but is not limited to: `_*.mjs`, `_*.js`, `_*.py`, `_*.ps1`, `fix*.py`, `fix*.mjs`, `temp*.*`, `build*.txt`, `deploy*.txt`, `check*.txt`, `out.txt`, `t.txt`.
+    - Exception: Files in `docs/`, `memory-bank/`, or explicitly requested by the user to keep are exempt.
+    - Constraint: Never delete files that the running application depends on (check `git status` or `import` references before deleting).
+    - Verification: At the end of each task, run `git status --short` to confirm no stray untracked files remain.
