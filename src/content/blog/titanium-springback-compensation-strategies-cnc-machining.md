@@ -1,7 +1,7 @@
 ---
 title: Titanium Springback Compensation Strategies in CNC Machining
 slug: titanium-springback-compensation-strategies-cnc-machining
-description: An engineering analysis of elastic springback in titanium machining �?why the low modulus of elasticity causes dimensional deviation in thin-wall and precision features, compensation methods in CAM programming, and toolpath strategies that account for elastic recovery.
+description: An engineering analysis of elastic springback in titanium machining —?why the low modulus of elasticity causes dimensional deviation in thin-wall and precision features, compensation methods in CAM programming, and toolpath strategies that account for elastic recovery.
 pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Manufacturing Problems
@@ -49,14 +49,14 @@ In pocket machining, leaving strategic support ribs that are removed in a separa
 
 | Wall height | Deflection under finish cut | Springback after tool passes | Compensation needed |
 |-------------|---------------------------|----------------------------|-------------------|
-| 10 mm | 0.01�?.02 mm | 0.008�?.015 mm | Minimal |
-| 20 mm | 0.03�?.05 mm | 0.025�?.04 mm | Moderate |
-| 30 mm | 0.08�?.12 mm | 0.06�?.10 mm | Significant |
-| 40 mm | 0.15�?.25 mm | 0.12�?.20 mm | Major |
+| 10 mm | 0.01—?.02 mm | 0.008—?.015 mm | Minimal |
+| 20 mm | 0.03—?.05 mm | 0.025—?.04 mm | Moderate |
+| 30 mm | 0.08—?.12 mm | 0.06—?.10 mm | Significant |
+| 40 mm | 0.15—?.25 mm | 0.12—?.20 mm | Major |
 
 ---
 
-<!-- VISUAL CONTENT BRIEF (for content planning only �?NOT rendered on page)
-Fig 1 �?Springback deflection diagram: Cross-section of a thin wall during and after cutting, showing the deflected position under load and the sprung-back position after tool passage. Overlaid tolerance zone shows the dimensional error. Supports queries about springback compensation in thin-wall titanium machining.
-Fig 2 �?CAM compensation methods comparison: Three schematics showing unadjusted toolpath (leaving oversize feature), uniform offset compensation (overcompensating at top, under at bottom), and tapered compensation (matching deflection profile). Supports queries about optimal CAM strategies for titanium springback.
+<!-- VISUAL CONTENT BRIEF (for content planning only —?NOT rendered on page)
+Fig 1 —?Springback deflection diagram: Cross-section of a thin wall during and after cutting, showing the deflected position under load and the sprung-back position after tool passage. Overlaid tolerance zone shows the dimensional error. Supports queries about springback compensation in thin-wall titanium machining.
+Fig 2 —?CAM compensation methods comparison: Three schematics showing unadjusted toolpath (leaving oversize feature), uniform offset compensation (overcompensating at top, under at bottom), and tapered compensation (matching deflection profile). Supports queries about optimal CAM strategies for titanium springback.
 -->
