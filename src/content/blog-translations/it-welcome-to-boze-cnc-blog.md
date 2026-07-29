@@ -1,8 +1,8 @@
 ---
-title: "Benvenuti nel blog BOZE CNC Ti"
+title: "Benvenuti nel blog Boze Titanium Manufacturing Center"
 description: "Presentiamo il nostro nuovo blog, dove condividiamo approfondimenti sulla precisione."
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Servizi di Lavorazione CNC del Titanio"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## Informazioni su Questo Blog
 
-Benvenuti sul blog ufficiale di BOZE CNC Ti! Siamo entusiasti di lanciare questa piattaforma, dove condivideremo la nostra esperienza, approfondimenti e aggiornamenti con clienti, partner e la più ampia comunità manifatturiera.
+Benvenuti sul blog ufficiale di Boze Titanium Manufacturing Center! Siamo entusiasti di lanciare questa piattaforma, dove condivideremo la nostra esperienza, approfondimenti e aggiornamenti con clienti, partner e la più ampia comunità manifatturiera.
 
 In qualità di fornitore leader di componenti in titanio lavorati con precisione CNC, operiamo in settori che spaziano dall'aerospaziale ai dispositivi medici, dall'automotive alle applicazioni industriali. Questo blog sarà una risorsa per ingegneri, professionisti degli approvvigionamenti e chiunque sia interessato al mondo della produzione di precisione.
 
@@ -35,7 +35,7 @@ Scoprite i nostri ultimi investimenti in attrezzature, certificazioni, ampliamen
 
 ## Il Nostro Impegno per la Qualità
 
-In BOZE CNC Ti, la qualità non è solo un parametro — è una mentalità. Siamo certificati AS9100D e ISO 9001, garantendo che ogni componente che produciamo soddisfi i più alti standard di precisione e affidabilità.
+In Boze Titanium Manufacturing Center, la qualità non è solo un parametro — è una mentalità. Siamo certificati AS9100D e ISO 9001, garantendo che ogni componente che produciamo soddisfi i più alti standard di precisione e affidabilità.
 
 > "La precisione non riguarda solo le misurazioni. Riguarda la fornitura di coerenza, affidabilità ed eccellenza in ogni singolo pezzo che produciamo."
 

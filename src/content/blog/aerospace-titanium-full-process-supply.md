@@ -3,7 +3,7 @@ title: Aerospace Titanium Supply - Reducing Multi-Source Risks & Lead Times
 slug: aerospace-titanium-full-process-supply
 description: Discover how multi-source aerospace titanium sourcing creates hidden coordination costs. Learn how full-process supply reduces lead times and eliminates quality re-approvals for AMS 4928T Ti-6Al-4V components.
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: [Aerospace Titanium]
 coverImage: /uploads/small-cnc-bay-overhead.jpg

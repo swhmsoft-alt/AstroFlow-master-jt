@@ -8,7 +8,7 @@ description: In high-performance engineering—from elite off-road motocross
   corrosion resistance. However, transforming raw titanium into precision
   components requires specialized expertise and elite manufacturing standards.
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: []
 coverImage: /uploads/small-cnc-bay-overhead.jpg

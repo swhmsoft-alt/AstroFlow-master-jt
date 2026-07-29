@@ -3,7 +3,7 @@ title: Medical Titanium Implants — Manufacturing Standards and Precision Requi
 slug: medical-titanium-implants-manufacturing-standards
 description: An engineering analysis of manufacturing requirements for medical titanium implants — material specifications for Grade 23 ELI, surface finish and cleanliness requirements, tolerances for implant mating features, and the process control and validation requirements for ISO 13485 production environments.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Medical Implants, Titanium Implants, Grade 23 Titanium, Medical Manufacturing, ISO 13485]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

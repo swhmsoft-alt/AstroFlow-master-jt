@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "티타늄 견적 받기"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Titanium CNC 가공 서비스 | 정밀 티타늄 부품 | BOZE CNC Ti"
+seoTitle: "Titanium CNC 가공 서비스 | 정밀 티타늄 부품 | Boze Titanium Manufacturing Center"
 seoDescription: "고정밀 티타늄 CNC 가공을 통한 신속한 프로토타이핑"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: ko
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti는 티타늄 및 기타 특수 금속 부품을 위한 세계적 수준의 정밀 CNC 가공 서비스를 제공합니다. 티타늄 제조 업계에서 **50년 이상의 축적된 경험**을 바탕으로 항공우주, 의료, 자동차 및 산업 분야에서 가장 까다로운 사양을 충족하는 부품을 공급합니다.
+Boze Titanium Manufacturing Center는 티타늄 및 기타 특수 금속 부품을 위한 세계적 수준의 정밀 CNC 가공 서비스를 제공합니다. 티타늄 제조 업계에서 **50년 이상의 축적된 경험**을 바탕으로 항공우주, 의료, 자동차 및 산업 분야에서 가장 까다로운 사양을 충족하는 부품을 공급합니다.
 
 ## 당사의 CNC 가공 역량
 
@@ -92,7 +92,7 @@ BOZE CNC Ti는 티타늄 및 기타 특수 금속 부품을 위한 세계적 수
 - **석유 및 가스** — 밸브 부품, 커넥터, 다운홀 공구 부품
 - **산업** — 맞춤형 기계 부품, 자동화 부품, 로봇 엔드 이펙터
 
-## BOZE CNC Ti를 선택해야 하는 이유
+## Boze Titanium Manufacturing Center를 선택해야 하는 이유
 
 - **50년 이상**의 티타늄 제조 전문성
 - **ISO 9001:2015 및 IATF 16949** 인증 품질 시스템

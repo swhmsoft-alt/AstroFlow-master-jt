@@ -2,7 +2,7 @@
 title: "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**"
 description: "In de hoogwaardige techniek—van elite off-road motocross"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titanium CNC-bewerkingsdiensten"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

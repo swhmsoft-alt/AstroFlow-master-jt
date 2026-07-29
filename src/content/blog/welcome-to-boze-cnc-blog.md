@@ -1,11 +1,11 @@
 ---
-title: Welcome to the BOZE CNC Ti Blog
+title: Welcome to the Boze Titanium Manufacturing Center Blog
 slug: welcome-to-boze-cnc-blog
 description: Introducing our new blog where we share insights about precision
   CNC titanium machining, industry trends, manufacturing best practices, and
   company updates.
 pubDate: 2026-05-28
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: []
 coverImage: /uploads/titanium-cnc-home.jpg
@@ -15,7 +15,7 @@ featured: false
 
 ## About This Blog
 
-Welcome to the official BOZE CNC Ti blog! We are excited to launch this platform where we will share our expertise, insights, and updates with our customers, partners, and the broader manufacturing community.
+Welcome to the official Boze Titanium Manufacturing Center blog! We are excited to launch this platform where we will share our expertise, insights, and updates with our customers, partners, and the broader manufacturing community.
 
 As a leading provider of precision CNC machined titanium components, we work with industries ranging from aerospace and medical devices to automotive and industrial applications. This blog will serve as a resource for engineers, procurement professionals, and anyone interested in the world of precision manufacturing.
 
@@ -37,7 +37,7 @@ Learn about our latest investments in equipment, certifications, facility expans
 
 ## Our Commitment to Quality
 
-At BOZE CNC Ti, quality is not just a metric — it's a mindset. We are AS9100D and ISO 9001 certified, ensuring that every component we produce meets the highest standards of precision and reliability.
+At Boze Titanium Manufacturing Center, quality is not just a metric — it's a mindset. We are AS9100D and ISO 9001 certified, ensuring that every component we produce meets the highest standards of precision and reliability.
 
 > "Precision is not just about measurements. It's about delivering consistency, reliability, and excellence in every single part we manufacture."
 

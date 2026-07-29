@@ -1,8 +1,8 @@
 ---
-title: "BOZE CNC Ti 블로그에 오신 것을 환영합니다"
+title: "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다"
 description: "당사의 새로운 블로그를 소개합니다. 정밀 가공에 관한 인사이트를 공유하는 공간입니다."
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "티타늄 CNC 가공 서비스"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## 이 블로그 소개
 
-BOZE CNC Ti 공식 블로그에 오신 것을 환영합니다! 저희는 이 플랫폼을 통해 고객, 파트너, 그리고 더 넓은 제조 커뮤니티와 전문 지식, 인사이트, 업데이트를 공유하고자 합니다.
+Boze Titanium Manufacturing Center 공식 블로그에 오신 것을 환영합니다! 저희는 이 플랫폼을 통해 고객, 파트너, 그리고 더 넓은 제조 커뮤니티와 전문 지식, 인사이트, 업데이트를 공유하고자 합니다.
 
 정밀 CNC 가공 티타늄 부품의 선도적 공급업체로서, 저희는 항공우주, 의료기기부터 자동차 및 산업용 애플리케이션에 이르기까지 다양한 산업 분야와 협력하고 있습니다. 이 블로그는 엔지니어, 조달 전문가, 그리고 정밀 제조 분야에 관심 있는 모든 분들을 위한 자료 공간이 될 것입니다.
 
@@ -35,7 +35,7 @@ BOZE CNC Ti 공식 블로그에 오신 것을 환영합니다! 저희는 이 플
 
 ## 품질에 대한 약속
 
-BOZE CNC Ti에서 품질은 단순한 지표가 아닌 사고방식입니다. 저희는 AS9100D 및 ISO 9001 인증을 보유하여 생산되는 모든 부품이 최고 수준의 정밀도와 신뢰성을 충족하도록 보장합니다.
+Boze Titanium Manufacturing Center에서 품질은 단순한 지표가 아닌 사고방식입니다. 저희는 AS9100D 및 ISO 9001 인증을 보유하여 생산되는 모든 부품이 최고 수준의 정밀도와 신뢰성을 충족하도록 보장합니다.
 
 > "정밀도는 단순한 측정값이 아닙니다. 제조하는 모든 단일 부품에서 일관성, 신뢰성, 탁월함을 제공하는 것입니다."
 

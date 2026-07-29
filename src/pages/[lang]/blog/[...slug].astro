@@ -74,7 +74,7 @@ const filteredAlternateLinks = [
 
 const tocHeadings = headings.filter((h: any) => h.depth === 2);
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
-const seoTitle = `${data.title} | BOZE CNC Ti Blog`;
+const seoTitle = `${data.title} | Boze Titanium Manufacturing Center Blog`;
 const tags = data.tags || [];
 const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blog/${slug}`;
 ---
@@ -254,7 +254,7 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
     "image": data.coverImage || '',
     "datePublished": pubDateISO,
     "author": { "@type": "Person", "name": data.author },
-    "publisher": { "@type": "Organization", "name": "BOZE CNC Ti" }
+    "publisher": { "@type": "Organization", "name": "Boze Titanium Manufacturing Center" }
   })} />
 </BaseLayout>
 

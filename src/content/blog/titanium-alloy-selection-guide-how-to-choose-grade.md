@@ -3,7 +3,7 @@ title: Titanium Alloy Selection Guide — How to Choose the Right Grade for Your
 slug: titanium-alloy-selection-guide-how-to-choose-grade
 description: An engineering decision guide for titanium alloy selection — a systematic framework for choosing between CP grades, alpha-beta alloys, and beta alloys based on strength requirements, corrosion environment, operating temperature, manufacturing process constraints, and cost considerations.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Titanium Alloys, Material Selection, Ti-6Al-4V, Engineering Design, Manufacturing Engineering]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

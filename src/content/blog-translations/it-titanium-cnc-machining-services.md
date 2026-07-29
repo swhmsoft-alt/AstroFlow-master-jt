@@ -2,7 +2,7 @@
 title: "Elevating Performance with Precision Titanium CNC Machining Services"
 description: "In ingegneria ad alte prestazioni—dal motocross fuoristrada d'élite"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Servizi di Lavorazione CNC del Titanio"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

@@ -3,7 +3,7 @@ title: Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys
 slug: titanium-grades-complete-guide-cp-alpha-beta-alloys
 description: A comprehensive engineering guide to titanium alloy classification — commercially pure grades 1-4, alpha and near-alpha alloys, alpha-beta alloys including Ti-6Al-4V, and beta alloys for high-strength applications. Selection criteria based on strength, corrosion resistance, formability, and machinability for aerospace, medical, and industrial applications.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Titanium Grades, Titanium Alloys, Ti-6Al-4V, Material Selection, Aerospace Materials, Manufacturing Engineering]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

@@ -2,7 +2,7 @@
 title: "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio"
 description: "Em engenharia de alto desempenho — desde o motocross off-road de elite"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Serviços de Usinagem CNC em Titânio"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

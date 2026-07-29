@@ -3,7 +3,7 @@ title: Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanica
 slug: why-titanium-is-difficult-to-machine
 description: An engineering analysis of why titanium presents fundamental machining challenges — low thermal conductivity driving edge temperatures past 1000°C, chemical reactivity causing accelerated tool wear, work hardening during interrupted cuts, and elastic springback in thin-wall features.
 pubDate: 2026-07-28
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Tool Wear, Manufacturing Engineering, Titanium Thermal Conductivity]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

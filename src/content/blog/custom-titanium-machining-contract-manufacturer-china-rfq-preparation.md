@@ -3,7 +3,7 @@ title: Custom Titanium Machining Contract Manufacturer in China for RFQ Preparat
 slug: custom-titanium-machining-contract-manufacturer-china-rfq-preparation
 description: A practical RFQ guide for sourcing a custom titanium machining contract manufacturer in China, covering supplier evaluation, cost drivers, traceability, and common production risks for aerospace, medical, energy, and industrial buyers.
 pubDate: 2026-07-02
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: [Titanium CNC Machining China]
 coverImage: /uploads/small-cnc-bay-overhead.jpg

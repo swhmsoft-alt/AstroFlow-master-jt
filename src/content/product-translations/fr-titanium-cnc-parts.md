@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Obtenez un devis pour le titane"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Services d'usinage CNC du titane | Pièces en titane de précision | BOZE CNC Ti"
+seoTitle: "Services d'usinage CNC du titane | Pièces en titane de précision | Boze Titanium Manufacturing Center"
 seoDescription: "Usinage CNC de haute précision du titane pour le prototypage rapide &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: fr
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti propose des services d'usinage CNC de précision de classe mondiale pour les composants en titane et autres métaux exotiques. Forts de plus de **50 ans d'expérience combinée** dans l'industrie de la fabrication du titane, nous livrons des composants répondant aux spécifications les plus exigeantes dans les secteurs aérospatial, médical, automobile et industriel.
+Boze Titanium Manufacturing Center propose des services d'usinage CNC de précision de classe mondiale pour les composants en titane et autres métaux exotiques. Forts de plus de **50 ans d'expérience combinée** dans l'industrie de la fabrication du titane, nous livrons des composants répondant aux spécifications les plus exigeantes dans les secteurs aérospatial, médical, automobile et industriel.
 
 ## Nos capacités d'usinage CNC
 
@@ -92,7 +92,7 @@ Nos composants de précision sont approuvés par les plus grandes entreprises mo
 - **Pétrole et gaz** — Composants de vannes, connecteurs, pièces d'outils de fond de trou
 - **Industriel** — Pièces de machines personnalisées, composants d'automatisation, effecteurs robotiques
 
-## Pourquoi choisir BOZE CNC Ti ?
+## Pourquoi choisir Boze Titanium Manufacturing Center ?
 
 - **Plus de 50 ans** d'expertise dans la fabrication du titane
 - Systèmes qualité certifiés **ISO 9001:2015 et IATF 16949**

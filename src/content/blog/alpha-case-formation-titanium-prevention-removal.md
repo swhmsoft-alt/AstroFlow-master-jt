@@ -3,7 +3,7 @@ title: "Alpha Case Formation in Titanium: Prevention and Removal"
 slug: alpha-case-formation-titanium-prevention-removal
 description: "An engineering analysis of alpha case formation during titanium heat treatment and machining - the oxygen-enriched surface layer that embrittles titanium above 400 degC, how it affects part performance, and the process controls needed to prevent or remove it."
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Alpha Case, Titanium Metallurgy, Heat Treatment, Surface Integrity]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

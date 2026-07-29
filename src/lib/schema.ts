@@ -93,7 +93,7 @@ export function buildWebSite() {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
     name: 'Boze Titanium Manufacturing Center',
-    alternateName: 'Boze CNC Ti Manufacturing Center',
+    alternateName: 'Boze Titanium Manufacturing Center',
     url: SITEROOT,
     description: 'Precision Titanium Manufacturing & CNC Machining Services',
     publisher: { '@id': ORG_ID },

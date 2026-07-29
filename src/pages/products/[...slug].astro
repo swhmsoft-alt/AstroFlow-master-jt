@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const { product } = Astro.props;
 const { data } = product;
 const firstImage = data.gallery?.[0]?.image || '/uploads/hero-bg.jpg';
-const seoTitle = data.seoTitle || `${data.title} | BOZE CNC Ti`;
+const seoTitle = data.seoTitle || `${data.title} | Boze Titanium Manufacturing Center`;
 const seoDesc = data.seoDescription || `${data.description} Precision CNC machined ${data.category.toLowerCase()} components. AS9100D & ISO 9001 certified. Request a quote.`;
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
 const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() : null;

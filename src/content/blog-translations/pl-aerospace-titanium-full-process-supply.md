@@ -2,7 +2,7 @@
 title: "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji"
 description: "Dowiedz się, jak wieloźródłowe pozyskiwanie tytanu lotniczego generuje ukryte koszty koordynacji. Poznaj, jak dostawa w pełnym procesie produkcyjnym skraca czasy realizacji i eliminuje ponowne zatwierdzanie jakości dla komponentów AMS 4928T Ti-6Al-4V."
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Usługi obróbki CNC tytanu"
 tags: ["Aerospace Titanium"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

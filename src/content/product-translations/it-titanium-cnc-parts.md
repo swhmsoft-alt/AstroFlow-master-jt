@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Ottieni Preventivo Titanio"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Servizi di Lavorazione CNC del Titanio | Parti in Titanio di Precisione | BOZE CNC Ti"
+seoTitle: "Servizi di Lavorazione CNC del Titanio | Parti in Titanio di Precisione | Boze Titanium Manufacturing Center"
 seoDescription: "Lavorazione CNC di alta precisione su titanio per prototipazione rapida &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: it
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti offre servizi di lavorazione CNC di precisione di livello mondiale per componenti in titanio e altri metalli esotici. Con oltre **50 anni di esperienza combinata** nel settore della produzione del titanio, forniamo componenti che soddisfano le specifiche più esigenti nei settori aerospaziale, medicale, automobilistico e industriale.
+Boze Titanium Manufacturing Center offre servizi di lavorazione CNC di precisione di livello mondiale per componenti in titanio e altri metalli esotici. Con oltre **50 anni di esperienza combinata** nel settore della produzione del titanio, forniamo componenti che soddisfano le specifiche più esigenti nei settori aerospaziale, medicale, automobilistico e industriale.
 
 ## Le Nostre Capacità di Lavorazione CNC
 
@@ -92,7 +92,7 @@ I nostri componenti di precisione sono apprezzati da aziende leader in tutto il 
 - **Oil & Gas** — Componenti per valvole, connettori, parti per utensili da fondo pozzo
 - **Industriale** — Parti per macchinari personalizzati, componenti per automazione, effettori finali robotici
 
-## Perché Scegliere BOZE CNC Ti?
+## Perché Scegliere Boze Titanium Manufacturing Center?
 
 - **Oltre 50 anni** di competenza nella produzione del titanio
 - Sistemi di qualità certificati **ISO 9001:2015 e IATF 16949**

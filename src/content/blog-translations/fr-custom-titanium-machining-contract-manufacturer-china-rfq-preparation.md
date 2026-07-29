@@ -2,7 +2,7 @@
 title: "Fabricant sous-traitant d'usinage de titane sur mesure en Chine pour la préparation de RFQ"
 description: "Guide pratique de RFQ pour la sélection d'un fabricant sous-traitant d'usinage de titane sur mesure en Chine, couvrant l'évaluation des fournisseurs, les facteurs de coût, la traçabilité et les risques de production courants pour les acheteurs des secteurs aérospatial, médical, énergétique et industriel."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Services d'usinage CNC du titane"
 tags: ["Usinage CNC du Titane en Chine"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

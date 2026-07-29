@@ -2,7 +2,7 @@
 title: "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다"
 description: "고성능 엔지니어링 분야에서 — 엘리트 오프로드 모터크로스부터"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "티타늄 CNC 가공 서비스"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

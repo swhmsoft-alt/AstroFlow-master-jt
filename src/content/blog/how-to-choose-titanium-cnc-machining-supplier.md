@@ -3,7 +3,7 @@ title: How to Choose a Titanium CNC Machining Supplier — Evaluation Framework 
 slug: how-to-choose-titanium-cnc-machining-supplier
 description: A practical evaluation framework for selecting a titanium CNC machining supplier — technical capability assessment criteria, quality system verification, communication and engineering support evaluation, and practical steps for RFQ preparation and supplier qualification.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Procurement Guides
 tags: [Titanium CNC, Supplier Selection, Procurement, Aerospace Sourcing, RFQ Guide]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

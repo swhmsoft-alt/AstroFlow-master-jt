@@ -3,7 +3,7 @@ title: Titanium CNC Design Guide — Engineering Rules for Machinability and Pre
 slug: titanium-cnc-design-guide-machinability-rules
 description: An engineering design guide for titanium CNC machined components — wall thickness guidelines, minimum radii, pocket depth limits, tool accessibility considerations, tolerance capability by feature type, and design-for-manufacturability rules specific to titanium alloys.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Design Engineering
 tags: [Titanium CNC, Design Guide, DFM, Machinability, Engineering Design, Precision Machining]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

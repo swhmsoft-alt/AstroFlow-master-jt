@@ -2,7 +2,7 @@
 title: "精密チタンCNC加工サービスで性能を向上"
 description: "ハイパフォーマンスエンジニアリングの分野において——エリートオフロードモトクロスから"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "チタンCNC加工サービス"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

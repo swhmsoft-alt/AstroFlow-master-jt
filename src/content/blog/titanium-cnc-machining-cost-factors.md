@@ -3,7 +3,7 @@ title: Titanium CNC Machining Cost Factors — What Drives Pricing for Precision
 slug: titanium-cnc-machining-cost-factors
 description: An engineering assessment of cost drivers for titanium CNC machining — material cost and availability by grade, machining time and tooling cost factors, the effect of tolerance and geometry complexity on pricing, and practical cost reduction strategies for component design and procurement.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Procurement Guides
 tags: [CNC Machining Cost, Titanium Pricing, Cost Reduction, Procurement, Manufacturing Cost]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

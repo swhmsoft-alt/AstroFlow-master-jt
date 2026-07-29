@@ -3,7 +3,7 @@ title: Ti-6Al-4V Grade 5 Titanium — Properties, Machining, and Applications Gu
 slug: ti-6al-4v-grade-5-titanium-guide
 description: An engineering guide to Ti-6Al-4V Grade 5 titanium — the most widely used titanium alloy. Mechanical and physical properties, heat treatment responses, machinability characteristics, and application-specific considerations for aerospace, medical, and industrial components.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Ti-6Al-4V, Grade 5 Titanium, Titanium Alloys, Aerospace Materials, CNC Machining]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

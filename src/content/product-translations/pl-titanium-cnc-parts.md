@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Uzyskaj wycenę tytanu"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Usługi obróbki CNC tytanu | Precyzyjne części tytanowe | BOZE CNC Ti"
+seoTitle: "Usługi obróbki CNC tytanu | Precyzyjne części tytanowe | Boze Titanium Manufacturing Center"
 seoDescription: "Wysokoprecyzyjna obróbka CNC tytanu do szybkiego prototypowania &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: pl
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti oferuje światowej klasy precyzyjne usługi obróbki CNC dla tytanu i innych egzotycznych elementów metalowych. Dzięki ponad **50-letniemu łącznemu doświadczeniu** w branży produkcji tytanu dostarczamy komponenty spełniające najbardziej wymagające specyfikacje w zastosowaniach lotniczych, medycznych, motoryzacyjnych i przemysłowych.
+Boze Titanium Manufacturing Center oferuje światowej klasy precyzyjne usługi obróbki CNC dla tytanu i innych egzotycznych elementów metalowych. Dzięki ponad **50-letniemu łącznemu doświadczeniu** w branży produkcji tytanu dostarczamy komponenty spełniające najbardziej wymagające specyfikacje w zastosowaniach lotniczych, medycznych, motoryzacyjnych i przemysłowych.
 
 ## Nasze możliwości obróbki CNC
 
@@ -92,7 +92,7 @@ Nasze precyzyjne komponenty są zaufane przez wiodące firmy na całym świecie:
 - **Nafta i gaz** — Elementy zaworów, złącza, części narzędzi wiertniczych
 - **Przemysł** — Części do maszyn niestandardowych, komponenty automatyki, efektory końcowe robotów
 
-## Dlaczego warto wybrać BOZE CNC Ti?
+## Dlaczego warto wybrać Boze Titanium Manufacturing Center?
 
 - **Ponad 50 lat** wiedzy specjalistycznej w produkcji tytanu
 - Systemy jakości z certyfikatem **ISO 9001:2015 i IATF 16949**

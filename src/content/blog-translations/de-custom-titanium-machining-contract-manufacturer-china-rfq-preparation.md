@@ -2,7 +2,7 @@
 title: "Auftragsfertiger für kundenspezifische Titanbearbeitung in China zur RFQ-Vorbereitung"
 description: "Ein praktischer RFQ-Leitfaden für die Beschaffung eines kundenspezifischen Titan-Zerspanungsauftragsfertigers in China, der Lieferantenbewertung, Kostentreiber, Rückverfolgbarkeit und typische Produktionsrisiken für Käufer aus der Luft- und Raumfahrt, Medizintechnik, Energie und Industrie abdeckt."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titanium-CNC-Bearbeitungsdienstleistungen"
 tags: ["Titan-CNC-Bearbeitung China"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

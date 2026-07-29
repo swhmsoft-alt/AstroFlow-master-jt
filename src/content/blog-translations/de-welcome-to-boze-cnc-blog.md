@@ -1,8 +1,8 @@
 ---
-title: "Willkommen im BOZE CNC Ti Blog"
+title: "Willkommen im Boze Titanium Manufacturing Center Blog"
 description: "Vorstellung unseres neuen Blogs, in dem wir Einblicke in die Präzision teilen"
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titan-CNC-Bearbeitungsdienstleistungen"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## Über diesen Blog
 
-Willkommen zum offiziellen BOZE CNC Ti Blog! Wir freuen uns, diese Plattform zu starten, auf der wir unser Fachwissen, unsere Einblicke und Neuigkeiten mit unseren Kunden, Partnern und der breiteren Fertigungsgemeinschaft teilen werden.
+Willkommen zum offiziellen Boze Titanium Manufacturing Center Blog! Wir freuen uns, diese Plattform zu starten, auf der wir unser Fachwissen, unsere Einblicke und Neuigkeiten mit unseren Kunden, Partnern und der breiteren Fertigungsgemeinschaft teilen werden.
 
 Als führender Anbieter von präzisionsgefertigten CNC-Titankomponenten arbeiten wir mit Branchen zusammen, die von Luft- und Raumfahrt über Medizintechnik bis hin zu Automobil- und Industrieanwendungen reichen. Dieser Blog dient als Ressource für Ingenieure, Einkaufsfachleute und alle, die sich für die Welt der Präzisionsfertigung interessieren.
 
@@ -35,7 +35,7 @@ Erfahren Sie mehr über unsere neuesten Investitionen in Ausrüstung, Zertifizie
 
 ## Unser Engagement für Qualität
 
-Bei BOZE CNC Ti ist Qualität nicht nur eine Kennzahl – es ist eine Denkweise. Wir sind nach AS9100D und ISO 9001 zertifiziert, um sicherzustellen, dass jede von uns gefertigte Komponente die höchsten Standards an Präzision und Zuverlässigkeit erfüllt.
+Bei Boze Titanium Manufacturing Center ist Qualität nicht nur eine Kennzahl – es ist eine Denkweise. Wir sind nach AS9100D und ISO 9001 zertifiziert, um sicherzustellen, dass jede von uns gefertigte Komponente die höchsten Standards an Präzision und Zuverlässigkeit erfüllt.
 
 > "Präzision bedeutet nicht nur Maße. Es geht darum, Konsistenz, Zuverlässigkeit und Exzellenz in jedem einzelnen Teil zu liefern, das wir fertigen."
 

@@ -2,7 +2,7 @@
 title: "**Approvisionnement en Titane Aérospatial - Réduction des Risques Multi-Sources et des Délais**"
 description: "Découvrez comment l'approvisionnement multi-source en titane aérospatial génère des coûts de coordination cachés. Apprenez comment une chaîne d'approvisionnement intégrée réduit les délais et élimine les re-certifications qualité pour les composants AMS 4928T Ti-6Al-4V."
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Services d'usinage CNC du titane"
 tags: ["Titane Aérospatial"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

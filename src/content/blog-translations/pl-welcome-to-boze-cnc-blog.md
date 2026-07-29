@@ -1,8 +1,8 @@
 ---
-title: "Witamy na blogu BOZE CNC Ti"
+title: "Witamy na blogu Boze Titanium Manufacturing Center"
 description: "Przedstawiamy naszego nowego bloga, na którym dzielimy się spostrzeżeniami na temat precyzji."
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Usługi obróbki CNC tytanu"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## O tym blogu
 
-Witamy na oficjalnym blogu BOZE CNC Ti! Z radością uruchamiamy tę platformę, na której będziemy dzielić się naszą wiedzą, spostrzeżeniami i aktualnościami z naszymi klientami, partnerami oraz szerszą społecznością produkcyjną.
+Witamy na oficjalnym blogu Boze Titanium Manufacturing Center! Z radością uruchamiamy tę platformę, na której będziemy dzielić się naszą wiedzą, spostrzeżeniami i aktualnościami z naszymi klientami, partnerami oraz szerszą społecznością produkcyjną.
 
 Jako wiodący dostawca precyzyjnych, obrabianych CNC komponentów tytanowych, współpracujemy z branżami od lotnictwa i urządzeń medycznych po motoryzację i zastosowania przemysłowe. Ten blog będzie źródłem wiedzy dla inżynierów, specjalistów ds. zaopatrzenia oraz wszystkich zainteresowanych światem precyzyjnej produkcji.
 
@@ -35,7 +35,7 @@ Dowiedz się o naszych najnowszych inwestycjach w sprzęt, certyfikaty, rozbudow
 
 ## Nasze zaangażowanie w jakość
 
-W BOZE CNC Ti jakość to nie tylko wskaźnik – to sposób myślenia. Jesteśmy certyfikowani zgodnie z AS9100D i ISO 9001, co gwarantuje, że każdy produkowany przez nas komponent spełnia najwyższe standardy precyzji i niezawodności.
+W Boze Titanium Manufacturing Center jakość to nie tylko wskaźnik – to sposób myślenia. Jesteśmy certyfikowani zgodnie z AS9100D i ISO 9001, co gwarantuje, że każdy produkowany przez nas komponent spełnia najwyższe standardy precyzji i niezawodności.
 
 > "Precyzja to nie tylko pomiary. Chodzi o dostarczanie spójności, niezawodności i doskonałości w każdej pojedynczej części, którą produkujemy."
 

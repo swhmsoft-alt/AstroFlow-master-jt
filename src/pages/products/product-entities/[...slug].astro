@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { data } = entry;
 
-const seoTitle = data.seoTitle || `${data.title} | ${data.material} | BOZE CNC Ti`;
+const seoTitle = data.seoTitle || `${data.title} | ${data.material} | Boze Titanium Manufacturing Center`;
 const seoDesc = data.seoDescription || `${data.title} — ${data.function}. Engineering specs, failure analysis, and manufacturing process. AS9100D & ISO 9001.`;
 
 // Load related entities (shared knowledge nodes)
@@ -120,7 +120,7 @@ const schemaProduct = {
       "description": data.seoDescription || data.function,
       "category": data.category,
       "material": data.material,
-      "manufacturer": { "@type": "Organization", "name": "BOZE CNC Ti" },
+      "manufacturer": { "@type": "Organization", "name": "Boze Titanium Manufacturing Center" },
       "brand": { "@type": "Brand", "name": "BOZE" },
       "offers": {
         "@type": "Offer",

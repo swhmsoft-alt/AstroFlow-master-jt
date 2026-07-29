@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Obtener Cotización de Titanio"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Servicios de Mecanizado CNC de Titanio | Piezas de Titanio de Precisión | BOZE CNC Ti"
+seoTitle: "Servicios de Mecanizado CNC de Titanio | Piezas de Titanio de Precisión | Boze Titanium Manufacturing Center"
 seoDescription: "Mecanizado CNC de titanio de alta precisión para prototipado rápido &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: es
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti ofrece servicios de mecanizado CNC de precisión de clase mundial para componentes de titanio y otros metales exóticos. Con más de **50 años de experiencia combinada** en la industria de fabricación de titanio, entregamos componentes que cumplen con las especificaciones más exigentes en aplicaciones aeroespaciales, médicas, automotrices e industriales.
+Boze Titanium Manufacturing Center ofrece servicios de mecanizado CNC de precisión de clase mundial para componentes de titanio y otros metales exóticos. Con más de **50 años de experiencia combinada** en la industria de fabricación de titanio, entregamos componentes que cumplen con las especificaciones más exigentes en aplicaciones aeroespaciales, médicas, automotrices e industriales.
 
 ## Nuestras Capacidades de Mecanizado CNC
 
@@ -92,7 +92,7 @@ Nuestros componentes de precisión son confiables para empresas líderes en todo
 - **Petróleo y Gas** — Componentes de válvulas, conectores, piezas de herramientas de fondo de pozo
 - **Industrial** — Piezas de maquinaria personalizada, componentes de automatización, efectores finales robóticos
 
-## ¿Por Qué Elegir BOZE CNC Ti?
+## ¿Por Qué Elegir Boze Titanium Manufacturing Center?
 
 - **Más de 50 años** de experiencia en fabricación de titanio
 - Sistemas de calidad certificados **ISO 9001:2015 e IATF 16949**

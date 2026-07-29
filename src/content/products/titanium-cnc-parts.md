@@ -30,7 +30,7 @@ specs:
     value: 1 pc (prototype); 1000 pcs (production)
 btnText: Get Titanium Quote
 btnLink: https://www.bozemetal.com/contact
-seoTitle: Titanium CNC Machining Services | Precision Titanium Parts | BOZE CNC Ti
+seoTitle: Titanium CNC Machining Services | Precision Titanium Parts | Boze Titanium Manufacturing Center
 seoDescription: High-precision Titanium CNC machining for rapid prototyping &
   mass production. 6061/7075 Titanium. ISO 9001 certified. Fast turnaround.
 featured: true
@@ -39,7 +39,7 @@ pubDate: 2025-01-15
 updatedDate: 2025-06-01
 ---
 
-BOZE CNC Ti offers world-class precision CNC machining services for titanium and other exotic metal components. With over **50 years of combined experience** in the titanium manufacturing industry, we deliver components that meet the most demanding specifications across aerospace, medical, automotive, and industrial applications.
+Boze Titanium Manufacturing Center offers world-class precision CNC machining services for titanium and other exotic metal components. With over **50 years of combined experience** in the titanium manufacturing industry, we deliver components that meet the most demanding specifications across aerospace, medical, automotive, and industrial applications.
 
 ## Our CNC Machining Capabilities
 
@@ -94,7 +94,7 @@ Our precision components are trusted by leading companies worldwide:
 - **Oil & Gas** — Valve components, connectors, downhole tool parts
 - **Industrial** — Custom machinery parts, automation components, robotic end-effectors
 
-## Why Choose BOZE CNC Ti?
+## Why Choose Boze Titanium Manufacturing Center?
 
 - **50+ years** of titanium manufacturing expertise
 - **ISO 9001:2015 & IATF 16949** certified quality systems

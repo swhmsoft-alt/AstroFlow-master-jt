@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Obter Cotação de Titânio"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Serviços de Usinagem CNC em Titânio | Peças de Titânio de Precisão | BOZE CNC Ti"
+seoTitle: "Serviços de Usinagem CNC em Titânio | Peças de Titânio de Precisão | Boze Titanium Manufacturing Center"
 seoDescription: "Usinagem CNC de alta precisão em titânio para prototipagem rápida &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: pt
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti oferece serviços de usinagem CNC de classe mundial para componentes de titânio e outros metais exóticos. Com mais de **50 anos de experiência combinada** na indústria de fabricação de titânio, entregamos componentes que atendem às especificações mais exigentes nas aplicações aeroespacial, médica, automotiva e industrial.
+Boze Titanium Manufacturing Center oferece serviços de usinagem CNC de classe mundial para componentes de titânio e outros metais exóticos. Com mais de **50 anos de experiência combinada** na indústria de fabricação de titânio, entregamos componentes que atendem às especificações mais exigentes nas aplicações aeroespacial, médica, automotiva e industrial.
 
 ## Nossas Capacidades de Usinagem CNC
 
@@ -92,7 +92,7 @@ Nossos componentes de precisão são confiáveis por empresas líderes em todo o
 - **Petróleo e Gás** — Componentes de válvulas, conectores, peças de ferramentas de fundo de poço
 - **Industrial** — Peças de máquinas personalizadas, componentes de automação, efetuadores robóticos
 
-## Por que Escolher a BOZE CNC Ti?
+## Por que Escolher a Boze Titanium Manufacturing Center?
 
 - **Mais de 50 anos** de expertise em fabricação de titânio
 - Sistemas de qualidade certificados **ISO 9001:2015 e IATF 16949**

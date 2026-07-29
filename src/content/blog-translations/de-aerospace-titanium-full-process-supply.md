@@ -2,7 +2,7 @@
 title: "Aerospace Titanium Supply - Reduzierung von Multi-Source-Risiken und Durchlaufzeiten"
 description: "Entdecken Sie, wie die Beschaffung von Luftfahrt-Titan aus mehreren Quellen versteckte Koordinationskosten verursacht. Erfahren Sie, wie die vollständige Prozessversorgung die Durchlaufzeiten verkürzt und Qualitätsnachfreigaben für AMS 4928T Ti-6Al-4V-Komponenten eliminiert."
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titan-CNC-Bearbeitungsdienstleistungen"
 tags: ["Luftfahrt-Titan"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

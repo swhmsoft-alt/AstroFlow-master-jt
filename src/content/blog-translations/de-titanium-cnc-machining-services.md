@@ -2,7 +2,7 @@
 title: "**Leistungssteigerung durch präzise CNC-Titanbearbeitungsdienste**"
 description: "Im Hochleistungs-Engineering – vom Elite-Offroad-Motocross"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titanium-CNC-Bearbeitungsdienstleistungen"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

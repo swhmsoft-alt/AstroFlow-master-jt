@@ -3,7 +3,7 @@ title: Case Study — Thin-Wall Titanium Aerospace Bracket Manufacturing
 slug: case-study-thin-wall-titanium-aerospace-bracket
 description: A case study of manufacturing a thin-wall titanium aerospace bracket — initial machining challenges with wall deflection and vibration, process development including toolpath optimization and fixturing redesign, and the final process parameters that achieved consistent dimensional compliance.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Case Studies
 tags: [Case Study, Aerospace Bracket, Thin Wall Titanium, Process Development, Manufacturing Engineering]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

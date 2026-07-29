@@ -2,7 +2,7 @@
 title: "Élever la performance grâce aux services d'usinage CNC de précision en titane"
 description: "Dans l'ingénierie haute performance — du motocross tout-terrain d'élite"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Services d'usinage CNC du titane"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

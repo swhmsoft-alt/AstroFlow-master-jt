@@ -3,7 +3,7 @@ title: Titanium Material Certification and Traceability Guide for Aerospace Comp
 slug: titanium-material-certification-traceability-guide
 description: An engineering guide to titanium material certification and traceability for aerospace manufacturing — mill test report requirements, heat number traceability systems, EN 10204 certification types, and practical considerations for maintaining traceability through machining and inspection operations.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [Material Certification, Traceability, Aerospace Quality, MTC, EN 10204, Material Test Report]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

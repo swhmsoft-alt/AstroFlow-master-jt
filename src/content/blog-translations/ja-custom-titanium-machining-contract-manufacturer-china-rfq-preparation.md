@@ -2,7 +2,7 @@
 title: "中国におけるRFQ準備のためのカスタムチタン加工請負製造業者"
 description: "中国でチタン加工のカスタム受託メーカーを調達するための実用的なRFQガイド。航空宇宙、医療、エネルギー、産業分野のバイヤー向けに、サプライヤー評価、コスト要因、トレーサビリティ、および一般的な生産リスクを網羅しています。"
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "チタンCNC加工サービス"
 tags: ["チタンCNC加工 中国"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

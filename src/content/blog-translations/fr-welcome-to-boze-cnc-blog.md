@@ -1,10 +1,10 @@
 ---
-title: "Bienvenue sur le blog BOZE CNC Ti"
+title: "Bienvenue sur le blog Boze Titanium Manufacturing Center"
 description: "Voici la traduction en français :
 
 Présentation de notre nouveau blog où nous partageons des informations sur la précision."
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Services d'usinage CNC du titane"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -15,7 +15,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## À propos de ce blog
 
-Bienvenue sur le blog officiel de BOZE CNC Ti ! Nous sommes ravis de lancer cette plateforme où nous partagerons notre expertise, nos perspectives et nos actualités avec nos clients, partenaires et la communauté manufacturière au sens large.
+Bienvenue sur le blog officiel de Boze Titanium Manufacturing Center ! Nous sommes ravis de lancer cette plateforme où nous partagerons notre expertise, nos perspectives et nos actualités avec nos clients, partenaires et la communauté manufacturière au sens large.
 
 En tant que fournisseur leader de composants en titane usinés par CNC de précision, nous travaillons avec des secteurs allant de l'aérospatiale et des dispositifs médicaux à l'automobile et aux applications industrielles. Ce blog servira de ressource pour les ingénieurs, les professionnels des achats et toute personne intéressée par le monde de la fabrication de précision.
 
@@ -37,7 +37,7 @@ Découvrez nos derniers investissements en équipements, certifications, extensi
 
 ## Notre engagement envers la qualité
 
-Chez BOZE CNC Ti, la qualité n'est pas seulement une métrique — c'est un état d'esprit. Nous sommes certifiés AS9100D et ISO 9001, garantissant que chaque composant que nous produisons répond aux normes les plus élevées de précision et de fiabilité.
+Chez Boze Titanium Manufacturing Center, la qualité n'est pas seulement une métrique — c'est un état d'esprit. Nous sommes certifiés AS9100D et ISO 9001, garantissant que chaque composant que nous produisons répond aux normes les plus élevées de précision et de fiabilité.
 
 > "La précision ne se limite pas aux mesures. Il s'agit d'apporter constance, fiabilité et excellence dans chaque pièce que nous fabriquons."
 

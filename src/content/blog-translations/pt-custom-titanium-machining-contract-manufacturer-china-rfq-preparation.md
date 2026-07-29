@@ -2,7 +2,7 @@
 title: "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ"
 description: "Um guia prático de RFQ para a contratação de um fabricante sob medida de usinagem de titânio na China, abordando avaliação de fornecedores, fatores de custo, rastreabilidade e riscos comuns de produção para compradores dos setores aeroespacial, médico, energético e industrial."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Serviços de Usinagem CNC em Titânio"
 tags: ["Titanium CNC Machining China"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

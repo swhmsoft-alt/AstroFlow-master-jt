@@ -26,7 +26,7 @@ const { entry } = Astro.props;
 const { data } = entry;
 const slug = entry.id.replace(/\.json$/i, '').replace(/^.*[\\/\\\\]/, '');
 
-const seoTitle = data.seoTitle || `${data.title} | Titanium Manufacturing Capability | BOZE CNC Ti`;
+const seoTitle = data.seoTitle || `${data.title} | Titanium Manufacturing Capability | Boze Titanium Manufacturing Center`;
 const seoDesc = data.seoDescription || `${data.description}. ${data.category} capability for precision CNC machined titanium components. AS9100D & ISO 9001 certified.`;
 
 // ── Resolve related product-entities & systems ──

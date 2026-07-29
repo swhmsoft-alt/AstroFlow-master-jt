@@ -2,7 +2,7 @@
 title: "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ"
 description: "Praktyczny przewodnik po RFQ dotyczący pozyskiwania kontraktowego producenta obróbki tytanu w Chinach, obejmujący ocenę dostawcy, czynniki kosztowe, identyfikowalność oraz typowe ryzyka produkcyjne dla nabywców z branży lotniczej, medycznej, energetycznej i przemysłowej."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Usługi obróbki CNC tytanu"
 tags: ["Obróbka CNC Tytanu w Chinach"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

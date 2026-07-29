@@ -2,7 +2,7 @@
 title: "Produttore a contratto di lavorazione personalizzata del titanio in Cina per la preparazione di RFQ"
 description: "Una guida pratica all'RFQ per l'approvvigionamento di un produttore a contratto di lavorazione personalizzata del titanio in Cina, che copre la valutazione dei fornitori, i fattori di costo, la tracciabilità e i rischi di produzione comuni per acquirenti nei settori aerospaziale, medico, energetico e industriale."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Servizi di Lavorazione CNC del Titanio"
 tags: ["Lavorazione CNC del Titanio in Cina"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "チタンの見積もりを取得"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Titanium CNC加工サービス | 精密チタン部品 | BOZE CNC Ti"
+seoTitle: "Titanium CNC加工サービス | 精密チタン部品 | Boze Titanium Manufacturing Center"
 seoDescription: "高精度チタンCNC加工による迅速な試作製作"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: ja
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Tiは、チタンおよびその他の特殊金属部品向けに、世界クラスの精密CNC加工サービスを提供しています。チタン製造業界における**50年以上の総合経験**を活かし、航空宇宙、医療、自動車、産業用途にわたる最も厳しい仕様を満たす部品を納品します。
+Boze Titanium Manufacturing Centerは、チタンおよびその他の特殊金属部品向けに、世界クラスの精密CNC加工サービスを提供しています。チタン製造業界における**50年以上の総合経験**を活かし、航空宇宙、医療、自動車、産業用途にわたる最も厳しい仕様を満たす部品を納品します。
 
 ## 当社のCNC加工能力
 
@@ -92,7 +92,7 @@ BOZE CNC Tiは、チタンおよびその他の特殊金属部品向けに、世
 - **石油・ガス** — バルブ部品、コネクタ、ダウンホールツール部品
 - **産業** — カスタム機械部品、自動化コンポーネント、ロボットエンドエフェクタ
 
-## BOZE CNC Tiを選ぶ理由
+## Boze Titanium Manufacturing Centerを選ぶ理由
 
 - **50年以上**のチタン製造専門知識
 - **ISO 9001:2015 & IATF 16949**認証の品質システム

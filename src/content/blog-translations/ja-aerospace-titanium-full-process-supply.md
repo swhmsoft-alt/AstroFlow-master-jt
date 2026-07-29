@@ -2,7 +2,7 @@
 title: "航空宇宙用チタン供給 - マルチソースリスクとリードタイムの低減"
 description: "マルチソースによる航空宇宙用チタン調達が生み出す隠れた調整コストを明らかにします。全工程一貫供給により、リードタイムを短縮し、AMS 4928T Ti-6Al-4V コンポーネントの品質再承認を不要にする方法をご紹介します。"
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "チタンCNC加工サービス"
 tags: ["航空宇宙用チタン"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

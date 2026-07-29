@@ -3,7 +3,7 @@ title: Case Study — Precision Titanium Medical Implant Component Production
 slug: case-study-precision-titanium-medical-implant
 description: A case study of producing a precision titanium medical implant component — material specification and certification requirements, machining process validation for ISO 13485 compliance, surface finish and cleanliness verification, and first article inspection results.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Case Studies
 tags: [Case Study, Medical Implant, Grade 23 Titanium, ISO 13485, Precision Machining]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

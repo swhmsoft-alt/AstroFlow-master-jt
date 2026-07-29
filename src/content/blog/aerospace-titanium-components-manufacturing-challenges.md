@@ -3,7 +3,7 @@ title: Aerospace Titanium Components — Manufacturing Challenges and Engineerin
 slug: aerospace-titanium-components-manufacturing-challenges
 description: An engineering analysis of manufacturing challenges specific to aerospace titanium components — thin-wall structural parts, tight tolerance requirements, material traceability and certification compliance, and process control strategies for AS9100D production environments.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Aerospace Titanium, Aerospace Manufacturing, Thin Wall Machining, AS9100D, Aircraft Components]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

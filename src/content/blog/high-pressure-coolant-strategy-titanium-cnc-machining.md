@@ -3,7 +3,7 @@ title: High Pressure Coolant Strategy for Titanium CNC Machining
 slug: high-pressure-coolant-strategy-titanium-cnc-machining
 description: An engineering analysis of coolant strategy in titanium CNC machining — why high-pressure through-spindle coolant above 50 bar is necessary for thermal management and chip evacuation, concentration and temperature control requirements, and how coolant system capability affects process stability and tool life.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Coolant Strategy, High Pressure Coolant, Manufacturing Engineering, Cutting Tools]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

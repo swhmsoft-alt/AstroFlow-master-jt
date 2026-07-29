@@ -2,7 +2,7 @@
 title: "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu"
 description: "W inżynierii wysokiej wydajności – od elitarnego motocrossu terenowego"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Usługi obróbki CNC tytanu"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

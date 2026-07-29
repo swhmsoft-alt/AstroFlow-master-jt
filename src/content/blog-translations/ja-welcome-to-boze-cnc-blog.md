@@ -1,8 +1,8 @@
 ---
-title: "BOZE CNC Ti ブログへようこそ"
+title: "Boze Titanium Manufacturing Center ブログへようこそ"
 description: "弊社の新しいブログでは、精密加工に関する知見を共有しています。"
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "チタンCNC加工サービス"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## このブログについて
 
-BOZE CNC Ti 公式ブログへようこそ！このプラットフォームでは、お客様、パートナー、そして広く製造業界の皆様に向けて、当社の専門知識、洞察、最新情報を発信してまいります。
+Boze Titanium Manufacturing Center 公式ブログへようこそ！このプラットフォームでは、お客様、パートナー、そして広く製造業界の皆様に向けて、当社の専門知識、洞察、最新情報を発信してまいります。
 
 精密CNC加工によるチタン部品のリーディングプロバイダーとして、当社は航空宇宙、医療機器、自動車、産業用途など幅広い業界に対応しています。このブログは、エンジニア、調達担当者、そして精密製造の世界にご興味をお持ちの皆様にとって貴重な情報源となるでしょう。
 
@@ -35,7 +35,7 @@ BOZE CNC Ti 公式ブログへようこそ！このプラットフォームで�
 
 ## 品質への取り組み
 
-BOZE CNC Ti において、品質は単なる指標ではなく、マインドセットです。当社はAS9100DおよびISO 9001認証を取得しており、製造するすべての部品が最高水準の精度と信頼性を満たすことを保証します。
+Boze Titanium Manufacturing Center において、品質は単なる指標ではなく、マインドセットです。当社はAS9100DおよびISO 9001認証を取得しており、製造するすべての部品が最高水準の精度と信頼性を満たすことを保証します。
 
 > 「精度とは単なる測定値ではありません。製造する一つひとつの部品において、一貫性、信頼性、卓越性を提供することです。」
 

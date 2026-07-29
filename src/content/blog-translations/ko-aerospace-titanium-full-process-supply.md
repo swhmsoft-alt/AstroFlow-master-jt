@@ -2,7 +2,7 @@
 title: "항공우주용 티타늄 공급 - 다중 소스 리스크 및 리드 타임 절감"
 description: "다중 소스 항공우주 티타늄 조달이 숨은 조정 비용을 발생시키는 방식을 알아보십시오. 전체 공정 공급이 AMS 4928T Ti-6Al-4V 부품의 리드 타임을 단축하고 품질 재승인을 제거하는 방법을 확인하십시오."
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "티타늄 CNC 가공 서비스"
 tags: ["항공우주용 티타늄"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

@@ -3,7 +3,7 @@ title: Titanium Chip Control and Fire Prevention in CNC Machining
 slug: titanium-chip-control-fire-prevention-cnc-machining
 description: An engineering analysis of titanium chip management and fire risk — why titanium chips are uniquely flammable, the conditions that lead to chip fires, chip formation and evacuation strategies for drilling and milling, and coolant system requirements that prevent ignition events.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Chip Control, Fire Prevention, Manufacturing Safety, Cutting Tools]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

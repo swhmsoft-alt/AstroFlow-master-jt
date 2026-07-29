@@ -1,8 +1,8 @@
 ---
-title: "Welkom bij de BOZE CNC Ti Blog"
+title: "Welkom bij de Boze Titanium Manufacturing Center Blog"
 description: "Introduceren van onze nieuwe blog waar we inzichten delen over precisie"
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titanium CNC-bewerkingsdiensten"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## Over Deze Blog
 
-Welkom op de officiële BOZE CNC Ti blog! We zijn verheugd dit platform te lanceren waar we onze expertise, inzichten en updates zullen delen met onze klanten, partners en de bredere productiegemeenschap.
+Welkom op de officiële Boze Titanium Manufacturing Center blog! We zijn verheugd dit platform te lanceren waar we onze expertise, inzichten en updates zullen delen met onze klanten, partners en de bredere productiegemeenschap.
 
 Als toonaangevende leverancier van precisie CNC gefreesde titaniumcomponenten werken we met industrieën variërend van lucht- en ruimtevaart en medische apparatuur tot automobiel- en industriële toepassingen. Deze blog zal dienen als een bron voor ingenieurs, inkoopprofessionals en iedereen die geïnteresseerd is in de wereld van precisieproductie.
 
@@ -35,7 +35,7 @@ Leer over onze nieuwste investeringen in apparatuur, certificeringen, uitbreidin
 
 ## Onze Toewijding aan Kwaliteit
 
-Bij BOZE CNC Ti is kwaliteit niet alleen een meetwaarde — het is een mentaliteit. We zijn AS9100D en ISO 9001 gecertificeerd, wat ervoor zorgt dat elk onderdeel dat we produceren voldoet aan de hoogste normen van precisie en betrouwbaarheid.
+Bij Boze Titanium Manufacturing Center is kwaliteit niet alleen een meetwaarde — het is een mentaliteit. We zijn AS9100D en ISO 9001 gecertificeerd, wat ervoor zorgt dat elk onderdeel dat we produceren voldoet aan de hoogste normen van precisie en betrouwbaarheid.
 
 > "Precisie gaat niet alleen over metingen. Het gaat over het leveren van consistentie, betrouwbaarheid en uitmuntendheid in elk enkel onderdeel dat we vervaardigen."
 

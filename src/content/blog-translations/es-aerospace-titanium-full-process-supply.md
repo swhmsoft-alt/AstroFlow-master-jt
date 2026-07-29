@@ -2,7 +2,7 @@
 title: "Suministro de Titanio Aeroespacial - Reducción de Riesgos de Múltiples Fuentes y Plazos de Entrega"
 description: "Descubra cómo el abastecimiento de titanio aeroespacial de múltiples fuentes genera costos de coordinación ocultos. Conozca cómo el suministro de proceso completo reduce los plazos de entrega y elimina las re-aprobaciones de calidad para componentes AMS 4928T Ti-6Al-4V."
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Servicios de Mecanizado CNC de Titanio"
 tags: ["Titanio Aeroespacial"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

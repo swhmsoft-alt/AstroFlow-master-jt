@@ -2,7 +2,7 @@
 title: "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding"
 description: "Een praktische RFQ-gids voor het inkopen van een contractfabrikant voor maatwerk titaniumbewerking in China, met aandacht voor leveranciersevaluatie, kostendrijvers, traceerbaarheid en veelvoorkomende productierisico's voor kopers in de lucht- en ruimtevaart, medische sector, energie en industrie."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titanium CNC Machining Services"
 tags: ["Titanium CNC Machining China"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

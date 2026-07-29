@@ -2,7 +2,7 @@
 title: "중국 맞춤형 티타늄 가공 계약 제조업체 - RFQ 준비 전문"
 description: "중국에서 맞춤형 티타늄 가공 계약 제조업체를 선정하기 위한 실용적인 RFQ 가이드로, 항공우주, 의료, 에너지 및 산업 분야 구매자를 위한 공급업체 평가, 비용 요인, 추적성 및 일반적인 생산 리스크를 다룹니다."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "티타늄 CNC 가공 서비스"
 tags: ["티타늄 CNC 가공 중국"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

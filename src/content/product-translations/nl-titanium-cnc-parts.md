@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Ontvang Titanium Offerte"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Titanium CNC-bewerkingsdiensten | Precisie titanium onderdelen | BOZE CNC Ti"
+seoTitle: "Titanium CNC-bewerkingsdiensten | Precisie titanium onderdelen | Boze Titanium Manufacturing Center"
 seoDescription: "Hoognauwkeurige titanium CNC-bewerking voor rapid prototyping &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: nl
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti biedt wereldwijde precisie CNC-bewerkingsdiensten voor titanium en andere exotische metalen componenten. Met meer dan **50 jaar gecombineerde ervaring** in de titaniumproductie-industrie leveren wij componenten die voldoen aan de meest veeleisende specificaties in de luchtvaart, medische sector, automobielindustrie en industriële toepassingen.
+Boze Titanium Manufacturing Center biedt wereldwijde precisie CNC-bewerkingsdiensten voor titanium en andere exotische metalen componenten. Met meer dan **50 jaar gecombineerde ervaring** in de titaniumproductie-industrie leveren wij componenten die voldoen aan de meest veeleisende specificaties in de luchtvaart, medische sector, automobielindustrie en industriële toepassingen.
 
 ## Onze CNC-bewerkingscapaciteiten
 
@@ -92,7 +92,7 @@ Onze precisiecomponenten worden vertrouwd door toonaangevende bedrijven wereldwi
 - **Olie & Gas** — Ventielcomponenten, connectoren, boorgatgereedschapsonderdelen
 - **Industrieel** — Aangepaste machineonderdelen, automatiseringscomponenten, robotische eindeffectoren
 
-## Waarom kiezen voor BOZE CNC Ti?
+## Waarom kiezen voor Boze Titanium Manufacturing Center?
 
 - **50+ jaar** titaniumproductie-expertise
 - **ISO 9001:2015 & IATF 16949** gecertificeerde kwaliteitssystemen

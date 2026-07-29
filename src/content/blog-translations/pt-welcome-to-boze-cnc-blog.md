@@ -1,8 +1,8 @@
 ---
-title: "Bem-vindo ao Blog da BOZE CNC Ti"
+title: "Bem-vindo ao Blog da Boze Titanium Manufacturing Center"
 description: "Apresentando nosso novo blog, onde compartilhamos insights sobre precisão."
 pubDate: 2026-05-28
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Serviços de Usinagem CNC em Titânio"
 tags: []
 coverImage: "/uploads/titanium-cnc-home.jpg"
@@ -13,7 +13,7 @@ originalSlug: "welcome-to-boze-cnc-blog"
 ---
 ## Sobre Este Blog
 
-Bem-vindo ao blog oficial da BOZE CNC Ti! Estamos entusiasmados em lançar esta plataforma, onde compartilharemos nossa expertise, insights e atualizações com nossos clientes, parceiros e a comunidade de manufatura em geral.
+Bem-vindo ao blog oficial da Boze Titanium Manufacturing Center! Estamos entusiasmados em lançar esta plataforma, onde compartilharemos nossa expertise, insights e atualizações com nossos clientes, parceiros e a comunidade de manufatura em geral.
 
 Como fornecedor líder de componentes de titânio usinados com precisão CNC, trabalhamos com indústrias que vão desde aeroespacial e dispositivos médicos até aplicações automotivas e industriais. Este blog servirá como um recurso para engenheiros, profissionais de compras e qualquer pessoa interessada no mundo da manufatura de precisão.
 
@@ -35,7 +35,7 @@ Saiba mais sobre nossos últimos investimentos em equipamentos, certificações,
 
 ## Nosso Compromisso com a Qualidade
 
-Na BOZE CNC Ti, qualidade não é apenas uma métrica — é uma mentalidade. Somos certificados AS9100D e ISO 9001, garantindo que cada componente que produzimos atenda aos mais altos padrões de precisão e confiabilidade.
+Na Boze Titanium Manufacturing Center, qualidade não é apenas uma métrica — é uma mentalidade. Somos certificados AS9100D e ISO 9001, garantindo que cada componente que produzimos atenda aos mais altos padrões de precisão e confiabilidade.
 
 > "Precisão não se trata apenas de medições. Trata-se de entregar consistência, confiabilidade e excelência em cada peça que fabricamos."
 

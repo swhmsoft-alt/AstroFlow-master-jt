@@ -3,7 +3,7 @@ title: ASTM B348 vs ASTM B265 — Understanding Titanium Bar and Plate Material 
 slug: astm-b348-vs-astm-b265-titanium-bar-plate-standards
 description: A technical comparison of ASTM B348 (titanium bar and billet) and ASTM B265 (titanium sheet, plate, and strip) material standards — product form coverage, mechanical property requirements by grade, testing and certification requirements, and practical implications for material selection.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [ASTM B348, ASTM B265, Titanium Standards, Material Specifications, Aerospace Materials]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

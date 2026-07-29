@@ -28,7 +28,7 @@ specs:
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Titan-Angebot anfordern"
 btnLink: "https://www.bozemetal.com/contact"
-seoTitle: "Titanium CNC Machining Services | Präzisionsteile aus Titan | BOZE CNC Ti"
+seoTitle: "Titanium CNC Machining Services | Präzisionsteile aus Titan | Boze Titanium Manufacturing Center"
 seoDescription: "Hochpräzise Titan-CNC-Bearbeitung für Rapid Prototyping &"
 featured: true
 order: 2
@@ -37,7 +37,7 @@ updatedDate: 2025-06-01
 lang: de
 originalSlug: titanium-cnc-parts
 ---
-BOZE CNC Ti bietet erstklassige Präzisions-CNC-Bearbeitungsdienstleistungen für Titan und andere exotische Metallkomponenten. Mit über **50 Jahren kombinierter Erfahrung** in der Titanherstellungsbranche liefern wir Komponenten, die die anspruchsvollsten Spezifikationen in den Bereichen Luft- und Raumfahrt, Medizintechnik, Automobilindustrie und Industrieanwendungen erfüllen.
+Boze Titanium Manufacturing Center bietet erstklassige Präzisions-CNC-Bearbeitungsdienstleistungen für Titan und andere exotische Metallkomponenten. Mit über **50 Jahren kombinierter Erfahrung** in der Titanherstellungsbranche liefern wir Komponenten, die die anspruchsvollsten Spezifikationen in den Bereichen Luft- und Raumfahrt, Medizintechnik, Automobilindustrie und Industrieanwendungen erfüllen.
 
 ## Unsere CNC-Bearbeitungskapazitäten
 
@@ -92,7 +92,7 @@ Unsere Präzisionskomponenten werden von führenden Unternehmen weltweit geschä
 - **Öl & Gas** — Ventilkomponenten, Verbinder, Bohrlochwerkzeugteile
 - **Industrie** — Kundenspezifische Maschinenteile, Automatisierungskomponenten, Roboterendeflektoren
 
-## Warum BOZE CNC Ti?
+## Warum Boze Titanium Manufacturing Center?
 
 - **Über 50 Jahre** Fachwissen in der Titanherstellung
 - **ISO 9001:2015 & IATF 16949** zertifizierte Qualitätssysteme

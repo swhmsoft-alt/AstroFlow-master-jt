@@ -3,7 +3,7 @@ title: Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Appl
 slug: grade-23-titanium-ti-6al-4v-eli-medical-aerospace
 description: An engineering guide to Grade 23 titanium (Ti-6Al-4V ELI) — the reduced interstitial version of Grade 5 with improved fracture toughness and ductility. Mechanical properties, biocompatibility considerations, machining characteristics, and applications in medical implants and aerospace components.
 pubDate: 2026-07-29
-author: BOZE CNC Ti
+author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Grade 23 Titanium, Ti-6Al-4V ELI, Medical Implants, Aerospace Materials, Biomaterials]
 coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg

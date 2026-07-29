@@ -6,7 +6,7 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
-<BaseLayout title="Titanium Weight Calculator | Ti-6Al-4V Weight & Cost Estimator | BOZE CNC Ti" description="Calculate titanium part weight and raw material cost for round bar, plate, tube, and rectangular bar. Supports all grades including Grade 5, Grade 2, Grade 23, and Beta alloys.">
+<BaseLayout title="Titanium Weight Calculator | Ti-6Al-4V Weight & Cost Estimator | Boze Titanium Manufacturing Center" description="Calculate titanium part weight and raw material cost for round bar, plate, tube, and rectangular bar. Supports all grades including Grade 5, Grade 2, Grade 23, and Beta alloys.">
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
@@ -34,9 +34,9 @@ const t = useTranslations(currentLang);
       <div class="mt-12 p-6 rounded-2xl" style="background-color: color-mix(in srgb, var(--theme-surface) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
         <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Titanium Density Reference</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-          <div><strong style="color: var(--theme-text);">CP Titanium (Grades 1-4):</strong> 4.51 g/cm³ �?Pure titanium with excellent corrosion resistance. Density varies minimally across CP grades.</div>
-          <div><strong style="color: var(--theme-text);">Ti-6Al-4V (Grade 5, Grade 23):</strong> 4.43 g/cm³ �?Slightly lighter than CP grades due to aluminum content.</div>
-          <div><strong style="color: var(--theme-text);">Beta Alloys (Grade 19, Grade 21):</strong> 4.65-4.78 g/cm³ �?Heavier due to higher alloying element content (V, Cr, Fe).</div>
+          <div><strong style="color: var(--theme-text);">CP Titanium (Grades 1-4):</strong> 4.51 g/cm³ �?Pure titanium with excellent corrosion resistance. Density varies minimally across CP grades.</div>
+          <div><strong style="color: var(--theme-text);">Ti-6Al-4V (Grade 5, Grade 23):</strong> 4.43 g/cm³ �?Slightly lighter than CP grades due to aluminum content.</div>
+          <div><strong style="color: var(--theme-text);">Beta Alloys (Grade 19, Grade 21):</strong> 4.65-4.78 g/cm³ �?Heavier due to higher alloying element content (V, Cr, Fe).</div>
           <div><strong style="color: var(--theme-text);">Cost Note:</strong> Raw material cost estimates are based on current market ranges. Final pricing depends on quantity, certification requirements, and sourcing conditions.</div>
         </div>
       </div>

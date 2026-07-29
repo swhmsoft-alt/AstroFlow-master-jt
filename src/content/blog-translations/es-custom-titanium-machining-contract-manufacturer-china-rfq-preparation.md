@@ -2,7 +2,7 @@
 title: "Fabricante contratista de mecanizado de titanio personalizado en China para preparación de RFQ"
 description: "Una guía práctica de RFQ para la contratación de un fabricante personalizado de mecanizado de titanio en China, que cubre la evaluación de proveedores, los factores de costo, la trazabilidad y los riesgos comunes de producción para compradores de los sectores aeroespacial, médico, energético e industrial."
 pubDate: 2026-07-02
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Servicios de Mecanizado CNC de Titanio"
 tags: ["Mecanizado CNC de Titanio en China"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

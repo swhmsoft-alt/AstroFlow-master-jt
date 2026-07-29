@@ -2,7 +2,7 @@
 title: "Elevando el Rendimiento con Servicios de Mecanizado CNC de Precisión en Titanio"
 description: "En ingeniería de alto rendimiento—desde motocross todoterreno de élite"
 pubDate: 2026-05-28T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Servicios de Mecanizado CNC de Titanio"
 tags: []
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"

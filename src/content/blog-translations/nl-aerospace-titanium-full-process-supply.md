@@ -2,7 +2,7 @@
 title: "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden"
 description: "Ontdek hoe multi-source inkoop van luchtvaarttitanium verborgen coördinatiekosten met zich meebrengt. Leer hoe volledige proceslevering doorlooptijden verkort en kwaliteitsherkeuringen voor AMS 4928T Ti-6Al-4V componenten elimineert."
 pubDate: 2026-06-18T15:19:00.000+08:00
-author: "BOZE CNC Ti"
+author: "Boze Titanium Manufacturing Center"
 category: "Titanium CNC Machining Services"
 tags: ["Luchtvaart Titanium"]
 coverImage: "/uploads/small-cnc-bay-overhead.jpg"
