@@ -192,9 +192,9 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ]
   },
   '/blog': {
-    h1: 'Our Blog',
-    subtitle: 'Technical guides, industry trends, and company news from the forefront of precision CNC titanium manufacturing.',
-    badge: 'Insights & Updates',
+    h1: 'BOZE CNC Ti Blog: Expert Insights on Titanium Manufacturing',
+    subtitle: 'In-depth engineering guides, case studies, procurement guides, material science, and manufacturing insights from our AS9100D-certified titanium CNC facility.',
+    badge: 'Knowledge Hub',
   },
   '/documentation': {
     h1: 'Documentation Center',
