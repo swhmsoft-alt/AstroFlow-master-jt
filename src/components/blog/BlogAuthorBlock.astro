@@ -1,0 +1,86 @@
+---
+/**
+ * BlogAuthorBlock.astro
+ *
+ * Reusable author-info block for blog article pages.
+ *
+ * Props:
+ *   variant — "full" (at article end) | "sidebar" (right-rail card)
+ */
+interface Props {
+  variant?: 'full' | 'sidebar';
+}
+const { variant = 'full' } = Astro.props;
+const logo = '/uploads/boze-cnc-ti-ico.png';
+---
+
+{
+  variant === 'full' && (
+    <aside class="mt-12 pt-8 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);" aria-label="Article author and reviewers">
+      <!-- Authored by (team) -->
+      <div class="flex flex-col sm:flex-row sm:items-start gap-5 p-6 rounded-2xl" style="background: color-mix(in srgb, var(--theme-primary) 4%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+        <div class="flex-shrink-0">
+          <img
+            src={logo}
+            alt="BOZE CNC Ti"
+            width="64"
+            height="64"
+            class="rounded-xl"
+            loading="lazy"
+          />
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-bold uppercase tracking-wider mb-1" style="color: var(--theme-primary);">
+            <svg class="w-4 h-4 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            Authored by: The BOZE CNC Ti Engineering Team
+          </p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+            This technical guide was collaboratively produced by our senior CNC programmers and metallurgists. With over 20 years of experience in AS9100-certified titanium manufacturing, our team specializes in solving complex tool-wear and heat-management issues in 5-axis Ti-6Al-4V production.
+          </p>
+        </div>
+      </div>
+
+      <!-- Technical Reviewer -->
+      <div class="flex flex-col sm:flex-row sm:items-start gap-5 p-6 mt-4 rounded-2xl" style="background: color-mix(in srgb, var(--theme-primary) 2%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <div class="flex-shrink-0">
+          <div class="w-16 h-16 rounded-xl flex items-center justify-center text-lg font-bold" style="background: linear-gradient(to bottom right, var(--theme-primary), var(--theme-accent)); color: var(--theme-text);">
+            GL
+          </div>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-bold uppercase tracking-wider mb-1" style="color: var(--theme-accent);">
+            <svg class="w-4 h-4 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+            Technical Reviewer: Garrett Liu, Lead Production Engineer
+          </p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+            Garrett Liu is a specialist in the metallurgy and mechanical behavior of reactive metals. With a focus on Ti-6Al-4V (Grade 5) and Commercially Pure Titanium, they oversee the technical integrity of our manufacturing processes, ensuring that every CNC-machined component maintains its structural properties and meets ASTM/AMS standards. Their expertise ensures our content reflects real-world shop floor data and advanced metallurgical science.
+          </p>
+        </div>
+      </div>
+    </aside>
+  )
+}
+
+{
+  variant === 'sidebar' && (
+    <div class="mt-6 rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <div class="flex items-center gap-3 mb-3">
+        <img
+          src={logo}
+          alt="BOZE CNC Ti"
+          width="40"
+          height="40"
+          class="rounded-lg flex-shrink-0"
+          loading="lazy"
+        />
+        <div>
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">Authored by</p>
+          <p class="text-sm font-semibold leading-tight" style="color: var(--theme-text);">The BOZE CNC Ti Engineering Team</p>
+        </div>
+      </div>
+      <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        This technical guide was collaboratively produced by our senior CNC programmers and metallurgists. With over 20 years of experience in AS9100-certified titanium manufacturing, our team specializes in solving complex tool-wear and heat-management issues in 5-axis Ti-6Al-4V production.
+      </p>
+    </div>
+  )
+}

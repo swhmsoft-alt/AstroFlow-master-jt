@@ -9,6 +9,7 @@
  * that actually have a translation for this slug.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogAuthorBlock from '../../../components/blog/BlogAuthorBlock.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
 import { DEFAULT_LANG } from '../../../i18n/ui';
@@ -160,10 +161,15 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
       <div class="flex flex-col lg:flex-row lg:gap-12">
         <article class="blog-content flex-1 min-w-0 max-w-4xl">
           <Content />
+
+          <!-- Author Block: Full at Article End -->
+          <BlogAuthorBlock variant="full" />
         </article>
         {tocHeadings.length > 0 && (
           <aside class="lg:w-72 xl:w-80 flex-shrink-0">
             <div class="lg:sticky lg:top-28">
+              <!-- Author Block: Sidebar (top) -->
+              <BlogAuthorBlock variant="sidebar" />
               <div class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
                 <div class="flex items-center mb-4">
                   <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);">
@@ -209,6 +215,7 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
                   {t('blog.back')}
                 </a>
               </div>
+
             </div>
           </aside>
         )}
