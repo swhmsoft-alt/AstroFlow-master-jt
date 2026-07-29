@@ -20,7 +20,10 @@
     "    /products/materials/*  /materials/:splat  301!",
     "",
     "Last updated: 2026-07-29 (after code fix removing broken links from product pages)",
-    "Status: Code fix applied. Redirects below are for backward-compatibility (SEO residual links)."
+    "Status: Code fix applied. Redirects below are for backward-compatibility (SEO residual links).",
+    "",
+    "2026-07-29 v2: Also fixed src/pages/products/materials/index.astro line 195 fallback",
+    "  from /products/materials/{entry.id}/ → /materials/ (for materials without GRADE_DATA)."
   ],
   "redirects": [
     { "from": "/products/materials/grade-5-ti-6al-4v/",           "to": "/materials/grade-5/",           "description": "Grade 5 Ti-6Al-4V → Grade 5 page" },

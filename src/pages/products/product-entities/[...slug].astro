@@ -156,33 +156,6 @@ if (schemaFaqData.length > 0) {
   });
 }
 
-// CTA industry-tailored text
-const ctaByIndustry: Record<string, { lead: string; btn: string }> = {
-  'Medical Device': {
-    lead: `Need a custom ${data.title.toLowerCase()} for your surgical instrument set? Send us your drawings — our ISO 13485-certified team responds within 24 hours.`,
-    btn: `Request Medical Manufacturing Quote for ${data.title}`
-  },
-  'Consumer Electronics': {
-    lead: `Ready to prototype ${data.title.toLowerCase()}? Upload your CAD model — our engineering team provides DFM feedback within 24 hours.`,
-    btn: `Request DFM Analysis & Quote for ${data.title}`
-  },
-  'Cycling / Bicycle': {
-    lead: `Looking for a lightweight ${data.title.toLowerCase()}? Send us your design specs — our cycling component specialists respond within 24 hours.`,
-    btn: `Request Quote for ${data.title}`
-  },
-  'Semiconductor': {
-    lead: `Need ${data.title.toLowerCase()} for your semiconductor process tool? Send your specifications — our cleanroom manufacturing team responds within 24 hours.`,
-    btn: `Request UHV Manufacturing Quote for ${data.title}`
-  },
-  'Aerospace & Defense': {
-    lead: `Need an AS9100D-certified ${data.title.toLowerCase()}? Send your print or model — our aerospace engineering team responds within 24 hours.`,
-    btn: `Request Aerospace Manufacturing Quote for ${data.title}`
-  },
-};
-const industryKey = Object.keys(ctaByIndustry).find(k => (data.industry || '').startsWith(k));
-const industryCta = industryKey ? ctaByIndustry[industryKey] : undefined;
-const ctaLead = industryCta?.lead || `Need a custom ${data.title.toLowerCase()}? Send us your drawings — our engineering team responds within 24 hours.`;
-const ctaBtn = industryCta?.btn || `Request Quote for ${data.title}`;
 ---
 
 <BaseLayout title={seoTitle} description={seoDesc}>
@@ -273,18 +246,7 @@ const ctaBtn = industryCta?.btn || `Request Quote for ${data.title}`;
     </section>
   )}
 
-  <!-- ── SECTION 6: CTA (industry-tailored) ── -->
-  <section class="py-12 text-center" style="background: var(--theme-bg);">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-        {ctaLead}
-      </p>
-      <a href="/contact" class="inline-flex items-center px-6 py-3 text-sm font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
-        {ctaBtn}
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-      </a>
-    </div>
-  </section>
+
 
   <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
 <script is:inline>

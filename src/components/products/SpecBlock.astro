@@ -1,6 +1,6 @@
 ---
 // src/components/products/SpecBlock.astro
-// B2B Technical Spec Block — quick-scan dark card
+// B2B Technical Spec Block — quick-scan card (theme-consistent)
 
 interface FAQ { q: string; a: string; }
 
@@ -53,62 +53,62 @@ if (surface_finish || max_service_temp) add('Surface Finish & Max Temp', [surfac
 if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standards');
 ---
 
-<div class="my-6 rounded-xl border border-slate-700/80 bg-slate-900/90 text-slate-200 shadow-lg backdrop-blur-sm" style="max-width:80rem;margin-left:auto;margin-right:auto;padding:1.25rem;">
+<div class="my-6 rounded-xl border shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); max-width:80rem; margin-left:auto; margin-right:auto; padding:1.25rem;">
   <div class="max-w-full">
 
     <!-- 1. Header -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-5">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-5" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
       <div>
         <div class="flex items-center gap-2 mb-1">
-          <span class="px-2 py-0.5 text-xs font-semibold tracking-wide uppercase bg-sky-950 text-sky-400 border border-sky-800/60 rounded">{category}</span>
-          <span class="text-xs font-mono text-slate-400">SKU: {sku}</span>
+          <span class="px-2 py-0.5 text-xs font-semibold tracking-wide uppercase rounded" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);">{category}</span>
+          <span class="text-xs font-mono" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">SKU: {sku}</span>
         </div>
-        <h3 class="text-lg md:text-xl font-bold text-white tracking-tight">{title}</h3>
+        <h3 class="text-lg md:text-xl font-bold tracking-tight" style="color: var(--theme-text);">{title}</h3>
       </div>
       <div class="flex flex-wrap items-center gap-1.5 sm:justify-end">
         {supply_availability && (
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> {supply_availability}
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium" style="background: color-mix(in srgb, #10b981 12%, transparent); color: #10b981; border: 1px solid color-mix(in srgb, #10b981 25%, transparent);">
+            <span class="w-1.5 h-1.5 rounded-full" style="background: #10b981;"></span> {supply_availability}
           </span>
         )}
         {compliance?.slice(0, 4).map(item => (
-          <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 text-xs">{item}</span>
+          <span class="px-2 py-0.5 rounded text-xs" style="background: color-mix(in srgb, var(--theme-primary) 6%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">{item}</span>
         ))}
       </div>
     </div>
 
     <!-- 2. Material Summary -->
-    <div class="mb-5 rounded-lg border border-sky-900/50 bg-sky-950/20 p-3 md:p-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-semibold text-sky-300 mb-1 text-sm">
-        <span>Material Grade: {materialSlug ? <a href={`/materials/${materialSlug}/`} class="text-sky-300 underline underline-offset-2 hover:text-sky-200">{titanium_grade}</a> : <span>{titanium_grade}</span>}</span>
+    <div class="mb-5 rounded-lg p-3 md:p-4" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface)); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 font-semibold mb-1 text-sm" style="color: var(--theme-primary);">
+        <span>Material Grade: {materialSlug ? <a href={`/materials/${materialSlug}/`} class="underline underline-offset-2" style="color: var(--theme-primary);">{titanium_grade}</a> : <span>{titanium_grade}</span>}</span>
         {(uns_number || werkstoff_number) && (
-          <span class="font-mono text-xs text-sky-400/80">{[uns_number, werkstoff_number].filter(Boolean).join(' / ')}</span>
+          <span class="font-mono text-xs" style="color: color-mix(in srgb, var(--theme-primary) 55%, transparent);">{[uns_number, werkstoff_number].filter(Boolean).join(' / ')}</span>
         )}
       </div>
-      {fn && <p class="text-sm leading-relaxed text-slate-400">{fn}</p>}
+      {fn && <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{fn}</p>}
     </div>
 
     <!-- 3. Spec Table -->
     {rows.length > 0 && (
       <div class="mb-5">
-        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Technical Specifications Matrix
+        <div class="text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          <span class="w-1.5 h-1.5 rounded-full" style="background: var(--theme-primary);"></span> Technical Specifications Matrix
         </div>
-        <div class="overflow-x-auto rounded-lg border border-slate-800">
+        <div class="overflow-x-auto rounded-lg border" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <table class="w-full text-left text-sm border-collapse">
-            <thead class="bg-slate-800/80 text-slate-300 font-semibold uppercase text-xs tracking-wider">
-              <tr>
-                <th class="p-2.5 md:p-3 border-b border-slate-700/80">Technical Parameter</th>
-                <th class="p-2.5 md:p-3 border-b border-slate-700/80 text-sky-300">Specification Value</th>
-                <th class="p-2.5 md:p-3 border-b border-slate-700/80 hidden sm:table-cell">Associated Standard & Context</th>
+            <thead>
+              <tr style="background: color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+                <th class="p-2.5 md:p-3 font-semibold uppercase text-xs tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">Technical Parameter</th>
+                <th class="p-2.5 md:p-3 font-semibold uppercase text-xs tracking-wider" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">Specification Value</th>
+                <th class="p-2.5 md:p-3 font-semibold uppercase text-xs tracking-wider hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">Associated Standard & Context</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-800/60 bg-slate-900/50">
+            <tbody style="background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));">
               {rows.map(row => (
-                <tr class="hover:bg-slate-800/40">
-                  <td class="p-2.5 md:p-3 font-medium text-slate-200 text-sm">{row.label}</td>
-                  <td class="p-2.5 md:p-3 text-sky-300 text-sm">{row.value}</td>
-                  <td class="p-2.5 md:p-3 text-slate-400 text-sm hidden sm:table-cell">{row.ctx}</td>
+                <tr class="transition-colors" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 6%, transparent);">
+                  <td class="p-2.5 md:p-3 font-medium text-sm" style="color: var(--theme-text);">{row.label}</td>
+                  <td class="p-2.5 md:p-3 text-sm" style="color: var(--theme-primary);">{row.value}</td>
+                  <td class="p-2.5 md:p-3 text-sm hidden sm:table-cell" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{row.ctx}</td>
                 </tr>
               ))}
             </tbody>
@@ -119,24 +119,24 @@ if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standard
 
     <!-- 4. Quality & Manufacturing -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
-      <div class="p-3 md:p-4 rounded-lg border border-slate-800 bg-slate-950/40">
-        <div class="font-semibold text-slate-200 mb-2 flex items-center gap-1.5 text-sm">
-          <span class="text-sky-400">📜</span> Quality & Traceability Gate
+      <div class="p-3 md:p-4 rounded-lg border" style="background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface)); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+        <div class="font-semibold mb-2 flex items-center gap-1.5 text-sm" style="color: var(--theme-text);">
+          <span style="color: var(--theme-primary);">📜</span> Quality & Traceability Gate
         </div>
-        <ul class="space-y-1.5 text-sm text-slate-400 leading-relaxed">
-          <li>• <strong class="text-slate-300">100% Traceability:</strong> Mill Test Certificate (EN 10204 3.1) with heat analysis & mechanical testing.</li>
-          {ndt_methods && <li>• <strong class="text-slate-300">NDT Verification:</strong> {ndt_methods}.</li>}
-          {compliance && <li>• <strong class="text-slate-300">Compliance:</strong> {compliance.filter(c => c.includes('REACH') || c.includes('RoHS')).join(', ') || 'REACH & RoHS 3'} certified. FAI AS9102 available.</li>}
+        <ul class="space-y-1.5 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <li>• <strong style="color: var(--theme-text);">100% Traceability:</strong> Mill Test Certificate (EN 10204 3.1) with heat analysis & mechanical testing.</li>
+          {ndt_methods && <li>• <strong style="color: var(--theme-text);">NDT Verification:</strong> {ndt_methods}.</li>}
+          {compliance && <li>• <strong style="color: var(--theme-text);">Compliance:</strong> {compliance.filter(c => c.includes('REACH') || c.includes('RoHS')).join(', ') || 'REACH & RoHS 3'} certified. FAI AS9102 available.</li>}
         </ul>
       </div>
-      <div class="p-3 md:p-4 rounded-lg border border-slate-800 bg-slate-950/40">
-        <div class="font-semibold text-slate-200 mb-2 flex items-center gap-1.5 text-sm">
-          <span class="text-sky-400">⚙️</span> CNC & Stress Relief Controls
+      <div class="p-3 md:p-4 rounded-lg border" style="background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface)); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+        <div class="font-semibold mb-2 flex items-center gap-1.5 text-sm" style="color: var(--theme-text);">
+          <span style="color: var(--theme-primary);">⚙️</span> CNC & Stress Relief Controls
         </div>
-        <ul class="space-y-1.5 text-sm text-slate-400 leading-relaxed">
-          {manufacturing_process && <li>• <strong class="text-slate-300">Process:</strong> {manufacturing_process}.</li>}
-          <li>• <strong class="text-slate-300">Thermal Stress Relief:</strong> Post-machining vacuum annealing (540-675°C under Argon) reduces distortion risk &gt;70%.</li>
-          <li>• <strong class="text-slate-300">Rolled Threads:</strong> Thread rolling (not cutting) increases fatigue limits by 30-50%.</li>
+        <ul class="space-y-1.5 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          {manufacturing_process && <li>• <strong style="color: var(--theme-text);">Process:</strong> {manufacturing_process}.</li>}
+          <li>• <strong style="color: var(--theme-text);">Thermal Stress Relief:</strong> Post-machining vacuum annealing (540-675°C under Argon) reduces distortion risk &gt;70%.</li>
+          <li>• <strong style="color: var(--theme-text);">Rolled Threads:</strong> Thread rolling (not cutting) increases fatigue limits by 30-50%.</li>
         </ul>
       </div>
     </div>
@@ -144,17 +144,17 @@ if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standard
     <!-- 5. FAQ -->
     {faqs && faqs.length > 0 && (
       <div class="mb-4">
-        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> Engineering FAQ
+        <div class="text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          <span class="w-1.5 h-1.5 rounded-full" style="background: var(--theme-primary);"></span> Engineering FAQ
         </div>
         <div class="space-y-2">
           {faqs.map(faq => (
-            <details class="group rounded-md border border-slate-800 bg-slate-950/30 p-3 transition-colors hover:border-slate-700">
-              <summary class="font-medium text-slate-300 cursor-pointer flex justify-between items-center text-sm">
+            <details class="group rounded-md border p-3 transition-colors" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-surface)); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <summary class="font-medium cursor-pointer flex justify-between items-center text-sm" style="color: var(--theme-text);">
                 <span>Q: {faq.q}</span>
-                <span class="text-slate-500 group-open:rotate-180 transition-transform">▼</span>
+                <span class="group-open:rotate-180 transition-transform" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">▼</span>
               </summary>
-              <p class="mt-2 text-sm text-slate-400 border-t border-slate-800/80 pt-2 leading-relaxed">{faq.a}</p>
+              <p class="mt-2 text-sm pt-2 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">{faq.a}</p>
             </details>
           ))}
         </div>
@@ -162,7 +162,7 @@ if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standard
     )}
 
     <!-- 6. Bottom Metadata -->
-    <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+    <div class="pt-3 flex flex-wrap items-center justify-between gap-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
       {upstream && upstream.length > 0 && <div>Integration: {upstream.join(' / ')}</div>}
       {downstream && downstream.length > 0 && <div>Downstream: {downstream.join(' / ')}</div>}
     </div>
