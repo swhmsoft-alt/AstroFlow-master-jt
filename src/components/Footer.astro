@@ -18,8 +18,8 @@ const navKeyByHref: Record<string, string> = {
 };
 
 const logoImage = '/uploads/boze-cnc-ti-ico.png';
-const logoAlt = 'Boze CNC Ti - Boze Titanium Manufacturing Center';
-const logoText = 'BOZE CNC Ti';
+const logoAlt = 'Boze Titanium Manufacturing Center';
+const logoText = 'Boze';
 const logoSubtext = t('header.logoSubtext');
 const siteName = SITE.title;
 const siteDescription = SITE.description;
@@ -36,7 +36,7 @@ const siteDescription = SITE.description;
             <img
               src={logoImage}
               alt={logoAlt}
-              class="h-10 w-auto max-w-[180px] object-contain"
+              class="h-10 w-auto max-w-[120px] object-contain"
               style="filter: brightness(0) invert(var(--theme-nav-invert, 1));"
             />
           ) : (

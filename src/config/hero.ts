@@ -192,7 +192,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ]
   },
   '/blog': {
-    h1: 'BOZE CNC Ti Blog: Expert Insights on Titanium Manufacturing',
+    h1: 'Boze Titanium Manufacturing Center Blog: Expert Insights on Titanium Manufacturing',
     subtitle: 'In-depth engineering guides, case studies, procurement guides, material science, and manufacturing insights from our AS9100D-certified titanium CNC facility.',
     badge: 'Knowledge Hub',
   },
@@ -1064,7 +1064,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ]
   },
   '/about': {
-    h1: 'About BOZE CNC-Ti',
+    h1: 'About Boze Titanium Manufacturing Center',
     subtitle: 'Mastering One Metal to Serve the World\'s Most Demanding Industries — from precision titanium CNC machining to OEM/ODM customization.',
     badge: 'Our Story',
 

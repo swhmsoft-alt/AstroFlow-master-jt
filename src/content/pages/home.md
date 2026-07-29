@@ -1,5 +1,5 @@
 ---
-badge: BOZE CNC Ti | AS9100D Certified | Baoji · China
+badge: Boze Titanium Manufacturing Center | AS9100D Certified | Baoji · China
 title: Your One-Stop Titanium Partner
 highlight: ""
 description: We provide AS9100D-compliant titanium manufacturing—from rapid

@@ -1,7 +1,7 @@
 /**
  * src/lib/schema.ts
  *
- * Whole-site Structured Data center for BOZE CNC Ti.
+ * Whole-site Structured Data center for Boze Titanium Manufacturing Center.
  * Single file — no builder framework, no registry, no separate types.
  *
  * Responsibilities:
@@ -72,12 +72,12 @@ export function buildOrganization() {
     '@id': ORG_ID,
     name: 'Baoji Boze Metal Products Co., Ltd.',
     legalName: 'Baoji Boze Metal Products Co., Ltd.',
-    alternateName: ['Boze Metal', 'Boze CNC Ti'],
+    alternateName: ['Boze Metal', 'Boze CNC Ti', 'Boze Titanium Manufacturing Center'],
     url: MAIN_SITE,
     logo: { '@id': LOGO_ID },
     brand: {
       '@type': 'Brand',
-      name: 'Boze CNC Ti',
+      name: 'Boze Titanium Manufacturing Center',
     },
     sameAs: [
       'https://www.linkedin.com/in/baoji-boze-metal-products-co-ltd-25a0923aa',
@@ -93,7 +93,7 @@ export function buildWebSite() {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
     name: 'Boze Titanium Manufacturing Center',
-    alternateName: 'Boze CNC Ti Manufacturing Hub',
+    alternateName: 'Boze CNC Ti Manufacturing Center',
     url: SITEROOT,
     description: 'Precision Titanium Manufacturing & CNC Machining Services',
     publisher: { '@id': ORG_ID },
@@ -106,7 +106,7 @@ export function buildImageObject() {
     '@id': LOGO_ID,
     url: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
     contentUrl: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
-    caption: 'Boze CNC Ti - Boze Titanium Manufacturing Center',
+    caption: 'Boze Titanium Manufacturing Center - Precision Titanium CNC Machining',
   };
 }
 
@@ -404,7 +404,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           headline: data.articleHeadline,
           description: data.articleDescription ?? data.pageDescription,
           url: data.pageUrl,
-          author: data.articleAuthor ?? 'BOZE CNC Ti',
+          author: data.articleAuthor ?? 'Boze Titanium Manufacturing Center',
           datePublished: data.articleDatePublished ?? new Date().toISOString(),
           image: data.articleImage,
           mainEntityOfPage: data.pageUrl,

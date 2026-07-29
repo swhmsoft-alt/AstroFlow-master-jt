@@ -156,8 +156,8 @@ const getHeadingKey = (parentHref: string, heading: string): string => {
 // Static site identity (previously loaded from CMS collection 'general')
 const siteName = SITE.title;
 const logoImage = '/uploads/boze-cnc-ti-ico.png';
-const logoAlt = 'Boze CNC Ti - Boze Titanium Manufacturing Center';
-const logoText = 'BOZE CNC Ti';
+const logoAlt = 'Boze Titanium Manufacturing Center';
+const logoText = 'Boze';
 const logoSubtext = t('header.logoSubtext');
 ---
 
@@ -172,7 +172,7 @@ const logoSubtext = t('header.logoSubtext');
             <img
               src={logoImage}
               alt={logoAlt}
-              class="h-12 w-auto max-w-[180px] object-contain"
+              class="h-10 w-auto max-w-[120px] object-contain"
               onerror="this.style.display='none'"
               style="opacity: 1; filter: brightness(0) invert(var(--theme-nav-invert, 1));"
             />
