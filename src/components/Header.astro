@@ -3,6 +3,7 @@ import { NAVIGATION, SITE } from '@config/site';
 import type { NavItem } from '@config/site';
 import MobileMenu from '@components/react/MobileMenu';
 import LanguageSelector from './LanguageSelector.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
 import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
 
 const { currentPathname } = Astro.props;
@@ -296,8 +297,9 @@ const logoSubtext = t('header.logoSubtext');
       })}
     </div>
 
-    <!-- Language Picker + CTA Button -->
+    <!-- Theme Switcher + Language Picker + CTA Button -->
     <div class="hidden lg:flex lg:items-center lg:space-x-4">
+      <ThemeSwitcher />
       <LanguageSelector />
       <a
         href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"

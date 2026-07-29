@@ -1,65 +1,80 @@
 ---
-import { themes as localThemes, DEFAULT_THEME_ID } from '@lib/cmsThemes';
-
-interface DisplayItem {
-  id: string;
-  name: string;
-}
-
-interface Props {
-  /** Optional theme list from CMS. Falls back to local cmsThemes.ts if not provided. */
-  items?: DisplayItem[];
-  /** Default theme ID from CMS. Falls back to 'legacy-original'. */
-  defaultTheme?: string;
-}
-
-const { items, defaultTheme } = Astro.props;
-const displayItems = items ?? localThemes.map((t) => ({ id: t.id, name: t.name }));
-const fallbackId = defaultTheme || DEFAULT_THEME_ID;
+import { DARK_DEFAULT, LIGHT_DEFAULT } from '@lib/cmsThemes';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
 
 <!-- ============================================================
      ThemeSwitcher Component
-     Dropdown to switch between the 5 CMS-driven color themes.
-     Data source: CMS (via props) or fallback to local cmsThemes.ts
+     A simple sun/moon toggle button to switch between dark & light mode.
+     Theme data is persisted to localStorage.
      ============================================================ -->
-<div class="theme-switcher">
-  <label for="theme-select" class="sr-only">{t('ThemeSwitcher.切换主题')} / Switch Theme</label>
-  <select
-    id="theme-select"
-    class="cursor-pointer rounded-lg border px-3 py-2 text-sm font-medium shadow-sm transition-all duration-200
-           bg-theme-surface text-theme-text
-           border-[var(--theme-primary)]/30 hover:border-[var(--theme-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--theme-primary)]/40"
+<div id="theme-switcher-root" class="relative">
+  <button
+    id="theme-toggle-btn"
+    class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer border"
+    style="
+      color: var(--theme-nav-text);
+      border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);
+      background-color: transparent;
+    "
+    onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+    onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 15%, transparent)'; this.style.backgroundColor='transparent'"
+    aria-label="{t('ThemeSwitcher.切换主题')}"
+    data-dark-default={DARK_DEFAULT}
+    data-light-default={LIGHT_DEFAULT}
   >
-    {displayItems.map((item) => (
-      <option value={item.id}>{item.name}</option>
-    ))}
-  </select>
+    <!-- Sun Icon (shown in light mode) -->
+    <svg id="theme-icon-sun" class="w-4 h-4 shrink-0 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    <!-- Moon Icon (shown in dark mode) -->
+    <svg id="theme-icon-moon" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+  </button>
 </div>
 
 <script>
   (function () {
-    const selectEl = document.getElementById('theme-select') as HTMLSelectElement | null;
-    if (!selectEl) return;
+    'use strict';
+    var btn = document.getElementById('theme-toggle-btn');
+    var iconSun = document.getElementById('theme-icon-sun');
+    var iconMoon = document.getElementById('theme-icon-moon');
+    if (!btn) return;
 
-    // --- 1. Initialise dropdown from current <html> data-theme ---
-    const currentTheme = document.documentElement.getAttribute('data-theme') || '{fallbackId}';
-    selectEl.value = currentTheme;
+    var DARK_DEFAULT = btn.getAttribute('data-dark-default') || 'aerospace-precision';
+    var LIGHT_DEFAULT = btn.getAttribute('data-light-default') || 'light-beige';
+    var DARK_THEMES = ['legacy-original', 'aerospace-precision', 'anodized-colorway'];
 
-    // --- 2. Listen for changes ---
-    selectEl.addEventListener('change', function () {
-      const theme = this.value;
-      // Update the <html> element
-      document.documentElement.setAttribute('data-theme', theme);
-      // Persist to localStorage
-      try {
-        localStorage.setItem('titanium-theme', theme);
-      } catch (_e) {
-        // localStorage might be unavailable (e.g. private browsing)
-      }
+    function isDark(themeId) {
+      return DARK_THEMES.indexOf(themeId) !== -1;
+    }
+
+    function updateIcons(themeId) {
+      var dark = isDark(themeId);
+      if (iconSun) iconSun.classList.toggle('hidden', !dark);
+      if (iconMoon) iconMoon.classList.toggle('hidden', dark);
+    }
+
+    function setTheme(themeId) {
+      document.documentElement.setAttribute('data-theme', themeId);
+      try { localStorage.setItem('titanium-theme', themeId); } catch (_e) {}
+      updateIcons(themeId);
+    }
+
+    // Restore saved theme or use default
+    var saved;
+    try { saved = localStorage.getItem('titanium-theme'); } catch (_e) {}
+    var initial = saved || DARK_DEFAULT;
+    setTheme(initial);
+
+    // Click toggles between dark and light
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') || DARK_DEFAULT;
+      setTheme(isDark(current) ? LIGHT_DEFAULT : DARK_DEFAULT);
     });
   })();
 </script>

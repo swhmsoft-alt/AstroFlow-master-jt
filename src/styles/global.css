@@ -77,3 +77,14 @@
   --theme-nav-text: #0F172A;
   --theme-nav-invert: 0;
 }
+
+/* Theme 6: light-beige — clean white light theme */
+[data-theme="light-beige"] {
+  --theme-bg: #FAFAFA;
+  --theme-surface: #FFFFFF;
+  --theme-text: #1E293B;
+  --theme-primary: #38BDF8;
+  --theme-accent: #34D399;
+  --theme-nav-text: #1E293B;
+  --theme-nav-invert: 0;
+}

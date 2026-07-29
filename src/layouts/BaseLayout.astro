@@ -158,7 +158,7 @@ const ldJson = JSON.stringify(pageGraph);
 {alternateLinks.map((link) => (<link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />))}
 {/* hreflang alternates — from prop if provided (blog overrides), otherwise auto-generated */}
 <link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
-<script is:inline>(function(){var theme='aerospace-precision';document.documentElement.setAttribute('data-theme',theme);})();</script>
+<script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
 </head>
 <body class="flex min-h-screen flex-col antialiased bg-theme-bg text-theme-text transition-colors duration-300" style={`font-family:${fontFamily};--font-primary:${fontFamily};--font-body:${fontFamily};--font-heading:${fontFamily};`}>
 <Header currentPathname={currentPathname} />
