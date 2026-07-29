@@ -5,10 +5,10 @@ export interface Props {
   material: any;
   allCaps: any[];
   faqData: any[];
+  materialSlug?: string;
 }
 
-const { data, system, material, allCaps, faqData } = Astro.props;
-const matSlug = material?.slug || material?.id?.replace(/\.(json|md)$/, '') || '';
+const { data, system, material, allCaps, faqData, materialSlug } = Astro.props;
 const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
 ---
 
@@ -30,7 +30,7 @@ const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
       {data.material && (
         <div class="flex items-center gap-2 px-4 py-2 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
           <span style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">Material</span>
-          <a href={`/products/materials/${matSlug}/`} class="font-semibold" style="color: var(--theme-primary);">{data.material.replace(/\(.*\)/, '').trim()}</a>
+          <a href={`/materials/${materialSlug}/`} class="font-semibold" style="color: var(--theme-primary);">{data.material.replace(/\(.*\)/, '').trim()}</a>
         </div>
       )}
       {data.industry && (
@@ -58,7 +58,7 @@ const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
           {data.alloyReason}
         </p>
         {material && (
-          <a href={`/products/materials/${matSlug}/`} class="inline-block mt-2 text-sm font-semibold" style="color: var(--theme-primary);">
+          <a href={`/materials/${materialSlug}/`} class="inline-block mt-2 text-sm font-semibold" style="color: var(--theme-primary);">
             Full {data.material.replace(/\(.*\)/, '').trim()} specifications &rarr;
           </a>
         )}

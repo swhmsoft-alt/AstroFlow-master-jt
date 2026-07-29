@@ -62,7 +62,12 @@ const materialBetter = allMaterials.find(m => {
 // Use better matched material (prefer direct title match over fuzzy)
 const bestMatchedMaterial = materialBetter || material;
 
-// Material slug mapping: content slug → material page slug (direct link, no redirect)
+// ── MATERIAL ROUTING SINGLE SOURCE OF TRUTH ──
+// CRITICAL: Material detail pages exist ONLY under /materials/{slug}/.
+// There is NO /products/materials/ route. All material links MUST:
+//   1. Use MATERIAL_SLUG_MAP to resolve content slug → page slug
+//   2. Use path prefix /materials/ (NOT /products/materials/)
+// See LegacyEntityContent.astro and SECTION 4 below for consumers.
 const MATERIAL_SLUG_MAP: Record<string, string> = {
   'grade-5-ti-6al-4v': 'grade-5',
   'grade-23-ti-6al-4v-eli': 'grade-23',
@@ -221,7 +226,7 @@ const ctaBtn = industryCta?.btn || `Request Quote for ${data.title}`;
 
   {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} materialSlug={materialPageSlug} />}
 
-{!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} />}
+{!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} materialSlug={materialPageSlug} />}
 
   <!-- ── SECTION 4: Shared Knowledge Links (30% — lean, no duplication) ── -->
   <section class="py-10 border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
@@ -229,7 +234,7 @@ const ctaBtn = industryCta?.btn || `Request Quote for ${data.title}`;
       <h2 class="text-lg font-bold mb-6" style="color: var(--theme-text);">Related Knowledge</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {data.material && material && (
-          <a href={`/products/materials/${bestMatchedMaterial?.slug || bestMatchedMaterial?.id?.replace(".json","") || ""}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <a href={`/materials/${materialPageSlug}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <p class="text-xs font-semibold" style="color: var(--theme-primary);">Material</p>
             <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{data.material.replace(/\(.*\)/, '').trim()}</p>
           </a>

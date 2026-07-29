@@ -1,0 +1,41 @@
+{
+  "// _README": [
+    "── 301 MATERIAL REDIRECT MAP ──",
+    "Source of truth: MATERIAL_SLUG_MAP in src/pages/products/product-entities/[...slug].astro",
+    "",
+    "Problem: Product detail pages (Related Knowledge section) previously linked to",
+    "  /products/materials/{content-slug}/  which is a NON-EXISTENT route.",
+    "  The correct path is: /materials/{page-slug}/",
+    "",
+    "This file lists all known broken URL patterns → correct destination.",
+    "",
+    "Usage:",
+    "  Option A — Astro config (SSG→Netlify/Vercel):",
+    "    Copy these entries into astro.config.mjs → redirects: {} or your host's _redirects file.",
+    "",
+    "  Option B — Nginx:",
+    "    generate rewrite rules:  rewrite ^/products/materials/(.+)/$ /materials/$1 permanent;",
+    "",
+    "  Option C — Netlify _redirects:",
+    "    /products/materials/*  /materials/:splat  301!",
+    "",
+    "Last updated: 2026-07-29 (after code fix removing broken links from product pages)",
+    "Status: Code fix applied. Redirects below are for backward-compatibility (SEO residual links)."
+  ],
+  "redirects": [
+    { "from": "/products/materials/grade-5-ti-6al-4v/",           "to": "/materials/grade-5/",           "description": "Grade 5 Ti-6Al-4V → Grade 5 page" },
+    { "from": "/products/materials/grade-23-ti-6al-4v-eli/",      "to": "/materials/grade-23/",          "description": "Grade 23 Ti-6Al-4V ELI → Grade 23 page" },
+    { "from": "/products/materials/grade-1-cp-ti/",               "to": "/materials/grade-1/",           "description": "Grade 1 CP Ti → Grade 1 page" },
+    { "from": "/products/materials/grade-2-cp-ti/",               "to": "/materials/grade-2/",           "description": "Grade 2 CP Ti → Grade 2 page" },
+    { "from": "/products/materials/grade-3-cp-ti/",               "to": "/materials/grade-3/",           "description": "Grade 3 CP Ti → Grade 3 page" },
+    { "from": "/products/materials/grade-4-cp-ti/",               "to": "/materials/grade-4/",           "description": "Grade 4 CP Ti → Grade 4 page" },
+    { "from": "/products/materials/beta-c-ti-3al-8v-6cr-4mo-4zr/","to": "/materials/grade-19/",          "description": "Beta-C Ti → Grade 19 page" },
+    { "from": "/products/materials/grade-9-ti-3al-25v/",          "to": "/materials/grade-9/",           "description": "Grade 9 Ti-3Al-2.5V → Grade 9 page" },
+    { "from": "/products/materials/ti-1023-ti-10v-2fe-3al/",      "to": "/materials/ti-5553/",           "description": "Ti-1023 → Ti-5553 page" },
+    { "from": "/products/materials/ti-15v-3cr-3sn-3al/",          "to": "/materials/grade-21/",          "description": "Ti-15V-3Cr-3Sn-3Al → Grade 21 page" },
+    { "from": "/products/materials/ti-5al-25sn-eli/",             "to": "/materials/grade-6/",           "description": "Ti-5Al-2.5Sn ELI → Grade 6 page" },
+    { "from": "/products/materials/ti-6242-ti-6al-2sn-4zr-2mo/",  "to": "/materials/grade-6242/",        "description": "Ti-6242 → Grade 6242 page" },
+
+    "// _wildcard_fallback": "If implementing catch-all, use: /products/materials/* → /materials/:splat  (Netlify) or rewrite regex"
+  ]
+}
