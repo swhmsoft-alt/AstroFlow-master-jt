@@ -39,6 +39,6 @@
     { "from": "/products/materials/ti-5al-25sn-eli/",             "to": "/materials/grade-6/",           "description": "Ti-5Al-2.5Sn ELI → Grade 6 page" },
     { "from": "/products/materials/ti-6242-ti-6al-2sn-4zr-2mo/",  "to": "/materials/grade-6242/",        "description": "Ti-6242 → Grade 6242 page" },
 
-    "// _wildcard_fallback": "If implementing catch-all, use: /products/materials/* → /materials/:splat  (Netlify) or rewrite regex"
+    "// _wildcard_fallback — If implementing catch-all, use: /products/materials/* → /materials/:splat  (Netlify) or rewrite regex"
   ]
 }
