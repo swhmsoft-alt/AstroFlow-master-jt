@@ -1,7 +1,7 @@
 ---
-title: Case Study —?Thin-Wall Titanium Aerospace Bracket Manufacturing
+title: Case Study — Thin-Wall Titanium Aerospace Bracket Manufacturing
 slug: case-study-thin-wall-titanium-aerospace-bracket
-description: A case study of manufacturing a thin-wall titanium aerospace bracket —?initial machining challenges with wall deflection and vibration, process development including toolpath optimization and fixturing redesign, and the final process parameters that achieved consistent dimensional compliance.
+description: A case study of manufacturing a thin-wall titanium aerospace bracket — initial machining challenges with wall deflection and vibration, process development including toolpath optimization and fixturing redesign, and the final process parameters that achieved consistent dimensional compliance.
 pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Case Studies
@@ -17,7 +17,7 @@ The component was an L-bracket for an aerospace structural application, machined
 
 ## Initial challenges
 
-The initial machining approach used conventional contour-parallel toolpaths with a 10 mm carbide end mill. The first components showed wall deflection of 0.12 to 0.18 mm at the top of the wall, and the flatness of the mounting surface was 0.08 to 0.12 mm —?both outside the print tolerance. This deflection behavior is consistent with the [thin-wall machining guidelines](/blog/thin-wall-titanium-machining-guidelines/), which identify aspect ratios above 12 to 1 as requiring specialized fixturing and toolpath strategies.
+The initial machining approach used conventional contour-parallel toolpaths with a 10 mm carbide end mill. The first components showed wall deflection of 0.12 to 0.18 mm at the top of the wall, and the flatness of the mounting surface was 0.08 to 0.12 mm — both outside the print tolerance. This deflection behavior is consistent with the [thin-wall machining guidelines](/blog/thin-wall-titanium-machining-guidelines/), which identify aspect ratios above 12 to 1 as requiring specialized fixturing and toolpath strategies.
 
 Vibration marks were visible on the wall surface at the mid-height region, corresponding to the point where the wall stiffness decreased below the threshold for stable cutting. Tool life was limited to two components per tool before the surface finish degraded beyond the acceptable limit.
 
@@ -53,6 +53,6 @@ The three-pass finishing sequence allowed the wall to stabilize between passes, 
 | Tool coating | Uncoated carbide | TiSiN coated |
 | Cutting speed | 55 m/min | 48 m/min |
 | Tool life | 2 components | 8 components |
-| Wall deflection | 0.12—?.18 mm | 0.03—?.05 mm |
+| Wall deflection | 0.12–0.18 mm | 0.03–0.05 mm |
 
 ---

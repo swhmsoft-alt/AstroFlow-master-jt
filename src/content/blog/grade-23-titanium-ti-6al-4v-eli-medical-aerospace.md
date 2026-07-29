@@ -1,7 +1,7 @@
 ---
 title: Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications
 slug: grade-23-titanium-ti-6al-4v-eli-medical-aerospace
-description: An engineering guide to Grade 23 titanium (Ti-6Al-4V ELI) —?the reduced interstitial version of Grade 5 with improved fracture toughness and ductility. Mechanical properties, biocompatibility considerations, machining characteristics, and applications in medical implants and aerospace components.
+description: An engineering guide to Grade 23 titanium (Ti-6Al-4V ELI) — the reduced interstitial version of Grade 5 with improved fracture toughness and ductility. Mechanical properties, biocompatibility considerations, machining characteristics, and applications in medical implants and aerospace components.
 pubDate: 2026-07-29
 author: BOZE CNC Ti
 category: Materials Engineering
@@ -11,7 +11,7 @@ coverImageAlt: Precision machined Grade 23 titanium medical implant component
 featured: false
 ---
 
-Grade 23 titanium, also designated Ti-6Al-4V ELI, is a version of the standard Ti-6Al-4V alloy with controlled lower limits on interstitial elements —?oxygen, carbon, and iron. The reduced interstitial content improves ductility and fracture toughness while maintaining essentially the same strength as the standard grade. These characteristics make Grade 23 the standard material for surgical implant applications and for aerospace components requiring enhanced damage tolerance. For a comparison with the standard Grade 5 composition, see the [Grade 5 titanium guide](/blog/ti-6al-4v-grade-5-titanium-guide/).
+Grade 23 titanium, also designated Ti-6Al-4V ELI, is a version of the standard Ti-6Al-4V alloy with controlled lower limits on interstitial elements — oxygen, carbon, and iron. The reduced interstitial content improves ductility and fracture toughness while maintaining essentially the same strength as the standard grade. These characteristics make Grade 23 the standard material for surgical implant applications and for aerospace components requiring enhanced damage tolerance. For a comparison with the standard Grade 5 composition, see the [Grade 5 titanium guide](/blog/ti-6al-4v-grade-5-titanium-guide/).
 
 ## Composition and property differences from Grade 5
 
@@ -21,7 +21,7 @@ The tensile strength of Grade 23 in the annealed condition is 860 to 960 MPa, co
 
 The lower interstitial content also improves the material's response to fatigue loading. Grade 23 has a higher fatigue crack growth resistance than Grade 5, which is important for components subject to cyclic loading where crack propagation rates determine the inspection interval and service life. The improvement in fatigue performance is most pronounced in the low-cycle, high-stress regime relevant to orthopedic implants.
 
-All other physical properties —?density 4.43 g/cm³, elastic modulus 105 to 115 GPa, thermal conductivity 7 W/m·K —?are identical to Grade 5. The thermal and mechanical processing responses are also similar, with the exception that Grade 23 requires slightly more careful control during heat treatment because its lower interstitial content makes it more sensitive to oxygen pickup during thermal processing.
+All other physical properties — density 4.43 g/cm³, elastic modulus 105 to 115 GPa, thermal conductivity 7 W/m·K — are identical to Grade 5. The thermal and mechanical processing responses are also similar, with the exception that Grade 23 requires slightly more careful control during heat treatment because its lower interstitial content makes it more sensitive to oxygen pickup during thermal processing.
 
 ## Biocompatibility and medical applications
 
@@ -31,7 +31,7 @@ The biocompatibility of Grade 23 is determined by its surface oxide layer, which
 
 Common orthopedic applications include hip stems, femoral heads, knee components, bone plates, screws, and spinal fixation hardware. The alloy is also used for dental implants, maxillofacial plates, and cardiovascular device components. For each application, the specific heat treatment and surface finish are optimized for the mechanical and biological requirements.
 
-The surface condition of Grade 23 implants affects both mechanical performance and biological response. Roughened surfaces promote bone integration for cementless implants. Polished surfaces are used for articulating components where wear resistance is required. The surface treatment —?which may include grit blasting, plasma spraying, or acid etching —?is specified as part of the implant design and must be applied without compromising the material's corrosion resistance or fatigue strength.
+The surface condition of Grade 23 implants affects both mechanical performance and biological response. Roughened surfaces promote bone integration for cementless implants. Polished surfaces are used for articulating components where wear resistance is required. The surface treatment — which may include grit blasting, plasma spraying, or acid etching — is specified as part of the implant design and must be applied without compromising the material's corrosion resistance or fatigue strength.
 
 ## Aerospace applications requiring enhanced toughness
 
@@ -47,7 +47,7 @@ Grade 23 machines similarly to Grade 5 in most respects. The cutting speed range
 
 The primary machining difference between Grade 23 and Grade 5 is in the surface integrity requirements for medical implant components. Implant surfaces must be free of embedded contaminants, including carbide particles from tool wear and iron particles from machining or handling. Medical device manufacturers typically specify dedicated tooling for implant production to avoid cross-contamination from other materials.
 
-The surface finish requirements for medical implant components are often specified as a maximum Ra value with additional requirements for the absence of surface defects visible at specified magnification. These requirements influence the finishing parameters selected —?typically lower feed rates and sharp tools to produce clean, defect-free surfaces. The article on [achieving Ra 0.4μm in titanium](/blog/titanium-surface-finish-achieving-ra-04um/) covers the finishing parameters applicable to Grade 23, and the [alloy selection guide](/blog/titanium-alloy-selection-guide-how-to-choose-grade/) provides context on when Grade 23 is the appropriate choice compared to other titanium grades.
+The surface finish requirements for medical implant components are often specified as a maximum Ra value with additional requirements for the absence of surface defects visible at specified magnification. These requirements influence the finishing parameters selected — typically lower feed rates and sharp tools to produce clean, defect-free surfaces. The article on [achieving Ra 0.4μm in titanium](/blog/titanium-surface-finish-achieving-ra-04um/) covers the finishing parameters applicable to Grade 23, and the [alloy selection guide](/blog/titanium-alloy-selection-guide-how-to-choose-grade/) provides context on when Grade 23 is the appropriate choice compared to other titanium grades.
 
 Cleanliness requirements for medical implant production extend to the machining environment itself. Implant machining is typically performed in a controlled area separate from general production, with dedicated coolant systems and chip handling to prevent contamination. The machined components are cleaned and passivated after machining to restore the protective oxide layer before packaging and sterilization.
 
@@ -58,16 +58,16 @@ Cleanliness requirements for medical implant production extend to the machining 
 | Property | Grade 5 (Ti-6Al-4V) | Grade 23 (Ti-6Al-4V ELI) | Significance |
 |----------|---------------------|--------------------------|-------------|
 | Max oxygen content | 0.20% | 0.13% | Controls ductility and toughness |
-| Tensile strength, annealed | 900—?000 MPa | 860—?60 MPa | Slightly lower for ELI |
-| Elongation | 10—?5% | 12—?8% | Higher ductility for ELI |
-| Fracture toughness | 50—?0 MPa√m | 70—?00 MPa√m | 20—?0% higher for ELI |
+| Tensile strength, annealed | 900–000 MPa | 860–60 MPa | Slightly lower for ELI |
+| Elongation | 10–5% | 12–8% | Higher ductility for ELI |
+| Fracture toughness | 50–0 MPa√m | 70–00 MPa√m | 20–0% higher for ELI |
 | Fatigue crack growth rate | Baseline | Reduced | Longer inspection intervals |
-| Density / Modulus | 4.43 / 105—?15 | 4.43 / 105—?15 | Identical |
+| Density / Modulus | 4.43 / 105–15 | 4.43 / 105–15 | Identical |
 | Machinability | Baseline | Similar to slightly better | Marginal improvement |
 
 ---
 
-<!-- VISUAL CONTENT BRIEF (for content planning only —?NOT rendered on page)
-Fig 1 —?Grade 23 vs Grade 5 fracture toughness comparison: A bar chart showing K₁c values for Grade 5 and Grade 23 in the annealed and STA conditions, with typical ranges indicated. Supports queries about why ELI grade is specified for fracture-critical and medical implant applications.
-Fig 2 —?Medical implant applications of Grade 23: Schematic showing a hip stem, bone plate, spinal screw, and dental implant, each labeled with the specific Grade 23 property that is critical for that application (fracture toughness for hip stem, fatigue strength for bone plate, osseointegration surface for dental implant). Supports queries about Grade 23 applications in medical devices.
+<!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
+Fig 1 — Grade 23 vs Grade 5 fracture toughness comparison: A bar chart showing K₁c values for Grade 5 and Grade 23 in the annealed and STA conditions, with typical ranges indicated. Supports queries about why ELI grade is specified for fracture-critical and medical implant applications.
+Fig 2 — Medical implant applications of Grade 23: Schematic showing a hip stem, bone plate, spinal screw, and dental implant, each labeled with the specific Grade 23 property that is critical for that application (fracture toughness for hip stem, fatigue strength for bone plate, osseointegration surface for dental implant). Supports queries about Grade 23 applications in medical devices.
 -->
