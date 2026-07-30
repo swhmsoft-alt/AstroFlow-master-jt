@@ -10,6 +10,7 @@ import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } 
 import { DEFAULT_LANG } from '../i18n/ui';
 import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType } from '../lib/schema';
 import BrandAbout from '@components/home/BrandAbout.astro';
+import CookieConsent from '@components/CookieConsent.astro';
 
 // Build path to label map from NAVIGATION for better breadcrumb names
 const NAV_LABEL_MAP: Record<string, string> = (() => {
@@ -98,6 +99,8 @@ const fallbackFont = 'monospace';
 const fontConfig = getFontConfig(fontStyle);
 const fontUrl = getGoogleFontsUrl(fontConfig);
 const fontFamily = getCssFamily(fontConfig, fallbackFont);
+const gaId = import.meta.env.PUBLIC_GA_ID || '';
+const isProd = import.meta.env.PROD;
 const pageType = detectPageType(canonicalPath, explicitPageType);
 const homeLabel = t('blog.breadcrumb.home');
 const breadcrumbRaw = buildBreadcrumbItems(canonicalPath, SEO_CONFIG, siteUrl, currentLang, homeLabel);
@@ -159,6 +162,31 @@ const ldJson = JSON.stringify(pageGraph);
 {/* hreflang alternates — from prop if provided (blog overrides), otherwise auto-generated */}
 <link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
 <script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
+
+{/* ═══ Google Ads — Consent Mode v2 (GDPR, ePanel-friendly) ═══ */}
+{isProd && gaId && (
+  <>
+    <!-- Consent default: always denied until user chooses -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
+    <!-- Google Ads tag (gtag.js) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{gaId}');
+    </script>
+  </>
+)}
 </head>
 <body class="flex min-h-screen flex-col antialiased bg-theme-bg text-theme-text transition-colors duration-300" style={`font-family:${fontFamily};--font-primary:${fontFamily};--font-body:${fontFamily};--font-heading:${fontFamily};`}>
 <Header currentPathname={currentPathname} />
@@ -169,5 +197,7 @@ const ldJson = JSON.stringify(pageGraph);
 
 </main>
 <Footer />
+
+<CookieConsent />
 </body>
 </html>

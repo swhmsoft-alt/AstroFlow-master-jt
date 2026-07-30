@@ -1,0 +1,115 @@
+---
+/**
+ * CookieConsent.astro
+ *
+ * GDPR-compliant cookie consent banner for Google Ads (AW-18359358390).
+ *
+ * Behaviour:
+ *  - Always loaded; checks localStorage for existing consent.
+ *  - If no consent recorded → shows a bottom banner with Accept / Reject.
+ *  - On Accept:  saves 'granted' to localStorage, calls gtag('consent','update',{granted}).
+ *  - On Reject:  saves 'denied'  to localStorage, calls gtag('consent','update',{denied}).
+ *  - If consent already exists → does nothing (banner hidden).
+ *
+ * Dependencies (set in BaseLayout.astro <head>):
+ *  - window.dataLayer / gtag() placeholder
+ *  - gtag('consent', 'default', { ad_storage: 'denied', ... })
+ *  - <script async src="https://www.googletagmanager.com/gtag/js?id=...">
+ *  - gtag('js', new Date()); gtag('config', 'AW-...')
+ */
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { DEFAULT_LANG } from '../i18n/ui';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const bannerTitle    = t('legal.cookie.bannerTitle');
+const bannerDesc     = t('legal.cookie.bannerDesc');
+const acceptLabel    = t('legal.cookie.acceptAll');
+const rejectLabel    = t('legal.cookie.rejectAll');
+const cookiePolicyLabel = t('legal.cookie.title');
+const cookiePolicyUrl   = currentLang === DEFAULT_LANG ? '/cookie-policy/' : `/${currentLang}/cookie-policy/`;
+---
+
+<div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 z-[9999] hidden" role="dialog" aria-label={bannerTitle}>
+  <div class="container mx-auto px-4 py-4 sm:py-6">
+    <div
+      class="rounded-xl p-4 sm:p-6 shadow-2xl border backdrop-blur-sm"
+      style="background-color: color-mix(in srgb, var(--theme-bg) 97%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);"
+    >
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-semibold mb-1" style="color: var(--theme-text);">{bannerTitle}</p>
+          <p class="text-xs leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">
+            {bannerDesc}
+          </p>
+        </div>
+        <div class="flex items-center gap-3 flex-shrink-0 w-full sm:w-auto">
+          <button
+            id="consent-reject"
+            class="flex-1 sm:flex-none px-4 py-2.5 text-sm rounded-lg transition-all cursor-pointer whitespace-nowrap"
+            style="background-color: transparent; color: var(--theme-text); border: 1px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);"
+          >
+            {rejectLabel}
+          </button>
+          <button
+            id="consent-accept"
+            class="flex-1 sm:flex-none px-4 py-2.5 text-sm rounded-lg transition-all cursor-pointer font-semibold whitespace-nowrap"
+            style="background-color: var(--theme-primary); color: var(--theme-text);"
+          >
+            {acceptLabel}
+          </button>
+        </div>
+      </div>
+      <div class="mt-3 text-xs" style="color: var(--theme-text); opacity: 0.45;">
+        <a href={cookiePolicyUrl} class="underline hover:opacity-100 transition-opacity">{cookiePolicyLabel}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var BANNER_ID = 'cookie-consent-banner';
+    var LS_KEY = 'ad_consent';
+
+    // ── 1. Check if user already made a choice ──────────────
+    var existingConsent = localStorage.getItem(LS_KEY);
+    if (existingConsent) {
+      // If previously granted, tell Google Consent Mode
+      if (existingConsent === 'granted' && typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
+      return; // hide banner
+    }
+
+    // ── 2. No consent yet — show the banner ─────────────────
+    var banner = document.getElementById(BANNER_ID);
+    if (!banner) return;
+    banner.classList.remove('hidden');
+
+    // ── 3. Helper: hide + save choice ───────────────────────
+    function saveAndHide(consentValue) {
+      localStorage.setItem(LS_KEY, consentValue);
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': consentValue,
+          'ad_user_data': consentValue,
+          'ad_personalization': consentValue
+        });
+      }
+      banner.classList.add('hidden');
+    }
+
+    // ── 4. Wire up buttons ──────────────────────────────────
+    var acceptBtn = document.getElementById('consent-accept');
+    var rejectBtn = document.getElementById('consent-reject');
+
+    if (acceptBtn) acceptBtn.addEventListener('click', function() { saveAndHide('granted'); });
+    if (rejectBtn) rejectBtn.addEventListener('click', function() { saveAndHide('denied'); });
+  })();
+</script>
