@@ -159,11 +159,11 @@ const ldJson = JSON.stringify(pageGraph);
 {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 <script type="application/ld+json" set:html={ldJson} />
 {alternateLinks.map((link) => (<link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />))}
-{/* hreflang alternates — from prop if provided (blog overrides), otherwise auto-generated */}
+{/* hreflang alternates �?from prop if provided (blog overrides), otherwise auto-generated */}
 <link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
 <script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
 
-{/* ═══ Google Ads — Consent Mode v2 (GDPR, ePanel-friendly) ═══ */}
+{/* ══�?Google Ads �?Consent Mode v2 (GDPR, ePanel-friendly) ══�?*/}
 {isProd && gaId && (
   <>
     <!-- Consent default: always denied until user chooses -->
@@ -184,6 +184,17 @@ const ldJson = JSON.stringify(pageGraph);
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', '{gaId}');
+    </script>
+    <!-- Conversion tracking: call gtagReportConversion() on form submit -->
+    <script is:inline>
+      window.gtagReportConversion = function() {
+        if (localStorage.getItem('ad_consent') !== 'granted') return;
+        gtag('event', 'conversion', {
+          'send_to': '{gaId}/u_IbCPfX6tgcELantrJE',
+          'value': 1.0,
+          'currency': 'TWD'
+        });
+      };
     </script>
   </>
 )}
