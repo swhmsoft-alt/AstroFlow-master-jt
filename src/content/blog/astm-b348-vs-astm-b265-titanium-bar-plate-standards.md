@@ -1,17 +1,17 @@
 ---
-title: ASTM B348 vs ASTM B265 â€” Understanding Titanium Bar and Plate Material Standards
+title: ASTM B348 vs ASTM B265 â€?Understanding Titanium Bar and Plate Material Standards
 slug: astm-b348-vs-astm-b265-titanium-bar-plate-standards
-description: A technical comparison of ASTM B348 (titanium bar and billet) and ASTM B265 (titanium sheet, plate, and strip) material standards â€” product form coverage, mechanical property requirements by grade, testing and certification requirements, and practical implications for material selection.
+description: A technical comparison of ASTM B348 (titanium bar and billet) and ASTM B265 (titanium sheet, plate, and strip) material standards â€?product form coverage, mechanical property requirements by grade, testing and certification requirements, and practical implications for material selection.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [ASTM B348, ASTM B265, Titanium Standards, Material Specifications, Aerospace Materials]
-coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg
+coverImage: /uploads/blog/blog-astm-b348-vs-astm-b265-titanium-bar-plate-standards-cover.jpg
 coverImageAlt: Titanium bar and plate stock materials
 featured: false
 ---
 
-ASTM B348 and ASTM B265 are the two most commonly referenced material standards for titanium used in CNC machining. ASTM B348 covers titanium and titanium alloy bar and billet â€” round, square, and hexagonal cross-sections. ASTM B265 covers titanium and titanium alloy sheet, plate, and strip â€” flat-rolled products. Understanding the differences between these standards is important for material selection and procurement specification.
+ASTM B348 and ASTM B265 are the two most commonly referenced material standards for titanium used in CNC machining. ASTM B348 covers titanium and titanium alloy bar and billet â€?round, square, and hexagonal cross-sections. ASTM B265 covers titanium and titanium alloy sheet, plate, and strip â€?flat-rolled products. Understanding the differences between these standards is important for material selection and procurement specification.
 
 ## Product form coverage
 
@@ -29,17 +29,17 @@ The difference in property requirements between bar and plate is primarily in th
 
 ## Testing and certification
 
-Both standards require chemical analysis and tensile testing for each production lot. The testing frequency and acceptance criteria are defined in the standard. Additional testing â€” ultrasonic inspection, fracture toughness testing, or microstructure evaluation â€” may be specified by the purchaser as supplementary requirements.
+Both standards require chemical analysis and tensile testing for each production lot. The testing frequency and acceptance criteria are defined in the standard. Additional testing â€?ultrasonic inspection, fracture toughness testing, or microstructure evaluation â€?may be specified by the purchaser as supplementary requirements.
 
-The certification requirements for bar and plate are the same â€” the mill test report must document the chemical composition, tensile properties, and any supplementary test results. The material must be identified by heat number, and the certification must include the standard designation and grade.
+The certification requirements for bar and plate are the same â€?the mill test report must document the chemical composition, tensile properties, and any supplementary test results. The material must be identified by heat number, and the certification must include the standard designation and grade.
 
 ## Practical selection considerations
 
-For components machined from round stock â€” shafts, pins, fittings, and fasteners â€” ASTM B348 bar is the appropriate material specification. The bar diameter is selected to provide sufficient stock for the component's largest diameter plus machining allowance.
+For components machined from round stock â€?shafts, pins, fittings, and fasteners â€?ASTM B348 bar is the appropriate material specification. The bar diameter is selected to provide sufficient stock for the component's largest diameter plus machining allowance.
 
-For components machined from flat stock â€” brackets, flanges, housings, and structural components â€” ASTM B265 plate is the appropriate specification. The plate thickness is selected to provide the required component thickness plus machining allowance from both sides.
+For components machined from flat stock â€?brackets, flanges, housings, and structural components â€?ASTM B265 plate is the appropriate specification. The plate thickness is selected to provide the required component thickness plus machining allowance from both sides.
 
-For components that require material properties in multiple orientations â€” complex machined components with features in different directions â€” the material product form selection should consider the grain orientation effects. Plate typically provides more uniform properties across the component than bar of equivalent cross-section.
+For components that require material properties in multiple orientations â€?complex machined components with features in different directions â€?the material product form selection should consider the grain orientation effects. Plate typically provides more uniform properties across the component than bar of equivalent cross-section.
 
 ---
 
@@ -47,7 +47,7 @@ For components that require material properties in multiple orientations â€” com
 
 | Aspect | ASTM B348 (bar and billet) | ASTM B265 (sheet and plate) |
 |--------|---------------------------|---------------------------|
-| Product forms | Round, square, hexagonal bar; billet | Sheet (<4.75 mm), plate (â€“0.75 mm), strip |
+| Product forms | Round, square, hexagonal bar; billet | Sheet (<4.75 mm), plate (â€?.75 mm), strip |
 | Typical diameter/thickness | 6 mm to 250+ mm | 0.4 mm to 100+ mm |
 | Grain orientation | Longitudinal along bar axis | Rolling plane, in-plane properties |
 | Typical components | Shafts, pins, fittings, turned parts | Brackets, flanges, housings, structural parts |

@@ -6,7 +6,7 @@ pubDate: 2026-07-02
 author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: [Titanium CNC Machining China]
-coverImage: /uploads/small-cnc-bay-overhead.jpg
+coverImage: /uploads/blog/blog-custom-titanium-machining-contract-manufacturer-china-rfq-preparation-cover.jpg
 coverImageAlt: Titanium CNC Machining Services
 featured: false
 ---

@@ -8,7 +8,7 @@ pubDate: 2026-05-28
 author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: []
-coverImage: /uploads/titanium-cnc-home.jpg
+coverImage: /uploads/blog/blog-welcome-to-boze-cnc-blog-cover.jpg
 coverImageAlt: Precision CNC machining of titanium components
 featured: false
 ---
@@ -37,7 +37,7 @@ Learn about our latest investments in equipment, certifications, facility expans
 
 ## Our Commitment to Quality
 
-At Boze Titanium Manufacturing Center, quality is not just a metric â€” it's a mindset. We are AS9100D and ISO 9001 certified, ensuring that every component we produce meets the highest standards of precision and reliability.
+At Boze Titanium Manufacturing Center, quality is not just a metric â€?it's a mindset. We are AS9100D and ISO 9001 certified, ensuring that every component we produce meets the highest standards of precision and reliability.
 
 > "Precision is not just about measurements. It's about delivering consistency, reliability, and excellence in every single part we manufacture."
 
