@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "optimize:images": "node scripts/optimize-images.js",
     "postbuild:images": "node scripts/postbuild-images.mjs",
-    "prebuild": "node scripts/check-undefined-slugs.mjs --ci",
+    "prebuild": "node scripts/check-undefined-slugs.mjs --ci && node scripts/check-encoding.mjs",
     "build": "echo [BUILD] Step 1/5: optimize:images && npm run optimize:images && echo [BUILD] Step 2/5: astro build && set NODE_OPTIONS=--max-old-space-size=4096 && npx astro build && echo [BUILD] Step 3/5: split-sitemap && node scripts/split-sitemap.mjs && echo [BUILD] Step 4/5: postbuild.js && node scripts/postbuild.js && echo [BUILD] Step 5/5: postbuild:images && npm run postbuild:images",
     "preview": "astro preview",
     "generate:product-images": "node scripts/generate-product-images.mjs --provider placeholder",

@@ -1,7 +1,7 @@
 ---
-title: Titanium Alloy Selection Guide â€?How to Choose the Right Grade for Your Application
+title: Titanium Alloy Selection Guide â€” How to Choose the Right Grade for Your Application
 slug: titanium-alloy-selection-guide-how-to-choose-grade
-description: An engineering decision guide for titanium alloy selection â€?a systematic framework for choosing between CP grades, alpha-beta alloys, and beta alloys based on strength requirements, corrosion environment, operating temperature, manufacturing process constraints, and cost considerations.
+description: An engineering decision guide for titanium alloy selection â€” a systematic framework for choosing between CP grades, alpha-beta alloys, and beta alloys based on strength requirements, corrosion environment, operating temperature, manufacturing process constraints, and cost considerations.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Materials Engineering
@@ -17,15 +17,15 @@ Selecting a titanium alloy for a component involves more than matching a strengt
 
 The first filter in titanium alloy selection is the minimum tensile strength the component must meet. Commercially pure grades cover the range from 240 to 550 MPa. Alpha-beta alloys cover 900 to 1200 MPa depending on heat treatment. Beta alloys extend to 1400 MPa.
 
-If the required strength is below 550 MPa, CP grades are viable. Grade 2 at approximately 340 MPa is adequate for many industrial and marine applications. If the strength requirement is between 550 and 900 MPa, the options are limited â€?this range falls between CP grades and standard alpha-beta alloys. Some near-alpha alloys and specialized CP grades can reach the lower end of this range, but in practice many components in this band end up using Ti-6Al-4V in the annealed condition because it provides margin above the requirement at minimal additional material cost.
+If the required strength is below 550 MPa, CP grades are viable. Grade 2 at approximately 340 MPa is adequate for many industrial and marine applications. If the strength requirement is between 550 and 900 MPa, the options are limited â€” this range falls between CP grades and standard alpha-beta alloys. Some near-alpha alloys and specialized CP grades can reach the lower end of this range, but in practice many components in this band end up using Ti-6Al-4V in the annealed condition because it provides margin above the requirement at minimal additional material cost.
 
-Above 900 MPa, alpha-beta alloys in the solution-treated and aged condition are the standard choice. Ti-6Al-4V STA achieves 1100 to 1200 MPa. Above 1200 MPa, beta alloys such as Ti-1023 are required. The cost increase from alpha-beta to beta alloys is substantial â€?typically 1.5 to 3 times the material cost per kilogram â€?so the strength requirement above 1200 MPa should be verified against the actual design loads before specifying a beta alloy.
+Above 900 MPa, alpha-beta alloys in the solution-treated and aged condition are the standard choice. Ti-6Al-4V STA achieves 1100 to 1200 MPa. Above 1200 MPa, beta alloys such as Ti-1023 are required. The cost increase from alpha-beta to beta alloys is substantial â€” typically 1.5 to 3 times the material cost per kilogram â€” so the strength requirement above 1200 MPa should be verified against the actual design loads before specifying a beta alloy.
 
 ## Evaluate the corrosion environment
 
 Titanium's corrosion resistance is excellent across all grades in most environments, but there are distinctions that matter for specific applications. CP titanium grades have the best general corrosion resistance because they contain no alloying elements that could create galvanic cells or preferential attack sites. In seawater, CP Grade 2 performs identically to Ti-6Al-4V in most conditions.
 
-In reducing acid environments â€?hydrochloric acid, sulfuric acid at moderate concentrations â€?CP titanium may experience attack. Grade 7, which contains 0.15 percent palladium, was developed specifically for these conditions. The palladium shifts the corrosion potential into the passive range, allowing Grade 7 to perform where CP grades and Ti-6Al-4V would corrode. Grade 7 is significantly more expensive than CP Grade 2 and is used only where the specific chemical environment requires it.
+In reducing acid environments â€” hydrochloric acid, sulfuric acid at moderate concentrations â€” CP titanium may experience attack. Grade 7, which contains 0.15 percent palladium, was developed specifically for these conditions. The palladium shifts the corrosion potential into the passive range, allowing Grade 7 to perform where CP grades and Ti-6Al-4V would corrode. Grade 7 is significantly more expensive than CP Grade 2 and is used only where the specific chemical environment requires it.
 
 For components in contact with human tissue or bodily fluids, CP grades and Ti-6Al-4V ELI (Grade 23) have extensive clinical history. The reduced interstitial content of Grade 23 provides better fracture toughness than standard Ti-6Al-4V, which is relevant for fatigue-loaded implants. CP grades are used for non-load-bearing implants and for components where osseointegration is the primary requirement.
 
@@ -47,13 +47,13 @@ For components that will be welded, CP grades and alpha alloys have the best wel
 
 For hot forming operations such as forging, alpha-beta alloys are preferred because they have a wider process window for hot working. Beta alloys require tighter temperature control during forging because their higher beta stabilizer content makes them more sensitive to process temperature variations. CP grades forge easily but cannot be strengthened by heat treatment, so the mechanical properties are determined by the forging process itself.
 
-For machining-intensive components, Ti-6Al-4V offers the best balance of material removal rate and tool life. CP grades produce stringy chips that are difficult to manage in production. Beta alloys produce higher cutting forces and wear tools faster, as discussed in the article on [titanium tool wear](/blog/titanium-tool-wear-causes-and-solutions/). If the component design requires extensive machining â€?thin walls, deep pockets, tight tolerances â€?the selection of Ti-6Al-4V over a beta alloy of equivalent strength should be considered, even if the beta alloy has marginally better mechanical properties.
+For machining-intensive components, Ti-6Al-4V offers the best balance of material removal rate and tool life. CP grades produce stringy chips that are difficult to manage in production. Beta alloys produce higher cutting forces and wear tools faster, as discussed in the article on [titanium tool wear](/blog/titanium-tool-wear-causes-and-solutions/). If the component design requires extensive machining â€” thin walls, deep pockets, tight tolerances â€” the selection of Ti-6Al-4V over a beta alloy of equivalent strength should be considered, even if the beta alloy has marginally better mechanical properties.
 
-For heat-treated components, the section thickness affects whether the alloy can be through-hardened. Alpha-beta alloys have limited hardenability â€?sections thicker than approximately 25 mm may not achieve full strength in the center after solution treatment and aging. Beta alloys have better hardenability and can be heat treated to high strength in thicker sections.
+For heat-treated components, the section thickness affects whether the alloy can be through-hardened. Alpha-beta alloys have limited hardenability â€” sections thicker than approximately 25 mm may not achieve full strength in the center after solution treatment and aging. Beta alloys have better hardenability and can be heat treated to high strength in thicker sections.
 
 ## Account for cost and availability
 
-Material cost varies significantly across titanium grades. CP Grade 2 is the least expensive titanium material, typically 20 to 40 percent less than Ti-6Al-4V on a per-kilogram basis. Ti-6Al-4V is the most widely available titanium alloy and is stocked by most titanium distributors in a wide range of product forms â€?plate, bar, sheet, forging billet.
+Material cost varies significantly across titanium grades. CP Grade 2 is the least expensive titanium material, typically 20 to 40 percent less than Ti-6Al-4V on a per-kilogram basis. Ti-6Al-4V is the most widely available titanium alloy and is stocked by most titanium distributors in a wide range of product forms â€” plate, bar, sheet, forging billet.
 
 Beta alloys are typically 50 to 100 percent more expensive than Ti-6Al-4V per kilogram. Their availability is more limited, and lead times for non-standard sizes can be longer. For components that require beta alloy properties, the design should use standard product forms and sizes where possible to avoid extended material lead times.
 
@@ -80,8 +80,8 @@ Fifth, verify cost and availability. If multiple alloys meet the technical requi
 | Requirement | First choice | Alternative | When to use alternative |
 |-------------|-------------|-------------|------------------------|
 | Strength below 550 MPa | CP Grade 2 | CP Grade 1 or 4 | Higher ductility (Grade 1) or higher strength (Grade 4) |
-| Strength 550â€?0 MPa | Ti-6Al-4V annealed | Near-alpha alloys | Elevated temperature service |
-| Strength 900â€?00 MPa | Ti-6Al-4V STA | Beta alloys | Strength above 1200 MPa required |
+| Strength 550â€“00 MPa | Ti-6Al-4V annealed | Near-alpha alloys | Elevated temperature service |
+| Strength 900â€“200 MPa | Ti-6Al-4V STA | Beta alloys | Strength above 1200 MPa required |
 | Strength above 1200 MPa | Ti-1023 | Ti-15-3 | Sheet or strip product form |
 | Seawater corrosion | CP Grade 2 | Ti-6Al-4V | Higher strength needed |
 | Reducing acid environment | Grade 7 | CP Grade 2 with coating | Cost-sensitive applications |
@@ -96,16 +96,16 @@ Fifth, verify cost and availability. If multiple alloys meet the technical requi
 
 | Grade | Relative material cost | Relative machining time | Typical total cost impact |
 |-------|----------------------|------------------------|--------------------------|
-| CP Grade 2 | 0.6â€?.8x Ti-6Al-4V | 1.1â€?.3x | 0.8â€?.0x |
+| CP Grade 2 | 0.6â€“0.8x Ti-6Al-4V | 1.1â€“0.3x | 0.8â€“0.0x |
 | Ti-6Al-4V annealed | 1.0x (baseline) | 1.0x (baseline) | 1.0x (baseline) |
-| Ti-6Al-4V STA | 1.0â€?.1x | 1.1â€?.2x | 1.05â€?.15x |
-| Ti-6242 | 1.2â€?.4x | 1.2â€?.4x | 1.2â€?.4x |
-| Ti-1023 | 1.8â€?.5x | 1.3â€?.5x | 1.5â€?.0x |
+| Ti-6Al-4V STA | 1.0â€“0.1x | 1.1â€“0.2x | 1.05â€“0.15x |
+| Ti-6242 | 1.2â€“0.4x | 1.2â€“0.4x | 1.2â€“0.4x |
+| Ti-1023 | 1.8â€“0.5x | 1.3â€“0.5x | 1.5â€“0.0x |
 
 ---
 
-<!-- VISUAL CONTENT BRIEF (for content planning only â€?NOT rendered on page)
-Fig 1 â€?Titanium alloy selection flow chart: A decision tree starting with "required tensile strength" at the top, branching through corrosion environment, temperature, manufacturing process, and cost. Each branch ends with a recommended grade or grade category. Supports queries about how to select a titanium alloy for a specific application.
-Fig 2 â€?Strength vs temperature capability: A graph with tensile strength on the y-axis and service temperature on the x-axis, showing the operating envelopes for CP grades, Ti-6Al-4V, near-alpha alloys, and beta alloys. Supports queries about titanium alloy performance at elevated temperatures.
-Fig 3 â€?Total cost comparison by grade: A stacked bar chart showing material cost, machining cost, and other processing costs for CP Grade 2, Ti-6Al-4V, Ti-6242, and Ti-1023. Machining cost dominates for complex components. Supports queries about the economic factors in titanium grade selection.
+<!-- VISUAL CONTENT BRIEF (for content planning only â€” NOT rendered on page)
+Fig 1 â€” Titanium alloy selection flow chart: A decision tree starting with "required tensile strength" at the top, branching through corrosion environment, temperature, manufacturing process, and cost. Each branch ends with a recommended grade or grade category. Supports queries about how to select a titanium alloy for a specific application.
+Fig 2 â€” Strength vs temperature capability: A graph with tensile strength on the y-axis and service temperature on the x-axis, showing the operating envelopes for CP grades, Ti-6Al-4V, near-alpha alloys, and beta alloys. Supports queries about titanium alloy performance at elevated temperatures.
+Fig 3 â€” Total cost comparison by grade: A stacked bar chart showing material cost, machining cost, and other processing costs for CP Grade 2, Ti-6Al-4V, Ti-6242, and Ti-1023. Machining cost dominates for complex components. Supports queries about the economic factors in titanium grade selection.
 -->

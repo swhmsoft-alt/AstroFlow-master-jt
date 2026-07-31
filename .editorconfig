@@ -1,0 +1,14 @@
+# EditorConfig — lock the whole repo to UTF-8 to prevent GBK/cp936 re-encoding
+# corruption of blog markdown (em dashes "—" etc.) on Chinese Windows.
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = false
+
+[*.md]
+charset = utf-8
+
+[*.json]
+charset = utf-8

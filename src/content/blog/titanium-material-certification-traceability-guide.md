@@ -1,7 +1,7 @@
 ---
 title: Titanium Material Certification and Traceability Guide for Aerospace Components
 slug: titanium-material-certification-traceability-guide
-description: An engineering guide to titanium material certification and traceability for aerospace manufacturing â€?mill test report requirements, heat number traceability systems, EN 10204 certification types, and practical considerations for maintaining traceability through machining and inspection operations.
+description: An engineering guide to titanium material certification and traceability for aerospace manufacturing â€” mill test report requirements, heat number traceability systems, EN 10204 certification types, and practical considerations for maintaining traceability through machining and inspection operations.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Quality and Standards
@@ -15,11 +15,11 @@ Material certification and traceability are fundamental requirements for aerospa
 
 ## Mill test report requirements
 
-The mill test report, also called a material test report or material certificate, documents the chemical composition and mechanical properties of the titanium material as produced by the mill. For aerospace applications, the MTR must include the chemical analysis results for each element specified in the material standard, the tensile properties â€?tensile strength, yield strength, and elongation â€?and any additional test results required by the purchase specification.
+The mill test report, also called a material test report or material certificate, documents the chemical composition and mechanical properties of the titanium material as produced by the mill. For aerospace applications, the MTR must include the chemical analysis results for each element specified in the material standard, the tensile properties â€” tensile strength, yield strength, and elongation â€” and any additional test results required by the purchase specification.
 
 The MTR must identify the material by heat number or lot number, which is the unique identifier that allows the material to be traced through the manufacturing process. The heat number is marked on the material itself and on the certification document, and it is the key link in the traceability chain.
 
-For Ti-6Al-4V aerospace components, the MTR typically includes the results of chemical analysis by optical emission spectroscopy or combustion analysis, tensile testing per ASTM E8 or E21, and microstructural evaluation. Additional testing â€?ultrasonic inspection, fracture toughness testing, or stress corrosion cracking testing â€?may be required depending on the material product form and the intended application. The quality system requirements for managing these certifications are covered in the [AS9100D overview](/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/).
+For Ti-6Al-4V aerospace components, the MTR typically includes the results of chemical analysis by optical emission spectroscopy or combustion analysis, tensile testing per ASTM E8 or E21, and microstructural evaluation. Additional testing â€” ultrasonic inspection, fracture toughness testing, or stress corrosion cracking testing â€” may be required depending on the material product form and the intended application. The quality system requirements for managing these certifications are covered in the [AS9100D overview](/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/).
 
 ## EN 10204 certification types
 
@@ -29,15 +29,15 @@ For aerospace titanium components, Type 3.1 certification is the minimum require
 
 ## Traceability system requirements
 
-The traceability system must link each finished component to the specific heat of material from which it was machined. For components machined from a single piece of stock, the traceability link is direct â€?the component is traced to the heat number of the stock. For components machined from stock that includes material from multiple heats, the traceability system must identify which heat was used for each component.
+The traceability system must link each finished component to the specific heat of material from which it was machined. For components machined from a single piece of stock, the traceability link is direct â€” the component is traced to the heat number of the stock. For components machined from stock that includes material from multiple heats, the traceability system must identify which heat was used for each component.
 
-The traceability system must account for material identification throughout the production process. The heat number must be transferred from the raw material to the work-in-process as material is cut and moved through the shop. For small components where marking individual pieces is impractical, the traceability is maintained by production lot â€?all components produced from a single heat of material within a defined production period are traced together.
+The traceability system must account for material identification throughout the production process. The heat number must be transferred from the raw material to the work-in-process as material is cut and moved through the shop. For small components where marking individual pieces is impractical, the traceability is maintained by production lot â€” all components produced from a single heat of material within a defined production period are traced together.
 
 Traceability records must be retained for the period specified by the customer or by applicable regulations. For aerospace components, the retention period is typically 10 years after the last production run, or the life of the program plus a specified extension period.
 
 ## Practical implementation
 
-Maintaining material traceability in a production machining environment requires physical systems for material identification and procedural systems for documentation. The physical system includes marking methods â€?stamping, etching, or tagging â€?that survive machining operations and material handling. The procedural system includes work instructions that require the operator to verify and document the material identification at each production step.
+Maintaining material traceability in a production machining environment requires physical systems for material identification and procedural systems for documentation. The physical system includes marking methods â€” stamping, etching, or tagging â€” that survive machining operations and material handling. The procedural system includes work instructions that require the operator to verify and document the material identification at each production step.
 
 The most common traceability failures in titanium production occur at material cutting and handling steps. When a large plate is cut into smaller pieces for multiple components, the heat number must be transferred to each piece before the original marking is cut away. When material is moved between workstations, the identification must travel with the material. These steps are where traceability is most often lost.
 

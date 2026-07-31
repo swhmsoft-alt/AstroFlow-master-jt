@@ -1,7 +1,7 @@
 ---
-title: DFM Guide for Titanium Parts â€?Design for Manufacturability in CNC Machining
+title: DFM Guide for Titanium Parts â€” Design for Manufacturability in CNC Machining
 slug: dfm-guide-titanium-parts-design-for-manufacturability
-description: An engineering design-for-manufacturability guide for titanium CNC machined components â€?design rules that reduce machining cost and improve quality, feature geometry guidelines for titanium-specific constraints, and practical examples of design changes that simplify production.
+description: An engineering design-for-manufacturability guide for titanium CNC machined components â€” design rules that reduce machining cost and improve quality, feature geometry guidelines for titanium-specific constraints, and practical examples of design changes that simplify production.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Design Engineering
@@ -11,11 +11,11 @@ coverImageAlt: Engineering DFM review of a titanium component design
 featured: false
 ---
 
-Design for manufacturability for titanium components involves rules that differ from DFM guidelines for steel or aluminum. Titanium's machining characteristics â€?high cutting forces, thermal concentration, work hardening, and elastic springback â€?create constraints on feature geometry that must be considered during the design phase to avoid components that are unnecessarily expensive or difficult to produce. These constraints are detailed in the [titanium CNC design guide](/blog/titanium-cnc-design-guide-machinability-rules/), which covers wall thickness limits, corner radii, and pocket depth rules.
+Design for manufacturability for titanium components involves rules that differ from DFM guidelines for steel or aluminum. Titanium's machining characteristics â€” high cutting forces, thermal concentration, work hardening, and elastic springback â€” create constraints on feature geometry that must be considered during the design phase to avoid components that are unnecessarily expensive or difficult to produce. These constraints are detailed in the [titanium CNC design guide](/blog/titanium-cnc-design-guide-machinability-rules/), which covers wall thickness limits, corner radii, and pocket depth rules.
 
 ## Feature geometry rules
 
-Internal corners should be designed with radii that match available tool diameters. A sharp internal corner â€?one with a radius smaller than the tool radius â€?requires a smaller tool, which is less rigid and more prone to deflection. The general rule is that the internal corner radius should be at least 1.5 times the tool diameter for standard features and 2.0 times the tool diameter for deep features where tool extension exceeds 4 to 1.
+Internal corners should be designed with radii that match available tool diameters. A sharp internal corner â€” one with a radius smaller than the tool radius â€” requires a smaller tool, which is less rigid and more prone to deflection. The general rule is that the internal corner radius should be at least 1.5 times the tool diameter for standard features and 2.0 times the tool diameter for deep features where tool extension exceeds 4 to 1.
 
 Pocket depth should be limited to 4 times the pocket width for standard machining. Deeper pockets require extended tools, reduced material removal rates, and specialized chip evacuation strategies. If the design requires deeper pockets, they should be specified with a width that allows the use of the largest possible tool.
 
@@ -47,11 +47,11 @@ The stock size should be specified to allow for machining allowance on all surfa
 
 | Design feature | Recommended practice | Reason |
 |---------------|---------------------|--------|
-| Internal corner radius | 1.5â€?.0x tool diameter | Allows larger, more rigid tools |
-| Pocket depth | â€?x pocket width | Avoids extended tool issues |
-| Wall thickness transitions | Tapered, 1â€“Â?| Reduces thermal distortion |
+| Internal corner radius | 1.5â€“0.0x tool diameter | Allows larger, more rigid tools |
+| Pocket depth | â€” x pocket width | Avoids extended tool issues |
+| Wall thickness transitions | Tapered, 1â€“Â° | Reduces thermal distortion |
 | Hole type | Through-hole preferred | Improves chip evacuation |
-| Thread engagement | 1.5â€?.0x bolt diameter | Ensures adequate thread strength |
+| Thread engagement | 1.5â€“0.0x bolt diameter | Ensures adequate thread strength |
 | Tolerance | Â±0.10 mm standard; tighten only where needed | Reduces machining time and cost |
 | Stock form | Match to component geometry | Minimizes material removal |
 
