@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Titanium Grades, Titanium Alloys, Ti-6Al-4V, Material Selection, Aerospace Materials, Manufacturing Engineering]
-coverImage: /uploads/blog/blog-titanium-grades-complete-guide-cp-alpha-beta-alloys-cover.jpg
+coverImage: /uploads/blog-titanium-grades-complete-guide-cp-alpha-beta-alloys-cover.jpg
 coverImageAlt: Titanium alloy stock materials for CNC machining
 featured: true
 ---

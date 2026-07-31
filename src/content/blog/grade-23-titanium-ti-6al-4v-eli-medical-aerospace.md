@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Grade 23 Titanium, Ti-6Al-4V ELI, Medical Implants, Aerospace Materials, Biomaterials]
-coverImage: /uploads/blog/blog-grade-23-titanium-ti-6al-4v-eli-medical-aerospace-cover.jpg
+coverImage: /uploads/blog-grade-23-titanium-ti-6al-4v-eli-medical-aerospace-cover.jpg
 coverImageAlt: Precision machined Grade 23 titanium medical implant component
 featured: false
 ---

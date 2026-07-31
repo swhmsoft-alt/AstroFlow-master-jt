@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Coolant Strategy, High Pressure Coolant, Manufacturing Engineering, Cutting Tools]
-coverImage: /uploads/blog/blog-high-pressure-coolant-strategy-titanium-cnc-machining-cover.jpg
+coverImage: /uploads/blog-high-pressure-coolant-strategy-titanium-cnc-machining-cover.jpg
 coverImageAlt: High-pressure coolant delivery during titanium CNC machining
 featured: false
 ---

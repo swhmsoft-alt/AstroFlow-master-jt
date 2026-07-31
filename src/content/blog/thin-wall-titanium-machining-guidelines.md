@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Design Engineering
 tags: [Thin Wall Machining, Titanium CNC, Thin Wall Titanium, Precision Machining, DFM]
-coverImage: /uploads/blog/blog-thin-wall-titanium-machining-guidelines-cover.jpg
+coverImage: /uploads/blog-thin-wall-titanium-machining-guidelines-cover.jpg
 coverImageAlt: Thin-wall titanium component during precision CNC machining
 featured: false
 ---

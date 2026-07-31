@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Case Studies
 tags: [Case Study, Aerospace Bracket, Thin Wall Titanium, Process Development, Manufacturing Engineering]
-coverImage: /uploads/blog/blog-case-study-thin-wall-titanium-aerospace-bracket-cover.jpg
+coverImage: /uploads/blog-case-study-thin-wall-titanium-aerospace-bracket-cover.jpg
 coverImageAlt: Finished titanium aerospace bracket on CMM inspection
 featured: false
 ---

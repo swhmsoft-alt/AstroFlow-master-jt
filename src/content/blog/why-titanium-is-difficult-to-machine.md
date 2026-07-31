@@ -6,7 +6,7 @@ pubDate: 2026-07-28
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Tool Wear, Manufacturing Engineering, Titanium Thermal Conductivity]
-coverImage: /uploads/blog/blog-why-titanium-is-difficult-to-machine-cover.jpg
+coverImage: /uploads/blog-why-titanium-is-difficult-to-machine-cover.jpg
 coverImageAlt: CNC machining of titanium components in a precision manufacturing facility
 featured: true
 ---

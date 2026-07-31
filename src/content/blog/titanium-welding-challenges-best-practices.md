@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Titanium Welding, TIG Welding, Welded Assemblies, Aerospace Welding, Manufacturing Engineering]
-coverImage: /uploads/blog/blog-titanium-welding-challenges-best-practices-cover.jpg
+coverImage: /uploads/blog-titanium-welding-challenges-best-practices-cover.jpg
 coverImageAlt: TIG welding of a titanium assembly
 featured: false
 ---

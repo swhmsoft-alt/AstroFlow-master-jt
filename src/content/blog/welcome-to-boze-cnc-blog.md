@@ -8,7 +8,7 @@ pubDate: 2026-05-28
 author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: []
-coverImage: /uploads/blog/blog-welcome-to-boze-cnc-blog-cover.jpg
+coverImage: /uploads/blog-welcome-to-boze-cnc-blog-cover.jpg
 coverImageAlt: Precision CNC machining of titanium components
 featured: false
 ---

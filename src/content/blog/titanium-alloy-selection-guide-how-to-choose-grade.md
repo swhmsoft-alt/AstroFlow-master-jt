@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Titanium Alloys, Material Selection, Ti-6Al-4V, Engineering Design, Manufacturing Engineering]
-coverImage: /uploads/blog/blog-titanium-alloy-selection-guide-how-to-choose-grade-cover.jpg
+coverImage: /uploads/blog-titanium-alloy-selection-guide-how-to-choose-grade-cover.jpg
 coverImageAlt: Selection of titanium alloy stock for precision machining
 featured: false
 ---

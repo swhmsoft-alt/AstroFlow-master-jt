@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Alpha Case, Titanium Metallurgy, Heat Treatment, Surface Integrity]
-coverImage: /uploads/blog/blog-alpha-case-formation-titanium-prevention-removal-cover.jpg
+coverImage: /uploads/blog-alpha-case-formation-titanium-prevention-removal-cover.jpg
 coverImageAlt: Metallurgical inspection of titanium surface condition
 featured: false
 ---

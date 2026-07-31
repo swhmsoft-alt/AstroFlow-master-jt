@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Springback, Elastic Deflection, Precision Machining, CAM Programming]
-coverImage: /uploads/blog/blog-titanium-springback-compensation-strategies-cnc-machining-cover.jpg
+coverImage: /uploads/blog-titanium-springback-compensation-strategies-cnc-machining-cover.jpg
 coverImageAlt: Precision measurement of a machined titanium component
 featured: false
 ---

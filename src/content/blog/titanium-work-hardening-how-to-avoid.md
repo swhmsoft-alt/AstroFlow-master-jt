@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Work Hardening, Manufacturing Engineering, Cutting Tools, Surface Integrity]
-coverImage: /uploads/blog/blog-titanium-work-hardening-how-to-avoid-cover.jpg
+coverImage: /uploads/blog-titanium-work-hardening-how-to-avoid-cover.jpg
 coverImageAlt: Precision CNC machining of titanium showing cutting tool engagement
 featured: false
 ---

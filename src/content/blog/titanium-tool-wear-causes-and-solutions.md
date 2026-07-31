@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Tool Wear, Carbide Tools, Cutting Tools, Manufacturing Engineering]
-coverImage: /uploads/blog/blog-titanium-tool-wear-causes-and-solutions-cover.jpg
+coverImage: /uploads/blog-titanium-tool-wear-causes-and-solutions-cover.jpg
 coverImageAlt: Precision cutting tools used for titanium CNC machining
 featured: false
 ---

@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Deformation, Manufacturing Engineering, Thin Wall Machining, Precision Machining]
-coverImage: /uploads/blog/blog-titanium-cnc-machining-deformation-causes-and-prevention-cover.jpg
+coverImage: /uploads/blog-titanium-cnc-machining-deformation-causes-and-prevention-cover.jpg
 coverImageAlt: Precision CNC machining of thin-wall titanium components
 featured: false
 ---

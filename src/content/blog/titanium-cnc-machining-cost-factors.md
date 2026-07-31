@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Procurement Guides
 tags: [CNC Machining Cost, Titanium Pricing, Cost Reduction, Procurement, Manufacturing Cost]
-coverImage: /uploads/blog/blog-titanium-cnc-machining-cost-factors-cover.jpg
+coverImage: /uploads/blog-titanium-cnc-machining-cost-factors-cover.jpg
 coverImageAlt: Cost analysis review for titanium machined components
 featured: false
 ---

@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Titanium Additive Manufacturing, 3D Printing Titanium, CNC Machining, Hybrid Manufacturing, Process Selection]
-coverImage: /uploads/blog/blog-titanium-additive-manufacturing-vs-cnc-machining-cover.jpg
+coverImage: /uploads/blog-titanium-additive-manufacturing-vs-cnc-machining-cover.jpg
 coverImageAlt: Titanium additive manufactured component with machined surfaces
 featured: false
 ---

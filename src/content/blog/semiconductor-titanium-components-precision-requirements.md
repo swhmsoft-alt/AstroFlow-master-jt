@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Semiconductor Titanium, Vacuum Chamber Components, Precision Machining, Cleanroom Manufacturing, Semiconductor Equipment]
-coverImage: /uploads/blog/blog-semiconductor-titanium-components-precision-requirements-cover.jpg
+coverImage: /uploads/blog-semiconductor-titanium-components-precision-requirements-cover.jpg
 coverImageAlt: Precision titanium component for semiconductor equipment
 featured: false
 ---

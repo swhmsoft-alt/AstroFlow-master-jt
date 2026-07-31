@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Design Engineering
 tags: [DFM, Design for Manufacturability, Titanium CNC, Engineering Design, Cost Reduction]
-coverImage: /uploads/blog/blog-dfm-guide-titanium-parts-design-for-manufacturability-cover.jpg
+coverImage: /uploads/blog-dfm-guide-titanium-parts-design-for-manufacturability-cover.jpg
 coverImageAlt: Engineering DFM review of a titanium component design
 featured: false
 ---

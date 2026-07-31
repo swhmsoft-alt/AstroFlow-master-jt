@@ -19,6 +19,10 @@ const publicDir = path.join(root, 'public');
 const RASTER_EXT = new Set(['.jpg', '.jpeg', '.png']);
 const WEBP_QUALITY = 82;
 
+// Same-origin host whose absolute image URLs (og:image / twitter:image) should
+// also be rewritten to WebP. Kept in sync with the `site` value in astro.config.mjs.
+const SITE_ORIGIN = 'cnc.bozemetal.com';
+
 /**
  * Recursively collect all files with a given extension set.
  */
@@ -107,9 +111,18 @@ async function updateHtmlReferences() {
 
       // Replace any /path/to/file.jpg → /path/to/file.webp
       // Also /path/to/file.png → /path/to/file.webp (only for public/images scene)
-      // Pattern: a URL-path (starts with /) ending in .jpg or .png, followed by a quote
+      // Pattern: a URL-path (starts with /) ending in .jpg or .png, followed by a quote.
+      // For absolute URLs (https://host/... or //host/...) the capture starts at the
+      // first slash, i.e. "//host/path", which is detected via the startsWith('//') branch.
       html = html.replace(/(\/[^"'\s?]+)\.(jpg|jpeg|png)(['"])/gi, (match, urlPath, ext, quote) => {
-        // Skip data URIs and external URLs
+        // Absolute (https://host/... or //host/...) URLs start with "//". Only rewrite
+        // them when they point at our own origin so og:image / twitter:image keep working.
+        if (urlPath.startsWith('//')) {
+          if (!urlPath.startsWith(`//${SITE_ORIGIN}`)) return match;
+          return `${urlPath}.webp${quote}`;
+        }
+        // Relative paths are always safe. Anything else containing "//" (e.g. data URIs)
+        // is left untouched.
         if (urlPath.includes('//')) return match;
         return `${urlPath}.webp${quote}`;
       });

@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Design Engineering
 tags: [Titanium CNC, Design Guide, DFM, Machinability, Engineering Design, Precision Machining]
-coverImage: /uploads/blog/blog-titanium-cnc-design-guide-machinability-rules-cover.jpg
+coverImage: /uploads/blog-titanium-cnc-design-guide-machinability-rules-cover.jpg
 coverImageAlt: Engineering design review of a titanium CNC machined component
 featured: true
 ---

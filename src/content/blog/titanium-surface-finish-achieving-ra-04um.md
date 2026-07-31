@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Surface Finish, Surface Roughness, Precision Machining, Manufacturing Engineering]
-coverImage: /uploads/blog/blog-titanium-surface-finish-achieving-ra-04um-cover.jpg
+coverImage: /uploads/blog-titanium-surface-finish-achieving-ra-04um-cover.jpg
 coverImageAlt: Surface finish inspection of a precision machined titanium component
 featured: false
 ---

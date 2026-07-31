@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Case Studies
 tags: [Case Study, Process Development, Complex Machining, Tight Tolerance, Production Scale-Up]
-coverImage: /uploads/blog/blog-case-study-complex-titanium-component-process-development-cover.jpg
+coverImage: /uploads/blog-case-study-complex-titanium-component-process-development-cover.jpg
 coverImageAlt: Complex titanium component during process development
 featured: false
 ---

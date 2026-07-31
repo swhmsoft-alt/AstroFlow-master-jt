@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Procurement Guides
 tags: [Titanium CNC, Supplier Selection, Procurement, Aerospace Sourcing, RFQ Guide]
-coverImage: /uploads/blog/blog-how-to-choose-titanium-cnc-machining-supplier-cover.jpg
+coverImage: /uploads/blog-how-to-choose-titanium-cnc-machining-supplier-cover.jpg
 coverImageAlt: Quality review meeting at a titanium CNC machining facility
 featured: true
 ---

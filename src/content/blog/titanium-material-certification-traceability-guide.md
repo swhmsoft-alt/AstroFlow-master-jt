@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [Material Certification, Traceability, Aerospace Quality, MTC, EN 10204, Material Test Report]
-coverImage: /uploads/blog/blog-titanium-material-certification-traceability-guide-cover.jpg
+coverImage: /uploads/blog-titanium-material-certification-traceability-guide-cover.jpg
 coverImageAlt: Material certification documentation for titanium stock
 featured: false
 ---

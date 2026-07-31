@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [ASTM B348, ASTM B265, Titanium Standards, Material Specifications, Aerospace Materials]
-coverImage: /uploads/blog/blog-astm-b348-vs-astm-b265-titanium-bar-plate-standards-cover.jpg
+coverImage: /uploads/blog-astm-b348-vs-astm-b265-titanium-bar-plate-standards-cover.jpg
 coverImageAlt: Titanium bar and plate stock materials
 featured: false
 ---

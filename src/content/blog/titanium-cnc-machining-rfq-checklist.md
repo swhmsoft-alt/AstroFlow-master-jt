@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Procurement Guides
 tags: [RFQ Checklist, CNC Machining Quote, Procurement, Supplier Quotation, Titanium Machining]
-coverImage: /uploads/blog/blog-titanium-cnc-machining-rfq-checklist-cover.jpg
+coverImage: /uploads/blog-titanium-cnc-machining-rfq-checklist-cover.jpg
 coverImageAlt: RFQ documentation review for titanium components
 featured: false
 ---

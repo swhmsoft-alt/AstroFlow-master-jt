@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, 5-Axis Machining, Aerospace Manufacturing, Complex Machining, CAM Programming]
-coverImage: /uploads/blog/blog-5-axis-titanium-machining-best-practices-cover.jpg
+coverImage: /uploads/blog-5-axis-titanium-machining-best-practices-cover.jpg
 coverImageAlt: 5-axis CNC machining of a complex titanium aerospace component
 featured: false
 ---

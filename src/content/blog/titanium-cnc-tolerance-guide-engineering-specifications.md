@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Design Engineering
 tags: [CNC Tolerance, Titanium Machining, Precision Machining, Engineering Specifications, GD&T]
-coverImage: /uploads/blog/blog-titanium-cnc-tolerance-guide-engineering-specifications-cover.jpg
+coverImage: /uploads/blog-titanium-cnc-tolerance-guide-engineering-specifications-cover.jpg
 coverImageAlt: Dimensional inspection of a precision titanium component
 featured: false
 ---

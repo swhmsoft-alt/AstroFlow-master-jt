@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Case Studies
 tags: [Case Study, Medical Implant, Grade 23 Titanium, ISO 13485, Precision Machining]
-coverImage: /uploads/blog/blog-case-study-precision-titanium-medical-implant-cover.jpg
+coverImage: /uploads/blog-case-study-precision-titanium-medical-implant-cover.jpg
 coverImageAlt: Finished titanium medical implant component
 featured: false
 ---

@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [AS9100D, Aerospace Quality, Quality Management, Aerospace Manufacturing, Supplier Qualification]
-coverImage: /uploads/blog/blog-as9100d-titanium-cnc-manufacturing-aerospace-quality-cover.jpg
+coverImage: /uploads/blog-as9100d-titanium-cnc-manufacturing-aerospace-quality-cover.jpg
 coverImageAlt: Quality inspection documentation for aerospace titanium components
 featured: false
 ---

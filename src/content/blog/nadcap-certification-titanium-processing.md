@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Quality and Standards
 tags: [NADCAP, Aerospace Certification, Process Accreditation, Aerospace Quality, Supplier Qualification]
-coverImage: /uploads/blog/blog-nadcap-certification-titanium-processing-cover.jpg
+coverImage: /uploads/blog-nadcap-certification-titanium-processing-cover.jpg
 coverImageAlt: NADCAP audit documentation review
 featured: false
 ---

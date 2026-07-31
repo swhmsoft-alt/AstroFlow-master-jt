@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [Ti-6Al-4V, Grade 5 Titanium, Titanium Alloys, Aerospace Materials, CNC Machining]
-coverImage: /uploads/blog/blog-ti-6al-4v-grade-5-titanium-guide-cover.jpg
+coverImage: /uploads/blog-ti-6al-4v-grade-5-titanium-guide-cover.jpg
 coverImageAlt: Ti-6Al-4V titanium alloy component after precision machining
 featured: false
 ---

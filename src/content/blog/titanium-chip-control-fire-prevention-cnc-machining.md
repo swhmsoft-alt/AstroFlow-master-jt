@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Manufacturing Problems
 tags: [Titanium CNC Machining, Chip Control, Fire Prevention, Manufacturing Safety, Cutting Tools]
-coverImage: /uploads/blog/blog-titanium-chip-control-fire-prevention-cnc-machining-cover.jpg
+coverImage: /uploads/blog-titanium-chip-control-fire-prevention-cnc-machining-cover.jpg
 coverImageAlt: CNC machining of titanium with coolant application
 featured: false
 ---

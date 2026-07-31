@@ -6,7 +6,7 @@ pubDate: 2026-06-18T15:19:00.000+08:00
 author: Boze Titanium Manufacturing Center
 category: Titanium CNC Machining Services
 tags: [Aerospace Titanium]
-coverImage: /uploads/blog/blog-aerospace-titanium-full-process-supply-cover.jpg
+coverImage: /uploads/blog-aerospace-titanium-full-process-supply-cover.jpg
 coverImageAlt: Titanium CNC Machining Services
 featured: false
 ---

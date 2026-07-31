@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Materials Engineering
 tags: [CP Titanium, Commercially Pure Titanium, Grade 2 Titanium, Material Selection, Corrosion Resistance]
-coverImage: /uploads/blog/blog-cp-titanium-grades-1-2-3-4-comparison-cover.jpg
+coverImage: /uploads/blog-cp-titanium-grades-1-2-3-4-comparison-cover.jpg
 coverImageAlt: Commercially pure titanium stock material for industrial applications
 featured: false
 ---

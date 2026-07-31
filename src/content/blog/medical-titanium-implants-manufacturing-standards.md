@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Medical Implants, Titanium Implants, Grade 23 Titanium, Medical Manufacturing, ISO 13485]
-coverImage: /uploads/blog/blog-medical-titanium-implants-manufacturing-standards-cover.jpg
+coverImage: /uploads/titanium-cnc-machining-manufacturing-facility.jpg
 coverImageAlt: Precision machined titanium medical implant component
 featured: false
 ---

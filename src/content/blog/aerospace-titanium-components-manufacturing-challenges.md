@@ -6,7 +6,7 @@ pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Aerospace Titanium, Aerospace Manufacturing, Thin Wall Machining, AS9100D, Aircraft Components]
-coverImage: /uploads/blog/blog-aerospace-titanium-components-manufacturing-challenges-cover.jpg
+coverImage: /uploads/blog-aerospace-titanium-components-manufacturing-challenges-cover.jpg
 coverImageAlt: Aerospace titanium component during CNC machining
 featured: false
 ---
