@@ -86,7 +86,7 @@ const categoryBadge = data.category || 'Component';
         </div>
 
         <!-- CTA -->
-        <a href="/contact" class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
+        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-bold rounded-xl transition-all" style="background: var(--theme-primary); color: var(--theme-text);">
           Request Quote for {data.title}
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
         </a>
