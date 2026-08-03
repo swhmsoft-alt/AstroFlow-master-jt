@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
+import { SITE } from '../../../config/site';
 
 export const prerender = true;
 
@@ -28,6 +29,11 @@ const entitySlug = (title: string) =>
 <BaseLayout
   title="Precision CNC Titanium Component Library — 260+ Parts | Boze Titanium Manufacturing Center"
   description="Browse 260+ precision CNC machined titanium components across 12 industries, 60 systems, and 20 alloys. Each part includes material grade, manufacturing process, and inspection criteria."
+  pageType="products-hub"
+  collectionName="Precision CNC Titanium Component Library"
+  collectionDescription={`Complete catalog of ${entities.length} precision CNC machined titanium components. Each entry includes material grade, manufacturing process, surface treatment, inspection criteria, and application-specific engineering notes.`}
+  itemCount={entities.length}
+  items={entities.map((e) => ({ name: e.data.title, url: `${SITE.url}/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/` }))}
 >
   <!-- Breadcrumb -->
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">

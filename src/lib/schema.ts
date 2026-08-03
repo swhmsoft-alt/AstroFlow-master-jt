@@ -153,7 +153,7 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
 
 // ── Additional Entity Builders ────────────────────────
 
-export function buildCollectionPage(input: { name: string; description: string; url: string }) {
+export function buildCollectionPage(input: { name: string; description: string; url: string; mainEntity?: string }) {
   return {
     '@type': 'CollectionPage',
     '@id': input.url,
@@ -161,16 +161,32 @@ export function buildCollectionPage(input: { name: string; description: string; 
     description: input.description,
     url: input.url,
     isPartOf: { '@id': WEBSITE_ID },
+    ...(input.mainEntity ? { mainEntity: { '@id': input.mainEntity } } : {}),
   };
 }
 
-export function buildItemList(input: { name: string; url: string; numberOfItems?: number }) {
+export function buildItemList(input: {
+  name: string;
+  url: string;
+  numberOfItems?: number;
+  items?: { name: string; url: string }[];
+}) {
   return {
     '@type': 'ItemList',
     '@id': `${input.url}#item-list`,
     name: input.name,
     url: input.url,
     ...(input.numberOfItems != null ? { numberOfItems: input.numberOfItems } : {}),
+    ...(input.items?.length
+      ? {
+          itemListElement: input.items.map((it, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: it.name,
+            url: it.url,
+          })),
+        }
+      : {}),
     mainEntityOfPage: { '@id': input.url },
   };
 }
@@ -243,7 +259,8 @@ export function buildArticle(input: {
 
 // ── Page type detection ───────────────────────────────
 
-export function detectPageType(path: string): PageType {
+export function detectPageType(path: string, explicit?: PageType): PageType {
+  if (explicit) return explicit;
   if (path === '/' || path === '') return 'home';
   if (path.startsWith('/services')) return path.split('/').filter(Boolean).length > 1 ? 'service-detail' : 'services-hub';
   if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
@@ -258,6 +275,20 @@ export function detectPageType(path: string): PageType {
 }
 
 // ── Breadcrumb builder ────────────────────────────────
+
+/** Short breadcrumb labels for product hub sub-pages (not present in NAVIGATION). */
+const BREADCRUMB_LABELS: Record<string, string> = {
+  '/products/systems': 'Engineering Systems',
+  '/products/industries': 'Industries Served',
+  '/products/materials': 'Materials Library',
+  '/products/capabilities': 'Capabilities',
+  '/products/product-entities': 'Component Library',
+  '/products/component-library': 'Component Library',
+  '/products/standards': 'Standards',
+};
+
+const humanizeSeg = (seg: string) =>
+  seg.replace(/[-_]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
 export function buildBreadcrumbItems(
   path: string,
@@ -276,7 +307,7 @@ export function buildBreadcrumbItems(
   for (const seg of segments) {
     accumulated += `/${seg}`;
     const entry = seoConfig[accumulated];
-    const name = entry?.title?.[lang] || entry?.name || seg.replace(/-/g, ' ');
+    const name = BREADCRUMB_LABELS[accumulated] || entry?.name || entry?.title?.[lang] || humanizeSeg(seg);
     items.push({
       position: items.length + 1,
       name,
@@ -320,6 +351,7 @@ export interface SchemaPageData {
   collectionName?: string;
   collectionDescription?: string;
   itemCount?: number;
+  items?: { name: string; url: string }[];
 }
 
 /**
@@ -361,15 +393,18 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     case 'products-hub':
     case 'blog-index':
       if (data.collectionName) {
+        const itemListId = `${data.pageUrl}#item-list`;
         graph.push(buildCollectionPage({
           name: data.collectionName,
           description: data.collectionDescription ?? data.pageDescription,
           url: data.pageUrl,
+          mainEntity: data.items?.length ? itemListId : undefined,
         }));
         graph.push(buildItemList({
           name: data.collectionName,
           url: data.pageUrl,
           numberOfItems: data.itemCount,
+          items: data.items,
         }));
       }
       break;

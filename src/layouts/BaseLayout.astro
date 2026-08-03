@@ -48,6 +48,7 @@ interface Props {
   productCategory?: string;
   collectionName?: string;
   itemCount?: number;
+  items?: { name: string; url: string }[];
   serviceHubKey?: string;
 }
 
@@ -73,6 +74,7 @@ const {
   productCategory,
   collectionName,
   itemCount,
+  items,
   serviceHubKey,
   alternateLinks: explicitAlternateLinks,
 } = Astro.props;
@@ -114,13 +116,13 @@ const alternateLinks = explicitAlternateLinks || defaultAlternateLinks;
 const resolvedServiceName = serviceName ?? (pageType === 'service-detail' ? title : undefined);
 const schemaData = {
   pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
-  breadcrumbItems: breadcrumbRaw,
+  breadcrumbItems,
   articleHeadline: explicitPageType === 'blog-post' ? title : undefined, articleDescription: description, articleAuthor: author,
   articleDatePublished: pubDate ?? undefined, serviceName: resolvedServiceName, serviceDescription: resolvedServiceName ? description : undefined,
   serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
-  productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount,
+  productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
 };
-const pageGraph = buildPageGraph(pageType, schemaData, serviceHubKey, currentLang);
+const pageGraph = buildPageGraph(pageType, schemaData);
 const ldJson = JSON.stringify(pageGraph);
 ---
 
@@ -159,11 +161,11 @@ const ldJson = JSON.stringify(pageGraph);
 {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 <script type="application/ld+json" set:html={ldJson} />
 {alternateLinks.map((link) => (<link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />))}
-{/* hreflang alternates �?from prop if provided (blog overrides), otherwise auto-generated */}
+{/* hreflang alternates �?from prop if provided (blog overrides), otherwise auto-generated */}
 <link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
 <script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
 
-{/* ══�?Google Ads �?Consent Mode v2 (GDPR, ePanel-friendly) ══�?*/}
+{/* ══�?Google Ads �?Consent Mode v2 (GDPR, ePanel-friendly) ══�?*/}
 {isProd && gaId && (
   <>
     <!-- Consent default: always denied until user chooses -->

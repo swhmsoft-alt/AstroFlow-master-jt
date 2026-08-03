@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
+import { SITE } from '../../../config/site';
 
 export const prerender = true;
 
@@ -47,6 +48,11 @@ const sysSlug = (entry: typeof allSystems[number]) =>
 <BaseLayout
   title="Engineering Systems – Titanium Component Systems | Boze Titanium Manufacturing Center"
   description={`${totalSystems} engineering systems organized across industries — chemical reactor internals, aerospace ducting, medical implants, semiconductor chambers, and more. AS9100D & ISO 9001.`}
+  pageType="products-hub"
+  collectionName="Engineering Systems"
+  collectionDescription={`${totalSystems} engineering systems organizing ${totalEntities} precision titanium components across ${allIndustries.length} industries.`}
+  itemCount={totalSystems}
+  items={allSystems.map((entry) => ({ name: entry.data.title, url: `${SITE.url}/products/systems/${sysSlug(entry)}/` }))}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -130,12 +136,5 @@ const sysSlug = (entry: typeof allSystems[number]) =>
       </section>
     );
   })}
-  <!-- Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Engineering Systems - Titanium Component Systems",
-    "description": `${totalSystems} engineering systems organizing ${totalEntities} precision titanium components across ${allIndustries.length} industries.`
-  })} />
 </BaseLayout>
 

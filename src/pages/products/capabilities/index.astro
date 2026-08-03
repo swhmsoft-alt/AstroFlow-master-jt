@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
+import { SITE } from '../../../config/site';
 export const prerender = true;
 
 const allCapabilities = await getCollection('capabilities');
@@ -55,6 +56,11 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
 <BaseLayout
   title="445 Titanium Manufacturing Capabilities — CNC, Surface Treatment, Inspection | Boze Titanium Manufacturing Center"
   description={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more. AS9100D & ISO 9001.`}
+  pageType="products-hub"
+  collectionName="Titanium Manufacturing Capabilities"
+  collectionDescription={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more.`}
+  itemCount={totalCaps}
+  items={allCapabilities.map((entry) => ({ name: entry.data.title, url: `${SITE.url}/products/capabilities/${capSlug(entry)}/` }))}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -143,10 +149,5 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
     </div>
   </section>
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org", "@type": "CollectionPage",
-    "name": "Titanium Manufacturing Capabilities",
-    "description": `${totalCaps} precision manufacturing capabilities for titanium components`
-  })} />
 </BaseLayout>
 

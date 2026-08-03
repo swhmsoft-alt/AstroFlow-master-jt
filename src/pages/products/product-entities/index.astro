@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { SITE } from '../../../config/site';
 
 export const prerender = true;
 
@@ -32,6 +33,11 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
 <BaseLayout
   title="Titanium Component Library - 260+ Precision CNC Parts | Boze Titanium Manufacturing Center"
   description="Browse 260+ precision CNC machined titanium components across 12 industries. Aerospace, Medical, Cycling, Semiconductor, Chemical, Marine, and more. AS9100D & ISO 9001 certified."
+  pageType="products-hub"
+  collectionName="Titanium Component Library"
+  collectionDescription={`${totalEntities} precision CNC machined titanium components across 12 industries.`}
+  itemCount={totalEntities}
+  items={entities.map((e) => ({ name: e.data.title, url: `${SITE.url}/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/` }))}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -154,13 +160,4 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
     </div>
   </section>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Titanium Component Library",
-    "description": `${totalEntities} precision CNC machined titanium components across 12 industries.`,
-    "numberOfItems": totalEntities,
-    "about": { "@type": "Thing", "name": "Titanium Precision CNC Machined Components" }
-  })} />
 </BaseLayout>
