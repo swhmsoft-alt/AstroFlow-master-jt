@@ -37,25 +37,25 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
-<section class="relative py-24 overflow-hidden bg-[#0F172A]">
+<section class="relative py-24 overflow-hidden bg-theme-bg">
   <!-- Circuit-board style background -->
   <div class="absolute inset-0 opacity-[0.02]">
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, #38BDF8 1px, transparent 0); background-size: 40px 40px;"></div>
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
   </div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-[#38BDF8] text-[#38BDF8] bg-[#38BDF8]/10">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-theme-primary text-theme-primary bg-theme-primary/10">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
         </svg>
         {t('services.smearingembeddingcontrolknowhow.badge')}
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
-        {t('services.smearingembeddingcontrolknowhow.title')} <span class="text-[#38BDF8]">{t('services.smearingembeddingcontrolknowhow.control_engineering_2')}</span>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-theme-text">
+        {t('services.smearingembeddingcontrolknowhow.title')} <span class="text-theme-primary">{t('services.smearingembeddingcontrolknowhow.control_engineering_2')}</span>
       </h2>
-      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-theme-text/65">
         {t('services.smearingembeddingcontrolknowhow.subtitle')}
       </p>
     </div>
@@ -64,17 +64,17 @@ const t = useTranslations(currentLang);
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {challenges.map((challenge) => (
         <div
-          class="relative rounded-xl overflow-hidden h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] transition-all duration-300"
+          class="relative rounded-xl overflow-hidden h-full bg-theme-surface border border-theme-surface hover:border-theme-primary transition-all duration-300"
         >
           <!-- Top problem zone -->
           <div class="p-8 pb-6">
             <div class="flex items-start mb-5">
-              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4 bg-[#38BDF8]/10">
-                <svg class="w-5 h-5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-4 bg-theme-primary/10">
+                <svg class="w-5 h-5 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d={challenge.icon} />
                 </svg>
               </div>
-              <h3 class="text-xl font-bold text-[#F8FAFC]">
+              <h3 class="text-xl font-bold text-theme-text">
                 {t(`services.smearingembeddingcontrolknowhow.challenge${challenges.indexOf(challenge) + 1}.title`)}
               </h3>
             </div>
@@ -82,8 +82,8 @@ const t = useTranslations(currentLang);
             <div class="pl-14">
               <!-- Problem statement -->
               <div class="mb-4">
-                <span class="text-xs font-semibold uppercase tracking-widest text-[#38BDF8]/70">{t('services.smearingembeddingcontrolknowhow.challenge_17')}</span>
-                <p class="text-sm mt-1.5 leading-relaxed text-[#F8FAFC]/65">
+                <span class="text-xs font-semibold uppercase tracking-widest text-theme-primary/70">{t('services.smearingembeddingcontrolknowhow.challenge_17')}</span>
+                <p class="text-sm mt-1.5 leading-relaxed text-theme-text/65">
                   {t(`services.smearingembeddingcontrolknowhow.challenge${challenges.indexOf(challenge) + 1}.problem`)}
                 </p>
               </div>
@@ -92,9 +92,9 @@ const t = useTranslations(currentLang);
 
           <!-- Divider with arrow -->
           <div class="relative flex items-center justify-center py-3">
-            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, rgba(56,189,248,0.3), transparent);"></div>
-            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full bg-[#38BDF8]/10 border border-[#38BDF8]/25">
-              <svg class="w-4 h-4 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-full h-px" style="background: linear-gradient(to right, transparent, color-mix(in srgb, var(--theme-primary) 30%, transparent), transparent);"></div>
+            <div class="absolute flex items-center justify-center w-8 h-8 rounded-full bg-theme-primary/10 border border-theme-primary/25">
+              <svg class="w-4 h-4 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </div>
@@ -103,17 +103,17 @@ const t = useTranslations(currentLang);
           <!-- Solution zone -->
           <div class="p-8 pt-4">
             <div class="pl-0">
-              <span class="text-xs font-semibold uppercase tracking-widest text-[#38BDF8]">{t('services.smearingembeddingcontrolknowhow.solution_17')}</span>
-              <h4 class="text-base font-bold mt-1.5 mb-4 text-[#F8FAFC]">
+              <span class="text-xs font-semibold uppercase tracking-widest text-theme-primary">{t('services.smearingembeddingcontrolknowhow.solution_17')}</span>
+              <h4 class="text-base font-bold mt-1.5 mb-4 text-theme-text">
                 {t(`services.smearingembeddingcontrolknowhow.challenge${challenges.indexOf(challenge) + 1}.solution`)}
               </h4>
               <ul class="space-y-3">
                 {challenge.solutionDetails.map((detail) => (
                   <li class="flex items-start">
-                    <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span class="text-sm leading-relaxed text-[#F8FAFC]/75">{t(`services.smearingembeddingcontrolknowhow.challenge${challenges.indexOf(challenge) + 1}.detail${challenge.solutionDetails.indexOf(detail) + 1}`)}</span>
+                    <span class="text-sm leading-relaxed text-theme-text/75">{t(`services.smearingembeddingcontrolknowhow.challenge${challenges.indexOf(challenge) + 1}.detail${challenge.solutionDetails.indexOf(detail) + 1}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -122,7 +122,7 @@ const t = useTranslations(currentLang);
 
           <!-- Corner accent -->
           <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, rgba(56,189,248,0.08) 50%);"></div>
+            <div class="absolute -top-8 -right-8 w-16 h-16 rotate-45" style="background: linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--theme-primary) 8%, transparent) 50%);"></div>
           </div>
         </div>
       ))}
@@ -130,8 +130,8 @@ const t = useTranslations(currentLang);
 
     <!-- Bottom CTA line -->
     <div class="text-center mt-12">
-      <p class="text-sm max-w-2xl mx-auto leading-relaxed text-[#F8FAFC]/50">
-        {t('services.smearingembeddingcontrolknowhow.footer')} <span class="text-[#38BDF8]">{t('services.smearingembeddingcontrolknowhow.clean_surfaces_deliver_reliable_performance')}</span>
+      <p class="text-sm max-w-2xl mx-auto leading-relaxed text-theme-text/50">
+        {t('services.smearingembeddingcontrolknowhow.footer')} <span class="text-theme-primary">{t('services.smearingembeddingcontrolknowhow.clean_surfaces_deliver_reliable_performance')}</span>
       </p>
     </div>
   </div>

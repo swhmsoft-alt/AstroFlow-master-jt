@@ -1,12 +1,43 @@
 # Active Context
 
-> **Last Updated:** 2026-07-29
-> **Current Focus:** Brand identity migration — "BOZE CNC Ti" → "Boze Titanium Manufacturing Center" completed
+> **Last Updated:** 2026-08-03
+> **Current Focus:** Service 组件主题变量迁移 — 全站硬编码深色背景修复完成
 
 ## Current Status
 ✅ Brand identity migration across all major touchpoints completed.
 
 ## Recent Decisions
+
+### Service Component Theme Migration — Hardcoded Dark Colors → Theme Variables (2026-08-03)
+用户报告 `/titanium-surface-treatment/` 切换到亮色主题时正文区域不变色。根因：页面 4 个正文组件（及全站其它服务组件）将深色主题色值（`#0F172A`/`#1E293B`/`#F8FAFC`/`#38BDF8`）硬编码进 Tailwind class，未引用 `--theme-*` CSS 变量。主题系统本身正常（`data-theme` + CSS 变量，`SubpageHero`/`Header`/`Footer`/`BrandAbout` 均已主题化）。
+
+修复范围：全站 **24 个**服务组件（用户选择全面统一方案）：
+- 6× DedicatedCta：Anodizing / Passivation / Surface / Texturing / Marking / Packaging
+- 6× SpecsDashboard：Anodizing / Marking / Packaging / Passivation / Surface / Texturing
+- 6× ProcessSpectrum / Classifications：AnodizingClassifications / Marking / Packaging / Passivation / Surface / Texturing
+- 6× KnowHow：GallingColorVariation / GallingOsseointegration / HydrogenEmbrittlement / SmearingEmbedding / SmearingWarehouse / ThermalStress
+
+替换规则（与已主题化兄弟组件 `CncProcessSpectrum`/`CncDedicatedCta` 一致）：
+| 硬编码 | → | 主题变量 |
+|---|---|---|
+| `bg-[#0F172A]` | → | `bg-theme-bg` |
+| `bg-[#1E293B]` / `border-[#1E293B]` | → | `bg-theme-surface` / `border-theme-surface` |
+| `text-[#F8FAFC]` 及 `/NN` | → | `text-theme-text` 及 `/NN` |
+| `bg/border/text-[#38BDF8]` 及 `/NN` | → | `bg/border/text-theme-primary` 及 `/NN` |
+| 内联 `#38BDF8`/`#1E293B`/`#F8FAFC` | → | `var(--theme-primary)`/`var(--theme-surface)`/`var(--theme-text)` |
+| 内联 `rgba(56,189,248,X)` | → | `color-mix(in srgb, var(--theme-primary) X%, transparent)` |
+| `hover:shadow-[0_0_30px_rgba(56,189,248,X)]` | → | `hover:shadow-[0_0_30px_color-mix(in_srgb,var(--theme-primary)_X%,transparent)]` |
+
+刻意保留：CTA 按钮深色文字 `text-[#0F172A]`（在 `var(--theme-primary)` 按钮上保证对比度，与 `CncDedicatedCta` 惯例一致）。
+
+已主题化的 17 个 CTA 组件（`AdditiveBatchCta` 等，仅含按钮 `color: #0F172A`）确认无需改动。
+
+### 验证结果
+- ✅ `npx astro build` 成功：2208 页面，35s，无编译错误
+- ✅ Tailwind v4 正确生成新类（`bg-theme-bg`、`text-theme-text/65`、`bg-theme-primary/10`、`hover:shadow-[...color-mix...]` 含 `@supports` 降级）
+- ✅ `node scripts/check-encoding.mjs` 通过
+- ✅ 构建产物中 `bg-[#0F172A]` 残留 = 0
+- ✅ `git status` 仅 24 个目标文件被修改
 
 ### Brand Identity Migration (2026-07-29)
 The cnc.bozemetal.com site branding has been systematically migrated from "BOZE CNC Ti" to **"Boze Titanium Manufacturing Center"** to:

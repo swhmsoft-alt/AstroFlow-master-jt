@@ -34,25 +34,25 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
-<section class="relative py-24 overflow-hidden bg-[#0F172A]">
+<section class="relative py-24 overflow-hidden bg-theme-bg">
   <!-- Engineering grid pattern -->
   <div class="absolute inset-0 opacity-[0.03]">
-    <div class="absolute inset-0" style="background-image: linear-gradient(#38BDF8 1px, transparent 1px), linear-gradient(90deg, #38BDF8 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
   </div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-[#38BDF8] text-[#38BDF8] bg-[#38BDF8]/10">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-theme-primary text-theme-primary bg-theme-primary/10">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
         </svg>
         {t('services.texturingprocessspectrum.badge')}
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#F8FAFC]">
-        Texturing <span class="text-[#38BDF8]">{t('services.texturingprocessspectrum.process_spectrum_8')}</span>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-theme-text">
+        Texturing <span class="text-theme-primary">{t('services.texturingprocessspectrum.process_spectrum_8')}</span>
       </h2>
-      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-[#F8FAFC]/65">
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-theme-text/65">
         {t('services.texturingprocessspectrum.subtitle')}
       </p>
     </div>
@@ -61,30 +61,30 @@ const t = useTranslations(currentLang);
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       {processes.map((process) => (
         <div
-          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full bg-[#1E293B] border border-[#1E293B] hover:border-[#38BDF8] hover:shadow-[0_0_30px_rgba(56,189,248,0.1)]"
+          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full bg-theme-surface border border-theme-surface hover:border-theme-primary hover:shadow-[0_0_30px_color-mix(in_srgb,var(--theme-primary)_10%,transparent)]"
         >
           <!-- Icon -->
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 bg-[#38BDF8]/10">
-            <svg class="w-6 h-6 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 bg-theme-primary/10">
+            <svg class="w-6 h-6 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d={process.icon} />
             </svg>
           </div>
 
           <!-- Title -->
-          <h3 class="text-lg font-bold mb-3 text-[#F8FAFC]">
+          <h3 class="text-lg font-bold mb-3 text-theme-text">
             {t(`services.texturingprocessspectrum.card${processes.indexOf(process) + 1}.title`)}
           </h3>
 
           <!-- Description -->
-          <p class="text-sm mb-4 leading-relaxed text-[#F8FAFC]/60">
+          <p class="text-sm mb-4 leading-relaxed text-theme-text/60">
             {t(`services.texturingprocessspectrum.card${processes.indexOf(process) + 1}.desc`)}
           </p>
 
           <!-- Capabilities list -->
           <ul class="space-y-2 mt-auto">
             {process.capabilities.map((cap) => (
-              <li class="flex items-start text-sm text-[#F8FAFC]/70">
-                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0 text-[#38BDF8]" fill="currentColor" viewBox="0 0 20 20">
+              <li class="flex items-start text-sm text-theme-text/70">
+                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0 text-theme-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
                 {t(`services.texturingprocessspectrum.card${processes.indexOf(process) + 1}.cap${process.capabilities.indexOf(cap) + 1}`)}
@@ -95,7 +95,7 @@ const t = useTranslations(currentLang);
           <!-- Corner hover accent -->
           <div
             class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
-            style="border-style: solid; border-color: transparent #38BDF8 transparent transparent; opacity: 0;"
+            style="border-style: solid; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
             onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
             onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
           ></div>

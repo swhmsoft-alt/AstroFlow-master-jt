@@ -4,23 +4,23 @@ const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
 
-<section class="relative py-24 overflow-hidden bg-[#0F172A]">
+<section class="relative py-24 overflow-hidden bg-theme-bg">
   <!-- Gradient background overlay -->
   <div class="absolute inset-0 opacity-15">
-    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, rgba(56,189,248,0.4) 0%, transparent 70%);"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--theme-primary) 40%, transparent) 0%, transparent 70%);"></div>
   </div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div
-      class="relative rounded-2xl overflow-hidden border border-[#38BDF8]/20 bg-[#1E293B]"
-      style="background: linear-gradient(135deg, #1E293B, rgba(56,189,248,0.05) 100%);"
+      class="relative rounded-2xl overflow-hidden border border-theme-primary/20 bg-theme-surface"
+      style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 5%, transparent) 100%);"
     >
       <!-- Accent top line -->
-      <div class="absolute top-0 left-0 right-0 h-0.5" style="background: linear-gradient(to right, transparent, #38BDF8, transparent);"></div>
+      <div class="absolute top-0 left-0 right-0 h-0.5" style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent);"></div>
 
       <div class="px-8 py-16 md:px-16 lg:px-24 text-center relative">
         <!-- Badge -->
-        <div class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full border border-[#38BDF8]/25 text-[#38BDF8] bg-[#38BDF8]/10">
+        <div class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold rounded-full border border-theme-primary/25 text-theme-primary bg-theme-primary/10">
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
@@ -28,22 +28,22 @@ const t = useTranslations(currentLang);
         </div>
 
         <!-- Headline -->
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-[#F8FAFC]">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-theme-text">
           High-Spec Surface Engineering —<br />
-          <span class="text-[#38BDF8]">{t('services.surfacededicatedcta.submit_your_blueprints_review')}</span>
+          <span class="text-theme-primary">{t('services.surfacededicatedcta.submit_your_blueprints_review')}</span>
         </h2>
 
-        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed text-[#F8FAFC]/70">
+        <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed text-theme-text/70">
           Medical device engineers, aerospace buyers, and consumer hardware designers — upload your CAD files, testing profiles, and performance requirements for a rapid 24-hour engineering assessment. Fully confidential under NDA.
         </p>
 
         <!-- CTA Button -->
         <a
           href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center px-10 py-5 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 group bg-[#38BDF8] text-[#0F172A] hover:opacity-90"
-          style="box-shadow: 0 0 40px rgba(56,189,248,0.3);"
-          onmouseover="this.style.boxShadow='0 0 60px rgba(56,189,248,0.5)'; this.style.transform='translateY(-2px)'"
-          onmouseout="this.style.boxShadow='0 0 40px rgba(56,189,248,0.3)'; this.style.transform='translateY(0)'"
+          class="inline-flex items-center px-10 py-5 text-lg font-bold rounded-xl shadow-lg transition-all duration-300 group bg-theme-primary text-[#0F172A] hover:opacity-90"
+          style="box-shadow: 0 0 40px color-mix(in srgb, var(--theme-primary) 30%, transparent);"
+          onmouseover="this.style.boxShadow='0 0 60px color-mix(in srgb, var(--theme-primary) 50%, transparent)'; this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.boxShadow='0 0 40px color-mix(in srgb, var(--theme-primary) 30%, transparent)'; this.style.transform='translateY(0)'"
         >
           <span>{t('services.surfacededicatedcta.submit_assessment')}</span>
           <svg class="w-5 h-5 ml-3 transition-transform group-hover:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,20 +53,20 @@ const t = useTranslations(currentLang);
 
         <!-- Trust indicators -->
         <div class="flex flex-wrap items-center justify-center gap-6 mt-10">
-          <div class="flex items-center text-xs text-[#F8FAFC]/45">
-            <svg class="w-4 h-4 mr-1.5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center text-xs text-theme-text/45">
+            <svg class="w-4 h-4 mr-1.5 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
             NDA Protected
           </div>
-          <div class="flex items-center text-xs text-[#F8FAFC]/45">
-            <svg class="w-4 h-4 mr-1.5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center text-xs text-theme-text/45">
+            <svg class="w-4 h-4 mr-1.5 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
             ISO 13485 / AS9100D Compliant
           </div>
-          <div class="flex items-center text-xs text-[#F8FAFC]/45">
-            <svg class="w-4 h-4 mr-1.5 text-[#38BDF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-center text-xs text-theme-text/45">
+            <svg class="w-4 h-4 mr-1.5 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Response Within 24 Hours
