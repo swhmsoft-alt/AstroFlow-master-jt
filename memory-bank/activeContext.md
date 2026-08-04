@@ -67,6 +67,16 @@
 - **8MB 附件实测**：POST 带 8MB `.step` → 302 `/thank-you/`（HTTP 层 post_max_size=32M 已由 .htaccess 生效；`mail()` 成功入队），附件邮件 `Titanium Machining RFQ — Attachment Test` 已发，待用户确认收件。
 - ⚠️ 25MB 边界说明：base64 使邮件体膨胀 ~33%（25MB 文件 ≈ 33MB 邮件），共享主机 Exim 常有单封大小上限（常见 25MB），故接近 25MB 的附件可能网页层成功、邮件层被拒。建议实用安全上限 ≈15–18MB，更大文件应 ZIP；如需下调表单文案待用户决定。
 
+### 附件邮件被企业邮网关拦截 — 服务器端存储方案（2026-08-04）
+用户确认：**1MB 附件也没收到**（纯文本能到）→ 非大小问题，而是**企业邮网关（恩特/163 链路）对外部发件人附件整体拦截**。
+
+- MIME 结构已本机解析验证合法（boundary/双部件/base64 解码一致）→ 排除格式问题。
+- **修复：双保险**：① 附件仍随邮件发送（网关放行则直达）；② **图纸同时保存服务器 `/rfq-files/`**（随机名 `rfq_日期_hex.step`），邮件正文附服务器路径提示；目录由 PHP 自引导创建并自动写入 deny-all `.htaccess`（FTP `MKD` 被拒 501，故不依赖 FTP 建目录）。
+- 附件 MIME 改为规范类型映射（step→application/step、pdf→application/pdf、zip→application/zip 等）提升网关兼容。
+- 实测：POST 带 2MB → 302；FTP 确认 `rfq-files/` 存在且含保存文件（精确 2MB）+ 自写 .htaccess；网页直访 `rfq-files/` 返回 404（不可公网下载）。
+- 团队取件方式：FTP/cPanel 访问根目录 `rfq-files/`。提交 `5be7e7ff` 已推送。
+- 遗留：若希望邮件附件直达，需 SMTP 认证发信（用 info@bozemetal.com 的 SMTP 账号+密码）或邮件后台白名单/DKIM——需用户提供凭据/操作。
+
 ### Google Ads Landing Page — `/titanium-machining/` (2026-08-04)
 面向 "Titanium Machining Services" 关键词的 B2B 高转化单页落地页（英文，Google Ads Quality Score + CRO 优化）。
 
