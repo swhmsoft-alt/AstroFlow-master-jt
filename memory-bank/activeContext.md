@@ -47,6 +47,21 @@
 - 经验教训：日志文件名避免与仓库既有已跟踪文件重名（`deploy_final_log.txt` 曾被覆盖并删除，已 `git restore` 恢复）。
 - ⚠️ 遗留观察：BaseLayout head 中 `gtag('config','{gaId}')` 与 `send_to:'{gaId}/...'` 是字面量占位符（未插值），站点级 gtagReportConversion 实际 send_to 无效；不影响本落地页新转化链路（感谢页脚本自包含正确 ID）。如需修复可改为模板字符串 `${gaId}`。
 
+### 询盘邮件未收到 — 根因定位与修复（2026-08-04）
+用户实测表单提交成功但未收到邮件。诊断结论：
+
+| 检查项 | 结果 |
+|---|---|
+| DNS | `bozemetal.com` 邮箱托管**网易 163 企业邮箱**（qiye163mx01/02.mxmail.netease.com）；SPF=`v=spf1 +ip4:40.160.1.205 +include:relay.mailchannels.net +include:spf.163.com -all`（**已授权服务器 IP**） |
+| 根因 | PHP 发件域用 `no-reply@cnc.bozemetal.com`，该子域**无 SPF** → 163 拒收/丢垃圾箱；且 `mail()` 返回 true 但投递失败（用户以为「没发」） |
+| 服务器诊断 | `?rfq_diag=1` 临时口：PHP 8.3.31，mail() 可用，sendmail=/usr/sbin/sendmail -t -i，mail() 返回 true，POST/文件接收正常 |
+| 修复 | `$fromEmail = 'no-reply@bozemetal.com'`（SPF 授权域）+ `mail(...,'-f '.$fromEmail)` 信封发件人 + 失败回退无 -f；已向 info@bozemetal.com 发出 2 封 `RFQ diag` 测试邮件待用户确认 |
+| 上传限制 | 服务器 `post_max_size=8M`（upload 100M 但 POST 体 8M）→ 新增 `public/.htaccess`（php_value post_max_size 32M / upload_max_filesize 30M），**LiteSpeed 生效**（诊断复验 32M/30M） |
+
+- 部署：重建 + FTP 上传最终 `dist/submit-rfq.php` 与 `.htaccess`；诊断口已从最终版移除（`?rfq_diag=1` 现 302）。
+- 提交：`6a40a0cf` 修复询盘邮件投递 + .htaccess 上传限制（已推 origin/main）。
+- 遗留建议：163 企业邮箱反垃圾严格，若仍收不到需在 163 后台加白名单或配 DKIM；`-f` 参数在部分 MTA 会被拒，已内置无 -f 回退。
+
 ### Google Ads Landing Page — `/titanium-machining/` (2026-08-04)
 面向 "Titanium Machining Services" 关键词的 B2B 高转化单页落地页（英文，Google Ads Quality Score + CRO 优化）。
 
