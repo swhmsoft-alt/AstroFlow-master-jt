@@ -27,7 +27,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
 $to          = 'info@bozemetal.com';
 $fromName    = 'Titanium Machining RFQ';
-$fromEmail   = 'no-reply@' . ($_SERVER['HTTP_HOST'] ?? 'bozemetal.com');
+// IMPORTANT: sender must use a domain whose SPF authorizes this server.
+// bozemetal.com SPF includes the server IP (+ip4:40.160.1.205);
+// cnc.bozemetal.com has NO SPF → NetEase (163 enterprise) drops the mail.
+$fromEmail   = 'no-reply@bozemetal.com';
 $maxFileSize = 25 * 1024 * 1024; // 25 MB
 $allowedExt  = array('step', 'stp', 'igs', 'iges', 'pdf', 'zip');
 
@@ -152,7 +155,10 @@ $headers .= "X-Mailer: PHP/" . phpversion();
 // ─────────────────────────────────────────────────────────────────────────────
 // 6. SEND + REDIRECT
 // ─────────────────────────────────────────────────────────────────────────────
-$sent = mail($to, $subject, $body, $headers);
+$sent = @mail($to, $subject, $body, $headers, '-f ' . $fromEmail);
+if (!$sent) {
+    $sent = @mail($to, $subject, $body, $headers);
+}
 
 if ($sent) {
     header('Location: /thank-you/');
