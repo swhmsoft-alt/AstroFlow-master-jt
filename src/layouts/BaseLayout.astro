@@ -50,6 +50,8 @@ interface Props {
   itemCount?: number;
   items?: { name: string; url: string }[];
   serviceHubKey?: string;
+  /** Override the auto-generated hreflang alternate links (e.g. for non-localized campaign pages) */
+  alternateLinks?: { lang: string; href: string }[];
 }
 
 const currentPathname = Astro.url.pathname;

@@ -1,0 +1,98 @@
+---
+// Capabilities.astro — "Can you do it?" validation: materials + equipment/specs.
+const materials = [
+  { name: 'Grade 1', note: 'Commercially pure — maximum formability & corrosion resistance' },
+  { name: 'Grade 2', note: 'Workhorse CP titanium for industrial & chemical applications' },
+  { name: 'Grade 5 (Ti-6Al-4V)', note: 'Industry-standard aerospace alloy with high strength-to-weight' },
+  { name: 'Grade 23 (Ti-6Al-4V ELI)', note: 'Implant-grade extra-low interstitial alloy for medical devices' },
+  { name: 'Titanium Aluminide', note: 'High-temperature intermetallic for extreme-service components' },
+];
+
+const equipment = [
+  { name: '5-Axis CNC Machining Centers', note: 'Complex 3D titanium geometries finished in a single setup' },
+  { name: 'Swiss-Type & Multi-Axis Turning', note: 'Tight-tolerance round, bar-fed and contoured parts' },
+  { name: 'Wire EDM', note: 'Precision contoured cuts with fine surface detail' },
+  { name: 'CMM Coordinate Measuring', note: 'Full GD&T verification of every critical dimension' },
+];
+
+const specs = [
+  { label: 'Machining Tolerances', value: '±0.005 mm' },
+  { label: 'Part Envelope', value: 'Micro-medical to large structural' },
+  { label: 'Material Standards', value: 'ASTM B348 · AMS 4928 · ISO 5832-3' },
+  { label: 'Certified Raw Stock', value: 'Mill certificates (MTRs) supplied' },
+];
+---
+
+<section id="capabilities" class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <header class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Capabilities</p>
+      <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+        Advanced Titanium Machining Capabilities
+      </h2>
+      <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        From Grade 1 commercially-pure titanium to aerospace-grade Ti-6Al-4V and medical ELI alloys, our
+        <strong style="color: var(--theme-text);">120+ advanced CNC machining centers</strong> convert complex titanium designs
+        into certified precision components — prototype to full production.
+      </p>
+    </header>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-2">
+      <!-- Column A: Materials -->
+      <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <h3 class="flex items-center gap-2 text-lg font-bold" style="color: var(--theme-text);">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </span>
+          Materials We Machine
+        </h3>
+        <ul class="mt-6 space-y-4">
+          {
+            materials.map((m) => (
+              <li class="border-b pb-4 last:border-0 last:pb-0" style="border-color: color-mix(in srgb, var(--theme-text) 10%, transparent);">
+                <p class="font-semibold" style="color: var(--theme-text);">{m.name}</p>
+                <p class="mt-1 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{m.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+
+      <!-- Column B: Equipment & Specs -->
+      <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <h3 class="flex items-center gap-2 text-lg font-bold" style="color: var(--theme-text);">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </span>
+          Equipment &amp; Machining Specs
+        </h3>
+        <ul class="mt-6 space-y-4">
+          {
+            equipment.map((e) => (
+              <li class="border-b pb-4 last:border-0 last:pb-0" style="border-color: color-mix(in srgb, var(--theme-text) 10%, transparent);">
+                <p class="font-semibold" style="color: var(--theme-text);">{e.name}</p>
+                <p class="mt-1 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{e.note}</p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <dl class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {
+            specs.map((s) => (
+              <div class="rounded-xl border px-4 py-3" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-bg));">
+                <dt class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{s.label}</dt>
+                <dd class="mt-1 text-sm font-bold" style="color: var(--theme-primary);">{s.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>

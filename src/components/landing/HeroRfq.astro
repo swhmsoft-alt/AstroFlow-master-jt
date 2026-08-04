@@ -1,0 +1,376 @@
+---
+// =============================================================================
+// HeroRfq.astro — Above-the-fold hero + inline RFQ form container.
+// Conversion strategy: value props on the left, quote form on the right.
+// The form button routes leads to the main site's inquiry form
+// (https://www.bozemetal.com/contact) in a new tab — the same pattern used by
+// the site-wide home hero and product inquiry CTAs.
+// =============================================================================
+
+const valueProps = [
+  { text: 'Tier-1 Material Certification (Grade 5 / Ti-6Al-4V ELI)' },
+  { text: 'Rapid Prototyping & High-Volume Production' },
+  { text: 'NDA Signed Upon Request' },
+];
+
+const stats = [
+  { value: '120+', label: 'CNC Machining Centers' },
+  { value: '< 48h', label: 'DFM & RFQ Response' },
+  { value: '500+', label: 'Global Clients' },
+];
+---
+
+<section class="relative overflow-hidden">
+  <!-- Ambient background glow -->
+  <div class="absolute inset-0 opacity-25" aria-hidden="true">
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(circle at 18% 30%, color-mix(in srgb, var(--theme-primary) 28%, transparent) 0%, transparent 46%), radial-gradient(circle at 85% 75%, color-mix(in srgb, var(--theme-accent) 18%, transparent) 0%, transparent 50%);"
+    ></div>
+  </div>
+  <div
+    class="absolute inset-0"
+    aria-hidden="true"
+    style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 55%, var(--theme-surface) 100%);"
+  ></div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 lg:pt-10 lg:pb-24">
+    <!-- Breadcrumb (non-home page navigation per SEMANTIC_CLOSURE) -->
+    <nav aria-label="Breadcrumb" class="mb-8">
+      <ol itemscope itemtype="https://schema.org/BreadcrumbList" class="flex flex-wrap items-center gap-2 text-sm">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors hover:text-[var(--theme-primary)]" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span aria-hidden="true" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">›</span>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-primary);">Precision Titanium CNC Machining</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+    </nav>
+
+    <div class="grid items-start gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
+      <!-- ============ LEFT: Value proposition ============ -->
+      <div>
+        <div
+          class="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-wider mb-6"
+          style="border-color: color-mix(in srgb, var(--theme-primary) 30%, transparent); background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary); letter-spacing: 0.06em;"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          AS9100D Certified · Baoji, China
+        </div>
+
+        <h1 class="text-4xl md:text-5xl xl:text-[3.25rem] font-bold leading-[1.1]">
+          <span style="color: var(--theme-text);">Precision Titanium CNC Machining Services</span>
+          <span
+            class="block mt-3"
+            style="background: linear-gradient(to right, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 45%, var(--theme-accent))); -webkit-background-clip: text; background-clip: text; color: transparent;"
+          >AS9100D Certified</span>
+        </h1>
+
+        <p class="mt-6 text-lg md:text-xl leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+          Custom medical, aerospace, and defense titanium components with tight tolerances up to
+          <strong style="color: var(--theme-text);">±0.005&nbsp;mm</strong>. 100% quality inspection &amp; fast global shipping.
+        </p>
+
+        <!-- Instant value propositions -->
+        <ul class="mt-8 space-y-4">
+          {
+            valueProps.map((item) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full"
+                  style="background: color-mix(in srgb, var(--theme-accent) 18%, transparent); color: var(--theme-accent);"
+                >
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <span class="text-base md:text-lg font-medium" style="color: var(--theme-text);">{item.text}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- Trust stats -->
+        <dl class="mt-10 grid grid-cols-3 gap-4 border-t pt-8" style="border-color: color-mix(in srgb, var(--theme-text) 12%, transparent);">
+          {
+            stats.map((s) => (
+              <div>
+                <dt class="sr-only">{s.label}</dt>
+                <dd class="text-2xl md:text-3xl font-bold" style="color: var(--theme-primary);">{s.value}</dd>
+                <dd class="mt-1 text-xs md:text-sm leading-snug" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{s.label}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <!-- ============ RIGHT: RFQ form container ============ -->
+      <div
+        id="tm-quote"
+        class="rounded-2xl border p-6 lg:p-8 shadow-2xl"
+        style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+      >
+        <h2 class="text-xl lg:text-2xl font-bold leading-tight" style="color: var(--theme-text);">
+          Get an Instant Quote
+          <span style="color: var(--theme-primary);">Within 24 Hours</span>
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Upload your drawings (.STEP / .IGS) and our processing engineers will respond with a competitive quotation within 24 hours.
+        </p>
+
+        <!-- Error / info toast -->
+        <p id="tm-form-error" role="status" aria-live="polite" class="mt-4 hidden rounded-lg px-4 py-3 text-sm font-medium" style="background: color-mix(in srgb, #ef4444 15%, transparent); color: #fca5a5;"></p>
+
+        <form id="tm-rfq-form" class="mt-6">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="rfq-name" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Name <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                id="rfq-name" name="name" type="text" required autocomplete="name"
+                placeholder="John Carter"
+                class="w-full rounded-lg border px-4 py-3 text-sm outline-none transition focus:ring-2"
+                style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-text) 25%, transparent); color: var(--theme-text);"
+              />
+            </div>
+            <div>
+              <label for="rfq-email" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Corporate Email <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                id="rfq-email" name="email" type="email" required autocomplete="email"
+                placeholder="name@company.com"
+                class="w-full rounded-lg border px-4 py-3 text-sm outline-none transition focus:ring-2"
+                style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-text) 25%, transparent); color: var(--theme-text);"
+              />
+            </div>
+            <div>
+              <label for="rfq-phone" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Phone <span style="color: var(--theme-primary);">*</span>
+              </label>
+              <input
+                id="rfq-phone" name="phone" type="tel" required autocomplete="tel"
+                placeholder="+1 555 000 1234"
+                class="w-full rounded-lg border px-4 py-3 text-sm outline-none transition focus:ring-2"
+                style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-text) 25%, transparent); color: var(--theme-text);"
+              />
+            </div>
+            <div>
+              <label for="rfq-company" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Company
+              </label>
+              <input
+                id="rfq-company" name="company" type="text" autocomplete="organization"
+                placeholder="AeroTech Industries"
+                class="w-full rounded-lg border px-4 py-3 text-sm outline-none transition focus:ring-2"
+                style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-text) 25%, transparent); color: var(--theme-text);"
+              />
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <label for="rfq-details" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              Project Details <span style="color: var(--theme-primary);">*</span>
+            </label>
+            <textarea
+              id="rfq-details" name="details" rows="4" required
+              placeholder="Material, quantity, tolerances, delivery target…"
+              class="w-full resize-none rounded-lg border px-4 py-3 text-sm outline-none transition focus:ring-2"
+              style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-text) 25%, transparent); color: var(--theme-text);"
+            ></textarea>
+          </div>
+
+          <!-- Drag & drop CAD upload (visual placeholder — STEP / IGS) -->
+          <label
+            for="tm-file-input"
+            id="tm-dropzone"
+            class="mt-4 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-4 py-6 text-center transition-colors"
+            style="border-color: color-mix(in srgb, var(--theme-primary) 35%, transparent); background: color-mix(in srgb, var(--theme-primary) 5%, var(--theme-bg));"
+          >
+            <svg class="h-8 w-8" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <p class="text-sm font-medium" style="color: var(--theme-text);">
+              Drag &amp; drop your CAD file here, or <span class="font-semibold" style="color: var(--theme-primary);">browse files</span>
+            </p>
+            <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">STEP · STP · IGS · PDF | Max 100 MB</p>
+            <p id="tm-file-name" class="text-xs font-semibold" style="color: var(--theme-accent);" hidden></p>
+          </label>
+          <input id="tm-file-input" type="file" accept=".step,.stp,.igs,.iges,.pdf" class="sr-only" tabindex="-1" aria-hidden="true" />
+
+          <button
+            type="submit"
+            class="mt-6 w-full rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-[0.99]"
+            style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, #0c4a6e) 100%);"
+          >
+            Get an Instant Quote Within 24 Hours
+          </button>
+          <p class="mt-4 flex items-center justify-center gap-1.5 text-center text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+            <svg class="h-3.5 w-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            100% confidential · Your designs are safe — NDA available on request
+          </p>
+
+        </form>
+
+        <!-- Post-submit success panel -->
+        <div id="tm-form-success" role="status" aria-live="polite" class="hidden">
+          <div class="rounded-xl border p-6 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-accent) 40%, transparent);">
+            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full" style="background: color-mix(in srgb, var(--theme-accent) 18%, transparent); color: var(--theme-accent);">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </span>
+            <h3 class="mt-4 text-lg font-bold" style="color: var(--theme-text);">We&rsquo;ve opened our secure RFQ form for you</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              Complete the form in the new tab (attach your CAD file there) and our engineers will respond within 24 hours.
+            </p>
+            <div class="mt-5 flex flex-wrap justify-center gap-3">
+              <a
+                href="https://www.bozemetal.com/contact"
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:opacity-90"
+                style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, #0c4a6e) 100%);"
+              >
+                Open RFQ Form
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a
+                href="mailto:info@bozemetal.com?subject=Titanium%20Machining%20RFQ"
+                class="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--theme-primary)]/10"
+                style="border-color: var(--theme-primary); color: var(--theme-primary);"
+              >Email Directly</a>
+              <a
+                href="https://wa.me/8618623919905"
+                target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--theme-primary)]/10"
+                style="border-color: var(--theme-primary); color: var(--theme-primary);"
+              >WhatsApp Us</a>
+            </div>
+            <button type="button" id="tm-reset-form" class="mt-5 text-xs underline underline-offset-2 transition-colors hover:text-[var(--theme-primary)]" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Prefer to fill the form here? Start over →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ============================================================
+  // Hero RFQ form: lightweight vanilla JS (no React island).
+  // Routes leads to the main site's inquiry form in a new tab —
+  // same pattern as the site-wide home hero & product CTAs.
+  // ============================================================
+  (() => {
+    const form = document.getElementById('tm-rfq-form');
+    const errBox = document.getElementById('tm-form-error');
+    const success = document.getElementById('tm-form-success');
+    const resetBtn = document.getElementById('tm-reset-form');
+    const dropzone = document.getElementById('tm-dropzone');
+    const fileInput = document.getElementById('tm-file-input');
+    const fileName = document.getElementById('tm-file-name');
+    const supportedExt = ['STEP', 'STP', 'IGS', 'IGES', 'PDF'];
+    const maxSize = 100 * 1024 * 1024; // 100 MB
+    let toastTimer = 0;
+
+    function showToast(msg) {
+      if (!errBox) return;
+      errBox.textContent = msg;
+      errBox.classList.remove('hidden');
+      window.clearTimeout(toastTimer);
+      toastTimer = window.setTimeout(() => errBox.classList.add('hidden'), 6000);
+    }
+
+    function handleFile(file) {
+      const ext = (file.name.split('.').pop() || '').toUpperCase();
+      if (!supportedExt.includes(ext)) {
+        showToast('Unsupported format. Please upload STEP, STP, IGS, IGES or PDF.');
+        return;
+      }
+      if (file.size > maxSize) {
+        showToast('File size cannot exceed 100 MB.');
+        return;
+      }
+      if (fileName) {
+        fileName.textContent = `✓ ${file.name}`;
+        fileName.hidden = false;
+      }
+    }
+
+    if (dropzone) {
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.style.borderColor = 'var(--theme-primary)';
+        dropzone.style.background = 'color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg))';
+      });
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.style.borderColor = '';
+        dropzone.style.background = '';
+      });
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.style.borderColor = '';
+        dropzone.style.background = '';
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleFile(e.dataTransfer.files[0]);
+        }
+      });
+    }
+
+    if (fileInput) {
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files && fileInput.files.length > 0) {
+          handleFile(fileInput.files[0]);
+        }
+      });
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        // Route the lead to the main site's inquiry form (same inbox as the
+        // primary contact page). Graceful on every browser.
+        window.open('https://www.bozemetal.com/contact', '_blank', 'noopener,noreferrer');
+        form.hidden = true;
+        if (success) success.classList.remove('hidden');
+        // Google Ads conversion tracking hook (defined in BaseLayout head)
+        if (typeof window.gtagReportConversion === 'function') {
+          window.gtagReportConversion();
+        }
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (form) {
+          form.hidden = false;
+          form.reset();
+        }
+        if (success) success.classList.add('hidden');
+        if (fileName) {
+          fileName.hidden = true;
+          fileName.textContent = '';
+        }
+        if (fileInput) fileInput.value = '';
+      });
+    }
+  })();
+</script>
+

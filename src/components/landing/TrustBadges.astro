@@ -1,0 +1,48 @@
+---
+// TrustBadges.astro — Certification & compliance bar (immediate buyer validation).
+const badges = [
+  {
+    code: 'AS9100D',
+    label: 'Aerospace Quality Management System',
+    path: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    code: 'ISO 9001:2015',
+    label: 'Certified Quality Management System',
+    path: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    code: 'ISO 13485',
+    label: 'Medical Device Quality Standard',
+    path: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    code: 'MTR Traceability',
+    label: 'Material Test Reports with Every Shipment',
+    path: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+];
+---
+
+<section class="border-y" aria-label="Certifications and compliance" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+    <div class="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+      {
+        badges.map((b) => (
+          <div
+            class="flex items-center gap-3 rounded-xl border px-4 py-4 transition-transform duration-200 hover:-translate-y-0.5"
+            style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-bg));"
+          >
+            <svg class="h-8 w-8 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={b.path} />
+            </svg>
+            <div class="min-w-0">
+              <p class="text-sm font-bold leading-tight" style="color: var(--theme-text);">{b.code}</p>
+              <p class="mt-0.5 text-xs leading-snug" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{b.label}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

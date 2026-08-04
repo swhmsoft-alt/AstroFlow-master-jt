@@ -1,0 +1,54 @@
+---
+// QualityControl.astro — Risk mitigation: inspection workflow & documentation.
+const items = [
+  {
+    title: 'CMM Inspection',
+    icon: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+    desc: 'Coordinate Measuring Machines verify every critical dimension against GD&T to ±0.005 mm before any part ships.',
+  },
+  {
+    title: 'FAIR Reports',
+    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+    desc: 'Project-specific First Article Inspection Reports delivered for every new part number — engineered for fast PPAP / FAIR approval.',
+  },
+  {
+    title: 'Material Traceability',
+    icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',
+    desc: 'Material Test Reports (mill certificates) accompany every shipment for full source-to-component traceability.',
+  },
+];
+---
+
+<section id="quality" class="relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20" aria-hidden="true">
+    <div class="absolute inset-0" style="background: radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--theme-accent) 20%, transparent) 0%, transparent 45%);"></div>
+  </div>
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <header class="max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Quality</p>
+      <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+        Uncompromising Quality Control
+      </h2>
+      <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Every titanium part is verified, documented, and traceable before it leaves our Baoji facility — because in
+        aerospace and medical manufacturing, documentation is just as critical as the cut itself.
+      </p>
+    </header>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        items.map((item) => (
+          <article class="rounded-2xl border p-6 lg:p-8 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.icon} />
+              </svg>
+            </span>
+            <h3 class="mt-5 text-lg font-bold" style="color: var(--theme-text);">{item.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{item.desc}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

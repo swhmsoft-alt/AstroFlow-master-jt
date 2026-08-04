@@ -1,0 +1,71 @@
+---
+// StickyCta.astro — Persistent bottom CTA bar for maximum conversion.
+// Appears after the user scrolls past the hero; hides when the hero form or
+// the final CTA section is on screen so it never overlaps the primary action.
+---
+
+<div
+  id="tm-sticky-cta"
+  class="pointer-events-none fixed inset-x-0 bottom-0 z-50 translate-y-full opacity-0 transition-all duration-300 ease-out"
+  aria-hidden="true"
+>
+  <div class="mx-auto max-w-3xl px-4 pb-4">
+    <div class="flex items-center justify-between gap-4 rounded-2xl border px-5 py-3.5 shadow-2xl" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 30%, transparent);">
+      <div class="min-w-0">
+        <p class="truncate text-sm font-bold" style="color: var(--theme-text);">Get a Titanium Quote in 24h</p>
+        <p class="truncate text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">AS9100D certified · ±0.005 mm · NDA on request</p>
+      </div>
+      <a
+        href="https://www.bozemetal.com/contact"
+        target="_blank" rel="noopener noreferrer"
+        class="pointer-events-auto inline-flex flex-shrink-0 items-center gap-1.5 rounded-lg px-4 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:opacity-90"
+        style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, #0c4a6e) 100%);"
+      >
+        Get a Quote
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Lightweight IntersectionObserver + scroll listener (no dependencies).
+  (() => {
+    const sticky = document.getElementById('tm-sticky-cta');
+    const watchTargets = [document.getElementById('tm-quote'), document.getElementById('tm-final-cta')].filter(Boolean);
+    let targetVisible = false;
+    let scrolledPast = window.scrollY > 500;
+
+    function update() {
+      if (!sticky) return;
+      const show = scrolledPast && !targetVisible;
+      sticky.classList.toggle('translate-y-full', !show);
+      sticky.classList.toggle('opacity-0', !show);
+      sticky.classList.toggle('pointer-events-none', !show);
+      sticky.setAttribute('aria-hidden', String(!show));
+    }
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          targetVisible = entries.some((e) => e.isIntersecting);
+          update();
+        },
+        { threshold: 0 }
+      );
+      watchTargets.forEach((el) => io.observe(el));
+    }
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        scrolledPast = window.scrollY > 500;
+        update();
+      },
+      { passive: true }
+    );
+    update();
+  })();
+</script>
