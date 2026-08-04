@@ -77,6 +77,13 @@
 - 团队取件方式：FTP/cPanel 访问根目录 `rfq-files/`。提交 `5be7e7ff` 已推送。
 - 遗留：若希望邮件附件直达，需 SMTP 认证发信（用 info@bozemetal.com 的 SMTP 账号+密码）或邮件后台白名单/DKIM——需用户提供凭据/操作。
 
+### 表单移除附件上传（2026-08-04）
+用户决定：落地页表单**去掉 CAD 附件上传控件**，改为提示「Need to send CAD attachments? Email them directly to info@bozemetal.com to avoid losing drawings.」（避免图纸丢失）。
+
+- `src/components/landing/HeroRfq.astro`：删除拖拽区/tm-file-input/tm-dropzone/drawing_attachment 及对应 JS（handleFile/DataTransfer/校验），副标题改为「Submit your project requirements…」；新增 mailto 提示卡片。表单仍 `enctype=multipart/form-data` + POST `/submit-rfq.php`（兼容 PHP 防御性处理）。
+- PHP `submit-rfq.php` **未改**：无文件时走 UPLOAD_ERR_NO_FILE 分支照常收询盘；若直接 POST 带文件仍会存档 rfq-files（防御性）。
+- 实测：无附件 POST → 302 /thank-you/；线上确认无上传控件、提示卡片+mailto 在位。提交 `46bce0d6` 已推送。
+
 ### Google Ads Landing Page — `/titanium-machining/` (2026-08-04)
 面向 "Titanium Machining Services" 关键词的 B2B 高转化单页落地页（英文，Google Ads Quality Score + CRO 优化）。
 
