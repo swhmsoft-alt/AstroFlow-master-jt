@@ -62,6 +62,11 @@
 - 提交：`6a40a0cf` 修复询盘邮件投递 + .htaccess 上传限制（已推 origin/main）。
 - 遗留建议：163 企业邮箱反垃圾严格，若仍收不到需在 163 后台加白名单或配 DKIM；`-f` 参数在部分 MTA 会被拒，已内置无 -f 回退。
 
+### 附件投递验证（2026-08-04）
+- 用户确认收到 `RFQ diag body A` 纯文本测试邮件 → **SPF 发件域修复生效**（no-reply@bozemetal.com → 163 收件箱）。
+- **8MB 附件实测**：POST 带 8MB `.step` → 302 `/thank-you/`（HTTP 层 post_max_size=32M 已由 .htaccess 生效；`mail()` 成功入队），附件邮件 `Titanium Machining RFQ — Attachment Test` 已发，待用户确认收件。
+- ⚠️ 25MB 边界说明：base64 使邮件体膨胀 ~33%（25MB 文件 ≈ 33MB 邮件），共享主机 Exim 常有单封大小上限（常见 25MB），故接近 25MB 的附件可能网页层成功、邮件层被拒。建议实用安全上限 ≈15–18MB，更大文件应 ZIP；如需下调表单文案待用户决定。
+
 ### Google Ads Landing Page — `/titanium-machining/` (2026-08-04)
 面向 "Titanium Machining Services" 关键词的 B2B 高转化单页落地页（英文，Google Ads Quality Score + CRO 优化）。
 

@@ -69,6 +69,7 @@ if (strlen($name) > 120 || strlen($phone) > 30 || strlen($details) > 5000) {
 // ─────────────────────────────────────────────────────────────────────────────
 $attachment     = null;
 $attachmentName = null;
+$storedName     = '';
 
 if (isset($_FILES['drawing_attachment']) && is_array($_FILES['drawing_attachment'])) {
     $file = $_FILES['drawing_attachment'];
@@ -89,6 +90,19 @@ if (isset($_FILES['drawing_attachment']) && is_array($_FILES['drawing_attachment
             header('Location: /titanium-machining/?rfq=error');
             exit;
         }
+
+        // Use a known/registered MIME type for the attachment instead of the
+        // generic application/octet-stream — enterprise mail gateways often
+        // strip unknown-typed attachments.
+        $mimeByExt = array(
+            'step' => 'application/step',
+            'stp'  => 'application/step',
+            'igs'  => 'application/iges',
+            'iges' => 'application/iges',
+            'pdf'  => 'application/pdf',
+            'zip'  => 'application/zip',
+        );
+        $attachMime = $mimeByExt[$ext] ?? 'application/octet-stream';
 
         // Reject executable / web-shell MIME types masquerading as CAD files
         $mime = '';
@@ -115,7 +129,29 @@ if (isset($_FILES['drawing_attachment']) && is_array($_FILES['drawing_attachment
             exit;
         }
         $attachment     = $content;
-        $attachmentName = basename($file['name']); // strip any path from the name
+        $attachmentName = basename($file['name']);
+
+        // Save a server-side copy so the drawing is never lost even if the
+        // mail gateway strips attachments (common on enterprise mail systems).
+        $rfqDir = __DIR__ . '/rfq-files';
+        if (!is_dir($rfqDir)) {
+            @mkdir($rfqDir, 0755, true);
+        }
+        // Protect the folder from direct web access (self-bootstrap on first run)
+        if (!file_exists($rfqDir . '/.htaccess')) {
+            @file_put_contents(
+                $rfqDir . '/.htaccess',
+                "# deny web access\r\n<FilesMatch \".*\">\r\n  Require all denied\r\n</FilesMatch>\r\n"
+            );
+        }
+        if (is_writable($rfqDir)) {
+            $storedName = 'rfq_' . date('Ymd_His') . '_' . bin2hex(random_bytes(6)) . '.' . $ext;
+            if (!@move_uploaded_file($file['tmp_name'], $rfqDir . '/' . $storedName)) {
+                if (!@copy($file['tmp_name'], $rfqDir . '/' . $storedName)) {
+                    $storedName = '';
+                }
+            }
+        } // end file validation & storage
     }
 }
 
@@ -134,11 +170,14 @@ $body .= "Email:   $email\r\n";
 $body .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\r\n";
 $body .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\r\n";
 $body .= "Drawing: " . ($attachmentName ? $attachmentName : 'None') . "\r\n\r\n";
+if ($storedName !== '') {
+    $body .= "Server copy: /rfq-files/$storedName (if the email attachment is missing, download this file via FTP/cPanel)\r\n\r\n";
+}
 $body .= "Project Details:\r\n$details\r\n\r\n";
 
 if ($attachment !== null && $attachmentName !== null) {
     $body .= "--$boundary\r\n";
-    $body .= "Content-Type: application/octet-stream; name=\"$attachmentName\"\r\n";
+    $body .= "Content-Type: $attachMime; name=\"$attachmentName\"\r\n";
     $body .= "Content-Transfer-Encoding: base64\r\n";
     $body .= "Content-Disposition: attachment; filename=\"$attachmentName\"\r\n\r\n";
     $body .= chunk_split(base64_encode($attachment));

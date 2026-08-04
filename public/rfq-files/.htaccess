@@ -1,0 +1,5 @@
+# RFQ CAD file storage — deny direct web access.
+# Files are retrieved by the team via FTP / cPanel File Manager.
+<FilesMatch ".*">
+  Require all denied
+</FilesMatch>
