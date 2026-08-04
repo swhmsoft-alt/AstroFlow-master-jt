@@ -2,9 +2,9 @@
 // =============================================================================
 // HeroRfq.astro — Above-the-fold hero + inline RFQ form container.
 // Conversion strategy: value props on the left, quote form on the right.
-// The form button routes leads to the main site's inquiry form
-// (https://www.bozemetal.com/contact) in a new tab — the same pattern used by
-// the site-wide home hero and product inquiry CTAs.
+// The form natively POSTs (multipart/form-data) to /submit-rfq.php — a cPanel
+// PHP handler that emails the RFQ + 3D drawing attachment to the Boze inbox,
+// then redirects to /thank-you/ (Google Ads conversion page).
 // =============================================================================
 
 const valueProps = [
@@ -128,7 +128,9 @@ const stats = [
         <!-- Error / info toast -->
         <p id="tm-form-error" role="status" aria-live="polite" class="mt-4 hidden rounded-lg px-4 py-3 text-sm font-medium" style="background: color-mix(in srgb, #ef4444 15%, transparent); color: #fca5a5;"></p>
 
-        <form id="tm-rfq-form" class="mt-6">
+        <form id="tm-rfq-form" method="POST" action="/submit-rfq.php" enctype="multipart/form-data" class="mt-6">
+          <!-- Honeypot anti-spam field (bots fill hidden inputs; humans don't) -->
+          <input type="hidden" name="bot-field" value="" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="grid gap-4 sm:grid-cols-2">
             <div>
               <label for="rfq-name" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
@@ -201,15 +203,15 @@ const stats = [
             <p class="text-sm font-medium" style="color: var(--theme-text);">
               Drag &amp; drop your CAD file here, or <span class="font-semibold" style="color: var(--theme-primary);">browse files</span>
             </p>
-            <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">STEP · STP · IGS · PDF | Max 100 MB</p>
+            <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">STEP · STP · IGS · IGES · PDF · ZIP | Max 25 MB</p>
             <p id="tm-file-name" class="text-xs font-semibold" style="color: var(--theme-accent);" hidden></p>
           </label>
-          <input id="tm-file-input" type="file" accept=".step,.stp,.igs,.iges,.pdf" class="sr-only" tabindex="-1" aria-hidden="true" />
+          <input id="tm-file-input" type="file" name="drawing_attachment" accept=".step,.stp,.igs,.iges,.pdf,.zip" required class="sr-only" tabindex="-1" aria-hidden="true" />
 
           <button
             type="submit"
-            class="mt-6 w-full rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-[0.99]"
-            style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, #0c4a6e) 100%);"
+            class="mt-6 w-full rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-200 active:scale-[0.99]"
+            style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
           >
             Get an Instant Quote Within 24 Hours
           </button>
@@ -221,48 +223,6 @@ const stats = [
           </p>
 
         </form>
-
-        <!-- Post-submit success panel -->
-        <div id="tm-form-success" role="status" aria-live="polite" class="hidden">
-          <div class="rounded-xl border p-6 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-accent) 40%, transparent);">
-            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full" style="background: color-mix(in srgb, var(--theme-accent) 18%, transparent); color: var(--theme-accent);">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </span>
-            <h3 class="mt-4 text-lg font-bold" style="color: var(--theme-text);">We&rsquo;ve opened our secure RFQ form for you</h3>
-            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-              Complete the form in the new tab (attach your CAD file there) and our engineers will respond within 24 hours.
-            </p>
-            <div class="mt-5 flex flex-wrap justify-center gap-3">
-              <a
-                href="https://www.bozemetal.com/contact"
-                target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:opacity-90"
-                style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, #0c4a6e) 100%);"
-              >
-                Open RFQ Form
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-              <a
-                href="mailto:info@bozemetal.com?subject=Titanium%20Machining%20RFQ"
-                class="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--theme-primary)]/10"
-                style="border-color: var(--theme-primary); color: var(--theme-primary);"
-              >Email Directly</a>
-              <a
-                href="https://wa.me/8618623919905"
-                target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-[var(--theme-primary)]/10"
-                style="border-color: var(--theme-primary); color: var(--theme-primary);"
-              >WhatsApp Us</a>
-            </div>
-            <button type="button" id="tm-reset-form" class="mt-5 text-xs underline underline-offset-2 transition-colors hover:text-[var(--theme-primary)]" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-              Prefer to fill the form here? Start over →
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -270,39 +230,53 @@ const stats = [
 
 <script>
   // ============================================================
-  // Hero RFQ form: lightweight vanilla JS (no React island).
-  // Routes leads to the main site's inquiry form in a new tab —
-  // same pattern as the site-wide home hero & product CTAs.
+  // RFQ form client-side enhancement (vanilla JS, no React island).
+  // The form natively POSTs to /submit-rfq.php (multipart/form-data), so the
+  // browser handles submission + file upload. JS only:
+  //   1. Drag & drop → attach the file to the real <input type="file">
+  //   2. Client-side extension / size validation (mirrors the PHP handler)
+  //   3. "Submitting…" state to prevent double submission
+  //   4. Error banner when PHP redirects back with ?rfq=error
   // ============================================================
   (() => {
     const form = document.getElementById('tm-rfq-form');
     const errBox = document.getElementById('tm-form-error');
-    const success = document.getElementById('tm-form-success');
-    const resetBtn = document.getElementById('tm-reset-form');
     const dropzone = document.getElementById('tm-dropzone');
     const fileInput = document.getElementById('tm-file-input');
     const fileName = document.getElementById('tm-file-name');
-    const supportedExt = ['STEP', 'STP', 'IGS', 'IGES', 'PDF'];
-    const maxSize = 100 * 1024 * 1024; // 100 MB
+    const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+    const supportedExt = ['STEP', 'STP', 'IGS', 'IGES', 'PDF', 'ZIP'];
+    const maxSize = 25 * 1024 * 1024; // 25 MB — mirrors submit-rfq.php
     let toastTimer = 0;
+
+    // PHP handler failed → redirected back with ?rfq=error
+    if (new URLSearchParams(window.location.search).get('rfq') === 'error') {
+      showToast('Sorry, your RFQ could not be sent. Please try again or email us directly at info@bozemetal.com.');
+    }
 
     function showToast(msg) {
       if (!errBox) return;
       errBox.textContent = msg;
       errBox.classList.remove('hidden');
       window.clearTimeout(toastTimer);
-      toastTimer = window.setTimeout(() => errBox.classList.add('hidden'), 6000);
+      toastTimer = window.setTimeout(() => errBox.classList.add('hidden'), 8000);
     }
 
     function handleFile(file) {
       const ext = (file.name.split('.').pop() || '').toUpperCase();
       if (!supportedExt.includes(ext)) {
-        showToast('Unsupported format. Please upload STEP, STP, IGS, IGES or PDF.');
+        showToast('Unsupported format. Please upload STEP, STP, IGS, IGES, PDF or ZIP.');
         return;
       }
       if (file.size > maxSize) {
-        showToast('File size cannot exceed 100 MB.');
+        showToast('File size cannot exceed 25 MB.');
         return;
+      }
+      // Attach the dropped file to the real file input so PHP receives it.
+      if (fileInput) {
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        fileInput.files = dt.files;
       }
       if (fileName) {
         fileName.textContent = `✓ ${file.name}`;
@@ -338,37 +312,11 @@ const stats = [
       });
     }
 
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-        // Route the lead to the main site's inquiry form (same inbox as the
-        // primary contact page). Graceful on every browser.
-        window.open('https://www.bozemetal.com/contact', '_blank', 'noopener,noreferrer');
-        form.hidden = true;
-        if (success) success.classList.remove('hidden');
-        // Google Ads conversion tracking hook (defined in BaseLayout head)
-        if (typeof window.gtagReportConversion === 'function') {
-          window.gtagReportConversion();
-        }
-      });
-    }
-
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        if (form) {
-          form.hidden = false;
-          form.reset();
-        }
-        if (success) success.classList.add('hidden');
-        if (fileName) {
-          fileName.hidden = true;
-          fileName.textContent = '';
-        }
-        if (fileInput) fileInput.value = '';
+    if (form && submitBtn) {
+      form.addEventListener('submit', () => {
+        // Prevent double-submission while the PHP handler processes the upload.
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting…';
       });
     }
   })();

@@ -52,6 +52,8 @@ interface Props {
   serviceHubKey?: string;
   /** Override the auto-generated hreflang alternate links (e.g. for non-localized campaign pages) */
   alternateLinks?: { lang: string; href: string }[];
+  /** Emit <meta name="robots" content="noindex, nofollow"> (e.g. thank-you / conversion pages) */
+  noindex?: boolean;
 }
 
 const currentPathname = Astro.url.pathname;
@@ -79,6 +81,7 @@ const {
   items,
   serviceHubKey,
   alternateLinks: explicitAlternateLinks,
+  noindex = false,
 } = Astro.props;
 
 const rawPath = removeLangPrefix(currentPathname);
@@ -141,7 +144,7 @@ const ldJson = JSON.stringify(pageGraph);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

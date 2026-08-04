@@ -4,9 +4,48 @@
 > **Current Focus:** Google Ads 落地页 `/titanium-machining/` — Precision Titanium CNC Machining Services 高转化单页 + 主站询盘表单对接
 
 ## Current Status
-✅ Google Ads 落地页已构建并通过全量构建验证（2209 页 / 41.67s）。
+✅ Google Ads 落地页已构建并通过全量构建验证（2210 页 / 35.7s）。表单已改为 cPanel 原生 PHP 后端方案。
 
 ## Recent Decisions
+
+### 落地页表单改为 cPanel 原生 PHP 后端（2026-08-04）
+用户确认最终方案：放弃 Formspree/Redirect，改用**自托管 PHP 处理询盘 + 图纸附件上传**（cPanel 共享主机、无 Node 运行时、零第三方费用）。
+
+**新增/修改文件：**
+- `public/submit-rfq.php`（新增）— 原生 PHP 处理：蜜罐 `bot-field` 静默拦截 → 文本字段 CR/LF 清洗 + 邮箱/长度校验 → 附件后缀白名单（step/stp/igs/iges/pdf/zip）+ 25MB 上限 + 危险 MIME 拦截 → `mail()` MIME multipart 打包 base64 附件 → 成功 `Location: /thank-you/`，失败 `?rfq=error`
+- `src/pages/thank-you.astro`（新增）— 转化页，`noindex`，含 `window.__LANDING_CONVERSION_PLACEHOLDER__` 标记（compressHTML 会剥离纯注释脚本，故用真实语句占位）
+- `src/components/landing/HeroRfq.astro` — 表单改为 `<form method="POST" action="/submit-rfq.php" enctype="multipart/form-data">`；新增隐藏蜜罐；文件字段 `name="drawing_attachment"` required（accept .zip 加入）；脚本改为拖拽→DataTransfer 附加真实 input + 客户端校验（25MB/ZIP）+ 防重复提交 + `?rfq=error` 错误横幅；CTA 改橙蓝高亮
+- `src/layouts/BaseLayout.astro` — 新增 `noindex?: boolean` prop（robots meta 可覆盖）
+- `astro.config.mjs` — sitemap 过滤 `/thank-you`（noindex 页不入 sitemap）
+- `FinalCta.astro` / `StickyCta.astro` — CTA 改橙色渐变（#ff8a3d→#ff5a00）与石板蓝搭配
+
+**关键决策：**
+| 项 | 决策 |
+|---|---|
+| 表单提交 | 原生 multipart POST → PHP → mail()（无 JS fetch，最稳） |
+| 文件上传 | 真实附件经 mail() base64 发送；PHP 白名单+大小+危险 MIME 三重校验 |
+| 转化统计 | 成功跳 `/thank-you/`（GTM 占位在 is:inline 脚本中保留）；BaseLayout 头部 gtagReportConversion 定义仍在（页面不再直接调用） |
+| GTM 占位 | compressHTML 会删纯注释脚本 → 改用 `window.__LANDING_CONVERSION_PLACEHOLDER__ = true;` 真实语句标记 |
+
+**验证：** `check-undefined-slugs`/`check-encoding` 通过；`npx astro build` ✅ 2210 页；产物断言：form POST action、honeypot、drawing_attachment required、橙 CTA、thank-you noindex+H1+GTM 标记、`dist/submit-rfq.php` 原样拷贝、sitemap 排除 thank-you、单 H1、ManufacturingPlant JSON-LD。PHP 本机无 CLI 未 lint（cPanel 部署后 `php -l submit-rfq.php` 验证）。
+
+**部署：** `npm run build` → 上传 `dist/` 全部内容到 cPanel `public_html/`；编辑 `public/submit-rfq.php` 顶部 `$to` 为公司邮箱。
+
+### FTP 部署上线（2026-08-04）
+用户授权使用内置 FTP 凭据直接部署。
+
+- 主机 cPanel **无 public_html 层级**，FTP 根目录即网站文档根（`.env.production` 的 `PRODUCTION_SERVER_PATH=/` 证实）；全量 `npm run deploy`（2661 文件）在 FTP 下单文件串行约需 40+ 分钟，中途终止。
+- 改用**精准上传**脚本（basic-ftp，复用 `.env.production` 凭据）只传本任务文件：根目录 `index.html/robots.txt/404.html/sitemap-*.xml/submit-rfq.php` + `thank-you/` + `titanium-machining/` + `_astro/`(20 文件)。注意 `ensureDir` 在本机（CD-first 流程）失败，需显式 `MKD`。
+- 线上验证：`/submit-rfq.php` 302（PHP 已执行）；`/thank-you/` 200（H1/24h 文案/noindex/`__LANDING_CONVERSION_PLACEHOLDER__` 全在）；`/titanium-machining/` 200（含 action=/submit-rfq.php、drawing_attachment、蜜罐、橙 CTA）；**真实 POST 实测 → 302 跳转 `/thank-you/`**（全链路通）；蜜罐 POST → 200 静默拦截。
+- ⚠️ **待办（关键）**：`$to` 仍是占位符 `YOUR_COMPANY_EMAIL@YOURDOMAIN.COM`，邮件会被主机 mail 队列接受后丢失。用户设置真实公司邮箱前，询盘不会送达收件箱（页面流程正常，仅邮件目的地为占位）。
+
+### 邮箱 + Google Ads 转化代码配置上线（2026-08-04）
+- `public/submit-rfq.php`：`$to = 'info@bozemetal.com'`（本地源 + 重新构建 + FTP 覆盖服务器文件，经 FTP 下载回验确认）。
+- `src/pages/thank-you.astro`：占位标记替换为**真实 Google Ads 转化代码**：`gtag('event','conversion',{send_to:'AW-18359358390/u_IbCPfX6tgcELantrJE', value:1.0, currency:'TWD'})`，受 Consent Mode v2 门控（`localStorage.ad_consent === 'granted'`，与 CookieConsent/BaseLayout 同键同值）。转换 ID 取自 BaseLayout 的 gtagReportConversion（GA 标签 AW-18359358390 + 转化行为 u_IbCPfX6tgcELantrJE）。
+- 线上验证：`/thank-you/` 含 send_to 代码 + consent 门控（旧占位已消失）；`/submit-rfq.php` GET→302（PHP 运行中）；FTP 下载服务器 submit-rfq.php 确认 `$to=info@bozemetal.com`。
+- 部署方式：重建（35s）+ 最小 FTP 精准上传 2 文件（submit-rfq.php、thank-you/index.html）。
+- 经验教训：日志文件名避免与仓库既有已跟踪文件重名（`deploy_final_log.txt` 曾被覆盖并删除，已 `git restore` 恢复）。
+- ⚠️ 遗留观察：BaseLayout head 中 `gtag('config','{gaId}')` 与 `send_to:'{gaId}/...'` 是字面量占位符（未插值），站点级 gtagReportConversion 实际 send_to 无效；不影响本落地页新转化链路（感谢页脚本自包含正确 ID）。如需修复可改为模板字符串 `${gaId}`。
 
 ### Google Ads Landing Page — `/titanium-machining/` (2026-08-04)
 面向 "Titanium Machining Services" 关键词的 B2B 高转化单页落地页（英文，Google Ads Quality Score + CRO 优化）。

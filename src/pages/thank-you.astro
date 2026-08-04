@@ -1,0 +1,68 @@
+---
+// =============================================================================
+// thank-you.astro — Conversion page for the Google Ads landing page RFQ form.
+// The PHP handler (public/submit-rfq.php) redirects here after a successful
+// submission. Paste your Google Tag Manager / Google Ads conversion snippet
+// inside the placeholder comment at the bottom of this page.
+// noindex: conversion pages should never appear in search results.
+// =============================================================================
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = 'Thank You for Your RFQ | Boze Titanium Manufacturing Center';
+const pageDescription =
+  'Thank you for your RFQ. Our engineering team will review your 3D drawings and get back to you with a quote within 24 hours.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} noindex>
+  <section class="relative flex items-center justify-center overflow-hidden py-20 lg:py-28">
+    <div class="absolute inset-0 opacity-25" aria-hidden="true">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 30%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 55%);"></div>
+    </div>
+
+    <div class="relative container mx-auto max-w-2xl px-4 text-center">
+      <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full" style="background: color-mix(in srgb, var(--theme-accent) 18%, transparent); color: var(--theme-accent);">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </span>
+
+      <h1 class="mt-6 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Thank you for your RFQ!</h1>
+      <p class="mt-4 text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        Our engineering team will review your 3D drawings and get back to you with a quote within 24 hours.
+      </p>
+
+      <div class="mt-8">
+        <a
+          href="/titanium-machining/"
+          class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-200 active:scale-[0.99]"
+          style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+        >
+          Back to Titanium Machining Services
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        Questions? <a href="mailto:info@bozemetal.com" class="font-semibold underline underline-offset-2" style="color: var(--theme-primary);">info@bozemetal.com</a>
+        &nbsp;·&nbsp; <a href="https://wa.me/8618623919905" target="_blank" rel="noopener noreferrer" class="font-semibold underline underline-offset-2" style="color: var(--theme-primary);">WhatsApp +86 186 2391 9905</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Google Ads conversion — RFQ submit (fires on this thank-you page) -->
+  <script is:inline>
+    // ═══ Google Ads Conversion — RFQ Submit ═══
+    // Tag: AW-18359358390 · Conversion action: u_IbCPfX6tgcELantrJE
+    // Respects Consent Mode v2 — fires only if the visitor accepted cookies
+    // (same localStorage key/value as the site cookie banner).
+    if (localStorage.getItem('ad_consent') === 'granted') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18359358390/u_IbCPfX6tgcELantrJE',
+        'value': 1.0,
+        'currency': 'TWD'
+      });
+    }
+  </script>
+</BaseLayout>

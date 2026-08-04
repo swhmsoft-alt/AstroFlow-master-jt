@@ -15,7 +15,7 @@ export default defineConfig({
     react(),
     normalizeTrailingSlash(),
     sitemap({
-      filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin'),
+      filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin') && !page.includes('/thank-you'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),
