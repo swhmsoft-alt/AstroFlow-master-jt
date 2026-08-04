@@ -2,9 +2,9 @@
 // =============================================================================
 // HeroRfq.astro — Above-the-fold hero + inline RFQ form container.
 // Conversion strategy: value props on the left, quote form on the right.
-// The form natively POSTs (multipart/form-data) to /submit-rfq.php — a cPanel
-// PHP handler that emails the RFQ + 3D drawing attachment to the Boze inbox,
-// then redirects to /thank-you/ (Google Ads conversion page).
+// The form natively POSTs to /submit-rfq.php — a cPanel PHP handler that
+// emails the RFQ to the Boze inbox, then redirects to /thank-you/ (Google Ads
+// conversion page). CAD attachments are handled by email to avoid loss.
 // =============================================================================
 
 const valueProps = [
@@ -122,7 +122,7 @@ const stats = [
           <span style="color: var(--theme-primary);">Within 24 Hours</span>
         </h2>
         <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Upload your drawings (.STEP / .IGS) and our processing engineers will respond with a competitive quotation within 24 hours.
+          Submit your project requirements and our processing engineers will respond with a competitive quotation within 24 hours.
         </p>
 
         <!-- Error / info toast -->
@@ -190,23 +190,20 @@ const stats = [
             ></textarea>
           </div>
 
-          <!-- Drag & drop CAD upload (visual placeholder — STEP / IGS) -->
-          <label
-            for="tm-file-input"
-            id="tm-dropzone"
-            class="mt-4 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed px-4 py-6 text-center transition-colors"
-            style="border-color: color-mix(in srgb, var(--theme-primary) 35%, transparent); background: color-mix(in srgb, var(--theme-primary) 5%, var(--theme-bg));"
+          <!-- CAD attachment advice — files are sent via email to avoid loss -->
+          <div
+            class="mt-4 flex items-start gap-2.5 rounded-xl border px-4 py-3"
+            style="border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));"
           >
-            <svg class="h-8 w-8" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <p class="text-sm font-medium" style="color: var(--theme-text);">
-              Drag &amp; drop your CAD file here, or <span class="font-semibold" style="color: var(--theme-primary);">browse files</span>
+            <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              Need to send CAD attachments? Email them directly to
+              <a href="mailto:info@bozemetal.com" class="font-semibold underline underline-offset-2" style="color: var(--theme-primary);">info@bozemetal.com</a>
+              to avoid losing drawings.
             </p>
-            <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">STEP · STP · IGS · IGES · PDF · ZIP | Max 25 MB</p>
-            <p id="tm-file-name" class="text-xs font-semibold" style="color: var(--theme-accent);" hidden></p>
-          </label>
-          <input id="tm-file-input" type="file" name="drawing_attachment" accept=".step,.stp,.igs,.iges,.pdf,.zip" required class="sr-only" tabindex="-1" aria-hidden="true" />
+          </div>
 
           <button
             type="submit"
@@ -231,22 +228,14 @@ const stats = [
 <script>
   // ============================================================
   // RFQ form client-side enhancement (vanilla JS, no React island).
-  // The form natively POSTs to /submit-rfq.php (multipart/form-data), so the
-  // browser handles submission + file upload. JS only:
-  //   1. Drag & drop → attach the file to the real <input type="file">
-  //   2. Client-side extension / size validation (mirrors the PHP handler)
-  //   3. "Submitting…" state to prevent double submission
-  //   4. Error banner when PHP redirects back with ?rfq=error
+  // The form natively POSTs to /submit-rfq.php; JS only:
+  //   1. "Submitting…" state to prevent double submission
+  //   2. Error banner when PHP redirects back with ?rfq=error
   // ============================================================
   (() => {
     const form = document.getElementById('tm-rfq-form');
     const errBox = document.getElementById('tm-form-error');
-    const dropzone = document.getElementById('tm-dropzone');
-    const fileInput = document.getElementById('tm-file-input');
-    const fileName = document.getElementById('tm-file-name');
     const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-    const supportedExt = ['STEP', 'STP', 'IGS', 'IGES', 'PDF', 'ZIP'];
-    const maxSize = 25 * 1024 * 1024; // 25 MB — mirrors submit-rfq.php
     let toastTimer = 0;
 
     // PHP handler failed → redirected back with ?rfq=error
@@ -262,59 +251,9 @@ const stats = [
       toastTimer = window.setTimeout(() => errBox.classList.add('hidden'), 8000);
     }
 
-    function handleFile(file) {
-      const ext = (file.name.split('.').pop() || '').toUpperCase();
-      if (!supportedExt.includes(ext)) {
-        showToast('Unsupported format. Please upload STEP, STP, IGS, IGES, PDF or ZIP.');
-        return;
-      }
-      if (file.size > maxSize) {
-        showToast('File size cannot exceed 25 MB.');
-        return;
-      }
-      // Attach the dropped file to the real file input so PHP receives it.
-      if (fileInput) {
-        const dt = new DataTransfer();
-        dt.items.add(file);
-        fileInput.files = dt.files;
-      }
-      if (fileName) {
-        fileName.textContent = `✓ ${file.name}`;
-        fileName.hidden = false;
-      }
-    }
-
-    if (dropzone) {
-      dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropzone.style.borderColor = 'var(--theme-primary)';
-        dropzone.style.background = 'color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg))';
-      });
-      dropzone.addEventListener('dragleave', () => {
-        dropzone.style.borderColor = '';
-        dropzone.style.background = '';
-      });
-      dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropzone.style.borderColor = '';
-        dropzone.style.background = '';
-        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-          handleFile(e.dataTransfer.files[0]);
-        }
-      });
-    }
-
-    if (fileInput) {
-      fileInput.addEventListener('change', () => {
-        if (fileInput.files && fileInput.files.length > 0) {
-          handleFile(fileInput.files[0]);
-        }
-      });
-    }
-
     if (form && submitBtn) {
       form.addEventListener('submit', () => {
-        // Prevent double-submission while the PHP handler processes the upload.
+        // Prevent double-submission while the PHP handler processes the request.
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting…';
       });
