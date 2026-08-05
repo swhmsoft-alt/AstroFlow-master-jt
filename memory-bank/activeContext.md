@@ -6,6 +6,21 @@
 ## Current Status
 ✅ `npx astro check` 错误 **1864 → 68（-96.4%）**；`npx astro build` **2210 页通过**。所有确认的真实运行时 bug 均已修复。
 
+### GA 跟踪码增量部署上线（2026-08-05 15:20）
+- **任务：** commit `eaf68377`「GA」（更新 GA 跟踪码 + 类型修复批次）向生产 FTP 提交（账号内置 `.env.production`）。
+- **构建：** `npm run build` 全 5 步通过（约 80s），dist 共 2662 文件 / 332.6MB，GA4 `G-HT4X8QR22B` + Google Ads `AW-18359358390` 确认在产物中。
+- **部署方式（时间限制下最优）：** 新增正式脚本 `scripts/deploy-incremental-ftp.js`（修复 `package.json` 中 `deploy:inc` 引用的缺失文件）：
+  - 并行 SIZE 命令对比（6 连接，实测 ~247ms/文件，控制通道无需数据连接）→ 仅 407/2662 文件不同（60MB）；
+  - 差异缓存 `.deploy-diff.json`（10min TTL，重启免重复对比）；
+  - 4 连接并行上传（单连接实测仅 ~37KB/s，并行提至 ~0.6 文件/s）。
+  - 结果：**407 成功 / 0 失败，总耗时 628s（~10.5min）**。
+- **踩坑记录：** ① basic-ftp `list(path)` 若服务器 MLSD 忽略路径参数会无限递归列根目录（内存膨胀）→ 改用 SIZE 方案；② `ensureDir()` 会改变 cwd，上传须用「绝对父目录 ensureDir + basename uploadFrom」；③ 服务器单连接上传极慢（~120KB/s），必须并行；④ PowerShell 字符串 `.Length` ≠ UTF-8 字节数（多字节语言校验需用 FTP SIZE）。
+- **线上验证（全部通过）：**
+  - 首页 GA4 + Ads + gtag.js + consent 门控在线；`hreflang` 属性已生效（新构建标记）；
+  - `/thank-you/` 含 `AW-18359358390/u_IbCPfX6tgcELantrJE` 转化代码；
+  - `/ar/materials/grade-6242/` 等本次上传页 GA 码在线；
+  - FTP SIZE 抽查 6 文件：远程字节数与本地 dist 完全一致（二进制完整性 ✅）。
+
 ## Recent Decisions
 
 ### 剩余 src/ 错误深度修复（2026-08-05，第二轮）
