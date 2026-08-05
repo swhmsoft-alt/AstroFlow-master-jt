@@ -156,40 +156,54 @@ if (isset($_FILES['drawing_attachment']) && is_array($_FILES['drawing_attachment
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5. BUILD MULTIPART MIME EMAIL WITH ATTACHMENT
+// 5. BUILD EMAIL — text/plain when no attachment (reliable delivery); multipart only with attachment
 // ─────────────────────────────────────────────────────────────────────────────
-$boundary = 'b1_' . md5(uniqid((string)mt_rand(), true));
-$subject  = 'Titanium Machining RFQ — ' . $name . ($company !== '' ? ' / ' . $company : '');
+$subject = 'Titanium Machining RFQ — ' . $name . ($company !== '' ? ' / ' . $company : '');
 
-$body  = "--$boundary\r\n";
-$body .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
-$body .= "New RFQ from the Precision Titanium CNC Machining landing page\r\n\r\n";
-$body .= "Name:    $name\r\n";
-$body .= "Email:   $email\r\n";
-$body .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\r\n";
-$body .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\r\n";
-$body .= "Drawing: " . ($attachmentName ? $attachmentName : 'None') . "\r\n\r\n";
-if ($storedName !== '') {
-    $body .= "Server copy: /rfq-files/$storedName (if the email attachment is missing, download this file via FTP/cPanel)\r\n\r\n";
-}
-$body .= "Project Details:\r\n$details\r\n\r\n";
-
-if ($attachment !== null && $attachmentName !== null) {
+if ($attachment === null || $attachmentName === null) {
+    // ── No attachment → simple text/plain. This format is RELIABLY delivered
+    //    by the enterprise mail gateway, while multipart/mixed messages from
+    //    external senders are silently dropped (verified on this host). ──
+    $body  = "New RFQ from the Precision Titanium CNC Machining landing page\r\n\r\n";
+    $body .= "Name:    $name\r\n";
+    $body .= "Email:   $email\r\n";
+    $body .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\r\n";
+    $body .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\r\n\r\n";
+    $body .= "Project Details:\r\n$details\r\n\r\n";
+    $headers  = "From: $fromName <$fromEmail>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion();
+} else {
+    // ── With attachment → multipart/mixed (best effort; may be dropped) ──
+    $boundary = 'b1_' . md5(uniqid((string)mt_rand(), true));
+    $body  = "--$boundary\r\n";
+    $body .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $body .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+    $body .= "New RFQ from the Precision Titanium CNC Machining landing page\r\n\r\n";
+    $body .= "Name:    $name\r\n";
+    $body .= "Email:   $email\r\n";
+    $body .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\r\n";
+    $body .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\r\n";
+    $body .= "Drawing: " . ($attachmentName ? $attachmentName : 'None') . "\r\n\r\n";
+    $body .= "Project Details:\r\n$details\r\n\r\n";
+    if ($storedName !== '') {
+        $body .= "Server copy: /rfq-files/$storedName (if the email attachment is missing, download this file via FTP/cPanel)\r\n\r\n";
+    }
     $body .= "--$boundary\r\n";
     $body .= "Content-Type: $attachMime; name=\"$attachmentName\"\r\n";
     $body .= "Content-Transfer-Encoding: base64\r\n";
     $body .= "Content-Disposition: attachment; filename=\"$attachmentName\"\r\n\r\n";
     $body .= chunk_split(base64_encode($attachment));
     $body .= "\r\n";
+    $body .= "--$boundary--\r\n";
+    $headers  = "From: $fromName <$fromEmail>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion();
 }
-$body .= "--$boundary--\r\n";
-
-$headers  = "From: $fromName <$fromEmail>\r\n";
-$headers .= "Reply-To: $email\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion();
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 6. SEND + REDIRECT
