@@ -61,7 +61,7 @@ For medical implant components, surface integrity requirements extend to the abs
 
 ## Post-machining surface enhancement options
 
-For applications where the as-machined surface finish does not meet requirements, several post-machining processes can improve surface condition. The choice of process depends on whether the goal is to reduce roughness, improve surface integrity, or both.
+For applications where the as-machined surface finish does not meet requirements, several [post-machining surface treatment](/titanium-surface-treatment/polishing-sandblasting/) processes can improve surface condition. The choice of process depends on whether the goal is to reduce roughness, improve surface integrity, or both.
 
 Mechanical polishing reduces surface roughness by abrasively removing the feed mark peaks. In titanium, polishing must be done with care because the abrasives can embed in the soft titanium surface. Silicon carbide or aluminum oxide abrasives at progressively finer grit sizes, from 400 to 1200 grit, are typical. The polishing process removes material, so dimensional changes must be accounted for in the preceding machining operations. For tight-tolerance features, the machining allowance for polishing is typically 0.01 to 0.02 mm per surface.
 
@@ -73,7 +73,7 @@ Chemical etching and electropolishing remove a uniform layer of material from th
 
 ---
 
-**Table 1: Surface finish capability by operation type (Ti-6Al-4V)**
+**Table 1: Surface finish capability by operation type ([Ti-6Al-4V](/materials/grade-5/))**
 
 | Operation | Typical Ra range (μm) | Limiting factor | Primary control |
 |-----------|----------------------|-----------------|-----------------|
@@ -94,6 +94,8 @@ Chemical etching and electropolishing remove a uniform layer of material from th
 | Cutting speed | 45–5 m/min | Avoids BUE and rapid wear zones | Narrow optimal window |
 | Depth of cut | 0.1–0.3 mm | Below 0.1 = rubbing risk | Deeper cuts increase deflection |
 | Coolant pressure | 50+ bar | Stabilizes BUE, controls temperature | Higher pressure requires pump capacity |
+
+To compare achievable Ra values across machining operations and post-processing methods, use our [surface roughness comparator](/tools/surface-roughness-comparator/).
 
 ---
 

@@ -11,7 +11,7 @@ coverImageAlt: Titanium CNC Machining Services
 featured: false
 ---
 
-If you are preparing an RFQ for custom titanium machining in China, the most important thing is not the lowest unit price but whether the supplier can hold tolerance, traceability, and delivery consistency across the full production run. For aerospace, medical, energy, and general industrial parts, the right contract manufacturer is one that can quote clearly, document material and process controls, and explain where the real cost and risk sit.
+If you are preparing an RFQ for custom titanium machining in China, the most important thing is not the lowest unit price but whether the supplier can hold tolerance, traceability, and delivery consistency across the full production run. For [aerospace](/industries/aerospace/), medical, energy, and general industrial parts, the right contract manufacturer is one that can quote clearly, document material and process controls, and explain where the real cost and risk sit.
 
 ## What a strong RFQ should ask for
 
@@ -33,7 +33,7 @@ Use a written checklist before sending the RFQ: material grade, quantity by rele
 
 ## How to judge a titanium supplier
 
-The best supplier is not the one with the lowest hourly machine rate; it is the one that can repeatedly make acceptable parts with minimal supervision. For custom titanium machining, that usually means stable process control, clear traveler records, appropriate inspection capability, and a realistic understanding of the geometry you are asking them to produce. If the quote is vague about how they will make and inspect the part, treat that as a warning sign.
+The best supplier is not the one with the lowest hourly machine rate; it is the one that can repeatedly make acceptable parts with minimal supervision. For custom titanium machining, that usually means stable process control, clear traveler records, appropriate [inspection capability](/capabilities/inspection/), and a realistic understanding of the geometry you are asking them to produce. If the quote is vague about how they will make and inspect the part, treat that as a warning sign.
 
 In aerospace and medical work, the supplier must also understand how traceability and documentation affect release timing. A shop can have good CNC equipment and still fail a program because the paperwork, material verification, or sub-tier process coordination is weak. This is especially common when buyers assume every machine shop handles titanium the same way.
 
@@ -87,4 +87,4 @@ Good RFQs reduce ambiguity and make engineering questions easier to answer. That
 
 Do not overcomplicate the request with unnecessary legal or commercial noise. Ask for what affects manufacturability and release quality, then compare the responses on technical clarity, not just price. That keeps the sourcing process focused on execution risk.
 
-For your next round of sourcing, build the RFQ around one principle: the supplier should be able to quote the part without inventing assumptions. If they need to invent assumptions, the order is not ready yet.
+For your next round of sourcing, build the RFQ around one principle: the supplier should be able to quote the part without inventing assumptions. If they need to invent assumptions, the order is not ready yet. When the package is ready, submit it directly through our [online quotation portal](/rfq/), which structures the required information up front.

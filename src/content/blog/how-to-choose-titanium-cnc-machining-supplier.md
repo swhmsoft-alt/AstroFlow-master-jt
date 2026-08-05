@@ -21,11 +21,11 @@ The machine tools should have sufficient spindle power to maintain cutting speed
 
 High-pressure coolant capability is essential. Through-spindle coolant delivery at 50 bar minimum, and preferably 70 bar or higher, is standard for production titanium machining. Suppliers without high-pressure coolant systems will struggle with tool life, surface finish, and process reliability on titanium work.
 
-The supplier should have documented experience with the specific titanium alloy and component type required. General titanium machining experience is useful but not sufficient — a supplier who machines thick-walled Ti-6Al-4V brackets successfully may not have the thin-wall machining capability needed for aerospace structural components. Requesting examples of similar work and contacting references is a standard part of the evaluation.
+The supplier should have documented experience with the specific titanium alloy and component type required. General titanium machining experience is useful but not sufficient — a supplier who machines thick-walled [Ti-6Al-4V](/materials/grade-5/) brackets successfully may not have the thin-wall machining capability needed for aerospace structural components. Requesting examples of similar work and contacting references is a standard part of the evaluation.
 
 ## Quality system verification
 
-Quality system requirements depend on the industry. For aerospace work, AS9100D certification is a prerequisite. For medical devices, ISO 13485 certification is typically required. For industrial components, ISO 9001 certification is standard.
+Quality system requirements depend on the industry. For aerospace work, [AS9100D certification](/capabilities/certifications/) is a prerequisite. For medical devices, ISO 13485 certification is typically required. For industrial components, ISO 9001 certification is standard.
 
 Beyond the certification, the evaluation should verify that the quality system is actually followed in production. An audit of the supplier's quality records — inspection reports, non-conformance documentation, corrective action records — reveals whether the system is a working process or a certification document that is not applied in practice. The presence of recurring non-conformances that have not been addressed through corrective action is a warning sign.
 
@@ -66,6 +66,8 @@ Third, a sample part evaluation where the supplier machines a representative com
 Fourth, a first production run with increased inspection frequency. The first lot provides the data to confirm that the supplier's process is capable of meeting the requirements consistently.
 
 Fifth, ongoing performance monitoring with periodic quality reviews. Supplier performance should be tracked using metrics such as on-time delivery, part non-conformance rate, and corrective action response time.
+
+When your evaluation criteria are defined, submitting a structured [RFQ request](/rfq/) to shortlisted suppliers will produce comparable quotations for direct review.
 
 ---
 

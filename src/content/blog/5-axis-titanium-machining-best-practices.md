@@ -31,7 +31,7 @@ Tool engagement control is fundamentally different in 5-axis machining. In 3-axi
 
 ## Tool orientation principles for rigid cutting conditions
 
-The primary rule for 5-axis tool orientation in titanium is to avoid cutting with the center of the tool. The center of a rotating end mill has zero surface speed, and when this region contacts the workpiece, it rubs rather than cuts. The rubbing generates heat without material removal, and in titanium, this heat accelerates tool wear and can produce localized surface damage. A tilt angle of 3 to 5 degrees from the surface normal is typically sufficient to move the cutting zone away from the tool center while maintaining effective material removal. This principle is applied in [5-axis CNC machining centers](/titanium-cnc-machining-services/3-5-axis-cnc-machining/) configured specifically for titanium aerospace work.
+The primary rule for 5-axis tool orientation in titanium is to avoid cutting with the center of the tool. The center of a rotating end mill has zero surface speed, and when this region contacts the workpiece, it rubs rather than cuts. The rubbing generates heat without material removal, and in titanium, this heat accelerates tool wear and can produce localized surface damage. A tilt angle of 3 to 5 degrees from the surface normal is typically sufficient to move the cutting zone away from the tool center while maintaining effective material removal. This principle is applied in [5-axis CNC machining centers](/titanium-cnc-machining-services/3-5-axis-cnc-machining/) configured specifically for titanium [aerospace work](/industries/aerospace/).
 
 The lead angle — the angle between the tool axis and the surface normal in the direction of travel — determines how the cutting forces are distributed. A positive lead angle of 5 to 10 degrees directs the cutting forces axially into the spindle and produces a clean shearing action. A negative lead angle directs forces radially and increases the risk of deflection and chatter. For titanium finishing operations, a positive lead angle is strongly preferred.
 
@@ -81,7 +81,7 @@ Simultaneous 5-axis finishing, where all five axes move simultaneously to mainta
 
 ---
 
-**Table 1: 5-axis parameter guidelines for Ti-6Al-4V**
+**Table 1: 5-axis parameter guidelines for [Ti-6Al-4V](/materials/grade-5/)**
 
 | Operation | Tilt angle | Lead angle | Chip load (mm/tooth) | Radial engagement | Surface speed (m/min) |
 |-----------|-----------|-----------|---------------------|-------------------|----------------------|

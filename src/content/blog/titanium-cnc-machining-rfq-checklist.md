@@ -15,7 +15,7 @@ A well-prepared RFQ package for titanium CNC machined components reduces the ris
 
 ## Material specification
 
-The material specification should include the alloy designation, the applicable standard, the condition, and any supplementary requirements. A complete material specification for a Ti-6Al-4V component would read "Ti-6Al-4V per ASTM B348, Grade 5, annealed" or "Ti-6Al-4V ELI per ASTM F136, Grade 23, annealed."
+The material specification should include the alloy designation, the applicable standard, the condition, and any supplementary requirements. A complete material specification for a Ti-6Al-4V component would read "Ti-6Al-4V per [ASTM B348](/materials/astm-b348/), Grade 5, annealed" or "Ti-6Al-4V ELI per ASTM F136, Grade 23, annealed."
 
 The material product form should be specified — plate, bar, forging, or near-net shape. If the component can be machined from multiple product forms, the RFQ should specify which form is preferred or allow the supplier to propose the most cost-effective option.
 
@@ -23,7 +23,7 @@ Any supplementary material requirements should be included — ultrasonic inspec
 
 ## Drawing and model requirements
 
-The RFQ should include both a 3D CAD model and a 2D drawing. The CAD model provides the geometric definition, and the 2D drawing provides the tolerance specifications, surface finish requirements, and notes that are not captured in the model.
+The RFQ should include both a 3D CAD model and a 2D drawing. The CAD model provides the geometric definition, and the 2D drawing provides the tolerance specifications, surface finish requirements, and notes that are not captured in the model. When the package is complete, it can be submitted through our [engineering RFQ portal](/rfq/), which accepts CAD file uploads so the supplier quotes against the exact geometry.
 
 The drawing should include a complete tolerance specification with the datum structure clearly defined. Floating tolerances that are not referenced to a specific datum are a common source of interpretation differences between suppliers.
 
@@ -61,5 +61,7 @@ The delivery schedule should include the lead time for material procurement. Non
 | Delivery schedule | Required delivery dates | Determines production planning |
 | Quality requirements | Inspection reports, certifications | Affects inspection time and cost |
 | Special requirements | Source inspection, special testing | Adds to lead time and cost |
+
+If you are preparing an RFQ for titanium machined parts, our [titanium CNC machining services](/titanium-cnc-machining-services/) page outlines the production systems, inspection equipment, and quality controls that your quotation will be evaluated against.
 
 ---

@@ -1,10 +1,38 @@
 # Active Context
 
 > **Last Updated:** 2026-08-05
-> **Current Focus:** 类型检查净化收尾 — 修复剩余 166 个 src/ 错误中的真实 bug（RFQForm/CADUpload 崩溃、grade 数据错位、FAQ 字段名等）
+> **Current Focus:** Titanium CNC Query Universe 第一阶段执行 — Semantic Linking（10 篇高商业价值博客内链重组）已完成并构建验证
 
 ## Current Status
-✅ `npx astro check` 错误 **1864 → 68（-96.4%）**；`npx astro build` **2210 页通过**。所有确认的真实运行时 bug 均已修复。
+✅ Semantic Linking Phase 1 完成：10 篇博客新增 25 条 Tier1 内链（service/material/industry/rfq/capabilities/tools），`check-undefined-slugs` 0 issue，`npm run build` 通过，dist 产物 0 重复包裹。
+
+## Recent Decisions
+
+### Semantic Linking Phase 1（2026-08-05）
+**背景：** 战略层批准 Semantic Linking Map（39 篇博客），执行顺序调整为 Phase 0（keywordMap Safety Audit）→ Phase 1（10 篇高价值博客手动内链）。
+
+**Phase 0 — KeywordMap Safety Audit 结论：**
+- 底层插件 `rehype-auto-internal-links` v0.1.0：`BLOCKED_TAGS` 含 `a/code/pre/h1-h6/script/style/button`，遇到即 SKIP → **手动链接绝不会被二次包裹** ✅
+- ⚠️ `<table>` **未阻断**：若未来 keywordMap 增加裸合金词（如 "Ti-6Al-4V"），表格单元格会被自动链接 → 只加长短语或用手动链接
+- ⚠️ 无 exclude selector / URL 黑名单选项（仅 keywordMap + maxLinksPerPage=3）
+- i18n 过滤正确：en 页排除 `/nl/...` 等语言前缀（`Rapid Prototyping → /nl/...` 异常项不污染英语页）
+- 本次完全未修改 keywordMap
+
+**Phase 1 — 10 篇博客内链（25 条新 Tier1）：**
+| 目标类型 | Before | After |
+|---|---|---|
+| Service | 2 | 6 |
+| Material | 0 | 8 |
+| Industry | 0 | 4 |
+| RFQ | 0 | 5 |
+| Capabilities | 0 | 6 |
+| Tools | 0 | 2 |
+
+- 关键修复：`why-titanium-is-difficult-to-machine` 补齐 Material Entity 链接（→ `/materials/grade-5/`，形成 Problem→Material→Process→Service→RFQ 链）；`titanium-cnc-machining-rfq-checklist` 补齐最高价值 `/rfq/` 链接
+- 锚文本全部各异，遵循「描述目标实体」原则，无重复商业锚文本
+- 构建验证：dist 产物链接正确渲染、`<a href="..."><a href=` 重复包裹数 = 0
+
+**下一步（待批准）：** P0.5 Supplier Entity Page `/titanium-cnc-machining-manufacturer/` → P0.6 AS9100 → P1 5-Axis / RFQ Preparation 强化
 
 ### GA 跟踪码增量部署上线（2026-08-05 15:20）
 - **任务：** commit `eaf68377`「GA」（更新 GA 跟踪码 + 类型修复批次）向生产 FTP 提交（账号内置 `.env.production`）。
@@ -20,8 +48,6 @@
   - `/thank-you/` 含 `AW-18359358390/u_IbCPfX6tgcELantrJE` 转化代码；
   - `/ar/materials/grade-6242/` 等本次上传页 GA 码在线；
   - FTP SIZE 抽查 6 文件：远程字节数与本地 dist 完全一致（二进制完整性 ✅）。
-
-## Recent Decisions
 
 ### 剩余 src/ 错误深度修复（2026-08-05，第二轮）
 **背景：** 用户问剩余 166 个错误是否需修复。逐一调查发现其中含多个**真实运行时 bug**，已全部修复；其余为类型级问题（slug 死分支等）。

@@ -13,11 +13,11 @@ featured: false
 
 ## Component overview
 
-The component was a complex titanium housing for an aerospace actuator system, machined from Ti-6Al-4V plate per ASTM B265. The component had multiple precision features — a 100 mm diameter bore with a tolerance of H6, six threaded holes with true position tolerance of 0.05 mm, a sealing surface with a flatness requirement of 0.02 mm, and wall thicknesses ranging from 1.5 mm to 8.0 mm. The overall dimensions were approximately 200 mm by 150 mm by 100 mm. The tolerance requirements for this component align with the precision ranges described in the [titanium CNC tolerance guide](/blog/titanium-cnc-tolerance-guide-engineering-specifications/).
+The component was a complex titanium housing for an aerospace actuator system, machined from [Ti-6Al-4V](/materials/grade-5/) plate per ASTM B265. The component had multiple precision features — a 100 mm diameter bore with a tolerance of H6, six threaded holes with true position tolerance of 0.05 mm, a sealing surface with a flatness requirement of 0.02 mm, and wall thicknesses ranging from 1.5 mm to 8.0 mm. The overall dimensions were approximately 200 mm by 150 mm by 100 mm. The tolerance requirements for this component align with the precision ranges described in the [titanium CNC tolerance guide](/blog/titanium-cnc-tolerance-guide-engineering-specifications/).
 
 ## Process development approach
 
-The process development followed a structured approach with three phases. Phase one established the roughing sequence and verified that the material was adequately stress-relieved. Phase two developed the semi-finishing and finishing strategies for each critical feature. Phase three validated the complete process with a production trial of 25 components.
+The [process development](/capabilities/engineering/) followed a structured approach with three phases. Phase one established the roughing sequence and verified that the material was adequately stress-relieved. Phase two developed the semi-finishing and finishing strategies for each critical feature. Phase three validated the complete process with a production trial of 25 components.
 
 The roughing sequence was designed to remove material symmetrically to manage residual stress redistribution. The component was roughed in three stages — first the external profile, then the internal features from one side, then the internal features from the opposite side. The component was stress-relieved between the roughing stages at 600°C in a vacuum furnace.
 
@@ -49,5 +49,7 @@ The production scale-up from the trial to full production was accomplished witho
 | Thread true position | 0.05 mm | 0.015 to 0.035 mm | 1.38 | CMM |
 | Sealing surface flatness | 0.02 mm | 0.008 to 0.016 mm | 1.45 | Laser measurement |
 | Wall thickness | 1.5 ±0.10 mm | 1.48 to 1.56 mm | 1.33 | Ultrasonic measurement |
+
+For components with similar tolerance and process requirements, [request a process study](/rfq/), and our engineers will outline the machining sequence, tooling, and inspection plan for your geometry.
 
 ---

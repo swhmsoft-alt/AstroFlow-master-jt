@@ -14,7 +14,7 @@ Aerospace Titanium Full-Process Supply: Reducing Multi-Source Risks and Lead Tim
 
 ## Introduction
 
-A Tier 2 aerospace fastener supplier in the Midwest United States received two NDT rejections in consecutive quarters on a **Ti-6Al-4V (Grade 5)** hex bolt order. The root cause traced back to batch chemistry drift: the **AMS 4928T**-specified bar stock came from three separate upstream mills over a six-month period. Oxygen content varied by 0.04 wt% between heats and annealing twins exceeded AMS limits in one batch. The supplier lost eight production weeks and incurred approximately **$18,000 in re-inspection and rework costs** — a figure that did not include the soft cost of a delayed delivery to their prime customer.
+A Tier 2 aerospace fastener supplier in the Midwest United States received two NDT rejections in consecutive quarters on a **[Ti-6Al-4V (Grade 5)](/materials/grade-5/)** hex bolt order. The root cause traced back to batch chemistry drift: the **AMS 4928T**-specified bar stock came from three separate upstream mills over a six-month period. Oxygen content varied by 0.04 wt% between heats and annealing twins exceeded AMS limits in one batch. The supplier lost eight production weeks and incurred approximately **$18,000 in re-inspection and rework costs** — a figure that did not include the soft cost of a delayed delivery to their prime customer.
 
 This scenario is not uncommon. What is less frequently discussed in the aerospace supply chain is the **coordination cost black hole** created by multi-source strategies: the hidden administrative, quality, and scheduling overhead that accumulates when one component draws material from multiple independent suppliers. Based on industry observations across mid-tier AS9100-certified machine shops, these unallocated costs can consume **12–18% of procurement team capacity** without appearing on any single purchase order. This article quantifies those hidden costs and presents an alternative: **full-process titanium supply** from a single certified source.
 
@@ -36,7 +36,7 @@ Aerospace-grade titanium is specified under tightly controlled material standard
 
 The difference in **oxygen upper limit between AMS 6415 (0.18%) and AMS 4911H/4928T (0.20%)** is small in absolute terms but significant in process control. Oxygen is an alpha stabilizer — exceeding the limit reduces ductility and fracture toughness, particularly problematic in forged structural components subjected to cyclic loading. A forging house that sources bar stock specified to AMS 4928T but applies it to a part that ultimately requires AMS 6415 certification may face **chemistry non-conformance on final test reports**.
 
-**Traceability requirements** compound the issue. **EN 10204 3.2** certification demands that an independent inspection body (not the manufacturer alone) verify material chemistry and mechanical properties against the order specification. The traceability chain — from master heat number → billet lot → individual piece → serialized final part — must be unbroken. When material passes through three independent suppliers (mill, service center, machine shop), a single missing MTR (material test report) link can halt production for weeks pending re-verification.
+**[Traceability requirements](/capabilities/traceability/)** compound the issue. **EN 10204 3.2** certification demands that an independent inspection body (not the manufacturer alone) verify material chemistry and mechanical properties against the order specification. The traceability chain — from master heat number → billet lot → individual piece → serialized final part — must be unbroken. When material passes through three independent suppliers (mill, service center, machine shop), a single missing MTR (material test report) link can halt production for weeks pending re-verification.
 
 ---
 
@@ -171,6 +171,8 @@ If you would like to evaluate your current material specifications against a ful
 - An **anonymized export record summary** (customer names redacted) illustrating material flow under full traceability
 - A **sample EN 10204 3.2 certificate** package with corresponding UT inspection report for review
 - A **virtual facility walk-through** covering our melt, forge, heat treat, and NDT operations
+
+Request the [evaluation package](/rfq/) through our engineering RFQ portal.
 
 ---
 

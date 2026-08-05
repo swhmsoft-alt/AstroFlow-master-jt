@@ -11,7 +11,7 @@ coverImageAlt: Ti-6Al-4V titanium alloy component after precision machining
 featured: false
 ---
 
-Ti-6Al-4V, designated as Grade 5 in the ASTM system, is the most widely used titanium alloy, accounting for approximately half of all titanium consumed globally. Its dominance is not because it excels in any single property — other titanium alloys offer higher strength, better creep resistance, or improved corrosion performance — but because it provides the best combination of mechanical properties, manufacturability, and supply chain maturity across the full range of engineering requirements. For a full comparison across all titanium categories, see the [titanium grades complete guide](/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/).
+[Ti-6Al-4V](/materials/grade-5/), designated as Grade 5 in the ASTM system, is the most widely used titanium alloy, accounting for approximately half of all titanium consumed globally. Its dominance is not because it excels in any single property — other titanium alloys offer higher strength, better creep resistance, or improved corrosion performance — but because it provides the best combination of mechanical properties, manufacturability, and supply chain maturity across the full range of engineering requirements. For a full comparison across all titanium categories, see the [titanium grades complete guide](/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/).
 
 ## Mechanical and physical properties
 
@@ -39,7 +39,7 @@ The recommended cutting speed range for carbide tools in Ti-6Al-4V is 40 to 80 m
 
 The material's low thermal conductivity requires high-pressure coolant delivery to manage the heat at the cutting interface. Coolant pressures of 50 bar or higher, delivered through the spindle, are standard for production Ti-6Al-4V machining. Without adequate coolant, tool edge temperatures can exceed 1000°C, and tool life drops to unacceptable levels within minutes.
 
-Ti-6Al-4V in the annealed condition machines more easily than in the STA condition. The higher hardness of STA material increases cutting forces by 15 to 25 percent and reduces tool life by 20 to 30 percent at equivalent cutting parameters. Process planning should account for the heat treatment condition of the material when setting cutting parameters.
+Ti-6Al-4V in the annealed condition machines more easily than in the STA condition. The higher hardness of STA material increases cutting forces by 15 to 25 percent and reduces tool life by 20 to 30 percent at equivalent cutting parameters. Process planning should account for the heat treatment condition of the material when setting cutting parameters. These strategies are applied in production within our [titanium CNC machining services](/titanium-cnc-machining-services/), where coolant delivery and toolpath planning are matched to the material condition.
 
 ## Weldability and forming
 
@@ -51,7 +51,7 @@ Ti-6Al-4V can be hot formed at temperatures of 700 to 900°C. Hot forming at the
 
 ## Common applications
 
-In aerospace, Ti-6Al-4V is used for airframe structural components, landing gear components, engine mounts, fasteners, and hydraulic tubing. It is the standard material for many structural aerospace applications where the combination of strength, weight, and corrosion resistance is required.
+In [aerospace](/industries/aerospace/), Ti-6Al-4V is used for airframe structural components, landing gear components, engine mounts, fasteners, and hydraulic tubing. It is the standard material for many structural aerospace applications where the combination of strength, weight, and corrosion resistance is required.
 
 In medical devices, the ELI version (Grade 23) is used for load-bearing orthopedic implants, including hip stems, knee components, bone plates, and spinal fixation hardware. Standard Ti-6Al-4V is used for surgical instruments and instruments where the biocompatibility requirements are less stringent than for permanent implants.
 

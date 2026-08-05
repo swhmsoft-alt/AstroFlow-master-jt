@@ -15,7 +15,7 @@ Specifying tolerances on titanium components requires an understanding of how th
 
 ## General tolerance capability for titanium
 
-The base tolerance capability for titanium CNC machining on standard 3-axis and 5-axis machine tools is approximately ±0.05 mm for linear dimensions under 100 mm. This assumes the component is machined from stress-relieved material on a machine tool in good condition with appropriate tooling and coolant systems.
+The base tolerance capability for [titanium CNC machining](/titanium-cnc-machining-services/) on standard 3-axis and 5-axis machine tools is approximately ±0.05 mm for linear dimensions under 100 mm. This assumes the component is machined from stress-relieved material on a machine tool in good condition with appropriate tooling and coolant systems.
 
 For dimensions over 100 mm, the achievable tolerance relaxes by approximately 0.01 mm per 50 mm of additional length. A 200 mm dimension can typically be held to ±0.07 mm, while a 400 mm dimension requires approximately ±0.10 mm. The relaxation is driven by thermal expansion of the workpiece and the machine tool structure over the longer machining cycle required for larger components.
 
@@ -72,6 +72,8 @@ For thin-wall features, the tolerance should account for the expected deflection
 | Bored hole | H8 | H7 | H6 |
 | Linear dimension <100 mm | ±0.05 mm | ±0.025 mm | –|
 | Linear dimension >100 mm | ±0.07–0.10 mm | ±0.05 mm | –|
+
+To check whether a proposed tolerance is achievable for a specific feature and material condition, use our [CNC tolerance checker](/tools/cnc-tolerance-checker/), and review the verification methods available under our [inspection and testing capabilities](/capabilities/inspection/).
 
 ---
 
