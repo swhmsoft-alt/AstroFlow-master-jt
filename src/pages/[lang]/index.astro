@@ -27,7 +27,7 @@ const tOrNull = useTOrNull(currentLang);
 // Load home page data from content collection at build time
 const pages = await getCollection('pages');
 const homePage = pages.find(p => p.id === 'home');
-const pageData = homePage?.data || {};
+const pageData = (homePage?.data || {}) as Record<string, any>;
 const heroEntry = HERO_CONFIG['/'] || undefined;
 
 // Translation-aware hero values for home page

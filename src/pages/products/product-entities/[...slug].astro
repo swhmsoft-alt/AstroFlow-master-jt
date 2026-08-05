@@ -145,7 +145,7 @@ const schemaProduct = {
   ]
 };
 // Use spec FAQ when available, fall back to JSON FAQ
-const schemaFaqData = specEntry?.data?.faq || faqData;
+const schemaFaqData = specEntry?.data?.faqs || faqData;
 if (schemaFaqData.length > 0) {
   (schemaProduct["@graph"] as any[]).push({
     "@type": "FAQPage",

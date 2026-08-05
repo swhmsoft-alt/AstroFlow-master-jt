@@ -235,7 +235,7 @@ const stats = [
   (() => {
     const form = document.getElementById('tm-rfq-form');
     const errBox = document.getElementById('tm-form-error');
-    const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+    const submitBtn = form ? form.querySelector<HTMLButtonElement>('button[type="submit"]') : null;
     let toastTimer = 0;
 
     // PHP handler failed → redirected back with ?rfq=error
@@ -243,7 +243,7 @@ const stats = [
       showToast('Sorry, your RFQ could not be sent. Please try again or email us directly at info@bozemetal.com.');
     }
 
-    function showToast(msg) {
+    function showToast(msg: string) {
       if (!errBox) return;
       errBox.textContent = msg;
       errBox.classList.remove('hidden');

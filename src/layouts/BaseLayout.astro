@@ -8,7 +8,7 @@ import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
-import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType } from '../lib/schema';
+import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem } from '../lib/schema';
 import BrandAbout from '@components/home/BrandAbout.astro';
 import CookieConsent from '@components/CookieConsent.astro';
 
@@ -35,7 +35,7 @@ interface Props {
   title?: string;
   description?: string;
   hideThemeSwitcher?: boolean;
-  canonicalURL?: string;
+  canonicalURL?: string | URL;
   ogImage?: string;
   pubDate?: string | null;
   author?: string;
@@ -87,13 +87,15 @@ const {
 const rawPath = removeLangPrefix(currentPathname);
 const canonicalPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
 const seoEntry = SEO_CONFIG[canonicalPath];
-const seoTitleFromConfig = seoEntry?.title?.[currentLang];
-const seoDescFromConfig = seoEntry?.description?.[currentLang];
+// NOTE: currentLang is typed `Lang` (= string, because LANGUAGES: Record<string, string>),
+// while SeoEntry.title/description are fixed-key per-lang objects → cast to their own keys.
+const seoTitleFromConfig = seoEntry?.title?.[currentLang as keyof typeof seoEntry.title];
+const seoDescFromConfig = seoEntry?.description?.[currentLang as keyof typeof seoEntry.description];
 const title = seoTitleFromConfig || explicitTitle || SITE.title;
 const description = seoDescFromConfig || explicitDesc || SITE.description;
 const siteUrl = SITE.url;
 const currentUrl = `${siteUrl}${currentPathname}`;
-const canonicalUrl = canonicalURL || currentUrl;
+const canonicalUrl = canonicalURL ? String(canonicalURL) : currentUrl;
 const defaultOgImage = `${siteUrl}/uploads/boze-tmc-og-en.png`;
 const seoImage = ogImage || defaultOgImage;
 const ogLocales: Record<string, string> = { en: 'en_US', de: 'de_DE', zh: 'zh_CN', ja: 'ja_JP', fr: 'fr_FR', es: 'es_ES', pt: 'pt_PT', it: 'it_IT', ko: 'ko_KR', nl: 'nl_NL', pl: 'pl_PL' };
@@ -111,7 +113,7 @@ const isProd = import.meta.env.PROD;
 const pageType = detectPageType(canonicalPath, explicitPageType);
 const homeLabel = t('blog.breadcrumb.home');
 const breadcrumbRaw = buildBreadcrumbItems(canonicalPath, SEO_CONFIG, siteUrl, currentLang, homeLabel);
-const breadcrumbItems = breadcrumbRaw.map((item: { name: string; item: string }) => {
+const breadcrumbItems = breadcrumbRaw.map((item: BreadcrumbItem) => {
   const p = item.item.replace(siteUrl, '').replace(/\/+$/, '');
   const lbl = p ? NAV_LABEL_MAP[p] : undefined;
   return lbl ? { ...item, name: lbl } : item;
@@ -164,13 +166,13 @@ const ldJson = JSON.stringify(pageGraph);
 {pubDate && <meta property="article:published_time" content={pubDate} />}
 {author && <meta property="article:author" content={author} />}
 {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
-<script type="application/ld+json" set:html={ldJson} />
-{alternateLinks.map((link) => (<link rel="alternate" hrefLang={link.lang} href={`${SITE.url}${link.href}`} />))}
-{/* hreflang alternates �?from prop if provided (blog overrides), otherwise auto-generated */}
-<link rel="alternate" hrefLang="x-default" href={`${SITE.url}${currentPathname}`} />
+<script is:inline type="application/ld+json" set:html={ldJson} />
+{alternateLinks.map((link) => (<link rel="alternate" hreflang={link.lang} href={`${SITE.url}${link.href}`} />))}
+{/* hreflang alternates — from prop if provided (blog overrides), otherwise auto-generated */}
+<link rel="alternate" hreflang="x-default" href={`${SITE.url}${currentPathname}`} />
 <script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
 
-{/* ══�?Google Ads �?Consent Mode v2 (GDPR, ePanel-friendly) ══�?*/}
+{/* ══ Google Ads — Consent Mode v2 (GDPR, ePanel-friendly) ══ */}
 {isProd && gaId && (
   <>
     <!-- Consent default: always denied until user chooses -->
@@ -184,20 +186,22 @@ const ldJson = JSON.stringify(pageGraph);
         'analytics_storage': 'denied'
       });
     </script>
-    <!-- Google Ads tag (gtag.js) -->
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script is:inline>
+    <!-- Google tag (gtag.js) — Google Ads + Google Analytics 4 (shared loader) -->
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline define:vars={{ gaId }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '{gaId}');
+      gtag('config', `${gaId}`);
+      // Google Analytics 4 (GA4) — traffic analytics, same gtag()/dataLayer as Google Ads
+      gtag('config', 'G-HT4X8QR22B');
     </script>
     <!-- Conversion tracking: call gtagReportConversion() on form submit -->
-    <script is:inline>
+    <script is:inline define:vars={{ gaId }}>
       window.gtagReportConversion = function() {
         if (localStorage.getItem('ad_consent') !== 'granted') return;
         gtag('event', 'conversion', {
-          'send_to': '{gaId}/u_IbCPfX6tgcELantrJE',
+          'send_to': `${gaId}/u_IbCPfX6tgcELantrJE`,
           'value': 1.0,
           'currency': 'TWD'
         });

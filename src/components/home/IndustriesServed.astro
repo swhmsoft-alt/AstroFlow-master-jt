@@ -102,10 +102,7 @@ const checkmarkPath = "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a
     <div class="text-center mt-16">
       <a 
         href="/use-cases" 
-        class="inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group"
-        style="background-color: var(--theme-primary); color: var(--theme-text);"
-        onmouseover="this.style.backgroundColor=\x27color-mix(in srgb, var(--theme-primary) 80%, black)\x27; this.style.boxShadow=\x270 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)\x27"
-        onmouseout="this.style.backgroundColor=\x27var(--theme-primary)\x27; this.style.boxShadow=\x27\x27"
+        class="industries-served-cta inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg shadow-lg transition-all group"
       >
         {t('home.industriesServed.cta')}
         <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,3 +112,14 @@ const checkmarkPath = "M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a
     </div>
   </div>
 </section>
+
+<style>
+  .industries-served-cta {
+    background-color: var(--theme-primary);
+    color: var(--theme-text);
+  }
+  .industries-served-cta:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+  }
+</style>

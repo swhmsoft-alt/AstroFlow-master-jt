@@ -2,7 +2,8 @@
 /**
  * CookieConsent.astro
  *
- * GDPR-compliant cookie consent banner for Google Ads (AW-18359358390).
+ * GDPR-compliant cookie consent banner for Google Ads (AW-18359358390) +
+ * Google Analytics 4 traffic analytics (G-HT4X8QR22B).
  *
  * Behaviour:
  *  - Always loaded; checks localStorage for existing consent.
@@ -81,7 +82,8 @@ const cookiePolicyUrl   = currentLang === DEFAULT_LANG ? '/cookie-policy/' : `/$
         gtag('consent', 'update', {
           'ad_storage': 'granted',
           'ad_user_data': 'granted',
-          'ad_personalization': 'granted'
+          'ad_personalization': 'granted',
+          'analytics_storage': 'granted'
         });
       }
       return; // hide banner
@@ -99,7 +101,8 @@ const cookiePolicyUrl   = currentLang === DEFAULT_LANG ? '/cookie-policy/' : `/$
         gtag('consent', 'update', {
           'ad_storage': consentValue,
           'ad_user_data': consentValue,
-          'ad_personalization': consentValue
+          'ad_personalization': consentValue,
+          'analytics_storage': consentValue
         });
       }
       banner.classList.add('hidden');

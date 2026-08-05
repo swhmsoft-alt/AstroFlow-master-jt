@@ -116,7 +116,7 @@ export async function getBlogPost(lang: string, slug: string): Promise<BlogPost 
 export function getTranslationContent(
   engPost: BlogPost,
   translation?: BlogTranslation
-): { Content: BlogPost['render'] extends Promise<infer T> ? T['Content'] : never; headings: any[] } {
+): { Content: ReturnType<BlogPost['render']> extends Promise<infer T extends { Content: unknown }> ? T['Content'] : never; headings: unknown[] } {
   return null as any;
 }
 

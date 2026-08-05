@@ -1,12 +1,53 @@
 # Active Context
 
-> **Last Updated:** 2026-08-04
-> **Current Focus:** Google Ads 落地页 `/titanium-machining/` — Precision Titanium CNC Machining Services 高转化单页 + 主站询盘表单对接
+> **Last Updated:** 2026-08-05
+> **Current Focus:** 类型检查净化收尾 — 修复剩余 166 个 src/ 错误中的真实 bug（RFQForm/CADUpload 崩溃、grade 数据错位、FAQ 字段名等）
 
 ## Current Status
-✅ Google Ads 落地页已构建并通过全量构建验证（2210 页 / 35.7s）。表单已改为 cPanel 原生 PHP 后端方案。
+✅ `npx astro check` 错误 **1864 → 68（-96.4%）**；`npx astro build` **2210 页通过**。所有确认的真实运行时 bug 均已修复。
 
 ## Recent Decisions
+
+### 剩余 src/ 错误深度修复（2026-08-05，第二轮）
+**背景：** 用户问剩余 166 个错误是否需修复。逐一调查发现其中含多个**真实运行时 bug**，已全部修复；其余为类型级问题（slug 死分支等）。
+
+**发现的真实 bug 与修复：**
+| 文件 | Bug | 修复 |
+|---|---|---|
+| `src/components/react/RFQForm.tsx` | `const t = 'var(--theme-text)'` 颜色字符串被当翻译函数调用 `t('react.rfqform.*')`（20 处）→ 提交按钮等**运行时崩溃** | 全部替换为硬编码英文（该组件本就无 i18n） |
+| `src/components/react/CADUpload.tsx` | `t` 完全未定义却调用 `t('react.cadupload.*')`（4 处）→ **运行时 ReferenceError** | 替换为硬编码英文 |
+| `src/data/titanium-grades.ts` | 8 个 grade 条目的 `faqs`/`whyChooseUs` 被误嵌套进 `alternativeTo` 内 → **8 个 grade 页 FAQ/WhyChooseUs 区块静默丢失**（数据在、翻译键在、仅位置错） | 脚本将 8 处 `faqs`/`whyChooseUs` 移回顶层（14 个 grade 全部恢复顶层字段）；构建产物验证 grade-4 页 `<details>` 1→4 |
+| `src/pages/products/product-entities/[...slug].astro` | `specEntry?.data?.faq` 字段名错（product-specs 集合是 `faqs` 复数）→ FAQ JSON-LD 恒空 | 改为 `specEntry?.data?.faqs`（注意：当前页 data 是 `faq` 单数，勿混淆） |
+| `src/components/home/IndustriesServed.astro` | 内联 `onmouseover/onmouseout`（含 `\x27` 转义）导致 24 个 ts(1127)，且违反 SEMANTIC_CLOSURE §2.1 | 迁移为 CSS `:hover`（scoped `<style>`） |
+| `src/components/home/EngineeringResources.astro` | `image: any` 必填但 3 个资源对象未提供 → 断图 + ts(2741) | `image?: string` + 条件渲染 |
+
+**类型级修复：** `[lang]/index.astro`（pageData `Record<string, any>` 注解）、`BaseLayout.astro`（`canonicalURL?: string \| URL` + `String()` 归一化，消除 ~30 个设备/能力页错误）、`schema.ts`（`inLanguage ?? 'en-US'`）、`blog-i18n.ts`（stub 返回类型修正）、`ThemeSwitcher`/`HeroRfq`（函数参数 `: string` 注解）、`titanium-grades.ts`（`GradeSection` 补可选 `faqs`/`whyChooseUs`）。
+
+**验证：** `npx astro check` 166→68；`npx astro build` ✅ 2210 页；grade-4 页 FAQ 恢复；prod-entities 详情页 FAQPage JSON-LD 存在。
+
+**剩余 68 个错误分类（建议专项跟进）：** ① ~30 个 slug 类型错误（`entry.slug` 在 Astro v5 类型不存在、运行时为 undefined，均有 id 兜底 → 类型级、运行时安全）；② ~15 个组件 props 契约问题（CTA/Hero 的 Button props、RichEntityContent 3、UseCaseTabs/FacilityStats/StatsCards 的 ts(2769)、EngineeringReport 隐式 any 等）；③ 零星（ProcessWorkflow/documentation 缺 image、StickyCta 类型、ReverseEngineerTool string[] 等）。另：prod-entities 的 spec 注入匹配（`s.slug === specSlug`）因 v5 无 slug **静默失效**（构建产物 Jump-to 块缺失），修复需改用 id 匹配并重建验证——属行为变更，建议单独确认后处理。
+
+**经验教训：** PowerShell 中 `[...slug]` 方括号会被当作 glob 通配符，`Select-String`/`git status` 需用 `-LiteralPath`/引号包裹，否则静默不匹配造成假阴性；不同 content collection 字段名可能不同（`faq` vs `faqs`），修改前必须查 `src/content/config.ts` 确认。
+
+### 类型检查净化 + SEO 修复（2026-08-05，第一轮）
+**背景：** 修复 BaseLayout `hrefLang` TS 错误后调研发现，`astro check` 1864 个错误中 84%（1562 个）来自根目录损坏草稿 `update_translations.js`（全部 ts(1005) 语法错误），其余为 temp/ 草稿 + src/ 既有类型错误。用户授权 Cline 决定处理范围。
+
+**修改文件：**
+| 文件 | 变更 |
+|---|---|
+| `src/layouts/BaseLayout.astro` | ① `hrefLang` → `hreflang`（第 170/172 行，标准 HTML 属性，修复 LinkHTMLAttributes 类型错误）；② 第 169 行 JSON-LD 与第 190 行 gtag 脚本加 `is:inline`（消除 2 个 astro(4000)）；③ 清理注释 U+FFFD 乱码（第 171/175 行，恢复 em-dash） |
+| `src/lib/schema.ts` | `PageType` 联合类型新增 `'industry-detail'`（消除 12+ 个 ts(2322)）；switch 并入 `service-detail` 分支 → 行业详情页现生成 `Service` JSON-LD 实体（SEO 增强） |
+| `tsconfig.json` | `exclude` 新增 `temp`/`tasks`/`output`/`scripts` 目录 + 根目录 8 个草稿脚本（update_translations.js 等）；非破坏性，草稿文件本体保留仅退出类型检查 |
+
+**关键决策：**
+- ❌ 不批量清理 ts(6133) 未使用变量（纯警告不影响构建；BaseLayout 剩 4 条：DEFAULT_LANG/hideThemeSwitcher/serviceHubKey/cmsDefaultTheme）
+- ❌ 不删除草稿文件本体（仅 tsconfig 排除）
+- ❌ 不修 `canonicalURL: URL` 的 ~30 个 equipment/capabilities 页面（涉及面大，留作专项）
+- ⏳ 剩余 166 个 src/ 错误均为既有问题（IndustriesServed.astro 编码损坏 ts(1127) 24、RFQForm.tsx ts(2349) 19、[lang]/index.astro ts(2339) 12、titanium-grades.ts ts(2353) 8 等）
+
+**验证：** `check-undefined-slugs`/`check-encoding` ✅；`npx astro check` 1864→166（本次改动 0 新增 error/warning）；`npx astro build` ✅ 2210 页；产物断言：`"@type":"Service"` 已生成、13 个 hreflang 链接（含 x-default）、is:inline 脚本渲染正确。
+
+**经验教训：** `astro check` 输出含 ANSI 颜色码（`\x1b[91m` 前缀），PowerShell 正则统计前须剥离（`$esc = [char]27; -replace ($esc + '\\[[0-9;]*m')`）；`Get-Content`/`Select-String` 处理 700KB+ 输出会超时，应使用 `-Tail` 流式读取。
 
 ### 落地页表单改为 cPanel 原生 PHP 后端（2026-08-04）
 用户确认最终方案：放弃 Formspree/Redirect，改用**自托管 PHP 处理询盘 + 图纸附件上传**（cPanel 共享主机、无 Node 运行时、零第三方费用）。

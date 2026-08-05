@@ -49,17 +49,17 @@ const t = useTranslations(currentLang);
     var LIGHT_DEFAULT = btn.getAttribute('data-light-default') || 'light-beige';
     var DARK_THEMES = ['legacy-original', 'aerospace-precision', 'anodized-colorway'];
 
-    function isDark(themeId) {
+    function isDark(themeId: string) {
       return DARK_THEMES.indexOf(themeId) !== -1;
     }
 
-    function updateIcons(themeId) {
+    function updateIcons(themeId: string) {
       var dark = isDark(themeId);
       if (iconSun) iconSun.classList.toggle('hidden', !dark);
       if (iconMoon) iconMoon.classList.toggle('hidden', dark);
     }
 
-    function setTheme(themeId) {
+    function setTheme(themeId: string) {
       document.documentElement.setAttribute('data-theme', themeId);
       try { localStorage.setItem('titanium-theme', themeId); } catch (_e) {}
       updateIcons(themeId);

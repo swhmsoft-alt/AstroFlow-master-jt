@@ -40,6 +40,7 @@ export type PageType =
   | 'materials'
   | 'capabilities'
   | 'industries'
+  | 'industry-detail'
   | 'resources'
   | 'rfq'
   | 'generic';
@@ -378,7 +379,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     name: data.pageName,
     description: data.pageDescription,
     url: data.pageUrl,
-    inLanguage: data.inLanguage,
+    inLanguage: data.inLanguage ?? 'en-US',
     datePublished: data.articleDatePublished ?? null,
   }));
 
@@ -410,6 +411,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       break;
 
     case 'service-detail':
+    case 'industry-detail':
       if (data.serviceName) {
         graph.push(buildService({
           name: data.serviceName,

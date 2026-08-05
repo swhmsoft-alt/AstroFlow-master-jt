@@ -10,7 +10,7 @@ interface Resource {
   title: string;
   category: string;
   description: string;
-  image: any;
+  image?: string;
   href: string;
 }
 
@@ -73,6 +73,7 @@ const resources: Resource[] = [
           onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
         >
           <!-- Image -->
+          {resource.image && (
           <div class="relative h-48 overflow-hidden">
             <Img
               src={resource.image}
@@ -83,6 +84,7 @@ const resources: Resource[] = [
             />
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, color-mix(in srgb, var(--theme-bg) 90%, transparent) 100%);"></div>
           </div>
+          )}
 
           <!-- Content -->
           <div class="p-6">

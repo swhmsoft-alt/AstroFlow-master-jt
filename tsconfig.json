@@ -5,7 +5,20 @@
     "**/*"
   ],
   "exclude": [
-    "dist"
+    "dist",
+    "temp",
+    "tasks",
+    "output",
+    "scripts",
+    "update_translations.js",
+    "restored.astro",
+    "test_api.mjs",
+    "check_file_content.mjs",
+    "scan-i18n.mjs",
+    "fix-de-json.cjs",
+    "fixcolors.js",
+    "fix-imports.mjs",
+    "fix-titles.js"
   ],
   "compilerOptions": {
     "jsx": "react-jsx",
