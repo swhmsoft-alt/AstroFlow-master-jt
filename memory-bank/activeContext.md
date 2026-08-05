@@ -84,6 +84,19 @@
 - PHP `submit-rfq.php` **未改**：无文件时走 UPLOAD_ERR_NO_FILE 分支照常收询盘；若直接 POST 带文件仍会存档 rfq-files（防御性）。
 - 实测：无附件 POST → 302 /thank-you/；线上确认无上传控件、提示卡片+mailto 在位。提交 `46bce0d6` 已推送。
 
+### 根因再定位：网关拦截 multipart/mixed（非仅附件）— 纯文本修复（2026-08-04）
+用户反馈：**无附件真实提交邮件也未收到**（此前 `diag body A` 纯文本成功）。对比确认：
+
+| 邮件 | 格式 | 结果 |
+|---|---|---|
+| diag body A/B | **text/plain** | ✅ 收到 |
+| 真实表单（无附件）| **multipart/mixed**（PHP 始终按 multipart 构造）| ❌ 未收到 |
+
+→ **网关拦的是 multipart/mixed 格式本身**（外部发件人），与有无附件无关。
+
+- **修复**：`submit-rfq.php` 邮件构造改为分支——**无附件 → 纯文本 text/plain**（可靠送达，与成功样例同格式）；**有附件 → 才用 multipart/mixed**（best effort）。
+- 已部署 + FTP 回验（含 text/plain 分支 + multipart 分支）；无附件 POST → 302；已发 `Plain Text Test` 待用户确认。提交 `e9adecca` 已推送。
+
 ### Google Ads Landing Page — `/titanium-machining/` (2026-08-04)
 面向 "Titanium Machining Services" 关键词的 B2B 高转化单页落地页（英文，Google Ads Quality Score + CRO 优化）。
 
