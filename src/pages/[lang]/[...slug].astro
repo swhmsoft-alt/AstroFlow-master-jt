@@ -119,9 +119,15 @@ import TechnicalFaqAccordion from '../../components/resources/TechnicalFaqAccord
 
 /* ── Other 页面组件 ────────────────────────── */
 import FacilityStats from '../../components/react/FacilityStats';
-import EngineeringRfqForm from '../../components/rfq/EngineeringRfqForm.astro';
-import SecurityNdaBanner from '../../components/rfq/SecurityNdaBanner.astro';
-import ResponsePipelineTimeline from '../../components/rfq/ResponsePipelineTimeline.astro';
+
+/* ── RFQ / Landing 系列（复用已上线询盘模块）── */
+import HeroRfq from '../../components/landing/HeroRfq.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import Capabilities from '../../components/landing/Capabilities.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import FinalCta from '../../components/landing/FinalCta.astro';
+import StickyCta from '../../components/landing/StickyCta.astro';
 
 /* ── CNC Machining 系列 ───────────────────── */
 import CncProcessSpectrum from '../../components/services/CncProcessSpectrum.astro';
@@ -1803,37 +1809,13 @@ if (heroEntry) {
 {
   effectiveSlug === 'rfq' && !isHome && (
     <BaseLayout>
-      <!-- Breadcrumb -->
-      <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-
-              <a href={localizePath('/', currentLang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-                <span itemprop="name">{t('nav.home')}</span>
-              </a>
-              <meta itemprop="position" content="1" />
-            </li>
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-
-              <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-              <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{pageH1}</span>
-              <meta itemprop="position" content="2" />
-            </li>
-          </ol>
-        </div>
-      </nav>
-      <SubpageHero
-        h1={pageH1}
-        badge={pageBadge}
-        subtitle={pageSubtitle}
-        keyMetrics={heroEntry?.keyMetrics}
-        entityChips={heroEntry?.entityChips}
-        compact={heroEntry?.compact}
-      />
-      <EngineeringRfqForm />
-      <SecurityNdaBanner />
-      <ResponsePipelineTimeline />
+      <HeroRfq />
+      <TrustBadges />
+      <Capabilities />
+      <QualityControl />
+      <Applications />
+      <FinalCta />
+      <StickyCta />
     </BaseLayout>
   )
 }

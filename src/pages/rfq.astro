@@ -1,52 +1,93 @@
 ---
+// =============================================================================
+// Engineering RFQ Page — "Request a Quote | Titanium CNC Machining"
+// Conversion-focused B2B inquiry page.
+// Inquiry module: HeroRfq form (tested & live) — native POST to /submit-rfq.php
+// (cPanel PHP handler → email + server-side file archive → redirect /thank-you/).
+// Localized /[lang]/rfq/ mirrors this English landing structure (English-only).
+// =============================================================================
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SubpageHero from '../components/ui/SubpageHero.astro';
-import EngineeringRfqForm from '../components/rfq/EngineeringRfqForm.astro';
-import SecurityNdaBanner from '../components/rfq/SecurityNdaBanner.astro';
-import ResponsePipelineTimeline from '../components/rfq/ResponsePipelineTimeline.astro';
+import HeroRfq from '../components/landing/HeroRfq.astro';
+import TrustBadges from '../components/landing/TrustBadges.astro';
+import Capabilities from '../components/landing/Capabilities.astro';
+import QualityControl from '../components/landing/QualityControl.astro';
+import Applications from '../components/landing/Applications.astro';
+import FinalCta from '../components/landing/FinalCta.astro';
+import StickyCta from '../components/landing/StickyCta.astro';
 
-const pageTitle = 'Engineering RFQ | Titanium CNC Machining';
-const pageSubtitle = 'Submit your technical requirements and CAD files. Our processing engineers will respond with a formal quotation within 24–48 hours.';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+// ── SEO: page title & meta description (RFQ / quotation intent) ──
+// Note: for English the title/description are sourced from src/config/seo.ts
+// ('/rfq' entry); these explicit values act as a fallback.
+const pageTitle = 'Request a Quote | Titanium CNC Machining RFQ | Boze Titanium Manufacturing Center';
+const pageDescription =
+  'Submit your titanium CNC machining RFQ with CAD files. AS9100D certified manufacturing with tolerances to ±0.005mm for aerospace and medical parts. Formal quotation within 24–48 hours.';
+const canonicalUrl = 'https://cnc.bozemetal.com/rfq/';
 
+// ── Supplementary JSON-LD: Service + ManufacturingPlant + OfferCatalog ──
+// BaseLayout auto-generates Organization / WebSite / WebPage / BreadcrumbList
+// (pageType="rfq"). This additional graph strengthens the Service / provider
+// signals for GEO / AI search and indexing of the quotation service.
+const landingSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: 'Precision Titanium CNC Machining RFQ & Quotation',
+      serviceType: 'CNC Machining RFQ',
+      provider: {
+        '@type': 'ManufacturingPlant',
+        name: 'Boze Titanium Manufacturing Center',
+        url: 'https://www.bozemetal.com',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Baoji',
+          addressRegion: 'Shaanxi',
+          addressCountry: 'CN',
+        },
+      },
+      description:
+        'Request a quotation for custom 5-axis titanium CNC machining of Grade 5, Ti-6Al-4V ELI, aerospace and medical components. Formal quote within 24-48 hours with full material traceability and inspection reports.',
+      areaServed: 'Worldwide',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Titanium Machining RFQ Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: '5-Axis Titanium Milling & Turning Quotation',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Aerospace & Medical Titanium Component RFQ',
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
 ---
 
-<BaseLayout title={pageTitle} description={pageSubtitle}>
-  <!-- Breadcrumb -->
-  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">{t('nav.home')}</span>
-          </a>
-          <meta itemprop="position" content="1" />
-          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-        </li>
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">RFQ</span>
-          <meta itemprop="position" content="2" />
-        </li>
-      </ol>
-    </div>
-  </nav>
-  <!-- Hero -->
-  <SubpageHero
-    title={t('rfq.astro.rfq.request')}
-    highlight="Engineering Quote"
-    badge="RFQ Portal"
-    badgeIcon="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-    subtitle={pageSubtitle}
-  />
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="rfq"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(landingSchema)} />
 
-  <!-- Engineering RFQ Form -->
-  <EngineeringRfqForm />
-
-  <!-- Security & NDA Banner -->
-  <SecurityNdaBanner />
-
-  <!-- Response Pipeline Timeline -->
-  <ResponsePipelineTimeline />
+  <!-- ================= RFQ landing sections ================= -->
+  <HeroRfq />
+  <TrustBadges />
+  <Capabilities />
+  <QualityControl />
+  <Applications />
+  <FinalCta />
+  <StickyCta />
 </BaseLayout>

@@ -34,6 +34,19 @@
 
 **下一步（待批准）：** P0.5 Supplier Entity Page `/titanium-cnc-machining-manufacturer/` → P0.6 AS9100 → P1 5-Axis / RFQ Preparation 强化
 
+### RFQ 询盘页重构（2026-08-05）
+**背景：** 用户要求：删除 `/rfq/` 原页面内容与组件，复制 `/titanium-machining/`（已上线测试通过的询盘落地页）内容与组件到 `/rfq/`，改造为专业询盘页；HeroRfq 询盘模块完全保留。
+
+**执行：**
+1. **`src/pages/rfq.astro` 重写** — 复制 titanium-machining 装配（HeroRfq + TrustBadges + Capabilities + QualityControl + Applications + FinalCta + StickyCta），SEO 改 RFQ 意图（title 沿用 seo.ts `/rfq` 条目），canonical=`/rfq/`，`pageType="rfq"`，保留 Service+ManufacturingPlant 补充 JSON-LD；不传 alternateLinks（默认 12 语 hreflang，`/lang/rfq/` 真实存在）。
+2. **`[lang]/[...slug].astro` 同步** — 移除 3 个旧组件 import（第 122-124 行），新增 7 个 landing 组件 import；rfq 分支（原 1804-1839）改为渲染 landing 组件。**关键依赖：不更新此路由则删组件后构建报错。**
+3. **删除旧组件**：`EngineeringRfqForm.astro`（mailto 型表单）、`SecurityNdaBanner.astro`、`ResponsePipelineTimeline.astro`（`src/components/rfq/` 现已空）。
+4. **HeroRfq 询盘模块零改动** — 表单 action=/submit-rfq.php、蜜罐、防重复提交、mailto CAD 提示卡片全部原样。
+
+**验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过（2167 HTML webp 更新 Completed）；dist `/rfq/`：`action="/submit-rfq.php"` 1、`tm-rfq-form` 1、旧 `engineering-rfq-form` 0、ld+json 2、ManufacturingPlant 1、hreflang 12+x-default；`/de/rfq/` 含新表单；旧 `EngineeringRfqForm*.js` 产物已从 dist/_astro 消失。
+
+**影响说明：** `/lang/rfq/`（11 语）现统一渲染英文 landing 内容 —— 与 titanium-machining English-only 活动页先例一致。
+
 ### GA 跟踪码增量部署上线（2026-08-05 15:20）
 - **任务：** commit `eaf68377`「GA」（更新 GA 跟踪码 + 类型修复批次）向生产 FTP 提交（账号内置 `.env.production`）。
 - **构建：** `npm run build` 全 5 步通过（约 80s），dist 共 2662 文件 / 332.6MB，GA4 `G-HT4X8QR22B` + Google Ads `AW-18359358390` 确认在产物中。
