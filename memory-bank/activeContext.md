@@ -92,13 +92,13 @@
 - 排除项（实测命中表格单元格）：`Ti-6Al-4V ELI`（2 处）、`material certification`（1 处）
 - 插件属性复核：大小写不敏感、跳过 a/code/pre/h1-h6/script/style/button、maxLinksPerPage=3、长词优先、word-boundary 匹配 → 无二次包裹风险
 
-**Type check：** tsconfig `ignoreDeprecations` `6.0→5.0`（TS 5.9.3 仅接受 5.0，此前 TS5103 使 tsc 完全无法运行）；`npx astro sync` ✅；`npx tsc --noEmit` 报告 **6 个既有错误**（FacilityStats/StatsCards/UseCaseTabs ts(2769)、UseCaseTabs ts(2322)、ReverseEngineerTool ts(2345) ×2）——均为既有 React 组件问题，本次改动 0 新增。
+**Type check：** tsconfig `ignoreDeprecations` `6.0→5.0`（TS 5.9.3 仅接受 5.0，此前 TS5103 使 tsc 完全无法运行）；`npx astro sync` ✅；`npx tsc --noEmit` ✅ **0 错误**（6 个既有 React 错误已修复：FacilityStats/StatsCards/UseCaseTabs 图标类型补 `style`、UseCaseTabs `onerror`→`onError`、ReverseEngineerTool `kw`→`k` 匹配逻辑修复）。
 
 **验证：** `check-undefined-slugs` 0 issue；`npx astro build` ✅ **2213 页**（48.8s，0 错误）；dist 抽查：9 篇博客预期 href 全部命中、14 个目标页面均存在、全 dist `<a href="..."><a href=` 重复包裹 = 0、keywordMap 自动链接生效（HPC→equipment ×2、grade-5 ×2、medical→industries ×3）。
 
 **生产部署（2026-08-07）：** commit `ada264cf` 后全量 `npm run build`（5 步通过，2213 页 + sitemap 12 语 + webp 更新 2170 HTML）。`npm run deploy:inc` 首轮 SIZE 对比发现 2170 文件差异（304.0MB，与上次全量规模一致——增量脚本实际每次几乎全量）→ **2142 成功 / 28 失败**（失败集中在末尾 titanium-*/tools/use-cases，典型连接中断）→ 删除 `.deploy-diff.json` 重跑，**第二轮 28 成功 / 0 失败（191s）**，合计 **2170 文件全部上传 / 0 失败**。线上验证（全部通过）：welcome（5 条新 href）、alpha-case（CTA）、chip-control（CTA+fire-suppression）、astm-b348（astm-b348/b265+traceability+grade-5 自动链）、HPC 博客（equipment 自动链+3-5-axis）、medical 博客（industries 自动链）、equipment/high-pressure-coolant（HTTP 200）。
 
-**下一步：** git push（HEAD=`ada264cf` 未推送）；6 个既有 React 类型错误专项修复。
+**下一步：** git push（HEAD=`ada264cf` 未推送）；6 个既有 React 类型错误专项修复（进行中）。
 
 ### 生产部署上线（2026-08-05）
 **任务：** commit `75f55a01`「P1 5-Axis 落地页 + 博客入口链 + Memory Bank」（6 文件）+ `npm run deploy:inc`。

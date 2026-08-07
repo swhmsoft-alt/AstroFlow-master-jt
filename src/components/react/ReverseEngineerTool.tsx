@@ -1105,12 +1105,12 @@ export default function ReverseEngineerTool() {
       let score = 0;
       for (const k of kw) {
         for (const pk of p.keywords) {
-          if (pk.toLowerCase().includes(kw) || kw.includes(pk.toLowerCase())) {
+          if (pk.toLowerCase().includes(k) || k.includes(pk.toLowerCase())) {
             score += 10;
           }
         }
         for (const ind of p.industries) {
-          if (ind.toLowerCase().includes(kw) || kw.includes(ind.toLowerCase())) {
+          if (ind.toLowerCase().includes(k) || k.includes(ind.toLowerCase())) {
             score += 5;
           }
         }

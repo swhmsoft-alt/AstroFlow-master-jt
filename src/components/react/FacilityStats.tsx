@@ -1,7 +1,7 @@
 import { Package, Truck, Users, Globe } from 'lucide-react';
 
 interface Stat {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   title: string;
   value: string;
 }

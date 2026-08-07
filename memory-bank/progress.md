@@ -1,6 +1,7 @@
 # Progress & TODO
 
 ## Completed
+- ✅ **6 个既有 React 类型错误修复**（2026-08-07）— FacilityStats/StatsCards/UseCaseTabs 图标类型补 `style?: React.CSSProperties`（ts2769 ×3）、UseCaseTabs `onerror`→`onError`（ts2322）、ReverseEngineerTool 搜索逻辑 `kw`→`k`（ts2345 ×2，顺带修复数组误用运行时 bug）；`npx tsc --noEmit` ✅ **0 错误**；`npx astro build` ✅ 2213 页；ReverseEngineerTool/UseCaseTabs 生成新 bundle 哈希
 - ✅ **第 4 批内链生产部署**（2026-08-07）— commit `ada264cf` + 全量 `npm run build` + `npm run deploy:inc`：首轮 2142 成功/28 失败（末尾连接中断）→ 清除缓存重跑 28 成功/0 失败（191s），合计 **2170 文件 / 304MB / 0 失败**（总耗时 ~51min）；线上抽查全部通过（welcome 5 链 / astm-b348 全链 / chip-control CTA / HPC+medical 自动链）
 - ✅ **Semantic Linking Phase 4 + keywordMap 增量 + type check**（2026-08-07）— 剩余 9 篇博客新增 27 条手动内链（material=5, equipment=2, service=4, capability=2, blog 交叉=3, blog hub=1, industry=1, rfq=9）；**welcome 从 0 链接去孤立（5 条）**；四批累计 **39 篇全部完成 / 113 条新 Tier1 内链**；keywordMap 增量 6 条长短语（Ti-6Al-4V Grade 5/Grade 5 titanium→grade-5、Grade 23 titanium→grade-23、through-spindle & high-pressure coolant→equipment/high-pressure-coolant、medical implants→industries/medical；全部表格安全）；tsconfig `ignoreDeprecations 6.0→5.0` 解除 TS5103 阻断；`check-undefined-slugs` 0 issue；`npx astro build` ✅ 2213 页；dist 0 重复包裹；`tsc --noEmit` 6 个既有 React 错误（本次 0 新增）
 - ✅ **生产部署**（2026-08-05）— commit `75f55a01` + `npm run deploy:inc`：2172 文件 / 306.2MB 上传成功 / 0 失败 / 2330s；线上验证 4 关键页（Supplier/AS9100/5-Axis/rfq 新表单）全部在线 ✅
@@ -21,4 +22,3 @@
 
 ## Pending
 - [ ] `git push`（HEAD=`ada264cf` 未推送到 origin/main）
-- [ ] 既有 6 个 React 组件类型错误专项修复（FacilityStats/StatsCards/UseCaseTabs ts(2769)、UseCaseTabs ts(2322)、ReverseEngineerTool ts(2345) ×2）

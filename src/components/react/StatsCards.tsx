@@ -10,7 +10,7 @@ interface Props {
   stats: Stat[];
 }
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   CheckCircle2,
   TrendingDown,
   Users,

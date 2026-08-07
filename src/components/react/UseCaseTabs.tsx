@@ -24,7 +24,7 @@ interface Props {
   useCases: UseCase[];
 }
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   ShoppingCart,
   Heart,
   Car,
@@ -108,7 +108,7 @@ export default function UseCaseTabs({ useCases }: Props) {
                     alt={useCase.industry}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     loading="lazy"
-                    onerror="this.style.display='none'"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
                   )}
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 80%, transparent), color-mix(in srgb, var(--theme-bg) 40%, transparent))' }}></div>
