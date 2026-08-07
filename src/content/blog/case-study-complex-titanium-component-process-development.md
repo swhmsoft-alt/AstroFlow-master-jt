@@ -13,7 +13,7 @@ featured: false
 
 ## Component overview
 
-The component was a complex titanium housing for an aerospace actuator system, machined from [Ti-6Al-4V](/materials/grade-5/) plate per ASTM B265. The component had multiple precision features — a 100 mm diameter bore with a tolerance of H6, six threaded holes with true position tolerance of 0.05 mm, a sealing surface with a flatness requirement of 0.02 mm, and wall thicknesses ranging from 1.5 mm to 8.0 mm. The overall dimensions were approximately 200 mm by 150 mm by 100 mm. The tolerance requirements for this component align with the precision ranges described in the [titanium CNC tolerance guide](/blog/titanium-cnc-tolerance-guide-engineering-specifications/).
+The component was a complex titanium housing for an aerospace actuator system, machined from [Ti-6Al-4V](/materials/grade-5/) plate per ASTM B265. The component had multiple precision features — a 100 mm diameter bore with a tolerance of H6, six threaded holes with true position tolerance of 0.05 mm, a sealing surface with a flatness requirement of 0.02 mm, and wall thicknesses ranging from 1.5 mm to 8.0 mm. The overall dimensions were approximately 200 mm by 150 mm by 100 mm. The tolerance requirements for this component align with the precision ranges described in the [titanium CNC tolerance guide](/blog/titanium-cnc-tolerance-guide-engineering-specifications/). The machining sequence leverages [5-axis titanium machining](/5-axis-titanium-machining/) to complete these precision features in fewer setups.
 
 ## Process development approach
 

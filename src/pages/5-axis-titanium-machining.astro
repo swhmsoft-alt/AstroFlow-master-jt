@@ -1,0 +1,284 @@
+---
+// =============================================================================
+// 5-Axis Titanium Machining Landing — "5-Axis Titanium Machining Services"
+// Differentiation capability + RFQ Preparation.
+// English-only campaign page (no localized variants required).
+// Conversion flow: Hero CTA + RFQ Prep section + bottom CTA → /rfq/.
+// =============================================================================
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import TrustBadges from '../components/landing/TrustBadges.astro';
+import Capabilities from '../components/landing/Capabilities.astro';
+import QualityControl from '../components/landing/QualityControl.astro';
+import Applications from '../components/landing/Applications.astro';
+
+// ── SEO: page title & meta description (5-axis differentiation intent) ──
+const pageTitle =
+  '5-Axis Titanium Machining Services | ±0.005 mm Tolerances | AS9100D Certified';
+const pageDescription =
+  '5-axis titanium CNC machining for complex aerospace and medical components. Single-setup machining of thin-wall and contoured geometries, tolerances to ±0.005 mm, in-process probing, and CMM verification. Request a 5-axis quote within 48 hours.';
+const canonicalUrl = 'https://cnc.bozemetal.com/5-axis-titanium-machining/';
+
+// ── Supplementary JSON-LD: Service + ManufacturingPlant + OfferCatalog ──
+const supplierSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: '5-Axis Titanium Machining',
+      serviceType: '5-Axis CNC Machining',
+      provider: {
+        '@type': 'ManufacturingPlant',
+        name: 'Boze Titanium Manufacturing Center',
+        url: 'https://www.bozemetal.com',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Baoji',
+          addressRegion: 'Shaanxi',
+          addressCountry: 'CN',
+        },
+      },
+      description:
+        '5-axis titanium CNC machining of complex aerospace and medical components in a single setup, with tolerances to ±0.005 mm, in-process probing, and CMM verification.',
+      areaServed: 'Worldwide',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: '5-Axis Titanium Machining Capabilities',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Simultaneous 5-Axis Milling of Contoured Titanium Components',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Thin-Wall Titanium Structural Components',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: '5-Axis Machining RFQ & Process Study',
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
+
+// ── Why 5-axis for titanium ──
+const whyFiveAxis = [
+  {
+    title: 'Single-Setup Complex Geometry',
+    desc: 'Contoured, compound-angle, and pocketed titanium features are machined in one clamping — eliminating the setup error that compounds across multiple operations.',
+  },
+  {
+    title: 'Thin-Wall Stability',
+    desc: '5-axis tool orientation keeps the cutting edge near the wall for reduced deflection, supporting titanium walls down to 1.0 mm with aspect ratios above 12 to 1.',
+  },
+  {
+    title: 'Tighter Tolerances',
+    desc: 'In-process probing and thermal compensation hold critical dimensions to ±0.005 mm on large aerospace components.',
+  },
+  {
+    title: 'Better Surface Integrity',
+    desc: 'Optimal tool engagement across contoured surfaces reduces work hardening and produces the surface finish required for fatigue-critical parts.',
+  },
+];
+
+// ── 5-axis capability facts ──
+const capabilityFacts = [
+  { value: '5-Axis', label: 'Simultaneous & 3+2 machining centers' },
+  { value: '±0.005 mm', label: 'CMM-verified dimensional tolerance' },
+  { value: '1.0 mm', label: 'Minimum thin-wall thickness supported' },
+  { value: 'Ra 0.4 μm', label: 'Machined surface finish capability' },
+];
+
+// ── RFQ preparation checklist ──
+const rfqPrepItems = [
+  { label: 'CAD file', note: 'STEP or IGES 3D model plus a 2D drawing with the revision level.' },
+  { label: 'Material specification', note: 'Grade and condition — Ti-6Al-4V per AMS 4928, Grade 23 per ASTM F136, etc.' },
+  { label: 'Critical tolerances', note: 'Call out the datum structure so all features reference the same origin.' },
+  { label: 'Surface finish & inspection', note: 'Ra values, required reports (FAIR, CMM, MTR), and any PPAP requirements.' },
+  { label: 'Quantity & schedule', note: 'Prototype, low-volume, or production lot with the target delivery window.' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="5-Axis Titanium Machining"
+  serviceCategory="5-Axis CNC Machining"
+  alternateLinks={[{ lang: 'en', href: '/5-axis-titanium-machining/' }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(supplierSchema)} />
+
+  <!-- ================= Hero ================= -->
+  <SubpageHero
+    h1="5-Axis Titanium Machining Services"
+    badge="5-Axis CNC · Aerospace & Medical"
+    subtitle="Boze Titanium Manufacturing Center machines complex titanium components on dedicated 5-axis machining centers — contoured aerospace structures, thin-wall features, and medical implants finished in a single setup with tolerances to ±0.005 mm."
+    keyMetrics={[
+      { value: '5-Axis', label: 'Simultaneous & 3+2 Centers' },
+      { value: '±0.005 mm', label: 'CMM-Verified Tolerances' },
+      { value: '<48h', label: 'Technical RFQ Response' },
+      { value: 'AS9100D', label: 'Aerospace Certified' },
+    ]}
+    entityChips={['Simultaneous 5-Axis', '3+2 Positioning', 'Thin-Wall Machining', 'In-Process Probing', 'CMM Verification']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        href="/rfq/"
+        class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+        style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+      >
+        Submit Your Drawing for a 5-Axis Quote
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+      <a
+        href="https://wa.me/8618623919905"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors"
+        style="border-color: var(--theme-primary); color: var(--theme-primary);"
+      >Chat on WhatsApp</a>
+    </div>
+  </SubpageHero>
+
+  <!-- ================= Trust ================= -->
+  <TrustBadges />
+
+  <!-- ================= Why 5-Axis ================= -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Why 5-Axis</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Why Titanium Needs a 5-Axis Approach
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Titanium's low thermal conductivity, high cutting forces, and elastic springback punish multi-setup machining.
+          5-axis machining keeps the tool at the optimal engagement angle — reducing setup error, deflection, and
+          work hardening on the geometries that matter most.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          whyFiveAxis.map((w) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{w.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{w.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <dl class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {
+          capabilityFacts.map((f) => (
+            <div class="rounded-2xl border p-6 text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <dd class="text-3xl font-black" style="color: var(--theme-primary);">{f.value}</dd>
+              <dt class="mt-2 text-sm leading-snug" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{f.label}</dt>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= Capabilities ================= -->
+  <Capabilities />
+
+  <!-- ================= RFQ Preparation ================= -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">RFQ Preparation</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          What to Prepare Before Requesting a 5-Axis Quote
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          A complete RFQ returns a faster, more accurate quotation. The same information is covered in our
+          <a href="/blog/titanium-cnc-machining-rfq-checklist/" style="color: var(--theme-primary); font-weight: 600;">titanium CNC machining RFQ checklist</a>.
+        </p>
+      </header>
+
+      <dl class="mt-12 grid gap-4 md:grid-cols-2">
+        {
+          rfqPrepItems.map((d) => (
+            <div class="rounded-xl border px-5 py-4" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: var(--theme-surface);">
+              <dt class="text-sm font-bold" style="color: var(--theme-primary);">{d.label}</dt>
+              <dd class="mt-1 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.note}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="mt-10 text-center">
+        <a
+          href="/rfq/"
+          class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+          style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+        >
+          Submit Your 5-Axis RFQ Now
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Applications ================= -->
+  <Applications />
+
+  <!-- ================= Quality ================= -->
+  <QualityControl />
+
+  <!-- ================= CTA ================= -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 opacity-25" aria-hidden="true">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 55%);"></div>
+    </div>
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Get a 5-Axis Titanium Machining Evaluation
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Send your CAD file and receive a formal quotation within 48 hours — including fixturing strategy,
+          toolpath approach, and the inspection plan for your thin-wall or contoured geometry.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a
+            href="/rfq/"
+            class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+            style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+          >
+            Request a 5-Axis Quote
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+          <a
+            href="https://wa.me/8618623919905"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors"
+            style="border-color: var(--theme-primary); color: var(--theme-primary);"
+          >Chat on WhatsApp</a>
+        </div>
+        <p class="mx-auto mt-6 inline-flex max-w-xl items-center gap-2 rounded-full border px-5 py-2.5 text-sm" style="border-color: color-mix(in srgb, var(--theme-accent) 35%, transparent); background: color-mix(in srgb, var(--theme-accent) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+          <svg class="h-4 w-4 flex-shrink-0" style="color: var(--theme-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          Your designs are safe. We strictly adhere to strict NDA protocols.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

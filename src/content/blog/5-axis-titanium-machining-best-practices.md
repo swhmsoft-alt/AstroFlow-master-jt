@@ -11,7 +11,7 @@ coverImageAlt: 5-axis CNC machining of a complex titanium aerospace component
 featured: false
 ---
 
-Five-axis machining offers advantages for titanium that go beyond the ability to produce complex geometries. The ability to orient the tool relative to the workpiece changes the cutting mechanics in ways that directly address several of the fundamental challenges of titanium machining — [thermal concentration](/blog/why-titanium-is-difficult-to-machine/), tool engagement control, and vibration management. But realizing these advantages requires programming strategies that differ from what works for 3-axis machining and from what works for 5-axis machining of aluminum or steel.
+Five-axis machining offers advantages for titanium that go beyond the ability to produce complex geometries. The ability to orient the tool relative to the workpiece changes the cutting mechanics in ways that directly address several of the fundamental challenges of titanium machining — [thermal concentration](/blog/why-titanium-is-difficult-to-machine/), tool engagement control, and vibration management. But realizing these advantages requires programming strategies that differ from what works for 3-axis machining and from what works for 5-axis machining of aluminum or steel. For an overview of how these strategies are applied on production components, see our [5-axis titanium machining services](/5-axis-titanium-machining/).
 
 - [How 5-axis machining changes the cutting mechanics for titanium](#how-5-axis-machining-changes-the-cutting-mechanics-for-titanium)
 - [Tool orientation principles for rigid cutting conditions](#tool-orientation-principles-for-rigid-cutting-conditions)

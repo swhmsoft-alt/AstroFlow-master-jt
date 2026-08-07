@@ -1,7 +1,7 @@
 # Active Context
 
 > **Last Updated:** 2026-08-05
-> **Current Focus:** P0.6 AS9100 Landing 上线；P0.5 Supplier 页 + 三批 Semantic Linking（30 篇/86 条内链）已完成；下一步 P1 5-Axis 强化 + 剩余 9 篇博客 + 部署
+> **Current Focus:** P1 5-Axis 深度强化 + RFQ Preparation 上线（路线图最后页）；P0.5/P0.6 + 三批内链已完成；剩余：9 篇博客 + keywordMap 增量 + type check + 生产部署
 
 ## Current Status
 ✅ Semantic Linking Phase 1 完成：10 篇博客新增 25 条 Tier1 内链（service/material/industry/rfq/capabilities/tools），`check-undefined-slugs` 0 issue，`npm run build` 通过，dist 产物 0 重复包裹。
@@ -73,6 +73,22 @@
 **验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过；dist 抽查 5 篇：rfq/grade-5 链接正确、`<a href="..."><a href=` 重复包裹 = 0。
 
 **累计：** 三批共 **30 篇博客 / 86 条新 Tier1 内链**（svc=13, mat=29, ind=12, rfq=19, cap=13, tool=8）。剩余 9 篇：alpha-case、high-pressure-coolant（已有 1 服务链）、chip-control、deformation、springback、tool-wear、work-hardening、welcome（低价值可跳过或仅 1-2 链）。
+
+### P1 5-Axis 深度强化 + RFQ Preparation 上线（2026-08-05）
+**背景：** 用户批准 P1 —— 路线图最后一页。目标 Query「5 axis titanium machining / 5 axis titanium machining supplier」（差异化能力 ★★★★★）。将 5-Axis 深度 + RFQ Preparation 两个子项合并为单一综合落地页。
+
+**页面：** `src/pages/5-axis-titanium-machining.astro` → `/5-axis-titanium-machining/`
+- **Hero：** `SubpageHero` 自定义（H1「5-Axis Titanium Machining Services」+ 4 指标 + 5 芯片 + slot CTA → `/rfq/`）
+- **Why 5-Axis（自定义 4 卡）**：单装夹/薄壁稳定/公差/表面完整性 + 能力事实 4 格（5-Axis/±0.005mm/1.0mm 薄壁/Ra 0.4μm）
+- **RFQ Preparation（自定义 5 项）**：CAD/材料规格/关键公差/表面+检验/数量交期 → `/rfq/` + RFQ 清单博客 —— 转化核心
+- **复用：** TrustBadges / Capabilities / Applications / QualityControl
+- **SEO：** Title「5-Axis Titanium Machining Services \| ±0.005 mm Tolerances \| AS9100D Certified」、`pageType="service-detail"` + 补充 JSON-LD（Service + OfferCatalog ×3 + ManufacturingPlant）、alternateLinks 仅 en+x-default
+
+**入口链（3 条）：** 5-axis-best-practices 博客（锚「5-axis titanium machining services」）、case-study-medical-implant（锚「5-axis machine tool」）、case-study-complex-component（锚「5-axis titanium machining」）。
+
+**验证：** `check-undefined-slugs` 0 issue；`npm run build` ✅（**2170 HTML**，+1 新页）；dist：h1/canonical ✅、CTA→/rfq/ ×3、RFQ Prep 区块 ✅、ld+json ×2（含 OfferCatalog）、sitemap-en.xml 收录（+ 5-axis 博客 URL）、入口链 ✅。
+
+**路线图状态：** P0.5 Supplier / P0.6 AS9100 / P1 5-Axis+RFQ 全部完成 ✅。**下一步：** 剩余 9 篇博客（第 4 批）+ keywordMap 增量 + type check + 生产部署。
 
 ### P0.6 AS9100 Landing 上线（2026-08-05）
 **背景：** 用户从待办审计中选择继续路线图 → P0.6 AS9100 Landing（目标 Query「AS9100 titanium supplier」，航空采购信任 ★★★★★）。
