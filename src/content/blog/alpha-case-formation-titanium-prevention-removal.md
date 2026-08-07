@@ -19,7 +19,7 @@ At temperatures above roughly 400 degC, titanium has a high affinity for oxygen.
 
 The alpha case layer has different mechanical properties from the bulk material. Its hardness can be 50 to 100 HV higher than the underlying metal, and its ductility is significantly reduced. In components subject to cyclic loading, the alpha case layer is a potential fatigue crack initiation site. Cracks that form in the brittle alpha case can propagate into the base material under continued loading.
 
-The depth of alpha case depends on the temperature and the duration of exposure. At 600 degC, a one-hour exposure produces an alpha case depth of approximately 10 to 15 microns. At 800 degC, the same exposure time produces 30 to 50 microns. At typical solution heat treatment temperatures for Ti-6Al-4V, which range from 900 to 980 degC, alpha case can reach depths of 100 to 200 microns within the heat treatment cycle.
+The depth of alpha case depends on the temperature and the duration of exposure. At 600 degC, a one-hour exposure produces an alpha case depth of approximately 10 to 15 microns. At 800 degC, the same exposure time produces 30 to 50 microns. At typical solution heat treatment temperatures for [Ti-6Al-4V](/materials/grade-5/), which range from 900 to 980 degC, alpha case can reach depths of 100 to 200 microns within the heat treatment cycle.
 
 ## Where alpha case occurs in the manufacturing process
 
@@ -41,7 +41,7 @@ In thin-wall components, alpha case can represent a significant fraction of the 
 
 ## Prevention methods
 
-The most reliable prevention method is to avoid exposing titanium to oxygen at elevated temperatures. Vacuum heat treatment at pressures below 10 to the minus 4 torr prevents alpha case formation entirely. Argon or nitrogen backfill at positive pressure in the furnace also prevents oxygen diffusion, though nitrogen can form a titanium nitride surface layer that has its own implications for subsequent processing.
+The most reliable prevention method is to avoid exposing titanium to oxygen at elevated temperatures. [Vacuum heat treatment](/equipment/vacuum-heat-treat-furnace/) at pressures below 10 to the minus 4 torr prevents alpha case formation entirely. Argon or nitrogen backfill at positive pressure in the furnace also prevents oxygen diffusion, though nitrogen can form a titanium nitride surface layer that has its own implications for subsequent processing.
 
 For operations where vacuum or protective atmosphere is not available, chemical barrier coatings can be applied to the surface before heat treatment. These coatings form a glassy barrier that prevents oxygen from reaching the titanium surface. The coatings are removed after heat treatment by chemical stripping or mechanical abrasion.
 
@@ -70,3 +70,5 @@ Aerospace process specifications typically require verification that alpha case 
 | Stress relief, air furnace | 500-700 degC | 20-50 microns | Vacuum or Ar atmosphere |
 | Solution treatment, air | 900-980 degC | 100-200 microns | Vacuum furnace required |
 | Hot forging, air | 800-950 degC | 50-200 microns | Protective coating or atmosphere |
+
+For components where alpha case control is critical to fatigue performance and surface integrity, [request a process review](/rfq/) and our engineering team will confirm the required prevention and removal steps for your heat treatment and machining sequence.

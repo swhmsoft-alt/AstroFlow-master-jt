@@ -11,7 +11,7 @@ coverImageAlt: Precision cutting tools used for titanium CNC machining
 featured: false
 ---
 
-Tool wear in titanium machining follows different mechanisms and accelerates at different rates than what most shops experience with steel or aluminum. The combination of high cutting temperatures, chemical reactivity, and work-hardened surface layers — covered in detail in the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/) — creates an environment where standard tool life predictions often fall short. This article examines the specific wear mechanisms active in titanium cutting, how they interact with process parameters, and what criteria drive tool material and coating decisions for production work.
+Tool wear in titanium machining follows different mechanisms and accelerates at different rates than what most shops experience with steel or aluminum. The combination of high cutting temperatures, chemical reactivity, and [work-hardened surface layers](/blog/titanium-work-hardening-how-to-avoid/) — covered in detail in the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/) — creates an environment where standard tool life predictions often fall short. This article examines the specific wear mechanisms active in titanium cutting, how they interact with process parameters, and what criteria drive tool material and coating decisions for production work.
 
 - [Adhesion, diffusion, and abrasion — the three active wear mechanisms](#adhesion-diffusion-and-abrasion--the-three-active-wear-mechanisms)
 - [How cutting parameters influence wear progression](#how-cutting-parameters-influence-wear-progression)
@@ -106,6 +106,8 @@ The implication for process planning is that tool selection should be optimized 
 | Cutting sound change | Audible shift | Audible shift | Operator observation |
 
 ---
+
+For production titanium programs where tool life and process stability are critical, [submit your application for review](/rfq/).
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Wear mechanism diagram: A close-up cross-section of a carbide tool edge showing three zones — adhesion craters on rake face, diffusion zone beneath crater, abrasion marks on flank. Each zone labeled with the dominant mechanism and operating temperature range. Supports queries about how titanium wears tools differently than steel.

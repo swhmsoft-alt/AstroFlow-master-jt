@@ -15,9 +15,9 @@ featured: false
 
 ## About This Blog
 
-Welcome to the official Boze Titanium Manufacturing Center blog! We are excited to launch this platform where we will share our expertise, insights, and updates with our customers, partners, and the broader manufacturing community.
+Welcome to the official Boze Titanium Manufacturing Center [blog](/blog/)! We are excited to launch this platform where we will share our expertise, insights, and updates with our customers, partners, and the broader manufacturing community.
 
-As a leading provider of precision CNC machined titanium components, we work with industries ranging from aerospace and medical devices to automotive and industrial applications. This blog will serve as a resource for engineers, procurement professionals, and anyone interested in the world of precision manufacturing.
+As a leading provider of [precision CNC machined titanium components](/titanium-cnc-machining-services/), we work with industries ranging from [aerospace](/industries/aerospace/) and medical devices to automotive and industrial applications. This blog will serve as a resource for engineers, procurement professionals, and anyone interested in the world of precision manufacturing.
 
 ## What You Can Expect
 
@@ -37,7 +37,7 @@ Learn about our latest investments in equipment, certifications, facility expans
 
 ## Our Commitment to Quality
 
-At Boze Titanium Manufacturing Center, quality is not just a metric — it's a mindset. We are AS9100D and ISO 9001 certified, ensuring that every component we produce meets the highest standards of precision and reliability.
+At Boze Titanium Manufacturing Center, quality is not just a metric — it's a mindset. We are [AS9100D and ISO 9001 certified](/capabilities/certifications/), ensuring that every component we produce meets the highest standards of precision and reliability.
 
 > "Precision is not just about measurements. It's about delivering consistency, reliability, and excellence in every single part we manufacture."
 
@@ -47,4 +47,4 @@ We encourage you to subscribe to our newsletter and follow us on social media to
 
 ## Get Started Today
 
-Whether you need prototypes, low-volume production runs, or high-volume manufacturing, our team is ready to help. Contact us today for a competitive quote on your next project. Our engineering team will review your specifications and respond within 24 hours.
+Whether you need prototypes, low-volume production runs, or high-volume manufacturing, our team is ready to help. [Contact us today](/rfq/) for a competitive quote on your next project. Our engineering team will review your specifications and respond within 24 hours.

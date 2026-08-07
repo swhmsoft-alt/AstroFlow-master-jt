@@ -1,10 +1,10 @@
 # Active Context
 
-> **Last Updated:** 2026-08-05
-> **Current Focus:** P1 5-Axis 深度强化 + RFQ Preparation 上线（路线图最后页）；P0.5/P0.6 + 三批内链已完成；剩余：9 篇博客 + keywordMap 增量 + type check + 生产部署
+> **Last Updated:** 2026-08-07
+> **Current Focus:** 第 4 批语义内链（9 篇）+ keywordMap 增量 + type check 全部完成；剩余：git push + 部署
 
 ## Current Status
-✅ Semantic Linking Phase 1 完成：10 篇博客新增 25 条 Tier1 内链（service/material/industry/rfq/capabilities/tools），`check-undefined-slugs` 0 issue，`npm run build` 通过，dist 产物 0 重复包裹。
+✅ Semantic Linking Phase 4 完成：剩余 9 篇博客新增 27 条手动内链（welcome 从 0 链接去孤立），四批累计 39 篇 / 113 条新 Tier1 内链；keywordMap 增量 6 条长短语（全部表格安全）；`check-undefined-slugs` 0 issue；`npx astro build` ✅ 2213 页；dist 0 重复包裹。type check 已可运行（tsconfig 修复），6 个既有 React 组件错误留待专项。
 
 ## Recent Decisions
 
@@ -73,6 +73,39 @@
 **验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过；dist 抽查 5 篇：rfq/grade-5 链接正确、`<a href="..."><a href=` 重复包裹 = 0。
 
 **累计：** 三批共 **30 篇博客 / 86 条新 Tier1 内链**（svc=13, mat=29, ind=12, rfq=19, cap=13, tool=8）。剩余 9 篇：alpha-case、high-pressure-coolant（已有 1 服务链）、chip-control、deformation、springback、tool-wear、work-hardening、welcome（低价值可跳过或仅 1-2 链）。
+
+### Semantic Linking Phase 4 + keywordMap 增量 + type check（2026-08-07）
+**背景：** 收尾剩余 9 篇博客（Manufacturing Problems 簇 + welcome）+ keywordMap 长短语增量 + 全量 type check。
+
+**执行（9 篇 / 27 条新手动内链）：** material=5（grade-5 ×3、astm-b348、astm-b265）、equipment=2（vacuum-heat-treat-furnace、chip-management-fire-suppression）、service=4（3-5-axis ×3、services ×1）、capability=2（traceability、certifications）、blog 交叉=3（thin-wall ×2、work-hardening）、blog hub=1（/blog/）、industry=1（aerospace）、rfq=9。
+- **welcome 去孤立：** 0 链接 → 5 条（/blog/、services、aerospace、certifications、/rfq/），成为博客枢纽入口
+- 首度引入 `/equipment/` 设备页目标类型（前 3 批未用）；已确认页面真实存在且内容完整
+- 锚文本全部各异；RFQ CTA 段落沿用 thin-wall 博客先例
+
+**keywordMap 增量（6 条长短语，全部逐条核对无 `<table>` 单元格命中）：**
+| 关键词 | → URL | 正文出现 |
+|---|---|---|
+| `Ti-6Al-4V Grade 5` / `Grade 5 titanium` | `/materials/grade-5/` | 3 / 4 |
+| `Grade 23 titanium` | `/materials/grade-23/` | 8 |
+| `through-spindle coolant` / `high-pressure coolant` | `/equipment/high-pressure-coolant/` | 6 / 7 |
+| `medical implants` | `/industries/medical/` | 7 |
+- 排除项（实测命中表格单元格）：`Ti-6Al-4V ELI`（2 处）、`material certification`（1 处）
+- 插件属性复核：大小写不敏感、跳过 a/code/pre/h1-h6/script/style/button、maxLinksPerPage=3、长词优先、word-boundary 匹配 → 无二次包裹风险
+
+**Type check：** tsconfig `ignoreDeprecations` `6.0→5.0`（TS 5.9.3 仅接受 5.0，此前 TS5103 使 tsc 完全无法运行）；`npx astro sync` ✅；`npx tsc --noEmit` 报告 **6 个既有错误**（FacilityStats/StatsCards/UseCaseTabs ts(2769)、UseCaseTabs ts(2322)、ReverseEngineerTool ts(2345) ×2）——均为既有 React 组件问题，本次改动 0 新增。
+
+**验证：** `check-undefined-slugs` 0 issue；`npx astro build` ✅ **2213 页**（48.8s，0 错误）；dist 抽查：9 篇博客预期 href 全部命中、14 个目标页面均存在、全 dist `<a href="..."><a href=` 重复包裹 = 0、keywordMap 自动链接生效（HPC→equipment ×2、grade-5 ×2、medical→industries ×3）。
+
+**下一步：** git push（origin/main 落后）；生产部署（本次改动需 `npm run deploy:inc`）；6 个既有 React 类型错误专项修复。
+
+### 生产部署上线（2026-08-05）
+**任务：** commit `75f55a01`「P1 5-Axis 落地页 + 博客入口链 + Memory Bank」（6 文件）+ `npm run deploy:inc`。
+
+**部署：** `deploy-incremental-ftp.js` → SIZE 对比 2664 文件 → **2172 需上传（306.2MB）/ 492 未变** → 4 连接并行上传，**2172 成功 / 0 失败，总耗时 2330s（~39min）**。注：因上次部署后累积大量改动（RFQ 重构/86 内链/3 新页/入口扩充），上传量远超上次的 407 文件。
+
+**线上验证（全部通过）：** `/titanium-cnc-machining-manufacturer/`（H1/CTA/材料卡/AS9100 交叉链 ✅）、`/as9100-titanium-supplier/`（AS9100D Scope + Evidence Docs ✅）、`/5-axis-titanium-machining/`（Why-5Axis + RFQ Prep ✅）、`/rfq/`（新表单 mailto 提示 + 24h 报价 + Supplier 横幅 ✅）。
+
+**git：** HEAD=`75f55a01` 未 push（origin/main 仍为 `85224284`）—— 需用户 `git push`。`.deploy-diff.json` 为部署缓存（10min TTL）。
 
 ### P1 5-Axis 深度强化 + RFQ Preparation 上线（2026-08-05）
 **背景：** 用户批准 P1 —— 路线图最后一页。目标 Query「5 axis titanium machining / 5 axis titanium machining supplier」（差异化能力 ★★★★★）。将 5-Axis 深度 + RFQ Preparation 两个子项合并为单一综合落地页。

@@ -21,7 +21,7 @@ Work hardening in titanium is not the same phenomenon that machinists encounter 
 
 ## What work hardening does to the titanium subsurface
 
-When a cutting tool passes over titanium, the plastic deformation in the subsurface layer is not uniform. The material immediately beneath the machined surface undergoes severe strain that refines the grain structure and increases dislocation density. In Ti-6Al-4V, this strain-affected layer can extend to depths of 200 to 400 microns under aggressive cutting conditions, compared to 20 to 50 microns in most steels under equivalent conditions.
+When a cutting tool passes over titanium, the plastic deformation in the subsurface layer is not uniform. The material immediately beneath the machined surface undergoes severe strain that refines the grain structure and increases dislocation density. In [Ti-6Al-4V](/materials/grade-5/), this strain-affected layer can extend to depths of 200 to 400 microns under aggressive cutting conditions, compared to 20 to 50 microns in most steels under equivalent conditions.
 
 The hardened layer has two distinct zones. The outermost zone, typically 10 to 30 microns deep, experiences the most severe deformation and can show grain elongation and even grain refinement to submicron sizes. Below this is a transition zone where the strain decreases progressively until reaching the bulk material hardness. The hardness gradient between the surface layer and the bulk material can be as high as 30 to 50 HV, depending on cutting conditions and the starting microstructure of the material.
 
@@ -92,6 +92,8 @@ For complex geometries with multiple features requiring different tool orientati
 | Climb vs conventional | Use climb milling | Reduces exit-zone hardening | Requires rigid setup |
 
 ---
+
+For work-hardening-sensitive components, [request a process review](/rfq/) and our engineers will define the roughing and finishing strategy for your geometry.
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Subsurface deformation cross-section: A micrograph-style cross-section showing the work-hardened layer beneath a machined titanium surface, with grain refinement at the surface and transition zone below. Hardness gradient overlaid as a line graph. Supports queries about surface integrity in titanium machining.

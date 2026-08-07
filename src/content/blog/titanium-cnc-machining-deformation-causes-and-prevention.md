@@ -41,7 +41,7 @@ Stress-relieving the raw material before machining is the most reliable way to r
 
 ## Thin-wall deformation patterns
 
-Thin-wall titanium components present the most challenging combination of deformation drivers. The wall is simultaneously subject to thermal expansion during cutting, elastic deflection under cutting forces, and springback after the tool passes. The wall thickness itself changes through the machining process, and the deformation behavior changes as the wall becomes thinner.
+[Thin-wall titanium components](/blog/thin-wall-titanium-machining-guidelines/) present the most challenging combination of deformation drivers. The wall is simultaneously subject to thermal expansion during cutting, elastic deflection under cutting forces, and springback after the tool passes. The wall thickness itself changes through the machining process, and the deformation behavior changes as the wall becomes thinner.
 
 A characteristic pattern in thin-wall pocket machining is that the first few passes around the pocket perimeter produce minimal visible deformation. As the wall approaches its final thickness, the stiffness drops rapidly, and each subsequent pass produces more deflection than the previous one. The relationship between wall thickness and stiffness is cubic in the direction perpendicular to the wall — reducing the wall thickness from 2.0 mm to 1.0 mm reduces stiffness by a factor of eight. This non-linear relationship means that the last 0.5 mm of material removal on a thin wall can produce more deformation than the first 2.0 mm.
 
@@ -95,6 +95,8 @@ Multiple semi-finishing passes are more effective for deformation control than a
 | Above 20:1 | Extreme | Specialized fixturing, adaptive correction, specialist process design |
 
 ---
+
+For components where deformation control is critical to holding tolerance, [request a process study](/rfq/) and our [5-axis titanium machining services](/titanium-cnc-machining-services/3-5-axis-cnc-machining/) will define the toolpath and fixturing strategy for your geometry.
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Deformation mechanism diagram: Three side-by-side schematics showing thermal expansion (localized heating expansion zone), elastic springback (wall deflection under tool force, returning after tool passes), and residual stress redistribution (initial stress state vs post-machining bowed state). Each with labeled drivers. Supports queries about why titanium parts warp during machining.

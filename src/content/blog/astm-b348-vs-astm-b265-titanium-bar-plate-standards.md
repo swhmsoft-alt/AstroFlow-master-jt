@@ -11,7 +11,7 @@ coverImageAlt: Titanium bar and plate stock materials
 featured: false
 ---
 
-ASTM B348 and ASTM B265 are the two most commonly referenced material standards for titanium used in CNC machining. ASTM B348 covers titanium and titanium alloy bar and billet — round, square, and hexagonal cross-sections. ASTM B265 covers titanium and titanium alloy sheet, plate, and strip — flat-rolled products. Understanding the differences between these standards is important for material selection and procurement specification.
+[ASTM B348](/materials/astm-b348/) and [ASTM B265](/materials/astm-b265/) are the two most commonly referenced material standards for titanium used in CNC machining. ASTM B348 covers titanium and titanium alloy bar and billet — round, square, and hexagonal cross-sections. ASTM B265 covers titanium and titanium alloy sheet, plate, and strip — flat-rolled products. Understanding the differences between these standards is important for material selection and procurement specification.
 
 ## Product form coverage
 
@@ -31,7 +31,7 @@ The difference in property requirements between bar and plate is primarily in th
 
 Both standards require chemical analysis and tensile testing for each production lot. The testing frequency and acceptance criteria are defined in the standard. Additional testing — ultrasonic inspection, fracture toughness testing, or microstructure evaluation — may be specified by the purchaser as supplementary requirements.
 
-The certification requirements for bar and plate are the same — the mill test report must document the chemical composition, tensile properties, and any supplementary test results. The material must be identified by heat number, and the certification must include the standard designation and grade.
+The certification requirements for bar and plate are the same — the [mill test report](/capabilities/traceability/) must document the chemical composition, tensile properties, and any supplementary test results. The material must be identified by heat number, and the certification must include the standard designation and grade.
 
 ## Practical selection considerations
 
@@ -53,5 +53,7 @@ For components that require material properties in multiple orientations — com
 | Typical components | Shafts, pins, fittings, turned parts | Brackets, flanges, housings, structural parts |
 | Mechanical properties | Same grade requirements by standard | Same grade requirements by standard |
 | Supplementary testing | Ultrasonic, fracture toughness (as specified) | Ultrasonic, fracture toughness (as specified) |
+
+Specifying the correct ASTM standard, grade, and product form in your [RFQ](/rfq/) ensures the material is procured and certified to the right specification.
 
 ---

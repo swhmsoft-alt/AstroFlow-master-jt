@@ -17,7 +17,7 @@ Springback in titanium machining is a direct consequence of the material's low m
 
 Titanium's modulus of elasticity ranges from 105 to 115 GPa, compared to approximately 200 GPa for steel. This means that under an equivalent cutting force, a titanium feature will deflect nearly twice as much as a steel feature of the same geometry. When the tool passes and the cutting force is removed, the deflected material springs back toward its original position. If the CAM program does not account for this springback, the machined dimension will differ from the programmed dimension.
 
-Springback matters most in three specific situations. The first is thin-wall machining, where the wall height is large relative to its thickness and the wall deflects significantly under even moderate cutting forces. The second is precision boring and turning of thin-wall rings and housings, where the part deflects under clamping and cutting forces and recovers after the tool passes. The third is hole machining in thin-wall sections, where the wall deflection during drilling or boring produces non-round holes that spring back to a different diameter after the tool exits.
+Springback matters most in three specific situations. The first is [thin-wall machining](/blog/thin-wall-titanium-machining-guidelines/), where the wall height is large relative to its thickness and the wall deflects significantly under even moderate cutting forces. The second is precision boring and turning of thin-wall rings and housings, where the part deflects under clamping and cutting forces and recovers after the tool passes. The third is hole machining in thin-wall sections, where the wall deflection during drilling or boring produces non-round holes that spring back to a different diameter after the tool exits.
 
 ## How springback interacts with cutting forces
 
@@ -55,6 +55,8 @@ In pocket machining, leaving strategic support ribs that are removed in a separa
 | 40 mm | 0.15–0.25 mm | 0.12–0.20 mm | Major |
 
 ---
+
+For thin-wall and precision titanium features where springback compensation is critical, [request a process study](/rfq/) and our [5-axis titanium machining services](/titanium-cnc-machining-services/3-5-axis-cnc-machining/) will validate the CAM compensation strategy for your geometry.
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Springback deflection diagram: Cross-section of a thin wall during and after cutting, showing the deflected position under load and the sprung-back position after tool passage. Overlaid tolerance zone shows the dimensional error. Supports queries about springback compensation in thin-wall titanium machining.

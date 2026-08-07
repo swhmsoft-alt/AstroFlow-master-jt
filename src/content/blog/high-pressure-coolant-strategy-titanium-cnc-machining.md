@@ -71,7 +71,7 @@ Through-spindle coolant is the preferred delivery method for titanium machining 
 
 Flood coolant applied through external nozzles is significantly less effective for titanium. The coolant stream must travel from the nozzle to the cutting zone, and it can be deflected by the rotating tool and the chip stream. In deep pockets and internal features, external coolant may not reach the cutting edge at all. For operations where through-spindle coolant is not available, external nozzles should be positioned as close to the cutting zone as possible, ideally within 25 mm of the tool edge, and directed to follow the tool rotation so that coolant is carried into the cut.
 
-High-pressure external coolant systems that deliver 50 bar through focused nozzles can approach the performance of through-spindle coolant for some operations, but they require careful nozzle positioning and are limited by the geometry of the part and the tool. For five-axis machining where the tool orientation changes continuously, external coolant is difficult to maintain at the cutting interface.
+High-pressure external coolant systems that deliver 50 bar through focused nozzles can approach the performance of through-spindle coolant for some operations, but they require careful nozzle positioning and are limited by the geometry of the part and the tool. For [five-axis machining](/titanium-cnc-machining-services/3-5-axis-cnc-machining/) where the tool orientation changes continuously, external coolant is difficult to maintain at the cutting interface.
 
 Minimum quantity lubrication, which delivers a small volume of lubricant in a compressed air stream, is not suitable for titanium machining. The heat removal requirement in titanium is too high for MQL systems, which rely on the chip to carry away most of the cutting heat. In titanium, where the tool absorbs a larger share of the heat, the coolant must provide active cooling that MQL systems cannot deliver.
 
@@ -102,6 +102,8 @@ Coolant filtration is a supporting requirement that is often overlooked. High-pr
 | pH | 8.5–0.5 | Weekly | Corrosion risk, bacterial growth |
 
 ---
+
+For a coolant strategy assessment matched to your titanium operations, [request an engineering review](/rfq/).
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Coolant flow comparison diagram: Side-by-side schematic of flood coolant (showing deflected stream, minimal penetration) vs through-spindle high-pressure coolant (showing jet reaching tool-chip interface). Temperature gradient overlay shows cooling effectiveness difference. Supports queries about coolant requirements for titanium machining.

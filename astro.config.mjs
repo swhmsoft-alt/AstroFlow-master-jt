@@ -147,6 +147,24 @@ export default defineConfig({
           },
           "Polishing & Sandblasting": {
             "href": "/titanium-surface-treatment/polishing-sandblasting/"
+          },
+          "Ti-6Al-4V Grade 5": {
+            "href": "/materials/grade-5/"
+          },
+          "Grade 5 titanium": {
+            "href": "/materials/grade-5/"
+          },
+          "Grade 23 titanium": {
+            "href": "/materials/grade-23/"
+          },
+          "through-spindle coolant": {
+            "href": "/equipment/high-pressure-coolant/"
+          },
+          "high-pressure coolant": {
+            "href": "/equipment/high-pressure-coolant/"
+          },
+          "medical implants": {
+            "href": "/industries/medical/"
           }
       }
       }]

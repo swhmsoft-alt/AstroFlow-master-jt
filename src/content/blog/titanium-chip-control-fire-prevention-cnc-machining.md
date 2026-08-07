@@ -25,7 +25,7 @@ Titanium chips ignite through a mechanism that is different from how cutting flu
 
 The conditions that lead to chip ignition are well understood. Chip temperature at the moment of formation must be above approximately 800°C, and the chip must be small enough that the surface-area-to-volume ratio is high enough to sustain rapid oxidation. This temperature threshold is reached routinely in titanium machining, as the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/) explains in the context of thermal concentration at the cutting edge. Thin, stringy chips with large surface areas relative to their mass are the most dangerous. Heavy, thick chips from roughing operations are less likely to ignite because they have a lower surface-area-to-volume ratio and cool more slowly in a controlled way.
 
-Cutting speed is the primary driver of chip ignition risk. At cutting speeds above 80 m/min for Ti-6Al-4V, the chip temperature at formation is consistently above the ignition threshold. Below 60 m/min, the risk is significantly lower but not zero — specific conditions such as tool wear, reduced coolant flow, or interrupted cuts can produce localized temperatures high enough for ignition even at lower average speeds.
+Cutting speed is the primary driver of chip ignition risk. At cutting speeds above 80 m/min for [Ti-6Al-4V](/materials/grade-5/), the chip temperature at formation is consistently above the ignition threshold. Below 60 m/min, the risk is significantly lower but not zero — specific conditions such as tool wear, reduced coolant flow, or interrupted cuts can produce localized temperatures high enough for ignition even at lower average speeds.
 
 Tool condition matters for fire risk because a worn tool generates higher cutting forces and higher chip temperatures than a sharp tool at the same cutting parameters. A tool that is approaching end of life can generate chip temperatures 100 to 200°C higher than a fresh tool under identical conditions. This means that a process that is safe with a sharp tool can become hazardous as the tool wears. Tool change intervals that are based on part quality criteria alone may not account for this shift in fire risk.
 
@@ -75,7 +75,7 @@ Chip accumulation in the machine enclosure should not be allowed to build up ove
 
 Coolant nozzles and delivery paths should be inspected regularly for blockages. A blocked nozzle that goes unnoticed can produce a localized dry cutting condition that leads to chip ignition. In machines with multiple coolant nozzles, a single blocked nozzle may not be detected by flow monitoring if the total flow rate is still within range.
 
-Fire suppression systems are a standard requirement for machine tools used for titanium machining. CO— or inert gas systems that flood the machine enclosure are the most common, as they extinguish fires without damaging the machine tool or leaving residue. Dry chemical systems are also used but require thorough cleaning after activation to prevent corrosion of machine components.
+[Fire suppression systems](/equipment/chip-management-fire-suppression/) are a standard requirement for machine tools used for titanium machining. CO— or inert gas systems that flood the machine enclosure are the most common, as they extinguish fires without damaging the machine tool or leaving residue. Dry chemical systems are also used but require thorough cleaning after activation to prevent corrosion of machine components.
 
 The most effective fire prevention measure remains operator awareness. Operators working on titanium should be trained to recognize the conditions that lead to chip ignition — changes in chip color, chip form, or cutting sound — and to respond by stopping the cut and verifying coolant coverage before resuming. A culture of fire prevention that treats chip fires as a process control issue rather than a safety incident is the foundation of safe titanium machining operations.
 
@@ -108,6 +108,8 @@ The most effective fire prevention measure remains operator awareness. Operators
 | Operator training | Fire prevention awareness | Annual refresher |
 
 ---
+
+For titanium programs where fire prevention is a process requirement, [discuss your application](/rfq/) with our engineering team.
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Chip ignition temperature diagram: A graph showing chip temperature vs time from formation for thin, medium, and thick chips in titanium. Annotated with ignition threshold line and cooling curves for different coolant conditions. Supports queries about titanium chip fire conditions and prevention.
