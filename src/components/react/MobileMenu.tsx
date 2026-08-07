@@ -5,6 +5,8 @@ import { NAVIGATION } from '../../config/site';
 import type { NavItem } from '../../config/site';
 
 interface MobileMenuProps {
+  /** Locale-aware navigation items to render. Defaults to the shared NAVIGATION. */
+  items?: NavItem[];
   /** Translated text for the hamburger button aria-label */
   toggleMenuLabel?: string;
   /** Translated text for the dialog title (screen-reader only) */
@@ -87,6 +89,7 @@ function NavItemWithChildren({ item, onClose }: { item: NavItem; onClose: () => 
 }
 
 export default function MobileMenu({
+  items = NAVIGATION,
   toggleMenuLabel = 'Toggle menu',
   navigationMenuLabel = 'Navigation Menu',
   mainNavigationMenuLabel = 'Main navigation menu',
@@ -116,7 +119,7 @@ export default function MobileMenu({
           <Dialog.Title className="sr-only">{navigationMenuLabel}</Dialog.Title>
           <Dialog.Description className="sr-only">{mainNavigationMenuLabel}</Dialog.Description>
           <div className="container mx-auto px-4 py-6 space-y-2">
-            {NAVIGATION.map((item) => (
+            {items.map((item) => (
               <NavItemWithChildren key={item.href} item={item} onClose={() => setOpen(false)} />
             ))}
             <div className="pt-4">

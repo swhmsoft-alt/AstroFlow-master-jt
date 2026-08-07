@@ -1,5 +1,5 @@
 ---
-import { NAVIGATION, SITE } from '@config/site';
+import { SITE, getNavigation } from '@config/site';
 import type { NavItem } from '@config/site';
 import MobileMenu from '@components/react/MobileMenu';
 import LanguageSelector from './LanguageSelector.astro';
@@ -10,6 +10,10 @@ const { currentPathname } = Astro.props;
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const isActiveLink = (href: string) : boolean => { return href === currentPathname; }
+
+// Locale-aware nav: English promotes Products to a top-level item before Services;
+// all other locales keep the shared NAVIGATION structure unchanged.
+const navItems = getNavigation(currentLang);
 
 // ── Navigation translation key mappings ────────────────────
 // Map top-level href → nav translation key
@@ -212,7 +216,7 @@ const logoSubtext = t('header.logoSubtext');
 
     <!-- Desktop Navigation -->
     <div class="hidden lg:flex lg:items-center lg:space-x-1">
-      {NAVIGATION.map((item: NavItem) => {
+      {navItems.map((item: NavItem) => {
         const isActive = isActiveLink(item.href);
         const hasChildren = item.children && item.children.length > 0;
         return (
@@ -315,6 +319,7 @@ const logoSubtext = t('header.logoSubtext');
     <!-- Mobile Menu Button -->
     <MobileMenu
       client:idle
+      items={navItems}
       toggleMenuLabel={t('react.mobilemenu.toggle_menu')}
       navigationMenuLabel={t('react.mobilemenu.navigation_menu')}
       mainNavigationMenuLabel={t('react.mobilemenu.main_navigation_menu')}

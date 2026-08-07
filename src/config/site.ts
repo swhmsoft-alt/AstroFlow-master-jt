@@ -189,6 +189,54 @@ export const NAVIGATION: NavItem[] = [
   },
 ];
 
+/**
+ * Return the navigation structure for the given locale.
+ *
+ * Only English (the default locale) gets "Products" promoted from the
+ * Resources dropdown to a top-level nav item placed immediately before
+ * "Services" (rendered as a plain link without a dropdown). All other
+ * locales keep the shared NAVIGATION structure unchanged because the
+ * localized product-hub pages are not built yet.
+ *
+ * Note: 'en' is the project DEFAULT_LANG (see src/i18n/ui.ts). We intentionally
+ * compare against the literal instead of importing i18n/ui here, so the React
+ * MobileMenu island does not pull the full translation dictionaries into the
+ * client bundle.
+ */
+export function getNavigation(lang: string): NavItem[] {
+  if (lang !== 'en') return NAVIGATION;
+
+  const productsItem: NavItem = { name: 'Products', href: '/products' };
+  const englishNav: NavItem[] = [];
+  let productsInserted = false;
+
+  for (const item of NAVIGATION) {
+    // Insert Products immediately before Services (top-level, no dropdown).
+    if (item.href === '/services' && !productsInserted) {
+      englishNav.push(productsItem);
+      productsInserted = true;
+    }
+    // Remove the duplicate Products link from the Resources dropdown.
+    if (item.href === '/resources' && item.children) {
+      englishNav.push({
+        ...item,
+        children: item.children
+          .map((column) => ({
+            ...column,
+            items: column.items.filter((child) => child.href !== '/products'),
+          }))
+          .filter((column) => column.items.length > 0),
+      });
+      continue;
+    }
+    englishNav.push(item);
+  }
+
+  // Safety net: keep Products even if Services were ever removed from NAVIGATION.
+  if (!productsInserted) englishNav.push(productsItem);
+  return englishNav;
+}
+
 export const SOCIAL_LINKS = {
   linkedin: 'https://www.linkedin.com/in/baoji-boze-metal-products-co-ltd-25a0923aa',
   facebook: 'https://www.facebook.com/titaniummachinedparts/',

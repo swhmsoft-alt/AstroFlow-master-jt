@@ -1,12 +1,29 @@
 # Active Context
 
 > **Last Updated:** 2026-08-07
-> **Current Focus:** 第 4 批语义内链 + keywordMap + type check 完成；**已部署上线（2170 文件全量）**；剩余：git push
+> **Current Focus:** 英语站导航：Products 提升为一级分类（置于 Services 之前，无下拉）；多语言站导航保持原样；已通过 tsc 0 错误 + 渲染级验证
 
 ## Current Status
 ✅ Semantic Linking Phase 4 完成：剩余 9 篇博客新增 27 条手动内链（welcome 从 0 链接去孤立），四批累计 39 篇 / 113 条新 Tier1 内链；keywordMap 增量 6 条长短语（全部表格安全）；`check-undefined-slugs` 0 issue；`npx astro build` ✅ 2213 页；dist 0 重复包裹。type check 已可运行（tsconfig 修复），6 个既有 React 组件错误留待专项。**生产部署完成（2026-08-07）：** `npm run deploy:inc` 两轮上传共 2170 文件 / 0 失败，线上抽查全部通过。
 
 ## Recent Decisions
+
+### 导航：Products 提升为英语站一级分类（2026-08-07）
+**背景：** 用户要求将导航上的 Products 位置提到 Services 之前、作为一级分类，**且只在英语站调整**；多语言站因暂无大范围产品布局需保持不变。已确认方案：Products 为**无下拉的纯一级链接**（→ `/products`）。
+
+**执行：**
+1. **`src/config/site.ts`** — 新增 `getNavigation(lang)`：`en` 时构建专属导航 `Home → Products → Services → Materials → Capabilities → Industries → Resources`，并从 Resources 下拉中移除重复的 Products 子项；非 `en` 原样返回 `NAVIGATION`（多语言零变化）。**关键约束：** 不在 site.ts 引入 `i18n/ui`（`DEFAULT_LANG`），避免 React MobileMenu island 把 12 套翻译字典拉进客户端 bundle → 直接比较 `'en'` 字面量（加注释说明）。
+2. **`Header.astro`** — 桌面导航改用 `getNavigation(currentLang)`；`<MobileMenu>` 新增 `items={navItems}` prop。
+3. **`MobileMenu.tsx`** — 新增 `items?: NavItem[]` prop（默认回退 `NAVIGATION`，不传时行为不变）。
+4. **未改动**：`Footer.astro`（Quick Links 仅渲染一级项，原本就不含 Products，任何语言均不变）、`BaseLayout.astro`（面包屑 NAV_LABEL_MAP 与顺序无关）、所有翻译文件（en `nav.products` 已存在）、所有 slug/路由文件。
+
+**验证：**
+- `check-undefined-slugs.mjs --ci` 0 issue、`check-encoding.mjs` 通过
+- `npx tsc --noEmit` 0 错误
+- 功能验证（esbuild 加载真实 site.ts）：en 顺序 `/ → /products → /services → …`、en Resources 无 products 子项、de/ja 与 `NAVIGATION` 完全一致
+- 渲染验证（dev server 抓取 HTML）：EN 桌面导航 `Home → Products → Services → …`，`/products/` 在 header 仅 1 处（Resources 下拉已移除）；DE 导航顺序不变且 `/de/products/` 仍只存在于 Resources 下拉；EN/DE MobileMenu island props 序列化顺序均正确（EN 中 Products 在 Services 前，DE 中 Products 在 Resources 子项内）
+
+**下一步：** 用户确认后 `git push` + 部署；如后续需 Footer Quick Links 同步展示 Products（英语站）或为 Products 增加英文子分类下拉，可再扩展。
 
 ### Semantic Linking Phase 1（2026-08-05）
 **背景：** 战略层批准 Semantic Linking Map（39 篇博客），执行顺序调整为 Phase 0（keywordMap Safety Audit）→ Phase 1（10 篇高价值博客手动内链）。
