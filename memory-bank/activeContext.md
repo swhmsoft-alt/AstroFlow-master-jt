@@ -1,10 +1,10 @@
 # Active Context
 
 > **Last Updated:** 2026-08-07
-> **Current Focus:** 第 4 批语义内链（9 篇）+ keywordMap 增量 + type check 全部完成；剩余：git push + 部署
+> **Current Focus:** 第 4 批语义内链 + keywordMap + type check 完成；**已部署上线（2170 文件全量）**；剩余：git push
 
 ## Current Status
-✅ Semantic Linking Phase 4 完成：剩余 9 篇博客新增 27 条手动内链（welcome 从 0 链接去孤立），四批累计 39 篇 / 113 条新 Tier1 内链；keywordMap 增量 6 条长短语（全部表格安全）；`check-undefined-slugs` 0 issue；`npx astro build` ✅ 2213 页；dist 0 重复包裹。type check 已可运行（tsconfig 修复），6 个既有 React 组件错误留待专项。
+✅ Semantic Linking Phase 4 完成：剩余 9 篇博客新增 27 条手动内链（welcome 从 0 链接去孤立），四批累计 39 篇 / 113 条新 Tier1 内链；keywordMap 增量 6 条长短语（全部表格安全）；`check-undefined-slugs` 0 issue；`npx astro build` ✅ 2213 页；dist 0 重复包裹。type check 已可运行（tsconfig 修复），6 个既有 React 组件错误留待专项。**生产部署完成（2026-08-07）：** `npm run deploy:inc` 两轮上传共 2170 文件 / 0 失败，线上抽查全部通过。
 
 ## Recent Decisions
 
@@ -96,7 +96,9 @@
 
 **验证：** `check-undefined-slugs` 0 issue；`npx astro build` ✅ **2213 页**（48.8s，0 错误）；dist 抽查：9 篇博客预期 href 全部命中、14 个目标页面均存在、全 dist `<a href="..."><a href=` 重复包裹 = 0、keywordMap 自动链接生效（HPC→equipment ×2、grade-5 ×2、medical→industries ×3）。
 
-**下一步：** git push（origin/main 落后）；生产部署（本次改动需 `npm run deploy:inc`）；6 个既有 React 类型错误专项修复。
+**生产部署（2026-08-07）：** commit `ada264cf` 后全量 `npm run build`（5 步通过，2213 页 + sitemap 12 语 + webp 更新 2170 HTML）。`npm run deploy:inc` 首轮 SIZE 对比发现 2170 文件差异（304.0MB，与上次全量规模一致——增量脚本实际每次几乎全量）→ **2142 成功 / 28 失败**（失败集中在末尾 titanium-*/tools/use-cases，典型连接中断）→ 删除 `.deploy-diff.json` 重跑，**第二轮 28 成功 / 0 失败（191s）**，合计 **2170 文件全部上传 / 0 失败**。线上验证（全部通过）：welcome（5 条新 href）、alpha-case（CTA）、chip-control（CTA+fire-suppression）、astm-b348（astm-b348/b265+traceability+grade-5 自动链）、HPC 博客（equipment 自动链+3-5-axis）、medical 博客（industries 自动链）、equipment/high-pressure-coolant（HTTP 200）。
+
+**下一步：** git push（HEAD=`ada264cf` 未推送）；6 个既有 React 类型错误专项修复。
 
 ### 生产部署上线（2026-08-05）
 **任务：** commit `75f55a01`「P1 5-Axis 落地页 + 博客入口链 + Memory Bank」（6 文件）+ `npm run deploy:inc`。
