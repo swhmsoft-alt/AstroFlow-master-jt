@@ -8,6 +8,7 @@ import AerospaceSwissTurningSection from '../../components/industries/aerospace/
 import AerospaceComplianceSection from '../../components/industries/aerospace/AerospaceComplianceSection.astro';
 import AerospaceMetrologySection from '../../components/industries/aerospace/AerospaceMetrologySection.astro';
 import AerospaceCtaSection from '../../components/industries/aerospace/AerospaceCtaSection.astro';
+import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -62,5 +63,37 @@ const t = useTranslations(lang);
   <AerospaceSwissTurningSection />
   <AerospaceComplianceSection />
   <AerospaceMetrologySection />
+
+  <BuyerIntentBlock
+    industry="Aerospace"
+    whyTitanium={[
+      'Highest strength-to-weight ratio of structural metals — up to 45% weight saving vs steel for airframe and engine components',
+      'Superior corrosion and fatigue resistance under repeated stress cycles',
+      'Proven service history in critical flight applications (structural, hydraulic, and engine systems)',
+    ]}
+    typicalComponents={[
+      'Structural brackets, housings, and mounting hardware',
+      'Engine components and ducting systems',
+      'Thin-wall structural parts (0.60 mm wall demonstrated)',
+      'Fasteners and turn-mill components for actuation systems',
+    ]}
+    manufacturing={[
+      '5-axis CNC machining with ±0.005 mm positioning accuracy',
+      'Swiss-type turning for small high-precision components',
+      'Wire EDM for stress-free precision profiles',
+      'Vacuum heat treatment for residual stress control',
+      'In-house CMM metrology with AS9102 first article reporting',
+    ]}
+    qualityRequirements={[
+      'AS9100D aerospace quality management system',
+      'Material traceability with EN 10204 3.1 mill certificates',
+      'FAIR / PPAP documentation for new part numbers',
+      'AMS 2750F Class 2 compliant heat treatment',
+    ]}
+    caseStudyLinks={[
+      { label: 'Thin-Wall Titanium Aerospace Housing (0.60 mm wall, CMM verified)', href: '/case-studies/aerospace-thin-wall-housing/' },
+    ]}
+  />
+
   <AerospaceCtaSection />
 </BaseLayout>

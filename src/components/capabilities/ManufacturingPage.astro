@@ -233,6 +233,113 @@ const t = useTranslations(currentLang);
 
 
 <!-- ════════════════════════════════════════════════════════════════
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 2.5 — Titanium Machining Capability Matrix (Procurement)
+     Process-by-process capability evidence for buyer qualification.
+     All values sourced from real equipment inventory & metrology data.
+     ════════════════════════════════════════════════════════════════ -->
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /></svg>
+        Titanium Machining Capability Matrix
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        Can We Machine <span class="gradient-text-accent">Your Component?</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        A process-by-process capability summary for procurement engineers. Every value below reflects our actual equipment fleet, metrology lab, and production records — not a marketing sheet.
+      </p>
+    </div>
+
+    <!-- Capability Matrix Table -->
+    <div class="max-w-6xl mx-auto overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+      <table class="w-full text-left border-collapse tech-spec-table">
+        <thead>
+          <tr>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">Process</th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">Capability / Key Spec</th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">Equipment Class</th>
+            <th scope="col" class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border-bottom: 2px solid var(--theme-primary);">Typical Titanium Applications</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">5-Axis CNC Milling</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Positioning accuracy ±0.005 mm; simultaneous 5-axis; single-setup complex geometry; HSK-A63 spindle</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">DMG Mori DMU 50/65, Mazak VARIAXIS i-500, Hermle C 32 U</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Aerospace structural parts, housings, brackets, impellers</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Turn-Mill (Done-in-One)</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Combined turning + milling in one clamping; eliminates re-fixturing error</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Nakamura-Tome NTRX-300, DMG Mori NTX 1000/2000, Mazak INTEGREX i-200</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Rotational components, fittings, valve bodies, medical implants</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Wire EDM</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">±0.002 mm accuracy; Ra 0.4 µm finish; 0.05–0.33 mm wire; stress-free profiling</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Sodick ALN400G/600G, Mitsubishi MV1200S/2400S, Makino U6</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Precision profiles, thin-wall parts, complex contours</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Through-Spindle High-Pressure Coolant</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">70–150 bar at 40–80 L/min — the single most impactful upgrade for titanium MRR and tool life</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">ChipBLASTER, LNS, MP Systems class</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">All titanium machining operations</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Automatic Tool Magazine</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">60–120 tool capacity; HSK-A63 interface; RFID; sister-tool switching for unattended runs</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Chain / rack-type magazines</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Lights-out production, complex multi-tool parts</td>
+          </tr>
+
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Vacuum / Nitrogen Heat Treatment</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Stress relief, annealing, solution heat treatment; ±5°C uniformity</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Ipsen TITAN, ALD MonoTherm, TAV H-Series (AMS 2750F Class 2)</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Residual stress control for precision titanium parts</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">CMM Metrology</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Accuracy (1.8 + L/300) µm; scanning probe; AS9102 FAI reporting</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Zeiss CONTURA/PRISMO, Hexagon Global S, Mitutoyo CRYSTA-Apex V</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Dimensional verification of all complex geometries</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Laser Tracker / 3D Scanning</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">±15 µm + 6 µm/m accuracy; large-volume inspection</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">Hexagon Leica AT960, FARO Vantage S/E, API Radian</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Large assemblies, fixtures, machine geometry verification</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80" style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Anodizing & Surface Treatment</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Type II & Type III anodizing; passivation; PVD coating capability</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">In-house anodizing line (AMS 2488, ASTM B600, RoHS, REACH)</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Aerospace color-coding, wear resistance, medical passivation</td>
+          </tr>
+          <tr class="transition-colors hover:opacity-80">
+            <td class="px-5 py-5 text-sm font-semibold" style="color: var(--theme-text);">Automatic Bar Feeding</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Ø3–65 mm bar range; 12–20 bar capacity; remnant < 150 mm</td>
+            <td class="px-5 py-5 text-sm" style="color: var(--theme-primary);">LNS Alpha SL65, IEMCA Boss 338/552, FMB Turbo 5-65</td>
+            <td class="px-5 py-5 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">High-volume titanium fasteners, pins, small turned parts</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Evidence note -->
+    <div class="max-w-6xl mx-auto mt-6 p-4 rounded-lg text-sm" style="background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+      <span class="font-semibold" style="color: var(--theme-text);">Verification:</span> Machine accuracy and metrology values are from our equipment fleet specification sheets and in-house calibration records. Full equipment details are available on the <a href="/equipment/" class="underline" style="color: var(--theme-primary);">equipment inventory page</a>, and real machining results are documented in our <a href="/case-studies/" class="underline" style="color: var(--theme-primary);">manufacturing evidence library</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════
      Section 3 — Quality Assurance & Material Traceability (EEAT)
      ════════════════════════════════════════════════════════════════ -->
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">

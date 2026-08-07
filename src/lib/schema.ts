@@ -37,6 +37,7 @@ export type PageType =
   | 'product-detail'
   | 'blog-index'
   | 'blog-post'
+  | 'case-studies'
   | 'materials'
   | 'capabilities'
   | 'industries'
@@ -80,6 +81,31 @@ export function buildOrganization() {
       '@type': 'Brand',
       name: 'Boze Titanium Manufacturing Center',
     },
+    industry: 'Titanium Manufacturing',
+    knowsAbout: [
+      'Titanium CNC Machining',
+      'Titanium Components Manufacturing',
+      'Ti-6Al-4V (Grade 5)',
+      'Ti-6Al-4V ELI (Grade 23)',
+      'Aerospace Titanium Components',
+      'Medical Titanium Components',
+      'Chemical Corrosion Resistant Components',
+      '5-Axis CNC Machining',
+      'CMM Inspection & Metrology',
+      'Material Traceability (MTR)',
+    ],
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Titanium Manufacturing Services',
+          description: 'Precision titanium CNC machining, fabrication, additive manufacturing, and surface treatment for aerospace, medical, chemical, and industrial components.',
+          areaServed: 'Worldwide',
+          category: 'Titanium Manufacturing',
+        },
+      },
+    ],
     sameAs: [
       'https://www.linkedin.com/in/baoji-boze-metal-products-co-ltd-25a0923aa',
       'https://www.facebook.com/titaniummachinedparts/',
@@ -267,6 +293,7 @@ export function detectPageType(path: string, explicit?: PageType): PageType {
   if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
   if (path.startsWith('/blog') && path.split('/').filter(Boolean).length > 1) return 'blog-post';
   if (path.startsWith('/blog')) return 'blog-index';
+  if (path.startsWith('/case-studies')) return 'case-studies';
   if (path.startsWith('/materials')) return 'materials';
   if (path.startsWith('/capabilities')) return 'capabilities';
   if (path.startsWith('/industries')) return 'industries';
@@ -393,6 +420,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     case 'services-hub':
     case 'products-hub':
     case 'blog-index':
+    case 'case-studies':
       if (data.collectionName) {
         const itemListId = `${data.pageUrl}#item-list`;
         graph.push(buildCollectionPage({

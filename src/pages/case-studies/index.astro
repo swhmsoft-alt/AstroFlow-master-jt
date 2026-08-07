@@ -1,0 +1,244 @@
+---
+// src/pages/case-studies/index.astro
+// Procurement Evidence Library — Case Studies & Manufacturing Examples hub.
+// Dual trust system: verified case studies + manufacturing examples.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const all = await getCollection('case-studies');
+const sorted = all.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+const verified = sorted.filter((c) => c.data.type === 'case-study');
+const examples = sorted.filter((c) => c.data.type === 'manufacturing-example');
+
+const industryList = Array.from(new Set(sorted.map((c) => c.data.industry))).sort();
+
+const INDUSTRY_ICONS: Record<string, string> = {
+  Aerospace: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+  Medical: 'M4.5 12.75l6 6 9-13.5',
+  Semiconductor: 'M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z',
+  Marine: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8',
+  Energy: 'M13 10V3L4 14h7v7l9-11h-7z',
+  'UAV & Drones': 'M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2 2-7z',
+  'AI Infrastructure': 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  'Industrial Equipment': 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z',
+};
+
+function formatDate(d: Date): string {
+  return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+}
+
+// Safe slug — guaranteed non-empty per check-undefined-slugs rules.
+function safeSlug(c: { data: { slug?: string }; id: string }): string {
+  return c.data.slug || c.id.replace(/\.(md|mdx)$/, '') || '';
+}
+---
+
+<BaseLayout
+  title="Titanium CNC Machining Case Studies & Manufacturing Examples | Boze Titanium Manufacturing Center"
+  description="Verified titanium machining case studies and manufacturing examples: thin-wall aerospace housings, medical bone screws, UHV semiconductor components. Real tolerances, CMM data, and material certifications."
+  pageType="case-studies"
+  collectionName="Titanium Machining Case Studies & Manufacturing Examples"
+  itemCount={sorted.length}
+  items={sorted.map((c) => ({
+    name: c.data.title,
+    url: `https://cnc.bozemetal.com/case-studies/${safeSlug(c)}/`,
+  }))}
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Case Studies & Manufacturing Examples</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <SubpageHero
+    h1="Titanium Machining Evidence: Case Studies & Manufacturing Examples"
+    badge="Procurement Evidence Library"
+    subtitle="Documented proof of what we manufacture — real tolerances, CMM-verified dimensional data, material certifications, and production results. No marketing fluff: engineering evidence a buyer can evaluate."
+    badgeIcon="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+    keyMetrics={[
+      { value: String(sorted.length), label: 'Documented Projects' },
+      { value: verified.length > 0 ? String(verified.length) : '0', label: 'Verified Case Studies' },
+      { value: String(examples.length), label: 'Manufacturing Examples' },
+      { value: String(industryList.length), label: 'Industries Covered' },
+    ]}
+    entityChips={['Ti-6Al-4V', 'Grade 23 ELI', '5-Axis CNC', 'CMM Verified', 'Thin-Wall', 'Micro-Drilling']}
+    compact={false}
+  />
+
+  <!-- ═══ Evidence Library Grid ═══ -->
+  <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0" style="background-image: linear-gradient(color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--theme-text) 42%, transparent) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+      <!-- Verified Case Studies section (only when present) -->
+      {
+        verified.length > 0 && (
+          <div class="mb-20">
+            <div class="text-center mb-12">
+              <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                Verified Case Studies
+              </div>
+              <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">Real Customer Programs</h2>
+              <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+                Client-approved projects with full documentation, photos, and inspection data.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {
+                verified.map((c) => (
+                  <a
+                    href={`/case-studies/${safeSlug(c)}/`}
+                    class="group rounded-2xl border p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1"
+                    style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+                  >
+                    <div class="flex items-center justify-between mb-4">
+                      <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">{c.data.industry}</span>
+                      <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">{formatDate(c.data.pubDate)}</span>
+                    </div>
+                    <h3 class="text-lg font-bold leading-snug mb-3" style="color: var(--theme-text);">{c.data.title}</h3>
+                    <p class="text-sm leading-relaxed line-clamp-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{c.data.requirements}</p>
+                    {
+                      c.data.metrics && (
+                        <div class="mt-4 flex flex-wrap gap-2">
+                          {c.data.metrics.slice(0, 3).map((m) => (
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">{m.value}</span>
+                          ))}
+                        </div>
+                      )
+                    }
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        )
+      }
+
+
+      <!-- Manufacturing Examples section -->
+      <div>
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-accent) 10%, transparent); border-color: var(--theme-accent); color: var(--theme-accent);">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" /></svg>
+            Manufacturing Examples
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">Capabilities Demonstrated on Real Geometries</h2>
+          <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            Non-client-specific demonstrations of component classes we manufacture — thin-wall structures, medical-grade micro components, and semiconductor micro-feature parts.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {
+            examples.map((c) => (
+              <a
+                href={`/case-studies/${safeSlug(c)}/`}
+                class="group rounded-2xl border p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1"
+                style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-accent) 20%, transparent);"
+              >
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-accent);">{c.data.industry}</span>
+                  <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">{formatDate(c.data.pubDate)}</span>
+                </div>
+                <h3 class="text-lg font-bold leading-snug mb-3" style="color: var(--theme-text);">{c.data.title}</h3>
+                <p class="text-sm leading-relaxed line-clamp-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{c.data.componentType}: {c.data.material}</p>
+                {
+                  c.data.metrics && (
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      {c.data.metrics.slice(0, 3).map((m) => (
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold" style="background: color-mix(in srgb, var(--theme-accent) 10%, transparent); color: var(--theme-accent);">{m.value}</span>
+                      ))}
+                    </div>
+                  )
+                }
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+
+      <!-- Industry filter row -->
+      <div class="mt-20">
+        <h2 class="text-2xl font-bold text-center mb-8" style="color: var(--theme-text);">Browse by Industry</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          {
+            industryList.map((ind) => (
+              <a
+                href={`/industries/${ind.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}/`}
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border transition-colors"
+                style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);"
+              >
+                <svg class="w-4 h-4" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={INDUSTRY_ICONS[ind] || INDUSTRY_ICONS.Aerospace} /></svg>
+                {ind}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- What this library demonstrates -->
+      <div class="mt-20 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-6 text-center" style="color: var(--theme-text);">What This Evidence Library Proves</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h3 class="font-bold mb-2" style="color: var(--theme-text);">Real Manufacturing Capability</h3>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Each entry documents a specific component class we have manufactured — with measurable dimensional results, not claims.</p>
+          </div>
+          <div class="rounded-xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h3 class="font-bold mb-2" style="color: var(--theme-text);">Metrology-Verified Data</h3>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Tolerances and surface finishes are verified through CMM, profilometry, and material testing — the same evidence your QA team requests.</p>
+          </div>
+          <div class="rounded-xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h3 class="font-bold mb-2" style="color: var(--theme-text);">Material Traceability</h3>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Materials are documented against ASTM/AMS standards with EN 10204 3.1 certificates available per heat lot.</p>
+          </div>
+          <div class="rounded-xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h3 class="font-bold mb-2" style="color: var(--theme-text);">Scaling Evidence</h3>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">From prototype validation to 5,000-piece production runs — process capability (Cpk) is documented, not assumed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-20 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Have a Similar Component to Manufacture?</h2>
+        <p class="text-lg mb-8 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          Send us your drawing and our engineers will respond with a process plan, tolerance assessment, and quote within 48 hours.
+        </p>
+        <a
+          href="/rfq/"
+          class="inline-flex items-center px-8 py-4 font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all text-lg"
+          style="background: var(--theme-primary); color: var(--theme-bg);"
+        >
+          Request a Titanium Component Quote
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

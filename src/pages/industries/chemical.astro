@@ -1,0 +1,224 @@
+---
+// src/pages/industries/chemical.astro
+// Buyer-Intent page: Titanium Corrosion Resistant Components Manufacturer.
+// English-only (per approved scope) — hardcoded procurement evidence content.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="Titanium Corrosion Resistant Components Manufacturer | Chemical Processing Parts | Boze Titanium Manufacturing Center"
+  description="Titanium corrosion resistant components manufacturer for chemical processing: heat exchangers, pipe fittings, valve bodies, and reactor internals. Grade 2 / Grade 12 titanium CNC machining with MTR traceability."
+  pageType="industry-detail"
+  serviceName="Titanium Corrosion Resistant Components Manufacturing"
+  serviceCategory="CNC Machining"
+  productName="Titanium Chemical Processing Components"
+  productCategory="Corrosion Resistant Components"
+  serviceHubKey="cnc-machining"
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/industries/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.industries')}</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Chemical Processing</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <SubpageHero
+    h1="Titanium Corrosion Resistant Components Manufacturer"
+    badge="Chemical Processing Industry"
+    subtitle="Precision CNC machining of corrosion-resistant titanium components for chemical process equipment — heat exchangers, pipe fittings, valve bodies, and reactor internals in Grade 2 and Grade 12 titanium. Full material traceability and pressure-capable machining."
+    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+    keyMetrics={[
+      { value: 'Grade 2/12', label: 'Corrosion Grades' },
+      { value: '10+', label: 'Process Industries' },
+      { value: '100%', label: 'MTR Traceability' },
+      { value: '±0.01mm', label: 'Precision' },
+    ]}
+    entityChips={['Grade 2 Titanium', 'Grade 12 Titanium', 'Heat Exchangers', 'Pipe Fittings', 'Valve Bodies', 'MTR Traceability']}
+    compact={false}
+  />
+
+  <!-- Why Titanium in Chemical Processing -->
+  <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+          Why Titanium for Chemical Service
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+          The Metal That <span class="gradient-text-accent">Outlasts the Process</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Chloride & Acid Resistance</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            Titanium resists chloride pitting and crevice corrosion where stainless steel fails — including wet chlorine, seawater, and oxidizing acids.
+          </p>
+        </div>
+        <div class="rounded-2xl border p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Erosion & Heat Resistance</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            Maintains mechanical strength at elevated process temperatures and resists erosion from slurry and high-velocity flow.
+          </p>
+        </div>
+        <div class="rounded-2xl border p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Lifecycle Cost Reduction</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            Longer service life and lower maintenance than alloy alternatives reduce total cost of ownership across process equipment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Components & Manufacturing -->
+  <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+          What We Manufacture
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+          Corrosion Resistant <span class="gradient-text-accent">Components</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="rounded-2xl border p-6 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="font-bold" style="color: var(--theme-text);">Heat Exchangers</h3>
+          <p class="mt-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Tube sheets, baffles, and headers for corrosive duty</p>
+        </div>
+        <div class="rounded-2xl border p-6 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="font-bold" style="color: var(--theme-text);">Pipe Fittings</h3>
+          <p class="mt-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Flanges, reducers, and process line components</p>
+        </div>
+        <div class="rounded-2xl border p-6 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="font-bold" style="color: var(--theme-text);">Valve Bodies</h3>
+          <p class="mt-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Ball, butterfly, and control valve housings</p>
+        </div>
+        <div class="rounded-2xl border p-6 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="font-bold" style="color: var(--theme-text);">Reactor Internals</h3>
+          <p class="mt-2 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Agitators, spargers, and vessel hardware</p>
+        </div>
+      </div>
+
+
+      <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="rounded-2xl border p-8" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="text-xl font-bold mb-5" style="color: var(--theme-text);">Materials We Process</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <a href="/materials/grade-2/" class="font-semibold hover:underline" style="color: var(--theme-primary);">Grade 2</a> — ASTM B265 / B348. Workhorse corrosion grade for chemical process equipment.
+            </li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span class="font-semibold" style="color: var(--theme-text);">Grade 12</span> — enhanced strength + corrosion resistance for heat exchanger and pressure service.
+            </li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span class="font-semibold" style="color: var(--theme-text);">Grade 5 / 23</span> — high-strength process components and instrumentation hardware.
+            </li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border p-8" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <h3 class="text-xl font-bold mb-5" style="color: var(--theme-text);">Manufacturing & Quality</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              5-axis and turn-mill CNC machining for complex valve and fitting geometries
+            </li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              CMM dimensional verification per ASME Y14.5 GD&T
+            </li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              EN 10204 3.1 material certificates with full mill-to-component traceability
+            </li>
+            <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-4 h-4 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              ISO 9001:2015 quality management system
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Buyer Intent Block -->
+  <BuyerIntentBlock
+    industry="Chemical Processing"
+    whyTitanium={[
+      'Superior chloride pitting and crevice corrosion resistance where stainless steel fails',
+      'Resistance to wet chlorine, seawater, oxidizing acids, and caustic environments',
+      'Longer service life and lower total cost of ownership in process equipment',
+      'Proven in heat exchangers, piping systems, and pressure vessels',
+    ]}
+    typicalComponents={[
+      'Heat exchanger tube sheets and headers',
+      'Pipe fittings, flanges, and reducers',
+      'Valve bodies and control hardware',
+      'Reactor internals, agitators, and spargers',
+    ]}
+    manufacturing={[
+      '5-axis CNC machining for complex flow-path geometries',
+      'Turn-mill machining for pressure-capable fittings and valve components',
+      'Wire EDM for precision profiles without mechanical stress',
+      'CMM metrology per ASME Y14.5 GD&T',
+      'Full material traceability with EN 10204 3.1 certificates',
+    ]}
+    qualityRequirements={[
+      'ISO 9001:2015 quality management system',
+      'EN 10204 3.1 material test reports per heat lot',
+      'ASME Y14.5 GD&T dimensional validation',
+      'Material certification for pressure-capable components',
+    ]}
+  />
+
+  <!-- CTA -->
+  <section class="relative py-24 overflow-hidden" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Need a Corrosion-Resistant Titanium Component?</h2>
+      <p class="text-lg mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Send your drawing and process conditions. Our engineers recommend the right titanium grade and machining strategy — with a quote in 48 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/rfq/" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all" style="background: var(--theme-primary); color: var(--theme-bg);">
+          Request a Titanium Component Quote
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+        <a href="/case-studies/" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl transition-all" style="border: 2px solid color-mix(in srgb, var(--theme-text) 30%, transparent); color: var(--theme-text);">
+          Browse Manufacturing Evidence
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

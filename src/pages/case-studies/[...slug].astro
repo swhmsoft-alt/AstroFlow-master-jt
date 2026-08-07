@@ -1,0 +1,283 @@
+---
+// src/pages/case-studies/[...slug].astro
+// Detail page for Procurement Evidence Library entries.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection('case-studies');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug || entry.id.replace(/\.(md|mdx)$/, '') || '' },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await entry.render();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const slug = data.slug || entry.id.replace(/\.(md|mdx)$/, '') || '';
+const canonicalUrl = `https://cnc.bozemetal.com/case-studies/${slug}/`;
+const seoTitle = data.seoTitle || `${data.title} | Boze Titanium Manufacturing Center`;
+const seoDescription = data.seoDescription || data.result || data.solution || data.requirements || '';
+
+const isCaseStudy = data.type === 'case-study';
+const typeLabel = isCaseStudy ? 'Verified Case Study' : 'Manufacturing Example';
+
+const all = await getCollection('case-studies');
+const others = all
+  .filter((c) => (c.data.slug || c.id.replace(/\.(md|mdx)$/, '') || '') !== slug)
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  canonicalURL={canonicalUrl}
+  pageType="blog-post"
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/case-studies/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Case Studies</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.title}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="flex flex-wrap items-center gap-3 mb-5">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+          style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+          {typeLabel}
+        </span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
+          style="background: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          {data.industry}
+        </span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold"
+          style="background: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          {data.componentType}
+        </span>
+        <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+          {new Date(data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight" style="color: var(--theme-text);">{data.title}</h1>
+      <p class="mt-4 text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        {data.application}
+      </p>
+    </div>
+  </section>
+
+  <!-- Evidence metrics strip -->
+  {
+    data.metrics && data.metrics.length > 0 && (
+      <section class="border-y" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-5xl">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {
+              data.metrics.map((m) => (
+                <div class="rounded-xl border px-4 py-5 text-center" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-bg));">
+                  <p class="text-xl md:text-2xl font-bold" style="color: var(--theme-primary);">{m.value}</p>
+                  <p class="mt-1 text-xs leading-snug" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{m.label}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Main content -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Body -->
+        <article class="lg:col-span-2">
+          <div class="blog-content"><Content /></div>
+        </article>
+
+        <!-- Evidence sidebar -->
+        <aside class="space-y-6">
+          <!-- Material evidence card -->
+          <div class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h2 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">Material Evidence</h2>
+            <dl class="space-y-3">
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Material</dt>
+                <dd class="mt-0.5 text-sm font-semibold" style="color: var(--theme-text);">{data.material}</dd>
+              </div>
+              {data.materialStandard && (
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Standard</dt>
+                  <dd class="mt-0.5 text-sm font-semibold" style="color: var(--theme-text);">{data.materialStandard}</dd>
+                </div>
+              )}
+              {data.tolerances && (
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Tolerances</dt>
+                  <dd class="mt-0.5 text-sm font-semibold" style="color: var(--theme-text);">{data.tolerances}</dd>
+                </div>
+              )}
+              {data.surfaceFinish && (
+                <div>
+                  <dt class="text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Surface Finish</dt>
+                  <dd class="mt-0.5 text-sm font-semibold" style="color: var(--theme-text);">{data.surfaceFinish}</dd>
+                </div>
+              )}
+            </dl>
+          </div>
+
+
+
+          <!-- Manufacturing evidence card -->
+          <div class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h2 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">Manufacturing Evidence</h2>
+            <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Processes</h3>
+            <ul class="mb-4 space-y-1.5">
+              {data.process.map((p) => (
+                <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            {data.equipment && data.equipment.length > 0 && (
+              <>
+                <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Equipment</h3>
+                <ul class="mb-4 space-y-1.5">
+                  {data.equipment.map((e) => (
+                    <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                      <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                      {e}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+
+          <!-- Quality evidence card -->
+          <div class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <h2 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">Quality Evidence</h2>
+            {data.inspectionMethod && data.inspectionMethod.length > 0 && (
+              <>
+                <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Inspection Methods</h3>
+                <ul class="mb-4 space-y-1.5">
+                  {data.inspectionMethod.map((m) => (
+                    <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                      <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {data.certification && data.certification.length > 0 && (
+              <>
+                <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Certifications</h3>
+                <ul class="space-y-1.5">
+                  {data.certification.map((c) => (
+                    <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                      <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+
+          <!-- Related links -->
+          {data.relatedLinks && data.relatedLinks.length > 0 && (
+            <div class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <h2 class="text-sm font-bold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">Related Resources</h2>
+              <ul class="space-y-2">
+                {data.relatedLinks.map((l) => (
+                  <li>
+                    <a href={l.href} class="text-sm font-semibold transition-colors hover:underline" style="color: var(--theme-primary);">
+                      {l.label} →
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+
+          <!-- CTA -->
+          <div class="rounded-2xl border p-6" style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface)); border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+            <h2 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Discuss a Similar Project</h2>
+            <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+              Our engineers will assess your geometry and recommend a manufacturing strategy within 48 hours.
+            </p>
+            <a
+              href="/rfq/"
+              class="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl font-bold transition-all"
+              style="background: var(--theme-primary); color: var(--theme-bg);"
+            >
+              Request a Quote
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related entries -->
+  {
+    others.length > 0 && (
+      <section class="py-16" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
+          <h2 class="text-2xl font-bold mb-8" style="color: var(--theme-text);">More Manufacturing Evidence</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {
+              others.map((c) => (
+                <a
+                  href={`/case-studies/${c.data.slug || c.id.replace(/\.(md|mdx)$/, '') || ''}/`}
+                  class="group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1"
+                  style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+                >
+                  <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">{c.data.industry}</span>
+                  <h3 class="mt-2 text-base font-bold leading-snug" style="color: var(--theme-text);">{c.data.title}</h3>
+                  {
+                    c.data.metrics && c.data.metrics[0] && (
+                      <p class="mt-3 text-sm font-semibold" style="color: var(--theme-accent);">{c.data.metrics[0].value} {c.data.metrics[0].label}</p>
+                    )
+                  }
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

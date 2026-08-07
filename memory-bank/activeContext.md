@@ -1,12 +1,27 @@
 # Active Context
 
 > **Last Updated:** 2026-08-07
-> **Current Focus:** 英语站导航：Products 提升为一级分类（置于 Services 之前，无下拉）；多语言站导航保持原样；已通过 tsc 0 错误 + 渲染级验证
+> **Current Focus:** Trust Layer（信任层）建设 — Procurement Evidence Architecture：案例库/制造示例双体系 + 制造能力矩阵 + Buyer Intent 增强 + Schema Entity 强化。仅英文，不动 12 语言。
 
 ## Current Status
-✅ Semantic Linking Phase 4 完成：剩余 9 篇博客新增 27 条手动内链（welcome 从 0 链接去孤立），四批累计 39 篇 / 113 条新 Tier1 内链；keywordMap 增量 6 条长短语（全部表格安全）；`check-undefined-slugs` 0 issue；`npx astro build` ✅ 2213 页；dist 0 重复包裹。type check 已可运行（tsconfig 修复），6 个既有 React 组件错误留待专项。**生产部署完成（2026-08-07）：** `npm run deploy:inc` 两轮上传共 2170 文件 / 0 失败，线上抽查全部通过。
+✅ **Trust Layer Phase 0-4 完成（2026-08-07）：** `npx astro build` ✅ **2219 页**；`check-undefined-slugs` 0 issue；`check-encoding` 通过；tsc 0 错误；sitemap 已含新页面。新增：`/case-studies/` 证据库（CollectionPage+ItemList JSON-LD）、3 个 Manufacturing Example、`/industries/chemical/`（采购意图页）、Manufacturing Capability Matrix（真实设备数据）、BuyerIntentBlock 组件（已集成 aerospace+medical）、Organization `knowsAbout`/`makesOffer` Schema 强化。**未部署（待用户确认）。**
 
 ## Recent Decisions
+
+### Trust Layer — Procurement Evidence Architecture（2026-08-07）
+**背景：** 战略层批准从"Semantic Layer（让搜索引擎理解）"转向"Trust Layer（让采购经理相信）"。执行顺序调整：Phase B（能力矩阵）→ Phase A（案例/制造示例）→ Phase C（行业增强）→ Phase D（Schema）。仅英文，不扩展 12 语言；不编造客户案例（Case Study 仅真实、Manufacturing Example 用于能力展示）。
+
+**执行（Phase 0-4）：**
+1. **Phase 0 — Content Collection：** `src/content/config.ts` 新增 `case-studies` 集合（`type: case-study | manufacturing-example` 双体系，含 material/process/equipment/inspection/certification/metrics 证据字段）。
+2. **Phase 2 — 案例库系统：** `/case-studies/` 索引页（CollectionPage+ItemList JSON-LD、按 verified/examples 分区、行业筛选）+ `/case-studies/[...slug]/` 详情页（Material/Manufacturing/Quality Evidence 侧栏 + CTA）。创建 3 个 **Manufacturing Example**（aerospace thin-wall housing 0.60mm、medical bone screws Ra0.38µm、semiconductor UHV showerhead）—— 全部从现有硬编码 CaseStudies.astro 抽取，标注 manufacturing-example，避免"虚假案例感"。导航加入 Resources 下拉。
+3. **Phase 1 — 制造能力矩阵：** `/capabilities/manufacturing/` 新增 Section 2.5 "Titanium Machining Capability Matrix"（10 行真实设备数据：5-axis ±0.005mm、turn-mill、wire EDM ±0.002mm、HPC 70-150bar、tool magazine、vacuum HT AMS2750F、CMM (1.8+L/300)µm、laser tracker、anodizing、bar feeder）。所有数字来自 `src/data/equipment.ts`。
+4. **Phase 3 — Buyer Intent：** 新建可复用 `BuyerIntentBlock.astro` 组件（Why Titanium → Typical Components → Manufacturing → Quality → Related Evidence → CTA）。增量集成到 aerospace + medical 行业页。新建 `/industries/chemical/`（"Titanium Corrosion Resistant Components Manufacturer"采购意图页，英文硬编码，含 Grade 2/12 材料链接）。
+5. **Phase 4 — Schema：** `src/lib/schema.ts` Organization 增加 `industry: 'Titanium Manufacturing'`、`knowsAbout`（10 项）、`makesOffer`（Titanium Manufacturing Services）；PageType 增加 `case-studies`，detectPageType/buildPageGraph 支持 CollectionPage+ItemList。
+
+**验证：** `check-undefined-slugs.mjs --ci` 0 issue；`check-encoding.mjs` 通过；`npx tsc --noEmit` 0 错误；`npx astro build` ✅ 2219 页（原 2213 → 案例库+4、chemical+1、其它页复用）；sitemap 含 `/case-studies/` 与 `/industries/chemical/`；渲染抽查：CollectionPage/ItemList、Capability Matrix 全部字段、Chemical H1+Service schema、BuyerIntentBlock、knowsAbout/makesOffer 全部命中。
+
+**下一步：** 用户确认后 `git push` + 部署；后续可加真实 Case Study（客户允许+照片+数据）扩充证据库；Manufacturing Example 可继续按设备/工艺扩容。
+
 
 ### 导航：Products 提升为英语站一级分类（2026-08-07）
 **背景：** 用户要求将导航上的 Products 位置提到 Services 之前、作为一级分类，**且只在英语站调整**；多语言站因暂无大范围产品布局需保持不变。已确认方案：Products 为**无下拉的纯一级链接**（→ `/products`）。

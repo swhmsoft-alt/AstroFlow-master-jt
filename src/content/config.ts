@@ -295,6 +295,66 @@ const standardsCollection = defineCollection({
   }),
 });
 
+/**
+ * Procurement Evidence Library — Case Study / Manufacturing Example collection.
+ *
+ * Trust-layer dual system:
+ *  - type: 'case-study'           → ONLY real, customer-approved projects
+ *                                    (client permission, photos, inspection data).
+ *  - type: 'manufacturing-example' → Capability demonstration with no customer
+ *                                    identity. Used to show "we can make this"
+ *                                    without fabricating client relationships.
+ *
+ * All numbers MUST reflect real, verifiable manufacturing data.
+ */
+const caseStudiesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    // ── Identity ──
+    title: z.string(),
+    type: z.enum(['case-study', 'manufacturing-example']),
+    industry: z.string(),
+    componentType: z.string(),
+    application: z.string(),
+    customerType: z.string().optional(),
+    // ── Material Evidence ──
+    material: z.string(),
+    materialStandard: z.string().optional(),
+    // ── Manufacturing Evidence ──
+    process: z.array(z.string()),
+    equipment: z.array(z.string()).optional(),
+    manufacturingChallenge: z.string().optional(),
+    requirements: z.string().optional(),
+    solution: z.string().optional(),
+    result: z.string().optional(),
+    tolerances: z.string().optional(),
+    surfaceFinish: z.string().optional(),
+    // ── Quality Evidence ──
+    inspectionMethod: z.array(z.string()).optional(),
+    certification: z.array(z.string()).optional(),
+    metrics: z.array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+      })
+    ).optional(),
+    // ── Presentation ──
+    coverImage: z.string().optional(),
+    coverImageAlt: z.string().optional(),
+    pubDate: z.date(),
+    featured: z.boolean().default(false),
+    // ── Semantic links ──
+    relatedLinks: z.array(
+      z.object({
+        label: z.string(),
+        href: z.string(),
+      })
+    ).optional(),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+  }),
+});
+
 const industriesCollection = defineCollection({
   type: 'data',
   schema: z.object({
@@ -365,4 +425,5 @@ export const collections = {
   standards: standardsCollection,
   industries: industriesCollection,
   'product-specs': productSpecsCollection,
+  'case-studies': caseStudiesCollection,
 };

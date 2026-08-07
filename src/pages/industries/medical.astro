@@ -9,6 +9,7 @@ import MedicalFiveAxisSection from '../../components/industries/medical/MedicalF
 import MedicalContaminationSection from '../../components/industries/medical/MedicalContaminationSection.astro';
 import MedicalComplianceSection from '../../components/industries/medical/MedicalComplianceSection.astro';
 import MedicalCtaSection from '../../components/industries/medical/MedicalCtaSection.astro';
+import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -71,6 +72,38 @@ const t = useTranslations(lang);
 
   <!-- Section 4: ISO 13485 Compliance + MTR Traceability -->
   <MedicalComplianceSection />
+
+  <BuyerIntentBlock
+    industry="Medical"
+    whyTitanium={[
+      'Biocompatibility — Grade 23 ELI (Ti-6Al-4V ELI) per ASTM F136 for surgical implant applications',
+      'Excellent corrosion resistance in physiological environments',
+      'Superior fatigue strength for load-bearing orthopedic devices',
+      'Osseointegration-friendly surface treatments (grit blasting, anodizing)',
+    ]}
+    typicalComponents={[
+      'Cortical bone screws and orthopedic fixation hardware',
+      'Femoral stems and trauma plates (ASTM F136 Grade 23)',
+      'Dental abutments and implant components',
+      'Surgical instruments requiring precision cutting edges',
+    ]}
+    manufacturing={[
+      'Swiss-type CNC turning with precision-ground form tools (Ra 0.38 µm demonstrated)',
+      '5-axis milling for contoured implant geometries',
+      'Thread whirling for burr-free bone screw threads',
+      'Multi-stage ultrasonic cleaning with residue verification (< 10 µg)',
+      'ISO Class 5 cleanroom packaging',
+    ]}
+    qualityRequirements={[
+      'ISO 13485 medical device quality management system',
+      'EN 10204 3.1 material certificates per heat lot',
+      'Process validation per medical device requirements (Cpk ≥ 1.33)',
+      'Full material traceability from mill to finished component',
+    ]}
+    caseStudyLinks={[
+      { label: 'Grade 23 ELI Bone Screws — Ra 0.38 µm, Cpk 1.67, zero contamination', href: '/case-studies/medical-bone-screws/' },
+    ]}
+  />
 
   <!-- Section 5: Conversion CTA -->
   <MedicalCtaSection />
