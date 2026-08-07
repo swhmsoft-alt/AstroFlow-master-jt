@@ -11,7 +11,7 @@ coverImageAlt: Aerospace titanium component during CNC machining
 featured: false
 ---
 
-Aerospace titanium components present a convergence of manufacturing challenges that are rarely encountered together in other industries. The materials are difficult to machine, the geometries are complex with thin walls and deep pockets, the tolerances are tight, and the traceability and documentation requirements are extensive. Understanding how these factors interact is important for both design engineers who specify aerospace titanium components and procurement teams who select suppliers for them.
+[Aerospace titanium components](/industries/aerospace/) present a convergence of manufacturing challenges that are rarely encountered together in other industries. The materials are difficult to machine, the geometries are complex with thin walls and deep pockets, the tolerances are tight, and the traceability and documentation requirements are extensive. Understanding how these factors interact is important for both design engineers who specify aerospace titanium components and procurement teams who select suppliers for them.
 
 ## Thin-wall structural challenges
 
@@ -39,11 +39,13 @@ The surface integrity requirements influence machining parameters. Cutting speed
 
 ## Process control for AS9100D compliance
 
-Production of aerospace titanium components under AS9100D requires documented process control at every stage. The process specification — a document that defines the machining sequence, tooling, parameters, and inspection points — must be approved before production begins. Any deviation from the approved process requires documented justification and customer approval.
+Production of aerospace titanium components under [AS9100D](/capabilities/certifications/) requires documented process control at every stage. The process specification — a document that defines the machining sequence, tooling, parameters, and inspection points — must be approved before production begins. Any deviation from the approved process requires documented justification and customer approval.
 
 The process specification typically includes the cutting tools, speeds and feeds, coolant type and pressure, inspection frequency and methods, and acceptance criteria for each feature. The specification is developed during the process qualification phase and becomes the controlling document for production. Changes to the process — even those that improve efficiency — must be evaluated for their effect on part quality before implementation.
 
 In-process inspection is required at defined stages, typically after roughing, after semi-finishing, and after finishing. The inspection results are documented and retained as part of the component's quality record. First article inspection, which verifies that the production process produces parts that meet all drawing requirements, is performed at the start of production and after any significant process change.
+
+For aerospace titanium components with demanding tolerance and traceability requirements, [submit your RFQ](/rfq/) and our engineers will review the process specification and inspection plan for your program.
 
 ---
 

@@ -84,7 +84,7 @@ For medical implant components, Grade 23 Ti-6Al-4V ELI is the standard material.
 
 For chemical processing and marine applications, CP titanium grades 2 and 7 are the primary choices. Grade 2 provides adequate strength for pressure vessels and piping systems, with excellent corrosion resistance in seawater and most chemical environments. Grade 7 contains 0.15 percent palladium, which improves corrosion resistance in reducing acid environments where CP titanium alone may be attacked.
 
-For industrial and consumer applications, the selection depends on the specific requirements of each application. CP Grade 2 is common for heat exchangers and piping. Ti-6Al-4V is used for high-performance bicycle components, automotive exhaust systems, and consumer electronics where the combination of strength, weight, and aesthetic appearance is valued. Beta alloys are used in specialty consumer products such as high-end watch cases where the material's response to surface finishing produces a distinctive appearance.
+For industrial and consumer applications, the selection depends on the specific requirements of each application. [CP Grade 2](/materials/grade-2/) is common for heat exchangers and piping. [Ti-6Al-4V](/materials/grade-5/) is used for high-performance bicycle components, automotive exhaust systems, and consumer electronics where the combination of strength, weight, and aesthetic appearance is valued. Beta alloys are used in specialty consumer products such as high-end watch cases where the material's response to surface finishing produces a distinctive appearance.
 
 For applications where machinability is a primary selection criterion — such as high-volume precision components — Ti-6Al-4V offers the best combination of mechanical properties and manufacturing efficiency among the structural titanium alloys. The established tooling knowledge, parameter databases, and process experience available for Ti-6Al-4V make it the lowest-risk choice for new titanium component development.
 
@@ -108,13 +108,15 @@ For applications where machinability is a primary selection criterion — such a
 | Aerospace airframe, standard | Grade 5 (Ti-6Al-4V) | Strength-to-weight, established process knowledge |
 | Aerospace engine, elevated temperature | Ti-6242 | Creep resistance above 400°C |
 | Aerospace landing gear | Ti-1023 | Strength requirement above Grade 5 capability |
-| Medical implants, load-bearing | Grade 23 (Ti-6Al-4V ELI) | Fracture toughness, biocompatibility |
+| Medical implants, load-bearing | [Grade 23](/materials/grade-23/) (Ti-6Al-4V ELI) | Fracture toughness, biocompatibility |
 | Medical implants, non-load-bearing | CP Grade 2 or 4 | Biocompatibility, lower cost |
 | Chemical processing | CP Grade 2 | Corrosion resistance, adequate strength |
 | Marine components | CP Grade 2 | Seawater corrosion resistance |
 | High-performance consumer | Grade 5 | Strength, appearance, established supply |
 
 ---
+
+To apply these grade selection criteria interactively to your application, use the [titanium grade finder](/tools/titanium-grade-finder/).
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Titanium alloy classification tree: A hierarchical diagram showing the four alloy categories (CP, alpha/near-alpha, alpha-beta, beta) with representative grades and key properties listed under each. Arrows indicate typical applications by industry. Supports queries about titanium grade classification and selection logic.

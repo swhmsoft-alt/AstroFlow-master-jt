@@ -13,7 +13,7 @@ featured: false
 
 ## Component overview
 
-The component was an L-bracket for an aerospace structural application, machined from Ti-6Al-4V plate per ASTM B265, Grade 5, annealed. The bracket had a wall thickness of 1.2 mm with a wall height of 18 mm, giving an aspect ratio of 15 to 1. The overall dimensions were approximately 120 mm by 80 mm by 30 mm. The critical tolerances were ±0.05 mm on the mounting surface flatness and ±0.10 mm on the hole positions.
+The component was an L-bracket for an [aerospace](/industries/aerospace/) structural application, machined from [Ti-6Al-4V](/materials/grade-5/) plate per ASTM B265, Grade 5, annealed. The bracket had a wall thickness of 1.2 mm with a wall height of 18 mm, giving an aspect ratio of 15 to 1. The overall dimensions were approximately 120 mm by 80 mm by 30 mm. The critical tolerances were ±0.05 mm on the mounting surface flatness and ±0.10 mm on the hole positions.
 
 ## Initial challenges
 
@@ -40,6 +40,8 @@ The fixturing change had the largest single effect on component quality. The con
 The trochoidal toolpath with constant engagement was essential for maintaining consistent wall thickness. The variable engagement of the conventional toolpath produced corresponding variation in wall deflection and thickness.
 
 The three-pass finishing sequence allowed the wall to stabilize between passes, and the final 0.05 mm pass produced a clean surface with minimal cutting force.
+
+For thin-wall titanium components with similar deflection and tolerance requirements, [request a process study](/rfq/) and our engineers will recommend the fixturing and toolpath strategy for your geometry.
 
 ---
 

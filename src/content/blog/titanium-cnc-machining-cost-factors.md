@@ -11,15 +11,15 @@ coverImageAlt: Cost analysis review for titanium machined components
 featured: false
 ---
 
-The cost of titanium CNC machined components is driven by factors that differ from those that determine the cost of steel or aluminum components. Material cost is higher, machining time is longer, tooling costs are greater, and inspection requirements are more extensive. Understanding these cost drivers helps procurement teams evaluate quotes accurately and design engineers make cost-effective design decisions. The supplier evaluation framework in the [supplier selection guide](/blog/how-to-choose-titanium-cnc-machining-supplier/) provides context for how cost factors influence supplier capability assessment.
+The cost of titanium CNC machined components is driven by factors that differ from those that determine the cost of steel or aluminum components. Material cost is higher, machining time is longer, tooling costs are greater, and inspection requirements are more extensive. Understanding these cost drivers helps procurement teams evaluate quotes accurately and design engineers make cost-effective design decisions. The supplier evaluation framework in the [supplier selection guide](/blog/how-to-choose-titanium-cnc-machining-supplier/) provides context for how cost factors influence supplier capability assessment, and the [manufacturer profile](/titanium-cnc-machining-manufacturer/) of a titanium-specialist illustrates how these cost controls are documented in practice.
 
 ## Material cost
 
-Titanium raw material cost is significantly higher than steel or aluminum. CP Grade 2 is typically 2 to 3 times the cost of stainless steel per kilogram. Ti-6Al-4V is 3 to 5 times the cost of stainless steel. Beta alloys can be 5 to 10 times the cost of stainless steel.
+Titanium raw material cost is significantly higher than steel or aluminum. CP Grade 2 is typically 2 to 3 times the cost of stainless steel per kilogram. [Ti-6Al-4V](/materials/grade-5/) is 3 to 5 times the cost of stainless steel. Beta alloys can be 5 to 10 times the cost of stainless steel.
 
 The material product form affects cost. Plate is generally less expensive than bar of equivalent cross-section. Sheet is more expensive per kilogram than plate because of the additional processing required. Forgings are more expensive than plate but may reduce total component cost by reducing the material that must be machined away.
 
-Material availability affects cost and lead time. Ti-6Al-4V in standard sizes and product forms is widely available and competitively priced. Non-standard sizes and less common alloys may require special mill runs with extended lead times and premium pricing. Material costs are subject to surcharges based on raw material commodity prices, which can fluctuate significantly.
+Material availability affects cost and lead time. Ti-6Al-4V in standard sizes and product forms is widely available and competitively priced. Non-standard sizes and less common alloys may require special mill runs with extended lead times and premium pricing. Material costs are subject to surcharges based on raw material commodity prices, which can fluctuate significantly. To estimate the raw material weight for your component geometry, use our [titanium weight calculator](/tools/titanium-weight-calculator/).
 
 ## Machining time
 
@@ -50,6 +50,8 @@ The aspect ratio of thin walls is a specific geometry complexity factor that has
 The component cost decreases with quantity as setup costs, tooling costs, and programming costs are spread over more components. The quantity effect is more significant for titanium than for steel because the setup and programming costs are higher relative to the per-component machining cost.
 
 For quantities below 50 components, the setup and programming costs can account for 30 to 50 percent of the total cost. For quantities above 500 components, the per-component cost is dominated by the machining time and tooling costs.
+
+Because material cost, machining time, and tooling interact differently for every geometry, an accurate estimate requires a specific part review — submit your drawing through our [engineering RFQ portal](/rfq/) and receive a detailed quotation within 48 hours.
 
 ---
 

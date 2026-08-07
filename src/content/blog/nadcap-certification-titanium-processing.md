@@ -11,11 +11,11 @@ coverImageAlt: NADCAP audit documentation review
 featured: false
 ---
 
-NADCAP certification is a process accreditation system for aerospace manufacturing, managed by the Performance Review Institute. Unlike AS9100D, which certifies the overall quality management system, NADCAP accreditation is specific to individual processes — a supplier may be NADCAP accredited for heat treatment but not for NDE, or for surface treatment but not for welding.
+NADCAP certification is a process accreditation system for [aerospace manufacturing](/industries/aerospace/), managed by the Performance Review Institute. Unlike AS9100D, which certifies the overall quality management system, NADCAP accreditation is specific to individual processes — a supplier may be NADCAP accredited for heat treatment but not for NDE, or for surface treatment but not for welding.
 
 ## NADCAP vs AS9100D
 
-AS9100D certification covers the supplier's quality management system as a whole. NADCAP accreditation covers specific technical processes and verifies that the supplier's process meets the applicable aerospace industry standards and customer requirements.
+[AS9100D certification](/capabilities/certifications/) covers the supplier's quality management system as a whole. NADCAP accreditation covers specific technical processes and verifies that the supplier's process meets the applicable aerospace industry standards and customer requirements.
 
 A supplier can be AS9100D certified without being NADCAP accredited for any specific process. However, many aerospace primes and tier-one suppliers require NADCAP accreditation for certain processes — typically heat treatment, surface treatment, NDE, and welding. The accreditation demonstrates that the supplier's process has been independently audited against the applicable standards and found compliant.
 
@@ -35,7 +35,7 @@ The penetrant inspection NADCAP audit verifies that the penetrant materials are 
 
 ## NADCAP significance for supplier evaluation
 
-NADCAP accreditation provides independent verification that the supplier's process meets industry standards. For procurement teams, NADCAP accreditation simplifies the supplier qualification process — instead of conducting their own process audit, they can accept NADCAP accreditation as evidence of process capability. The relationship between NADCAP process accreditation and overall quality system certification is discussed in the [AS9100D overview](/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/).
+NADCAP accreditation provides independent verification that the supplier's process meets industry standards. For procurement teams, NADCAP accreditation simplifies the supplier qualification process — instead of conducting their own process audit, they can accept NADCAP accreditation as evidence of process capability. The relationship between NADCAP process accreditation and overall quality system certification is discussed in the [AS9100D overview](/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/), and our [AS9100D titanium machining supplier](/as9100-titanium-supplier/) page shows how these systems are implemented in production.
 
 However, NADCAP accreditation does not guarantee that every component produced by the accredited process meets specification. The accreditation verifies process capability and process control, but individual component quality still depends on the operator's attention to detail and the effectiveness of the quality management system.
 
@@ -52,3 +52,5 @@ However, NADCAP accreditation does not guarantee that every component produced b
 | Welding | AWS D17.1 | Weld procedure qualification, welder certification, shielding gas control |
 
 ---
+
+When qualifying a supplier for NADCAP-accredited titanium processes, [request our capability documentation](/rfq/) through the engineering RFQ portal.

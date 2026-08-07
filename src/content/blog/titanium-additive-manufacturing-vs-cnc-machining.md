@@ -11,7 +11,7 @@ coverImageAlt: Titanium additive manufactured component with machined surfaces
 featured: false
 ---
 
-Additive manufacturing and CNC machining are often presented as competing technologies for titanium component production, but in practice they serve different geometric and production niches. Understanding the capability and limitations of each process is important for selecting the most cost-effective manufacturing approach for a given component. The machining challenges that apply to conventionally produced titanium also apply to post-processing of additively built components, as discussed in the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/).
+Additive manufacturing and CNC machining are often presented as competing technologies for titanium component production, but in practice they serve different geometric and production niches. Understanding the capability and limitations of each process is important for selecting the most cost-effective manufacturing approach for a given component. The machining challenges that apply to conventionally produced titanium also apply to post-processing of additively built components, as discussed in the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/). For a comparison of our process capabilities, see [titanium additive manufacturing](/titanium-additive-manufacturing/) and [titanium CNC machining services](/titanium-cnc-machining-services/).
 
 ## Geometric capability comparison
 
@@ -58,3 +58,5 @@ The hybrid approach requires coordination between the additive and machining pro
 | Maximum size | Limited by build volume | Limited by machine travel |
 
 ---
+
+For guidance on whether additive, machining, or a hybrid approach fits your component, [submit your requirements](/rfq/) and our engineers will recommend the manufacturing route.

@@ -15,7 +15,7 @@ Selecting a supplier for titanium CNC machined components involves different cri
 
 ## Technical capability assessment
 
-The first evaluation step is to confirm that the supplier has the equipment and experience to machine titanium to the required specifications. Not all CNC machine shops can machine titanium effectively, and the equipment differences matter.
+The first evaluation step is to confirm that the supplier has the equipment and experience to machine titanium to the required specifications. Not all CNC machine shops can machine titanium effectively, and the equipment differences matter. A reference profile of a titanium-specialized [CNC machining manufacturer](/titanium-cnc-machining-manufacturer/) shows the equipment and process documentation that this evaluation should expect.
 
 The machine tools should have sufficient spindle power to maintain cutting speeds in the range of 40 to 80 m/min with carbide tooling. Titanium machining requires roughly 30 to 50 percent more spindle power than steel machining at equivalent material removal rates. A machine that is adequate for aluminum work will not have the torque or rigidity needed for titanium.
 

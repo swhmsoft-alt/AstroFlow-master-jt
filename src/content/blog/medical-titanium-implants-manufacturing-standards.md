@@ -11,11 +11,11 @@ coverImageAlt: Precision machined titanium medical implant component
 featured: false
 ---
 
-Medical titanium implants are subject to manufacturing requirements that are distinct from aerospace or industrial components. The biological environment in which implants function imposes constraints on material selection, surface condition, cleanliness, and process validation that have no equivalent in other industries. Understanding these requirements is essential for suppliers considering medical device work and for design engineers developing implant components.
+[Medical titanium implants](/industries/medical/) are subject to manufacturing requirements that are distinct from aerospace or industrial components. The biological environment in which implants function imposes constraints on material selection, surface condition, cleanliness, and process validation that have no equivalent in other industries. Understanding these requirements is essential for suppliers considering medical device work and for design engineers developing implant components.
 
 ## Material specifications for implant-grade titanium
 
-The standard material for load-bearing orthopedic implants is Ti-6Al-4V ELI, designated as Grade 23 per ASTM F136. The reduced interstitial content — oxygen limited to 0.13 percent maximum — provides the fracture toughness required for fatigue-loaded implants. CP titanium Grade 4 per ASTM F67 is used for non-load-bearing implants and for components where osseointegration is the primary requirement. The [Grade 23 titanium guide](/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/) provides detailed property comparisons with standard Grade 5.
+The standard material for load-bearing orthopedic implants is Ti-6Al-4V ELI, designated as [Grade 23](/materials/grade-23/) per ASTM F136. The reduced interstitial content — oxygen limited to 0.13 percent maximum — provides the fracture toughness required for fatigue-loaded implants. CP titanium Grade 4 per ASTM F67 is used for non-load-bearing implants and for components where osseointegration is the primary requirement. The [Grade 23 titanium guide](/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/) provides detailed property comparisons with standard Grade 5.
 
 The material certification requirements for implant-grade titanium are extensive. Each lot of material must be tested for chemical composition, mechanical properties, and microstructure. The mill test report must document the results of these tests and certify that the material meets the applicable ASTM standard. The certifications are retained as part the device history record for each production lot of implants.
 
@@ -44,6 +44,8 @@ Medical device manufacturing under ISO 13485 requires that production processes 
 Process validation for implant machining includes tool life studies that establish the maximum number of parts that can be machined with a single tool while maintaining the required tolerances and surface finish. The tool life limit is documented in the process specification, and tools are replaced at or before this limit regardless of their apparent condition.
 
 Cleaning process validation demonstrates that the cleaning process removes machining residues to the required level. The validation includes challenge testing with artificially contaminated components to verify that the cleaning process is effective across the expected range of contamination levels. The validated cleaning parameters — time, temperature, cleaning agent concentration, and agitation method — are documented and controlled in production.
+
+For medical implant components requiring validated processes and full device-history documentation, [request a quotation](/rfq/) through our engineering RFQ portal.
 
 ---
 

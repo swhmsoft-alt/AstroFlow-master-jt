@@ -17,13 +17,13 @@ Selecting a titanium alloy for a component involves more than matching a strengt
 
 The first filter in titanium alloy selection is the minimum tensile strength the component must meet. Commercially pure grades cover the range from 240 to 550 MPa. Alpha-beta alloys cover 900 to 1200 MPa depending on heat treatment. Beta alloys extend to 1400 MPa.
 
-If the required strength is below 550 MPa, CP grades are viable. Grade 2 at approximately 340 MPa is adequate for many industrial and marine applications. If the strength requirement is between 550 and 900 MPa, the options are limited — this range falls between CP grades and standard alpha-beta alloys. Some near-alpha alloys and specialized CP grades can reach the lower end of this range, but in practice many components in this band end up using Ti-6Al-4V in the annealed condition because it provides margin above the requirement at minimal additional material cost.
+If the required strength is below 550 MPa, CP grades are viable. Grade 2 at approximately 340 MPa is adequate for many industrial and marine applications. If the strength requirement is between 550 and 900 MPa, the options are limited — this range falls between CP grades and standard alpha-beta alloys. Some near-alpha alloys and specialized CP grades can reach the lower end of this range, but in practice many components in this band end up using [Ti-6Al-4V](/materials/grade-5/) in the annealed condition because it provides margin above the requirement at minimal additional material cost.
 
 Above 900 MPa, alpha-beta alloys in the solution-treated and aged condition are the standard choice. Ti-6Al-4V STA achieves 1100 to 1200 MPa. Above 1200 MPa, beta alloys such as Ti-1023 are required. The cost increase from alpha-beta to beta alloys is substantial — typically 1.5 to 3 times the material cost per kilogram — so the strength requirement above 1200 MPa should be verified against the actual design loads before specifying a beta alloy.
 
 ## Evaluate the corrosion environment
 
-Titanium's corrosion resistance is excellent across all grades in most environments, but there are distinctions that matter for specific applications. CP titanium grades have the best general corrosion resistance because they contain no alloying elements that could create galvanic cells or preferential attack sites. In seawater, CP Grade 2 performs identically to Ti-6Al-4V in most conditions.
+Titanium's corrosion resistance is excellent across all grades in most environments, but there are distinctions that matter for specific applications. CP titanium grades have the best general corrosion resistance because they contain no alloying elements that could create galvanic cells or preferential attack sites. In seawater, [CP Grade 2](/materials/grade-2/) performs identically to Ti-6Al-4V in most conditions.
 
 In reducing acid environments — hydrochloric acid, sulfuric acid at moderate concentrations — CP titanium may experience attack. Grade 7, which contains 0.15 percent palladium, was developed specifically for these conditions. The palladium shifts the corrosion potential into the passive range, allowing Grade 7 to perform where CP grades and Ti-6Al-4V would corrode. Grade 7 is significantly more expensive than CP Grade 2 and is used only where the specific chemical environment requires it.
 
@@ -71,7 +71,7 @@ Third, check the operating temperature range. If the service temperature exceeds
 
 Fourth, assess the manufacturing process. If the component will be welded, CP grades or Ti-6Al-4V are preferred. If it requires extensive machining, Ti-6Al-4V offers the best balance. If thick sections need through-hardening, evaluate beta alloys or design for surface hardening only.
 
-Fifth, verify cost and availability. If multiple alloys meet the technical requirements, select the one with the best combination of material cost, machining cost, and availability for the required product form and quantity.
+Fifth, verify cost and availability. If multiple alloys meet the technical requirements, select the one with the best combination of material cost, machining cost, and availability for the required product form and quantity. The [titanium grade finder](/tools/titanium-grade-finder/) applies these criteria interactively to shortlist alloys for your application.
 
 ---
 

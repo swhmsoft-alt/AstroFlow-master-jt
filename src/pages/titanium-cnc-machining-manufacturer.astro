@@ -1,0 +1,278 @@
+---
+// =============================================================================
+// Supplier Entity Page — "Titanium CNC Machining Manufacturer"
+// B2B commercial landing for the highest-intent supplier-selection query.
+// English-only campaign page (no localized variants required).
+// Conversion flow: Hero CTA + bottom CTA → /rfq/ (tested inquiry module).
+// =============================================================================
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import TrustBadges from '../components/landing/TrustBadges.astro';
+import Capabilities from '../components/landing/Capabilities.astro';
+import QualityControl from '../components/landing/QualityControl.astro';
+import Applications from '../components/landing/Applications.astro';
+
+// ── SEO: page title & meta description (supplier-selection intent) ──
+const pageTitle =
+  'Titanium CNC Machining Manufacturer | AS9100D Certified | Boze Titanium Manufacturing Center';
+const pageDescription =
+  'AS9100D-certified titanium CNC machining manufacturer. 120+ advanced machining centers, 16 years of titanium-specific experience, tolerances to ±0.005 mm. From raw titanium stock to certified aerospace and medical components — submit your drawing for a formal quotation.';
+const canonicalUrl = 'https://cnc.bozemetal.com/titanium-cnc-machining-manufacturer/';
+
+// ── Supplementary JSON-LD: Service + ManufacturingPlant + OfferCatalog ──
+// Organization / WebSite / WebPage / BreadcrumbList / Service are auto-generated
+// by BaseLayout via buildPageGraph() (pageType="service-detail"). This graph
+// strengthens the ManufacturingPlant (supplier) + capability signals for the
+// "titanium cnc machining manufacturer" entity.
+const supplierSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: 'Titanium CNC Machining Manufacturing',
+      serviceType: 'CNC Machining Manufacturer',
+      provider: {
+        '@type': 'ManufacturingPlant',
+        name: 'Boze Titanium Manufacturing Center',
+        url: 'https://www.bozemetal.com',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Baoji',
+          addressRegion: 'Shaanxi',
+          addressCountry: 'CN',
+        },
+      },
+      description:
+        'AS9100D-certified titanium CNC machining manufacturer producing precision aerospace and medical components from Grade 5 Ti-6Al-4V, Grade 2, and Grade 23 alloys with tolerances to ±0.005 mm.',
+      areaServed: 'Worldwide',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Titanium CNC Machining Capabilities',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: '5-Axis Titanium Milling & Turning',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Aerospace & Medical Titanium Components',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Wire EDM & Precision Inspection',
+            },
+          },
+        ],
+      },
+    },
+  ],
+};
+
+// ── Supplier profile facts ──
+const supplierFacts = [
+  { value: '16+', label: 'Years of titanium-specific machining experience' },
+  { value: '120+', label: 'Advanced CNC machining centers on site' },
+  { value: 'AS9100D', label: 'Aerospace quality management certification' },
+  { value: '3,000+ m²', label: 'Dedicated titanium manufacturing facility in Baoji, China' },
+];
+
+// ── Material entity cards ──
+const materials = [
+  {
+    grade: 'Grade 5 — Ti-6Al-4V',
+    href: '/materials/grade-5/',
+    note: 'Industry-standard aerospace alloy with the best balance of strength, weight, and established machining knowledge.',
+  },
+  {
+    grade: 'Grade 2 — CP Titanium',
+    href: '/materials/grade-2/',
+    note: 'Workhorse commercially-pure titanium for chemical processing, marine, and industrial components.',
+  },
+  {
+    grade: 'Grade 23 — Ti-6Al-4V ELI',
+    href: '/materials/grade-23/',
+    note: 'Implant-grade extra-low interstitial alloy for medical devices and fracture-critical aerospace parts.',
+  },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="Titanium CNC Machining Manufacturing"
+  serviceCategory="CNC Machining Manufacturer"
+  alternateLinks={[{ lang: 'en', href: '/titanium-cnc-machining-manufacturer/' }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(supplierSchema)} />
+
+  <!-- ================= Hero ================= -->
+  <SubpageHero
+    h1="Titanium CNC Machining Manufacturer"
+    badge="AS9100D Certified · Aerospace & Medical"
+    subtitle="Boze Titanium Manufacturing Center is a vertically integrated titanium CNC machining manufacturer in Baoji, China — converting raw titanium stock into certified aerospace, medical, and industrial components with tolerances to ±0.005 mm."
+    keyMetrics={[
+      { value: '120+', label: 'CNC Machining Centers' },
+      { value: '16+', label: 'Years Titanium-Specific' },
+      { value: '<48h', label: 'Technical RFQ Response' },
+      { value: 'AS9100D', label: 'Aerospace Certified' },
+    ]}
+    entityChips={['5-Axis CNC', 'CNC Milling', 'CNC Turning', 'Wire EDM', 'CMM Inspection']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        href="/rfq/"
+        class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+        style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+      >
+        Submit Your Drawing for a Quote
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+      <a
+        href="https://wa.me/8618623919905"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors"
+        style="border-color: var(--theme-primary); color: var(--theme-primary);"
+      >Chat on WhatsApp</a>
+    </div>
+  </SubpageHero>
+
+  <!-- ================= Trust ================= -->
+  <TrustBadges />
+
+  <!-- ================= Supplier Profile ================= -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">
+            Supplier Profile
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+            A Titanium-Specific CNC Manufacturing Partner
+          </h2>
+          <p class="mt-5 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Since our founding, Boze Titanium Manufacturing Center has focused exclusively on titanium machining — not mixed-material job shop work.
+            That focus drives our <strong style="color: var(--theme-text);">vertical integration</strong>: raw material sourcing with mill certifications,
+            in-house 5-axis CNC machining, surface treatment, and CMM inspection under one roof.
+          </p>
+          <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Every component is traceable from the mill heat number to the finished part, and every shipment includes
+            material test reports, inspection records, and first article documentation. For a deeper look at our operation,
+            see our <a href="/about/" style="color: var(--theme-primary); font-weight: 600;">company overview</a>,
+            <a href="/facilities/" style="color: var(--theme-primary); font-weight: 600;">facilities</a>, and
+            <a href="/equipment/" style="color: var(--theme-primary); font-weight: 600;">equipment list</a>.
+          </p>
+        </div>
+
+        <dl class="grid grid-cols-2 gap-4">
+          {
+            supplierFacts.map((f) => (
+              <div class="rounded-2xl border p-6 text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+                <dd class="text-3xl font-black" style="color: var(--theme-primary);">{f.value}</dd>
+                <dt class="mt-2 text-sm leading-snug" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{f.label}</dt>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Capabilities ================= -->
+  <Capabilities />
+
+  <!-- ================= Materials ================= -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Materials</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Titanium Alloys We Machine Every Day
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Our process qualifications, tooling strategies, and inspection plans are built around the titanium grades that
+          aerospace and medical programs specify most.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          materials.map((m) => (
+            <a
+              href={m.href}
+              class="group rounded-2xl border p-6 lg:p-8 transition-transform duration-200 hover:-translate-y-1"
+              style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); display: block;"
+            >
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{m.grade}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{m.note}</p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--theme-primary);">
+                View material data
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Applications ================= -->
+  <Applications />
+
+  <!-- ================= Quality ================= -->
+  <QualityControl />
+
+  <!-- ================= CTA ================= -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 opacity-25" aria-hidden="true">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 55%);"></div>
+    </div>
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Evaluate Us Against Your Titanium Program
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Submit your drawings and receive a formal quotation within 48 hours — including DFM feedback,
+          material sourcing options, tolerance review, and inspection documentation plan.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a
+            href="/rfq/"
+            class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+            style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+          >
+            Request a Quote
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+          <a
+            href="https://wa.me/8618623919905"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors"
+            style="border-color: var(--theme-primary); color: var(--theme-primary);"
+          >Chat on WhatsApp</a>
+        </div>
+        <p class="mx-auto mt-6 inline-flex max-w-xl items-center gap-2 rounded-full border px-5 py-2.5 text-sm" style="border-color: color-mix(in srgb, var(--theme-accent) 35%, transparent); background: color-mix(in srgb, var(--theme-accent) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+          <svg class="h-4 w-4 flex-shrink-0" style="color: var(--theme-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          Your designs are safe. We strictly adhere to strict NDA protocols.
+        </p>
+        <p class="mx-auto mt-4 max-w-xl text-sm" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          For the quality system behind every part, see our <a href="/as9100-titanium-supplier/" class="font-semibold" style="color: var(--theme-primary);">AS9100D titanium machining supplier</a> profile.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

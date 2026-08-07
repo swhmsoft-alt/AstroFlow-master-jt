@@ -13,7 +13,7 @@ featured: false
 
 ## Component overview
 
-The component was a femoral hip stem component machined from Ti-6Al-4V ELI per ASTM F136, Grade 23. The component had a complex contoured geometry with a polished articulating surface, a grit-blasted bone-ingrowth surface, and precision-machined taper and locking features. The overall length was approximately 150 mm, and the critical tolerances included a taper angle of 5° 42' 30" ± 2', a surface finish of Ra 0.05 μm maximum on the articulating surface, and a true position tolerance of 0.05 mm on the locking feature. The material selection and surface finish requirements are discussed in the [Grade 23 guide](/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/) and the [surface finish guide](/blog/titanium-surface-finish-achieving-ra-04um/).
+The component was a femoral hip stem component machined from Ti-6Al-4V ELI per ASTM F136, [Grade 23](/materials/grade-23/). The component had a complex contoured geometry with a polished articulating surface, a grit-blasted bone-ingrowth surface, and precision-machined taper and locking features. The overall length was approximately 150 mm, and the critical tolerances included a taper angle of 5° 42' 30" ± 2', a surface finish of Ra 0.05 μm maximum on the articulating surface, and a true position tolerance of 0.05 mm on the locking feature. The material selection and surface finish requirements are discussed in the [Grade 23 guide](/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/) and the [surface finish guide](/blog/titanium-surface-finish-achieving-ra-04um/).
 
 ## Process validation requirements
 
@@ -34,5 +34,7 @@ The polished articulating surface was produced by mechanical polishing after mac
 The first article inspection results showed all critical dimensions within specification. The taper angle measured 5° 42' 35", within the ±2' tolerance. The surface finish on the articulating surface was Ra 0.04 μm. The true position of the locking feature was 0.03 mm.
 
 Microscopic inspection of the machined surfaces at 100x magnification showed no embedded contaminants, no smearing, and no surface defects. The surface condition was consistent across all 50 components in the validation lot.
+
+For [medical implant](/industries/medical/) components with similar material and validation requirements, [request a process study](/rfq/) and our engineers will outline the machining, polishing, and inspection plan for your geometry.
 
 ---

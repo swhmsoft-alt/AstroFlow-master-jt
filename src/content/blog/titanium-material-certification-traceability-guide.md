@@ -11,7 +11,7 @@ coverImageAlt: Material certification documentation for titanium stock
 featured: false
 ---
 
-Material certification and traceability are fundamental requirements for aerospace titanium components. The certification documents provide the evidence that the material meets the applicable specification, and the traceability system provides the link between the certification and each finished component. Understanding the certification types, the information they contain, and the traceability system requirements is important for procurement teams and quality engineers involved in aerospace titanium production.
+Material certification and traceability are fundamental requirements for aerospace titanium components. The certification documents provide the evidence that the material meets the applicable specification, and the traceability system provides the link between the certification and each finished component. Understanding the certification types, the information they contain, and the [traceability system requirements](/capabilities/traceability/) is important for procurement teams and quality engineers involved in aerospace titanium production.
 
 ## Mill test report requirements
 
@@ -19,7 +19,7 @@ The mill test report, also called a material test report or material certificate
 
 The MTR must identify the material by heat number or lot number, which is the unique identifier that allows the material to be traced through the manufacturing process. The heat number is marked on the material itself and on the certification document, and it is the key link in the traceability chain.
 
-For Ti-6Al-4V aerospace components, the MTR typically includes the results of chemical analysis by optical emission spectroscopy or combustion analysis, tensile testing per ASTM E8 or E21, and microstructural evaluation. Additional testing — ultrasonic inspection, fracture toughness testing, or stress corrosion cracking testing — may be required depending on the material product form and the intended application. The quality system requirements for managing these certifications are covered in the [AS9100D overview](/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/).
+For [Ti-6Al-4V](/materials/grade-5/) aerospace components, the MTR typically includes the results of chemical analysis by optical emission spectroscopy or combustion analysis, tensile testing per ASTM E8 or E21, and microstructural evaluation. Additional testing — ultrasonic inspection, fracture toughness testing, or stress corrosion cracking testing — may be required depending on the material product form and the intended application. The quality system requirements for managing these certifications are covered in the [AS9100D overview](/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/).
 
 ## EN 10204 certification types
 
@@ -53,3 +53,5 @@ The most common traceability failures in titanium production occur at material c
 | 3.2 | Test results certified by manufacturer and third party | Critical flight safety | Significant |
 
 ---
+
+To request material certification documentation for your aerospace program, [submit an RFQ](/rfq/).

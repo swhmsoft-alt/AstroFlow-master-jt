@@ -1,7 +1,7 @@
 # Active Context
 
 > **Last Updated:** 2026-08-05
-> **Current Focus:** Titanium CNC Query Universe 第一阶段执行 — Semantic Linking（10 篇高商业价值博客内链重组）已完成并构建验证
+> **Current Focus:** P0.6 AS9100 Landing 上线；P0.5 Supplier 页 + 三批 Semantic Linking（30 篇/86 条内链）已完成；下一步 P1 5-Axis 强化 + 剩余 9 篇博客 + 部署
 
 ## Current Status
 ✅ Semantic Linking Phase 1 完成：10 篇博客新增 25 条 Tier1 内链（service/material/industry/rfq/capabilities/tools），`check-undefined-slugs` 0 issue，`npm run build` 通过，dist 产物 0 重复包裹。
@@ -46,6 +46,61 @@
 **验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过（2167 HTML webp 更新 Completed）；dist `/rfq/`：`action="/submit-rfq.php"` 1、`tm-rfq-form` 1、旧 `engineering-rfq-form` 0、ld+json 2、ManufacturingPlant 1、hreflang 12+x-default；`/de/rfq/` 含新表单；旧 `EngineeringRfqForm*.js` 产物已从 dist/_astro 消失。
 
 **影响说明：** `/lang/rfq/`（11 语）现统一渲染英文 landing 内容 —— 与 titanium-machining English-only 活动页先例一致。
+
+### Semantic Linking Phase 2（2026-08-05）
+**背景：** 用户批准第二批 10 篇（BOFU/采购/案例研究/行业优先），完成后转向 Supplier Entity Page。
+
+**执行：** 10 篇新增 **30 条新 Tier1 内链**：service=3, material=10, industry=5, **rfq=7**, capabilities=2, tools=3。
+- BOFU 类全部补齐 `/rfq/` 链：cost-factors、grade-2-vs-5-vs-23、case-study-medical、case-study-thin-wall、aerospace-challenges、medical-implants、semiconductor（7 篇）
+- 案例/行业类补 `/industries/*` 链：medical/semiconductor/aerospace
+- 对比文章（grade-2-vs-5-vs-23）链全 3 个材料实体页（合理超 3 条）
+- 锚文本全部各异；`titanium-cnc-machining-services` 博客仅 2 条（竞品列表文，克制）
+- ⚠️ 踩坑：该博客正文含 **U+2011 不间断连字符**（`one‑stop`/`Ti‑6Al‑4V`），精确匹配失败 → 改用避开特殊字符的子串匹配
+
+**验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过；dist 抽查 5 篇博客页：rfq/grade-5/industries 链接正确渲染、`<a href="..."><a href=` 重复包裹 = 0。
+
+**下一步：** 剩余 9 篇信息型博客（Manufacturing Problems 簇 + welcome）待定；**P0.6 AS9100 Landing** 为下一优先。
+
+### Semantic Linking Phase 3（2026-08-05）
+**背景：** 用户批准第三批 10 篇（知识中枢/材料对比/信任认证/DFM/工艺类）。
+
+**执行：** 10 篇新增 **31 条新 Tier1 内链**：service=4, material=11, industry=3, **rfq=7**, capabilities=5, tools=3。
+- 知识中枢 `titanium-grades-complete-guide` 链 3 个材料实体页 + grade finder（合理超 3 条）
+- 信任类（as9100d/nadcap/material-certification）补 `/capabilities/certifications|traceability` + `/industries/aerospace` + `/rfq/`
+- 工艺类（welding→welding-assembly 服务、additive-vs-cnc→additive+cnc 服务、thin-wall→5-axis 服务）
+- 锚文本继续全部各异，无重复商业锚文本
+
+**验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过；dist 抽查 5 篇：rfq/grade-5 链接正确、`<a href="..."><a href=` 重复包裹 = 0。
+
+**累计：** 三批共 **30 篇博客 / 86 条新 Tier1 内链**（svc=13, mat=29, ind=12, rfq=19, cap=13, tool=8）。剩余 9 篇：alpha-case、high-pressure-coolant（已有 1 服务链）、chip-control、deformation、springback、tool-wear、work-hardening、welcome（低价值可跳过或仅 1-2 链）。
+
+### P0.6 AS9100 Landing 上线（2026-08-05）
+**背景：** 用户从待办审计中选择继续路线图 → P0.6 AS9100 Landing（目标 Query「AS9100 titanium supplier」，航空采购信任 ★★★★★）。
+
+**页面：** `src/pages/as9100-titanium-supplier.astro` → `/as9100-titanium-supplier/`
+- **Hero：** `SubpageHero` 自定义（H1「AS9100D Titanium CNC Machining Supplier」+ AS9100D 徽标 + 4 指标 + 5 芯片 + slot CTA → `/rfq/`）
+- **复用：** TrustBadges / QualityControl（CMM/FAIR/MTR）/ Capabilities / Applications
+- **自定义：** AS9100D Scope 4 卡（QMS/热号追溯/首件/防伪）+ Evidence Documentation 4 项（MTR/FAIR/CMM/PPAP）—— Evidence Query 层
+- **SEO：** Title「AS9100D Titanium CNC Machining Supplier \| Aerospace Quality …」、`pageType="service-detail"` + 补充 JSON-LD（Service + **hasCredential Certification** + ManufacturingPlant）、alternateLinks 仅 en+x-default
+
+**入口链（3 条）：** as9100d 博客 + nadcap 博客（锚「AS9100D titanium CNC machining supplier」）+ Supplier 页 CTA 交叉链接。
+
+**验证：** `check-undefined-slugs` 0 issue；`npm run build` ✅（**2169 HTML**，+1 新页）；dist：h1/canonical/title ✅、CTA→/rfq/ ×2、hasCredential ✅、sitemap-en.xml 收录、入口链 ✅。
+
+### P0.5 Supplier Entity Page 上线（2026-08-05）
+**背景：** 用户批准继续（“继续”），按路线图推进最高商业意图 Query「titanium cnc machining manufacturer」（机会评分 95）。
+
+**页面：** `src/pages/titanium-cnc-machining-manufacturer.astro` → `/titanium-cnc-machining-manufacturer/`
+- **Hero：** `SubpageHero` 自定义（H1「Titanium CNC Machining Manufacturer」+ AS9100D 徽标 + 4 指标 + 6 能力芯片 + slot CTA → `/rfq/`）；**不用 HeroRfq/FinalCta**（表单页/外链 CTA 不适合，FinalCta 主 CTA 外链 bozemetal.com/contact）
+- **复用组件：** TrustBadges / Capabilities / QualityControl / Applications（已验证）
+- **自定义紧凑区：** Supplier Profile（Boze Metal 实体 + 链 `/about/` `/facilities/` `/equipment/`）、Materials 3 卡片（→ `/materials/grade-5|2|23/`）、底部 CTA（→ `/rfq/` + WhatsApp）
+- **SEO：** Title「Titanium CNC Machining Manufacturer \| AS9100D Certified…」、canonical、`pageType="service-detail"` + serviceName、补充 JSON-LD（Service + ManufacturingPlant + OfferCatalog + areaServed）、alternateLinks 仅 en+x-default（英文专属，不入 [lang] 路由）
+
+**内链：** 2 篇高相关已上线博客补入口链（锚文本各异）：`how-to-choose-titanium-cnc-machining-supplier`（CNC machining manufacturer）、`custom-titanium-machining-contract-manufacturer-china-rfq-preparation`（titanium CNC machining manufacturer）。
+
+**验证：** `check-undefined-slugs` 0 issue；`npm run build` 全链路通过（**2168 HTML**，+1 新页）；dist：h1/canonical/title ✅、CTA→/rfq/ ×2、材料链接 ×3、ld+json ×2（含 ManufacturingPlant）、sitemap-en.xml 收录、博客入口链 ✅。
+
+**入口扩充（用户选轻量方案，2026-08-05）：** 入口从 2 条扩到 **9 条**：① 7 篇博客内链（原 2 篇 + 新增 aerospace-full-process、as9100d、cost-factors、cnc-services-blog、grade-2-vs-5-vs-23）；② 2 个英文落地页交叉链接横幅（`/titanium-machining/`、`/rfq/`，FinalCta 后 StickyCta 前，锚文本「titanium CNC machining manufacturer profile」）；③ sitemap-en.xml。**未动导航/页脚**（i18n 系统 + localizePath 会生成 /lang/ 404，属完整方案范畴）。build ✅ 2168 HTML、dist 0 重复包裹。
 
 ### GA 跟踪码增量部署上线（2026-08-05 15:20）
 - **任务：** commit `eaf68377`「GA」（更新 GA 跟踪码 + 类型修复批次）向生产 FTP 提交（账号内置 `.env.production`）。

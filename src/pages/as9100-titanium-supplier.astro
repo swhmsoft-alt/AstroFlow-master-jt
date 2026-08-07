@@ -1,0 +1,226 @@
+---
+// =============================================================================
+// AS9100D Landing — "AS9100D Titanium CNC Machining Supplier"
+// Aerospace-quality trust / evidence landing for the AS9100 supplier query.
+// English-only campaign page (no localized variants required).
+// Conversion flow: Hero CTA + bottom CTA → /rfq/ (tested inquiry module).
+// =============================================================================
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SubpageHero from '../components/ui/SubpageHero.astro';
+import TrustBadges from '../components/landing/TrustBadges.astro';
+import Capabilities from '../components/landing/Capabilities.astro';
+import QualityControl from '../components/landing/QualityControl.astro';
+import Applications from '../components/landing/Applications.astro';
+
+// ── SEO: page title & meta description (AS9100 supplier trust intent) ──
+const pageTitle =
+  'AS9100D Titanium CNC Machining Supplier | Aerospace Quality | Boze Titanium Manufacturing Center';
+const pageDescription =
+  'AS9100D-certified titanium CNC machining supplier. Documented quality management, heat-level material traceability, CMM inspection, and FAIR documentation for aerospace titanium components. Submit your drawing for a formal quotation.';
+const canonicalUrl = 'https://cnc.bozemetal.com/as9100-titanium-supplier/';
+
+// ── Supplementary JSON-LD: Service + Certification + ManufacturingPlant ──
+// Organization / WebSite / WebPage / BreadcrumbList / Service are auto-generated
+// by BaseLayout via buildPageGraph() (pageType="service-detail"). This graph adds
+// the AS9100D Certification credential + supplier capability signals.
+const supplierSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: 'AS9100D Certified Titanium CNC Machining',
+      serviceType: 'Aerospace Titanium Machining',
+      provider: {
+        '@type': 'ManufacturingPlant',
+        name: 'Boze Titanium Manufacturing Center',
+        url: 'https://www.bozemetal.com',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Baoji',
+          addressRegion: 'Shaanxi',
+          addressCountry: 'CN',
+        },
+      },
+      description:
+        'AS9100D-certified titanium CNC machining supplier producing aerospace components with documented quality management, heat-level material traceability, CMM inspection, and first article documentation.',
+      areaServed: 'Worldwide',
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'AS9100D Aerospace Quality Management System Certification',
+        description:
+          'Quality management system certification covering design, development, production, and delivery of aerospace titanium components.',
+      },
+    },
+  ],
+};
+
+// ── AS9100D scope points ──
+const as9100Scope = [
+  { title: 'Documented Quality Management', desc: 'AS9100D requires a controlled QMS with risk management, configuration control, and corrective action — not just final inspection.' },
+  { title: 'Heat-Level Material Traceability', desc: 'Every aerospace titanium component is traced from its mill heat number through machining, inspection, and delivery.' },
+  { title: 'Process Control & First Article', desc: 'Approved process specifications, in-process inspection points, and FAIR verification before production release.' },
+  { title: 'Counterfeit & Non-Conformance Control', desc: 'Documented counterfeit part prevention and non-conformance management per aerospace requirements.' },
+];
+
+// ── Evidence documentation list ──
+const evidenceDocs = [
+  { label: 'Mill Test Reports (MTR)', note: 'Chemical composition and mechanical properties certified per heat number.' },
+  { label: 'First Article Inspection (FAIR)', note: 'Dimensional, surface, and material verification for every new part number.' },
+  { label: 'CMM Inspection Reports', note: 'GD&T verification of critical dimensions to ±0.005 mm.' },
+  { label: 'PPAP & Lot Documentation', note: 'Complete quality records packaged for prime and Tier-1 approval.' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="AS9100D Certified Titanium CNC Machining"
+  serviceCategory="Aerospace Titanium Machining"
+  alternateLinks={[{ lang: 'en', href: '/as9100-titanium-supplier/' }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(supplierSchema)} />
+
+  <!-- ================= Hero ================= -->
+  <SubpageHero
+    h1="AS9100D Titanium CNC Machining Supplier"
+    badge="AS9100D Certified · Aerospace Quality Management"
+    subtitle="Boze Titanium Manufacturing Center operates its titanium machining facility under an AS9100D quality management system — delivering aerospace components with documented process control, heat-level traceability, and complete first article documentation."
+    keyMetrics={[
+      { value: 'AS9100D', label: 'Aerospace QMS Certified' },
+      { value: 'MTR', label: 'Heat-Level Traceability' },
+      { value: '±0.005 mm', label: 'CMM-Verified Tolerances' },
+      { value: '<48h', label: 'Technical RFQ Response' },
+    ]}
+    entityChips={['AS9100D QMS', 'Material Traceability', 'CMM Inspection', 'FAIR Reports', 'Risk Management']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        href="/rfq/"
+        class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+        style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+      >
+        Submit Your Drawing for a Quote
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+      <a
+        href="https://wa.me/8618623919905"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors"
+        style="border-color: var(--theme-primary); color: var(--theme-primary);"
+      >Chat on WhatsApp</a>
+    </div>
+  </SubpageHero>
+
+  <!-- ================= Trust ================= -->
+  <TrustBadges />
+
+  <!-- ================= AS9100D Scope ================= -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">AS9100D Scope</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          What AS9100D Certification Covers for Titanium Machining
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          AS9100D certifies the quality management system — not any single part. For procurement teams, that means the
+          supplier has documented systems for the process areas that most often fail in aerospace titanium sourcing.
+          See our <a href="/capabilities/certifications/" style="color: var(--theme-primary); font-weight: 600;">certifications</a> and
+          <a href="/capabilities/quality/" style="color: var(--theme-primary); font-weight: 600;">quality systems</a> pages for the full scope.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          as9100Scope.map((s) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{s.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Quality Control ================= -->
+  <QualityControl />
+
+  <!-- ================= Evidence Documentation ================= -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Documentation</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Evidence You Receive with Every Aerospace Shipment
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          For aerospace procurement, documentation is part of the deliverable. Our
+          <a href="/capabilities/inspection/" style="color: var(--theme-primary); font-weight: 600;">inspection</a> and
+          <a href="/capabilities/traceability/" style="color: var(--theme-primary); font-weight: 600;">traceability</a>
+          systems produce the records aerospace programs require.
+        </p>
+      </header>
+
+      <dl class="mt-12 grid gap-4 md:grid-cols-2">
+        {
+          evidenceDocs.map((d) => (
+            <div class="rounded-xl border px-5 py-4" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: var(--theme-surface);">
+              <dt class="text-sm font-bold" style="color: var(--theme-primary);">{d.label}</dt>
+              <dd class="mt-1 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.note}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= Capabilities ================= -->
+  <Capabilities />
+
+  <!-- ================= Applications ================= -->
+  <Applications />
+
+  <!-- ================= CTA ================= -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 opacity-25" aria-hidden="true">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 55%);"></div>
+    </div>
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Request an AS9100D-Qualified Supplier Review
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Submit your drawings and receive a formal quotation within 48 hours — including the quality documentation
+          plan, inspection approach, and material certification package for your aerospace program.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a
+            href="/rfq/"
+            class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 active:scale-[0.99]"
+            style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+          >
+            Request a Quote
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+          <a
+            href="https://wa.me/8618623919905"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors"
+            style="border-color: var(--theme-primary); color: var(--theme-primary);"
+          >Chat on WhatsApp</a>
+        </div>
+        <p class="mx-auto mt-6 inline-flex max-w-xl items-center gap-2 rounded-full border px-5 py-2.5 text-sm" style="border-color: color-mix(in srgb, var(--theme-accent) 35%, transparent); background: color-mix(in srgb, var(--theme-accent) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+          <svg class="h-4 w-4 flex-shrink-0" style="color: var(--theme-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          Your designs are safe. We strictly adhere to strict NDA protocols.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -11,7 +11,7 @@ coverImageAlt: Engineering design review of a titanium CNC machined component
 featured: true
 ---
 
-Designing components for titanium CNC machining requires rules that differ from design guidelines for steel, aluminum, or even stainless steel. The material's low thermal conductivity, high cutting forces, elastic springback, and work hardening behavior create constraints on geometry that are not present in more machinable materials. Applying design rules developed for other metals to titanium components leads to parts that are difficult to machine, expensive to produce, or impossible to hold to tolerance. This guide provides geometry-specific design rules for titanium CNC machining, organized by feature type. The machining challenges that create these design constraints are analyzed in detail in the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/).
+Designing components for titanium CNC machining requires rules that differ from design guidelines for steel, aluminum, or even stainless steel. The material's low thermal conductivity, high cutting forces, elastic springback, and work hardening behavior create constraints on geometry that are not present in more machinable materials. Applying design rules developed for other metals to titanium components leads to parts that are difficult to machine, expensive to produce, or impossible to hold to tolerance. This guide provides geometry-specific design rules for titanium CNC machining, organized by feature type. The machining challenges that create these design constraints are analyzed in detail in the article on [why titanium is difficult to machine](/blog/why-titanium-is-difficult-to-machine/), and our [titanium CNC machining services](/titanium-cnc-machining-services/) page describes how these design rules are applied in production.
 
 - [Wall thickness guidelines for titanium](#wall-thickness-guidelines-for-titanium)
 - [Minimum internal and external radii](#minimum-internal-and-external-radii)
@@ -97,6 +97,8 @@ Sharp internal corners should be avoided at all locations where the component wi
 The datum structure for titanium components should be designed to allow all critical features to be machined in a single setup wherever possible. Multiple setups introduce setup error that compounds the inherent variability of titanium machining. Datums should be located on surfaces that are accessible from the primary machining direction and that remain stable throughout the machining process.
 
 Component design should allow for roughing and finishing passes with a minimum of 0.3 to 0.5 mm of stock remaining for finishing. This allowance provides sufficient material for the finishing tool to cut cleanly through the work-hardened surface layer left by roughing. Designs that leave minimal finishing stock increase the risk of the finishing tool encountering hardened surface material and wearing prematurely.
+
+To have your design reviewed for machinability before quoting, contact our [engineering support team](/capabilities/engineering/), and validate the tolerances in your drawing with the [CNC tolerance checker](/tools/cnc-tolerance-checker/).
 
 ---
 

@@ -11,7 +11,7 @@ coverImageAlt: Quality inspection documentation for aerospace titanium component
 featured: false
 ---
 
-AS9100D is the quality management system standard for aerospace manufacturing, replacing the earlier AS9100C revision. For titanium CNC machining suppliers, AS9100D certification demonstrates that the organization has implemented a quality management system that meets aerospace industry requirements for design, development, production, and delivery of aerospace products. Understanding what AS9100D certification actually covers — and what it does not cover — is important for procurement teams evaluating titanium machining suppliers for aerospace work. The [manufacturing capabilities](/capabilities/manufacturing/) page provides an overview of the production systems that operate under AS9100D quality controls.
+AS9100D is the quality management system standard for aerospace manufacturing, replacing the earlier AS9100C revision. For titanium CNC machining suppliers, AS9100D certification demonstrates that the organization has implemented a quality management system that meets aerospace industry requirements for design, development, production, and delivery of aerospace products. Understanding what AS9100D certification actually covers — and what it does not cover — is important for procurement teams evaluating titanium machining suppliers for [aerospace work](/industries/aerospace/). The [manufacturing capabilities](/capabilities/manufacturing/) page provides an overview of the production systems that operate under AS9100D quality controls, and our [AS9100D titanium CNC machining supplier](/as9100-titanium-supplier/) page documents the quality and traceability systems behind that certification.
 
 ## What AS9100D certification covers
 
@@ -43,7 +43,7 @@ AS9100D certification does not guarantee that a supplier can machine titanium to
 
 The certification does not guarantee that the supplier has the specific equipment needed for titanium — high-pressure coolant systems, suitable spindle power, or appropriate machine tools for the component size range. These capability factors are evaluated through the supplier's own risk assessment process but are not specifically verified by the certification audit.
 
-For procurement teams, AS9100D certification is a prerequisite for aerospace titanium machining work, but it should be supplemented by a technical capability assessment that addresses the specific requirements of the component or program. The certification answers the question "does the supplier have a quality management system?" but not "can the supplier machine this specific titanium component to the required tolerances?"
+For procurement teams, [AS9100D certification](/capabilities/certifications/) is a prerequisite for aerospace titanium machining work, but it should be supplemented by a technical capability assessment that addresses the specific requirements of the component or program. A titanium-specialist [manufacturer profile](/titanium-cnc-machining-manufacturer/) is a practical starting point for that technical capability assessment. The certification answers the question "does the supplier have a quality management system?" but not "can the supplier machine this specific titanium component to the required tolerances?"
 
 ---
 
@@ -59,6 +59,8 @@ For procurement teams, AS9100D certification is a prerequisite for aerospace tit
 | Supplier management | Approved supplier list for titanium stock | Audit of purchasing system |
 
 ---
+
+When evaluating an AS9100D-certified supplier for your program, [submit your RFQ](/rfq/) and request the quality documentation relevant to your component.
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — AS9100D certification scope for titanium machining: A diagram showing the quality management system elements that AS9100D covers — material receiving, machining, inspection, delivery — and the documentation required at each stage. Supports queries about what AS9100D certification covers for CNC machining suppliers.

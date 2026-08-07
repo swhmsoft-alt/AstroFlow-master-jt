@@ -11,7 +11,7 @@ coverImageAlt: TIG welding of a titanium assembly
 featured: false
 ---
 
-Welding titanium components that have been CNC machined requires coordination between the machining and welding processes that is often underestimated. The machined surfaces must be protected from contamination during welding, the weld zones must be accounted for in the machining sequence, and the distortion from welding must be managed to maintain the dimensional accuracy achieved in machining. The interaction between welding heat input and pre-existing machined features is related to the [deformation mechanisms](/blog/titanium-cnc-machining-deformation-causes-and-prevention/) discussed in the context of thermal expansion and residual stress redistribution.
+Welding titanium components that have been CNC machined requires coordination between the machining and welding processes that is often underestimated. The machined surfaces must be protected from contamination during welding, the weld zones must be accounted for in the machining sequence, and the distortion from welding must be managed to maintain the dimensional accuracy achieved in machining. The interaction between welding heat input and pre-existing machined features is related to the [deformation mechanisms](/blog/titanium-cnc-machining-deformation-causes-and-prevention/) discussed in the context of thermal expansion and residual stress redistribution. These interfaces are managed end-to-end in our [titanium welding and assembly services](/titanium-fabrication-services/titanium-welding-assembly/).
 
 ## Weld joint design for machined titanium components
 
@@ -35,7 +35,7 @@ Welding distortion in titanium assemblies can be significant because the materia
 
 Pre-bending or pre-setting the components before welding can compensate for predictable distortion patterns. The amount of pre-set is determined from experience or from welding trials on representative test pieces. For complex assemblies with multiple welds, the welding sequence should be planned to balance the thermal input across the assembly.
 
-Post-weld stress relief is performed at 500 to 600°C for Ti-6Al-4V assemblies to reduce residual stresses from welding. The stress relief cycle is performed in a vacuum furnace or under inert gas shielding to prevent [alpha case formation](/blog/alpha-case-formation-titanium-prevention-removal/). After stress relief, the assembly is typically finish-machined to restore dimensional accuracy.
+Post-weld stress relief is performed at 500 to 600°C for [Ti-6Al-4V](/materials/grade-5/) assemblies to reduce residual stresses from welding. The stress relief cycle is performed in a vacuum furnace or under inert gas shielding to prevent [alpha case formation](/blog/alpha-case-formation-titanium-prevention-removal/). After stress relief, the assembly is typically finish-machined to restore dimensional accuracy.
 
 The machining allowance for post-weld machining should be established during process planning. Welded assemblies typically require 0.5 to 1.0 mm of stock on machined surfaces that will be finished after welding, to allow for distortion correction and weld cleanup.
 
@@ -56,3 +56,5 @@ Welding sequence planning should prioritize welds that are near critical machine
 | 6.0–2.0 mm | Double-V, 60° included angle | Argon-He mix, 25–0 L/min | Machine joint prep, chemical clean | Stress relief required, NDE after |
 
 ---
+
+For welded titanium assemblies that require coordinated machining and welding, [submit your RFQ](/rfq/) and our engineers will plan the joint design, shielding, and post-weld machining sequence.

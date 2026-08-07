@@ -11,7 +11,7 @@ coverImageAlt: Engineering DFM review of a titanium component design
 featured: false
 ---
 
-Design for manufacturability for titanium components involves rules that differ from DFM guidelines for steel or aluminum. Titanium's machining characteristics — high cutting forces, thermal concentration, work hardening, and elastic springback — create constraints on feature geometry that must be considered during the design phase to avoid components that are unnecessarily expensive or difficult to produce. These constraints are detailed in the [titanium CNC design guide](/blog/titanium-cnc-design-guide-machinability-rules/), which covers wall thickness limits, corner radii, and pocket depth rules.
+Design for manufacturability for titanium components involves rules that differ from DFM guidelines for steel or aluminum. Titanium's machining characteristics — high cutting forces, thermal concentration, work hardening, and elastic springback — create constraints on feature geometry that must be considered during the design phase to avoid components that are unnecessarily expensive or difficult to produce. These constraints are detailed in the [titanium CNC design guide](/blog/titanium-cnc-design-guide-machinability-rules/), which covers wall thickness limits, corner radii, and pocket depth rules, and our [engineering support team](/capabilities/engineering/) applies these rules when reviewing customer designs.
 
 ## Feature geometry rules
 
@@ -33,7 +33,7 @@ Thread reliefs should be specified at the base of threaded features to allow the
 
 Specifying tolerances tighter than necessary is the most common DFM error in titanium component design. Every tolerance tighter than ±0.10 mm adds machining time and cost. For titanium, the cost increases disproportionately as tolerances tighten because the material's machining characteristics make it more difficult to hold tight tolerances than steel or aluminum.
 
-A practical approach is to specify standard tolerances of ±0.10 mm for the majority of features, precision tolerances of ±0.05 mm for features that require it, and high-precision tolerances of ±0.025 mm only for features where the functional requirement genuinely demands it.
+A practical approach is to specify standard tolerances of ±0.10 mm for the majority of features, precision tolerances of ±0.05 mm for features that require it, and high-precision tolerances of ±0.025 mm only for features where the functional requirement genuinely demands it. Use the [CNC tolerance checker](/tools/cnc-tolerance-checker/) to validate that your specified tolerances are achievable in titanium.
 
 ## Material and stock optimization
 
@@ -56,3 +56,5 @@ The stock size should be specified to allow for machining allowance on all surfa
 | Stock form | Match to component geometry | Minimizes material removal |
 
 ---
+
+For a DFM review of your titanium component, [submit your design](/rfq/) and our engineers will return manufacturability feedback with your quotation.

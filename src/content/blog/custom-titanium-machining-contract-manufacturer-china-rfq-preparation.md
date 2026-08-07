@@ -11,7 +11,7 @@ coverImageAlt: Titanium CNC Machining Services
 featured: false
 ---
 
-If you are preparing an RFQ for custom titanium machining in China, the most important thing is not the lowest unit price but whether the supplier can hold tolerance, traceability, and delivery consistency across the full production run. For [aerospace](/industries/aerospace/), medical, energy, and general industrial parts, the right contract manufacturer is one that can quote clearly, document material and process controls, and explain where the real cost and risk sit.
+If you are preparing an RFQ for custom titanium machining in China, the most important thing is not the lowest unit price but whether the supplier can hold tolerance, traceability, and delivery consistency across the full production run. For [aerospace](/industries/aerospace/), medical, energy, and general industrial parts, the right contract manufacturer is one that can quote clearly, document material and process controls, and explain where the real cost and risk sit. For an example of how a vertically integrated China manufacturer documents these controls, see the [titanium CNC machining manufacturer](/titanium-cnc-machining-manufacturer/) profile.
 
 ## What a strong RFQ should ask for
 

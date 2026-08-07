@@ -11,7 +11,7 @@ coverImageAlt: Thin-wall titanium component during precision CNC machining
 featured: false
 ---
 
-Thin-wall titanium components present the most demanding combination of design and manufacturing challenges. The low elastic modulus of titanium means that thin walls deflect more under cutting forces than equivalent steel features, and the material's work hardening behavior means that each pass changes the surface condition for the next pass. Successful thin-wall machining requires a process strategy that accounts for these factors from the first roughing pass through the final finishing cut. For the overall design rules that apply to all titanium features, see the [titanium CNC design guide](/blog/titanium-cnc-design-guide-machinability-rules/).
+Thin-wall titanium components present the most demanding combination of design and manufacturing challenges. The low elastic modulus of titanium means that thin walls deflect more under cutting forces than equivalent steel features, and the material's work hardening behavior means that each pass changes the surface condition for the next pass. Successful thin-wall machining requires a process strategy that accounts for these factors from the first roughing pass through the final finishing cut. For the overall design rules that apply to all titanium features, see the [titanium CNC design guide](/blog/titanium-cnc-design-guide-machinability-rules/), and our [5-axis CNC machining services](/titanium-cnc-machining-services/3-5-axis-cnc-machining/) apply these strategies on production thin-wall components.
 
 ## How wall geometry determines process limits
 
@@ -53,7 +53,7 @@ For extremely thin walls — aspect ratios above 12 to 1 — multiple finish pas
 
 ---
 
-**Table 1: Thin-wall machining parameters by aspect ratio (Ti-6Al-4V)**
+**Table 1: Thin-wall machining parameters by aspect ratio ([Ti-6Al-4V](/materials/grade-5/))**
 
 | Aspect ratio | Radial engagement | Finishing stock | Tool condition | Expected deflection |
 |-------------|------------------|----------------|---------------|-------------------|
@@ -63,6 +63,8 @@ For extremely thin walls — aspect ratios above 12 to 1 — multiple finish pas
 | Above 15:1 | 3— % | 0.1–0.15 mm | New tool, multiple passes | 0.10–0.20 mm |
 
 ---
+
+For thin-wall components where deflection control is critical, [request a process study](/rfq/) and our engineers will define the toolpath and fixturing strategy for your geometry.
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — Wall stiffness vs aspect ratio curve: A graph showing relative stiffness decreasing with the cube of aspect ratio for titanium thin walls. Annotated with process regimes — stable, transitional, deflection-dominated, and redesign-recommended zones. Supports queries about thin-wall machining limits for titanium.

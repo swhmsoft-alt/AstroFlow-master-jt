@@ -19,7 +19,7 @@ The four CP grades are defined by their maximum oxygen content. Grade 1 allows 0
 
 The progression is continuous and predictable. Grade 1 has the lowest strength, approximately 240 MPa tensile, and the highest ductility, with elongation of 24 percent. Grade 4 has the highest strength among CP grades, approximately 550 MPa tensile, with elongation of 15 percent. Each grade increases in strength by approximately 50 to 70 MPa over the previous grade while ductility decreases correspondingly.
 
-Grade 2 is the most widely used CP grade because it offers the best practical balance of properties. Its 340 MPa tensile strength is adequate for most industrial applications, and its 20 percent elongation provides sufficient formability for standard forming and bending operations. Grade 1 is specified where maximum formability is required. Grade 3 and Grade 4 are used where higher strength is needed but the application cannot justify the cost or complexity of an alpha-beta alloy.
+[Grade 2](/materials/grade-2/) is the most widely used CP grade because it offers the best practical balance of properties. Its 340 MPa tensile strength is adequate for most industrial applications, and its 20 percent elongation provides sufficient formability for standard forming and bending operations. Grade 1 is specified where maximum formability is required. Grade 3 and Grade 4 are used where higher strength is needed but the application cannot justify the cost or complexity of an alpha-beta alloy.
 
 ## Typical applications by grade
 
@@ -29,7 +29,7 @@ Grade 1 is used for applications requiring maximum formability, such as deep-dra
 
 Grade 3 is the least commonly specified CP grade. It is used where slightly higher strength than Grade 2 is needed but the reduced formability of Grade 4 is not acceptable. Some heat exchanger applications specify Grade 3 for tube sheets where the tube-to-tube-sheet joint strength benefits from the higher material strength.
 
-Grade 4 is used for medical implant components, particularly dental implants and non-load-bearing orthopedic devices. Its higher strength provides better mechanical performance than Grade 2 while maintaining the biocompatibility of unalloyed titanium. Grade 4 is also used in some aerospace and industrial fasteners where the strength of CP titanium is sufficient and the corrosion resistance is required.
+[Grade 4](/materials/grade-4/) is used for medical implant components, particularly dental implants and non-load-bearing orthopedic devices. Its higher strength provides better mechanical performance than Grade 2 while maintaining the biocompatibility of unalloyed titanium. Grade 4 is also used in some aerospace and industrial fasteners where the strength of CP titanium is sufficient and the corrosion resistance is required.
 
 ## Machining and forming characteristics
 
@@ -51,6 +51,8 @@ CP grades have excellent formability, particularly at elevated temperatures. Gra
 | Grade 4 | 0.40% | 550 | 15 | Medical implants, fasteners, higher-strength needs |
 
 ---
+
+To compare CP grades against alloyed titanium grades for your application, use the [titanium grade finder](/tools/titanium-grade-finder/).
 
 <!-- VISUAL CONTENT BRIEF (for content planning only — NOT rendered on page)
 Fig 1 — CP grade strength-ductility trade-off: A bar chart showing tensile strength and elongation for Grades 1 through 4, demonstrating the inverse relationship controlled by oxygen content. Supports queries about differences between CP titanium grades and selection criteria.

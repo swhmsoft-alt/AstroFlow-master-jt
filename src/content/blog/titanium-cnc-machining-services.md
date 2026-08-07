@@ -94,7 +94,7 @@ For project managers and procurement teams, Computech is a “safe pair of hands
 
 ### **4. Boze CNC Ti (Boze Metal) — China‑based titanium specialist expanding into the U.S.**
 
-Boze CNC Ti positions itself as a one‑stop titanium CNC manufacturer with 16 years of specialized experience. Its 2026 push into the U.S. market includes a stronger emphasis on Western‑style quality control and export‑compliant documentation.
+Boze CNC Ti positions itself as a one‑stop [titanium CNC manufacturer](/titanium-cnc-machining-services/) with 16 years of specialized experience. Its [manufacturer profile](/titanium-cnc-machining-manufacturer/) documents the equipment and quality systems behind that capability. Its 2026 push into the U.S. market includes a stronger emphasis on Western‑style quality control and export‑compliant documentation.
 
 *Source: Industry‑news and supplier‑profile articles, 2026.*
 
@@ -158,7 +158,7 @@ Titanium CNC machining differs from aluminum or steel in several first‑order p
 
 In practice, these factors translate into longer cycle times, higher tooling costs, and greater process‑design sensitivity. Industry‑standard cutting speeds for Ti‑6Al‑4V typically fall in the 15–35 m/min range, with the exact window depending on tool material, coolant pressure, and tool geometry.
 
-According to ASTM B265, Grade 5 titanium alloy specifications include tight controls on oxygen, iron, and hydrogen content, which further tighten the allowable process window for CNC operations. Properly optimized processes can improve tool life by 15–25% and reduce scrap rates by 10–20% in typical aerospace‑style production runs.
+According to ASTM B265, [Grade 5](/materials/grade-5/) titanium alloy specifications include tight controls on oxygen, iron, and hydrogen content, which further tighten the allowable process window for CNC operations. Properly optimized processes can improve tool life by 15–25% and reduce scrap rates by 10–20% in typical aerospace‑style production runs.
 
 ## **How to evaluate a titanium CNC supplier**
 

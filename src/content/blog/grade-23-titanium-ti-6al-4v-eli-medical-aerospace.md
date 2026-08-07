@@ -11,11 +11,11 @@ coverImageAlt: Precision machined Grade 23 titanium medical implant component
 featured: false
 ---
 
-Grade 23 titanium, also designated Ti-6Al-4V ELI, is a version of the standard Ti-6Al-4V alloy with controlled lower limits on interstitial elements — oxygen, carbon, and iron. The reduced interstitial content improves ductility and fracture toughness while maintaining essentially the same strength as the standard grade. These characteristics make Grade 23 the standard material for surgical implant applications and for aerospace components requiring enhanced damage tolerance. For a comparison with the standard Grade 5 composition, see the [Grade 5 titanium guide](/blog/ti-6al-4v-grade-5-titanium-guide/).
+[Grade 23 titanium](/materials/grade-23/), also designated Ti-6Al-4V ELI, is a version of the standard Ti-6Al-4V alloy with controlled lower limits on interstitial elements — oxygen, carbon, and iron. The reduced interstitial content improves ductility and fracture toughness while maintaining essentially the same strength as the standard grade. These characteristics make Grade 23 the standard material for surgical implant applications and for aerospace components requiring enhanced damage tolerance. For a comparison with the standard Grade 5 composition, see the [Grade 5 titanium guide](/blog/ti-6al-4v-grade-5-titanium-guide/).
 
 ## Composition and property differences from Grade 5
 
-The primary difference between Grade 23 and Grade 5 is the maximum oxygen content. Grade 23 limits oxygen to 0.13 percent by weight, compared to 0.20 percent for Grade 5. The lower oxygen content reduces solid-solution strengthening in the alpha phase, producing a material with slightly lower strength but significantly higher ductility and fracture toughness.
+The primary difference between Grade 23 and [Grade 5](/materials/grade-5/) is the maximum oxygen content. Grade 23 limits oxygen to 0.13 percent by weight, compared to 0.20 percent for Grade 5. The lower oxygen content reduces solid-solution strengthening in the alpha phase, producing a material with slightly lower strength but significantly higher ductility and fracture toughness.
 
 The tensile strength of Grade 23 in the annealed condition is 860 to 960 MPa, compared to 900 to 1000 MPa for Grade 5. The yield strength is 790 to 900 MPa, compared to 830 to 950 MPa. The elongation is 12 to 18 percent, compared to 10 to 15 percent for Grade 5. The fracture toughness is typically 20 to 40 percent higher than Grade 5, depending on the specific heat treatment condition.
 
@@ -25,7 +25,7 @@ All other physical properties — density 4.43 g/cm³, elastic modulus 105 to 11
 
 ## Biocompatibility and medical applications
 
-Grade 23 is the most widely specified titanium alloy for permanent medical implants. Its combination of high strength, excellent corrosion resistance, and proven biocompatibility makes it suitable for load-bearing orthopedic and dental applications. The material has been used in clinical applications for more than four decades, and its long-term performance is well documented.
+Grade 23 is the most widely specified titanium alloy for permanent [medical implants](/industries/medical/). Its combination of high strength, excellent corrosion resistance, and proven biocompatibility makes it suitable for load-bearing orthopedic and dental applications. The material has been used in clinical applications for more than four decades, and its long-term performance is well documented.
 
 The biocompatibility of Grade 23 is determined by its surface oxide layer, which forms spontaneously in air and in bodily fluids. The oxide layer is chemically stable and isolates the underlying metal from the biological environment. The release of metal ions from Grade 23 in vivo is minimal, and the concentrations are well below levels associated with adverse biological responses.
 
