@@ -116,7 +116,6 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
           </a>
           
           {Object.entries(indData.systems).map(([sysName, sysEntities]) => {
-            const sysSlug = sysName.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
             return (
               <div class="mb-10">
                 <h2 class="text-xl font-bold mb-4" style="color: var(--theme-text);">
@@ -134,9 +133,6 @@ const totalSystems = Object.keys(Object.fromEntries(entities.map(e => [e.data.sy
                     );
                   })}
                 </div>
-                <a href={`/products/systems/${sysSlug}/`} class="inline-block mt-3 text-sm font-medium" style="color: var(--theme-primary);">
-                  View {sysName} System →
-                </a>
               </div>
             );
           })}
