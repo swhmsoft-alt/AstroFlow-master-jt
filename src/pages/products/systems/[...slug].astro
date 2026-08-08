@@ -52,7 +52,8 @@ const uniqueProcesses = [...new Set(allProducts.flatMap(p => p.data.process || [
 const uniqueProductIndustries = [...new Set(allProducts.map(p => p.data.industry).filter(Boolean))];
 
 // Unique key specs from products
-const keySpecs = allProducts.slice(0, 6).map(p => ({
+const keySpecs = allProducts.map(p => ({
+  slug: p.slug || p.id?.replace('.json','') || '',
   title: p.data.title,
   material: p.data.material,
   process: (p.data.process || []).slice(0, 2).join(', '),
@@ -262,7 +263,9 @@ const solutionContent = getSolutionForSystem({
             <tbody>
               {keySpecs.map((spec) => (
                 <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
-                  <td class="px-4 py-3 font-medium" style="color: var(--theme-text);">{spec.title}</td>
+                  <td class="px-4 py-3 font-medium">
+                    <a href={`/products/product-entities/${spec.slug}/`} class="hover:underline" style="color: var(--theme-text);">{spec.title}</a>
+                  </td>
                   <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{spec.material || '-'}</td>
                   <td class="px-4 py-3 hidden md:table-cell" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{spec.process || '-'}</td>
                   <td class="px-4 py-3 hidden lg:table-cell text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{spec.function || ''}</td>

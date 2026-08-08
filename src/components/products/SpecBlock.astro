@@ -2,6 +2,8 @@
 // src/components/products/SpecBlock.astro
 // B2B Technical Spec Block — quick-scan card (theme-consistent)
 
+import { linkifyProcessSteps } from '../../utils/process-links';
+
 interface FAQ { q: string; a: string; }
 
 interface Props {
@@ -134,7 +136,15 @@ if (ndt_methods) add('NDT & Quality Control', ndt_methods, 'Per ISO/IEC standard
           <span style="color: var(--theme-primary);">⚙️</span> CNC & Stress Relief Controls
         </div>
         <ul class="space-y-1.5 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-          {manufacturing_process && <li>• <strong style="color: var(--theme-text);">Process:</strong> {manufacturing_process}.</li>}
+          {manufacturing_process && <li>• <strong style="color: var(--theme-text);">Process:</strong>{' '}
+            {linkifyProcessSteps(manufacturing_process).map((step, i) => (
+              <span key={i}>
+                {i > 0 && ', '}
+                {step.href
+                  ? <a href={step.href} class="underline underline-offset-2" style="color: var(--theme-primary);">{step.text}</a>
+                  : <span>{step.text}</span>}
+              </span>
+            ))}.</li>}
           <li>• <strong style="color: var(--theme-text);">Thermal Stress Relief:</strong> Post-machining vacuum annealing (540-675°C under Argon) reduces distortion risk &gt;70%.</li>
           <li>• <strong style="color: var(--theme-text);">Rolled Threads:</strong> Thread rolling (not cutting) increases fatigue limits by 30-50%.</li>
         </ul>

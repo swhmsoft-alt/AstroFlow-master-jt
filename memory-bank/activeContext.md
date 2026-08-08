@@ -1,12 +1,35 @@
 # Active Context
 
-> **Last Updated:** 2026-08-07
-> **Current Focus:** Chemical 页优化 — 导航行业下拉 + 行业页网格新增 Chemical 模块（9 行业卡片可点击）+ BuyerIntentBlock CTA 去重。仅英文。
+> **Last Updated:** 2026-08-08
+> **Current Focus:** 产品页工艺流程加链接 — `manufacturing_process` 工艺步骤链接到服务/能力页（SpecBlock + EngineeringReport 三处渲染）。
 
 ## Current Status
-✅ **Chemical 页优化完成（2026-08-07）：** 导航 Industries 下拉新增 Chemical；`/industries/` 行业页网格新增 Chemical Processing 模块（9 个行业卡片全部可点击，带 Learn More 链接）；`BuyerIntentBlock` 组件增加 `showCta` prop 并在 Chemical 页传 `false` 移除重复 CTA；同时修复组件历史遗留的标签闭合错位。`npx astro build` ✅ **2219 页**；所有校验通过。**未部署（待用户确认）。**
+✅ **产品页工艺流程链接化完成（2026-08-08）：** 新建 `src/utils/process-links.ts`（工艺关键词→服务/能力 URL 映射 + `linkifyProcessSteps` 纯函数），改造 `SpecBlock.astro` 与 `EngineeringReport.astro` 的 3 处 `manufacturing_process` 渲染：每项工艺步骤命中映射则渲染为 `<a>` 链接（`/titanium-cnc-machining-services/cnc-milling-turning/`、`/titanium-surface-treatment/chemical-passivation/`、`/products/capabilities/{slug}/` 等），未命中保持纯文本。覆盖全库 5 种 `manufacturing_process` 模板值（270+ 有 spec 产品页）。`npx astro build` ✅ **2219 页**；tsc 0 错误。**未部署。**
 
 ## Recent Decisions
+
+### 产品页工艺流程链接化（2026-08-08）
+**背景：** 用户要求产品页"工艺流程"中的工艺（如 fender mounting bolt 的 CNC turning / heat treatment / surface grinding / passivation / dimensional check）链接到对应服务和能力页面。根因：`manufacturing_process`（product-specs frontmatter，全库仅 5 种模板值）渲染为纯文本，无任何内链。
+
+**执行（3 文件）：**
+1. **`src/utils/process-links.ts`**（新建）— `PROCESS_LINK_MAP` 有序映射（长词优先）：CNC 车铣/5轴/精密加工→`/titanium-cnc-machining-services/cnc-milling-turning/`；热处理/应力消除→`/products/capabilities/vacuum-heat-treatment/`；磨削→`high-precision-grinding`；钝化→`/titanium-surface-treatment/chemical-passivation/`；检验（CMM/vision/optical gauging/check）→`100-dimensional-inspection-cmm`；另有 thread-rolling / electropolishing / ultrasonic-cleaning / pvd-coating / bead-blasting / diamond-cut-beveling / deburring 能力页。`linkifyProcessSteps(str)` 按逗号拆分、trim、逐步骤匹配，返回 `{text, href?}[]`。
+2. **`SpecBlock.astro`** — "Process:" 行（⚙️ CNC & Stress Relief Controls）改为每步骤 `<a class="underline underline-offset-2">` 渲染。
+3. **`EngineeringReport.astro`** — Specifications "Process:" 列表项 + "is manufactured using…" 段落（原 `toLowerCase()` 改为保留原大小写步骤文本）两处同样链接化。
+
+**验证：** `check-undefined-slugs` 0 issue；`npx tsc --noEmit` 0 错误；`npx astro build` ✅ 2219 页；dist 抽查 fender + 其他 4 种工艺模板产品页（acetabular-cup / acoustic-waveguide-extension / air-sparger-pipe / brake-bleed-port-screw）：全部步骤链接命中且目标 URL 均为有效页面；JSON-LD HowToStep 保持纯文本；`git status` 无残留临时文件（process-links.ts 为新增应用代码）。
+
+**下一步：** 用户确认后 `git push` + 部署。可后续将 `PROCESS_LINK_MAP` 扩充覆盖更多工艺关键词（如 forging / welding / EDM）。
+
+### 系统页组件链接 + 完整产品列表（2026-08-08）
+**背景：** 用户报告系统页（如 `premium-consumer-electronics-wearables`）：① 组件没有链接到具体产品；② 产品列表不全（仅 6 行）。根因：`keySpecs = allProducts.slice(0, 6)` 硬编码截断；表格组件名渲染为纯文本无 `<a>`；系统 JSON `productEntities` 只列 13 个而匹配 `system === title` 的产品实体有 27 个，导致 `/products/` 索引计数（13 parts）与详情页（27 Components）不一致。
+
+**执行（2 文件）：**
+1. **`src/pages/products/systems/[...slug].astro`**（60 个系统共享模板）— `keySpecs` 移除 `slice(0, 6)`；为每个 spec 增加 `slug`（`p.slug || p.id?.replace('.json','') || ''` fallback 链）；组件名称 `<td>` 内包 `<a href={`/products/product-entities/${spec.slug}/`} class="hover:underline">`。
+2. **`src/content/systems/premium-consumer-electronics-wearables.json`** — `productEntities` 数组补全 13 → 27（字母序，与 product-entities 集合顺序一致）：新增 camera-hot-shoe-mount、camera-lens-filter-ring、edc-pen-body、edc-utility-knife-handle、flashlight-body、headphone-driver-enclosure、key-organizer-screw、laptop-hinge-bracket、laptop-hinge-shaft、pen-clip、pocket-comb、smartphone-sim-tray、smartphone-volume-button、wallet-card-case。
+
+**验证：** `check-undefined-slugs.mjs` 0 issue；`npx astro build` ✅ 2219 页；dist 抽查：组件表格 **27 行**全部带 `/products/product-entities/{slug}/` 链接（27 个目标页均存在）、用户列出的 6 个组件保持表格前部（字母序）、`/products/` 索引页显示 "27 parts"；`git status` 仅 2 个预期文件改动，无残留临时文件。
+
+**下一步：** 用户确认后 `git push` + 部署。**后续对齐审计（2026-08-08）已完成：** 全量扫描全部 60 个系统的 `productEntities` 数组 vs product-entities 集合（`system === title`），差异 0；所有产品实体均有 `system` 字段且均指向存在的系统标题（孤儿 0）。即此前的偏差仅为 premium-consumer-electronics-wearables 一处（已修复），其余系统数据源天然一致，无需再改其他系统 JSON。
 
 ### Chemical 页优化 — 导航/行业网格/CTA 去重（2026-08-07）
 **背景：** 用户要求：① 导航行业下拉加 Chemical；② `/industries/` 行业页加 Chemical 模块并为全部行业卡片加链接；③ 移除 Chemical 页 BuyerIntentBlock 内 CTA（与页面底部 CTA 重复）。

@@ -2,6 +2,8 @@
 // src/components/products/EngineeringReport.astro
 // Per-product generated content — no shared template text
 
+import { linkifyProcessSteps } from '../../utils/process-links';
+
 interface Props {
   title: string;
   sku: string;
@@ -91,7 +93,16 @@ const sectionManufacturing = t.sectionTitles?.manufacturing || `Manufacturing Pr
             <li><strong style="color: var(--theme-text);">Category:</strong> {category}</li>
             <li><strong style="color: var(--theme-text);">Industry:</strong> {industry}</li>
             <li><strong style="color: var(--theme-text);">Material:</strong> {titanium_grade}</li>
-            {manufacturing_process && <li><strong style="color: var(--theme-text);">Process:</strong> {manufacturing_process}</li>}
+            {manufacturing_process && <li><strong style="color: var(--theme-text);">Process:</strong>{' '}
+              {linkifyProcessSteps(manufacturing_process).map((step, i) => (
+                <span key={i}>
+                  {i > 0 && ', '}
+                  {step.href
+                    ? <a href={step.href} class="underline underline-offset-2" style="color: var(--theme-primary);">{step.text}</a>
+                    : <span>{step.text}</span>}
+                </span>
+              ))}
+            </li>}
             {weight_reduction && <li><strong style="color: var(--theme-text);">Weight:</strong> {weight_reduction}</li>}
           </ul>
         </div>
@@ -123,7 +134,15 @@ const sectionManufacturing = t.sectionTitles?.manufacturing || `Manufacturing Pr
       </h2>
       <div class="card-titanium p-4">
         <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          {title} is manufactured using {manufacturing_process.toLowerCase()}. Each operation is performed by certified machinists with real-time process monitoring and dimensional verification at critical stages. Heat code traceability is maintained throughout all production steps.
+          {title} is manufactured using{' '}
+          {linkifyProcessSteps(manufacturing_process).map((step, i) => (
+            <span key={i}>
+              {i > 0 && ', '}
+              {step.href
+                ? <a href={step.href} class="underline underline-offset-2" style="color: var(--theme-primary);">{step.text}</a>
+                : <span>{step.text}</span>}
+            </span>
+          ))}. Each operation is performed by certified machinists with real-time process monitoring and dimensional verification at critical stages. Heat code traceability is maintained throughout all production steps.
         </p>
       </div>
     </section>
