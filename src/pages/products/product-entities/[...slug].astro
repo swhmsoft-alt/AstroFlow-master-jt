@@ -19,6 +19,11 @@ const { data } = entry;
 
 const seoTitle = data.seoTitle || `${data.title} | ${data.material} | Boze Titanium Manufacturing Center`;
 const seoDesc = data.seoDescription || `${data.title} — ${data.function}. Engineering specs, failure analysis, and manufacturing process. AS9100D & ISO 9001.`;
+const pageUrl = `https://cnc.bozemetal.com/products/product-entities/${entry.slug || entry.id?.replace(/\.(json|md)$/, '') || ''}/`;
+const productImage = data.image || data.gallery?.[0]?.image || '';
+const productImageUrl = productImage
+  ? (productImage.startsWith('http') ? productImage : `https://cnc.bozemetal.com${productImage}`)
+  : '';
 
 // Load related entities (shared knowledge nodes)
 const allSystems = await getCollection('systems');
@@ -115,25 +120,23 @@ if (specEntry) {
 }
 
 // JSON-LD
+// Product entity: linked to Legal Organization + BOZE CNC Ti brand by @id.
+// No price on B2B RFQ products → no offers (Google requires numeric price).
 const schemaProduct = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Product",
+      "@id": `${pageUrl}#product`,
+      "url": pageUrl,
       "name": data.title,
       "sku": data.sku || specEntry?.data?.sku || '',
       "description": data.seoDescription || data.function,
       "category": data.category,
       "material": data.material,
-      "manufacturer": { "@type": "Organization", "name": "Boze Titanium Manufacturing Center" },
-      "brand": { "@type": "Brand", "name": "BOZE" },
-      "offers": {
-        "@type": "Offer",
-        "price": "Inquire",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
-      ...(system ? { "isRelatedTo": { "@type": "Product", "name": system.data.title }, "isPartOf": { "@type": "Product", "name": data.industry } } : { "isPartOf": { "@type": "Product", "name": data.industry } })
+      ...(productImageUrl ? { "image": [productImageUrl] } : {}),
+      "manufacturer": { "@type": "Organization", "@id": "https://www.bozemetal.com/#organization", "name": "Baoji Boze Metal Products Co., Ltd." },
+      "brand": { "@type": "Brand", "@id": "https://www.bozemetal.com/#brand-boze-cnc-ti", "name": "BOZE CNC Ti" }
     },
     {
       "@type": "HowTo",
@@ -197,7 +200,7 @@ if (schemaFaqData.length > 0) {
     </section>
   )}
 
-  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} materialSlug={materialPageSlug} />}
+  {specEntry && <RichEntityContent SpecContent={SpecContent} data={data} specEntry={specEntry} materialSlug={materialPageSlug} pageSlug={entry.slug || entry.id?.replace(/\.(json|md)$/, '') || ''} />}
 
 {!specEntry && <LegacyEntityContent data={data} system={system} material={material} allCaps={allCaps} faqData={faqData} materialSlug={materialPageSlug} />}
 

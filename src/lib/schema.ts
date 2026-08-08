@@ -20,12 +20,22 @@
 import { SITE } from '@config/site';
 
 // ── Constants ─────────────────────────────────────────
+//
+// Entity Identity (Single Source of Truth):
+//   Legal Entity      → https://www.bozemetal.com/#organization        (Baoji Boze Metal Products Co., Ltd.)
+//   Corporate Brand   → https://www.bozemetal.com/#brand-boze-metal    (BOZE Metal)
+//   Commercial Brand  → https://www.bozemetal.com/#brand-boze-cnc-ti   (BOZE CNC Ti)
+//   Manufacturing Ctr → https://cnc.bozemetal.com/#manufacturing-center (Boze Titanium Manufacturing Center)
+// NOTE: cnc.bozemetal.com/#organization MUST NOT exist (no second legal entity).
 
 const MAIN_SITE = 'https://www.bozemetal.com';
 const SITEROOT = SITE.url;
 const ORG_ID     = `${MAIN_SITE}/#organization`;
+const BRAND_BOZE_METAL_ID = `${MAIN_SITE}/#brand-boze-metal`;
+const BRAND_BOZE_CNC_TI_ID = `${MAIN_SITE}/#brand-boze-cnc-ti`;
 const WEBSITE_ID = `${SITEROOT}/#website`;
 const LOGO_ID    = `${SITEROOT}/#boze-logo`;
+const MANUFACTURING_CENTER_ID = `${SITEROOT}/#manufacturing-center`;
 
 // ── Page Type ─────────────────────────────────────────
 
@@ -74,13 +84,13 @@ export function buildOrganization() {
     '@id': ORG_ID,
     name: 'Baoji Boze Metal Products Co., Ltd.',
     legalName: 'Baoji Boze Metal Products Co., Ltd.',
-    alternateName: ['Boze Metal', 'Boze CNC Ti', 'Boze Titanium Manufacturing Center'],
+    alternateName: ['BOZE Metal', 'BOZE CNC Ti', 'BOZE'],
     url: MAIN_SITE,
     logo: { '@id': LOGO_ID },
-    brand: {
-      '@type': 'Brand',
-      name: 'Boze Titanium Manufacturing Center',
-    },
+    brand: [
+      { '@id': BRAND_BOZE_METAL_ID },
+      { '@id': BRAND_BOZE_CNC_TI_ID },
+    ],
     industry: 'Titanium Manufacturing',
     knowsAbout: [
       'Titanium CNC Machining',
@@ -115,12 +125,38 @@ export function buildOrganization() {
   };
 }
 
+export function buildBrands() {
+  return [
+    {
+      '@type': 'Brand',
+      '@id': BRAND_BOZE_METAL_ID,
+      name: 'BOZE Metal',
+    },
+    {
+      '@type': 'Brand',
+      '@id': BRAND_BOZE_CNC_TI_ID,
+      name: 'BOZE CNC Ti',
+      parentBrand: { '@id': BRAND_BOZE_METAL_ID },
+    },
+  ];
+}
+
+export function buildManufacturingCenter() {
+  return {
+    '@type': 'Organization',
+    '@id': MANUFACTURING_CENTER_ID,
+    name: 'Boze Titanium Manufacturing Center',
+    url: SITEROOT,
+    parentOrganization: { '@id': ORG_ID },
+    brand: { '@id': BRAND_BOZE_CNC_TI_ID },
+  };
+}
+
 export function buildWebSite() {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
     name: 'Boze Titanium Manufacturing Center',
-    alternateName: 'Boze Titanium Manufacturing Center',
     url: SITEROOT,
     description: 'Precision Titanium Manufacturing & CNC Machining Services',
     publisher: { '@id': ORG_ID },
@@ -242,22 +278,38 @@ export function buildProduct(input: {
   image?: string;
   category?: string;
   datePublished?: string | null;
+  /** Real numeric price (USD). offers is ONLY emitted when a real price exists. */
+  price?: number;
 }) {
   return {
     '@type': 'Product',
-    '@id': input.url,
+    '@id': `${input.url}#product`,
     name: input.name,
     description: input.description,
     url: input.url,
     ...(input.image ? { image: input.image } : {}),
     ...(input.category ? { category: input.category } : {}),
     ...(input.datePublished ? { datePublished: input.datePublished } : {}),
-    offers: {
-      '@type': 'Offer',
-      availability: 'https://schema.org/InStock',
-      price: 'Inquire',
-      priceCurrency: 'USD',
+    manufacturer: {
+      '@type': 'Organization',
+      '@id': ORG_ID,
+      name: 'Baoji Boze Metal Products Co., Ltd.',
     },
+    brand: {
+      '@type': 'Brand',
+      '@id': BRAND_BOZE_CNC_TI_ID,
+      name: 'BOZE CNC Ti',
+    },
+    ...(input.price != null
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: input.price,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+        }
+      : {}),
   };
 }
 
@@ -396,8 +448,10 @@ export interface SchemaPageData {
 export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
   const graph: Record<string, unknown>[] = [];
 
-  // 1. Organization & WebSite — every page
+  // 1. Legal Organization + Brands + Manufacturing Center + WebSite — every page
   graph.push(buildOrganization());
+  graph.push(...buildBrands());
+  graph.push(buildManufacturingCenter());
   graph.push(buildImageObject());
   graph.push(buildWebSite());
 

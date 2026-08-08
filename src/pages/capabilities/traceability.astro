@@ -61,50 +61,5 @@ const canonicalURL = new URL('/capabilities/traceability/', Astro.site || 'https
 
   <TraceabilityPage />
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://cnc.bozemetal.com/capabilities/traceability/#webpage",
-        "url": "https://cnc.bozemetal.com/capabilities/traceability/",
-        "name": "Titanium Material Traceability & DFARS Compliance Standards",
-        "description": "Explore BOZE's unbroken material traceability infrastructure. 100% EN 10204 3.1 mill cert tracking, DFARS compliance, and 10-year digital records preservation.",
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": "https://cnc.bozemetal.com/#website",
-          "url": "https://cnc.bozemetal.com/",
-          "name": "Boze Titanium Manufacturing Center"
-        },
-        "breadcrumb": {
-          "@id": "https://cnc.bozemetal.com/capabilities/traceability/#breadcrumb"
-        }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://cnc.bozemetal.com/capabilities/traceability/#breadcrumb",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cnc.bozemetal.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Capabilities", "item": "https://cnc.bozemetal.com/capabilities/" },
-          { "@type": "ListItem", "position": 3, "name": "Material Traceability", "item": "https://cnc.bozemetal.com/capabilities/traceability/" }
-        ]
-      },
-      {
-        "@type": "ManufacturingBusiness",
-        "@id": "https://cnc.bozemetal.com/#organization",
-        "name": "Boze Titanium Manufacturing Center",
-        "url": "https://cnc.bozemetal.com/",
-        "knowsAbout": [
-          "Material Traceability",
-          "EN 10204 3.1 Certification",
-          "DFARS Compliance",
-          "Heat Number Tracking",
-          "Positive Material Identification",
-          "Chain of Custody Documentation",
-          "AS9100D Auditing Support",
-          "Laser Marking Identification"
-        ]
-      }
-    ]
-  })} />
+  
 </BaseLayout>

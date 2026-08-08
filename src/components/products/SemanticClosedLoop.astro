@@ -13,34 +13,28 @@ interface Props {
   industry: string;
   system: string;
   materialSlug?: string;
+  /** Real page slug (e.g. titanium-3d-printed-ergonomic-mouse). Used for stable @id URLs. */
+  pageSlug?: string;
 }
 
-const { productName, sku, material, unsNumber, upstream, downstream, industry, system, materialSlug } = Astro.props;
+const { productName, sku, material, unsNumber, upstream, downstream, industry, system, materialSlug, pageSlug } = Astro.props;
 
 const skuLower = sku.toLowerCase();
 const upStr = upstream.join('; ');
 const downStr = downstream.join('; ');
 
+// Stable @id namespace: always cnc.bozemetal.com (never bare bozemetal.com).
+const baseEntityUrl = `https://cnc.bozemetal.com/products/product-entities/${pageSlug || skuLower}`;
+
+// NOTE: the Product entity itself is emitted once, by the page-level
+// [...slug].astro schemaProduct block (linked to the Legal Organization by @id).
+// This component only adds taxonomy (DefinedTermSet) — no duplicate Product.
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Product",
-      "@id": `https://bozemetal.com/products/product-entities/${skuLower}/#product`,
-      "name": productName,
-      "sku": sku,
-      "material": material,
-      "category": industry,
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "itemCondition": "https://schema.org/NewCondition",
-        "availability": "https://schema.org/InStock"
-      }
-    },
-    {
       "@type": "DefinedTermSet",
-      "@id": `https://bozemetal.com/products/product-entities/${skuLower}/#topology`,
+      "@id": `${baseEntityUrl}/#topology`,
       "name": "Industrial Component Topology",
       "hasDefinedTerm": [
         { "@type": "DefinedTerm", "name": "Upstream Integration", "description": upStr },
@@ -49,7 +43,7 @@ const jsonLd = JSON.stringify({
     },
     {
       "@type": "DefinedTermSet",
-      "@id": `https://bozemetal.com/products/product-entities/${skuLower}/#classification`,
+      "@id": `${baseEntityUrl}/#classification`,
       "name": "Component Classification",
       "hasDefinedTerm": [
         { "@type": "DefinedTerm", "name": "Industry", "description": industry },

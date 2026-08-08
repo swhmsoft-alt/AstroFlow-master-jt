@@ -9,6 +9,9 @@ export interface Props {
 
 const { grade, gradeKey, lang } = Astro.props;
 const siteUrl = 'https://cnc.bozemetal.com';
+const brandId = 'https://www.bozemetal.com/#brand-boze-cnc-ti';
+const orgId = 'https://www.bozemetal.com/#organization';
+const orgName = 'Baoji Boze Metal Products Co., Ltd.';
 const canonicalURL = `${siteUrl}/materials/${gradeKey}/`;
 const currentDate = new Date().toISOString().split('T')[0];
 
@@ -31,8 +34,8 @@ const faqItems = (grade.faqs || []).map((faq) => ({
       headline: grade.pageTitle,
       description: grade.metaDescription,
       name: `${grade.name} Titanium Precision CNC Machining`,
-      author: { '@type': 'Organization', name: 'Bozemetal CNC Ti Manufacturing' },
-      publisher: { '@type': 'Organization', name: 'Bozemetal CNC Ti Manufacturing', url: siteUrl },
+      author: { '@type': 'Organization', '@id': brandId, name: 'BOZE CNC Ti' },
+      publisher: { '@type': 'Organization', '@id': brandId, name: 'BOZE CNC Ti', url: 'https://www.bozemetal.com' },
       datePublished: currentDate,
       dateModified: currentDate,
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
@@ -50,14 +53,11 @@ const faqItems = (grade.faqs || []).map((faq) => ({
     {
       '@type': 'Product',
       '@id': canonicalURL + '#product',
+      url: canonicalURL,
       name: `${grade.name} Titanium Precision Machining Services`,
       description: grade.subtitle,
-      brand: { '@type': 'Brand', name: 'Boze Titanium Manufacturing Center' },
-      offers: {
-        '@type': 'Offer',
-        availability: 'https://schema.org/InStock',
-        itemCondition: 'https://schema.org/NewCondition',
-      },
+      brand: { '@type': 'Brand', '@id': brandId, name: 'BOZE CNC Ti' },
+      manufacturer: { '@type': 'Organization', '@id': orgId, name: orgName },
     },
     ...(grade.faqs && grade.faqs.length > 0 ? [{
       '@type': 'FAQPage',

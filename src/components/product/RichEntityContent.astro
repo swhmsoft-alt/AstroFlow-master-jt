@@ -16,9 +16,10 @@ export interface Props {
   data: any;
   specEntry?: any;
   materialSlug?: string;
+  pageSlug?: string;
 }
 
-const { SpecContent, data, specEntry, materialSlug } = Astro.props;
+const { SpecContent, data, specEntry, materialSlug, pageSlug } = Astro.props;
 const fm = specEntry?.data || {};
 
 const moq = typeof fm.moq === 'number' ? fm.moq : (typeof fm.moq === 'string' ? parseInt(fm.moq) || 1 : 1);
@@ -176,6 +177,7 @@ const faqs = (fm.faqs && fm.faqs.length > 0) ? fm.faqs : (data.faq || []);
   industry={data.industry || ''}
   system={data.system || ''}
   materialSlug={materialSlug}
+  pageSlug={pageSlug}
 
 />
 

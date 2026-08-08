@@ -87,6 +87,7 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
   tags={tags.length > 0 ? tags : undefined}
   ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
   alternateLinks={filteredAlternateLinks}
+  pageType="blog-post"
 >
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label={t('blog.Slug].breadcrumb')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -245,17 +246,8 @@ const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blo
     </div>
   </section>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": data.title,
-    "description": data.description,
-    "image": data.coverImage || '',
-    "datePublished": pubDateISO,
-    "author": { "@type": "Person", "name": data.author },
-    "publisher": { "@type": "Organization", "name": "Boze Titanium Manufacturing Center" }
-  })} />
+  <!-- Structured Data: BaseLayout's buildPageGraph already emits Article
+       (linked to the Legal Organization by @id). No duplicate BlogPosting. -->
 </BaseLayout>
 
 <style is:global>

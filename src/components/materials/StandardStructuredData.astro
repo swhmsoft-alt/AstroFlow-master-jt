@@ -9,8 +9,12 @@ export interface Props {
 
 const { standard, lang, canonicalURL } = Astro.props;
 const siteName = 'Boze Titanium Manufacturing Center';
-const orgName = 'Bozemetal CNC Ti Manufacturing';
-const orgUrl = 'https://cnc.bozemetal.com';
+const brandId = 'https://www.bozemetal.com/#brand-boze-cnc-ti';
+const brandName = 'BOZE CNC Ti';
+const orgId = 'https://www.bozemetal.com/#organization';
+const orgName = 'Baoji Boze Metal Products Co., Ltd.';
+const orgUrl = 'https://www.bozemetal.com';
+const imageUrl = 'https://cnc.bozemetal.com/uploads/boze-tmc-og-en.png';
 const currentDate = new Date().toISOString().split('T')[0];
 
 // Build breadcrumb items
@@ -42,14 +46,16 @@ const faqItems = standard.faqs.map((faq, i) => ({
       name: `${standard.name} Titanium Precision CNC Machining Services`,
       author: {
         '@type': 'Organization',
-        name: orgName,
+        '@id': brandId,
+        name: brandName,
       },
       publisher: {
         '@type': 'Organization',
-        name: orgName,
+        '@id': brandId,
+        name: brandName,
         url: orgUrl,
       },
-      image: `${orgUrl}/og-image.jpg`,
+      image: imageUrl,
       datePublished: currentDate,
       dateModified: currentDate,
       mainEntityOfPage: {
@@ -76,24 +82,18 @@ const faqItems = standard.faqs.map((faq, i) => ({
     {
       '@type': 'Product',
       '@id': canonicalURL.href + '#product',
+      url: canonicalURL.href,
       name: `${standard.name} Titanium Precision Machining Services`,
       description: standard.subtitle,
       brand: {
         '@type': 'Brand',
-        name: siteName,
-      },
-      offers: {
-        '@type': 'Offer',
-        availability: 'https://schema.org/InStock',
-        itemCondition: 'https://schema.org/NewCondition',
-        priceSpecification: {
-          '@type': 'UnitPriceSpecification',
-          priceCurrency: 'USD',
-        },
+        '@id': brandId,
+        name: brandName,
       },
       category: standard.category,
       manufacturer: {
         '@type': 'Organization',
+        '@id': orgId,
         name: orgName,
       },
     },

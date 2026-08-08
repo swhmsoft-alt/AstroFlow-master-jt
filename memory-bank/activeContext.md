@@ -503,3 +503,75 @@ The cnc.bozemetal.com site branding has been systematically migrated from "BOZE 
 1. **Build & deploy** — Run `npm run build` and deploy to verify the changes live
 2. **Monitor search console** — After deployment, monitor Google Search Console for re-indexing of the new brand entity
 3. **12-language translation update** — Update all other language files (de, ja, fr, es, pt, etc.) to match the English rebranding
+
+---
+
+## Global Entity Alignment — JSON-LD Restructure (2026-08-08)
+
+### Context
+cnc.bozemetal.com (Boze Titanium Manufacturing Center) restructured to align with main site (BOZE CNC Ti) per client instruction. **Main site www.bozemetal.com unchanged.**
+
+### Knowledge Graph (Single Source of Truth in `src/lib/schema.ts`)
+```
+Baoji Boze Metal Products Co., Ltd.   Legal Entity     @id https://www.bozemetal.com/#organization
+  ├─ BOZE Metal                       Corporate Brand  @id https://www.bozemetal.com/#brand-boze-metal
+  │    └─ BOZE CNC Ti                 Commercial Brand @id https://www.bozemetal.com/#brand-boze-cnc-ti (parentBrand: BOZE Metal)
+  └─ Boze Titanium Manufacturing Center  Manufacturing Center Org  @id https://cnc.bozemetal.com/#manufacturing-center
+       (parentOrganization → Legal Entity, brand → BOZE CNC Ti)
+WebSite: cnc.bozemetal.com/#website, name "Boze Titanium Manufacturing Center", publisher → Legal Entity @id
+```
+
+### Changes
+- `src/lib/schema.ts`: 4 fixed @id constants; `buildBrands()` (BOZE Metal + BOZE CNC Ti w/ parentBrand); `buildManufacturingCenter()`; Organization.alternateName → [BOZE Metal, BOZE CNC Ti, BOZE]; Organization.brand → both Brand @ids; `buildProduct()` removed `price:'Inquire'` (offers only with real numeric price), manufacturer → Legal Org @id, brand → BOZE CNC Ti @id; every page graph now emits Brands + Manufacturing Center.
+- Product pages (`[...slug].astro`): Product has `@id=pageURL#product`, `url`, `image` (absolute), manufacturer=Legal Org, brand=BOZE CNC Ti; **removed** invalid offers + mis-typed `isRelatedTo`/`isPartOf`; image path fixed (svg→webp for the mouse).
+- `SemanticClosedLoop.astro`: **removed duplicate Product/AggregateOffer**; DefinedTermSet @id namespace → cnc.bozemetal.com + real page slug; added `pageSlug` prop (via RichEntityContent).
+- 7 capabilities pages + `[lang]/[...slug].astro` (7 multi-lang blocks): **removed hand-written JSON-LD** (WebPage/WebSite/Breadcrumb/ManufacturingBusiness @id=cnc/#organization) — BaseLayout is the only source. Fixed corrupted `capacity.astro` (duplicate template).
+- 5 landing pages (titanium-machining, titanium-cnc-machining-manufacturer, 5-axis, as9100, rfq): `Service.provider` → `@id` reference to Legal Org + legal name (was name/url mismatch).
+- Materials (`GradeStructuredData`/`StandardStructuredData`): eliminated phantom "Bozemetal CNC Ti Manufacturing"; author/publisher → BOZE CNC Ti Brand @id; Product brand/manufacturer aligned; removed invalid offers (UnitPriceSpecification w/o price).
+- `[lang]/blog/[...slug].astro`: removed hand-written BlogPosting (dup with BaseLayout Article); added `pageType="blog-post"` so Article emits.
+- Legal text: replaced "Bozhe Metal Titanium Technology Co., Ltd." (4th entity) with "Baoji Boze Metal Products Co., Ltd." in 12 i18n files + PrivacyPolicy + privacy-policy.astro. **⚠️ Client should verify legal entity name for privacy policy.**
+- Deleted legacy root files `ja_equipment.html` (4th entity, old export) and `temp_homepage.html`.
+
+### Verification
+- `node scripts/check-undefined-slugs.mjs` → 0 issues (15 files scanned)
+- `npx astro build` → 2219 pages, exit 0
+- dist scan (2208 html): `price="Inquire"`=0, `ManufacturingBusiness`=0, `Bozemetal CNC Ti Manufacturing`=0, `cnc.bozemetal.com/#organization`=0
+- Spot-checked: home/capabilities(en+ja)/landing/product-entities/materials-grade/blog(en+ja) — 1 Organization @id=www.bozemetal.com/#organization each, Brands + Manufacturing Center present, Product manufacturer=Legal Org / brand=BOZE CNC Ti, blog Article=1 BlogPosting=0.
+
+### Next Steps
+1. Deploy dist → re-test GSC URL inspection for the mouse product page (image now present, no invalid price).
+2. Client to confirm "Baoji Boze Metal Products Co., Ltd." is correct Data Controller for privacy policy (or revert legal-text change).
+
+
+---
+
+## Production Deploy Recovery + Deploy Script Hardening (2026-08-08)
+
+### Incident
+`npm run deploy` (deploy-basic-ftp.js, FTPS single-connection) hit `ECONNRESET` on cPanel → partial upload → site in "new HTML + missing _astro assets" state (CSS 404, broken rendering).
+
+### Root causes
+1. cPanel FTP unstable: FTPS data connection reset; 4-concurrent plain FTP triggers server throttling (large failure batches).
+2. Old `deploy-incremental-ftp.js`: `.deploy-diff.json` TTL 10min, no persisted success record → every restart re-did full SIZE compare + progress reset (user: "每次中断就从 0 开始").
+3. Processes launched via the agent's run_commands got killed when the terminal session closed.
+
+### Fixes
+- **`scripts/deploy-incremental-ftp.js` v2 (resume + auto-retry):**
+  - `deploy-manifest.json` persisted: every successfully uploaded file written immediately → restart resumes, no full re-compare, progress not lost.
+  - Internal retry loop (MAX_ROUNDS=8): failures auto-re-enter next round until 0 failures.
+  - Per-file retry (3x) + connection rebuild on ECONNRESET; UPLOAD_POOL 4→2 (stable).
+- Recovery executed via `Start-Process` (detached process, survives terminal close).
+- Deployed remaining 297 files (0 failures) after prior partial rounds; final SIZE-compare confirmed all 2671 files consistent on remote (the "2374 not uploaded" report was a false positive — files were already present & size-matched).
+- `deploy-manifest.json` now covers all 2671 files (future `deploy:inc` runs are fast no-ops unless manifest deleted).
+
+### Verified online (live)
+- `/_astro/_slug_.DbjtM4T2.css` → 200 (82KB)
+- `_astro/*.js` (client/vendor/component) → 200
+- Homepage, capabilities(EN+JA), products, materials, equipment, industries render normally
+- Mouse product page JSON-LD: `@id=pageURL#product`, manufacturer=Legal Org `www.bozemetal.com/#organization`, brand=`#brand-boze-cnc-ti` BOZE CNC Ti, no Inquire, image=webp, no `cnc.bozemetal.com/#organization`
+- capabilities/manufacturing: no ManufacturingBusiness, no cnc/#organization, has manufacturing-center + brands
+
+### Deploy process notes
+- Use `Start-Process node scripts/deploy-incremental-ftp.js` (detached) for long FTP deploys; do NOT delete `deploy-manifest.json` between runs.
+- `deploy-manifest.json` is runtime state (generated); consider adding to .gitignore if desired.
+
