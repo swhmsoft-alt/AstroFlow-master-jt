@@ -46,6 +46,7 @@ interface Props {
   productName?: string;
   productImage?: string;
   productCategory?: string;
+  productRfqUrl?: string;
   collectionName?: string;
   itemCount?: number;
   items?: { name: string; url: string }[];
@@ -80,6 +81,7 @@ const {
   productName,
   productImage,
   productCategory,
+  productRfqUrl,
   collectionName,
   itemCount,
   items,
@@ -133,7 +135,7 @@ const schemaData = {
   articleHeadline: explicitPageType === 'blog-post' ? title : undefined, articleDescription: description, articleAuthor: author,
   articleDatePublished: pubDate ?? undefined, serviceName: resolvedServiceName, serviceDescription: resolvedServiceName ? description : undefined,
   serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
-  productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
+  productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
 };
 const pageGraph = buildPageGraph(pageType, schemaData);
 const ldJson = JSON.stringify(pageGraph);

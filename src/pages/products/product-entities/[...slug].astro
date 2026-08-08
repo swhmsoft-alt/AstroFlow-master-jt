@@ -121,7 +121,9 @@ if (specEntry) {
 
 // JSON-LD
 // Product entity: linked to Legal Organization + BOZE CNC Ti brand by @id.
-// No price on B2B RFQ products → no offers (Google requires numeric price).
+// B2B RFQ Offer (no fixed price — custom-manufactured, NOT retail stock):
+//   Product → Offer (MadeToOrder) → seller (Legal Org) → /rfq/
+//   itemOffered back-ref closes the Product ⇄ Offer entity loop.
 const schemaProduct = {
   "@context": "https://schema.org",
   "@graph": [
@@ -136,7 +138,16 @@ const schemaProduct = {
       "material": data.material,
       ...(productImageUrl ? { "image": [productImageUrl] } : {}),
       "manufacturer": { "@type": "Organization", "@id": "https://www.bozemetal.com/#organization", "name": "Baoji Boze Metal Products Co., Ltd." },
-      "brand": { "@type": "Brand", "@id": "https://www.bozemetal.com/#brand-boze-cnc-ti", "name": "BOZE CNC Ti" }
+      "brand": { "@type": "Brand", "@id": "https://www.bozemetal.com/#brand-boze-cnc-ti", "name": "BOZE CNC Ti" },
+      "offers": {
+        "@type": "Offer",
+        "@id": `${pageUrl}#offer`,
+        "url": "https://cnc.bozemetal.com/rfq/",
+        "availability": "https://schema.org/MadeToOrder",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": { "@type": "Organization", "@id": "https://www.bozemetal.com/#organization", "name": "Baoji Boze Metal Products Co., Ltd." },
+        "itemOffered": { "@type": "Product", "@id": `${pageUrl}#product` }
+      }
     },
     {
       "@type": "HowTo",

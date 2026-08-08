@@ -13,7 +13,10 @@
  * Principles:
  *  - Only Schema.org official types & properties
  *  - Only entities supported by actual page content
- *  - No fabricated values (no fake offers, reviews, ratings, prices)
+ *  - No fabricated values: no fake reviews / ratings / prices. The B2B RFQ Offer
+ *    (price-less, MadeToOrder → /rfq/) is a real manufacturing-quotation
+ *    relationship, NOT a retail sale. Offers only carry `price` when a real
+ *    numeric price exists.
  *  - Every entity with an @id is referenceable across the site
  */
 
@@ -278,9 +281,36 @@ export function buildProduct(input: {
   image?: string;
   category?: string;
   datePublished?: string | null;
-  /** Real numeric price (USD). offers is ONLY emitted when a real price exists. */
+  /** Real numeric retail price (USD). When set, offers is a retail Offer (price + InStock). */
   price?: number;
+  /** B2B Request-Quote page URL. When set without price, emits a price-less manufacturing Offer (MadeToOrder) → RFQ. */
+  rfqUrl?: string;
 }) {
+  const hasPrice = input.price != null;
+  const hasRfq = Boolean(input.rfqUrl);
+  const offers =
+    hasPrice || hasRfq
+      ? {
+          '@type': 'Offer',
+          '@id': `${input.url}#offer`,
+          url: hasPrice ? input.url : input.rfqUrl,
+          ...(hasPrice ? { price: input.price, priceCurrency: 'USD' } : {}),
+          availability: hasPrice
+            ? 'https://schema.org/InStock'
+            : 'https://schema.org/MadeToOrder',
+          itemCondition: 'https://schema.org/NewCondition',
+          seller: {
+            '@type': 'Organization',
+            '@id': ORG_ID,
+            name: 'Baoji Boze Metal Products Co., Ltd.',
+          },
+          itemOffered: {
+            '@type': 'Product',
+            '@id': `${input.url}#product`,
+          },
+        }
+      : undefined;
+
   return {
     '@type': 'Product',
     '@id': `${input.url}#product`,
@@ -300,16 +330,7 @@ export function buildProduct(input: {
       '@id': BRAND_BOZE_CNC_TI_ID,
       name: 'BOZE CNC Ti',
     },
-    ...(input.price != null
-      ? {
-          offers: {
-            '@type': 'Offer',
-            price: input.price,
-            priceCurrency: 'USD',
-            availability: 'https://schema.org/InStock',
-          },
-        }
-      : {}),
+    ...(offers ? { offers } : {}),
   };
 }
 
@@ -428,6 +449,8 @@ export interface SchemaPageData {
   productImage?: string;
   productCategory?: string;
   productDatePublished?: string | null;
+  /** B2B Request-Quote URL for the Product offer (defaults to ${SITEROOT}/rfq/). */
+  productRfqUrl?: string;
 
   // Collection / listing
   collectionName?: string;
@@ -515,6 +538,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           image: data.productImage,
           category: data.productCategory,
           datePublished: data.productDatePublished,
+          rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
         }));
       }
       break;

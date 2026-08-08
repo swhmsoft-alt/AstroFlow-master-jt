@@ -1,12 +1,34 @@
 # Active Context
 
 > **Last Updated:** 2026-08-08
-> **Current Focus:** 修复 `baoji-china-titanium-valley.md` 缺失封面图路径（40 篇中唯一无 coverImage 的文章）。
+> **Current Focus:** 260 个 Product Entity 页增加 B2B RFQ Offer（无 price，MadeToOrder）——工业实体图谱商业关系层。
 
 ## Current Status
 ✅ **博客封面图缺失修复完成（2026-08-08）：** `baoji-china-titanium-valley.md` frontmatter 补充 `coverImage: /uploads/blog-baoji-china-titanium-valley-cover.jpg` + `coverImageAlt`（图片文件早已存在于 `public/uploads/`，仅 frontmatter 漏写）。修复后 40 篇英文博客文章全部具备封面图。`npx astro build` ✅ **2232 页**；dist 抽查详情页 `<img src="/uploads/blog-baoji-china-titanium-valley-cover.jpg" alt=...>` 正常渲染，首页 Industry Insights 卡片同步显示封面。**未部署**（上一轮方案 A+B 分页/归档已随 commit `213e2689` 入库推送）。
 
 ## Recent Decisions
+
+### 260 Product Entities + RFQ Offer 商业关系层（2026-08-08）
+**背景：** Google Search Console 对 260 个 Product Entity 页报告 `Product enhancement`（提示补 review/rating 或 offers+price）。用户决策：**不做电商化**（禁止假 review/aggregateRating/price），选择 **B2B Product Entity Schema 优化**——保留 Product 实体，增加**无 price 的 RFQ Offer**（真实制造报价关系，非零售销售）。
+
+**关键设计（基于 schema.ts 实际品牌实体体系，不照搬外部方案）：**
+- `availability: https://schema.org/MadeToOrder`（定制 CNC 制造件非库存商品，不用 InStock）
+- `offers.url → https://cnc.bozemetal.com/rfq/`（真实 RFQ 页，非不存在的 `/rfq/request-quote/`）
+- `seller/@id → https://www.bozemetal.com/#organization`（Legal Org；`cnc.bozemetal.com/#organization` 刻意不存在）
+- `itemOffered/@id → {pageUrl}#product`（闭环回指 Product 实体）
+- 无 `price`/`priceCurrency`；无 review/rating
+
+**执行（4 文件）：**
+1. **`src/pages/products/product-entities/[...slug].astro`** — 页面级 `schemaProduct` 的 Product 实体增加 `offers`（@id `{pageUrl}#offer`），260 页统一生效；注释更新为 RFQ Offer 语义。
+2. **`src/lib/schema.ts`** — `buildProduct()` 新增 `rfqUrl` 参数（无 price 时输出 MadeToOrder RFQ Offer，price 分支保留向后兼容）；`SchemaPageData` 新增 `productRfqUrl`；`buildPageGraph` product-detail 分支默认 `rfqUrl = ${SITEROOT}/rfq/`（旧产品页 `/products/titanium-cnc-parts/` 也自动获得 RFQ Offer）；顶部注释更新（RFQ Offer 为真实制造报价关系，非伪造）。
+3. **`src/layouts/BaseLayout.astro`** — 新增 `productRfqUrl` prop 透传。
+4. **`tasks/validate_schema.mjs`** — 修复过时断言（org @id `cnc.bozemetal.com/#boze-org` → `www.bozemetal.com/#organization`）；offers 验证策略改为：**含 price/priceCurrency → FAIL（伪造价格）；RFQ Offer（MadeToOrder + url=/rfq/ + seller=Legal Org + itemOffered 回指）→ PASS**；解析全部 JSON-LD 块（BaseLayout + 页面级）；补充 2 个 product-entities 实体页样例。
+
+**统一 @graph：** 不合并 BaseLayout 与页面级两个块（保持标准 RDF @id 互联）。BaseLayout 块含 Organization/Brand/ManufacturingCenter/WebSite/WebPage/Breadcrumb；页面级块含 Product/HowTo/FAQPage；Product 的 manufacturer/brand/seller 通过 @id 指向 BaseLayout 实体 → 语义统一图谱。Service 已在 `/rfq/` 页 graph 表达，通过 offers.url 关联。
+
+**验证：** `check-undefined-slugs.mjs --ci` 0 issue；`npx tsc --noEmit` 0 错误；`npx astro build` ✅ **2232 页**（product-entities 目录 260 页全部生成）；`node tasks/validate_schema.mjs` **Pass: 10, Fail: 0**；dist 抽查 Mouse 页：`offers.url=https://cnc.bozemetal.com/rfq/`、`availability=MadeToOrder`、`itemOffered` 回指 `#product`、无 price。
+
+**预期影响（诚实说明）：** Google Product 富媒体 enhancement 提示可能不完全消失（其判定核心仍是 price/review）——本方案的价值是实体图谱完整性与 AI/GEO 语义（Product → Offer → seller → RFQ 三角关系），非消除提示。**未部署**（等待用户确认后 git push + 部署）。
 
 ### 博客分页（方案 B）（2026-08-08）
 **背景：** 方案 A 交付后用户选择继续叠加**方案 B 分页**（原计划文案："文章数大幅增长（如 100+ 篇）时再叠加"）。根因：博客首页为分类分组视图（每类 ≤4 篇 + View all 到归档页），缺少按时间倒序浏览全部文章的入口；40 篇已需翻页。
