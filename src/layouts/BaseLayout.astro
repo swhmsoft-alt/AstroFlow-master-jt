@@ -52,6 +52,10 @@ interface Props {
   serviceHubKey?: string;
   /** Override the auto-generated hreflang alternate links (e.g. for non-localized campaign pages) */
   alternateLinks?: { lang: string; href: string }[];
+  /** Emit <link rel="prev"> for paginated listings */
+  prevURL?: string;
+  /** Emit <link rel="next"> for paginated listings */
+  nextURL?: string;
   /** Emit <meta name="robots" content="noindex, nofollow"> (e.g. thank-you / conversion pages) */
   noindex?: boolean;
 }
@@ -81,6 +85,8 @@ const {
   items,
   serviceHubKey,
   alternateLinks: explicitAlternateLinks,
+  prevURL,
+  nextURL,
   noindex = false,
 } = Astro.props;
 
@@ -156,6 +162,8 @@ const ldJson = JSON.stringify(pageGraph);
 <meta name="twitter:description" content={description} />
 <link rel="icon" type="image/png" href="/uploads/boze-cnc-ti-ico.png" />
 <link rel="canonical" href={canonicalUrl} />
+{prevURL && <link rel="prev" href={`${siteUrl}${prevURL}`} />}
+{nextURL && <link rel="next" href={`${siteUrl}${nextURL}`} />}
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={seoImage} />
 <meta property="og:image:width" content="1200" />

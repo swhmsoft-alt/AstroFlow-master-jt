@@ -1,0 +1,219 @@
+---
+/**
+ * src/pages/blog/page/[page].astro
+ *
+ * Paginated blog listing (English).
+ * Serves /blog/page/2/, /blog/page/3/, … in reverse-chronological order.
+ * /blog/page/1/ redirects to /blog/ (single source of truth for page 1).
+ *
+ * Includes:
+ *  - Page-size listing (12 posts per page)
+ *  - Numbered pagination + rel="prev"/rel="next" link hints
+ *  - JSON-LD ItemList + CollectionPage via BaseLayout
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+import { BLOG_PAGE_SIZE } from '../../../lib/blog-i18n';
+
+export async function getStaticPaths() {
+  const all = await getCollection('blog');
+  const posts = all
+    .filter(p => !p.slug.includes('/'))
+    .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+  const totalPages = Math.max(1, Math.ceil(posts.length / BLOG_PAGE_SIZE));
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    params: { page: String(i + 1) },
+    props: { page: i + 1, totalPages, allPosts: posts },
+  }));
+}
+
+const { page, totalPages, allPosts } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Page 1 is the canonical /blog/ index — redirect to avoid duplicate content.
+if (page === 1) {
+  return Astro.redirect(localizePath('/blog', lang));
+}
+
+const start = (page - 1) * BLOG_PAGE_SIZE;
+const posts = allPosts.slice(start, start + BLOG_PAGE_SIZE);
+
+const pageTitle = `Blog Articles – Page ${page} | Boze Titanium Manufacturing Center`;
+const pageDescription = `More titanium manufacturing articles — page ${page} of ${totalPages}. Engineering guides, case studies, procurement guidance, and manufacturing insights from the Boze Titanium Manufacturing Center.`;
+const items = posts.map(p => ({
+  name: p.data.title,
+  url: `https://cnc.bozemetal.com/blog/${p.slug}`,
+}));
+
+const prevPage = page > 2 ? `/blog/page/${page - 1}/` : '/blog/';
+const nextPage = page < totalPages ? `/blog/page/${page + 1}/` : undefined;
+const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="blog-index"
+  collectionName="Blog Articles"
+  itemCount={posts.length}
+  items={items}
+  alternateLinks={[{ lang: 'en', href: `/blog/page/${page}` }]}
+  prevURL={prevPage}
+  nextURL={nextPage}
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('blog.breadcrumb.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/blog', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('blog.breadcrumb.blog')}</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Page {page}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-surface); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full mb-4" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+          Page {page} of {totalPages}
+        </span>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight" style="color: var(--theme-text);">
+          More Titanium Manufacturing Articles
+        </h1>
+        <p class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+          {pageDescription}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map((post) => (
+          <a
+            href={localizePath(`/blog/${post.slug}`, lang)}
+            class="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+            style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"
+          >
+            {post.data.coverImage && (
+              <div class="relative overflow-hidden aspect-[16/10]">
+                <img
+                  src={post.data.coverImage}
+                  alt={post.data.coverImageAlt || post.data.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  width="600"
+                  height="375"
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                {post.data.category && (
+                  <span class="px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+                    {post.data.category}
+                  </span>
+                )}
+                <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                  {new Date(post.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                </span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 transition-colors group-hover:text-[var(--theme-primary)]" style="color: var(--theme-text);">
+                {post.data.title}
+              </h3>
+              <p class="text-sm line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                {post.data.description}
+              </p>
+              <div class="mt-4 flex items-center gap-2 text-xs font-medium" style="color: var(--theme-primary);">
+                {t('blog.readMore')}
+                <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Pagination -->
+      <nav class="mt-14 flex items-center justify-center gap-2" aria-label="Blog pagination">
+        <a
+          href={localizePath(prevPage, lang)}
+          class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-xl transition-all border"
+          style="color: var(--theme-primary); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, transparent);"
+          rel="prev"
+          aria-label="Previous page"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          Previous
+        </a>
+
+        {pageNumbers.map((n) => (
+          n === page ? (
+            <span
+              class="inline-flex items-center justify-center w-10 h-10 text-sm font-bold rounded-xl"
+              style="background: var(--theme-primary); color: var(--theme-text);"
+              aria-current="page"
+            >
+              {n}
+            </span>
+          ) : (
+            <a
+              href={localizePath(n === 1 ? '/blog/' : `/blog/page/${n}/`, lang)}
+              class="inline-flex items-center justify-center w-10 h-10 text-sm font-semibold rounded-xl transition-all border"
+              style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+            >
+              {n}
+            </a>
+          )
+        ))}
+
+        {nextPage && (
+          <a
+            href={localizePath(nextPage, lang)}
+            class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-xl transition-all border"
+            style="color: var(--theme-primary); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, transparent);"
+            rel="next"
+            aria-label="Next page"
+          >
+            Next
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </a>
+        )}
+      </nav>
+
+      <!-- Back to all articles -->
+      <div class="mt-10 text-center">
+        <a
+          href={localizePath('/blog', lang)}
+          class="inline-flex items-center gap-1.5 px-6 py-3 text-sm font-semibold rounded-xl transition-all border"
+          style="color: var(--theme-primary); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, transparent);"
+        >
+          <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          {t('blog.back')}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -343,6 +343,8 @@ export function detectPageType(path: string, explicit?: PageType): PageType {
   if (path === '/' || path === '') return 'home';
   if (path.startsWith('/services')) return path.split('/').filter(Boolean).length > 1 ? 'service-detail' : 'services-hub';
   if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
+  if (path.startsWith('/blog/category')) return 'blog-index';
+  if (path.startsWith('/blog/page/')) return 'blog-index';
   if (path.startsWith('/blog') && path.split('/').filter(Boolean).length > 1) return 'blog-post';
   if (path.startsWith('/blog')) return 'blog-index';
   if (path.startsWith('/case-studies')) return 'case-studies';

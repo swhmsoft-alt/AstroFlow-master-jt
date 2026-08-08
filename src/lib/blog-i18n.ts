@@ -19,6 +19,9 @@ type BlogTranslation = CollectionEntry<'blog-translations'>;
 
 const SUPPORTED_LANGS = new Set(Object.keys(LANGUAGES));
 
+/** Posts per page for the paginated blog listing (/blog/page/{n}/). */
+export const BLOG_PAGE_SIZE = 12;
+
 /**
  * Extract the original slug from a blog-translations slug (format: "{lang}-{slug}").
  */
@@ -125,6 +128,21 @@ export function getTranslationContent(
  */
 export function getOriginalSlug(prefixedSlug: string): string {
   return prefixedSlug;
+}
+
+/**
+ * Convert a blog category display name into a URL-safe slug.
+ *
+ * Matches the slug format used across blog category pages
+ * (e.g. "Titanium CNC Machining Services" → "titanium-cnc-machining-services").
+ */
+export function categoryToSlug(category: string): string {
+  const slug = category
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  // Never emit an empty slug — fall back to a safe archive path.
+  return slug || 'uncategorized';
 }
 
 /**

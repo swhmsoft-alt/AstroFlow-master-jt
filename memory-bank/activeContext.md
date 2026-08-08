@@ -1,12 +1,39 @@
 # Active Context
 
 > **Last Updated:** 2026-08-08
-> **Current Focus:** 产品页工艺流程加链接 — `manufacturing_process` 工艺步骤链接到服务/能力页（SpecBlock + EngineeringReport 三处渲染）。
+> **Current Focus:** 博客分页（方案 B）+ 分类归档页（方案 A）— 40 篇文章全量可达 + `/blog/page/2/` 分页，待部署。
 
 ## Current Status
-✅ **产品页工艺流程链接化完成（2026-08-08）：** 新建 `src/utils/process-links.ts`（工艺关键词→服务/能力 URL 映射 + `linkifyProcessSteps` 纯函数），改造 `SpecBlock.astro` 与 `EngineeringReport.astro` 的 3 处 `manufacturing_process` 渲染：每项工艺步骤命中映射则渲染为 `<a>` 链接（`/titanium-cnc-machining-services/cnc-milling-turning/`、`/titanium-surface-treatment/chemical-passivation/`、`/products/capabilities/{slug}/` 等），未命中保持纯文本。覆盖全库 5 种 `manufacturing_process` 模板值（270+ 有 spec 产品页）。`npx astro build` ✅ **2219 页**；tsc 0 错误。**未部署。**
+✅ **博客分页完成（2026-08-08）：** 方案 A（分类归档页 + View all 修复）基础上叠加**方案 B 分页**：新增 `/blog/page/{n}/`（每页 12 篇，时间倒序，40 篇 → 4 页），`/blog/page/1/` 301 重定向至 `/blog/` 避免重复内容；页码导航 + `rel="prev"/"next"` + JSON-LD `ItemList/CollectionPage`；首页分类导航栏新增 "All Articles" 入口 + 底部 Next Page 分页区块。`npx astro build` ✅ **2232 页**（原 2228 + 4 分页页）。**未部署。**
 
 ## Recent Decisions
+
+### 博客分页（方案 B）（2026-08-08）
+**背景：** 方案 A 交付后用户选择继续叠加**方案 B 分页**（原计划文案："文章数大幅增长（如 100+ 篇）时再叠加"）。根因：博客首页为分类分组视图（每类 ≤4 篇 + View all 到归档页），缺少按时间倒序浏览全部文章的入口；40 篇已需翻页。
+
+**执行（4 文件）：**
+1. **`src/pages/blog/page/[page].astro`**（新建）— 分页列表页：`getStaticPaths` 按 `BLOG_PAGE_SIZE=12` 切分 40 篇英文文章 → 4 页；`page===1` 时 `Astro.redirect('/blog')`（避免 `/blog/page/1/` 与 `/blog/` 重复内容，规范 canonical）；页码导航（当前页高亮、`aria-current`）+ `rel="prev"`（第 2 页 prev 指向 `/blog/`）+ `rel="next"`；面包屑 Home > Blog > Page {n}；`pageType="blog-index"` + items 驱动 JSON-LD `ItemList(numberOfItems)+CollectionPage+BreadcrumbList`；`alternateLinks` 仅 en。
+2. **`src/lib/blog-i18n.ts`** — 新增共享 `BLOG_PAGE_SIZE = 12` 常量（getStaticPaths 与组件 body 均引用，避免 Astro 编译作用域问题）。
+3. **`src/pages/blog/index.astro`** — ① 分类导航栏末尾新增 "All Articles →" 入口（`totalPages > 1` 条件渲染，指向 `/blog/page/2/`）；② 分类区块与 CTA 之间新增分页区块（Next Page 按钮 + "{totalPages} pages · {totalArticles} articles" 文案）。
+4. **`src/layouts/BaseLayout.astro`** + **`src/lib/schema.ts`** — BaseLayout 新增 `prevURL`/`nextURL` props，head 输出 `<link rel="prev">`/`<link rel="next">`；`detectPageType` 增加 `/blog/page/` 前缀识别为 `blog-index`（防误判 `blog-post`）。
+
+**验证：** `check-undefined-slugs.mjs --ci` 0 issue；`npx astro build` ✅ **2232 页**（2228 + 4 分页页）；dist 抽查：`/blog/page/2/` 12 篇 + rel=prev(→/blog/) + rel=next(→/blog/page/3/) + ItemList(12) + JSON-LD 面包屑 Home>Blog>Page>2；`/blog/page/4/` 4 篇 + rel=prev 有 + rel=next 无；`/blog/page/1/` meta refresh 301 → `/blog` + canonical 正确；首页含 All Articles 入口 + Next Page 区块 + "4 pages · 40 articles"；改动文件 astro check 0 新错误。
+
+**下一步：** 用户确认后 `git push` + 部署。可选后续：为 12 语言新增分页/分类归档页（多语言博客首页目前为全量列表无隐藏问题）。
+
+### 博客分类归档页 + View all 修复（2026-08-08）
+**背景：** 用户审计 `/blog/`：① 分类分组布局每类最多 4 篇（`MAX_VISIBLE`），Manufacturing Problems(10)/Materials Engineering(5)/Applications and Processes(5) 共 8 篇被隐藏且 "View all N articles" 按钮仅为 `#锚点`（不展开、不跳转）；② `baoji-china-titanium-valley.md` 的 `Industry Insights` 分类不在 `CATEGORY_ORDER`，首页完全不可见（但仍计入 "9 Categories" 统计，孤儿文章）；③ 无分页（`/blog/page/2/` 404）、无分类归档页。用户选定**方案 A：修复 View all + 新增分类归档页**。
+
+**执行（5 文件）：**
+1. **`src/lib/blog-i18n.ts`** — 新增共享 `categoryToSlug()`（`toLowerCase → 非字母数字转 - → 去首尾 -`，空值回退 `uncategorized`），首页与归档页共用同一 slug 规则。
+2. **`src/pages/blog/category/[slug].astro`**（新建）— `getStaticPaths` 遍历全部英文文章提取 9 个分类生成静态路径；展示该分类全部文章（featured 大卡 + 网格）；面包屑 Home > Blog > {category}；`pageType="blog-index"` + `collectionName/itemCount/items` 驱动 JSON-LD `CollectionPage + ItemList + BreadcrumbList`；`alternateLinks` 仅 en（避免生成不存在多语言分类页的 hreflang）。
+3. **`src/pages/blog/index.astro`** — "View all" 按钮 `href` 从 `#sectionId` 改为 `/blog/category/{categoryToSlug(cat)}/`；遍历列表改为 `orderedCategories`（`CATEGORY_ORDER` + 剩余分类）使 Industry Insights 区块可见，未来新分类也不会被遗漏。
+4. **`src/lib/schema.ts`** — `detectPageType` 增加 `/blog/category` 前缀优先识别为 `blog-index`（此前被误判为 `blog-post`）。
+5. **`src/pages/blog/[...slug].astro`** — 分类徽章改为链接到分类归档页；HTML 面包屑增加分类层级（Home > Blog > {category} > Title，JSON-LD 面包屑仍由 BaseLayout 自动生成 Home > Blog > Title）。
+
+**验证：** `check-undefined-slugs.mjs --ci` 0 issue；`npx astro build` ✅ **2228 页**（原 2219 + 9 分类页）；dist 抽查：manufacturing-problems 分类页 **10 篇全量**链接、industry-insights 页含 `baoji-china-titanium-valley`、首页含 Industry Insights 区块 + View all 真实链接、JSON-LD `CollectionPage+ItemList(numberOfItems:10)` 命中；详情页分类徽章/面包屑链接命中。改动文件（blog-i18n.ts、schema.ts、blog/index.astro、blog/[...slug].astro、blog/category/[slug].astro）`astro check` 0 错误（其余 117 错误均为基线既有）。
+
+**下一步：** 用户确认后 `git push` + 部署。可选后续：为 12 语言新增对应分类归档页、博客首页分页（方案 B）。
 
 ### 产品页工艺流程链接化（2026-08-08）
 **背景：** 用户要求产品页"工艺流程"中的工艺（如 fender mounting bolt 的 CNC turning / heat treatment / surface grinding / passivation / dimensional check）链接到对应服务和能力页面。根因：`manufacturing_process`（product-specs frontmatter，全库仅 5 种模板值）渲染为纯文本，无任何内链。
