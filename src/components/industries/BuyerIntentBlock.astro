@@ -11,6 +11,8 @@ interface Props {
   qualityRequirements?: string[];
   caseStudyLinks?: { label: string; href: string }[];
   ctaHref?: string;
+  /** Set to false to hide the block's internal CTA (when the page already has its own CTA section). */
+  showCta?: boolean;
 }
 const {
   industry = 'Titanium Components',
@@ -20,6 +22,7 @@ const {
   qualityRequirements = [],
   caseStudyLinks = [],
   ctaHref = '/rfq/',
+  showCta = true,
 } = Astro.props;
 ---
 
@@ -121,6 +124,9 @@ const {
           </ul>
           <a href="/capabilities/inspection/" class="inline-flex items-center mt-6 text-sm font-semibold transition-colors hover:underline" style="color: var(--theme-primary);">
             View inspection & testing capabilities →
+          </a>
+        </article>
+      </div>
 
       <!-- Row 3: Related Evidence + CTA -->
       {
@@ -145,25 +151,25 @@ const {
       }
 
       <!-- CTA -->
-      <div class="rounded-2xl p-8 lg:p-10 text-center" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 12%, transparent), color-mix(in srgb, var(--theme-primary) 4%, transparent)); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
-        <h3 class="text-2xl md:text-3xl font-bold mb-3" style="color: var(--theme-text);">Need a {industry} Titanium Component Quoted?</h3>
-        <p class="text-base md:text-lg mb-6 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-          Send us your drawing and material specification. Our engineers respond with a DFM review, tolerance assessment, and quote within 48 hours.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href={ctaHref} class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all" style="background: var(--theme-primary); color: var(--theme-bg);">
-            Request a {industry} Titanium Quote
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-          </a>
-          <a href="/case-studies/" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl transition-all" style="border: 2px solid color-mix(in srgb, var(--theme-text) 30%, transparent); color: var(--theme-text);">
-            Browse Manufacturing Evidence
-          </a>
-        </div>
-      </div>
+      {
+        showCta && (
+          <div class="rounded-2xl p-8 lg:p-10 text-center" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 12%, transparent), color-mix(in srgb, var(--theme-primary) 4%, transparent)); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+            <h3 class="text-2xl md:text-3xl font-bold mb-3" style="color: var(--theme-text);">Need a {industry} Titanium Component Quoted?</h3>
+            <p class="text-base md:text-lg mb-6 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+              Send us your drawing and material specification. Our engineers respond with a DFM review, tolerance assessment, and quote within 48 hours.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href={ctaHref} class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all" style="background: var(--theme-primary); color: var(--theme-bg);">
+                Request a {industry} Titanium Quote
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </a>
+              <a href="/case-studies/" class="inline-flex items-center justify-center px-8 py-4 font-bold rounded-xl transition-all" style="border: 2px solid color-mix(in srgb, var(--theme-text) 30%, transparent); color: var(--theme-text);">
+                Browse Manufacturing Evidence
+              </a>
+            </div>
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
-
-          </a>
-        </article>
-      </div>

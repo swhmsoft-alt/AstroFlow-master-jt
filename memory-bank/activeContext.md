@@ -1,12 +1,27 @@
 # Active Context
 
 > **Last Updated:** 2026-08-07
-> **Current Focus:** Trust Layer（信任层）建设 — Procurement Evidence Architecture：案例库/制造示例双体系 + 制造能力矩阵 + Buyer Intent 增强 + Schema Entity 强化。仅英文，不动 12 语言。
+> **Current Focus:** Chemical 页优化 — 导航行业下拉 + 行业页网格新增 Chemical 模块（9 行业卡片可点击）+ BuyerIntentBlock CTA 去重。仅英文。
 
 ## Current Status
-✅ **Trust Layer Phase 0-4 完成（2026-08-07）：** `npx astro build` ✅ **2219 页**；`check-undefined-slugs` 0 issue；`check-encoding` 通过；tsc 0 错误；sitemap 已含新页面。新增：`/case-studies/` 证据库（CollectionPage+ItemList JSON-LD）、3 个 Manufacturing Example、`/industries/chemical/`（采购意图页）、Manufacturing Capability Matrix（真实设备数据）、BuyerIntentBlock 组件（已集成 aerospace+medical）、Organization `knowsAbout`/`makesOffer` Schema 强化。**未部署（待用户确认）。**
+✅ **Chemical 页优化完成（2026-08-07）：** 导航 Industries 下拉新增 Chemical；`/industries/` 行业页网格新增 Chemical Processing 模块（9 个行业卡片全部可点击，带 Learn More 链接）；`BuyerIntentBlock` 组件增加 `showCta` prop 并在 Chemical 页传 `false` 移除重复 CTA；同时修复组件历史遗留的标签闭合错位。`npx astro build` ✅ **2219 页**；所有校验通过。**未部署（待用户确认）。**
 
 ## Recent Decisions
+
+### Chemical 页优化 — 导航/行业网格/CTA 去重（2026-08-07）
+**背景：** 用户要求：① 导航行业下拉加 Chemical；② `/industries/` 行业页加 Chemical 模块并为全部行业卡片加链接；③ 移除 Chemical 页 BuyerIntentBlock 内 CTA（与页面底部 CTA 重复）。
+
+**执行（5 文件）：**
+1. **`src/config/site.ts`** — Industries 下拉新增 `{ name: 'Chemical', href: '/industries/chemical' }`（Energy 之后）。
+2. **`src/components/industries/IndustryVerticalsGrid.astro`** — `Industry` 接口加 `href`；9 个行业全部映射到各自页面；新增 **Chemical Processing** 模块（ind8：Heat Exchanger / Pipe Fittings / Valve Bodies / Reactor Internals；pain: chloride corrosion resistance）；卡片 `<div>`→`<a>` 可点击（保留 hover 效果 + Learn More 链接 + aria-label）。
+3. **`src/i18n/translations/en.json`** — 新增 `ind8_*` 翻译键；desc 更新为 "Nine specialized sectors..."（其他语言自动回退英文，不扩 12 语言）。
+4. **`src/components/industries/BuyerIntentBlock.astro`** — 新增 `showCta` prop（默认 true）；CTA 区块条件渲染；**修复历史遗留标签闭合错位**（Row 2 的 `</a></article></div>` 归位，删除文件末尾残留）。
+5. **`src/pages/industries/chemical.astro`** — `<BuyerIntentBlock showCta={false} />`。
+
+**验证：** `check-undefined-slugs` 0 issue；`check-encoding` 通过；tsc 0 错误；`npx astro build` ✅ 2219 页；渲染抽查：导航含 Chemical、行业页 9 卡片可点击（href 全部命中）、Learn More ×9、Chemical 页组件内 CTA 已移除且页面底部 CTA 保留。
+
+**下一步：** 用户确认后 `git push` + 部署。
+
 
 ### Trust Layer — Procurement Evidence Architecture（2026-08-07）
 **背景：** 战略层批准从"Semantic Layer（让搜索引擎理解）"转向"Trust Layer（让采购经理相信）"。执行顺序调整：Phase B（能力矩阵）→ Phase A（案例/制造示例）→ Phase C（行业增强）→ Phase D（Schema）。仅英文，不扩展 12 语言；不编造客户案例（Case Study 仅真实、Manufacturing Example 用于能力展示）。

@@ -160,6 +160,7 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Marine', href: '/industries/marine' },
           { name: 'Semiconductor', href: '/industries/semiconductor' },
           { name: 'Energy', href: '/industries/energy' },
+          { name: 'Chemical', href: '/industries/chemical' },
           { name: 'Industrial Equipment', href: '/industries/industrial-equipment' },
         ],
       },
