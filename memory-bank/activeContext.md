@@ -1,10 +1,10 @@
 # Active Context
 
 > **Last Updated:** 2026-08-08
-> **Current Focus:** 博客分页（方案 B）+ 分类归档页（方案 A）— 40 篇文章全量可达 + `/blog/page/2/` 分页，待部署。
+> **Current Focus:** 修复 `baoji-china-titanium-valley.md` 缺失封面图路径（40 篇中唯一无 coverImage 的文章）。
 
 ## Current Status
-✅ **博客分页完成（2026-08-08）：** 方案 A（分类归档页 + View all 修复）基础上叠加**方案 B 分页**：新增 `/blog/page/{n}/`（每页 12 篇，时间倒序，40 篇 → 4 页），`/blog/page/1/` 301 重定向至 `/blog/` 避免重复内容；页码导航 + `rel="prev"/"next"` + JSON-LD `ItemList/CollectionPage`；首页分类导航栏新增 "All Articles" 入口 + 底部 Next Page 分页区块。`npx astro build` ✅ **2232 页**（原 2228 + 4 分页页）。**未部署。**
+✅ **博客封面图缺失修复完成（2026-08-08）：** `baoji-china-titanium-valley.md` frontmatter 补充 `coverImage: /uploads/blog-baoji-china-titanium-valley-cover.jpg` + `coverImageAlt`（图片文件早已存在于 `public/uploads/`，仅 frontmatter 漏写）。修复后 40 篇英文博客文章全部具备封面图。`npx astro build` ✅ **2232 页**；dist 抽查详情页 `<img src="/uploads/blog-baoji-china-titanium-valley-cover.jpg" alt=...>` 正常渲染，首页 Industry Insights 卡片同步显示封面。**未部署**（上一轮方案 A+B 分页/归档已随 commit `213e2689` 入库推送）。
 
 ## Recent Decisions
 

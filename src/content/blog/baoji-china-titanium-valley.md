@@ -6,6 +6,8 @@ pubDate: 2026-08-07
 author: Boze Titanium Manufacturing Center
 category: Industry Insights
 tags: [Baoji Titanium, China Titanium Valley, Titanium Sourcing, Supplier Evaluation, China Manufacturing]
+coverImage: /uploads/blog-baoji-china-titanium-valley-cover.jpg
+coverImageAlt: Baoji China Titanium Valley titanium production cluster
 featured: false
 ---
 
