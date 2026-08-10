@@ -112,9 +112,12 @@ if entries_raw:
         specNote = get_field('specNote')
         keywords = get_array('keywords')
         
-        # Generate slug
-        slug = title.lower().replace(' & ', '-').replace('/', '-').replace(',', '').replace('(', '').replace(')', '').replace('  ', ' ').replace(' ', '-').replace('--', '-').strip('-')
+        # Generate slug — fully collapse consecutive hyphens so titles with "/"
+        # produce clean single-hyphen slugs (e.g. "Brackets / Fittings / Connectors" → brackets-fittings-connectors).
+        # NOTE: when re-seeding, delete the old "--" filename variants in src/content/systems/ afterwards.
+        slug = title.lower().replace(' & ', '-').replace('/', '-').replace(',', '').replace('(', '').replace(')', '').replace('  ', ' ').replace(' ', '-').strip('-')
         slug = re.sub(r'[^a-z0-9-]', '', slug)
+        slug = re.sub(r'-+', '-', slug)
         
         # Determine industry mapping
         ind_map = {
@@ -242,7 +245,9 @@ industries_data = [
      'systems': [], 'applications': ['Fasteners & hardware', 'Pipe flanges', 'Structural brackets', 'Handling equipment', 'Machine components']},
 ]
 for ind in industries_data:
-    slug = ind['title'].lower().replace(' & ', '-').replace('/', '-').replace(' ', '-')
+    # Collapse consecutive hyphens → clean single-hyphen slugs (e.g. "Cycling / Bicycle" → cycling-bicycle).
+    # NOTE: when re-seeding, delete the old "cycling---bicycle.json" file in src/content/industries/ afterwards.
+    slug = re.sub(r'-+', '-', ind['title'].lower().replace(' & ', '-').replace('/', '-').replace(' ', '-'))
     fname = f'{OUT_DIR}/industries/{slug}.json'
     with open(fname, 'w', encoding='utf-8') as f:
         json.dump(ind, f, indent=2, ensure_ascii=False)

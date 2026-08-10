@@ -7,7 +7,7 @@ export const prerender = true;
 export async function getStaticPaths() {
   const entries = await getCollection('industries');
   return entries.map((entry) => ({
-    params: { slug: entry.slug || entry.id?.replace('.json','') || '' },
+    params: { slug: entry.data?.slug || entry.slug || entry.id?.replace('.json','') || '' },
     props: { entry },
   }));
 }
@@ -73,7 +73,7 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
             const sysEntities = entitiesBySystem[s.data.title] || [];
             return (
               <div class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-                <a href={`/products/systems/${s.slug || s.id?.replace('.json','') || ''}/`} class="block">
+                <a href={`/products/systems/${s.data?.slug || s.slug || s.id?.replace('.json','') || ''}/`} class="block">
                   <h3 class="font-bold" style="color: var(--theme-text);">{s.data.emoji} {s.data.title}</h3>
                   <p class="text-sm mt-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{s.data.description?.slice(0, 100)}</p>
                 </a>
@@ -89,7 +89,7 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
                         </a>
                       ))}
                       {sysEntities.length > 5 && (
-                        <a href={`/products/systems/${s.slug || s.id?.replace('.json','') || ''}/`} class="text-xs px-2 py-1 rounded" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                        <a href={`/products/systems/${s.data?.slug || s.slug || s.id?.replace('.json','') || ''}/`} class="text-xs px-2 py-1 rounded" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
                           +{sysEntities.length - 5} more
                         </a>
                       )}

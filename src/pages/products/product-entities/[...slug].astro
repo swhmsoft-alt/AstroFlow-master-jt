@@ -234,7 +234,7 @@ if (schemaFaqData.length > 0) {
           </a>
         ))}
         {system && (
-          <a href={`/products/systems/${system?.slug || system?.id?.replace('.json','') || ''}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+          <a href={`/products/systems/${system?.data?.slug || system?.slug || system?.id?.replace('.json','') || ''}/`} class="block p-4 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
             <p class="text-xs font-semibold" style="color: var(--theme-primary);">System</p>
             <p class="text-sm font-bold mt-1" style="color: var(--theme-text);">{system.data.title}</p>
           </a>

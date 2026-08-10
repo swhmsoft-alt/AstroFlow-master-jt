@@ -122,6 +122,8 @@ const systemsCollection = defineCollection({
   type: 'data',
   schema: z.object({
     title: z.string(),
+    // Custom slug overrides the filename-derived slug (clean single-hyphen URLs)
+    slug: z.string().optional(),
     emoji: z.string(),
     industry: z.string(),
     description: z.string(),
@@ -359,6 +361,8 @@ const industriesCollection = defineCollection({
   type: 'data',
   schema: z.object({
     title: z.string(),
+    // Custom slug overrides the filename-derived slug (clean single-hyphen URLs)
+    slug: z.string().optional(),
     aliases: z.array(z.string()).optional(),
     description: z.string(),
     systems: z.array(z.string()).optional(),

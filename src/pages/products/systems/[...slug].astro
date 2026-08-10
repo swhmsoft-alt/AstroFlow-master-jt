@@ -9,7 +9,7 @@ export const prerender = true;
 export async function getStaticPaths() {
   const systems = await getCollection('systems');
   return systems.map((entry) => ({
-    params: { slug: entry.slug || entry.id?.replace('.json','') || '' },
+    params: { slug: entry.data?.slug || entry.slug || entry.id?.replace('.json','') || '' },
     props: { entry },
   }));
 }
@@ -21,7 +21,7 @@ const { data } = entry;
 const allIndustries = await getCollection('industries');
 const industrySlug: Record<string, string> = {};
 for (const ind of allIndustries) {
-  industrySlug[ind.data.title] = ind.slug || ind.id?.replace('.json','') || '';
+  industrySlug[ind.data.title] = ind.data?.slug || ind.slug || ind.id?.replace('.json','') || '';
 }
 
 // ── Load related data ──

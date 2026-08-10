@@ -8,3 +8,19 @@
   php_value post_max_size 32M
   php_value upload_max_filesize 30M
 </IfModule>
+
+# ─────────────────────────────────────────────────────────────
+# 301 redirects — old multi-hyphen slugs → clean single-hyphen slugs
+# (2026-08-10: normalized industry/system content slugs; see scripts/301-redirects.json)
+# ─────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^products/industries/cycling---bicycle/?$ /products/industries/cycling-bicycle/ [R=301,L]
+  RewriteRule ^products/systems/brackets--fittings--connectors/?$ /products/systems/brackets-fittings-connectors/ [R=301,L]
+  RewriteRule ^products/systems/heat-exchangers--piping-systems/?$ /products/systems/heat-exchangers-piping-systems/ [R=301,L]
+  RewriteRule ^products/systems/housings--chambers--enclosures/?$ /products/systems/housings-chambers-enclosures/ [R=301,L]
+  RewriteRule ^products/systems/impellers--blades-rotational/?$ /products/systems/impellers-blades-rotational/ [R=301,L]
+  RewriteRule ^products/systems/springs--elastic-elements/?$ /products/systems/springs-elastic-elements/ [R=301,L]
+  RewriteRule ^products/systems/valves--fluid-control-components/?$ /products/systems/valves-fluid-control-components/ [R=301,L]
+</IfModule>
+

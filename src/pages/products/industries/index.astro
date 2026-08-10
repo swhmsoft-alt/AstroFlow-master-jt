@@ -35,7 +35,7 @@ const sorted = [...industries].sort((a, b) =>
   collectionName="Industries Served"
   collectionDescription={`${total} industries where our precision titanium components are used. Each sector has unique engineering requirements.`}
   itemCount={total}
-  items={sorted.map((entry) => ({ name: entry.data.title, url: `${SITE.url}/products/industries/${entry.slug || entry.id?.replace('.json','') || ''}/` }))}
+  items={sorted.map((entry) => ({ name: entry.data.title, url: `${SITE.url}/products/industries/${entry.data?.slug || entry.slug || entry.id?.replace('.json','') || ''}/` }))}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

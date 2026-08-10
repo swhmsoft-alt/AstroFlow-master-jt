@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const { data, system, material, allCaps, faqData, materialSlug } = Astro.props;
-const sysSlug = system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
+const sysSlug = system?.data?.slug || system?.slug || system?.id?.replace(/\.(json|md)$/, '') || '';
 ---
 
 <section class="py-10 lg:py-12" style="background: var(--theme-surface);">
