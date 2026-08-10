@@ -208,7 +208,7 @@ export const NAVIGATION: NavItem[] = [
 export function getNavigation(lang: string): NavItem[] {
   if (lang !== 'en') return NAVIGATION;
 
-  const productsItem: NavItem = { name: 'Products', href: '/products' };
+  const productsItem: NavItem = { name: 'Products & Solutions', href: '/products' };
   const englishNav: NavItem[] = [];
   let productsInserted = false;
 

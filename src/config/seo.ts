@@ -207,7 +207,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
   },
   '/products': {
     title: {
-      en: 'Precision CNC Machined Titanium Products | B2B Manufacturing | Boze Titanium Manufacturing Center',
+      en: 'Custom Titanium Components & Manufacturing Solutions | Boze Titanium Manufacturing Center',
       de: 'Präzisions-CNC-gefräste Titanprodukte | B2B-Fertigung | Boze Titanium Manufacturing Center',
       zh: '精密CNC加工钛合金产品 | B2B制造 | Boze Titanium Manufacturing Center',
       ja: '精密CNC加工チタン製品 | B2B製造 | Boze Titanium Manufacturing Center',
@@ -222,7 +222,7 @@ export const SEO_CONFIG: Record<string, SeoEntry> = {
       ar: 'منتجات التيتانيوم المُشكَّلة بدقة باستخدام الحاسب الآلي | تصنيع B2B | Boze Titanium Manufacturing Center',
     },
     description: {
-      en: 'Browse our catalog of precision CNC machined titanium components. Custom manufacturing available for aerospace, medical, and industrial applications.',
+      en: 'Delivering custom titanium components and manufacturing solutions, including CNC machining, fabrication, additive manufacturing, and engineered titanium solutions for global industries.',
       de: 'Entdecken Sie unseren Katalog präzisions-CNC-gefräster Titan-Komponenten. Kundenspezifische Fertigung für Luftfahrt, Medizin und Industrie.',
       zh: '浏览我们的精密CNC加工钛合金部件目录。可定制制造，适用于航空航天、医疗及工业应用。',
       ja: '精密CNC加工チタン部品のカタログ。航空宇宙、医療、産業用途向けのカスタム製造に対応。',
