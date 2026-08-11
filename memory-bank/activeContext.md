@@ -8,6 +8,29 @@
 
 ## Recent Decisions
 
+### 关键词库（Keyword Database）方案 4 落地（2026-08-11）
+**决策：** 用户拍板 **方案 4** —— 静态 JSON 主库 + Repository 数据访问抽象层（为未来迁移 DB/API 留接缝），纯静态、无新依赖、随 Git 走。
+
+**主库语言范围：** 直接按 **12 语言**扩展（含 ru/ar），虽现有 entity-keywords.mjs 仅 10 语言，主库 Schema 预留 ru/ar。
+
+**volume/difficulty：** DeepSeek 扩词阶段一律 `null`（不虚构），`source='deepseek'`、`status='planned'`；后续用 GSC/第三方数据回填。
+
+**DeepSeek API Key：** 优先 `process.env.DEEPSEEK_API_KEY`，未配置则兑底脚本内默认 key。
+
+**交付物：**
+- `data/keywords/main-db.json` — 唯一权威源（从 entity-keywords.mjs 无损迁移 271 条，`source='manual'`、`status='mapped'`）
+- `src/lib/keywords/types.ts` — 12 语言类型 Schema（KeywordEntry / SearchIntent / EntityCategory 等）
+- `src/lib/keywords/repository.mjs` — 数据访问层（getAll/query/upsert/upsertMany/exportAllLangs/countByLang/persist/buildId）
+- `scripts/keywords-sync.mjs` — 主库 → entity-keywords.mjs 派生（保留注释结构，兼容 generate-entity-keywords.mjs）
+- `scripts/kw-cli.mjs` — Headless CLI 查询（--lang/--intent/--entity/--status/--source/--targetUrl，--format=json|csv，--export，--count，--all）
+- `scripts/deepseek-expand-keywords.mjs` — DeepSeek 批量扩词入库（--seed/--seeds-file/--lang/--entity/--count/--dry-run/--batch）
+- `scripts/migrate-keywords.mjs` — 一次性迁移工具
+- `package.json` scripts：`kw:query` / `kw:count` / `kw:sync` / `kw:expand` / `kw:migrate`
+
+**关键坑：** `buildId` 对日文/韩文/阿拉伯/西里尔等非拉丁字符不能降级 slug（会导致 id 冲突覆盖丢数据），最终用纯拉丁则 slug、否则 djb2 短 hash，保证唯一。迁移 271 条 0 丢失。
+
+**内链链路验证：** `kw:sync` → `generate-entity-keywords.mjs` → astro.config.mjs keywordMap 无感切换；`npm run build` ✅ **2232 页**；`check-undefined-slugs` 0 issue。注：generate 脚本扁平 keywordMap 因 3 语言同名 "Rapid Prototyping" 去重到 269，为原脚本固有行为，非数据丢失（主库/entity-keywords 均 271 完好）。
+
 ### 260 Product Entities + RFQ Offer 商业关系层（2026-08-08）
 **背景：** Google Search Console 对 260 个 Product Entity 页报告 `Product enhancement`（提示补 review/rating 或 offers+price）。用户决策：**不做电商化**（禁止假 review/aggregateRating/price），选择 **B2B Product Entity Schema 优化**——保留 Product 实体，增加**无 price 的 RFQ Offer**（真实制造报价关系，非零售销售）。
 

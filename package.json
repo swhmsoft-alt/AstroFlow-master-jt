@@ -20,6 +20,11 @@
     "prebuild:similarity": "node scripts/check-similarity.mjs --threshold 0.30 || echo '⚠️  Similarity exceeds threshold. Run `npm run differentiate` to fix.'",
     "deploy": "set NODE_OPTIONS=--max-old-space-size=4096 && npm run build && node scripts/deploy-basic-ftp.js",
     "deploy:inc": "node scripts/deploy-incremental-ftp.js",
+    "kw:query": "node scripts/kw-cli.mjs",
+    "kw:count": "node scripts/kw-cli.mjs --count",
+    "kw:sync": "node scripts/keywords-sync.mjs",
+    "kw:expand": "node scripts/deepseek-expand-keywords.mjs",
+    "kw:migrate": "node scripts/migrate-keywords.mjs",
     "astro": "astro"
   },
   "dependencies": {
