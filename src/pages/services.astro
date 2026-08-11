@@ -7,6 +7,7 @@ import ComplianceRibbon from '../components/services/ComplianceRibbon.astro';
 import EngineeringWorkflow from '../components/services/EngineeringWorkflow.astro';
 import QuickIndustrySolutions from '../components/services/QuickIndustrySolutions.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import PartsPromoBanner from '../components/parts/PartsPromoBanner.astro';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
@@ -53,4 +54,5 @@ const t = useTranslations(currentLang);
 
   <!-- Quick Industry Solutions -->
   <QuickIndustrySolutions />
+  <PartsPromoBanner />
 </BaseLayout>

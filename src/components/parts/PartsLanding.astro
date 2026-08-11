@@ -1,0 +1,130 @@
+---
+/**
+ * PartsLanding.astro
+ *
+ * Renders the /parts/ Titanium Parts landing page body (Hero → intro →
+ * category grid → services/grades links → RFQ CTA → FAQ).
+ * The page wrapper (BaseLayout + JSON-LD) is provided by the Astro page itself.
+ */
+import { PARTS_LANDING } from '../../data/parts';
+
+const d = PARTS_LANDING;
+
+// Semantic links into existing sections (Materials + Services).
+const sectionLinks = [
+  { label: 'Titanium Grades', href: '/materials/', desc: 'Grade 1 CP-titanium to Ti-6Al-4V ELI, with material data and standards.' },
+  { label: 'CNC Machining', href: '/titanium-cnc-machining-services/', desc: '3/5-axis milling, turning and wire EDM services.' },
+  { label: 'Fabrication & Welding', href: '/titanium-fabrication-services/', desc: 'TIG welding, laser cutting and fabricated assemblies.' },
+  { label: 'Wire EDM Machining', href: '/titanium-cnc-machining-services/wire-edm-machining/', desc: 'Precision wire-EDM for complex titanium geometries.' },
+];
+---
+<article>
+  <!-- Hero -->
+  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--theme-surface), var(--theme-bg));">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full uppercase"
+        style="color: var(--theme-primary); background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        {d.heroBadge}
+      </span>
+      <h1 class="mt-5 text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">
+        {d.heroH1}
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {d.heroSubtitle}
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all"
+          style="background: var(--theme-primary); color: var(--theme-text);">
+          Upload Drawing
+        </a>
+        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all"
+          style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">
+          Request Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <p class="text-base sm:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {d.intro}
+      </p>
+    </div>
+  </section>
+
+  <!-- Category grid -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Titanium Parts We Manufacture</h2>
+      <p class="mt-3 mb-10" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Browse titanium part categories to understand what we machine, fabricate and assemble.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {d.categories.map((cat) => (
+          <a href={`/parts/${cat.slug}/`} class="group block p-6 rounded-xl border transition-all hover:translate-y-[-2px]"
+            style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-text);">{cat.name}</h3>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{cat.blurb}</p>
+            <span class="mt-4 inline-flex items-center text-sm font-semibold" style="color: var(--theme-primary);">
+              View Category
+              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & Materials links -->
+  <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Manufacturing Services & Titanium Materials</h2>
+      <p class="mt-3 mb-10" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Every titanium part is backed by certified machining and fabrication services and traceable titanium grades.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sectionLinks.map((l) => (
+          <a href={l.href} class="block p-6 rounded-xl border transition-all"
+            style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{l.label}</h3>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{l.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RFQ CTA -->
+  <section class="py-14 text-center" style="background: var(--theme-surface);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Start Your Titanium Parts Project</h2>
+      <p class="mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Send your drawing for a DFM review — our engineering team returns a quote within 24–48 hours.
+      </p>
+      <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center px-8 py-4 text-sm font-bold rounded-xl transition-all"
+        style="background: var(--theme-primary); color: var(--theme-text);">
+        Request Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold mb-8" style="color: var(--theme-text);">Titanium Parts FAQ</h2>
+      <div class="space-y-4">
+        {d.faqs.map((f) => (
+          <details class="rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <summary class="font-semibold cursor-pointer" style="color: var(--theme-text);">{f.question}</summary>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</article>

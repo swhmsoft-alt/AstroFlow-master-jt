@@ -26,6 +26,7 @@ const navKeyByHref: Record<string, string> = {
   '/resources': 'nav.resources',
   '/products': 'nav.products',
   '/equipment': 'nav.equipment',
+  '/parts': 'nav.parts',
 };
 
 // Map child href → child item translation key
@@ -124,6 +125,15 @@ const childNavKeyByHref: Record<string, string> = {
   '/blog': 'nav.blog',
   // Products (inside Resources dropdown)
   '/products': 'nav.products',
+  // Titanium Parts (top-level, English nav)
+  '/parts': 'nav.parts',
+  '/parts/titanium-cnc-parts': 'nav.parts.titaniumCncParts',
+  '/parts/titanium-fabricated-parts': 'nav.parts.titaniumFabricatedParts',
+  '/parts/titanium-pipe-components': 'nav.parts.titaniumPipeComponents',
+  '/parts/titanium-marine-parts': 'nav.parts.titaniumMarineParts',
+  '/parts/titanium-uav-components': 'nav.parts.titaniumUavComponents',
+  '/parts/titanium-motorsport-parts': 'nav.parts.titaniumMotorsportParts',
+  '/parts/titanium-medical-components': 'nav.parts.titaniumMedicalComponents',
 };
 
 // Map (parent href → heading text → translation key) for dropdown column headings
@@ -149,6 +159,9 @@ const navHeadingKeyByParent: Record<string, Record<string, string>> = {
   },
   '/resources': {
     'Resource Hub': 'nav.resources.resourceHub',
+  },
+  '/parts': {
+    'Titanium Parts': 'nav.parts',
   },
 };
 

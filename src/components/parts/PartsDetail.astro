@@ -1,0 +1,204 @@
+---
+/**
+ * PartsDetail.astro
+ *
+ * Shared template for the 7 /parts/ category pages. Renders the 9-section
+ * B2B procurement structure: Hero → Application Overview → Typical Components →
+ * Manufacturing Methods → Available Titanium Grades → Technical Capabilities →
+ * Quality & Inspection → RFQ CTA → FAQ.
+ * The page wrapper (BaseLayout + JSON-LD) is provided by the Astro page itself.
+ */
+import type { PartsCategory } from '../../data/parts';
+
+interface Props {
+  data: PartsCategory;
+}
+const { data } = Astro.props;
+
+// Map grade names to existing /materials/ pages. Unknown grades fall back to
+// the Materials directory to avoid 404 internal links.
+const gradeLink = (name: string): string => {
+  const m: Record<string, string> = {
+    'Grade 2 – Commercial Pure': '/materials/grade-2/',
+    'Grade 4 ELI – CP-Titanium': '/materials/grade-4-eli/',
+    'Grade 5 – Ti-6Al-4V': '/materials/grade-5/',
+    'Grade 9 – Ti-3Al-2.5V': '/materials/grade-9/',
+    'Grade 12 – Ti-0.3Mo-0.8Ni': '/materials/grade-12/',
+    'Grade 19 / 21 – Beta alloys': '/materials/grade-19/',
+    'Grade 23 – Ti-6Al-4V ELI': '/materials/grade-23/',
+  };
+  return m[name] || '/materials/';
+};
+---
+<article>
+  <!-- Hero -->
+  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--theme-surface), var(--theme-bg));">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full uppercase"
+        style="color: var(--theme-primary); background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        {data.heroBadge}
+      </span>
+      <h1 class="mt-5 text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">
+        {data.heroH1}
+      </h1>
+      <p class="mt-5 max-w-3xl text-lg" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {data.heroSubtitle}
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all"
+          style="background: var(--theme-primary); color: var(--theme-text);">
+          Upload Drawing
+        </a>
+        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all"
+          style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">
+          Request Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Overview -->
+  <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.applicationOverview.title}</h2>
+        <p class="mt-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          {data.applicationOverview.body}
+        </p>
+      </div>
+      <ul class="space-y-3">
+        {data.applicationOverview.keyPoints.map((k) => (
+          <li class="flex items-start gap-3 p-4 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <svg class="w-5 h-5 mt-0.5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+            <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{k}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Typical Components -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.typicalComponents.title}</h2>
+      <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.typicalComponents.intro}</p>
+      <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <th class="px-5 py-3 font-semibold" style="color: var(--theme-primary);">Component</th>
+              <th class="px-5 py-3 font-semibold" style="color: var(--theme-primary);">Titanium Grade</th>
+              <th class="px-5 py-3 font-semibold" style="color: var(--theme-primary);">Standard</th>
+              <th class="px-5 py-3 font-semibold" style="color: var(--theme-primary);">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.typicalComponents.items.map((c) => (
+              <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <td class="px-5 py-4 font-medium" style="color: var(--theme-text);">{c.name}</td>
+                <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.grade}</td>
+                <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.standard}</td>
+                <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{c.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manufacturing Methods -->
+  <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.manufacturingMethods.title}</h2>
+      <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.manufacturingMethods.intro}</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {data.manufacturingMethods.methods.map((m) => (
+          <div class="p-6 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <h3 class="font-bold" style="color: var(--theme-primary);">{m.name}</h3>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Titanium Grades -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.availableGrades.title}</h2>
+      <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.availableGrades.intro}</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {data.availableGrades.grades.map((g) => (
+          <a href={gradeLink(g.name)} class="block p-6 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <h3 class="font-bold" style="color: var(--theme-text);">{g.name}</h3>
+            <p class="mt-1 text-xs font-medium uppercase tracking-wide" style="color: var(--theme-primary);">{g.uns}</p>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{g.note}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Capabilities -->
+  <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.technicalCapabilities.title}</h2>
+      <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.technicalCapabilities.intro}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {data.technicalCapabilities.capabilities.map((c) => (
+          <div class="flex items-center justify-between gap-3 p-4 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <span class="text-sm font-medium" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{c.label}</span>
+            <span class="text-sm font-bold text-right" style="color: var(--theme-primary);">{c.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality & Inspection -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.qualityInspection.title}</h2>
+      <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{data.qualityInspection.intro}</p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {data.qualityInspection.points.map((p) => (
+          <li class="flex items-start gap-3 p-4 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <svg class="w-5 h-5 mt-0.5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+            <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- RFQ CTA -->
+  <section class="border-t py-14 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.rfqCta.title}</h2>
+      <p class="mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.rfqCta.text}</p>
+      <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center px-8 py-4 text-sm font-bold rounded-xl transition-all"
+        style="background: var(--theme-primary); color: var(--theme-text);">
+        Request Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-14 lg:py-16" style="background: var(--theme-surface);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold mb-8" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {data.faqs.map((f) => (
+          <details class="rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+            <summary class="font-semibold cursor-pointer" style="color: var(--theme-text);">{f.question}</summary>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{f.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</article>

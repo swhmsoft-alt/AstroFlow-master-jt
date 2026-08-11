@@ -1,0 +1,35 @@
+---
+/** /parts/titanium-fabricated-parts/ — Titanium Fabricated Parts (B2B procurement page). */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PartsDetail from '../../components/parts/PartsDetail.astro';
+import { PART_PAGES } from '../../data/parts';
+
+const data = PART_PAGES.find((p) => p.slug === 'titanium-fabricated-parts')!;
+const SITE = 'https://cnc.bozemetal.com';
+const canonicalUrl = `${SITE}/parts/${data.slug}/`;
+const supplementarySchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'FAQPage',
+      mainEntity: data.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+  ],
+};
+---
+<BaseLayout
+  title={data.pageTitle}
+  description={data.metaDescription}
+  pageType="service-detail"
+  serviceName={data.heroH1}
+  serviceCategory={data.navName}
+  canonicalURL={canonicalUrl}
+  alternateLinks={[{ lang: 'en', href: `/parts/${data.slug}/` }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(supplementarySchema)} />
+  <PartsDetail data={data} />
+</BaseLayout>

@@ -388,6 +388,15 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   '/products/product-entities': 'Component Library',
   '/products/component-library': 'Component Library',
   '/products/standards': 'Standards',
+  // Titanium Parts (top-level B2B procurement entry, English nav)
+  '/parts': 'Titanium Parts',
+  '/parts/titanium-cnc-parts': 'Titanium CNC Parts',
+  '/parts/titanium-fabricated-parts': 'Titanium Fabricated Parts',
+  '/parts/titanium-pipe-components': 'Titanium Pipe Components',
+  '/parts/titanium-marine-parts': 'Titanium Marine Parts',
+  '/parts/titanium-uav-components': 'Titanium UAV Components',
+  '/parts/titanium-motorsport-parts': 'Titanium Motorsport Parts',
+  '/parts/titanium-medical-components': 'Titanium Medical Components',
 };
 
 const humanizeSeg = (seg: string) =>

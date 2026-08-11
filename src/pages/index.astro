@@ -8,6 +8,7 @@ import MaterialMatrix from '../components/home/MaterialMatrix.astro';
 import IndustryApplications from '../components/home/IndustryApplications.astro';
 import EngineeringResources from '../components/home/EngineeringResources.astro';
 import PremiumCTA from '../components/home/PremiumCTA.astro';
+import PartsPromoBanner from '../components/parts/PartsPromoBanner.astro';
 import { HERO_CONFIG } from '../config/hero';
 import { getCollection } from 'astro:content';
 
@@ -51,5 +52,6 @@ const heroData = {
   <MaterialMatrix />
   <IndustryApplications />
   <EngineeringResources />
+  <PartsPromoBanner />
   <PremiumCTA />
 </BaseLayout>

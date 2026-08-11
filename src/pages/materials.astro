@@ -7,6 +7,7 @@ import TitaniumStandardsSection from '../components/materials/TitaniumStandardsS
 import AlloyComparisonTable from '../components/materials/AlloyComparisonTable.astro';
 import MachiningKnowHow from '../components/materials/MachiningKnowHow.astro';
 import MaterialTraceability from '../components/materials/MaterialTraceability.astro';
+import PartsPromoBanner from '../components/parts/PartsPromoBanner.astro';
 import TitaniumGradeFinder from '../components/react/TitaniumGradeFinder';
 import WeightCalculator from '../components/react/WeightCalculator';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
@@ -89,4 +90,5 @@ const t = useTranslations(currentLang);
 
   <!-- Material Traceability -->
   <MaterialTraceability />
+  <PartsPromoBanner />
 </BaseLayout>

@@ -209,6 +209,26 @@ export function getNavigation(lang: string): NavItem[] {
   if (lang !== 'en') return NAVIGATION;
 
   const productsItem: NavItem = { name: 'Products & Solutions', href: '/products' };
+  // Titanium Parts — a parallel top-level B2B procurement entry (distinct from
+  // Products & Solutions). Single-column dropdown listing the 7 part categories.
+  const partsItem: NavItem = {
+    name: 'Titanium Parts',
+    href: '/parts',
+    children: [
+      {
+        heading: 'Titanium Parts',
+        items: [
+          { name: 'Titanium CNC Parts', href: '/parts/titanium-cnc-parts' },
+          { name: 'Titanium Fabricated Parts', href: '/parts/titanium-fabricated-parts' },
+          { name: 'Titanium Pipe Components', href: '/parts/titanium-pipe-components' },
+          { name: 'Titanium Marine Parts', href: '/parts/titanium-marine-parts' },
+          { name: 'Titanium UAV Components', href: '/parts/titanium-uav-components' },
+          { name: 'Titanium Motorsport Parts', href: '/parts/titanium-motorsport-parts' },
+          { name: 'Titanium Medical Components', href: '/parts/titanium-medical-components' },
+        ],
+      },
+    ],
+  };
   const englishNav: NavItem[] = [];
   let productsInserted = false;
 
@@ -232,6 +252,11 @@ export function getNavigation(lang: string): NavItem[] {
       continue;
     }
     englishNav.push(item);
+    // Insert Titanium Parts immediately after Services — a parallel top-level
+    // commercial entry (B2B procurement gateway) distinct from Products.
+    if (item.href === '/services') {
+      englishNav.push(partsItem);
+    }
   }
 
   // Safety net: keep Products even if Services were ever removed from NAVIGATION.

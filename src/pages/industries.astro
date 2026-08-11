@@ -5,6 +5,7 @@ import { HERO_CONFIG } from '../config/hero';
 import IndustryVerticalsGrid from '../components/industries/IndustryVerticalsGrid.astro';
 import IndustryComplianceDashboard from '../components/industries/IndustryComplianceDashboard.astro';
 import IndustryCtaSection from '../components/industries/IndustryCtaSection.astro';
+import PartsPromoBanner from '../components/parts/PartsPromoBanner.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
@@ -49,4 +50,5 @@ const t = useTranslations(currentLang);
 
   <!-- CTA Section -->
   <IndustryCtaSection />
+  <PartsPromoBanner />
 </BaseLayout>

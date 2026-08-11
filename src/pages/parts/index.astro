@@ -1,0 +1,53 @@
+---
+/**
+ * /parts/ — Titanium Parts Landing (B2B Procurement Gateway).
+ * English-only top-level commercial entry, parallel to /products/.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PartsLanding from '../../components/parts/PartsLanding.astro';
+import { PARTS_LANDING, PART_PAGES } from '../../data/parts';
+
+const SITE = 'https://cnc.bozemetal.com';
+const pageTitle = 'Custom Titanium Parts Manufacturing | CNC Titanium Components';
+const pageDescription =
+  "Custom titanium parts manufacturing for aerospace, marine, UAV, motorsport and industrial applications. CNC machining, welding, EDM and rapid prototyping from Baoji, China's titanium manufacturing hub.";
+const canonicalUrl = `${SITE}/parts/`;
+
+// Supplementary JSON-LD: Service + FAQPage. CollectionPage + ItemList are
+// generated automatically by BaseLayout via pageType="products-hub".
+const supplementarySchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: 'Custom Titanium Parts Manufacturing',
+      serviceType: 'Titanium Parts Manufacturing',
+      provider: { '@id': `${SITE}/#manufacturing-center` },
+      areaServed: 'Worldwide',
+      description: pageDescription,
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: PARTS_LANDING.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+  ],
+};
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="products-hub"
+  collectionName="Titanium Parts Manufacturing"
+  collectionDescription={PARTS_LANDING.heroSubtitle}
+  itemCount={PART_PAGES.length}
+  items={PART_PAGES.map((p) => ({ name: p.navName, url: `${SITE}/parts/${p.slug}/` }))}
+  alternateLinks={[{ lang: 'en', href: '/parts/' }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(supplementarySchema)} />
+  <PartsLanding />
+</BaseLayout>
