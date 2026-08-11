@@ -18,7 +18,7 @@
     "check:similarity:strict": "node scripts/check-similarity.mjs --threshold 0.30",
     "differentiate": "node scripts/differentiate-products.mjs",
     "prebuild:similarity": "node scripts/check-similarity.mjs --threshold 0.30 || echo '⚠️  Similarity exceeds threshold. Run `npm run differentiate` to fix.'",
-    "deploy": "set NODE_OPTIONS=--max-old-space-size=4096 && npm run build && node scripts/deploy-basic-ftp.js",
+    "deploy": "set NODE_OPTIONS=--max-old-space-size=4096 && npm run build && node scripts/deploy-incremental-ftp.js",
     "deploy:inc": "node scripts/deploy-incremental-ftp.js",
     "kw:query": "node scripts/kw-cli.mjs",
     "kw:count": "node scripts/kw-cli.mjs --count",
