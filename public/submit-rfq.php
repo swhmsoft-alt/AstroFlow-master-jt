@@ -65,6 +65,23 @@ if (strlen($name) > 120 || strlen($phone) > 30 || strlen($details) > 5000) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// 3b. SERVER-SIDE ARCHIVE — every valid inquiry is appended to
+//     /rfq-inquiries.log (web root) so RFQs are never lost even if email
+//     delivery is unreliable. Retrieve via FTP/cPanel → download the file.
+//     (Append-log to web root is used because subdir creation is not
+//     reliably writable on this host, while a root-level log is proven to be.)
+// ─────────────────────────────────────────────────────────────────────────────
+$archiveLog = __DIR__ . '/rfq-inquiries.log';
+$archiveTxt  = "[RFQ " . date('Y-m-d H:i:s T') . " | IP " . ($_SERVER['REMOTE_ADDR'] ?? '') . "]\n";
+$archiveTxt .= "Name:    $name\n";
+$archiveTxt .= "Email:   $email\n";
+$archiveTxt .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\n";
+$archiveTxt .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\n\n";
+$archiveTxt .= "Project Details:\n$details\n";
+$archiveTxt .= str_repeat('-', 40) . "\n";
+@file_put_contents($archiveLog, $archiveTxt, FILE_APPEND);
+
+// ─────────────────────────────────────────────────────────────────────────────
 // 4. FILE UPLOAD — strict extension whitelist + size limit (25 MB)
 // ─────────────────────────────────────────────────────────────────────────────
 $attachment     = null;
@@ -174,7 +191,7 @@ if ($attachment === null || $attachmentName === null) {
     $headers .= "Reply-To: $email\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+    $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 } else {
     // ── With attachment → multipart/mixed (best effort; may be dropped) ──
     $boundary = 'b1_' . md5(uniqid((string)mt_rand(), true));
@@ -202,7 +219,7 @@ if ($attachment === null || $attachmentName === null) {
     $headers .= "Reply-To: $email\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+    $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

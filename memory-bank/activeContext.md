@@ -1,9 +1,14 @@
 # Active Context
 
 > **Last Updated:** 2026-08-12
-> **Current Focus:** /parts/ 制造方法（Manufacturing Methods）内链修复：机制接入方法名 + 补制造方法精确词库。
+> **Current Focus:** 首页 PremiumCTA 信任指标框改自适应，修复 AS9100D 的 D 被裁切。
 
 ## Current Status
+✅ **首页信任指标框自适应修复完成（2026-08-12）：**
+- 背景：`cnc.bozemetal.com` 首页 `PremiumCTA.astro` 四个信任框（25+ Years / AS9100D Certified / 24/7 Support / Global Network）原先为固定 `grid-cols-2 md:grid-cols-4` 等宽列，列宽不足导致 `AS9100D`（`home.premiumcta.iso_9001_2`，`text-4xl font-bold`）右侧 D 被裁切/未完整展示。
+- 修复：容器改为 `flex flex-wrap justify-center`；每个框改为 `flex flex-col items-center text-center`（宽度随内容自适应）+ 数值/标签加 `whitespace-nowrap` 防止换行裁切。四框统一应用，`25+`/`AS9100D`/`24/7`/`Global` 均完整显示。
+- 验证：`npx astro check` 仅含该组件既有无用 import 警告（localizePath/Button，改动前已存在），无新增错误。**未部署。**
+
 ✅ **/parts/ 制造方法内链修复完成（2026-08-12，仅 EN）：**
 - 根因：`PartsDetail.astro` 制造方法只对 `desc` 用 `linkify`，方法名 `name`（h3）未接入；且主库缺制造方法精确锚文本（只有带括号长版 / "Titanium-" 前缀版），导致 desc 与 name 都命中不了。
 - 机制：`PartsDetail.astro` 制造方法 `name` 改为 `set:html={linkify(m.name, 1)}`（h3>a 合法），desc 仍 linkify。
@@ -26,6 +31,14 @@
 - 验证：`node scripts/check-undefined-slugs.mjs` 0 issue；`astro build` 成功；dist 抽查 `/parts/` 与 `/parts/titanium-cnc-parts/` 均含 BreadcrumbList、唯一 `<h1>`、position="3" 3级面包屑。**未部署。**
 
 ✅ **博客封面图缺失修复完成（2026-08-08）：** `baoji-china-titanium-valley.md` frontmatter 补充 `coverImage: /uploads/blog-baoji-china-titanium-valley-cover.jpg` + `coverImageAlt`（图片文件早已存在于 `public/uploads/`，仅 frontmatter 漏写）。修复后 40 篇英文博客文章全部具备封面图。`npx astro build` ✅ **2232 页**；dist 抽查详情页 `<img src="/uploads/blog-baoji-china-titanium-valley-cover.jpg" alt=...>` 正常渲染，首页 Industry Insights 卡片同步显示封面。**未部署**（上一轮方案 A+B 分页/归档已随 commit `213e2689` 入库推送）。
+
+✅ **RFQ 询盘表单「接收」排查 + 服务器端存档兜底完成（2026-08-12）：**
+- 背景：用户再次测 `/rfq/` 询盘表单能否发送/接收；表单 `POST /submit-rfq.php` 全链路通（302→/thank-you/），`mail()` 入队成功，但 info@bozemetal.com 未收到邮件。
+- 发送侧取证（全绿）：服务器部署文件与本机 e9adecca 一致；临时日志 `rfq-send.log` 实测 `mail1(-f)=true`（信封 `no-reply@bozemetal.com`）；SPF 授权服务器 IP 40.160.1.205 ✅；DMARC `p=none` ✅；出站 IP 未进 Spamhaus/SpamCop/Barracuda/PSBL/SORBS/CBL 任何 RBL ✅。
+- 结论：`mail()` 返回 true 仅代表 Exim 收进本地队列，共享主机出站 IP 信誉评分波动导致投递到收件箱不可靠（用户曾收到过一次=运气）。**没有 SMTP 凭据/API Key/域名控制权时，无法更换发信通道，邮件到收件箱无法根治。**
+- **改动（仅 EN，已部署）**：`public/submit-rfq.php` 增加**服务器端存档兜底**——每条合法询盘追加写 `__DIR__.'/rfq-inquiries.log'`（web 根，FTP/cPanel 可取，与邮件不冲突、双保险）；同时移除 `X-Mailer: PHP/` 扣分头（两处），改为 `Content-Transfer-Encoding: 8bit`。
+- ⚠️ **踩坑：`file_put_contents(..., FILE_APPEND | LOCK_EX)` 在本机 LiteSpeed 上静默失败（`@` 抑制）导致日志不落盘**；改为仅 `FILE_APPEND`（与历史 `rfq-send.log` 成功写法一致）即正常。**今后在本主机写日志禁用 LOCK_EX。**
+- 验证：真实 POST → 302；FTP 取回 `rfq-inquiries.log`（238B）内容完整（Name/Email/Phone/Company/Details/IP）。`git status` 仅 `M public/submit-rfq.php`。**未 commit。**
 
 ## Recent Decisions
 
