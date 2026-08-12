@@ -1,9 +1,30 @@
 # Active Context
 
-> **Last Updated:** 2026-08-08
-> **Current Focus:** 260 个 Product Entity 页增加 B2B RFQ Offer（无 price，MadeToOrder）——工业实体图谱商业关系层。
+> **Last Updated:** 2026-08-12
+> **Current Focus:** /parts/ 制造方法（Manufacturing Methods）内链修复：机制接入方法名 + 补制造方法精确词库。
 
 ## Current Status
+✅ **/parts/ 制造方法内链修复完成（2026-08-12，仅 EN）：**
+- 根因：`PartsDetail.astro` 制造方法只对 `desc` 用 `linkify`，方法名 `name`（h3）未接入；且主库缺制造方法精确锚文本（只有带括号长版 / "Titanium-" 前缀版），导致 desc 与 name 都命中不了。
+- 机制：`PartsDetail.astro` 制造方法 `name` 改为 `set:html={linkify(m.name, 1)}`（h3>a 合法），desc 仍 linkify。
+- 词库：补主库 15 条 EN `mapped`（repository.upsertMany）：3/5-Axis CNC Milling、5-Axis Machining、CNC Turning & Mill-Turn、CNC Turning & Milling、CNC Machining、Precision CNC Machining、CNC Machining of Fittings & Flanges、Titanium Rapid Prototyping、Titanium TIG (GTAW) Welding、TIG (GTAW) Pipe Welding、TIG Welding & Fabrication、Laser Cutting、Pipe Spool Fabrication、Forming & Bending、Surface Treatment → 各自站内服务页。EN mapped 76→91。
+- 派生：`kw:sync` → entity-keywords.mjs(658行)；`generate-entity-keywords.mjs` → astro.config.mjs keywordMap。
+- 验证：`astro build` ✅ 2240 页；dist 抽查 fabricated-parts 制造方法 5 项均有内链（laser-cutting/waterjet-cutting/welding-assembly/forming/surface-treatment），锚文本正确；pipe/marine/cnc/uav/medical 制造方法内链均命中；`check-undefined-slugs` 0 issue；临时脚本已删除。**未部署。**
+
+✅ **/parts/ 内链机制落地完成（2026-08-12，仅 EN）：**
+- 新增 `src/lib/auto-inline-links.ts`：`.astro` 页面版自动内链工具，复用 `data/keywords/main-db.json`（EN `mapped` 词）在纯文本段落中自动包裹站内 `<a>` 链接。规则与 markdown rehype 同源：仅 mapped+有 targetUrl、大小写敏感+单词边界（防 CMM/RFQ/SLM 误配）、每字段 max 链接数、不处理 h1/h2 标题、保护已有 `<a>` 避免二次包裹。
+- 补主库 `data/keywords/main-db.json`（经 repository.upsertMany 规范写入）：`titanium parts`→`/parts/` 等核心词改 `mapped`；`titanium-3d-printing-parts`→`/titanium-additive-manufacturing/`；新增 7 个分类词（titanium cnc/fabricated/pipe/marine/uav/motorsport/medical components 等 → 各自 `/parts/*/`）。EN mapped 67→76。
+- 派生链路（勿手改）：`npm run kw:sync` → `entity-keywords.mjs`；`node scripts/generate-entity-keywords.mjs` → `astro.config.mjs` keywordMap（已含 parts 全部词）。
+- 集成：`PartsLanding.astro` intro 用 linkify；`PartsDetail.astro` 对 applicationOverview.body / manufacturingMethods.desc / typicalComponents.note / qualityInspection.points / rfqCta.text / faqs.answer 用 linkify。
+- 验证：`check-undefined-slugs` 0 issue；`astro build` ✅ 2240 页；dist 抽查 parts 页已渲染内链（/materials/grade-23/、/titanium-cnc-machining-services/、/industries/aerospace/、/rfq/、/equipment/cmm/ 等）。**未部署。**
+
+✅ **/parts/ 一致性与 Hero/面包屑优化完成（2026-08-12，仅 EN）：**
+- `src/pages/parts/index.astro`：新增可见面包屑（Home › Titanium Parts，Schema.org 微数据）+ `<SubpageHero>`（含 Upload Drawing / Request Quote CTA slot，keyMetrics/entityChips）。
+- `src/components/parts/PartsLanding.astro`：移除原自绘渐变 Hero（由页面级 SubpageHero 取代，避免双 H1）。
+- `src/config/hero.ts`：新增 `HERO_CONFIG['/parts']`（badge/H1/subtitle/keyMetrics/entityChips）。
+- `src/components/parts/PartsDetail.astro`（共享分类模板，一处覆盖 7 个分类页）：新增 3 级面包屑（Home › Titanium Parts › 分类名）+ SubpageHero（数据驱动 data.heroH1/heroSubtitle/heroBadge），移除自绘 Hero。
+- 验证：`node scripts/check-undefined-slugs.mjs` 0 issue；`astro build` 成功；dist 抽查 `/parts/` 与 `/parts/titanium-cnc-parts/` 均含 BreadcrumbList、唯一 `<h1>`、position="3" 3级面包屑。**未部署。**
+
 ✅ **博客封面图缺失修复完成（2026-08-08）：** `baoji-china-titanium-valley.md` frontmatter 补充 `coverImage: /uploads/blog-baoji-china-titanium-valley-cover.jpg` + `coverImageAlt`（图片文件早已存在于 `public/uploads/`，仅 frontmatter 漏写）。修复后 40 篇英文博客文章全部具备封面图。`npx astro build` ✅ **2232 页**；dist 抽查详情页 `<img src="/uploads/blog-baoji-china-titanium-valley-cover.jpg" alt=...>` 正常渲染，首页 Industry Insights 卡片同步显示封面。**未部署**（上一轮方案 A+B 分页/归档已随 commit `213e2689` 入库推送）。
 
 ## Recent Decisions

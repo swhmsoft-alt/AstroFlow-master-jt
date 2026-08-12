@@ -9,11 +9,16 @@
  * The page wrapper (BaseLayout + JSON-LD) is provided by the Astro page itself.
  */
 import type { PartsCategory } from '../../data/parts';
+import SubpageHero from '../ui/SubpageHero.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { linkify } from '../../lib/auto-inline-links';
 
 interface Props {
   data: PartsCategory;
 }
 const { data } = Astro.props;
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 
 // Map grade names to existing /materials/ pages. Unknown grades fall back to
 // the Materials directory to avoid 404 internal links.
@@ -30,43 +35,60 @@ const gradeLink = (name: string): string => {
   return m[name] || '/materials/';
 };
 ---
-<article>
-  <!-- Hero -->
-  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--theme-surface), var(--theme-bg));">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-      <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full uppercase"
-        style="color: var(--theme-primary); background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-        {data.heroBadge}
-      </span>
-      <h1 class="mt-5 text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">
-        {data.heroH1}
-      </h1>
-      <p class="mt-5 max-w-3xl text-lg" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-        {data.heroSubtitle}
-      </p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
-        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all"
-          style="background: var(--theme-primary); color: var(--theme-text);">
-          Upload Drawing
+<!-- Breadcrumb -->
+<nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          <span itemprop="name">{t('nav.home')}</span>
         </a>
-        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all"
-          style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">
-          Request Quote
+        <meta itemprop="position" content="1" />
+        <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/parts/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+          <span itemprop="name">{t('nav.parts')}</span>
         </a>
-      </div>
-    </div>
-  </section>
+        <meta itemprop="position" content="2" />
+        <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{data.navName}</span>
+        <meta itemprop="position" content="3" />
+      </li>
+    </ol>
+  </div>
+</nav>
 
+<!-- Hero -->
+<SubpageHero
+  h1={data.heroH1}
+  badge={data.heroBadge}
+  subtitle={data.heroSubtitle}
+  badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+>
+  <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+    <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+      class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all"
+      style="background: var(--theme-primary); color: var(--theme-text);">
+      Upload Drawing
+    </a>
+    <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+      class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all"
+      style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">
+      Request Quote
+    </a>
+  </div>
+</SubpageHero>
+
+<article>
   <!-- Application Overview -->
   <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
       <div>
         <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.applicationOverview.title}</h2>
-        <p class="mt-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-          {data.applicationOverview.body}
-        </p>
+        <p class="mt-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);" set:html={linkify(data.applicationOverview.body, 5)} />
       </div>
       <ul class="space-y-3">
         {data.applicationOverview.keyPoints.map((k) => (
@@ -100,7 +122,7 @@ const gradeLink = (name: string): string => {
                 <td class="px-5 py-4 font-medium" style="color: var(--theme-text);">{c.name}</td>
                 <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.grade}</td>
                 <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.standard}</td>
-                <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{c.note}</td>
+                <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);" set:html={linkify(c.note, 1)} />
               </tr>
             ))}
           </tbody>
@@ -117,8 +139,8 @@ const gradeLink = (name: string): string => {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {data.manufacturingMethods.methods.map((m) => (
           <div class="p-6 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
-            <h3 class="font-bold" style="color: var(--theme-primary);">{m.name}</h3>
-            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{m.desc}</p>
+            <h3 class="font-bold" style="color: var(--theme-primary);" set:html={linkify(m.name, 1)}></h3>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={linkify(m.desc, 3)} />
           </div>
         ))}
       </div>
@@ -167,7 +189,7 @@ const gradeLink = (name: string): string => {
         {data.qualityInspection.points.map((p) => (
           <li class="flex items-start gap-3 p-4 rounded-lg border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
             <svg class="w-5 h-5 mt-0.5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-            <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p}</span>
+            <span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);" set:html={linkify(p, 2)} />
           </li>
         ))}
       </ul>
@@ -178,7 +200,7 @@ const gradeLink = (name: string): string => {
   <section class="border-t py-14 text-center" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{data.rfqCta.title}</h2>
-      <p class="mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{data.rfqCta.text}</p>
+      <p class="mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={linkify(data.rfqCta.text, 3)} />
       <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
         class="mt-8 inline-flex items-center px-8 py-4 text-sm font-bold rounded-xl transition-all"
         style="background: var(--theme-primary); color: var(--theme-text);">
@@ -195,7 +217,7 @@ const gradeLink = (name: string): string => {
         {data.faqs.map((f) => (
           <details class="rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
             <summary class="font-semibold cursor-pointer" style="color: var(--theme-text);">{f.question}</summary>
-            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{f.answer}</p>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={linkify(f.answer, 3)} />
           </details>
         ))}
       </div>

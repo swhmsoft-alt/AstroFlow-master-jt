@@ -1324,4 +1324,31 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       "Industries"
     ]
   },
+  '/parts': {
+    h1: 'Custom Titanium Parts Manufacturing',
+    subtitle: 'Custom titanium components manufactured from prototype to production. BOZE provides precision CNC machining, welding, EDM and fabrication solutions with direct access to the Baoji titanium supply chain.',
+    badge: 'Titanium Parts Procurement Gateway',
+
+    keyMetrics: [
+      {
+        "value": "7",
+        "label": "Part Categories"
+      },
+      {
+        "value": "Gr1-Gr23",
+        "label": "Titanium Grades"
+      },
+      {
+        "value": "24-48h",
+        "label": "Quote TAT"
+      }
+    ],
+    entityChips: [
+      "CNC Machining",
+      "Welding & Fabrication",
+      "Wire EDM",
+      "Rapid Prototyping",
+      "Material Traceability"
+    ]
+  },
 };

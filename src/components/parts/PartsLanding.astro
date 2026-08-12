@@ -7,6 +7,7 @@
  * The page wrapper (BaseLayout + JSON-LD) is provided by the Astro page itself.
  */
 import { PARTS_LANDING } from '../../data/parts';
+import { linkify } from '../../lib/auto-inline-links';
 
 const d = PARTS_LANDING;
 
@@ -19,40 +20,10 @@ const sectionLinks = [
 ];
 ---
 <article>
-  <!-- Hero -->
-  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--theme-surface), var(--theme-bg));">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-      <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wide rounded-full uppercase"
-        style="color: var(--theme-primary); background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-        {d.heroBadge}
-      </span>
-      <h1 class="mt-5 text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">
-        {d.heroH1}
-      </h1>
-      <p class="mt-5 max-w-3xl text-lg" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-        {d.heroSubtitle}
-      </p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
-        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all"
-          style="background: var(--theme-primary); color: var(--theme-text);">
-          Upload Drawing
-        </a>
-        <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all"
-          style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">
-          Request Quote
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- Intro -->
   <section class="border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <p class="text-base sm:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-        {d.intro}
-      </p>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);" set:html={linkify(d.intro, 5)} />
     </div>
   </section>
 

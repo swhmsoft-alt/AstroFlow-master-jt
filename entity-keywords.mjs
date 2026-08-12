@@ -16,6 +16,7 @@ export const en = [
 
   // ── CNC 加工 (CNC Machining) ──
   ['3/5-Axis CNC Machining',  '/titanium-cnc-machining-services/3-5-axis-cnc-machining/'],
+  ['3/5-Axis CNC Milling',  '/titanium-cnc-machining-services/3-5-axis-cnc-machining/'],
 
   // ── 其他 (Other) ──
   ['3D CMM inspection',  '/products/capabilities/3d-cmm-inspection/'],
@@ -28,6 +29,7 @@ export const en = [
   ['5-Axis CNC Machining',  '/titanium-cnc-machining-services/3-5-axis-cnc-machining/'],
 
   // ── 其他 (Other) ──
+  ['5-Axis Machining',  '/titanium-cnc-machining-services/3-5-axis-cnc-machining/'],
   ['aerospace titanium',  '/industries/aerospace/'],
   ['AMS 4928T',  '/materials/grade-5/'],
 
@@ -50,8 +52,12 @@ export const en = [
   ['CMM',  '/equipment/cmm/'],
 
   // ── CNC 加工 (CNC Machining) ──
+  ['CNC Machining',  '/titanium-cnc-machining-services/'],
+  ['CNC Machining of Fittings & Flanges',  '/titanium-cnc-machining-services/'],
   ['CNC Milling',  '/titanium-cnc-machining-services/cnc-milling-turning/'],
   ['CNC Milling & Turning',  '/titanium-cnc-machining-services/cnc-milling-turning/'],
+  ['CNC Turning & Mill-Turn',  '/titanium-cnc-machining-services/cnc-milling-turning/'],
+  ['CNC Turning & Milling',  '/titanium-cnc-machining-services/cnc-milling-turning/'],
 
   // ── 首页 ──
   ['Comprehensive Titanium Manufacturing',  '/'],
@@ -67,6 +73,9 @@ export const en = [
   // ── 表面处理 (Surface Treatment) ──
   ['electropolishing',  '/products/capabilities/electropolishing/'],
 
+  // ── 成型与重型制造 (Forming & Heavy Manufacturing) ──
+  ['Forming & Bending',  '/titanium-forming-heavy-manufacturing/'],
+
   // ── 其他 (Other) ──
   ['Grade 1 Titanium',  '/materials/grade-1/'],
   ['Grade 2 Titanium',  '/materials/grade-2/'],
@@ -79,6 +88,7 @@ export const en = [
   ['ITAR',  '/capabilities/'],
 
   // ── 钣金加工 (Fabrication) ──
+  ['Laser Cutting',  '/titanium-fabrication-services/laser-cutting/'],
   ['Laser Cutting (Sheet',  '/titanium-fabrication-services/laser-cutting/'],
   ['Laser Cutting (Sheet & Tube)',  '/titanium-fabrication-services/laser-cutting/'],
   ['laser welding titanium',  '/titanium-fabrication-services/titanium-welding-assembly/'],
@@ -90,9 +100,15 @@ export const en = [
   ['medical implants',  '/industries/medical/'],
   ['NADCAP',  '/capabilities/'],
 
+  // ── 钣金加工 (Fabrication) ──
+  ['Pipe Spool Fabrication',  '/titanium-fabrication-services/titanium-welding-assembly/'],
+
   // ── 表面处理 (Surface Treatment) ──
   ['Polishing',  '/titanium-surface-treatment/polishing-sandblasting/'],
   ['Polishing & Sandblasting',  '/titanium-surface-treatment/polishing-sandblasting/'],
+
+  // ── CNC 加工 (CNC Machining) ──
+  ['Precision CNC Machining',  '/titanium-cnc-machining-services/'],
 
   // ── 增材制造 (Additive Manufacturing) ──
   ['Rapid Prototyping',  '/titanium-additive-manufacturing/rapid-prototyping/'],
@@ -107,19 +123,31 @@ export const en = [
   // ── 增材制造 (Additive Manufacturing) ──
   ['SLM',  '/titanium-additive-manufacturing/3d-printing-slm/'],
 
+  // ── 表面处理 (Surface Treatment) ──
+  ['Surface Treatment',  '/titanium-surface-treatment/'],
+
   // ── 其他 (Other) ──
   ['thread rolling of titanium',  '/products/capabilities/thread-rolling/'],
   ['Ti-6Al-4V ELI',  '/materials/grade-23/'],
   ['Ti-6Al-4V',  '/materials/grade-5/'],
 
+  // ── 钣金加工 (Fabrication) ──
+  ['TIG (GTAW) Pipe Welding',  '/titanium-fabrication-services/titanium-welding-assembly/'],
+  ['TIG Welding & Fabrication',  '/titanium-fabrication-services/titanium-welding-assembly/'],
+
   // ── 增材制造 (Additive Manufacturing) ──
+  ['titanium 3D printing parts',  '/titanium-additive-manufacturing/'],
   ['Titanium Additive Manufacturing',  '/titanium-additive-manufacturing/'],
 
   // ── CNC 加工 (CNC Machining) ──
   ['Titanium CNC Machining Services',  '/titanium-cnc-machining-services/'],
+  ['titanium CNC parts',  '/parts/titanium-cnc-parts/'],
 
   // ── 成型与重型制造 (Forming & Heavy Manufacturing) ──
   ['Titanium Extrusion',  '/titanium-forming-heavy-manufacturing/titanium-extrusion/'],
+
+  // ── 其他 (Other) ──
+  ['titanium fabricated parts',  '/parts/titanium-fabricated-parts/'],
 
   // ── 钣金加工 (Fabrication) ──
   ['Titanium Fabrication Services',  '/titanium-fabrication-services/'],
@@ -133,8 +161,24 @@ export const en = [
   ['Titanium Forming',  '/titanium-forming-heavy-manufacturing/'],
   ['Titanium Forming & Heavy Manufacturing',  '/titanium-forming-heavy-manufacturing/'],
 
+  // ── 其他 (Other) ──
+  ['titanium marine parts',  '/parts/titanium-marine-parts/'],
+  ['titanium medical components',  '/parts/titanium-medical-components/'],
+  ['titanium motorsport parts',  '/parts/titanium-motorsport-parts/'],
+  ['titanium parts',  '/parts/'],
+  ['titanium pipe components',  '/parts/titanium-pipe-components/'],
+
+  // ── 增材制造 (Additive Manufacturing) ──
+  ['Titanium Rapid Prototyping',  '/titanium-additive-manufacturing/rapid-prototyping/'],
+
   // ── 表面处理 (Surface Treatment) ──
   ['Titanium Surface Treatment',  '/titanium-surface-treatment/'],
+
+  // ── 钣金加工 (Fabrication) ──
+  ['Titanium TIG (GTAW) Welding',  '/titanium-fabrication-services/titanium-welding-assembly/'],
+
+  // ── 其他 (Other) ──
+  ['titanium UAV components',  '/parts/titanium-uav-components/'],
 
   // ── 钣金加工 (Fabrication) ──
   ['Titanium Welding & Assembly',  '/titanium-fabrication-services/titanium-welding-assembly/'],

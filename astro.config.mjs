@@ -52,6 +52,9 @@ export default defineConfig({
           "3/5-Axis CNC Machining": {
             "href": "/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
+          "3/5-Axis CNC Milling": {
+            "href": "/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
+          },
           "3D CMM inspection": {
             "href": "/products/capabilities/3d-cmm-inspection/"
           },
@@ -62,6 +65,9 @@ export default defineConfig({
             "href": "/titanium-additive-manufacturing/3d-printing-slm/"
           },
           "5-Axis CNC Machining": {
+            "href": "/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
+          },
+          "5-Axis Machining": {
             "href": "/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
           "aerospace titanium": {
@@ -100,10 +106,22 @@ export default defineConfig({
           "CMM": {
             "href": "/equipment/cmm/"
           },
+          "CNC Machining": {
+            "href": "/titanium-cnc-machining-services/"
+          },
+          "CNC Machining of Fittings & Flanges": {
+            "href": "/titanium-cnc-machining-services/"
+          },
           "CNC Milling": {
             "href": "/titanium-cnc-machining-services/cnc-milling-turning/"
           },
           "CNC Milling & Turning": {
+            "href": "/titanium-cnc-machining-services/cnc-milling-turning/"
+          },
+          "CNC Turning & Mill-Turn": {
+            "href": "/titanium-cnc-machining-services/cnc-milling-turning/"
+          },
+          "CNC Turning & Milling": {
             "href": "/titanium-cnc-machining-services/cnc-milling-turning/"
           },
           "Comprehensive Titanium Manufacturing": {
@@ -123,6 +141,9 @@ export default defineConfig({
           },
           "electropolishing": {
             "href": "/products/capabilities/electropolishing/"
+          },
+          "Forming & Bending": {
+            "href": "/titanium-forming-heavy-manufacturing/"
           },
           "Grade 1 Titanium": {
             "href": "/materials/grade-1/"
@@ -151,6 +172,9 @@ export default defineConfig({
           "ITAR": {
             "href": "/capabilities/"
           },
+          "Laser Cutting": {
+            "href": "/titanium-fabrication-services/laser-cutting/"
+          },
           "Laser Cutting (Sheet": {
             "href": "/titanium-fabrication-services/laser-cutting/"
           },
@@ -169,11 +193,17 @@ export default defineConfig({
           "NADCAP": {
             "href": "/capabilities/"
           },
+          "Pipe Spool Fabrication": {
+            "href": "/titanium-fabrication-services/titanium-welding-assembly/"
+          },
           "Polishing": {
             "href": "/titanium-surface-treatment/polishing-sandblasting/"
           },
           "Polishing & Sandblasting": {
             "href": "/titanium-surface-treatment/polishing-sandblasting/"
+          },
+          "Precision CNC Machining": {
+            "href": "/titanium-cnc-machining-services/"
           },
           "Rapid Prototyping": {
             "href": "/nl/titanium-additive-manufacturing/rapid-prototyping/"
@@ -190,6 +220,9 @@ export default defineConfig({
           "SLM": {
             "href": "/titanium-additive-manufacturing/3d-printing-slm/"
           },
+          "Surface Treatment": {
+            "href": "/titanium-surface-treatment/"
+          },
           "thread rolling of titanium": {
             "href": "/products/capabilities/thread-rolling/"
           },
@@ -199,14 +232,29 @@ export default defineConfig({
           "Ti-6Al-4V": {
             "href": "/materials/grade-5/"
           },
+          "TIG (GTAW) Pipe Welding": {
+            "href": "/titanium-fabrication-services/titanium-welding-assembly/"
+          },
+          "TIG Welding & Fabrication": {
+            "href": "/titanium-fabrication-services/titanium-welding-assembly/"
+          },
+          "titanium 3D printing parts": {
+            "href": "/titanium-additive-manufacturing/"
+          },
           "Titanium Additive Manufacturing": {
             "href": "/titanium-additive-manufacturing/"
           },
           "Titanium CNC Machining Services": {
             "href": "/titanium-cnc-machining-services/"
           },
+          "titanium CNC parts": {
+            "href": "/parts/titanium-cnc-parts/"
+          },
           "Titanium Extrusion": {
             "href": "/titanium-forming-heavy-manufacturing/titanium-extrusion/"
+          },
+          "titanium fabricated parts": {
+            "href": "/parts/titanium-fabricated-parts/"
           },
           "Titanium Fabrication Services": {
             "href": "/titanium-fabrication-services/"
@@ -226,8 +274,32 @@ export default defineConfig({
           "Titanium Forming & Heavy Manufacturing": {
             "href": "/titanium-forming-heavy-manufacturing/"
           },
+          "titanium marine parts": {
+            "href": "/parts/titanium-marine-parts/"
+          },
+          "titanium medical components": {
+            "href": "/parts/titanium-medical-components/"
+          },
+          "titanium motorsport parts": {
+            "href": "/parts/titanium-motorsport-parts/"
+          },
+          "titanium parts": {
+            "href": "/parts/"
+          },
+          "titanium pipe components": {
+            "href": "/parts/titanium-pipe-components/"
+          },
+          "Titanium Rapid Prototyping": {
+            "href": "/titanium-additive-manufacturing/rapid-prototyping/"
+          },
           "Titanium Surface Treatment": {
             "href": "/titanium-surface-treatment/"
+          },
+          "Titanium TIG (GTAW) Welding": {
+            "href": "/titanium-fabrication-services/titanium-welding-assembly/"
+          },
+          "titanium UAV components": {
+            "href": "/parts/titanium-uav-components/"
           },
           "Titanium Welding & Assembly": {
             "href": "/titanium-fabrication-services/titanium-welding-assembly/"

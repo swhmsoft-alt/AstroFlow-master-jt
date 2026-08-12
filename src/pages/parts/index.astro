@@ -5,7 +5,13 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PartsLanding from '../../components/parts/PartsLanding.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { HERO_CONFIG } from '../../config/hero';
 import { PARTS_LANDING, PART_PAGES } from '../../data/parts';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const hero = HERO_CONFIG['/parts'];
 
 const SITE = 'https://cnc.bozemetal.com';
 const pageTitle = 'Custom Titanium Parts Manufacturing | CNC Titanium Components';
@@ -49,5 +55,49 @@ const supplementarySchema = {
   alternateLinks={[{ lang: 'en', href: '/parts/' }]}
 >
   <script type="application/ld+json" set:html={JSON.stringify(supplementarySchema)} />
+
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('nav.parts')}</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <SubpageHero
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+    compact={hero.compact}
+  >
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all"
+        style="background: var(--theme-primary); color: var(--theme-text);">
+        Upload Drawing
+      </a>
+      <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all"
+        style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">
+        Request Quote
+      </a>
+    </div>
+  </SubpageHero>
+
   <PartsLanding />
 </BaseLayout>
