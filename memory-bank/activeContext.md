@@ -1,9 +1,28 @@
 # Active Context
 
 > **Last Updated:** 2026-08-12
-> **Current Focus:** 首页 PremiumCTA 信任指标框改自适应，修复 AS9100D 的 D 被裁切。
+> **Current Focus:** 修复 hreflang alternate 首页/多语言 URL 未以斜杠结尾。
 
 ## Current Status
+✅ **hreflang alternate 尾斜杠修复完成（2026-08-12）：**
+- 背景：站点 `trailingSlash: 'always'`，用户反馈首页多语言 hreflang 未以 `/` 结尾（`/de` 应为 `/de/`）。
+- 根因：`src/i18n/utils.ts` 的 `getAlternateLinks`：首页分支 `canonical === '/' ? '' : canonical` 把本地化路径生成为 `/${lang}`（无尾斜杠）；且非首页 `removeLangPrefix` 会去掉尾斜杠 → 非首页 hreflang 也缺斜杠，与 canonical（构建后带尾斜杠）不一致。
+- 修复：`getAlternateLinks` 统一归一化 `const norm = canonical.replace(/\/+$/, '') + '/'`，`en → norm`，本地化 → `/${lang}${norm}`。首页 `/`→`/de/`；非首页 `/services`→`/services/`、`/de/services/`。与 canonical 及 trailingSlash:always 一致。
+- 验证：`astro check` i18n/utils.ts 无诊断；`astro build` ✅ 2240 页；dist 首页 12 语 hreflang 全部 `/xxx/` + x-default `/`；de 子页 `.../titanium-cnc-machining-services/` 正确。**未部署。**
+
+✅ **首页引入关键词库与内链机制完成（2026-08-12，仅 EN）：**
+- 目标：把既有 `src/lib/auto-inline-links.ts` 的 `linkify`（复用 `data/keywords/main-db.json` EN mapped 词）接入首页正文段落，让 EN 首页自动加站内内链。
+- 接入字段（均非 `<a>` 内、纯文本段落，避免嵌套 `<a>`）：`PremiumHero.hero.description`、`ServicesOverview` 副标题、`TechnicalCapabilities` 副标题 + cap.subtext、`MaterialMatrix` 副标题 + 各组 description、`IndustryApplications` 副标题、`EngineeringResources` 副标题、`PremiumCTA` 副标题、`PartsPromoBanner.body`。
+- **跳过**：服务/行业/资源卡片 description（整卡已包在 `<a>` 内，linkify 会产生非法嵌套锚点）；各 h2/h3 标题。
+- **多语言安全**：全部用 `isEn = currentLang === DEFAULT_LANG` 门控，`set:html={isEn ? linkify(...) : 原文}` → 11 个本地化首页零影响（不注入无语言前缀的错误链接）。
+- 顺修 `auto-inline-links.ts`：`EnKeyword` 接口补 `lang?: string`（消除 ts2339 既有类型错误）；`PremiumHero` 用 `hero.description ?? ''` 兜底 undefined。
+- 验证：`astro check` 8 组件+lib 无新增错误（仅既有 Button/Img/localizePath 无用 import 警告）；`astro build` ✅ 2240 页；dist 首页 hero 描述已注入 `<a href="/parts/">titanium parts</a>`、`<a href="/capabilities/">AS9100</a>` 等；`dist/de/index.html` 确认无注入内链（isEn 门控生效）。**未部署。**
+
+✅ **首页 Material Matrix 等级名锚文本内链补强（2026-08-12）：**
+- 背景：用户质疑首页是否真有锚文本内链；核实发现 `linkify` 仅注入 hero 3 处（titanium parts→/parts/、AS9100→/capabilities/、CMM→/equipment/cmm/），Material Matrix 副标题/组描述因未命中 mapped 关键词为 no-op 无内链；表内等级 label 为 "Grade 5"（非库中 "Grade 5 Titanium"）不匹配。
+- 修复：`MaterialMatrix.astro` 表内 `grade.label`（Grade 1/2/4/5/9/12/23）直接锚到 `localizePath('/materials/grade-X/', currentLang)`（由 label 小写+空格转连字符派生 slug），primary 色+下划线样式。因用 localizePath，12 语言均得到正确本地化链接（非 EN 专属）。
+- 验证：`astro check` MaterialMatrix 无诊断；`astro build` ✅ 2240 页；dist 首页 7 个等级名均注入锚链接到 `/materials/grade-X/`；dist/de 正确为 `/de/materials/grade-X/`。**未部署。**
+
 ✅ **首页信任指标框自适应修复完成（2026-08-12）：**
 - 背景：`cnc.bozemetal.com` 首页 `PremiumCTA.astro` 四个信任框（25+ Years / AS9100D Certified / 24/7 Support / Global Network）原先为固定 `grid-cols-2 md:grid-cols-4` 等宽列，列宽不足导致 `AS9100D`（`home.premiumcta.iso_9001_2`，`text-4xl font-bold`）右侧 D 被裁切/未完整展示。
 - 修复：容器改为 `flex flex-wrap justify-center`；每个框改为 `flex flex-col items-center text-center`（宽度随内容自适应）+ 数值/标签加 `whitespace-nowrap` 防止换行裁切。四框统一应用，`25+`/`AS9100D`/`24/7`/`Global` 均完整显示。

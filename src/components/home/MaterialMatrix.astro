@@ -1,8 +1,11 @@
 ---
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 
 interface GradeGroup {
   group: string;
@@ -63,9 +66,7 @@ const gradeGroups: GradeGroup[] = [
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         {t('home.materials.title')}
       </h2>
-      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        {t('home.materials.subtitle')}
-      </p>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);" set:html={isEn ? linkify(t('home.materials.subtitle'), 5) : t('home.materials.subtitle')} />
     </div>
 
     <!-- Grade Groups -->
@@ -82,7 +83,7 @@ const gradeGroups: GradeGroup[] = [
               <h3 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">
                 <span class="gradient-text-accent">{group.group}</span>
               </h3>
-              <p class="text-sm leading-relaxed max-w-2xl" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{group.description}</p>
+              <p class="text-sm leading-relaxed max-w-2xl" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);" set:html={isEn ? linkify(group.description, 3) : group.description} />
             </div>
           </div>
 
@@ -99,7 +100,13 @@ const gradeGroups: GradeGroup[] = [
               <tbody>
                 {group.grades.map((grade) => (
                   <tr style="border-bottom: 1px solid var(--theme-surface);">
-                    <td class="py-4 pr-4 font-semibold" style="color: var(--theme-text);">{grade.label}</td>
+                    <td class="py-4 pr-4 font-semibold">
+                      <a
+                        href={localizePath(`/materials/${grade.label.toLowerCase().replace(/\s+/g, '-')}/`, currentLang)}
+                        class="hover:underline"
+                        style="color: var(--theme-primary); text-decoration: underline; text-underline-offset: 2px;"
+                      >{grade.label}</a>
+                    </td>
                     <td class="py-4 px-4 font-mono text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{grade.spec}</td>
                     <td class="py-4 pl-4" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{grade.application}</td>
                   </tr>

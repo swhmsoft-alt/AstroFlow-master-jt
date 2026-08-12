@@ -1,4 +1,5 @@
 ---
+import { linkify } from '../../lib/auto-inline-links';
 /**
  * PartsPromoBanner.astro
  *
@@ -21,9 +22,7 @@ const body =
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
       <div class="max-w-2xl">
         <h2 class="text-2xl font-bold leading-tight" style="color: var(--theme-text);">{heading}</h2>
-        <p class="mt-2 text-sm sm:text-base" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-          {body}
-        </p>
+        <p class="mt-2 text-sm sm:text-base" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={linkify(body, 5)} />
       </div>
       <div class="shrink-0">
         <a

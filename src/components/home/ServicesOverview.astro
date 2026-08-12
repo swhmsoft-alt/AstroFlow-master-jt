@@ -1,9 +1,12 @@
 ---
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const currentLang = lang;
+const isEn = currentLang === DEFAULT_LANG;
 
 interface Service {
   title: string;
@@ -108,9 +111,7 @@ const services: Service[] = [
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--theme-text);">
         {t('home.services.title')}
       </h2>
-      <p class="text-lg max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        {t('home.services.subtitle')}
-      </p>
+      <p class="text-lg max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);" set:html={isEn ? linkify(t('home.services.subtitle'), 5) : t('home.services.subtitle')} />
     </div>
 
     <!-- Services Grid -->

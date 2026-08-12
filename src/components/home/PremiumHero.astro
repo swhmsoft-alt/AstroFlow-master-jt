@@ -2,6 +2,8 @@
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import Img from '../ui/Image.astro';
 import Button from '../ui/Button.astro';
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 
 interface StatItem {
   value: string;
@@ -33,6 +35,8 @@ const { hero } = Astro.props as Props;
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const isVideo = hero.heroMediaType === 'video' && hero.heroVideoUrl;
+const isEn = currentLang === DEFAULT_LANG;
+const heroDescription = hero.description ?? '';
 ---
 
 <section class="relative h-screen min-h-[600px] flex items-center overflow-hidden">
@@ -84,9 +88,7 @@ const isVideo = hero.heroMediaType === 'video' && hero.heroVideoUrl;
         )}
       </h1>
       
-      <p class="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        {hero.description}
-      </p>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={isEn ? linkify(heroDescription, 5) : heroDescription} />
       
       <!-- Brand Bar — Boze Titanium Manufacturing Center badge -->
       <div class="flex flex-wrap items-center gap-2 mb-8 px-4 py-3 rounded-lg border" style="background-color: color-mix(in srgb, var(--theme-primary) 6%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">

@@ -1,8 +1,11 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 
 interface Capability {
   label: string;
@@ -62,9 +65,7 @@ const capabilities: Capability[] = [
       <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
         {t('home.tech.titlePrefix')} <span class="gradient-text-accent">{t('home.tech.title')}</span>
       </h2>
-      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-        {t('home.tech.subtitle')}
-      </p>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);" set:html={isEn ? linkify(t('home.tech.subtitle'), 5) : t('home.tech.subtitle')} />
     </div>
 
     <!-- Capabilities Dashboard Grid -->
@@ -93,7 +94,7 @@ const capabilities: Capability[] = [
               </svg>
             </div>
           </div>
-          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{cap.subtext}</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);" set:html={isEn ? linkify(cap.subtext, 3) : cap.subtext} />
 
           <!-- Bottom accent bar -->
           <div class="absolute bottom-0 left-0 right-0 h-0.5 rounded-full" style="background: linear-gradient(90deg, var(--theme-primary), #14b8a6); transform: scaleX(0); transition: transform 0.3s;" onmouseover="this.style.transform='scaleX(1)'" onmouseout="this.style.transform='scaleX(0)'"></div>

@@ -108,8 +108,10 @@ export function removeLangPrefix(pathname: string): string {
  */
 export function getAlternateLinks(currentPathname: string): Array<{ lang: string; href: string }> {
   const canonical = removeLangPrefix(currentPathname);
+  // Site uses trailingSlash: 'always' — ensure canonical & every localized hreflang ends with '/'
+  const norm = canonical.replace(/\/+$/, '') + '/';
   return (Object.keys(UI) as Lang[]).map((lang) => ({
     lang,
-    href: lang === DEFAULT_LANG ? canonical : `/${lang}${canonical === '/' ? '' : canonical}`,
+    href: lang === DEFAULT_LANG ? norm : `/${lang}${norm}`,
   }));
 }

@@ -2,9 +2,12 @@
 import Img from '@components/ui/Image.astro';
 import Button from '../ui/Button.astro';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 ---
 
 <section class="relative py-32 overflow-hidden">
@@ -29,9 +32,7 @@ const t = useTranslations(currentLang);
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
         {t('home.cta.title')}
       </h2>
-      <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        {t('home.cta.subtitle')}
-      </p>
+      <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={isEn ? linkify(t('home.cta.subtitle'), 5) : t('home.cta.subtitle')} />
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
         <a 

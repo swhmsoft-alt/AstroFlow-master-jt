@@ -28,6 +28,7 @@ const ROOT = path.resolve(__dirname, '../..');
 const MAIN_DB = path.join(ROOT, 'data', 'keywords', 'main-db.json');
 
 interface EnKeyword {
+  lang?: string;
   keyword: string;
   anchorText?: string;
   targetUrl?: string;
