@@ -381,6 +381,7 @@ export function detectPageType(path: string, explicit?: PageType): PageType {
 
 /** Short breadcrumb labels for product hub sub-pages (not present in NAVIGATION). */
 const BREADCRUMB_LABELS: Record<string, string> = {
+  '/products': 'Products & Solutions',
   '/products/systems': 'Engineering Systems',
   '/products/industries': 'Industries Served',
   '/products/materials': 'Materials Library',

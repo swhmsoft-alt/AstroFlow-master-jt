@@ -194,10 +194,14 @@ export const NAVIGATION: NavItem[] = [
 /**
  * Return the navigation structure for the given locale.
  *
- * Only English (the default locale) gets "Products" promoted from the
- * Resources dropdown to a top-level nav item placed immediately before
- * "Services" (rendered as a plain link without a dropdown). All other
- * locales keep the shared NAVIGATION structure unchanged because the
+ * Only English (the default locale) promotes "Solutions" (the abbreviated label
+ * for the /products hub; the full name "Products & Solutions" is reserved for
+ * breadcrumbs / page copy) and "Titanium Parts" out of the Resources dropdown to
+ * top-level nav items placed immediately after Home, in this order:
+ *
+ *     Home → Titanium Parts → Solutions → Services → ...
+ *
+ * All other locales keep the shared NAVIGATION structure unchanged because the
  * localized product-hub pages are not built yet.
  *
  * Note: 'en' is the project DEFAULT_LANG (see src/i18n/ui.ts). We intentionally
@@ -208,9 +212,11 @@ export const NAVIGATION: NavItem[] = [
 export function getNavigation(lang: string): NavItem[] {
   if (lang !== 'en') return NAVIGATION;
 
-  const productsItem: NavItem = { name: 'Products & Solutions', href: '/products' };
+  // Solutions — the abbreviated English nav label for the /products hub.
+  // Full name "Products & Solutions" is reserved for breadcrumbs / page copy.
+  const solutionsItem: NavItem = { name: 'Solutions', href: '/products' };
   // Titanium Parts — a parallel top-level B2B procurement entry (distinct from
-  // Products & Solutions). Single-column dropdown listing the 7 part categories.
+  // Solutions). Single-column dropdown listing the 7 part categories.
   const partsItem: NavItem = {
     name: 'Titanium Parts',
     href: '/parts',
@@ -230,14 +236,9 @@ export function getNavigation(lang: string): NavItem[] {
     ],
   };
   const englishNav: NavItem[] = [];
-  let productsInserted = false;
+  let promotedInserted = false;
 
   for (const item of NAVIGATION) {
-    // Insert Products immediately before Services (top-level, no dropdown).
-    if (item.href === '/services' && !productsInserted) {
-      englishNav.push(productsItem);
-      productsInserted = true;
-    }
     // Remove the duplicate Products link from the Resources dropdown.
     if (item.href === '/resources' && item.children) {
       englishNav.push({
@@ -252,15 +253,20 @@ export function getNavigation(lang: string): NavItem[] {
       continue;
     }
     englishNav.push(item);
-    // Insert Titanium Parts immediately after Services — a parallel top-level
-    // commercial entry (B2B procurement gateway) distinct from Products.
-    if (item.href === '/services') {
+    // Insert Titanium Parts, then Solutions, immediately after Home, giving the
+    // English order: Home → Titanium Parts → Solutions → Services → ...
+    if (item.href === '/' && !promotedInserted) {
       englishNav.push(partsItem);
+      englishNav.push(solutionsItem);
+      promotedInserted = true;
     }
   }
 
-  // Safety net: keep Products even if Services were ever removed from NAVIGATION.
-  if (!productsInserted) englishNav.push(productsItem);
+  // Safety net: keep both even if Home were ever removed from NAVIGATION.
+  if (!promotedInserted) {
+    englishNav.push(partsItem);
+    englishNav.push(solutionsItem);
+  }
   return englishNav;
 }
 

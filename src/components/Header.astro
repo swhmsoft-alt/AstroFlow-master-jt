@@ -11,8 +11,9 @@ const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const isActiveLink = (href: string) : boolean => { return href === currentPathname; }
 
-// Locale-aware nav: English promotes Products to a top-level item before Services;
-// all other locales keep the shared NAVIGATION structure unchanged.
+// Locale-aware nav: English promotes Titanium Parts and Solutions (abbreviated
+// label for the /products hub) to top-level items right after Home; all other
+// locales keep the shared NAVIGATION structure unchanged.
 const navItems = getNavigation(currentLang);
 
 // ── Navigation translation key mappings ────────────────────
@@ -24,7 +25,7 @@ const navKeyByHref: Record<string, string> = {
   '/capabilities': 'nav.capabilities',
   '/industries': 'nav.industries',
   '/resources': 'nav.resources',
-  '/products': 'nav.products',
+  '/products': 'nav.solutions',
   '/equipment': 'nav.equipment',
   '/parts': 'nav.parts',
 };
