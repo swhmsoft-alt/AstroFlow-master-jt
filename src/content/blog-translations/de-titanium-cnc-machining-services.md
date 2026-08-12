@@ -191,7 +191,7 @@ Drei wichtige Erkenntnisse für Ihr Team:
 * Fordern Sie Nachweise für titanspezifische Prozessfähigkeit, nicht nur eine generische ISO 9001-Zertifizierung.
 * Nutzen Sie die Lieferantenbewertungsmatrix 2026 als lebendige Scorecard und aktualisieren Sie sie vierteljährlich mit neuen Audits und Leistungskennzahlen.
 
-Wenn Ihr aktueller Präzisions-CNC-Bearbeitungslieferant keine dokumentierten Prozessfähigkeitsdaten für Ti-6Al-4V und enge Toleranzen vorweisen kann, ist es möglicherweise an der Zeit, Ihre strategischen Partner neu zu bewerten. [Fordern Sie eine technische Bewertung](https://www.bozemetal.com/contact) Ihrer Titan-Beschaffungssituation an, und unsere Ingenieure helfen Ihnen, die praktikabelsten Alternativen zu identifizieren und Implementierungsschritte zu priorisieren.
+Wenn Ihr aktueller Präzisions-CNC-Bearbeitungslieferant keine dokumentierten Prozessfähigkeitsdaten für Ti-6Al-4V und enge Toleranzen vorweisen kann, ist es möglicherweise an der Zeit, Ihre strategischen Partner neu zu bewerten. [Fordern Sie eine technische Bewertung](/rfq/) Ihrer Titan-Beschaffungssituation an, und unsere Ingenieure helfen Ihnen, die praktikabelsten Alternativen zu identifizieren und Implementierungsschritte zu priorisieren.
 
 ## Warum generische CNC-Werkstätten bei Luftfahrt-Titanprogrammen scheitern
 

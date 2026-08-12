@@ -1,5 +1,5 @@
-// Replaced: form-based B2B inquiry → CTA redirect to bozemetal.com/contact
-// 2026-07-29: Removed full inquiry form per request, replaced with styled CTA link
+// Replaced: form-based B2B inquiry → CTA link to the subdomain RFQ page (/rfq/)
+// Inquiries stay on cnc.bozemetal.com (no outbound redirect to the main site).
 
 export default function InquiryForm({ productTitle, productSku }: { productTitle: string; productSku: string }) {
   return (
@@ -14,7 +14,7 @@ export default function InquiryForm({ productTitle, productSku }: { productTitle
             Ready to manufacture {productTitle} (SKU: {productSku})? Contact our engineering team for a custom solution.
           </p>
           <a
-            href="https://www.bozemetal.com/contact"
+            href="/rfq/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 text-sm font-bold rounded-xl transition-all"

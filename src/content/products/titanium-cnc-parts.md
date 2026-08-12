@@ -29,7 +29,7 @@ specs:
   - param: MOQ
     value: 1 pc (prototype); 1000 pcs (production)
 btnText: Get Titanium Quote
-btnLink: https://www.bozemetal.com/contact
+btnLink: /rfq/
 seoTitle: Titanium CNC Machining Services | Precision Titanium Parts | Boze Titanium Manufacturing Center
 seoDescription: High-precision Titanium CNC machining for rapid prototyping &
   mass production. 6061/7075 Titanium. ISO 9001 certified. Fast turnaround.

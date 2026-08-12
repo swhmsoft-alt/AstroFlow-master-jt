@@ -196,7 +196,7 @@ Three key takeaways for your team:
 * Demand evidence of titanium‑specific process capability, not just generic ISO 9001 certification.
 * Use the 2026 supplier‑evaluation matrix as a living scorecard, updating it quarterly with new audit data and performance metrics.
 
-If your current precision CNC machining supplier cannot demonstrate documented process‑capability data for Ti‑6Al‑4V and tight‑tolerance features, it may be time to re‑evaluate your strategic partners. [Request a technical evaluation](https://www.bozemetal.com/contact) of your titanium‑sourcing posture, and our engineers will help you identify the most viable alternatives and prioritize implementation steps.
+If your current precision CNC machining supplier cannot demonstrate documented process‑capability data for Ti‑6Al‑4V and tight‑tolerance features, it may be time to re‑evaluate your strategic partners. [Request a technical evaluation](/rfq/) of your titanium‑sourcing posture, and our engineers will help you identify the most viable alternatives and prioritize implementation steps.
 
 ## Why Generic CNC Shops Fail on Aerospace Titanium Programs
 

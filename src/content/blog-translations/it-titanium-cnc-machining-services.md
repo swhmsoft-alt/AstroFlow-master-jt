@@ -191,7 +191,7 @@ Tre punti chiave per il vostro team:
 * Esigete prove della capacità di processo specifica per il titanio, non solo una certificazione ISO 9001 generica.
 * Utilizzate la matrice di valutazione dei fornitori 2026 come una scheda di valutazione dinamica, aggiornandola trimestralmente con nuovi dati di audit e metriche di performance.
 
-Se il vostro attuale fornitore di lavorazioni CNC di precisione non è in grado di dimostrare dati documentati sulla capacità di processo per Ti-6Al-4V e caratteristiche con tolleranze strette, potrebbe essere il momento di rivalutare i vostri partner strategici. [Richiedete una valutazione tecnica](https://www.bozemetal.com/contact) della vostra posizione di approvvigionamento del titanio: i nostri ingegneri vi aiuteranno a identificare le alternative più valide e a prioritizzare le fasi di implementazione.
+Se il vostro attuale fornitore di lavorazioni CNC di precisione non è in grado di dimostrare dati documentati sulla capacità di processo per Ti-6Al-4V e caratteristiche con tolleranze strette, potrebbe essere il momento di rivalutare i vostri partner strategici. [Richiedete una valutazione tecnica](/rfq/) della vostra posizione di approvvigionamento del titanio: i nostri ingegneri vi aiuteranno a identificare le alternative più valide e a prioritizzare le fasi di implementazione.
 
 ## Perché le Officine CNC Generiche Falliscono nei Programmi Aerospaziali in Titanio
 

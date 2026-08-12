@@ -125,7 +125,7 @@ export default function MobileMenu({
             <div className="pt-4">
               <Dialog.Close asChild>
                 <a
-                  href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+                  href="/rfq/" target="_blank" rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="block text-center px-6 py-3 text-sm font-semibold rounded-lg shadow-md transition-all"
                   style={{ backgroundColor: 'var(--theme-primary)', color: 'var(--theme-text)' }}

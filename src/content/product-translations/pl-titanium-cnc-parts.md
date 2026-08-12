@@ -27,7 +27,7 @@ specs:
   - param: "MOQ"
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Uzyskaj wycenę tytanu"
-btnLink: "https://www.bozemetal.com/contact"
+btnLink: "/rfq/"
 seoTitle: "Usługi obróbki CNC tytanu | Precyzyjne części tytanowe | Boze Titanium Manufacturing Center"
 seoDescription: "Wysokoprecyzyjna obróbka CNC tytanu do szybkiego prototypowania &"
 featured: true

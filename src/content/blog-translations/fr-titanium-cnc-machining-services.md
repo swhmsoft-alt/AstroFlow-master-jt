@@ -191,7 +191,7 @@ Trois points clés à retenir pour votre équipe :
 * Exigez des preuves de capabilité de processus spécifique au titane, et non une simple certification ISO 9001 générique.
 * Utilisez la matrice d'évaluation des fournisseurs 2026 comme un tableau de bord vivant, en la mettant à jour trimestriellement avec de nouvelles données d'audit et des indicateurs de performance.
 
-Si votre fournisseur actuel d'usinage CNC de précision ne peut pas démontrer de données documentées de capabilité de processus pour le Ti-6Al-4V et les caractéristiques à tolérances serrées, il est peut-être temps de réévaluer vos partenaires stratégiques. [Demandez une évaluation technique](https://www.bozemetal.com/contact) de votre posture d'approvisionnement en titane, et nos ingénieurs vous aideront à identifier les alternatives les plus viables et à prioriser les étapes de mise en œuvre.
+Si votre fournisseur actuel d'usinage CNC de précision ne peut pas démontrer de données documentées de capabilité de processus pour le Ti-6Al-4V et les caractéristiques à tolérances serrées, il est peut-être temps de réévaluer vos partenaires stratégiques. [Demandez une évaluation technique](/rfq/) de votre posture d'approvisionnement en titane, et nos ingénieurs vous aideront à identifier les alternatives les plus viables et à prioriser les étapes de mise en œuvre.
 
 ## Pourquoi les Ateliers CNC Génériques Échouent sur les Programmes Aérospatiaux en Titane
 

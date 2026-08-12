@@ -27,7 +27,7 @@ specs:
   - param: "MOQ"
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "チタンの見積もりを取得"
-btnLink: "https://www.bozemetal.com/contact"
+btnLink: "/rfq/"
 seoTitle: "Titanium CNC加工サービス | 精密チタン部品 | Boze Titanium Manufacturing Center"
 seoDescription: "高精度チタンCNC加工による迅速な試作製作"
 featured: true

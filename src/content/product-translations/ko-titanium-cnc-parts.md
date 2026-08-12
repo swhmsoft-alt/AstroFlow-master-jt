@@ -27,7 +27,7 @@ specs:
   - param: "최소 주문 수량 (MOQ)"
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "티타늄 견적 받기"
-btnLink: "https://www.bozemetal.com/contact"
+btnLink: "/rfq/"
 seoTitle: "Titanium CNC 가공 서비스 | 정밀 티타늄 부품 | Boze Titanium Manufacturing Center"
 seoDescription: "고정밀 티타늄 CNC 가공을 통한 신속한 프로토타이핑"
 featured: true

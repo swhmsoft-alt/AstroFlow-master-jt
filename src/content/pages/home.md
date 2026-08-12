@@ -6,7 +6,7 @@ description: We provide AS9100D-compliant titanium manufacturing—from rapid
   prototyping to precision CNC machining and heavy fabrication. Perfect
   tolerances, guaranteed.
 primaryCta: Request a Quote
-primaryCtaLink: https://www.bozemetal.com/contact
+primaryCtaLink: /rfq/
 secondaryCta: Explore Solutions
 secondaryCtaLink: /services
 heroMediaType: video

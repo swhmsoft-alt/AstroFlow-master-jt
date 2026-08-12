@@ -27,7 +27,7 @@ specs:
   - param: "MOQ"
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Ontvang Titanium Offerte"
-btnLink: "https://www.bozemetal.com/contact"
+btnLink: "/rfq/"
 seoTitle: "Titanium CNC-bewerkingsdiensten | Precisie titanium onderdelen | Boze Titanium Manufacturing Center"
 seoDescription: "Hoognauwkeurige titanium CNC-bewerking voor rapid prototyping &"
 featured: true

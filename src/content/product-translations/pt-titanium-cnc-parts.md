@@ -27,7 +27,7 @@ specs:
   - param: "MOQ"
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Obter Cotação de Titânio"
-btnLink: "https://www.bozemetal.com/contact"
+btnLink: "/rfq/"
 seoTitle: "Serviços de Usinagem CNC em Titânio | Peças de Titânio de Precisão | Boze Titanium Manufacturing Center"
 seoDescription: "Usinagem CNC de alta precisão em titânio para prototipagem rápida &"
 featured: true

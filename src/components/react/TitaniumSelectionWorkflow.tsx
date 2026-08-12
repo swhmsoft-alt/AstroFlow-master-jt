@@ -668,7 +668,7 @@ export default function TitaniumSelectionWorkflow() {
         <div className="mt-8 p-5 rounded-xl text-center" style={{ backgroundColor: 'color-mix(in srgb, var(--theme-primary) 8%, transparent)', border: '1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent)' }}>
           <p className="text-sm font-semibold mb-2" style={{ color: 'var(--theme-text)' }}>Need expert confirmation on your material selection?</p>
           <p className="text-xs mb-3" style={{ color: 'color-mix(in srgb, var(--theme-text) 55%, transparent)' }}>Send this spec to our engineering team for review and formal quotation.</p>
-          <a href="https://www.bozemetal.com/contact" target="_blank" rel="noopener noreferrer"
+          <a href="/rfq/" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg text-white transition-all"
             style={{ backgroundColor: 'var(--theme-primary)' }}
             onMouseOver={e => e.currentTarget.style.opacity = '0.9'}

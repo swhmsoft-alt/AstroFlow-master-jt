@@ -192,7 +192,7 @@ Três principais conclusões para sua equipe:
 * Exija evidências de capacidade de processo específica para titânio, não apenas certificação ISO 9001 genérica.
 * Use a matriz de avaliação de fornecedores de 2026 como um scorecard vivo, atualizando-a trimestralmente com novos dados de auditoria e métricas de desempenho.
 
-Se seu fornecedor atual de usinagem CNC de precisão não puder demonstrar dados de capacidade de processo documentados para Ti-6Al-4V e características de tolerância apertada, pode ser hora de reavaliar seus parceiros estratégicos. [Solicite uma avaliação técnica](https://www.bozemetal.com/contact) de sua postura de fornecimento de titânio, e nossos engenheiros ajudarão você a identificar as alternativas mais viáveis e priorizar as etapas de implementação.
+Se seu fornecedor atual de usinagem CNC de precisão não puder demonstrar dados de capacidade de processo documentados para Ti-6Al-4V e características de tolerância apertada, pode ser hora de reavaliar seus parceiros estratégicos. [Solicite uma avaliação técnica](/rfq/) de sua postura de fornecimento de titânio, e nossos engenheiros ajudarão você a identificar as alternativas mais viáveis e priorizar as etapas de implementação.
 
 ## Por que Oficinas CNC Genéricas Falham em Programas Aeroespaciais de Titânio
 

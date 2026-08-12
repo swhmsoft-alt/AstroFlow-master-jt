@@ -192,7 +192,7 @@ Trzy kluczowe wnioski dla Twojego zespołu:
 * Żądaj dowodów na zdolność procesową specyficzną dla tytanu, a nie tylko ogólnej certyfikacji ISO 9001.
 * Używaj macierzy oceny dostawców z 2026 roku jako żywej karty wyników, aktualizując ją kwartalnie o nowe dane z audytów i wskaźniki wydajności.
 
-Jeśli Twój obecny dostawca precyzyjnej obróbki CNC nie jest w stanie przedstawić udokumentowanych danych o zdolności procesowej dla Ti-6Al-4V i cech o wąskich tolerancjach, być może nadszedł czas, aby ponownie ocenić swoich strategicznych partnerów. [Poproś o ocenę techniczną](https://www.bozemetal.com/contact) swojej pozycji w zakresie pozyskiwania tytanu, a nasi inżynierowie pomogą Ci zidentyfikować najbardziej realne alternatywy i ustalić priorytety wdrożenia.
+Jeśli Twój obecny dostawca precyzyjnej obróbki CNC nie jest w stanie przedstawić udokumentowanych danych o zdolności procesowej dla Ti-6Al-4V i cech o wąskich tolerancjach, być może nadszedł czas, aby ponownie ocenić swoich strategicznych partnerów. [Poproś o ocenę techniczną](/rfq/) swojej pozycji w zakresie pozyskiwania tytanu, a nasi inżynierowie pomogą Ci zidentyfikować najbardziej realne alternatywy i ustalić priorytety wdrożenia.
 
 ## Dlaczego ogólne warsztaty CNC zawodzą w programach tytanowych dla lotnictwa
 

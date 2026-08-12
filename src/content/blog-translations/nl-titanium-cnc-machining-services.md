@@ -192,7 +192,7 @@ Drie belangrijke conclusies voor uw team:
 *   Eis bewijs van titaniumspecifieke procescapaciteit, niet alleen generieke ISO 9001-certificering.
 *   Gebruik de leveranciersevaluatiematrix van 2026 als een levende scorekaart, werk deze elk kwartaal bij met nieuwe auditgegevens en prestatiemetingen.
 
-Als uw huidige leverancier van precisie-CNC-bewerking geen gedocumenteerde procescapaciteitsgegevens kan aantonen voor Ti-6Al-4V en onderdelen met nauwe toleranties, is het wellicht tijd om uw strategische partners te herevalueren. [Vraag een technische evaluatie aan](https://www.bozemetal.com/contact) van uw titaniuminkooppositie, en onze ingenieurs helpen u de meest haalbare alternatieven te identificeren en implementatiestappen te prioriteren.
+Als uw huidige leverancier van precisie-CNC-bewerking geen gedocumenteerde procescapaciteitsgegevens kan aantonen voor Ti-6Al-4V en onderdelen met nauwe toleranties, is het wellicht tijd om uw strategische partners te herevalueren. [Vraag een technische evaluatie aan](/rfq/) van uw titaniuminkooppositie, en onze ingenieurs helpen u de meest haalbare alternatieven te identificeren en implementatiestappen te prioriteren.
 
 ## Waarom generieke CNC-werkplaatsen falen bij luchtvaart-titaniumprogramma's
 

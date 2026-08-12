@@ -27,7 +27,7 @@ specs:
   - param: "MOQ"
     value: "1 pc (prototype); 1000 pcs (production)"
 btnText: "Obtenez un devis pour le titane"
-btnLink: "https://www.bozemetal.com/contact"
+btnLink: "/rfq/"
 seoTitle: "Services d'usinage CNC du titane | Pièces en titane de précision | Boze Titanium Manufacturing Center"
 seoDescription: "Usinage CNC de haute précision du titane pour le prototypage rapide &"
 featured: true
