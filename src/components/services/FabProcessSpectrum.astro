@@ -5,11 +5,12 @@ interface Process {
   description: string;
   capabilities: string[];
   icon: string;
+  href: string;
 }
 
 import { linkify } from '../../lib/auto-inline-links';
 import { DEFAULT_LANG } from '../../i18n/ui';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const isEn = currentLang === DEFAULT_LANG;
@@ -25,7 +26,8 @@ const processes: Process[] = [
       t('services.fabprocessspectrum.card1.cap2'),
       t('services.fabprocessspectrum.card1.cap3')
     ],
-    icon: "M13 10V3L4 14h7v7l9-11h-7z"
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    href: localizePath('/titanium-fabrication-services/titanium-welding-assembly/', currentLang)
   },
   {
     title: t('services.fabprocessspectrum.card2.title'),
@@ -37,7 +39,8 @@ const processes: Process[] = [
       t('services.fabprocessspectrum.card2.cap2'),
       t('services.fabprocessspectrum.card2.cap3')
     ],
-    icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z"
+    icon: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z",
+    href: localizePath('/titanium-fabrication-services/laser-cutting/', currentLang)
   },
   {
     title: t('services.fabprocessspectrum.card3.title'),
@@ -49,7 +52,8 @@ const processes: Process[] = [
       t('services.fabprocessspectrum.card3.cap2'),
       t('services.fabprocessspectrum.card3.cap3')
     ],
-    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+    href: localizePath('/titanium-fabrication-services/waterjet-cutting/', currentLang)
   }
 ];
 ---
@@ -78,7 +82,8 @@ const processes: Process[] = [
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {processes.map((proc) => (
-        <div
+        <a
+          href={proc.href}
           class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
           onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
@@ -106,13 +111,22 @@ const processes: Process[] = [
               </li>
             ))}
           </ul>
+
+          <!-- Arrow indicator -->
+          <div class="mt-6 flex items-center text-sm font-semibold transition-all" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span>{t('services.fabprocessspectrum.learnMore')}</span>
+            <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+
           <div
             class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
             style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
             onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
             onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
           ></div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
