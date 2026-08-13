@@ -13,6 +13,14 @@
 - 验证：`astro check` 无新增诊断（既有 118 errors 均位于未改动文件）；main-db 缺失字段 HEAD=15 vs CUR=15 NEWLY_MISSING=0；`entity-keywords.mjs`/`astro.config.mjs` 未改动 → 构建内链映射零变化；planned 被 `exportAllLangs` 的 `status==='mapped'` 过滤不进构建。
 - 落档：`memory-bank/audienceFirstSeo.md`（策略+审计+行动清单）。**未部署**（仅数据+文档，不影响线上构建）。
 
+✅ **受众优先 SEO 扩展（2026-08-13 第 2 轮）：行业页全覆盖 + blog 长尾词**
+- 反馈：① 行业页覆盖仅 2 个太少；② blog 是流量入口。选择：行业页扩全 + blog 只在关键词库补长尾问答词（不改内容 schema）。
+- 行业页：为其余 7 个 `/industries/` 静态页补 **mapped** persona 关键词（ai-infrastructure→design、chemical→quality、energy→procurement、industrial-equipment→procurement、marine→manufacturing、semiconductor→quality、uav-drones→design，journeyStage=consideration）。至此 9 个行业页全覆盖（含 aerospace/medical）。
+- blog：新增 **10 条 planned** 长尾问答词（行业×人群×旅程，targetUrl 指向 blog 文章），纯储备不进构建。
+- 管线（闭环）：audience-tag.mjs → main-db.json → keywords-sync → entity-keywords.mjs → generate-entity-keywords → astro.config.mjs（纯增量）。
+- 结果：persona 70（design13/quality19/owner3/manufacturing18/procurement17）；EN mapped 98；planned 110；总量 412→429。
+- 验证：astro.config +21/0、entity-keywords +11/0（纯增量）；main-db NEWLY_MISSING=0；astro check 118（与改动前一致，无新增）；blog planned 被 exportAllLangs 排除。**未部署**。
+
 ✅ **hreflang alternate 尾斜杠修复完成（2026-08-12）：**
 - 背景：站点 `trailingSlash: 'always'`，用户反馈首页多语言 hreflang 未以 `/` 结尾（`/de` 应为 `/de/`）。
 - 根因：`src/i18n/utils.ts` 的 `getAlternateLinks`：首页分支 `canonical === '/' ? '' : canonical` 把本地化路径生成为 `/${lang}`（无尾斜杠）；且非首页 `removeLangPrefix` 会去掉尾斜杠 → 非首页 hreflang 也缺斜杠，与 canonical（构建后带尾斜杠）不一致。

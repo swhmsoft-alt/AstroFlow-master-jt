@@ -162,6 +162,40 @@ const PLANNED_LONGTAILS = [
   { keyword: 'semiconductor-grade titanium parts cleanliness requirements', industry: 'semiconductor', persona: 'quality', journeyStage: 'consideration', intent: 'informational', targetUrl: '/industries/semiconductor/' },
 ];
 
+/**
+ * 行业页覆盖扩展（mapped，受众维度）。
+ * 为其余 7 个未被覆盖的 /industries/ 静态行业页补齐 persona 关键词；
+ * aerospace / medical 已覆盖，保持现状。这些词进入构建内链映射（纯增量）。
+ * 旅程阶段统一 consideration（行业应用发现期）。
+ */
+const INDUSTRY_MAPPED = [
+  { keyword: 'titanium AI infrastructure components', targetUrl: '/industries/ai-infrastructure/', persona: 'design' },
+  { keyword: 'titanium chemical processing equipment', targetUrl: '/industries/chemical/', persona: 'quality' },
+  { keyword: 'titanium components for the energy industry', targetUrl: '/industries/energy/', persona: 'procurement' },
+  { keyword: 'titanium industrial equipment components', targetUrl: '/industries/industrial-equipment/', persona: 'procurement' },
+  { keyword: 'marine titanium components', targetUrl: '/industries/marine/', persona: 'manufacturing' },
+  { keyword: 'semiconductor titanium components', targetUrl: '/industries/semiconductor/', persona: 'quality' },
+  { keyword: 'titanium components for UAVs and drones', targetUrl: '/industries/uav-drones/', persona: 'design' },
+];
+
+/**
+ * 针对 blog 文章的长尾问答词储备（纯词库，不动内容 schema）。
+ * status:'planned' → 不进构建、不进内链。
+ * 每条按「行业 × 人群 × 旅程」组织，targetUrl 指向对应 blog 文章。
+ */
+const BLOG_PLANNED = [
+  { keyword: 'how much does titanium CNC machining cost per part', industry: 'general-industrial', persona: 'procurement', journeyStage: 'consideration', targetUrl: '/blog/titanium-cnc-machining-cost-factors/' },
+  { keyword: 'what is alpha case formation in titanium and how to prevent it', industry: 'aerospace-defense', persona: 'manufacturing', journeyStage: 'awareness', targetUrl: '/blog/alpha-case-formation-titanium-prevention-removal/' },
+  { keyword: 'Ti-6Al-4V machining tips to avoid work hardening', industry: 'aerospace-defense', persona: 'manufacturing', journeyStage: 'awareness', targetUrl: '/blog/titanium-work-hardening-how-to-avoid/' },
+  { keyword: 'AS9100D vs ISO 9001 what is the difference for a titanium supplier', industry: 'aerospace-defense', persona: 'quality', journeyStage: 'consideration', targetUrl: '/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/' },
+  { keyword: 'how to prepare an RFQ for custom titanium machined parts', industry: 'general-industrial', persona: 'procurement', journeyStage: 'decision', targetUrl: '/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/' },
+  { keyword: 'titanium grade 2 vs 5 vs 23 which should I choose', industry: 'general-industrial', persona: 'design', journeyStage: 'awareness', targetUrl: '/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/' },
+  { keyword: 'can titanium CNC machining achieve Ra 0.4 surface finish', industry: 'general-industrial', persona: 'design', journeyStage: 'consideration', targetUrl: '/blog/titanium-surface-finish-achieving-ra-04um/' },
+  { keyword: 'what tolerances can titanium CNC machining hold', industry: 'general-industrial', persona: 'design', journeyStage: 'consideration', targetUrl: '/blog/titanium-cnc-tolerance-guide-engineering-specifications/' },
+  { keyword: 'thin wall titanium machining guidelines to prevent distortion', industry: 'aerospace-defense', persona: 'manufacturing', journeyStage: 'awareness', targetUrl: '/blog/thin-wall-titanium-machining-guidelines/' },
+  { keyword: 'what does NADCAP certification mean for titanium processing', industry: 'medical-device', persona: 'quality', journeyStage: 'awareness', targetUrl: '/blog/nadcap-certification-titanium-processing/' },
+];
+
 function main() {
   const all = getAll();
   const tagged = [];
@@ -193,7 +227,42 @@ function main() {
     note: '受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建',
   }));
 
-  const written = upsertMany([...tagged, ...planned]);
+  // 3) 行业页覆盖扩展（mapped，进入构建内链映射）
+  const industryMapped = INDUSTRY_MAPPED.map((kw) => ({
+    keyword: kw.keyword,
+    lang: 'en',
+    intent: 'commercial',
+    entity: 'industry',
+    status: 'mapped',
+    targetUrl: kw.targetUrl,
+    anchorText: kw.keyword,
+    persona: kw.persona,
+    journeyStage: 'consideration',
+    source: 'audience-first',
+    volume: null,
+    difficulty: null,
+    note: '行业页受众覆盖（mapped，进入内链映射）',
+  }));
+
+  // 4) 针对 blog 文章的长尾问答词储备（planned，不进构建）
+  const blogPlanned = BLOG_PLANNED.map((kw) => ({
+    keyword: kw.keyword,
+    lang: 'en',
+    intent: 'informational',
+    entity: 'uncategorized',
+    status: 'planned',
+    targetUrl: kw.targetUrl,
+    anchorText: kw.keyword,
+    industry: kw.industry,
+    persona: kw.persona,
+    journeyStage: kw.journeyStage,
+    source: 'audience-first-blog',
+    volume: null,
+    difficulty: null,
+    note: '针对 blog 文章的长尾问答词储备（planned，不进构建）',
+  }));
+
+  const written = upsertMany([...tagged, ...planned, ...industryMapped, ...blogPlanned]);
 
   // 统计
   const after = getAll();

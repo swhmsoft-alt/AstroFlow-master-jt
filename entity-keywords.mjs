@@ -97,6 +97,7 @@ export const en = [
   ['Low-Volume Production',  '/titanium-additive-manufacturing/low-volume-production/'],
 
   // ── 其他 (Other) ──
+  ['marine titanium components',  '/industries/marine/'],
   ['medical implants',  '/industries/medical/'],
   ['NADCAP',  '/capabilities/'],
 
@@ -119,6 +120,7 @@ export const en = [
 
   // ── 其他 (Other) ──
   ['RFQ',  '/rfq/'],
+  ['semiconductor titanium components',  '/industries/semiconductor/'],
 
   // ── 增材制造 (Additive Manufacturing) ──
   ['SLM',  '/titanium-additive-manufacturing/3d-printing-slm/'],
@@ -139,9 +141,17 @@ export const en = [
   ['titanium 3D printing parts',  '/titanium-additive-manufacturing/'],
   ['Titanium Additive Manufacturing',  '/titanium-additive-manufacturing/'],
 
+  // ── 其他 (Other) ──
+  ['titanium AI infrastructure components',  '/industries/ai-infrastructure/'],
+  ['titanium chemical processing equipment',  '/industries/chemical/'],
+
   // ── CNC 加工 (CNC Machining) ──
   ['Titanium CNC Machining Services',  '/titanium-cnc-machining-services/'],
   ['titanium CNC parts',  '/parts/titanium-cnc-parts/'],
+
+  // ── 其他 (Other) ──
+  ['titanium components for the energy industry',  '/industries/energy/'],
+  ['titanium components for UAVs and drones',  '/industries/uav-drones/'],
 
   // ── 成型与重型制造 (Forming & Heavy Manufacturing) ──
   ['Titanium Extrusion',  '/titanium-forming-heavy-manufacturing/titanium-extrusion/'],
@@ -162,6 +172,7 @@ export const en = [
   ['Titanium Forming & Heavy Manufacturing',  '/titanium-forming-heavy-manufacturing/'],
 
   // ── 其他 (Other) ──
+  ['titanium industrial equipment components',  '/industries/industrial-equipment/'],
   ['titanium marine parts',  '/parts/titanium-marine-parts/'],
   ['titanium medical components',  '/parts/titanium-medical-components/'],
   ['titanium motorsport parts',  '/parts/titanium-motorsport-parts/'],

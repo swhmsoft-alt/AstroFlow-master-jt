@@ -46,10 +46,16 @@
 - 追加 **10 条** `status:'planned'` 的“行业×人群×旅程”长尾问答词（PAA 风格）作储备，不进构建
 
 ### 3. 数据统计（验证后）
-- 带 persona 标签总数：**53**（43 核心词 + 10 计划词）
-  - `design` 8、`quality` 15、`owner` 3、`manufacturing` 14、`procurement` 13
-- `planned` 储备：**100**（含项目原有 90 条）
-- EN mapped 锚文本：**91**（与改动前一致，构建映射零变化）
+- 带 persona 标签总数：**70**（43 核心词 + 7 行业 mapped + 10 计划词 + 10 blog planned）
+  - `design` 13、`quality` 19、`owner` 3、`manufacturing` 18、`procurement` 17
+- `planned` 储备：**110**（含项目原有 90 条）
+- EN mapped 锚文本：**98**（+7 条行业页锚点）
+
+### 3b. 行业页覆盖扩展 + blog 长尾（2026-08-13 第 2 轮）
+- **行业页：** 为其余 7 个 `/industries/` 静态页补齐 **mapped** persona 关键词（ai-infrastructure→design、chemical→quality、energy→procurement、industrial-equipment→procurement、marine→manufacturing、semiconductor→quality、uav-drones→design），journeyStage 统一 consideration。至此 **9 个行业页全部覆盖**（aerospace、medical 此前已覆盖）。
+- **blog：** 新增 **10 条 planned** 长尾问答词（`行业×人群×旅程`，targetUrl 指向对应 blog 文章），纯储备、不动内容 schema、不进构建。
+- 数据流（闭环）：输入=行业页/blog→计算=audience-tag.mjs→存储=main-db.json→输出=`keywords-sync`→`entity-keywords.mjs`→`generate-entity-keywords`→`astro.config.mjs`（纯增量）→改进=astro check/字段校验→再输入=planned 词后续转 mapped。
+- 验证：astro.config +21/0、entity-keywords +11/0（纯增量）；main-db NEWLY_MISSING=0；astro check 118 errors（与改动前一致，无新增）；blog planned 被 `exportAllLangs` 排除。**未部署**。
 
 ---
 

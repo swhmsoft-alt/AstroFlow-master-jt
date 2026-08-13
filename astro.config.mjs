@@ -187,6 +187,9 @@ export default defineConfig({
           "Low-Volume Production": {
             "href": "/titanium-additive-manufacturing/low-volume-production/"
           },
+          "marine titanium components": {
+            "href": "/industries/marine/"
+          },
           "medical implants": {
             "href": "/industries/medical/"
           },
@@ -217,6 +220,9 @@ export default defineConfig({
           "RFQ": {
             "href": "/rfq/"
           },
+          "semiconductor titanium components": {
+            "href": "/industries/semiconductor/"
+          },
           "SLM": {
             "href": "/titanium-additive-manufacturing/3d-printing-slm/"
           },
@@ -244,11 +250,23 @@ export default defineConfig({
           "Titanium Additive Manufacturing": {
             "href": "/titanium-additive-manufacturing/"
           },
+          "titanium AI infrastructure components": {
+            "href": "/industries/ai-infrastructure/"
+          },
+          "titanium chemical processing equipment": {
+            "href": "/industries/chemical/"
+          },
           "Titanium CNC Machining Services": {
             "href": "/titanium-cnc-machining-services/"
           },
           "titanium CNC parts": {
             "href": "/parts/titanium-cnc-parts/"
+          },
+          "titanium components for the energy industry": {
+            "href": "/industries/energy/"
+          },
+          "titanium components for UAVs and drones": {
+            "href": "/industries/uav-drones/"
           },
           "Titanium Extrusion": {
             "href": "/titanium-forming-heavy-manufacturing/titanium-extrusion/"
@@ -273,6 +291,9 @@ export default defineConfig({
           },
           "Titanium Forming & Heavy Manufacturing": {
             "href": "/titanium-forming-heavy-manufacturing/"
+          },
+          "titanium industrial equipment components": {
+            "href": "/industries/industrial-equipment/"
           },
           "titanium marine parts": {
             "href": "/parts/titanium-marine-parts/"
