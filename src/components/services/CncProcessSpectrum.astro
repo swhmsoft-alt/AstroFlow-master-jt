@@ -18,6 +18,13 @@ const capKeys: string[][] = [
   ['services.cncprocessspectrum.2.cap0', 'services.cncprocessspectrum.2.cap1', 'services.cncprocessspectrum.2.cap2', 'services.cncprocessspectrum.2.cap3'],
   ['services.cncprocessspectrum.3.cap0', 'services.cncprocessspectrum.3.cap1', 'services.cncprocessspectrum.3.cap2', 'services.cncprocessspectrum.3.cap3']
 ];
+
+const hrefs: string[] = [
+  '/titanium-cnc-machining-services/3-5-axis-cnc-machining/',
+  '/titanium-cnc-machining-services/cnc-milling-turning/',
+  '/titanium-cnc-machining-services/wire-edm-machining/',
+  '/titanium-cnc-machining-services/custom-industrial-components/'
+];
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <!-- Engineering grid pattern -->
@@ -45,9 +52,10 @@ const capKeys: string[][] = [
     <!-- Process Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {processIndices.map((idx) => (
-        <div
-          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full"
-          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+        <a
+          href={hrefs[idx]}
+          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full no-underline"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent); display: block; text-decoration: none;"
           onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
           onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
         >
@@ -87,7 +95,7 @@ const capKeys: string[][] = [
             onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
             onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
           ></div>
-        </div>
+        </a>
       ))}
     </div>
   </div>
