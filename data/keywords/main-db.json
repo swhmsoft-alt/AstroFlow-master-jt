@@ -42,7 +42,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "3-5-axis-cnc-machining-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
   },
   {
     "lang": "en",
@@ -71,7 +73,9 @@
     "volume": null,
     "difficulty": null,
     "id": "3d-cmm-inspection-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "awareness"
   },
   {
     "keyword": "3D-Druck SLM",
@@ -278,7 +282,9 @@
     "volume": null,
     "difficulty": null,
     "id": "aerospace-titanium-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "owner",
+    "journeyStage": "decision"
   },
   {
     "keyword": "AMS 4928T",
@@ -398,7 +404,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "anodizing-type-ii-type-iii-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Anodizzazione (Tipo II e Tipo III)",
@@ -611,7 +619,27 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "as9100-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
+  },
+  {
+    "keyword": "AS9100D certified titanium supplier for defense hardware",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/capabilities/certifications/",
+    "anchorText": "AS9100D certified titanium supplier for defense hardware",
+    "industry": "aerospace-defense",
+    "persona": "procurement",
+    "journeyStage": "decision",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "as9100d-certified-titanium-supplier-for-defense-hardware-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "AS9100D",
@@ -626,7 +654,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "as9100d-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "ASTM B348",
@@ -641,7 +671,9 @@
     "volume": null,
     "difficulty": null,
     "id": "astm-b348-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "awareness"
   },
   {
     "keyword": "bead blasting",
@@ -745,7 +777,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "cmm-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "CNC Frezen en Draaien",
@@ -818,7 +852,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "cnc-milling-turning-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "cnc titanium machining",
@@ -920,7 +956,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "comprehensive-titanium-manufacturing-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "owner",
+    "journeyStage": "decision"
   },
   {
     "keyword": "Comprehensive Titanium Manufacturing & Processing Services",
@@ -935,7 +973,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "comprehensive-titanium-manufacturing-processing-services-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "owner",
+    "journeyStage": "decision"
   },
   {
     "keyword": "Corte a Laser (Chapa e Tubo)",
@@ -980,7 +1020,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "custom-industrial-components-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Titan-Oberflächenbehandlung",
@@ -1126,7 +1168,9 @@
     "volume": null,
     "difficulty": null,
     "id": "deburring-of-components-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "awareness"
   },
   {
     "keyword": "dimensional inspection",
@@ -1141,7 +1185,9 @@
     "volume": null,
     "difficulty": null,
     "id": "dimensional-inspection-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "awareness"
   },
   {
     "keyword": "Draadvonken (Wire EDM)",
@@ -1575,7 +1621,9 @@
     "targetUrl": "/titanium-forming-heavy-manufacturing/",
     "note": "制造方法 name 内链",
     "id": "forming-bending-en",
-    "updatedAt": "2026-08-12T05:18:59.142Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Découpe Laser (Tôle et Tube)",
@@ -1785,7 +1833,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "grade-23-titanium-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Grade 5 Titanium",
@@ -1800,7 +1850,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "grade-5-titanium-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Grade 9 Titanium",
@@ -1845,7 +1897,45 @@
     "volume": null,
     "difficulty": null,
     "id": "high-precision-grinding-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "awareness"
+  },
+  {
+    "keyword": "how to qualify an AS9100D titanium CNC machining supplier",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/capabilities/certifications/",
+    "anchorText": "how to qualify an AS9100D titanium CNC machining supplier",
+    "industry": "aerospace-defense",
+    "persona": "quality",
+    "journeyStage": "consideration",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "how-to-qualify-an-as9100d-titanium-cnc-machining-supplier-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
+  },
+  {
+    "keyword": "how to reduce titanium CNC machining cost per part",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/titanium-cnc-machining-services/",
+    "anchorText": "how to reduce titanium CNC machining cost per part",
+    "industry": "general-industrial",
+    "persona": "procurement",
+    "journeyStage": "consideration",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "how-to-reduce-titanium-cnc-machining-cost-per-part-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "Impression 3D SLM/DMLS",
@@ -1890,7 +1980,27 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "iso-13485-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
+  },
+  {
+    "keyword": "ISO 13485 titanium implant manufacturing requirements",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/industries/medical/",
+    "anchorText": "ISO 13485 titanium implant manufacturing requirements",
+    "industry": "medical-device",
+    "persona": "quality",
+    "journeyStage": "decision",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "iso-13485-titanium-implant-manufacturing-requirements-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "ISO 9001",
@@ -1905,7 +2015,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "iso-9001-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "ITAR",
@@ -1920,7 +2032,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "itar-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "化学的不動態化処理",
@@ -2809,7 +2923,9 @@
     "targetUrl": "/titanium-fabrication-services/laser-cutting/",
     "note": "制造方法 name 内链",
     "id": "laser-cutting-en",
-    "updatedAt": "2026-08-12T05:18:59.142Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Laser Cutting (Sheet",
@@ -2974,7 +3090,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "low-volume-production-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "decision"
   },
   {
     "keyword": "Lucidatura e Sabbiatura",
@@ -3034,7 +3152,27 @@
     "volume": null,
     "difficulty": null,
     "id": "medical-implants-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
+  },
+  {
+    "keyword": "NADCAP certified titanium processing what it means for medical implants",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/capabilities/certifications/",
+    "anchorText": "NADCAP certified titanium processing what it means for medical implants",
+    "industry": "medical-device",
+    "persona": "quality",
+    "journeyStage": "awareness",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "nadcap-certified-titanium-processing-what-it-means-for-medic-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "NADCAP",
@@ -3049,7 +3187,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "nadcap-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "quality",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Op maat gemaakte industriële componenten",
@@ -3452,7 +3592,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "polishing-sandblasting-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Polissage et Sablage",
@@ -3916,7 +4058,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "rapid-prototyping-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Rapid Prototyping",
@@ -3976,7 +4120,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "rfq-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "decision"
   },
   {
     "keyword": "Rohmaterialvorbereitung",
@@ -4204,6 +4350,24 @@
     "note": "migrated from entity-keywords.mjs",
     "id": "saldatura-e-assemblaggio-del-titanio-it",
     "updatedAt": "2026-08-11T04:46:18.690Z"
+  },
+  {
+    "keyword": "semiconductor-grade titanium parts cleanliness requirements",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/industries/semiconductor/",
+    "anchorText": "semiconductor-grade titanium parts cleanliness requirements",
+    "industry": "semiconductor",
+    "persona": "quality",
+    "journeyStage": "consideration",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "semiconductor-grade-titanium-parts-cleanliness-requirements-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "Services Complets de Fabrication et de Traitement du Titane",
@@ -4471,7 +4635,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "ti-6al-4v-eli-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Ti-6Al-4V",
@@ -4486,7 +4652,27 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "ti-6al-4v-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "design",
+    "journeyStage": "consideration"
+  },
+  {
+    "keyword": "Ti-6Al-4V vs Ti-6Al-4V ELI design differences for aerospace",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/materials/grade-5/",
+    "anchorText": "Ti-6Al-4V vs Ti-6Al-4V ELI design differences for aerospace",
+    "industry": "aerospace-defense",
+    "persona": "design",
+    "journeyStage": "awareness",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "ti-6al-4v-vs-ti-6al-4v-eli-design-differences-for-aerospace-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "ti fabrication",
@@ -4859,7 +5045,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "titanium-cnc-machining-services-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "consideration"
   },
   {
     "lang": "en",
@@ -4874,7 +5062,9 @@
     "targetUrl": "/parts/titanium-cnc-parts/",
     "anchorText": "titanium CNC parts",
     "note": "parts 分类",
-    "updatedAt": "2026-08-12T02:47:14.599Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "decision"
   },
   {
     "keyword": "titanium coil",
@@ -4988,7 +5178,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "titanium-extrusion-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "titanium extrusion machining process",
@@ -5061,7 +5253,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "titanium-fabrication-services-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "titanium fasteners",
@@ -5076,7 +5270,9 @@
     "volume": null,
     "difficulty": null,
     "id": "titanium-fasteners-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "decision"
   },
   {
     "keyword": "titanium filter",
@@ -5105,7 +5301,9 @@
     "volume": null,
     "difficulty": null,
     "id": "titanium-flanges-en",
-    "updatedAt": "2026-08-11T06:24:33.695Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "decision"
   },
   {
     "keyword": "Titanium Forging",
@@ -5120,7 +5318,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "titanium-forging-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "titanium forging vs CNC machining",
@@ -5392,8 +5592,28 @@
     "volume": null,
     "difficulty": null,
     "id": "titanium-parts-en",
-    "updatedAt": "2026-08-12T02:47:14.599Z",
-    "targetUrl": "/parts/"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "targetUrl": "/parts/",
+    "persona": "procurement",
+    "journeyStage": "decision"
+  },
+  {
+    "keyword": "titanium parts lead time and MOQ from a Chinese CNC supplier",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/rfq/",
+    "anchorText": "titanium parts lead time and MOQ from a Chinese CNC supplier",
+    "industry": "general-industrial",
+    "persona": "procurement",
+    "journeyStage": "decision",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "titanium-parts-lead-time-and-moq-from-a-chinese-cnc-supplier-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "lang": "en",
@@ -5408,7 +5628,9 @@
     "targetUrl": "/parts/titanium-pipe-components/",
     "anchorText": "titanium pipe components",
     "note": "parts 分类",
-    "updatedAt": "2026-08-12T02:47:14.599Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "procurement",
+    "journeyStage": "decision"
   },
   {
     "keyword": "titanium precision grinding process",
@@ -5522,7 +5744,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "titanium-surface-treatment-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "lang": "en",
@@ -5568,6 +5792,24 @@
     "updatedAt": "2026-08-12T02:47:14.599Z"
   },
   {
+    "keyword": "titanium vacuum chamber machining distortion prevention",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/titanium-cnc-machining-services/custom-industrial-components/",
+    "anchorText": "titanium vacuum chamber machining distortion prevention",
+    "industry": "semiconductor",
+    "persona": "manufacturing",
+    "journeyStage": "consideration",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "titanium-vacuum-chamber-machining-distortion-prevention-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
+  },
+  {
     "keyword": "Titanium Vormen en Zware Productie",
     "lang": "nl",
     "targetUrl": "/titanium-forming-heavy-manufacturing/",
@@ -5595,7 +5837,27 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "titanium-welding-assembly-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
+  },
+  {
+    "keyword": "titanium welding contamination prevention for chemical processing",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "uncategorized",
+    "status": "planned",
+    "targetUrl": "/titanium-fabrication-services/titanium-welding-assembly/",
+    "anchorText": "titanium welding contamination prevention for chemical processing",
+    "industry": "chemical-processing",
+    "persona": "manufacturing",
+    "journeyStage": "consideration",
+    "source": "audience-first",
+    "volume": null,
+    "difficulty": null,
+    "note": "受众优先长尾问答词储备（行业×人群×旅程）；planned，不进构建",
+    "id": "titanium-welding-contamination-prevention-for-chemical-proce-en",
+    "updatedAt": "2026-08-13T01:29:52.792Z"
   },
   {
     "keyword": "Titanium Welding",
@@ -5820,7 +6082,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "waterjet-cutting-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "waterjet cutting of titanium",
@@ -5894,7 +6158,9 @@
     "difficulty": null,
     "note": "migrated from entity-keywords.mjs",
     "id": "wire-edm-machining-en",
-    "updatedAt": "2026-08-11T04:46:18.690Z"
+    "updatedAt": "2026-08-13T01:29:52.792Z",
+    "persona": "manufacturing",
+    "journeyStage": "consideration"
   },
   {
     "keyword": "Wyciskanie Tytanu",

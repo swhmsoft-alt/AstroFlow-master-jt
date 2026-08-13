@@ -1,9 +1,18 @@
 # Active Context
 
-> **Last Updated:** 2026-08-12
-> **Current Focus:** 修复 hreflang alternate 首页/多语言 URL 未以斜杠结尾。
+> **Last Updated:** 2026-08-13
+> **Current Focus:** 落地「受众优先 SEO」—— 关键词库新增 行业×人群×旅程 维度（有节制示范）。
 
 ## Current Status
+
+✅ **受众优先 SEO 落地完成（2026-08-13）：**
+- 背景：引入《Audience-First SEO: A Smarter Way to Rank Higher in 2026》方法论；B2B 受众 = **行业（应用场景）× 人群（角色）× 旅程阶段**。
+- 新增 `data/keywords/audience-taxonomy.json`：5 人群（procurement/design/manufacturing/quality/owner）+ 12 行业 + persona↔industry 映射。
+- 新增 `scripts/audience-tag.mjs`（幂等）：仅对 **43 个高价值核心 EN mapped 词**（行业/服务/工艺/产品页）打 `persona`+`journeyStage`；追加 **10 条** `status:'planned'` 长尾问答词储备。persona/journeyStage 为纯新增字段，未改删任何既有字段。
+- 结果：53 条带 persona（design8/quality15/owner3/manufacturing14/procurement13）；planned 100（含原有 90）；EN mapped 91 不变。
+- 验证：`astro check` 无新增诊断（既有 118 errors 均位于未改动文件）；main-db 缺失字段 HEAD=15 vs CUR=15 NEWLY_MISSING=0；`entity-keywords.mjs`/`astro.config.mjs` 未改动 → 构建内链映射零变化；planned 被 `exportAllLangs` 的 `status==='mapped'` 过滤不进构建。
+- 落档：`memory-bank/audienceFirstSeo.md`（策略+审计+行动清单）。**未部署**（仅数据+文档，不影响线上构建）。
+
 ✅ **hreflang alternate 尾斜杠修复完成（2026-08-12）：**
 - 背景：站点 `trailingSlash: 'always'`，用户反馈首页多语言 hreflang 未以 `/` 结尾（`/de` 应为 `/de/`）。
 - 根因：`src/i18n/utils.ts` 的 `getAlternateLinks`：首页分支 `canonical === '/' ? '' : canonical` 把本地化路径生成为 `/${lang}`（无尾斜杠）；且非首页 `removeLangPrefix` 会去掉尾斜杠 → 非首页 hreflang 也缺斜杠，与 canonical（构建后带尾斜杠）不一致。

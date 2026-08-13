@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0",
+  "model": "B2B audience = industry (应用场景) × persona (受众人群/角色)",
+  "methodologySource": "《Audience-First SEO: A Smarter Way to Rank Higher in 2026》 — 先锁定高价值目标人群，再反向挖掘需求、关键词、内容赛道。关键词降级为洞察用户需求的工具，而非优化终点。",
+  "description": "受众优先SEO落地：将全站关键词/内容体系按「行业 × 人群 × 旅程阶段」三维组织。persona 与 journeyStage 均为 main-db.json 中纯新增可选字段，不修改任何既有字段。",
+  "personas": [
+    {
+      "id": "procurement",
+      "labelEn": "Procurement Manager / Buyer",
+      "labelZh": "采购经理/采购工程师",
+      "focus": ["RFQ / quote", "lead time", "supplier qualification", "MOQ", "cost", "sourcing decision"],
+      "journeyStages": ["awareness", "consideration", "decision"]
+    },
+    {
+      "id": "design",
+      "labelEn": "Design Engineer",
+      "labelZh": "设计工程师",
+      "focus": ["material & grade specs", "tolerances", "DFM", "CAD / STEP", "design guidelines"],
+      "journeyStages": ["awareness", "consideration"]
+    },
+    {
+      "id": "manufacturing",
+      "labelEn": "Manufacturing / Process Engineer",
+      "labelZh": "制造/工艺工程师",
+      "focus": ["machinability", "process capability", "tooling", "deformation / chip control", "welding / forming"],
+      "journeyStages": ["awareness", "consideration"]
+    },
+    {
+      "id": "quality",
+      "labelEn": "Quality / Compliance Engineer",
+      "labelZh": "质量/合规工程师",
+      "focus": ["certifications", "standards (AS9100D / ISO 13485 / NADCAP / ASTM)", "traceability", "inspection / CMM"],
+      "journeyStages": ["awareness", "consideration", "decision"]
+    },
+    {
+      "id": "owner",
+      "labelEn": "Business Owner / Decision Maker",
+      "labelZh": "企业主/决策者",
+      "focus": ["capability proof", "trust signals", "case studies", "strategic sourcing"],
+      "journeyStages": ["consideration", "decision"]
+    }
+  ],
+  "journeyStages": [
+    {
+      "id": "awareness",
+      "labelZh": "认知期",
+      "description": "了解问题与可能性，通常对应 informational intent"
+    },
+    {
+      "id": "consideration",
+      "labelZh": "考虑期",
+      "description": "评估方案与供应商，通常对应 commercial intent"
+    },
+    {
+      "id": "decision",
+      "labelZh": "决策期",
+      "description": "准备采购/下单，通常对应 commercial + 采购类关键词"
+    }
+  ],
+  "industries": [
+    { "id": "aerospace-defense", "label": "Aerospace & Defense", "personas": ["quality", "design", "procurement", "owner"] },
+    { "id": "automotive-motorsports", "label": "Automotive & Motorsports", "personas": ["manufacturing", "design", "procurement"] },
+    { "id": "chemical-processing", "label": "Chemical Processing", "personas": ["procurement", "quality", "design"] },
+    { "id": "consumer-electronics", "label": "Consumer Electronics", "personas": ["design", "manufacturing", "procurement"] },
+    { "id": "cycling---bicycle", "label": "Cycling / Bicycle", "personas": ["design", "manufacturing", "owner"] },
+    { "id": "electroplating-surface-finishing", "label": "Electroplating & Surface Finishing", "personas": ["manufacturing", "quality"] },
+    { "id": "energy", "label": "Energy", "personas": ["procurement", "quality", "design"] },
+    { "id": "environmental-engineering", "label": "Environmental Engineering", "personas": ["procurement", "design", "manufacturing"] },
+    { "id": "general-industrial", "label": "General Industrial", "personas": ["procurement", "design", "manufacturing"] },
+    { "id": "marine-offshore", "label": "Marine & Offshore", "personas": ["procurement", "quality", "manufacturing"] },
+    { "id": "medical-device", "label": "Medical Device", "personas": ["quality", "design", "procurement", "owner"] },
+    { "id": "semiconductor", "label": "Semiconductor", "personas": ["manufacturing", "quality", "design", "procurement"] }
+  ],
+  "personaToIndustry": {
+    "procurement": ["aerospace-defense", "chemical-processing", "consumer-electronics", "energy", "environmental-engineering", "general-industrial", "marine-offshore", "medical-device", "semiconductor", "automotive-motorsports"],
+    "design": ["aerospace-defense", "automotive-motorsports", "chemical-processing", "consumer-electronics", "cycling---bicycle", "energy", "environmental-engineering", "general-industrial", "medical-device", "semiconductor"],
+    "manufacturing": ["automotive-motorsports", "consumer-electronics", "cycling---bicycle", "electroplating-surface-finishing", "environmental-engineering", "general-industrial", "marine-offshore", "semiconductor"],
+    "quality": ["aerospace-defense", "chemical-processing", "electroplating-surface-finishing", "energy", "marine-offshore", "medical-device", "semiconductor"],
+    "owner": ["aerospace-defense", "cycling---bicycle", "medical-device"]
+  }
+}

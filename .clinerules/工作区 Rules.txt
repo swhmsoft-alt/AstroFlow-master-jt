@@ -35,3 +35,14 @@
     - Exception: Files in `docs/`, `memory-bank/`, or explicitly requested by the user to keep are exempt.
     - Constraint: Never delete files that the running application depends on (check `git status` or `import` references before deleting).
     - Verification: At the end of each task, run `git status --short` to confirm no stray untracked files remain.
+
+7. Closed-Loop Engineering Principle (CRITICAL — see SEMANTIC_CLOSURE.md §0):
+   - All small projects, functions, mechanisms MUST follow the unified closed loop:
+       Input → Compute → Store → Output → Improve → Re-input (loop)  +  Reuse mechanism.
+   - Input: audit & reuse existing data/mechanisms (Single Source of Truth) before creating new.
+   - Compute: prefer idempotent scripts / pure functions (reproducible results).
+   - Store: persist result as the single authoritative source (e.g. data/keywords/*.json).
+   - Output: produce consumer-ready output WITHOUT altering existing runtime behavior.
+   - Improve: run validation gates (astro check, field integrity, git diff review).
+   - Re-input: feed verification/retrospective back to input to drive the next iteration.
+   - Reuse: prefer existing abstractions (repository.mjs, scripts/*, memory-bank) over parallel implementations.

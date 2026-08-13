@@ -6,6 +6,33 @@
 
 ---
 
+## 0. 闭环工程原则（Closed-Loop Engineering Principle）— 强制统一流程
+
+> **所有小项目、功能、机制都必须遵循统一的闭环流程**，形成「数据流闭环 + 改进再循环 + 复用机制」。
+> 这是 §1-§6 的底层骨架：每个输出都必须完成从输入到可复用结果的一次完整闭环。
+
+### 0.1 六段闭环（输入 → 计算 → 存储 → 输出 → 改进 → 再输入）
+
+1. **输入（Input）**：明确定义入参 / 数据源 / 前置依赖；先审计并**复用已有数据与机制**（Single Source of Truth），避免重复造轮子。
+2. **计算（Compute）**：以纯函数 / 幂等脚本完成变换与逻辑，避免副作用；同一输入保证结果可复现。
+3. **存储（Store）**：结果落盘为**唯一权威源**（如 `data/keywords/*.json`），结构稳定、可校验（JSON Schema / Zod）。
+4. **输出（Output）**：按消费方格式产出（构建产物 / 文档 / 报告 / 映射表），**不影响既有运行行为**。
+5. **改进机制（Improve）**：每次实现后运行验证门禁（`astro check`、字段完整性、`git diff` 审查），形成可重复的改进路径。
+6. **再输入循环（Re-input / Loop）**：把验证与复盘结果反馈回输入层，驱动下一轮迭代（改进 → 再输入 → 再计算…）。
+
+### 0.2 复用机制（Reuse）
+
+- 优先复用项目既有抽象与工具（如 `src/lib/keywords/repository.mjs`、`scripts/*`、`memory-bank` 模式），而非新建并行实现。
+- 幂等脚本可重复运行，作为**可复用机制**沉淀在 `scripts/` 下（如 `scripts/audience-tag.mjs`）。
+- 每一次落地都应在 `memory-bank` 记录，形成可追溯、可复用的知识库。
+
+### 0.3 落地校验
+
+每个小项目 / 功能 / 机制完成时，除按 §6 Validation Checklist 复核外，确认「闭环已闭合」：
+- 输入已定义、计算已复现、存储已权威化、输出已验证、改进已记录、**可被再次作为输入复用**。
+
+---
+
 ## 1. User Intent Closure（意图闭环）
 
 Cline must verify before generating and validate after generating.
