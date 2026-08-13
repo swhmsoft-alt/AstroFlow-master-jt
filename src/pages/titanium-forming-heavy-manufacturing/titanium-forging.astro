@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import ForgingProcessSpectrum from '../../components/services/ForgingProcessSpectrum.astro';
 import ForgingSpecsDashboard from '../../components/services/ForgingSpecsDashboard.astro';
@@ -66,4 +67,5 @@ const t = useTranslations(lang);
 
   <!-- Dedicated CTA — Forging Assessment -->
   <ForgingDedicatedCta />
+<AudienceHub industry="forming" />
 </BaseLayout>

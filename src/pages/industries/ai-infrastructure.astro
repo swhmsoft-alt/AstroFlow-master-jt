@@ -9,6 +9,7 @@ import AiLiquidCoolingSection from '../../components/industries/ai-infrastructur
 import AiMetrologySection from '../../components/industries/ai-infrastructure/AiMetrologySection.astro';
 import AiComplianceSection from '../../components/industries/ai-infrastructure/AiComplianceSection.astro';
 import AiCtaSection from '../../components/industries/ai-infrastructure/AiCtaSection.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -83,5 +84,7 @@ const t = useTranslations(lang);
   <AiComplianceSection />
 
   <!-- Section 5: CTA -->
+  <AudienceHub industry="ai-infrastructure" />
+
   <AiCtaSection />
 </BaseLayout>

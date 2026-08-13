@@ -5,6 +5,7 @@ import AdditiveProcessSpectrum from '../components/services/AdditiveProcessSpect
 import AdditiveSpecsDashboard from '../components/services/AdditiveSpecsDashboard.astro';
 import AdditiveQualityKnowHow from '../components/services/AdditiveQualityKnowHow.astro';
 import AdditiveDedicatedCta from '../components/services/AdditiveDedicatedCta.astro';
+import AudienceHub from '../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -59,5 +60,7 @@ const t = useTranslations(lang);
   <AdditiveQualityKnowHow />
 
   <!-- Dedicated CTA — AM Design Review -->
+  <AudienceHub industry="additive" />
+
   <AdditiveDedicatedCta />
 </BaseLayout>

@@ -10,6 +10,7 @@ import MedicalContaminationSection from '../../components/industries/medical/Med
 import MedicalComplianceSection from '../../components/industries/medical/MedicalComplianceSection.astro';
 import MedicalCtaSection from '../../components/industries/medical/MedicalCtaSection.astro';
 import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -106,5 +107,7 @@ const t = useTranslations(lang);
   />
 
   <!-- Section 5: Conversion CTA -->
+  <AudienceHub industry="medical" />
+
   <MedicalCtaSection />
 </BaseLayout>

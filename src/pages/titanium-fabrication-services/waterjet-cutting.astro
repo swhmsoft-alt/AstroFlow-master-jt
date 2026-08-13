@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import WaterjetAdvantages from '../../components/services/WaterjetAdvantages.astro';
 import WaterjetSpecsDashboard from '../../components/services/WaterjetSpecsDashboard.astro';
@@ -66,4 +67,5 @@ const t = useTranslations(lang);
 
   <!-- Dedicated CTA — Waterjet Assessment -->
   <WaterjetDedicatedCta />
+<AudienceHub industry="fabrication" />
 </BaseLayout>

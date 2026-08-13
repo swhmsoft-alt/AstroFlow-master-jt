@@ -12,6 +12,7 @@ import type { PartsCategory } from '../../data/parts';
 import SubpageHero from '../ui/SubpageHero.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { linkify } from '../../lib/auto-inline-links';
+import AudienceHub from '../audience/AudienceHub.astro';
 
 interface Props {
   data: PartsCategory;
@@ -223,4 +224,7 @@ const gradeLink = (name: string): string => {
       </div>
     </div>
   </section>
+
+  <!-- Audience guidance -->
+  <AudienceHub industry="parts" />
 </article>

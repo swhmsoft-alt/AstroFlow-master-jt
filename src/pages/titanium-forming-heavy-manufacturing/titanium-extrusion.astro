@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import ExtrusionProcessSpectrum from '../../components/services/ExtrusionProcessSpectrum.astro';
 import ExtrusionSpecsDashboard from '../../components/services/ExtrusionSpecsDashboard.astro';
@@ -66,4 +67,5 @@ const t = useTranslations(lang);
 
   <!-- Dedicated CTA — Extrusion Feasibility Review -->
   <ExtrusionDedicatedCta />
+<AudienceHub industry="forming" />
 </BaseLayout>

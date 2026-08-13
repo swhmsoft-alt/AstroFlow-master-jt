@@ -5,6 +5,7 @@ import HeavyProcessSpectrum from '../components/services/HeavyProcessSpectrum.as
 import HeavySpecsDashboard from '../components/services/HeavySpecsDashboard.astro';
 import HotFormingStressKnowHow from '../components/services/HotFormingStressKnowHow.astro';
 import HeavyDedicatedCta from '../components/services/HeavyDedicatedCta.astro';
+import AudienceHub from '../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -58,5 +59,7 @@ const t = useTranslations(lang);
   <HotFormingStressKnowHow />
 
   <!-- Dedicated CTA — Heavy Compliance Assessment -->
+  <AudienceHub industry="forming" />
+
   <HeavyDedicatedCta />
 </BaseLayout>

@@ -9,6 +9,7 @@ import AerospaceComplianceSection from '../../components/industries/aerospace/Ae
 import AerospaceMetrologySection from '../../components/industries/aerospace/AerospaceMetrologySection.astro';
 import AerospaceCtaSection from '../../components/industries/aerospace/AerospaceCtaSection.astro';
 import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -94,6 +95,8 @@ const t = useTranslations(lang);
       { label: 'Thin-Wall Titanium Aerospace Housing (0.60 mm wall, CMM verified)', href: '/case-studies/aerospace-thin-wall-housing/' },
     ]}
   />
+
+  <AudienceHub industry="aerospace" />
 
   <AerospaceCtaSection />
 </BaseLayout>

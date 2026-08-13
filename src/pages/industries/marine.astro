@@ -8,6 +8,7 @@ import MarineCorrosionSection from '../../components/industries/marine/MarineCor
 import MarineValidationSection from '../../components/industries/marine/MarineValidationSection.astro';
 import MarineComplianceSection from '../../components/industries/marine/MarineComplianceSection.astro';
 import MarineCtaSection from '../../components/industries/marine/MarineCtaSection.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -73,5 +74,7 @@ const t = useTranslations(lang);
   <MarineCorrosionSection />
   <MarineValidationSection />
   <MarineComplianceSection />
+  <AudienceHub industry="marine" />
+
   <MarineCtaSection />
 </BaseLayout>

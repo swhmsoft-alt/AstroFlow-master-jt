@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import CustomComponentSpectrum from '../../components/services/CustomComponentSpectrum.astro';
 import SystemSpecsDashboard from '../../components/services/SystemSpecsDashboard.astro';
@@ -67,4 +68,5 @@ const t = useTranslations(lang);
 
   <!-- Dedicated CTA — BOM Program Evaluation -->
   <ComponentDedicatedCta />
+<AudienceHub industry="cnc-machining" />
 </BaseLayout>

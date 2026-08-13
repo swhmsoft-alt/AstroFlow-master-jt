@@ -9,6 +9,7 @@ import UavKineticSection from '../../components/industries/uav-drones/UavKinetic
 import UavImpactSection from '../../components/industries/uav-drones/UavImpactSection.astro';
 import UavComplianceSection from '../../components/industries/uav-drones/UavComplianceSection.astro';
 import UavCtaSection from '../../components/industries/uav-drones/UavCtaSection.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -83,5 +84,7 @@ const t = useTranslations(lang);
   <UavComplianceSection />
 
   <!-- Section 5: CTA -->
+  <AudienceHub industry="uav-drones" />
+
   <UavCtaSection />
 </BaseLayout>

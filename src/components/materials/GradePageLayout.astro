@@ -11,6 +11,7 @@ import GradeAlternativeMaterials from './GradeAlternativeMaterials.astro';
 import GradePageCta from './GradePageCta.astro';
 import GradeStructuredData from './GradeStructuredData.astro';
 import GradeRelatedComponents from './GradeRelatedComponents.astro';
+import AudienceHub from '../audience/AudienceHub.astro';
 import type { GradeData } from '../../data/titanium-grades';
 
 export interface Props {
@@ -125,3 +126,6 @@ const hp = `materials.${gradeKey}.hero`;
 
 <!-- CTA -->
 <GradePageCta grade={grade} lang={lang} gradeKey={gradeKey} />
+
+<!-- Audience guidance -->
+<AudienceHub industry="materials" />

@@ -1,0 +1,364 @@
+---
+// AudienceHub.astro
+// Audience-First SEO 外显模块：按「行业 × 人群」在当前页面渲染可见的受众导向内容。
+// - FAQ（含 FAQPage JSON-LD，提升 AI Overview 引用概率）
+// - 相关资源（人群导向 blog / 服务页 / 询盘）
+// - CTA → /rfq/
+// 0-JS：FAQ 用原生 <details>，无客户端水合。
+// 通用文案走 t()（en.json 缺省回退）；FAQ/相关链接内容为内联 EN 配置（首个外显版本）。
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+import type { Lang } from '../../i18n/ui';
+
+const lang: Lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+  /** 行业 id：semiconductor / medical / aerospace / marine / chemical / energy / industrial-equipment / ai-infrastructure / uav-drones */
+  industry: string;
+}
+const { industry } = Astro.props;
+
+const PERSONA_LABEL: Record<string, string> = {
+  procurement: t('audience.persona.procurement'),
+  design: t('audience.persona.design'),
+  manufacturing: t('audience.persona.manufacturing'),
+  quality: t('audience.persona.quality'),
+  owner: t('audience.persona.owner'),
+};
+
+interface IndustryConfig {
+  personas: string[];
+  faqs: { q: string; a: string }[];
+  related: { label: string; href: string; localized?: boolean }[];
+}
+
+const CONFIG: Record<string, IndustryConfig> = {
+  semiconductor: {
+    personas: ['quality', 'manufacturing', 'design'],
+    faqs: [
+      { q: 'What cleanliness and particle requirements apply to semiconductor titanium components?', a: 'Semiconductor titanium parts are manufactured to strict UHP cleanliness—degreased, cleaned and passivated—then packed in cleanroom conditions to prevent particle contamination of vacuum and gas-delivery hardware.' },
+      { q: 'Which titanium grade suits vacuum chamber and showerhead components?', a: 'Grades 2, 5 (Ti-6Al-4V) and 23 (Ti-6Al-4V ELI) are commonly specified for vacuum and gas-delivery hardware depending on strength, corrosion and outgassing requirements.' },
+      { q: 'Can you hold tight tolerances on thin-walled vacuum hardware?', a: 'Yes—we use 5-axis ultra-precision CNC and controlled machining to hold tolerances down to ±0.005 mm on complex geometries.' },
+    ],
+    related: [
+      { label: 'Semiconductor titanium components: precision requirements', href: '/blog/semiconductor-titanium-components-precision-requirements/' },
+      { label: 'Custom industrial components', href: '/titanium-cnc-machining-services/custom-industrial-components/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  medical: {
+    personas: ['quality', 'design', 'procurement'],
+    faqs: [
+      { q: 'What quality system applies to titanium medical device components?', a: 'We operate under ISO 13485 and ISO 9001; implantable-grade parts are made from Ti-6Al-4V ELI (Grade 23) with full material certification and traceability.' },
+      { q: 'Which titanium grade is used for medical implants?', a: 'Ti-6Al-4V ELI (Grade 23) is the most common implantable grade, offering high strength, biocompatibility and a lower interstitial content for improved toughness.' },
+      { q: 'Can you achieve the surface finish required for surgical instruments and implants?', a: 'Yes—precision grinding and controlled finishing achieve Ra down to 0.4 µm and mirror finishes where specifications require.' },
+    ],
+    related: [
+      { label: 'Medical titanium implants: manufacturing standards', href: '/blog/medical-titanium-implants-manufacturing-standards/' },
+      { label: 'Titanium medical components', href: '/parts/titanium-medical-components/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  aerospace: {
+    personas: ['quality', 'design', 'procurement'],
+    faqs: [
+      { q: 'Are you AS9100D certified for aerospace titanium parts?', a: 'Yes—we are AS9100D and ISO 9001 certified, with full material certification, traceability and controlled documentation for aerospace programs.' },
+      { q: 'What material certifications and traceability do you provide?', a: 'Each heat is supplied with mill test certificates (AMS 4928, ASTM B348/B265) and full lot traceability through machining, inspection and delivery.' },
+      { q: 'Can you machine thin-wall airframe and engine components to tight tolerances?', a: 'Yes—5-axis machining with controlled fixturing holds tight tolerances while managing distortion in thin-wall aerospace geometries.' },
+    ],
+    related: [
+      { label: 'Aerospace titanium component manufacturing challenges', href: '/blog/aerospace-titanium-components-manufacturing-challenges/' },
+      { label: 'AS9100D titanium CNC manufacturing', href: '/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/' },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  marine: {
+    personas: ['procurement', 'quality', 'manufacturing'],
+    faqs: [
+      { q: 'Which titanium grade resists seawater corrosion for marine components?', a: 'Commercially pure grades (2) and Ti-6Al-4V are widely used offshore for their outstanding resistance to seawater and chloride-induced corrosion.' },
+      { q: 'Can you manufacture propellers, shafting and seawater hardware?', a: 'Yes—we machine, fabricate and weld titanium for marine propellers, shafting, fasteners and structural hardware.' },
+      { q: 'Do you provide marine-grade material certification?', a: 'Yes—full material certification and traceability are provided for every marine titanium component.' },
+    ],
+    related: [
+      { label: 'Titanium marine parts', href: '/parts/titanium-marine-parts/', localized: true },
+      { label: 'Titanium welding & assembly', href: '/titanium-fabrication-services/titanium-welding-assembly/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  chemical: {
+    personas: ['procurement', 'quality', 'design'],
+    faqs: [
+      { q: 'How does titanium resist corrosion in chemical processing equipment?', a: 'Titanium forms a stable passive oxide film that resists chlorides, acids and process fluids, making it ideal for heat exchangers, valves and reactor internals.' },
+      { q: 'Which grade is best for chemical processing hardware?', a: 'Grades 2 and 12 (with molybdenum) are common; for higher strength and creep resistance, Ti-6Al-4V may be specified.' },
+      { q: 'Can you fabricate heat exchangers, tube sheets and valve bodies?', a: 'Yes—we machine and fabricate heat exchanger components, tube sheets, flanges, valves and reactor internals.' },
+    ],
+    related: [
+      { label: 'Titanium pipe components', href: '/parts/titanium-pipe-components/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  energy: {
+    personas: ['procurement', 'quality', 'design'],
+    faqs: [
+      { q: 'Why is titanium used in energy and offshore applications?', a: 'Titanium offers high strength-to-weight, corrosion resistance and long service life in demanding energy and subsea environments.' },
+      { q: 'Which titanium grades are specified for energy components?', a: 'Grades 2, 5 and 23 are common depending on pressure, temperature and corrosion requirements.' },
+      { q: 'Do you provide certified titanium for critical energy hardware?', a: 'Yes—full material certification, NDT and traceability are available for critical energy applications.' },
+    ],
+    related: [
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'industrial-equipment': {
+    personas: ['procurement', 'design', 'manufacturing'],
+    faqs: [
+      { q: 'Can you produce custom titanium industrial components?', a: 'Yes—we machine custom industrial components from drawings or CAD, with DFM feedback and rapid prototyping.' },
+      { q: 'What tolerances can you hold?', a: 'We hold tolerances down to ±0.005 mm on precision-machined titanium components.' },
+      { q: 'Do you support low-volume and production runs?', a: 'Yes—from rapid prototyping to low-volume and production quantities with consistent quality control.' },
+    ],
+    related: [
+      { label: 'Custom industrial components', href: '/titanium-cnc-machining-services/custom-industrial-components/', localized: true },
+      { label: 'DFM guide for titanium parts', href: '/blog/dfm-guide-titanium-parts-design-for-manufacturability/' },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'ai-infrastructure': {
+    personas: ['design', 'manufacturing', 'procurement'],
+    faqs: [
+      { q: 'Can you machine precision titanium components for AI / data-center infrastructure?', a: 'Yes—we produce precision-machined titanium structural and thermal hardware for high-performance computing and data-center infrastructure.' },
+      { q: 'Which grade suits structural AI-infrastructure components?', a: 'Grades 5 and 23 offer high strength and stiffness-to-weight for precision structural hardware.' },
+      { q: 'Can you hold tight tolerances on complex geometries?', a: 'Yes—5-axis machining and controlled processes hold tight tolerances on complex geometries.' },
+    ],
+    related: [
+      { label: 'Custom industrial components', href: '/titanium-cnc-machining-services/custom-industrial-components/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'uav-drones': {
+    personas: ['design', 'manufacturing', 'owner'],
+    faqs: [
+      { q: 'Why use titanium in UAV and drone components?', a: 'Titanium delivers a high strength-to-weight ratio and stiffness, ideal for lightweight airframes, motor housings and fasteners.' },
+      { q: 'Which grade suits UAV hardware?', a: 'Ti-6Al-4V (Grade 5) is the standard for lightweight, high-strength UAV and drone components.' },
+      { q: 'Can you produce small, high-precision UAV parts?', a: 'Yes—we machine small, complex, high-precision titanium components with tight tolerances and low-volume runs.' },
+    ],
+    related: [
+      { label: 'Titanium UAV components', href: '/parts/titanium-uav-components/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  // ── 服务/工艺页配置（persona 导向）──
+  'cnc-machining': {
+    personas: ['procurement', 'design', 'manufacturing'],
+    faqs: [
+      { q: 'What titanium CNC machining services do you offer?', a: '3/5-axis milling, CNC turning and mill-turn, wire EDM, and custom industrial components — from rapid prototyping to high-volume production.' },
+      { q: 'What tolerances can you hold on machined titanium?', a: 'We hold tolerances down to ±0.005 mm with 3/5-axis machining and in-house CMM inspection.' },
+      { q: 'Do you provide DFM feedback before quoting?', a: 'Yes—our engineers review your drawings or CAD and provide DFM feedback with a quote, typically within 24-48 hours.' },
+    ],
+    related: [
+      { label: '3/5-axis CNC machining', href: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/', localized: true },
+      { label: 'CNC milling & turning', href: '/titanium-cnc-machining-services/cnc-milling-turning/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'surface': {
+    personas: ['manufacturing', 'design', 'quality'],
+    faqs: [
+      { q: 'What titanium surface treatments do you offer?', a: 'Anodizing (AMS 2488), micro-arc plasma ceramic deposition, chemical passivation, and polishing / sandblasting.' },
+      { q: 'Which surface finish improves corrosion resistance?', a: 'Anodizing and passivation build a protective oxide layer that enhances corrosion resistance and wear performance.' },
+      { q: 'Can you achieve Ra 0.4 or mirror finishes?', a: 'Yes—precision polishing achieves Ra down to 0.4 µm and mirror finishes where specified.' },
+    ],
+    related: [
+      { label: 'Anodizing', href: '/titanium-surface-treatment/anodizing/', localized: true },
+      { label: 'Polishing & sandblasting', href: '/titanium-surface-treatment/polishing-sandblasting/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'fabrication': {
+    personas: ['manufacturing', 'procurement', 'quality'],
+    faqs: [
+      { q: 'What titanium fabrication services do you provide?', a: 'Laser cutting, waterjet cutting, TIG / laser welding with full argon shielding, and sheet-metal assembly.' },
+      { q: 'How do you prevent weld contamination?', a: 'We use full argon shielding and controlled purge during TIG welding to prevent oxygen and nitrogen contamination of the weld.' },
+      { q: 'Can you handle large vessels and piping assemblies?', a: 'Yes—large-scale industrial vessel and piping assembly with qualified welding procedures (WPS).' },
+    ],
+    related: [
+      { label: 'Laser cutting', href: '/titanium-fabrication-services/laser-cutting/', localized: true },
+      { label: 'Titanium welding & assembly', href: '/titanium-fabrication-services/titanium-welding-assembly/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'forming': {
+    personas: ['manufacturing', 'procurement', 'design'],
+    faqs: [
+      { q: 'What titanium forming and heavy manufacturing do you offer?', a: 'Hot forming, open / closed-die forging, extrusion, and large-scale structural assembly for multi-ton infrastructure.' },
+      { q: 'How do you control stress and distortion in formed parts?', a: 'Vacuum heat treatment for stress relief and controlled hot-forming processes reduce distortion.' },
+      { q: 'Can you handle large, heavy titanium components?', a: 'Yes—multi-ton titanium structural components with heavy plate rolling and integration.' },
+    ],
+    related: [
+      { label: 'Titanium forging', href: '/titanium-forming-heavy-manufacturing/titanium-forging/', localized: true },
+      { label: 'Titanium extrusion', href: '/titanium-forming-heavy-manufacturing/titanium-extrusion/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'additive': {
+    personas: ['design', 'procurement', 'manufacturing'],
+    faqs: [
+      { q: 'What titanium additive manufacturing do you offer?', a: 'SLM / DMLS 3D printing from rapid prototypes in 3-5 days to low-volume production with mechanical properties matching wrought material.' },
+      { q: 'Which titanium grade is used for 3D printing?', a: 'Ti-6Al-4V (Grade 5) and Ti-6Al-4V ELI (Grade 23) are the most common for additive components.' },
+      { q: 'Do you combine AM with CNC finishing?', a: 'Yes—we finish printed parts with CNC machining to achieve tight tolerances and required surface finishes.' },
+    ],
+    related: [
+      { label: '3D printing (SLM/DMLS)', href: '/titanium-additive-manufacturing/3d-printing-slm/', localized: true },
+      { label: 'Rapid prototyping', href: '/titanium-additive-manufacturing/rapid-prototyping/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  'capabilities': {
+    personas: ['quality', 'procurement', 'design'],
+    faqs: [
+      { q: 'What quality systems and certifications do you hold?', a: 'AS9100D, ISO 9001, ISO 13485, NADCAP and ITAR-compliant — with full material traceability and in-house CMM inspection.' },
+      { q: 'How do you verify dimensional quality?', a: 'In-house CMM metrology and GD&T validation per ASME Y14.5, with first article inspection reports.' },
+      { q: 'Do you provide engineering support and DFM?', a: 'Yes—engineering support for DFM, material selection, and tolerance feasibility.' },
+    ],
+    related: [
+      { label: 'Certifications', href: '/capabilities/certifications/', localized: true },
+      { label: 'Engineering support', href: '/capabilities/engineering/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  // ── 材料页配置（设计/质量导向）──
+  'materials': {
+    personas: ['design', 'quality', 'procurement'],
+    faqs: [
+      { q: 'How do I choose the right titanium grade?', a: 'Selection depends on strength, corrosion resistance, formability and application — CP grades for corrosion, alpha-beta alloys like Ti-6Al-4V for strength, and ELI grades for medical.' },
+      { q: 'Which titanium grade is best for medical implants?', a: 'Ti-6Al-4V ELI (Grade 23) per ASTM F136 is the most common implantable grade for its strength and biocompatibility.' },
+      { q: 'What certifications accompany titanium material?', a: 'Mill test certificates (ASTM, AMS), EN 10204 3.1 reports and full lot traceability are provided with every shipment.' },
+    ],
+    related: [
+      { label: 'Titanium alloy selection guide', href: '/blog/titanium-alloy-selection-guide-how-to-choose-grade/' },
+      { label: 'Ti-6Al-4V (Grade 5) guide', href: '/materials/grade-5/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  // ── 部件页配置（采购导向）──
+  'parts': {
+    personas: ['procurement', 'design', 'manufacturing'],
+    faqs: [
+      { q: 'Can you machine custom titanium parts?', a: 'Yes—CNC machined, fabricated, forged and pipe titanium parts from drawings or CAD, with DFM feedback and quoting.' },
+      { q: 'What titanium parts do you manufacture?', a: 'CNC parts, fabricated parts, pipe components, and marine, UAV, medical and motorsport parts.' },
+      { q: 'How do I get a quote for titanium parts?', a: 'Submit your drawing via the request-a-quote page and our engineers respond with DFM feedback and a quote in 24-48 hours.' },
+    ],
+    related: [
+      { label: 'Titanium CNC parts', href: '/parts/titanium-cnc-parts/', localized: true },
+      { label: 'Titanium fabricated parts', href: '/parts/titanium-fabricated-parts/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  // ── blog 文章页配置（采购导向）──
+  'blog': {
+    personas: ['procurement', 'design', 'quality'],
+    faqs: [
+      { q: 'Need a quote for a custom titanium component?', a: 'Submit your drawing via our request-a-quote page and our engineers provide DFM feedback with a quote in 24-48 hours.' },
+      { q: 'Which titanium grade should I choose?', a: 'Selection depends on strength, corrosion resistance and application — see our titanium alloy selection guide.' },
+      { q: 'How do you ensure quality and traceability?', a: 'We are AS9100D / ISO 9001 certified and provide material certification with full lot traceability.' },
+    ],
+    related: [
+      { label: 'Titanium alloy selection guide', href: '/blog/titanium-alloy-selection-guide-how-to-choose-grade/' },
+      { label: 'How to choose a titanium CNC machining supplier', href: '/blog/how-to-choose-titanium-cnc-machining-supplier/' },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+  // ── 设备页配置（工艺/质量导向）──
+  'equipment': {
+    personas: ['manufacturing', 'quality', 'design'],
+    faqs: [
+      { q: 'What equipment do you use for titanium machining?', a: '5-axis machining centers, turn-mill CNC, wire EDM, CMM, laser trackers, robotic pallet systems and vacuum heat-treat furnaces.' },
+      { q: 'How do you ensure precision and repeatability?', a: 'In-house CMM metrology and laser-tracker 3D scanning verify dimensions; controlled machining holds tolerances down to ±0.005 mm.' },
+      { q: 'How is inspection and quality verified?', a: 'CMM, laser tracker and 3D scanner inspection per ASME Y14.5 with first article reports.' },
+    ],
+    related: [
+      { label: '3D CMM inspection', href: '/products/capabilities/3d-cmm-inspection/', localized: true },
+      { label: 'Capabilities & certifications', href: '/capabilities/', localized: true },
+      { label: 'Request a quote', href: '/rfq/', localized: true },
+    ],
+  },
+};
+
+const cfg = CONFIG[industry] ?? CONFIG['industrial-equipment'];
+
+const faqLdJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: cfg.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+});
+
+function linkFor(href: string, localized?: boolean): string {
+  return localized ? localizePath(href, lang) : href;
+}
+---
+<section class="relative py-16" style="background-color: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);" aria-label="Audience guidance">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+    <div class="rounded-2xl p-6 sm:p-10" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent); background: color-mix(in srgb, var(--theme-bg) 60%, transparent);">
+      <div class="inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full border mb-4" style="border-color: var(--theme-primary); color: var(--theme-primary);">
+        {t('audience.hub.badge')}
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold mb-2" style="color: var(--theme-text);">
+        {t('audience.hub.title')}
+      </h2>
+      <p class="mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('audience.hub.subtitle')}
+      </p>
+
+      <!-- Persona chips -->
+      <div class="flex flex-wrap gap-2 mb-8" role="list" aria-label="Audience personas">
+        {cfg.personas.map((p) => (
+          <span role="listitem" class="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+            {PERSONA_LABEL[p] ?? p}
+          </span>
+        ))}
+      </div>
+
+      <!-- FAQ -->
+      <h3 class="text-lg font-bold mb-4" style="color: var(--theme-text);">
+        {t('audience.hub.faqTitle')}
+      </h3>
+      <div class="space-y-3 mb-8">
+        {cfg.faqs.map((f) => (
+          <details class="group rounded-xl border px-4 py-3" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <summary class="cursor-pointer font-medium" style="color: var(--theme-text);">
+              {f.q}
+            </summary>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              {f.a}
+            </p>
+          </details>
+        ))}
+      </div>
+
+      <!-- Related resources -->
+      <h3 class="text-lg font-bold mb-4" style="color: var(--theme-text);">
+        {t('audience.hub.relatedTitle')}
+      </h3>
+      <ul class="space-y-2 mb-8">
+        {cfg.related.map((r) => (
+          <li>
+            <a href={linkFor(r.href, r.localized)} class="inline-flex items-center gap-2 font-medium transition-colors" style="color: var(--theme-primary);">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              {r.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA -->
+      <a href={localizePath('/rfq/', lang)} target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 font-semibold rounded-xl transition-all duration-300 hover:scale-105" style="background-color: var(--theme-primary); color: #ffffff;">
+        {t('audience.hub.cta')}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={faqLdJson} />

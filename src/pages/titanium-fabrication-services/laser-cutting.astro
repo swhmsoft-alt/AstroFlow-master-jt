@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import LaserProcessSpectrum from '../../components/services/LaserProcessSpectrum.astro';
 import LaserSpecsDashboard from '../../components/services/LaserSpecsDashboard.astro';
@@ -66,4 +67,5 @@ const t = useTranslations(lang);
 
   <!-- Dedicated CTA — Laser Nesting & Quote -->
   <LaserDedicatedCta />
+<AudienceHub industry="fabrication" />
 </BaseLayout>

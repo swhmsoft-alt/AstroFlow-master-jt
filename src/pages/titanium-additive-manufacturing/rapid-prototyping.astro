@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import RapidValuePillars from '../../components/services/RapidValuePillars.astro';
 import PrototypingSpecsDashboard from '../../components/services/PrototypingSpecsDashboard.astro';
@@ -67,4 +68,5 @@ const t = useTranslations(lang);
 
   <!-- Dedicated CTA — Rapid Assessment -->
   <RapidPrototypeCta />
+<AudienceHub industry="additive" />
 </BaseLayout>

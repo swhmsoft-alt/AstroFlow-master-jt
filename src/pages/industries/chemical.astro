@@ -5,6 +5,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -202,6 +203,8 @@ const t = useTranslations(lang);
       'Material certification for pressure-capable components',
     ]}
   />
+
+  <AudienceHub industry="chemical" />
 
   <!-- CTA -->
   <section class="relative py-24 overflow-hidden" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">

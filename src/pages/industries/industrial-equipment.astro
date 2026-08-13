@@ -9,6 +9,7 @@ import IndEqFlowControlSection from '../../components/industries/industrial-equi
 import IndEqStressReliefSection from '../../components/industries/industrial-equipment/IndEqStressReliefSection.astro';
 import IndEqComplianceSection from '../../components/industries/industrial-equipment/IndEqComplianceSection.astro';
 import IndEqCtaSection from '../../components/industries/industrial-equipment/IndEqCtaSection.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -83,5 +84,7 @@ const t = useTranslations(lang);
   <IndEqComplianceSection />
 
   <!-- Section 5: CTA -->
+  <AudienceHub industry="industrial-equipment" />
+
   <IndEqCtaSection />
 </BaseLayout>

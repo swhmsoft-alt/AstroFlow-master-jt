@@ -7,6 +7,7 @@ import EngineeringSupport from '../components/capabilities/EngineeringSupport.as
 import QualityAndCertifications from '../components/capabilities/QualityAndCertifications.astro';
 import InspectionLabGrid from '../components/capabilities/InspectionLabGrid.astro';
 import TraceabilityFoundation from '../components/capabilities/TraceabilityFoundation.astro';
+import AudienceHub from '../components/audience/AudienceHub.astro';
 import ToleranceChecker from '../components/react/ToleranceChecker';
 import SurfaceRoughnessComparator from '../components/react/SurfaceRoughnessComparator';
 import GDTSymbolReference from '../components/react/GDTSymbolReference';
@@ -105,4 +106,7 @@ const t = useTranslations(currentLang);
 
   <!-- 5. Traceability Foundation -->
   <TraceabilityFoundation />
+
+  <!-- Audience guidance -->
+  <AudienceHub industry="capabilities" />
 </BaseLayout>

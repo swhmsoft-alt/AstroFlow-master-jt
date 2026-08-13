@@ -9,6 +9,7 @@ import EquipmentProducts from './EquipmentProducts.astro';
 import EquipmentIndustries from './EquipmentIndustries.astro';
 import EquipmentAlternatives from './EquipmentAlternatives.astro';
 import EquipmentPageCta from './EquipmentPageCta.astro';
+import AudienceHub from '../audience/AudienceHub.astro';
 import type { EquipmentData } from '../../data/equipment';
 
 export interface Props {
@@ -59,3 +60,6 @@ const heroSubtitle = _t(`${pfx}.subtitle`, equipment.subtitle);
 
 <!-- CTA -->
 <EquipmentPageCta equipment={equipment} lang={lang} equipmentKey={equipmentKey} />
+
+<!-- Audience guidance -->
+<AudienceHub industry="equipment" />

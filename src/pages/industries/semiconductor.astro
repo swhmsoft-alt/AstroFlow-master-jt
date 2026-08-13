@@ -9,6 +9,7 @@ import SemiMicroDrillSection from '../../components/industries/semiconductor/Sem
 import SemiCleanroomSection from '../../components/industries/semiconductor/SemiCleanroomSection.astro';
 import SemiComplianceSection from '../../components/industries/semiconductor/SemiComplianceSection.astro';
 import SemiCtaSection from '../../components/industries/semiconductor/SemiCtaSection.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -83,5 +84,7 @@ const t = useTranslations(lang);
   <SemiComplianceSection />
 
   <!-- Section 5: CTA -->
+  <AudienceHub industry="semiconductor" />
+
   <SemiCtaSection />
 </BaseLayout>

@@ -57,6 +57,19 @@
 - 数据流（闭环）：输入=行业页/blog→计算=audience-tag.mjs→存储=main-db.json→输出=`keywords-sync`→`entity-keywords.mjs`→`generate-entity-keywords`→`astro.config.mjs`（纯增量）→改进=astro check/字段校验→再输入=planned 词后续转 mapped。
 - 验证：astro.config +21/0、entity-keywords +11/0（纯增量）；main-db NEWLY_MISSING=0；astro check 118 errors（与改动前一致，无新增）；blog planned 被 `exportAllLangs` 排除。**未部署**。
 
+### 3c. 外显模块落地（2026-08-13 第 3 轮，回应"不外显"反馈）
+- **新增 `src/components/audience/AudienceHub.astro`**：0-JS 可见模块，渲染 persona 标签 chips + FAQ（含 FAQPage JSON-LD）+ 相关资源 + CTA→/rfq/。通用文案走 `t()`，FAQ/相关为 9 行业内联 EN 配置。
+- **整合进 9 个行业页**（CTA 前）：aerospace / ai-infrastructure / chemical / energy / industrial-equipment / marine / medical / semiconductor / uav-drones。已有 `BuyerIntentBlock` 的页（aerospace/medical/chemical）以 AudienceHub 作 FAQ/相关补充、不重复。
+- i18n：`en.json` 追加 11 个 `audience.*` key（7325 keys，其余语言 t() 回退 EN）。
+- 验证：`astro check` 118 errors（无新增）；dev server 实测 `/industries/semiconductor/` 标题/FAQ/JSON-LD/CTA 均渲染。
+- **扩展至服务页（同轮续）：** AudienceHub 新增 6 个服务配置（cnc-machining/surface/fabrication/forming/additive/capabilities），挂载到 6 个服务页（titanium-cnc-machining-services、titanium-surface-treatment、titanium-fabrication-services、titanium-forming-heavy-manufacturing、titanium-additive-manufacturing、capabilities）。**15 页外显**。
+- **再扩至子页（同轮续）：** 复用父级服务配置，再挂载 16 个子页（CNC×4、Fab×3、Forming×3、Surface×3、Additive×3）。**31 页外显**。
+- **扩至材料/部件页（同轮三续）：** 新增 `materials`、`parts` 配置，经共享组件 `GradePageLayout.astro`（32 材料页）+ `PartsDetail.astro`（8 部件页）一次挂载。**71 页外显**（9 行业 + 6 服务枢纽 + 16 子页 + 32 材料 + 8 部件）。
+- **扩至微能力页（同轮四续）：** `products/capabilities/*` 由 `[...slug].astro` 动态渲染，模板挂载一次覆盖全部（industry="capabilities"）。已跑 `check-undefined-slugs.mjs --ci`（0 issue）。
+- **扩至 blog（同轮五续）：** 新增 `blog` 配置，在 `blog/[...slug].astro` 模板文章内容后挂载，覆盖全部 EN blog 文章。已跑 `check-undefined-slugs.mjs --ci`（0 issue）。
+- **扩至设备页（同轮六续）：** 新增 `equipment` 配置，经共享组件 `EquipmentPageLayout.astro` 一次挂载，覆盖全部 13 设备页。
+- 待办：`/use-cases/`（演示页，非被覆盖业务页，跳过）、`/applications/*`（目录不存在，跳过）。核心业务页类型已全覆盖。
+
 ---
 
 ## 四、验证门禁（已通过）

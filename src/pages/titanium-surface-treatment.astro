@@ -5,6 +5,7 @@ import SurfaceProcessSpectrum from '../components/services/SurfaceProcessSpectru
 import SurfaceSpecsDashboard from '../components/services/SurfaceSpecsDashboard.astro';
 import GallingOsseointegrationKnowHow from '../components/services/GallingOsseointegrationKnowHow.astro';
 import SurfaceDedicatedCta from '../components/services/SurfaceDedicatedCta.astro';
+import AudienceHub from '../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -59,5 +60,7 @@ const t = useTranslations(lang);
   <GallingOsseointegrationKnowHow />
 
   <!-- Dedicated CTA — 24-Hour Engineering Assessment -->
+  <AudienceHub industry="surface" />
+
   <SurfaceDedicatedCta />
 </BaseLayout>

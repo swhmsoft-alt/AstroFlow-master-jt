@@ -5,6 +5,7 @@ import CncProcessSpectrum from '../components/services/CncProcessSpectrum.astro'
 import CncTechnicalDashboard from '../components/services/CncTechnicalDashboard.astro';
 import TitaniumEngineeringKnowHow from '../components/services/TitaniumEngineeringKnowHow.astro';
 import CncDedicatedCta from '../components/services/CncDedicatedCta.astro';
+import AudienceHub from '../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -58,5 +59,7 @@ const t = useTranslations(lang);
   <TitaniumEngineeringKnowHow />
 
   <!-- Dedicated CTA — DFM Analysis banner -->
+  <AudienceHub industry="cnc-machining" />
+
   <CncDedicatedCta />
 </BaseLayout>

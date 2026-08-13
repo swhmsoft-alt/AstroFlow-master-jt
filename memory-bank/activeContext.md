@@ -21,6 +21,20 @@
 - 结果：persona 70（design13/quality19/owner3/manufacturing18/procurement17）；EN mapped 98；planned 110；总量 412→429。
 - 验证：astro.config +21/0、entity-keywords +11/0（纯增量）；main-db NEWLY_MISSING=0；astro check 118（与改动前一致，无新增）；blog planned 被 exportAllLangs 排除。**未部署**。
 
+✅ **受众优先 SEO 外显模块落地（2026-08-13 第 3 轮）：AudienceHub** —— 回应"不外显"反馈，让受众维度真正可见。
+- 反馈：此前 persona/blog 打标为后台数据，本地页面无新增内容（不外显）。用户要求"内外兼有、必须外显、涉及哪个页面就在哪个页面外显、已有模块就整合"。
+- 新增 `src/components/audience/AudienceHub.astro`（0-JS、`<details>` 原生手风琴、语义 `<section>`）：渲染 受众导向标题/副标题 + **persona 标签 chips** + **FAQ（含 FAQPage JSON-LD）** + **相关资源链接** + CTA→`/rfq/`。配置按 9 行业内联 EN（FAQ/相关），通用文案走 t()。
+- 整合进 **9 个行业页** `src/pages/industries/*.astro`（各加 import + `<AudienceHub industry="X" />`，置于 CTA 前）。aerospace/medical/chemical 已有 `BuyerIntentBlock`（受众导向模块），AudienceHub 作为 FAQ/相关补充、不重复。
+- i18n：`en.json` 追加 11 个 `audience.*` key（7325 keys，其余语言经 t() 回退 EN）。
+- 验证：en.json 有效；`astro check` 118 errors（与改动前一致，无新增）；dev server 实测 `/industries/semiconductor/` status 200，标题/FAQ/FAQPage JSON-LD/`/rfq/` 均渲染（`&` 转义为 `&amp;` 属正常）。**未部署**。
+- 第 3 轮续：AudienceHub 增加 6 个服务页配置（cnc-machining/surface/fabrication/forming/additive/capabilities，persona 导向 FAQ+相关），并挂载到 6 个服务页：titanium-cnc-machining-services、titanium-surface-treatment、titanium-fabrication-services、titanium-forming-heavy-manufacturing、titanium-additive-manufacturing、capabilities。**15 页外显**（9 行业 + 6 服务）。
+- 第 3 轮再续：复用父级服务配置，再挂载 **16 个子页**（CNC：3-5-axis/cnc-milling-turning/custom-industrial-components/wire-edm；Fab：laser-cutting/waterjet/titanium-welding-assembly；Forming：titanium-forging/titanium-extrusion/raw-material-preparation-sizing；Surface：anodizing/chemical-passivation/polishing-sandblasting；Additive：3d-printing-slm/rapid-prototyping/low-volume-production）。**31 页外显**。
+- 第 3 轮三续：新增 `materials`、`parts` 配置，并在**共享组件**挂载一次即覆盖全部——`GradePageLayout.astro`（32 材料页）+ `PartsDetail.astro`（8 部件页）。**71 页外显**（9 行业 + 6 服务枢纽 + 16 子页 + 32 材料 + 8 部件）。
+- 第 3 轮四续：`products/capabilities/*` 微能力页由 `[...slug].astro` 动态渲染，在模板挂载一次即覆盖全部（industry="capabilities"，质量导向）。已运行 `check-undefined-slugs.mjs --ci`（0 issue）。
+- 第 3 轮五续：**blog 覆盖**——新增 `blog` 配置（procurement/design/quality 导向），在 `blog/[...slug].astro` 模板文章内容后、CTA 前挂载，覆盖全部 EN blog 文章。已运行 `check-undefined-slugs.mjs --ci`（0 issue）。
+- 第 3 轮六续：**设备页覆盖**——新增 `equipment` 配置（manufacturing/quality/design 导向），在共享组件 `EquipmentPageLayout.astro` 挂载一次，覆盖全部 13 设备页。
+- 验证：`astro check` 118 errors（无新增）；dev server 实测 `/equipment/cmm/` status 200、hub/FAQ 渲染。**未部署**。
+
 ✅ **hreflang alternate 尾斜杠修复完成（2026-08-12）：**
 - 背景：站点 `trailingSlash: 'always'`，用户反馈首页多语言 hreflang 未以 `/` 结尾（`/de` 应为 `/de/`）。
 - 根因：`src/i18n/utils.ts` 的 `getAlternateLinks`：首页分支 `canonical === '/' ? '' : canonical` 把本地化路径生成为 `/${lang}`（无尾斜杠）；且非首页 `removeLangPrefix` 会去掉尾斜杠 → 非首页 hreflang 也缺斜杠，与 canonical（构建后带尾斜杠）不一致。

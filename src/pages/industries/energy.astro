@@ -9,6 +9,7 @@ import EnergyNuclearSection from '../../components/industries/energy/EnergyNucle
 import EnergyFatigueSection from '../../components/industries/energy/EnergyFatigueSection.astro';
 import EnergyComplianceSection from '../../components/industries/energy/EnergyComplianceSection.astro';
 import EnergyCtaSection from '../../components/industries/energy/EnergyCtaSection.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -83,5 +84,7 @@ const t = useTranslations(lang);
   <EnergyComplianceSection />
 
   <!-- Section 5: CTA -->
+  <AudienceHub industry="energy" />
+
   <EnergyCtaSection />
 </BaseLayout>
