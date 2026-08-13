@@ -7,9 +7,12 @@ interface Process {
   icon: string;
 }
 
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 
 const processes: Process[] = [
   {
@@ -66,7 +69,11 @@ const processes: Process[] = [
         Titanium Fabrication <span style="color: var(--theme-primary);">{t('services.fabprocessspectrum.process_spectrum_3')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        {t('services.fabprocessspectrum.subtitle')}
+        {
+          isEn
+            ? <span set:html={linkify(t('services.fabprocessspectrum.subtitle') ?? '')} />
+            : t('services.fabprocessspectrum.subtitle')
+        }
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -83,15 +90,19 @@ const processes: Process[] = [
             </svg>
           </div>
           <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{proc.title}</h3>
-          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);">{proc.subtitle}</span>
-          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{proc.description}</p>
+          <span class="text-sm font-medium mb-4 block" style="color: var(--theme-primary);" set:html={isEn ? linkify(proc.subtitle ?? '') : proc.subtitle}></span>
+          <p class="text-sm leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);" set:html={isEn ? linkify(proc.description ?? '') : proc.description}></p>
           <ul class="space-y-2 mt-auto">
             {proc.capabilities.map((cap) => (
               <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
                 <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
-                {cap}
+                {
+                  isEn
+                    ? <span set:html={linkify(cap ?? '')} />
+                    : cap
+                }
               </li>
             ))}
           </ul>

@@ -1,7 +1,10 @@
 ---
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const isEn = lang === DEFAULT_LANG;
 
 const items: { label: string; value: string }[] = [
   { label: t('fabrication.pipespool.item1.label') || "Pipe Sizes", value: t('fabrication.pipespool.item1.value') || "1/2\" – 24\" OD (DN15 – DN600)" },
@@ -26,13 +29,17 @@ const items: { label: string; value: string }[] = [
           {t('fabrication.pipespool.title_prefix') || "ASME B31.3 Titanium"} <span style="color: var(--theme-primary);">{t('fabrication.pipespool.title_highlight') || "Pipe Spool & Isometric Assemblies"}</span>
         </h2>
         <p class="text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-          {t('fabrication.pipespool.desc1') || "We fabricate ready-to-install titanium pipe spools from isometric drawings — cut, fit, orbitally TIG welded and hydrostatically tested in-house. Every spool is fit-up verified against the isometric and shipped with a full material test certificate for traceability from mill to installation."}
+          {
+            isEn
+              ? <span set:html={linkify(t('fabrication.pipespool.desc1') || "We fabricate ready-to-install titanium pipe spools from isometric drawings — cut, fit, orbitally TIG welded and hydrostatically tested in-house. Every spool is fit-up verified against the isometric and shipped with a full material test certificate for traceability from mill to installation.")} />
+              : (t('fabrication.pipespool.desc1') || "We fabricate ready-to-install titanium pipe spools from isometric drawings — cut, fit, orbitally TIG welded and hydrostatically tested in-house. Every spool is fit-up verified against the isometric and shipped with a full material test certificate for traceability from mill to installation.")
+          }
         </p>
         <ul class="space-y-3 mb-8">
           {[t('fabrication.pipespool.point1') || "Orbital TIG welding with full internal/external argon shielding", t('fabrication.pipespool.point2') || "In-house 3D CMM and isometric fit-up verification", t('fabrication.pipespool.point3') || "Laser marking for spool ID, heat number and weld traceability"].map((p) => (
             <li class="flex items-start">
               <svg class="w-5 h-5 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              <span class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{p}</span>
+              <span class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);" set:html={isEn ? linkify(p) : p}></span>
             </li>
           ))}
         </ul>

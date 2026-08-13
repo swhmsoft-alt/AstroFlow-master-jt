@@ -7,9 +7,12 @@ interface EngineeringFocus {
   icon: string;
 }
 
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 
 const foci: EngineeringFocus[] = [
   {
@@ -55,7 +58,11 @@ const foci: EngineeringFocus[] = [
         {t('services.reactiveweldingknowhow.title_prefix')}<span style="color: var(--theme-primary);">{t('services.reactiveweldingknowhow.reactive_welding_metallurgy')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        {t('services.reactiveweldingknowhow.subtitle')}
+        {
+          isEn
+            ? <span set:html={linkify(t('services.reactiveweldingknowhow.subtitle') ?? '')} />
+            : t('services.reactiveweldingknowhow.subtitle')
+        }
       </p>
     </div>
 
@@ -76,7 +83,7 @@ const foci: EngineeringFocus[] = [
             </div>
             <div class="pl-14">
               <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{t('services.reactiveweldingknowhow.challenge_15')}</span>
-              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{focus.problem}</p>
+              <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={isEn ? linkify(focus.problem ?? '') : focus.problem}></p>
             </div>
           </div>
 
@@ -91,14 +98,14 @@ const foci: EngineeringFocus[] = [
 
           <div class="p-8 pt-4">
             <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">{t('services.reactiveweldingknowhow.solution_15')}</span>
-            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);">{focus.solution}</h4>
+            <h4 class="text-base font-bold mt-1.5 mb-4" style="color: var(--theme-text);" set:html={isEn ? linkify(focus.solution ?? '') : focus.solution}></h4>
             <ul class="space-y-3">
               {focus.details.map((detail) => (
                 <li class="flex items-start">
                   <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{detail}</span>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);" set:html={isEn ? linkify(detail ?? '') : detail}></span>
                 </li>
               ))}
             </ul>

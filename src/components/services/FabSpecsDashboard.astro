@@ -7,9 +7,12 @@ interface SpecItem {
   icon: string;
 }
 
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 
 const specs: SpecItem[] = [
   {
@@ -55,7 +58,11 @@ const specs: SpecItem[] = [
         Fabrication <span style="color: var(--theme-primary);">{t('services.fabspecsdashboard.capacity_dashboard_2')}</span>
       </h2>
       <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        {t('services.fabspecsdashboard.subtitle')}
+        {
+          isEn
+            ? <span set:html={linkify(t('services.fabspecsdashboard.subtitle') ?? '')} />
+            : t('services.fabspecsdashboard.subtitle')
+        }
       </p>
     </div>
 
@@ -75,7 +82,7 @@ const specs: SpecItem[] = [
             {spec.unit && <span class="text-lg font-semibold ml-1" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{spec.unit}</span>}
           </div>
           <h3 class="text-base font-bold mb-3" style="color: var(--theme-text);">{spec.label}</h3>
-          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{spec.description}</p>
+          <p class="text-sm leading-relaxed mt-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);" set:html={isEn ? linkify(spec.description ?? '') : spec.description}></p>
           <div class="absolute bottom-0 left-6 right-6 h-px" style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent); opacity: 0.2;"></div>
         </div>
       ))}
@@ -83,7 +90,11 @@ const specs: SpecItem[] = [
 
     <div class="mt-12 text-center">
       <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
-        {t('services.fabspecsdashboard.footnote')}
+        {
+          isEn
+            ? <span set:html={linkify(t('services.fabspecsdashboard.footnote') ?? '')} />
+            : t('services.fabspecsdashboard.footnote')
+        }
       </p>
     </div>
   </div>

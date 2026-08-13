@@ -1,7 +1,10 @@
 ---
+import { linkify } from '../../lib/auto-inline-links';
+import { DEFAULT_LANG } from '../../i18n/ui';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const isEn = currentLang === DEFAULT_LANG;
 ---
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
   <div class="absolute inset-0 opacity-15">
@@ -29,7 +32,11 @@ const t = useTranslations(currentLang);
         </h2>
 
         <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-          Upload your engineering drawings, weld specifications, and project requirements for a complete 24-hour WPS (Welding Procedure Specification) assessment and scalable multi-tier RFQ evaluation — from single weldments to full industrial vessel and piping packages.
+          {
+            isEn
+              ? <span set:html={linkify("Upload your engineering drawings, weld specifications, and project requirements for a complete 24-hour WPS (Welding Procedure Specification) assessment and scalable multi-tier RFQ evaluation — from single weldments to full industrial vessel and piping packages.")} />
+              : "Upload your engineering drawings, weld specifications, and project requirements for a complete 24-hour WPS (Welding Procedure Specification) assessment and scalable multi-tier RFQ evaluation — from single weldments to full industrial vessel and piping packages."
+          }
         </p>
 
         <a
