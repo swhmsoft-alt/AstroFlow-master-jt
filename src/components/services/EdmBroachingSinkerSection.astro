@@ -1,0 +1,64 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Modality {
+  icon: string;
+  title: string;
+  problem: string;
+  solution: string;
+}
+
+const modalities: Modality[] = [
+  {
+    icon: "M12 21a9 9 0 100-18 9 9 0 000 18zm0-9a3 3 0 100-6 3 3 0 000 6z",
+    title: t('services.edmbroaching.m1.title') || "EDM Broaching",
+    problem: t('services.edmbroaching.m1.problem') || "Producing splines, keyways and square/hex bores in titanium traditionally requires broach tooling or single-point machining. Titanium's work-hardening and low thermal conductivity cause rapid tool wear, poor surface finish and inconsistent form accuracy.",
+    solution: t('services.edmbroaching.m1.solution') || "Wire EDM broaching cuts the internal form directly from a pilot hole — no dedicated broach tool, no tool wear, and ±0.005 mm form repeatability with a fatigue-safe, recast-minimized surface on the finished tooth profile.",
+  },
+  {
+    icon: "M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z",
+    title: t('services.edmbroaching.m2.title') || "Sinker (Ram) EDM",
+    problem: t('services.edmbroaching.m2.problem') || "Blind cavities, 3D contoured pockets and internal features in hardened or difficult-to-machine titanium parts cannot be reached by conventional milling without deep-tooling and excessive heat build-up.",
+    solution: t('services.edmbroaching.m2.solution') || "Sinker EDM uses graphite and copper-tungsten electrodes with adaptive multi-phase flushing to erode precise cavities and contours while controlling the recast layer and preserving dimensional accuracy on complex geometries.",
+  },
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 9l6 6m0-6l-6 6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        {t('services.edmbroaching.badge') || "Beyond Wire Cutting"}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        {t('services.edmbroaching.title_prefix') || "EDM Broaching &"} <span style="color: var(--theme-primary);">{t('services.edmbroaching.title_highlight') || "Sinker EDM"}</span>
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {t('services.edmbroaching.subtitle') || "Two complementary EDM modalities solve internal-form and blind-cavity geometries that milling cannot reach — with the same surface-integrity rigor as our wire cutting."}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {modalities.map((m) => (
+        <div class="relative rounded-xl overflow-hidden h-full p-8" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <div class="flex items-start mb-5">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center shrink-0 mr-4" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={m.icon} /></svg>
+            </div>
+            <h3 class="text-2xl font-bold" style="color: var(--theme-text);">{m.title}</h3>
+          </div>
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">{t('services.edmbroaching.problem_label') || "The Challenge"}</span>
+          <p class="text-sm mt-1.5 mb-6 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{m.problem}</p>
+          <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">{t('services.edmbroaching.solution_label') || "Our Solution"}</span>
+          <p class="text-sm mt-1.5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{m.solution}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

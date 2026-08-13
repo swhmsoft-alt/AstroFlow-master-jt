@@ -731,3 +731,49 @@ WebSite: cnc.bozemetal.com/#website, name "Boze Titanium Manufacturing Center", 
 - Use `Start-Process node scripts/deploy-incremental-ftp.js` (detached) for long FTP deploys; do NOT delete `deploy-manifest.json` between runs.
 - `deploy-manifest.json` is runtime state (generated); consider adding to .gitignore if desired.
 
+## SEO Fix Execution (2026-08-13) — AMS Parameters, Nav, Title/CTR, NADCAP
+
+**用户批复**：全部按默认，NADCAP 无。后续核实发现部分原方案方向需修正（真实内容源为 i18n，非数据文件）。
+
+### 完成
+1. **AMS 4943/4944 参数**：初判数据文件为单一事实源，实际 `StandardPageLayout` 的参数表**标签/值取自 i18n** `materials.techspecs.ams.*`（6 个 AMS 页共用），数据数组只决定行数。已**回滚**此前改数据数组（会致 17 行 vs 6 键的裸键回归）。参数从 Grade5→Grade9 需为管材单设 `faqCategoryKey`（`amsTube`）+ 新增 i18n 键 —— **未做，待决策**。
+2. **Title/CTR**：6 个 AMS 页 `pageTitle` 改为产品形态+品牌（`AMS 4943 Ti-3Al-2.5V Seamless Tubing | Boze CNC` 等）；数据 `metaDescription` 已改商业意图。
+3. **NADCAP 清理（en.json 先行，其余 11 语言后续）**：全站 ~19 处 `Nadcap-accredited/NADCAP-accepted/NADCAP NDT/NADCAP accreditation` 改为合规措辞 `per NADCAP-compliant procedures`；设备热处理 conformsTo 改为 AMS 2750F；RFQ force3 标签改为 `NADCAP-compliant NDT`；resourcehubmatrix 移除 NADCAP。**注意**：材料页 FAQ/WhyChooseUs 在 i18n（`materials.standards.faq.ams.*`/`whyChooseUs.ams`），非数据文件。
+4. **导航改名（12 语言）**：`nav.equipment`→Facilities & Equipment；`nav.services.wireEdmMachining`→Wire & Sinker EDM；`nav.services.laserMarkingCustomLogo`→Laser Marking & Traceability。
+5. **新内容组件（en 先行，其余语言回退英文）**：首页 `SpecializedCapabilities`（4 卡）；Fabrication `PipeSpoolFabricationSection` + seo.ts 标题/描述改 pipe spool；Wire EDM `EdmBroachingSinkerSection`。46 个 en.json 键已加。
+
+### 关键架构教训
+- `useTranslations` 键缺失时返回**键字符串**（非 null）→ `t(key) || fallback` 兜底失效。新增内容必须把键写进 en.json（或对应语言文件），不能只靠组件内 fallback。
+- `seo.ts` 无 `/materials/` 条目；材料页 title/meta 直接取数据 `pageTitle`/`metaDescription`。
+
+### 验证
+- `npx astro build`：2240 页，0 错误。
+- dist 产物复核：AMS4943 无裸键、NADCAP-compliant 合规；首页 SpecializedCapabilities、Fabrication pipe spool、Wire Sinker 均正确渲染；12 语言 JSON 全部解析有效。
+
+### 待办/决策点
+- 参数 Grade5→Grade9：为 ams-4943/4944 单设 `faqCategoryKey`+12 语言 i18n 键（当前与 4911/4928 共用 Grade5 泛化表）。
+- NADCAP 清理其余 11 语言（en 已先行）。
+- 新组件内容翻译到其余 11 语言。
+
+## 阶段二执行（2026-08-13）— 多语言冻结 + AMS 参数修复
+
+**用户决策（焊死）**：除英语外，其余 11 语言**全部冻结，不再维护更新**；后续所有内容/修复只做英文(en.json)。blog 多语言博文例外，走 content 集合、手动更新。非英文页面的旧 NADCAP 声称**保留不处理**。
+
+### 完成
+- **AMS 4943/4944 参数 Grade5→Grade9**（实现于真实内容源 i18n）：
+  - `titanium-standards.ts`：ams-4943/4944 的 `faqCategoryKey` → `amstube`；`technicalProperties` → Grade9 管材 9 行（620 MPa / 520 MPa / 10% / OD 6-100mm / 壁厚 0.5-5mm / 化学组成 / EN 10204 3.1 / 退火）；`whyChooseUsKey` 保留 `ams`（尊重焊死、非英文 NADCAP 保留）。
+  - `en.json` 新增 24 键（`materials.techspecs.amstube.label/value.0-8` + `materials.standards.faq.amstube.q0-2/a0-2`）。
+  - 其他 AMS(4911/4928/2488/mil-t-9047) 仍为 `ams`（Grade5，正确）。
+  - 非英文页面因 amstube 键缺失**自动回退英文**（已验证 de/ams-4943 显示英文 Grade9、无裸键）→ 符合焊死策略。
+
+### 残留进程事故
+- 此前 `npm run build` 被「终端关闭」中断后，残留的 node 构建进程(11480 npm run build + 9504/14548 postbuild)仍在后台并发写 dist，导致 postbuild.js 对 `titanium-extrusion/index.html` ENOENT（glob 后文件被删）。已 `taskkill /T /F` 清理；dev server(9492)与 MCP 服务器(14384/12956)保留。清理后 `npx astro build` 正常，2240 页，titanium-extrusion 正常生成。
+
+### 最终验证（dist 产物）
+- AMS4943 `<title>AMS 4943 Ti-3Al-2.5V Seamless Tubing | Boze CNC</title>`；Grade9 参数(620MPa)在、Grade5 0、裸键 0；NADCAP accepted/accredited 0、compliant 3。
+- 首页 SpecializedCapabilities、Fabrication pipe spool、Wire Sinker 均渲染正确；12 语言 JSON 有效。
+
+### 说明
+- 非英文 ams-4943/4944 的 techspecs/FAQ 现显示英文（Grade9 正确、合规措辞）；whyChooseUs 仍显示各语言本地化（含旧 NADCAP，用户接受）。
+- 后续新改动一律只在 en.json / 英文文件。
+

@@ -4,6 +4,7 @@ import SubpageHero from '../components/ui/SubpageHero.astro';
 import FabProcessSpectrum from '../components/services/FabProcessSpectrum.astro';
 import FabSpecsDashboard from '../components/services/FabSpecsDashboard.astro';
 import ReactiveWeldingKnowHow from '../components/services/ReactiveWeldingKnowHow.astro';
+import PipeSpoolFabricationSection from '../components/services/PipeSpoolFabricationSection.astro';
 import FabDedicatedCta from '../components/services/FabDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
@@ -55,6 +56,9 @@ const t = useTranslations(lang);
 
   <!-- Fabrication Capacity Dashboard — 4-column specs -->
   <FabSpecsDashboard />
+
+  <!-- Pipe Spool & Isometric Fabrication -->
+  <PipeSpoolFabricationSection />
 
   <!-- Reactive Welding Engineering Know-How — 2-column -->
   <ReactiveWeldingKnowHow />

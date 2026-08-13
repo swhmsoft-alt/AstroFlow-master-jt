@@ -1,0 +1,64 @@
+---
+import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const items: { label: string; value: string }[] = [
+  { label: t('fabrication.pipespool.item1.label') || "Pipe Sizes", value: t('fabrication.pipespool.item1.value') || "1/2\" – 24\" OD (DN15 – DN600)" },
+  { label: t('fabrication.pipespool.item2.label') || "Wall Thickness", value: t('fabrication.pipespool.item2.value') || "0.049\" – 0.500\" (Schedule 5S – 40S)" },
+  { label: t('fabrication.pipespool.item3.label') || "Tolerance", value: t('fabrication.pipespool.item3.value') || "±1.0 mm overall, ±0.5 mm branch-to-face" },
+  { label: t('fabrication.pipespool.item4.label') || "Testing", value: t('fabrication.pipespool.item4.value') || "100% ASME B31.3 hydrostatic + helium leak" },
+];
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" /></svg>
+          {t('fabrication.pipespool.badge') || "Pipe Spool Fabrication"}
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+          {t('fabrication.pipespool.title_prefix') || "ASME B31.3 Titanium"} <span style="color: var(--theme-primary);">{t('fabrication.pipespool.title_highlight') || "Pipe Spool & Isometric Assemblies"}</span>
+        </h2>
+        <p class="text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          {t('fabrication.pipespool.desc1') || "We fabricate ready-to-install titanium pipe spools from isometric drawings — cut, fit, orbitally TIG welded and hydrostatically tested in-house. Every spool is fit-up verified against the isometric and shipped with a full material test certificate for traceability from mill to installation."}
+        </p>
+        <ul class="space-y-3 mb-8">
+          {[t('fabrication.pipespool.point1') || "Orbital TIG welding with full internal/external argon shielding", t('fabrication.pipespool.point2') || "In-house 3D CMM and isometric fit-up verification", t('fabrication.pipespool.point3') || "Laser marking for spool ID, heat number and weld traceability"].map((p) => (
+            <li class="flex items-start">
+              <svg class="w-5 h-5 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{p}</span>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={localizePath('/parts/titanium-pipe-components/', lang)}
+          class="inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg transition-all"
+          style="background-color: var(--theme-primary); color: var(--theme-text);"
+        >
+          {t('fabrication.pipespool.cta') || "View Titanium Pipe Components"}
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        </a>
+      </div>
+
+      <div class="rounded-xl overflow-hidden" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <div class="p-6 border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-text);">{t('fabrication.pipespool.specs_title') || "Spool Fabrication Capabilities"}</h3>
+        </div>
+        <div class="divide-y" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          {items.map((it) => (
+            <div class="flex items-start justify-between gap-4 p-5">
+              <span class="text-sm font-semibold uppercase tracking-wide" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{it.label}</span>
+              <span class="text-sm text-right font-medium" style="color: var(--theme-text);">{it.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

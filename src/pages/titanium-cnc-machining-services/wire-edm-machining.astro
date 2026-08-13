@@ -6,6 +6,7 @@ import WireEdmAdvantages from '../../components/services/WireEdmAdvantages.astro
 import WireEdmSpecsDashboard from '../../components/services/WireEdmSpecsDashboard.astro';
 import WireEdmKnowHow from '../../components/services/WireEdmKnowHow.astro';
 import WireEdmDedicatedCta from '../../components/services/WireEdmDedicatedCta.astro';
+import EdmBroachingSinkerSection from '../../components/services/EdmBroachingSinkerSection.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -65,6 +66,9 @@ const t = useTranslations(lang);
 
   <!-- Wire EDM Engineering Know-How — 2-column challenge/solution -->
   <WireEdmKnowHow />
+
+  <!-- EDM Broaching & Sinker EDM -->
+  <EdmBroachingSinkerSection />
 
   <!-- Dedicated CTA for Wire EDM DFM Analysis -->
   <WireEdmDedicatedCta />
