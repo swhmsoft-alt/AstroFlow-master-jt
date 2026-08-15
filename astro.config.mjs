@@ -4,6 +4,8 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import normalizeTrailingSlash from '@reunmedia/astro-normalize-trailing-slash';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { rehypeAutoInternalLinksI18n } from './src/lib/rehype-auto-internal-links-i18n';
 
 // https://astro.build
@@ -46,7 +48,9 @@ export default defineConfig({
     },
   },
   markdown: {
+    remarkPlugins: [remarkMath],
     rehypePlugins: [
+      rehypeKatex,
       [rehypeAutoInternalLinksI18n, {
         keywordMap: {
           "3/5-Axis CNC Machining": {
