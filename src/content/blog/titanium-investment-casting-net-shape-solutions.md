@@ -6,7 +6,7 @@ pubDate: 2026-08-15
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Titanium Investment Casting, Titanium Manufacturing, Net-Shape Casting, Vacuum Induction Melting, Titanium Foundry, Aerospace Castings, DFM Cast Titanium]
-coverImage: /uploads/blog-titanium-investment-casting-cover.jpg
+coverImage: /uploads/blog-titanium-investment-casting-net-shape-solutions-cover.jpg
 coverImageAlt: Titanium investment casting mold assembly and finished near-net-shape component
 featured: false
 ---
