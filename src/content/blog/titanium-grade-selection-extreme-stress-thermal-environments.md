@@ -71,7 +71,9 @@ Interstitial elements reside in the voids of the titanium crystal lattice. Oxyge
 
 The relationship between yield strength ($\sigma_y$) and oxygen content ($[\text{O}]$) can be modeled as:
 
-$$\sigma_y = \sigma_0 + k \cdot [\text{O}]^{1/2}$$
+$$
+\sigma_y = \sigma_0 + k \cdot [\text{O}]^{1/2}
+$$
 
 When oxygen exceeds 0.20 wt%, micro-cleavage initiation sites form under cyclic stress, accelerating fatigue crack growth rates. Conversely, reducing oxygen to $\le 0.13\text{ wt}\%$ yields Extra Low Interstitial (ELI) grades, such as Grade 23, critical for cryogenic and high-cycle fatigue environments.
 
