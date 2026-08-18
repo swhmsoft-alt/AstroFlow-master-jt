@@ -162,7 +162,18 @@ const ldJson = JSON.stringify(pageGraph);
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<link rel="icon" type="image/png" href="/uploads/boze-cnc-ti-ico.png" />
+{/* ── Favicon suite (SVG first → PNG ladder → ICO → apple-touch → manifest) ── */}
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0f172a" />
+<meta name="msapplication-TileColor" content="#0f172a" />
+<meta name="msapplication-TileImage" content="/android-chrome-192x192.png" />
 <link rel="canonical" href={canonicalUrl} />
 {prevURL && <link rel="prev" href={`${siteUrl}${prevURL}`} />}
 {nextURL && <link rel="next" href={`${siteUrl}${nextURL}`} />}
