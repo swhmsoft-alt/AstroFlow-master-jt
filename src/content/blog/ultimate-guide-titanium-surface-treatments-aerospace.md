@@ -8,7 +8,7 @@ category: Quality and Standards
 tags: [Titanium Surface Treatment, Aerospace Standards, AMS 2488, Anodizing, Tribology, Fastener Engineering]
 coverImage: /uploads/blog-ams-2488-type-2-titanium-anodizing-aerospace-cover.jpg
 coverImageAlt: The ultimate guide to titanium surface treatments in aerospace engineering showing AMS 2488 Type 2 anodized components
-featured: false
+featured: true
 ---
 
 Galvanic seizure on a Ti-6Al-4V landing-gear actuator pin during final assembly delayed a Tier 1 airframer's delivery by six weeks. The root cause was not metallurgical — the [Ti-6Al-4V](/materials/grade-5/) bar met AMS 4928T chemistry, ultrasonic inspection, and mechanical properties. The failure traced back to an untreated bearing interface: when the titanium pin mated against a steel bushing at **600 MPa Hertzian contact stress** with no dry-film or anodized layer, the nascent TiO₂ surface film ruptured, micro-asperities cold-welded, and within seventeen assembly cycles the friction coefficient rose from μ ≈ **0.45 to μ ≈ 1.2**. That single interface failure cost approximately **$74,000** in rework, schedule recovery, and requalification testing.
