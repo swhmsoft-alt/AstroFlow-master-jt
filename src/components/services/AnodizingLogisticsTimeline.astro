@@ -1,0 +1,196 @@
+---
+/**
+ * src/components/services/AnodizingLogisticsTimeline.astro
+ *
+ * 5-step vertical workflow timeline for the AMS 2488 Type II Titanium Anodizing
+ * service-detail page. Hardcoded English (page is English-only per project
+ * scope). Mirrors the circuit-board aesthetic of GallingColorVariationKnowHow.
+ */
+
+interface Step {
+  step: number;
+  badge: string;
+  duration: string;
+  title: string;
+  description: string;
+  details: string[];
+  icon: string;
+}
+
+const steps: Step[] = [
+  {
+    step: 1,
+    badge: 'Step 01',
+    duration: '≤ 1 hour',
+    title: 'RFQ Intake & NDA',
+    description:
+      'Submit your blueprint via /rfq/. Engineering replies within one hour with an NDA-ready quote shell and a dedicated project owner for your program.',
+    details: [
+      'Multi-step form with CAD upload, alloy, tolerance, and quantity',
+      'One project owner for the full cycle — no ticket rotation',
+      'Mutual NDA signed electronically inside 24 hours for sensitive aerospace IPs',
+    ],
+    icon: 'M16 13.5V12a4 4 0 10-8 0v1.5M5 13.5h14V20a2 2 0 01-2 2H7a2 2 0 01-2-2v-6.5z',
+  },
+  {
+    step: 2,
+    badge: 'Step 02',
+    duration: '24 hours',
+    title: 'DFM Review & Mask / Rack Design',
+    description:
+      'Engineering reviews your drawing and produces a mask / rack plan tuned to the AMS 2488 voltage window, oxide-thickness band, and color-coding targets.',
+    details: [
+      'Selective-area masking layout for threaded fastener bores',
+      'Ti-6Al-4V vs. commercially-pure routing against your alloy spec',
+      'Mask / rack drawing returned to buyer for sign-off before the bath',
+    ],
+    icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z',
+  },
+  {
+    step: 3,
+    badge: 'Step 03',
+    duration: '5 – 7 days',
+    title: 'AMS 2488 Bath Run',
+    description:
+      'Production bath executed in a dedicated AMS 2488 Type II or Type III cell. Voltage, current density, and bath temperature are logged at one-second resolution.',
+    details: [
+      'Voltage-controlled oxide growth — ±0.1 V tolerance band',
+      'Bath chemistry monitored for phosphate / fluoride per AMS 2488D §3.4',
+      'Each lot tagged with a unique run ID traceable to the MTR',
+    ],
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+  {
+    step: 4,
+    badge: 'Step 04',
+    duration: '24 hours',
+    title: 'QA & Color-Match Inspection',
+    description:
+      'Every batch is inspected against ASTM D2244 color-match limits, eddy-current oxide-thickness maps, and ASTM B117 salt-spray coupons when specified.',
+    details: [
+      'ASTM D2244 ΔE color match with up to 6 reference color zones',
+      'Eddy-current oxide-thickness map across 100% of critical surfaces',
+      'Optional ASTM B117 salt-spray coupon pulled per batch (200+ hr baseline)',
+    ],
+    icon: 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',
+  },
+  {
+    step: 5,
+    badge: 'Step 05',
+    duration: '2 – 3 days',
+    title: 'Crate, Ship & Track Globally',
+    description:
+      'Parts are vacuum-sealed with desiccant, crated to IATA standards, and dispatched via DHL / FedEx with door-to-door tracking for aerospace and medical buyer hubs.',
+    details: [
+      'Vacuum-sealed + desiccant for oxide protection in transit',
+      'IATA-compliant wooden crate with humidity indicator card',
+      'Door-to-door tracking: USA / EU / JP / KR / IL — average transit 3 days',
+    ],
+    icon: 'M3 7l9-4 9 4M3 7l9 4 9-4M3 7v10l9 4 9-4V7M12 11v10',
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden bg-theme-bg">
+  <!-- Circuit-board style background -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border border-theme-primary text-theme-primary bg-theme-primary/10">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Workflow Timeline
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-theme-text">
+        From <span class="text-theme-primary">RFQ to Crated Shipment</span>
+        <br />in 8 – 11 Days
+      </h2>
+      <p class="text-xl max-w-3xl mx-auto leading-relaxed text-theme-text/65">
+        Five standardized work-cells, one project owner, end-to-end traceability under
+        AMS 2488D, AS9100D, and ISO 13485 quality systems. Every step is timestamped and
+        logged to your batch MTR.
+      </p>
+    </div>
+
+    <!-- Vertical timeline -->
+    <ol class="relative max-w-4xl mx-auto">
+      <!-- Spine -->
+      <div class="absolute left-7 sm:left-9 top-2 bottom-2 w-px hidden sm:block" style="background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--theme-primary) 35%, transparent), transparent);"></div>
+
+      {steps.map((s) => (
+        <li class="relative flex gap-6 mb-10 last:mb-0">
+          <!-- Step badge -->
+          <div class="shrink-0 w-14 sm:w-18">
+            <div class="relative w-14 h-14 sm:w-18 sm:h-18 flex items-center justify-center rounded-full font-bold text-lg border-2 border-theme-primary bg-theme-bg text-theme-primary">
+              {s.step.toString().padStart(2, '0')}
+            </div>
+          </div>
+
+          <!-- Card -->
+          <div class="flex-1 rounded-xl overflow-hidden bg-theme-surface border border-theme-surface hover:border-theme-primary transition-all duration-300">
+            <div class="p-6 sm:p-8">
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <span class="inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-full bg-theme-primary/10 text-theme-primary border border-theme-primary/25">
+                  {s.badge}
+                </span>
+                <span class="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-theme-text/5 text-theme-text/70 border border-theme-surface">
+                  <svg class="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {s.duration}
+                </span>
+              </div>
+
+              <div class="flex items-start gap-3 mb-3">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-theme-primary/10">
+                  <svg class="w-5 h-5 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={s.icon} />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-theme-text leading-tight">
+                  {s.title}
+                </h3>
+              </div>
+
+              <p class="text-sm leading-relaxed text-theme-text/75 mb-4">
+                {s.description}
+              </p>
+
+              <ul class="space-y-2 pl-1 border-l border-theme-primary/20 ml-1">
+                {s.details.map((d) => (
+                  <li class="flex items-start pl-3">
+                    <svg class="w-3.5 h-3.5 mt-1 mr-2 shrink-0 text-theme-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-sm leading-relaxed text-theme-text/70">{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <!-- Bottom CTA line -->
+    <div class="text-center mt-14">
+      <p class="text-sm max-w-2xl mx-auto leading-relaxed text-theme-text/55 mb-6">
+        Need a tighter lead-time for a hot aerospace program?
+      </p>
+      <a
+        href="/rfq/"
+        class="inline-flex items-center px-6 py-3 font-semibold rounded-lg border border-theme-primary text-theme-primary hover:bg-theme-primary hover:text-white transition-colors duration-300"
+      >
+        Submit Your Blueprint
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

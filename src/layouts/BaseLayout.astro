@@ -8,7 +8,7 @@ import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
-import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem } from '../lib/schema';
+import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem, type FaqItem } from '../lib/schema';
 import BrandAbout from '@components/home/BrandAbout.astro';
 import CookieConsent from '@components/CookieConsent.astro';
 
@@ -50,6 +50,13 @@ interface Props {
   collectionName?: string;
   itemCount?: number;
   items?: { name: string; url: string }[];
+  /**
+   * FAQ items for an in-page accordion. Passed through to buildPageGraph →
+   * emits an additional schema.org FAQPage entity in the page @graph.
+   */
+  faqItems?: FaqItem[];
+  /** Optional label for the FAQPage entity (defaults to `${pageName} — Frequently Asked Questions`). */
+  faqName?: string;
   serviceHubKey?: string;
   /** Override the auto-generated hreflang alternate links (e.g. for non-localized campaign pages) */
   alternateLinks?: { lang: string; href: string }[];
@@ -85,6 +92,8 @@ const {
   collectionName,
   itemCount,
   items,
+  faqItems,
+  faqName,
   serviceHubKey,
   alternateLinks: explicitAlternateLinks,
   prevURL,
@@ -136,6 +145,7 @@ const schemaData = {
   articleDatePublished: pubDate ?? undefined, serviceName: resolvedServiceName, serviceDescription: resolvedServiceName ? description : undefined,
   serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
+  faqItems, faqName,
 };
 const pageGraph = buildPageGraph(pageType, schemaData);
 const ldJson = JSON.stringify(pageGraph);

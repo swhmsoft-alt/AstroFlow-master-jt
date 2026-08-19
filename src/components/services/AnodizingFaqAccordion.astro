@@ -1,0 +1,132 @@
+---
+/**
+ * src/components/services/AnodizingFaqAccordion.astro
+ *
+ * Anodizing-specific FAQ accordion embedded in the AMS 2488 Type II Titanium
+ * Anodizing service-detail page. Six Q&A pairs covering aerospace / medical
+ * procurement concerns. Hardcoded English per project scope (no i18n keys).
+ *
+ * Exports `ANODIZING_FAQ_ITEMS` so the parent page can pass the same items to
+ * `BaseLayout faqItems={ANODIZING_FAQ_ITEMS}` → emits a schema.org FAQPage
+ * entity in the page @graph (see src/lib/schema.ts → buildFaqPage).
+ *
+ * Shape matches the FaqItem interface in src/lib/schema.ts (question / answer).
+ */
+
+export interface AnodizingFaqItem {
+  question: string;
+  answer: string;
+}
+
+export const ANODIZING_FAQ_ITEMS: AnodizingFaqItem[] = [
+  {
+    question:
+      'What is AMS 2488 Type II anti-galling anodizing and how does it differ from decorative Type III?',
+    answer:
+      'AMS 2488 Type II is a functional anti-galling treatment that grows a thin titanium oxide film (typically 10–150 nm) to reduce the kinetic coefficient of friction on titanium threaded aerospace fasteners and medical implant threads. Type III is a heavier, voltage-controlled oxide (up to several hundred nm) used for pigment-free color coding and biocompatible identification. Type II prioritizes tribology; Type III prioritizes cosmetic color mapping. Both are qualified under our AS9100D / ISO 13485 systems.',
+  },
+  {
+    question:
+      'How do you ensure color uniformity across complex aerospace geometries?',
+    answer:
+      'Color is mapped by voltage, not pigment, so uniformity depends on the bath voltage window. We hold ±0.1 V tolerance across each part and use a multi-zone reference panel measured against ASTM D2244 ΔE limits on every batch. For complex geometries (deep bores, internal threads, undercuts) we engineer custom masking and rack designs to keep every anode surface within the same field-strength window. Color match reports are included in the MTR per batch.',
+  },
+  {
+    question:
+      'What voltage range is used for AMS 2488 Type II vs. Type III color-coding?',
+    answer:
+      'Type II anti-galling runs typically at low-to-mid voltages (5–30 V) where the oxide is thin enough to remain functional but thick enough to lower friction. Type III color-coding spans the full 5–85 V window: ~20 V (gold), 30 V (purple), 40 V (dark blue), 50 V (light blue), 60 V (yellow), 70 V (magenta), 80 V (sea-green), and 85 V (light green). Our DC rectifier bank logs voltage at 1-second resolution for every run.',
+  },
+  {
+    question:
+      'Do you provide AMS 2488D / ISO 13485 certified certifications with every batch?',
+    answer:
+      'Yes. Every batch ships with an MTR that links the original mill heat / lot number to your finished components, plus the run ID, voltage log, thickness map, and color-match report. AS9100D FAIR (AS9102) documentation is included for aerospace orders, and ISO 13485:2016 device-history records are available for medical orders. NADCAP-accredited NDT, heat-treatment, and chemical-processing inspection reports are archived against your batch for 7 years.',
+  },
+  {
+    question:
+      'What masking and rack-design methods do you use for selective-area anodizing?',
+    answer:
+      'We use a combination of chemically-resistant masking lacquers, PTFE plug masks, and machined rack fixtures to protect threaded bores, sealing faces, and mating surfaces from the bath. Each mask / rack drawing is reviewed by our engineering team during DFM and returned to you for sign-off before the bath runs. For high-volume production we build dedicated titanium racks with conductive contacts sized to the part\'s current density envelope.',
+  },
+  {
+    question:
+      'What is your typical lead time for prototype vs. production titanium anodizing runs?',
+    answer:
+      'Prototype runs (1–10 parts) typically ship in 5–7 business days from CAD approval — masking is manual, and the bath is run in a dedicated prototype cell. Production runs (10–500+ parts) take 8–11 business days end-to-end including dedicated rack build, full bath run, and 100% QC map. We support expedite options down to 72 hours for hot aerospace programs; contact our engineering team via /rfq/ to lock a slot.',
+  },
+];
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: color-mix(in srgb, var(--theme-surface) 20%, var(--theme-bg));">
+  <!-- Subtle dot matrix -->
+  <div class="absolute inset-0 opacity-[0.02]">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, var(--theme-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-4xl">
+    <!-- Section Header -->
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+        Technical FAQ
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+        <span style="color: var(--theme-text);">Anodizing</span>
+        <span style="background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Engineering Q&amp;A</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Six questions our aerospace and medical buyers ask most often about AMS 2488 Type II
+        and Type III titanium anodizing, color uniformity, certifications, and lead times.
+      </p>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-3">
+      {ANODIZING_FAQ_ITEMS.map((faq) => (
+        <details
+          class="group rounded-xl overflow-hidden transition-all duration-300"
+          style="border: 1px solid color-mix(in srgb, var(--theme-text) 42%, transparent); background-color: var(--theme-surface);"
+        >
+          <summary
+            class="flex items-center justify-between px-6 py-5 cursor-pointer list-none transition-colors select-none"
+            style="color: var(--theme-text);"
+          >
+            <span class="text-base font-semibold leading-snug pr-4">
+              {faq.question}
+            </span>
+            <div
+              class="shrink-0 w-6 h-6 flex items-center justify-center rounded-full transition-transform duration-300 group-open:rotate-180"
+              style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </summary>
+          <div class="px-6 pb-5 pt-0 border-t" style="border-color: color-mix(in srgb, var(--theme-text) 20%, transparent);">
+            <p class="text-sm leading-relaxed mt-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              {faq.answer}
+            </p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Bottom CTA hint -->
+    <div class="text-center mt-10">
+      <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 42%, transparent);">
+        Have a specific anodizing or compliance question?
+        <a
+          href="/rfq/"
+          class="font-semibold underline-offset-2 hover:underline"
+          style="color: var(--theme-primary);"
+        >
+          Contact our engineering team
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

@@ -204,6 +204,16 @@ export interface BreadcrumbItem {
   item: string;
 }
 
+/**
+ * Single FAQ Q&A pair. Mirrors the schema.org Question / acceptedAnswer shape
+ * used by buildFaqPage(). Plain strings so callers can hardcode English
+ * content or pass `t('...')` lookups directly.
+ */
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export function buildBreadcrumbList(items: BreadcrumbItem[]) {
   return {
     '@type': 'BreadcrumbList',
@@ -214,6 +224,49 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
       name: item.name,
       item: item.item,
     })),
+  };
+}
+
+/**
+ * Build a single schema.org Question entity.
+ * Used inside buildFaqPage(). The acceptedAnswer.text holds the
+ * plain-text answer.
+ */
+export function buildFaqEntry(item: FaqItem) {
+  return {
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  };
+}
+
+/**
+ * Build a schema.org FAQPage entity for a set of Q&A pairs.
+ *
+ * Per Google Search Central (2024+), FAQPage rich results are limited to
+ * well-formed government / health Q&A. For B2B industrial pages we still emit
+ * the entity so search engines and LLMs can ingest the structured Q&A pairs,
+ * even though rich-result eligibility is restricted.
+ */
+export function buildFaqPage(input: {
+  name: string;
+  description?: string;
+  url: string;
+  inLanguage?: string;
+  items: FaqItem[];
+}) {
+  const faqId = `${input.url}#faq`;
+  return {
+    '@type': 'FAQPage',
+    '@id': faqId,
+    name: input.name,
+    ...(input.description ? { description: input.description } : {}),
+    url: input.url,
+    ...(input.inLanguage ? { inLanguage: input.inLanguage } : {}),
+    mainEntity: input.items.map((it) => buildFaqEntry(it)),
   };
 }
 
@@ -467,6 +520,16 @@ export interface SchemaPageData {
   collectionDescription?: string;
   itemCount?: number;
   items?: { name: string; url: string }[];
+
+  /**
+   * FAQPage structured-data items. When provided, buildPageGraph will emit
+   * an additional FAQPage entity (Question / acceptedAnswer pairs) regardless
+   * of pageType. Use for service-detail / product / blog pages where the
+   * visible accordion Q&A should be machine-readable.
+   */
+  faqItems?: FaqItem[];
+  /** Optional human-readable label for the FAQPage entity. */
+  faqName?: string;
 }
 
 /**
@@ -504,7 +567,18 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     graph.push(buildBreadcrumbList(data.breadcrumbItems));
   }
 
-  // 4. Type-specific entities
+  // 4. FAQ (opt-in — independent of pageType so it works on service-detail,
+  //    product-detail, blog-post, etc. when an accordion is present).
+  if (data.faqItems?.length) {
+    graph.push(buildFaqPage({
+      name: data.faqName ?? `${data.pageName} — Frequently Asked Questions`,
+      url: data.pageUrl,
+      inLanguage: data.inLanguage ?? 'en-US',
+      items: data.faqItems,
+    }));
+  }
+
+  // 5. Type-specific entities
   switch (pageType) {
     case 'services-hub':
     case 'products-hub':

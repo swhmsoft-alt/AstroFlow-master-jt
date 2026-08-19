@@ -5,6 +5,8 @@ import SubpageHero from '../../components/ui/SubpageHero.astro';
 import AnodizingClassifications from '../../components/services/AnodizingClassifications.astro';
 import AnodizingSpecsDashboard from '../../components/services/AnodizingSpecsDashboard.astro';
 import GallingColorVariationKnowHow from '../../components/services/GallingColorVariationKnowHow.astro';
+import AnodizingLogisticsTimeline from '../../components/services/AnodizingLogisticsTimeline.astro';
+import AnodizingFaqAccordion, { ANODIZING_FAQ_ITEMS } from '../../components/services/AnodizingFaqAccordion.astro';
 import AnodizingDedicatedCta from '../../components/services/AnodizingDedicatedCta.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
@@ -12,7 +14,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 ---
-<BaseLayout title={t('titanium-surface-treatment.anodizing.titanium_anodizing_boze_cnc_ti')} description="Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. ISO 13485, AMS 2488D certified.">
+<BaseLayout
+  title={t('titanium-surface-treatment.anodizing.titanium_anodizing_boze_cnc_ti')}
+  description="Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. ISO 13485, AMS 2488D certified."
+  faqItems={ANODIZING_FAQ_ITEMS}
+  faqName="AMS 2488 Type II Titanium Anodizing — Frequently Asked Questions"
+>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,6 +72,12 @@ const t = useTranslations(lang);
 
   <!-- Galling & Color Variation Know-How — 2-column challenge/solution -->
   <GallingColorVariationKnowHow />
+
+  <!-- Logistics Workflow Timeline — 5-step RFQ → crate -->
+  <AnodizingLogisticsTimeline />
+
+  <!-- Anodizing Technical FAQ — 6 Q&A pairs (also drives FAQPage JSON-LD) -->
+  <AnodizingFaqAccordion />
 
   <!-- Dedicated CTA — 24-Hour Commercial Quote -->
   <AnodizingDedicatedCta />
