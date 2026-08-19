@@ -6,6 +6,8 @@ pubDate: 2026-08-18
 author: Boze Titanium Manufacturing Center
 category: Applications and Processes
 tags: [Wire EDM, Titanium Wire EDM, Bearing Seats, Precision Features, Titanium Machining, Aerospace Bearings]
+coverImage: /uploads/blog-titanium-wire-edm-bearing-seats-cover.jpg
+coverImageAlt: Titanium wire edm bearing seats
 featured: false
 ---
 
