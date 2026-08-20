@@ -5,7 +5,7 @@ pubDate: 2026-08-20T10:00:00.000+08:00
 author: "Boze Titanium Manufacturing Center"
 category: "Titan-CNC-Bearbeitungsdienstleistungen"
 tags: ["Titanverarbeitung", "Titan Präzisionsfertigung", "Titanlegierung AMS ASTM", "ISO 13485 Titanlieferant", "AS9100 Titan", "DACH Titan-Zulieferer", "Titan Messtechnik", "Titan Oberflächentechnik"]
-coverImage: "/uploads/de-titanverarbeitung-praezisionsfertigung-oberflaechentechnik-messtechnik-cover.png"
+coverImage: "/uploads/de-titanverarbeitung-praezisionsfertigung-oberflaechentechnik-messtechnik-cover.jpg"
 coverImageAlt: "Präzisionsgefertigtes Titan-Bauteil in einer CNC-Fertigungszelle"
 featured: true
 lang: "de"
@@ -211,6 +211,31 @@ Stellen Sie sich selbst vier Fragen, bevor die Anfrage rausgeht:
 4. Habe ich den Zertifizierungsbedarf des Endprodukts hinterfragt – oder nur kopiert, was der Vorgänger angegeben hat?
 
 Eine RFQ, die diese vier Punkte klar beantwortet, erhält nicht nur schneller ein Angebot – sie erhält auch ein präziseres Angebot, weil der Lieferant weniger Rückfragen stellen muss.
+
+---
+
+## Cluster-Übersicht: 7 thematische Vertiefungen
+
+Dieser Leitfaden bündelt sieben eigenständige Vertiefungsartikel, die jeweils einen der vier Engineering-Bereiche – Werkstoffauswahl, Präzisionsfertigung, Oberflächentechnik und Messtechnik – operativ ausdifferenzieren. Die folgende Übersicht verlinkt die sieben Artikel in der Reihenfolge der behandelten Cluster:
+
+**Abschnitt 1 — Werkstoff, Normen und Werkstoffeigenschaften**
+
+- [Titan Güteklassen und Normen im Vergleich (AMS, ASTM, ISO, DIN)](/de/blog/titan-gueteklassen-normen-ams-astm-vergleich/) — Engineering-Vergleich der zwölf gängigsten Titan-Güteklassen mit Mapping-Tabelle zwischen SAE-AMS, ASTM B265/B348/F67/F136, ISO 5832 und DIN-Werkstoffnummern.
+- [Medizintechnik-Titan Grade 23 (Ti-6Al-4V ELI) nach ISO 5832-1](/de/blog/medizintechnik-titan-grade-23-ta6v-eli-iso-5832-1/) — Implantatwerkstoff Ti-6Al-4V ELI, Norm-Architektur ISO 5832-1 bis 5832-3, Biokompatibilitätsprüfung nach ISO 10993 und Beschaffung unter ISO 13485.
+
+**Abschnitt 2 — Präzisionsfertigung, Bearbeitungsgrenzen und Prozessstabilität**
+
+- [CNC-Präzisionszerspanung von Titan (Fräsen, Drehen, Schleifen)](/de/blog/cnc-praezisionszerspanung-titan-frasen-drehen-schleifen/) — Schnittparameter, Werkzeugstrategie, Hochdruckkühlung, 5-Achs-Bearbeitung und Präzisionsschleifen für Toleranzen bis ±0,005 mm.
+- [Additive Fertigung vs. Laserschweißen und Laserschneiden bei Titan](/de/blog/additive-fertigung-vs-laserschweissen-laserschneiden-titan/) — DMLS/LPBF-Pulverspezifikationen, Schutzgasatmosphäre beim Schweißen, Schnittqualität beim Laserschneiden und obligatorische Vakuum-Wärmebehandlung.
+
+**Abschnitt 3 — Oberflächentechnik, Passivierung und Rückverfolgbarkeit**
+
+- [Passivieren, Elektropolieren und Eloxieren von Titan nach AMS 2488](/de/blog/passivieren-elektropolieren-titan-ams-4944/) — Verfahrenswahl zwischen chemischer Passivierung (AMS 2488, ASTM B600/F86), Elektropolierung und anodischem Eloxieren Typ I/II/III mit Audit-Checkliste.
+- [DataMatrix-Laserbeschriftung und UDI-Rückverfolgbarkeit für Titanbauteile](/de/blog/datamatrix-laserbeschriftung-titan-rueckverfolgbarkeit-udi/) — Anlassbeschriftung vs. Direktbeschriftung, GS1-DataMatrix-Codestruktur, UDI-Konformität nach EU-MDR und FDA 21 CFR 830, ISO-13485-Audit-Pfad.
+
+**Abschnitt 4 — Messtechnik, KMG-Auswahl und AS9102-Erstmusterfreigabe**
+
+- [3D-Koordinatenmesstechnik in der Titanverarbeitung (Zeiss Scanning-Tastkopf)](/de/blog/3d-koordinatenmesstechnik-titan-zeiss-scanning-tastkopf/) — Taktil vs. optisch, DIN EN ISO 10360 Messunsicherheit, Form- und Lagetoleranzen nach ISO 1101 und CNC-KMG-Kopplung in der Luftfahrt-Fertigung.
 
 ---
 
