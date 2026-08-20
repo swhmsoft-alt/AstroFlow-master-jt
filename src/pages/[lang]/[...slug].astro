@@ -107,7 +107,6 @@ import TitaniumGradesGuide from '../../components/resources/TitaniumGradesGuide.
 import DesignEngineeringGuide from '../../components/resources/DesignEngineeringGuide.astro';
 import ManufacturingInsights from '../../components/resources/ManufacturingInsights.astro';
 import ResourceIndustryApplications from '../../components/resources/IndustryApplications.astro';
-import CaseStudies from '../../components/resources/CaseStudies.astro';
 import FaqPage from '../../components/resources/FaqPage.astro';
 import DownloadsPage from '../../components/resources/DownloadsPage.astro';
 
@@ -261,7 +260,6 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
     'resources/design-engineering-guide',
     'resources/manufacturing-insights',
     'resources/industry-applications',
-    'resources/case-studies',
     'resources/faq',
     'resources/downloads',
     'capabilities/manufacturing',
@@ -356,7 +354,9 @@ const { data: pageData } = await getLocalizedContent(pageId, currentLang);
 
 const isInvalidLang = !isSupportedLang(lang);
 const legalSlugs = ['privacy-policy', 'terms-of-service', 'cookie-policy'];
-const isLegalSlug = isInvalidLang && !slug && legalSlugs.includes(lang as string);
+// Type-guard narrows lang from `string | undefined` to `string`, so `.includes(lang)` is type-safe
+// (replaces unsafe `lang as string` cast that triggered TS error "undefined to string conversion")
+const isLegalSlug = isInvalidLang && !slug && typeof lang === 'string' && legalSlugs.includes(lang);
 
 const isHome = (!slug || slug === '') && !isLegalSlug;
 // Normalize slug for English URLs without language prefix
@@ -1474,9 +1474,6 @@ if (heroEntry) {
 }
 {
   effectiveSlug === 'resources/industry-applications' && <ResourceIndustryApplications />
-}
-{
-  effectiveSlug === 'resources/case-studies' && <CaseStudies />
 }
 {
   effectiveSlug === 'resources/faq' && <FaqPage />

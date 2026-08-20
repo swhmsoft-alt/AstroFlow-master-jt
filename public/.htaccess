@@ -27,6 +27,12 @@
   RewriteRule ^products/systems/impellers--blades-rotational/?$ /products/systems/impellers-blades-rotational/ [R=301,L]
   RewriteRule ^products/systems/springs--elastic-elements/?$ /products/systems/springs-elastic-elements/ [R=301,L]
   RewriteRule ^products/systems/valves--fluid-control-components/?$ /products/systems/valves-fluid-control-components/ [R=301,L]
+  # 2026-08-20: Merged /resources/case-studies/ into the canonical /case-studies/ hub.
+  # See scripts/301-redirects.json for the canonical redirect map (single source of truth).
+  RewriteRule ^resources/case-studies/?$ /case-studies/ [R=301,L]
+  # Multilingual variant: redirect any /[lang]/resources/case-studies/ to /case-studies/ (canonical English hub;
+  # localized case-study detail pages render under /[lang]/case-studies/[slug]/ via the dedicated collection route).
+  RewriteRule ^[a-z]{2}(-[a-z]{2})?/resources/case-studies/?$ /case-studies/ [R=301,L]
 </IfModule>
 
 # BEGIN BotControl

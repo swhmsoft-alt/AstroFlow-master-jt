@@ -48,6 +48,15 @@
     { "from": "/products/systems/springs--elastic-elements/",               "to": "/products/systems/springs-elastic-elements/",               "description": "Springs / Elastic Elements system → clean slug" },
     { "from": "/products/systems/valves--fluid-control-components/",        "to": "/products/systems/valves-fluid-control-components/",         "description": "Valves / Fluid Control Components system → clean slug" },
 
-    "// _wildcard_fallback — If implementing catch-all, use: /products/materials/* → /materials/:splat  (Netlify) or rewrite regex"
+    "// _wildcard_fallback — If implementing catch-all, use: /products/materials/* → /materials/:splat  (Netlify) or rewrite regex",
+
+    "// _2026-08-20 — /resources/case-studies/ merged into the canonical /case-studies/ hub.",
+    "// Old Resources wrapper page removed (src/pages/resources/case-studies.astro + src/components/resources/CaseStudies.astro).",
+    "// All 3 entries (aerospace / medical-bone-screws / semiconductor-uhv-showerhead) live in src/content/case-studies/*.md,",
+    "// rendered by src/pages/case-studies/{index,[...slug]}.astro. Same Apache RewriteRule + Netlify _redirects syntax.",
+    { "from": "/resources/case-studies/", "to": "/case-studies/",
+      "description": "Old Resources Case Studies wrapper merged into canonical /case-studies/ hub (2026-08-20)." },
+    { "from": "/[lang]/resources/case-studies/", "to": "/case-studies/",
+      "description": "Multilingual variant (de/fr/ja/...) of the old wrapper — Astro route removed in src/pages/[lang]/[...slug].astro; .htaccess catches ^[a-z]{2}/resources/case-studies/." }
   ]
 }
