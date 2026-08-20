@@ -1,0 +1,287 @@
+---
+/**
+ * src/components/services/AnodizingTypeComparison.astro
+ *
+ * AI-friendly structured comparison section for the AMS 2488 Type II vs.
+ * Type III titanium anodizing service page.
+ *
+ * Designed for:
+ *   - Semantic SEO (BERT / Knowledge Graph extraction)
+ *   - Generative-engine citation (Perplexity, SGE, ChatGPT Search)
+ *   - Programmatic parsers (schema.org Table / ItemList compatible)
+ *
+ * Data strategy:
+ *   - 8 fact-first rows in a clean HTML <table> with <th scope="col"> /
+ *     <th scope="row"> markers — crawlers and LLMs can lift cells as
+ *     discrete (feature, value-A, value-B) triples without prose noise.
+ *   - Spec values are short, copy-paste-ready snippets (no marketing fluff).
+ *
+ * Translation:
+ *   All copy uses t() keys under `services.anodizingtypecomparison.*`.
+ *   Languages missing the key fall back to English (DEFAULT_LANG).
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Row {
+  feature: string;
+  type2: string;
+  type3: string;
+}
+
+const rows: Row[] = Array.from({ length: 8 }, (_, i) => ({
+  feature: t(`services.anodizingtypecomparison.row${i}.feature`) || '',
+  type2: t(`services.anodizingtypecomparison.row${i}.type2`) || '',
+  type3: t(`services.anodizingtypecomparison.row${i}.type3`) || '',
+}));
+
+interface DifferentiatorCard {
+  tag: string;
+  title: string;
+  pick: string;
+  reason: string;
+  bullets: string[];
+  icon: string;
+}
+
+const cards: DifferentiatorCard[] = [0, 1, 2].map((idx) => ({
+  tag: t(`services.anodizingtypecomparison.card${idx}.tag`) || '',
+  title: t(`services.anodizingtypecomparison.card${idx}.title`) || '',
+  pick: t(`services.anodizingtypecomparison.card${idx}.pick`) || '',
+  reason: t(`services.anodizingtypecomparison.card${idx}.reason`) || '',
+  bullets: [0, 1, 2].map((j) => t(`services.anodizingtypecomparison.card${idx}.bullet${j}`) || '').filter(Boolean),
+  icon: [
+    'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+    'M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.745 3.745 0 011.043 3.296A3.745 3.745 0 0121 12z',
+    'M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z'
+  ][idx],
+}));
+---
+<section
+  class="relative py-24 overflow-hidden"
+  style="background-color: var(--theme-bg);"
+  id="type2-vs-type3-specs"
+  aria-labelledby="type2-vs-type3-specs-heading"
+  itemscope
+  itemtype="https://schema.org/ItemList"
+>
+  <!-- Engineering grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <meta itemprop="name" content={t('services.anodizingtypecomparison.section_title') || 'Titanium Anodizing Specifications: Type II vs Type III'} />
+  <meta itemprop="description" content={t('services.anodizingtypecomparison.subtitle') || 'Structured comparison of AMS 2488 Type II anti-galling and Type III pigment-free color anodizing.'} />
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- ─── Section Header ─── -->
+    <div class="text-center mb-16">
+      <div
+        class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border"
+        style={`background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);`}
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+        </svg>
+        {t('services.anodizingtypecomparison.badge') || 'Specification Matrix'}
+      </div>
+
+      <h2
+        id="type2-vs-type3-specs-heading"
+        class="text-4xl md:text-5xl font-bold mb-6"
+        style="color: var(--theme-text);"
+      >
+        {t('services.anodizingtypecomparison.section_title_prefix') || 'Titanium Anodizing Specifications: '}
+        <span style={`background: linear-gradient(135deg, var(--theme-primary) 0%, color-mix(in srgb, var(--theme-primary) 70%, white) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;`}>
+          {t('services.anodizingtypecomparison.section_title_highlight') || 'Type II vs Type III'}
+        </span>
+      </h2>
+
+      <p
+        class="text-xl max-w-3xl mx-auto leading-relaxed"
+        style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);"
+      >
+        {t('services.anodizingtypecomparison.subtitle') || 'A side-by-side specification matrix of the two AMS 2488 titanium anodizing workflows — written for engineers, parsable by LLMs. Each row below is a single fact, no marketing prose.'}
+      </p>
+    </div>
+
+    <!-- ─── Structured Data Table (AI-Parsable) ─── -->
+    <div
+      class="overflow-x-auto rounded-xl border"
+      style={`background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent);`}
+    >
+      <table
+        class="w-full text-left text-sm border-collapse"
+        aria-label={t('services.anodizingtypecomparison.aria_table_label') || 'Type II vs Type III titanium anodizing specifications'}
+      >
+        <caption
+          class="sr-only"
+        >
+          {t('services.anodizingtypecomparison.spec_table_caption') || 'Specification matrix comparing Type II (AMS 2488 anti-galling) and Type III (pigment-free color) titanium anodizing.'}
+        </caption>
+        <thead>
+          <tr
+            style={`background: linear-gradient(180deg, color-mix(in srgb, var(--theme-primary) 14%, transparent) 0%, color-mix(in srgb, var(--theme-primary) 6%, transparent) 100%);`}
+          >
+            <th
+              scope="col"
+              class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-widest"
+              style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"
+            >
+              {t('services.anodizingtypecomparison.th_feature') || 'Feature'}
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-widest"
+              style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"
+            >
+              <span class="block">
+                {t('services.anodizingtypecomparison.th_type2_label') || 'Type II (AMS 2488)'}
+              </span>
+              <span
+                class="block mt-1 text-[10px] font-medium tracking-normal"
+                style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"
+              >
+                {t('services.anodizingtypecomparison.th_type2_sub') || 'Anti-Galling Conversion'}
+              </span>
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-widest"
+              style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"
+            >
+              <span class="block">
+                {t('services.anodizingtypecomparison.th_type3_label') || 'Type III (Colored)'}
+              </span>
+              <span
+                class="block mt-1 text-[10px] font-medium tracking-normal"
+                style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);"
+              >
+                {t('services.anodizingtypecomparison.th_type3_sub') || 'Pigment-Free Color Coding'}
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, idx) => (
+            <tr
+              class="transition-colors hover:bg-theme-primary/5"
+              style={`border-top: 1px solid color-mix(in srgb, var(--theme-text) 18%, transparent);`}
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-semibold align-top"
+                style="color: color-mix(in srgb, var(--theme-text) 90%, transparent);"
+              >
+                {row.feature}
+              </th>
+              <td
+                class="px-6 py-4 align-top"
+                style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);"
+              >
+                {row.type2}
+              </td>
+              <td
+                class="px-6 py-4 align-top"
+                style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);"
+              >
+                {row.type3}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footnote caption (machine-readable) -->
+    <p
+      class="mt-4 text-xs"
+      style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);"
+    >
+      {t('services.anodizingtypecomparison.spec_table_footnote') || 'All specifications measured under controlled laboratory conditions. Bath voltage log: 1-second resolution. Thickness: NIST-traceable eddy-current probe. Color: ASTM D2244 ΔE. Capacity held ±0.5 V window for every commercial batch.'}
+    </p>
+
+    <!-- ─── Industry Picker — 3 differentiator cards ─── -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+      {cards.map((card) => (
+        <article
+          class="group relative rounded-xl p-7 flex flex-col transition-all"
+          style={`background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-text) 12%, transparent);`}
+          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-text) 12%, transparent)'; this.style.boxShadow='none'"
+        >
+          <!-- Tag -->
+          <span
+            class="inline-flex self-start items-center px-2.5 py-1 mb-4 text-[10px] font-semibold uppercase tracking-widest rounded-full"
+            style={`background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);`}
+          >
+            {card.tag}
+          </span>
+
+          <!-- Icon + Title -->
+          <div class="flex items-start mb-3">
+            <div
+              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mr-3"
+              style={`background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);`}
+            >
+              <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={card.icon} />
+              </svg>
+            </div>
+            <h3
+              class="text-lg font-bold leading-tight"
+              style="color: var(--theme-text);"
+            >
+              {card.title}
+            </h3>
+          </div>
+
+          <!-- Pick -->
+          <p
+            class="text-xs font-semibold uppercase tracking-widest mb-2"
+            style="color: color-mix(in srgb, var(--theme-primary) 80%, transparent);"
+          >
+            {t('services.anodizingtypecomparison.recommended_label') || 'Recommended'} → {card.pick}
+          </p>
+
+          <!-- Reason -->
+          <p
+            class="text-sm leading-relaxed mb-4"
+            style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"
+          >
+            {card.reason}
+          </p>
+
+          <!-- Bullets -->
+          <ul class="space-y-2 mt-auto">
+            {card.bullets.map((b) => (
+              <li
+                class="flex items-start text-sm"
+                style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);"
+              >
+                <svg
+                  class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0"
+                  style="color: var(--theme-primary);"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                {b}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Corner accent -->
+          <div
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+            onmouseover="this.style.borderWidth='32px 32px 0 0'; this.style.opacity='1'"
+            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+          ></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import AnodizingClassifications from '../../components/services/AnodizingClassifications.astro';
 import AnodizingSpecsDashboard from '../../components/services/AnodizingSpecsDashboard.astro';
+import AnodizingTypeComparison from '../../components/services/AnodizingTypeComparison.astro';
 import GallingColorVariationKnowHow from '../../components/services/GallingColorVariationKnowHow.astro';
 import AnodizingLogisticsTimeline from '../../components/services/AnodizingLogisticsTimeline.astro';
 import AnodizingFaqAccordion, { ANODIZING_FAQ_ITEMS } from '../../components/services/AnodizingFaqAccordion.astro';
@@ -69,6 +70,9 @@ const t = useTranslations(lang);
 
   <!-- Technical Specifications Dashboard — 4-column metrics -->
   <AnodizingSpecsDashboard />
+
+  <!-- Type II vs Type III AI-Friendly Comparison Matrix — semantic HTML table -->
+  <AnodizingTypeComparison />
 
   <!-- Galling & Color Variation Know-How — 2-column challenge/solution -->
   <GallingColorVariationKnowHow />
