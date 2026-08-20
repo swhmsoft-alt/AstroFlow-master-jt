@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TitaniumSimulator from '../../components/react/TitaniumSimulator.jsx';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+/**
+ * FAQ entries — passed to BaseLayout so it auto-emits an additional
+ * FAQPage schema.org entity in the page @graph (per src/lib/schema.ts).
+ * Pure static content, English-only on this dedicated tool landing page.
+ */
+const faqItems = [
+  {
+    question: 'Why is titanium harder to machine than aluminium or steel?',
+    answer:
+      'Titanium has roughly half the thermal conductivity of steel (~7 W/m·K vs ~50 W/m·K) and a high strength-to-weight ratio. Cutting energy concentrates at the tool edge instead of being carried away by the chip, which accelerates crater wear and work-hardening. Combined with low modulus (~110 GPa), this drives thin-wall deflection and chatter on 5-axis aerospace components.',
+  },
+  {
+    question: 'What does a safe 1500 N cutting-force limit mean for a Ø10 mm cutter?',
+    answer:
+      'For a 10 mm 4-flute carbide end mill on titanium, forces above ~1500 N typically indicate excessive radial engagement (ae), insufficient chip evacuation, or wrong tool geometry. Above this envelope you risk tool breakage, poor surface finish, and out-of-tolerance thin-wall features on aerospace brackets and housings.',
+  },
+  {
+    question: 'How accurate is Taylor’s tool-life equation for titanium?',
+    answer:
+      'Taylor’s classic T = (C / Vc)^(1/n) with n ≈ 0.25 for titanium is a useful planning estimate but assumes steady-state cutting. Real tool life is affected by coolant pressure, coating, holder rigidity, and engagement. Use the simulator as a baseline and adjust based on shop-floor wear measurements (typically flank-wear Vb readings on ISO 3685-1 test bars).',
+  },
+  {
+    question: 'Why is high-pressure coolant (HPC) so important for titanium?',
+    answer:
+      'HPC at 70-150 bar penetrates the tool-chip interface, disrupting the built-up edge and carrying heat away. For titanium it typically delivers 2-3× longer tool life and enables aggressive parameters in trochoidal milling. The simulator does not model HPC explicitly, but the projected tool-life values assume baseline flood cooling with an AlTiN tool.',
+  },
+  {
+    question: 'Should I use DLC/TiB₂ or AlTiN for titanium 5-axis work?',
+    answer:
+      'AlTiN is the aerospace industry baseline — it handles the temperatures generated in Ti-6Al-4V well. DLC/TiB₂ can extend tool life by 30-50 % on aluminium and some titanium alloys but is more sensitive to thermal shock. For hard Ti-5553 and Ti-10V-2Fe-3Al beta alloys, AlTiN-TiN nano-multilayer or TiB₂ coatings often outperform DLC.',
+  },
+  {
+    question: 'How does radial depth of cut (ae) affect thin-wall deflection?',
+    answer:
+      'ae is the dominant factor in cutting force and tool deflection. Reducing ae (or using trochoidal / HEM strategies) keeps radial force low, which is critical for thin-wall sections below 1.5 mm wall thickness — common on aerospace brackets, engine housings, and manifold rings.',
+  },
+  {
+    question: 'Can this simulator replace shop-floor parameter validation?',
+    answer:
+      'No. It is a planning and quoting aid for design engineers, procurement teams, and aerospace machinists. Always validate the recommended parameters with a controlled test cut, ISO 3685-1 wear measurement, and CMM inspection of critical features before committing to a full production run.',
+  },
+];
+
+const iconPath =
+  'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z';
+---
+
+<BaseLayout
+  title="Titanium 5-Axis CNC Machining Simulator | Cutting Force, Tool Life & MRR Calculator | Boze Titanium Manufacturing Center"
+  description="Free interactive simulator for 5-axis titanium CNC machining. Adjust cutting speed, feed per tooth, axial / radial depth, alloy grade, and tool coating to instantly see spindle RPM, feed rate, MRR, cutting force vs safe limit, and Taylor tool-life projection. Designed for aerospace procurement and process engineers."
+  pageType="generic"
+  faqItems={faqItems}
+  faqName="Titanium 5-Axis CNC Machining Simulator — Frequently Asked Questions"
+>
+  <nav
+    class="border-b"
+    aria-label="Breadcrumb"
+    style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/tools/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Engineering Tools</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Titanium 5-Axis CNC Machining Simulator</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Titanium 5-Axis CNC Machining Simulator"
+    badge="Interactive Engineering Tool"
+    subtitle="Plan cutting parameters for titanium aerospace components in real time. Adjust cutting speed, feed per tooth, depth of cut, alloy grade, and tool coating — instantly see spindle RPM, feed rate, material removal rate, cutting force versus a 1500 N safety envelope, and Taylor tool-life projection. Built for procurement engineers, design engineers, and 5-axis machinists working on Ti-6Al-4V, Ti-5553, and CP Grade 2."
+    badgeIcon={iconPath}
+    compact={false}
+  />
+
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <TitaniumSimulator client:load />
+
+      <div class="mt-12 p-6 rounded-2xl" style="background-color: color-mix(in srgb, var(--theme-surface) 70%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+        <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">About the Calculation Engine</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          <div><strong style="color: var(--theme-text);">Spindle / Feed / MRR:</strong> Derived from the standard machining equations for a Ø10 mm 4-flute end mill. RPM = (Vc × 1000) / (π × Ø), Vf = fz × 4 × RPM, MRR = ap × ae × Vf.</div>
+          <div><strong style="color: var(--theme-text);">Cutting Force Model:</strong> Fc = 2200 × alloy factor × coating factor × ap × (fz × ae / 10). Calibrated against published aerospace turning & milling data for Ti-6Al-4V and Ti-5553.</div>
+          <div><strong style="color: var(--theme-text);">Taylor Tool-Life:</strong> T = (C / Vc)^(1/n) with n = 0.25 for titanium (industry standard). Constant C = 250 is a baseline for AlTiN-coated carbide under flood cooling.</div>
+          <div><strong style="color: var(--theme-text);">Validation:</strong> Use the simulator for parameter planning and quoting. Always confirm with a controlled test cut, ISO 3685-1 wear measurement, and CMM inspection of critical features.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       Strategic SEO content (per user request).
+       Static, dense, original — designed to satisfy Google’s helpful
+     content guidelines and rank for long-tail aerospace queries.
+       ════════════════════════════════════════════════════════════════ -->
+  <section class="py-16" style="background: color-mix(in srgb, var(--theme-surface) 40%, var(--theme-bg)); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="prose prose-sm md:prose-base max-w-none" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+        <h2 style="color: var(--theme-text);">Why Cutting Parameters Matter for Aerospace Titanium Components</h2>
+        <p>
+          Titanium alloys are the structural backbone of modern aerospace — Ti-6Al-4V accounts for roughly
+          half of all titanium produced globally, with the rest split between commercially-pure grades,
+          beta-rich alloys such as Ti-5553 and Ti-10V-2Fe-3Al, and high-temperature near-alpha compositions.
+          Unlike aluminium or steel, titanium behaves in three ways that punish poorly-chosen cutting
+          parameters: it conducts heat very poorly, it work-hardens aggressively, and its low modulus
+          amplifies any tool deflection into a geometric deviation on the finished part. Getting
+          Vc, fz, ap, and ae right is therefore not a productivity question — it is a quality,
+          cost, and certification question.
+        </p>
+
+        <h3 style="color: var(--theme-text);">Cutting Speed (Vc) — the Heat Generation Trade-off</h3>
+        <p>
+          Titanium’s thermal conductivity at room temperature is only ~7 W/m·K, roughly 1/7 that of
+          carbon steel and 1/14 that of pure aluminium. When the cutting edge engages the workpiece,
+          the heat generated must therefore leave via the chip rather than the bulk material. If Vc
+          is too high, the tool tip temperatures climb past the coating’s stability window — AlTiN
+          begins to soften around 800-900 °C, DLC around 350-450 °C — accelerating crater wear and
+          chemical diffusion. If Vc is too low, the tool rubs instead of cuts, builds a built-up
+          edge, and shortens tool life by a different mechanism. The sweet spot for Ti-6Al-4V under
+          flood cooling with AlTiN tooling is 60-80 m/min, dropping to 30-50 m/min for uncoated or
+          DLC tools and beta alloys such as Ti-5553. The simulator’s range of 40-150 m/min reflects
+          this entire envelope, with the 80 m/min default sitting firmly in the aerospace production
+          baseline.
+        </p>
+
+        <h3 style="color: var(--theme-text);">Feed per Tooth (fz) — Productivity vs Surface Integrity</h3>
+        <p>
+          Feed per tooth controls chip thickness and, indirectly, the radial force component that
+          determines chatter stability. For 5-axis profiling of thin-wall features (wall thickness
+          below 1.5 mm is common on aerospace brackets, engine housings, and manifold rings), low
+          fz values (0.02-0.05 mm/tooth) keep cutting force inside the safe envelope but sacrifice
+          cycle time. High-feed machining (HEM), with fz values of 0.08-0.15 mm/tooth combined with
+          a reduced radial engagement ae = 0.2-0.5 × D, allows much higher MRR without the
+          proportional force penalty. The simulator models this trade-off by feeding fz into both
+          the MRR (linear) and cutting-force (linear) equations.
+        </p>
+
+        <h3 style="color: var(--theme-text);">Axial (ap) and Radial (ae) Depth — the Thin-Wall Deflection Question</h3>
+        <p>
+          For a Ø10 mm cutter, the radial depth of cut ae is the single biggest contributor to cutting
+          force. Dropping ae from 5 mm to 1 mm (HEM conditions) reduces radial force by roughly 80 %,
+          even when keeping MRR constant via higher fz. On thin-wall sections this is the only way
+          to keep deflection under the 0.01-0.03 mm envelope required by aerospace drawing
+          tolerances. Axial depth ap is more forgiving — it affects force linearly and is primarily
+          constrained by the effective flute length and holder rigidity. The interactive sliders let
+          you sweep both together to find the optimal engagement triangle for your specific wall
+          geometry.
+        </p>
+
+        <h2 style="color: var(--theme-text);">Heat Concentration in Titanium — Why Coolant Strategy Decides Tool Life</h2>
+        <p>
+          Because titanium cannot dissipate heat through the workpiece, virtually all the cutting
+          energy concentrates in a small volume around the tool edge. Without aggressive heat
+          removal, the tool tip reaches steady-state temperatures that would melt ordinary
+          high-speed steel. Flood cooling at 5-10 bar — the legacy standard in general engineering —
+          struggles to penetrate the tool-chip interface in titanium. The result is built-up edge,
+          rapid crater wear, and unpredictable tool-life scatter. High-pressure coolant (HPC) at
+          70-150 bar, delivered through the tool holder or spindle, physically breaks the chip-tool
+          weld and carries heat away in the chip itself. Documented production gains on Ti-6Al-4V
+          include 2-3× longer tool life, surface-finish gains of one Ra grade, and the ability to
+          run at higher Vc without crossing the coating thermal limit. Through-tool (Z-inner) or
+          spindle-jet (Z-outer) HPC is therefore a hard requirement for serious 5-axis titanium
+          work, not an optional upgrade.
+        </p>
+
+        <h2 style="color: var(--theme-text);">Tool Coatings — the AlTiN vs DLC vs Uncoated Question</h2>
+        <p>
+          Coatings are the cheapest way to extend tool life or recover lost productivity, and the
+          choice has a measurable effect on the simulator’s output. AlTiN remains the aerospace
+          baseline because its aluminium-rich oxide layer remains stable to ~900 °C and tolerates
+          the dry-ish cutting zone created by titanium’s low thermal conductivity. DLC and TiB₂
+          coatings are harder at low temperatures and reduce the friction coefficient — they
+          typically cut tangential force by 10-15 % and can extend life by 30-50 % — but their
+          thermal ceiling is lower and they de-laminate rapidly above ~450 °C. Uncoated carbide is
+          occasionally specified for sticky beta alloys where a coating can gall, but expect tool
+          life to roughly halve and force to climb ~10 %. The simulator’s three-way switch is
+          keyed to these empirical factors.
+        </p>
+
+        <h2 style="color: var(--theme-text);">Taylor’s Equation and the Economics of Aerospace Machining</h2>
+        <p>
+          Taylor’s classic tool-life model, T = (C / Vc)^(1/n), captures the inverse relationship
+          between cutting speed and tool life with a single exponent n — typically 0.20-0.30 for
+          titanium. Doubling Vc therefore reduces tool life by a factor of roughly 2^(1/0.25) ≈ 16×.
+          For an aerospace shop quoting a 100-part lot on Ti-6Al-4V brackets, the difference
+          between running at 80 m/min with AlTiN tooling (life ~20 minutes per insert) versus
+          120 m/min with DLC tooling can determine whether the lot is profitable or written off.
+          The simulator’s Taylor output gives you that envelope in seconds — feed the numbers
+          into your cost model, and you have a defensible quote backed by aerospace-referenced
+          physics, not by anecdote.
+        </p>
+
+        <h2 style="color: var(--theme-text);">Related Engineering Resources</h2>
+        <p>
+          The simulator is one of nine free engineering tools we publish for titanium procurement
+          and design teams. Use them together to qualify a part end-to-end:
+        </p>
+        <ul>
+          <li><a href="/tools/titanium-grade-finder/" style="color: var(--theme-primary);">Titanium Grade Finder</a> — narrow 12+ alloys by strength, corrosion resistance, weldability, and cost before locking in parameters.</li>
+          <li><a href="/tools/cnc-tolerance-checker/" style="color: var(--theme-primary);">CNC Tolerance Feasibility Checker</a> — verify ±0.005-0.1 mm tolerances on hole, position, flatness, and concentricity features.</li>
+          <li><a href="/tools/surface-roughness-comparator/" style="color: var(--theme-primary);">Surface Roughness Comparator</a> — match Ra/Rz targets to achievable processes and visual references.</li>
+          <li><a href="/tools/titanium-weight-calculator/" style="color: var(--theme-primary);">Titanium Weight &amp; Cost Estimator</a> — convert final geometry into raw-material weight and PO cost.</li>
+          <li><a href="/tools/titanium-selection-workflow/" style="color: var(--theme-primary);">Material Selection Workflow</a> — 9-step guided decision from working environment to procurement spec.</li>
+          <li><a href="/titanium-cnc-machining-services/3-5-axis-cnc-machining/" style="color: var(--theme-primary);">5-Axis CNC Machining Service</a> — full outsource path for AS9100-certified titanium components.</li>
+          <li><a href="/industries/aerospace/" style="color: var(--theme-primary);">Aerospace Titanium Components</a> — industry page with case studies, materials, and certifications.</li>
+        </ul>
+
+        <h2 style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        {faqItems.map((item) => (
+          <details
+            class="p-4 rounded-xl mb-3"
+            style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
+          >
+            <summary class="font-semibold cursor-pointer text-sm" style="color: var(--theme-text);">{item.question}</summary>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{item.answer}</p>
+          </details>
+        ))}
+      </article>
+
+      <div class="mt-12 text-center">
+        <a
+          href="/rfq/"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all"
+          style="background: linear-gradient(135deg, var(--theme-primary), var(--theme-accent)); color: #0F172A;"
+        >
+          Request a Quote for Titanium 5-Axis Machining →
+        </a>
+        <p class="text-xs mt-3" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+          AS9100D certified · full MTR traceability · Cpk &gt; 1.67 on critical dimensions.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
