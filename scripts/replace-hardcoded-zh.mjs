@@ -38,6 +38,72 @@ function* walk(dir, prefix) {
   }
 }
 
+/**
+ * Apply translations to content with smart space handling.
+ *
+ * Rules (applied to each match of a Chinese phrase):
+ *   - Char BEFORE the phrase:
+ *       is English letter (a-zA-Z) → prepend a single space
+ *       otherwise (start / punctuation / digit / CJK) → no change
+ *   - Char AFTER the phrase:
+ *       is English letter (a-zA-Z) → append a single space
+ *       otherwise → no change
+ *
+ * Example:
+ *   applySpaceAwareTranslation(
+ *     'High-temperature氧化防护涂层 capability',
+ *     { '氧化防护涂层': 'Oxidation Protective Coating' }
+ *   )
+ *   → 'High-temperature Oxidation Protective Coating capability'
+ *
+ * Notes:
+ *   - Idempotent (the Chinese phrase is replaced, won't re-match).
+ *   - Longer phrases are matched first to avoid partial matches.
+ *   - Pure function: returns { content, replacements[] }.
+ *
+ * Used by:
+ *   - `node scripts/replace-hardcoded-zh.mjs --test` (self-check below)
+ *   - Future content-data i18n scripts (JSON/MD) that translate zh → en.
+ *
+ * @param {string} content
+ * @param {Record<string,string>} mapping  zh → en
+ * @returns {{ content: string, replacements: Array<{zh: string, en: string, offset: number}> }}
+ */
+export function applySpaceAwareTranslation(content, mapping) {
+  const entries = Object.entries(mapping)
+    .filter(([zh, en]) => zh && en)
+    .sort((a, b) => b[0].length - a[0].length);
+
+  const replacements = [];
+  let result = content;
+
+  for (const [zh, en] of entries) {
+    let searchStart = 0;
+    while (true) {
+      const idx = result.indexOf(zh, searchStart);
+      if (idx < 0) break;
+
+      const charBefore = idx > 0 ? result[idx - 1] : '';
+      const charAfter  = idx + zh.length < result.length ? result[idx + zh.length] : '';
+
+      const prefix = /[a-zA-Z]/.test(charBefore) ? ' ' : '';
+      const suffix = /[a-zA-Z]/.test(charAfter)  ? ' ' : '';
+
+      const translated = prefix + en + suffix;
+      const before = result.slice(0, idx);
+      const after  = result.slice(idx + zh.length);
+      result = before + translated + after;
+
+      // Skip past inserted text so we don't re-match inside it.
+      searchStart = idx + translated.length;
+
+      replacements.push({ zh, en: translated, offset: idx });
+    }
+  }
+
+  return { content: result, replacements };
+}
+
 /** Generate a semantic key from file path and text snippet */
 function generateKey(relPath, text, usedKeys, index) {
   const base = relPath
@@ -215,6 +281,75 @@ function main() {
   }
   writeFileSync(OUTPUT_FILE, JSON.stringify(allNewKeys, null, 2), 'utf-8');
   console.log(`\nTranslation keys written to: ${OUTPUT_FILE}`);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CLI: --test exercises applySpaceAwareTranslation against canonical cases.
+// Usage: node scripts/replace-hardcoded-zh.mjs --test
+// Exits 0 on success, 1 on failure. No files are written.
+// ─────────────────────────────────────────────────────────────────────────────
+if (process.argv.includes('--test')) {
+  const cases = [
+    {
+      name: 'letter before + space-after word',
+      input: 'High-temperature氧化防护涂层 capability',
+      mapping: { '氧化防护涂层': 'Oxidation Protective Coating' },
+      expected: 'High-temperature Oxidation Protective Coating capability',
+    },
+    {
+      name: 'start of string + punctuation after',
+      input: '氧化防护涂层, supported by QC',
+      mapping: { '氧化防护涂层': 'Oxidation Protective Coating' },
+      expected: 'Oxidation Protective Coating, supported by QC',
+    },
+    {
+      name: 'punctuation before + punctuation after',
+      input: '(氧化防护涂层)',
+      mapping: { '氧化防护涂层': 'Oxidation Protective Coating' },
+      expected: '(Oxidation Protective Coating)',
+    },
+    {
+      name: 'CJK before + CJK after',
+      input: '高级氧化防护涂层材料',
+      mapping: { '氧化防护涂层': 'Oxidation Protective Coating' },
+      expected: '高级Oxidation Protective Coating材料',
+    },
+    {
+      name: 'multiple matches in one string',
+      input: 'A:氧化防护涂层 B:氧化防护涂层',
+      mapping: { '氧化防护涂层': 'Oxidation Protective Coating' },
+      expected: 'A:Oxidation Protective Coating B:Oxidation Protective Coating',
+    },
+    {
+      name: 'end of string',
+      input: 'uses 氧化防护涂层',
+      mapping: { '氧化防护涂层': 'Oxidation Protective Coating' },
+      expected: 'uses Oxidation Protective Coating',
+    },
+  ];
+
+  let failed = 0;
+  for (const c of cases) {
+    const { content, replacements } = applySpaceAwareTranslation(c.input, c.mapping);
+    const ok = content === c.expected;
+    if (!ok) failed++;
+    console.log(`[${ok ? '✓' : '✗'}] ${c.name}`);
+    if (!ok) {
+      console.log(`    input:    ${JSON.stringify(c.input)}`);
+      console.log(`    expected: ${JSON.stringify(c.expected)}`);
+      console.log(`    actual:   ${JSON.stringify(content)}`);
+    } else {
+      console.log(`    ${replacements.length} replacement(s)`);
+    }
+  }
+
+  console.log(`\nResult: ${cases.length - failed}/${cases.length} passed`);
+  if (failed > 0) {
+    console.error('applySpaceAwareTranslation self-check FAILED');
+    process.exit(1);
+  }
+  console.log('applySpaceAwareTranslation self-check PASSED');
+  process.exit(0);
 }
 
 main();

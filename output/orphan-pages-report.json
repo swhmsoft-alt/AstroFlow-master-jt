@@ -1,21 +1,41 @@
 {
-  "generatedAt": "2026-07-06T05:30:30.513Z",
-  "totalPages": 107,
-  "linkedCount": 5,
-  "orphanCount": 102,
-  "coverage": "4.7%",
+  "generatedAt": "2026-08-21T04:54:02.367Z",
+  "totalPages": 267,
+  "linkedCount": 121,
+  "whitelistedCount": 13,
+  "policyViolationCount": 0,
+  "orphanCount": 133,
+  "coverage": "45.3%",
+  "effectiveCoverage": "50.2%",
   "orphans": [
-    "/",
-    "/[lang]/",
-    "/[lang]/blog/",
-    "/[lang]/products/",
-    "/blog/",
+    "/blog/aerospace-titanium-components-manufacturing-challenges",
     "/blog/aerospace-titanium-full-process-supply",
+    "/blog/ams-4943-vs-ams-4944",
+    "/blog/astm-b338-explained",
+    "/blog/astm-b348-explained",
+    "/blog/astm-b381-explained",
+    "/blog/astm-f86-passivation",
+    "/blog/baoji-china-titanium-valley",
+    "/blog/case-study-complex-titanium-component-process-development",
+    "/blog/case-study-precision-titanium-medical-implant",
+    "/blog/case-study-thin-wall-titanium-aerospace-bracket",
+    "/blog/cnc-machining-subsea-equipment-materials-tolerances",
+    "/blog/cnc-machining-thin-wall-titanium",
+    "/blog/cnc-vs-edm-titanium-parts",
     "/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
+    "/blog/de-3d-koordinatenmesstechnik-titan-zeiss-scanning-tastkopf",
+    "/blog/de-additive-fertigung-vs-laserschweissen-laserschneiden-titan",
     "/blog/de-aerospace-titanium-full-process-supply",
+    "/blog/de-cnc-praezisionszerspanung-titan-frasen-drehen-schleifen",
     "/blog/de-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
+    "/blog/de-datamatrix-laserbeschriftung-titan-rueckverfolgbarkeit-udi",
+    "/blog/de-medizintechnik-titan-grade-23-ta6v-eli-iso-5832-1",
+    "/blog/de-passivieren-elektropolieren-titan-ams-4944",
+    "/blog/de-titan-gueteklassen-normen-ams-astm-vergleich",
     "/blog/de-titanium-cnc-machining-services",
+    "/blog/de-ultimative-leitfaden-titanverarbeitung",
     "/blog/de-welcome-to-boze-cnc-blog",
+    "/blog/edm-broaching-titanium-parts",
     "/blog/es-aerospace-titanium-full-process-supply",
     "/blog/es-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
     "/blog/es-titanium-cnc-machining-services",
@@ -36,6 +56,8 @@
     "/blog/ko-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
     "/blog/ko-titanium-cnc-machining-services",
     "/blog/ko-welcome-to-boze-cnc-blog",
+    "/blog/micro-machining-titanium-edm-cnc",
+    "/blog/mil-std-278-titanium-welded-assemblies",
     "/blog/nl-aerospace-titanium-full-process-supply",
     "/blog/nl-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
     "/blog/nl-titanium-cnc-machining-services",
@@ -48,86 +70,178 @@
     "/blog/pt-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
     "/blog/pt-titanium-cnc-machining-services",
     "/blog/pt-welcome-to-boze-cnc-blog",
+    "/blog/semiconductor-titanium-components-precision-requirements",
+    "/blog/subsea-component-machining-precision-requirements",
+    "/blog/subsea-equipment-precision-machining-requirements",
+    "/blog/ti-6242-titanium-alloy-properties-specifications-applications",
+    "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants",
+    "/blog/titanium-5-axis-parts",
+    "/blog/titanium-additive-manufacturing-vs-cnc-machining",
+    "/blog/titanium-chip-control-fire-prevention-cnc-machining",
+    "/blog/titanium-cnc-machining-services",
+    "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide",
+    "/blog/titanium-grade-23-vs-grade-4-vs-grade-5-comparison",
+    "/blog/titanium-grade-selection-extreme-stress-thermal-environments",
+    "/blog/titanium-investment-casting-net-shape-solutions",
+    "/blog/titanium-machining-marine-components-material-process-selection",
+    "/blog/titanium-springback-compensation-strategies-cnc-machining",
+    "/blog/titanium-valve-stem-machining-process-precision",
+    "/blog/titanium-welding-challenges-best-practices",
+    "/blog/titanium-wire-edm-bearing-seats",
+    "/blog/ultimate-guide-titanium-surface-treatments-aerospace",
+    "/blog/welcome-to-boze-cnc-blog",
+    "/blog/what-does-eli-mean-in-titanium",
+    "/blog/what-is-grade-3-titanium-properties-composition-applications",
+    "/blog/why-is-titanium-hard-to-machine",
     "/branded-custom-packaging-services/",
-    "/capabilities/",
+    "/capabilities/capacity/",
     "/documentation/",
-    "/equipment/",
     "/equipment/5-axis-machining-center/",
     "/equipment/anodizing-surface-treatment/",
     "/equipment/automatic-bar-feeder/",
     "/equipment/automatic-tool-magazine/",
-    "/equipment/chip-management-fire-suppression/",
-    "/equipment/cmm/",
     "/equipment/high-pressure-coolant/",
     "/equipment/laser-tracker-3d-scanner/",
     "/equipment/robotic-pallet-system/",
     "/equipment/tool-presetter/",
     "/equipment/turn-mill-cnc/",
-    "/equipment/vacuum-heat-treat-furnace/",
     "/equipment/wire-edm/",
-    "/facilities/",
-    "/industries/",
     "/laser-marking-custom-logo/",
-    "/materials/",
-    "/materials/grade-1/",
-    "/materials/grade-19/",
-    "/materials/grade-2/",
+    "/materials/ams-2488/",
+    "/materials/ams-4911/",
+    "/materials/ams-4928/",
+    "/materials/ams-4943/",
+    "/materials/ams-4944/",
+    "/materials/astm-b338/",
+    "/materials/astm-b381/",
+    "/materials/astm-b861/",
+    "/materials/astm-f136/",
+    "/materials/astm-f2924/",
+    "/materials/astm-f3001/",
+    "/materials/astm-f67/",
+    "/materials/astm-f86/",
     "/materials/grade-21/",
-    "/materials/grade-23/",
     "/materials/grade-3/",
     "/materials/grade-4-eli/",
-    "/materials/grade-4/",
-    "/materials/grade-5/",
     "/materials/grade-6/",
     "/materials/grade-6242/",
-    "/materials/grade-9/",
+    "/materials/iso-5832-11/",
+    "/materials/iso-5832-3/",
+    "/materials/mil-t-9047/",
     "/materials/ti-5553/",
+    "/materials/ti-6211/",
+    "/products/component-library/",
+    "/products/titanium-cnc-parts",
     "/resources/",
-    "/rfq/",
-    "/theme-demo/",
-    "/titanium-additive-manufacturing/",
-    "/titanium-additive-manufacturing/3d-printing-slm/",
-    "/titanium-additive-manufacturing/low-volume-production/",
-    "/titanium-additive-manufacturing/rapid-prototyping/",
-    "/titanium-cnc-machining-services/",
-    "/titanium-cnc-machining-services/3-5-axis-cnc-machining/",
-    "/titanium-cnc-machining-services/cnc-milling-turning/",
-    "/titanium-cnc-machining-services/custom-industrial-components/",
-    "/titanium-cnc-machining-services/wire-edm-machining/",
-    "/titanium-fabrication-services/",
-    "/titanium-fabrication-services/laser-cutting/",
-    "/titanium-fabrication-services/titanium-welding-assembly/",
-    "/titanium-fabrication-services/waterjet-cutting/",
-    "/titanium-forming-heavy-manufacturing/",
-    "/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing/",
-    "/titanium-forming-heavy-manufacturing/titanium-extrusion/",
-    "/titanium-forming-heavy-manufacturing/titanium-forging/",
-    "/titanium-surface-treatment/",
-    "/titanium-surface-treatment/anodizing/",
-    "/titanium-surface-treatment/chemical-passivation/",
-    "/titanium-surface-treatment/polishing-sandblasting/",
+    "/resources/downloads/",
+    "/resources/engineering-tools/",
+    "/resources/faq/",
+    "/resources/industry-applications/",
+    "/resources/manufacturing-insights/",
+    "/resources/titanium-grades-guide/",
+    "/resources/titanium-knowledge-base/",
     "/use-cases/"
   ],
+  "whitelisted": {
+    "dynamic-route": [
+      "/[lang]/",
+      "/[lang]/blog/",
+      "/[lang]/products/",
+      "/[lang]/resources/engineering-tools/",
+      "/[lang]/tools/",
+      "/blog/category/[slug]/",
+      "/blog/page/[page]/"
+    ],
+    "legal-boilerplate": [
+      "/cookie-policy/",
+      "/privacy-policy/",
+      "/terms-of-service/"
+    ],
+    "system-404": [
+      "/404/"
+    ],
+    "system-thank-you": [
+      "/thank-you/"
+    ],
+    "system-theme-demo": [
+      "/theme-demo/"
+    ]
+  },
+  "whitelistedFlat": [
+    {
+      "url": "/[lang]/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/[lang]/blog/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/[lang]/products/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/[lang]/resources/engineering-tools/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/[lang]/tools/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/blog/category/[slug]/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/blog/page/[page]/",
+      "reason": "dynamic-route"
+    },
+    {
+      "url": "/cookie-policy/",
+      "reason": "legal-boilerplate"
+    },
+    {
+      "url": "/privacy-policy/",
+      "reason": "legal-boilerplate"
+    },
+    {
+      "url": "/terms-of-service/",
+      "reason": "legal-boilerplate"
+    },
+    {
+      "url": "/404/",
+      "reason": "system-404"
+    },
+    {
+      "url": "/thank-you/",
+      "reason": "system-thank-you"
+    },
+    {
+      "url": "/theme-demo/",
+      "reason": "system-theme-demo"
+    }
+  ],
+  "policyViolations": [],
   "topLinked": [
     {
-      "url": "/products/titanium-cnc-parts",
-      "count": 8
+      "url": "/materials/",
+      "count": 33
     },
     {
-      "url": "/blog/welcome-to-boze-cnc-blog",
-      "count": 8
-    },
-    {
-      "url": "/blog/titanium-cnc-machining-services",
-      "count": 8
+      "url": "/titanium-cnc-machining-manufacturer/",
+      "count": 25
     },
     {
       "url": "/services/",
-      "count": 2
+      "count": 24
     },
     {
-      "url": "/products/",
-      "count": 2
+      "url": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys",
+      "count": 14
+    },
+    {
+      "url": "/equipment/",
+      "count": 14
     }
   ]
 }
