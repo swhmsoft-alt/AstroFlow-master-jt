@@ -196,11 +196,6 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     subtitle: 'In-depth engineering guides, case studies, procurement guides, material science, and manufacturing insights from our AS9100D-certified titanium CNC facility.',
     badge: 'Knowledge Hub',
   },
-  '/documentation': {
-    h1: 'Documentation Center',
-    subtitle: 'Access comprehensive guides, technical documentation, compliance certificates, and resources to optimize your Titanium CNC Machining operations.',
-    badge: 'Comprehensive Resource Center',
-  },
   '/use-cases': {
     h1: 'Use Cases',
     subtitle: 'Real-world use cases and application examples of titanium CNC machining across aerospace, medical, automotive, and industrial sectors.',
