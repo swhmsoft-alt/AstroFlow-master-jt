@@ -23,7 +23,8 @@ function readKeywordMap() {
   const configContent = fs.readFileSync(configPath, 'utf-8');
 
   const existing = {};
-  const regex = /"([^"]+)"\s*:\s*(?:\{[^}]*href:\s*"([^"]+)"[^}]*\}|"([^"]+)")/g;
+  // Match "key": "url" / 'key': 'url' / `key`: `url` and object form with href
+  const regex = /['"`]([^'"`]+)['"`]\s*:\s*(?:\{[^}]*href:\s*['"`]([^'"`]+)['"`][^}]*\}|['"`]([^'"`]+)['"`])/g;
   let match;
   while ((match = regex.exec(configContent)) !== null) {
     const href = match[2] || match[3];
@@ -32,7 +33,31 @@ function readKeywordMap() {
   return existing;
 }
 
-// ── 2. Scan content files for internal links ────────────
+// ── 2. Scan files for internal links ────────────────────
+// Unified link extractor covering Markdown, HTML, JSX/Astro,
+// TS/JS data fields, and common wrapper calls.
+function extractLinks(content) {
+  const links = new Set();
+  const patterns = [
+    /\]\((\/[^)\s]+)\)/g,                              // Markdown: [text](/path)
+    /^\[.*?\]:\s*(\/[^\s]+)/gm,                        // Markdown ref: [text]: /path
+    /<a[^>]*href="(\/[^"]+)"/g,                        // HTML dq: <a href="...">
+    /<a[^>]*href='(\/[^']+)'/g,                        // HTML sq: <a href='...'>
+    /<a[^>]*href=\{["']?(\/[^"'\s}]+)["']?\}/g,        // JSX/Astro: <a href={...}>
+    /href:\s*['"`](\/[^'"`\s]+)['"`]/g,                // Data: href: "/path"
+    /localizePath\(\s*['"`](\/[^'"`\s]+)['"`]/g,       // localizePath('/path', ...)
+  ];
+  for (const p of patterns) {
+    for (const m of content.matchAll(p)) {
+      let url = m[1];
+      if (!url || url.startsWith('//') || url.startsWith('http')) continue;
+      url = url.replace(/\/$/, '').replace(/\/index\.html$/, '');
+      if (url) links.add(url);
+    }
+  }
+  return links;
+}
+
 async function scanInternalLinks(dirPatterns) {
   const files = [];
   for (const pattern of dirPatterns) {
@@ -42,37 +67,14 @@ async function scanInternalLinks(dirPatterns) {
     }
   }
 
-  // Extract all internal links from Markdown and MDX files
   const internalLinks = {}; // URL → count
-
   for (const file of files) {
-    const content = fs.readFileSync(file, 'utf-8');
-    const relativePath = path.relative(ROOT, file).replace(/\\/g, '/');
-
-    // Markdown links: [text](/path)
-    const mdLinks = content.matchAll(/\]\((\/[^)\s]+)\)/g);
-    for (const m of mdLinks) {
-      const url = m[1].replace(/\/$/, ''); // normalize trailing slash
+    let content;
+    try { content = fs.readFileSync(file, 'utf-8'); } catch { continue; }
+    for (const url of extractLinks(content)) {
       internalLinks[url] = (internalLinks[url] || 0) + 1;
-    }
-
-    // Markdown references: [text]: /path
-    const mdRefs = content.matchAll(/^\[.*?\]:\s*(\/[^\s]+)/gm);
-    for (const m of mdRefs) {
-      const url = m[1].replace(/\/$/, '');
-      internalLinks[url] = (internalLinks[url] || 0) + 1;
-    }
-
-    // HTML <a href="/path">
-    const htmlLinks = content.matchAll(/<a[^>]*href="(\/[^"]+)"/g);
-    for (const m of htmlLinks) {
-      const url = m[1].replace(/\/$/, '').replace(/\/index\.html$/, '');
-      if (!url.startsWith('//') && !url.startsWith('http')) {
-        internalLinks[url] = (internalLinks[url] || 0) + 1;
-      }
     }
   }
-
   return internalLinks;
 }
 
@@ -217,15 +219,23 @@ async function main() {
     console.log(`keywordMap entries: ${Object.entries(keywordMap).reduce((a, [, c]) => a + c, 0)}`);
     console.log(`Unique URLs in keywordMap: ${Object.keys(keywordMap).length}\n`);
 
-    // 2. Internal links from content files
+    // 2. Internal links from content files (.md / .mdx)
     const contentLinks = await scanInternalLinks([
       'src/content/**/*.md',
       'src/content/**/*.mdx',
     ]);
 
-    // 3. Internal links from page components
+    // 3. Internal links from all Astro/TS sources — components, layouts,
+    //    pages, and TS/TSX/JSX data/config files. This catches navigation,
+    //    footer, breadcrumbs, and `href: "/path"` data fields that the old
+    //    pages-only scan missed.
     const pageLinks = await scanInternalLinks([
       'src/pages/**/*.astro',
+      'src/components/**/*.astro',
+      'src/layouts/**/*.astro',
+      'src/**/*.ts',
+      'src/**/*.tsx',
+      'src/**/*.jsx',
     ]);
 
     // Merge all link sources
