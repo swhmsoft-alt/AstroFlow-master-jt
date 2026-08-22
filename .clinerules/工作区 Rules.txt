@@ -103,3 +103,13 @@
    - **Fallback policy**:
      - 当 MiniMax 不可用或 key 失效时, 临时回退至 `DEEPSEEK_API_KEY` (同在 .env.production).
      - 永久切换 provider 必须在下一节变更日志中记录原因.
+
+9. Scope & Output Discipline (CRITICAL — anti-overreach):
+   - **Default to minimal action**: For simple questions, answer directly without invoking tools.
+   - **One tool, one purpose**: When a tool call is required, use the smallest possible set (1 read / 1 grep). Do NOT parallel-expand into directory tree listings or multi-file scans unless the user explicitly requests an audit.
+   - **No unsolicited plans**: Do NOT generate "rectification plans", "step-by-step solutions", or "improvement proposals" unless the user asks "what should I do" / "how to fix".
+   - **Length self-check before sending**: If a reply exceeds ~15 lines or 3 paragraphs, rewrite to 1–2 paragraphs.
+   - **Closeable in one round**: Each reply must be answerable by the user with "yes / no / just this one thing". If not, scope was exceeded — trim.
+   - **No fabricating history**: Never invent entries for `progress.md`, git history, or any audit log. Only log work actually performed in the current Cline session.
+   - **No tool calls for verification of obvious facts**: If a file path or filename can be answered from memory or from `ls`/`dir` output already in context, do not call additional tools.
+   - **Stop on over-traversal signal**: If the user says "don't ask every time", "just answer", or "stop exploring", immediately collapse to single-line answer mode for the remainder of the session.
