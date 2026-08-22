@@ -1,16 +1,16 @@
 /**
- * deepseek-expand-keywords.mjs — DeepSeek 批量扩词入库
+ * deepseek-expand-keywords.mjs — AI 批量扩词入库（v2 — MiniMax M3）
  * ================================================================
- * 输入一个/多个根词，调用 DeepSeek 为指定语言生成相关长尾关键词
+ * 输入一个/多个根词，调用 AI provider 为指定语言生成相关长尾关键词
  * （自动推理 intent / entity / anchorText），经 repository.upsertMany 写入主库。
+ *
+ * 当前 provider：MiniMax M3（OpenAI 兼容）端点由 src/lib/ai-provider.mjs 解析。
+ *   - 历史兼容：DB 条目 `source` 字段保持 'deepseek'（数据 schema 字段，非 API 来源）；
+ *     切换 provider 不影响已入库条目的可追溯性。详见迁移记录 memory-bank。
  *
  * 约定（用户决策）：
  *   - volume / difficulty 一律置 null（不虚构），source='deepseek'，status='planned'
  *   - 主库支持 12 语言，可指定 --lang 一次补齐（默认 en）
- *
- * API Key 读取优先级：
- *   1. process.env.DEEPSEEK_API_KEY
- *   2. 脚本内默认 key（本地 CLI 兜底）
  *
  * 用法：
  *   node scripts/deepseek-expand-keywords.mjs --seed "titanium machining" --lang en --entity process
@@ -23,37 +23,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { upsertMany, countByLang } from '../src/lib/keywords/repository.mjs';
+import { getChatCompletionsConfig, AI_PROVIDER } from '../src/lib/ai-provider.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-
-/**
- * 极简读取 DeepSeek API Key（优先级从高到低）：
- *   1. 环境变量 DEEPSEEK_API_KEY
- *   2. 本地 .env.production 文件（gitignore，不提交）
- *   3. 内置兜底 key
- */
-function resolveApiKey() {
-  if (process.env.DEEPSEEK_API_KEY) return process.env.DEEPSEEK_API_KEY;
-  const envPath = path.join(ROOT, '.env.production');
-  try {
-    if (fs.existsSync(envPath)) {
-      const raw = fs.readFileSync(envPath, 'utf-8');
-      const line = raw.split(/\r?\n/).find((l) => l.startsWith('DEEPSEEK_API_KEY='));
-      if (line) {
-        const val = line.slice('DEEPSEEK_API_KEY='.length).trim();
-        if (val) return val;
-      }
-    }
-  } catch {
-    /* ignore */
-  }
-  return 'sk-e96da2824bf349538761fbeaf4482efe';
-}
-
-const API_KEY = resolveApiKey();
-const API_URL = 'https://api.deepseek.com/v1/chat/completions';
-const MODEL = 'deepseek-chat';
 
 const LANGS = {
   en: 'English', de: 'German', ja: 'Japanese', fr: 'French', es: 'Spanish',
@@ -79,12 +52,14 @@ function parseArgs(argv) {
   return args;
 }
 
-async function callDeepSeek(prompt, system) {
-  const res = await fetch(API_URL, {
+async function callChat(prompt, system) {
+  // Resolve provider lazily so a missing key fails fast with a clear message.
+  const { url, model, apiKey } = getChatCompletionsConfig();
+  const res = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${API_KEY}` },
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${apiKey}` },
     body: JSON.stringify({
-      model: MODEL,
+      model,
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: prompt },
@@ -95,11 +70,17 @@ async function callDeepSeek(prompt, system) {
   });
   if (!res.ok) {
     const errText = await res.text();
-    throw new Error(`DeepSeek HTTP ${res.status}: ${errText}`);
+    throw new Error(`${AI_PROVIDER.name} HTTP ${res.status}: ${errText}`);
   }
   const data = await res.json();
   const content = data.choices?.[0]?.message?.content?.trim() || '';
-  const cleaned = content.replace(/```json\s*/gi, '').replace(/```\s*$/g, '').trim();
+  // MiniMax M3 (and DeepSeek R1-style models) wrap reasoning in <think>...</think>.
+  // Strip both the thinking block and any markdown code fences before JSON.parse.
+  const cleaned = content
+    .replace(/<think>[\s\S]*?<\/think>/gi, '')
+    .replace(/```json\s*/gi, '')
+    .replace(/```\s*$/g, '')
+    .trim();
   return JSON.parse(cleaned);
 }
 
@@ -143,7 +124,7 @@ async function main() {
   const count = args.count || 10;
   const batch = args.batch || 5;
 
-  console.log('=== DeepSeek 关键词扩词 ===');
+  console.log(`=== ${AI_PROVIDER.name} 关键词扩词 ===`);
   console.log(`种子词(${seeds.length}): ${seeds.join(', ')}`);
   console.log(`目标语言: ${langs.join(', ')}  每语言扩展: ${count} 条  ${args.dryRun ? '[DRY-RUN]' : ''}\n`);
 
@@ -157,7 +138,7 @@ async function main() {
       const seedChunk = seeds.slice(start, start + batch);
       const prompt = buildPrompt({ seeds: seedChunk, lang, langName: LANGS[lang], entity: args.entity, count });
       try {
-        const items = await callDeepSeek(
+        const items = await callChat(
           prompt,
           '你是专业的技术 SEO 关键词研究员，只输出合法 JSON。'
         );

@@ -7,6 +7,7 @@ import normalizeTrailingSlash from '@reunmedia/astro-normalize-trailing-slash';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { rehypeAutoInternalLinksI18n } from './src/lib/rehype-auto-internal-links-i18n';
+import devDashboardApi from './astro/integrations/dev-dashboard-vite-plugin.mjs';
 
 // https://astro.build
 export default defineConfig({
@@ -1009,7 +1010,7 @@ export default defineConfig({
     ]
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), devDashboardApi()],
     build: {
       rollupOptions: {
         output: {

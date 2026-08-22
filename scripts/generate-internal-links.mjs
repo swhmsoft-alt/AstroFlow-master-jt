@@ -1,13 +1,16 @@
 /**
- * Generate internal keyword links mapping using DeepSeek AI (v4 — Multilingual Edition).
+ * Generate internal keyword links mapping using AI provider (v5 — Multilingual Edition, MiniMax M3).
  *
  * Source content:  src/content/blog/*.md (EN) + src/content/blog-translations/*.md (DE/FR/ES/...)
  * Target URLs:     Monolingual + language-prefixed pillar pages
  *
+ * Provider config (API key, model, URL) is centralized in src/lib/ai-provider.mjs;
+ * switching AI vendors is a one-file change here.
+ *
  * Workflow:
  * 1. Scan EN blog + all blog-translations as SOURCE content
  * 2. Build pillar page catalog for EN + each of 9 languages
- * 3. For each language: send source content + pillar URLs to DeepSeek
+ * 3. For each language: send source content + pillar URLs to the AI provider
  * 4. Merge all language-specific keyword mappings into astro.config.mjs
  */
 
@@ -16,12 +19,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { glob } from 'glob';
 import matter from 'gray-matter';
+import { getChatCompletionsConfig, AI_PROVIDER } from '../src/lib/ai-provider.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-
-const DEEPSEEK_API_KEY = 'sk-b187f5cf84c74f9aac8bd04b7fd0d2f8';
-const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
 const MAX_KEYWORDS_PER_URL = 8;
 
@@ -305,17 +306,20 @@ ${existingList.length > 0 ? existingList.join('\n') : '  (none)'}
 
 Generate **10-25 keyword mappings** for ${langName}. Return ONLY valid JSON: {"keyword": "/url-path", ...}. No explanation. No markdown.`;
 
-  console.log(`\n  🤖 DeepSeek [${lang}] ${langName}...`);
+  console.log(`\n  🤖 ${AI_PROVIDER.name} [${lang}] ${langName}...`);
   console.log(`     Sources: ${sourceItems.filter(i => i.lang === lang).length} blogs, Targets: ${pillarPages.length} pages`);
 
-  const response = await fetch(DEEPSEEK_API_URL, {
+  // Resolve provider config lazily so missing keys fail fast with a clear message.
+  const { url: providerUrl, model: providerModel, apiKey: providerKey } = getChatCompletionsConfig();
+
+  const response = await fetch(providerUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+      'Authorization': `Bearer ${providerKey}`,
     },
     body: JSON.stringify({
-      model: 'deepseek-chat',
+      model: providerModel,
       messages: [
         {
           role: 'system',
@@ -334,7 +338,11 @@ Generate **10-25 keyword mappings** for ${langName}. Return ONLY valid JSON: {"k
   }
 
   const data = await response.json();
-  const content = data.choices[0].message.content.trim();
+  let content = data.choices[0].message.content.trim();
+
+  // MiniMax M3 (and DeepSeek R1-style models) wrap reasoning in <think>...</think>.
+  // Strip them before extracting JSON.
+  content = content.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
 
   const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)\s*```/) || content.match(/{[\s\S]*}/);
   const jsonStr = jsonMatch ? jsonMatch[1] || jsonMatch[0] : content;

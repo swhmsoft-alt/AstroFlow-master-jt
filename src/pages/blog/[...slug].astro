@@ -5,6 +5,9 @@ import AudienceHub from '../../components/audience/AudienceHub.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 import { getOriginalSlug, categoryToSlug } from '../../lib/blog-i18n';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const prerender = true;
 
@@ -32,6 +35,22 @@ const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
 const seoTitle = `${data.title} | Boze Titanium Manufacturing Center Blog`;
 const tags = data.tags || [];
 const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
+
+// Load internal-link matrix (SoT: data/related-links.json, see scripts/build-related-links.mjs)
+const __filename = fileURLToPath(import.meta.url);
+const __root = path.resolve(path.dirname(__filename), '../../../');
+let relatedEdges: any[] = [];
+try {
+  const rlPath = path.resolve(__root, 'data/related-links.json');
+  if (fs.existsSync(rlPath)) {
+    const all = JSON.parse(fs.readFileSync(rlPath, 'utf-8'));
+    relatedEdges = Array.isArray(all?.links?.[post.slug]) ? all.links[post.slug] : [];
+  }
+} catch (e) { /* graceful degradation: block silently hides */ }
+const relatedHubs = relatedEdges.filter(e => e.type === 'hub');
+const relatedI18n = relatedEdges.filter(e => e.type === 'i18n');
+const relatedMore = relatedEdges.filter(e => e.type === 'related');
+const hasRelated = relatedEdges.length > 0;
 ---
 
 <BaseLayout
@@ -237,6 +256,96 @@ const blogUrl = `https://cnc.bozemetal.com/blog/${post.slug}`;
       </div>
     </div>
   </section>
+
+  <!-- Related Articles (internal-link matrix, SoT: data/related-links.json) -->
+  {hasRelated && (
+    <section class="py-12 lg:py-16" style="background: color-mix(in srgb, var(--theme-surface) 60%, var(--theme-bg) 40%); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center mb-6">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            <h2 class="text-2xl font-bold" style="color: var(--theme-text);">Related Articles</h2>
+          </div>
+
+          {relatedHubs.length > 0 && (
+            <div class="mb-6">
+              <h3 class="text-sm font-bold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Popular in {data.category}
+              </h3>
+              <ul class="grid gap-3 md:grid-cols-2">
+                {relatedHubs.map(e => (
+                  <li>
+                    <a href={e.href || '/blog/'} class="related-card group flex items-start p-4 rounded-xl border transition-all hover:shadow-md" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                      <span class="related-badge mr-3 mt-1 px-2 py-0.5 text-xs font-bold rounded-full flex-shrink-0" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">
+                        Hub
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block font-semibold leading-snug mb-1 transition-colors group-hover:underline" style="color: var(--theme-text);">
+                          {e.label}
+                        </span>
+                        <span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                          {e.cluster}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {relatedI18n.length > 0 && (
+            <div class="mb-6">
+              <h3 class="text-sm font-bold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Available in other languages
+              </h3>
+              <ul class="flex flex-wrap gap-2">
+                {relatedI18n.map(e => (
+                  <li>
+                    <a href={e.href || '/blog/'} class="related-i18n inline-flex items-center px-3 py-2 text-sm rounded-lg border transition-colors hover:shadow" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-text);">
+                      <span class="font-mono text-xs uppercase mr-2 px-1.5 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-accent) 18%, transparent); color: var(--theme-text);">
+                        {e.lang || 'i18n'}
+                      </span>
+                      <span class="font-medium">{e.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {relatedMore.length > 0 && (
+            <div>
+              <h3 class="text-sm font-bold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                You may also like
+              </h3>
+              <ul class="grid gap-3 md:grid-cols-2">
+                {relatedMore.map(e => (
+                  <li>
+                    <a href={e.href || '/blog/'} class="related-card group flex items-start p-4 rounded-xl border transition-all hover:shadow-md" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                      <span class="related-badge mr-3 mt-1 px-2 py-0.5 text-xs font-bold rounded-full flex-shrink-0" style="background: color-mix(in srgb, var(--theme-accent) 18%, transparent); color: var(--theme-text);">
+                        Related
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block font-semibold leading-snug mb-1 transition-colors group-hover:underline" style="color: var(--theme-text);">
+                          {e.label}
+                        </span>
+                        <span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                          {e.cluster}
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Audience guidance -->
   <AudienceHub industry="blog" />
