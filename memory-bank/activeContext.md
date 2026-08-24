@@ -1,7 +1,7 @@
 # Active Context
 
-> **Last Updated:** 2026-08-13
-> **Current Focus:** 落地「受众优先 SEO」—— 关键词库新增 行业×人群×旅程 维度（有节制示范）。
+> **Last Updated:** 2026-08-24
+> **Current Focus:** GEO Cluster×Inbound Phase 1 完成（实体图谱 + 覆盖率审计）。Phase 2 待批复。详见 `memory-bank/entity-graph.md`。
 
 ## Current Status
 
