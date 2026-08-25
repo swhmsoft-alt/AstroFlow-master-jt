@@ -279,7 +279,7 @@ function extractStandards() {
       organization: s.organization,
       aliases,
       search_terms: searchTermsFrom(s.name, s.fullName, s.organization, s.specTitle),
-      page_url: `/titanium-standards/${key}/`,
+      page_url: `/materials/${key}/`,
       source_file: 'src/data/titanium-standards.ts',
       source_collection: 'titanium-standards.ts',
       relationships: {

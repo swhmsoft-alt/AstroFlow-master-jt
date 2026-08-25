@@ -38,7 +38,7 @@ export interface Props {
 const { category = 'all', limit = 9, compact = false, heading } = Astro.props;
 
 const STANDARDS = getEntitiesByCategory('standard')
-  .filter((e) => e.page_url && e.page_url.startsWith('/titanium-standards/'))
+  .filter((e) => e.page_url && e.page_url.startsWith('/materials/'))
   .map((e) => ({
     id: e.id,
     name: e.canonical_name,
