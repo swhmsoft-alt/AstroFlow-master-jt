@@ -61,6 +61,9 @@ const hasRelated = relatedEdges.length > 0;
   tags={tags.length > 0 ? tags : undefined}
   ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
   pageType="blog-post"
+  howtoItem={data.howto}
+  speakableSelectors={data.speakableSelectors}
+  comparisonList={data.comparisonList}
 >
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label={t('blog.Slug].breadcrumb')} style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">

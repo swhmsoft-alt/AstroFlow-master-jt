@@ -190,11 +190,22 @@ export interface WebPageInput {
    * 建立跨页实体关联图。无 page_url 的实体自动跳过。
    */
   mentions?: string[];
+  /**
+   * AIO — Speakable CSS selectors. Targets in-page paragraphs that AIO
+   * (Google AI Overviews) is permitted to cite as the authoritative answer
+   * for voice / AI-summary features. Recommended: 3-5 thesis-first
+   * paragraphs at the top of the page. Must match real DOM ids, e.g.
+   * `['#aio-thesis-1', '#aio-thesis-2']`.
+   *
+   * Reference: https://schema.org/speakable
+   */
+  speakableSelectors?: string[];
 }
 
 export function buildWebPage(input: WebPageInput) {
-  const { name, description, url, inLanguage, datePublished, mentions } = input;
+  const { name, description, url, inLanguage, datePublished, mentions, speakableSelectors } = input;
   const mentionRefs = mentions ? refsFromIds(mentions) : [];
+  const hasSpeakable = Array.isArray(speakableSelectors) && speakableSelectors.length > 0;
   return {
     '@type': 'WebPage',
     '@id': url,
@@ -205,6 +216,14 @@ export function buildWebPage(input: WebPageInput) {
     inLanguage,
     ...(datePublished ? { datePublished } : {}),
     ...(mentionRefs.length > 0 ? { mentions: mentionRefs } : {}),
+    ...(hasSpeakable
+      ? {
+          speakable: {
+            '@type': 'Speakable',
+            cssSelector: speakableSelectors,
+          },
+        }
+      : {}),
   };
 }
 
@@ -280,6 +299,120 @@ export function buildFaqPage(input: {
   };
 }
 
+/**
+ * Single step inside a HowTo procedure. Mirrors the schema.org HowToStep
+ * shape used by buildHowTo(). Plain strings so callers can hardcode English
+ * content or pass `t('...')` lookups directly.
+ *
+ * Schema.org HowToStep reference:
+ *   - position (int, required by Google rich-result guidelines)
+ *   - name     (Text, recommended — short step title)
+ *   - text     (Text, required — the step instruction itself)
+ *   - url      (URL, optional — anchor to in-page section)
+ */
+export interface HowToStep {
+  name: string;
+  text: string;
+  /** 1-based ordinal position of the step within the procedure. */
+  position: number;
+  /** Optional in-page anchor URL the AI extractor should link the step to. */
+  url?: string;
+}
+
+/**
+ * A HowTo procedure — a recipe-style, step-by-step answer to a "how to"
+ * question. Mirrors the schema.org HowTo shape used by buildHowTo().
+ *
+ * Designed for AIO (Google AI Overviews) extraction: the procedure appears
+ * inline in the AI-generated summary when the user's query is procedural
+ * (e.g. "how to choose a titanium grade", "how to qualify an AS9100
+ * supplier"). Per Google Search Central, HowTo rich results require
+ *   - name (required)
+ *   - step (required, ≥1 item, each with name + text + position)
+ *
+ * Reference: https://schema.org/HowTo
+ */
+export interface HowToItem {
+  /** Procedure title (e.g. "How to Choose the Right Titanium Grade"). */
+  name: string;
+  /** Short human-readable description of what the procedure accomplishes. */
+  description: string;
+  /** Ordered list of steps. Must have at least one item with position ≥ 1. */
+  steps: HowToStep[];
+  /** ISO 8601 duration string (e.g. "PT15M", "P1D"). Recommended. */
+  totalTime?: string;
+  /** Estimated cost as a MonetaryAmount-shaped value (USD). Optional. */
+  estimatedCost?: { currency: string; value: number };
+  /** Tools required (HowToTool shape). Plain strings render as Text. */
+  tool?: string[];
+  /** Supplies / materials required (HowToSupply shape). Plain strings render as Text. */
+  supply?: string[];
+}
+
+/**
+ * Build a single schema.org HowToStep entity.
+ * Used inside buildHowTo().
+ */
+export function buildHowToStep(step: HowToStep) {
+  return {
+      '@type': 'HowToStep',
+      position: step.position,
+      name: step.name,
+      text: step.text,
+      ...(step.url ? { url: step.url } : {}),
+    };
+}
+
+/**
+ * Build a schema.org HowTo entity for a step-by-step procedure.
+ *
+ * AIO (Google AI Overviews) heavily favours HowTo schemas for procedural
+ * queries. Emitting this entity signals the AI engine that the page is
+ * a primary candidate for "how to" summary citations.
+ *
+ * Reference: https://schema.org/HowTo
+ *   Google rich-result requirements: https://developers.google.com/search/docs/appearance/structured-data/how-to
+ */
+export function buildHowTo(input: {
+  /** URL of the page hosting the procedure — used to derive a unique @id. */
+  url: string;
+  inLanguage?: string;
+  item: HowToItem;
+}) {
+  const howtoId = `${input.url}#howto`;
+  return {
+    '@type': 'HowTo',
+    '@id': howtoId,
+    name: input.item.name,
+    description: input.item.description,
+    ...(input.inLanguage ? { inLanguage: input.inLanguage } : {}),
+    ...(input.item.totalTime ? { totalTime: input.item.totalTime } : {}),
+    ...(input.item.estimatedCost
+      ? {
+          estimatedCost: {
+            '@type': 'MonetaryAmount',
+            currency: input.item.estimatedCost.currency,
+            value: input.item.estimatedCost.value,
+          },
+        }
+      : {}),
+    ...(input.item.tool?.length
+      ? {
+          tool: input.item.tool.map((t) => ({ '@type': 'HowToTool', name: t })),
+        }
+      : {}),
+    ...(input.item.supply?.length
+      ? {
+          supply: input.item.supply.map((s) => ({ '@type': 'HowToSupply', name: s })),
+        }
+      : {}),
+    step: input.item.steps
+      .slice()
+      .sort((a, b) => a.position - b.position)
+      .map(buildHowToStep),
+  };
+}
+
 // ── Additional Entity Builders ────────────────────────
 
 export function buildCollectionPage(input: { name: string; description: string; url: string; mainEntity?: string }) {
@@ -317,6 +450,58 @@ export function buildItemList(input: {
         }
       : {}),
     mainEntityOfPage: { '@id': input.url },
+  };
+}
+
+/**
+ * Build a schema.org ItemList entity for a comparison table (e.g. "Grade 5
+ * vs Grade 23"). AIO heavily cites comparison tables for "best X for Y"
+ * queries. Each row is emitted as a ListItem referencing a Product @id,
+ * with the comparison criteria exposed via additionalProperty.
+ *
+ * Reference: https://schema.org/ItemList
+ */
+export function buildComparisonList(input: {
+  /** URL of the page hosting the comparison table — used to derive a unique @id. */
+  url: string;
+  /** Comparison-table heading (e.g. "Grade 5 vs Grade 23 (Ti-6Al-4V ELI)"). */
+  name: string;
+  /** Short human-readable description of what is being compared. */
+  description?: string;
+  /**
+   * Compared entities. Each item must reference an existing schema.org @id
+   * (Product, Service, etc.) so the ItemList links back into the site-wide
+   * entity graph.
+   */
+  items: { '@id': string; name: string; description?: string }[];
+  /**
+   * Comparison criteria as PropertyValue rows. AIO uses these to render
+   * feature-by-feature cells in the AI summary table.
+   */
+  criteria?: { name: string; values: Record<string, string | number> }[];
+}) {
+  const comparisonId = `${input.url}#comparison-list`;
+  return {
+    '@type': 'ItemList',
+    '@id': comparisonId,
+    name: input.name,
+    ...(input.description ? { description: input.description } : {}),
+    url: input.url,
+    numberOfItems: input.items.length,
+    itemListElement: input.items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: { '@id': it['@id'], '@type': 'Product', name: it.name, ...(it.description ? { description: it.description } : {}) },
+    })),
+    ...(input.criteria?.length
+      ? {
+          additionalProperty: input.criteria.map((c) => ({
+            '@type': 'PropertyValue',
+            name: c.name,
+            value: c.values,
+          })),
+        }
+      : {}),
   };
 }
 
@@ -542,6 +727,16 @@ export interface SchemaPageData {
   faqName?: string;
 
   /**
+   * AIO — HowTo structured-data item. When provided, buildPageGraph will emit
+   * an additional HowTo entity (recipe-style step-by-step procedure) regardless
+   * of pageType. Use for procedural content pages that answer a "how to"
+   * query (e.g. "how to choose a titanium grade", "how to qualify an AS9100
+   * supplier"). Google AI Overviews heavily favour HowTo schemas for procedural
+   * queries and may cite the procedure inline in the AI summary.
+   */
+  howtoItem?: HowToItem;
+
+  /**
    * F3 — Entity graph @id references. Pass an array of `entity.id` from
    * `data/entities/entity-registry.json`; each is resolved to a schema.org
    * @id + @type reference and emitted under WebPage.mentions.
@@ -552,6 +747,28 @@ export interface SchemaPageData {
    * page.
    */
   mentions?: string[];
+  /**
+   * AIO — Speakable CSS selectors. Targets in-page paragraphs that AIO
+   * (Google AI Overviews) is permitted to cite as the authoritative answer
+   * for voice / AI-summary features. Recommended: 3-5 thesis-first
+   * paragraphs at the top of the page. Must match real DOM ids, e.g.
+   * `['#aio-thesis-1', '#aio-thesis-2']`.
+   *
+   * Reference: https://schema.org/speakable
+   */
+  speakableSelectors?: string[];
+  /**
+   * AIO — Comparison-table ItemList. When provided, buildPageGraph emits an
+   * additional ItemList entity where each ListItem references an existing
+   * Product @id and the comparison criteria are exposed via PropertyValue.
+   * AIO cites comparison tables for "best X for Y" queries.
+   */
+  comparisonList?: {
+    name: string;
+    description?: string;
+    items: { '@id': string; name: string; description?: string }[];
+    criteria?: { name: string; values: Record<string, string | number> }[];
+  };
 }
 
 /**
@@ -583,6 +800,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     inLanguage: data.inLanguage ?? 'en-US',
     datePublished: data.articleDatePublished ?? null,
     mentions: data.mentions,
+    speakableSelectors: data.speakableSelectors,
   }));
 
   // 3. Breadcrumb
@@ -598,6 +816,31 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       url: data.pageUrl,
       inLanguage: data.inLanguage ?? 'en-US',
       items: data.faqItems,
+    }));
+  }
+
+  // 4b. AIO — HowTo (opt-in — independent of pageType). Emits a recipe-style
+  //     step-by-step procedure entity that Google AI Overviews can extract
+  //     for procedural "how to" queries.
+  if (data.howtoItem?.steps?.length) {
+    graph.push(buildHowTo({
+      url: data.pageUrl,
+      inLanguage: data.inLanguage ?? 'en-US',
+      item: data.howtoItem,
+    }));
+  }
+
+  // 4c. AIO — Comparison ItemList (opt-in — independent of pageType). Emits
+  //     an ItemList entity referencing existing Product @ids, with comparison
+  //     criteria as PropertyValue rows. AIO cites comparison tables for
+  //     "best X for Y" queries.
+  if (data.comparisonList?.items?.length) {
+    graph.push(buildComparisonList({
+      url: data.pageUrl,
+      name: data.comparisonList.name,
+      ...(data.comparisonList.description ? { description: data.comparisonList.description } : {}),
+      items: data.comparisonList.items,
+      ...(data.comparisonList.criteria?.length ? { criteria: data.comparisonList.criteria } : {}),
     }));
   }
 

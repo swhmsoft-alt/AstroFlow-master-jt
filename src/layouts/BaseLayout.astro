@@ -8,7 +8,7 @@ import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
-import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem, type FaqItem } from '../lib/schema';
+import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem, type FaqItem, type HowToItem } from '../lib/schema';
 import BrandAbout from '@components/home/BrandAbout.astro';
 import CookieConsent from '@components/CookieConsent.astro';
 
@@ -57,6 +57,13 @@ interface Props {
   faqItems?: FaqItem[];
   /** Optional label for the FAQPage entity (defaults to `${pageName} — Frequently Asked Questions`). */
   faqName?: string;
+  /**
+   * AIO — HowTo procedure (recipe-style step-by-step). When provided,
+   * buildPageGraph emits an additional schema.org HowTo entity in the page
+   * @graph. Designed for procedural "how to" content pages (e.g. "How to
+   * Choose the Right Titanium Grade") to maximise AI Overview citation rate.
+   */
+  howtoItem?: HowToItem;
   serviceHubKey?: string;
   /** Override the auto-generated hreflang alternate links (e.g. for non-localized campaign pages) */
   alternateLinks?: { lang: string; href: string }[];
@@ -74,6 +81,26 @@ interface Props {
    * products) to expose the site's entity vocabulary to LLM crawlers.
    */
   mentions?: string[];
+  /**
+   * AIO — Speakable CSS selectors. CSS selectors (e.g. `['#aio-thesis-1']`)
+   * that target in-page paragraphs AIO is permitted to cite as the
+   * authoritative answer for voice / AI-summary features. The selectors
+   * MUST match real DOM ids on the rendered page. Recommended: 3-5
+   * thesis-first paragraphs at the top of the page.
+   */
+  speakableSelectors?: string[];
+  /**
+   * AIO — Comparison-table ItemList. When provided, buildPageGraph emits an
+   * additional ItemList entity referencing existing Product @ids with
+   * PropertyValue comparison rows. AIO cites such tables for "best X for Y"
+   * queries.
+   */
+  comparisonList?: {
+    name: string;
+    description?: string;
+    items: { '@id': string; name: string; description?: string }[];
+    criteria?: { name: string; values: Record<string, string | number> }[];
+  };
 }
 
 const currentPathname = Astro.url.pathname;
@@ -102,12 +129,15 @@ const {
   items,
   faqItems,
   faqName,
+  howtoItem,
   serviceHubKey,
   alternateLinks: explicitAlternateLinks,
   prevURL,
   nextURL,
   noindex = false,
   mentions,
+  speakableSelectors,
+  comparisonList,
 } = Astro.props;
 
 const rawPath = removeLangPrefix(currentPathname);
@@ -155,7 +185,10 @@ const schemaData = {
   serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
   faqItems, faqName,
+  howtoItem,
   mentions,
+  speakableSelectors,
+  comparisonList,
 };
 const pageGraph = buildPageGraph(pageType, schemaData);
 const ldJson = JSON.stringify(pageGraph);

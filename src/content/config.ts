@@ -53,6 +53,52 @@ const productsCollection = defineCollection({
   }),
 });
 
+// ── AIO schema helpers (shared by blogCollection + blogTranslationsCollection) ──
+//
+// These mirror `src/lib/schema.ts` types (HowToItem / HowToStep / ComparisonListItem /
+// ComparisonListCriterion) so a blog markdown author can write the same shape into
+// frontmatter and `src/pages/blog/[...slug].astro` will lift it into BaseLayout
+// props (howtoItem / speakableSelectors / comparisonList). The buildPageGraph
+// call in BaseLayout emits HowTo + Speakable + ItemList JSON-LD accordingly.
+
+const howToStepSchema = z.object({
+  name: z.string(),
+  text: z.string(),
+  position: z.number().int().positive(),
+  url: z.string().optional(),
+});
+
+const howToItemSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  totalTime: z.string().optional(),
+  estimatedCost: z.object({
+    currency: z.string(),
+    value: z.number(),
+  }).optional(),
+  tool: z.array(z.string()).optional(),
+  supply: z.array(z.string()).optional(),
+  steps: z.array(howToStepSchema).min(1),
+});
+
+const comparisonListItemSchema = z.object({
+  '@id': z.string(),
+  name: z.string(),
+  description: z.string().optional(),
+});
+
+const comparisonListCriterionSchema = z.object({
+  name: z.string(),
+  values: z.record(z.union([z.string(), z.number()])),
+});
+
+const comparisonListSchema = z.object({
+  name: z.string(),
+  description: z.string().optional(),
+  items: z.array(comparisonListItemSchema).min(1),
+  criteria: z.array(comparisonListCriterionSchema).optional(),
+});
+
 const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -65,6 +111,10 @@ const blogCollection = defineCollection({
     coverImage: z.string().optional(),
     coverImageAlt: z.string().optional(),
     featured: z.boolean().default(false),
+    // ── AIO: HowTo + Speakable + ComparisonList (optional) ──
+    howto: howToItemSchema.optional(),
+    speakableSelectors: z.array(z.string()).optional(),
+    comparisonList: comparisonListSchema.optional(),
   }),
 });
 
@@ -80,6 +130,10 @@ const blogTranslationsCollection = defineCollection({
     coverImage: z.string().optional(),
     coverImageAlt: z.string().optional(),
     featured: z.boolean().default(false),
+    // ── AIO: HowTo + Speakable + ComparisonList (optional, mirrors blogCollection) ──
+    howto: howToItemSchema.optional(),
+    speakableSelectors: z.array(z.string()).optional(),
+    comparisonList: comparisonListSchema.optional(),
     lang: z.string(),
     originalSlug: z.string(),
   }),

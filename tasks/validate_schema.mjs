@@ -26,10 +26,20 @@ const PAGES = [
   { name: 'Blog Index', file: 'dist/blog/index.html' },
   { name: 'Blog Article', file: 'dist/blog/aerospace-titanium-full-process-supply/index.html' },
   { name: 'RFQ', file: 'dist/rfq/index.html' },
+  { name: 'AIO Seed 1 — Grade Selection (HowTo + Speakable + ItemList)', file: 'dist/how-to-choose-titanium-grade/index.html' },
+  { name: 'AIO Seed 2 — AS9100 Supplier (HowTo + Speakable)', file: 'dist/how-to-qualify-as9100-titanium-supplier/index.html' },
+  { name: 'AIO Seed 3 — CNC Part Specification (HowTo + Speakable)', file: 'dist/how-to-specify-titanium-cnc-machined-part/index.html' },
+  { name: 'AIO Seed 4 — MTR Reading (HowTo + Speakable)', file: 'dist/how-to-read-titanium-mill-test-report/index.html' },
 ];
 
 const LEGAL_ORG_ID = 'https://www.bozemetal.com/#organization';
 const WEBSITE_ID = 'https://cnc.bozemetal.com/#website';
+
+/** ISO 8601 duration regex (subset sufficient for HowTo.totalTime):
+ *   P[n]DT[n]H[n]M[n]S — supports PT15M, P1D, PT2H30M, etc.
+ *   Google's HowTo rich-result guideline accepts this format.
+ */
+const ISO_8601_DURATION_RE = /^P(?!$)(\d+Y)?(\d+M)?(\d+D)?(T(?=\d)(\d+H)?(\d+M)?(\d+(?:\.\d+)?S)?)?$/;
 
 /** Extract + merge every application/ld+json block on the page into one @graph array. */
 function parseAllLdJson(html) {
@@ -60,6 +70,7 @@ for (const p of PAGES) {
     const page = graph.find(e => e['@type'] === 'WebPage');
     const breadcrumb = graph.find(e => e['@type'] === 'BreadcrumbList');
     const product = graph.find(e => e['@type'] === 'Product');
+    const howto = graph.find(e => e['@type'] === 'HowTo');
 
     console.log(`\n=== ${p.name} ===`);
     console.log(`  Types: [${types.join(', ')}]`);
@@ -106,6 +117,89 @@ for (const p of PAGES) {
         console.log(`  RFQ Offer: url=${rfqOffer['url']} · availability=${rfqOffer['availability']} · itemOffered=${rfqOffer['itemOffered']?.['@id']}`);
       } else {
         console.log(`  WARN: Product present but no offers`);
+      }
+    }
+
+    // ── AIO — HowTo integrity ──────────────────────────────────────
+    //   Per Google Search Central, HowTo rich results require:
+    //     - name (Text, required)
+    //     - step (HowToStep array, ≥1 item)
+    //   Each step must have position (≥1), name (Text), and text (Text).
+    //   totalTime, when present, must be a valid ISO 8601 duration.
+    if (howto) {
+      const steps = howto['step'];
+      if (!Array.isArray(steps) || steps.length === 0) {
+        console.log(`  FAIL: HowTo step[] must be a non-empty array`);
+        pageOk = false;
+      } else {
+        for (let i = 0; i < steps.length; i++) {
+          const s = steps[i];
+          if (typeof s['position'] !== 'number' || s['position'] < 1) {
+            console.log(`  FAIL: HowTo step[${i}].position must be an integer ≥ 1 (got ${s['position']})`);
+            pageOk = false;
+          }
+          if (typeof s['name'] !== 'string' || s['name'].length === 0) {
+            console.log(`  FAIL: HowTo step[${i}].name must be a non-empty string`);
+            pageOk = false;
+          }
+          if (typeof s['text'] !== 'string' || s['text'].length === 0) {
+            console.log(`  FAIL: HowTo step[${i}].text must be a non-empty string`);
+            pageOk = false;
+          }
+        }
+      }
+      if (howto['totalTime'] != null && !ISO_8601_DURATION_RE.test(String(howto['totalTime']))) {
+        console.log(`  FAIL: HowTo.totalTime must be a valid ISO 8601 duration (got "${howto['totalTime']}")`);
+        pageOk = false;
+      }
+      if (!howto['@id'] || !String(howto['@id']).endsWith('#howto')) {
+        console.log(`  FAIL: HowTo @id must end with "#howto" (got "${howto['@id']}")`);
+        pageOk = false;
+      }
+      console.log(`  HowTo: name="${howto['name']}" · steps=${Array.isArray(steps) ? steps.length : 0} · totalTime=${howto['totalTime'] ?? 'N/A'}`);
+    }
+
+    // ── AIO — WebPage.speakable integrity ──────────────────────────
+    //   Per Google Search Central, speakable requires:
+    //     - cssSelector (Array of strings, ≥1 item)
+    //     - each selector must be a non-empty string
+    const speakable = page?.['speakable'];
+    if (speakable) {
+      const selectors = speakable['cssSelector'];
+      if (!Array.isArray(selectors) || selectors.length === 0) {
+        console.log(`  FAIL: WebPage.speakable.cssSelector must be a non-empty array`);
+        pageOk = false;
+      } else {
+        for (let i = 0; i < selectors.length; i++) {
+          const sel = selectors[i];
+          if (typeof sel !== 'string' || sel.length === 0) {
+            console.log(`  FAIL: WebPage.speakable.cssSelector[${i}] must be a non-empty string`);
+            pageOk = false;
+          }
+        }
+        console.log(`  Speakable: ${selectors.length} selector(s) [${selectors.slice(0, 3).join(', ')}${selectors.length > 3 ? ', ...' : ''}]`);
+      }
+    }
+
+    // ── AIO — Comparison ItemList integrity ────────────────────────
+    //   Per schema.org/ItemList, a comparison list requires:
+    //     - itemListElement (Array, ≥2 items for a real comparison)
+    //     - each ListItem references an existing Product @id
+    const itemList = graph.find((n) => n['@type'] === 'ItemList' && String(n['@id'] || '').endsWith('#comparison-list'));
+    if (itemList) {
+      const rows = itemList['itemListElement'];
+      if (!Array.isArray(rows) || rows.length < 2) {
+        console.log(`  FAIL: Comparison ItemList must have ≥ 2 itemListElement entries (got ${Array.isArray(rows) ? rows.length : 0})`);
+        pageOk = false;
+      } else {
+        for (let i = 0; i < rows.length; i++) {
+          const r = rows[i];
+          if (!r['item'] || !r['item']['@id']) {
+            console.log(`  FAIL: Comparison ItemList row[${i}].item.@id is required`);
+            pageOk = false;
+          }
+        }
+        console.log(`  Comparison: name="${itemList['name']}" · rows=${rows.length} · criteria=${(itemList['additionalProperty'] || []).length}`);
       }
     }
 
