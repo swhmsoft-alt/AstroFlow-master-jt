@@ -66,6 +66,14 @@ interface Props {
   nextURL?: string;
   /** Emit <meta name="robots" content="noindex, nofollow"> (e.g. thank-you / conversion pages) */
   noindex?: boolean;
+  /**
+   * F3 — Entity graph @id references. Pass an array of `entity.id` from
+   * `data/entities/entity-registry.json`; each is resolved to a schema.org
+   * @id + @type reference and emitted under WebPage.mentions in JSON-LD.
+   * Recommended for hub pages (industries, capabilities, materials, parts,
+   * products) to expose the site's entity vocabulary to LLM crawlers.
+   */
+  mentions?: string[];
 }
 
 const currentPathname = Astro.url.pathname;
@@ -99,6 +107,7 @@ const {
   prevURL,
   nextURL,
   noindex = false,
+  mentions,
 } = Astro.props;
 
 const rawPath = removeLangPrefix(currentPathname);
@@ -146,6 +155,7 @@ const schemaData = {
   serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
   faqItems, faqName,
+  mentions,
 };
 const pageGraph = buildPageGraph(pageType, schemaData);
 const ldJson = JSON.stringify(pageGraph);

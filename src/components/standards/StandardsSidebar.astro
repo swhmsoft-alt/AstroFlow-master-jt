@@ -1,0 +1,154 @@
+---
+/**
+ * StandardsSidebar.astro
+ * ================================================================
+ * F2 — Standards Compliance Sidebar (RFQ Conversion Focus).
+ *
+ * 目的：在产品/工艺/材料相关页面侧边栏渲染相关 ASTM/AMS/ISO/AS9100 等标准，
+ *       +「Request Compliance-Certified Quote」CTA → /rfq/。
+ *
+ * 设计原则：
+ *   - 数据源 = entity-registry.json 中的 18 个 standard 实体（SSO 原则）。
+ *   - 按 subcategory 前缀自动分组：ams-aerospace / astm-material / iso-medical /
+ *     iso-quality / as9100-quality / generic。
+ *   - 侧边栏小工具，不抢主内容焦点。RFQ CTA 是唯一强 CTA。
+ *   - 不引入新依赖；纯内联 CSS + theme variables。
+ *
+ * Props:
+ *   category?: string   按 subcategory 前缀过滤；'all' / undefined = 全部
+ *   limit?: number      最多展示的标准数（默认 9）
+ *   compact?: boolean   紧凑模式（仅列表，少量说明）
+ *   heading?: string    自定义标题
+ *
+ * 使用示例：
+ *   <StandardsSidebar category="ams" />
+ *   <StandardsSidebar category="all" limit={18} />
+ * ================================================================
+ */
+
+import { getEntitiesByCategory } from '../../lib/entity-graph';
+
+export interface Props {
+  category?: 'all' | 'ams' | 'astm' | 'iso' | 'as9100' | 'generic';
+  limit?: number;
+  compact?: boolean;
+  heading?: string;
+}
+
+const { category = 'all', limit = 9, compact = false, heading } = Astro.props;
+
+const STANDARDS = getEntitiesByCategory('standard')
+  .filter((e) => e.page_url && e.page_url.startsWith('/titanium-standards/'))
+  .map((e) => ({
+    id: e.id,
+    name: e.canonical_name,
+    fullName: (e as any).full_name || '',
+    subcategory: e.subcategory || 'generic',
+    pageUrl: e.page_url!,
+    organization: (e as any).organization || '',
+    description: e.description || e.seo?.meta_description || '',
+  }));
+
+// 按 subcategory 前缀过滤
+const filtered = (() => {
+  if (category === 'all') return STANDARDS;
+  const prefixMap: Record<string, string[]> = {
+    ams: ['ams-'],
+    astm: ['astm-'],
+    iso: ['iso-'],
+    as9100: ['as9100', 'as-9100'],
+    generic: [],
+  };
+  const prefixes = prefixMap[category] || [];
+  if (prefixes.length === 0) return STANDARDS;
+  return STANDARDS.filter((s) => {
+    const sub = (s.subcategory || '').toLowerCase();
+    const slug = s.pageUrl.toLowerCase();
+    return prefixes.some((p) => sub.startsWith(p) || slug.includes(p));
+  });
+})();
+
+const displayStandards = filtered.slice(0, limit);
+const headingText = heading || (category === 'all' ? 'Standards We Comply With' : `${category.toUpperCase()} Standards`);
+
+// 分组（按组织）
+const grouped: Record<string, typeof displayStandards> = {};
+for (const s of displayStandards) {
+  const org = s.organization || s.subcategory.split('-')[0].toUpperCase();
+  if (!grouped[org]) grouped[org] = [];
+  grouped[org].push(s);
+}
+
+const totalShown = displayStandards.length;
+const rfqUrl = '/rfq/?compliance=1';
+---
+
+<aside
+  class="standards-sidebar my-8 p-6 rounded-xl border"
+  style="background: linear-gradient(180deg, color-mix(in srgb, var(--theme-surface) 90%, transparent), var(--theme-bg)); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); box-shadow: 0 4px 24px color-mix(in srgb, var(--theme-primary) 6%, transparent);"
+  aria-label="Standards and Compliance"
+>
+  <header class="mb-4">
+    <div class="inline-flex items-center px-3 py-1 mb-2 text-xs font-semibold rounded-full" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">
+      <svg class="w-3 h-3 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+      Compliance
+    </div>
+    <h3 class="text-lg font-bold mb-1" style="color: var(--theme-text);">{headingText}</h3>
+    <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+      Every batch ships with full MTC traceability against the {totalShown} standards below.
+    </p>
+  </header>
+
+  {displayStandards.length > 0 && (
+    <ul class="space-y-2 mb-5">
+      {displayStandards.map((s) => (
+        <li>
+          <a
+            href={s.pageUrl}
+            class="flex items-center justify-between p-3 rounded-lg transition-colors group"
+            style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
+            onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 5%, var(--theme-bg))'"
+            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'; this.style.backgroundColor='var(--theme-bg)'"
+          >
+            <div class="min-w-0 flex-1">
+              <div class="font-semibold text-sm truncate" style="color: var(--theme-text);">{s.name}</div>
+              {!compact && s.fullName && s.fullName !== s.name && (
+                <div class="text-xs truncate mt-0.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{s.fullName}</div>
+              )}
+            </div>
+            <svg class="w-4 h-4 ml-2 shrink-0 transition-transform group-hover:translate-x-1" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  {Object.keys(grouped).length > 1 && (
+    <div class="mb-5 pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="flex flex-wrap gap-1.5">
+        {Object.entries(grouped).map(([org, items]) => (
+          <span
+            class="text-xs px-2 py-1 rounded"
+            style="background-color: color-mix(in srgb, var(--theme-accent) 10%, transparent); color: color-mix(in srgb, var(--theme-accent) 80%, var(--theme-text));"
+          >
+            {org} · {items.length}
+          </span>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <a
+    href={rfqUrl}
+    class="block w-full text-center px-5 py-3 rounded-lg font-semibold text-sm transition-all"
+    style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, var(--theme-accent))); color: var(--theme-bg); box-shadow: 0 4px 14px color-mix(in srgb, var(--theme-primary) 30%, transparent);"
+    onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 18px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
+    onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 14px color-mix(in srgb, var(--theme-primary) 30%, transparent)'"
+  >
+    Request Compliance-Certified Quote →
+  </a>
+</aside>

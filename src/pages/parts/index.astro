@@ -5,10 +5,12 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PartsLanding from '../../components/parts/PartsLanding.astro';
+import StandardsSidebar from '../../components/standards/StandardsSidebar.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import { HERO_CONFIG } from '../../config/hero';
 import { PARTS_LANDING, PART_PAGES } from '../../data/parts';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { hubMentionsForCategory } from '../../lib/hub-mentions';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const hero = HERO_CONFIG['/parts'];
@@ -53,6 +55,7 @@ const supplementarySchema = {
   itemCount={PART_PAGES.length}
   items={PART_PAGES.map((p) => ({ name: p.navName, url: `${SITE}/parts/${p.slug}/` }))}
   alternateLinks={[{ lang: 'en', href: '/parts/' }]}
+  mentions={hubMentionsForCategory('service')}
 >
   <script type="application/ld+json" set:html={JSON.stringify(supplementarySchema)} />
 
@@ -100,4 +103,25 @@ const supplementarySchema = {
   </SubpageHero>
 
   <PartsLanding />
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 my-12">
+      <div class="lg:col-span-2">
+        <StandardsSidebar category="all" limit={9} heading="Standards We Comply With" />
+      </div>
+      <aside class="lg:col-span-1">
+        <div class="p-6 rounded-xl border" style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Why Standards Matter</h3>
+          <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Every titanium part we ship includes full Material Test Certificate (MTC)
+            traceability against ASTM, AMS, ISO, and AS9100 standards. Your QC team can
+            audit heat → lot → part in under 60 seconds.
+          </p>
+          <a href="/rfq/?compliance=1" class="inline-block px-4 py-2 rounded-lg font-semibold text-sm" style="background-color: var(--theme-primary); color: var(--theme-bg);">
+            Request Compliance Quote →
+          </a>
+        </div>
+      </aside>
+    </div>
+  </div>
 </BaseLayout>

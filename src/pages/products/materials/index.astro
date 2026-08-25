@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { GRADE_DATA } from '../../../data/titanium-grades';
 import { SITE } from '../../../config/site';
+import { hubMentionsForCategory } from '../../../lib/hub-mentions';
 
 export const prerender = true;
 
@@ -139,6 +140,7 @@ const catDesc: Record<string, string> = {
   collectionDescription={`${enriched.length} titanium alloys with matched systems and components. Complete mechanical property data.`}
   itemCount={enriched.length}
   items={enriched.map((m: any) => ({ name: m.data.title, url: `${SITE.url}${m.gradeKey ? '/materials/' + m.gradeKey + '/' : '/materials/'}` }))}
+  mentions={hubMentionsForCategory('material')}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

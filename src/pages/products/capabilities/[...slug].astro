@@ -12,6 +12,7 @@ import MicroCapabilityPage from '../../../components/capabilities/MicroCapabilit
 import AudienceHub from '../../../components/audience/AudienceHub.astro';
 import { getCollection } from 'astro:content';
 import { DEFAULT_LANG } from '../../../i18n/ui';
+import { mentionsForCapability } from '../../../lib/mentions';
 
 export const prerender = true;
 
@@ -95,7 +96,7 @@ if (relatedProducts.length >= 3) {
 }
 ---
 
-<BaseLayout title={seoTitle} description={seoDesc}>
+<BaseLayout title={seoTitle} description={seoDesc} mentions={mentionsForCapability(data as Record<string, any>)}>
   <!-- Products-specific breadcrumb -->
   <BreadcrumbNav
     lang="en"

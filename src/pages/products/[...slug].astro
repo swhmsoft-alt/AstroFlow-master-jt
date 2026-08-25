@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import { getCollection } from 'astro:content';
+import { mentionsForProduct } from '../../lib/mentions';
+import { refsFromIds } from '../../lib/entity-graph';
 
 export const prerender = true;
 
@@ -23,6 +25,7 @@ const updatedISO = data.updatedDate ? new Date(data.updatedDate).toISOString() :
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+const productMentionsIds = mentionsForProduct(data as Record<string, any>);
 ---
 
 <BaseLayout
@@ -32,7 +35,7 @@ const t = useTranslations(currentLang);
   productName={data.title}
   productImage={firstImage ? `https://cnc.bozemetal.com${firstImage}` : undefined}
   productCategory={data.category}
-  productDatePublished={pubDateISO}
+  productDatePublished={pubDateISO} mentions={productMentionsIds}
 >
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">

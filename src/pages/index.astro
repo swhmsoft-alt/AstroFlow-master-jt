@@ -12,11 +12,31 @@ import PremiumCTA from '../components/home/PremiumCTA.astro';
 import PartsPromoBanner from '../components/parts/PartsPromoBanner.astro';
 import { HERO_CONFIG } from '../config/hero';
 import { getCollection } from 'astro:content';
+import { getEntitiesByCategory, getAllEntities } from '../lib/entity-graph';
 
 // This collection is defined in src/content/config.ts
 // home.md from src/content/pages/home.md is loaded at build time
 const pages = await getCollection('pages');
 const homePage = pages.find(p => p.id === 'home');
+
+// F3 — Home page exposes the site's full entity vocabulary as WebPage.mentions
+// so LLM crawlers see a centralized @id graph for the brand.
+// Includes top 30 high-importance entities from each key category (industry /
+// material / service / standard) plus the homepage's featured application
+// entities. Cap at ~150 entries to keep JSON-LD manageable.
+const homeMentions: string[] = (() => {
+  const ids = new Set<string>();
+  const priority: Array<'industry' | 'material' | 'service' | 'standard' | 'application'> = [
+    'industry', 'material', 'service', 'standard', 'application',
+  ];
+  for (const cat of priority) {
+    const ents = getEntitiesByCategory(cat).slice(0, 30);
+    for (const e of ents) {
+      if (e.page_url) ids.add(e.id);
+    }
+  }
+  return [...ids];
+})();
 const enHero = HERO_CONFIG['/'];
 const heroData = {
   ...(homePage?.data || {
@@ -45,7 +65,7 @@ const heroData = {
 };
 ---
 
-<BaseLayout>
+<BaseLayout mentions={homeMentions}>
   <PremiumHero hero={heroData} />
   <ServicesOverview />
   <TechnicalCapabilities />

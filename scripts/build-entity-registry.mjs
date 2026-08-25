@@ -481,21 +481,67 @@ function extractContentCapabilities() {
   });
 }
 
+// ─────────────────────────────────────────────────────────────────────
+// F4 — Industry slug 调和映射（持久化层）
+// ─────────────────────────────────────────────────────────────────────
+// src/content/industries/*.json 文件名 slug ≠ src/pages/industries/*.astro 文件名 slug。
+// 例：`aerospace-defense.json` 对应的页面是 `aerospace.astro`（URL `/industries/aerospace/`）。
+//
+// 这里维护 source-slug → page-slug 的重映射，保证 build-entity-registry 重跑后
+// registry 里的 page_url 仍指向真实页面（而非 404）。
+//
+// 添加新行业时：
+//   - 在 src/content/industries/<key>.json 放原始数据
+//   - 在 src/pages/industries/<pageSlug>.astro 放对应页面
+//   - 如果 key 与 pageSlug 不一致，把 key 加进 INDUSTRY_SLUG_REMAP 即可
+//   - 如果该行业暂无对应页面，把 key 改成 value 为 '__HUB__'，会被映射到
+//     /products/industries/（行业 hub）兜底，保证不出现 404 内链
+// ─────────────────────────────────────────────────────────────────────
+const INDUSTRY_SLUG_REMAP = Object.freeze({
+  'aerospace-defense':              'aerospace',
+  'chemical-processing':            'chemical',
+  'marine-offshore':                'marine',
+  'medical-device':                 'medical',
+  // 暂无独立页面的行业 → 落到 /products/industries/ hub
+  'automotive-motorsports':         '__HUB__',
+  'consumer-electronics':           '__HUB__',
+  'cycling---bicycle':              '__HUB__',
+  'electroplating-surface-finishing': '__HUB__',
+  'environmental-engineering':      '__HUB__',
+  'general-industrial':             '__HUB__',
+});
+
+const INDUSTRY_HUB_URL = '/products/industries/';
+
+function resolveIndustrySlug(sourceSlug) {
+  const mapped = INDUSTRY_SLUG_REMAP[sourceSlug];
+  if (mapped === '__HUB__') return { pageSlug: null, pageUrl: INDUSTRY_HUB_URL, fellBack: true };
+  if (mapped) return { pageSlug: mapped, pageUrl: `/industries/${mapped}/`, fellBack: false };
+  return { pageSlug: sourceSlug, pageUrl: `/industries/${sourceSlug}/`, fellBack: false };
+}
+
 function extractContentIndustries() {
   console.log('  · content/industries …');
   const files = listFiles(PATHS.INDUSTRIES_DIR);
   return files.map((f) => {
-    const slug = f.replace(/\.json$/, '');
+    const sourceSlug = f.replace(/\.json$/, '');
     const j = loadJson(path.join(PATHS.INDUSTRIES_DIR, f)) || {};
     const aliases = uniqueAliases(j.aliases, [j.title]);
+
+    // F4 — 应用 slug 重映射（保持 source_slug 不变以维持 ID 稳定，只动 page_url）
+    const { pageSlug, pageUrl, fellBack } = resolveIndustrySlug(sourceSlug);
+    const entitySlug = pageSlug || sourceSlug; // hub-only fallback 时仍用 sourceSlug 做 ID
+
     return {
-      id: `industry:${slug}`,
-      slug,
+      id: `industry:${sourceSlug}`,                // ID 保持 source slug 稳定
+      slug: entitySlug,
       category: 'industry',
       canonical_name: j.title,
       aliases,
       search_terms: searchTermsFrom(j.title, j.aliases),
-      page_url: `/industries/${slug}/`,
+      page_url: pageUrl,                             // 调和后的真实页面 URL
+      _source_slug: sourceSlug,                      // 调试用：原始 source slug
+      _hub_fallback: fellBack || undefined,
       source_file: `src/content/industries/${f}`,
       source_collection: 'content/industries',
       relationships: {

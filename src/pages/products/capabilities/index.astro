@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SubpageHero from '../../../components/ui/SubpageHero.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../../../config/site';
+import { hubMentionsForCategory } from '../../../lib/hub-mentions';
 export const prerender = true;
 
 const allCapabilities = await getCollection('capabilities');
@@ -61,6 +62,7 @@ const capSlug = (entry: typeof allCapabilities[number]) =>
   collectionDescription={`${totalCaps} precision manufacturing capabilities for titanium components — CNC machining, surface treatment, welding, EDM, inspection, and more.`}
   itemCount={totalCaps}
   items={allCapabilities.map((entry) => ({ name: entry.data.title, url: `${SITE.url}/products/capabilities/${capSlug(entry)}/` }))}
+  mentions={hubMentionsForCategory('process', 100)}
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

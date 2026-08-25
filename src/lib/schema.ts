@@ -21,6 +21,7 @@
  */
 
 import { SITE } from '@config/site';
+import { refsFromIds } from './entity-graph';
 
 // ── Constants ─────────────────────────────────────────
 //
@@ -182,10 +183,18 @@ export interface WebPageInput {
   url: string;
   inLanguage: string;
   datePublished?: string | null;
+  /**
+   * F3 — 站点实体图。
+   * 传入 entity-registry.json 中的 entity.id 列表，本函数解析为
+   * schema.org @id 引用并以 WebPage.mentions 形式输出，供 LLM crawler
+   * 建立跨页实体关联图。无 page_url 的实体自动跳过。
+   */
+  mentions?: string[];
 }
 
 export function buildWebPage(input: WebPageInput) {
-  const { name, description, url, inLanguage, datePublished } = input;
+  const { name, description, url, inLanguage, datePublished, mentions } = input;
+  const mentionRefs = mentions ? refsFromIds(mentions) : [];
   return {
     '@type': 'WebPage',
     '@id': url,
@@ -195,6 +204,7 @@ export function buildWebPage(input: WebPageInput) {
     isPartOf: { '@id': WEBSITE_ID },
     inLanguage,
     ...(datePublished ? { datePublished } : {}),
+    ...(mentionRefs.length > 0 ? { mentions: mentionRefs } : {}),
   };
 }
 
@@ -530,6 +540,18 @@ export interface SchemaPageData {
   faqItems?: FaqItem[];
   /** Optional human-readable label for the FAQPage entity. */
   faqName?: string;
+
+  /**
+   * F3 — Entity graph @id references. Pass an array of `entity.id` from
+   * `data/entities/entity-registry.json`; each is resolved to a schema.org
+   * @id + @type reference and emitted under WebPage.mentions.
+   *
+   * Use this for hub pages (industries, capabilities, materials, parts)
+   * to declare "this page is about these entities" — enables LLM crawlers
+   * to build a site-wide entity graph even without crawling every detail
+   * page.
+   */
+  mentions?: string[];
 }
 
 /**
@@ -560,6 +582,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     url: data.pageUrl,
     inLanguage: data.inLanguage ?? 'en-US',
     datePublished: data.articleDatePublished ?? null,
+    mentions: data.mentions,
   }));
 
   // 3. Breadcrumb
