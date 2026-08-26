@@ -437,6 +437,24 @@ function updateAstroConfig(mergedKeywords) {
   console.log('\n✓ Updated astro.config.mjs with multilingual keywordMap');
 }
 
+// ── 7b. Pull authoritative routes from dist/sitemap*.xml ───
+function pullSitemapRoutesFromDist() {
+  const distDir = path.resolve(ROOT, 'dist');
+  if (!fs.existsSync(distDir)) return null;
+  const files = fs.readdirSync(distDir).filter(f => /^sitemap.*\.xml$/.test(f));
+  if (files.length === 0) return null;
+  const locRe = /<loc>([^<]+)<\/loc>/g;
+  const hostRe = /^https?:\/\/[^/]+/;
+  const routes = new Set();
+  for (const f of files) {
+    const text = fs.readFileSync(path.join(distDir, f), 'utf-8');
+    for (const m of text.matchAll(locRe)) {
+      routes.add(m[1].replace(hostRe, ''));
+    }
+  }
+  return routes.size > 0 ? routes : null;
+}
+
 // ── Main ─────────────────────────────────────────────────
 async function main() {
   try {
@@ -477,8 +495,59 @@ async function main() {
     // Also add blog translation URLs
     for (const item of allItems) validUrls.add(item.urlPath);
 
+    // Strengthen with authoritative dist/sitemap*.xml (if a prior build exists)
+    const distSitemapRoutes = pullSitemapRoutesFromDist();
+    if (distSitemapRoutes) {
+      let addedFromDist = 0;
+      for (const r of distSitemapRoutes) {
+        if (!validUrls.has(r)) { validUrls.add(r); addedFromDist++; }
+      }
+      console.log(`  Strengthened validUrls with ${addedFromDist} dist-sitemap routes.`);
+    }
+
     console.log(`\nTotal source items: ${allItems.length}`);
     console.log(`Total valid target URLs: ${validUrls.size}`);
+
+    // 2b. Purge existing keywords whose URL is not in validUrls.
+    //     This removes fabricated/minimax-hallucinated URLs that were written
+    //     to astro.config.mjs in earlier runs without validation.
+    //     Guard added by AstroFlow Closed-Loop: Input -> Compute -> Store -> Validate -> Re-input.
+    const purgedExisting = [];
+    for (const [kw, url] of Object.entries(mergedKeywords)) {
+      const normalized = typeof url === 'string' && url.endsWith('/') ? url : (url + '/');
+      if (!validUrls.has(normalized)) {
+        purgedExisting.push({ keyword: kw, url });
+        delete mergedKeywords[kw];
+      }
+    }
+    if (purgedExisting.length > 0) {
+      console.log(`\n⚠ Purging ${purgedExisting.length} existing broken keywords (URL not in valid set).`);
+      for (const p of purgedExisting.slice(0, 10)) {
+        console.log(`     - "${p.keyword.slice(0, 50)}" → ${p.url}`);
+      }
+      if (purgedExisting.length > 10) {
+        console.log(`     ... and ${purgedExisting.length - 10} more`);
+      }
+      // Persist purge report for diff/history
+      try {
+        const reportDir = path.resolve(ROOT, '_audit');
+        if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });
+        const reportPath = path.join(reportDir, 'purged-keywords-history.json');
+        let history = [];
+        if (fs.existsSync(reportPath)) {
+          try { history = JSON.parse(fs.readFileSync(reportPath, 'utf-8')); } catch { /* ignore */ }
+        }
+        history.push({
+          ts: new Date().toISOString(),
+          source: 'generate-internal-links.mjs',
+          count: purgedExisting.length,
+          items: purgedExisting,
+        });
+        fs.writeFileSync(reportPath, JSON.stringify(history, null, 2), 'utf-8');
+      } catch (e) {
+        console.warn(`     (could not write purge history: ${e.message})`);
+      }
+    }
 
     // 3. Process each language separately
     for (const lang of SUPPORTED_LANGS) {
