@@ -34,6 +34,23 @@ jobs:
       - name: Build Astro site
         run: npm run build
 
+      # ── 内部链接审计门禁 ────────────────────────────────────────
+      # 验证 dist/sitemap*.xml 与 keywordMap + main-db 的一致性。
+      # 如果 fabricated URL（404）存在，脚本以 exit 1 失败，中止部署。
+      # 详细规范参见 SEMANTIC_CLOSURE.md §0.4 "Closed-Loop: Validate → Write"。
+      - name: Audit internal links (no broken anchor links)
+        id: link-audit
+        run: node scripts/check-keyword-map.mjs
+
+      - name: Upload broken-link audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: internal-link-audit
+          path: _audit/keywordmap_broken.json
+          if-no-files-found: ignore
+          retention-days: 14
+
       - name: Deploy to cPanel via FTP
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}

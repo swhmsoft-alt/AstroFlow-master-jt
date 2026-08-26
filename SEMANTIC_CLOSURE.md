@@ -33,6 +33,101 @@
 
 ---
 
+
+### 0.4 Closed-Loop: Validate → Write（写入前验证闭环）— 强制
+
+> 任何**会被构建系统或运行时读到并注入产物**的数据源（`keywordMap`、`main-db.json`、sitemap、JSON-LD 等），在写入之前**必须**先验证、写入之后**必须**再验证。
+> 这是对 §0.1 六段闭环中「输出 → 改进 → 再输入」三步的具象化，防止"写入即污染"反模式。
+
+#### 0.4.1 适用场景
+
+以下任一变更触发本闭环（不仅限于）：
+
+- 修改 `astro.config.mjs` 中的 `keywordMap`（rehype 插件运行时从该 map 读取并改写 Markdown HTML）。
+- 修改 `data/keywords/main-db.json`（供 `src/lib/auto-inline-links.ts` 运行时插入 `<a>` 标签）。
+- 修改路由生成逻辑（`src/pages/**/[...slug].astro`）、重定向表、或 sitemap 注入逻辑。
+- 修改 `src/lib/rehype-*` / `remark-*` 插件，使其可能产出新外链 / 内链。
+
+#### 0.4.2 五步闭环流程
+
+```
+[1] Source      → 拉取权威 URL 集 (dist/sitemap*.xml)
+[2] Validate    → node scripts/check-keyword-map.mjs   ─现状对账─
+[3] Purge       → purge-keyword-map.mjs / purge-main-db-broken.mjs   ─治理 source─
+[4] Write       → generate-internal-links.mjs（内置 Step 2b purge guard）─生成新数据─
+[5] Re-validate → node scripts/check-keyword-map.mjs   ─产出后再对账─
+                    ↓
+                若 0 broken → 闭环闭合（可提交 / 部署）
+                若 N broken → 回 [3] Purge，重走闭环
+```
+
+**关键不变量**：
+
+- `[5]` 的 `0 broken` 是**写入完成的唯一验收门禁**，不是写入后的可选检查。
+- `[1]` 的权威源 **只能是 `dist/sitemap*.xml`**，不允许"根据记忆"或"根据其他文档"判断某个 URL 是否存在。
+- `[3]` Purge 不直接改 HTML；只改 source（`keywordMap` / `main-db.json`）。下一次 `npm run build` 会重新生成 HTML。
+
+#### 0.4.3 CI 门禁（强制接入）
+
+在 `.github/workflows/deploy-ftp.yml` 中：
+
+```yaml
+- name: Build Astro site
+  run: npm run build
+
+# 强制门禁：若存在 broken internal link，部署中止
+- name: Audit internal links (no broken anchor links)
+  run: node scripts/check-keyword-map.mjs
+
+- name: Upload broken-link audit report
+  if: always()
+  uses: actions/upload-artifact@v4
+  with:
+    name: internal-link-audit
+    path: _audit/keywordmap_broken.json
+    retention-days: 14
+```
+
+**规则**：
+
+- 严禁 `--no-verify`、严禁 `continue-on-error: true`。check 失败 → job 中止 → 不进入 deploy。
+- 报告作为 artifact 上传（即使 0 broken 也保留 14 天），便于事后复盘"为何以前存在 fabricated URL"。
+- 本门禁与 `npm run build` 顺序锁定：先 build（产出 dist/），再 check（验证 dist/）。不可颠倒。
+
+#### 0.4.4 三脚本职责与防护关系
+
+| 脚本 | 职责 | 调用时机 | 防护层级 |
+| :--- | :--- | :--- | :--- |
+| `scripts/check-keyword-map.mjs` | 读 `dist/sitemap*.xml` + 两个 source，输出 0/N broken，exit 0/1 | CI / 本地验证 | **检测层** |
+| `scripts/purge-keyword-map.mjs` | 从 `astro.config.mjs` 删除 broken entries（备份原文件） | 本地手工 / 修复性运行 | **治理层** |
+| `scripts/purge-main-db-broken.mjs` | 从 `data/keywords/main-db.json` 删除 broken entries（备份原文件） | 本地手工 / 修复性运行 | **治理层** |
+| `scripts/generate-internal-links.mjs` Step 2b | 生成新 entries 时，预先过滤掉 `validUrls`（pillar + blog urlPath + dist sitemap）以外的 URL | 每次生成 | **预防层** |
+
+> **设计原则**：检测（check） + 治理（purge） + 预防（guard） 三层互为补充。
+> 只有检测 → 发现后只能手工 purge；只有预防 → 可能漏检历史遗留数据。
+> 三者同时存在才能同时防护「新增坏数据」与「遗留坏数据」。
+
+#### 0.4.5 案例（2026-08-26 keywordMap 修复）
+
+- **问题**：1602 个 fabricated URL 渗入 blog 文章锚文本（801 在 `keywordMap`，801 在 `main-db`），导致 404。
+- **根因**：`scripts/generate-internal-links.mjs` 的 `mergeKeywords()` 只验证 `newLinks`，不验证历史 `existing`，跨轮重生。
+- **修复**：
+  - `scripts/purge-keyword-map.mjs`：1152 → 351 entries（修复 brace counter off-by-one bug）。
+  - `scripts/purge-main-db-broken.mjs`：1264 → 463 entries。
+  - `scripts/generate-internal-links.mjs` 新增 `pullSitemapRoutesFromDist()` + Step 2b purge guard。
+  - `scripts/check-keyword-map.mjs`：固化为 CI 门禁，接入 `.github/workflows/deploy-ftp.yml`。
+- **验证**：本地 `node --check astro.config.mjs` ✅；本地 `npm run build` ✅（0 伪造锚文本）；CI 上 check exit 0 ✅。
+- **闭环**：所有改动遵循 [1]→[5] 流程；本次 5 步全部走完后才提交。
+
+#### 0.4.6 反模式（严格禁止）
+
+- ❌ **记忆判断 URL 有效性**：不读 `dist/sitemap*.xml`，凭"应该是 200"写入 `keywordMap`。
+- ❌ **绕过 CI**：PR review 时"临时跳过 check"、`--no-verify`、手工 `gh run watch` 欺骗。
+- ❌ **源头修正代替产物验证**：改了 `keywordMap` 但不复跑 `npm run build`，就提交。
+- ❌ **历史遗留豁免**："这些是旧数据，先不管" → 累计到下一次人工修复，造成"奇数年才需要跳脚"的技术债。
+
+---
+
 ## 1. User Intent Closure（意图闭环）
 
 Cline must verify before generating and validate after generating.
