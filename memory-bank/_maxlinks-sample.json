@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-08-27T05:27:27.417Z",
+  "config_max_default": 3,
+  "candidate_max": 6,
+  "total_keywordmap_entries": 351,
+  "per_lang_keyword_counts": {
+    "en": 131,
+    "de": 29,
+    "ja": 23,
+    "ko": 23,
+    "ar": 0
+  },
+  "samples": [
+    {
+      "file": "src/content/blog/ultimate-guide-titanium-surface-treatments-aerospace.md",
+      "lang": "en",
+      "size_bytes": 30506,
+      "lang_kw_count": 131,
+      "links_max3_total": 3,
+      "links_max3_unique": 3,
+      "links_max6_total": 6,
+      "links_max6_unique": 4,
+      "new_unique_at_max6": [
+        "/industries/aerospace/"
+      ]
+    },
+    {
+      "file": "src/content/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide.md",
+      "lang": "en",
+      "size_bytes": 24381,
+      "lang_kw_count": 131,
+      "links_max3_total": 3,
+      "links_max3_unique": 3,
+      "links_max6_total": 6,
+      "links_max6_unique": 5,
+      "new_unique_at_max6": [
+        "/industries/chemical/",
+        "/industries/medical/",
+        "/industries/medical/"
+      ]
+    },
+    {
+      "file": "src/content/blog-translations/de-ultimative-leitfaden-titanverarbeitung.md",
+      "lang": "de",
+      "size_bytes": 28303,
+      "lang_kw_count": 29,
+      "links_max3_total": 0,
+      "links_max3_unique": 0,
+      "links_max6_total": 0,
+      "links_max6_unique": 0,
+      "new_unique_at_max6": []
+    },
+    {
+      "file": "src/content/blog-translations/ja-titanium-cnc-machining-services.md",
+      "lang": "ja",
+      "size_bytes": 22228,
+      "lang_kw_count": 23,
+      "links_max3_total": 1,
+      "links_max3_unique": 1,
+      "links_max6_total": 1,
+      "links_max6_unique": 1,
+      "new_unique_at_max6": []
+    },
+    {
+      "file": "src/content/blog-translations/ko-titanium-cnc-machining-services.md",
+      "lang": "ko",
+      "size_bytes": 20060,
+      "lang_kw_count": 23,
+      "links_max3_total": 1,
+      "links_max3_unique": 1,
+      "links_max6_total": 1,
+      "links_max6_unique": 1,
+      "new_unique_at_max6": []
+    }
+  ]
+}

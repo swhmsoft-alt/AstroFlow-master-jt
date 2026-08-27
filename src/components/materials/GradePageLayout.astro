@@ -11,6 +11,7 @@ import GradeAlternativeMaterials from './GradeAlternativeMaterials.astro';
 import GradePageCta from './GradePageCta.astro';
 import GradeStructuredData from './GradeStructuredData.astro';
 import GradeRelatedComponents from './GradeRelatedComponents.astro';
+import AlloyComparisonTable from './AlloyComparisonTable.astro';
 import AudienceHub from '../audience/AudienceHub.astro';
 import type { GradeData } from '../../data/titanium-grades';
 
@@ -18,15 +19,23 @@ export interface Props {
   grade: GradeData;
   lang: string;
   gradeKey: string;
+  /**
+   * F3 — Entity @id reference for WebPage.mentions + TechArticle.about.
+   * Pass the `entity.id` from `data/entities/entity-registry.json`
+   * (e.g. "material:grade:grade-5"). When provided, the structured-data
+   * block emits the registry @id reference so LLM crawlers can link the
+   * grade page to its canonical entity node.
+   */
+  entityId?: string;
 }
 
-const { grade, lang, gradeKey } = Astro.props;
+const { grade, lang, gradeKey, entityId } = Astro.props;
 const t = useTranslations(lang);
 const hp = `materials.${gradeKey}.hero`;
 ---
 
 <!-- JSON-LD Structured Data -->
-<GradeStructuredData grade={grade} gradeKey={gradeKey} lang={lang} />
+<GradeStructuredData grade={grade} gradeKey={gradeKey} lang={lang} entityId={entityId} />
 
 <!-- Hero -->
 <SubpageHero
@@ -57,6 +66,19 @@ const hp = `materials.${gradeKey}.hero`;
 
 <!-- 7. Alternative Materials (alternative_to) -->
 <GradeAlternativeMaterials grade={grade} gradeKey={gradeKey} />
+
+<!-- 7b. Focused grade-vs-grade comparison (G2 pattern — AIO/对比型长尾).
+     Two clusters ship focused subsets; all other grade pages remain unchanged:
+     - Alpha-beta alloy family: Grade 5 (Ti-6Al-4V) vs Grade 23 ELI
+     - CP-Ti family:           Grade 1 vs Grade 2 vs Grade 4
+     Each cluster whitelits only matching grade labels so the table doesn't
+     collapse the "vs" / "differences" long-tail UX into a full 7-row dump. -->
+{(gradeKey === 'grade-5' || gradeKey === 'grade-23') && (
+  <AlloyComparisonTable gradeKeys={['Grade 5', 'Grade 23 ELI']} />
+)}
+{(gradeKey === 'grade-1' || gradeKey === 'grade-2' || gradeKey === 'grade-4') && (
+  <AlloyComparisonTable gradeKeys={['Grade 1', 'Grade 2', 'Grade 4']} />
+)}
 
 <!-- Why Choose Us (AIO narrative) -->
 {t(`materials.grades.${gradeKey}.whyChooseUs`) && (

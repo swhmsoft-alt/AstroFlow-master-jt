@@ -114,9 +114,21 @@ function auditEntity(entity, allFiles, fileContents) {
     new RegExp(`href=["']${pageUrlEsc.replace(/\/$/, '')}["']`, 'g'),
   ];
   // JSON-LD @id 引用模式
+  // - 原 cnc.bozemetal.com <page_url> 形式（向后兼容）
+  // - "url" 字段含 page_url
+  // - canonical entity @id 公式: https://www.bozemetal.com<page_url>#entity
+  //   同时兼容运行时形态（refsFromIds 输出）与源码 template 字面量形态
+  //   （例如 GradeStructuredData.astro 中的 `${gradeKey}/#entity`）
+  // - bare entity.id 字符串字面量（如 MENTIONED_ENTITY_IDS / ENTITY_ID 常量）
+  const pageUrlNoSlash = pageUrlEsc.replace(/\/$/, '');
   const jsonldPatterns = [
     new RegExp(`"@id"\\s*:\\s*["']${escapeRegex('https://cnc.bozemetal.com') + pageUrlEsc}["']`, 'g'),
     new RegExp(`"url"\\s*:\\s*["']${pageUrlEsc}["']`, 'g'),
+    new RegExp(
+      `["']https://www\\.bozemetal\\.com${pageUrlNoSlash}/(?:[^"']*?#entity)["']`,
+      'g'
+    ),
+    new RegExp(`["']${escapeRegex(entity.id)}["']`, 'g'),
   ];
 
   let totalMentions = 0;

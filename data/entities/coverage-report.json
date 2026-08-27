@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generated_at": "2026-08-24T10:23:16.467Z",
+    "generated_at": "2026-08-27T07:28:49.402Z",
     "total_entities": 867,
-    "zero_coverage": 293,
-    "with_internal_links": 8,
-    "with_jsonld_refs": 0,
+    "zero_coverage": 292,
+    "with_internal_links": 17,
+    "with_jsonld_refs": 4,
     "avg_coverage_score": 3,
-    "files_scanned": 439,
+    "files_scanned": 441,
     "by_category": {
       "application": {
         "total": 60,
@@ -20,13 +20,13 @@
       },
       "industry": {
         "total": 12,
-        "with_links": 2,
-        "avg_score": 59
+        "with_links": 11,
+        "avg_score": 61
       },
       "material": {
         "total": 34,
         "with_links": 1,
-        "avg_score": 8
+        "avg_score": 9
       },
       "process": {
         "total": 458,
@@ -55,12 +55,12 @@
       "id": "industry:aerospace-defense",
       "category": "industry",
       "canonical_name": "Aerospace & Defense",
-      "page_url": "/industries/aerospace-defense/",
-      "mentions_count": 402,
-      "link_count": 0,
+      "page_url": "/industries/aerospace/",
+      "mentions_count": 403,
+      "link_count": 2,
       "jsonld_refs": 0,
       "coverage_score": 100,
-      "files_hit": 94,
+      "files_hit": 95,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
@@ -79,6 +79,18 @@
           ]
         },
         {
+          "file": "src\\pages\\tools\\machining-simulator.astro",
+          "mentions": 20,
+          "links": 1,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Aerospace",
+              "count": 20
+            }
+          ]
+        },
+        {
           "file": "src\\components\\industries\\aerospace\\AerospaceComplianceSection.astro",
           "mentions": 25,
           "links": 0,
@@ -87,18 +99,6 @@
             {
               "term": "Aerospace",
               "count": 25
-            }
-          ]
-        },
-        {
-          "file": "src\\components\\industries\\aerospace\\AerospaceMetrologySection.astro",
-          "mentions": 24,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Aerospace",
-              "count": 24
             }
           ]
         }
@@ -177,9 +177,9 @@
       "id": "industry:general-industrial",
       "category": "industry",
       "canonical_name": "General Industrial",
-      "page_url": "/industries/general-industrial/",
+      "page_url": "/products/industries/",
       "mentions_count": 643,
-      "link_count": 0,
+      "link_count": 1,
       "jsonld_refs": 0,
       "coverage_score": 100,
       "files_hit": 132,
@@ -238,12 +238,12 @@
       "id": "industry:medical-device",
       "category": "industry",
       "canonical_name": "Medical Device",
-      "page_url": "/industries/medical-device/",
-      "mentions_count": 362,
-      "link_count": 0,
+      "page_url": "/industries/medical/",
+      "mentions_count": 363,
+      "link_count": 1,
       "jsonld_refs": 0,
       "coverage_score": 100,
-      "files_hit": 81,
+      "files_hit": 82,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
@@ -312,11 +312,11 @@
       "category": "material",
       "canonical_name": "Grade 5 – Ti-6Al-4V Titanium Alloy",
       "page_url": "/materials/grade-5/",
-      "mentions_count": 287,
+      "mentions_count": 292,
       "link_count": 0,
-      "jsonld_refs": 0,
+      "jsonld_refs": 2,
       "coverage_score": 100,
-      "files_hit": 59,
+      "files_hit": 60,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
@@ -356,7 +356,7 @@
         },
         {
           "file": "src\\components\\audience\\AudienceHub.astro",
-          "mentions": 16,
+          "mentions": 17,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
@@ -370,7 +370,7 @@
             },
             {
               "term": "Grade 5",
-              "count": 3
+              "count": 4
             }
           ]
         }
@@ -380,11 +380,11 @@
       "id": "industry:marine-offshore",
       "category": "industry",
       "canonical_name": "Marine & Offshore",
-      "page_url": "/industries/marine-offshore/",
+      "page_url": "/industries/marine/",
       "mentions_count": 220,
-      "link_count": 0,
+      "link_count": 1,
       "jsonld_refs": 0,
-      "coverage_score": 88,
+      "coverage_score": 93,
       "files_hit": 26,
       "top_files": [
         {
@@ -682,7 +682,7 @@
       "id": "industry:chemical-processing",
       "category": "industry",
       "canonical_name": "Chemical Processing",
-      "page_url": "/industries/chemical-processing/",
+      "page_url": "/industries/chemical/",
       "mentions_count": 170,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -738,6 +738,75 @@
             {
               "term": "Chemical",
               "count": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "material:grade:grade-23",
+      "category": "material",
+      "canonical_name": "Grade 23 – Ti-6Al-4V ELI Medical Titanium",
+      "page_url": "/materials/grade-23/",
+      "mentions_count": 128,
+      "link_count": 0,
+      "jsonld_refs": 1,
+      "coverage_score": 54,
+      "files_hit": 38,
+      "top_files": [
+        {
+          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
+          "mentions": 24,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Ti-6Al-4V ELI",
+              "count": 3
+            },
+            {
+              "term": "ASTM F136",
+              "count": 6
+            },
+            {
+              "term": "Grade 23",
+              "count": 15
+            }
+          ]
+        },
+        {
+          "file": "src\\components\\resources\\TitaniumGradesGuide.astro",
+          "mentions": 11,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Ti-6Al-4V ELI",
+              "count": 2
+            },
+            {
+              "term": "Grade 23",
+              "count": 9
+            }
+          ]
+        },
+        {
+          "file": "src\\components\\audience\\AudienceHub.astro",
+          "mentions": 10,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Ti-6Al-4V ELI",
+              "count": 5
+            },
+            {
+              "term": "ASTM F136",
+              "count": 1
+            },
+            {
+              "term": "Grade 23",
+              "count": 4
             }
           ]
         }
@@ -850,83 +919,14 @@
       ]
     },
     {
-      "id": "material:grade:grade-23",
-      "category": "material",
-      "canonical_name": "Grade 23 – Ti-6Al-4V ELI Medical Titanium",
-      "page_url": "/materials/grade-23/",
-      "mentions_count": 125,
-      "link_count": 0,
-      "jsonld_refs": 0,
-      "coverage_score": 50,
-      "files_hit": 37,
-      "top_files": [
-        {
-          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 24,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Ti-6Al-4V ELI",
-              "count": 3
-            },
-            {
-              "term": "ASTM F136",
-              "count": 6
-            },
-            {
-              "term": "Grade 23",
-              "count": 15
-            }
-          ]
-        },
-        {
-          "file": "src\\components\\resources\\TitaniumGradesGuide.astro",
-          "mentions": 11,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Ti-6Al-4V ELI",
-              "count": 2
-            },
-            {
-              "term": "Grade 23",
-              "count": 9
-            }
-          ]
-        },
-        {
-          "file": "src\\components\\audience\\AudienceHub.astro",
-          "mentions": 10,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Ti-6Al-4V ELI",
-              "count": 5
-            },
-            {
-              "term": "ASTM F136",
-              "count": 1
-            },
-            {
-              "term": "Grade 23",
-              "count": 4
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "process:equipment:cmm",
       "category": "process",
       "canonical_name": "Coordinate Measuring Machine (CMM)",
       "page_url": "/equipment/cmm/",
-      "mentions_count": 92,
+      "mentions_count": 99,
       "link_count": 0,
-      "jsonld_refs": 0,
-      "coverage_score": 37,
+      "jsonld_refs": 1,
+      "coverage_score": 43,
       "files_hit": 37,
       "top_files": [
         {
@@ -943,25 +943,25 @@
         },
         {
           "file": "src\\components\\audience\\AudienceHub.astro",
-          "mentions": 8,
+          "mentions": 13,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
               "term": "CMM",
-              "count": 8
+              "count": 13
             }
           ]
         },
         {
           "file": "src\\pages\\5-axis-titanium-machining.astro",
-          "mentions": 6,
+          "mentions": 8,
           "links": 0,
-          "jsonld": 0,
+          "jsonld": 1,
           "matched_terms": [
             {
               "term": "CMM",
-              "count": 6
+              "count": 8
             }
           ]
         }
@@ -1427,6 +1427,83 @@
       ]
     },
     {
+      "id": "industry:cycling---bicycle",
+      "category": "industry",
+      "canonical_name": "Cycling / Bicycle",
+      "page_url": "/products/industries/",
+      "mentions_count": 48,
+      "link_count": 1,
+      "jsonld_refs": 0,
+      "coverage_score": 24,
+      "files_hit": 7,
+      "top_files": [
+        {
+          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
+          "mentions": 37,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Cycling / Bicycle",
+              "count": 1
+            },
+            {
+              "term": "Bicycle",
+              "count": 11
+            },
+            {
+              "term": "Cycling",
+              "count": 18
+            },
+            {
+              "term": "Bike",
+              "count": 7
+            }
+          ]
+        },
+        {
+          "file": "src\\pages\\products\\index.astro",
+          "mentions": 3,
+          "links": 1,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Cycling / Bicycle",
+              "count": 1
+            },
+            {
+              "term": "Bicycle",
+              "count": 1
+            },
+            {
+              "term": "Cycling",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "file": "src\\pages\\products\\industries\\index.astro",
+          "mentions": 4,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Cycling / Bicycle",
+              "count": 1
+            },
+            {
+              "term": "Bicycle",
+              "count": 1
+            },
+            {
+              "term": "Cycling",
+              "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "application:fasteners",
       "category": "application",
       "canonical_name": "Fasteners",
@@ -1537,10 +1614,83 @@
       ]
     },
     {
+      "id": "industry:consumer-electronics",
+      "category": "industry",
+      "canonical_name": "Consumer Electronics",
+      "page_url": "/products/industries/",
+      "mentions_count": 39,
+      "link_count": 1,
+      "jsonld_refs": 0,
+      "coverage_score": 21,
+      "files_hit": 8,
+      "top_files": [
+        {
+          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
+          "mentions": 24,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Consumer Electronics",
+              "count": 2
+            },
+            {
+              "term": "Electronics",
+              "count": 5
+            },
+            {
+              "term": "Consumer",
+              "count": 17
+            }
+          ]
+        },
+        {
+          "file": "src\\pages\\products\\index.astro",
+          "mentions": 3,
+          "links": 1,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Consumer Electronics",
+              "count": 1
+            },
+            {
+              "term": "Electronics",
+              "count": 1
+            },
+            {
+              "term": "Consumer",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "file": "src\\pages\\products\\industries\\index.astro",
+          "mentions": 3,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Consumer Electronics",
+              "count": 1
+            },
+            {
+              "term": "Electronics",
+              "count": 1
+            },
+            {
+              "term": "Consumer",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "standard:astm-b348",
       "category": "standard",
       "canonical_name": "ASTM B348",
-      "page_url": "/titanium-standards/astm-b348/",
+      "page_url": "/materials/astm-b348/",
       "mentions_count": 53,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -1586,130 +1736,118 @@
       ]
     },
     {
-      "id": "industry:cycling---bicycle",
+      "id": "industry:automotive-motorsports",
       "category": "industry",
-      "canonical_name": "Cycling / Bicycle",
-      "page_url": "/industries/cycling---bicycle/",
-      "mentions_count": 48,
-      "link_count": 0,
+      "canonical_name": "Automotive & Motorsports",
+      "page_url": "/products/industries/",
+      "mentions_count": 33,
+      "link_count": 1,
       "jsonld_refs": 0,
-      "coverage_score": 19,
-      "files_hit": 7,
+      "coverage_score": 18,
+      "files_hit": 12,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 37,
+          "mentions": 12,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Cycling / Bicycle",
-              "count": 1
-            },
-            {
-              "term": "Bicycle",
+              "term": "Automotive",
               "count": 11
             },
             {
-              "term": "Cycling",
-              "count": 18
-            },
-            {
-              "term": "Bike",
-              "count": 7
-            }
-          ]
-        },
-        {
-          "file": "src\\pages\\products\\industries\\index.astro",
-          "mentions": 4,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Cycling / Bicycle",
+              "term": "Racing",
               "count": 1
-            },
-            {
-              "term": "Bicycle",
-              "count": 1
-            },
-            {
-              "term": "Cycling",
-              "count": 2
             }
           ]
         },
         {
           "file": "src\\pages\\products\\index.astro",
           "mentions": 3,
+          "links": 1,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "Automotive & Motorsports",
+              "count": 1
+            },
+            {
+              "term": "Motorsports",
+              "count": 1
+            },
+            {
+              "term": "Automotive",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "file": "src\\components\\react\\TitaniumGradeFinder.tsx",
+          "mentions": 5,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Cycling / Bicycle",
-              "count": 1
+              "term": "Automotive",
+              "count": 3
             },
             {
-              "term": "Bicycle",
-              "count": 1
-            },
-            {
-              "term": "Cycling",
-              "count": 1
+              "term": "Racing",
+              "count": 2
             }
           ]
         }
       ]
     },
     {
-      "id": "industry:consumer-electronics",
+      "id": "industry:electroplating-surface-finishing",
       "category": "industry",
-      "canonical_name": "Consumer Electronics",
-      "page_url": "/industries/consumer-electronics/",
-      "mentions_count": 39,
-      "link_count": 0,
+      "canonical_name": "Electroplating & Surface Finishing",
+      "page_url": "/products/industries/",
+      "mentions_count": 32,
+      "link_count": 1,
       "jsonld_refs": 0,
-      "coverage_score": 16,
-      "files_hit": 8,
+      "coverage_score": 18,
+      "files_hit": 7,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 24,
+          "mentions": 21,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Consumer Electronics",
+              "term": "Surface finishing",
               "count": 2
             },
             {
-              "term": "Electronics",
-              "count": 5
+              "term": "Electroplating",
+              "count": 12
             },
             {
-              "term": "Consumer",
-              "count": 17
+              "term": "PCB",
+              "count": 7
             }
           ]
         },
         {
           "file": "src\\pages\\products\\index.astro",
-          "mentions": 3,
-          "links": 0,
+          "mentions": 4,
+          "links": 1,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Consumer Electronics",
+              "term": "Electroplating & Surface Finishing",
               "count": 1
             },
             {
-              "term": "Electronics",
+              "term": "Surface finishing",
               "count": 1
             },
             {
-              "term": "Consumer",
-              "count": 1
+              "term": "Electroplating",
+              "count": 2
             }
           ]
         },
@@ -1720,15 +1858,15 @@
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Consumer Electronics",
+              "term": "Electroplating & Surface Finishing",
               "count": 1
             },
             {
-              "term": "Electronics",
+              "term": "Surface finishing",
               "count": 1
             },
             {
-              "term": "Consumer",
+              "term": "Electroplating",
               "count": 1
             }
           ]
@@ -2194,15 +2332,15 @@
       ]
     },
     {
-      "id": "industry:automotive-motorsports",
+      "id": "industry:environmental-engineering",
       "category": "industry",
-      "canonical_name": "Automotive & Motorsports",
-      "page_url": "/industries/automotive-motorsports/",
-      "mentions_count": 33,
-      "link_count": 0,
+      "canonical_name": "Environmental Engineering",
+      "page_url": "/products/industries/",
+      "mentions_count": 20,
+      "link_count": 1,
       "jsonld_refs": 0,
       "coverage_score": 13,
-      "files_hit": 12,
+      "files_hit": 6,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
@@ -2211,120 +2349,47 @@
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Automotive",
-              "count": 11
-            },
-            {
-              "term": "Racing",
+              "term": "Environmental Engineering",
               "count": 1
-            }
-          ]
-        },
-        {
-          "file": "src\\components\\react\\TitaniumGradeFinder.tsx",
-          "mentions": 5,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Automotive",
-              "count": 3
             },
             {
-              "term": "Racing",
+              "term": "Environmental",
               "count": 2
+            },
+            {
+              "term": "Wastewater",
+              "count": 9
             }
           ]
         },
         {
           "file": "src\\pages\\products\\index.astro",
-          "mentions": 3,
-          "links": 0,
+          "mentions": 2,
+          "links": 1,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Automotive & Motorsports",
+              "term": "Environmental Engineering",
               "count": 1
             },
             {
-              "term": "Motorsports",
+              "term": "Environmental",
               "count": 1
-            },
-            {
-              "term": "Automotive",
-              "count": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "industry:electroplating-surface-finishing",
-      "category": "industry",
-      "canonical_name": "Electroplating & Surface Finishing",
-      "page_url": "/industries/electroplating-surface-finishing/",
-      "mentions_count": 32,
-      "link_count": 0,
-      "jsonld_refs": 0,
-      "coverage_score": 13,
-      "files_hit": 7,
-      "top_files": [
-        {
-          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 21,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Surface finishing",
-              "count": 2
-            },
-            {
-              "term": "Electroplating",
-              "count": 12
-            },
-            {
-              "term": "PCB",
-              "count": 7
-            }
-          ]
-        },
-        {
-          "file": "src\\pages\\products\\index.astro",
-          "mentions": 4,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Electroplating & Surface Finishing",
-              "count": 1
-            },
-            {
-              "term": "Surface finishing",
-              "count": 1
-            },
-            {
-              "term": "Electroplating",
-              "count": 2
             }
           ]
         },
         {
           "file": "src\\pages\\products\\industries\\index.astro",
-          "mentions": 3,
+          "mentions": 2,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "Electroplating & Surface Finishing",
+              "term": "Environmental Engineering",
               "count": 1
             },
             {
-              "term": "Surface finishing",
-              "count": 1
-            },
-            {
-              "term": "Electroplating",
+              "term": "Environmental",
               "count": 1
             }
           ]
@@ -2389,10 +2454,59 @@
       ]
     },
     {
+      "id": "process:capability:cmm-inspection",
+      "category": "process",
+      "canonical_name": "CMM inspection",
+      "page_url": "/capabilities/cmm-inspection/",
+      "mentions_count": 22,
+      "link_count": 0,
+      "jsonld_refs": 1,
+      "coverage_score": 12,
+      "files_hit": 12,
+      "top_files": [
+        {
+          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
+          "mentions": 5,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "CMM inspection",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "file": "src\\pages\\as9100-titanium-supplier.astro",
+          "mentions": 4,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "CMM inspection",
+              "count": 4
+            }
+          ]
+        },
+        {
+          "file": "src\\components\\audience\\AudienceHub.astro",
+          "mentions": 3,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "CMM inspection",
+              "count": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "standard:ams-2488",
       "category": "standard",
       "canonical_name": "AMS 2488",
-      "page_url": "/titanium-standards/ams-2488/",
+      "page_url": "/materials/ams-2488/",
       "mentions_count": 28,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -2637,7 +2751,7 @@
       "id": "standard:astm-f136",
       "category": "standard",
       "canonical_name": "ASTM F136",
-      "page_url": "/titanium-standards/astm-f136/",
+      "page_url": "/materials/astm-f136/",
       "mentions_count": 25,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -2683,49 +2797,48 @@
       ]
     },
     {
-      "id": "process:capability:cmm-inspection",
-      "category": "process",
-      "canonical_name": "CMM inspection",
-      "page_url": "/capabilities/cmm-inspection/",
-      "mentions_count": 22,
-      "link_count": 0,
+      "id": "material:grade:grade-2",
+      "category": "material",
+      "canonical_name": "Grade 2 – Commercially Pure Titanium",
+      "page_url": "/materials/grade-2/",
+      "mentions_count": 10,
+      "link_count": 1,
       "jsonld_refs": 0,
       "coverage_score": 9,
-      "files_hit": 11,
+      "files_hit": 3,
       "top_files": [
         {
           "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 5,
+          "mentions": 6,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "CMM inspection",
-              "count": 5
+              "term": "ASTM B265 Grade 2",
+              "count": 6
             }
           ]
         },
         {
-          "file": "src\\pages\\as9100-titanium-supplier.astro",
+          "file": "src\\pages\\industries\\chemical.astro",
+          "mentions": 0,
+          "links": 1,
+          "jsonld": 0,
+          "matched_terms": []
+        },
+        {
+          "file": "src\\components\\audience\\AudienceHub.astro",
           "mentions": 4,
           "links": 0,
           "jsonld": 0,
           "matched_terms": [
             {
-              "term": "CMM inspection",
-              "count": 4
-            }
-          ]
-        },
-        {
-          "file": "src\\components\\audience\\AudienceHub.astro",
-          "mentions": 3,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
+              "term": "CP-Ti Grade 2",
+              "count": 2
+            },
             {
-              "term": "CMM inspection",
-              "count": 3
+              "term": "Ti Grade 2",
+              "count": 2
             }
           ]
         }
@@ -3095,71 +3208,6 @@
       ]
     },
     {
-      "id": "industry:environmental-engineering",
-      "category": "industry",
-      "canonical_name": "Environmental Engineering",
-      "page_url": "/industries/environmental-engineering/",
-      "mentions_count": 20,
-      "link_count": 0,
-      "jsonld_refs": 0,
-      "coverage_score": 8,
-      "files_hit": 6,
-      "top_files": [
-        {
-          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 12,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Environmental Engineering",
-              "count": 1
-            },
-            {
-              "term": "Environmental",
-              "count": 2
-            },
-            {
-              "term": "Wastewater",
-              "count": 9
-            }
-          ]
-        },
-        {
-          "file": "src\\pages\\products\\index.astro",
-          "mentions": 2,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Environmental Engineering",
-              "count": 1
-            },
-            {
-              "term": "Environmental",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "file": "src\\pages\\products\\industries\\index.astro",
-          "mentions": 2,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "Environmental Engineering",
-              "count": 1
-            },
-            {
-              "term": "Environmental",
-              "count": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "process:capability:thread-rolling",
       "category": "process",
       "canonical_name": "Thread rolling",
@@ -3212,7 +3260,7 @@
       "id": "standard:astm-b265",
       "category": "standard",
       "canonical_name": "ASTM B265",
-      "page_url": "/titanium-standards/astm-b265/",
+      "page_url": "/materials/astm-b265/",
       "mentions_count": 20,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -3261,7 +3309,7 @@
       "id": "standard:astm-f86",
       "category": "standard",
       "canonical_name": "ASTM F86",
-      "page_url": "/titanium-standards/astm-f86/",
+      "page_url": "/materials/astm-f86/",
       "mentions_count": 19,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -3409,38 +3457,6 @@
               "count": 2
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "material:grade:grade-2",
-      "category": "material",
-      "canonical_name": "Grade 2 – Commercially Pure Titanium",
-      "page_url": "/materials/grade-2/",
-      "mentions_count": 6,
-      "link_count": 1,
-      "jsonld_refs": 0,
-      "coverage_score": 7,
-      "files_hit": 2,
-      "top_files": [
-        {
-          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 6,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "ASTM B265 Grade 2",
-              "count": 6
-            }
-          ]
-        },
-        {
-          "file": "src\\pages\\industries\\chemical.astro",
-          "mentions": 0,
-          "links": 1,
-          "jsonld": 0,
-          "matched_terms": []
         }
       ]
     },
@@ -3827,7 +3843,7 @@
       "id": "standard:ams-4928",
       "category": "standard",
       "canonical_name": "AMS 4928",
-      "page_url": "/titanium-standards/ams-4928/",
+      "page_url": "/materials/ams-4928/",
       "mentions_count": 14,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -7711,7 +7727,7 @@
       "id": "standard:astm-b338",
       "category": "standard",
       "canonical_name": "ASTM B338",
-      "page_url": "/titanium-standards/astm-b338/",
+      "page_url": "/materials/astm-b338/",
       "mentions_count": 5,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -7760,7 +7776,7 @@
       "id": "standard:astm-f2924",
       "category": "standard",
       "canonical_name": "ASTM F2924",
-      "page_url": "/titanium-standards/astm-f2924/",
+      "page_url": "/materials/astm-f2924/",
       "mentions_count": 4,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -7809,7 +7825,7 @@
       "id": "standard:iso-5832-3",
       "category": "standard",
       "canonical_name": "ISO 5832-3",
-      "page_url": "/titanium-standards/iso-5832-3/",
+      "page_url": "/materials/iso-5832-3/",
       "mentions_count": 6,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -7858,7 +7874,7 @@
       "id": "standard:mil-t-9047",
       "category": "standard",
       "canonical_name": "MIL-T-9047",
-      "page_url": "/titanium-standards/mil-t-9047/",
+      "page_url": "/materials/mil-t-9047/",
       "mentions_count": 6,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -8452,6 +8468,76 @@
             {
               "term": "ti65",
               "count": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "material:grade:grade-1",
+      "category": "material",
+      "canonical_name": "Grade 1 – Commercially Pure Titanium",
+      "page_url": "/materials/grade-1/",
+      "mentions_count": 3,
+      "link_count": 0,
+      "jsonld_refs": 0,
+      "coverage_score": 1,
+      "files_hit": 2,
+      "top_files": [
+        {
+          "file": "src\\components\\audience\\AudienceHub.astro",
+          "mentions": 2,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "CP-Ti Grade 1",
+              "count": 1
+            },
+            {
+              "term": "Ti Grade 1",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
+          "mentions": 1,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "ASTM B265 Grade 1",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "material:grade:grade-4",
+      "category": "material",
+      "canonical_name": "Grade 4 – Commercially Pure Titanium",
+      "page_url": "/materials/grade-4/",
+      "mentions_count": 2,
+      "link_count": 0,
+      "jsonld_refs": 0,
+      "coverage_score": 1,
+      "files_hit": 1,
+      "top_files": [
+        {
+          "file": "src\\components\\audience\\AudienceHub.astro",
+          "mentions": 2,
+          "links": 0,
+          "jsonld": 0,
+          "matched_terms": [
+            {
+              "term": "CP-Ti Grade 4",
+              "count": 1
+            },
+            {
+              "term": "Ti Grade 4",
+              "count": 1
             }
           ]
         }
@@ -10090,7 +10176,7 @@
       "id": "standard:ams-4911",
       "category": "standard",
       "canonical_name": "AMS 4911",
-      "page_url": "/titanium-standards/ams-4911/",
+      "page_url": "/materials/ams-4911/",
       "mentions_count": 3,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10139,7 +10225,7 @@
       "id": "standard:ams-4943",
       "category": "standard",
       "canonical_name": "AMS 4943",
-      "page_url": "/titanium-standards/ams-4943/",
+      "page_url": "/materials/ams-4943/",
       "mentions_count": 2,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10176,7 +10262,7 @@
       "id": "standard:astm-b381",
       "category": "standard",
       "canonical_name": "ASTM B381",
-      "page_url": "/titanium-standards/astm-b381/",
+      "page_url": "/materials/astm-b381/",
       "mentions_count": 3,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10225,7 +10311,7 @@
       "id": "standard:astm-b861",
       "category": "standard",
       "canonical_name": "ASTM B861",
-      "page_url": "/titanium-standards/astm-b861/",
+      "page_url": "/materials/astm-b861/",
       "mentions_count": 2,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10262,7 +10348,7 @@
       "id": "standard:astm-f3001",
       "category": "standard",
       "canonical_name": "ASTM F3001",
-      "page_url": "/titanium-standards/astm-f3001/",
+      "page_url": "/materials/astm-f3001/",
       "mentions_count": 2,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10299,7 +10385,7 @@
       "id": "standard:astm-f67",
       "category": "standard",
       "canonical_name": "ASTM F67",
-      "page_url": "/titanium-standards/astm-f67/",
+      "page_url": "/materials/astm-f67/",
       "mentions_count": 3,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10348,7 +10434,7 @@
       "id": "standard:iso-5832-11",
       "category": "standard",
       "canonical_name": "ISO 5832-11",
-      "page_url": "/titanium-standards/iso-5832-11/",
+      "page_url": "/materials/iso-5832-11/",
       "mentions_count": 2,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -10481,47 +10567,10 @@
       ]
     },
     {
-      "id": "material:grade:grade-1",
-      "category": "material",
-      "canonical_name": "Grade 1 – Commercially Pure Titanium",
-      "page_url": "/materials/grade-1/",
-      "mentions_count": 1,
-      "link_count": 0,
-      "jsonld_refs": 0,
-      "coverage_score": 0,
-      "files_hit": 1,
-      "top_files": [
-        {
-          "file": "src\\components\\react\\ReverseEngineerTool.tsx",
-          "mentions": 1,
-          "links": 0,
-          "jsonld": 0,
-          "matched_terms": [
-            {
-              "term": "ASTM B265 Grade 1",
-              "count": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "material:grade:grade-3",
       "category": "material",
       "canonical_name": "Grade 3 – Commercially Pure Titanium",
       "page_url": "/materials/grade-3/",
-      "mentions_count": 0,
-      "link_count": 0,
-      "jsonld_refs": 0,
-      "coverage_score": 0,
-      "files_hit": 0,
-      "top_files": []
-    },
-    {
-      "id": "material:grade:grade-4",
-      "category": "material",
-      "canonical_name": "Grade 4 – Commercially Pure Titanium",
-      "page_url": "/materials/grade-4/",
       "mentions_count": 0,
       "link_count": 0,
       "jsonld_refs": 0,
@@ -22301,7 +22350,7 @@
       "id": "standard:ams-4944",
       "category": "standard",
       "canonical_name": "AMS 4944",
-      "page_url": "/titanium-standards/ams-4944/",
+      "page_url": "/materials/ams-4944/",
       "mentions_count": 1,
       "link_count": 0,
       "jsonld_refs": 0,

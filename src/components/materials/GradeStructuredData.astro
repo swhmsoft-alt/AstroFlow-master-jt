@@ -5,15 +5,37 @@ export interface Props {
   grade: GradeData;
   gradeKey: string;
   lang: string;
+  /**
+   * F3 — Entity @id reference. When provided, TechArticle.about is emitted
+   * as a canonical @id reference to `data/entities/entity-registry.json`
+   * instead of an anonymous Thing, and the registry node is also added
+   * to the page @graph so LLM crawlers can link the grade page to its
+   * canonical material entity (e.g. material:grade:grade-5).
+   */
+  entityId?: string;
 }
 
-const { grade, gradeKey, lang } = Astro.props;
+const { grade, gradeKey, lang, entityId } = Astro.props;
 const siteUrl = 'https://cnc.bozemetal.com';
 const brandId = 'https://www.bozemetal.com/#brand-boze-cnc-ti';
 const orgId = 'https://www.bozemetal.com/#organization';
 const orgName = 'Baoji Boze Metal Products Co., Ltd.';
 const canonicalURL = `${siteUrl}/materials/${gradeKey}/`;
 const currentDate = new Date().toISOString().split('T')[0];
+
+// F3 — Resolve entity @id reference. Mirrors entity-graph.ts ::entitySchemaId():
+//   https://www.bozemetal.com<page_url without trailing slash>/#entity
+// We only emit the reference when entityId is provided; otherwise we fall back
+// to the existing anonymous Thing so behavior is unchanged for callers that
+// don't opt in.
+const entityRef: Record<string, unknown> | null = entityId
+  ? {
+      '@id': `https://www.bozemetal.com/materials/${gradeKey}/#entity`,
+      '@type': 'DefinedTerm',
+      name: grade.name,
+      description: grade.tagline,
+    }
+  : null;
 
 const faqItems = (grade.faqs || []).map((faq) => ({
   '@type': 'Question',
@@ -39,7 +61,13 @@ const faqItems = (grade.faqs || []).map((faq) => ({
       datePublished: currentDate,
       dateModified: currentDate,
       mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
-      about: { '@type': 'Thing', name: grade.name, description: grade.tagline },
+      // F3 — when entityId is provided, swap the anonymous Thing for a
+      // canonical @id reference defined in @graph (see entityRef below).
+      // Falls back to the previous anonymous Thing for callers that don't
+      // opt in, so behavior is unchanged for non-target grade pages.
+      about: entityRef
+        ? { '@id': entityRef['@id'] }
+        : { '@type': 'Thing', name: grade.name, description: grade.tagline },
     },
     {
       '@type': 'BreadcrumbList',
@@ -59,6 +87,9 @@ const faqItems = (grade.faqs || []).map((faq) => ({
       brand: { '@type': 'Brand', '@id': brandId, name: 'BOZE CNC Ti' },
       manufacturer: { '@type': 'Organization', '@id': orgId, name: orgName },
     },
+    // F3 — emit the canonical entity node when entityId was provided so
+    // LLM crawlers can resolve TechArticle.about back to the registry entry.
+    ...(entityRef ? [entityRef] : []),
     ...(grade.faqs && grade.faqs.length > 0 ? [{
       '@type': 'FAQPage',
       '@id': canonicalURL + '#faq',

@@ -3,14 +3,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GradePageLayout from '../../components/materials/GradePageLayout.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { GRADE_DATA } from '../../data/titanium-grades';
+import { getEntityByPageUrl } from '../../lib/entity-graph';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const grade = GRADE_DATA['grade-5'];
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com');
+
+// F3 — resolve the canonical entity @id for this grade page so BaseLayout
+// emits WebPage.mentions and GradeStructuredData emits TechArticle.about
+// as a real @id reference to data/entities/entity-registry.json.
+const entity = getEntityByPageUrl(`/materials/${grade.key}/`);
+const entityId = entity?.id;
+const mentions = entityId ? [entityId] : undefined;
 ---
 
-<BaseLayout title={grade.pageTitle} description={grade.metaDescription} canonicalURL={canonicalURL.href}>
+<BaseLayout title={grade.pageTitle} description={grade.metaDescription} canonicalURL={canonicalURL.href} mentions={mentions}>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,5 +44,5 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.boze
       </ol>
     </div>
   </nav>
-  <GradePageLayout grade={grade} lang={lang} gradeKey={grade.key} />
+  <GradePageLayout grade={grade} lang={lang} gradeKey={grade.key} entityId={entityId} />
 </BaseLayout>

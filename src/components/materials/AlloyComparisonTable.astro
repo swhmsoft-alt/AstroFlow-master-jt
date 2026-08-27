@@ -10,11 +10,23 @@ interface AlloyRow {
   specStandard: string;
 }
 
+interface Props {
+  /**
+   * Optional whitelist of grade labels to include.
+   * When omitted, all 7 default rows render.
+   * Used by Grade 5 / Grade 23 pages to render a focused
+   * comparison block (see memory-bank/grade-5-semantic-cluster-audit.md §7 G2).
+   */
+  gradeKeys?: string[];
+}
+
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
-const alloyData: AlloyRow[] = [
+const { gradeKeys } = Astro.props as Props;
+
+const alloyDataAll: AlloyRow[] = [
   { grade: "Grade 1", spec: "CP-Ti", tensile: "≥ 240", yield: "≥ 170", elongation: "≥ 24", hardness: "~ 120", advantage: t('materials.alloycomparisontable.adv_grade1'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
   { grade: "Grade 2", spec: "CP-Ti", tensile: "≥ 345", yield: "≥ 275", elongation: "≥ 20", hardness: "~ 145", advantage: t('materials.alloycomparisontable.adv_grade2'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
   { grade: "Grade 4", spec: "CP-Ti", tensile: "≥ 550", yield: "≥ 483", elongation: "≥ 15", hardness: "~ 265", advantage: t('materials.alloycomparisontable.adv_grade4'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
@@ -23,6 +35,11 @@ const alloyData: AlloyRow[] = [
   { grade: "Grade 5", spec: "Ti-6Al-4V", tensile: "≥ 895", yield: "≥ 828", elongation: "≥ 10", hardness: "~ 330", advantage: t('materials.alloycomparisontable.adv_grade5'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
   { grade: "Grade 23 ELI", spec: "Ti-6Al-4V ELI", tensile: "≥ 860", yield: "≥ 795", elongation: "≥ 10", hardness: "~ 315", advantage: t('materials.alloycomparisontable.adv_grade23'), specStandard: t('materials.alloycomparisontable.spec_astm_b265') },
 ];
+
+// Backward-compatible filter: empty / undefined prop = all rows.
+const alloyData: AlloyRow[] = gradeKeys && gradeKeys.length > 0
+  ? alloyDataAll.filter((row) => gradeKeys.includes(row.grade))
+  : alloyDataAll;
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">

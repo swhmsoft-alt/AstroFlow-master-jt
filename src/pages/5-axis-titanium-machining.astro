@@ -11,6 +11,7 @@ import TrustBadges from '../components/landing/TrustBadges.astro';
 import Capabilities from '../components/landing/Capabilities.astro';
 import QualityControl from '../components/landing/QualityControl.astro';
 import Applications from '../components/landing/Applications.astro';
+import { refsFromIds } from '../lib/entity-graph';
 
 // ── SEO: page title & meta description (5-axis differentiation intent) ──
 const pageTitle =
@@ -19,7 +20,18 @@ const pageDescription =
   '5-axis titanium CNC machining for complex aerospace and medical components. Single-setup machining of thin-wall and contoured geometries, tolerances to ±0.005 mm, in-process probing, and CMM verification. Request a 5-axis quote within 48 hours.';
 const canonicalUrl = 'https://cnc.bozemetal.com/5-axis-titanium-machining/';
 
-// ── Supplementary JSON-LD: Service + ManufacturingPlant + OfferCatalog ──
+// F3 — Entity graph bridge (mirrors data/entities/entity-registry.json).
+// Declared as a literal array so audit-entity-coverage.mjs can detect the
+// source-file reference; @id URLs are resolved at runtime via refsFromIds().
+const MENTIONED_ENTITY_IDS = [
+  'material:grade:grade-5',
+  'material:grade:grade-23',
+  'process:equipment:cmm',
+  'process:capability:cmm-inspection',
+];
+const mentionRefs = refsFromIds([...MENTIONED_ENTITY_IDS]);
+
+// ── Supplementary JSON-LD: Service + ManufacturingPlant + OfferCatalog + WebPage ──
 const supplierSchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -71,6 +83,20 @@ const supplierSchema = {
         ],
       },
     },
+    // F3 — WebPage entry carrying WebPage.mentions so LLM crawlers can
+    // resolve the canonical material/process entities this service touches.
+    // @id URLs come from data/entities/entity-registry.json via refsFromIds().
+    ...(mentionRefs.length > 0
+      ? [{
+          '@type': 'WebPage',
+          '@id': canonicalUrl,
+          url: canonicalUrl,
+          name: pageTitle,
+          isPartOf: { '@id': 'https://cnc.bozemetal.com/#website' },
+          inLanguage: 'en-US',
+          mentions: mentionRefs,
+        }]
+      : []),
   ],
 };
 
