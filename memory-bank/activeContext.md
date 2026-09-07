@@ -1,7 +1,19 @@
 # Active Context
 
-> **Last Updated:** 2026-08-24
+> **Last Updated:** 2026-09-07
 > **Current Focus:** GEO Cluster×Inbound Phase 1 完成（实体图谱 + 覆盖率审计）。Phase 2 待批复。详见 `memory-bank/entity-graph.md`。
+
+## 2026-09-07 — Knowledge Package `services` 最小修复落地
+- **触发：** 用户反馈上周启动的 Knowledge Package trial（22 文件工作量）大概率完不成，要求复盘 + 决策是否放弃。
+- **诊断：** `/services/` 页面已完整运行（5 主服务 + 2 子服务卡片 + 合规 + 工作流 + 行业 + CTA，HERO_CONFIG 驱动），真实 gap 仅 3 处 schema/registry 缺口而非整个 V2.0 流程。
+- **决策：** 放弃完整 Knowledge Package 仪式（V2.0 Batch 2 + Human Review + APPROVED + IMPLEMENTATION_BRIEF + 全量落地，估 6–10h/30–40%），改最小手术式修复（15min/95%+）。
+- **变更（2 处）：**
+  - `data/entities/entity-registry.json` 新增 `service:master-services` entity（slug=services, page_url=/services/, 5 cross_refs→sub-hubs, 3 standards AS9100D/ISO 13485/ISO 9001）。meta.total 867→868, meta.by_category.service 22→23。字符串级 surgery，零格式化膨胀。
+  - `src/pages/services.astro` 加 `mentions={[...6 个 service:...-services id]}` 到 `<BaseLayout>`，复用现有 `F3 — Entity graph @id references` 机制自动注入 `WebPage.mentions` JSON-LD（schema.ts/BaseLayout 零改动）。
+- **清理（69 个文件）：** 删除整个 `knowledge-packages/services/`（14 文件）+ 空 `knowledge-packages/` 目录；删除 root 55 个临时文件（`_gen-*.mjs`、`_smoke-*.mjs`、`_list-services.*`、`_dns-test.mjs` 等 + `build_*.txt`/`deploy_*.txt`/`t.txt`/`out.txt`/`_*.log` 多个）。
+- **验证：** 字符串 + JSON 解析全部通过；`astro check` 输出 0 提及 services.astro/service:master/entity-registry（即修改零新增 error/warning）。
+- **经验教训：** Knowledge Package 仪式流程对"页面已存在且完整"的 seed 是杀鸡用牛刀。复盘先实际读页面（`src/pages/*.astro` + 组件）再决策，比直接读 Knowledge Package 文档准 10 倍。`serviceHubKey` prop 之前是死代码（声明但未用），本次通过 `mentions` 实际驱动 schema 输出。
+- **未部署：** 仅改 entity-registry 数据 + 1 行 mentions prop；下次 `npm run build` 时自动生效。
 
 ## Current Status
 
@@ -776,4 +788,44 @@ WebSite: cnc.bozemetal.com/#website, name "Boze Titanium Manufacturing Center", 
 ### 说明
 - 非英文 ams-4943/4944 的 techspecs/FAQ 现显示英文（Grade9 正确、合规措辞）；whyChooseUs 仍显示各语言本地化（含旧 NADCAP，用户接受）。
 - 后续新改动一律只在 en.json / 英文文件。
+
+---
+
+✅ **B-Prime+ 4 层架构落地（2026-09-04）：V2.0 → Knowledge Package → Implementation Brief → AstroFlow**
+- 背景：完整保存 V2.0 Master Prompt (~28KB, 30 节) 作为独立研究引擎；与 AstroFlow 现有体系通过 Knowledge Package 解耦；为 Cline 上下文预算增加精简执行层。
+- 新增 `docs/prompts/MASTER_PROMPT_V2.md`（V2.0 完整原文 + 极简 frontmatter，4 字段）
+- 新增 `docs/prompts/IMPLEMENTATION_BRIEF_TEMPLATE.md`（Cline 唯一执行入口模板，≤4KB）
+- 编辑 `docs/prompts/KNOWLEDGE_PACKAGE_TEMPLATE.md`：
+  - §8 evidence-matrix 加注：证据等级对齐说明（per V2.0 §5，E1=ASTM/ISO 最高，E6=推断最低；与 AstroFlow 不强行对齐）
+  - §11 APPROVED.md checks 增加 1 项（IMPLEMENTATION_BRIEF.md 已生成）
+  - §12 状态机扩展：DRAFT → APPROVED → APPROVED + BRIEF_READY → AstroFlow 消费
+  - 新增 §14 IMPLEMENTATION_BRIEF.md（B-Prime+ 新增层）
+- 编辑 `.clinerules/knowledge-package-handling.md`：
+  - Step 0 重写：验证 IMPLEMENTATION_BRIEF.md 存在（BRIEF_READY 状态）
+  - 新增 Step 0.5：上下文隔离（禁止读取 MASTER_PROMPT_V2.md 与 Package 非 Brief 文件）
+  - Step 4 改写：按 Brief 中 Translation 列执行，不让 Cline 重映射 E0-E6
+  - §4 写入边界增加 2 项（Brief 模板 + Brief 生成）
+  - §5 自检清单增加 2 项（Brief 入口 + 上下文隔离）
+- 关键决策：
+  - **母引擎不为适配子系统变形**：V2.0 E1=ASTM/ISO 编号原样保留，AstroFlow 端做映射（不强对齐 grade-5-semantic-cluster-audit.md）
+  - **Cline 不学 V2.0**：禁止读取 `MASTER_PROMPT_V2.md`（除非用户明确指示）
+  - **上下文预算**：V2.0(~28KB) + Package(~15KB) 同时加载 ~49KB → Brief(≤4KB) + Rules(~6KB) ≈ ~12KB（节省 ~75%）
+  - **状态机**：APPROVED → APPROVED + BRIEF_READY → AstroFlow 消费（Brief 必须存在）
+  - **未触碰 AstroFlow 正式系统**：`entity-registry.json` / `schema.ts` / `keywordMap` / `.astro` / `SEMANTIC_CLOSURE.md` 均未修改
+- 验证：5 个文件大小合理（见 .clinerules 工作区规则 §6）；git diff 已确认；未引入临时脚本。
+
+
+### Knowledge Package Trial 启动 (2026-09-04): seed = services
+
+- 背景: V2.0 + Knowledge Package + Brief + Cline 流水线首个 trial. seed = `/services/` (master-services-hub) — 选择 hub 而非 leaf page, 因为这样能让"语义知识系统价值"可量化 (≥ 200 字 hero 重写 + ≥ 5 sections 让 58 行 shell 变厚页).
+- 新增 `knowledge-packages/services/` 骨架 (12 文件 — README / architecture / entities / relationships / intent-map / information-gain / evidence-matrix / content-blueprint / implementation-notes / IMPLEMENTATION_BRIEF / APPROVED / V2.0_INVOCATION_PROMPT). 全部 DRAFT 状态.
+- 编辑 `docs/prompts/IMPLEMENTATION_BRIEF_TEMPLATE.md`: 新增 `## Hub Content Mandate (Conditional)` 段 (硬约束 — 仅 hub-type seed 触发; ≥ 200 字 hero + ≥ 5 sections + 内部链接图). 插入位置在 `## Required Changes` 之前.
+- V2.0_INVOCATION_PROMPT.md 已草拟 (用户可复制到外部 LLM Claude / Gemini / ChatGPT 启动 V2.0 输出).
+- 关键决策:
+  - **seed 选择 `/services/` 而非 leaf page**: 验证 hub-type trial 路径 + 让"语义知识系统价值"可量化 (避免 V2.0 沦为"关系图谱文档归档").
+  - **上下文隔离**: V2.0_INVOCATION_PROMPT.md 由 Cline 草拟但**不读** `MASTER_PROMPT_V2.md` (per `.clinerules/knowledge-package-handling.md` Step 0.5).
+  - **状态机**: 全部 12 文件 DRAFT → 等 V2.0 输出 + 人工 Review → APPROVED.md 全勾选 → IMPLEMENTATION_BRIEF.md 生成 → BRIEF_READY → AstroFlow 消费.
+  - **未触碰 AstroFlow 正式系统**: `entity-registry.json` / `schema.ts` / `keywordMap` / `.astro` / `SEMANTIC_CLOSURE.md` 均未修改.
+- 验证: knowledge-packages/services/ 12 文件已建立; BRIEF 模板 Hub Content Mandate 已加入; 待 git status 确认.
+- 后续: 等用户发出 V2.0 invocation prompt → 收到输出 → 拆分到 10 文件 → 人工 Review → APPROVED → Brief 生成 → 消费.
 

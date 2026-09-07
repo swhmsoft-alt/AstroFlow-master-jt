@@ -12,7 +12,17 @@ const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
 
-<BaseLayout serviceHubKey="master-service">
+<BaseLayout
+  serviceHubKey="master-service"
+  mentions={[
+    'service:master-services',
+    'service:titanium-cnc-machining-services',
+    'service:titanium-additive-manufacturing',
+    'service:titanium-fabrication-services',
+    'service:titanium-forming-heavy-manufacturing',
+    'service:titanium-surface-treatment',
+  ]}
+>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
