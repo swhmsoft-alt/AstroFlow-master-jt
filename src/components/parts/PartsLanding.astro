@@ -20,6 +20,16 @@ const sectionLinks = [
 ];
 ---
 <article>
+  <!-- AIO Direct Intent Resolver (Citation Block 2) -->
+  {d.directIntentResolver && (
+    <section id="aio-thesis-1" class="border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <h2 class="text-2xl font-bold mb-3" style="color: var(--theme-text);">What is custom titanium parts manufacturing?</h2>
+        <p class="text-base sm:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);" set:html={linkify(d.directIntentResolver.snapshot, 5)} />
+      </div>
+    </section>
+  )}
+
   <!-- Intro -->
   <section class="border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -36,7 +46,7 @@ const sectionLinks = [
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {d.categories.map((cat) => (
-          <a href={`/parts/${cat.slug}/`} class="group block p-6 rounded-xl border transition-all hover:translate-y-[-2px]"
+          <a href={`/parts/${cat.slug}/`} class="group block p-6 rounded-xl border transition-all hover:-translate-y-0.5"
             style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
             <h3 class="text-lg font-bold" style="color: var(--theme-text);">{cat.name}</h3>
             <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{cat.blurb}</p>
@@ -84,6 +94,150 @@ const sectionLinks = [
     </div>
   </section>
 
+  <!-- Procurement Snapshot (Citation Block 6) -->
+  {d.procurementSnapshot && (
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{d.procurementSnapshot.title}</h2>
+        <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.procurementSnapshot.intro}</p>
+        <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <table class="w-full text-sm" style="background: var(--theme-surface);">
+            <thead>
+              <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Parameter</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {d.procurementSnapshot.items.map((it) => (
+                <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                  <td class="p-3 font-semibold whitespace-nowrap" style="color: var(--theme-text);">{it.label}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{it.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+          Indicative parameters; project-specific MOQ, lead time and surcharge confirmed on RFQ.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <!-- Dimensional Comparison Matrix (Citation Block 4) -->
+  {d.comparisonMatrix && (
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{d.comparisonMatrix.title}</h2>
+        <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.comparisonMatrix.intro}</p>
+        <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <table class="w-full text-sm" style="background: var(--theme-bg);">
+            <thead>
+              <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                {d.comparisonMatrix.columns.map((c) => (
+                  <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">{c}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {d.comparisonMatrix.rows.map((r) => (
+                <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                  <td class="p-3 font-semibold" style="color: var(--theme-text);">{r.grade}</td>
+                  {r.cells.map((cell) => (
+                    <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {d.comparisonMatrix.footnote && (
+          <p class="mt-4 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{d.comparisonMatrix.footnote}</p>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- Cutting Parameters (STEP 2 / Citation Block — Engineering) -->
+  {d.cuttingParameters && (
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{d.cuttingParameters.title}</h2>
+        <p class="mt-3 mb-6" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);" set:html={linkify(d.cuttingParameters.intro, 5)} />
+
+        {/* Grade × Vc table */}
+        <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <table class="w-full text-sm" style="background: var(--theme-surface);">
+            <thead>
+              <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Grade / Operation</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Cutting Speed (Vc)</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Feed (f)</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Tool</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Coolant</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {d.cuttingParameters.grades.map((g) => (
+                <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                  <td class="p-3 font-semibold" style="color: var(--theme-text);">{g.grade}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{g.vc}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{g.feed}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{g.tool}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{g.coolant}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{g.notes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Industry-adjusted Vc caps */}
+        <h3 class="mt-10 mb-4 text-xl font-semibold" style="color: var(--theme-text);">Industry-Adjusted Vc Cap</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {d.cuttingParameters.industryChips.map((c) => (
+            <div class="rounded-xl border p-4" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="text-sm font-bold" style="color: var(--theme-primary);">{c.industry}</div>
+              <div class="mt-1 text-base font-semibold" style="color: var(--theme-text);">{c.vc}</div>
+              <p class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{c.constraint}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Troubleshooting */}
+        <h3 class="mt-10 mb-4 text-xl font-semibold" style="color: var(--theme-text);">Troubleshooting</h3>
+        <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <table class="w-full text-sm" style="background: var(--theme-surface);">
+            <thead>
+              <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Symptom</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Likely Cause</th>
+                <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {d.cuttingParameters.troubleshooting.map((t) => (
+                <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                  <td class="p-3 font-semibold" style="color: var(--theme-text);">{t.symptom}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t.cause}</td>
+                  <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t.action}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Startup note */}
+        <div class="mt-6 rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <div class="text-xs font-semibold uppercase tracking-wide" style="color: var(--theme-primary);">Conservative Start Parameter</div>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);" set:html={linkify(d.cuttingParameters.startupNote, 5)} />
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- FAQ -->
   <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,4 +252,78 @@ const sectionLinks = [
       </div>
     </div>
   </section>
+
+  <!-- Workflow Pipeline (Citation Block 5) -->
+  {d.workflowPipeline && (
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{d.workflowPipeline.title}</h2>
+        <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.workflowPipeline.intro}</p>
+        <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {d.workflowPipeline.stages.map((s) => (
+            <li class="rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="text-sm font-bold" style="color: var(--theme-primary);">{s.name}</div>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{s.desc}</p>
+              <p class="mt-3 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Deliverable: {s.deliverable}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  <!-- Boundary Conditions & Failure Modes (Citation Block 7) -->
+  {d.boundaryConditions && (
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{d.boundaryConditions.title}</h2>
+        <p class="mt-3 mb-8" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.boundaryConditions.intro}</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4" style="color: var(--theme-text);">Not Suitable For</h3>
+            <ul class="space-y-3">
+              {d.boundaryConditions.notSuitableFor.map((n) => (
+                <li class="rounded-xl border p-4" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+                  <div class="font-semibold" style="color: var(--theme-text);">{n.name}</div>
+                  <p class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{n.reason}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4" style="color: var(--theme-text);">Common Design Mistakes</h3>
+            <ul class="space-y-3">
+              {d.boundaryConditions.commonMistakes.map((m) => (
+                <li class="rounded-xl border p-4" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+                  <div class="font-semibold" style="color: var(--theme-text);">Mistake: {m.mistake}</div>
+                  <p class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Fix: {m.fix}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Related Entities (Citation Block 11) -->
+  {d.relatedEntities && (
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold" style="color: var(--theme-text);">{d.relatedEntities.title}</h2>
+        <div class="mt-6 flex flex-wrap gap-3">
+          {d.relatedEntities.items.map((it) => (
+            <a href={it.href} class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border transition-all"
+              style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); color: var(--theme-text);">
+              <span>{it.name}</span>
+              <span class="text-xs" style="color: color-mix(in srgb, var(--theme-primary) 80%, transparent);">· {it.relation}</span>
+            </a>
+          ))}
+        </div>
+        <p class="mt-4 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+          Titanium manufacturing entities reachable from /parts/. Each link targets an existing certified page.
+        </p>
+      </div>
+    </section>
+  )}
 </article>

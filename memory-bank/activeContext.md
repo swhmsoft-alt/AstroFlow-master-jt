@@ -1,7 +1,83 @@
 # Active Context
 
-> **Last Updated:** 2026-09-07
-> **Current Focus:** GEO Cluster×Inbound Phase 1 完成（实体图谱 + 覆盖率审计）。Phase 2 待批复。详见 `memory-bank/entity-graph.md`。
+> **Last Updated:** 2026-09-08
+> **Current Focus:** /parts/ STEP 2 Citation Blocks 已完整落地 + BaseLayout `collectionDescription` Props gap 已修补。详见本条 + 后续记录。
+
+## 2026-09-08 — 修复 BaseLayout Props gap：`collectionDescription` 接入 schema 流
+
+- **触发：** 用户跑 `npm run build`，TypeScript 报错 `src/pages/parts/index.astro:63` — `collectionDescription` 不在 `BaseLayout` Props 类型中。
+- **根因（架构 gap，非本次改动引入）：**
+  - `src/lib/schema.ts` 的 `PageSchemaData` 接口早已定义 `collectionDescription?: string`（line 715），并由 `buildCollectionPage({ description: data.collectionDescription ?? data.pageDescription })` 消费（line 857）→ schema 接收端**完全就绪**。
+  - 但 `src/layouts/BaseLayout.astro` 的 `Props` 接口、解构、`schemaData` 转发**三处全部缺失** → TypeScript 在调用站（`parts/index.astro:63`）拒绝 `collectionDescription` 属性。
+  - 这意味着即使其他页面想传 `collectionDescription` 给 CollectionPage description 字段，也会被 TS 拦下。`parts/index.astro` 是第一个**真正使用**该 prop 的页面（错位暴露了 gap）。
+- **修补（3 行，最小手术）：**
+  1. `BaseLayout.astro` line 51：Props 接口加 `collectionDescription?: string;`（在 `collectionName` 之后）。
+  2. `BaseLayout.astro` line 129：destructure 加 `collectionDescription,`（紧跟 `collectionName`）。
+  3. `BaseLayout.astro` line 188：`schemaData` 转发加 `collectionDescription`（紧跟 `collectionName`）。
+- **向后兼容：** 全程可选。`schema.ts:857` 已有 `?? data.pageDescription` 回退 → 未传 prop 的页面行为完全不变；只有当调用方主动传 `collectionDescription` 时才会进 `buildCollectionPage.description`。
+- **零侵入：** 不改 `schema.ts`，不改 `buildPageGraph()` 签名，不改任何其他页面。
+- **未部署：** 仅 `BaseLayout.astro` 3 行；下次 `npm run build` 时自动生效。
+- **git status（新增 1 个改动，累计 4 个）：**
+  - `M src/data/parts.ts`
+  - `M src/components/parts/PartsLanding.astro`
+  - `M src/pages/parts/index.astro`
+  - `M src/layouts/BaseLayout.astro`（本次新增）
+- **下一步候选：** ① 用户重跑 `npm run build` 确认 TypeScript 错误消失；② 若仍报错 → 检查 `astro.config.mjs` `tsconfig.json.strict` 设置；③ 通过后 commit + push 触发部署。
+
+## 2026-09-08 — 收尾：Tailwind lint 警告 + 临时文件清理
+
+- **触发：** `npm run build` 末尾的 Tailwind CSS 警告 `Line 49: hover:translate-y-[-2px] can be written as hover:-translate-y-0.5`。用户要求"准备收尾工作"。
+- **修复（1 行）：** `src/components/parts/PartsLanding.astro` line 49 `hover:translate-y-[-2px]` → `hover:-translate-y-0.5`。`hover:-translate-y-0.5` 编译产出 `transform: translateY(-0.125rem)` = `-2px`，视觉/动画行为等价。
+- **临时文件清理：** 删除本次 session 产生的 3 个 `_*.log`（`_check.log` / `_slug.log` / `_gs.log`）。其余根目录文件（`_keys_en.json` / `fix_*.py` / `nul` / `tmp` 等）为前置 session 既有产物，按 §6 约束不触碰。
+- **累计改动文件（4 个，未新增）：**
+  - `M src/data/parts.ts` — STEP 2 Citation Blocks 数据 + Cutting Parameters 7 行 Grade × Vc + 4 行业 cap + 3 troubleshooting + 启动公式。
+  - `M src/components/parts/PartsLanding.astro` — 渲染 7 个 Block + 本轮替换 Tailwind 类名。
+  - `M src/pages/parts/index.astro` — `supplementarySchema.Service.additionalProperty` 镜像 Procurement Snapshot。
+  - `M src/layouts/BaseLayout.astro` — 补 Props gap（`collectionDescription` × 3 处：Props / destructure / schemaData 转发）。
+- **闭环检查（§7）：**
+  - Input → 已审计 `schema.ts` (line 715, 857) 与 `BaseLayout` 三处转发点的 gap。
+  - Compute → 3 行最小手术 + 1 行 Tailwind 类名（无重新设计）。
+  - Store → `BaseLayout.astro` 写入 3 处；`PartsLanding.astro` 写入 1 处。
+  - Output → Schema 流恢复一致（CollectionPage.description 现可被外部传入）；7 个 STEP 2 Block 全部可渲染。
+  - Improve → Tailwind lint 警告消除；零破坏性变更。
+  - Re-input → 等用户 `npm run build` 验证 TypeScript + Tailwind 双通道。
+  - Reuse → `linkify(text, 5)` 复用、`var(--theme-*)` 主题 token 复用、`color-mix()` 复用 — 零新增样式资产。
+- **下一步候选（待用户决策）：** ① `npm run build` 验证；② commit + push 部署；③ 把 `cuttingParameters` 数据推广到 8 个 PART_PAGES 子页（按需开启 schema 演进）；④ 评估是否将 4 个 Industry-Adjusted Vc Cap 提升为 JSON-LD `PropertyValue`（需走 schema 演进流程）。
+
+## 2026-09-08 — /parts/ 落地 Cutting Parameters Citation Block（替换占位）
+
+- **触发：** 用户提供完整钛合金 Vc 表 + 多行业 Vc cap + 故障排查指南。前次 Procurement Snapshot 留有 `[用户请输入确切的：推荐切削速度 Vc (m/min) — Ti-6Al-4V)]` 占位，本次按"最小改动、不污染 JSON-LD、不推广子页"原则执行。
+- **变更（2 文件，零 schema 改动）：**
+  1. `src/data/parts.ts`：
+     - `PartsLandingData` 接口扩展 `cuttingParameters` 字段（grades / industryChips / troubleshooting / startupNote）。
+     - Procurement Snapshot 的 1 项 `Recommended Cutting Parameter` 占位 → 替换为 **8 项合同级摘要**（Ti-6Al-4V 粗/精/钻 + Ti-5Al-5V-5Fe-3Cr + Beta-C + Ti-5Al-2.5Sn + CP Grade 2/5 + Industry-Adjusted Vc Cap）。
+     - 新增 `cuttingParameters` 字段承载**完整工程数据**：7 行 Grade × Vc × f × tool × coolant × notes + 4 个 Industry Vc Cap + 3 条 Troubleshooting + 1 段 Conservative Start 公式。
+  2. `src/components/parts/PartsLanding.astro`：在 Comparison Matrix 之后、FAQ 之前插入 `<section>` Cutting Parameters。包含：6 列 Grade-Operation 表 + 4 卡 Industry Vc + 3 列 Troubleshooting 表 + 启动参数提示盒。所有 prose 用 `linkify(..., 5)`。
+- **JSON-LD 策略：** 切削参数**仅出现在可视 Block**，不镜像到 `Service.additionalProperty`（避免 8 条工程参数污染顶层 JSON-LD；JSON-LD 顶层只承载合同级 MOQ/Lead Time/证书/NDT/Quality Systems — 与上次 STEP 2 落地一致）。
+- **未部署：** 仅数据 + 组件；下次 `npm run build` 时自动生效。
+- **红线遵守：** ① `schema.ts` / `BaseLayout` / `buildPageGraph()` 零改动；② 所有 Vc/f/tool/coolant 数值直接来自用户提供的工程参数，未编造；③ 7 个钛合金牌号均使用行业标准化学符号（Ti-6Al-4V、Ti-5Al-5V-5Fe-3Cr、Beta-C、Ti-5Al-2.5Sn、CP Grade 2/5）。✅
+- **git status（仅 2 个本次新增改动 + 上次的 1 个，仍是 3 个文件）：**
+  - `M src/data/parts.ts`
+  - `M src/components/parts/PartsLanding.astro`
+  - `M src/pages/parts/index.astro`（上次 STEP 2 留下）
+- **下一步候选（待用户决策）：** ① 把 `cuttingParameters` 推广到 8 个 PART_PAGES 子页（需扩展 `PartsCategory` 接口 + `PartsDetail.astro` 模板）；② 把 `Industry-Adjusted Vc Cap` 作为 Schema.org `PropertyValue` 加进 JSON-LD（需新增独立 `TechArticle` 实体到 entity-registry.json，按 `.clinerules/knowledge-package-handling` 走 schema 演进）；③ run `npm run build` 验证 dist/parts/index.html 渲染 7 行 grade 表 + 4 卡 industry cap；④ git commit + push 触发部署。
+
+## 2026-09-08 — /parts/ 落地 STEP 2 Citation Blocks（最小手术）
+
+- **触发：** 用户要求按 V2.0 Knowledge Package 的 STEP 2 Citation Blocks 思路，将 /parts/ Titanium Parts Landing 改造成完整 Pillar Solution Page（AIO / EEAT / 维度对比 / 工作流 / 边界条件 / Related Entities）。
+- **变更（3 文件，全部数据驱动 / 零 schema 改动）：**
+  1. `src/data/parts.ts`：`PartsLandingData` 接口扩展 6 个可选字段（`directIntentResolver` / `procurementSnapshot` / `comparisonMatrix` / `workflowPipeline` / `boundaryConditions` / `relatedEntities`），并向 `PARTS_LANDING` 注入完整内容。
+  2. `src/components/parts/PartsLanding.astro`：在 `<article>` 内依次渲染 AIO Thesis → Intro → Categories → SectionLinks → RFQ CTA → **Procurement Snapshot** → **Comparison Matrix** → FAQ → **Workflow Pipeline** → **Boundary Conditions** → **Related Entities**；使用现有 `linkify(text, 5)` 与 `var(--theme-*)` 主题色；新增 `<table>` 与 grid 排版，与原视觉一致。
+  3. `src/pages/parts/index.astro`：仅扩展 `supplementarySchema.Service.additionalProperty` = Procurement Snapshot items 的镜像，让 AIO 爬虫能从 JSON-LD 命中 MOQ / lead-time / 证书等关键参数。**不替换** `schema.ts` / `BaseLayout` 的 `buildPageGraph()`，保留原 Service + FAQPage 不变。
+- **未部署：** 仅改数据文件 + 1 组件 + 1 页面；下次 `npm run build` 时自动生效。
+- **占位项（需用户后续提供）：** 暂无 — 切削参数已由用户提供并落盘（见 2026-09-08 第 2 条）。所有数值（MOQ 5–10 pc、lead time 3–5/4–6/5–8 周、Expedited +20–30%、AS9100D/ISO 9001/ISO 13485、EN 10204 3.1、±0.005 mm、Ra 0.4 µm、grade R56400/R50400/R56320/R56401、Vc 60–80/40–60/20–40/50–70/40–60/70–90/80–120 m/min）均直接来源于用户提供的工程与商务参数。
+- **红线遵守：** ① `schema.ts` 未触碰（避免破坏 `buildPageGraph()` 与 `hub-mentions` 现有机制）；② Related Entities 链接全部指向 sitemap 已存在的页面（services/industries/materials/capabilities/rfq）；③ 所有事实陈述只搬用户提供的商务参数，不编造数字；④ 工具栏 URL/路径未伪造。✅
+- **验证（受限）：** `node scripts/check-undefined-slugs.mjs --ci` ✅ 0 issue；`npx astro check` 在 sandbox 内被 ^C 中断，已扫描到的 warning 全部位于与本次改动无关的旧文件（middleware.js / Footer.astro / Header.astro / AudienceHub.astro / MicroCapabilityPage.astro / TraceabilityFoundation.astro / ThemeSwitcher.astro / ComparisonTable.astro）— **未发现** `parts/index.astro` / `PartsLanding.astro` / `parts.ts` 的新增 error。
+- **git status（仅 3 个本次改动）：**
+  - `M src/data/parts.ts`
+  - `M src/components/parts/PartsLanding.astro`
+  - `M src/pages/parts/index.astro`
+- **下一步候选（待用户决策）：** ① 用户填写 Recommended Cutting Parameter 占位 → 删 `[…]`；② 把 `procurementSnapshot` 推广为 `PartsCategory` 共享字段（PART_PAGES 共 8 条）→ 需新增循环渲染模板；③ Workflow Pipeline 与 Boundary Conditions 同样推广到 Part Pages；④ run `npm run build` 验证 dist/parts/index.html 的 JSON-LD additionalProperty 与可视内容一致；⑤ git commit + push 触发部署。
 
 ## 2026-09-07 — Knowledge Package `services` 最小修复落地
 - **触发：** 用户反馈上周启动的 Knowledge Package trial（22 文件工作量）大概率完不成，要求复盘 + 决策是否放弃。

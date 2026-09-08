@@ -23,6 +23,10 @@ const canonicalUrl = `${SITE}/parts/`;
 
 // Supplementary JSON-LD: Service + FAQPage. CollectionPage + ItemList are
 // generated automatically by BaseLayout via pageType="products-hub".
+// Service.additionalProperty is a flat mirror of the visible Procurement
+// Snapshot table so AIO / LLM crawlers can ground MOQ / lead-time /
+// traceability values without scrolling. Standards and grades stay
+// textual; no fabrication of numeric data not present on the page.
 const supplementarySchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -34,6 +38,11 @@ const supplementarySchema = {
       provider: { '@id': `${SITE}/#manufacturing-center` },
       areaServed: 'Worldwide',
       description: pageDescription,
+      additionalProperty: (PARTS_LANDING.procurementSnapshot?.items ?? []).map((it) => ({
+        '@type': 'PropertyValue',
+        name: it.label,
+        value: it.value,
+      })),
     },
     {
       '@type': 'FAQPage',

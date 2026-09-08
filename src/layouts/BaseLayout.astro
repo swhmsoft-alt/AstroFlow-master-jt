@@ -48,6 +48,7 @@ interface Props {
   productCategory?: string;
   productRfqUrl?: string;
   collectionName?: string;
+  collectionDescription?: string;
   itemCount?: number;
   items?: { name: string; url: string }[];
   /**
@@ -125,6 +126,7 @@ const {
   productCategory,
   productRfqUrl,
   collectionName,
+  collectionDescription,
   itemCount,
   items,
   faqItems,
@@ -183,7 +185,7 @@ const schemaData = {
   articleHeadline: explicitPageType === 'blog-post' ? title : undefined, articleDescription: description, articleAuthor: author,
   articleDatePublished: pubDate ?? undefined, serviceName: resolvedServiceName, serviceDescription: resolvedServiceName ? description : undefined,
   serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
-  productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, itemCount, items,
+  productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, collectionDescription, itemCount, items,
   faqItems, faqName,
   howtoItem,
   mentions,

@@ -106,6 +106,51 @@ export interface PartsLandingData {
   intro: string;
   categories: { name: string; slug: string; blurb: string }[];
   faqs: PartsFaq[];
+
+  // ---- STEP 2 enhancements (Pillar Solution Page / AIO / EEAT) ----
+  /** AIO snapshot: 2–3 sentence direct-answer block. */
+  directIntentResolver?: { snapshot: string };
+  /** Procurement Snapshot: MOQ / sample fee / lead time / capacity / cert. */
+  procurementSnapshot?: {
+    title: string;
+    intro: string;
+    items: { label: string; value: string; placeholder?: boolean }[];
+  };
+  /** Dimensional Comparison Matrix across part families. */
+  comparisonMatrix?: {
+    title: string;
+    intro: string;
+    columns: string[];
+    rows: { grade: string; cells: string[] }[];
+    footnote?: string;
+  };
+  /** Sequential Workflow Pipeline (DFM → Quotation → FAI → Production → Shipment). */
+  workflowPipeline?: {
+    title: string;
+    intro: string;
+    stages: { name: string; desc: string; deliverable: string }[];
+  };
+  /** Boundary Conditions & Failure Modes for B2B engineering evaluation. */
+  boundaryConditions?: {
+    title: string;
+    intro: string;
+    notSuitableFor: { name: string; reason: string }[];
+    commonMistakes: { mistake: string; fix: string }[];
+  };
+  /** Related Entities Graph: bottom semantic-neighbor links. */
+  relatedEntities?: {
+    title: string;
+    items: { name: string; href: string; relation: string }[];
+  };
+  /** Cutting Parameters Reference: grade × Vc table + industry caps + troubleshooting. */
+  cuttingParameters?: {
+    title: string;
+    intro: string;
+    grades: { grade: string; vc: string; feed: string; tool: string; coolant: string; notes: string }[];
+    industryChips: { industry: string; vc: string; constraint: string }[];
+    troubleshooting: { symptom: string; cause: string; action: string }[];
+    startupNote: string;
+  };
 }
 
 // ── Titanium grade slugs (link targets under /materials/) ────────────
@@ -168,6 +213,135 @@ export const PARTS_LANDING: PartsLandingData = {
         'We support prototypes, low-volume production and batch production. MOQ is project-dependent — for many CNC and fabricated titanium parts we can produce single-piece prototypes and ramp to production.',
     },
   ],
+
+  // ---- AIO direct-answer snapshot (STEP 2 / Citation Block 2) ----
+  directIntentResolver: {
+    snapshot:
+      'Custom titanium parts manufacturing from BOZE covers prototype through mid-volume production of CNC-machined, fabricated, welded and EDM-processed titanium components, machined from certified grades (Gr1–Gr4 CP-titanium and Ti-6Al-4V / Ti-6Al-4V ELI alloys) under AS9100D, ISO 9001 and ISO 13485 quality systems with full EN 10204 3.1 traceability. Submit drawings for a 24–48 hour DFM-reviewed quotation.',
+  },
+
+  // ---- Procurement Snapshot (STEP 2 / Citation Block 6) ----
+  procurementSnapshot: {
+    title: 'Procurement & Supply-Chain Readiness',
+    intro: 'Indicative commercial parameters for evaluation. Final terms are confirmed per RFQ.',
+    items: [
+      { label: 'Batch Range', value: '1-piece prototype → 10–1,000-piece mid-volume production' },
+      { label: 'MOQ', value: '5–10 pieces or ≥5 kg per part number (project-dependent)' },
+      { label: 'Sample Policy', value: 'Paid prototypes at cost recovery; fees refundable against bulk PO' },
+      { label: 'Prototype Lead Time', value: '3–5 working weeks (incl. DFM + First Article Inspection)' },
+      { label: 'Low-Volume Lead Time', value: '4–6 working weeks (5–50 pieces)' },
+      { label: 'Mid-Volume Lead Time', value: '5–8 working weeks (50–500 pieces; bar stock lead time included)' },
+      { label: 'Expedited Surcharge', value: 'Typically +20–30% on standard lead time' },
+      { label: 'Customer-Supplied Material', value: 'Accepted (customer-issued titanium bar/plate); full traceability preserved' },
+      { label: 'Quality Systems', value: 'AS9100D · ISO 9001 · ISO 13485' },
+      { label: 'Material Traceability', value: 'EN 10204 3.1 mill certificates per shipment' },
+      { label: 'NDT Capability', value: 'UT / RT / PT / MPI as specified' },
+      { label: 'Ti-6Al-4V Roughing Vc (m/min)', value: '60–80 (TiAlN-coated carbide, f 0.15–0.25 mm/rev, ample coolant)' },
+      { label: 'Ti-6Al-4V Finishing Vc (m/min)', value: '40–60 (TiAlN/AlCrN-coated, f 0.05–0.10 mm/rev; Ra ≤ 0.8 µm)' },
+      { label: 'Ti-6Al-4V Drilling Vc (m/min)', value: '20–40 (carbide twist drill, f 0.10–0.20 mm/rev, chip evacuation mandatory)' },
+      { label: 'Ti-5Al-5V-5Fe-3Cr Roughing Vc (m/min)', value: '50–70 (higher strength; TiAlN-coated, f 0.12–0.20 mm/rev)' },
+      { label: 'Beta-C (Ti-3Al-8V-6Cr-4Zr-4Mo) Roughing Vc (m/min)', value: '40–60 (high-temperature alloy; coated carbide, f 0.10–0.18 mm/rev)' },
+      { label: 'Ti-5Al-2.5Sn Roughing Vc (m/min)', value: '70–90 (cold-formable titanium; carbide, f 0.15–0.25 mm/rev)' },
+      { label: 'CP Grade 2/5 Roughing Vc (m/min)', value: '80–120 (best machinability; carbide, f 0.15–0.30 mm/rev)' },
+      { label: 'Industry-Adjusted Vc Cap', value: 'Aerospace AS9100D ≤ 60 m/min · Medical ISO 13485 40–50 m/min · Industrial 60–80 m/min · Prototype 30–50 m/min' },
+    ],
+  },
+
+  // ---- Cutting Parameters (STEP 2 / Citation Block — Engineering) ----
+  // Visible Block on the page; NOT mirrored to JSON-LD Service.additionalProperty
+  // (engineering parameters stay on-page; JSON-LD only carries contract-level values).
+  cuttingParameters: {
+    title: 'Cutting Speed (Vc) Reference by Titanium Grade',
+    intro:
+      'Cutting speed Vc — not spindle RPM — is the primary constraint for titanium. Titanium has very low thermal conductivity (≈ 7 W/m·K), so heat concentrates at the cutting edge: raising RPM to "compensate" slow feed accelerates built-up edge and chipping. Coolant: oil-based > emulsion >> dry. Tool coating: TiAlN / AlCrN > TiN > uncoated.',
+    grades: [
+      { grade: 'Ti-6Al-4V — Roughing', vc: '60–80 m/min', feed: 'f 0.15–0.25 mm/rev', tool: 'TiAlN-coated carbide', coolant: 'ample flood + air blast', notes: 'Generic first choice; hot-hardness retention' },
+      { grade: 'Ti-6Al-4V — Finishing', vc: '40–60 m/min', feed: 'f 0.05–0.10 mm/rev', tool: 'TiAlN / AlCrN-coated', coolant: 'ample flood', notes: 'ISO 5/6 tolerance · Ra ≤ 0.8 µm' },
+      { grade: 'Ti-6Al-4V — Drilling', vc: '20–40 m/min', feed: 'f 0.10–0.20 mm/rev', tool: 'carbide twist drill', coolant: 'ample flood + chip evacuation', notes: 'Titanium sticks to flute; forced evacuation mandatory' },
+      { grade: 'Ti-5Al-5V-5Fe-3Cr — Roughing', vc: '50–70 m/min', feed: 'f 0.12–0.20 mm/rev', tool: 'TiAlN-coated carbide', coolant: 'ample flood', notes: 'Higher strength → Vc trimmed vs Ti-6-4' },
+      { grade: 'Beta-C (Ti-3Al-8V-6Cr-4Zr-4Mo) — Roughing', vc: '40–60 m/min', feed: 'f 0.10–0.18 mm/rev', tool: 'coated carbide', coolant: 'ample flood', notes: 'High-temperature alloy; hardest to cut' },
+      { grade: 'Ti-5Al-2.5Sn — Roughing', vc: '70–90 m/min', feed: 'f 0.15–0.25 mm/rev', tool: 'carbide', coolant: 'ample flood', notes: 'Cold-formable titanium; better machinability' },
+      { grade: 'CP Grade 2 / 5 — Roughing', vc: '80–120 m/min', feed: 'f 0.15–0.30 mm/rev', tool: 'carbide', coolant: 'ample flood', notes: 'Best machinability; low strength' },
+    ],
+    industryChips: [
+      { industry: 'Aerospace (AS9100D)', vc: 'Vc ≤ 60 m/min (conservative)', constraint: 'Ra ≤ 0.8 µm · full cutting-parameter file archived and traceable' },
+      { industry: 'Medical (ISO 13485)', vc: '40–50 m/min', constraint: 'Ra ≤ 0.4 µm · no burrs, no micro-cracks (implant-critical)' },
+      { industry: 'Automotive / Industrial', vc: '60–80 m/min', constraint: 'Cost-sensitive · optimise cycle time · wider tool-wear budget' },
+      { industry: 'Prototype / Low-Volume', vc: '30–50 m/min', constraint: 'First-article yield ≥ 95% · time secondary' },
+    ],
+    troubleshooting: [
+      { symptom: 'Built-up edge / smearing', cause: 'Vc too high OR insufficient coolant', action: 'Reduce Vc · increase coolant flow · verify coating selection' },
+      { symptom: 'Insert chipping / breakage', cause: 'Workpiece rigidity insufficient OR f too aggressive', action: 'Re-check fixturing · reduce feed per tooth · verify ap' },
+      { symptom: 'Surface roughness exceeds spec', cause: 'Feed too high OR coolant concentration low', action: 'Reduce f · raise coolant concentration · switch to finer edge prep' },
+    ],
+    startupNote:
+      'Conservative start for Ti-6Al-4V finish milling (D = 25 mm): n ≈ 760 RPM · Vf = n × f ≈ 760 × 0.08 ≈ 60 mm/min · actual Vc ≈ 60 m/min. Ramp in small increments only after confirming chip color and surface finish.',
+  },
+
+  // ---- Dimensional Comparison Matrix (STEP 2 / Citation Block 4) ----
+  comparisonMatrix: {
+    title: 'Titanium Part Family Comparison',
+    intro: 'Engineering-side view of the seven titanium part families BOZE manufactures through /parts/. Cost index is qualitative (CP titanium baseline) and reflects families most commonly procured for multi-vertical OEM programs.',
+    columns: ['Part Family', 'Primary Process', 'Typical Tolerance', 'Typical Lot', 'Relative Cost'],
+    rows: [
+      { grade: 'Titanium CNC Parts', cells: ['3/5-axis milling, turning, wire EDM', '±0.005 mm (CMM-verified)', 'Prototype → 10,000+ pc', '1.0–2.5×'] },
+      { grade: 'Titanium Fabricated Parts', cells: ['TIG / laser cut / formed', '±0.1 mm typical', '1 → 500 assemblies', '1.1–2.0×'] },
+      { grade: 'Titanium Pipe Components', cells: ['Spool fabrication, welded', '±0.2 mm on spool OD', 'Project-orders', '1.2–2.4×'] },
+      { grade: 'Titanium Marine Parts', cells: ['CNC + fabrication', '±0.05 mm critical features', 'Low-volume to series', '1.4–2.6×'] },
+      { grade: 'Titanium UAV Components', cells: ['5-axis milling, Swiss-type', '±0.005 mm thin-wall', 'Prototype → 1,000 pc', '1.6–3.0×'] },
+      { grade: 'Titanium Motorsport Parts', cells: ['CNC + welded assemblies', '±0.02 mm suspension', 'Small series', '1.5–2.8×'] },
+      { grade: 'Titanium Medical Components', cells: ['CNC, electropolished', '±0.01 mm + Ra ≤ 0.4 µm', 'Project / sterile-pack', '1.8–3.5×'] },
+    ],
+    footnote: 'Tolerance, lot and cost ranges are engineering-side reference figures, not quotations. Project-specific terms confirmed via RFQ.',
+  },
+
+  // ---- Sequential Workflow Pipeline (STEP 2 / Citation Block 5) ----
+  workflowPipeline: {
+    title: 'From Drawing to Shipment — Manufacturing Workflow',
+    intro: 'How a custom titanium parts program moves through BOZE engineering, production and quality gates.',
+    stages: [
+      { name: '1. RFQ Intake', desc: 'Customer submits 3D/2D drawing, grade, tolerance, surface finish, NDT.', deliverable: 'RFQ ticket + NDA on request' },
+      { name: '2. DFM Review', desc: 'Engineering reviews manufacturability, GDAM, fixturing and cost drivers.', deliverable: 'DFM report + indicative price (24–48 h)' },
+      { name: '3. Quotation', desc: 'Formal quote issued with lead time, MOQ, payment terms and sample policy.', deliverable: 'Signed quotation + PO' },
+      { name: '4. First Article (FAI)', desc: 'First article machined, CMM-checked, material certificates issued.', deliverable: 'FAI report + CMM inspection' },
+      { name: '5. Production Run', desc: 'Approved FAI released to batch; in-process inspection at each stage.', deliverable: 'Batch + traveler + MTC (EN 10204 3.1)' },
+      { name: '6. NDT & Surface', desc: 'UT / RT / PT, surface treatment (passivation, anodizing, PVD) as specified.', deliverable: 'NDT report + surface records' },
+      { name: '7. Shipment', desc: 'Export packing, HS code, COO, Incoterms and logistics coordinated.', deliverable: 'Shipment + commercial invoice + packing list' },
+    ],
+  },
+
+  // ---- Boundary Conditions & Failure Modes (STEP 2 / Citation Block 7) ----
+  boundaryConditions: {
+    title: 'Boundary Conditions & Engineering Failure Modes',
+    intro: 'Engineering-side disclosures for buyers and designers evaluating titanium parts manufacturing feasibility.',
+    notSuitableFor: [
+      { name: 'Mass-production > 50,000 pcs/month', reason: 'Optimized for prototype-to-mid-volume; for very high-volume runs another process tier is more cost-effective.' },
+      { name: 'Non-titanium substitutes', reason: 'Titanium-specific tooling, fixturing and chemistry — aluminum / steel jobs are out of scope for this page.' },
+      { name: 'Replacing certified OEM-issued parts', reason: 'Customer-OEM parts remain governed by their own FAA / MDR / MIL documentation chain; BOZE supports build-to-print but cannot re-issue OEM certifications.' },
+    ],
+    commonMistakes: [
+      { mistake: 'Specifying ±0.001 mm tolerances where ±0.05 mm is sufficient', fix: 'Tighten only critical GDAM features; reduces cycle time and cost 10–30%.' },
+      { mistake: 'Ignoring titanium-specific machinability (work-hardening, springback)', fix: 'Engage DFM in Step 2; fixturing and cutter selection reviewed before quotation.' },
+      { mistake: 'Mixing grades on a single part (CP + alloy)', fix: 'Confirm grade(s) up-front; mixing affects weld procedure and certificates.' },
+      { mistake: 'Assuming Ti-6Al-4V weldability like CP-Ti', fix: 'Post-weld heat treatment required; design weld access accordingly.' },
+    ],
+  },
+
+  // ---- Related Entities Graph (STEP 2 / Citation Block 11) ----
+  relatedEntities: {
+    title: 'Related Titanium Manufacturing Entities',
+    items: [
+      { name: 'Titanium CNC Machining Services', href: '/titanium-cnc-machining-services/', relation: 'Service' },
+      { name: 'Titanium Fabrication & Welding', href: '/titanium-fabrication-services/', relation: 'Service' },
+      { name: 'Wire EDM Machining', href: '/titanium-cnc-machining-services/wire-edm-machining/', relation: 'Process' },
+      { name: 'Titanium Grades (Materials Library)', href: '/materials/', relation: 'Material' },
+      { name: 'Aerospace Titanium Components', href: '/industries/aerospace/', relation: 'Industry' },
+      { name: 'Medical Titanium Components', href: '/industries/medical/', relation: 'Industry' },
+      { name: 'Technical Capabilities', href: '/capabilities/', relation: 'Capability' },
+      { name: 'Standards Compliance', href: '/capabilities/standards-compliance/', relation: 'Standard' },
+      { name: 'Request a Quote (RFQ)', href: '/rfq/', relation: 'Commercial' },
+    ],
+  },
 };
 
 // ── Part category pages ──────────────────────────────────────────────
