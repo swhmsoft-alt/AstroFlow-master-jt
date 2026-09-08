@@ -59,6 +59,44 @@ export interface PartsCategory {
   };
   rfqCta: { title: string; text: string };
   faqs: PartsFaq[];
+
+  // ---- STEP 2 enhancements (procurement-first / AIO / E-E-A-T) ----
+  /** AIO snapshot: 2–3 sentence direct answer block, optimized for AI Overviews. */
+  directIntentResolver?: {
+    snapshot: string;
+  };
+  /** Procurement Snapshot: MOQ / sample fee / lead time / capacity / cert. */
+  procurementSnapshot?: {
+    title: string;
+    intro: string;
+    items: { label: string; value: string; placeholder?: boolean }[];
+  };
+  /** Dimensional Comparison Matrix (e.g. Gr2 vs Gr5 vs Gr9 vs Gr23). */
+  comparisonMatrix?: {
+    title: string;
+    intro: string;
+    columns: string[];
+    rows: { grade: string; cells: string[] }[];
+    footnote?: string;
+  };
+  /** Sequential Workflow Pipeline (DFM → Quotation → FAI → PPAP → Production → Shipment). */
+  workflowPipeline?: {
+    title: string;
+    intro: string;
+    stages: { name: string; desc: string; deliverable: string }[];
+  };
+  /** Boundary Conditions & Failure Modes: not-suitable-for / common design mistakes. */
+  boundaryConditions?: {
+    title: string;
+    intro: string;
+    notSuitableFor: { name: string; reason: string }[];
+    commonMistakes: { mistake: string; fix: string }[];
+  };
+  /** Related Entities Graph: bottom semantic-neighbor links. */
+  relatedEntities?: {
+    title: string;
+    items: { name: string; href: string; relation: string }[];
+  };
 }
 
 export interface PartsLandingData {
@@ -144,6 +182,24 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Custom Titanium CNC Parts Manufacturing',
     heroSubtitle:
       'Precision titanium precision parts machined on 3/5-axis CNC centers and turn-mill cells — from prototype to production, with wire EDM for complex geometries and titanium rapid prototyping.',
+    directIntentResolver: {
+      snapshot:
+        'Custom titanium CNC parts from BOZE are precision-machined from certified titanium grades (Gr2, Gr5, Gr9, Gr23) on 3/5-axis CNC centers with ±0.005 mm tolerances. Production runs from single-piece prototypes to 10,000+ piece batches under AS9100D / ISO 9001 / ISO 13485 quality systems with EN 10204 3.1 mill certificates. Submit drawings via RFQ for a DFM review and quotation within 24–48 hours.',
+    },
+    procurementSnapshot: {
+      title: 'Procurement Snapshot',
+      intro: 'Key commercial parameters for procurement planning. Contact us for project-specific confirmation.',
+      items: [
+        { label: 'MOQ', value: '1–5 pieces; flexible, prototype-friendly (vs typical 5–10 pc Western job-shop MOQ)' },
+        { label: 'Sample Policy', value: 'Paid samples at 50–100% cost recovery; refundable against bulk PO' },
+        { label: 'Standard Lead Time', value: '7–15 working days (7 d prototype; 10–15 d short-run production)' },
+        { label: 'Monthly Capacity', value: '50,000–100,000 pieces/month (mid-to-upper tier capacity)' },
+        { label: 'Quality Systems', value: 'AS9100D · ISO 9001 · ISO 13485 (medical)' },
+        { label: 'Material Traceability', value: 'EN 10204 3.1 mill certificates per shipment' },
+        { label: 'RFQ Response', value: 'DFM review and quotation within 24–48 hours' },
+        { label: 'Pricing Position', value: 'Typically 25–35% below Western job-shop benchmarks for comparable specifications; cost-advantage from integrated Baoji titanium supply chain. Final price subject to project specification.' },
+      ],
+    },
     applicationOverview: {
       title: 'Application Overview',
       body:
@@ -166,6 +222,8 @@ export const PART_PAGES: PartsCategory[] = [
         { name: 'UAV airframe & gimbal components', grade: 'Gr5 / Gr9', standard: 'ASTM B348', note: 'Lightweight thin-wall' },
         { name: 'Semiconductor vacuum chamber hardware', grade: 'Gr2 / Gr5', standard: 'ASTM B348', note: 'UHV-cleaned surfaces' },
         { name: 'Custom shafts, housings & threaded fasteners', grade: 'Gr2 / Gr5 / Gr23', standard: 'ASTM B348', note: 'Turn-mill single setup' },
+        { name: 'Marine fasteners & propeller hubs', grade: 'Gr5 / Gr9', standard: 'ASTM B348 / ASTM B265', note: 'Seawater-corrosion resistant' },
+        { name: 'Chemical process valve & reactor internals', grade: 'Gr2 / Gr7', standard: 'ASTM B348 / ASTM B265', note: 'Crevice-corrosion resistant for HCl / H2SO4 service' },
       ],
     },
     manufacturingMethods: {
@@ -191,6 +249,22 @@ export const PART_PAGES: PartsCategory[] = [
         { name: 'Grade 19 / 21 – Beta alloys', uns: 'UNS R58640 / R58210', note: 'High strength for aerospace' },
       ],
     },
+    comparisonMatrix: {
+      title: 'Titanium Grade Procurement Comparison',
+      intro: 'Side-by-side view of the four grades most commonly procured for custom CNC parts. Cost index is qualitative relative to Grade 2 (CP).',
+      columns: ['Property', 'Grade 2 (CP)', 'Grade 5 (Ti-6Al-4V)', 'Grade 9 (Ti-3Al-2.5V)', 'Grade 23 (Ti-6Al-4V ELI)'],
+      rows: [
+        { grade: 'UNS Designation', cells: ['R50400', 'R56400', 'R56320', 'R56401'] },
+        { grade: 'Tensile Strength (min, MPa)', cells: ['345', '895', '620', '860'] },
+        { grade: 'Yield Strength (min, MPa)', cells: ['275', '828', '483', '795'] },
+        { grade: 'Machinability Index', cells: ['Fair (gummy, work-hardens)', 'Poor–Fair (work-hardening)', 'Fair', 'Poor–Fair (similar to Gr5)'] },
+        { grade: 'Corrosion Resistance', cells: ['Excellent (oxidizing media)', 'Good', 'Good', 'Good'] },
+        { grade: 'Weldability', cells: ['Excellent', 'Limited (post-weld treatment)', 'Excellent', 'Limited (post-weld treatment)'] },
+        { grade: 'Relative Cost Index', cells: ['1.0× (baseline)', '2.5–3.5×', '1.6–2.0×', '3.0–4.0×'] },
+        { grade: 'Typical Procurement Use', cells: ['Chemical / marine corrosion parts', 'Aerospace structural & motorsport', 'High-strength welded tubing', 'Medical implants (ISO 5832-3)'] },
+      ],
+      footnote: 'Mechanical property minima per ASTM B348 (Gr2, Gr5) and ASTM B265 (Gr9, Gr23). Cost index is a market-relative estimate, not a quotation. Confirm with RFQ.',
+    },
     technicalCapabilities: {
       title: 'Technical Capabilities',
       intro: 'Typical machining capabilities for titanium CNC parts:',
@@ -201,6 +275,20 @@ export const PART_PAGES: PartsCategory[] = [
         { label: 'Axes', value: '3-axis, 5-axis, turn-mill, Swiss-type' },
         { label: 'Threading', value: 'Internal/external, metric & UN threads' },
         { label: 'Batch Size', value: 'Prototype (1 pc) to 10,000+ pc production' },
+      ],
+    },
+    workflowPipeline: {
+      title: 'From Drawing to Shipment — Sequential Workflow',
+      intro: 'Standard process flow for a custom titanium CNC part. Each stage has a defined deliverable for procurement sign-off.',
+      stages: [
+        { name: '1. DFM Review', desc: 'Engineering review of your drawing for manufacturability, GD&T, tolerance feasibility and material selection.', deliverable: 'DFM report + risk flags within 24 h' },
+        { name: '2. Quotation', desc: 'Itemized quote covering material, machining, inspection, surface treatment and freight terms.', deliverable: 'Quotation within 24–48 h' },
+        { name: '3. Prototype / First Article', desc: 'Single-piece or small-batch production from stock or procured bar/billet.', deliverable: 'First Article parts (as applicable)' },
+        { name: '4. FAI Inspection', desc: 'CMM dimensional inspection against your drawing, surface roughness and thread gauge verification.', deliverable: 'AS9102 / ISO 9001 FAI report' },
+        { name: '5. PPAP / ISIR (Automotive / Aerospace)', desc: 'Production Part Approval Process or Initial Sample Inspection Report on request.', deliverable: 'PPAP / ISIR dossier' },
+        { name: '6. Production Run', desc: 'Lights-out CNC production with in-process SPC and traveler traceability.', deliverable: 'Production lot + traveler' },
+        { name: '7. Final Inspection & Release', desc: 'Final dimensional, surface, NDT and material certificate review before shipment.', deliverable: 'CMM + EN 10204 3.1 cert' },
+        { name: '8. Shipment', desc: 'Export packaging, customs documentation and freight per agreed Incoterms.', deliverable: 'Commercial invoice + packing list + MTC' },
       ],
     },
     qualityInspection: {
@@ -215,10 +303,26 @@ export const PART_PAGES: PartsCategory[] = [
         'AS9100D & ISO 9001 quality system control',
       ],
     },
+    boundaryConditions: {
+      title: 'Boundary Conditions & Failure Modes',
+      intro: 'To avoid wasted iteration, please review these limitations and common design pitfalls before releasing your drawing.',
+      notSuitableFor: [
+        { name: 'High-volume commodity parts where aluminum suffices', reason: 'Titanium raw-material cost dominates unit price. Where strength-to-weight is not a critical driver, aluminum or stainless is more economical.' },
+        { name: 'Cosmetic-surface parts without functional performance requirement', reason: 'Titanium polishing and finishing cost is significantly higher than stainless. Specify cosmetic requirements explicitly.' },
+        { name: 'Envelope > 1.2 m in any single axis', reason: 'Our 5-axis work envelope tops out at 1.2 m. Larger envelopes require welded fabrication — request a fabrication quote instead.' },
+        { name: 'Wall thickness < 0.3 mm in Ti-6Al-4V (Gr5)', reason: 'Thin-wall Gr5 has high chatter and work-hardening risk. Minimum recommended wall is 0.5 mm for aerospace Gr5 parts.' },
+      ],
+      commonMistakes: [
+        { mistake: 'Specifying Ra 0.1 µm on functional (non-sealing) surfaces', fix: 'Standard machined Ra 0.4–0.8 µm is achievable; sub-Ra 0.2 µm requires secondary polishing — add to drawing and quote.' },
+        { mistake: 'Internal corner radii below the tool nose radius', fix: 'Internal corners are limited by the cutting tool. Specify ≥ R0.5 mm for Gr5, ≥ R0.3 mm for Gr2 to avoid EDM secondary operations.' },
+        { mistake: 'Tight ±0.005 mm on non-critical datums', fix: 'Apply tight tolerance only to functional features. Wide-tolerance defaults to ISO 2768-m; this typically halves machining time.' },
+        { mistake: 'Forgetting to specify MTC type (3.1 vs 3.2)', fix: 'EN 10204 3.1 is the standard mill certificate; 3.2 requires independent third-party validation — flag this on the PO.' },
+      ],
+    },
     rfqCta: {
       title: 'Ready to Manufacture Your Titanium CNC Part?',
       text:
-        'Upload your drawing or send an RFQ — our engineers review for manufacturability and return a quote within 24–48 hours.',
+        'Upload your drawing or send an RFQ — our engineers review for manufacturability and return a quote within 24–48 hours. You can also request a 24-hour technical review window or our titanium machining whitepaper via the RFQ form.',
     },
     faqs: [
       {
@@ -236,7 +340,35 @@ export const PART_PAGES: PartsCategory[] = [
         answer:
           'Yes. Every production batch ships with material traceability and EN 10204 3.1 mill test certificates where required.',
       },
+      {
+        question: 'What is the typical lead time from PO to delivery for a titanium CNC production order?',
+        answer:
+          'Standard lead time depends on material stock and part complexity. For stocked titanium grades (Gr2, Gr5, Gr23), typical production lot lead time is 15–25 working days after PO and material release. For special grades or non-standard bar sizes, add 10–15 working days for material procurement. Express prototyping options are available — request a current lead-time confirmation with your RFQ.',
+      },
+      {
+        question: 'How do you de-risk titanium supply for long-term contracts?',
+        answer:
+          'We hold direct contracts with Baoji titanium mills, maintain a safety stock of common grades (Gr2, Gr5, Gr23) in standard bar/billet sizes, and lock material slots for framework agreements. Material certificates (EN 10204 3.1) accompany every shipment, and a two-source qualification is maintained for AS9100 programs.',
+      },
     ],
+    relatedEntities: {
+      title: 'Related Entities',
+      items: [
+        { name: '5-Axis Titanium Machining', href: '/5-axis-titanium-machining/', relation: 'capability' },
+        { name: 'AS9100 Titanium Supplier', href: '/as9100-titanium-supplier/', relation: 'certification' },
+        { name: 'Titanium CNC Machining Services', href: '/titanium-cnc-machining-services/', relation: 'service-hub' },
+        { name: 'Wire EDM Machining (Titanium)', href: '/titanium-cnc-machining-services/wire-edm-machining/', relation: 'process' },
+        { name: 'Titanium Grade 5 (Ti-6Al-4V)', href: '/materials/grade-5/', relation: 'material' },
+        { name: 'Titanium Grade 23 (Ti-6Al-4V ELI)', href: '/materials/grade-23/', relation: 'material' },
+        { name: 'Titanium Grade 2 (CP)', href: '/materials/grade-2/', relation: 'material' },
+        { name: 'Titanium CNC Tolerance Guide', href: '/blog/titanium-cnc-tolerance-guide-engineering-specifications/', relation: 'knowledge' },
+        { name: 'Titanium CNC Cost Factors', href: '/blog/titanium-cnc-machining-cost-factors/', relation: 'knowledge' },
+        { name: 'Titanium CNC RFQ Checklist', href: '/blog/titanium-cnc-machining-rfq-checklist/', relation: 'knowledge' },
+        { name: 'Aerospace Parts', href: '/parts/titanium-uav-components/', relation: 'industry-vertical' },
+        { name: 'Medical Components', href: '/parts/titanium-medical-components/', relation: 'industry-vertical' },
+        { name: 'Marine Parts', href: '/parts/titanium-marine-parts/', relation: 'industry-vertical' },
+      ],
+    },
   },
 
   {

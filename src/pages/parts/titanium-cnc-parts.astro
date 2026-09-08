@@ -11,7 +11,36 @@ const supplementarySchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: data.heroH1,
+      serviceType: 'Custom Titanium CNC Machining',
+      description: data.metaDescription,
+      provider: {
+        '@type': 'Organization',
+        name: 'BOZE Titanium Manufacturing Center',
+        url: SITE,
+      },
+      areaServed: 'Global',
+      url: canonicalUrl,
+    },
+    {
+      '@type': 'TechArticle',
+      '@id': `${canonicalUrl}#article`,
+      headline: data.pageTitle,
+      description: data.metaDescription,
+      about: { '@type': 'Service', name: 'Custom Titanium CNC Machining' },
+      proficiencyLevel: 'Expert',
+      inLanguage: 'en',
+      author: {
+        '@type': 'Organization',
+        name: 'BOZE Titanium Manufacturing Center',
+        url: SITE,
+      },
+    },
+    {
       '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
       mainEntity: data.faqs.map((f) => ({
         '@type': 'Question',
         name: f.question,
