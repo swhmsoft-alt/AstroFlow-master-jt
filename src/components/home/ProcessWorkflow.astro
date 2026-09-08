@@ -10,11 +10,11 @@ interface Step {
   number: number;
   title: string;
   description: string;
-  image: ImageMetadata;
+  image?: ImageMetadata;
   alt: string;
 }
 
-const steps = [
+const steps: Step[] = [
   {
     number: 1,
     title: t('home.workflow.step0.title'),
@@ -71,13 +71,17 @@ const arrowPath = "M9 5l7 7-7 7";
           <div class="relative h-full">
             <div class="card-titanium overflow-hidden transition-all hover:border-[var(--theme-primary)] hover:shadow-[0_0_20px_rgba(255,90,0,0.3)] relative z-10 flex flex-col h-full">
               <div class="relative h-48 overflow-hidden">
-                <Img 
-                  src={step.image}
-                  alt={step.alt}
-                  class="w-full h-full object-cover"
-                  widths={[480,768,1024,1200]}
-                  sizes="100vw"
-                />
+                {step.image ? (
+                  <Img
+                    src={step.image}
+                    alt={step.alt}
+                    class="w-full h-full object-cover"
+                    widths={[480,768,1024,1200]}
+                    sizes="100vw"
+                  />
+                ) : (
+                  <div class="w-full h-full" style="background: var(--theme-surface);"></div>
+                )}
                 <div class="absolute inset-0" style="background: linear-gradient(to top, color-mix(in srgb, var(--theme-bg) 90%, transparent) 0%, transparent 50%);"></div>
                 <div class="absolute top-4 right-4 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg" style="background-color: var(--theme-primary); color: #ffffff;">
                   {step.number}

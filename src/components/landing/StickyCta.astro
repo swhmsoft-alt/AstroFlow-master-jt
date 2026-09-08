@@ -34,7 +34,7 @@
   // Lightweight IntersectionObserver + scroll listener (no dependencies).
   (() => {
     const sticky = document.getElementById('tm-sticky-cta');
-    const watchTargets = [document.getElementById('tm-quote'), document.getElementById('tm-final-cta')].filter(Boolean);
+    const watchTargets = [document.getElementById('tm-quote'), document.getElementById('tm-final-cta')].filter((el): el is HTMLElement => el !== null);
     let targetVisible = false;
     let scrolledPast = window.scrollY > 500;
 

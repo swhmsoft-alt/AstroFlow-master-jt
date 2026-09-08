@@ -1,11 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
-import TitaniumGradeFinder from '../../components/react/TitaniumGradeFinder';
-import ToleranceChecker from '../../components/react/ToleranceChecker';
-import WeightCalculator from '../../components/react/WeightCalculator';
-import SurfaceRoughnessComparator from '../../components/react/SurfaceRoughnessComparator';
-import GDTSymbolReference from '../../components/react/GDTSymbolReference';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);

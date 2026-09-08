@@ -101,6 +101,9 @@ function ndjson(obj) {
 
 // ── Vite plugin factory ───────────────────────────────────────────────
 
+/**
+ * @returns {import('vite').PluginOption}
+ */
 export default function devDashboardVitePlugin() {
   return {
     name: 'dev-dashboard-vite-plugin',

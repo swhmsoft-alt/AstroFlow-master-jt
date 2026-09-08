@@ -67,7 +67,7 @@ const display = related.slice(0, limit);
           return (
             <a href={`/products/product-entities/${eslug}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
               <h3 class="font-bold text-sm" style="color: var(--theme-text);">{e.data.title}</h3>
-              <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{e.data.function?.slice(0, 100) || e.data.description?.slice(0, 100)}</p>
+              <p class="text-xs mt-1" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{e.data.function?.slice(0, 100) || (e.data as { description?: string }).description?.slice(0, 100) || ''}</p>
               {e.data.process && (
                 <span class="inline-block mt-2 text-[10px] px-2 py-0.5 rounded" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: color-mix(in srgb, var(--theme-primary) 60%, transparent);">{e.data.process}</span>
               )}
