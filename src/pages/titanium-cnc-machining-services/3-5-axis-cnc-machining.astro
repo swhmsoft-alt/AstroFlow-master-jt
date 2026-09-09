@@ -3,9 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AudienceHub from '../../components/audience/AudienceHub.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import MultiAxisComparison from '../../components/services/MultiAxisComparison.astro';
-import FiveAxisTechSpecs from '../../components/services/FiveAxisTechSpecs.astro';
-import CamSimulationKnowHow from '../../components/services/CamSimulationKnowHow.astro';
 import MultiAxisCta from '../../components/services/MultiAxisCta.astro';
+import TitaniumPainPoints from '../../components/services/TitaniumPainPoints.astro';
+import AxisComparisonMatrix from '../../components/services/AxisComparisonMatrix.astro';
+import QualityControl from '../../components/services/QualityControl.astro';
+import FaqSection from '../../components/services/FaqSection.astro';
+import CaseStudies from '../../components/services/CaseStudies.astro';
+import LeadTimePricing from '../../components/services/LeadTimePricing.astro';
+import ProcessCapability from '../../components/services/ProcessCapability.astro';
+import TeamCredentials from '../../components/services/TeamCredentials.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -33,7 +39,7 @@ const t = useTranslations(lang);
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">{t('nav.services.titaniumCncMachiningServices')}</span>
+            <span itemprop="name">{t('nav.services.titaniumCncMachiningServices')</span>
           </a>
           <meta itemprop="position" content="3" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
@@ -45,28 +51,47 @@ const t = useTranslations(lang);
       </ol>
     </div>
   </nav>
-  <!-- Hero — DO NOT MODIFY -->
+
+  <!-- Hero -->
   <SubpageHero
-    title={t('titanium-cnc-machining-services.5AxisCncMachining.35axis_cnc_machining')}
-    highlight="Services"
-    badge="Precision Multi-Axis Machining"
+    title="High-Precision Titanium CNC Machining"
+    highlight="3-Axis · 4-Axis · 5-Axis"
+    badge="Titanium CNC | AS9100D"
     badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-    subtitle="From prismatic 3/4-axis operations to full simultaneous 5-axis contouring — engineered for complex titanium geometries, impellers, turbine blades, orthopedic structures, and aerospace structural nodes."
-  
+    subtitle="High-precision CNC machining for difficult-to-cut titanium (Ti-6Al-4V Grade 5, CP-Ti Grade 2, Ti-6Al-4V ELI Grade 23) — overcoming poor heat dissipation and severe work-hardening. From standard aerospace brackets to blisks and orthopedic implants, with full DFM assessment and custom production."
+
     keyMetrics={HERO_CONFIG['/titanium-cnc-machining-services/3-5-axis-cnc-machining']?.keyMetrics}
     entityChips={HERO_CONFIG['/titanium-cnc-machining-services/3-5-axis-cnc-machining']?.entityChips}
   />
 
-  <!-- 3/4-Axis vs Simultaneous 5-Axis Comparison -->
+  <!-- 1. Pain points (decision-chain stage: pain identification) -->
+  <TitaniumPainPoints />
+
+  <!-- 2. Engineering comparison matrix (decision-chain stage: solution exploration) -->
+  <AxisComparisonMatrix />
+
+  <!-- 3. Per-axis capability cards (solution exploration continued) -->
   <MultiAxisComparison />
 
-  <!-- 5-Axis Machine Platform Specifications -->
-  <FiveAxisTechSpecs />
+  <!-- 4. Process capability / Cpk data (EEAT: Expertise + Information Gain) -->
+  <ProcessCapability />
 
-  <!-- CAM Simulation & Adaptive Machining Know-How -->
-  <CamSimulationKnowHow />
+  <!-- 5. Quality Control & Certifications (EEAT: Trust) -->
+  <QualityControl />
 
-  <!-- Dedicated CTA for 5-Axis DFM Analysis -->
+  <!-- 6. Engineering team credentials (EEAT: Experience + Expertise) -->
+  <TeamCredentials />
+
+  <!-- 7. Customer case studies (EEAT: Experience, quantified outcomes) -->
+  <CaseStudies />
+
+  <!-- 8. Lead time & pricing transparency (decision-chain stage: cost & time) -->
+  <LeadTimePricing />
+
+  <!-- 9. FAQ (decision-chain stage: last-mile questions + AI citation FAQPage schema) -->
+  <FaqSection />
+
+  <!-- 10. Conversion CTA -->
   <MultiAxisCta />
-<AudienceHub industry="cnc-machining" />
+  <AudienceHub industry="cnc-machining" />
 </BaseLayout>

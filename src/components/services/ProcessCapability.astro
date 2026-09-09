@@ -1,0 +1,135 @@
+---
+/**
+ * ProcessCapability.astro
+ *
+ * Cpk process-capability data table addressing EEAT (Expertise) and
+ * Information-Gain for AI citation. Includes the measurement method
+ * and standards cited for trust signals.
+ *
+ * i18n: t(key) returns the localized string when present, falling back
+ * to English otherwise.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface CpkRow {
+  feature: string;
+  tol: string;
+  cpk: string;
+  confidence: string;
+}
+
+const rows: CpkRow[] = [
+  { feature: t('services.processcapability.row1.feature'), tol: t('services.processcapability.row1.tol'), cpk: t('services.processcapability.row1.cpk'), confidence: t('services.processcapability.row1.confidence') },
+  { feature: t('services.processcapability.row2.feature'), tol: t('services.processcapability.row2.tol'), cpk: t('services.processcapability.row2.cpk'), confidence: t('services.processcapability.row2.confidence') },
+  { feature: t('services.processcapability.row3.feature'), tol: t('services.processcapability.row3.tol'), cpk: t('services.processcapability.row3.cpk'), confidence: t('services.processcapability.row3.confidence') },
+  { feature: t('services.processcapability.row4.feature'), tol: t('services.processcapability.row4.tol'), cpk: t('services.processcapability.row4.cpk'), confidence: t('services.processcapability.row4.confidence') },
+];
+
+const badge = t('services.processcapability.badge');
+const sectionTitle = t('services.processcapability.sectionTitle');
+const sectionLede = t('services.processcapability.sectionLede');
+const tableHeaderFeature = t('services.processcapability.tableHeaderFeature');
+const tableHeaderTol = t('services.processcapability.tableHeaderTol');
+const tableHeaderCpk = t('services.processcapability.tableHeaderCpk');
+const tableHeaderConfidence = t('services.processcapability.tableHeaderConfidence');
+const methodTitle = t('services.processcapability.methodTitle');
+const methodBody = t('services.processcapability.methodBody');
+const methodStandard = t('services.processcapability.methodStandard');
+const methodStandardText = t('services.processcapability.methodStandardText');
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  </div>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <div
+        class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold rounded-full border"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+        </svg>
+        {badge}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-5 leading-tight" style="color: var(--theme-text);">
+        {sectionTitle}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {sectionLede}
+      </p>
+    </div>
+
+    <!-- Cpk table -->
+    <div class="overflow-x-auto mb-10">
+      <table
+        class="w-full border-collapse min-w-[760px]"
+        style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+      >
+        <caption class="sr-only">Process capability indices (Cpk) for critical features on titanium machined parts, measured on HEXAGON Global S coordinate measuring machine.</caption>
+        <thead>
+          <tr
+            style="background: linear-gradient(180deg, color-mix(in srgb, var(--theme-primary) 14%, transparent) 0%, color-mix(in srgb, var(--theme-primary) 6%, transparent) 100%); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);"
+          >
+            <th scope="col" class="text-left px-5 py-4 text-sm font-semibold uppercase tracking-wider" style="color: var(--theme-text); width: 38%;">{tableHeaderFeature}</th>
+            <th scope="col" class="text-left px-5 py-4 text-sm font-semibold uppercase tracking-wider" style="color: var(--theme-text); width: 22%;">{tableHeaderTol}</th>
+            <th scope="col" class="text-left px-5 py-4 text-sm font-semibold uppercase tracking-wider" style="color: var(--theme-text); width: 18%;">{tableHeaderCpk}</th>
+            <th scope="col" class="text-left px-5 py-4 text-sm font-semibold uppercase tracking-wider" style="color: var(--theme-text); width: 22%;">{tableHeaderConfidence}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, idx) => (
+            <tr
+              class="transition-colors"
+              style={`border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); ${idx === rows.length - 1 ? 'border-bottom: none;' : ''}`}
+              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
+              onmouseout="this.style.backgroundColor='transparent'"
+            >
+              <td class="px-5 py-5 align-top">
+                <p class="text-sm leading-relaxed font-semibold" style="color: var(--theme-text);">{r.feature}</p>
+              </td>
+              <td class="px-5 py-5 align-top">
+                <p class="text-sm leading-relaxed font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{r.tol}</p>
+              </td>
+              <td class="px-5 py-5 align-top">
+                <div class="inline-flex items-center px-3 py-1.5 rounded-lg font-bold text-base" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 8%, transparent)); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">
+                  ≥ {r.cpk}
+                </div>
+              </td>
+              <td class="px-5 py-5 align-top">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{r.confidence}</p>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Method -->
+    <div
+      class="rounded-2xl p-6 md:p-10 border"
+      style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+    >
+      <div class="flex items-start mb-4">
+        <svg class="w-7 h-7 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+        </svg>
+        <div>
+          <h3 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">{methodTitle}</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{methodBody}</p>
+        </div>
+      </div>
+      <div
+        class="mt-5 px-5 py-3 rounded-lg flex items-center"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface)); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+      >
+        <span class="text-xs font-semibold uppercase tracking-widest mr-3" style="color: color-mix(in srgb, var(--theme-primary) 80%, transparent);">{methodStandard}</span>
+        <span class="font-mono text-sm" style="color: var(--theme-text);">{methodStandardText}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -283,30 +283,30 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ]
   },
   '/titanium-cnc-machining-services/3-5-axis-cnc-machining': {
-    h1: '3/5-Axis CNC Machining Services',
-    subtitle: 'Precision 3/4-axis and simultaneous 5-axis CNC machining for titanium: complex geometries, single-setup accuracy, aerospace-grade tolerances ±0.005 mm.',
-    badge: 'Precision Manufacturing',
+    h1: 'High-Precision Titanium CNC Machining | 3-Axis · 4-Axis · 5-Axis',
+    subtitle: 'High-precision CNC machining for difficult-to-cut titanium (TC4, TA2, TA15) — overcoming poor heat dissipation and severe work-hardening. From standard aerospace brackets to blisks and orthopedic implants, with full DFM assessment and custom production.',
+    badge: 'Titanium CNC | AS9100D',
 
     keyMetrics: [
           {
                 "value": "3/4/5-Axis",
-                "label": "Simultaneous"
+                "label": "Full Coverage"
           },
           {
-                "value": "\u00b10.005mm",
+                "value": "Gr 5 / Gr 23 ELI",
+                "label": "Alloy Range"
+          },
+          {
+                "value": "±0.005mm",
                 "label": "Tolerance"
-          },
-          {
-                "value": "HSK-A63",
-                "label": "Spindle"
           }
     ],
     entityChips: [
-          "5-Axis Milling",
-          "3-Axis Milling",
-          "HSK Tooling",
-          "CAM Sim",
-          "In-Process"
+          "3-Axis VMC",
+          "4-Axis (3+1)",
+          "5-Axis Simultaneous",
+          "Blisk & IBR",
+          "Orthopedic Implants"
     ]
   },
   '/titanium-cnc-machining-services/cnc-milling-turning': {

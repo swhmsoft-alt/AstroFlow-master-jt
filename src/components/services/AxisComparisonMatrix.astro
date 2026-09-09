@@ -1,0 +1,233 @@
+---
+/**
+ * AxisComparisonMatrix.astro
+ *
+ * Engineering comparison matrix for 3-axis / 4-axis / 5-axis titanium
+ * CNC machining across the FIVE decision dimensions specified by the
+ * landing-page brief:
+ *   1. Axis freedom / degrees of motion
+ *   2. Clamping & tolerance control
+ *   3. Tool wear & life
+ *   4. Surface roughness / finish
+ *   5. Cost efficiency
+ *
+ * Renders a real HTML <table> element so that LLMs, Google SGE, and
+ * structured-data crawlers can lift the rows into answer panels without
+ * ambiguity.
+ *
+ * i18n: t(key) returns the localized string when present, falling back to
+ * English otherwise.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Dimension {
+  label: string;
+  helper: string;
+  threeAxis: string;
+  fourAxis: string;
+  fiveAxis: string;
+}
+
+const dimensions: Dimension[] = [
+  {
+    label: t('services.axismatrix.dim1.label'),
+    helper: t('services.axismatrix.dim1.helper'),
+    threeAxis: t('services.axismatrix.dim1.three'),
+    fourAxis: t('services.axismatrix.dim1.four'),
+    fiveAxis: t('services.axismatrix.dim1.five'),
+  },
+  {
+    label: t('services.axismatrix.dim2.label'),
+    helper: t('services.axismatrix.dim2.helper'),
+    threeAxis: t('services.axismatrix.dim2.three'),
+    fourAxis: t('services.axismatrix.dim2.four'),
+    fiveAxis: t('services.axismatrix.dim2.five'),
+  },
+  {
+    label: t('services.axismatrix.dim3.label'),
+    helper: t('services.axismatrix.dim3.helper'),
+    threeAxis: t('services.axismatrix.dim3.three'),
+    fourAxis: t('services.axismatrix.dim3.four'),
+    fiveAxis: t('services.axismatrix.dim3.five'),
+  },
+  {
+    label: t('services.axismatrix.dim4.label'),
+    helper: t('services.axismatrix.dim4.helper'),
+    threeAxis: t('services.axismatrix.dim4.three'),
+    fourAxis: t('services.axismatrix.dim4.four'),
+    fiveAxis: t('services.axismatrix.dim4.five'),
+  },
+  {
+    label: t('services.axismatrix.dim5.label'),
+    helper: t('services.axismatrix.dim5.helper'),
+    threeAxis: t('services.axismatrix.dim5.three'),
+    fourAxis: t('services.axismatrix.dim5.four'),
+    fiveAxis: t('services.axismatrix.dim5.five'),
+  },
+];
+
+const badge = t('services.axismatrix.badge');
+const sectionTitle = t('services.axismatrix.sectionTitle');
+const sectionLede = t('services.axismatrix.sectionLede');
+const tableHeadDimension = t('services.axismatrix.tableHeadDimension');
+const takeawayTitle = t('services.axismatrix.takeawayTitle');
+const takeawayBody = t('services.axismatrix.takeawayBody');
+const takeawayCta = t('services.axismatrix.takeawayCta');
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  </div>
+  
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <div
+        class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold rounded-full border"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H" />
+        </svg>
+        {badge}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-5 leading-tight" style="color: var(--theme-text);">
+        {sectionTitle}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {sectionLede}
+      </p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table
+        class="w-full border-collapse min-w-[820px]"
+        style="background-color: var(--theme-surface);"
+      >
+        <caption class="sr-only">
+          Engineering comparison of 3-axis, 4-axis, and 5-axis CNC machining configurations for titanium alloys (TC4 / TA2 / TA15) across five decision dimensions: axis freedom, clamping and tolerance control, tool wear and life, surface roughness, and cost efficiency.
+        </caption>
+        <thead>
+          <tr
+            style="background: linear-gradient(180deg, color-mix(in srgb, var(--theme-primary) 14%, transparent) 0%, color-mix(in srgb, var(--theme-primary) 6%, transparent) 100%); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);"
+          >
+            <th
+              scope="col"
+              class="text-left px-6 py-4 text-sm font-semibold uppercase tracking-wider"
+              style="color: color-mix(in srgb, var(--theme-text) 60%, transparent); width: 18%;"
+            >
+              {tableHeadDimension}
+            </th>
+            <th
+              scope="col"
+              class="text-left px-6 py-4 text-base font-bold"
+              style="color: var(--theme-primary); width: 27%;"
+            >
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                </svg>
+                3-Axis VMC
+              </div>
+            </th>
+            <th
+              scope="col"
+              class="text-left px-6 py-4 text-base font-bold"
+              style="color: var(--theme-primary); width: 27%;"
+            >
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2z" />
+                </svg>
+                4-Axis (3+1)
+              </div>
+            </th>
+            <th
+              scope="col"
+              class="text-left px-6 py-4 text-base font-bold"
+              style="color: var(--theme-primary); width: 28%;"
+            >
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                </svg>
+                5-Axis Simultaneous
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {dimensions.map((dim, idx) => (
+            <tr
+              class="transition-colors"
+              style={`border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); ${idx === dimensions.length - 1 ? 'border-bottom: none;' : ''}`}
+              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
+              onmouseout="this.style.backgroundColor='transparent'"
+            >
+              <th
+                scope="row"
+                class="text-left px-6 py-5 align-top"
+                style="color: var(--theme-text);"
+              >
+                <div class="font-bold text-sm mb-1">{dim.label}</div>
+                <div class="text-xs font-normal" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+                  {dim.helper}
+                </div>
+              </th>
+              <td class="px-6 py-5 align-top">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+                  {dim.threeAxis}
+                </p>
+              </td>
+              <td class="px-6 py-5 align-top">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+                  {dim.fourAxis}
+                </p>
+              </td>
+              <td class="px-6 py-5 align-top">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+                  {dim.fiveAxis}
+                </p>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="mt-10 rounded-xl p-6 md:p-8"
+      style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+    >
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex items-start">
+          <svg class="w-6 h-6 mr-3 mt-0.5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+          </svg>
+          <div>
+            <div class="text-base font-bold mb-1" style="color: var(--theme-text);">
+              {takeawayTitle}
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+              {takeawayBody}
+            </p>
+          </div>
+        </div>
+        <a
+          href="/rfq/"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-bold whitespace-nowrap transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
+          style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%); color: #ffffff;"
+        >
+          {takeawayCta}
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

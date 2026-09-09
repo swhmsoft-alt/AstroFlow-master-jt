@@ -1,0 +1,217 @@
+---
+/**
+ * TitaniumPainPoints.astro
+ *
+ * Pain-point diagnostic module for titanium CNC machining.
+ *
+ * Three core challenges that distinguish titanium (TC4 / TA2 / TA15) from
+ * aluminum / steel, paired with engineering countermeasures used on our shop
+ * floor:
+ *   01  Poor thermal conductivity  → accelerated tool wear
+ *   02  Severe work-hardening      → cumulative dimensional drift
+ *   03  High cutting force         → part deformation
+ *
+ * i18n: t(key) returns the localized string when present, falling the
+ * English fallback otherwise (mirrors pattern used by MultiAxisComparison).
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface PainPoint {
+  number: string;
+  icon: string;
+  title: string;
+  body: string;
+  metricLabel: string;
+  metricValue: string;
+  metricCompare: string;
+  countermeasures: { title: string; body: string }[];
+}
+
+const pains: PainPoint[] = [
+  {
+    number: '01',
+    icon: 'M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1.001A3.75 3.75 0 0012 18z',
+    title: t('services.titaniumpainpoints.pain1.title'),
+    body: t('services.titaniumpainpoints.pain1.body'),
+    metricLabel: t('services.titaniumpainpoints.pain1.metricLabel'),
+    metricValue: t('services.titaniumpainpoints.pain1.metricValue'),
+    metricCompare: t('services.titaniumpainpoints.pain1.metricCompare'),
+    countermeasures: [
+      {
+        title: t('services.titaniumpainpoints.pain1.cm1.title'),
+        body: t('services.titaniumpainpoints.pain1.cm1.body'),
+      },
+      {
+        title: t('services.titaniumpainpoints.pain1.cm2.title'),
+        body: t('services.titaniumpainpoints.pain1.cm2.body'),
+      },
+      {
+        title: t('services.titaniumpainpoints.pain1.cm3.title'),
+        body: t('services.titaniumpainpoints.pain1.cm3.body'),
+      },
+    ],
+  },
+  {
+    number: '02',
+    icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
+    title: t('services.titaniumpainpoints.pain2.title'),
+    body: t('services.titaniumpainpoints.pain2.body'),
+    metricLabel: t('services.titaniumpainpoints.pain2.metricLabel'),
+    metricValue: t('services.titaniumpainpoints.pain2.metricValue'),
+    metricCompare: t('services.titaniumpainpoints.pain2.metricCompare'),
+    countermeasures: [
+      {
+        title: t('services.titaniumpainpoints.pain2.cm1.title'),
+        body: t('services.titaniumpainpoints.pain2.cm1.body'),
+      },
+      {
+        title: t('services.titaniumpainpoints.pain2.cm2.title'),
+        body: t('services.titaniumpainpoints.pain2.cm2.body'),
+      },
+      {
+        title: t('services.titaniumpainpoints.pain2.cm3.title'),
+        body: t('services.titaniumpainpoints.pain2.cm3.body'),
+      },
+    ],
+  },
+  {
+    number: '03',
+    icon: 'M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z',
+    title: t('services.titaniumpainpoints.pain3.title'),
+    body: t('services.titaniumpainpoints.pain3.body'),
+    metricLabel: t('services.titaniumpainpoints.pain3.metricLabel'),
+    metricValue: t('services.titaniumpainpoints.pain3.metricValue'),
+    metricCompare: t('services.titaniumpainpoints.pain3.metricCompare'),
+    countermeasures: [
+      {
+        title: t('services.titaniumpainpoints.pain3.cm1.title'),
+        body: t('services.titaniumpainpoints.pain3.cm1.body'),
+      },
+      {
+        title: t('services.titaniumpainpoints.pain3.cm2.title'),
+        body: t('services.titaniumpainpoints.pain3.cm2.body'),
+      },
+      {
+        title: t('services.titaniumpainpoints.pain3.cm3.title'),
+        body: t('services.titaniumpainpoints.pain3.cm3.body'),
+      },
+    ],
+  },
+];
+
+const sectionHighlight = t('services.titaniumpainpoints.sectionHighlight');
+const sectionTitle = t('services.titaniumpainpoints.sectionTitle');
+const sectionLede = t('services.titaniumpainpoints.sectionLede');
+const countermeasuresLabel = t('services.titaniumpainpoints.countermeasures_label');
+const footnote = t('services.titaniumpainpoints.footnote');
+---
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  </div>
+  
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <div
+        class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold rounded-full border"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+        </svg>
+        {sectionHighlight}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight" style="color: var(--theme-text);">
+        {sectionTitle}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {sectionLede}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {pains.map((pain) => (
+        <article
+          class="relative rounded-2xl overflow-hidden flex flex-col h-full transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"
+        >
+          <div
+            class="absolute top-0 left-0 right-0 h-0.5"
+            style="background: linear-gradient(to right, transparent, var(--theme-primary), transparent);"
+          ></div>
+
+          <div class="p-7 pb-6">
+            <div class="flex items-start justify-between mb-5">
+              <div
+                class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));"
+              >
+                <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={pain.icon} />
+                </svg>
+              </div>
+              <span
+                class="text-5xl font-bold leading-none"
+                style="color: color-mix(in srgb, var(--theme-primary) 25%, transparent);"
+                aria-hidden="true"
+              >
+                {pain.number}
+              </span>
+            </div>
+
+            <h3 class="text-xl font-bold mb-3 leading-snug" style="color: var(--theme-text);">
+              {pain.title}
+            </h3>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+              {pain.body}
+            </p>
+          </div>
+
+          <div
+            class="mx-7 my-1 rounded-lg p-4"
+            style="background-color: color-mix(in srgb, var(--theme-primary) 6%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          >
+            <div class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: color-mix(in srgb, var(--theme-primary) 80%, transparent);">
+              {pain.metricLabel}
+            </div>
+            <div class="text-2xl font-bold mb-1" style="color: var(--theme-primary);">
+              {pain.metricValue}
+            </div>
+            <div class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              {pain.metricCompare}
+            </div>
+          </div>
+
+          <div class="p-7 pt-6 flex-1">
+            <h4 class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">
+              {countermeasuresLabel}
+            </h4>
+            <ul class="space-y-4">
+              {pain.countermeasures.map((cm) => (
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <div>
+                    <div class="text-sm font-semibold mb-0.5" style="color: var(--theme-text);">{cm.title}</div>
+                    <div class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{cm.body}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        {footnote}
+      </p>
+    </div>
+  </div>
+</section>
