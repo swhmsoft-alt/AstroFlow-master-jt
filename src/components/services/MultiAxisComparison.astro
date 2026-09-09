@@ -21,8 +21,8 @@
  *     - Orthopedic implants — hip & knee prostheses, dental bridges
  *     - Racing turbocharger impellers
  *
- * All three cards are equally weighted — the brief elevates 5-axis as a
- * critical capability for aerospace & medical.
+ * Each card now carries explicit "Best for" / "Not for" tags
+ * to optimize AI-citation pull (Buyer Decision Chain stage 2).
  *
  * i18n: t(key) returns the localized string when present, falling back to
  * English otherwise.
@@ -36,6 +36,8 @@ interface AxisConfig {
   type: string;
   subtitle: string;
   description: string;
+  bestFor: string;
+  notFor: string;
   applications: string[];
   strengths: string[];
   limitations: string;
@@ -56,6 +58,8 @@ const axisConfigs: AxisConfig[] = [
     type: t('services.multiaxiscomparison.card1.type'),
     subtitle: t('services.multiaxiscomparison.card1.subtitle'),
     description: t('services.multiaxiscomparison.card1.description'),
+    bestFor: t('services.multiaxiscomparison.card1.bestFor'),
+    notFor: t('services.multiaxiscomparison.card1.notFor'),
     applications: [
       t('services.multiaxiscomparison.card1.app0'),
       t('services.multiaxiscomparison.card1.app1'),
@@ -74,6 +78,8 @@ const axisConfigs: AxisConfig[] = [
     type: t('services.multiaxiscomparison.card2.type'),
     subtitle: t('services.multiaxiscomparison.card2.subtitle'),
     description: t('services.multiaxiscomparison.card2.description'),
+    bestFor: t('services.multiaxiscomparison.card2.bestFor'),
+    notFor: t('services.multiaxiscomparison.card2.notFor'),
     applications: [
       t('services.multiaxiscomparison.card2.app0'),
       t('services.multiaxiscomparison.card2.app1'),
@@ -92,6 +98,8 @@ const axisConfigs: AxisConfig[] = [
     type: t('services.multiaxiscomparison.card3.type'),
     subtitle: t('services.multiaxiscomparison.card3.subtitle'),
     description: t('services.multiaxiscomparison.card3.description'),
+    bestFor: t('services.multiaxiscomparison.card3.bestFor'),
+    notFor: t('services.multiaxiscomparison.card3.notFor'),
     applications: [
       t('services.multiaxiscomparison.card3.app0'),
       t('services.multiaxiscomparison.card3.app1'),
@@ -114,6 +122,8 @@ const subtitle = t('services.multiaxiscomparison.subtitle');
 const typicalApplications = t('services.multiaxiscomparison.typical_applications');
 const keyStrengths = t('services.multiaxiscomparison.key_strengths');
 const limitationsLabel = t('services.multiaxiscomparison.limitations_label');
+const bestForLabel = t('services.multiaxiscomparison.best_for_label');
+const notForLabel = t('services.multiaxiscomparison.not_for_label');
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
@@ -144,9 +154,9 @@ const limitationsLabel = t('services.multiaxiscomparison.limitations_label');
       {axisConfigs.map((axis) => (
         <div
           class="relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
-          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
-          onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 35%, transparent)'; this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.transform='translateY(0)'"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+          onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 45%, transparent)'; this.style.transform='translateY(-4px)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 22%, transparent)'; this.style.transform='translateY(0)'"
         >
           <div class="flex items-start mb-6">
             <div
@@ -171,6 +181,25 @@ const limitationsLabel = t('services.multiaxiscomparison.limitations_label');
             {axis.description}
           </p>
 
+          <!-- Best for / Not for (AI citation pull) -->
+          <div class="grid grid-cols-1 gap-3 mb-5">
+            <div
+              class="rounded-lg p-3"
+              style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-left: 3px solid var(--theme-primary);"
+            >
+              <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color: var(--theme-primary);">{bestForLabel}</div>
+              <div class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{axis.bestFor}</div>
+            </div>
+            <div
+              class="rounded-lg p-3"
+              style="background-color: color-mix(in srgb, var(--theme-text) 5%, transparent); border-left: 3px solid color-mix(in srgb, var(--theme-text) 30%, transparent);"
+            >
+              <div class="text-xs font-bold uppercase tracking-wider mb-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{notForLabel}</div>
+              <div class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{axis.notFor}</div>
+            </div>
+          </div>
+
+          <!-- Applications -->
           <div class="mb-5">
             <h4 class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: color-mix(in srgb, var(--theme-primary) 70%, transparent);">
               {typicalApplications}
@@ -187,6 +216,7 @@ const limitationsLabel = t('services.multiaxiscomparison.limitations_label');
             </ul>
           </div>
 
+          <!-- Key Strengths -->
           <div class="mb-5">
             <h4 class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary);">
               {keyStrengths}
@@ -203,6 +233,7 @@ const limitationsLabel = t('services.multiaxiscomparison.limitations_label');
             </ul>
           </div>
 
+          <!-- Limitations -->
           <div
             class="mt-2 pt-4"
             style="border-top: 1px dashed color-mix(in srgb, var(--theme-primary) 25%, transparent);"

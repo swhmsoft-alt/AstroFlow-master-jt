@@ -1,0 +1,163 @@
+---
+/**
+ * FileProcessAndCapacity.astro
+ *
+ * Buyer Decision Chain stages 7 (fileProcess) + 11 (capacityLock).
+ * Answers: "what file formats do you accept?" + "what if my volume scales?".
+ *
+ * i18n: t(key) with English fallback.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const fileFormats: string[] = [
+  t('services.fileprocess.format0'),
+  t('services.fileprocess.format1'),
+  t('services.fileprocess.format2'),
+  t('services.fileprocess.format3'),
+  t('services.fileprocess.format4'),
+  t('services.fileprocess.format5'),
+];
+
+const processSteps: { num: string; title: string; body: string }[] = [
+  { num: '01', title: t('services.fileprocess.step1.title'), body: t('services.fileprocess.step1.body') },
+  { num: '02', title: t('services.fileprocess.step2.title'), body: t('services.fileprocess.step2.body') },
+  { num: '03', title: t('services.fileprocess.step3.title'), body: t('services.fileprocess.step3.body') },
+  { num: '04', title: t('services.fileprocess.step4.title'), body: t('services.fileprocess.step4.body') },
+];
+
+interface CapacityRow { metric: string; value: string; unit: string; }
+
+const capacity: CapacityRow[] = [
+  { metric: t('services.fileprocess.cap.metric0'), value: t('services.fileprocess.cap.value0'), unit: t('services.fileprocess.cap.unit0') },
+  { metric: t('services.fileprocess.cap.metric1'), value: t('services.fileprocess.cap.value1'), unit: t('services.fileprocess.cap.unit1') },
+  { metric: t('services.fileprocess.cap.metric2'), value: t('services.fileprocess.cap.value2'), unit: t('services.fileprocess.cap.unit2') },
+  { metric: t('services.fileprocess.cap.metric3'), value: t('services.fileprocess.cap.value3'), unit: t('services.fileprocess.cap.unit3') },
+];
+
+const fileBadge = t('services.fileprocess.fileBadge');
+const fileTitle = t('services.fileprocess.fileTitle');
+const fileLede = t('services.fileprocess.fileLede');
+const ndaTitle = t('services.fileprocess.ndaTitle');
+const ndaBody = t('services.fileprocess.ndaBody');
+const capBadge = t('services.fileprocess.capBadge');
+const capTitle = t('services.fileprocess.capTitle');
+const capLede = t('services.fileprocess.capLede');
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <div
+        class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold rounded-full border"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        {fileBadge}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-5 leading-tight" style="color: var(--theme-text);">
+        {fileTitle}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {fileLede}
+      </p>
+    </div>
+
+    <!-- Accepted file formats -->
+    <div
+      class="rounded-2xl p-6 md:p-8 mb-10 border"
+      style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+    >
+      <h3 class="text-xl font-bold mb-5" style="color: var(--theme-text);">Accepted File Formats</h3>
+      <div class="flex flex-wrap gap-3">
+        {fileFormats.map((fmt) => (
+          <span
+            class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-mono font-semibold"
+            style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);"
+          >
+            {fmt}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- 4-step process -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+      {processSteps.map((step) => (
+        <div
+          class="rounded-2xl p-5 transition-all duration-300"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
+          onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 45%, transparent)'; this.style.transform='translateY(-3px)'"
+          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 22%, transparent)'; this.style.transform='translateY(0)'"
+        >
+          <div class="flex items-start mb-3">
+            <span
+              class="w-9 h-9 rounded-lg flex items-center justify-center mr-3 font-bold text-sm shrink-0"
+              style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;"
+            >
+              {step.num}
+            </span>
+            <h4 class="text-base font-bold leading-tight pt-1" style="color: var(--theme-text);">{step.title}</h4>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{step.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- NDA -->
+    <div
+      class="rounded-xl p-6 md:p-7 mb-10 flex flex-col md:flex-row md:items-center gap-4"
+      style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);"
+    >
+      <div class="flex items-start flex-1">
+        <svg class="w-6 h-6 mr-3 mt-0.5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <div>
+          <div class="text-base font-bold mb-1" style="color: var(--theme-text);">{ndaTitle}</div>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{ndaBody}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capacity & Backup -->
+    <div>
+      <div class="text-center mb-8">
+        <div
+          class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold rounded-full border"
+          style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          {capBadge}
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-3" style="color: var(--theme-text);">{capTitle}</h2>
+        <p class="text-base leading-relaxed max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{capLede}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {capacity.map((row) => (
+          <div
+            class="rounded-2xl p-5 text-center transition-all duration-300"
+            style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 5%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);"
+            onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 50%, transparent)'; this.style.transform='translateY(-4px)'"
+            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 25%, transparent)'; this.style.transform='translateY(0)'"
+          >
+            <div class="text-3xl md:text-4xl font-bold mb-1" style="color: var(--theme-primary);">{row.value}</div>
+            <div class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: color-mix(in srgb, var(--theme-primary) 80%, transparent);">{row.unit}</div>
+            <div class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{row.metric}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -12,12 +12,37 @@ import CaseStudies from '../../components/services/CaseStudies.astro';
 import LeadTimePricing from '../../components/services/LeadTimePricing.astro';
 import ProcessCapability from '../../components/services/ProcessCapability.astro';
 import TeamCredentials from '../../components/services/TeamCredentials.astro';
+import QuickStatsBanner from '../../components/services/QuickStatsBanner.astro';
+import WhyBozeVsOthers from '../../components/services/WhyBozeVsOthers.astro';
+import FileProcessAndCapacity from '../../components/services/FileProcessAndCapacity.astro';
+import HowToChooseAxis from '../../components/services/HowToChooseAxis.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+// Service JSON-LD schema for AI citation (ProductSchema)
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'CNC Machining',
+  name: 'Titanium CNC Machining Services — 3-Axis / 4-Axis / 5-Axis',
+  provider: {
+    '@type': 'Organization',
+    name: 'BOZE CNC',
+    foundingDate: '2011',
+  },
+  areaServed: ['United States', 'European Union', 'United Kingdom'],
+  description: 'High-precision 3-axis, 4-axis, and 5-axis CNC machining of titanium alloys for aerospace, medical, motorsport, and chemical-processing industries. AS9100D / ISO 13485 / ISO 9001 certified.',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD',
+    priceRange: '$$',
+  },
+};
 ---
+
 <BaseLayout>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -39,7 +64,7 @@ const t = useTranslations(lang);
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
-            <span itemprop="name">{t('nav.services.titaniumCncMachiningServices')</span>
+            <span itemprop="name">{t('nav.services.titaniumCncMachiningServices')}</span>
           </a>
           <meta itemprop="position" content="3" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
@@ -51,6 +76,15 @@ const t = useTranslations(lang);
       </ol>
     </div>
   </nav>
+
+  <!-- Hero awareness lead-in (Buyer Decision Chain stage 1) -->
+  <section style="background-color: var(--theme-bg); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);" class="py-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm md:text-base" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+        Need to machine titanium parts? Aerospace brackets, medical implants, blisks, or custom prototypes? You are in the right place.
+      </p>
+    </div>
+  </section>
 
   <!-- Hero -->
   <SubpageHero
@@ -64,34 +98,49 @@ const t = useTranslations(lang);
     entityChips={HERO_CONFIG['/titanium-cnc-machining-services/3-5-axis-cnc-machining']?.entityChips}
   />
 
-  <!-- 1. Pain points (decision-chain stage: pain identification) -->
+  <!-- 1. Quick Stats Banner (EEAT: years, scale, certs) -->
+  <QuickStatsBanner />
+
+  <!-- 2. How to Choose Your Axis (AI: HowTo schema) -->
+  <HowToChooseAxis />
+
+  <!-- 3. Pain points -->
   <TitaniumPainPoints />
 
-  <!-- 2. Engineering comparison matrix (decision-chain stage: solution exploration) -->
+  <!-- 4. Engineering comparison matrix -->
   <AxisComparisonMatrix />
 
-  <!-- 3. Per-axis capability cards (solution exploration continued) -->
+  <!-- 5. Per-axis capability cards (now with Best for / Not for) -->
   <MultiAxisComparison />
 
-  <!-- 4. Process capability / Cpk data (EEAT: Expertise + Information Gain) -->
+  <!-- 6. Process capability / Cpk data -->
   <ProcessCapability />
 
-  <!-- 5. Quality Control & Certifications (EEAT: Trust) -->
+  <!-- 7. Quality Control & Certifications -->
   <QualityControl />
 
-  <!-- 6. Engineering team credentials (EEAT: Experience + Expertise) -->
+  <!-- 8. Engineering team credentials -->
   <TeamCredentials />
 
-  <!-- 7. Customer case studies (EEAT: Experience, quantified outcomes) -->
+  <!-- 9. Customer case studies -->
   <CaseStudies />
 
-  <!-- 8. Lead time & pricing transparency (decision-chain stage: cost & time) -->
+  <!-- 10. Lead time & pricing transparency -->
   <LeadTimePricing />
 
-  <!-- 9. FAQ (decision-chain stage: last-mile questions + AI citation FAQPage schema) -->
+  <!-- 11. File Process & Capacity (Buyer: fileProcess + capacityLock) -->
+  <FileProcessAndCapacity />
+
+  <!-- 12. BOZE vs Others (Buyer: comparison) -->
+  <WhyBozeVsOthers />
+
+  <!-- 13. FAQ (AI: FAQPage schema) -->
   <FaqSection />
 
-  <!-- 10. Conversion CTA -->
+  <!-- 14. Conversion CTA -->
   <MultiAxisCta />
   <AudienceHub industry="cnc-machining" />
+
+  <!-- Service JSON-LD schema (AI citation) -->
+  <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
 </BaseLayout>

@@ -1,0 +1,133 @@
+---
+/**
+ * WhyBozeVsOthers.astro
+ *
+ * Comparison block — Buyer Decision Chain stage 10 (comparison / why us).
+ * 4-column comparison: BOZE vs Typical CNC Shop vs Job Shop vs Overseas Broker.
+ *
+ * i18n: t(key) with English fallback.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+interface Column {
+  name: string;
+  highlight?: boolean;
+  rows: string[];
+}
+
+const cols: Column[] = [
+  {
+    name: t('services.whyboze.col1.name'),
+    highlight: true,
+    rows: [
+      t('services.whyboze.col1.row0'),
+      t('services.whyboze.col1.row1'),
+      t('services.whyboze.col1.row2'),
+      t('services.whyboze.col1.row3'),
+      t('services.whyboze.col1.row4'),
+      t('services.whyboze.col1.row5'),
+    ],
+  },
+  {
+    name: t('services.whyboze.col2.name'),
+    rows: [
+      t('services.whyboze.col2.row0'),
+      t('services.whyboze.col2.row1'),
+      t('services.whyboze.col2.row2'),
+      t('services.whyboze.col2.row3'),
+      t('services.whyboze.col2.row4'),
+      t('services.whyboze.col2.row5'),
+    ],
+  },
+  {
+    name: t('services.whyboze.col3.name'),
+    rows: [
+      t('services.whyboze.col3.row0'),
+      t('services.whyboze.col3.row1'),
+      t('services.whyboze.col3.row2'),
+      t('services.whyboze.col3.row3'),
+      t('services.whyboze.col3.row4'),
+      t('services.whyboze.col3.row5'),
+    ],
+  },
+  {
+    name: t('services.whyboze.col4.name'),
+    rows: [
+      t('services.whyboze.col4.row0'),
+      t('services.whyboze.col4.row1'),
+      t('services.whyboze.col4.row2'),
+      t('services.whyboze.col4.row3'),
+      t('services.whyboze.col4.row4'),
+      t('services.whyboze.col4.row5'),
+    ],
+  },
+];
+
+const badge = t('services.whyboze.badge');
+const sectionTitle = t('services.whyboze.sectionTitle');
+const sectionLede = t('services.whyboze.sectionLede');
+---
+
+<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.04]" aria-hidden="true">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 80px 80px;"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-12 max-w-3xl mx-auto">
+      <div
+        class="inline-flex items-center px-4 py-2 mb-5 text-sm font-semibold rounded-full border"
+        style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);"
+      >
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.001 5.001 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.001 5.001 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+        </svg>
+        {badge}
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-5 leading-tight" style="color: var(--theme-text);">
+        {sectionTitle}
+      </h2>
+      <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {sectionLede}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {cols.map((col) => (
+        <div
+          class={`rounded-2xl p-6 flex flex-col h-full transition-all duration-300 ${col.highlight ? 'ring-2' : ''}`}
+          style={`background-color: ${col.highlight ? 'color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface))' : 'var(--theme-surface)'}; border: 1px solid color-mix(in srgb, var(--theme-primary) ${col.highlight ? '40' : '18'}%, transparent);`}
+          onmouseover={`this.style.borderColor='color-mix(in srgb, var(--theme-primary) ${col.highlight ? '55' : '35'}%, transparent)'; this.style.transform='translateY(-3px)'`}
+          onmouseout={`this.style.borderColor='color-mix(in srgb, var(--theme-primary) ${col.highlight ? '40' : '18'}%, transparent)'; this.style.transform='translateY(0)'`}
+        >
+          <h3
+            class="text-lg font-bold mb-4 pb-3"
+            style={`color: ${col.highlight ? 'var(--theme-primary)' : 'var(--theme-text)'}; border-bottom: 2px solid ${col.highlight ? 'color-mix(in srgb, var(--theme-primary) 40%, transparent)' : 'color-mix(in srgb, var(--theme-primary) 15%, transparent)'};`}
+          >
+            {col.name}
+          </h3>
+          <ul class="space-y-3 flex-1">
+            {col.rows.map((row) => (
+              <li class="flex items-start text-sm leading-relaxed" style={`color: ${col.highlight ? 'color-mix(in srgb, var(--theme-text) 80%, transparent)' : 'color-mix(in srgb, var(--theme-text) 70%, transparent)'};`}>
+                <svg
+                  class="w-4 h-4 mt-0.5 mr-2 shrink-0"
+                  style={`color: ${col.highlight ? 'var(--theme-primary)' : 'color-mix(in srgb, var(--theme-text) 40%, transparent)'};`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {row}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
