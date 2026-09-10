@@ -1,4 +1,19 @@
 ---
+/**
+ * src/pages/services.astro — Services Hub
+ *
+ * Trinity Audit (P0 fixes 2026-09-10):
+ *   Buyer: awareness / pain / cost / time / file / risk / rfq / comparison / capacity / faq
+ *   EEAT:  experience / years / standards / cert / external / team / source / freshness / unique / proprietary
+ *   AI:    schemaOrg / product / article / faqHtml / realTable / bestFor / headingNumbered
+ *
+ * Architectural notes:
+ *   - pageType="services-hub" + serviceName → schema.ts injects Service + Product + Article
+ *     entities via the F4 case added in buildPageGraph (services-hub branch).
+ *   - faqItems / howtoItem → FAQPage + HowTo JSON-LD via BaseLayout.
+ *   - mentions → entity-graph @id refs (Service / Material / Standard / Industry / Product).
+ *   - All <a href> use literal project-relative paths (no undefined interpolation).
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SubpageHero from '../components/ui/SubpageHero.astro';
 import { HERO_CONFIG } from '../config/hero';
@@ -6,13 +21,67 @@ import ServiceMatrixGrid from '../components/services/ServiceMatrixGrid.astro';
 import ComplianceRibbon from '../components/services/ComplianceRibbon.astro';
 import EngineeringWorkflow from '../components/services/EngineeringWorkflow.astro';
 import QuickIndustrySolutions from '../components/services/QuickIndustrySolutions.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import ServicesPainAndValue from '../components/services/ServicesPainAndValue.astro';
+import LeadTimeAndCapacity from '../components/services/LeadTimeAndCapacity.astro';
+import CostAndRisk from '../components/services/CostAndRisk.astro';
+import ServicesFaq from '../components/services/ServicesFaq.astro';
 import PartsPromoBanner from '../components/parts/PartsPromoBanner.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import type { FaqItem, HowToItem } from '../lib/schema';
+
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+
+// F4 — Service schema (services-hub → buildService)
+const serviceName = 'Titanium CNC Manufacturing Services';
+const serviceDescription = 'End-to-end titanium CNC machining, fabrication, additive manufacturing, and surface treatment for aerospace, medical, marine, and energy — AS9100D-certified, 12+ years in titanium.';
+const serviceCategory = 'Precision Manufacturing';
+
+// F4 — Product schema (B2B RFQ Offer → /rfq/)
+const productName = 'Custom Titanium CNC Parts';
+const productCategory = 'Titanium CNC Machined Components';
+
+// F4 — Article schema (EEAT.proprietaryFrame hook → drives JSON-LD Article)
+const articleHeadline = 'BOZE 5-Pillar DFM Framework™ for Titanium Manufacturing';
+const articleAuthor = 'BOZE CNC Ti Engineering Team';
+const articleDatePublished = '2026-09-10';
+
+// F4 — FAQPage JSON-LD (8 entries → FAQ schema + real HTML <details>)
+const faqItems: FaqItem[] = [0,1,2,3,4,5,6,7].map((i) => ({
+  question: t(`services.faq.q${i}.q`),
+  answer: t(`services.faq.q${i}.a`),
+}));
+
+// F4 — HowTo schema (mirrors existing EngineeringWorkflow 4 steps)
+const howtoItem: HowToItem = {
+  name: 'How to Order Custom Titanium CNC Parts from BOZE',
+  description: 'Four-step B2B workflow from RFQ submission to on-time delivery — covering DFM, engineering, production, and final QA.',
+  totalTime: 'P14D',
+  steps: [
+    { name: t('services.workflow.step0.title'), text: t('services.workflow.step0.desc'), position: 1 },
+    { name: t('services.workflow.step1.title'), text: t('services.workflow.step1.desc'), position: 2 },
+    { name: t('services.workflow.step2.title'), text: t('services.workflow.step2.desc'), position: 3 },
+    { name: t('services.workflow.step3.title'), text: t('services.workflow.step3.desc'), position: 4 },
+  ],
+};
 ---
 
 <BaseLayout
+  pageType="services-hub"
+  serviceName={serviceName}
+  serviceDescription={serviceDescription}
+  serviceCategory={serviceCategory}
+  productName={productName}
+  productDescription={serviceDescription}
+  productCategory={productCategory}
+  productRfqUrl="/rfq/"
+  articleHeadline={articleHeadline}
+  articleDescription={serviceDescription}
+  articleAuthor={articleAuthor}
+  articleDatePublished={articleDatePublished}
+  faqItems={faqItems}
+  faqName="Titanium CNC Manufacturing Services — Frequently Asked Questions"
+  howtoItem={howtoItem}
   serviceHubKey="master-service"
   mentions={[
     'service:master-services',
@@ -21,6 +90,18 @@ const t = useTranslations(currentLang);
     'service:titanium-fabrication-services',
     'service:titanium-forming-heavy-manufacturing',
     'service:titanium-surface-treatment',
+    'material:astm-b348-titanium-grade-5',
+    'material:astm-b348-titanium-grade-2',
+    'standard:as9100d',
+    'standard:iso-9001-2015',
+    'standard:iso-13485-2016',
+    'standard:astm-b348',
+    'standard:ams-4928',
+    'industry:aerospace',
+    'industry:medical',
+    'industry:marine',
+    'industry:semiconductor',
+    'industry:energy',
   ]}
 >
   <!-- Breadcrumb -->
@@ -53,16 +134,29 @@ const t = useTranslations(currentLang);
     compact={HERO_CONFIG['/services'].compact}
   />
 
-  <!-- Service Matrix Grid -->
+  <!-- F4 — Section 01–02: Buyer awareness + pain identification + EEAT signal strip -->
+  <ServicesPainAndValue />
+
+  <!-- Service Matrix Grid (existing — 7 service pillars) -->
   <ServiceMatrixGrid />
 
-  <!-- Compliance Ribbon -->
+  <!-- F4 — Compliance Ribbon extended with real cert list, standards, external links, freshness, source -->
   <ComplianceRibbon />
 
-  <!-- Engineering Workflow -->
+  <!-- F4 — Section 03–04: Lead-time table + capacity lock (Buyer timeDecision + capacityLock) -->
+  <LeadTimeAndCapacity />
+
+  <!-- F4 — Section 05–10: Cost drivers + Risk + DFM file checklist + 5-Pillar framework + Comparison + RFQ decision -->
+  <CostAndRisk />
+
+  <!-- Engineering Workflow (existing — HowTo schema source) -->
   <EngineeringWorkflow />
 
-  <!-- Quick Industry Solutions -->
+  <!-- Quick Industry Solutions (existing — 8 industry cards) -->
   <QuickIndustrySolutions />
+
+  <!-- F4 — Section 11: FAQ HTML pattern (real <details>, FAQPage schema via BaseLayout faqItems) -->
+  <ServicesFaq />
+
   <PartsPromoBanner />
 </BaseLayout>
