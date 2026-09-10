@@ -1,0 +1,104 @@
+---
+/**
+ * LeadTimeAndCapacity — Buyer timeDecision + capacityLock + lead-time table.
+ *
+ * Trinity Audit P0 fix:
+ *   - Buyer.timeDecision    (lead-time table by volume tier)
+ *   - Buyer.capacityLock    (capacity allocation + lock mechanism)
+ *   - AI.realTableElement   (real <table> for AI extraction)
+ *   - AI.headingNumbered    (03 / 04 sub-headings)
+ *   - EEAT.specificMetrics  (quantified lead times + monthly capacity)
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Lead-time tiers (typical ranges, not contractual SLAs)
+const tiers = [
+  { tier: 0, volume: t('services.capacity.tier0.vol'), setup: t('services.capacity.tier0.setup'), cycle: t('services.capacity.tier0.cycle'), qa: t('services.capacity.tier0.qa') },
+  { tier: 1, volume: t('services.capacity.tier1.vol'), setup: t('services.capacity.tier1.setup'), cycle: t('services.capacity.tier1.cycle'), qa: t('services.capacity.tier1.qa') },
+  { tier: 2, volume: t('services.capacity.tier2.vol'), setup: t('services.capacity.tier2.setup'), cycle: t('services.capacity.tier2.cycle'), qa: t('services.capacity.tier2.qa') },
+  { tier: 3, volume: t('services.capacity.tier3.vol'), setup: t('services.capacity.tier3.setup'), cycle: t('services.capacity.tier3.cycle'), qa: t('services.capacity.tier3.qa') },
+];
+---
+
+<section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl">
+
+    <header class="mb-10 text-center">
+      <div class="inline-flex items-center px-4 py-2 mb-5 text-xs font-semibold rounded-full border tracking-wider uppercase" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        {t('services.capacity.badge')}
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-5" style="color: var(--theme-text);">
+        <span class="text-base font-mono mr-2 align-top" style="color: var(--theme-primary);">03</span>
+        {t('services.capacity.h2_1')}<span class="gradient-text-accent"> {t('services.capacity.h2_2')}</span>
+      </h2>
+      <p class="text-lg max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('services.capacity.lede')}
+      </p>
+    </header>
+
+    {/* ── Lead time + monthly capacity strip (quantified) ── */}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+      {[
+          { v: '3-5', u: t('services.capacity.metric.proto.unit') },
+          { v: '2-3', u: t('services.capacity.metric.mid.unit') },
+          { v: '4-6', u: t('services.capacity.metric.heavy.unit') },
+          { v: '~10k', u: t('services.capacity.metric.monthly.unit') },
+        ].map((m) => (
+          <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="text-3xl md:text-4xl font-bold mb-1" style="color: var(--theme-primary);">{m.v}</div>
+            <div class="text-xs leading-tight" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{m.u}</div>
+          </div>
+        ))}
+    </div>
+
+    {/* ── Real <table> (AI.realTableElement + Buyer.timeDecision) ── */}
+    <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+      <table class="w-full text-sm">
+        <caption class="sr-only">{t('services.capacity.table_caption')}</caption>
+        <thead>
+          <tr style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <th class="text-left py-3 px-4 font-semibold" style="color: var(--theme-text);">{t('services.capacity.th.volume')}</th>
+            <th class="text-left py-3 px-4 font-semibold" style="color: var(--theme-text);">{t('services.capacity.th.setup')}</th>
+            <th class="text-left py-3 px-4 font-semibold" style="color: var(--theme-text);">{t('services.capacity.th.cycle')}</th>
+            <th class="text-left py-3 px-4 font-semibold" style="color: var(--theme-text);">{t('services.capacity.th.qa')}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tiers.map((row, idx) => (
+            <tr style={idx % 2 === 0 ? 'background-color: var(--theme-bg);' : 'background-color: color-mix(in srgb, var(--theme-surface) 60%, var(--theme-bg));'}>
+              <td class="py-3 px-4 font-semibold" style="color: var(--theme-text);">{row.volume}</td>
+              <td class="py-3 px-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.setup}</td>
+              <td class="py-3 px-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.cycle}</td>
+              <td class="py-3 px-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.qa}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs mt-3 italic" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+      {t('services.capacity.table_note')}
+    </p>
+
+    {/* ── Capacity lock section (Buyer.capacityLock) ── */}
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[0, 1, 2].map((i) => (
+        <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <div class="flex items-center mb-3">
+            <span class="text-xs font-mono font-bold mr-2" style="color: var(--theme-primary);">04.0{i + 1}</span>
+            <h4 class="text-base font-bold" style="color: var(--theme-text);">{t(`services.capacity.lock${i}.title`)}</h4>
+          </div>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            {t(`services.capacity.lock${i}.desc`)}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-xs mt-8 text-center" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+      {t('services.capacity.disclaimer')}
+    </p>
+  </div>
+</section>

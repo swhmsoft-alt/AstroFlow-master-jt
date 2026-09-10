@@ -2,6 +2,15 @@
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+
+// F4 — certifications rendered as a real list (EEAT.certification + EEAT.standardCitation + EEAT.externalLinks)
+const certs = [
+  { id: 0, ext: true },
+  { id: 1, ext: true },
+  { id: 2, ext: true },
+  { id: 3, ext: false },
+];
+const standards = [0, 1, 2, 3];
 ---
 
 <section class="relative py-16 overflow-hidden border-t border-b" style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
@@ -34,13 +43,29 @@ const t = useTranslations(currentLang);
           </svg>
         </div>
         <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('services.compliance.col0.title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        <p class="text-sm leading-relaxed mb-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
           {t('services.compliance.col0.desc')}
         </p>
+        {/* F4 — Real certification list */}
+        <ul class="text-left space-y-1.5">
+          {certs.map((c) => (
+            <li class="text-xs flex items-start" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-3.5 h-3.5 mr-1.5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              {c.ext ? (
+                <a href={t(`services.cert.cert${c.id}.url`)} target="_blank" rel="noopener noreferrer" class="underline-offset-2 hover:underline" style="color: var(--theme-primary);">
+                  {t(`services.cert.cert${c.id}.code`)}
+                </a>
+              ) : (
+                <span>{t(`services.cert.cert${c.id}.code`)}</span>
+              )}
+              <span class="ml-1.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">— {t(`services.cert.cert${c.id}.issuer`)}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <!-- Divider -->
-      <div class="hidden md:block w-px bg-gradient-to-b from-transparent via-[color-mix(in srgb, var(--theme-primary) 18%, transparent)] to-transparent"></div>
+      <div class="hidden md:block w-px bg-linear-to-b from-transparent via-[color-mix(in srgb, var(--theme-primary) 18%, transparent)] to-transparent"></div>
 
       <!-- Column 2: Traceability -->
       <div class="text-center md:text-left">
@@ -59,7 +84,7 @@ const t = useTranslations(currentLang);
       </div>
 
       <!-- Divider -->
-      <div class="hidden md:block w-px bg-gradient-to-b from-transparent via-[color-mix(in srgb, var(--theme-primary) 18%, transparent)] to-transparent"></div>
+      <div class="hidden md:block w-px bg-linear-to-b from-transparent via-[color-mix(in srgb, var(--theme-primary) 18%, transparent)] to-transparent"></div>
 
       <!-- Column 3: Standards -->
       <div class="text-center md:text-left">
@@ -72,10 +97,33 @@ const t = useTranslations(currentLang);
           </svg>
         </div>
         <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">{t('services.compliance.col2.title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+        <p class="text-sm leading-relaxed mb-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
           {t('services.compliance.col2.desc')}
         </p>
+        <ul class="text-left space-y-1.5">
+          {standards.map((s) => (
+            <li class="text-xs flex items-start" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              <svg class="w-3.5 h-3.5 mr-1.5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+              <a href={t(`services.cert.std${s}.url`)} target="_blank" rel="noopener noreferrer" class="underline-offset-2 hover:underline" style="color: var(--theme-primary);">
+                {t(`services.cert.std${s}.code`)}
+              </a>
+              <span class="ml-1.5" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">— {t(`services.cert.std${s}.title`)}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+    </div>
+
+    {/* F4 — Footer source disclosure + freshness (EEAT.sourceDisclosure + EEAT.freshnessDate) */}
+    <div class="mt-10 pt-6 border-t flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+      <p>
+        <span class="font-semibold mr-1" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('services.cert.source_label')}:</span>
+        {t('services.cert.source_text')}
+      </p>
+      <p>
+        <span class="font-semibold mr-1" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t('services.cert.freshness_label')}:</span>
+        {t('services.cert.freshness_text')}
+      </p>
     </div>
   </div>
 </section>

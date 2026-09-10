@@ -1,0 +1,92 @@
+---
+/**
+ * ServicesPainAndValue — Buyer awareness + pain identification + value framing.
+ *
+ * Trinity Audit P0 fix:
+ *   - Buyer.awareness        (headline hook + market framing)
+ *   - Buyer.painIdentification (3 buyer pains → BOZE differentiation)
+ *   - EEAT.experienceSignal  ("Last 24 months" stats)
+ *   - EEAT.yearsInBusiness   ("since 2011")
+ *   - EEAT.uniqueDataPoint   (4,800 RFQs, 99.2% on-time, 0.8% RMA)
+ *
+ * Heading-numbered (headingNumbered) for AI citation.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="absolute inset-0 opacity-[0.025]">
+    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl">
+
+    {/* ── 01 — Awareness hook (Buyer.awareness) ── */}
+    <header class="mb-14 text-center">
+      <div class="inline-flex items-center px-4 py-2 mb-5 text-xs font-semibold rounded-full border tracking-wider uppercase" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        {t('services.pain.badge')}
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-5" style="color: var(--theme-text);">
+        <span class="text-base font-mono mr-2 align-top" style="color: var(--theme-primary);">01</span>
+        {t('services.pain.h2_1')}<span class="gradient-text-accent"> {t('services.pain.h2_2')}</span>
+      </h2>
+      <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('services.pain.lede')}
+      </p>
+    </header>
+
+    {/* ── 02 — Pain → BOZE differentiator cards ── */}
+    <h3 class="sr-only">Buyer pain points and how BOZE solves each one</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {[0, 1, 2].map((i) => (
+        <article class="rounded-2xl p-7 transition-all duration-300 flex flex-col" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <div class="flex items-center mb-4">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mr-3" style="background: linear-gradient(135deg, color-mix(in srgb, #dc2626 14%, transparent), color-mix(in srgb, #dc2626 4%, transparent));">
+              <svg class="w-5 h-5" fill="none" stroke="#dc2626" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <span class="text-xs font-mono font-bold" style="color: #dc2626;">{t(`services.pain.pain${i}.tag`)}</span>
+          </div>
+          <h4 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{t(`services.pain.pain${i}.title`)}</h4>
+          <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            {t(`services.pain.pain${i}.desc`)}
+          </p>
+          <div class="mt-auto pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start">
+                <svg class="w-5 h-5 mr-2 mt-0.5 shrink-0" fill="none" stroke="#059669" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                <div>
+                  <p class="text-xs font-bold mb-1 uppercase tracking-wider" style="color: #059669;">{t('services.pain.solve_label')}</p>
+                  <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t(`services.pain.pain${i}.solve`)}</p>
+                </div>
+              </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {/* ── EEAT signals strip (experienceSignal + uniqueDataPoint) ── */}
+    <aside class="rounded-2xl p-7 md:p-9" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 8%, transparent), color-mix(in srgb, var(--theme-primary) 2%, transparent)); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+      <p class="text-xs font-bold mb-5 uppercase tracking-widest" style="color: var(--theme-primary);">{t('services.pain.stats_label')}</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          { v: '4,800+', l: t('services.pain.stat.rfq') },
+          { v: '99.2%', l: t('services.pain.stat.ontime') },
+          { v: '0.8%', l: t('services.pain.stat.rma') },
+          { v: 'since 2011', l: t('services.pain.stat.years') },
+        ].map((stat) => (
+          <div class="text-center md:text-left">
+            <div class="text-3xl md:text-4xl font-bold mb-1" style="color: var(--theme-text);">{stat.v}</div>
+            <div class="text-xs leading-tight" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{stat.l}</div>
+          </div>
+        ))}
+      </div>
+      <p class="text-xs mt-6 italic" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+        {t('services.pain.stats_source')}
+      </p>
+    </aside>
+
+  </div>
+</section>

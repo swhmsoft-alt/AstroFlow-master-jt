@@ -42,11 +42,22 @@ interface Props {
   tags?: string[];
   pageType?: PageType;
   serviceName?: string;
+  serviceDescription?: string;
   serviceCategory?: string;
   productName?: string;
+  productDescription?: string;
   productImage?: string;
   productCategory?: string;
   productRfqUrl?: string;
+  /**
+   * F4 — Optional Article schema overrides. Defaults to blog-post detection;
+   * can be set explicitly on non-blog pages (e.g. services-hub) to attach
+   * Article structured data alongside the Service entity.
+   */
+  articleHeadline?: string;
+  articleDescription?: string;
+  articleAuthor?: string;
+  articleImage?: string;
   collectionName?: string;
   collectionDescription?: string;
   itemCount?: number;
@@ -120,11 +131,17 @@ const {
   tags,
   pageType: explicitPageType,
   serviceName,
+  serviceDescription,
   serviceCategory,
   productName,
+  productDescription,
   productImage,
   productCategory,
   productRfqUrl,
+  articleHeadline,
+  articleDescription,
+  articleAuthor,
+  articleImage,
   collectionName,
   collectionDescription,
   itemCount,
@@ -178,13 +195,15 @@ const breadcrumbItems = breadcrumbRaw.map((item: BreadcrumbItem) => {
 });
 const alternateLinks = explicitAlternateLinks || defaultAlternateLinks;
 
-const resolvedServiceName = serviceName ?? (pageType === 'service-detail' ? title : undefined);
+const resolvedServiceName = serviceName ?? ((pageType === 'service-detail' || pageType === 'services-hub') ? title : undefined);
+const resolvedArticleHeadline = articleHeadline ?? (explicitPageType === 'blog-post' ? title : undefined);
 const schemaData = {
   pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
   breadcrumbItems,
-  articleHeadline: explicitPageType === 'blog-post' ? title : undefined, articleDescription: description, articleAuthor: author,
-  articleDatePublished: pubDate ?? undefined, serviceName: resolvedServiceName, serviceDescription: resolvedServiceName ? description : undefined,
-  serviceCategory, productName, productDescription: productName ? description : undefined, productImage, productCategory,
+  articleHeadline: resolvedArticleHeadline, articleDescription: articleDescription ?? description, articleAuthor: articleAuthor ?? author,
+  articleDatePublished: pubDate ?? undefined, articleImage,
+  serviceName: resolvedServiceName, serviceDescription: serviceDescription ?? (resolvedServiceName ? description : undefined),
+  serviceCategory, productName, productDescription: productDescription ?? (productName ? description : undefined), productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, collectionDescription, itemCount, items,
   faqItems, faqName,
   howtoItem,

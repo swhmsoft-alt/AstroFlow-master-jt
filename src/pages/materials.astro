@@ -13,9 +13,19 @@ import WeightCalculator from '../components/react/WeightCalculator';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+
+// FAQ items — passed to BaseLayout for FAQPage JSON-LD injection.
+const faqItems = [
+  { question: 'Which titanium grade should I choose for my application?', answer: 'Choose Grade 1 or 2 (CP-Titanium) for chemical processing, marine, and medical implants where corrosion resistance and formability matter most. Choose Grade 5 (Ti-6Al-4V) for aerospace structural parts, automotive, and high-stress applications requiring the best strength-to-weight ratio. Choose Grade 23 (Ti-6Al-4V ELI) for surgical implants and medical devices requiring extra-low interstitial content and superior fatigue performance.' },
+  { question: 'What is the difference between Grade 5 and Grade 23 titanium?', answer: 'Both are Ti-6Al-4V alloys with identical nominal composition, but Grade 23 (ELI = Extra Low Interstitial) has tighter limits on iron, oxygen, and nitrogen impurities. This gives Grade 23 superior fracture toughness, fatigue life, and biocompatibility — required for ASTM F136 surgical implants. Grade 5 (ASTM B265 / AMS 4911) is used for aerospace structural components per AMS 4928 and AMS 4965.' },
+  { question: 'Do you provide material certifications with every shipment?', answer: 'Yes. Every shipment ships with full EN 10204 Type 3.1 mill certification including heat number, chemical composition, mechanical properties (ultimate tensile strength, yield strength, elongation), and country of origin. For aerospace and medical programs we also provide AS9102 first-article inspection reports, dimensional inspection reports per ISO 2768, and batch-level traceability to ASTM E415 / ASTM E2371 spectrometric analysis.' },
+  { question: 'What tolerances can you hold on titanium CNC machined parts?', answer: 'Standard milling tolerance is plus or minus 0.025 mm (plus or minus 0.001 inch) on critical features per ISO 2768 m-k. Tight tolerance machining down to plus or minus 0.005 mm is available for bearing seats, threaded ports, and medical implant mating surfaces. Surface finishes of Ra 0.4 micrometer (16 microinch) or better are achievable through precision grinding and lapping.' },
+  { question: 'What is the lead time for titanium CNC machined parts?', answer: 'Standard lead time is 3-7 days for prototypes (1-10 pieces), 2-4 weeks for pilot runs (10-100 pieces), and 4-8 weeks for production volumes (100-5,000+ pieces). Lead time depends on material certification requirements (Type 3.1 mill cert vs. full batch traceability), part complexity, and surface finishing specifications. Expedited 48-hour turnaround is available for emergency prototype work through our fast-track manufacturing cell.' },
+  { question: 'Are your titanium parts compliant with aerospace and medical standards?', answer: 'Yes. We manufacture under AS9100D quality management system for aerospace and NADCAP-accredited special processes. Medical parts meet ASTM F136 (Grade 23 ELI) and ISO 5832-3 with full DFARS-compliant Country of Origin documentation. We support Nadcap AC7110/12 heat treating, AC7110/5 nondestructive testing, and AC7004 surface enhancement audits.' },
+];
 ---
 
-<BaseLayout>
+<BaseLayout faqItems={faqItems} faqName="Titanium Materials — Frequently Asked Questions">
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,5 +100,69 @@ const t = useTranslations(currentLang);
 
   <!-- Material Traceability -->
   <MaterialTraceability />
+
+  <!-- Best For — application-driven grade selection guide -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Which Titanium Grade Is Best For Your Application?</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Match your operating environment, certification requirements, and mechanical performance targets to the right titanium alloy. Every grade below is in stock and supported by our AS9100D quality system.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Best for Aerospace and Defense</h3>
+          <p class="text-sm leading-relaxed mb-3"><strong>Grade 5 (Ti-6Al-4V) per AMS 4911 / AMS 4928</strong> — industry standard for airframe structural components, landing gear fittings, and engine casings. Certified to AMS 4965 for forged parts and AMS 4911 for sheet and plate.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Tensile strength 895 MPa minimum, density 4.43 g/cm3, service temperature up to 315 degrees Celsius.</p>
+        </article>
+        <article class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Best for Medical Implants</h3>
+          <p class="text-sm leading-relaxed mb-3"><strong>Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3</strong> — extra-low interstitial content for orthopedic implants, spinal cages, dental abutments, and trauma plates. Biocompatibility certified per ISO 10993.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Improved fracture toughness and fatigue life versus standard Grade 5, certified DFARS-compliant Country of Origin.</p>
+        </article>
+        <article class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Best for Chemical and Marine</h3>
+          <p class="text-sm leading-relaxed mb-3"><strong>Grade 2 (CP-Titanium) per ASTM B265 / ASME SB-265</strong> — commercially pure titanium with outstanding corrosion resistance in seawater, chlorides, nitric acid, and oxidizing media. Ideal for heat exchangers, marine hardware, and chemical processing equipment.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Most widely used CP grade, weldable per AWS D1.9, available in plate, bar, tube, and wire forms.</p>
+        </article>
+        <article class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Best for High-Temperature Service</h3>
+          <p class="text-sm leading-relaxed mb-3"><strong>Grade 9 (Ti-3Al-2.5V) per AMS 4943 / AMS 4944</strong> — cold-formable alpha-beta alloy for tubing, hydraulic systems, and aircraft ducting. Service to 315 degrees Celsius.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Cold-formable to tight bend radii, ideal for thin-wall tubing in aerospace and motorsport applications.</p>
+        </article>
+        <article class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Best for Industrial and Oil and Gas</h3>
+          <p class="text-sm leading-relaxed mb-3"><strong>Grade 7 (Ti-0.2Pd) per ASTM B265</strong> — CP-Titanium with palladium addition for superior corrosion resistance in reducing acids (HCl, H2SO4) and chloride-rich environments. Used in chemical reactors, desalination, and downhole tools.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">NACE MR0175 compliant for sour service, ASME B31.3 compliant for process piping.</p>
+        </article>
+        <article class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Best for 3D Printing and Additive</h3>
+          <p class="text-sm leading-relaxed mb-3"><strong>Grade 5 (Ti-6Al-4V) per ASTM F2924 / F3306</strong> — plasma-atomized powder for laser powder bed fusion (LPBF) and electron beam melting (EBM). Pre-alloyed, spherical powder for aerospace and medical additive manufacturing.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Particle size 15-45 micrometer or 45-105 micrometer, certified per ASTM F3049 for medical and AS9100 for aerospace.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ — paired with BaseLayout faqItems prop for FAQPage JSON-LD -->
+  <section class="py-16" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Frequently Asked Questions About Titanium Materials</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Common questions from procurement engineers, design engineers, and quality teams specifying titanium alloys for aerospace, medical, chemical, and industrial applications.</p>
+      </div>
+      <div class="space-y-3">
+        {faqItems.map((item) => (
+          <details class="group rounded-xl p-5" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <summary class="flex items-center justify-between cursor-pointer font-semibold" style="color: var(--theme-text);">
+              <span>{item.question}</span>
+              <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <PartsPromoBanner />
 </BaseLayout>

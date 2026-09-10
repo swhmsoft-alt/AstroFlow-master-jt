@@ -1,0 +1,56 @@
+---
+/**
+ * ServicesFaq — FAQ accordion (real HTML <details>) + FAQPage schema injection
+ * is delegated to BaseLayout via the faqItems prop on the parent page.
+ *
+ * Trinity Audit P0 fix:
+ *   - Buyer.faqResolution   (FAQ content)
+ *   - AI.faqHtmlPattern     (real <details>/<summary>, no JS)
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const items = [0, 1, 2, 3, 4, 5, 6, 7];
+---
+
+<section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-4xl">
+
+    <header class="mb-10 text-center">
+      <div class="inline-flex items-center px-4 py-2 mb-5 text-xs font-semibold rounded-full border tracking-wider uppercase" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-3.5 h-3.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        {t('services.faq.badge')}
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-5" style="color: var(--theme-text);">
+        <span class="text-base font-mono mr-2 align-top" style="color: var(--theme-primary);">11</span>
+        {t('services.faq.h2_1')}<span class="gradient-text-accent"> {t('services.faq.h2_2')}</span>
+      </h2>
+      <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t('services.faq.lede')}
+      </p>
+    </header>
+
+    <div class="space-y-3">
+      {items.map((i) => (
+        <details class="group rounded-xl overflow-hidden" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <summary class="cursor-pointer list-none px-6 py-4 flex items-center justify-between font-semibold transition-colors" style="color: var(--theme-text);">
+            <span class="flex items-center pr-4">
+              <span class="text-xs font-mono font-bold mr-3 shrink-0" style="color: var(--theme-primary);">{String(i + 1).padStart(2, '0')}</span>
+              <span>{t(`services.faq.q${i}.q`)}</span>
+            </span>
+            <svg class="w-5 h-5 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-6 pb-5 text-sm leading-relaxed border-t pt-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            {t(`services.faq.q${i}.a`)}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <p class="text-xs mt-8 text-center" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+      {t('services.faq.contact_lede')}
+      <a href="/rfq/" rel="noopener" class="font-semibold underline ml-1" style="color: var(--theme-primary);">{t('services.faq.contact_link')}</a>.
+    </p>
+  </div>
+</section>

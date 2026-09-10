@@ -87,6 +87,13 @@ function findKeyProps(properties: any[] | undefined): { tensile?: string; yield?
 }
 
 const materials = await getCollection('materials');
+
+// FAQ items — also rendered as visible accordion on the page
+const faqItems = [
+  { question: 'How many titanium alloys are in this materials library?', answer: 'The library catalogs 30+ titanium alloys organized by metallurgical class — Commercially Pure (Grade 1, 2, 3, 4), Alpha-Beta (Grade 5 Ti-6Al-4V, Grade 5 ELI, Grade 9, Grade 23), Near-Alpha (Grade 6, Ti-6242), Beta (Ti-10V-2Fe-3Al, Beta-C), Intermetallic (TiAl, Gamma-MET), and Shape Memory (Nitinol Ni-Ti).' },
+  { question: 'What certifications are available for these titanium alloys?', answer: 'Every alloy in the library is available with EN 10204 Type 3.1 mill certification, AS9102 first-article inspection, and full batch traceability per ASTM E415 spectrometric analysis. Aerospace grades are AS9100D and NADCAP-compliant. Medical grades meet ASTM F136 (Ti-6Al-4V ELI) and ISO 5832-3 biocompatibility per ISO 10993.' },
+  { question: 'How are alloys classified in this library?', answer: 'Alloys are organized by microstructural class — Commercially Pure (CP-Ti grades 1-4 with varying oxygen and iron content), Alpha-Beta (the workhorse family including Ti-6Al-4V), Near-Alpha (high-temperature alloys for jet engines), Beta (high-strength alloys for fasteners and springs), Intermetallic (gamma TiAl for turbine blades), and Shape Memory (Nitinol for medical stents and actuators).' },
+];
 const refMap = buildMaterialRef(materials);
 
 // Augment each material with GRADE_DATA and entity counts
@@ -141,6 +148,8 @@ const catDesc: Record<string, string> = {
   itemCount={enriched.length}
   items={enriched.map((m: any) => ({ name: m.data.title, url: `${SITE.url}${m.gradeKey ? '/materials/' + m.gradeKey + '/' : '/materials/'}` }))}
   mentions={hubMentionsForCategory('material')}
+  faqItems={faqItems}
+  faqName="Titanium Materials Library — Frequently Asked Questions"
 >
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -249,6 +258,82 @@ const catDesc: Record<string, string> = {
           </div>
         </div>
       ))}
+    </div>
+  </section>
+
+  <!-- Quick-Reference Table — alloy class vs typical use case -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Titanium Alloy Class Quick-Reference</h2>
+        <p class="text-lg max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Compare the six metallurgical classes by tensile strength, density, weldability, and typical applications.</p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left" style="border-collapse: collapse; background-color: var(--theme-surface);">
+          <thead>
+            <tr style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 2px solid var(--theme-primary);">
+              <th class="px-4 py-3 text-sm font-bold" style="color: var(--theme-text);">Alloy Class</th>
+              <th class="px-4 py-3 text-sm font-bold" style="color: var(--theme-text);">Example Grades</th>
+              <th class="px-4 py-3 text-sm font-bold" style="color: var(--theme-text);">Tensile Strength</th>
+              <th class="px-4 py-3 text-sm font-bold" style="color: var(--theme-text);">Density</th>
+              <th class="px-4 py-3 text-sm font-bold" style="color: var(--theme-text);">Weldability</th>
+              <th class="px-4 py-3 text-sm font-bold" style="color: var(--theme-text);">Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"><td class="px-4 py-3 text-sm">Commercially Pure</td><td class="px-4 py-3 text-sm">Grade 1, 2, 3, 4</td><td class="px-4 py-3 text-sm">240-550 MPa</td><td class="px-4 py-3 text-sm">4.51 g/cm3</td><td class="px-4 py-3 text-sm">Excellent</td><td class="px-4 py-3 text-sm">Best for chemical processing, marine hardware</td></tr>
+            <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"><td class="px-4 py-3 text-sm">Alpha-Beta</td><td class="px-4 py-3 text-sm">Grade 5, 5 ELI, 9, 23</td><td class="px-4 py-3 text-sm">895-1100 MPa</td><td class="px-4 py-3 text-sm">4.43 g/cm3</td><td class="px-4 py-3 text-sm">Good (Grade 9)</td><td class="px-4 py-3 text-sm">Best for aerospace structural, medical implants</td></tr>
+            <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"><td class="px-4 py-3 text-sm">Near-Alpha</td><td class="px-4 py-3 text-sm">Grade 6, Ti-6242</td><td class="px-4 py-3 text-sm">895-1100 MPa</td><td class="px-4 py-3 text-sm">4.55 g/cm3</td><td class="px-4 py-3 text-sm">Limited</td><td class="px-4 py-3 text-sm">Best for high-temperature jet engine components</td></tr>
+            <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"><td class="px-4 py-3 text-sm">Beta</td><td class="px-4 py-3 text-sm">Ti-10V-2Fe-3Al, Beta-C</td><td class="px-4 py-3 text-sm">1100-1400 MPa</td><td class="px-4 py-3 text-sm">4.65 g/cm3</td><td class="px-4 py-3 text-sm">Good</td><td class="px-4 py-3 text-sm">Best for high-strength fasteners and springs</td></tr>
+            <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"><td class="px-4 py-3 text-sm">Intermetallic</td><td class="px-4 py-3 text-sm">Gamma TiAl</td><td class="px-4 py-3 text-sm">500-800 MPa</td><td class="px-4 py-3 text-sm">3.9-4.0 g/cm3</td><td class="px-4 py-3 text-sm">Poor</td><td class="px-4 py-3 text-sm">Best for turbine blades</td></tr>
+            <tr><td class="px-4 py-3 text-sm">Shape Memory</td><td class="px-4 py-3 text-sm">Nitinol Ni-Ti</td><td class="px-4 py-3 text-sm">800-1500 MPa</td><td class="px-4 py-3 text-sm">6.45 g/cm3</td><td class="px-4 py-3 text-sm">Limited</td><td class="px-4 py-3 text-sm">Best for medical stents and actuators</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Selection Guide — 3-step decision path -->
+  <section class="py-16" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">How to Select the Right Titanium Alloy</h2>
+      </div>
+      <ol class="space-y-6">
+        <li class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Step 1: Identify Operating Environment</h3>
+          <p class="text-sm leading-relaxed">Match your service conditions to the alloy class. Seawater, chlorides, and oxidizing acids favor Commercially Pure Grade 2 or Pd-stabilized Grade 7. High-temperature jet engine service above 315 degrees Celsius needs Near-Alpha Grade 6 or Ti-6242. Body-temperature medical implants call for Grade 23 ELI per ASTM F136.</p>
+        </li>
+        <li class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Step 2: Define Strength and Density Targets</h3>
+          <p class="text-sm leading-relaxed">For aerospace structural parts requiring the best strength-to-weight ratio, Grade 5 Ti-6Al-4V at 895 MPa minimum tensile and 4.43 g/cm3 density remains the industry default. Beta alloys such as Ti-10V-2Fe-3Al reach 1400 MPa for landing gear and fastener applications where maximum strength outweighs density concerns.</p>
+        </li>
+        <li class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Step 3: Specify Certification Requirements</h3>
+          <p class="text-sm leading-relaxed">Aerospace programs require EN 10204 Type 3.1 mill certification, AS9102 first-article inspection, and full heat-number traceability per ASTM E415. Medical implants add ASTM F136 or ISO 5832-3 compliance, ISO 10993 biocompatibility, and DFARS-compliant Country of Origin. Oil and gas sour service specifies NACE MR0175.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+<!-- FAQ — accordion UI paired with FAQPage JSON-LD via BaseLayout faqItems prop -->
+  <section class="py-16" style="background: color-mix(in srgb, var(--theme-surface) 50%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="text-lg max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Common questions from procurement and design engineers selecting titanium alloys from the Boze materials library.</p>
+      </div>
+      <div class="space-y-3">
+        {faqItems.map((item) => (
+          <details class="group rounded-xl p-5" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <summary class="flex items-center justify-between cursor-pointer font-semibold" style="color: var(--theme-text);">
+              <span>{item.question}</span>
+              <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{item.answer}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </section>
 

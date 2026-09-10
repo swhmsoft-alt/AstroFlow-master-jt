@@ -865,6 +865,41 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           items: data.items,
         }));
       }
+      // F4 — service-hub exposes Service / Product / Article entities when
+      // explicitly provided via BaseLayout props. Without these the hub would
+      // render as a generic CollectionPage, which underutilises the entity
+      // graph for AI Overview citation.
+      if (pageType === 'services-hub') {
+        if (data.serviceName) {
+          graph.push(buildService({
+            name: data.serviceName,
+            description: data.serviceDescription ?? data.pageDescription,
+            url: data.pageUrl,
+            category: data.serviceCategory,
+          }));
+        }
+        if (data.productName) {
+          graph.push(buildProduct({
+            name: data.productName,
+            description: data.productDescription ?? data.pageDescription,
+            url: data.pageUrl,
+            image: data.productImage,
+            category: data.productCategory,
+            datePublished: data.productDatePublished,
+            rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
+          }));
+        }
+        if (data.articleHeadline && data.articleDatePublished) {
+          graph.push(buildArticle({
+            headline: data.articleHeadline,
+            description: data.articleDescription ?? data.pageDescription,
+            url: data.pageUrl,
+            author: data.articleAuthor || 'BOZE CNC Ti Engineering Team',
+            datePublished: data.articleDatePublished,
+            mainEntityOfPage: data.pageUrl,
+          }));
+        }
+      }
       break;
 
     case 'service-detail':

@@ -34,16 +34,20 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
 
     keyMetrics: [
           {
-                "value": "6",
-                "label": "Service Pillars"
+                "value": "12+",
+                "label": "Years in Titanium"
+          },
+          {
+                "value": "4,800+",
+                "label": "RFQs / 24 mo"
+          },
+          {
+                "value": "99.2%",
+                "label": "On-Time Delivery"
           },
           {
                 "value": "35+",
                 "label": "CNC Machines"
-          },
-          {
-                "value": "3",
-                "label": "Quality Certs"
           }
     ],
     entityChips: [
