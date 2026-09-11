@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.1",
+  "generatedAt": "2026-09-11T00:00:00.000Z",
+  "description": "Data-driven Single Source of Truth for the Trinity Audit gate. Aligned with the project goal of (1) guiding the buyer decision chain to a conversion, and (2) being cite-worthy by RAG systems (Google AI Overviews, Perplexity, ChatGPT Search, etc.). Each pageType defines the decision-chain stages it must satisfy, the runtime evidence signals required per stage (split across buyer / eeat / genai axes), and the floor thresholds for publish-blocking. Evidence signal names MUST match the runtime check keys produced by scripts/audit-trinity.mjs (e.g. buyerChecks.awareness, eeatChecks.teamAuthority, aiChecks.articleSchema).",
+  "axes": {
+    "buyer": "Buyer Decision Chain — drives the human toward RFQ / conversion.",
+    "eeat": "Google EEAT + Information Gain — gates whether RAG treats the page as an authoritative source.",
+    "genai": "Generative AI Citation (RAG) — gates whether RAG can ingest and surface the page as structured context."
+  },
+  "runtimeCheckKeys": {
+    "buyer": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "costAssessment", "timeDecision", "fileProcess", "riskMitigation", "decisionRfq", "comparison", "capacityLock", "faqResolution"],
+    "eeat": ["experienceSignal", "yearsInBusiness", "specificMetrics", "specificExamples", "standardCitation", "certification", "externalLinks", "teamAuthority", "quantified", "sourceDisclosure", "freshnessDate", "uniqueDataPoint", "proprietaryFrame"],
+    "genai": ["schemaOrg", "faqSchema", "breadcrumbSchema", "productSchema", "serviceSchema", "articleSchema", "howToSchema", "faqHtmlPattern", "realTableElement", "bestForPattern", "headingNumbered", "bulletOrStepList", "quotedSpec"]
+  },
+  "chainMode": {
+    "scoring": "Per-stage pass/fail, not a weighted average. A stage passes when every axis in its requires list has a truthy runtime value (or matches an alias OR-group). The page passes the publish gate when it passes at least minTotalStages of its required stages, meets the EEAT authority floor, AND meets the AI readability floor. To require ALL required stages to pass, set strictStages: true.",
+    "p0Format": "P0 Fix List is organised by blocked stage, not by axis. Each line states the stage name and the axis/signal combination missing, so the fix list maps directly to a buyer-path failure rather than a checklist."
+  },
+  "stages": [
+    {
+      "id": "awareness",
+      "label": "Awareness — visitor lands and recognises the page addresses their problem",
+      "requires": ["buyer:awareness", "genai:breadcrumbSchema"]
+    },
+    {
+      "id": "painIdentification",
+      "label": "Pain Identification — visitor's specific pain / challenge is acknowledged",
+      "requires": ["buyer:painIdentification"]
+    },
+    {
+      "id": "solutionExplore",
+      "label": "Solution Exploration — visitor sees how approaches / methods / capabilities fit",
+      "requires": ["buyer:solutionExplore"]
+    },
+    {
+      "id": "capabilityValid",
+      "label": "Capability Validation — 'can they actually do it?'",
+      "requires": ["buyer:capabilityValid", "eeat:certification"]
+    },
+    {
+      "id": "costAssessment",
+      "label": "Cost Assessment — 'what will it cost?' (RFQ redirect for MadeToOrder, never fabricate retail price)",
+      "requires": ["buyer:costAssessment", "buyer:decisionRfq"]
+    },
+    {
+      "id": "timeDecision",
+      "label": "Time-to-Decision — 'how fast?' (lead time / turnaround as ranges)",
+      "requires": ["buyer:timeDecision"]
+    },
+    {
+      "id": "fileProcess",
+      "label": "File / Process — 'how do I submit my design?' (CAD formats, upload)",
+      "requires": ["buyer:fileProcess"]
+    },
+    {
+      "id": "riskMitigation",
+      "label": "Risk Mitigation — quality systems, inspection, traceability, Cpk / yield",
+      "requires": ["buyer:riskMitigation", "eeat:sourceDisclosure"]
+    },
+    {
+      "id": "decisionRfq",
+      "label": "Decision — RFQ / sample / contact endpoint reachable on the page",
+      "requires": ["buyer:decisionRfq"]
+    },
+    {
+      "id": "comparison",
+      "label": "Comparison — visitor compares this vs alternatives",
+      "requires": ["buyer:comparison"]
+    },
+    {
+      "id": "capacityLock",
+      "label": "Capacity Lock — production capacity / monthly volume / backup evidence",
+      "requires": ["buyer:capacityLock"]
+    },
+    {
+      "id": "faqResolution",
+      "label": "FAQ Resolution — last-mile objections answered",
+      "requires": ["buyer:faqResolution", "genai:faqSchema"]
+    }
+  ],
+  "pageTypes": {
+    "service-detail": {
+      "label": "Service / capability detail page (e.g. /titanium-cnc-machining-services/3-5-axis-cnc-machining/)",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "costAssessment", "timeDecision", "fileProcess", "riskMitigation", "decisionRfq", "capacityLock", "faqResolution"],
+      "floors": { "eeat": 60, "genai": 50 },
+      "publishGate": { "minTotalStages": 9, "strictStages": false }
+    },
+    "service-hub": {
+      "label": "Service hub / collection (e.g. /titanium-cnc-machining-services/ index)",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "decisionRfq", "faqResolution"],
+      "floors": { "eeat": 60, "genai": 50 },
+      "publishGate": { "minTotalStages": 5, "strictStages": false }
+    },
+    "product-detail": {
+      "label": "Product / component detail (e.g. /products/titanium-cnc-parts/... or part-detail)",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "costAssessment", "timeDecision", "fileProcess", "riskMitigation", "decisionRfq", "comparison", "faqResolution"],
+      "floors": { "eeat": 60, "genai": 50 },
+      "publishGate": { "minTotalStages": 9, "strictStages": false }
+    },
+    "products-hub": {
+      "label": "Product hub / collection",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "decisionRfq", "faqResolution"],
+      "floors": { "eeat": 55, "genai": 50 },
+      "publishGate": { "minTotalStages": 4, "strictStages": false }
+    },
+    "material": {
+      "label": "Material / grade page (e.g. /materials/grade-5/)",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "riskMitigation", "comparison", "faqResolution"],
+      "floors": { "eeat": 60, "genai": 50 },
+      "publishGate": { "minTotalStages": 5, "strictStages": false, "_migrationNote": "AMS/ASTM/ISO standard pages currently satisfy 5/6 stages (typical miss: comparison or riskMitigation). strictStages target is 6/6." }
+    },
+    "capability": {
+      "label": "Equipment / process / capability detail (e.g. /equipment/cmm/)",
+      "requires": ["awareness", "painIdentification", "capabilityValid", "comparison", "riskMitigation", "faqResolution"],
+      "floors": { "eeat": 55, "genai": 50 },
+      "publishGate": { "minTotalStages": 5, "strictStages": true }
+    },
+    "industry": {
+      "label": "Industry hub or detail (e.g. /industries/aerospace/)",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "decisionRfq", "comparison", "faqResolution"],
+      "floors": { "eeat": 55, "genai": 50 },
+      "publishGate": { "minTotalStages": 5, "strictStages": false }
+    },
+    "blog-post": {
+      "label": "Blog article detail — the long-tail RAG entry point (e.g. /blog/[...slug])",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "faqResolution"],
+      "floors": { "eeat": 70, "genai": 60 },
+      "publishGate": { "minTotalStages": 4, "strictStages": true }
+    },
+    "blog-index": {
+      "label": "Blog index / category / pagination (e.g. /blog/, /blog/category/materials/)",
+      "requires": ["awareness", "solutionExplore", "faqResolution"],
+      "floors": { "eeat": 50, "genai": 50 },
+      "publishGate": { "minTotalStages": 3, "strictStages": true }
+    },
+    "case-studies": {
+      "label": "Case study hub or detail",
+      "requires": ["awareness", "painIdentification", "solutionExplore", "capabilityValid", "riskMitigation", "decisionRfq"],
+      "floors": { "eeat": 60, "genai": 50 },
+      "publishGate": { "minTotalStages": 4, "strictStages": false }
+    },
+    "narrative": {
+      "label": "Brand narrative (about / privacy / cookie) — no buyer funnel, focus on trust + AI readability",
+      "requires": ["awareness"],
+      "floors": { "eeat": 50, "genai": 40 },
+      "publishGate": null
+    },
+    "rfq": {
+      "label": "RFQ / contact page — conversion endpoint",
+      "requires": ["awareness", "decisionRfq"],
+      "floors": { "eeat": 50, "genai": 50 },
+      "publishGate": { "minTotalStages": 2, "strictStages": true }
+    },
+    "generic": {
+      "label": "Generic page (legal placeholder, error, thank-you, fallback)",
+      "requires": ["awareness"],
+      "floors": { "eeat": 30, "genai": 30 },
+      "publishGate": null
+    }
+  },
+  "aliasMap": {
+    "_comment": "Optional aliases: when a stage.requires entry matches an alias key, evaluate as OR over the listed runtime keys.",
+    "serviceSchema_or_productSchema": ["serviceSchema", "productSchema"],
+    "anyBreadcrumb": ["breadcrumbSchema"]
+  }
+}

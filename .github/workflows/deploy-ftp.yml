@@ -51,6 +51,25 @@ jobs:
           if-no-files-found: ignore
           retention-days: 14
 
+      # ── Trinity audit (buyer decision chain × EEAT × RAG) ────────
+      # Per-page pass/fail against the decision-chain stages and the EEAT
+      # + AI readability floors in data/audit-gate-config.json (SSOT).
+      # Strict mode (--gate): any gated page below its per-type threshold
+      # causes exit 1 and aborts deployment. The artifact upload preserves
+      # per-page reports for retrospective review.
+      - name: Trinity audit (buyer × EEAT × RAG) — strict gate
+        id: trinity-audit
+        run: node scripts/audit-trinity.mjs --all --gate
+
+      - name: Upload Trinity audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trinity-audit
+          path: audit-results/
+          if-no-files-found: ignore
+          retention-days: 14
+
       - name: Deploy to cPanel via FTP
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
