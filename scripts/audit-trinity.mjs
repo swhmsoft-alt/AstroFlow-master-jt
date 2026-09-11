@@ -101,7 +101,7 @@ function auditOne(slug) {
   const eeatChecks = {
     experienceSignal: /case stud|client|customer|yield|reduction|delivery|prototype|production run/i.test(content),
     yearsInBusiness:   /\bsince\s*20\d{2}|founded in 20\d{2}/i.test(allContent),
-    specificMetrics:  (allContent.match(/\d+(\.\d+)?\s*(mm|µm|Ra|W\/m·?K|°C|bar|kg|ksi|MPa|years?|months?|weeks?|parts?|units?|Hz|rpm|%|in)/gi) || []).length,
+    specificMetrics:  (allContent.match(/\b\d+(\.\d+)?\s*(mm|µm|Ra|W\/m·?K|°C|bar|kg|ksi|MPa|years?|months?|weeks?|parts?|units?|Hz|rpm)\b/gi) || []).length,
     specificExamples: /Blisk|impeller|turbine|hip|knee|prosthet|dental|bracket/i.test(allContent),
     standardCitation: /AMS\s?\d{4}|AS9100|ISO\s?\d+|ASTM\s?[A-Z]\d+|NADCAP|EN\s?\d{4}/.test(allContent),
     certification:    /AS9100D|ISO\s?13485|ISO\s?9001|NADCAP|certified/i.test(allContent),
@@ -132,13 +132,13 @@ function auditOne(slug) {
     breadcrumbSchema: /itemListElement|BreadcrumbList/.test(allContent),
     productSchema:    /"@type":\s*"(Product|Service)"|@type:\s*['"]Service['"]|@type:\s*['"]Product['"]/i.test(allContent),
     articleSchema:    /"@type":\s*"(Article|BlogPosting|NewsArticle)"/.test(allContent),
-    howToSchema:      /HowTo/.test(allContent),
+    howToSchema:      /"@type":\s*"HowTo"/.test(allContent),
     faqHtmlPattern:   /<details>|"@type":\s*"Question"/i.test(allContent),
     realTableElement: /<table[^>]*>/.test(allContent),
     bestForPattern:   /Best for[:\s]|Not for[:\s]|Ideal for|Not suitable for/i.test(allContent),
     headingNumbered:   /Step\s+\d+:|^##\s+\d+\.|^###\s+\d+\./m.test(content),
     bulletOrStepList: /<ol[^>]*>|<ul[^>]*>/i.test(content),
-    quotedSpec:       /"[^"]{20,200}"/.test(allContent),
+    quotedSpec:       /"[^"]{20,200}"/.test(allContent) && !/"[a-z]+(-[a-z0-9]+){2,}"/.test(allContent),
   };
   const aiScore = Math.round(
     (Object.values(aiChecks).filter((v, i) => {
