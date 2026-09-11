@@ -488,10 +488,15 @@ export function buildComparisonList(input: {
     ...(input.description ? { description: input.description } : {}),
     url: input.url,
     numberOfItems: input.items.length,
+    // ItemList item is a cross-page @id reference to an existing Product entity.
+    // Do NOT re-declare @type / name / description inline — Google treats inline
+    // re-declarations as a Product owned by the host page and complains about
+    // missing offers/review/aggregateRating on a page that is actually a BlogPosting.
+    // Schema.org / Google guidance: a referenced Thing carries only @id.
     itemListElement: input.items.map((it, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      item: { '@id': it['@id'], '@type': 'Product', name: it.name, ...(it.description ? { description: it.description } : {}) },
+      item: { '@id': it['@id'] },
     })),
     ...(input.criteria?.length
       ? {
@@ -590,9 +595,17 @@ export function buildArticle(input: {
   datePublished: string;
   image?: string;
   mainEntityOfPage?: string;
+  /**
+   * Schema.org article subtype. Defaults to the generic 'Article' for
+   * backward compatibility. Blog pages pass `BlogPosting`, which is the
+   * precise Article subtype defined by schema.org for blog posts and is
+   * the recommended type for blog content per Google's structured-data
+   * documentation.
+   */
+  articleType?: 'Article' | 'BlogPosting' | 'NewsArticle';
 }) {
   return {
-    '@type': 'Article',
+    '@type': input.articleType ?? 'Article',
     '@id': input.url,
     headline: input.headline,
     description: input.description,
@@ -938,6 +951,10 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           datePublished: data.articleDatePublished ?? new Date().toISOString(),
           image: data.articleImage,
           mainEntityOfPage: data.pageUrl,
+          // schema.org Article subtype: BlogPosting is the precise match for
+          // blog content per Google's structured-data documentation. The
+          // generic 'Article' fallback would also be valid but less specific.
+          articleType: 'BlogPosting',
         }));
       }
       break;
