@@ -49,6 +49,18 @@ interface Props {
   productImage?: string;
   productCategory?: string;
   productRfqUrl?: string;
+  // Phase 3 — Product entity schema field overrides (replaces page-level
+  // JSON-LD block on product-entity detail pages).
+  productSku?: string;
+  productMaterial?: string;
+  productHowto?: HowToItem;
+  productFaqItems?: FaqItem[];
+  // Phase 2C — tool detail (WebApplication schema entity)
+  toolName?: string;
+  toolDescription?: string;
+  toolCategory?: string;
+  toolSubCategory?: string;
+  toolRfqPath?: string;
   /**
    * F4 — Optional Article schema overrides. Defaults to blog-post detection;
    * can be set explicitly on non-blog pages (e.g. services-hub) to attach
@@ -138,6 +150,15 @@ const {
   productImage,
   productCategory,
   productRfqUrl,
+  productSku,
+  productMaterial,
+  productHowto,
+  productFaqItems,
+  toolName,
+  toolDescription,
+  toolCategory,
+  toolSubCategory,
+  toolRfqPath,
   articleHeadline,
   articleDescription,
   articleAuthor,
@@ -196,7 +217,12 @@ const breadcrumbItems = breadcrumbRaw.map((item: BreadcrumbItem) => {
 const alternateLinks = explicitAlternateLinks || defaultAlternateLinks;
 
 const resolvedServiceName = serviceName ?? ((pageType === 'service-detail' || pageType === 'services-hub') ? title : undefined);
-const resolvedArticleHeadline = articleHeadline ?? (explicitPageType === 'blog-post' ? title : undefined);
+// Phase 2C — case-study pages now use Article (not BlogPosting). Default
+// the Article headline to the page title when no explicit headline is passed,
+// mirroring the previous blog-post behavior. Both page types derive Article
+// from page metadata; the type difference (BlogPosting vs Article) is decided
+// in schema.ts switch case.
+const resolvedArticleHeadline = articleHeadline ?? ((explicitPageType === 'blog-post' || explicitPageType === 'case-study') ? title : undefined);
 const schemaData = {
   pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
   breadcrumbItems,
@@ -210,6 +236,10 @@ const schemaData = {
   mentions,
   speakableSelectors,
   comparisonList,
+  // Phase 3 — product-detail entity field overrides (replaces page-level JSON-LD)
+  productSku, productMaterial, productHowto, productFaqItems,
+  // Phase 2C — tool detail (WebApplication)
+  toolName, toolDescription, toolCategory, toolSubCategory, toolRfqPath,
 };
 const pageGraph = buildPageGraph(pageType, schemaData);
 const ldJson = JSON.stringify(pageGraph);

@@ -6,8 +6,12 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
-<BaseLayout title="Surface Roughness Comparator | Ra Rz CNC Surface Finish Guide | Boze Titanium Manufacturing Center" description="Compare surface roughness from Ra 0.025 µm mirror finish to Ra 6.3 µm as-rough. Filter by machining process CNC milling, turning, grinding, EDM, and see application examples.">
-  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+<BaseLayout title="Surface Roughness Comparator | Ra Rz CNC Surface Finish Guide | Boze Titanium Manufacturing Center"
+  description="Compare surface roughness from Ra 0.025 µm mirror finish to Ra 6.3 µm as-rough. Filter by machining process CNC milling, turning, grinding, EDM, and see application examples."
+  pageType="tool-detail"
+  toolName="Surface Roughness Comparator"
+  toolSubCategory="Surface Finish Comparator"
+> <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">

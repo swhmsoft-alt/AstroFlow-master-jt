@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LegacyEntityContent from '../../../components/product/LegacyEntityContent.astro';
 import RichEntityContent from '../../../components/product/RichEntityContent.astro';
 import { getCollection } from 'astro:content';
+import type { FaqItem, HowToItem } from '../../lib/schema';
 
 export const prerender = true;
 
@@ -109,6 +110,10 @@ const relatedProducts = allProducts.filter(p => {
 // FAQ
 const faqData = data.faq || [];
 
+// Phase 3 — entity @id references for WebPage.mentions (replaces inline @id
+// duplication). Empty for legacy data without entity relationships.
+const productMentionsIds: string[] = [];
+
 // Load matching product spec for rich blueprint injection
 const allSpecs = await getCollection('product-specs');
 const specSlug = entry.slug || entry.id?.replace(/\.(json|md)$/, '').split('/').pop();
@@ -119,60 +124,58 @@ if (specEntry) {
   SpecContent = rendered.Content;
 }
 
-// JSON-LD
-// Product entity: linked to Legal Organization + BOZE CNC Ti brand by @id.
-// B2B RFQ Offer (no fixed price — custom-manufactured, NOT retail stock):
-//   Product → Offer (MadeToOrder) → seller (Legal Org) → /rfq/
-//   itemOffered back-ref closes the Product ⇄ Offer entity loop.
-const schemaProduct = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "@id": `${pageUrl}#product`,
-      "url": pageUrl,
-      "name": data.title,
-      "sku": data.sku || specEntry?.data?.sku || '',
-      "description": data.seoDescription || data.function,
-      "category": data.category,
-      "material": data.material,
-      ...(productImageUrl ? { "image": [productImageUrl] } : {}),
-      "manufacturer": { "@type": "Organization", "@id": "https://www.bozemetal.com/#organization", "name": "Baoji Boze Metal Products Co., Ltd." },
-      "brand": { "@type": "Brand", "@id": "https://www.bozemetal.com/#brand-boze-cnc-ti", "name": "BOZE CNC Ti" },
-      "offers": {
-        "@type": "Offer",
-        "@id": `${pageUrl}#offer`,
-        "url": "https://cnc.bozemetal.com/rfq/",
-        "availability": "https://schema.org/MadeToOrder",
-        "itemCondition": "https://schema.org/NewCondition",
-        "seller": { "@type": "Organization", "@id": "https://www.bozemetal.com/#organization", "name": "Baoji Boze Metal Products Co., Ltd." },
-        "itemOffered": { "@type": "Product", "@id": `${pageUrl}#product` }
-      }
-    },
-    {
-      "@type": "HowTo",
-      "name": `Manufacturing ${data.title}`,
-      "step": ((specEntry?.data?.manufacturing_process ? specEntry.data.manufacturing_process.split(', ') : (data.process || [])).map((p: string, i: number) => ({
-        "@type": "HowToStep", "position": i + 1, "text": p.trim()
-      })))
-    }
-  ]
-};
-// Use spec FAQ when available, fall back to JSON FAQ
-const schemaFaqData = specEntry?.data?.faqs || faqData;
-if (schemaFaqData.length > 0) {
-  (schemaProduct["@graph"] as any[]).push({
-    "@type": "FAQPage",
-    "mainEntity": schemaFaqData.map((f: any) => ({
-      "@type": "Question", "name": f.q,
-      "acceptedAnswer": { "@type": "Answer", "text": f.a }
-    }))
-  });
-}
+// Phase 3 — JSON-LD is no longer emitted from a parallel page-level block.
+// All structured data now flows through BaseLayout props (productName,
+// productSku, productMaterial, productHowto, productFaqItems) and is
+// consolidated into a single @graph by buildPageGraph() in src/lib/schema.ts.
+// See docs/schema-audit/schema-issues.md P2-4.
+
+// Compute spec-driven HowTo (manufacturing_process → HowToStep[])
+// and FAQ (specEntry.data.faqs or fallback data.faq) so BaseLayout can emit
+// them through the unified graph.
+const manufacturingSteps: string[] = specEntry?.data?.manufacturing_process
+  ? specEntry.data.manufacturing_process.split(', ').map((s: string) => s.trim()).filter(Boolean)
+  : (data.process || []).map((s: string) => s.trim()).filter(Boolean);
+
+const productHowto = manufacturingSteps.length > 0 ? {
+  name: `Manufacturing ${data.title}`,
+  description: `Step-by-step manufacturing process for ${data.title} (${data.material || ''}).`,
+  steps: manufacturingSteps.map((text: string, i: number) => ({
+    name: `Step ${i + 1}`,
+    text,
+    position: i + 1,
+  })),
+} : undefined;
+
+// FAQ: prefer specEntry.data.faqs (richer), fall back to data.faq
+const specFaqItems: FaqItem[] = (specEntry?.data?.faqs || []).map((f: any) => ({
+  question: f.q,
+  answer: f.a,
+}));
+const productFaqItems: FaqItem[] | undefined = specFaqItems.length > 0
+  ? specFaqItems
+  : (faqData.length > 0
+      ? faqData.map((f: any) => ({ question: f.q, answer: f.a }))
+      : undefined);
 
 ---
 
-<BaseLayout title={seoTitle} description={seoDesc}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDesc}
+  pageType="product-detail"
+  productName={data.title}
+  productDescription={data.seoDescription || data.function}
+  productImage={productImageUrl || undefined}
+  productCategory={data.category}
+  productSku={data.sku || specEntry?.data?.sku || undefined}
+  productMaterial={data.material}
+  productRfqUrl="/rfq/"
+  productDatePublished={data.pubDate ? new Date(data.pubDate).toISOString() : undefined}
+  mentions={productMentionsIds}
+  productHowto={productHowto}
+  productFaqItems={productFaqItems}
+>
   <!-- Breadcrumb -->
   <nav class="border-b" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -262,7 +265,6 @@ if (schemaFaqData.length > 0) {
 
 
 
-  <script type="application/ld+json" set:html={JSON.stringify(schemaProduct)} />
 <script is:inline>
 (function() {
   var headings = document.querySelectorAll('article.prose h2, article.prose h3');

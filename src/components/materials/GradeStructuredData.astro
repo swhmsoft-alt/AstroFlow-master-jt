@@ -18,8 +18,6 @@ export interface Props {
 const { grade, gradeKey, lang, entityId } = Astro.props;
 const siteUrl = 'https://cnc.bozemetal.com';
 const brandId = 'https://www.bozemetal.com/#brand-boze-cnc-ti';
-const orgId = 'https://www.bozemetal.com/#organization';
-const orgName = 'Baoji Boze Metal Products Co., Ltd.';
 const canonicalURL = `${siteUrl}/materials/${gradeKey}/`;
 const currentDate = new Date().toISOString().split('T')[0];
 
@@ -78,15 +76,15 @@ const faqItems = (grade.faqs || []).map((faq) => ({
         { '@type': 'ListItem', position: 3, name: grade.name, item: canonicalURL },
       ],
     },
-    {
-      '@type': 'Product',
-      '@id': canonicalURL + '#product',
-      url: canonicalURL,
-      name: `${grade.name} Titanium Precision Machining Services`,
-      description: grade.subtitle,
-      brand: { '@type': 'Brand', '@id': brandId, name: 'BOZE CNC Ti' },
-      manufacturer: { '@type': 'Organization', '@id': orgId, name: orgName },
-    },
+    // Phase 2C (2026-09-12) — Product entity removed from materials grade pages.
+    // Per the Page Type → Entity Type governance matrix, materials pages describe
+    // a *technical specification / standard* (TechArticle + DefinedTerm), not a
+    // sellable Product. Emitting Product triggered GSC's retail-Product enhancement
+    // check (review / aggregateRating / price / priceCurrency / availability) and
+    // produced 5 false-positive warnings on every materials page (~195 grade × 12
+    // locales = 2340 HTML pages). The "Titanium Precision Machining Services for
+    // [grade]" concept is correctly modeled as a Service offered by the
+    // manufacturing center, not as a Product sold to retail.
     // F3 — emit the canonical entity node when entityId was provided so
     // LLM crawlers can resolve TechArticle.about back to the registry entry.
     ...(entityRef ? [entityRef] : []),

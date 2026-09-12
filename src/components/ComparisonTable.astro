@@ -69,10 +69,15 @@ const itemList = toComparisonList(seed, pageUrl);
     description: itemList.description,
     url: pageUrl,
     numberOfItems: itemList.items.length,
+    // Phase 2D — drop inline '@type' / 'name' on referenced items. Carrying only
+    // { '@id': ... } per schema.ts:491-495 prevents Google from re-declaring
+    // each product on this host page (which would trigger the retail-Product
+    // enhancement check and 5 false-positive warnings). See
+    // docs/schema-audit/schema-issues.md P2-3.
     itemListElement: itemList.items.map((it, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      item: { '@id': it['@id'], '@type': 'Product', name: it.name },
+      item: { '@id': it['@id'] },
     })),
     additionalProperty: itemList.criteria.map((c) => ({
       '@type': 'PropertyValue',

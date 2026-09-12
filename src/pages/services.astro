@@ -37,9 +37,14 @@ const serviceName = 'Titanium CNC Manufacturing Services';
 const serviceDescription = 'End-to-end titanium CNC machining, fabrication, additive manufacturing, and surface treatment for aerospace, medical, marine, and energy — AS9100D-certified, 12+ years in titanium.';
 const serviceCategory = 'Precision Manufacturing';
 
-// F4 — Product schema (B2B RFQ Offer → /rfq/)
-const productName = 'Custom Titanium CNC Parts';
-const productCategory = 'Titanium CNC Machined Components';
+// NOTE (Phase 2B, 2026-09-12): Product entity removed from services hub.
+// Per the Page Type → Entity Type governance matrix, /services/ is a Service hub
+// (CollectionPage + ItemList of Services). Emitting a Product on a hub page
+// triggered GSC's retail-Product enhancement check and created a competing
+// primary entity (Service "Titanium CNC Manufacturing Services" vs Product
+// "Custom Titanium CNC Parts") — see docs/schema-audit/schema-issues.md P0-1.
+// The Custom Titanium CNC Parts concept is correctly modeled on the per-part
+// detail pages (/products/titanium-cnc-parts/, /products/product-entities/.../).
 
 // F4 — Article schema (EEAT.proprietaryFrame hook → drives JSON-LD Article)
 const articleHeadline = 'BOZE 5-Pillar DFM Framework™ for Titanium Manufacturing';
@@ -71,10 +76,6 @@ const howtoItem: HowToItem = {
   serviceName={serviceName}
   serviceDescription={serviceDescription}
   serviceCategory={serviceCategory}
-  productName={productName}
-  productDescription={serviceDescription}
-  productCategory={productCategory}
-  productRfqUrl="/rfq/"
   articleHeadline={articleHeadline}
   articleDescription={serviceDescription}
   articleAuthor={articleAuthor}

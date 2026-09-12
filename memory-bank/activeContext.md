@@ -1,7 +1,184 @@
 # Active Context
 
-> **Last Updated:** 2026-09-08
-> **Current Focus:** /parts/ STEP 2 Citation Blocks 已完整落地 + BaseLayout `collectionDescription` Props gap 已修补。详见本条 + 后续记录。
+> **Last Updated:** 2026-09-12
+> **Current Focus:** Phase 3 完成。Product + Offer + HowTo + FAQPage 现在统一在 BaseLayout 主 graph 中。Validate 10/14 PASS（vs Phase 2D 8/14）。等待 GSC 重新抓取验证。
+
+## 2026-09-12 — Phase 3 完成（page-level JSON-LD → BaseLayout props 迁移）
+
+**改动：**
+- `src/lib/schema.ts:552-617`：buildProduct 函数签名新增 `sku?` 和 `material?` 参数（输出 Product.sku 和 Product.material 字段）
+- `src/lib/schema.ts:746-768`：SchemaPageData 接口新增 `productSku` / `productMaterial` / `productHowto` / `productFaqItems` 4 个字段
+- `src/lib/schema.ts:985-1021`：product-detail case 扩展为：(a) 透传 sku + material 给 buildProduct；(b) 新增 `data.productHowto` 触发 buildHowTo 注入；(c) 新增 `data.productFaqItems` 触发 buildFaqPage 注入（backwards-compatible 优先于 faqItems）
+- `src/layouts/BaseLayout.astro:51-56`：Props 新增 4 字段 + 解构 + schemaData 注入
+- `src/pages/products/product-entities/[...slug].astro`：删除 page-level `<script type="application/ld+json">` 块（原 Product + Offer + HowTo + FAQPage）；BaseLayout 调用改为透传 productName / productSku / productMaterial / productRfqUrl / productHowto / productFaqItems；frontmatter 派生 `manufacturingSteps[]` 和 `productHowto` / `productFaqItems` 对象；修复 `pubDateISO` 未定义 bug
+- **保留**：`rfq.astro` + `parts/titanium-cnc-parts.astro` + `SemanticClosedLoop.astro` 的 supplementary JSON-LD 块（语义不重叠或为 EEAT 补强用）
+
+**验证：**
+- `npm run build` → **2319 pages**（0 errors）
+- `node tasks/audit_product_pages.mjs` → **281 Products**（不变 — Phase 3 不改 Product 数）
+- `grep -c '<script type="application/ld+json"' dist/products/product-entities/titanium-3d-printed-ergonomic-mouse/index.html` → 2（主 graph 1 + SemanticClosedLoop DefinedTermSet 1）
+- `grep -o '"@type":"[A-Z][a-zA-Z]*"' ... | sort -u` → Answer, Brand, BreadcrumbList, FAQPage, HowTo, HowToStep, ImageObject, ListItem, Offer, Organization, Product, Question, Service, WebPage, WebSite ✅ 全在主 graph
+- `node tasks/validate_schema.mjs` → **10/14 PASS**（修复了 Phase 2D 中 Product Entity (Mouse) 和 Product Entity (Acetabular) 的 HowTo step.name 缺失 FAIL）
+
+**清理：** 临时 `_run_astro.py` / `_run_build.ps1` / `build_p3.log` / `/tmp/p3.log` 已删除。
+
+## 2026-09-12 — Phase 2D 完成（Inline JSON-LD 清理）
+
+**改动：**
+- `src/components/ComparisonTable.astro:75`：删除 inline `'@type': 'Product', name: it.name` 重声明（违反 schema.ts:491-495 警告）。ItemList items 现在只保留 `{ '@id': it['@id'] }` 引用。
+
+**未做的事（按规划推迟到 Phase 3）：**
+- ❌ 260 个 product-entity 详情页的 page-level JSON-LD → BaseLayout props 迁移（涉及 specEntry 数据传递，风险高，独立 PR 处理）
+- ❌ `rfq.astro` supplementary Service 与 BaseLayout 自动 Service 的合并（两者语义互补，不严格重复）
+- ❌ `parts/titanium-cnc-parts.astro` supplementary TechArticle + FAQPage 与 BaseLayout 的整合
+
+**验证：**
+- `npm run build` → 2319 pages（不变）
+- `node tasks/audit_product_pages.mjs` → 281 Products（不变 — Phase 2D 只改重声明模式）
+- `node tasks/validate_schema.mjs` → 8/14 PASS（不变）
+
+**清理：** 临时 `_run_astro.py` / `build_p2d.log` 已删除。
+
+---
+
+## 2026-09-12 — Phase 2 全部完成总结
+
+### 修复矩阵
+| Phase | 改动 | Product 数变化 | 修复 issue |
+|---|---|---|---|
+| 2A | 导出 @id 常量 + 清理 alternateName + 13 个匿名 Org 节点 | 647 → 647 | P2-1, P2-2 |
+| 2B | services hub 撤 Product + parts-hub / tools-hub 路由 | 647 → 645 | P0-1, P1-3, P1-4, P3-2 |
+| 2C | materials grade/standard 撤 Product + parts/equipment/tool/case-study 专属化 | 645 → 281 | P0-2, P1-1, P1-2, P1-5, P1-6 |
+| 2D | ComparisonTable inline 重声明修复 | 281 → 281 | P2-3 |
+
+**总效果：**
+- **Product 实体：647 → 281（-366, -57%）**
+- **GSC 商品富媒体 enhancement 报错：预计从 600+ 页面减少到 ~280 页面**（260 product-entity + 1 legacy product-detail + 13 equipment-detail + 7 part-detail = 281，正确用法）
+- **Anonymous Organization 节点：13 → 0**
+- **Schema graph 全部 @id 引用化，无重声明**
+
+### GSC 重新抓取清单（待执行）
+1. `/services/` — 之前 5 报错 → 现在应 0 报错
+2. `/materials/grade-*/`, `/materials/astm-*` 等 384 页 — 之前 5 报错 → 现在应 0 报错
+3. 280 个正确 Product 实体页（product-entity + part-detail + equipment-detail）— 之前 5 报错 → 现在应仍 0 报错（B2B RFQ Offer + Product 实体正确用法）
+
+## 2026-09-12 — Phase 2C 完成（详情页靶向重构）
+
+**改动：**
+- `src/components/materials/GradeStructuredData.astro:81-89`：删除 `@type: Product` 实体。grade 页只剩 TechArticle + BreadcrumbList + DefinedTerm + FAQPage
+- `src/components/materials/GradeStructuredData.astro:21-22`：清理未使用的 `orgId` / `orgName` 常量
+- `src/components/materials/StandardStructuredData.astro:82-99`：删除 `@type: Product` 实体 + 清理 `siteName` / `orgId` / `orgName` 未使用常量
+- `src/lib/schema.ts:949-986`：part-detail 共用 product-detail 分支，并加 serviceName 触发同时 inject Service（part + 制造能力双语义）
+- `src/lib/schema.ts:964-980`：新增 equipment-detail case：buildProduct 不带 Offer（设备展示页，不卖设备）
+- `src/lib/schema.ts:982-1005`：新增 tool-detail case：emit `WebApplication`（不是 Product — 工具是免费 utility 不是商品）
+- `src/lib/schema.ts:1007-1023`：新增 case-study case：emit `Article`（不是 BlogPosting — 采购证据不是 blog）
+- `src/layouts/BaseLayout.astro:199-204`：resolvedArticleHeadline 回退范围扩到 `case-study`
+- `src/layouts/BaseLayout.astro:51-57, 142-152, 229`：新增 toolName/toolDescription/toolCategory/toolSubCategory/toolRfqPath Props + 解构 + schemaData 注入
+- `src/pages/parts/<7 个>.astro`：pageType="service-detail" → pageType="part-detail" + 加 productName + productCategory 透传
+- `src/pages/case-studies/[...slug].astro:43`：pageType="blog-post" → pageType="case-study"
+- `src/pages/equipment/<13 个>.astro`：加 pageType="equipment-detail" + productName={equipment.name} + productCategory={equipment.category}
+- `src/pages/tools/<8 个>.astro`：加 pageType="tool-detail" + toolName + toolSubCategory
+
+**验证：**
+- `npm run build` → 2319 pages
+- `node tasks/audit_product_pages.mjs` → **281 Products**（-366 from 645, -57% total from 647）
+  - product-entity: 260（保持，正确）
+  - product-detail-legacy: 1（保持，正确）
+  - other: 20 = 13 equipment-detail + 7 part-detail（Phase 2C 故意创建的正确 Product 实体）
+- `grep '"@type":"Article"' dist/case-studies/aerospace-thin-wall-housing/index.html` → ✅ 1（不是 BlogPosting）
+- `node tasks/validate_schema.mjs` → 8/14 PASS（与 Phase 2A/2B 同水平；2 个 Product Entity page HowTo pre-existing + 4 个 AIO seed pages ENOENT pre-existing）
+
+**清理：** 临时 `_run_*.py` / `build_p2c.log` / `_patch_*.py` / `_fix_*.py` / `/tmp/p2c.log` 已删除。
+
+## 2026-09-12 — Phase 2B 完成（Hub & Collection Pages 类型纠偏）
+
+**改动：**
+- `src/pages/services.astro:40-46, 79-82`：删除 `productName` / `productCategory` / `productDescription` / `productRfqUrl` 4 个 prop 透传 + 常量。服务 hub 现在只透传 Service + Article。
+- `src/lib/schema.ts:64-69`：PageType 联合类型新增 `parts-hub` / `part-detail` / `tools-hub` / `tool-detail` / `equipment-detail` / `case-study` 6 个类型
+- `src/lib/schema.ts:648-657`：detectPageType 路由 `/parts` → parts-hub / part-detail, `/tools` → tools-hub / tool-detail, `/equipment/<slug>` → equipment-detail, `/case-studies/<slug>` → case-study
+- `src/lib/schema.ts:889-890`：switch case 加 `parts-hub` / `tools-hub` 与 `services-hub` / `products-hub` 共用 hub CollectionPage + ItemList 路径
+- `src/lib/schema.ts:949-1023`：switch case 新增 `part-detail` (复用 product-detail buildProduct)、`equipment-detail` (buildProduct 不带 Offer)、`tool-detail` (新发 WebApplication 实体)、`case-study` (Article 非 BlogPosting subtype)
+- `src/lib/schema.ts:751-757`：SchemaPageData 接口新增 `toolName` / `toolDescription` / `toolCategory` / `toolSubCategory` / `toolRfqPath` 5 个字段供 tool-detail 使用
+- `src/pages/parts/index.astro:61`：pageType="products-hub" → pageType="parts-hub"
+- `src/pages/tools/index.astro:93`：pageType="services-hub" → pageType="tools-hub"
+
+**验证：**
+- `npm run build` → 2319 pages（与基线持平）
+- `node tasks/audit_product_pages.mjs` → **645 Products**（-2 from 647）
+- `grep '"@type":"Product"' dist/services/index.html` → **0**（services hub 已清空 Product 实体）
+- `grep '"@type":"Product"' dist/parts/index.html` → 0
+- `grep '"@type":"Product"' dist/parts/titanium-cnc-parts/index.html` → 0（仍 pageType="service-detail"，Phase 2C 切换）
+- `node tasks/validate_schema.mjs` → 8/14 PASS（与 Phase 2A 同水平）
+
+**清理：** 临时 `_run_build.py` / `build_p2b.log` / `/tmp/p2b.log` 已删除。
+
+## 2026-09-12 — Phase 2A 完成（地基：@id Consolidation）
+
+**改动：**
+- `src/lib/schema.ts:26-54`：导出 `ORG_ID` / `BRAND_*_ID` / `MANUFACTURING_CENTER_ID` / `WEBSITE_ID` / `LOGO_ID`（让 page-level supplementary JSON-LD 可以 `@id` 引用）
+- `src/lib/schema.ts:1-29`：顶部注释更新为「JSON-LD Graph Architecture」段落
+- `src/lib/schema.ts:101-107`：`buildOrganization().alternateName` 从 `['BOZE Metal', 'BOZE CNC Ti', 'BOZE']` 改为 `['BOZE', 'Boze Metal', 'Baoji Boze']`，移除 Brand 名冗余（修 P2-2）
+- `src/pages/parts/titanium-cnc-parts.astro:10-50`：删除 2 个 anonymous Organization 节点（provider + author），改用 `{ '@id': MANUFACTURING_CENTER_ID }` 引用
+
+**验证：**
+- `npm run build` → 2319 pages
+- `node tasks/validate_schema.mjs` → 8/14 PASS
+- `node tasks/audit_product_pages.mjs` → 647 Products（不变 — Phase 2A 只动 @id）
+
+**清理：** 临时 `_run_build.py` 已删除。
+
+## 2026-09-12 — Phase 2A 完成（地基：@id Consolidation）
+
+**改动：**
+- `src/lib/schema.ts:26-54`：导出 `ORG_ID` / `BRAND_*_ID` / `MANUFACTURING_CENTER_ID` / `WEBSITE_ID` / `LOGO_ID`（让 page-level supplementary JSON-LD 可以 `@id` 引用）
+- `src/lib/schema.ts:1-29`：顶部注释更新为「JSON-LD Graph Architecture」段落
+- `src/lib/schema.ts:101-107`：`buildOrganization().alternateName` 从 `['BOZE Metal', 'BOZE CNC Ti', 'BOZE']` 改为 `['BOZE', 'Boze Metal', 'Baoji Boze']`，移除 Brand 名冗余（修 P2-2）
+- `src/pages/parts/titanium-cnc-parts.astro:10-50`：删除 2 个 anonymous Organization 节点（provider + author），改用 `{ '@id': MANUFACTURING_CENTER_ID }` 引用
+
+**未删：**
+- `alternateName` 中保留 'BOZE' / 'Boze Metal'（公司贸易名）— 这是合法的 corporate alias
+
+**验证：**
+- `npm run build` → 2319 pages（与基线持平）
+- `node tasks/validate_schema.mjs` → 8/14 PASS；2 个 Product Entity page HowTo step.name 缺失 + @id 缺失是 pre-existing（不是 Phase 2A 引入）；4 个 AIO seed pages ENOENT 是 pre-existing
+- `node tasks/audit_product_pages.mjs` → 647 Products（不变 — Phase 2A 只动 @id）
+- 抽查 `dist/parts/titanium-cnc-parts/index.html` → Service provider 字段从 `{ '@type': 'Organization', name: '...', url: SITE }` 变成 `{ '@id': 'https://cnc.bozemetal.com/#manufacturing-center' }`
+
+**清理：** 临时 `_run_build.py` 已删除（按工作区 Rules §6）。
+
+## 2026-09-12 — Phase 1 Audit: Page Type → Entity → Schema Inventory
+
+**交付：** `docs/schema-audit/page-schema-inventory.md` (330 行) + `docs/schema-audit/schema-issues.md` (294 行)。完整 URL inventory、Entity 一致性、Schema 生成源树、Offer 审计、P0–P3 严重程度问题清单。**未修改任何代码**。
+
+## 2026-09-12 — Phase 0 Audit: Product Schema Coverage 全量排查
+
+**触发：** GSC 对 `/services/` 报 5 字段缺失（review / aggregateRating / price / priceCurrency + availability 枚举无效）。用户提示不仅单页，整站可能都受同一 schema 架构问题影响。
+
+**审计方法：** 新建 `tasks/audit_product_pages.mjs`，扫描 `dist/**/*.html`，抽取所有 `@type: Product` 实体，输出 `tasks/audit-report.json`（647 个实体，覆盖 647 个页面）。
+
+**关键发现（386 个页面误用 Product）：**
+
+| 来源 | 路径 | 数量 | 实体类型问题 |
+|---|---|---|---|
+| `src/components/materials/StandardStructuredData.astro` 第 82–99 行 | materials standard 页面 | ~195 HTML | name="<material> Titanium Precision Machining **Services**" 硬编码为 `Product`，应是 `Service` |
+| `src/components/materials/GradeStructuredData.astro` 第 81–89 行 | materials grade 页面 | ~195 HTML | 同上 |
+| `src/lib/schema.ts` 第 894–903 行（services-hub 分支）+ `src/pages/services.astro` 第 41–42、74–77 行 | `/services/` hub | 1 HTML | 透传 `productName="Custom Titanium CNC Parts"` 给 Hub 页面，Hub 应是 `CollectionPage` 不是 `Product` |
+| `src/pages/products/product-entities/[...slug].astro`（260 页） | product entity 详情 | 260 HTML | **正确**（每页是具体零件的 Product） |
+| `src/pages/products/titanium-cnc-parts.astro` + product-detail 分支 | legacy product detail | 1 HTML | **正确** |
+
+**根因（认知升级）：** ChatGPT 提示 GSC 报错本质是"实体类型选错"，不是字段缺失。这些 materials/standard 页面**服务命名（"Titanium Precision Machining Services"）**硬塞 Product 类型，触发 GSC 商品富媒体检查，必然报 review / aggregateRating / price 缺失。
+
+**方案落地（待 Phase 1 执行）：**
+- `StandardStructuredData.astro`：`@type: Product` → `@type: Service`，加 `provider` / `serviceType` / `areaServed`
+- `GradeStructuredData.astro`：同上
+- `src/lib/schema.ts` 第 894–903 行：删除 services-hub 分支的 `buildProduct` 调用
+- `src/pages/services.astro`：删除 `productName` / `productCategory` / `productRfqUrl` 4 个 prop 透传
+- 260 个 product-entity 页：保留 Product，加 `businessModel: 'B2B-RFQ'` 锚点（schema.ts 新增参数）
+
+**不做的事（红线）：**
+- ❌ 不补 `review` / `aggregateRating`（无真实评价）
+- ❌ 不补 `price` / `priceCurrency`（无零售定价）
+- ❌ 不保留 `availability: MadeToOrder`（Services Hub 撤掉 Offer 后自然消除；Product Entity 页用 schema.ts 控制）
 
 ## 2026-09-08 — 修复 BaseLayout Props gap：`collectionDescription` 接入 schema 流
 

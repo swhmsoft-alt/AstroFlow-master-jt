@@ -7,6 +7,14 @@ import { PART_PAGES } from '../../data/parts';
 const data = PART_PAGES.find((p) => p.slug === 'titanium-cnc-parts')!;
 const SITE = 'https://cnc.bozemetal.com';
 const canonicalUrl = `${SITE}/parts/${data.slug}/`;
+
+// ── Identity @id references (defined in src/lib/schema.ts) ──
+// Re-used here so the supplementary JSON-LD never redeclares Organization fields.
+// BaseLayout already emits the canonical Organization / Brand / ManufacturingCenter.
+import { MANUFACTURING_CENTER_ID } from '../../lib/schema';
+
+// Reference the canonical Manufacturing Center for the Service provider (no inline
+// Organization redeclaration). The Service's provider entity must carry an @id only.
 const supplementarySchema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -16,11 +24,7 @@ const supplementarySchema = {
       name: data.heroH1,
       serviceType: 'Custom Titanium CNC Machining',
       description: data.metaDescription,
-      provider: {
-        '@type': 'Organization',
-        name: 'BOZE Titanium Manufacturing Center',
-        url: SITE,
-      },
+      provider: { '@id': MANUFACTURING_CENTER_ID },
       areaServed: 'Global',
       url: canonicalUrl,
     },
@@ -32,11 +36,7 @@ const supplementarySchema = {
       about: { '@type': 'Service', name: 'Custom Titanium CNC Machining' },
       proficiencyLevel: 'Expert',
       inLanguage: 'en',
-      author: {
-        '@type': 'Organization',
-        name: 'BOZE Titanium Manufacturing Center',
-        url: SITE,
-      },
+      author: { '@id': MANUFACTURING_CENTER_ID },
     },
     {
       '@type': 'FAQPage',
@@ -53,8 +53,10 @@ const supplementarySchema = {
 <BaseLayout
   title={data.pageTitle}
   description={data.metaDescription}
-  pageType="service-detail"
+  pageType="part-detail"
   serviceName={data.heroH1}
+  productName={data.heroH1}
+  productCategory={data.navName}
   serviceCategory={data.navName}
   canonicalURL={canonicalUrl}
   alternateLinks={[{ lang: 'en', href: `/parts/${data.slug}/` }]}

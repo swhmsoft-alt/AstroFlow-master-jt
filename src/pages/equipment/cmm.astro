@@ -10,7 +10,11 @@ const equipment = EQUIPMENT_DATA['cmm'];
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cnc.bozemetal.com'); 
 --- 
  
-<BaseLayout title={t('equipment.cmm.pageTitle')} description={t('equipment.cmm.metaDescription')} canonicalURL={canonicalURL}> 
+<BaseLayout title={t('equipment.cmm.pageTitle')} description={t('equipment.cmm.metaDescription')} canonicalURL={canonicalURL}
+  pageType="equipment-detail"
+  productName={equipment.name}
+  productCategory={equipment.category}
+>
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

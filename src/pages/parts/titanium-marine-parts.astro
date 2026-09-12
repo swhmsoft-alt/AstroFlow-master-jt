@@ -24,8 +24,10 @@ const supplementarySchema = {
 <BaseLayout
   title={data.pageTitle}
   description={data.metaDescription}
-  pageType="service-detail"
+  pageType="part-detail"
   serviceName={data.heroH1}
+  productName={data.heroH1}
+  productCategory={data.navName}
   serviceCategory={data.navName}
   canonicalURL={canonicalUrl}
   alternateLinks={[{ lang: 'en', href: `/parts/${data.slug}/` }]}

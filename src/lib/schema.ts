@@ -4,6 +4,14 @@
  * Whole-site Structured Data center for Boze Titanium Manufacturing Center.
  * Single file — no builder framework, no registry, no separate types.
  *
+ * Architecture: JSON-LD Graph with @id-pointer reference model.
+ *  - Global entities (Organization, Brand, ManufacturingCenter, WebSite, ImageObject)
+ *    are emitted once per page and carry stable @id values.
+ *  - Page-level entities (Product, Service, Article, etc.) reference the global
+ *    entities by @id, NEVER by inline re-declaration of `name`/`url`/`address`.
+ *  - This deduplicates entity nodes across the site graph and lets Google
+ *    cleanly resolve the canonical Legal Org, Brands, and Manufacturing Center.
+ *
  * Responsibilities:
  *  - Build individual Schema.org entities (Organization, WebSite, WebPage, etc.)
  *  - Compose them into a single @graph per page
@@ -25,21 +33,25 @@ import { refsFromIds } from './entity-graph';
 
 // ── Constants ─────────────────────────────────────────
 //
-// Entity Identity (Single Source of Truth):
+// Entity Identity (Single Source of Truth) — EXPORTED so page-level
+// supplementary JSON-LD blocks can reference these by @id without ever
+// re-declaring the underlying entity fields.
+//
 //   Legal Entity      → https://www.bozemetal.com/#organization        (Baoji Boze Metal Products Co., Ltd.)
 //   Corporate Brand   → https://www.bozemetal.com/#brand-boze-metal    (BOZE Metal)
 //   Commercial Brand  → https://www.bozemetal.com/#brand-boze-cnc-ti   (BOZE CNC Ti)
 //   Manufacturing Ctr → https://cnc.bozemetal.com/#manufacturing-center (Boze Titanium Manufacturing Center)
+//
 // NOTE: cnc.bozemetal.com/#organization MUST NOT exist (no second legal entity).
 
 const MAIN_SITE = 'https://www.bozemetal.com';
 const SITEROOT = SITE.url;
-const ORG_ID     = `${MAIN_SITE}/#organization`;
-const BRAND_BOZE_METAL_ID = `${MAIN_SITE}/#brand-boze-metal`;
-const BRAND_BOZE_CNC_TI_ID = `${MAIN_SITE}/#brand-boze-cnc-ti`;
-const WEBSITE_ID = `${SITEROOT}/#website`;
-const LOGO_ID    = `${SITEROOT}/#boze-logo`;
-const MANUFACTURING_CENTER_ID = `${SITEROOT}/#manufacturing-center`;
+export const ORG_ID     = `${MAIN_SITE}/#organization`;
+export const BRAND_BOZE_METAL_ID = `${MAIN_SITE}/#brand-boze-metal`;
+export const BRAND_BOZE_CNC_TI_ID = `${MAIN_SITE}/#brand-boze-cnc-ti`;
+export const WEBSITE_ID = `${SITEROOT}/#website`;
+export const LOGO_ID    = `${SITEROOT}/#boze-logo`;
+export const MANUFACTURING_CENTER_ID = `${SITEROOT}/#manufacturing-center`;
 
 // ── Page Type ─────────────────────────────────────────
 
@@ -49,6 +61,12 @@ export type PageType =
   | 'service-detail'
   | 'products-hub'
   | 'product-detail'
+  | 'parts-hub'
+  | 'part-detail'
+  | 'tools-hub'
+  | 'tool-detail'
+  | 'equipment-detail'
+  | 'case-study'
   | 'blog-index'
   | 'blog-post'
   | 'case-studies'
@@ -88,7 +106,11 @@ export function buildOrganization() {
     '@id': ORG_ID,
     name: 'Baoji Boze Metal Products Co., Ltd.',
     legalName: 'Baoji Boze Metal Products Co., Ltd.',
-    alternateName: ['BOZE Metal', 'BOZE CNC Ti', 'BOZE'],
+    // alternateName intentionally only carries the corporate trade name.
+    // Brand-level aliases (BOZE Metal, BOZE CNC Ti) live on the Brand @ids
+    // below — duplicating them here confuses LLM crawlers trying to resolve
+    // which node is canonical for a given alias. See Phase 2A / P2-2.
+    alternateName: ['BOZE', 'Boze Metal', 'Baoji Boze'],
     url: MAIN_SITE,
     logo: { '@id': LOGO_ID },
     brand: [
@@ -534,6 +556,10 @@ export function buildProduct(input: {
   image?: string;
   category?: string;
   datePublished?: string | null;
+  /** Phase 3 — optional Product.sku (e.g. "TI-MOUSE-001"). */
+  sku?: string;
+  /** Phase 3 — optional Product.material (e.g. "Grade 5 Ti-6Al-4V"). */
+  material?: string;
   /** Real numeric retail price (USD). When set, offers is a retail Offer (price + InStock). */
   price?: number;
   /** B2B Request-Quote page URL. When set without price, emits a price-less manufacturing Offer (MadeToOrder) → RFQ. */
@@ -572,6 +598,8 @@ export function buildProduct(input: {
     url: input.url,
     ...(input.image ? { image: input.image } : {}),
     ...(input.category ? { category: input.category } : {}),
+    ...(input.sku ? { sku: input.sku } : {}),
+    ...(input.material ? { material: input.material } : {}),
     ...(input.datePublished ? { datePublished: input.datePublished } : {}),
     manufacturer: {
       '@type': 'Organization',
@@ -624,12 +652,15 @@ export function detectPageType(path: string, explicit?: PageType): PageType {
   if (explicit) return explicit;
   if (path === '/' || path === '') return 'home';
   if (path.startsWith('/services')) return path.split('/').filter(Boolean).length > 1 ? 'service-detail' : 'services-hub';
+  if (path.startsWith('/parts')) return path.split('/').filter(Boolean).length > 1 ? 'part-detail' : 'parts-hub';
   if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
+  if (path.startsWith('/tools')) return path.split('/').filter(Boolean).length > 1 ? 'tool-detail' : 'tools-hub';
+  if (path.startsWith('/equipment')) return path.split('/').filter(Boolean).length > 1 ? 'equipment-detail' : 'generic';
   if (path.startsWith('/blog/category')) return 'blog-index';
   if (path.startsWith('/blog/page/')) return 'blog-index';
   if (path.startsWith('/blog') && path.split('/').filter(Boolean).length > 1) return 'blog-post';
   if (path.startsWith('/blog')) return 'blog-index';
-  if (path.startsWith('/case-studies')) return 'case-studies';
+  if (path.startsWith('/case-studies')) return path.split('/').filter(Boolean).length > 1 ? 'case-study' : 'case-studies';
   if (path.startsWith('/materials')) return 'materials';
   if (path.startsWith('/capabilities')) return 'capabilities';
   if (path.startsWith('/industries')) return 'industries';
@@ -722,6 +753,30 @@ export interface SchemaPageData {
   productDatePublished?: string | null;
   /** B2B Request-Quote URL for the Product offer (defaults to ${SITEROOT}/rfq/). */
   productRfqUrl?: string;
+  /** Phase 3 — Product SKU. Per-page override of the entity's own sku field. */
+  productSku?: string;
+  /** Phase 3 — Product material (e.g. "Grade 5 Ti-6Al-4V"). Maps to schema.org Product.material. */
+  productMaterial?: string;
+  /**
+   * Phase 3 — Override howToItem for product-detail pages. When the page has
+   * a spec-driven manufacturing_process list, pass it as a HowToItem so the
+   * main graph emits a single HowTo entity without a parallel page-level script.
+   */
+  productHowto?: HowToItem;
+  /**
+   * Phase 3 — Override faqItems for product-detail pages. When the page has
+   * a spec-driven FAQ list, pass it as a FaqItem[] so the main graph emits a
+   * single FAQPage entity without a parallel page-level script.
+   */
+  productFaqItems?: FaqItem[];
+
+  // Tool (Phase 2C) — WebApplication entity for /tools/<slug>/ pages
+  toolName?: string;
+  toolDescription?: string;
+  toolCategory?: string;
+  toolSubCategory?: string;
+  /** Optional path (relative to SITEROOT) for the RFQ Offer link from a tool. */
+  toolRfqPath?: string;
 
   // Collection / listing
   collectionName?: string;
@@ -861,6 +916,8 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
   switch (pageType) {
     case 'services-hub':
     case 'products-hub':
+    case 'parts-hub':
+    case 'tools-hub':
     case 'blog-index':
     case 'case-studies':
       if (data.collectionName) {
@@ -878,10 +935,13 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           items: data.items,
         }));
       }
-      // F4 — service-hub exposes Service / Product / Article entities when
-      // explicitly provided via BaseLayout props. Without these the hub would
-      // render as a generic CollectionPage, which underutilises the entity
-      // graph for AI Overview citation.
+      // F4 — services-hub exposes Service + Article entities (Product removed in
+      // Phase 2B, 2026-09-12 — see schema-issues.md P0-1 and P2-4). Hubs must
+      // not emit Product entities because GSC then applies the retail-Product
+      // enhancement check (review / aggregateRating / price / priceCurrency /
+      // availability) and reports 5 false-positive warnings on every B2B hub
+      // page. The "Custom Titanium CNC Parts" concept is correctly modeled as
+      // Product on the per-part detail pages only.
       if (pageType === 'services-hub') {
         if (data.serviceName) {
           graph.push(buildService({
@@ -889,17 +949,6 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
             description: data.serviceDescription ?? data.pageDescription,
             url: data.pageUrl,
             category: data.serviceCategory,
-          }));
-        }
-        if (data.productName) {
-          graph.push(buildProduct({
-            name: data.productName,
-            description: data.productDescription ?? data.pageDescription,
-            url: data.pageUrl,
-            image: data.productImage,
-            category: data.productCategory,
-            datePublished: data.productDatePublished,
-            rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
           }));
         }
         if (data.articleHeadline && data.articleDatePublished) {
@@ -928,6 +977,62 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       break;
 
     case 'product-detail':
+    case 'part-detail':
+      // Phase 2C — part-detail emits BOTH Product (the part being procured)
+      // and Service (the manufacturing capability that backs the part). This
+      // matches the B2B reality: customer procures a Part, but the Part is
+      // fulfilled by a custom Manufacturing Service. See schema-issues.md P1-2.
+      // Phase 3 — product-detail now accepts sku / material / howto / faqItems
+      // via SchemaPageData (previously only emitted via parallel page-level
+      // JSON-LD blocks; see product-entities/[...slug].astro pre-Phase 3).
+      if (data.productName) {
+        graph.push(buildProduct({
+          name: data.productName,
+          description: data.productDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          image: data.productImage,
+          category: data.productCategory,
+          ...(data.productSku ? { sku: data.productSku } : {}),
+          ...(data.productMaterial ? { material: data.productMaterial } : {}),
+          datePublished: data.productDatePublished,
+          rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
+        }));
+      }
+      // Phase 3 — product-detail page-level HowTo (manufacturing_process) is
+      // now expressed via productHowto prop. The main graph emits a single
+      // HowTo entity in the unified @graph.
+      if (data.productHowto && data.productHowto.steps?.length) {
+        graph.push(buildHowTo({
+          url: data.pageUrl,
+          inLanguage: data.inLanguage ?? 'en-US',
+          item: data.productHowto,
+        }));
+      }
+      // Phase 3 — product-detail FAQ (specEntry?.data.faqs or data.faq) now
+      // expressed via productFaqItems prop. Falls back to existing faqItems if
+      // the page-level override is not provided (backwards-compatible).
+      if (data.productFaqItems?.length && !data.faqItems?.length) {
+        graph.push(buildFaqPage({
+          name: data.faqName ?? `${data.pageName} — Frequently Asked Questions`,
+          url: data.pageUrl,
+          inLanguage: data.inLanguage ?? 'en-US',
+          items: data.productFaqItems,
+        }));
+      }
+      if (data.serviceName) {
+        graph.push(buildService({
+          name: data.serviceName,
+          description: data.serviceDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          category: data.serviceCategory,
+        }));
+      }
+      break;
+
+    // Phase 2C — equipment-detail emits a Product entity WITHOUT an Offer
+    // (equipment pages are showcase, not retail sale). Mirrors part-detail
+    // structure for consistency. See docs/schema-audit/schema-issues.md P1-5.
+    case 'equipment-detail':
       if (data.productName) {
         graph.push(buildProduct({
           name: data.productName,
@@ -936,7 +1041,52 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           image: data.productImage,
           category: data.productCategory,
           datePublished: data.productDatePublished,
-          rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
+          // No rfqUrl → buildProduct skips the Offer block (buildProduct only
+          // emits offers when rfqUrl or price is provided, schema.ts:545-565).
+        }));
+      }
+      break;
+
+    // Phase 2C — tool-detail emits a WebApplication entity (interactive
+    // engineering calculators / utilities). NOT a Product — tools are free
+    // utilities, not retail goods. See schema-issues.md P1-6.
+    case 'tool-detail':
+      if (data.toolName) {
+        graph.push({
+          '@type': 'WebApplication',
+          '@id': `${data.pageUrl}#webapp`,
+          url: data.pageUrl,
+          name: data.toolName,
+          description: data.toolDescription ?? data.pageDescription,
+          applicationCategory: data.toolCategory ?? 'EngineeringApplication',
+          applicationSubCategory: data.toolSubCategory,
+          operatingSystem: 'Web Browser',
+          browserRequirements: 'Modern browser with JavaScript enabled',
+          inLanguage: data.inLanguage ?? 'en-US',
+          isPartOf: { '@id': WEBSITE_ID },
+          provider: { '@id': ORG_ID },
+          // Free engineering tools — link to RFQ for downstream manufacturing
+          // service, but do NOT fabricate availability/price.
+          ...(data.toolRfqPath ? { offers: { '@type': 'Offer', url: `${SITEROOT}${data.toolRfqPath}`, availability: 'https://schema.org/MadeToOrder', itemOffered: { '@type': 'Service', name: data.toolName } } } : {}),
+        });
+      }
+      break;
+
+    // Phase 2C — case-study emits Article (NOT BlogPosting). Procurement
+    // evidence pages are not blog content. See schema-issues.md P1-1.
+    case 'case-study':
+      if (data.articleHeadline) {
+        graph.push(buildArticle({
+          headline: data.articleHeadline,
+          description: data.articleDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          author: data.articleAuthor ?? 'Boze Titanium Manufacturing Center',
+          datePublished: data.articleDatePublished ?? new Date().toISOString(),
+          image: data.articleImage,
+          mainEntityOfPage: data.pageUrl,
+          // Generic Article (not BlogPosting) — case studies are procurement
+          // evidence, not blog content.
+          articleType: 'Article',
         }));
       }
       break;
