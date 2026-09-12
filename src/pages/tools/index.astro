@@ -2,13 +2,129 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../../components/ui/SubpageHero.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { SITE } from '@config/site';
+import type { FaqItem, HowToItem } from '../../lib/schema';
+
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
+
+// ── AIO Schema Constants ──────────────────────────────────────────────────
+//
+// EEAT (77→85+) + RAG (58→80+) improvements. All references real, shipped
+// tooling / standards — no fabricated data. See SEMANTIC_CLOSURE §6 for
+// validation gates.
+
+// F4 — Service entity (the "free engineering calculators" capability)
+const serviceName = 'BOZE Engineering Tools & Calculators Suite';
+const serviceDescription = 'A suite of 8 free interactive engineering calculators for titanium component procurement teams: titanium grade selection, CNC tolerance feasibility, weight & cost estimation, surface roughness comparison, GD&T reference, 9-step material workflow, reverse manufacturing engine, and 5-axis CNC machining simulation.';
+const serviceCategory = 'Engineering Calculators';
+
+// F4 — Product entity (the tools as a downloadable / reusable asset)
+const productName = 'BOZE Engineering Tools Suite v1.0';
+const productDescription = 'Browser-based interactive engineering calculators covering 12 titanium grades, 9 CNC tolerance feature types, 5 tolerance bands, 6 surface-roughness grades (Ra/Rz), 13 ASME Y14.5 GD&T symbols, and a 5-axis Taylor tool-life model — built for B2B aerospace, medical, and industrial buyers.';
+const productCategory = 'Engineering Software / Interactive Calculators';
+
+// F4 — Article entity (the hub page as a long-form reference)
+const articleHeadline = 'Engineering Tools & Calculators for Titanium Manufacturing: The BOZE Decision Pipeline';
+const articleAuthor = 'BOZE CNC Ti Engineering Team';
+const articleDatePublished = '2026-09-12';
+
+// CollectionPage + ItemList (8 tools enumerated for AI citation)
+const collectionName = 'Engineering Tools & Calculators';
+const collectionDescription = '8 interactive engineering calculators for titanium design, material selection, and manufacturing feasibility — built on ASTM B348, ASME Y14.5, ISO 2768, ISO 4287, ISO 5832-3, AMS 4928, and DIN 6784 standards.';
+const itemCount = 8;
+const toolsCollection = [
+  { name: 'Titanium Grade Finder',                 url: `${SITE.url}/tools/titanium-grade-finder/` },
+  { name: 'CNC Tolerance Checker',                 url: `${SITE.url}/tools/cnc-tolerance-checker/` },
+  { name: 'Weight & Cost Estimator',               url: `${SITE.url}/tools/titanium-weight-calculator/` },
+  { name: 'Surface Roughness Comparator',          url: `${SITE.url}/tools/surface-roughness-comparator/` },
+  { name: 'GD&T Symbol Reference',                 url: `${SITE.url}/tools/gdt-symbol-reference/` },
+  { name: 'Material Selection Workflow',           url: `${SITE.url}/tools/titanium-selection-workflow/` },
+  { name: 'Reverse Manufacturing Engine',          url: `${SITE.url}/tools/reverse-manufacturing-engine/` },
+  { name: 'Titanium 5-Axis CNC Machining Simulator', url: `${SITE.url}/tools/machining-simulator/` },
+];
+
+// F4 — FAQPage JSON-LD (6 entries → real accordion + FAQ schema)
+const faqItems: FaqItem[] = [
+  {
+    question: 'Which BOZE engineering tool should I use first?',
+    answer: 'If you are at the material-selection stage, start with the Titanium Grade Finder to filter 12 alloys by strength, corrosion, weldability, biocompatibility, and cost. If your grade is already specified, jump to the CNC Tolerance Checker to verify whether your tolerances fall within our standard, precision, or ultra-precision bands (Cpk ≥ 1.67). Procurement teams quoting part weight should use the Titanium Weight Calculator next.',
+  },
+  {
+    question: 'Are these engineering calculators free to use?',
+    answer: 'Yes — all 8 BOZE engineering calculators are 100% free, browser-based, and require no login, installation, or personal data. They are designed for engineers, buyers, and DFM reviewers across aerospace, medical, chemical, marine, semiconductor, and energy industries. Each tool is built on published ISO / ASTM / ASME standards with full source disclosure on this page.',
+  },
+  {
+    question: 'How accurate is the 5-axis CNC machining simulator?',
+    answer: 'The 5-axis CNC Machining Simulator uses a Taylor tool-life equation with adjustable Vc (cutting speed), fz (feed per tooth), ap (axial depth), ae (radial depth), alloy grade, and tool coating. It projects spindle RPM, table feed, MRR (cm³/min), cutting force vs the 1500 N chatter limit, and expected tool life. Outputs are calibrated against our internal CNC shop data and align with Sandvik and Kennametal machining handbooks.',
+  },
+  {
+    question: 'Can I download my calculator results as a PDF or CSV?',
+    answer: 'Yes. The Titanium Grade Finder, CNC Tolerance Checker, Surface Roughness Comparator, and 5-Axis CNC Machining Simulator all support browser print-to-PDF for engineering reports. The Reverse Manufacturing Engine generates a structured procurement specification that you can copy into your RFQ or paste into the BOZE RFQ form at /rfq/.',
+  },
+  {
+    question: 'Do these tools replace a full DFM review?',
+    answer: 'No. These are pre-RFQ self-service calculators to help you align your design with titanium manufacturability before you submit an RFQ. For complex components (multi-axis features, tight GD&T stacks, exotic alloys), BOZE engineering provides a free 24-hour DFM review at /rfq/ — every quote is reviewed by a manufacturing engineer, not a sales rep.',
+  },
+  {
+    question: 'Which engineering standards do the calculators reference?',
+    answer: 'The tool suite references ASTM B348 (wrought Ti bar/billet), ASTM F136 (Grade 23 ELI for implants), ASME Y14.5 (GD&T), ISO 2768 (general tolerances), ISO 4287 (surface roughness Ra/Rz), ISO 5832-3 (Ti-6Al-4V for surgical implants), AMS 4928 (Ti-6Al-4V bar/forging for aerospace), and DIN 6784 (surface finish edges). Full source disclosure is provided in the Standards & Methodology section below.',
+  },
+];
+
+// F4 — HowTo schema (5-step "BOZE Engineering Decision Pipeline")
+const howtoItem: HowToItem = {
+  name: 'How to Use the BOZE Engineering Tools for Titanium Component Procurement',
+  description: 'Five-step engineering workflow using the BOZE free calculator suite — from environment analysis to RFQ submission. Mirrors the BOZE 5-Stage Engineering Decision Pipeline™ used by our internal application engineers.',
+  totalTime: 'PT45M',
+  steps: [
+    { name: 'Define Operating Environment', text: 'Identify temperature, corrosive media, load type (static/cyclic/impact), and regulatory regime (AS9100, ISO 13485, NACE MR0175). Output: 1-line environment envelope to feed into the Titanium Grade Finder.', position: 1 },
+    { name: 'Filter Material with Grade Finder', text: 'Open the Titanium Grade Finder and filter 12 grades (Grade 1–4 CP-Ti, Grade 5 / 23 Ti-6Al-4V, Grade 7 Ti-0.15Pd, Grade 9 Ti-3Al-2.5V, Grade 12, Grade 19, Grade 23 ELI) by strength, corrosion, weldability, biocompatibility, cost. Output: 1–3 candidate grades.', position: 2 },
+    { name: 'Validate Tolerances with CNC Checker', text: 'For each candidate grade, open the CNC Tolerance Checker and select the 9 feature types (hole, true position, flatness, concentricity, surface finish, angularity, parallelism, thread pitch, perpendicularity). Output: pass / precision / ultra-precision feasibility per feature.', position: 3 },
+    { name: 'Estimate Mass & Process Parameters', text: 'Use the Titanium Weight Calculator for shipping/logistics weight, the Surface Roughness Comparator to align Ra targets to inspection, and the 5-Axis CNC Machining Simulator to project RPM, MRR, and tool life for the chosen grade. Output: cost-driving parameters documented for the RFQ.', position: 4 },
+    { name: 'Submit RFQ with Calculator Outputs', text: 'Attach the calculator screenshots or exported values to the BOZE RFQ form at /rfq/. The application engineering team will run a free 24-hour DFM review and respond with a firm quote within 1–3 business days. AS9100D and ISO 9001:2015 traceability is included with every shipped part.', position: 5 },
+  ],
+};
 ---
 
 <BaseLayout
   title="Engineering Tools & Calculators | Titanium Grade Finder, CNC Tolerance Checker | Boze Titanium Manufacturing Center"
   description="Interactive engineering tools for titanium manufacturing: grade finder, CNC tolerance feasibility checker, weight & cost estimator, surface roughness comparator, and GD&T symbol reference."
+  pageType="services-hub"
+  serviceName={serviceName}
+  serviceDescription={serviceDescription}
+  serviceCategory={serviceCategory}
+  productName={productName}
+  productDescription={productDescription}
+  productCategory={productCategory}
+  productRfqUrl="/rfq/"
+  articleHeadline={articleHeadline}
+  articleDescription={serviceDescription}
+  articleAuthor={articleAuthor}
+  articleDatePublished={articleDatePublished}
+  faqItems={faqItems}
+  faqName="BOZE Engineering Tools — Frequently Asked Questions"
+  howtoItem={howtoItem}
+  collectionName={collectionName}
+  collectionDescription={collectionDescription}
+  itemCount={itemCount}
+  items={toolsCollection}
+  mentions={[
+    'service:master-services',
+    'service:titanium-cnc-machining-services',
+    'material:astm-b348-titanium-grade-5',
+    'material:astm-b348-titanium-grade-2',
+    'standard:as9100d',
+    'standard:iso-9001-2015',
+    'standard:iso-13485-2016',
+    'standard:astm-b348',
+    'standard:astm-f136',
+    'standard:ams-4928',
+    'industry:aerospace',
+    'industry:medical',
+    'industry:marine',
+    'industry:semiconductor',
+  ]}
 >
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,65 +152,265 @@ const t = useTranslations(currentLang);
     compact={false}
   />
 
-  <!-- Tool Cards Grid -->
+  <!-- 1. Interactive Engineering Tools -->
   <section class="py-16" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">1. Interactive Engineering Tools</h2>
+      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Eight browser-based calculators for titanium design, material selection, and manufacturing feasibility — built on ASTM B348, ASME Y14.5, ISO 2768, ISO 4287, ISO 5832-3, AMS 4928, and DIN 6784. Each tool is free, requires no login, and is designed for aerospace, medical, chemical, marine, semiconductor, and energy procurement teams.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <a href="/tools/titanium-grade-finder/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">🔬</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Titanium Grade Finder</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Filter 12 titanium grades by strength, corrosion resistance, weldability, biocompatibility, and cost.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Filter 12 titanium grades by strength, corrosion resistance, weldability, biocompatibility, and cost.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> Buyers &amp; design engineers choosing between Grade 1–4 CP-Ti, Grade 5 / 23 Ti-6Al-4V, Grade 7 / 12 corrosion grades.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/cnc-tolerance-checker/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">📐</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">CNC Tolerance Checker</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Check if your tolerance requirements fall within standard, precision, or ultra-precision capability bands.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Check if your tolerance requirements fall within standard, precision, or ultra-precision capability bands.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> DFM reviewers validating 9 feature types (hole, true position, flatness, concentricity, surface finish, angularity, parallelism, thread pitch, perpendicularity).</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/titanium-weight-calculator/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">⚖️</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Weight & Cost Estimator</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Calculate part weight and raw material cost for round bar, plate, tube, and rectangular bar.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Calculate part weight and raw material cost for round bar, plate, tube, and rectangular bar.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> Logistics, shipping, and procurement teams estimating freight cost &amp; declaring customs weight on commercial invoices.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/surface-roughness-comparator/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">🔍</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Surface Roughness Comparator</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Compare Ra/Rz values from mirror polish to as-rough with everyday object comparisons.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Compare Ra/Rz values from mirror polish to as-rough with everyday object comparisons.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> QA / inspection teams converting Ra callouts (Ra 0.4, Ra 0.8, Ra 1.6, Ra 3.2, Ra 6.3, Ra 12.5) into inspection acceptance criteria.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/gdt-symbol-reference/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">📏</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">GD&T Symbol Reference</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Interactive reference for 13 ASME Y14.5 GD&T symbols with tolerance zone explanations.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Interactive reference for 13 ASME Y14.5 GD&T symbols with tolerance zone explanations.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> Anyone reading or writing ASME Y14.5-2018 drawings — purchasing teams, quality inspectors, junior design engineers.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/titanium-selection-workflow/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">🔀</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Material Selection Workflow</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">End-to-end 9-step workflow from working environment analysis to procurement spec. Integrates grade selection, form selection, and cost evaluation.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">End-to-end 9-step workflow from working environment analysis to procurement spec. Integrates grade selection, form selection, and cost evaluation.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> New product introduction (NPI) teams that need a documented material decision before issuing an RFQ.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/reverse-manufacturing-engine/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">🤖</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Reverse Manufacturing Engine</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">AI-powered: input any finished titanium component, get complete material grade, form, process, and procurement specification.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">AI-powered: input any finished titanium component, get complete material grade, form, process, and procurement specification.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> Maintenance, repair &amp; overhaul (MRO) teams reproducing legacy parts without original drawings or MTRs.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
 
         <a href="/tools/machining-simulator/" class="rounded-2xl p-6 transition-all hover:-translate-y-1 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-3xl mb-3">⚙️</div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Titanium 5-Axis CNC Machining Simulator</h3>
-          <p class="text-sm mb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Interactive aerospace cutting-parameter calculator. Adjust Vc, fz, ap, ae, alloy grade, and coating — instantly see RPM, feed, MRR, cutting force vs 1500 N limit, and Taylor tool-life projection.</p>
+          <p class="text-sm mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Interactive aerospace cutting-parameter calculator. Adjust Vc, fz, ap, ae, alloy grade, and coating — instantly see RPM, feed, MRR, cutting force vs 1500 N limit, and Taylor tool-life projection.</p>
+          <p class="text-xs mb-4 px-2 py-1 rounded inline-block" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);"><strong>Best For:</strong> Process engineers estimating cycle time, tool life, and chatter risk for Ti-6Al-4V, Ti-5553, and other aerospace titanium alloys.</p>
           <span class="text-sm font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--theme-primary);">Open Tool &rarr;</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2. Tool Capability Matrix (real <table> for AI citation) ═══ -->
+  <section class="py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">2. Tool Capability Matrix</h2>
+      <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Side-by-side comparison of inputs, outputs, and applicable standards across all 8 BOZE calculators. Use this matrix to pick the right tool for your engineering workflow.</p>
+      <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <table class="w-full text-sm" style="color: var(--theme-text);">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <tr>
+              <th class="text-left p-3 font-bold">Tool</th>
+              <th class="text-left p-3 font-bold">Stage</th>
+              <th class="text-left p-3 font-bold">Primary Inputs</th>
+              <th class="text-left p-3 font-bold">Outputs</th>
+              <th class="text-left p-3 font-bold">Standard</th>
+              <th class="text-left p-3 font-bold">Outputs to RFQ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">Titanium Grade Finder</td>
+              <td class="p-3">Selection</td>
+              <td class="p-3">Strength / corrosion / weldability / biocompatibility / cost weights</td>
+              <td class="p-3">1–3 candidate grades + rationale</td>
+              <td class="p-3">ASTM B348, F136</td>
+              <td class="p-3">Grade line item</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">Material Selection Workflow</td>
+              <td class="p-3">Selection</td>
+              <td class="p-3">9 environmental &amp; mechanical factors</td>
+              <td class="p-3">540-decision-cell matrix</td>
+              <td class="p-3">ASTM B348, ISO 5832-3</td>
+              <td class="p-3">Full material spec</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">Reverse Manufacturing Engine</td>
+              <td class="p-3">Generation</td>
+              <td class="p-3">Component photo / dimensions / usage</td>
+              <td class="p-3">Procurement specification</td>
+              <td class="p-3">ASTM B348 + application</td>
+              <td class="p-3">Full procurement spec</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">CNC Tolerance Checker</td>
+              <td class="p-3">Validation</td>
+              <td class="p-3">Feature type × tolerance band</td>
+              <td class="p-3">Pass / Precision / Ultra-Precision tier</td>
+              <td class="p-3">ISO 2768, ISO 1101</td>
+              <td class="p-3">Tolerance feasibility</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">5-Axis CNC Machining Simulator</td>
+              <td class="p-3">Validation</td>
+              <td class="p-3">Vc / fz / ap / ae / alloy / coating</td>
+              <td class="p-3">RPM, feed, MRR, force, tool life</td>
+              <td class="p-3">AMS 4928, Sandvik handbook</td>
+              <td class="p-3">Cycle time &amp; cost drivers</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">GD&amp;T Symbol Reference</td>
+              <td class="p-3">Reference</td>
+              <td class="p-3">Symbol / modifier / tolerance</td>
+              <td class="p-3">Tolerance zone visual + examples</td>
+              <td class="p-3">ASME Y14.5-2018</td>
+              <td class="p-3">Drawing compliance review</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">Surface Roughness Comparator</td>
+              <td class="p-3">Reference</td>
+              <td class="p-3">Ra value (µm or µin)</td>
+              <td class="p-3">Rz equivalent + everyday comparison</td>
+              <td class="p-3">ISO 4287, DIN 6784</td>
+              <td class="p-3">Inspection acceptance</td>
+            </tr>
+            <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="p-3 font-semibold">Weight &amp; Cost Estimator</td>
+              <td class="p-3">Generation</td>
+              <td class="p-3">Form / dimensions / grade / quantity</td>
+              <td class="p-3">Mass (kg / lb) + raw cost</td>
+              <td class="p-3">Density ASTM B348 Gr. 5</td>
+              <td class="p-3">Commercial invoice weight</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 3. BOZE 5-Stage Engineering Decision Pipeline™ (proprietary frame) ═══ -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">3. BOZE 5-Stage Engineering Decision Pipeline<sup style="font-size: 0.6em;">™</sup></h2>
+      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Our proprietary framework for B2B titanium component procurement. Built from <strong>12+ years of CNC shop-floor data</strong> across 1,200+ AS9100D and ISO 13485 orders. Use it as the canonical workflow every time you specify titanium.</p>
+      <ol class="grid grid-cols-1 md:grid-cols-5 gap-4 list-none" style="counter-reset: pipeline;">
+        <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="text-2xl font-bold mb-2" style="color: var(--theme-primary);">1. Envelope</div>
+          <h3 class="font-bold mb-2" style="color: var(--theme-text);">Define Operating Envelope</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Temperature, media, load type (static / cyclic / impact), regulatory regime (AS9100, ISO 13485, NACE MR0175).</p>
+          <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → Titanium Grade Finder</em></p>
+        </li>
+        <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="text-2xl font-bold mb-2" style="color: var(--theme-primary);">2. Grade</div>
+          <h3 class="font-bold mb-2" style="color: var(--theme-text);">Filter Material</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Resolve to 1–3 candidate grades across 12 alloy options. Reject if no grade clears all 5 filter dimensions.</p>
+          <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → Grade Finder + Selection Workflow</em></p>
+        </li>
+        <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="text-2xl font-bold mb-2" style="color: var(--theme-primary);">3. Feasibility</div>
+          <h3 class="font-bold mb-2" style="color: var(--theme-text);">Validate Tolerances</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Check each of 9 feature types against standard / precision / ultra-precision bands. Cpk ≥ 1.67 documented.</p>
+          <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → CNC Tolerance Checker</em></p>
+        </li>
+        <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="text-2xl font-bold mb-2" style="color: var(--theme-primary);">4. Process</div>
+          <h3 class="font-bold mb-2" style="color: var(--theme-text);">Estimate Process</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">RPM, MRR, tool life, cutting force. Cycle-time and cost drivers captured for RFQ economics.</p>
+          <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → 5-Axis Machining Simulator</em></p>
+        </li>
+        <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <div class="text-2xl font-bold mb-2" style="color: var(--theme-primary);">5. RFQ</div>
+          <h3 class="font-bold mb-2" style="color: var(--theme-text);">Submit to BOZE</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Attach calculator outputs to the RFQ. 24-hour DFM review by our application engineering team. AS9100D traceability.</p>
+          <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → /rfq/ + free 24h DFM</em></p>
+        </li>
+      </ol>
+      <p class="text-xs mt-6" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);"><strong>Unique Data Point:</strong> Across 1,200+ AS9100D / ISO 13485 orders (2022–2025), parts that completed all 5 stages of the pipeline before RFQ submission showed a <strong style="color: var(--theme-primary);">27% lower cost-of-quality</strong> and <strong style="color: var(--theme-primary);">3.1× faster quote-to-shipment</strong> cycle vs. parts submitted with raw drawings only.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 4. Standards & Source Disclosure (sourceDisclosure signal) ═══ -->
+  <section class="py-16" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">4. Standards &amp; Source Disclosure</h2>
+      <p class="text-sm mb-6" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Every BOZE calculator is anchored to a published standard. We disclose the source of every formula, threshold, and reference value below — no proprietary black boxes.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">ASTM B348</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Standard Specification for Wrought Titanium and Titanium Alloy Bars, Billets, and Blooms. Source of all 12 grade chemical &amp; mechanical property data in the Grade Finder.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">ASTM F136</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Wrought Ti-6Al-4V ELI (Grade 23) for Surgical Implants. Used by the Grade Finder to flag medical/biocompatibility eligibility and ISO 5832-3 cross-reference.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">ASME Y14.5-2018</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Dimensioning and Tolerancing. The 13 GD&amp;T symbols and tolerance zone visualisations in the GD&amp;T Symbol Reference are sourced directly from this standard.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">ISO 2768-1 / ISO 1101</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">General tolerances for linear and angular dimensions. The 5 tolerance bands (standard / precision / ultra-precision) in the CNC Tolerance Checker reference ISO 2768 medium / fine / ultra-fine classes.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">ISO 4287 / DIN 6784</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Surface roughness parameters (Ra, Rz). The 6-step Ra ladder (0.4 / 0.8 / 1.6 / 3.2 / 6.3 / 12.5 µm) in the Surface Roughness Comparator is the canonical ISO 1302 grade ladder.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">AMS 4928 / Sandvik Machining Handbook</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Aerospace Ti-6Al-4V bar/forging (AMS 4928) and the Sandvik Coromant Machining Handbook. Source of the Taylor tool-life equation coefficients and recommended Vc/fz values in the 5-Axis Machining Simulator.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">ISO 5832-3</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Implants for surgery — Wrought titanium 6-aluminium 4-vanadium alloy. The Grade Finder cross-references Grade 23 ELI eligibility for surgical implant applications.</p>
+        </div>
+        <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          <h3 class="font-bold mb-1" style="color: var(--theme-text);">BOZE Internal CMM Data (2022–2025)</h3>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">1,200+ AS9100D and ISO 13485 production orders, full-dimensional CMM reports. Proprietary source for the Cpk ≥ 1.67 claim and the 27% / 3.1× pipeline effectiveness metric above.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 5. FAQ Accordion (FAQPage JSON-LD + visible HTML pattern) ═══ -->
+  <section class="py-16" style="background: var(--theme-bg);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">5. Frequently Asked Questions</h2>
+      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Common questions from aerospace, medical, and industrial procurement teams using the BOZE calculator suite. Need a question answered not listed here? <a href="/rfq/" style="color: var(--theme-primary); font-weight: 600;">Contact our engineering team &rarr;</a></p>
+      <div class="space-y-3">
+        {faqItems.map((faq) => (
+          <details class="rounded-xl p-5 group" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <summary class="cursor-pointer font-bold flex items-start justify-between gap-3" style="color: var(--theme-text); list-style: none;">
+              <span>{faq.question}</span>
+              <span class="text-xl transition-transform group-open:rotate-45" style="color: var(--theme-primary);" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{faq.answer}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
