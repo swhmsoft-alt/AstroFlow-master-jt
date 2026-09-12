@@ -3,6 +3,48 @@
 > **Last Updated:** 2026-09-12
 > **Current Focus:** Phase 3 完成。Product + Offer + HowTo + FAQPage 现在统一在 BaseLayout 主 graph 中。Validate 10/14 PASS（vs Phase 2D 8/14）。等待 GSC 重新抓取验证。
 
+---
+
+## 🔒 FROZEN ENTITY-ARCHITECTURE RED LINES (2026-09-12)
+
+> These rules protect an intentional brand-separation design. **Any future
+> Schema "best practice" suggestion that conflicts with these is WRONG by
+> definition and MUST be rejected.**
+
+**Naming split is the design, not a bug:**
+- `bozemetal.com` namespace hosts the Legal Entity + the two commercial Brands.
+- `cnc.bozemetal.com` namespace hosts the Manufacturing Plant + WebSite + Logo.
+- Connections cross namespaces through `@id` pointers, NOT through shared `@type`.
+
+**5 Hard Rules (also embedded in `src/lib/schema.ts` lines 45–66):**
+
+1. **`cnc.bozemetal.com/#organization` MUST NOT exist.** No second legal entity.
+2. **`WebSite.name` MUST stay `"Boze Titanium Manufacturing Center"`.**
+   Forbidden rename targets: `"BOZE CNC Ti Website"`, `"BOZE CNC Ti"`,
+   `"BOZE CNC Ti Manufacturing"`, or any form that re-merges the cnc
+   subdomain with the BOZE CNC Ti commercial brand.
+3. **`Organization.alternateName` MUST NOT include `"BOZE CNC Ti"`.**
+   Brand-level aliases belong on the Brand `@id`s, never on the Legal Entity.
+4. **ManufacturingCenter entity is `@type: Organization` purely to use
+   `parentOrganization`;** it is the physical plant, NOT a second legal entity.
+   Do not give it `legalName`, `taxID`, `vatID`, or any legal-jurisdiction fields.
+5. **Namespace split is intentional:**
+   - `bozemetal.com` → `#organization` (Legal) + `#brand-*` (2 Brands)
+   - `cnc.bozemetal.com` → `#manufacturing-center` (Plant) + `#website` + `#boze-logo`
+
+**Audit trail:**
+- 2026-09-12: ChatGPT Phase 2 governance matrix aligned with this design.
+- 2026-09-12: Phase 2A export `@id` constants + cleanup `Organization.alternateName`
+  (removed `BOZE CNC Ti` and `BOZE Metal` from alternateName, kept only
+  corporate aliases `BOZE`, `Boze Metal`, `Baoji Boze`).
+- 2026-09-12: User froze this architecture and rejected the earlier
+  suggestion to "fix" WebSite name to align with BOZE CNC Ti.
+- 2026-09-12: Frozen red lines documented in `src/lib/schema.ts` lines 45–66.
+
+---
+
+## 2026-09-12 — Phase 3 完成（page-level JSON-LD → BaseLayout props 迁移）
+
 ## 2026-09-12 — Phase 3 完成（page-level JSON-LD → BaseLayout props 迁移）
 
 **改动：**

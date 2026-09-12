@@ -41,8 +41,32 @@ import { refsFromIds } from './entity-graph';
 //   Corporate Brand   → https://www.bozemetal.com/#brand-boze-metal    (BOZE Metal)
 //   Commercial Brand  → https://www.bozemetal.com/#brand-boze-cnc-ti   (BOZE CNC Ti)
 //   Manufacturing Ctr → https://cnc.bozemetal.com/#manufacturing-center (Boze Titanium Manufacturing Center)
+//   WebSite           → https://cnc.bozemetal.com/#website            (Boze Titanium Manufacturing Center)
 //
-// NOTE: cnc.bozemetal.com/#organization MUST NOT exist (no second legal entity).
+// ── FROZEN ENTITY-ARCHITECTURE RED LINES (2026-09-12) ───────────────────
+// These rules protect an intentional brand-separation design: the
+// commercial brand `BOZE CNC Ti` lives under the bozemetal.com namespace
+// (alongside the Legal Entity and Corporate Brand `BOZE Metal`); the
+// manufacturing center + website live under cnc.bozemetal.com and use the
+// neutral name `Boze Titanium Manufacturing Center` so the cnc subdomain
+// is not misidentified with the BOZE CNC Ti brand.
+//
+//  1. cnc.bozemetal.com/#organization MUST NOT exist (no second legal entity).
+//  2. WebSite name MUST stay "Boze Titanium Manufacturing Center".
+//     DO NOT rename it back to "BOZE CNC Ti Website", "BOZE CNC Ti", or any
+//     form that re-merges the cnc subdomain with the commercial brand.
+//  3. Organization.alternateName MUST NOT include "BOZE CNC Ti".
+//     Brand-level aliases belong on the Brand @ids, not on the Legal Entity.
+//  4. DO NOT create a second Organization under cnc.bozemetal.com that
+//     claims legalEntity status. The ManufacturingCenter entity is `@type:
+//     Organization` purely to use the `parentOrganization` property; it is
+//     the physical plant, NOT a second legal entity.
+//  5. Namespace split is intentional:
+//       bozemetal.com       → #organization (Legal), #brand-* (2 Brands)
+//       cnc.bozemetal.com   → #manufacturing-center (Plant), #website, #boze-logo
+//     Connections between namespaces MUST go through @id pointers
+//     (parentOrganization / publisher / brand), NOT through shared @type.
+// ────────────────────────────────────────────────────────────────────────
 
 const MAIN_SITE = 'https://www.bozemetal.com';
 const SITEROOT = SITE.url;
