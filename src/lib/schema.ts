@@ -645,6 +645,12 @@ export function buildArticle(input: {
   url: string;
   author: string;
   datePublished: string;
+  /**
+   * ISO 8601 date string. Per schema.org/Article spec, dateModified indicates
+   * when the article was last edited. Emitted as `dateModified` on the
+   * Article/BlogPosting node so search engines can surface freshness signals.
+   */
+  dateModified?: string;
   image?: string;
   mainEntityOfPage?: string;
   /**
@@ -664,6 +670,7 @@ export function buildArticle(input: {
     url: input.url,
     author: { '@type': 'Person', name: input.author },
     datePublished: input.datePublished,
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: { '@id': input.mainEntityOfPage || input.url },
     ...(input.image ? { image: input.image } : {}),
@@ -762,6 +769,8 @@ export interface SchemaPageData {
   articleDescription?: string;
   articleAuthor?: string;
   articleDatePublished?: string | null;
+  /** ISO 8601 last-modified timestamp for Article/BlogPosting schema. */
+  articleDateModified?: string | null;
   articleImage?: string;
 
   // Service
@@ -1123,6 +1132,9 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           url: data.pageUrl,
           author: data.articleAuthor ?? 'Boze Titanium Manufacturing Center',
           datePublished: data.articleDatePublished ?? new Date().toISOString(),
+          // Only emit dateModified when caller provides one — avoids
+          // a fabricated value that would mislead search engines.
+          ...(data.articleDateModified ? { dateModified: data.articleDateModified } : {}),
           image: data.articleImage,
           mainEntityOfPage: data.pageUrl,
           // schema.org Article subtype: BlogPosting is the precise match for

@@ -105,6 +105,8 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.date(),
+    // ── Last-modified date (content updates after publication) ──
+    updatedDate: z.date().optional(),
     author: z.string().default('Boze Titanium Manufacturing Center'),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
@@ -124,6 +126,8 @@ const blogTranslationsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.date(),
+    // ── Last-modified date (mirrors blogCollection) ──
+    updatedDate: z.date().optional(),
     author: z.string().default('Boze Titanium Manufacturing Center'),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),

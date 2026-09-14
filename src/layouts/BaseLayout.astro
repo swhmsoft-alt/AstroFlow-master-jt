@@ -69,6 +69,13 @@ interface Props {
   articleHeadline?: string;
   articleDescription?: string;
   articleAuthor?: string;
+  /**
+   * ISO 8601 last-modified date for the Article/BlogPosting entity emitted
+   * by buildPageGraph (schema.ts). Mirrors the frontmatter `updatedDate`
+   * field on blog/blog-translations collections. When omitted the JSON-LD
+   * graph simply drops the `dateModified` key — no fabricated value.
+   */
+  articleDateModified?: string | null;
   articleImage?: string;
   collectionName?: string;
   collectionDescription?: string;
@@ -162,6 +169,7 @@ const {
   articleHeadline,
   articleDescription,
   articleAuthor,
+  articleDateModified,
   articleImage,
   collectionName,
   collectionDescription,
@@ -227,7 +235,7 @@ const schemaData = {
   pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
   breadcrumbItems,
   articleHeadline: resolvedArticleHeadline, articleDescription: articleDescription ?? description, articleAuthor: articleAuthor ?? author,
-  articleDatePublished: pubDate ?? undefined, articleImage,
+  articleDatePublished: pubDate ?? undefined, articleDateModified: articleDateModified ?? undefined, articleImage,
   serviceName: resolvedServiceName, serviceDescription: serviceDescription ?? (resolvedServiceName ? description : undefined),
   serviceCategory, productName, productDescription: productDescription ?? (productName ? description : undefined), productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, collectionDescription, itemCount, items,

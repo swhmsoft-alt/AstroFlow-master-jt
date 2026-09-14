@@ -76,6 +76,8 @@ function buildFrontmatter(fm) {
       lines.push(`featured: ${value === true || value === 'true' ? 'true' : 'false'}`);
     else if (key === 'pubDate')
       lines.push(`pubDate: ${value}`);
+    else if (key === 'updatedDate' && value)
+      lines.push(`updatedDate: ${value}`);
     else if (key === 'slug')
       lines.push(`slug: ${value}`);
     else if (typeof value === 'string')
@@ -221,6 +223,9 @@ async function translateBlogPost(filePath, targetLang) {
     title: translatedTitle,
     description: translatedDescription,
     pubDate: frontmatter.pubDate,
+    // updatedDate is language-agnostic — propagate verbatim so freshness
+    // signals stay in sync across all 9 locales.
+    updatedDate: frontmatter.updatedDate || '',
     author: frontmatter.author || 'BOZE CNC Ti',
     category: translatedCategory || '',
     tags: translatedTags,

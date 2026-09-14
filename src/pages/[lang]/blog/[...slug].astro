@@ -77,6 +77,12 @@ const filteredAlternateLinks = [
 
 const tocHeadings = headings.filter((h: any) => h.depth === 2);
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
+// Only surface updatedDate when it's strictly newer than pubDate — avoids
+// a redundant "Updated" label on freshly-published posts.
+const updatedDateRaw = data.updatedDate ? new Date(data.updatedDate) : null;
+const updatedDateISO = updatedDateRaw && updatedDateRaw.getTime() > new Date(data.pubDate).getTime()
+  ? updatedDateRaw.toISOString()
+  : null;
 const seoTitle = `${data.title} | Boze Titanium Manufacturing Center Blog`;
 const tags = data.tags || [];
 const blogUrl = `https://cnc.bozemetal.com/${lang === 'en' ? '' : lang + '/'}blog/${slug}`;
@@ -105,6 +111,7 @@ const hasRelated = relatedEdges.length > 0;
   title={seoTitle}
   description={data.description}
   pubDate={pubDateISO}
+  articleDateModified={updatedDateISO}
   author={data.author}
   tags={tags.length > 0 ? tags : undefined}
   ogImage={data.coverImage ? `https://cnc.bozemetal.com${data.coverImage}` : undefined}
@@ -173,6 +180,16 @@ const hasRelated = relatedEdges.length > 0;
             <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
             {new Date(data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
+          {updatedDateISO && (
+            <>
+              <span style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);">|</span>
+              <time datetime={updatedDateISO} class="flex items-center" title="Last updated">
+                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                <span style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Updated</span>
+                <span class="ml-1.5" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">{new Date(updatedDateISO).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </time>
+            </>
+          )}
         </div>
       </div>
     </div>
