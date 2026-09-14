@@ -8,6 +8,38 @@ import { getOriginalSlug, categoryToSlug } from '../../lib/blog-i18n';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
+
+/**
+ * Get the real last-modified time of a blog post from git history.
+ *
+ * This is the single source of truth for "Updated" — NOT the frontmatter
+ * `updatedDate` field. That field has been removed from the rendering path
+ * because it required manual maintenance on every edit (silently went stale,
+ * could be set equal to pubDate, could be set without an actual content
+ * change). Git's commit time on the source file is what the user actually
+ * changed, so it's the only honest signal.
+ *
+ * Falls back to file mtime if git is unavailable (e.g. shallow clone in CI).
+ */
+function getGitLastModified(filePath: string | undefined): Date | null {
+  if (!filePath) return null;
+  try {
+    const ts = execSync(
+      `git log -1 --format="%aI" -- "${filePath}"`,
+      { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
+    ).trim();
+    if (ts) {
+      const d = new Date(ts);
+      if (!isNaN(d.getTime())) return d;
+    }
+  } catch { /* git unavailable — fall through */ }
+  try {
+    const d = new Date(fs.statSync(filePath).mtime);
+    if (!isNaN(d.getTime())) return d;
+  } catch { /* give up */ }
+  return null;
+}
 
 export const prerender = true;
 
@@ -32,12 +64,13 @@ const t = useTranslations(lang);
 // Filter headings to only include h2 for the TOC
 const tocHeadings = headings.filter(h => h.depth === 2);
 const pubDateISO = data.pubDate ? new Date(data.pubDate).toISOString() : null;
-// Only surface updatedDate when it's meaningfully newer than pubDate —
-// protects against stale or accidentally-equal frontmatter values producing
-// a redundant "Updated" label on freshly-published posts.
-const updatedDateRaw = data.updatedDate ? new Date(data.updatedDate) : null;
-const updatedDateISO = updatedDateRaw && updatedDateRaw.getTime() > new Date(data.pubDate).getTime()
-  ? updatedDateRaw.toISOString()
+// "Updated" date = real git last-commit time on the source file. NOT the
+// frontmatter `updatedDate` field (removed). Only surface it when it's
+// strictly newer than pubDate, so a never-edited post never shows a
+// redundant "Updated" label.
+const gitUpdated = getGitLastModified(post.filePath);
+const updatedDateISO = gitUpdated && gitUpdated.getTime() > new Date(data.pubDate).getTime()
+  ? gitUpdated.toISOString()
   : null;
 const seoTitle = `${data.title} | Boze Titanium Manufacturing Center Blog`;
 const tags = data.tags || [];

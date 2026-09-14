@@ -72,6 +72,9 @@ i18n-report.json
 *.csv
 *.txt
 
+# ── Audit results (local-only diagnostics, never commit) ─
+audit-results/
+
 # ── Uploads / large binaries (keep in .gitignore) ─
 public/uploads/*.webp
 public/uploads/boze-tmc-*
