@@ -126,7 +126,7 @@ const hasRelated = relatedEdges.length > 0;
         </li>
         {data.category && (
           <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <a href={`/blog/category/${categoryToSlug(data.category)}/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <a href={`/blog/${categoryToSlug(data.category)}/`} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
               <span itemprop="name">{data.category}</span>
             </a>
             <meta itemprop="position" content="3" />
@@ -162,7 +162,7 @@ const hasRelated = relatedEdges.length > 0;
         <div class="flex flex-wrap items-center gap-3 mb-4">
           {data.category && (
             <a
-              href={`/blog/category/${categoryToSlug(data.category)}/`}
+              href={`/blog/${categoryToSlug(data.category)}/`}
               class="inline-block px-3 py-1 text-sm font-semibold rounded-full transition-colors"
               style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);"
             >
