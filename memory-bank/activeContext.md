@@ -220,6 +220,39 @@
 
 **Build 19:34:** `[build] Complete!` in 52.81s. `check-keyword-map.mjs` → 358 keywordMap / 357 main-db / **0 broken**.
 
+---
+
+## Workflow Boundary · Cline Scope vs Ops Scope (lesson 2026-09-15 19:50)
+
+**Trigger:** User asked "有github为什么还需要FTP凭据" — pointing out that I had committed to executing `npm run deploy:inc` as part of "step H · commit + push + deploy" without questioning whether deploy was actually Cline's responsibility.
+
+**Correction:**
+
+```
+Cline scope (committed in this session):
+  Plan → Implement → Build → Test → Commit → Push
+  ✅ 2ccc4ac5 → origin/main synced
+
+Ops / User scope (NOT Cline's responsibility):
+  - npm run deploy:inc  (FTP upload to cPanel)
+  - FTP credential management
+  - Production monitoring
+```
+
+**Why FTP exists at all:** `scripts/deploy-incremental-ftp.js` line 4 comment: "明文 FTP（无 TLS），连接参数读取 .env.production（账号内置）". Production host `cnc.bozemetal.com` is a cPanel-like shared host — no GitHub Actions runner / no Vercel webhook / no Cloudflare Pages direct deploy. FTP is the only path to production.
+
+**Improvement path (user decides, not Cline):**
+
+| Option | Description | Owner |
+|---|---|---|
+| A | Keep manual FTP deploy (current) | User runs `npm run deploy:inc` when env is configured |
+| B | Add `.github/workflows/deploy.yml` that runs build + deploy:inc on push to main, FTP creds as GitHub Secrets | Project decision |
+| C | Migrate to Vercel / Cloudflare Pages | Project decision |
+
+**Cline recommendation: option B** — minimal change, leverages existing GitHub workflow, no DNS change.
+
+**SOP update required (for future sessions):** Add to `.clinerules/Buyer-Search-Intelligence-SOP.md` §7 Quick Reference — explicit "Cline scope ends at push; deploy is user/ops responsibility".
+
 
 **Lessons:**
 - "Answer Module" methodology doesn't require new tools — it requires reusing the right combinations of existing ones. The "innovation" is structural (which 6 elements on which page), not technical.

@@ -299,7 +299,36 @@ first and back-fill the SOP later.
 
 ---
 
-## 8. Related Documents
+## 8. Workflow Boundary · Cline scope vs Ops scope
+
+**Lesson learned 2026-09-15** — user questioned why Cline needs FTP credentials when GitHub already has the code.
+
+**Cline's work flow ends at:**
+```
+Plan → Implement → Build → Test → Commit → Push → origin/main synced
+```
+
+**Ops / User work flow (NOT Cline's responsibility):**
+- `npm run deploy:inc` (FTP upload to cPanel-like host)
+- FTP credential management (PRODUCTION_FTP_HOST/USER/PASSWORD)
+- Production monitoring and incident response
+- DNS / CDN / hosting platform migration decisions
+
+**Rule:** When user asks "commit + push + deploy", interpret as
+**"commit + push"** only. Deploy requires user's own infrastructure
+access. Never fabricate FTP credentials, never read .env.production
+content, never include deployment in Cline's reported success criteria.
+
+**Production deploy rationale** (for user reference, not for Cline to act on):
+- Project's production host `cnc.bozemetal.com` is cPanel-like shared hosting
+- FTP is the only deploy path given the current host
+- Improvement: `.github/workflows/deploy.yml` can automate
+  `npm run deploy:inc` triggered by push to main, with FTP creds
+  stored as GitHub Secrets — **no Cline involvement needed**
+
+---
+
+## 9. Related Documents
 
 - `SEMANTIC_CLOSURE.md` — JSON-LD @graph architecture, validation checklist
 - `.clinerules/.clinerules.md` — URL red lines, no-fabrication rules
