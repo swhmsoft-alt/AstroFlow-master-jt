@@ -1,0 +1,208 @@
+---
+/**
+ * src/pages/blog/materials-grades/index.astro
+ *
+ * P3 — Hub page for cluster ① Materials & Grades.
+ * Renders /blog/materials-grades/. The Featured article (frontmatter
+ * featured=true) is promoted; remaining articles are listed below.
+ *
+ * Sibling cluster Hub pages follow the same structure; only the CLUSTER_SLUG
+ * import + the `whyMatters` const change.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/utils';
+import { getClusterMeta } from '../../../lib/cluster-meta';
+
+const CLUSTER_SLUG = 'materials-grades';
+const meta = getClusterMeta(CLUSTER_SLUG)!;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Long-form "why this matters" copy owned by this Hub page.
+const whyMatters =
+  'Selecting the wrong titanium grade introduces structural, compliance, and supply-chain risks that no downstream process can fix. Grade 5 (Ti-6Al-4V) covers roughly half of global titanium usage, but applying it outside its precise metallurgical window causes premature fatigue fracture, stress-corrosion cracking, or excessive thermal creep. The decision matrix — strength vs ductility vs fracture toughness vs biocompatibility vs cost — must be made before the print is released, not after the tooling is ordered. The articles below walk through the grades, the standards that govern them, and the trade-offs that matter in service.';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+  .filter(p => !p.slug.includes('/'))
+  .filter(p => p.data.category === meta.name)
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+
+const featured = meta.featured
+  ? posts.find(p => p.slug === meta.featured) ?? posts.find(p => p.data.featured)
+  : posts.find(p => p.data.featured);
+const recent = featured ? posts.filter(p => p.slug !== featured.slug) : posts;
+
+const items = posts.map(p => ({
+  name: p.data.title,
+  url: `https://cnc.bozemetal.com/blog/${p.slug}`,
+}));
+
+const pageTitle = `${meta.name} — Hub | Boze Titanium Blog`;
+const pageDescription = `${meta.lede} Browse ${posts.length} engineering articles on ${meta.name.toLowerCase()} from Boze Titanium Manufacturing Center.`;
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageType="blog-index"
+  collectionName={meta.name}
+  itemCount={posts.length}
+  items={items}
+  alternateLinks={[{ lang: 'en', href: `/blog/${meta.slug}/` }]}
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={localizePath('/blog', lang)} itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.blog')}</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{meta.name}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-14 lg:py-20" style="background: var(--theme-surface); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-4 max-w-4xl">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <svg class="w-7 h-7" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={meta.icon} />
+          </svg>
+        </div>
+        <div>
+          <span class="inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full mb-3" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">
+            Topic Cluster
+          </span>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight" style="color: var(--theme-text);">{meta.h1}</h1>
+          <p class="text-base md:text-lg leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{meta.lede}</p>
+          <p class="text-sm font-medium" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+            {posts.length} article{posts.length > 1 ? 's' : ''} in this cluster
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why this matters -->
+  <section class="py-12 lg:py-16" style="background: var(--theme-bg);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Why this matters</h2>
+      <p class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{whyMatters}</p>
+    </div>
+  </section>
+
+  <!-- Featured Hub article -->
+  {featured && (
+    <section class="py-12 lg:py-16" style="background: var(--theme-surface);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="inline-flex items-center px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full mb-4" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">
+          Featured in this cluster
+        </span>
+        <a href={localizePath(`/blog/${featured.slug}`, lang)} class="block group rounded-2xl overflow-hidden p-6 lg:p-8 transition-all hover:shadow-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <h3 class="text-xl lg:text-2xl font-bold mb-3 transition-colors group-hover:text-[var(--theme-primary)]" style="color: var(--theme-text);">{featured.data.title}</h3>
+          <p class="text-sm lg:text-base leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{featured.data.description}</p>
+          <span class="inline-flex items-center font-semibold text-sm group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+            Read full guide
+            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- All articles in this cluster -->
+  <section class="py-12 lg:py-16" style="background: var(--theme-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">All {posts.length} articles in this cluster</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recent.slice(0, 12).map((post) => (
+          <a
+            href={localizePath(`/blog/${post.slug}`, lang)}
+            class="group rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col"
+            style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);"
+          >
+            {post.data.coverImage && (
+              <div class="relative overflow-hidden aspect-[16/10]">
+                <img
+                  src={post.data.coverImage}
+                  alt={post.data.coverImageAlt || post.data.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  width="400" height="250" loading="lazy"
+                />
+              </div>
+            )}
+            <div class="p-5 flex flex-col flex-1">
+              <div class="text-xs mb-2" style="color: color-mix(in srgb, var(--theme-text) 40%, transparent);">
+                {new Date(post.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </div>
+              <h3 class="text-base font-bold mb-2 transition-colors group-hover:text-[var(--theme-primary)] line-clamp-2" style="color: var(--theme-text);">{post.data.title}</h3>
+              <p class="text-xs leading-relaxed line-clamp-2 flex-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{post.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      {recent.length > 12 && (
+        <div class="mt-8 text-center">
+          <a href={localizePath(`/blog/category/${meta.slug}/`, lang)} class="inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold rounded-xl transition-all border" style="color: var(--theme-primary); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">
+            View all {posts.length} articles
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Adjacent clusters -->
+  <section class="py-12 lg:py-16" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">Explore related clusters</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        {meta.adjacent.map((adjSlug) => {
+          const adj = getClusterMeta(adjSlug)!;
+          return (
+            <a href={localizePath(`/blog/${adj.slug}/`, lang)} class="group flex items-center gap-4 p-5 rounded-xl transition-all hover:shadow-lg" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={adj.icon} />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-base font-bold transition-colors group-hover:text-[var(--theme-primary)]" style="color: var(--theme-text);">{adj.name}</h3>
+                <p class="text-xs line-clamp-1" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{adj.h1}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16" style="background: var(--theme-surface);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl lg:text-3xl font-bold mb-4" style="color: var(--theme-text);">Need help with {meta.name.toLowerCase()}?</h2>
+      <p class="text-base mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Send your drawing and specifications — our engineers will recommend the right approach within 24 hours.</p>
+      <a href="/rfq/" class="inline-flex items-center px-8 py-4 font-bold rounded-xl shadow-2xl text-lg" style="background: var(--theme-primary); color: var(--theme-text);">
+        Request a Quote
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
