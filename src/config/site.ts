@@ -142,6 +142,15 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Material Traceability', href: '/capabilities/traceability' },
           { name: 'Certifications', href: '/capabilities/certifications' },
           { name: 'Equipment Inventory', href: '/equipment' },
+          { name: 'Compliance & Certifications', href: '/capabilities/compliance/' },
+          { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/' },
+        ],
+      },
+      {
+        heading: 'Delivery & Logistics',
+        items: [
+          { name: 'Lead Time Guide', href: '/capabilities/lead-time/' },
+          { name: 'Logistics & Shipping', href: '/capabilities/logistics/' },
         ],
       },
     ],
@@ -162,32 +171,6 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Energy', href: '/industries/energy' },
           { name: 'Chemical', href: '/industries/chemical' },
           { name: 'Industrial Equipment', href: '/industries/industrial-equipment' },
-        ],
-      },
-    ],
-  },
-  {
-    name: 'Capabilities',
-    href: '/capabilities',
-    children: [
-      {
-        heading: 'Capabilities Hub',
-        items: [
-          { name: 'All 6 Capability Dimensions', href: '/capabilities/' },
-        ],
-      },
-      {
-        heading: 'Compliance & Evaluation',
-        items: [
-          { name: 'Compliance & Certifications', href: '/capabilities/compliance/' },
-          { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/' },
-        ],
-      },
-      {
-        heading: 'Delivery & Logistics',
-        items: [
-          { name: 'Lead Time Guide', href: '/capabilities/lead-time/' },
-          { name: 'Logistics & Shipping', href: '/capabilities/logistics/' },
         ],
       },
     ],
