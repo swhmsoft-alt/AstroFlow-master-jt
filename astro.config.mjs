@@ -69,14 +69,14 @@ export default defineConfig({
     // 8 effective redirects; 21 edge categories (1-2 posts) intentionally
     // produce no static page and 404 naturally — see Plan §4 + §6.
     // Slug `'machining-processes'` is unchanged, no redirect needed.
-    '/blog/category/materials-engineering/':         '/blog/category/materials-grades/',
-    '/blog/category/manufacturing-problems/':        '/blog/category/problems-solutions/',
-    '/blog/category/quality-and-standards/':         '/blog/category/quality-standards/',
-    '/blog/category/applications-and-processes/':    '/blog/category/applications-industries/',
-    '/blog/category/procurement-guides/':            '/blog/category/procurement-services/',
-    '/blog/category/design-engineering/':            '/blog/category/design-dfm/',
-    '/blog/category/titanium-cnc-machining-services/': '/blog/category/procurement-services/',
-    '/blog/category/case-studies/':                  '/blog/category/applications-industries/',
+    '/blog/category/materials-engineering/': '/blog/materials-grades/',
+    '/blog/category/manufacturing-problems/': '/blog/problems-solutions/',
+    '/blog/category/quality-and-standards/': '/blog/quality-standards/',
+    '/blog/category/applications-and-processes/': '/blog/applications-industries/',
+    '/blog/category/procurement-guides/': '/blog/procurement-services/',
+    '/blog/category/design-engineering/': '/blog/design-dfm/',
+    '/blog/category/titanium-cnc-machining-services/': '/blog/procurement-services/',
+    '/blog/category/case-studies/': '/blog/applications-industries/',
   },
   markdown: {
     remarkPlugins: [remarkMath],

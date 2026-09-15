@@ -5,6 +5,7 @@ import { HERO_CONFIG } from '../../config/hero';
 import type { CollectionEntry } from 'astro:content';
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 import { getBlogPosts, categoryToSlug, BLOG_PAGE_SIZE } from '../../lib/blog-i18n';
+import { CLUSTERS } from '../../lib/cluster-meta';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -17,28 +18,10 @@ const sorted: BlogPost[] = await getBlogPosts('en');
 const featured = sorted.find(p => p.data.featured);
 const nonFeatured = featured ? sorted.filter(p => p.slug !== featured.slug) : sorted;
 
-// Group by category — ordered by B2B buyer's journey
-const CATEGORY_ORDER = [
-  'Titanium CNC Machining Services',
-  'Design Engineering',
-  'Materials Engineering',
-  'Manufacturing Problems',
-  'Quality and Standards',
-  'Applications and Processes',
-  'Case Studies',
-  'Procurement Guides',
-];
-
-const CATEGORY_ICONS: Record<string, string> = {
-  'Titanium CNC Machining Services': 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
-  'Design Engineering': 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
-  'Materials Engineering': 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
-  'Manufacturing Problems': 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z',
-  'Quality and Standards': 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-  'Applications and Processes': 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
-  'Case Studies': 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4',
-  'Procurement Guides': 'M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z M20.488 9H12V.512A9.025 9.025 0 0120.488 9z',
-};
+// Group by cluster — 7 topic clusters (P3 single source of truth).
+// Order: Materials → Processes → Design → Problems → Quality → Applications → Procurement.
+const CATEGORY_ORDER: string[] = CLUSTERS.map(c => c.name);
+const CATEGORY_ICONS: Record<string, string> = Object.fromEntries(CLUSTERS.map(c => [c.name, c.icon]));
 
 // Build grouped map
 const grouped = new Map<string, BlogPost[]>();
@@ -103,12 +86,52 @@ const blogPageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
     badgeIcon="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
     keyMetrics={[
       { value: `${totalArticles}`, label: 'Articles' },
-      { value: `${totalCategories}`, label: 'Categories' },
+      { value: `${totalCategories}`, label: 'Topic Clusters' },
       { value: `${totalCaseStudies > 0 ? totalCaseStudies : ''}`, label: totalCaseStudies > 0 ? 'Case Studies' : '' },
     ].filter(m => m.label)}
     entityChips={topCats.map(c => c.replace('Titanium ', 'Ti ').replace(' and ', ' & ').replace(' Applications', ''))}
   />
 
+
+  <!-- 7-Cluster Card Grid (P4) -->
+  <section class="py-12 lg:py-16" style="background: var(--theme-bg); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">Explore by topic cluster</h2>
+        <p class="text-sm md:text-base" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Each cluster is a curated knowledge hub — a pillar page plus every article on the topic.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5">
+        {CLUSTERS.map((c) => {
+          const clusterPosts = nonFeatured.filter(p => p.data.category === c.name);
+          const count = clusterPosts.length;
+          return (
+            <a
+              href={localizePath(`/blog/${c.slug}/`, lang)}
+              class="group relative flex flex-col gap-3 p-5 rounded-2xl transition-all hover:shadow-xl hover:-translate-y-0.5"
+              style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            >
+              <div class="flex items-start justify-between">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                  <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={c.icon} />
+                  </svg>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full" style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);">{count} {count === 1 ? 'article' : 'articles'}</span>
+              </div>
+              <div>
+                <h3 class="text-base font-bold mb-1 transition-colors group-hover:text-[var(--theme-primary)]" style="color: var(--theme-text);">{c.name}</h3>
+                <p class="text-xs leading-relaxed line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{c.h1}</p>
+              </div>
+              <span class="mt-auto inline-flex items-center text-xs font-semibold group-hover:gap-2 transition-all" style="color: var(--theme-primary);">
+                Explore cluster
+                <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
   <!-- Featured Post -->
   {featured && (
     <section class="py-16" style="background: var(--theme-surface);">
@@ -251,7 +274,7 @@ const blogPageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
             {hasMore && (
               <div class="mt-6 text-center">
                 <a
-                  href={`/blog/category/${categoryToSlug(cat)}/`}
+                  href={`/blog/${categoryToSlug(cat)}/`}
                   class="inline-flex items-center gap-1.5 px-5 py-2 text-sm font-semibold rounded-xl transition-all border"
                   style="color: var(--theme-primary); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, transparent);"
                   onmouseover="this.style.background='color-mix(in srgb, var(--theme-primary) 12%, transparent)'"
