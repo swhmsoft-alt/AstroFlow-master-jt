@@ -4,7 +4,7 @@ slug: how-to-choose-titanium-grade
 description: A procurement engineer's 5-step procedure for selecting the correct titanium grade (Grade 1-4, Grade 5 Ti-6Al-4V, Grade 23 Ti-6Al-4V ELI, beta alloys) for aerospace, medical, chemical and industrial components. Cross-references ASTM, ASME, AMS and ISO standards with first-hand MTR and shop-floor data.
 pubDate: 2026-08-25
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Titanium Grades, Grade Selection, Ti-6Al-4V, Material Selection, ASTM B265, AMS 4911, ASTM F136]
 coverImage: /uploads/blog-how-to-choose-titanium-grade-cover.jpg
 coverImageAlt: Engineer selecting titanium bar stock from a rack of CP, alpha-beta and beta alloys

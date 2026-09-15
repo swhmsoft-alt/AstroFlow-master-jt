@@ -6,7 +6,7 @@ description: Introducing our new blog where we share insights about precision
   company updates.
 pubDate: 2026-05-28
 author: Boze Titanium Manufacturing Center
-category: Titanium CNC Machining Services
+category: Procurement & Services
 tags: []
 coverImage: /uploads/blog-welcome-to-boze-cnc-blog-cover.jpg
 coverImageAlt: Precision CNC machining of titanium components

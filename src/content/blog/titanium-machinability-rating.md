@@ -4,7 +4,7 @@ slug: titanium-machinability-rating
 description: "A comparative guide to titanium machinability ratings across commercially pure grades, alpha-beta alloys, and beta alloys. Understand how grade selection affects cutting speed, tool life, and process cost."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Titanium Machinability, Titanium Grades, Grade 5 Titanium, Grade 2 Titanium, Beta Titanium, Machinability Rating]
 coverImage: /uploads/blog-titanium-machinability-rating-cover.jpg
 coverImageAlt: Titanium grade samples arranged for machinability comparison in a manufacturing facility

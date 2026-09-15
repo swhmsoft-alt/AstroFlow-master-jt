@@ -4,7 +4,7 @@ slug: astm-f86-passivation
 description: "A technical explanation of ASTM F86 passivation for titanium and titanium alloy implant and industrial components. Covers surface preparation, passivation chemistry, testing, common pitfalls, and procurement guidance."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [ASTM F86, Passivation, Titanium Surface Treatment, Medical Implants, Corrosion Resistance, ASTM Standards]
 coverImage: /uploads/blog-astm-f86-passivation-cover.jpg
 coverImageAlt: ASTM F86 passivated titanium medical implants in a clean processing tray

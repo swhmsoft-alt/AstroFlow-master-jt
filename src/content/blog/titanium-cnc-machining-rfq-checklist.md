@@ -4,7 +4,7 @@ slug: titanium-cnc-machining-rfq-checklist
 description: A practical checklist for preparing RFQ packages for titanium CNC machined components — the information suppliers need to provide accurate quotes, common RFQ omissions that lead to pricing variations, and how complete specifications improve quote comparison and reduce post-award changes.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Procurement Guides
+category: Procurement & Services
 tags: [RFQ Checklist, CNC Machining Quote, Procurement, Supplier Quotation, Titanium Machining]
 coverImage: /uploads/blog-titanium-cnc-machining-rfq-checklist-cover.jpg
 coverImageAlt: RFQ documentation review for titanium components

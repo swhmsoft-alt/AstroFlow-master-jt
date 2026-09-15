@@ -4,7 +4,7 @@ slug: titanium-carbide-tic-plates-vs-pure-titanium-hardness-wear-resistance
 description: "A materials engineering comparison of titanium carbide (TiC) ceramic plates, cermet TiC composites, and pure titanium metal. Covers hardness, wear resistance, fracture toughness, manufacturing methods, and the procurement framework for wear-critical applications in mining, aerospace, and chemical processing."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Wear Materials
+category: Materials & Grades
 tags: [Titanium Carbide, TiC, Cermet, Wear Resistance, Hardness, Pure Titanium, Material Comparison]
 featured: false
 ---

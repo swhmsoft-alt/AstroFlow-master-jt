@@ -4,7 +4,7 @@ slug: is-titanium-difficult-to-machine
 description: "A practical guide to titanium machinability — how titanium compares to aluminum, steel, and stainless steel, what makes it harder to cut, and when the difficulty justifies the performance benefits in aerospace, medical, and industrial applications."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Titanium Machinability, Titanium CNC Machining, Manufacturing Engineering, Grade 5 Titanium, Titanium vs Steel]
 coverImage: /uploads/blog-is-titanium-difficult-to-machine-cover.jpg
 coverImageAlt: CNC machining of a titanium workpiece with carbide cutting tool and coolant flow

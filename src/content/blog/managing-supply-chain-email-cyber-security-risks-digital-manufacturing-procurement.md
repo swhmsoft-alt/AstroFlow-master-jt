@@ -4,7 +4,7 @@ slug: managing-supply-chain-email-cyber-security-risks-digital-manufacturing-pro
 description: "An operational security analysis of cloud-based RFQ platforms and email-driven specification exchange in aerospace and medical machining procurement. Covers look-alike domain impersonation, reply-chain injection, mill test report integrity, and procedural controls that reduce procurement fraud risk."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Procurement and Sourcing
+category: Procurement & Services
 tags: [Supply Chain Security, Email Risk, Manufacturing Procurement, RFQ Security, Supplier Verification, DMARC, MTR Integrity]
 featured: false
 ---

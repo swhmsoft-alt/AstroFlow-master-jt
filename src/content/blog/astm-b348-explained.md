@@ -4,7 +4,7 @@ slug: astm-b348-explained
 description: "A technical explanation of ASTM B348 — the standard specification for titanium and titanium alloy bars and billets. Covers grade scope, mechanical property requirements, testing and certification, procurement rules, and when to specify ASTM B348 over ASTM B265 or AMS specifications."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [ASTM B348, Titanium Bar, Titanium Billet, ASTM Standards, Material Specifications, Grade 5 Titanium, Grade 23 Titanium]
 featured: false
 ---

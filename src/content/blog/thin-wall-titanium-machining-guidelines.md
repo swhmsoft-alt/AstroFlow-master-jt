@@ -4,7 +4,7 @@ slug: thin-wall-titanium-machining-guidelines
 description: Engineering guidelines for thin-wall titanium machining — how wall aspect ratio determines process strategy, toolpath approaches for minimizing deflection, fixturing methods that support thin features, and practical limits for wall thickness relative to height.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Design Engineering
+category: Design & DFM
 tags: [Thin Wall Machining, Titanium CNC, Thin Wall Titanium, Precision Machining, DFM]
 coverImage: /uploads/blog-thin-wall-titanium-machining-guidelines-cover.jpg
 coverImageAlt: Thin-wall titanium component during precision CNC machining

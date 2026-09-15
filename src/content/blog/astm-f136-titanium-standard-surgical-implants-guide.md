@@ -4,7 +4,7 @@ slug: astm-f136-titanium-standard-surgical-implants-guide
 description: "A technical guide to ASTM F136 — the governing standard for Ti-6Al-4V ELI wrought titanium for surgical implant applications. Chemical composition limits, mechanical property requirements, microstructure specifications, certification and traceability requirements, and practical procurement implications for medical device manufacturers."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Standards and Certifications
+category: Quality & Standards
 tags: [ASTM F136, Ti-6Al-4V ELI, Grade 23 Titanium, Medical Implants, Surgical Implant Standards, ASTM F1472, Material Certification]
 coverImage: /uploads/blog-astm-f136-titanium-cover.jpg
 coverImageAlt: ASTM F136 certified Grade 23 Ti-6Al-4V ELI titanium bar stock for medical implant manufacturing

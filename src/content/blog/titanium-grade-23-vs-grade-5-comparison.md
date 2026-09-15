@@ -4,7 +4,7 @@ slug: titanium-grade-23-vs-grade-5-comparison
 description: "A detailed engineering comparison of Grade 23 (Ti-6Al-4V ELI) and Grade 5 (Ti-6Al-4V) titanium — interstitial chemistry differences, mechanical property trade-offs, fracture toughness and fatigue performance, machinability and cost implications, applicable standards, and selection criteria for medical, aerospace, and cryogenic applications where the choice between ELI and standard-grade Ti-6Al-4V is not obvious."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Grade 23 Titanium, Grade 5 Titanium, Ti-6Al-4V ELI, Ti-6Al-4V, Titanium Grade Comparison, ASTM F136, ASTM F1472, Medical Implants, Fracture Toughness, Material Selection]
 coverImage: /uploads/blog-grade-23-vs-grade-5-titanium-comparison-cover.jpg
 coverImageAlt: Cross-section comparison of Grade 5 and Grade 23 titanium bar stock with visible surface identification marking

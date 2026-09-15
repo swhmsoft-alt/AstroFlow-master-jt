@@ -4,7 +4,7 @@ slug: investment-casting-vs-cnc-machining-titanium-cost-quality-decision-framewo
 description: "An engineering cost and quality comparison of investment casting vs CNC machining for titanium components. Covers part geometry suitability, surface finish, internal defects, mechanical property differences, break-even quantities, and procurement rules for choosing between the two processes."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Processes
+category: Machining Processes
 tags: [Investment Casting, CNC Machining, Titanium Components, Net Shape, Cost Analysis, Manufacturing Process Selection]
 featured: false
 ---

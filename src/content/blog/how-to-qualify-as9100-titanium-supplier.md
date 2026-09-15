@@ -4,7 +4,7 @@ slug: how-to-qualify-as9100-titanium-supplier
 description: A procurement-quality engineer's 5-step procedure for qualifying an AS9100D-certified titanium machining supplier. Covers certification scope, material traceability, calibration / MSA, AS9102 first-article, and change-control flow-down (DFARS / ITAR). References real shop-floor evidence from Boze's AS9100D program.
 pubDate: 2026-08-25
 author: Boze Titanium Manufacturing Center
-category: Procurement Guides
+category: Procurement & Services
 tags: [AS9100D, Supplier Qualification, Aerospace Sourcing, Procurement Quality, FAI, AS9102, DFARS]
 coverImage: /uploads/blog-how-to-qualify-as9100-titanium-supplier-cover.jpg
 coverImageAlt: Quality manager auditing a titanium machining supplier's first-article inspection report

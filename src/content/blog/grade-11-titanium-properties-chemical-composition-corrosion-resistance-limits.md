@@ -4,7 +4,7 @@ slug: grade-11-titanium-properties-chemical-composition-corrosion-resistance-lim
 description: "An engineering analysis of ASTM Grade 11 titanium — the palladium-stabilized version of Grade 1. Covers the role of the 0.12 to 0.25 percent palladium addition, the reducing acid service boundary, welding filler matching, and the procurement trap of over-specification in oxidizing environments."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Titanium Grades
+category: Materials & Grades
 tags: [Grade 11 Titanium, Palladium Alloy, Corrosion Resistance, ASTM B348, ASTM B265, Chemical Processing, Reducing Acid]
 featured: false
 ---

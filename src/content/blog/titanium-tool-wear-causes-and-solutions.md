@@ -4,7 +4,7 @@ slug: titanium-tool-wear-causes-and-solutions
 description: An engineering analysis of tool wear mechanisms in titanium CNC machining — adhesion and diffusion at elevated temperatures, abrasive wear from work-hardened surfaces, the relationship between cutting parameters and tool life, and practical carbide grade and coating selection criteria.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Titanium CNC Machining, Tool Wear, Carbide Tools, Cutting Tools, Manufacturing Engineering]
 coverImage: /uploads/blog-titanium-tool-wear-causes-and-solutions-cover.jpg
 coverImageAlt: Precision cutting tools used for titanium CNC machining

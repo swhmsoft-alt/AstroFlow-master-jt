@@ -4,7 +4,7 @@ slug: ta6v-eli-grade-23-titanium-specifications-biocompatibility-fracture-toughn
 description: "A materials engineering analysis of Grade 23 (Ti-6Al-4V ELI) titanium. Covers the interstitial ceiling reductions vs Grade 5, ASTM F136 and ISO 5832-3 medical standards, fracture toughness at cryogenic temperatures, and procurement rules for implant and aerospace cryogenic applications."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Titanium Grades
+category: Materials & Grades
 tags: [Grade 23 Titanium, Ti-6Al-4V ELI, ASTM F136, ISO 5832-3, Biocompatibility, Fracture Toughness, Cryogenic]
 featured: false
 ---

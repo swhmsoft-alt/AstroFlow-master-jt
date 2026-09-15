@@ -4,7 +4,7 @@ slug: cp-grade-1-vs-grade-2-titanium-ductility-strength-formability-tradeoffs
 description: "A materials engineering comparison of commercially pure Grade 1 and Grade 2 titanium. Covers the oxygen-driven strength-formability trade-off, deep draw ratios, weldability, service stiffness requirements, and procurement rules for selecting between the two softest CP grades."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Titanium Grades
+category: Materials & Grades
 tags: [Grade 1 Titanium, Grade 2 Titanium, Commercially Pure Titanium, Formability, ASTM B348, ASTM B265, Ductility]
 featured: false
 ---

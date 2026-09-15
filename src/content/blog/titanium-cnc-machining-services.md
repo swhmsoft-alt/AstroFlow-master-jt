@@ -9,7 +9,7 @@ description: In high-performance engineering—from elite off-road motocross
   components requires specialized expertise and elite manufacturing standards.
 pubDate: 2026-05-28T15:19:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Titanium CNC Machining Services
+category: Procurement & Services
 tags: []
 coverImage: /uploads/blog-titanium-cnc-machining-services-cover.jpg
 coverImageAlt: Titanium CNC Machining Services

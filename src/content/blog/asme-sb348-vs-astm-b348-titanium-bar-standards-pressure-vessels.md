@@ -4,7 +4,7 @@ slug: asme-sb348-vs-astm-b348-titanium-bar-standards-pressure-vessels
 description: "A specification comparison of ASME SB348 and ASTM B348 for titanium bar stock. Covers BPVC adoption mechanics, ASME QSC requirements, code-stamp implications, and procurement rules for pressure vessel, heat exchanger, and nuclear applications."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Titanium Standards
+category: Quality & Standards
 tags: [ASME SB348, ASTM B348, Pressure Vessel Titanium, ASME BPVC, ASME QSC, Code Stamping, Bar Specification]
 featured: false
 ---

@@ -4,7 +4,7 @@ slug: how-to-specify-titanium-cnc-machined-part
 description: A mechanical / manufacturing engineer's 5-step procedure for writing a complete, unambiguous specification for a CNC-machined titanium part — grade, governing standard, ASME Y14.5 GD&T, surface finish, FAI / inspection scope, and traceability deliverables. References real drawing call-outs from aerospace, medical, and chemical-process projects.
 pubDate: 2026-08-25
 author: Boze Titanium Manufacturing Center
-category: Engineering Drawing
+category: Design & DFM
 tags: [GD&T, ASME Y14.5, Drawing Specification, AS9102, ASTM F86, Surface Finish, RFQ]
 coverImage: /uploads/blog-how-to-specify-titanium-cnc-machined-part-cover.jpg
 coverImageAlt: Engineering drawing of a titanium aerospace bracket with GD&T call-outs on a CAD workstation

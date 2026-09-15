@@ -4,7 +4,7 @@ slug: semiconductor-titanium-components-precision-requirements
 description: An engineering analysis of titanium components in semiconductor manufacturing equipment — material purity requirements, precision machining tolerances for vacuum chamber hardware, surface finish specifications for plasma-facing components, and cleanroom manufacturing considerations.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Applications & Industries
 tags: [Semiconductor Titanium, Vacuum Chamber Components, Precision Machining, Cleanroom Manufacturing, Semiconductor Equipment]
 coverImage: /uploads/blog-semiconductor-titanium-components-precision-requirements-cover.jpg
 coverImageAlt: Precision titanium component for semiconductor equipment

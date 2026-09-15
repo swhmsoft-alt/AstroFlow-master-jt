@@ -4,7 +4,7 @@ slug: edm-titanium-machining
 description: "An engineering assessment of electrical discharge machining for titanium components — when EDM outperforms conventional cutting, material removal rate limitations, surface integrity considerations, electrode wear management, and practical process selection rules for aerospace and medical applications."
 pubDate: 2026-08-18
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [EDM Titanium, Electrical Discharge Machining, Titanium EDM, Titanium Machining, Manufacturing Process Selection]
 coverImage: /uploads/blog-edm-titanium-machining-cover.jpg
 coverImageAlt: Electrical discharge machining of a titanium workpiece showing electrode and dielectric fluid

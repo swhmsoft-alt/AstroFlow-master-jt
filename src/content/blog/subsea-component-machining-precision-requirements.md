@@ -4,7 +4,7 @@ slug: subsea-component-machining-precision-requirements
 description: A detailed technical examination of precision requirements in subsea component machining, covering sealing surfaces, threaded connections, pressure-retaining features, and the metrology methods used to verify them.
 pubDate: 2026-06-19T08:00:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Subsea Components
+category: Applications & Industries
 tags:
   - subsea component machining
   - subsea precision requirements

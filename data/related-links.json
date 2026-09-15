@@ -1,18 +1,18 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-08-22T02:11:32.245Z",
+  "generatedAt": "2026-09-15T01:27:22.511Z",
   "stats": {
-    "totalPosts": 119,
-    "enPosts": 75,
+    "totalPosts": 142,
+    "enPosts": 98,
     "i18nPosts": 44,
-    "categoriesFound": 33,
+    "categoriesFound": 25,
     "languagesFound": 10,
-    "linkedPosts": 106,
-    "totalEdges": 343,
-    "avgEdgesPerLinkedPost": 3.24,
+    "linkedPosts": 135,
+    "totalEdges": 409,
+    "avgEdgesPerLinkedPost": 3.03,
     "orphansBefore": 84,
-    "orphansCovered": 33,
-    "orphanCoveragePct": 39.3,
+    "orphansCovered": 39,
+    "orphanCoveragePct": 46.4,
     "incomingHubsKnown": 94
   },
   "links": {
@@ -21,7 +21,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       },
@@ -29,7 +29,7 @@
         "type": "hub",
         "label": "Why Is Titanium Hard to Machine? Heat, Work Hardening and Tool Wear Explained",
         "href": "/blog/why-is-titanium-hard-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -37,7 +37,7 @@
         "type": "related",
         "label": "CNC vs EDM for Titanium Parts: Which Process Should You Choose?",
         "href": "/blog/cnc-vs-edm-titanium-parts/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.25
       }
     ],
@@ -46,7 +46,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -54,9 +54,41 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
+      },
+      {
+        "type": "related",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.333
+      }
+    ],
+    "why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter": [
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Welding Challenges and Best Practices for CNC Machined Assemblies",
+        "href": "/blog/titanium-welding-challenges-best-practices/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "related",
+        "label": "Why Is Titanium Hard to Machine? Heat, Work Hardening and Tool Wear Explained",
+        "href": "/blog/why-is-titanium-hard-to-machine/",
+        "cluster": "Problems & Solutions",
+        "score": 0.333
       }
     ],
     "what-is-grade-3-titanium-properties-composition-applications": [
@@ -64,7 +96,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -72,7 +104,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -82,7 +114,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -90,7 +122,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       },
@@ -98,24 +130,24 @@
         "type": "related",
         "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
         "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
-        "cluster": "Standards and Certifications",
+        "cluster": "Quality & Standards",
         "score": 0.25
       }
     ],
     "welcome-to-boze-cnc-blog": [
       {
         "type": "hub",
-        "label": "Elevating Performance with Precision Titanium CNC Machining Services",
-        "href": "/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC Machining Services",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Custom Titanium Machining Contract Manufacturer in China for RFQ Preparation",
-        "href": "/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "label": "Elevating Performance with Precision Titanium CNC Machining Services",
+        "href": "/blog/titanium-cnc-machining-services/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -123,7 +155,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -131,7 +163,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -139,7 +171,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -147,19 +179,19 @@
     "ultimate-guide-titanium-surface-treatments-aerospace": [
       {
         "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "hub",
-        "label": "Titanium Material Certification and Traceability Guide for Aerospace Components",
-        "href": "/blog/titanium-material-certification-traceability-guide/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
       }
     ],
     "titanium-work-hardening-how-to-avoid": [
@@ -167,7 +199,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -175,7 +207,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -183,17 +215,17 @@
     "titanium-wire-edm-bearing-seats": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Welding Challenges and Best Practices for CNC Machined Assemblies",
         "href": "/blog/titanium-welding-challenges-best-practices/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -201,17 +233,71 @@
     "titanium-welding-challenges-best-practices": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "titanium-welding-best-practices-aerospace-structural-components": [
+      {
+        "type": "hub",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "titanium-vs-aluminum-aerospace-structural-components-material-selection-trade-off": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      }
+    ],
+    "titanium-valve-stem-machining-process-precision": [
+      {
+        "type": "hub",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -221,7 +307,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -229,7 +315,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -239,7 +325,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -247,9 +333,27 @@
         "type": "hub",
         "label": "Why Is Titanium Hard to Machine? Heat, Work Hardening and Tool Wear Explained",
         "href": "/blog/why-is-titanium-hard-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.55,
         "incomingCount": 0
+      }
+    ],
+    "titanium-stress-relieving-heat-treatment-temperature-control-distortion-prevention": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
       }
     ],
     "titanium-springback-compensation-strategies-cnc-machining": [
@@ -257,7 +361,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -265,7 +369,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -273,17 +377,35 @@
     "titanium-material-certification-traceability-guide": [
       {
         "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "titanium-machining-marine-components-material-process-selection": [
+      {
+        "type": "hub",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -293,7 +415,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -301,7 +423,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       },
@@ -309,24 +431,24 @@
         "type": "related",
         "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
         "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
-        "cluster": "Procurement Guides",
+        "cluster": "Procurement & Services",
         "score": 0.3
       }
     ],
     "titanium-investment-casting-net-shape-solutions": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -336,7 +458,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       },
@@ -344,7 +466,7 @@
         "type": "hub",
         "label": "Ti-6Al-4V Grade 5 Titanium — Properties, Machining, and Applications Guide",
         "href": "/blog/ti-6al-4v-grade-5-titanium-guide/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -354,7 +476,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -362,7 +484,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -372,7 +494,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -380,7 +502,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -390,7 +512,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -398,7 +520,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -408,7 +530,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -416,7 +538,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       },
@@ -424,7 +546,7 @@
         "type": "related",
         "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
         "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
-        "cluster": "Standards and Certifications",
+        "cluster": "Quality & Standards",
         "score": 0.417
       }
     ],
@@ -433,7 +555,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -441,7 +563,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -449,17 +571,17 @@
     "titanium-grade-2-vs-5-vs-23-procurement-decision-guide": [
       {
         "type": "hub",
-        "label": "Titanium CNC Machining RFQ Checklist — What to Include in Your Request for Quote",
-        "href": "/blog/titanium-cnc-machining-rfq-checklist/",
-        "cluster": "Procurement Guides",
+        "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
+        "href": "/blog/welcome-to-boze-cnc-blog/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Titanium CNC Machining Cost Factors — What Drives Pricing for Precision Components",
-        "href": "/blog/titanium-cnc-machining-cost-factors/",
-        "cluster": "Procurement Guides",
+        "label": "Elevating Performance with Precision Titanium CNC Machining Services",
+        "href": "/blog/titanium-cnc-machining-services/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -467,7 +589,7 @@
         "type": "related",
         "label": "Titanium Machinability Rating: How Different Titanium Grades Compare",
         "href": "/blog/titanium-machinability-rating/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.3
       }
     ],
@@ -476,7 +598,7 @@
         "type": "hub",
         "label": "Titanium CNC Design Guide — Engineering Rules for Machinability and Precision",
         "href": "/blog/titanium-cnc-design-guide-machinability-rules/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.83,
         "incomingCount": 7
       },
@@ -484,7 +606,7 @@
         "type": "hub",
         "label": "Thin Wall Titanium Machining Guidelines — Process Strategies for Dimensional Stability",
         "href": "/blog/thin-wall-titanium-machining-guidelines/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -494,15 +616,15 @@
         "type": "hub",
         "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
         "href": "/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Custom Titanium Machining Contract Manufacturer in China for RFQ Preparation",
-        "href": "/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -510,7 +632,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -518,7 +640,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -526,7 +648,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -534,17 +656,17 @@
     "titanium-cnc-machining-rfq-checklist": [
       {
         "type": "hub",
-        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
-        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
-        "cluster": "Procurement Guides",
+        "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
+        "href": "/blog/welcome-to-boze-cnc-blog/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Titanium CNC Machining Cost Factors — What Drives Pricing for Precision Components",
-        "href": "/blog/titanium-cnc-machining-cost-factors/",
-        "cluster": "Procurement Guides",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -554,7 +676,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -562,7 +684,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       },
@@ -570,24 +692,24 @@
         "type": "related",
         "label": "Thin Wall Titanium Machining Guidelines — Process Strategies for Dimensional Stability",
         "href": "/blog/thin-wall-titanium-machining-guidelines/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.25
       }
     ],
     "titanium-cnc-machining-cost-factors": [
       {
         "type": "hub",
-        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
-        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
-        "cluster": "Procurement Guides",
+        "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
+        "href": "/blog/welcome-to-boze-cnc-blog/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Titanium CNC Machining RFQ Checklist — What to Include in Your Request for Quote",
-        "href": "/blog/titanium-cnc-machining-rfq-checklist/",
-        "cluster": "Procurement Guides",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -597,7 +719,7 @@
         "type": "hub",
         "label": "Thin Wall Titanium Machining Guidelines — Process Strategies for Dimensional Stability",
         "href": "/blog/thin-wall-titanium-machining-guidelines/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.75,
         "incomingCount": 5
       },
@@ -605,7 +727,7 @@
         "type": "hub",
         "label": "Titanium CNC Tolerance Guide — Engineering Specifications for Precision Components",
         "href": "/blog/titanium-cnc-tolerance-guide-engineering-specifications/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -615,7 +737,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -623,17 +745,17 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
     ],
-    "titanium-alloy-selection-guide-how-to-choose-grade": [
+    "titanium-carbide-tic-plates-vs-pure-titanium-hardness-wear-resistance": [
       {
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -641,7 +763,25 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      }
+    ],
+    "titanium-alloy-selection-guide-how-to-choose-grade": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -649,17 +789,17 @@
     "titanium-additive-manufacturing-vs-cnc-machining": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -669,7 +809,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -677,7 +817,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -687,7 +827,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -695,17 +835,40 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
     ],
     "ti-6al-4v-eli-grade-23-in-spinal-surgery-implants": [
       {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Precision Machining for Subsea Equipment: Requirements and Manufacturing Challenges",
+        "href": "/blog/subsea-equipment-precision-machining-requirements/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "related",
+        "label": "TA6V ELI (Grade 23) Titanium Specifications: Biocompatibility and Fracture Toughness",
+        "href": "/blog/ta6v-eli-grade-23-titanium-specifications-biocompatibility-fracture-toughness/",
+        "cluster": "Materials & Grades",
+        "score": 0.308
+      },
+      {
         "type": "related",
         "label": "ISO 5832-3 vs ASTM F136: Titanium Material Standards for Surgical Implants Compared",
         "href": "/blog/iso-5832-3-vs-astm-f136-titanium-standards-comparison/",
-        "cluster": "Standards and Certifications",
+        "cluster": "Quality & Standards",
         "score": 0.267
       }
     ],
@@ -714,7 +877,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -722,7 +885,7 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -732,7 +895,7 @@
         "type": "hub",
         "label": "Titanium CNC Design Guide — Engineering Rules for Machinability and Precision",
         "href": "/blog/titanium-cnc-design-guide-machinability-rules/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.83,
         "incomingCount": 7
       },
@@ -740,7 +903,7 @@
         "type": "hub",
         "label": "Titanium CNC Tolerance Guide — Engineering Specifications for Precision Components",
         "href": "/blog/titanium-cnc-tolerance-guide-engineering-specifications/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -748,15 +911,83 @@
         "type": "related",
         "label": "Titanium CNC Machining Deformation: Causes and Prevention",
         "href": "/blog/titanium-cnc-machining-deformation-causes-and-prevention/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.25
       },
       {
         "type": "related",
         "label": "How to Machine Thin-Wall Titanium Parts Without Distortion",
         "href": "/blog/cnc-machining-thin-wall-titanium/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.25
+      }
+    ],
+    "ta6v-eli-grade-23-titanium-specifications-biocompatibility-fracture-toughness": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      },
+      {
+        "type": "related",
+        "label": "ISO 5832-3 vs ASTM F136: Titanium Material Standards for Surgical Implants Compared",
+        "href": "/blog/iso-5832-3-vs-astm-f136-titanium-standards-comparison/",
+        "cluster": "Quality & Standards",
+        "score": 0.333
+      },
+      {
+        "type": "related",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.308
+      }
+    ],
+    "subsea-equipment-precision-machining-requirements": [
+      {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "subsea-component-machining-precision-requirements": [
+      {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
       }
     ],
     "semiconductor-titanium-components-precision-requirements": [
@@ -764,15 +995,15 @@
         "type": "hub",
         "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
         "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
+        "cluster": "Applications & Industries",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "hub",
-        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
-        "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -780,53 +1011,53 @@
     "nadcap-certification-titanium-processing": [
       {
         "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
       }
     ],
     "mil-std-278-titanium-welded-assemblies": [
       {
         "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
       }
     ],
     "micro-machining-titanium-edm-cnc": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -834,17 +1065,17 @@
     "medical-titanium-implants-manufacturing-standards": [
       {
         "type": "hub",
-        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
-        "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Titanium Welding Challenges and Best Practices for CNC Machined Assemblies",
-        "href": "/blog/titanium-welding-challenges-best-practices/",
-        "cluster": "Applications and Processes",
+        "label": "Precision Machining for Subsea Equipment: Requirements and Manufacturing Challenges",
+        "href": "/blog/subsea-equipment-precision-machining-requirements/",
+        "cluster": "Applications & Industries",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -852,15 +1083,62 @@
         "type": "related",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.25
+      }
+    ],
+    "master-titanium-grade-comparison-chart-mechanical-properties-grades-1-29": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
       },
       {
-        "type": "related",
-        "label": "Case Study — Precision Titanium Medical Implant Component Production",
-        "href": "/blog/case-study-precision-titanium-medical-implant/",
-        "cluster": "Case Studies",
-        "score": 0.25
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      }
+    ],
+    "managing-supply-chain-email-cyber-security-risks-digital-manufacturing-procurement": [
+      {
+        "type": "hub",
+        "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
+        "href": "/blog/welcome-to-boze-cnc-blog/",
+        "cluster": "Procurement & Services",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "machining-hardened-titanium-alloys-surface-integrity-alpha-case-prevention": [
+      {
+        "type": "hub",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       }
     ],
     "iso-5832-3-vs-astm-f136-titanium-standards-comparison": [
@@ -868,15 +1146,30 @@
         "type": "hub",
         "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
         "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
-        "cluster": "Standards and Certifications",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "related",
+        "label": "TA6V ELI (Grade 23) Titanium Specifications: Biocompatibility and Fracture Toughness",
+        "href": "/blog/ta6v-eli-grade-23-titanium-specifications-biocompatibility-fracture-toughness/",
+        "cluster": "Materials & Grades",
+        "score": 0.333
+      },
+      {
+        "type": "related",
         "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
         "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
-        "cluster": "Medical Applications",
+        "cluster": "Applications & Industries",
         "score": 0.267
       }
     ],
@@ -885,7 +1178,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -893,25 +1186,133 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
     ],
-    "how-to-choose-titanium-cnc-machining-supplier": [
+    "investment-casting-vs-cnc-machining-titanium-cost-quality-decision-framework": [
       {
         "type": "hub",
-        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
-        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
-        "cluster": "Procurement Guides",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Titanium CNC Machining RFQ Checklist — What to Include in Your Request for Quote",
-        "href": "/blog/titanium-cnc-machining-rfq-checklist/",
-        "cluster": "Procurement Guides",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "inconel-718-vs-titanium-machining-heat-resistant-superalloy-comparison": [
+      {
+        "type": "hub",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "how-to-specify-titanium-cnc-machined-part": [
+      {
+        "type": "hub",
+        "label": "Titanium CNC Design Guide — Engineering Rules for Machinability and Precision",
+        "href": "/blog/titanium-cnc-design-guide-machinability-rules/",
+        "cluster": "Design & DFM",
+        "score": 0.83,
+        "incomingCount": 7
+      },
+      {
+        "type": "hub",
+        "label": "Thin Wall Titanium Machining Guidelines — Process Strategies for Dimensional Stability",
+        "href": "/blog/thin-wall-titanium-machining-guidelines/",
+        "cluster": "Design & DFM",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "how-to-read-titanium-mill-test-report": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "how-to-qualify-as9100-titanium-supplier": [
+      {
+        "type": "hub",
+        "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
+        "href": "/blog/welcome-to-boze-cnc-blog/",
+        "cluster": "Procurement & Services",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "how-to-choose-titanium-grade": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      }
+    ],
+    "how-to-choose-titanium-cnc-machining-supplier": [
+      {
+        "type": "hub",
+        "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
+        "href": "/blog/welcome-to-boze-cnc-blog/",
+        "cluster": "Procurement & Services",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -921,7 +1322,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -929,7 +1330,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -939,7 +1340,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -947,7 +1348,7 @@
         "type": "hub",
         "label": "Ti-6Al-4V Grade 5 Titanium — Properties, Machining, and Applications Guide",
         "href": "/blog/ti-6al-4v-grade-5-titanium-guide/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 0.75,
         "incomingCount": 5
       },
@@ -955,31 +1356,49 @@
         "type": "related",
         "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
         "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
-        "cluster": "Standards and Certifications",
+        "cluster": "Quality & Standards",
         "score": 0.333
       },
       {
         "type": "related",
         "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
         "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
+        "cluster": "Applications & Industries",
         "score": 0.25
+      }
+    ],
+    "grade-11-titanium-properties-chemical-composition-corrosion-resistance-limits": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
       }
     ],
     "edm-titanium-machining": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -987,17 +1406,17 @@
     "edm-broaching-titanium-parts": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -1007,7 +1426,7 @@
         "type": "hub",
         "label": "Titanium CNC Design Guide — Engineering Rules for Machinability and Precision",
         "href": "/blog/titanium-cnc-design-guide-machinability-rules/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.83,
         "incomingCount": 7
       },
@@ -1015,7 +1434,7 @@
         "type": "hub",
         "label": "Thin Wall Titanium Machining Guidelines — Process Strategies for Dimensional Stability",
         "href": "/blog/thin-wall-titanium-machining-guidelines/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -1025,15 +1444,15 @@
         "type": "hub",
         "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
         "href": "/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Elevating Performance with Precision Titanium CNC Machining Services",
-        "href": "/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC Machining Services",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1041,7 +1460,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1049,7 +1468,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1057,7 +1476,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -1067,7 +1486,7 @@
         "type": "hub",
         "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
         "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
         "score": 1,
         "incomingCount": 14
       },
@@ -1075,7 +1494,25 @@
         "type": "hub",
         "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
         "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      }
+    ],
+    "cp-grade-1-vs-grade-2-titanium-ductility-strength-formability-tradeoffs": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
         "score": 0.95,
         "incomingCount": 10
       }
@@ -1083,17 +1520,17 @@
     "cnc-vs-edm-titanium-parts": [
       {
         "type": "hub",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.75,
-        "incomingCount": 5
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       },
       {
         "type": "hub",
         "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
         "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "cluster": "Machining Processes",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1101,7 +1538,7 @@
         "type": "related",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.25
       }
     ],
@@ -1110,7 +1547,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -1118,7 +1555,7 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       },
@@ -1126,252 +1563,34 @@
         "type": "related",
         "label": "Thin Wall Titanium Machining Guidelines — Process Strategies for Dimensional Stability",
         "href": "/blog/thin-wall-titanium-machining-guidelines/",
-        "cluster": "Design Engineering",
+        "cluster": "Design & DFM",
         "score": 0.25
+      }
+    ],
+    "cnc-machining-subsea-equipment-materials-tolerances": [
+      {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
       }
     ],
     "case-study-thin-wall-titanium-aerospace-bracket": [
       {
         "type": "hub",
-        "label": "Case Study — Precision Titanium Medical Implant Component Production",
-        "href": "/blog/case-study-precision-titanium-medical-implant/",
-        "cluster": "Case Studies",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "hub",
-        "label": "Case Study — Complex Titanium Component Process Development for Tight Tolerance Production",
-        "href": "/blog/case-study-complex-titanium-component-process-development/",
-        "cluster": "Case Studies",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "case-study-precision-titanium-medical-implant": [
-      {
-        "type": "hub",
-        "label": "Case Study — Thin-Wall Titanium Aerospace Bracket Manufacturing",
-        "href": "/blog/case-study-thin-wall-titanium-aerospace-bracket/",
-        "cluster": "Case Studies",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "hub",
-        "label": "Case Study — Complex Titanium Component Process Development for Tight Tolerance Production",
-        "href": "/blog/case-study-complex-titanium-component-process-development/",
-        "cluster": "Case Studies",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "related",
-        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
-        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
-        "score": 0.25
-      }
-    ],
-    "case-study-complex-titanium-component-process-development": [
-      {
-        "type": "hub",
-        "label": "Case Study — Thin-Wall Titanium Aerospace Bracket Manufacturing",
-        "href": "/blog/case-study-thin-wall-titanium-aerospace-bracket/",
-        "cluster": "Case Studies",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "hub",
-        "label": "Case Study — Precision Titanium Medical Implant Component Production",
-        "href": "/blog/case-study-precision-titanium-medical-implant/",
-        "cluster": "Case Studies",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "astm-f86-passivation": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "astm-f136-titanium-standard-surgical-implants-guide": [
-      {
-        "type": "hub",
-        "label": "ISO 5832-3 vs ASTM F136: Titanium Material Standards for Surgical Implants Compared",
-        "href": "/blog/iso-5832-3-vs-astm-f136-titanium-standards-comparison/",
-        "cluster": "Standards and Certifications",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "related",
-        "label": "Titanium Grade 23 vs Grade 5: Key Differences, Pros and Cons for Engineers and Procurement",
-        "href": "/blog/titanium-grade-23-vs-grade-5-comparison/",
-        "cluster": "Materials Engineering",
-        "score": 0.417
-      },
-      {
-        "type": "related",
-        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
-        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
-        "cluster": "Materials Engineering",
-        "score": 0.333
-      }
-    ],
-    "astm-b861-explained": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "astm-b381-explained": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "astm-b348-vs-astm-b265-titanium-bar-plate-standards": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "astm-b348-explained": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "astm-b338-explained": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "as9100d-titanium-cnc-manufacturing-aerospace-quality": [
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "hub",
-        "label": "Titanium Material Certification and Traceability Guide for Aerospace Components",
-        "href": "/blog/titanium-material-certification-traceability-guide/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      },
-      {
-        "type": "related",
-        "label": "Aerospace Titanium Components — Manufacturing Challenges and Engineering Solutions",
-        "href": "/blog/aerospace-titanium-components-manufacturing-challenges/",
-        "cluster": "Applications and Processes",
-        "score": 0.25
-      }
-    ],
-    "ams-4943-vs-ams-4944": [
-      {
-        "type": "hub",
-        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
-        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
-        "score": 0.75,
-        "incomingCount": 5
-      },
-      {
-        "type": "hub",
-        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
-        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
-        "cluster": "Quality and Standards",
-        "score": 0.55,
-        "incomingCount": 0
-      }
-    ],
-    "alpha-case-formation-titanium-prevention-removal": [
-      {
-        "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -1379,7 +1598,298 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "case-study-precision-titanium-medical-implant": [
+      {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "case-study-complex-titanium-component-process-development": [
+      {
+        "type": "hub",
+        "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
+        "href": "/blog/why-titanium-is-difficult-to-machine/",
+        "cluster": "Problems & Solutions",
+        "score": 0.99,
+        "incomingCount": 11
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
+        "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
+        "cluster": "Problems & Solutions",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "baoji-china-titanium-valley": [
+      {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "astm-f86-passivation": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "astm-f136-titanium-standard-surgical-implants-guide": [
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
+        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
+        "cluster": "Quality & Standards",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "related",
+        "label": "Titanium Grade 23 vs Grade 5: Key Differences, Pros and Cons for Engineers and Procurement",
+        "href": "/blog/titanium-grade-23-vs-grade-5-comparison/",
+        "cluster": "Materials & Grades",
+        "score": 0.417
+      },
+      {
+        "type": "related",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.333
+      }
+    ],
+    "astm-b861-explained": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "astm-b381-explained": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "astm-b348-vs-astm-b265-titanium-bar-plate-standards": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "astm-b348-explained": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "astm-b338-explained": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "asme-sb348-vs-astm-b348-titanium-bar-standards-pressure-vessels": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "as9100d-titanium-cnc-manufacturing-aerospace-quality": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "The Ultimate Guide to Titanium Surface Treatments in Aerospace Engineering",
+        "href": "/blog/ultimate-guide-titanium-surface-treatments-aerospace/",
+        "cluster": "Quality & Standards",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "related",
+        "label": "Aerospace Titanium Components — Manufacturing Challenges and Engineering Solutions",
+        "href": "/blog/aerospace-titanium-components-manufacturing-challenges/",
+        "cluster": "Applications & Industries",
+        "score": 0.25
+      }
+    ],
+    "as9100-certified-titanium-machining-quality-auditing-traceability-standards": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "ams-4943-vs-ams-4944": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      }
+    ],
+    "alpha-case-formation-titanium-prevention-removal": [
+      {
+        "type": "hub",
+        "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
+        "href": "/blog/why-titanium-is-difficult-to-machine/",
+        "cluster": "Problems & Solutions",
+        "score": 0.99,
+        "incomingCount": 11
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
+        "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
       }
@@ -1389,15 +1899,15 @@
         "type": "hub",
         "label": "Welcome to the Boze Titanium Manufacturing Center Blog",
         "href": "/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
       {
         "type": "hub",
-        "label": "Elevating Performance with Precision Titanium CNC Machining Services",
-        "href": "/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC Machining Services",
+        "label": "Grade 2 vs Grade 5 vs Grade 23 Titanium — A Procurement Decision Guide for Buyers and Engineers",
+        "href": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide/",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1405,7 +1915,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1413,7 +1923,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1421,7 +1931,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -1431,15 +1941,15 @@
         "type": "hub",
         "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
         "href": "/blog/medical-titanium-implants-manufacturing-standards/",
-        "cluster": "Applications and Processes",
+        "cluster": "Applications & Industries",
         "score": 0.75,
         "incomingCount": 5
       },
       {
         "type": "hub",
-        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
-        "href": "/blog/titanium-wire-edm-bearing-seats/",
-        "cluster": "Applications and Processes",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1447,8 +1957,44 @@
         "type": "related",
         "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
         "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
-        "cluster": "Quality and Standards",
+        "cluster": "Quality & Standards",
         "score": 0.25
+      }
+    ],
+    "aerospace-fastener-selection-titanium-vs-inconel-vs-steel-comparative-analysis": [
+      {
+        "type": "hub",
+        "label": "Titanium Grades Complete Guide — CP, Alpha, Alpha-Beta, and Beta Alloys Explained",
+        "href": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys/",
+        "cluster": "Materials & Grades",
+        "score": 1,
+        "incomingCount": 14
+      },
+      {
+        "type": "hub",
+        "label": "Grade 23 Titanium (Ti-6Al-4V ELI) for Medical Implants and Aerospace Applications",
+        "href": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace/",
+        "cluster": "Materials & Grades",
+        "score": 0.95,
+        "incomingCount": 10
+      }
+    ],
+    "5-year-cmm-total-cost-of-ownership-aerospace-startup": [
+      {
+        "type": "hub",
+        "label": "ASTM F136 Explained: Ti-6Al-4V ELI Standard for Surgical Implants",
+        "href": "/blog/astm-f136-titanium-standard-surgical-implants-guide/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "AS9100D for Titanium CNC Manufacturing — What It Means for Aerospace Quality",
+        "href": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality/",
+        "cluster": "Quality & Standards",
+        "score": 0.75,
+        "incomingCount": 5
       }
     ],
     "5-axis-titanium-machining-best-practices": [
@@ -1456,7 +2002,7 @@
         "type": "hub",
         "label": "Why Titanium Is Difficult to Machine — Thermal, Chemical, and Mechanical Root Causes",
         "href": "/blog/why-titanium-is-difficult-to-machine/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.99,
         "incomingCount": 11
       },
@@ -1464,9 +2010,45 @@
         "type": "hub",
         "label": "Titanium Surface Finish: Achieving Ra 0.4μm in CNC Machining",
         "href": "/blog/titanium-surface-finish-achieving-ra-04um/",
-        "cluster": "Manufacturing Problems",
+        "cluster": "Problems & Solutions",
         "score": 0.75,
         "incomingCount": 5
+      }
+    ],
+    "5-axis-machined-titanium-medical-implants-fda-submissions-material-sourcing": [
+      {
+        "type": "hub",
+        "label": "Medical Titanium Implants — Manufacturing Standards and Precision Requirements",
+        "href": "/blog/medical-titanium-implants-manufacturing-standards/",
+        "cluster": "Applications & Industries",
+        "score": 0.75,
+        "incomingCount": 5
+      },
+      {
+        "type": "hub",
+        "label": "Ti-6Al-4V ELI (Grade 23) in Spinal Surgery: Material Selection Guide for Implant Manufacturers",
+        "href": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants/",
+        "cluster": "Applications & Industries",
+        "score": 0.55,
+        "incomingCount": 0
+      }
+    ],
+    "5-axis-cnc-machining-titanium-vs-inconel-hastelloy-speeds-feeds-tooling": [
+      {
+        "type": "hub",
+        "label": "Why Is Titanium Difficult to Machine: Thermal Dynamics and Tool Chatter",
+        "href": "/blog/why-is-titanium-difficult-to-machine-thermal-dynamics-tool-chatter/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
+      },
+      {
+        "type": "hub",
+        "label": "Titanium Wire EDM for Bearing Seats and Precision Features",
+        "href": "/blog/titanium-wire-edm-bearing-seats/",
+        "cluster": "Machining Processes",
+        "score": 0.55,
+        "incomingCount": 0
       }
     ],
     "pt-welcome-to-boze-cnc-blog": [
@@ -1474,7 +2056,7 @@
         "type": "hub",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1482,7 +2064,7 @@
         "type": "hub",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1490,7 +2072,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1498,7 +2080,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1506,7 +2088,7 @@
         "type": "i18n",
         "label": "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다",
         "href": "/ko/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1516,7 +2098,7 @@
         "type": "hub",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1524,7 +2106,7 @@
         "type": "hub",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1532,7 +2114,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1540,7 +2122,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1548,7 +2130,7 @@
         "type": "i18n",
         "label": "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다",
         "href": "/ko/blog/titanium-cnc-machining-services/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1558,7 +2140,7 @@
         "type": "hub",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1566,7 +2148,7 @@
         "type": "hub",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1574,7 +2156,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1582,7 +2164,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1590,7 +2172,7 @@
         "type": "i18n",
         "label": "중국 맞춤형 티타늄 가공 계약 제조업체 - RFQ 준비 전문",
         "href": "/ko/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1600,7 +2182,7 @@
         "type": "hub",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1608,7 +2190,7 @@
         "type": "hub",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1616,7 +2198,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1624,7 +2206,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1632,7 +2214,7 @@
         "type": "i18n",
         "label": "항공우주용 티타늄 공급 - 다중 소스 리스크 및 리드 타임 절감",
         "href": "/ko/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1642,7 +2224,7 @@
         "type": "hub",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1650,7 +2232,7 @@
         "type": "hub",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1658,7 +2240,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1666,7 +2248,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1674,7 +2256,7 @@
         "type": "i18n",
         "label": "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다",
         "href": "/ko/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1684,7 +2266,7 @@
         "type": "hub",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1692,7 +2274,7 @@
         "type": "hub",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1700,7 +2282,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1708,7 +2290,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1716,7 +2298,7 @@
         "type": "i18n",
         "label": "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다",
         "href": "/ko/blog/titanium-cnc-machining-services/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1726,7 +2308,7 @@
         "type": "hub",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1734,7 +2316,7 @@
         "type": "hub",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1742,7 +2324,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1750,7 +2332,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1758,7 +2340,7 @@
         "type": "i18n",
         "label": "중국 맞춤형 티타늄 가공 계약 제조업체 - RFQ 준비 전문",
         "href": "/ko/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1768,7 +2350,7 @@
         "type": "hub",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1776,7 +2358,7 @@
         "type": "hub",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1784,7 +2366,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1792,7 +2374,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       },
@@ -1800,7 +2382,7 @@
         "type": "i18n",
         "label": "항공우주용 티타늄 공급 - 다중 소스 리스크 및 리드 타임 절감",
         "href": "/ko/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1810,7 +2392,7 @@
         "type": "hub",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1818,7 +2400,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1826,7 +2408,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1834,7 +2416,7 @@
         "type": "i18n",
         "label": "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다",
         "href": "/ko/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1844,7 +2426,7 @@
         "type": "hub",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1852,7 +2434,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1860,7 +2442,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1868,7 +2450,7 @@
         "type": "i18n",
         "label": "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다",
         "href": "/ko/blog/titanium-cnc-machining-services/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1878,7 +2460,7 @@
         "type": "hub",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1886,7 +2468,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1894,7 +2476,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1902,7 +2484,7 @@
         "type": "i18n",
         "label": "중국 맞춤형 티타늄 가공 계약 제조업체 - RFQ 준비 전문",
         "href": "/ko/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1912,7 +2494,7 @@
         "type": "hub",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1920,7 +2502,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1928,7 +2510,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1936,7 +2518,7 @@
         "type": "i18n",
         "label": "항공우주용 티타늄 공급 - 다중 소스 리스크 및 리드 타임 절감",
         "href": "/ko/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "lang": "ko",
         "score": 0.9
       }
@@ -1946,7 +2528,7 @@
         "type": "hub",
         "label": "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다",
         "href": "/ko/blog/titanium-cnc-machining-services/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1954,7 +2536,7 @@
         "type": "hub",
         "label": "중국 맞춤형 티타늄 가공 계약 제조업체 - RFQ 준비 전문",
         "href": "/ko/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1962,7 +2544,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -1970,7 +2552,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -1978,7 +2560,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -1988,7 +2570,7 @@
         "type": "hub",
         "label": "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다",
         "href": "/ko/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -1996,7 +2578,7 @@
         "type": "hub",
         "label": "중국 맞춤형 티타늄 가공 계약 제조업체 - RFQ 준비 전문",
         "href": "/ko/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2004,7 +2586,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2012,7 +2594,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2020,7 +2602,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2030,7 +2612,7 @@
         "type": "hub",
         "label": "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다",
         "href": "/ko/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2038,7 +2620,7 @@
         "type": "hub",
         "label": "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다",
         "href": "/ko/blog/titanium-cnc-machining-services/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2046,7 +2628,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2054,7 +2636,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2062,7 +2644,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2072,7 +2654,7 @@
         "type": "hub",
         "label": "Boze Titanium Manufacturing Center 블로그에 오신 것을 환영합니다",
         "href": "/ko/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2080,7 +2662,7 @@
         "type": "hub",
         "label": "정밀 티타늄 CNC 가공 서비스로 성능을 한 단계 높이다",
         "href": "/ko/blog/titanium-cnc-machining-services/",
-        "cluster": "티타늄 CNC 가공 서비스",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2088,7 +2670,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2096,7 +2678,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2104,7 +2686,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2114,7 +2696,7 @@
         "type": "hub",
         "label": "精密チタンCNC加工サービスで性能を向上",
         "href": "/ja/blog/titanium-cnc-machining-services/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2122,7 +2704,7 @@
         "type": "hub",
         "label": "中国におけるRFQ準備のためのカスタムチタン加工請負製造業者",
         "href": "/ja/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2130,7 +2712,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2138,7 +2720,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2146,7 +2728,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2156,7 +2738,7 @@
         "type": "hub",
         "label": "Boze Titanium Manufacturing Center ブログへようこそ",
         "href": "/ja/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2164,7 +2746,7 @@
         "type": "hub",
         "label": "中国におけるRFQ準備のためのカスタムチタン加工請負製造業者",
         "href": "/ja/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2172,7 +2754,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2180,7 +2762,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2188,7 +2770,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2198,7 +2780,7 @@
         "type": "hub",
         "label": "Boze Titanium Manufacturing Center ブログへようこそ",
         "href": "/ja/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2206,7 +2788,7 @@
         "type": "hub",
         "label": "精密チタンCNC加工サービスで性能を向上",
         "href": "/ja/blog/titanium-cnc-machining-services/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2214,7 +2796,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2222,7 +2804,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2230,7 +2812,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2240,7 +2822,7 @@
         "type": "hub",
         "label": "Boze Titanium Manufacturing Center ブログへようこそ",
         "href": "/ja/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2248,7 +2830,7 @@
         "type": "hub",
         "label": "精密チタンCNC加工サービスで性能を向上",
         "href": "/ja/blog/titanium-cnc-machining-services/",
-        "cluster": "チタンCNC加工サービス",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2256,7 +2838,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2264,7 +2846,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2272,7 +2854,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2282,7 +2864,7 @@
         "type": "hub",
         "label": "Elevating Performance with Precision Titanium CNC Machining Services",
         "href": "/it/blog/titanium-cnc-machining-services/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2290,7 +2872,7 @@
         "type": "hub",
         "label": "Produttore a contratto di lavorazione personalizzata del titanio in Cina per la preparazione di RFQ",
         "href": "/it/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2298,7 +2880,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2306,7 +2888,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2314,7 +2896,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2324,7 +2906,7 @@
         "type": "hub",
         "label": "Benvenuti nel blog Boze Titanium Manufacturing Center",
         "href": "/it/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2332,7 +2914,7 @@
         "type": "hub",
         "label": "Produttore a contratto di lavorazione personalizzata del titanio in Cina per la preparazione di RFQ",
         "href": "/it/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2340,7 +2922,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2348,7 +2930,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2356,7 +2938,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2366,7 +2948,7 @@
         "type": "hub",
         "label": "Benvenuti nel blog Boze Titanium Manufacturing Center",
         "href": "/it/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2374,7 +2956,7 @@
         "type": "hub",
         "label": "Elevating Performance with Precision Titanium CNC Machining Services",
         "href": "/it/blog/titanium-cnc-machining-services/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2382,7 +2964,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2390,7 +2972,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2398,7 +2980,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2408,7 +2990,7 @@
         "type": "hub",
         "label": "Benvenuti nel blog Boze Titanium Manufacturing Center",
         "href": "/it/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2416,7 +2998,7 @@
         "type": "hub",
         "label": "Elevating Performance with Precision Titanium CNC Machining Services",
         "href": "/it/blog/titanium-cnc-machining-services/",
-        "cluster": "Servizi di Lavorazione CNC del Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2424,7 +3006,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2432,7 +3014,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2440,7 +3022,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2450,7 +3032,7 @@
         "type": "hub",
         "label": "Élever la performance grâce aux services d'usinage CNC de précision en titane",
         "href": "/fr/blog/titanium-cnc-machining-services/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2458,7 +3040,7 @@
         "type": "hub",
         "label": "Fabricant sous-traitant d'usinage de titane sur mesure en Chine pour la préparation de RFQ",
         "href": "/fr/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2466,7 +3048,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2474,7 +3056,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2482,7 +3064,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2492,7 +3074,7 @@
         "type": "hub",
         "label": "Bienvenue sur le blog Boze Titanium Manufacturing Center",
         "href": "/fr/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2500,7 +3082,7 @@
         "type": "hub",
         "label": "Fabricant sous-traitant d'usinage de titane sur mesure en Chine pour la préparation de RFQ",
         "href": "/fr/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2508,7 +3090,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2516,7 +3098,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2524,7 +3106,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2534,7 +3116,7 @@
         "type": "hub",
         "label": "Bienvenue sur le blog Boze Titanium Manufacturing Center",
         "href": "/fr/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2542,7 +3124,7 @@
         "type": "hub",
         "label": "Élever la performance grâce aux services d'usinage CNC de précision en titane",
         "href": "/fr/blog/titanium-cnc-machining-services/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2550,7 +3132,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2558,7 +3140,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2566,7 +3148,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2576,7 +3158,7 @@
         "type": "hub",
         "label": "Bienvenue sur le blog Boze Titanium Manufacturing Center",
         "href": "/fr/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2584,7 +3166,7 @@
         "type": "hub",
         "label": "Élever la performance grâce aux services d'usinage CNC de précision en titane",
         "href": "/fr/blog/titanium-cnc-machining-services/",
-        "cluster": "Services d'usinage CNC du titane",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2592,7 +3174,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2600,7 +3182,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2608,7 +3190,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2618,7 +3200,7 @@
         "type": "hub",
         "label": "Elevando el Rendimiento con Servicios de Mecanizado CNC de Precisión en Titanio",
         "href": "/es/blog/titanium-cnc-machining-services/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2626,7 +3208,7 @@
         "type": "hub",
         "label": "Fabricante contratista de mecanizado de titanio personalizado en China para preparación de RFQ",
         "href": "/es/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2634,7 +3216,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2642,7 +3224,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2650,7 +3232,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2660,7 +3242,7 @@
         "type": "hub",
         "label": "Bienvenido al Blog de Boze Titanium Manufacturing Center",
         "href": "/es/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2668,7 +3250,7 @@
         "type": "hub",
         "label": "Fabricante contratista de mecanizado de titanio personalizado en China para preparación de RFQ",
         "href": "/es/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2676,7 +3258,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2684,7 +3266,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2692,7 +3274,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2702,7 +3284,7 @@
         "type": "hub",
         "label": "Bienvenido al Blog de Boze Titanium Manufacturing Center",
         "href": "/es/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2710,7 +3292,7 @@
         "type": "hub",
         "label": "Elevando el Rendimiento con Servicios de Mecanizado CNC de Precisión en Titanio",
         "href": "/es/blog/titanium-cnc-machining-services/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2718,7 +3300,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2726,7 +3308,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2734,7 +3316,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2744,7 +3326,7 @@
         "type": "hub",
         "label": "Bienvenido al Blog de Boze Titanium Manufacturing Center",
         "href": "/es/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2752,7 +3334,7 @@
         "type": "hub",
         "label": "Elevando el Rendimiento con Servicios de Mecanizado CNC de Precisión en Titanio",
         "href": "/es/blog/titanium-cnc-machining-services/",
-        "cluster": "Servicios de Mecanizado CNC de Titanio",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2760,7 +3342,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2768,7 +3350,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2776,7 +3358,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2794,7 +3376,7 @@
         "type": "hub",
         "label": "Aerospace Titanium Supply - Reduzierung von Multi-Source-Risiken und Durchlaufzeiten",
         "href": "/de/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titan-CNC-Bearbeitungsdienstleistungen",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2802,7 +3384,7 @@
         "type": "i18n",
         "label": "Bem-vindo ao Blog da Boze Titanium Manufacturing Center",
         "href": "/pt/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2810,7 +3392,7 @@
         "type": "i18n",
         "label": "Witamy na blogu Boze Titanium Manufacturing Center",
         "href": "/pl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2818,7 +3400,7 @@
         "type": "i18n",
         "label": "Welkom bij de Boze Titanium Manufacturing Center Blog",
         "href": "/nl/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2828,7 +3410,7 @@
         "type": "hub",
         "label": "Willkommen im Boze Titanium Manufacturing Center Blog",
         "href": "/de/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titan-CNC-Bearbeitungsdienstleistungen",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2836,7 +3418,7 @@
         "type": "hub",
         "label": "Aerospace Titanium Supply - Reduzierung von Multi-Source-Risiken und Durchlaufzeiten",
         "href": "/de/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titan-CNC-Bearbeitungsdienstleistungen",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       }
@@ -2846,7 +3428,7 @@
         "type": "hub",
         "label": "Auftragsfertiger für kundenspezifische Titanbearbeitung in China zur RFQ-Vorbereitung",
         "href": "/de/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium-CNC-Bearbeitungsdienstleistungen",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2854,7 +3436,7 @@
         "type": "i18n",
         "label": "Elevando o Desempenho com Serviços de Usinagem CNC de Precisão em Titânio",
         "href": "/pt/blog/titanium-cnc-machining-services/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2862,7 +3444,7 @@
         "type": "i18n",
         "label": "Podnoszenie wydajności dzięki precyzyjnym usługom obróbki CNC tytanu",
         "href": "/pl/blog/titanium-cnc-machining-services/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2870,7 +3452,7 @@
         "type": "i18n",
         "label": "**Precisie Titanium CNC-bewerkingsdiensten voor Superieure Prestaties**",
         "href": "/nl/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium CNC-bewerkingsdiensten",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2880,7 +3462,7 @@
         "type": "hub",
         "label": "**Leistungssteigerung durch präzise CNC-Titanbearbeitungsdienste**",
         "href": "/de/blog/titanium-cnc-machining-services/",
-        "cluster": "Titanium-CNC-Bearbeitungsdienstleistungen",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2888,7 +3470,7 @@
         "type": "i18n",
         "label": "Fabricante Contratado de Usinagem Personalizada de Titânio na China para Preparação de RFQ",
         "href": "/pt/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2896,7 +3478,7 @@
         "type": "i18n",
         "label": "Chiński producent kontraktowy obróbki tytanu na zamówienie do przygotowania RFQ",
         "href": "/pl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2904,7 +3486,7 @@
         "type": "i18n",
         "label": "Op maat gemaakte titanium bewerkingscontractfabrikant in China voor RFQ-voorbereiding",
         "href": "/nl/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }
@@ -2914,7 +3496,7 @@
         "type": "hub",
         "label": "Willkommen im Boze Titanium Manufacturing Center Blog",
         "href": "/de/blog/welcome-to-boze-cnc-blog/",
-        "cluster": "Titan-CNC-Bearbeitungsdienstleistungen",
+        "cluster": "Procurement & Services",
         "score": 0.55,
         "incomingCount": 0
       },
@@ -2930,7 +3512,7 @@
         "type": "i18n",
         "label": "Fornecimento de Titânio Aeroespacial - Redução de Riscos de Múltiplas Fontes e Prazos de Entrega",
         "href": "/pt/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Serviços de Usinagem CNC em Titânio",
+        "cluster": "Procurement & Services",
         "lang": "pt",
         "score": 0.9
       },
@@ -2938,7 +3520,7 @@
         "type": "i18n",
         "label": "Dostawa tytanu dla lotnictwa – Redukcja ryzyka związanego z wieloma źródłami oraz czasów realizacji",
         "href": "/pl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Usługi obróbki CNC tytanu",
+        "cluster": "Procurement & Services",
         "lang": "pl",
         "score": 0.9
       },
@@ -2946,7 +3528,7 @@
         "type": "i18n",
         "label": "Luchtvaart Titanium Levering - Vermindering van Multi-Bron Risico's & Doorlooptijden",
         "href": "/nl/blog/aerospace-titanium-full-process-supply/",
-        "cluster": "Titanium CNC Machining Services",
+        "cluster": "Procurement & Services",
         "lang": "nl",
         "score": 0.9
       }

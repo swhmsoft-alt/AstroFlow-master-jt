@@ -4,7 +4,7 @@ slug: baoji-china-titanium-valley
 description: "Why Baoji is called China Titanium Valley — the industrial history behind the label, what the production scale really means for buyers, and the qualification checks every procurement team should run before sourcing titanium from the cluster."
 pubDate: 2026-08-07
 author: Boze Titanium Manufacturing Center
-category: Industry Insights
+category: Applications & Industries
 tags: [Baoji Titanium, China Titanium Valley, Titanium Sourcing, Supplier Evaluation, China Manufacturing]
 coverImage: /uploads/blog-baoji-china-titanium-valley-cover.jpg
 coverImageAlt: Baoji China Titanium Valley titanium production cluster

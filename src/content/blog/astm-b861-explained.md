@@ -4,7 +4,7 @@ slug: astm-b861-explained
 description: "A technical explanation of ASTM B861 — the standard specification for seamless titanium and titanium alloy pipe. Covers size ranges, schedules, grades, testing, and procurement rules for pressure piping systems."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [ASTM B861, Titanium Seamless Pipe, Titanium Pipe, ASTM Standards, Pressure Piping, Grade 2 Titanium]
 coverImage: /uploads/blog-astm-b861-explained-cover.jpg
 coverImageAlt: ASTM B861 titanium seamless pipe sections with NPS size markings

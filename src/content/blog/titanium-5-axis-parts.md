@@ -4,7 +4,7 @@ slug: titanium-5-axis-parts
 description: "A decision guide for 5-axis titanium machining — when complex geometry, tight tolerances, and setup reduction justify 5-axis over 3-axis, and how to evaluate cost and capability."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [5-Axis Machining, Titanium CNC, Aerospace Manufacturing, Complex Geometry, Setup Reduction]
 coverImage: /uploads/blog-titanium-5-axis-parts-cover.jpg
 coverImageAlt: 5-axis CNC machine tilting a titanium aerospace component during simultaneous machining

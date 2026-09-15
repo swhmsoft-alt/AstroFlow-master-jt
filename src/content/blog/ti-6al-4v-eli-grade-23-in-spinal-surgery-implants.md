@@ -4,7 +4,7 @@ slug: ti-6al-4v-eli-grade-23-in-spinal-surgery-implants
 description: "A technical guide to Grade 23 Ti-6Al-4V ELI for spinal implant applications — biomechanical rationale for ELI in spinal constructs, material requirements for pedicle screws, spinal rods, and interbody cages, applicable standards (ASTM F136, ISO 5832-3), surface treatment options for osseointegration, machining and quality requirements specific to spinal implant manufacturing, and procurement guidelines for spinal device companies."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Medical Applications
+category: Applications & Industries
 tags: [Grade 23 Titanium, Ti-6Al-4V ELI, Spinal Implants, Pedicle Screws, Spinal Rods, Interbody Cages, ASTM F136, ISO 5832-3, Medical Implant Manufacturing, Orthopedic Biomaterials]
 coverImage: /uploads/blog-grade-23-spinal-implants-cover.jpg
 coverImageAlt: Grade 23 Ti-6Al-4V ELI spinal implant components — pedicle screws, spinal rods, and interbody cage

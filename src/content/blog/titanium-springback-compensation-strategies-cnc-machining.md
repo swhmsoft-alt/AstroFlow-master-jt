@@ -4,7 +4,7 @@ slug: titanium-springback-compensation-strategies-cnc-machining
 description: An engineering analysis of elastic springback in titanium machining — why the low modulus of elasticity causes dimensional deviation in thin-wall and precision features, compensation methods in CAM programming, and toolpath strategies that account for elastic recovery.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Titanium CNC Machining, Springback, Elastic Deflection, Precision Machining, CAM Programming]
 coverImage: /uploads/blog-titanium-springback-compensation-strategies-cnc-machining-cover.jpg
 coverImageAlt: Precision measurement of a machined titanium component

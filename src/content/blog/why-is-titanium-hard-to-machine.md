@@ -4,7 +4,7 @@ slug: why-is-titanium-hard-to-machine
 description: "An engineering explanation of why titanium is hard to machine — how heat concentration, work hardening, and tool wear interact during cutting, and what this means for tool selection, cutting parameters, and process stability."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Titanium Machining, Heat Concentration, Work Hardening, Tool Wear, Grade 5 Titanium, Cutting Parameters]
 coverImage: /uploads/blog-why-is-titanium-hard-to-machine-cover.jpg
 coverImageAlt: Microscopic view of worn carbide insert after titanium machining showing crater and flank wear

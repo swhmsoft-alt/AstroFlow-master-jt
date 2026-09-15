@@ -4,7 +4,7 @@ slug: ultimate-guide-titanium-surface-treatments-aerospace
 description: "Comprehensive aerospace engineering reference for titanium surface treatments — AMS 2488 Type 1/2/3 anodizing standards, PEO/micro-arc oxidation, dry film lubricants, duplex coating systems, and torque-tension compliance for flight-critical titanium fasteners and structural components."
 pubDate: 2026-08-19T10:00:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [Titanium Surface Treatment, Aerospace Standards, AMS 2488, Anodizing, Tribology, Fastener Engineering]
 coverImage: /uploads/blog-ams-2488-type-2-titanium-anodizing-aerospace-cover.jpg
 coverImageAlt: The ultimate guide to titanium surface treatments in aerospace engineering showing AMS 2488 Type 2 anodized components

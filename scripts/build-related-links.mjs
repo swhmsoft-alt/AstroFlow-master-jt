@@ -28,7 +28,9 @@ function safeSlug(raw, fallback) {
 }
 
 function readPosts(dir, defaultLang) {
-  const files = glob.sync('**/*.md', { cwd: dir });
+  // Exclude dot-prefixed directories (e.g. ._backup-pre-cluster-2026-09-15)
+  // so dev/backup folders never leak into the link matrix.
+  const files = glob.sync('**/*.md', { cwd: dir, ignore: ['**/.*/**'] });
   const posts = [];
   for (const rel of files) {
     const full = path.join(dir, rel);
@@ -127,6 +129,20 @@ for (const p of i18nPosts) {
   i18nSiblings.set(p.originalSlug, arr);
 }
 
+// 4b. EN post by slug — used to normalize the `cluster` field on i18n
+// sibling edges so the related-links matrix uses a single set of cluster
+// names (the English ones) regardless of the i18n file's localized
+// category field. Cluster is a structural SEO/internal-link concept, not
+// a UI label, so it should not be translated.
+//   Plan §"i18n 本地化 category 保留 + cluster 字段统一"
+const enByOriginalSlug = new Map();
+for (const p of enPosts) enByOriginalSlug.set(p.slug, p);
+function resolveCluster(post) {
+  if (post.lang === 'en') return post.category;
+  const en = enByOriginalSlug.get(post.originalSlug || '');
+  return en ? en.category : post.category;
+}
+
 // 5. build edges per post
 const links = {};
 let edgeCount = 0;
@@ -152,7 +168,7 @@ for (const post of targets) {
     const score = Math.min(1, 0.55 + inc * 0.04);
     add({
       type: 'hub', label: hub.title, href: hrefOf(hub),
-      cluster: hub.category, score: Number(score.toFixed(3)), incomingCount: inc,
+      cluster: resolveCluster(hub), score: Number(score.toFixed(3)), incomingCount: inc,
     });
   }
 
@@ -165,7 +181,7 @@ for (const post of targets) {
       if (edges.filter(x => x.type === 'i18n').length >= 3) break;
       add({
         type: 'i18n', label: sib.title, href: hrefOf(sib),
-        cluster: sib.category, lang: sib.lang, score: 0.9,
+        cluster: resolveCluster(sib), lang: sib.lang, score: 0.9,
       });
     }
   }
@@ -181,7 +197,7 @@ for (const post of targets) {
     for (const c of cands) {
       add({
         type: 'related', label: c.p.title, href: hrefOf(c.p),
-        cluster: c.p.category, score: Number(c.s.toFixed(3)),
+        cluster: resolveCluster(c.p), score: Number(c.s.toFixed(3)),
       });
     }
   }

@@ -4,7 +4,7 @@ slug: 5-year-cmm-total-cost-of-ownership-aerospace-startup
 description: "An engineering cost analysis of owning a coordinate measuring machine over five years for an aerospace machining startup. Covers CAPEX vs OPEX split, calibration cycles, software seats, metrology room readiness, and the operating-cost items that compound over time."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Equipment and Quality
+category: Quality & Standards
 tags: [CMM, Coordinate Measuring Machine, Total Cost of Ownership, Aerospace Metrology, AS9102, ISO 10360, Calibration]
 featured: false
 ---

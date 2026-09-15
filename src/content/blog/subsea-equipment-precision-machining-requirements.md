@@ -4,7 +4,7 @@ slug: subsea-equipment-precision-machining-requirements
 description: Explore the precision machining requirements for subsea equipment, including material selection, tolerance standards, corrosion protection, and the manufacturing challenges unique to deepwater components.
 pubDate: 2026-06-16T08:00:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Subsea Machining
+category: Applications & Industries
 tags:
   - subsea equipment machining
   - precision machining subsea

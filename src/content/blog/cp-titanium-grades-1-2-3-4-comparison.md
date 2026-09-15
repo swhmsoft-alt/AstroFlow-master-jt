@@ -4,7 +4,7 @@ slug: cp-titanium-grades-1-2-3-4-comparison
 description: A practical comparison of commercially pure titanium grades 1 through 4 — how oxygen content controls strength and ductility, typical applications for each grade, and selection criteria based on formability, corrosion resistance, and cost requirements.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [CP Titanium, Commercially Pure Titanium, Grade 2 Titanium, Material Selection, Corrosion Resistance]
 coverImage: /uploads/blog-cp-titanium-grades-1-2-3-4-comparison-cover.jpg
 coverImageAlt: Commercially pure titanium stock material for industrial applications

@@ -4,7 +4,7 @@ slug: titanium-welding-challenges-best-practices
 description: An engineering analysis of titanium welding for machined assemblies — weld joint design for titanium, inert gas shielding requirements, distortion control in welded assemblies, post-weld heat treatment considerations, and interface management between machining and welding operations.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [Titanium Welding, TIG Welding, Welded Assemblies, Aerospace Welding, Manufacturing Engineering]
 coverImage: /uploads/blog-titanium-welding-challenges-best-practices-cover.jpg
 coverImageAlt: TIG welding of a titanium assembly

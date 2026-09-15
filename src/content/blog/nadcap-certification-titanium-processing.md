@@ -4,7 +4,7 @@ slug: nadcap-certification-titanium-processing
 description: An engineering assessment of NADCAP certification for titanium manufacturing processes — the scope of NADCAP accreditation for machining, heat treatment, surface treatment, and NDE, the audit process and requirements, and the significance of NADCAP certification for aerospace supplier qualification.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [NADCAP, Aerospace Certification, Process Accreditation, Aerospace Quality, Supplier Qualification]
 coverImage: /uploads/blog-nadcap-certification-titanium-processing-cover.jpg
 coverImageAlt: NADCAP audit documentation review

@@ -4,7 +4,7 @@ slug: edm-broaching-titanium-parts
 description: "A technical analysis of EDM broaching for titanium components — how the process differs from conventional broaching and standard EDM, the types of internal profiles it can produce, electrode design and wear management, surface integrity considerations, and when EDM broaching is the most practical option for complex internal titanium features."
 pubDate: 2026-08-18
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [EDM Broaching, Titanium EDM Broaching, Internal Profiles, Precision Machining, Titanium Machining, Complex Features]
 coverImage: /uploads/blog-edm-broaching-titanium-parts-cover.jpg
 coverImageAlt: EDM broaching electrode and titanium workpiece showing complex internal profile

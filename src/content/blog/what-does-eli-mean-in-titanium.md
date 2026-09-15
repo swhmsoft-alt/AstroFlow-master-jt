@@ -4,7 +4,7 @@ slug: what-does-eli-mean-in-titanium
 description: "A technical explanation of Extra-Low Interstitial (ELI) titanium — what ELI means, which grades have ELI variants, the effect of reduced interstitial content on mechanical properties, applicable standards for each ELI grade, and procurement guidance for specifying ELI material correctly in medical, cryogenic, and aerospace applications."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [ELI Titanium, Extra-Low Interstitial, Grade 23 Titanium, Ti-6Al-4V ELI, CP-Ti ELI, Medical Implants, Cryogenic Titanium, Fracture Toughness]
 coverImage: /uploads/blog-eli-titanium-grades-comparison-cover.jpg
 coverImageAlt: Side-by-side comparison of ELI and standard titanium alloy bar stock showing identification markings

@@ -4,7 +4,7 @@ slug: titanium-investment-casting-net-shape-solutions
 description: An engineering analysis of titanium investment casting for complex-geometry components — process mechanisms including vacuum induction melting and ceramic mold interaction, near-net-shape capability for material waste reduction, cost comparison with forging and CNC milling for batch production, post-casting quality controls including HIP and X-ray NDT, and DFM guidelines for cast titanium parts.
 pubDate: 2026-08-15
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [Titanium Investment Casting, Titanium Manufacturing, Net-Shape Casting, Vacuum Induction Melting, Titanium Foundry, Aerospace Castings, DFM Cast Titanium]
 coverImage: /uploads/blog-titanium-investment-casting-net-shape-solutions-cover.jpg
 coverImageAlt: Titanium investment casting mold assembly and finished near-net-shape component

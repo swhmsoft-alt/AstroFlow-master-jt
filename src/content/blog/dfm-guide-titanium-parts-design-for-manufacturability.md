@@ -4,7 +4,7 @@ slug: dfm-guide-titanium-parts-design-for-manufacturability
 description: An engineering design-for-manufacturability guide for titanium CNC machined components — design rules that reduce machining cost and improve quality, feature geometry guidelines for titanium-specific constraints, and practical examples of design changes that simplify production.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Design Engineering
+category: Design & DFM
 tags: [DFM, Design for Manufacturability, Titanium CNC, Engineering Design, Cost Reduction]
 coverImage: /uploads/blog-dfm-guide-titanium-parts-design-for-manufacturability-cover.jpg
 coverImageAlt: Engineering DFM review of a titanium component design

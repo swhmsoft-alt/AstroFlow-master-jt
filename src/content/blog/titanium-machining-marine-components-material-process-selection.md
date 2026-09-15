@@ -4,7 +4,7 @@ slug: titanium-machining-marine-components-material-process-selection
 description: Explore why titanium machining for marine components demands careful material selection and process engineering, covering alloy choices, corrosion resistance, CNC strategies, and quality standards for marine applications.
 pubDate: 2026-06-18T08:00:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Marine Machining
+category: Machining Processes
 tags:
   - marine machining
   - titanium marine components

@@ -4,7 +4,7 @@ slug: titanium-grade-selection-extreme-stress-thermal-environments
 description: A technical DFM, metallurgical evaluation, and quality assurance guide for aerospace, defense, and high-reliability procurement — comparing Ti-6Al-4V Grade 5, Grade 23 ELI, 6-2-4-2, and Beta alloys for extreme stress and thermal environments.
 pubDate: 2026-08-15
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Titanium Grades, Ti-6Al-4V, Grade 5, Grade 23, 6-2-4-2, Beta C, Aerospace Materials, DFM, Material Selection, AS9100]
 coverImage: /uploads/blog-titanium-grade-selection-extreme-stress-thermal-environments-cover.jpg
 coverImageAlt: High-performance titanium alloy grades for extreme stress and thermal environments

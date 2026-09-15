@@ -4,7 +4,7 @@ slug: astm-b381-explained
 description: "A technical explanation of ASTM B381 — the standard specification for titanium and titanium alloy forgings. Covers forging classes, mechanical properties, heat treatment, inspection requirements, and procurement guidance for aerospace and industrial applications."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [ASTM B381, Titanium Forgings, Forged Titanium, ASTM Standards, Aerospace Forgings, Grade 5 Titanium]
 coverImage: /uploads/blog-astm-b381-explained-cover.jpg
 coverImageAlt: ASTM B381 titanium forged disc and ring components on an inspection table

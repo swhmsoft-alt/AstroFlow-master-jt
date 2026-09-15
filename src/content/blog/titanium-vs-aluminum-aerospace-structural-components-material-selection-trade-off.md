@@ -4,7 +4,7 @@ slug: titanium-vs-aluminum-aerospace-structural-components-material-selection-tr
 description: "An aerospace materials selection guide comparing titanium and aluminum for structural components. Covers strength-to-weight ratio, fatigue performance, corrosion behavior, temperature limits, manufacturing cost, and the procurement framework for choosing between the two alloy families."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Aerospace Materials
+category: Materials & Grades
 tags: [Titanium vs Aluminum, Aerospace Structures, Material Selection, Strength-to-Weight Ratio, Fatigue, Corrosion]
 featured: false
 ---

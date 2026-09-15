@@ -4,7 +4,7 @@ slug: titanium-welding-best-practices-aerospace-structural-components
 description: "A welding engineering guide for titanium aerospace structural components. Covers gas-shielded TIG and plasma welding, weld pool atmosphere control, weld discoloration interpretation, distortion management, and the qualification framework for AWS D17.1 / ASME Section IX aerospace welds."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Welding and Joining
+category: Machining Processes
 tags: [Titanium Welding, Aerospace Welding, TIG Welding, Plasma Welding, AWS D17.1, Weld Shielding, Distortion Control]
 featured: false
 ---

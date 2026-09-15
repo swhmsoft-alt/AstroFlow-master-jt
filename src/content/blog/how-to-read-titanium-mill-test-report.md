@@ -4,7 +4,7 @@ slug: how-to-read-titanium-mill-test-report
 description: "A quality engineer's 5-step procedure for validating a titanium Mill Test Report (MTR): heat-lot / VAR-ingot traceability, chemistry vs specification, mechanical properties vs specification, EN 10204 inspection-certificate type, and sign-off. Includes real MTR field-value examples for Grade 2 / Grade 5 / Grade 23."
 pubDate: 2026-08-25
 author: Boze Titanium Manufacturing Center
-category: Quality & Traceability
+category: Quality & Standards
 tags: [MTR, Mill Test Report, EN 10204, Heat Lot, Titanium Chemistry, AS9100, Material Traceability]
 coverImage: /uploads/blog-how-to-read-titanium-mill-test-report-cover.jpg
 coverImageAlt: Quality inspector reviewing a titanium Mill Test Report against an engineering drawing

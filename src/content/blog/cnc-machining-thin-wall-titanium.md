@@ -4,7 +4,7 @@ slug: cnc-machining-thin-wall-titanium
 description: "Engineering strategies for machining thin-wall titanium parts without distortion — process sequencing, toolpath control, fixture design, and in-process compensation for stable dimensions."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Thin Wall Machining, Titanium CNC, Dimensional Stability, Distortion Control, Adaptive Toolpath]
 coverImage: /uploads/blog-cnc-machining-thin-wall-titanium-cover.jpg
 coverImageAlt: Thin-wall titanium aerospace bracket secured in a conformal fixture during CNC machining

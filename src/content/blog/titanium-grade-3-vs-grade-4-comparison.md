@@ -4,7 +4,7 @@ slug: titanium-grade-3-vs-grade-4-comparison
 description: "A direct engineering comparison of Grade 3 and Grade 4 commercially pure titanium — tensile strength, ductility, formability, machinability, corrosion resistance, applicable standards, material cost, and procurement lead time differences. Selection criteria for chemical processing, marine, and industrial applications where the choice between these two CP grades is not obvious."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Grade 3 Titanium, Grade 4 Titanium, CP Titanium, Commercially Pure Titanium, Titanium Grade Comparison, Material Selection, Corrosion-Resistant Materials]
 coverImage: /uploads/blog-titanium-grade-3-vs-grade-4-cover.jpg
 coverImageAlt: Side-by-side comparison of Grade 3 and Grade 4 titanium stock material

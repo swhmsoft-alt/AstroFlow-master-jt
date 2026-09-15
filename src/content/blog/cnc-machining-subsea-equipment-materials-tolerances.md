@@ -4,7 +4,7 @@ slug: cnc-machining-subsea-equipment-materials-tolerances
 description: A technical guide to CNC machining for subsea equipment, covering material selection strategies, tolerance capabilities for sealing and pressure-retaining features, and corrosion management through surface integrity control.
 pubDate: 2026-06-17T08:00:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Subsea CNC
+category: Applications & Industries
 tags:
   - CNC machining subsea equipment
   - subsea machining materials

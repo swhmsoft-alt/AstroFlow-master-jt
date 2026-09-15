@@ -4,7 +4,7 @@ slug: 5-axis-machined-titanium-medical-implants-fda-submissions-material-sourcin
 description: "A regulatory and process engineering guide to 5-axis machined titanium medical implants. Covers FDA 510(k) and PMA submission pathways, ASTM F136 and ISO 5832-3 material sourcing, machining process validation, and the supplier qualification framework for implant manufacturers."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Medical Manufacturing
+category: Applications & Industries
 tags: [Titanium Medical Implants, FDA 510k, PMA, ASTM F136, ISO 5832-3, 5-Axis Machining, Process Validation]
 featured: false
 ---

@@ -4,7 +4,7 @@ slug: astm-b338-explained
 description: "A technical explanation of ASTM B338 — the standard specification for seamless and welded titanium tubing for condensers, heat exchangers, and process equipment. Covers grades, wall thickness, testing, and procurement rules."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [ASTM B338, Titanium Tubing, Titanium Condenser Tubes, Heat Exchanger Tubes, ASTM Standards, Grade 2 Titanium]
 featured: false
 ---

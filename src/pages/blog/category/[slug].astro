@@ -16,15 +16,20 @@ import { getLangFromUrl, useTranslations, localizePath } from '../../../i18n/uti
 import { categoryToSlug } from '../../../lib/blog-i18n';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  const englishPosts = posts.filter(p => !p.slug.includes('/'));
+  // F5 — 7-cluster migration: emit EXACTLY the 7 topic clusters, not the
+  // union of legacy categories. Legacy URLs (incl. 21 edge categories)
+  // are handled by the 8 redirects in astro.config.mjs or 404 naturally.
+  const CLUSTERS = [
+    'Materials & Grades',
+    'Machining Processes',
+    'Design & DFM',
+    'Problems & Solutions',
+    'Quality & Standards',
+    'Applications & Industries',
+    'Procurement & Services',
+  ];
 
-  // Every distinct category becomes an archive page (incl. "Industry Insights").
-  const categories = Array.from(
-    new Set(englishPosts.map(p => p.data.category || 'Uncategorized'))
-  );
-
-  return categories.map(cat => ({
+  return CLUSTERS.map(cat => ({
     params: { slug: categoryToSlug(cat) },
     props: { category: cat },
   }));

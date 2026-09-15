@@ -4,7 +4,7 @@ slug: aerospace-fastener-selection-titanium-vs-inconel-vs-steel-comparative-anal
 description: "An engineering selection guide for aerospace fasteners. Covers titanium (Ti-6Al-4V, Ti-6Al-4V ELI, Beta-C), Inconel 718, A286 steel, and PH 17-4 stainless. Includes strength-to-weight, temperature limits, galvanic compatibility, fatigue, and procurement rules for aerospace structural bolting."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Aerospace Materials
+category: Materials & Grades
 tags: [Aerospace Fasteners, Titanium Fasteners, Inconel 718, A286 Steel, 17-4 PH, Bolting, Material Selection]
 featured: false
 ---

@@ -4,7 +4,7 @@ slug: ti-6242-titanium-alloy-properties-specifications-applications
 description: "A technical guide to Ti-6242 (Ti-6Al-2Sn-4Zr-2Mo) near-alpha titanium alloy for elevated-temperature aerospace applications — mechanical properties up to 540°C, AMS and ASTM standards, machining constraints, procurement considerations, and supplier qualification criteria for gas turbine engine components."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Ti-6242, Ti-6Al-2Sn-4Zr-2Mo, Near-Alpha Titanium, Aerospace Materials, High-Temperature Alloys, Gas Turbine Components, AMS 4919, AMS 4975]
 coverImage: /uploads/blog-ti-6242-titanium-alloy-cover.jpg
 coverImageAlt: Ti-6242 titanium alloy bar stock and forged components for aerospace engine applications

@@ -4,7 +4,7 @@ slug: titanium-grade-2-vs-5-vs-23-procurement-decision-guide
 description: "A procurement-focused comparison of Grade 2, Grade 5, and Grade 23 titanium — cost differences, lead time variations, supplier capability requirements, and a decision matrix to determine which grade delivers the best value for your specific application requirements."
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Procurement Guides
+category: Procurement & Services
 tags: [Titanium Grades, Procurement, Grade 2 Titanium, Grade 5 Titanium, Grade 23 Titanium, Supplier Evaluation, Cost Analysis]
 coverImage: /uploads/blog-titanium-grade-2-vs-5-vs-23-procurement-decision-guide-cover.jpg
 coverImageAlt: Side-by-side comparison of Grade 2, Grade 5, and Grade 23 titanium stock material

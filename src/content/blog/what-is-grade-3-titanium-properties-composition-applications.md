@@ -4,7 +4,7 @@ slug: what-is-grade-3-titanium-properties-composition-applications
 description: "An engineering guide to Grade 3 commercially pure titanium (UNS R50550, CP-Ti Grade 3) — mechanical properties, oxygen-controlled classification, applicable ASTM and AMS standards, machining behavior, procurement considerations, and application-specific selection criteria for chemical processing, marine, and industrial components."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Grade 3 Titanium, CP Titanium, Commercially Pure Titanium, UNS R50550, Titanium Grades, Material Selection, Corrosion-Resistant Materials, Chemical Processing]
 coverImage: /uploads/blog-grade-3-titanium-cover.jpg
 coverImageAlt: Grade 3 commercially pure titanium plate and bar stock for industrial applications

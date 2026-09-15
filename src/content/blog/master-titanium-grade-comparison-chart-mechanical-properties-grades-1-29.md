@@ -4,7 +4,7 @@ slug: master-titanium-grade-comparison-chart-mechanical-properties-grades-1-29
 description: "An engineering reference for ASTM titanium grades 1 through 29. Covers unalloyed CP grades, palladium-stabilized variants, alpha and near-alpha alloys, alpha-beta alloys, and beta alloys. Includes yield strength, corrosion behavior, weldability, temperature limits, and procurement cost gradient."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Titanium Grades
+category: Materials & Grades
 tags: [Titanium Grades, UNS Numbers, Tensile Strength, Density, ASTM B348, Material Selection, Grade Chart]
 featured: false
 ---

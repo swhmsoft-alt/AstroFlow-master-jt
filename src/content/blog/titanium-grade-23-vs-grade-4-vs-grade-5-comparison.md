@@ -4,7 +4,7 @@ slug: titanium-grade-23-vs-grade-4-vs-grade-5-comparison
 description: "A three-way engineering comparison of Grade 4 CP-Titanium, Grade 5 (Ti-6Al-4V), and Grade 23 (Ti-6Al-4V ELI) — chemical composition differences, mechanical property trade-offs across the strength-ductility-toughness spectrum, applicable standards for each grade, cost comparisons, machining and processing implications, and application-specific selection criteria for medical implants, aerospace components, chemical processing equipment, and marine hardware."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Grade 4 Titanium, Grade 5 Titanium, Grade 23 Titanium, Ti-6Al-4V, Ti-6Al-4V ELI, CP Titanium, Titanium Grade Comparison, Medical Implants, Aerospace Materials, Material Selection]
 coverImage: /uploads/blog-grade-4-vs-5-vs-23-titanium-comparison-cover.jpg
 coverImageAlt: Three titanium grade samples — Grade 4, Grade 5, and Grade 23 — arranged for comparison with visible identification markings

@@ -4,7 +4,7 @@ slug: mil-std-278-titanium-welded-assemblies
 description: "A technical guide to MIL-STD-278 welding requirements as applied to titanium assemblies. Covers qualification, procedure specifications, inspection, common failure modes, and procurement implications for defense and marine applications."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [MIL-STD-278, Titanium Welding, Welded Assemblies, Military Standards, Defense Manufacturing, NDT]
 coverImage: /uploads/blog-mil-std-278-titanium-welded-assemblies-cover.jpg
 coverImageAlt: Titanium welded assembly under inspection with weld procedure documentation

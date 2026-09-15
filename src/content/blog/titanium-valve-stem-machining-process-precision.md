@@ -4,7 +4,7 @@ slug: titanium-valve-stem-machining-process-precision
 description: A technical guide to the machining process for titanium valve stems, covering material selection, step-by-step manufacturing sequence, tolerance requirements, surface finishing, and quality verification methods.
 pubDate: 2026-06-20T08:00:00.000+08:00
 author: Boze Titanium Manufacturing Center
-category: Titanium Components
+category: Machining Processes
 tags:
   - valve stem machining
   - titanium valve stem

@@ -4,7 +4,7 @@ slug: titanium-stress-relieving-heat-treatment-temperature-control-distortion-pr
 description: "A heat treatment engineering guide for titanium components. Covers stress relief vs annealing vs solution treatment and aging, temperature-time profiles for Ti-6Al-4V and Ti-6Al-4V ELI, vacuum and argon atmosphere control, distortion prediction, and AS9100 process qualification."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Heat Treatment
+category: Materials & Grades
 tags: [Titanium Heat Treatment, Stress Relief, Annealing, Solution Treatment, Aging, Vacuum Furnace, Distortion Control]
 featured: false
 ---

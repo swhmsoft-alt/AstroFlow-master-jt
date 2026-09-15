@@ -4,7 +4,7 @@ slug: iso-5832-3-vs-astm-f136-titanium-standards-comparison
 description: "A technical comparison of ISO 5832-3 and ASTM F136 — the two governing material standards for Ti-6Al-4V ELI used in surgical implants. Composition and property differences, regulatory acceptance in Europe, the United States, and other markets, certification requirements under each standard, and practical guidance for procurement teams sourcing material for global medical device manufacturing."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Standards and Certifications
+category: Quality & Standards
 tags: [ISO 5832-3, ASTM F136, Ti-6Al-4V ELI, Medical Implant Standards, Surgical Implant Materials, Grade 23 Titanium, Medical Device Compliance, ISO 13485, CE Marking]
 coverImage: /uploads/blog-iso-5832-3-vs-astm-f136-standards-cover.jpg
 coverImageAlt: Comparison of ISO 5832-3 and ASTM F136 standard documents with Ti-6Al-4V ELI implant-grade material certification records

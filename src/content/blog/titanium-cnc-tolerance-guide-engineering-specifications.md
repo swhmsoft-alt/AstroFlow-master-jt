@@ -4,7 +4,7 @@ slug: titanium-cnc-tolerance-guide-engineering-specifications
 description: An engineering guide to dimensional tolerances for titanium CNC machining — achievable tolerance ranges by feature type, the effect of material condition and thermal stability on tolerance capability, and practical guidelines for specifying tolerances on titanium components for aerospace, medical, and industrial applications.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Design Engineering
+category: Design & DFM
 tags: [CNC Tolerance, Titanium Machining, Precision Machining, Engineering Specifications, GD&T]
 coverImage: /uploads/blog-titanium-cnc-tolerance-guide-engineering-specifications-cover.jpg
 coverImageAlt: Dimensional inspection of a precision titanium component

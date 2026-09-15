@@ -4,7 +4,7 @@ slug: cnc-vs-edm-titanium-parts
 description: "An engineering comparison of CNC machining and electrical discharge machining for titanium component production — geometric capabilities, surface integrity, tolerance ranges, cost structures, production quantity effects, and a decision framework for selecting the appropriate process for your part."
 pubDate: 2026-08-18
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [CNC vs EDM, Titanium CNC Machining, Titanium EDM, Process Selection, Manufacturing Engineering, Titanium Parts]
 coverImage: /uploads/blog-cnc-vs-edm-titanium-parts-cover.jpg
 coverImageAlt: CNC machined titanium part next to an EDM machined titanium part showing different surface finishes

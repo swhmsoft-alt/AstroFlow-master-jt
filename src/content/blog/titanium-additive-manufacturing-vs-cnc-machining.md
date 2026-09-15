@@ -4,7 +4,7 @@ slug: titanium-additive-manufacturing-vs-cnc-machining
 description: An engineering comparison of additive manufacturing and CNC machining for titanium components — geometric capability differences, material property comparisons between as-built and wrought material, surface finish and tolerance capability, cost drivers for each process, and hybrid approaches combining both technologies.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [Titanium Additive Manufacturing, 3D Printing Titanium, CNC Machining, Hybrid Manufacturing, Process Selection]
 coverImage: /uploads/blog-titanium-additive-manufacturing-vs-cnc-machining-cover.jpg
 coverImageAlt: Titanium additive manufactured component with machined surfaces

@@ -4,7 +4,7 @@ slug: case-study-complex-titanium-component-process-development
 description: A case study of developing a manufacturing process for a complex titanium component with multiple tight-tolerance features — machining sequence optimization, tool selection and validation, in-process inspection strategy, and production scale-up from prototype to volume manufacturing.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Case Studies
+category: Problems & Solutions
 tags: [Case Study, Process Development, Complex Machining, Tight Tolerance, Production Scale-Up]
 coverImage: /uploads/blog-case-study-complex-titanium-component-process-development-cover.jpg
 coverImageAlt: Complex titanium component during process development

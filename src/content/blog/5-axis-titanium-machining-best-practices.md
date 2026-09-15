@@ -4,7 +4,7 @@ slug: 5-axis-titanium-machining-best-practices
 description: An engineering analysis of 5-axis machining strategies for titanium components — tool orientation principles for rigid cutting conditions, chip load management in complex toolpaths, thermal distribution across multi-axis moves, and programming approaches that leverage the machine's full capability while managing titanium's unique machining characteristics.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Manufacturing Problems
+category: Problems & Solutions
 tags: [Titanium CNC Machining, 5-Axis Machining, Aerospace Manufacturing, Complex Machining, CAM Programming]
 coverImage: /uploads/blog-5-axis-titanium-machining-best-practices-cover.jpg
 coverImageAlt: 5-axis CNC machining of a complex titanium aerospace component

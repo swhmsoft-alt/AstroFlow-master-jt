@@ -4,7 +4,7 @@ slug: as9100-certified-titanium-machining-quality-auditing-traceability-standard
 description: "A quality engineering guide to AS9100 certification as it applies to titanium machining suppliers. Covers the AS9100D revision structure, audit findings common to machining shops, traceability chain requirements, and procurement rules for qualifying an AS9100 titanium supplier."
 pubDate: 2026-08-29
 author: Boze Titanium Manufacturing Center
-category: Quality Systems
+category: Quality & Standards
 tags: [AS9100D, AS9100, Aerospace Quality, Titanium Machining, Supplier Qualification, Audit, Traceability]
 featured: false
 ---

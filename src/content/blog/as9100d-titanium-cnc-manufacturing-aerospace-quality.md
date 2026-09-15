@@ -4,7 +4,7 @@ slug: as9100d-titanium-cnc-manufacturing-aerospace-quality
 description: An engineering assessment of AS9100D certification for titanium CNC machining suppliers — the quality management system requirements that affect aerospace component procurement, what AS9100D certification demonstrates about process control capability, and practical considerations for buyers evaluating certified suppliers.
 pubDate: 2026-07-29
 author: Boze Titanium Manufacturing Center
-category: Quality and Standards
+category: Quality & Standards
 tags: [AS9100D, Aerospace Quality, Quality Management, Aerospace Manufacturing, Supplier Qualification]
 coverImage: /uploads/blog-as9100d-titanium-cnc-manufacturing-aerospace-quality-cover.jpg
 coverImageAlt: Quality inspection documentation for aerospace titanium components

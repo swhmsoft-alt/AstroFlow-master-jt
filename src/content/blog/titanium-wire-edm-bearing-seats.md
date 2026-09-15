@@ -4,7 +4,7 @@ slug: titanium-wire-edm-bearing-seats
 description: "A technical guide to using wire EDM for precision bearing seats and dimensional features in titanium components — process capability for tight tolerances, surface integrity requirements for bearing interfaces, wire selection and skim cut strategies, and practical considerations for aerospace and medical bearing applications."
 pubDate: 2026-08-18
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [Wire EDM, Titanium Wire EDM, Bearing Seats, Precision Features, Titanium Machining, Aerospace Bearings]
 coverImage: /uploads/blog-titanium-wire-edm-bearing-seats-cover.jpg
 coverImageAlt: Titanium wire edm bearing seats

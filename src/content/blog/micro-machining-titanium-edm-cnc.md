@@ -4,7 +4,7 @@ slug: micro-machining-titanium-edm-cnc
 description: "An engineering overview of micro machining methods for titanium components — CNC micro milling and micro turning capabilities, micro EDM for high-aspect-ratio features, process selection for micro features, surface integrity at the microscale, and practical limitations of each method for aerospace, medical, and precision industrial applications."
 pubDate: 2026-08-18
 author: Boze Titanium Manufacturing Center
-category: Applications and Processes
+category: Machining Processes
 tags: [Micro Machining, Titanium Micro Machining, Micro EDM, Micro CNC, Precision Manufacturing, Micro Features]
 coverImage: /uploads/blog-micro-machining-titanium-edm-cnc-cover.jpg
 coverImageAlt: Micro-machined titanium component with precision features under magnification

@@ -4,7 +4,7 @@ slug: titanium-grade-chart-classification-guide
 description: "A systematic explanation of the titanium grade chart — how CP grades (1–4), alpha-beta alloys (Grade 5, Grade 23, Grade 9), near-alpha alloys (Ti-6242), and beta alloys (Ti-1023, Beta-C) are classified by composition, microstructure, mechanical properties, and operating temperature range. Selection logic and procurement implications of each category."
 pubDate: 2026-08-17
 author: Boze Titanium Manufacturing Center
-category: Materials Engineering
+category: Materials & Grades
 tags: [Titanium Grades, Titanium Grade Chart, CP Titanium, Ti-6Al-4V, Near-Alpha Titanium, Beta Titanium, Material Classification, Aerospace Materials]
 coverImage: /uploads/blog-titanium-grade-chart-cover.jpg
 coverImageAlt: Titanium grade classification chart showing CP, alpha-beta, near-alpha, and beta alloy categories
