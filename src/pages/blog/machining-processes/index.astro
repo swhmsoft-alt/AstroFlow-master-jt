@@ -132,7 +132,7 @@ const pageDescription = `${meta.lede} Browse ${posts.length} engineering article
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">All {posts.length} articles in this cluster</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {recent.slice(0, 12).map((post) => (
+        {recent.map((post) => (
           <a
             href={localizePath(`/blog/${post.slug}`, lang)}
             class="group rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col"
@@ -158,7 +158,6 @@ const pageDescription = `${meta.lede} Browse ${posts.length} engineering article
           </a>
         ))}
       </div>
-      }
       </div>
     </div>
   </section>

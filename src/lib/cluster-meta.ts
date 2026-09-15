@@ -37,6 +37,7 @@ export interface ClusterMeta {
   featured: string | null;
   adjacent: ClusterSlug[];
   icon: string;
+  subTags: Array<{ tag: string; label: string }>;
 }
 
 export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
@@ -50,6 +51,14 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['machining-processes', 'quality-standards'],
     icon:
       'M9 3v2m0 0a3 3 0 00-3 3v1a3 3 0 003 3m0-7a3 3 0 013 3v1a3 3 0 01-3 3m0-7v7m6-7v2m0 0a3 3 0 013 3v1a3 3 0 01-3 3m0-7v7M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  subTags: [
+    { tag: 'Material Selection', label: 'How to choose the right titanium grade' },
+    { tag: 'Ti-6Al-4V', label: 'Grade 5 (Ti-6Al-4V) applications and parameters' },
+    { tag: 'Titanium Grades', label: 'Other grades (Beta, near-\u03b1, specialty)' },
+    { tag: 'Grade 23 Titanium', label: 'Ti-6Al-4V ELI for medical & aerospace' },
+    { tag: 'CP Titanium', label: 'Commercially pure grades (1-4)' },
+    { tag: 'ASTM Standards', label: 'ASTM/ASME/AMS standards reference' },
+  ],
   },
   {
     slug: 'machining-processes',
@@ -61,6 +70,13 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['materials-grades', 'problems-solutions'],
     icon:
       'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+  subTags: [
+    { tag: 'Titanium Machining', label: 'Titanium-specific cutting parameters' },
+    { tag: 'Process Selection', label: 'Choosing the right CNC process' },
+    { tag: 'Cutting Parameters', label: 'Speed, feed, and chip load ranges' },
+    { tag: 'Aerospace Machining', label: 'Aerospace-grade titanium machining' },
+    { tag: 'EDM', label: 'Wire and sinker EDM for titanium' },
+  ],
   },
   {
     slug: 'design-dfm',
@@ -72,6 +88,12 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['problems-solutions', 'quality-standards'],
     icon:
       'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01',
+  subTags: [
+    { tag: 'DFM', label: 'Design for manufacturability rules' },
+    { tag: 'Titanium CNC', label: 'CNC-specific DFM for titanium' },
+    { tag: 'Precision Machining', label: 'Tolerance stack and GD&T for titanium' },
+    { tag: 'GD&T', label: 'Geometric dimensioning and tolerancing' },
+  ],
   },
   {
     slug: 'problems-solutions',
@@ -83,6 +105,13 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['machining-processes', 'design-dfm'],
     icon:
       'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z',
+  subTags: [
+    { tag: 'Titanium CNC Machining', label: 'Troubleshooting CNC machining problems' },
+    { tag: 'Manufacturing Engineering', label: 'Process engineering and root-cause analysis' },
+    { tag: 'Cutting Tools', label: 'Tool wear, breakage, and selection' },
+    { tag: 'Tool Wear', label: 'Tool life extension strategies' },
+    { tag: 'Precision Machining', label: 'Achieving tight tolerances in titanium' },
+  ],
   },
   {
     slug: 'quality-standards',
@@ -94,6 +123,13 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['materials-grades', 'applications-industries'],
     icon:
       'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  subTags: [
+    { tag: 'ASTM Standards', label: 'ASTM/ASME/AMS material standards' },
+    { tag: 'Aerospace Quality', label: 'AS9100 and aerospace compliance' },
+    { tag: 'Supplier Qualification', label: 'AS9100 / ISO 13485 qualification' },
+    { tag: 'AS9100D', label: 'AS9100D quality management' },
+    { tag: 'Traceability', label: 'Material and process traceability' },
+  ],
   },
   {
     slug: 'applications-industries',
@@ -105,6 +141,13 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['procurement-services', 'quality-standards'],
     icon:
       'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  subTags: [
+    { tag: 'Grade 23 Titanium', label: 'Implant-grade ELI applications' },
+    { tag: 'ASTM F136', label: 'ASTM F136 surgical implant standard' },
+    { tag: 'ISO 13485', label: 'ISO 13485 medical device QMS' },
+    { tag: 'Titanium Medical Implants', label: 'Medical implant case studies' },
+    { tag: 'Precision Machining', label: 'Precision applications across industries' },
+  ],
   },
   {
     slug: 'procurement-services',
@@ -116,6 +159,12 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     adjacent: ['applications-industries', 'quality-standards'],
     icon:
       'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+  subTags: [
+    { tag: 'Procurement', label: 'RFQ preparation and procurement workflow' },
+    { tag: 'Aerospace Sourcing', label: 'Aerospace supply chain qualification' },
+    { tag: 'Supplier Qualification', label: 'Supplier audit and selection' },
+    { tag: 'Titanium CNC Machining China', label: 'China titanium sourcing' },
+  ],
   },
 ]);
 
