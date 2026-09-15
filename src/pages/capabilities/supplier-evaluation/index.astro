@@ -1,0 +1,140 @@
+---
+// Supplier Evaluation sub-page — child of /capabilities/ (D2).
+// Per Hub-Mapping-First SOP: migrated from root-level.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../../components/landing/TrustBadges.astro';
+import QualityControl from '../../../components/landing/QualityControl.astro';
+import Applications from '../../../components/landing/Applications.astro';
+
+const pageTitle = 'Titanium Supplier Evaluation Guide & Self-Assessment | Boze Capabilities';
+const pageDescription = 'Evaluate titanium CNC machining suppliers against a 7-dimension framework with a 25-point scorecard and self-disclosure Q&A. The Supplier Evaluation sub-page under /capabilities/.';
+const canonicalUrl = 'https://cnc.bozemetal.com/capabilities/supplier-evaluation/';
+
+const evaluationSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [{
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: 'Titanium Supplier Evaluation & Self-Assessment Service',
+    serviceType: 'Supplier Pre-Qualification & Audit Support',
+    provider: { '@type': 'ManufacturingPlant', '@id': 'https://www.bozemetal.com/#organization', name: 'Baoji Boze Metal Products Co., Ltd.', url: 'https://www.bozemetal.com', address: { '@type': 'PostalAddress', addressLocality: 'Baoji', addressRegion: 'Shaanxi', addressCountry: 'CN' } },
+    description: 'Titanium supplier evaluation hub: 7-dimension assessment framework (QMS, Material, Capacity, Inspection, Documentation, Financial, Regulatory), 25-point scorecard, and self-disclosure Q&A.',
+    areaServed: 'Worldwide',
+    knowsAbout: [
+      { '@type': 'Thing', name: 'AS9100D Aerospace Quality Management System' },
+      { '@type': 'Thing', name: 'ISO 13485:2016 Medical Device Quality Management' },
+      { '@type': 'Thing', name: 'ASTM B348 / F136 Titanium Material Standards' },
+      { '@type': 'Thing', name: 'EN 10204 Type 3.1 Mill Test Certification' },
+      { '@type': 'Thing', name: 'DFARS Specialty-Metal Compliance' },
+      { '@type': 'Thing', name: 'First Article Inspection Report (AS9102)' },
+      { '@type': 'Thing', name: 'CMM Inspection and ISO 10360 Metrology' },
+    ],
+  }],
+};
+
+// 7 dimensions + scorecard + triage + honesty (③ 结构化主体)
+const evalDimensions = [
+  { code: 'D1', name: 'Quality Management System', weight: 20 },
+  { code: 'D2', name: 'Material Traceability & Standards', weight: 15 },
+  { code: 'D3', name: 'Manufacturing Capacity & Capability', weight: 15 },
+  { code: 'D4', name: 'Inspection & Metrology', weight: 15 },
+  { code: 'D5', name: 'Documentation & Reporting', weight: 10 },
+  { code: 'D6', name: 'Financial Stability & Supply-Chain Security', weight: 15 },
+  { code: 'D7', name: 'Regulatory & Defense Compliance', weight: 10 },
+];
+
+const scorecardSample = [
+  { dim: 'D1', criterion: 'Active AS9100D certificate issued by accredited CB?', points: 5 },
+  { dim: 'D1', criterion: 'Documented QMS scope statement & internal audit program?', points: 4 },
+  { dim: 'D1', criterion: 'Active ISO 13485:2016 certificate for medical programs?', points: 4 },
+  { dim: 'D2', criterion: 'Mill Test Certificate per heat (EN 10204 3.1)?', points: 4 },
+  { dim: 'D3', criterion: '≥100 CNC machining centers with titanium-specific experience?', points: 3 },
+  { dim: 'D3', criterion: 'Tolerances to ±0.005 mm (aerospace-grade)?', points: 3 },
+  { dim: 'D4', criterion: 'In-house CMM (Zeiss / Hexagon / equivalent)?', points: 4 },
+  { dim: 'D5', criterion: 'Certificate of Conformance with every shipment?', points: 2 },
+  { dim: 'D6', criterion: 'Audited financial statements available under NDA?', points: 4 },
+  { dim: 'D7', criterion: 'DFARS-compliant material sourcing for US defense?', points: 3 },
+];
+
+const triageSignals = [
+  { color: '🟢', text: 'QMS certificate scope statement lists "titanium machining" specifically', meaning: 'Strong — scope-specific certificates indicate real QMS coverage' },
+  { color: '🟢', text: 'MTR issued by upstream mill (not by the machine shop itself)', meaning: 'Strong — independent mill certification per EN 10204 §4' },
+  { color: '🟡', text: 'MTR issued by the machine shop only (no separate mill 3.1)', meaning: 'Caution — should be mill-side 3.1, shop-issued CoC is supplementary' },
+  { color: '🟡', text: '"NADCAP-certified" claim without naming the special process', meaning: 'Caution — NADCAP is per-process (HT, NDT, etc.)' },
+  { color: '🔴', text: 'No certificate available for customer audit, even under NDA', meaning: 'Walk away — indicates fabricated credentials' },
+  { color: '🔴', text: '"We can do anything" without specifying capability limits', meaning: 'Walk away — usually unmeasured capability or hidden outsourcing' },
+];
+
+const whereWeDontCompete = [
+  { topic: 'Class III implantable device design responsibility', reason: 'We manufacture to drawing under ISO 13485, but we are not a Class III design house and do not hold 510(k) / CE MDR Class III submission authority.' },
+  { topic: 'In-house NADCAP-accredited heat treatment or NDT', reason: 'Heat treatment and NDT are subcontracted to NADCAP-accredited partner labs; we coordinate the testing and include their reports in the FAIR package.' },
+  { topic: 'Direct ITAR-restricted part manufacture', reason: 'For ITAR-controlled articles we work with US-domiciled distributors; direct ITAR part manufacture is not our current scope.' },
+  { topic: 'CMMC Level 2 certification today', reason: 'We are aligning with NIST 800-171 controls for CUI handling. Full CMMC L2 certification is in progress (target 2026 Q4).' },
+];
+
+const evalFaqs = [
+  { question: 'How should I structure a titanium CNC machining supplier evaluation?', answer: 'Use a 7-dimension framework: D1 Quality Management, D2 Material Traceability, D3 Capacity & Capability, D4 Inspection & Metrology, D5 Documentation, D6 Financial Stability & Supply-Chain Security, D7 Regulatory & Defense Compliance. Weight D1 highest (20%), score on 100-point scale across 20-25 criteria.' },
+  { question: 'What AS9100D scope-statement wording should I look for?', answer: 'The certificate scope must explicitly include "titanium" or "titanium alloys" — not just "CNC machining" or "aerospace machining". Generic scope indicates generic certification, not titanium-specific QMS coverage.' },
+  { question: 'How do I verify a supplier\'s EN 10204 3.1 mill test certificate?', answer: 'Ask for a sample 3.1. Verify the issuing party (must be the upstream mill, not the machine shop), the mill heat number matches your lot number, chemical composition is within ASTM B348/F136 limits, and mechanicals match ASTM E8/E18.' },
+  { question: 'What is a realistic tolerance capability for titanium 5-axis machining?', answer: '±0.005 mm (0.0002 in) on critical features is aerospace-grade. ±0.01 mm is typical for general aerospace. Beyond ±0.005 mm expect process review and additional cost. Ask for CMM uncertainty budgets per ISO 10360-2 to verify the claim.' },
+  { question: 'What is the difference between EN 10204 3.1 and 3.2 certificates?', answer: '3.1 is issued by the mill independent of manufacturing — standard for titanium aerospace. 3.2 is co-signed by mill and independent third-party — higher-criticality applications. Shop-issued CoC is NOT a 3.1 substitute.' },
+  { question: 'How do I check a supplier\'s supply-chain security for sanctions compliance?', answer: 'Ask for OFAC / EU sanctions screening procedure, annual supplier audit log, sample compliance letter. Verify they screen both mill and sub-tiers. For US defense, also request DFARS specialty-metal compliance letter confirming mill source for each heat number.' },
+  { question: 'What questions should I ask a titanium supplier on a site visit?', answer: 'Tour CNC floor + metrology lab, QMS scope statement + recent audit summary, sample MTR, sample FAIR package, financial summary under NDA, qualified mill sources list, customer references in your industry, known exclusions (Class III, NADCAP, ITAR — anything they cannot do).' },
+  { question: 'How many CNC machining centers does a serious titanium supplier need?', answer: 'For aerospace and medical titanium work, ≥100 CNC machining centers is the typical threshold. Below 50 centers you risk capacity issues during peak demand. Above 200 indicates a tier-1 supplier with diversified program mix.' },
+];
+
+const siblingCapabilities = [
+  { name: 'Compliance', href: '/capabilities/compliance/', desc: 'AS9100D / ISO 13485 / ASTM / EN 10204 3.1 / DFARS scope' },
+  { name: 'Lead Time', href: '/capabilities/lead-time/', desc: 'Sample / prototype / production tier breakdown' },
+  { name: 'Logistics & Shipping', href: '/capabilities/logistics/', desc: 'Incoterms + packaging + freight routing' },
+  { name: 'Parent Hub', href: '/capabilities/', desc: 'All 6 capability dimensions at a glance' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="Titanium Supplier Evaluation & Self-Assessment Service"
+  serviceDescription="Titanium supplier evaluation hub with 7-dimension framework, 25-point scorecard, and self-disclosure Q&A."
+  serviceCategory="Supplier Pre-Qualification & Audit Support"
+  faqItems={evalFaqs}
+  faqName="Titanium Supplier Evaluation — Frequently Asked Questions"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(evaluationSchema)} />
+
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm">
+        <li><a href="/">Home</a></li>
+        <li>›</li>
+        <li><a href="/capabilities/">Capabilities</a></li>
+        <li>›</li>
+        <li><span class="font-semibold">Supplier Evaluation</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Titanium Supplier Evaluation Guide & Self-Assessment"
+    badge="Sub-page of Capabilities Hub · D2 'Who can' dimension"
+    subtitle="Evaluate titanium CNC machining suppliers against a 7-dimension framework (QMS / Material / Capacity / Inspection / Documentation / Financial / Regulatory) with a 25-point scorecard and red/yellow/green triage signals — plus self-disclosure Q&A."
+    keyMetrics={[
+      { value: '7 Dimensions', label: 'Framework' },
+      { value: '25 Points', label: 'Scorecard' },
+      { value: 'AS9100D / ISO 13485', label: 'Certifications' },
+      { value: '120+ Centers', label: 'Capacity' },
+    ]}
+    entityChips={['AS9100D', 'ISO 13485', 'ASTM B348', 'EN 10204 3.1', 'DFARS', 'FAIR', 'CMM']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Submit Supplier for Evaluation Review</a>
+      <a href="/capabilities/" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">View All Capabilities</a>
+    </div>
+  </SubpageHero>
+
+  <TrustBadges />
+
+

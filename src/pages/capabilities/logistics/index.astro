@@ -1,0 +1,217 @@
+---
+// Logistics & Shipping sub-page — child of /capabilities/ (D2 / D4).
+// Per Hub-Mapping-First SOP §2: Logistics maps to D4 (How long).
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../../components/landing/TrustBadges.astro';
+import QualityControl from '../../../components/landing/QualityControl.astro';
+import Applications from '../../../components/landing/Applications.astro';
+
+const pageTitle = 'Titanium Logistics & Shipping | Incoterms, Packaging, Freight | Boze Capabilities';
+const pageDescription = 'Titanium CNC machined part logistics: Incoterms (EXW / FOB / CIF / DAP / DDP), packaging (VCI + custom crating), freight routing (sea / air / courier), customs documentation.';
+const canonicalUrl = 'https://cnc.bozemetal.com/capabilities/logistics/';
+
+const incotermRows = [
+  { term: 'EXW', name: 'Ex Works', seller: 'Make available at our facility', buyer: 'All transport, customs, insurance', use: 'Domestic China orders' },
+  { term: 'FCA', name: 'Free Carrier', seller: 'Hand to carrier at named place', buyer: 'Main carriage, customs, insurance', use: 'Buyer has export agent' },
+  { term: 'FOB', name: 'Free On Board', seller: 'Loaded on vessel at port', buyer: 'Main carriage, insurance from port', use: 'Default for sea freight international' },
+  { term: 'CIF', name: 'Cost, Insurance, Freight', seller: 'Goods + insurance + freight to named port', buyer: 'From destination port onward', use: 'Common for EU / Japan' },
+  { term: 'DAP', name: 'Delivered At Place', seller: 'To buyer\'s named place (not unloaded)', buyer: 'Unloading + import customs', use: 'US defense programs' },
+  { term: 'DDP', name: 'Delivered Duty Paid', seller: 'To buyer\'s named place, all duties paid', buyer: 'Nothing', use: 'Hands-off delivery' },
+];
+
+const packagingOptions = [
+  { method: 'VCI anti-rust polybag + bubble wrap', suitable: 'Stock material + simple parts', notes: 'Standard for sample / prototype orders' },
+  { method: 'Custom foam-lined carton', suitable: 'Small machined parts ≤1 kg each', notes: 'Default for prototype runs' },
+  { method: 'Heat-treated wooden crate (ISPM-15)', suitable: 'Production parts, large or heavy', notes: 'Required for sea freight international' },
+  { method: 'VCI + vacuum-sealed alufoil + desiccant', suitable: 'Medical / aerospace, long storage', notes: 'For parts requiring 12+ month shelf life' },
+  { method: 'Customer-supplied fixture / rack', suitable: 'Repeat-production with reusable tooling', notes: 'Customer provides; we return empty for reuse' },
+];
+
+const logisticsFaqs = [
+  { question: 'What Incoterms do you support for international titanium orders?', answer: 'EXW, FCA, FOB, CIF, DAP, DDP per Incoterms 2020. FOB Shanghai is the default for sea freight. DAP is most common for US/EU defense programs; DDP is available on request with premium pricing.' },
+  { question: 'How do you package titanium machined parts for international shipping?', answer: 'Standard packaging: VCI anti-rust polybag + bubble wrap for samples. Production orders use ISPM-15 heat-treated wooden crates with foam lining. Medical/aerospace parts add vacuum sealing and desiccant.' },
+  { question: 'What is the typical air freight transit time from China?', answer: '3-5 business days to US/EU door-to-door. Sea freight: 18-25 days to US West Coast, 25-32 days to US East Coast / EU. Express courier (DHL/FedEx): 2-4 days for small urgent shipments.' },
+  { question: 'Do you handle US import customs and tariffs?', answer: 'Under DAP terms, buyer handles import. Under DDP terms, we pay all duties and tariffs (typically 3-5% for HS code 8108 titanium). For US DFARS orders, we provide the specialty-metal compliance letter required for customs clearance.' },
+  { question: 'Can you ship titanium parts under specific temperature or humidity control?', answer: 'Yes. For medical implants or aerospace flight parts, we provide vacuum-sealed packaging with desiccant and temperature data loggers on request. Adds 3-5 BD to packaging lead time.' },
+  { question: 'What documents accompany international titanium shipments?', answer: 'Commercial Invoice, Packing List, MTR (EN 10204 3.1), CoC, FAIR if applicable, Certificate of Origin (China), HS code classification. For US: DFARS specialty-metal compliance letter. For EU: REACH SVHC declaration if requested.' },
+];
+
+const siblingCapabilities = [
+  { name: 'Compliance', href: '/capabilities/compliance/', desc: 'AS9100D / ISO 13485 / ASTM / DFARS scope' },
+  { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/', desc: '7-dim framework + 25-point scorecard' },
+  { name: 'Lead Time', href: '/capabilities/lead-time/', desc: 'Sample / prototype / production tier breakdown' },
+  { name: 'Parent Hub', href: '/capabilities/', desc: 'All 6 capability dimensions at a glance' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="Titanium Logistics & Shipping Services"
+  serviceDescription="Titanium CNC machined part logistics: Incoterms, packaging, freight routing, customs documentation."
+  serviceCategory="International Logistics & Shipping for Titanium Parts"
+  faqItems={logisticsFaqs}
+  faqName="Titanium Logistics & Shipping — Frequently Asked Questions"
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: 'Titanium Logistics & Shipping Services',
+      serviceType: 'International Freight Forwarding for Titanium Parts',
+      provider: { '@type': 'ManufacturingPlant', '@id': 'https://www.bozemetal.com/#organization', name: 'Baoji Boze Metal Products Co., Ltd.', url: 'https://www.bozemetal.com', address: { '@type': 'PostalAddress', addressLocality: 'Baoji', addressRegion: 'Shaanxi', addressCountry: 'CN' } },
+      description: 'International logistics for titanium CNC parts: Incoterms 2020 (EXW / FCA / FOB / CIF / DAP / DDP), packaging (VCI / wooden crate / vacuum), freight (sea / air / courier), customs documentation, tariff handling.',
+      areaServed: 'Worldwide',
+      knowsAbout: [
+        { '@type': 'Thing', name: 'Incoterms 2020' },
+        { '@type': 'Thing', name: 'ISPM-15 Wood Crating for Sea Freight' },
+        { '@type': 'Thing', name: 'VCI Anti-Rust Packaging' },
+        { '@type': 'Thing', name: 'DFARS Customs Clearance Documents' },
+        { '@type': 'Thing', name: 'REACH SVHC Declaration' },
+      ],
+    }],
+  })} />
+
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm">
+        <li><a href="/">Home</a></li>
+        <li>›</li>
+        <li><a href="/capabilities/">Capabilities</a></li>
+        <li>›</li>
+        <li><span class="font-semibold">Logistics & Shipping</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Titanium Logistics & Shipping"
+    badge="Sub-page of Capabilities Hub · D4 'How long' dimension"
+    subtitle="International logistics for titanium CNC parts: Incoterms 2020 (EXW / FCA / FOB / CIF / DAP / DDP), packaging (VCI + ISPM-15 wood crate + vacuum seal), freight routing (sea / air / courier), customs documentation, tariff handling."
+    keyMetrics={[
+      { value: '6', label: 'Incoterms 2020' },
+      { value: '3-5 BD', label: 'Air Freight' },
+      { value: '18-32 BD', label: 'Sea Freight' },
+      { value: 'DFARS / REACH', label: 'Customs Docs' },
+    ]}
+    entityChips={['Incoterms 2020', 'VCI Packaging', 'ISPM-15 Wood Crating', 'Air Freight', 'Sea Freight', 'DFARS Docs']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Request Logistics Quote</a>
+      <a href="/capabilities/" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">View All Capabilities</a>
+    </div>
+  </SubpageHero>
+
+  <TrustBadges />
+
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary);">Incoterms 2020</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Six Incoterms for Titanium Shipments</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          We support the six most common Incoterms 2020. Default: FOB Shanghai for sea freight; DAP for air freight.
+        </p>
+      </header>
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <tr>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Term</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Name</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Seller</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Buyer</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              incotermRows.map((r, i) => (
+                <tr style={i % 2 === 1 ? 'background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));' : ''}>
+                  <td class="px-4 py-3 font-bold" style="color: var(--theme-primary);">{r.term}</td>
+                  <td class="px-4 py-3 font-semibold" style="color: var(--theme-text);">{r.name}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.seller}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.buyer}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.use}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary);">Packaging</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Five Standard Packaging Methods</h2>
+      </header>
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <tr>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Method</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Suitable For</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              packagingOptions.map((p, i) => (
+                <tr style={i % 2 === 1 ? 'background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));' : ''}>
+                  <td class="px-4 py-3 font-semibold" style="color: var(--theme-text);">{p.method}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p.suitable}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p.notes}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <QualityControl />
+  <Applications />
+
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary);">Other Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Explore the Other 5 Capability Dimensions</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          siblingCapabilities.map((s) => (
+            <a href={s.href} class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{s.name}</h3>
+              <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.desc}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden">
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Request a Logistics Quote</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Tell us your destination and Incoterm preference, and we will return a landed-cost estimate including freight, customs, and packaging.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Request Logistics Quote</a>
+          <a href="https://wa.me/8618623919905" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

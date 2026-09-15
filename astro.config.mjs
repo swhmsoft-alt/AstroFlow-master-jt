@@ -77,6 +77,11 @@ export default defineConfig({
     '/blog/category/design-engineering/': '/blog/design-dfm/',
     '/blog/category/titanium-cnc-machining-services/': '/blog/procurement-services/',
     '/blog/category/case-studies/': '/blog/applications-industries/',
+
+  // BSI Migration (2026-09-15) — Phase A/B migrated from root to /capabilities/
+  // per Hub-Mapping-First SOP. 301 redirects preserve SEO authority.
+  '/titanium-compliance-and-certifications/': '/capabilities/compliance/',
+  '/titanium-supplier-evaluation/': '/capabilities/supplier-evaluation/',
   },
   markdown: {
     remarkPlugins: [remarkMath],
@@ -104,6 +109,28 @@ export default defineConfig({
           },
           "5-Axis Machining": {
             "href": "/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
+          },
+          // BSI Phase F · Buyer Search Intelligence · 5-Entry rule (keywordMap)
+          "AS9100D compliance hub": {
+            "href": "/capabilities/compliance/"
+          },
+          "AS9100D titanium compliance": {
+            "href": "/capabilities/compliance/"
+          },
+          "titanium supplier evaluation": {
+            "href": "/capabilities/supplier-evaluation/"
+          },
+          "titanium lead time": {
+            "href": "/capabilities/lead-time/"
+          },
+          "titanium CNC lead time": {
+            "href": "/capabilities/lead-time/"
+          },
+          "titanium logistics": {
+            "href": "/capabilities/logistics/"
+          },
+          "Incoterms for titanium shipping": {
+            "href": "/capabilities/logistics/"
           },
           "Aerospace & Defense": {
             "href": "/industries/aerospace/"

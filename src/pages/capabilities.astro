@@ -109,4 +109,64 @@ const t = useTranslations(currentLang);
 
   <!-- Audience guidance -->
   <AudienceHub industry="capabilities" />
+
+  <!-- ================= BSI 6-Dimension Capability Matrix =================
+       Buyer Search Intelligence · 12-class canonical mapping per
+       Hub-Mapping-First SOP. Inline cards give top-nav, footer, and
+       parent-hub entry to all 4 new sub-pages. -->
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Capability Dimensions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Six Dimensions of Our Titanium Machining Capability
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Procurement teams evaluate suppliers across six decision dimensions. The four sub-pages below are deep-dives into the most-asked dimensions; the two existing components above cover capacity and quality on this page.
+        </p>
+      </header>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">Compliance</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Compliance & Certifications</h3>
+          <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">AS9100D / ISO 13485 / ASTM / EN 10204 3.1 / DFARS scope, 8 active compliance areas, document deliverables.</p>
+          <a href="/capabilities/compliance/" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--theme-primary);">Explore Compliance Hub →</a>
+        </article>
+
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">Supplier Evaluation</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Supplier Evaluation</h3>
+          <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">7-dimension framework + 25-point scorecard + 9 Red/Yellow/Green triage signals + 8 self-disclosure Q&A.</p>
+          <a href="/capabilities/supplier-evaluation/" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--theme-primary);">Apply the 7-Dim Framework →</a>
+        </article>
+
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">Lead Time</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Lead Time Guide</h3>
+          <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Sample (3-5 BD) / prototype (10-15 BD) / small-batch (15-25 BD) / production (25-45 BD) tier breakdown + 6 influence factors.</p>
+          <a href="/capabilities/lead-time/" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--theme-primary);">View Lead Time Tiers →</a>
+        </article>
+
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">Logistics</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Logistics & Shipping</h3>
+          <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Incoterms 2020 (EXW / FCA / FOB / CIF / DAP / DDP) + 5 packaging methods + freight + DFARS / REACH docs.</p>
+          <a href="/capabilities/logistics/" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style="color: var(--theme-primary);">View Logistics Options →</a>
+        </article>
+
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Capacity</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Capacity Dashboard</h3>
+          <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">120+ CNC machining centers, 5,000+ pcs/month titanium output, 16+ years experience — see Capacity Dashboard section above.</p>
+        </article>
+
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Quality</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Quality & Certifications</h3>
+          <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">CMM inspection, FAIR per AS9102, ISO 10360 metrology — see Quality & Certifications section above.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

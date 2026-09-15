@@ -167,6 +167,32 @@ export const NAVIGATION: NavItem[] = [
     ],
   },
   {
+    name: 'Capabilities',
+    href: '/capabilities',
+    children: [
+      {
+        heading: 'Capabilities Hub',
+        items: [
+          { name: 'All 6 Capability Dimensions', href: '/capabilities/' },
+        ],
+      },
+      {
+        heading: 'Compliance & Evaluation',
+        items: [
+          { name: 'Compliance & Certifications', href: '/capabilities/compliance/' },
+          { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/' },
+        ],
+      },
+      {
+        heading: 'Delivery & Logistics',
+        items: [
+          { name: 'Lead Time Guide', href: '/capabilities/lead-time/' },
+          { name: 'Logistics & Shipping', href: '/capabilities/logistics/' },
+        ],
+      },
+    ],
+  },
+  {
     name: 'Resources',
     href: '/resources',
     children: [

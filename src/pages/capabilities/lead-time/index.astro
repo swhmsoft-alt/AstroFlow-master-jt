@@ -1,0 +1,185 @@
+---
+// Lead Time sub-page — child of /capabilities/ (D2 / D4).
+// Per Hub-Mapping-First SOP §2: Lead Time maps to D4 (How long)
+// under the Capabilities master hub.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../../components/landing/TrustBadges.astro';
+import QualityControl from '../../../components/landing/QualityControl.astro';
+import Applications from '../../../components/landing/Applications.astro';
+
+const pageTitle = 'Titanium Lead Time Guide | Sample, Prototype & Production Tiers | Boze Capabilities';
+const pageDescription = 'Titanium machining lead time breakdown across 4 production tiers: sample (3-5 BD), prototype (10-15 BD), small-batch (15-25 BD), production (25-45 BD) — with influence factors and timeline compression options.';
+const canonicalUrl = 'https://cnc.bozemetal.com/capabilities/lead-time/';
+
+const leadTimeTiers = [
+  { tier: 'Sample / Prototype', qty: '1-5 pcs', baseline: '3-5 business days', factors: 'Stocked material availability, complexity, post-processing (passivation/anodizing)', compressTo: 'Express 48h available for ≤3 simple parts' },
+  { tier: 'Prototype Run', qty: '5-25 pcs', baseline: '10-15 business days', factors: 'Same as sample plus setup time, inspection plan, FAIR preparation', compressTo: '5-8 BD with dedicated 5-axis cell reservation' },
+  { tier: 'Small-Batch Production', qty: '25-200 pcs', baseline: '15-25 business days', factors: 'Tooling availability, fixturing complexity, heat-treat/NDT subcontractor scheduling', compressTo: '12-18 BD with priority scheduling surcharge' },
+  { tier: 'Production Run', qty: '200+ pcs', baseline: '25-45 business days', factors: 'Mill heat batch size, capacity reservation, downstream finishing chain', compressTo: '20-30 BD with capacity reservation ≥8 weeks ahead' },
+];
+
+const leadTimeFactors = [
+  { factor: 'Material stock & mill lead time', impact: 'High', note: 'Specialty alloys (Grade 23, Grade 12) may require 4-8 weeks from mill; standard Grade 5 is often stocked.' },
+  { factor: 'Tolerance class', impact: 'High', note: 'Tighter than ±0.01 mm requires multi-pass machining + CMM verification loops.' },
+  { factor: 'Heat treatment subcontracting', impact: 'Medium', note: 'NADCAP-accredited heat treat adds 5-10 BD; solution + aging adds another 3-5 BD.' },
+  { factor: 'CMM / NDT inspection', impact: 'Medium', note: 'Standard CMM 1-2 BD; NADCAP-accredited NDT (penetrant/ultrasonic) 5-7 BD.' },
+  { factor: 'Surface treatment chain', impact: 'Medium', note: 'Passivation (ASTM F86) 2-3 BD; anodizing Type II/III 3-5 BD; specialty coatings longer.' },
+  { factor: 'DFARS / REACH documentation', impact: 'Low', note: 'Specialty-metal compliance letter + SVHC declaration: 1-2 BD once requested.' },
+];
+
+const leadTimeFaqs = [
+  { question: 'What is the typical lead time for a titanium CNC machined sample?', answer: '3-5 business days for 1-5 simple parts using stocked Grade 5 / Grade 2 material. Express 48-hour turnaround is available for ≤3 parts with simplified geometry.' },
+  { question: 'How long does titanium prototype production take?', answer: '10-15 business days for 5-25 prototype pieces. This includes setup time, in-process inspection, and FAIR preparation per AS9102.' },
+  { question: 'What factors most affect titanium machining lead time?', answer: 'Top factors: material stock and mill lead time (especially specialty alloys), tolerance class, heat treatment subcontracting, NDT inspection, and surface treatment chain length.' },
+  { question: 'Can you compress standard lead time for urgent aerospace programs?', answer: 'Yes. Capacity reservation ≥8 weeks ahead can compress production lead time by 30-50%. We also offer priority scheduling surcharge for compressed timeline requests.' },
+  { question: 'How does titanium grade affect lead time?', answer: 'Standard Grade 2 / Grade 5 are usually stocked (no mill delay). Grade 23 (Ti-6Al-4V ELI) and Grade 12 typically require 4-8 weeks from mill for special batches.' },
+  { question: 'What about re-order lead time once a part is in production?', answer: 'Re-orders for in-production parts are typically 15-25 BD (skip setup). Reserved capacity customers receive priority scheduling on agreed cadence.' },
+];
+
+const siblingCapabilities = [
+  { name: 'Compliance', href: '/capabilities/compliance/', desc: 'AS9100D / ISO 13485 / ASTM / DFARS scope' },
+  { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/', desc: '7-dim framework + 25-point scorecard' },
+  { name: 'Logistics & Shipping', href: '/capabilities/logistics/', desc: 'Incoterms + packaging + freight routing' },
+  { name: 'Parent Hub', href: '/capabilities/', desc: 'All 6 capability dimensions at a glance' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="Titanium Lead Time & Delivery Planning"
+  serviceDescription="Titanium CNC machining lead time breakdown across sample, prototype, small-batch, and production tiers — with influence factors and timeline compression options."
+  serviceCategory="Delivery Time Planning & Capacity Reservation"
+  faqItems={leadTimeFaqs}
+  faqName="Titanium Lead Time — Frequently Asked Questions"
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [{
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: 'Titanium Lead Time & Delivery Planning',
+      serviceType: 'B2B Lead Time Planning for Titanium CNC Machining',
+      provider: { '@type': 'ManufacturingPlant', '@id': 'https://www.bozemetal.com/#organization', name: 'Baoji Boze Metal Products Co., Ltd.', url: 'https://www.bozemetal.com', address: { '@type': 'PostalAddress', addressLocality: 'Baoji', addressRegion: 'Shaanxi', addressCountry: 'CN' } },
+      description: 'Titanium machining lead time breakdown across 4 production tiers: sample (3-5 BD), prototype (10-15 BD), small-batch (15-25 BD), production (25-45 BD).',
+      areaServed: 'Worldwide',
+      knowsAbout: [
+        { '@type': 'Thing', name: 'Titanium CNC Machining Lead Time' },
+        { '@type': 'Thing', name: 'Aerospace Capacity Reservation' },
+        { '@type': 'Thing', name: 'NADCAP Heat Treatment Subcontracting' },
+        { '@type': 'Thing', name: 'Express Manufacturing 48-hour Turnaround' },
+      ],
+    }],
+  })} />
+
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm">
+        <li><a href="/">Home</a></li>
+        <li>›</li>
+        <li><a href="/capabilities/">Capabilities</a></li>
+        <li>›</li>
+        <li><span class="font-semibold">Lead Time</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Titanium Lead Time Guide"
+    badge="Sub-page of Capabilities Hub · D4 'How long' dimension"
+    subtitle="Lead time breakdown across 4 production tiers — sample (3-5 BD), prototype (10-15 BD), small-batch (15-25 BD), production (25-45 BD) — with influence factors and how to compress timelines via capacity reservation."
+    keyMetrics={[
+      { value: '3-5 BD', label: 'Sample' },
+      { value: '10-15 BD', label: 'Prototype' },
+      { value: '15-25 BD', label: 'Small-Batch' },
+      { value: '25-45 BD', label: 'Production' },
+    ]}
+    entityChips={['Lead Time Tiers', 'Capacity Reservation', 'Heat Treatment', 'NDT Inspection', 'Surface Treatment']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Submit Drawings for Lead Time Quote</a>
+      <a href="/capabilities/" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">View All Capabilities</a>
+    </div>
+  </SubpageHero>
+
+  <TrustBadges />
+
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary);">Lead Time Tiers</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Four Production Tiers, Four Time Horizons</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Baseline lead times assume stocked material, no special processes, and standard ±0.05 mm tolerances. Special requirements shift timelines as noted.
+        </p>
+      </header>
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <tr>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Tier</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Quantity</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Baseline</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Key Factors</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Compressed To</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              leadTimeTiers.map((t, i) => (
+                <tr style={i % 2 === 1 ? 'background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));' : ''}>
+                  <td class="px-4 py-3 font-semibold" style="color: var(--theme-text);">{t.tier}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t.qty}</td>
+                  <td class="px-4 py-3 font-bold" style="color: var(--theme-primary);">{t.baseline}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t.factors}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t.compressTo}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <QualityControl />
+  <Applications />
+
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary);">Other Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Explore the Other 5 Capability Dimensions</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          siblingCapabilities.map((s) => (
+            <a href={s.href} class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{s.name}</h3>
+              <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.desc}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden">
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Request a Lead Time Quote</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Submit your drawings and we will return a tier-based lead time estimate within 48 hours, including capacity reservation options for compressed timelines.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Submit Drawings for Lead Time Quote</a>
+          <a href="https://wa.me/8618623919905" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

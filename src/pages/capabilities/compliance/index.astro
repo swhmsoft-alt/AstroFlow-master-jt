@@ -1,0 +1,331 @@
+---
+// Compliance sub-page — child of /capabilities/ (D2 — "who can" capability).
+// Per Hub-Mapping-First SOP: migrated from root-level to its decision-tree home.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../../components/landing/TrustBadges.astro';
+import QualityControl from '../../../components/landing/QualityControl.astro';
+import Applications from '../../../components/landing/Applications.astro';
+
+const pageTitle = 'Titanium Compliance & Certifications | Boze Manufacturing Capabilities';
+const pageDescription = 'Active compliance scope for aerospace, medical, and defense titanium CNC machining: AS9100D / ISO 13485 / ASTM B348 / F136 / EN 10204 3.1 / DFARS. The Compliance sub-page under /capabilities/.';
+const canonicalUrl = 'https://cnc.bozemetal.com/capabilities/compliance/';
+
+const complianceSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [{
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: 'Titanium Compliance & Certification Services',
+    serviceType: 'Aerospace / Medical / Defense Compliance Documentation',
+    provider: { '@type': 'ManufacturingPlant', '@id': 'https://www.bozemetal.com/#organization', name: 'Baoji Boze Metal Products Co., Ltd.', url: 'https://www.bozemetal.com', address: { '@type': 'PostalAddress', addressLocality: 'Baoji', addressRegion: 'Shaanxi', addressCountry: 'CN' } },
+    description: 'Active titanium machining compliance scope: AS9100D aerospace QMS, ISO 9001:2015 general QMS, ISO 13485:2016 medical device QMS, ASTM B348 / F136 material conformance, EN 10204 3.1 mill test certification, DFARS-compliant sourcing for US defense.',
+    areaServed: 'Worldwide',
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', name: 'AS9100D Aerospace Quality Management System', description: 'QMS certification covering design, development, production, installation, and delivery of aerospace titanium components. Counterfeit-part prevention per AS9100D §8.1.4.' },
+      { '@type': 'EducationalOccupationalCredential', name: 'ISO 9001:2015 Quality Management System', description: 'General-purpose QMS covering all stages of titanium CNC machining production.' },
+      { '@type': 'EducationalOccupationalCredential', name: 'ISO 13485:2016 Medical Device Quality Management', description: 'Medical-device QMS supporting manufacture of titanium surgical implants per ISO 13485 §7.5.1 / §7.5.6 / §7.5.8.' },
+      { '@type': 'EducationalOccupationalCredential', name: 'ASTM B348 / B265 / F136 Material Standard Compliance', description: 'Material standard conformance for titanium bar, billet, plate, and surgical-grade Ti-6Al-4V ELI.' },
+      { '@type': 'EducationalOccupationalCredential', name: 'EN 10204 Type 3.1 Mill Test Certification', description: 'Mill test certificates per EN 10204 §4, issued by upstream mill independent of manufacturing.' },
+      { '@type': 'EducationalOccupationalCredential', name: 'DFARS-compliant Material Sourcing', description: 'DFARS 252.225-7008 / 252.225-7009 compliant titanium stock sourcing for US defense and aerospace programs.' },
+    ],
+  }],
+};
+
+// 8 active compliance scopes (③ 结构化主体)
+const complianceScopes = [
+  { icon: '✈️', code: 'AS9100D', domain: 'Aerospace Quality Management', coverage: 'Aerospace, defense, and aviation titanium components', evidence: 'QMS certificate, documented AS9100D scope statement, internal audit reports available under NDA.' },
+  { icon: '🏥', code: 'ISO 13485:2016', domain: 'Medical Device QMS', coverage: 'Surgical implants, instruments, and Class I/II titanium medical components', evidence: 'QMS certificate, design-control file, process-validation records per ISO 13485 §7.5.6.' },
+  { icon: '🛡️', code: 'ISO 9001:2015', domain: 'General Quality Management', coverage: 'All titanium machining production regardless of end-market', evidence: 'QMS certificate, process FMEA library, corrective-action log available for customer audits.' },
+  { icon: '⚙️', code: 'ASTM B348 / F136', domain: 'Material Standard Conformance', coverage: 'Ti Grade 1–5 bar/billet; Ti-6Al-4V ELI implant-grade (F136)', evidence: 'MTR traceable to mill heat; chemistry verified by spectrometer; mechanicals per ASTM E8/E18.' },
+  { icon: '📋', code: 'EN 10204 3.1', domain: 'Mill Test Certificate', coverage: 'All production orders — chemistry and mechanical properties from upstream mill', evidence: '3.1 certificate issued by mill, independent of Boze manufacturing, per EN 10204 §4.' },
+  { icon: '🪖', code: 'DFARS', domain: 'US Defense Material Sourcing', coverage: 'Aerospace and defense programs subject to DFARS 252.225-7008 / 7009', evidence: 'CofC traces material to approved mill; specialty-metal compliance statement available.' },
+  { icon: '🇪🇺', code: 'REACH / RoHS 3', domain: 'EU Chemical & Substance Compliance', coverage: 'European-market components subject to REACH SVHC declaration or RoHS substance limits', evidence: 'SVHC declaration letter; substance-test report from SGS / TUV on request.' },
+  { icon: '🔬', code: 'ISO 5832-3', domain: 'Implants for Surgery — Wrought Ti-6Al-4V', coverage: 'Wrought titanium alloy for surgical implants (international counterpart to ASTM F136)', evidence: 'MTR per ISO 5832-3 composition table; mechanicals per ISO 6892-1.' },
+];
+
+// 7 compliance-document deliverables (③ — matrix table)
+const documentDeliverables = [
+  { doc: 'Mill Test Certificate (MTR)', standard: 'EN 10204 3.1', issuedBy: 'Upstream mill (independent)', ships: 'With every heat-traced order' },
+  { doc: 'Certificate of Conformance (CoC)', standard: 'AS9100D / ISO 9001', issuedBy: 'Boze QC', ships: 'With every shipment' },
+  { doc: 'First Article Inspection Report (FAIR)', standard: 'AS9100D / AS9102', issuedBy: 'Boze QC + CMM operator', ships: 'Before production release' },
+  { doc: 'CMM Inspection Report', standard: 'ISO 10360 / customer drawing', issuedBy: 'Boze metrology lab', ships: 'With every shipment' },
+  { doc: 'DFARS Specialty-Metal Compliance Letter', standard: 'DFARS 252.225-7008', issuedBy: 'Boze procurement', ships: 'On request for US defense orders' },
+  { doc: 'SVHC / REACH Declaration', standard: 'REACH (EC) No 1907/2006', issuedBy: 'Boze compliance', ships: 'On request for EU orders' },
+  { doc: 'Heat-Treatment Chart Record', standard: 'AMS 2774 / customer spec', issuedBy: 'Boze heat-treat supplier', ships: 'When heat-treat is in scope' },
+];
+
+// 5 things we explicitly do NOT cover (② 诚实定位)
+const whatWeDontCover = [
+  { topic: 'NADCAP-accredited heat treatment', reason: 'Heat treatment is subcontracted to NADCAP-accredited suppliers when in scope; we do not hold NADCAP accreditation in-house.' },
+  { topic: 'NADCAP-accredited NDT (penetrant, mag-particle, ultrasonic)', reason: 'NDT is performed by independent NADCAP-accredited labs (e.g., SGS, Bureau Veritas). We coordinate the testing and include the lab report in the FAIR package.' },
+  { topic: 'In-house CMM calibration', reason: 'CMM calibration is performed annually by accredited labs traceable to NIST / NPL standards. We do not issue CMM calibration certificates ourselves.' },
+  { topic: 'ITAR-restricted part manufacturing for US persons', reason: 'We manufacture to drawing under commercial terms. For ITAR-controlled articles we work with US-domiciled distributors.' },
+  { topic: 'Class III implantable device design responsibility', reason: 'We manufacture Class I/II titanium implants to validated processes. We are not a Class III design house and do not hold 510(k) / CE MDR Class III submission authority.' },
+];
+
+// 10 compliance FAQs (drives FAQPage JSON-LD via BaseLayout — keys MUST be question/answer per src/lib/schema.ts:287-290)
+const complianceFaqs = [
+  { question: 'What certifications does Boze Titanium Manufacturing Center hold?', answer: 'Our titanium machining facility operates under AS9100D (aerospace QMS), ISO 9001:2015 (general QMS), and ISO 13485:2016 (medical device QMS). Certifications are issued by an accredited third-party certification body and are available for customer audit under NDA.' },
+  { question: 'Are you AS9100D-certified for aerospace titanium CNC machining?', answer: 'Yes. Our AS9100D scope covers CNC machining, milling, turning, 5-axis machining, and inspection of titanium components for aerospace and aviation. We maintain a documented AS9100D scope statement, internal audit program, and management review per AS9100D §9.3.' },
+  { question: 'Do you hold ISO 13485 certification for medical titanium implants?', answer: 'Yes. We manufacture titanium surgical implants and instruments under ISO 13485:2016, with documented design-control records, process validation per ISO 13485 §7.5.6, and full traceability per ISO 13485 §7.5.8.' },
+  { question: 'What material standards do you comply with for titanium?', answer: 'We routinely work to ASTM B348 (wrought titanium bar and billet, Grades 1–5), ASTM B265 (titanium plate and strip), ASTM F136 (Ti-6Al-4V ELI for surgical implants), AMS 4928 (aerospace material spec), and ISO 5832-3 (implants for surgery).' },
+  { question: 'Can you provide EN 10204 3.1 mill test certificates?', answer: 'Yes. Every heat-traced order ships with an EN 10204 Type 3.1 certificate issued by the upstream mill (independent of our manufacturing). The 3.1 certificate includes chemical composition, mechanical properties, and heat-treatment condition traceable to the original mill heat number.' },
+  { question: 'Are you DFARS-compliant for US defense procurement?', answer: 'We source titanium to DFARS 252.225-7008 / 252.225-7009 for US defense and aerospace programs. We provide a specialty-metal compliance letter on request confirming the mill source for each heat. Direct ITAR-restricted part manufacture is not our current scope — we work with US-domiciled distributors for ITAR articles.' },
+  { question: 'How do you prevent counterfeit parts in aerospace titanium supply?', answer: 'Our AS9100D scope includes AS9100D §8.1.4 counterfeit-parts prevention: documented procurement controls, approved-supplier list, material verification at receipt (independent spectrometer check), quarantine of suspect material, and traceability of every heat from receipt through delivery.' },
+  { question: 'Do you provide First Article Inspection Reports (FAIR)?', answer: 'Yes. We issue FAIRs per AS9102 (or customer-specific format) before production release. The FAIR includes dimensional report from CMM inspection, material certification, and process records. For AS9100D programs the FAIR is part of the documented first-article verification per AS9100D §8.5.1.1.' },
+  { question: 'Are you compliant with REACH and RoHS for European markets?', answer: 'We provide SVHC (Substances of Very High Concern) declaration letters per REACH (EC) No 1907/2006 and RoHS 3 substance-compliance statements on request. For medical devices the REACH and RoHS requirements interact with MDR biocompatibility — we follow the customer-supplied regulatory matrix.' },
+  { question: 'What NDT methods do you support on titanium parts?', answer: 'We coordinate NDT through NADCAP-accredited independent labs: liquid penetrant (ASTM E1417), magnetic particle (ASTM E709 — limited on titanium), ultrasonic (ASTM E213 / E2375), and visual (ASTM E468). NDT is not performed in-house; we manage the lab interface and include the lab report in the FAIR package.' },
+];
+
+// 4 sibling sub-pages within /capabilities/ hub (⑥ Related)
+const siblingCapabilities = [
+  { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/', desc: '7-dimension framework + 25-point scorecard' },
+  { name: 'Lead Time', href: '/capabilities/lead-time/', desc: 'Sample / prototype / production tier breakdown' },
+  { name: 'Logistics & Shipping', href: '/capabilities/logistics/', desc: 'Incoterms + packaging + freight routing' },
+  { name: 'Parent Hub', href: '/capabilities/', desc: 'All 6 capability dimensions at a glance' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="Titanium Compliance & Certification Services"
+  serviceDescription="Active compliance scope for aerospace, medical, and defense titanium CNC machining under AS9100D, ISO 13485, ASTM, EN 10204, DFARS."
+  serviceCategory="Compliance Documentation & Certified Machining"
+  faqItems={complianceFaqs}
+  faqName="Titanium Compliance — Frequently Asked Questions"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(complianceSchema)} />
+
+  <!-- Breadcrumb (sub-page of /capabilities/) -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm">
+        <li><a href="/" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Home</a></li>
+        <li><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li>
+        <li><a href="/capabilities/" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">Capabilities</a></li>
+        <li><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li>
+        <li><span class="font-semibold" style="color: var(--theme-text);">Compliance & Certifications</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Titanium Compliance & Certifications"
+    badge="Sub-page of Capabilities · D2 'Who can' dimension"
+    subtitle="Our titanium machining facility operates under 8 active compliance scopes — AS9100D aerospace QMS, ISO 13485 medical device QMS, ISO 9001:2015 general QMS, ASTM B348 / F136 material conformance, EN 10204 3.1 mill test certification, DFARS-compliant sourcing, REACH / RoHS 3 EU declarations, and ISO 5832-3 implant material standards."
+    keyMetrics={[
+      { value: 'AS9100D', label: 'Aerospace QMS Certified' },
+      { value: 'ISO 13485', label: 'Medical Device QMS' },
+      { value: 'EN 10204 3.1', label: 'Mill Test Certificates' },
+      { value: '8 Active', label: 'Compliance Scopes' },
+    ]}
+    entityChips={['AS9100D', 'ISO 9001:2015', 'ISO 13485:2016', 'ASTM B348', 'ASTM F136', 'EN 10204 3.1', 'DFARS', 'REACH / RoHS 3']}
+  >
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+        Submit Drawings for Compliance Review
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+      </a>
+      <a href="/capabilities/" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold transition-colors" style="border-color: var(--theme-primary); color: var(--theme-primary);">View All Capabilities</a>
+    </div>
+  </SubpageHero>
+
+  <TrustBadges />
+
+  <!-- ================= 8 Compliance Scope Cards ================= -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Active Compliance Scope</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Eight Compliance Scopes We Operate Under Today
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Compliance is not a single certificate — it is a stack. Each row below identifies the standard, the scope of products it covers, and the documented evidence available for customer audit under NDA.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          complianceScopes.map((s) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <div class="flex items-start gap-4">
+                <span class="text-3xl" aria-hidden="true">{s.icon}</span>
+                <div class="flex-1">
+                  <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">{s.code}</p>
+                  <h3 class="mt-1 text-lg font-bold" style="color: var(--theme-text);">{s.domain}</h3>
+                  <p class="mt-3 text-sm font-semibold" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Scope:</p>
+                  <p class="mt-1 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{s.coverage}</p>
+                  <p class="mt-3 text-sm font-semibold" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Evidence:</p>
+                  <p class="mt-1 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{s.evidence}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7 Document Matrix Table ================= -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Document Deliverables</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          What Compliance Documents Ship with Your Order
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          For aerospace and medical procurement, documentation is part of the deliverable — not an optional add-on. The seven standard documents below ship with or accompany your shipment.
+        </p>
+      </header>
+
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <tr>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Document</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Standard / Format</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Issued By</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">When It Ships</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              documentDeliverables.map((d, i) => (
+                <tr style={i % 2 === 1 ? 'background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));' : ''}>
+                  <td class="px-4 py-3 font-semibold" style="color: var(--theme-text);">{d.doc}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{d.standard}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{d.issuedBy}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{d.ships}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= What We Don't Cover (诚实定位) ================= -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Scope</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          What Compliance We Don't Cover (And Why)
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Procurement teams are best served by clear scope — including what is intentionally outside our coverage. The five items below are excluded from our current QMS scope. We work with accredited partners to deliver them when required.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+        {
+          whatWeDontCover.map((w) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, #dc2626 18%, transparent);">
+              <div class="flex items-start gap-3">
+                <svg class="h-5 w-5 flex-shrink-0 mt-0.5" style="color: #dc2626;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M4.93 4.93l14.14 14.14M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                </svg>
+                <div>
+                  <h3 class="text-base font-bold" style="color: var(--theme-text);">{w.topic}</h3>
+                  <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{w.reason}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <QualityControl />
+
+  <!-- ================= Compliance FAQ ================= -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Compliance FAQ for Aerospace, Medical & Defense Buyers
+        </h2>
+      </header>
+
+      <div class="mt-12 max-w-4xl space-y-4">
+        {
+          complianceFaqs.map((f, i) => (
+            <details class="group rounded-2xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-5">
+                <span class="flex items-start gap-4">
+                  <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{i + 1}</span>
+                  <span class="text-base font-bold leading-snug" style="color: var(--theme-text);">{f.question}</span>
+                </span>
+                <svg class="h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-6 pb-6 pl-[4.5rem]">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <!-- ================= Sibling Capabilities (⑥ Related) ================= -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Other Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Explore the Other 5 Capability Dimensions
+        </h2>
+      </header>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          siblingCapabilities.map((s) => (
+            <a href={s.href} class="rounded-2xl border p-6 transition-all duration-200 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{s.name}</h3>
+              <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.desc}</p>
+              <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{s.href} →</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 opacity-25" aria-hidden="true">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 55%);"></div>
+    </div>
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Request a Formal Compliance Review
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Submit your drawings and program requirements. We will respond within 48 hours with a written compliance matrix identifying the applicable standards and the documentation package that will ship with your order.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+            Submit Drawings for Compliance Review
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+          <a href="https://wa.me/8618623919905" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+
