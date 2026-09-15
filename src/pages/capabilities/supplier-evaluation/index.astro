@@ -138,3 +138,150 @@ const siblingCapabilities = [
   <TrustBadges />
 
 
+
+  <!-- 7-Dim Framework Table -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Evaluation Framework</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">The 7 Dimensions We Score Suppliers On</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Use the same template against any titanium supplier.</p>
+      </header>
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));"><tr><th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Dim</th><th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Dimension</th><th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Weight</th></tr></thead>
+          <tbody>
+            {evalDimensions.map((d, i) => (
+              <tr style={i % 2 === 1 ? "background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));" : ""}>
+                <td class="px-4 py-3 font-bold" style="color: var(--theme-primary);">{d.code}</td>
+                <td class="px-4 py-3 font-semibold" style="color: var(--theme-text);">{d.name}</td>
+                <td class="px-4 py-3 font-bold" style="color: var(--theme-text);">{d.weight}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 25-Point Scorecard -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">25-Point Scorecard</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Sample Scoring Criteria (10 of 22)</h2>
+      </header>
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));"><tr><th class="px-3 py-3 font-bold" style="color: var(--theme-text);">Dim</th><th class="px-3 py-3 font-bold" style="color: var(--theme-text);">Criterion</th><th class="px-3 py-3 font-bold text-center" style="color: var(--theme-text);">Pts</th></tr></thead>
+          <tbody>
+            {scorecardSample.map((r, i) => (
+              <tr style={i % 2 === 1 ? "background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));" : ""}>
+                <td class="px-3 py-3 font-bold" style="color: var(--theme-primary);">{r.dim}</td>
+                <td class="px-3 py-3" style="color: color-mix(in srgb, var(--theme-text) 85%, transparent);">{r.criterion}</td>
+                <td class="px-3 py-3 text-center font-bold" style="color: var(--theme-text);">{r.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Triage Signals -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Triage Signals</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Green / Yellow / Red ¡ª Quick Supplier Triage</h2>
+      </header>
+      <div class="mt-12 grid gap-4">
+        {triageSignals.map((t) => (
+          <div class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <p class="text-base font-semibold leading-snug" style="color: var(--theme-text);"><span class="mr-2">{t.color}</span>{t.text}</p>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{t.meaning}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Where We Don\'t Compete -->
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Scope</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Don\'t Compete (And Why)</h2>
+      </header>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {whereWeDontCompete.map((w) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, #dc2626 18%, transparent);">
+            <h3 class="text-base font-bold" style="color: var(--theme-text);">{w.topic}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{w.reason}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <QualityControl />
+
+  <!-- FAQ -->
+  <section style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">8 Self-Disclosure Questions for Procurement Teams</h2>
+      </header>
+      <div class="mt-12 max-w-4xl space-y-4">
+        {evalFaqs.map((f, i) => (
+          <details class="group rounded-2xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-5">
+              <span class="flex items-start gap-4">
+                <span class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{i + 1}</span>
+                <span class="text-base font-bold leading-snug" style="color: var(--theme-text);">{f.question}</span>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 pl-[4.5rem]">
+              <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <!-- Sibling Capabilities -->
+  <section class="relative overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Other Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Explore the Other 5 Capability Dimensions</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {siblingCapabilities.map((s) => (
+          <a href={s.href} class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{s.name}</h3>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden">
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Request a Formal Supplier Evaluation</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Submit your drawings and program requirements. We will respond within 48 hours with our completed scorecard, evidence documentation, and an open invitation for a site visit or virtual audit.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Submit Drawings for Evaluation Review</a>
+          <a href="https://wa.me/8618623919905" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
