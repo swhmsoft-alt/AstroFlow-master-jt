@@ -24,6 +24,20 @@ for (const ind of allIndustries) {
   industrySlug[ind.data.title] = ind.data?.slug || ind.slug || ind.id?.replace('.json','') || '';
 }
 
+// 2026-09-17 dead-link audit — handle industry titles that don't exactly match
+// any entry in the industries collection. Some systems/JSON files use the
+// short labels "Chemical" and "Oil & Gas" while the industries collection
+// uses the long labels "Chemical Processing" and "Energy" (Oil & Gas has no
+// industry page at all).  Map short labels to the closest matching
+// canonical slug so the page link points at a real route.
+const INDUSTRY_TITLE_ALIASES: Record<string, string> = {
+  'Chemical': 'chemical-processing',  // → /products/industries/chemical-processing/ → 200
+  'Oil & Gas': 'energy',             // → /products/industries/energy/ → 200
+};
+for (const [alias, slug] of Object.entries(INDUSTRY_TITLE_ALIASES)) {
+  if (!industrySlug[alias]) industrySlug[alias] = slug;
+}
+
 // Group systems by industry
 const byIndustry: Record<string, typeof allSystems> = {};
 for (const sys of allSystems) {

@@ -1,4 +1,6 @@
 // Site configuration
+import { isRouteAvailableInLang } from './route-availability.mjs';
+
 export const SITE = {
   title: 'Boze Titanium Manufacturing Center',
   description: 'Boze Titanium Manufacturing Center, operated by Baoji Boze Metal Products Co., Ltd., provides precision titanium manufacturing services including CNC machining, additive manufacturing, fabrication and finishing under AS9100D and ISO 13485 quality systems.',
@@ -10,6 +12,33 @@ export interface NavItem {
   name: string;
   href: string;
   children?: { heading: string; items: { name: string; href: string }[] }[];
+}
+
+/**
+ * Filter a nav-item tree by route availability for the given locale.
+ * Items (or sub-items) whose href is not available in `lang` are dropped.
+ * Empty columns/children are also removed to keep the nav tidy.
+ */
+function filterNavByLang(items: NavItem[], lang: string): NavItem[] {
+  return items
+    .map((item) => {
+      if (!item.children) {
+        return isRouteAvailableInLang(item.href, lang) ? item : null;
+      }
+      const filteredChildren = item.children
+        .map((col) => ({
+          ...col,
+          items: col.items.filter((c) => isRouteAvailableInLang(c.href, lang)),
+        }))
+        .filter((col) => col.items.length > 0);
+      if (filteredChildren.length === 0) return null;
+      // Drop the parent if its own href is unavailable AND it has no surviving children — rare
+      if (!isRouteAvailableInLang(item.href, lang)) {
+        return { ...item, children: filteredChildren };
+      }
+      return { ...item, children: filteredChildren };
+    })
+    .filter((x): x is NavItem => x !== null);
 }
 
 export const NAVIGATION: NavItem[] = [
@@ -157,20 +186,21 @@ export const NAVIGATION: NavItem[] = [
   },
   {
     name: 'Industries',
-    href: '/industries',
+    // 2026-09-17 dead-link audit — trailing slash to match canonical page URL.
+    href: '/industries/',
     children: [
       {
         heading: 'Industries Served',
         items: [
-          { name: 'Aerospace', href: '/industries/aerospace' },
-          { name: 'Medical', href: '/industries/medical' },
-          { name: 'UAV & Drones', href: '/industries/uav-drones' },
-          { name: 'AI Infrastructure & Optical Comms', href: '/industries/ai-infrastructure' },
-          { name: 'Marine', href: '/industries/marine' },
-          { name: 'Semiconductor', href: '/industries/semiconductor' },
-          { name: 'Energy', href: '/industries/energy' },
-          { name: 'Chemical', href: '/industries/chemical' },
-          { name: 'Industrial Equipment', href: '/industries/industrial-equipment' },
+          { name: 'Aerospace', href: '/industries/aerospace/' },
+          { name: 'Medical', href: '/industries/medical/' },
+          { name: 'UAV & Drones', href: '/industries/uav-drones/' },
+          { name: 'AI Infrastructure & Optical Comms', href: '/industries/ai-infrastructure/' },
+          { name: 'Marine', href: '/industries/marine/' },
+          { name: 'Semiconductor', href: '/industries/semiconductor/' },
+          { name: 'Energy', href: '/industries/energy/' },
+          { name: 'Chemical', href: '/industries/chemical/' },
+          { name: 'Industrial Equipment', href: '/industries/industrial-equipment/' },
         ],
       },
     ],
@@ -191,8 +221,13 @@ export const NAVIGATION: NavItem[] = [
           { name: 'FAQs', href: '/resources/faq' },
           { name: 'Engineering Tools', href: '/tools/' },
           { name: 'Downloads', href: '/resources/downloads' },
-          { name: 'Blog', href: '/blog' },
-          { name: 'Products', href: '/products' },
+          // 2026-09-17 dead-link audit — add trailing slashes to match the
+          // canonical URLs served by Astro (trailingSlash: 'always').  The
+          // old `/blog` and `/products` would go through a 301 redirect,
+          // which counted as a dead-target by check-dead-links.mjs even
+          // though the user never saw a 404.
+          { name: 'Blog', href: '/blog/' },
+          { name: 'Products', href: '/products/' },
         ],
       },
     ],
@@ -218,7 +253,12 @@ export const NAVIGATION: NavItem[] = [
  * client bundle.
  */
 export function getNavigation(lang: string): NavItem[] {
-  if (lang !== 'en') return NAVIGATION;
+  // Non-English locales: filter out nav items pointing to English-only paths.
+  // This is the "0-link entry" rule: a URL not translated to the current
+  // locale must not appear in the nav, hreflang alternate, or any internal
+  // link — otherwise the crawler discovers it and 404s. (See
+  // src/config/route-availability.mjs for the denylist.)
+  if (lang !== 'en') return filterNavByLang(NAVIGATION, lang);
 
   // Solutions — the abbreviated English nav label for the /products hub.
   // Full name "Products & Solutions" is reserved for breadcrumbs / page copy.

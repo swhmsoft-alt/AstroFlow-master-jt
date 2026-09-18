@@ -1,121 +1,274 @@
 {
-  "generatedAt": "2026-08-22T02:16:59.647Z",
+  "generatedAt": "2026-09-17T01:42:21.971Z",
   "level": "strict",
-  "pathFilter": "blog",
+  "pathFilter": null,
   "summary": {
-    "total": 120,
-    "critical": 84,
-    "warning": 33,
+    "total": 292,
+    "critical": 147,
+    "warning": 142,
     "clusterWeak": 0,
     "ok": 3,
     "whitelisted": 13,
     "policyViolations": 0,
-    "coverage": "2.5%",
-    "effectiveCoverage": "13.3%"
+    "coverage": "1.0%",
+    "effectiveCoverage": "5.5%"
   },
   "byPathPrefix": {
+    "products": {
+      "total": 8,
+      "critical": 7,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "/": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "case-studies": {
+      "total": 4,
+      "critical": 2,
+      "warning": 2,
+      "clusterWeak": 0,
+      "ok": 0
+    },
     "blog": {
-      "total": 120,
-      "critical": 84,
-      "warning": 33,
+      "total": 151,
+      "critical": 80,
+      "warning": 68,
       "clusterWeak": 0,
       "ok": 3
+    },
+    "use-cases": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-surface-treatment": {
+      "total": 4,
+      "critical": 0,
+      "warning": 4,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-machining": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-forming-heavy-manufacturing": {
+      "total": 4,
+      "critical": 0,
+      "warning": 4,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-fabrication-services": {
+      "total": 4,
+      "critical": 0,
+      "warning": 4,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-cnc-machining-services": {
+      "total": 5,
+      "critical": 0,
+      "warning": 5,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-cnc-machining-manufacturer": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "titanium-additive-manufacturing": {
+      "total": 4,
+      "critical": 0,
+      "warning": 4,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "services": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "rfq": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "resources": {
+      "total": 9,
+      "critical": 9,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "materials": {
+      "total": 33,
+      "critical": 19,
+      "warning": 14,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "laser-marking-custom-logo": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "industries": {
+      "total": 10,
+      "critical": 1,
+      "warning": 9,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "facilities": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "equipment": {
+      "total": 14,
+      "critical": 2,
+      "warning": 12,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "dev-dashboard": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "capabilities": {
+      "total": 12,
+      "critical": 7,
+      "warning": 5,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "branded-custom-packaging-services": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "as9100-titanium-supplier": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "about": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "5-axis-titanium-machining": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "tools": {
+      "total": 9,
+      "critical": 9,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0
+    },
+    "parts": {
+      "total": 8,
+      "critical": 0,
+      "warning": 8,
+      "clusterWeak": 0,
+      "ok": 0
     }
   },
   "byCluster": {
-    "Serviços de Usinagem CNC em Titânio": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
+    "titanium": {
+      "total": 53,
+      "critical": 37,
+      "warning": 16,
       "clusterWeak": 0,
       "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
+      "totalIncoming": 32,
+      "avgIncoming": 0.6
     },
-    "Usługi obróbki CNC tytanu": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
+    "unknown": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
       "clusterWeak": 0,
       "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
+      "totalIncoming": 2,
+      "avgIncoming": 2
     },
-    "Titanium CNC-bewerkingsdiensten": {
+    "semiconductor": {
       "total": 2,
-      "critical": 2,
-      "warning": 0,
+      "critical": 1,
+      "warning": 1,
       "clusterWeak": 0,
       "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
+      "totalIncoming": 2,
+      "avgIncoming": 1
     },
-    "Titanium CNC Machining Services": {
-      "total": 6,
-      "critical": 6,
-      "warning": 0,
+    "medical": {
+      "total": 2,
+      "critical": 0,
+      "warning": 2,
       "clusterWeak": 0,
       "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
+      "totalIncoming": 4,
+      "avgIncoming": 2
     },
-    "티타늄 CNC 가공 서비스": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
+    "aerospace": {
+      "total": 2,
+      "critical": 0,
+      "warning": 2,
       "clusterWeak": 0,
       "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
+      "totalIncoming": 4,
+      "avgIncoming": 2
     },
-    "チタンCNC加工サービス": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
+    "cnc": {
+      "total": 13,
+      "critical": 10,
+      "warning": 3,
       "clusterWeak": 0,
       "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Servizi di Lavorazione CNC del Titanio": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Services d": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Servicios de Mecanizado CNC de Titanio": {
-      "total": 4,
-      "critical": 4,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
+      "totalIncoming": 9,
+      "avgIncoming": 0.69
     },
     "Titan-CNC-Bearbeitungsdienstleistungen": {
-      "total": 3,
-      "critical": 3,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Titanium-CNC-Bearbeitungsdienstleistungen": {
-      "total": 2,
-      "critical": 2,
+      "total": 1,
+      "critical": 1,
       "warning": 0,
       "clusterWeak": 0,
       "ok": 0,
@@ -185,43 +338,133 @@
       "totalIncoming": 0,
       "avgIncoming": 0
     },
-    "Manufacturing Problems": {
-      "total": 15,
-      "critical": 5,
-      "warning": 9,
+    "Problems & Solutions": {
+      "total": 17,
+      "critical": 3,
+      "warning": 13,
       "clusterWeak": 0,
       "ok": 1,
-      "totalIncoming": 30,
-      "avgIncoming": 2
+      "totalIncoming": 55,
+      "avgIncoming": 3.24
     },
-    "Materials Engineering": {
-      "total": 12,
-      "critical": 4,
-      "warning": 6,
+    "Machining Processes": {
+      "total": 17,
+      "critical": 9,
+      "warning": 8,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 10,
+      "avgIncoming": 0.59
+    },
+    "Materials & Grades": {
+      "total": 21,
+      "critical": 5,
+      "warning": 14,
       "clusterWeak": 0,
       "ok": 2,
-      "totalIncoming": 38,
-      "avgIncoming": 3.17
+      "totalIncoming": 56,
+      "avgIncoming": 2.67
     },
-    "Quality and Standards": {
-      "total": 12,
-      "critical": 7,
+    "Procurement & Services": {
+      "total": 10,
+      "critical": 5,
+      "warning": 5,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 18,
+      "avgIncoming": 1.8
+    },
+    "Quality & Standards": {
+      "total": 18,
+      "critical": 6,
+      "warning": 12,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 35,
+      "avgIncoming": 1.94
+    },
+    "Design & DFM": {
+      "total": 5,
+      "critical": 1,
+      "warning": 4,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 21,
+      "avgIncoming": 4.2
+    },
+    "Applications & Industries": {
+      "total": 10,
+      "critical": 5,
       "warning": 5,
       "clusterWeak": 0,
       "ok": 0,
       "totalIncoming": 12,
+      "avgIncoming": 1.2
+    },
+    "use": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "services": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "rfq": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
       "avgIncoming": 1
     },
-    "Applications and Processes": {
-      "total": 11,
-      "critical": 7,
-      "warning": 4,
+    "resources": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "materials": {
+      "total": 3,
+      "critical": 2,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 0.33
+    },
+    "laser": {
+      "total": 3,
+      "critical": 1,
+      "warning": 2,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 4,
+      "avgIncoming": 1.33
+    },
+    "industries": {
+      "total": 3,
+      "critical": 1,
+      "warning": 2,
       "clusterWeak": 0,
       "ok": 0,
       "totalIncoming": 8,
-      "avgIncoming": 0.73
+      "avgIncoming": 2.67
     },
-    "Titanium Components": {
+    "facilities": {
       "total": 1,
       "critical": 1,
       "warning": 0,
@@ -230,70 +473,70 @@
       "totalIncoming": 0,
       "avgIncoming": 0
     },
-    "Marine": {
-      "total": 1,
-      "critical": 1,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "titanium": {
-      "total": 1,
-      "critical": 1,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Procurement Guides": {
-      "total": 4,
-      "critical": 1,
-      "warning": 3,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 7,
-      "avgIncoming": 1.75
-    },
-    "Design Engineering": {
-      "total": 4,
-      "critical": 0,
-      "warning": 4,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 18,
-      "avgIncoming": 4.5
-    },
-    "Medical Applications": {
-      "total": 1,
-      "critical": 1,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Subsea": {
-      "total": 3,
-      "critical": 3,
-      "warning": 0,
-      "clusterWeak": 0,
-      "ok": 0,
-      "totalIncoming": 0,
-      "avgIncoming": 0
-    },
-    "Standards and Certifications": {
+    "equipment": {
       "total": 2,
-      "critical": 0,
-      "warning": 2,
+      "critical": 1,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 0.5
+    },
+    "dev": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "capabilities": {
+      "total": 2,
+      "critical": 1,
+      "warning": 1,
       "clusterWeak": 0,
       "ok": 0,
       "totalIncoming": 6,
       "avgIncoming": 3
     },
-    "Case Studies": {
+    "branded": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "about": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "surface": {
+      "total": 2,
+      "critical": 1,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 0.5
+    },
+    "reverse": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "machining": {
       "total": 3,
       "critical": 3,
       "warning": 0,
@@ -302,7 +545,385 @@
       "totalIncoming": 0,
       "avgIncoming": 0
     },
-    "Industry Insights": {
+    "tools": {
+      "total": 2,
+      "critical": 2,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "gdt": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "polishing": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "chemical": {
+      "total": 2,
+      "critical": 0,
+      "warning": 2,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 5,
+      "avgIncoming": 2.5
+    },
+    "anodizing": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 3,
+      "avgIncoming": 3
+    },
+    "raw": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "waterjet": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "edm": {
+      "total": 2,
+      "critical": 0,
+      "warning": 2,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 3,
+      "avgIncoming": 1.5
+    },
+    "custom": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "rapid": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "low": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "3d": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 3,
+      "avgIncoming": 3
+    },
+    "manufacturing": {
+      "total": 2,
+      "critical": 2,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "industry": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "faq": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "downloads": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "design": {
+      "total": 2,
+      "critical": 1,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 0.5
+    },
+    "products": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "parts": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "uav": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "marine": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 3,
+      "avgIncoming": 3
+    },
+    "energy": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "ai": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "ti": {
+      "total": 2,
+      "critical": 0,
+      "warning": 2,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 1
+    },
+    "mil": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "iso": {
+      "total": 2,
+      "critical": 2,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "grade": {
+      "total": 12,
+      "critical": 0,
+      "warning": 12,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 21,
+      "avgIncoming": 1.75
+    },
+    "astm": {
+      "total": 10,
+      "critical": 10,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "ams": {
+      "total": 5,
+      "critical": 5,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "vacuum": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "tool": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "robotic": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "high": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "cmm": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "chip": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
+    },
+    "automatic": {
+      "total": 2,
+      "critical": 0,
+      "warning": 2,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 1
+    },
+    "case": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "traceability": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "quality": {
+      "total": 2,
+      "critical": 1,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 0.5
+    },
+    "inspection": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "engineering": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "certifications": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "capacity": {
       "total": 1,
       "critical": 1,
       "warning": 0,
@@ -319,18 +940,116 @@
       "ok": 0,
       "totalIncoming": 0,
       "avgIncoming": 0
+    },
+    "systems": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "product": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "component": {
+      "total": 1,
+      "critical": 1,
+      "warning": 0,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 0,
+      "avgIncoming": 0
+    },
+    "supplier": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "logistics": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "compliance": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 3,
+      "avgIncoming": 3
+    },
+    "lead": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "procurement": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 2,
+      "avgIncoming": 2
+    },
+    "problems": {
+      "total": 1,
+      "critical": 0,
+      "warning": 1,
+      "clusterWeak": 0,
+      "ok": 0,
+      "totalIncoming": 1,
+      "avgIncoming": 1
     }
   },
   "orphanPages": [
     {
+      "url": "/products/titanium-cnc-parts",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": "src/content/products/titanium-cnc-parts.md"
+    },
+    {
+      "url": "/case-studies/semiconductor-uhv-showerhead",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "semiconductor",
+      "fm": {},
+      "pathPrefix": "case-studies",
+      "lang": "en",
+      "sourceFile": "src/content/case-studies/semiconductor-uhv-showerhead.md"
+    },
+    {
       "url": "/blog/pt-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Serviços de Usinagem CNC em Titânio",
-      "fm": {
-        "category": "Serviços de Usinagem CNC em Titânio",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pt",
       "sourceFile": "src/content/blog-translations/pt-welcome-to-boze-cnc-blog.md"
@@ -339,11 +1058,8 @@
       "url": "/blog/pt-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Serviços de Usinagem CNC em Titânio",
-      "fm": {
-        "category": "Serviços de Usinagem CNC em Titânio",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pt",
       "sourceFile": "src/content/blog-translations/pt-titanium-cnc-machining-services.md"
@@ -352,13 +1068,8 @@
       "url": "/blog/pt-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Serviços de Usinagem CNC em Titânio",
-      "fm": {
-        "category": "Serviços de Usinagem CNC em Titânio",
-        "tags": [
-          "Titanium CNC Machining China"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pt",
       "sourceFile": "src/content/blog-translations/pt-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -367,13 +1078,8 @@
       "url": "/blog/pt-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Serviços de Usinagem CNC em Titânio",
-      "fm": {
-        "category": "Serviços de Usinagem CNC em Titânio",
-        "tags": [
-          "Aerospace Titanium"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pt",
       "sourceFile": "src/content/blog-translations/pt-aerospace-titanium-full-process-supply.md"
@@ -382,11 +1088,8 @@
       "url": "/blog/pl-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Usługi obróbki CNC tytanu",
-      "fm": {
-        "category": "Usługi obróbki CNC tytanu",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pl",
       "sourceFile": "src/content/blog-translations/pl-welcome-to-boze-cnc-blog.md"
@@ -395,11 +1098,8 @@
       "url": "/blog/pl-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Usługi obróbki CNC tytanu",
-      "fm": {
-        "category": "Usługi obróbki CNC tytanu",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pl",
       "sourceFile": "src/content/blog-translations/pl-titanium-cnc-machining-services.md"
@@ -408,13 +1108,8 @@
       "url": "/blog/pl-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Usługi obróbki CNC tytanu",
-      "fm": {
-        "category": "Usługi obróbki CNC tytanu",
-        "tags": [
-          "Obróbka CNC Tytanu w Chinach"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pl",
       "sourceFile": "src/content/blog-translations/pl-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -423,13 +1118,8 @@
       "url": "/blog/pl-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Usługi obróbki CNC tytanu",
-      "fm": {
-        "category": "Usługi obróbki CNC tytanu",
-        "tags": [
-          "Aerospace Titanium"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "pl",
       "sourceFile": "src/content/blog-translations/pl-aerospace-titanium-full-process-supply.md"
@@ -438,11 +1128,8 @@
       "url": "/blog/nl-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC-bewerkingsdiensten",
-      "fm": {
-        "category": "Titanium CNC-bewerkingsdiensten",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "nl",
       "sourceFile": "src/content/blog-translations/nl-welcome-to-boze-cnc-blog.md"
@@ -451,11 +1138,8 @@
       "url": "/blog/nl-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC-bewerkingsdiensten",
-      "fm": {
-        "category": "Titanium CNC-bewerkingsdiensten",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "nl",
       "sourceFile": "src/content/blog-translations/nl-titanium-cnc-machining-services.md"
@@ -464,13 +1148,8 @@
       "url": "/blog/nl-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC Machining Services",
-      "fm": {
-        "category": "Titanium CNC Machining Services",
-        "tags": [
-          "Titanium CNC Machining China"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "nl",
       "sourceFile": "src/content/blog-translations/nl-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -479,13 +1158,8 @@
       "url": "/blog/nl-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC Machining Services",
-      "fm": {
-        "category": "Titanium CNC Machining Services",
-        "tags": [
-          "Luchtvaart Titanium"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "nl",
       "sourceFile": "src/content/blog-translations/nl-aerospace-titanium-full-process-supply.md"
@@ -494,11 +1168,8 @@
       "url": "/blog/ko-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "티타늄 CNC 가공 서비스",
-      "fm": {
-        "category": "티타늄 CNC 가공 서비스",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ko",
       "sourceFile": "src/content/blog-translations/ko-welcome-to-boze-cnc-blog.md"
@@ -507,11 +1178,8 @@
       "url": "/blog/ko-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "티타늄 CNC 가공 서비스",
-      "fm": {
-        "category": "티타늄 CNC 가공 서비스",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ko",
       "sourceFile": "src/content/blog-translations/ko-titanium-cnc-machining-services.md"
@@ -520,13 +1188,8 @@
       "url": "/blog/ko-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "티타늄 CNC 가공 서비스",
-      "fm": {
-        "category": "티타늄 CNC 가공 서비스",
-        "tags": [
-          "티타늄 CNC 가공 중국"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ko",
       "sourceFile": "src/content/blog-translations/ko-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -535,13 +1198,8 @@
       "url": "/blog/ko-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "티타늄 CNC 가공 서비스",
-      "fm": {
-        "category": "티타늄 CNC 가공 서비스",
-        "tags": [
-          "항공우주용 티타늄"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ko",
       "sourceFile": "src/content/blog-translations/ko-aerospace-titanium-full-process-supply.md"
@@ -550,11 +1208,8 @@
       "url": "/blog/ja-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "チタンCNC加工サービス",
-      "fm": {
-        "category": "チタンCNC加工サービス",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ja",
       "sourceFile": "src/content/blog-translations/ja-welcome-to-boze-cnc-blog.md"
@@ -563,11 +1218,8 @@
       "url": "/blog/ja-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "チタンCNC加工サービス",
-      "fm": {
-        "category": "チタンCNC加工サービス",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ja",
       "sourceFile": "src/content/blog-translations/ja-titanium-cnc-machining-services.md"
@@ -576,13 +1228,8 @@
       "url": "/blog/ja-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "チタンCNC加工サービス",
-      "fm": {
-        "category": "チタンCNC加工サービス",
-        "tags": [
-          "チタンCNC加工 中国"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ja",
       "sourceFile": "src/content/blog-translations/ja-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -591,13 +1238,8 @@
       "url": "/blog/ja-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "チタンCNC加工サービス",
-      "fm": {
-        "category": "チタンCNC加工サービス",
-        "tags": [
-          "航空宇宙用チタン"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "ja",
       "sourceFile": "src/content/blog-translations/ja-aerospace-titanium-full-process-supply.md"
@@ -606,11 +1248,8 @@
       "url": "/blog/it-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servizi di Lavorazione CNC del Titanio",
-      "fm": {
-        "category": "Servizi di Lavorazione CNC del Titanio",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "it",
       "sourceFile": "src/content/blog-translations/it-welcome-to-boze-cnc-blog.md"
@@ -619,11 +1258,8 @@
       "url": "/blog/it-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servizi di Lavorazione CNC del Titanio",
-      "fm": {
-        "category": "Servizi di Lavorazione CNC del Titanio",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "it",
       "sourceFile": "src/content/blog-translations/it-titanium-cnc-machining-services.md"
@@ -632,13 +1268,8 @@
       "url": "/blog/it-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servizi di Lavorazione CNC del Titanio",
-      "fm": {
-        "category": "Servizi di Lavorazione CNC del Titanio",
-        "tags": [
-          "Lavorazione CNC del Titanio in Cina"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "it",
       "sourceFile": "src/content/blog-translations/it-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -647,13 +1278,8 @@
       "url": "/blog/it-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servizi di Lavorazione CNC del Titanio",
-      "fm": {
-        "category": "Servizi di Lavorazione CNC del Titanio",
-        "tags": [
-          "Aerospace Titanium"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "it",
       "sourceFile": "src/content/blog-translations/it-aerospace-titanium-full-process-supply.md"
@@ -662,11 +1288,8 @@
       "url": "/blog/fr-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Services d",
-      "fm": {
-        "category": "Services d",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "fr",
       "sourceFile": "src/content/blog-translations/fr-welcome-to-boze-cnc-blog.md"
@@ -675,11 +1298,8 @@
       "url": "/blog/fr-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Services d",
-      "fm": {
-        "category": "Services d",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "fr",
       "sourceFile": "src/content/blog-translations/fr-titanium-cnc-machining-services.md"
@@ -688,13 +1308,8 @@
       "url": "/blog/fr-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Services d",
-      "fm": {
-        "category": "Services d",
-        "tags": [
-          "Usinage CNC du Titane en Chine"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "fr",
       "sourceFile": "src/content/blog-translations/fr-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -703,13 +1318,8 @@
       "url": "/blog/fr-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Services d",
-      "fm": {
-        "category": "Services d",
-        "tags": [
-          "Titane Aérospatial"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "fr",
       "sourceFile": "src/content/blog-translations/fr-aerospace-titanium-full-process-supply.md"
@@ -718,11 +1328,8 @@
       "url": "/blog/es-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servicios de Mecanizado CNC de Titanio",
-      "fm": {
-        "category": "Servicios de Mecanizado CNC de Titanio",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "es",
       "sourceFile": "src/content/blog-translations/es-welcome-to-boze-cnc-blog.md"
@@ -731,11 +1338,8 @@
       "url": "/blog/es-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servicios de Mecanizado CNC de Titanio",
-      "fm": {
-        "category": "Servicios de Mecanizado CNC de Titanio",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "es",
       "sourceFile": "src/content/blog-translations/es-titanium-cnc-machining-services.md"
@@ -744,13 +1348,8 @@
       "url": "/blog/es-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servicios de Mecanizado CNC de Titanio",
-      "fm": {
-        "category": "Servicios de Mecanizado CNC de Titanio",
-        "tags": [
-          "Mecanizado CNC de Titanio en China"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "es",
       "sourceFile": "src/content/blog-translations/es-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -759,13 +1358,8 @@
       "url": "/blog/es-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Servicios de Mecanizado CNC de Titanio",
-      "fm": {
-        "category": "Servicios de Mecanizado CNC de Titanio",
-        "tags": [
-          "Titanio Aeroespacial"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "es",
       "sourceFile": "src/content/blog-translations/es-aerospace-titanium-full-process-supply.md"
@@ -774,11 +1368,8 @@
       "url": "/blog/de-welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titan-CNC-Bearbeitungsdienstleistungen",
-      "fm": {
-        "category": "Titan-CNC-Bearbeitungsdienstleistungen",
-        "tags": []
-      },
+      "cluster": "cnc",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "de",
       "sourceFile": "src/content/blog-translations/de-welcome-to-boze-cnc-blog.md"
@@ -809,11 +1400,8 @@
       "url": "/blog/de-titanium-cnc-machining-services",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium-CNC-Bearbeitungsdienstleistungen",
-      "fm": {
-        "category": "Titanium-CNC-Bearbeitungsdienstleistungen",
-        "tags": []
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "de",
       "sourceFile": "src/content/blog-translations/de-titanium-cnc-machining-services.md"
@@ -916,13 +1504,8 @@
       "url": "/blog/de-custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium-CNC-Bearbeitungsdienstleistungen",
-      "fm": {
-        "category": "Titanium-CNC-Bearbeitungsdienstleistungen",
-        "tags": [
-          "Titan-CNC-Bearbeitung China"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "de",
       "sourceFile": "src/content/blog-translations/de-custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
@@ -953,13 +1536,8 @@
       "url": "/blog/de-aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titan-CNC-Bearbeitungsdienstleistungen",
-      "fm": {
-        "category": "Titan-CNC-Bearbeitungsdienstleistungen",
-        "tags": [
-          "Luftfahrt-Titan"
-        ]
-      },
+      "cluster": "titanium",
+      "fm": {},
       "pathPrefix": "blog",
       "lang": "de",
       "sourceFile": "src/content/blog-translations/de-aerospace-titanium-full-process-supply.md"
@@ -1009,32 +1587,12 @@
       "sourceFile": "src/content/blog-translations/de-3d-koordinatenmesstechnik-titan-zeiss-scanning-tastkopf.md"
     },
     {
-      "url": "/blog/why-is-titanium-hard-to-machine",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Manufacturing Problems",
-      "fm": {
-        "category": "Manufacturing Problems",
-        "tags": [
-          "Titanium Machining",
-          "Heat Concentration",
-          "Work Hardening",
-          "Tool Wear",
-          "Grade 5 Titanium",
-          "Cutting Parameters"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/why-is-titanium-hard-to-machine.md"
-    },
-    {
       "url": "/blog/what-is-grade-3-titanium-properties-composition-applications",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Materials Engineering",
+      "cluster": "Materials & Grades",
       "fm": {
-        "category": "Materials Engineering",
+        "category": "Materials & Grades",
         "tags": [
           "Grade 3 Titanium",
           "CP Titanium",
@@ -1051,34 +1609,12 @@
       "sourceFile": "src/content/blog/what-is-grade-3-titanium-properties-composition-applications.md"
     },
     {
-      "url": "/blog/what-does-eli-mean-in-titanium",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Materials Engineering",
-      "fm": {
-        "category": "Materials Engineering",
-        "tags": [
-          "ELI Titanium",
-          "Extra-Low Interstitial",
-          "Grade 23 Titanium",
-          "Ti-6Al-4V ELI",
-          "CP-Ti ELI",
-          "Medical Implants",
-          "Cryogenic Titanium",
-          "Fracture Toughness"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/what-does-eli-mean-in-titanium.md"
-    },
-    {
       "url": "/blog/welcome-to-boze-cnc-blog",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC Machining Services",
+      "cluster": "Procurement & Services",
       "fm": {
-        "category": "Titanium CNC Machining Services",
+        "category": "Procurement & Services",
         "tags": []
       },
       "pathPrefix": "blog",
@@ -1086,32 +1622,12 @@
       "sourceFile": "src/content/blog/welcome-to-boze-cnc-blog.md"
     },
     {
-      "url": "/blog/ultimate-guide-titanium-surface-treatments-aerospace",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Quality and Standards",
-      "fm": {
-        "category": "Quality and Standards",
-        "tags": [
-          "Titanium Surface Treatment",
-          "Aerospace Standards",
-          "AMS 2488",
-          "Anodizing",
-          "Tribology",
-          "Fastener Engineering"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/ultimate-guide-titanium-surface-treatments-aerospace.md"
-    },
-    {
       "url": "/blog/titanium-wire-edm-bearing-seats",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Applications and Processes",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Applications and Processes",
+        "category": "Machining Processes",
         "tags": [
           "Wire EDM",
           "Titanium Wire EDM",
@@ -1126,129 +1642,48 @@
       "sourceFile": "src/content/blog/titanium-wire-edm-bearing-seats.md"
     },
     {
-      "url": "/blog/titanium-welding-challenges-best-practices",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Applications and Processes",
-      "fm": {
-        "category": "Applications and Processes",
-        "tags": [
-          "Titanium Welding",
-          "TIG Welding",
-          "Welded Assemblies",
-          "Aerospace Welding",
-          "Manufacturing Engineering"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/titanium-welding-challenges-best-practices.md"
-    },
-    {
       "url": "/blog/titanium-valve-stem-machining-process-precision",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium Components",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Titanium Components"
+        "category": "Machining Processes"
       },
       "pathPrefix": "blog",
       "lang": "en",
       "sourceFile": "src/content/blog/titanium-valve-stem-machining-process-precision.md"
     },
     {
-      "url": "/blog/titanium-springback-compensation-strategies-cnc-machining",
+      "url": "/blog/titanium-machining-processes-milling-turning-drilling-edm",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Manufacturing Problems",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Manufacturing Problems",
+        "category": "Machining Processes",
         "tags": [
-          "Titanium CNC Machining",
-          "Springback",
-          "Elastic Deflection",
-          "Precision Machining",
-          "CAM Programming"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/titanium-springback-compensation-strategies-cnc-machining.md"
-    },
-    {
-      "url": "/blog/titanium-machining-marine-components-material-process-selection",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Marine",
-      "fm": {
-        "category": "Marine Machining"
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/titanium-machining-marine-components-material-process-selection.md"
-    },
-    {
-      "url": "/blog/titanium-investment-casting-net-shape-solutions",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Applications and Processes",
-      "fm": {
-        "category": "Applications and Processes",
-        "tags": [
-          "Titanium Investment Casting",
-          "Titanium Manufacturing",
-          "Net-Shape Casting",
-          "Vacuum Induction Melting",
-          "Titanium Foundry",
-          "Aerospace Castings",
-          "DFM Cast Titanium"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/titanium-investment-casting-net-shape-solutions.md"
-    },
-    {
-      "url": "/blog/titanium-grade-selection-extreme-stress-thermal-environments",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "titanium",
-      "fm": {},
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/titanium-grade-selection-extreme-stress-thermal-environments.md"
-    },
-    {
-      "url": "/blog/titanium-grade-23-vs-grade-4-vs-grade-5-comparison",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Materials Engineering",
-      "fm": {
-        "category": "Materials Engineering",
-        "tags": [
-          "Grade 4 Titanium",
-          "Grade 5 Titanium",
-          "Grade 23 Titanium",
+          "Machining Processes",
+          "CNC Milling",
+          "Turning",
+          "Drilling",
+          "EDM",
+          "Process Selection",
+          "Titanium",
+          "Grade 5",
           "Ti-6Al-4V",
-          "Ti-6Al-4V ELI",
-          "CP Titanium",
-          "Titanium Grade Comparison",
-          "Medical Implants",
-          "Aerospace Materials",
-          "Material Selection"
+          "Speed and Feed"
         ]
       },
       "pathPrefix": "blog",
       "lang": "en",
-      "sourceFile": "src/content/blog/titanium-grade-23-vs-grade-4-vs-grade-5-comparison.md"
+      "sourceFile": "src/content/blog/titanium-machining-processes-milling-turning-drilling-edm.md"
     },
     {
       "url": "/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Procurement Guides",
+      "cluster": "Procurement & Services",
       "fm": {
-        "category": "Procurement Guides",
+        "category": "Procurement & Services",
         "tags": [
           "Titanium Grades",
           "Procurement",
@@ -1264,44 +1699,33 @@
       "sourceFile": "src/content/blog/titanium-grade-2-vs-5-vs-23-procurement-decision-guide.md"
     },
     {
-      "url": "/blog/titanium-cnc-machining-services",
+      "url": "/blog/titanium-carbide-tic-plates-vs-pure-titanium-hardness-wear-resistance",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC Machining Services",
+      "cluster": "Materials & Grades",
       "fm": {
-        "category": "Titanium CNC Machining Services",
-        "tags": []
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/titanium-cnc-machining-services.md"
-    },
-    {
-      "url": "/blog/titanium-chip-control-fire-prevention-cnc-machining",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Manufacturing Problems",
-      "fm": {
-        "category": "Manufacturing Problems",
+        "category": "Materials & Grades",
         "tags": [
-          "Titanium CNC Machining",
-          "Chip Control",
-          "Fire Prevention",
-          "Manufacturing Safety",
-          "Cutting Tools"
+          "Titanium Carbide",
+          "TiC",
+          "Cermet",
+          "Wear Resistance",
+          "Hardness",
+          "Pure Titanium",
+          "Material Comparison"
         ]
       },
       "pathPrefix": "blog",
       "lang": "en",
-      "sourceFile": "src/content/blog/titanium-chip-control-fire-prevention-cnc-machining.md"
+      "sourceFile": "src/content/blog/titanium-carbide-tic-plates-vs-pure-titanium-hardness-wear-resistance.md"
     },
     {
       "url": "/blog/titanium-additive-manufacturing-vs-cnc-machining",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Applications and Processes",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Applications and Processes",
+        "category": "Machining Processes",
         "tags": [
           "Titanium Additive Manufacturing",
           "3D Printing Titanium",
@@ -1318,9 +1742,9 @@
       "url": "/blog/titanium-5-axis-parts",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Manufacturing Problems",
+      "cluster": "Problems & Solutions",
       "fm": {
-        "category": "Manufacturing Problems",
+        "category": "Problems & Solutions",
         "tags": [
           "5-Axis Machining",
           "Titanium CNC",
@@ -1334,58 +1758,12 @@
       "sourceFile": "src/content/blog/titanium-5-axis-parts.md"
     },
     {
-      "url": "/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Medical Applications",
-      "fm": {
-        "category": "Medical Applications",
-        "tags": [
-          "Grade 23 Titanium",
-          "Ti-6Al-4V ELI",
-          "Spinal Implants",
-          "Pedicle Screws",
-          "Spinal Rods",
-          "Interbody Cages",
-          "ASTM F136",
-          "ISO 5832-3",
-          "Medical Implant Manufacturing",
-          "Orthopedic Biomaterials"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/ti-6al-4v-eli-grade-23-in-spinal-surgery-implants.md"
-    },
-    {
-      "url": "/blog/ti-6242-titanium-alloy-properties-specifications-applications",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Materials Engineering",
-      "fm": {
-        "category": "Materials Engineering",
-        "tags": [
-          "Ti-6242",
-          "Ti-6Al-2Sn-4Zr-2Mo",
-          "Near-Alpha Titanium",
-          "Aerospace Materials",
-          "High-Temperature Alloys",
-          "Gas Turbine Components",
-          "AMS 4919",
-          "AMS 4975"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/ti-6242-titanium-alloy-properties-specifications-applications.md"
-    },
-    {
       "url": "/blog/subsea-equipment-precision-machining-requirements",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Subsea",
+      "cluster": "Applications & Industries",
       "fm": {
-        "category": "Subsea Machining"
+        "category": "Applications & Industries"
       },
       "pathPrefix": "blog",
       "lang": "en",
@@ -1395,9 +1773,9 @@
       "url": "/blog/subsea-component-machining-precision-requirements",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Subsea",
+      "cluster": "Applications & Industries",
       "fm": {
-        "category": "Subsea Components"
+        "category": "Applications & Industries"
       },
       "pathPrefix": "blog",
       "lang": "en",
@@ -1407,9 +1785,9 @@
       "url": "/blog/mil-std-278-titanium-welded-assemblies",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Quality and Standards",
+      "cluster": "Quality & Standards",
       "fm": {
-        "category": "Quality and Standards",
+        "category": "Quality & Standards",
         "tags": [
           "MIL-STD-278",
           "Titanium Welding",
@@ -1427,9 +1805,9 @@
       "url": "/blog/micro-machining-titanium-edm-cnc",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Applications and Processes",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Applications and Processes",
+        "category": "Machining Processes",
         "tags": [
           "Micro Machining",
           "Titanium Micro Machining",
@@ -1444,12 +1822,115 @@
       "sourceFile": "src/content/blog/micro-machining-titanium-edm-cnc.md"
     },
     {
+      "url": "/blog/master-titanium-grade-comparison-chart-mechanical-properties-grades-1-29",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Materials & Grades",
+      "fm": {
+        "category": "Materials & Grades",
+        "tags": [
+          "Titanium Grades",
+          "UNS Numbers",
+          "Tensile Strength",
+          "Density",
+          "ASTM B348",
+          "Material Selection",
+          "Grade Chart"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/master-titanium-grade-comparison-chart-mechanical-properties-grades-1-29.md"
+    },
+    {
+      "url": "/blog/managing-supply-chain-email-cyber-security-risks-digital-manufacturing-procurement",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Procurement & Services",
+      "fm": {
+        "category": "Procurement & Services",
+        "tags": [
+          "Supply Chain Security",
+          "Email Risk",
+          "Manufacturing Procurement",
+          "RFQ Security",
+          "Supplier Verification",
+          "DMARC",
+          "MTR Integrity"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/managing-supply-chain-email-cyber-security-risks-digital-manufacturing-procurement.md"
+    },
+    {
+      "url": "/blog/investment-casting-vs-cnc-machining-titanium-cost-quality-decision-framework",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Machining Processes",
+      "fm": {
+        "category": "Machining Processes",
+        "tags": [
+          "Investment Casting",
+          "CNC Machining",
+          "Titanium Components",
+          "Net Shape",
+          "Cost Analysis",
+          "Manufacturing Process Selection"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/investment-casting-vs-cnc-machining-titanium-cost-quality-decision-framework.md"
+    },
+    {
+      "url": "/blog/inconel-718-vs-titanium-machining-heat-resistant-superalloy-comparison",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Machining Processes",
+      "fm": {
+        "category": "Machining Processes",
+        "tags": [
+          "Inconel 718",
+          "Ti-6Al-4V",
+          "Superalloy Machining",
+          "Cutting Parameters",
+          "Tool Wear",
+          "Aerospace Machining"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/inconel-718-vs-titanium-machining-heat-resistant-superalloy-comparison.md"
+    },
+    {
+      "url": "/blog/how-to-specify-titanium-cnc-machined-part",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Design & DFM",
+      "fm": {
+        "category": "Design & DFM",
+        "tags": [
+          "GD&T",
+          "ASME Y14.5",
+          "Drawing Specification",
+          "AS9102",
+          "ASTM F86",
+          "Surface Finish",
+          "RFQ"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/how-to-specify-titanium-cnc-machined-part.md"
+    },
+    {
       "url": "/blog/edm-broaching-titanium-parts",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Applications and Processes",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Applications and Processes",
+        "category": "Machining Processes",
         "tags": [
           "EDM Broaching",
           "Titanium EDM Broaching",
@@ -1467,9 +1948,9 @@
       "url": "/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC Machining Services",
+      "cluster": "Procurement & Services",
       "fm": {
-        "category": "Titanium CNC Machining Services",
+        "category": "Procurement & Services",
         "tags": [
           "Titanium CNC Machining China"
         ]
@@ -1479,12 +1960,33 @@
       "sourceFile": "src/content/blog/custom-titanium-machining-contract-manufacturer-china-rfq-preparation.md"
     },
     {
+      "url": "/blog/cp-grade-1-vs-grade-2-titanium-ductility-strength-formability-tradeoffs",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Materials & Grades",
+      "fm": {
+        "category": "Materials & Grades",
+        "tags": [
+          "Grade 1 Titanium",
+          "Grade 2 Titanium",
+          "Commercially Pure Titanium",
+          "Formability",
+          "ASTM B348",
+          "ASTM B265",
+          "Ductility"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/cp-grade-1-vs-grade-2-titanium-ductility-strength-formability-tradeoffs.md"
+    },
+    {
       "url": "/blog/cnc-vs-edm-titanium-parts",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Applications and Processes",
+      "cluster": "Machining Processes",
       "fm": {
-        "category": "Applications and Processes",
+        "category": "Machining Processes",
         "tags": [
           "CNC vs EDM",
           "Titanium CNC Machining",
@@ -1499,31 +2001,12 @@
       "sourceFile": "src/content/blog/cnc-vs-edm-titanium-parts.md"
     },
     {
-      "url": "/blog/cnc-machining-thin-wall-titanium",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Manufacturing Problems",
-      "fm": {
-        "category": "Manufacturing Problems",
-        "tags": [
-          "Thin Wall Machining",
-          "Titanium CNC",
-          "Dimensional Stability",
-          "Distortion Control",
-          "Adaptive Toolpath"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/cnc-machining-thin-wall-titanium.md"
-    },
-    {
       "url": "/blog/cnc-machining-subsea-equipment-materials-tolerances",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Subsea",
+      "cluster": "Applications & Industries",
       "fm": {
-        "category": "Subsea CNC"
+        "category": "Applications & Industries"
       },
       "pathPrefix": "blog",
       "lang": "en",
@@ -1533,9 +2016,9 @@
       "url": "/blog/case-study-thin-wall-titanium-aerospace-bracket",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Case Studies",
+      "cluster": "Problems & Solutions",
       "fm": {
-        "category": "Case Studies",
+        "category": "Problems & Solutions",
         "tags": [
           "Case Study",
           "Aerospace Bracket",
@@ -1549,31 +2032,12 @@
       "sourceFile": "src/content/blog/case-study-thin-wall-titanium-aerospace-bracket.md"
     },
     {
-      "url": "/blog/case-study-precision-titanium-medical-implant",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Case Studies",
-      "fm": {
-        "category": "Case Studies",
-        "tags": [
-          "Case Study",
-          "Medical Implant",
-          "Grade 23 Titanium",
-          "ISO 13485",
-          "Precision Machining"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/case-study-precision-titanium-medical-implant.md"
-    },
-    {
       "url": "/blog/case-study-complex-titanium-component-process-development",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Case Studies",
+      "cluster": "Problems & Solutions",
       "fm": {
-        "category": "Case Studies",
+        "category": "Problems & Solutions",
         "tags": [
           "Case Study",
           "Process Development",
@@ -1590,9 +2054,9 @@
       "url": "/blog/baoji-china-titanium-valley",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Industry Insights",
+      "cluster": "Applications & Industries",
       "fm": {
-        "category": "Industry Insights",
+        "category": "Applications & Industries",
         "tags": [
           "Baoji Titanium",
           "China Titanium Valley",
@@ -1609,9 +2073,9 @@
       "url": "/blog/astm-f86-passivation",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Quality and Standards",
+      "cluster": "Quality & Standards",
       "fm": {
-        "category": "Quality and Standards",
+        "category": "Quality & Standards",
         "tags": [
           "ASTM F86",
           "Passivation",
@@ -1629,9 +2093,9 @@
       "url": "/blog/astm-b381-explained",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Quality and Standards",
+      "cluster": "Quality & Standards",
       "fm": {
-        "category": "Quality and Standards",
+        "category": "Quality & Standards",
         "tags": [
           "ASTM B381",
           "Titanium Forgings",
@@ -1646,33 +2110,12 @@
       "sourceFile": "src/content/blog/astm-b381-explained.md"
     },
     {
-      "url": "/blog/astm-b348-explained",
-      "severity": "CRITICAL",
-      "incomingCount": 0,
-      "cluster": "Quality and Standards",
-      "fm": {
-        "category": "Quality and Standards",
-        "tags": [
-          "ASTM B348",
-          "Titanium Bar",
-          "Titanium Billet",
-          "ASTM Standards",
-          "Material Specifications",
-          "Grade 5 Titanium",
-          "Grade 23 Titanium"
-        ]
-      },
-      "pathPrefix": "blog",
-      "lang": "en",
-      "sourceFile": "src/content/blog/astm-b348-explained.md"
-    },
-    {
       "url": "/blog/astm-b338-explained",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Quality and Standards",
+      "cluster": "Quality & Standards",
       "fm": {
-        "category": "Quality and Standards",
+        "category": "Quality & Standards",
         "tags": [
           "ASTM B338",
           "Titanium Tubing",
@@ -1687,12 +2130,33 @@
       "sourceFile": "src/content/blog/astm-b338-explained.md"
     },
     {
+      "url": "/blog/asme-sb348-vs-astm-b348-titanium-bar-standards-pressure-vessels",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Quality & Standards",
+      "fm": {
+        "category": "Quality & Standards",
+        "tags": [
+          "ASME SB348",
+          "ASTM B348",
+          "Pressure Vessel Titanium",
+          "ASME BPVC",
+          "ASME QSC",
+          "Code Stamping",
+          "Bar Specification"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/asme-sb348-vs-astm-b348-titanium-bar-standards-pressure-vessels.md"
+    },
+    {
       "url": "/blog/ams-4943-vs-ams-4944",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Quality and Standards",
+      "cluster": "Quality & Standards",
       "fm": {
-        "category": "Quality and Standards",
+        "category": "Quality & Standards",
         "tags": [
           "AMS 4943",
           "AMS 4944",
@@ -1711,9 +2175,9 @@
       "url": "/blog/aerospace-titanium-full-process-supply",
       "severity": "CRITICAL",
       "incomingCount": 0,
-      "cluster": "Titanium CNC Machining Services",
+      "cluster": "Procurement & Services",
       "fm": {
-        "category": "Titanium CNC Machining Services",
+        "category": "Procurement & Services",
         "tags": [
           "Aerospace Titanium"
         ]
@@ -1723,10 +2187,712 @@
       "sourceFile": "src/content/blog/aerospace-titanium-full-process-supply.md"
     },
     {
+      "url": "/blog/aerospace-fastener-selection-titanium-vs-inconel-vs-steel-comparative-analysis",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Materials & Grades",
+      "fm": {
+        "category": "Materials & Grades",
+        "tags": [
+          "Aerospace Fasteners",
+          "Titanium Fasteners",
+          "Inconel 718",
+          "A286 Steel",
+          "17-4 PH",
+          "Bolting",
+          "Material Selection"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/aerospace-fastener-selection-titanium-vs-inconel-vs-steel-comparative-analysis.md"
+    },
+    {
+      "url": "/blog/5-axis-machined-titanium-medical-implants-fda-submissions-material-sourcing",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "Applications & Industries",
+      "fm": {
+        "category": "Applications & Industries",
+        "tags": [
+          "Titanium Medical Implants",
+          "FDA 510k",
+          "PMA",
+          "ASTM F136",
+          "ISO 5832-3",
+          "5-Axis Machining",
+          "Process Validation"
+        ]
+      },
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": "src/content/blog/5-axis-machined-titanium-medical-implants-fda-submissions-material-sourcing.md"
+    },
+    {
+      "url": "/use-cases/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "use",
+      "fm": {},
+      "pathPrefix": "use-cases",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/titanium-machining/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "titanium-machining",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/titanium-cnc-machining-manufacturer/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "titanium-cnc-machining-manufacturer",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/services/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "services",
+      "fm": {},
+      "pathPrefix": "services",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "resources",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "materials",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/laser-marking-custom-logo/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "laser",
+      "fm": {},
+      "pathPrefix": "laser-marking-custom-logo",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/industries/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "industries",
+      "fm": {},
+      "pathPrefix": "industries",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/facilities/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "facilities",
+      "fm": {},
+      "pathPrefix": "facilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/equipment/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "equipment",
+      "fm": {},
+      "pathPrefix": "equipment",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/dev-dashboard/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "dev",
+      "fm": {},
+      "pathPrefix": "dev-dashboard",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/branded-custom-packaging-services/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "branded",
+      "fm": {},
+      "pathPrefix": "branded-custom-packaging-services",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/as9100-titanium-supplier/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "as9100-titanium-supplier",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/about/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "about",
+      "fm": {},
+      "pathPrefix": "about",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/5-axis-titanium-machining/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "5-axis-titanium-machining",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/titanium-weight-calculator/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/titanium-selection-workflow/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/titanium-grade-finder/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/surface-roughness-comparator/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "surface",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/reverse-manufacturing-engine/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "reverse",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/machining-simulator/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "machining",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "tools",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/gdt-symbol-reference/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "gdt",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/tools/cnc-tolerance-checker/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "cnc",
+      "fm": {},
+      "pathPrefix": "tools",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/titanium-knowledge-base/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/titanium-grades-guide/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "titanium",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/manufacturing-insights/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "manufacturing",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/industry-applications/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "industry",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/faq/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "faq",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/engineering-tools/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "tools",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/downloads/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "downloads",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/resources/design-engineering-guide/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "design",
+      "fm": {},
+      "pathPrefix": "resources",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/products/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "products",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/mil-t-9047/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "mil",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/iso-5832-3/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "iso",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/iso-5832-11/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "iso",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-f86/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-f67/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-f3001/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-f2924/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-f136/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-b861/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-b381/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-b348/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-b338/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/astm-b265/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "astm",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/ams-4944/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "ams",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/ams-4943/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "ams",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/ams-4928/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "ams",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/ams-4911/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "ams",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/materials/ams-2488/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "ams",
+      "fm": {},
+      "pathPrefix": "materials",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/equipment/5-axis-machining-center/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "machining",
+      "fm": {},
+      "pathPrefix": "equipment",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/case-studies/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "case",
+      "fm": {},
+      "pathPrefix": "case-studies",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/traceability/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "traceability",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/quality/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "quality",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/manufacturing/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "manufacturing",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/inspection/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "inspection",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/engineering/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "engineering",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/certifications/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "certifications",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/capabilities/capacity/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "capacity",
+      "fm": {},
+      "pathPrefix": "capabilities",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
       "url": "/blog/",
       "severity": "CRITICAL",
       "incomingCount": 0,
       "cluster": "blog",
+      "fm": {},
+      "pathPrefix": "blog",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/products/systems/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "systems",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/products/product-entities/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "product",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/products/materials/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "materials",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/products/component-library/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "component",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/products/capabilities/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "capabilities",
+      "fm": {},
+      "pathPrefix": "products",
+      "lang": "en",
+      "sourceFile": null
+    },
+    {
+      "url": "/blog/machining-processes/",
+      "severity": "CRITICAL",
+      "incomingCount": 0,
+      "cluster": "machining",
       "fm": {},
       "pathPrefix": "blog",
       "lang": "en",
@@ -1763,63 +2929,63 @@
   "topIncoming": [
     {
       "url": "/blog/titanium-grades-complete-guide-cp-alpha-beta-alloys",
-      "count": 14,
-      "cluster": "Materials Engineering",
+      "count": 16,
+      "cluster": "Materials & Grades",
       "pathPrefix": "blog"
     },
     {
       "url": "/blog/why-titanium-is-difficult-to-machine",
-      "count": 11,
-      "cluster": "Manufacturing Problems",
+      "count": 10,
+      "cluster": "Problems & Solutions",
       "pathPrefix": "blog"
     },
     {
       "url": "/blog/grade-23-titanium-ti-6al-4v-eli-medical-aerospace",
       "count": 10,
-      "cluster": "Materials Engineering",
-      "pathPrefix": "blog"
-    },
-    {
-      "url": "/blog/titanium-cnc-design-guide-machinability-rules",
-      "count": 7,
-      "cluster": "Design Engineering",
+      "cluster": "Materials & Grades",
       "pathPrefix": "blog"
     },
     {
       "url": "/blog/titanium-surface-finish-achieving-ra-04um",
-      "count": 5,
-      "cluster": "Manufacturing Problems",
+      "count": 8,
+      "cluster": "Problems & Solutions",
       "pathPrefix": "blog"
     },
     {
-      "url": "/blog/ti-6al-4v-grade-5-titanium-guide",
-      "count": 5,
-      "cluster": "Materials Engineering",
+      "url": "/blog/titanium-cnc-machining-cost-factors",
+      "count": 8,
+      "cluster": "Procurement & Services",
       "pathPrefix": "blog"
     },
     {
-      "url": "/blog/thin-wall-titanium-machining-guidelines",
-      "count": 5,
-      "cluster": "Design Engineering",
-      "pathPrefix": "blog"
-    },
-    {
-      "url": "/blog/medical-titanium-implants-manufacturing-standards",
-      "count": 5,
-      "cluster": "Applications and Processes",
-      "pathPrefix": "blog"
-    },
-    {
-      "url": "/blog/astm-f136-titanium-standard-surgical-implants-guide",
-      "count": 5,
-      "cluster": "Standards and Certifications",
+      "url": "/blog/titanium-cnc-design-guide-machinability-rules",
+      "count": 8,
+      "cluster": "Design & DFM",
       "pathPrefix": "blog"
     },
     {
       "url": "/blog/as9100d-titanium-cnc-manufacturing-aerospace-quality",
-      "count": 5,
-      "cluster": "Quality and Standards",
+      "count": 8,
+      "cluster": "Quality & Standards",
       "pathPrefix": "blog"
+    },
+    {
+      "url": "/blog/titanium-tool-wear-causes-and-solutions",
+      "count": 7,
+      "cluster": "Problems & Solutions",
+      "pathPrefix": "blog"
+    },
+    {
+      "url": "/blog/medical-titanium-implants-manufacturing-standards",
+      "count": 7,
+      "cluster": "Applications & Industries",
+      "pathPrefix": "blog"
+    },
+    {
+      "url": "/titanium-fabrication-services/titanium-welding-assembly/",
+      "count": 7,
+      "cluster": "titanium",
+      "pathPrefix": "titanium-fabrication-services"
     }
   ]
 }

@@ -8,9 +8,19 @@
 // 通用文案走 t()（en.json 缺省回退）；FAQ/相关链接内容为内联 EN 配置（首个外显版本）。
 import { getLangFromUrl, useTranslations, localizePath } from '../../i18n/utils';
 import type { Lang } from '../../i18n/ui';
+import { isRouteAvailableInLang } from '../../config/route-availability.mjs';
+import { buildBlogMap } from '../../lib/blog-index';
 
 const lang: Lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+/**
+ * 2026-09-17 dead-link audit — load the blog translation index once so the
+ * related-resources filter can ask `isRouteAvailableInLang` about cross-language
+ * `/<lang>/blog/<slug>/` targets (the unified filter in `route-availability.mjs`
+ * strips non-translated slugs, which is what we want for this list).
+ */
+const blogMap = await buildBlogMap();
 
 interface Props {
   /** 行业 id：semiconductor / medical / aerospace / marine / chemical / energy / industrial-equipment / ai-infrastructure / uav-drones */
@@ -369,7 +379,16 @@ function normalizedTarget(href: string, localized?: boolean): string {
       </h3>
       <ul class="space-y-2 mb-8">
         {cfg.related
-          .filter((r) => normalizedTarget(r.href, r.localized) !== currentPath)
+          .filter((r) => {
+            const target = normalizedTarget(r.href, r.localized);
+            if (target === currentPath) return false; // self-link suppression (was already here)
+            // 2026-09-17 dead-link audit: also drop entries whose target is
+            // not reachable in the current language (e.g. an EN-only capability
+            // would otherwise be localized to `/de/products/capabilities/...`
+            // — a 404).  Honors both EN_ONLY_PREFIXES and the blog translation
+            // index in a single, language-aware predicate.
+            return isRouteAvailableInLang(target, lang, lang, blogMap);
+          })
           .map((r) => (
           <li>
             <a href={linkFor(r.href, r.localized)} class="inline-flex items-center gap-2 font-medium transition-colors" style="color: var(--theme-primary);">

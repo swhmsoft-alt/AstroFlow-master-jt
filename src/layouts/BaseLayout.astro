@@ -8,6 +8,8 @@ import { SEO_CONFIG } from '@config/seo';
 import { getFontConfig, getGoogleFontsUrl, getCssFamily } from '@utils/fonts';
 import { getLangFromUrl, useTranslations, getAlternateLinks, removeLangPrefix } from '../i18n/utils';
 import { DEFAULT_LANG } from '../i18n/ui';
+import { isRouteAvailableInLang } from '@config/route-availability.mjs';
+import { buildBlogMap } from '../lib/blog-index';
 import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem, type FaqItem, type HowToItem } from '../lib/schema';
 import BrandAbout from '@components/home/BrandAbout.astro';
 import CookieConsent from '@components/CookieConsent.astro';
@@ -137,7 +139,31 @@ interface Props {
 const currentPathname = Astro.url.pathname;
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
-const defaultAlternateLinks = getAlternateLinks(currentPathname);
+
+// F6 — Blog translations are independent content (per the user's model):
+//   not every `/blog/<slug>/` has a `/<lang>/blog/<slug>/` counterpart. Build
+//   a (lang → Set<slug>) map at frontmatter time so hreflang alternates and
+//   cross-language links both drop missing mirrors. The same map powers the
+//   `rehype-blog-i18n-link.mjs` plugin for markdown anchors.
+//
+// The 2026-09-17 dead-link audit added EN canonicals under key 'en' —
+// without them, LanguageSelector's "English" entry on a DE page emitted
+// `/blog/<DE-only-slug>/` hrefs that 404.  The shared `buildBlogMap()`
+// helper also reads `src/content/blog/*.md` so callers don't have to.
+const blogTranslationMap = await buildBlogMap();
+
+// Drop hreflang alternates pointing at English-only routes — emitting a
+// <link rel="alternate" hreflang="de" href="/de/products/"> for a path that
+// 404s is a Google violation (alternate must point at a real 200 page).
+// Default locale values apply: EN-only paths and EN-only blog slugs (per
+// `blogTranslationMap`) keep no alternates at all.  The single unified
+// `isRouteAvailableInLang(href, lang, currentLang, blogMap)` handles every
+// case: EN-only denylist + cross-language blog availability + self-link
+// exemption — so the hreflang output respects the user's "0-link entry"
+// rule for ALL paths, including blogs whose translations don't exist.
+const defaultAlternateLinks = getAlternateLinks(currentPathname).filter((link) => {
+  return isRouteAvailableInLang(link.href, link.lang, currentLang, blogTranslationMap);
+});
 
 const {
   title: explicitTitle,
@@ -302,8 +328,9 @@ const ldJson = JSON.stringify(pageGraph);
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
 <script is:inline type="application/ld+json" set:html={ldJson} />
 {alternateLinks.map((link) => (<link rel="alternate" hreflang={link.lang} href={`${SITE.url}${link.href}`} />))}
-{/* hreflang alternates — from prop if provided (blog overrides), otherwise auto-generated */}
-<link rel="alternate" hreflang="x-default" href={`${SITE.url}${currentPathname}`} />
+{/* hreflang x-default — always points at the canonical (English) URL so search engines
+    have a fallback when no locale-specific alternate matches the user. */}
+<link rel="alternate" hreflang="x-default" href={`${SITE.url}${canonicalPath}`} />
 <script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
 
 {/* ══ Google Ads — Consent Mode v2 (GDPR, ePanel-friendly) ══ */}

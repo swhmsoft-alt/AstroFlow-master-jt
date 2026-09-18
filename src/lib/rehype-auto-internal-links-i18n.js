@@ -19,9 +19,24 @@
 
 import { rehypeAutoInternalLinks } from 'rehype-auto-internal-links';
 import { visit } from 'unist-util-visit';
+import { isMissingCrossLang } from '../config/route-availability.mjs';
+import { loadBlogTranslations } from './rehype-blog-loader.mjs';
 
 const LANG_PREFIXES = ['de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'];
 const DEFAULT_LANG = 'en';
+
+/**
+ * Blog translation index (Map<lang, Set<slug>>), loaded once at build time.
+ * Used to decide whether an injected cross-language `/blog/<slug>/` target
+ * actually exists in the target locale. Loaded defensively: a missing
+ * directory must not break the whole markdown pipeline.
+ */
+let BLOG_MAP = null;
+try {
+  BLOG_MAP = loadBlogTranslations('./src/content/blog-translations');
+} catch (err) {
+  BLOG_MAP = null;
+}
 
 /**
  * Per-language maxLinksPerPage override (G6 = B).
@@ -107,6 +122,36 @@ function restoreTableCells(tree) {
   });
 }
 
+/**
+ * 2026-09-17 dead-link audit — strip cross-language hrefs on links that THIS
+ * plugin just injected.
+ *
+ * Why: `astro.config.mjs` runs `createRehypeI18nLinkPlugin()` BEFORE
+ * `rehypeAutoInternalLinksI18n`, so anchors injected here were never seen by
+ * the cross-language filter.  On a translated page (e.g. `/de/equipment/...`)
+ * a keyword such as "3D CMM inspection" was localized to
+ * `/de/products/capabilities/3d-cmm-inspection/` — a route that does not
+ * exist in any locale — producing a user-visible 404 on 11 languages × 13
+ * pages.
+ *
+ * Fix: validate at injection time instead of relying on plugin order.
+ * Anchor text is preserved (readers still see the keyword); only the href is
+ * removed, and `data-i18n-missing` records the stripped target so
+ * `check-dead-links.mjs` can audit it.
+ */
+function stripUnavailableLinks(tree, lang) {
+  visit(tree, (node) => {
+    if (node.type !== 'element' || node.tagName !== 'a') return;
+    const props = node.properties || {};
+    const href = typeof props.href === 'string' ? props.href : null;
+    if (!href || !href.startsWith('/') || href.startsWith('//')) return;
+    if (/^(https?:|mailto:|tel:|javascript:|data:|#)/i.test(href)) return;
+    if (!isMissingCrossLang(href, lang, BLOG_MAP)) return;
+    delete props.href;
+    props['data-i18n-missing'] = href;
+  });
+}
+
 export function rehypeAutoInternalLinksI18n(options = {}) {
   // NOTE: do NOT default maxLinksPerPage here — we need `undefined` to mean
   // "caller did not pass anything" so the per-language override can fire.
@@ -131,5 +176,9 @@ export function rehypeAutoInternalLinksI18n(options = {}) {
     originalPlugin(tree, file);
 
     restoreTableCells(tree);
+
+    // Order-independent safety net: drop cross-language hrefs that this
+    // transformer itself just created (see stripUnavailableLinks docs).
+    stripUnavailableLinks(tree, lang);
   };
 }

@@ -3,10 +3,17 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import normalizeTrailingSlash from '@reunmedia/astro-normalize-trailing-slash';
+// NOTE: previously imported `@reunmedia/astro-normalize-trailing-slash` here,
+// but that package exports raw .ts source from node_modules — Astro 5.18
+// refuses to strip types from node_modules at config-load time, so `astro dev`
+// crashes before any rendering starts.  The Astro built-in `trailingSlash: 'always'`
+// option below already enforces trailing slashes at the route level, and our
+// rehype-i18n-link plugin handles the cross-language variants.  The integration
+// was redundant and is now removed.
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import { rehypeAutoInternalLinksI18n } from './src/lib/rehype-auto-internal-links-i18n';
+import { rehypeAutoInternalLinksI18n } from './src/lib/rehype-auto-internal-links-i18n.js';
+import { createRehypeI18nLinkPlugin } from './src/lib/rehype-i18n-link.mjs';
 import devDashboardApi from './astro/integrations/dev-dashboard-vite-plugin.mjs';
 
 // https://astro.build
@@ -16,7 +23,6 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     react(),
-    normalizeTrailingSlash(),
     sitemap({
       filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin') && !page.includes('/thank-you'),
       changefreq: 'weekly',
@@ -82,10 +88,95 @@ export default defineConfig({
   // per Hub-Mapping-First SOP. 301 redirects preserve SEO authority.
   '/titanium-compliance-and-certifications/': '/capabilities/compliance/',
   '/titanium-supplier-evaluation/': '/capabilities/supplier-evaluation/',
+
+  // F4 — `/standards/:slug/` → `/materials/:slug/` (canonical exists).
+  // SpecificationTable.astro previously hard-coded `/standards/` prefix which
+  // 404'd; the redirect is a safety net for any external inbound link.
+  '/standards/astm-b348/':     '/materials/astm-b348/',
+  '/standards/astm-b265/':     '/materials/astm-b265/',
+  '/standards/astm-b381/':     '/materials/astm-b381/',
+  '/standards/astm-b338/':     '/materials/astm-b338/',
+  '/standards/astm-b861/':     '/materials/astm-b861/',
+  '/standards/astm-f67/':      '/materials/astm-f67/',
+  '/standards/astm-f136/':     '/materials/astm-f136/',
+  '/standards/astm-f86/':      '/materials/astm-f86/',
+  '/standards/iso-5832-3/':    '/materials/iso-5832-3/',
+  '/standards/iso-5832-11/':   '/materials/iso-5832-11/',
+  '/standards/iso-2768/':      '/materials/iso-2768/',
+  '/standards/astm-f2924/':    '/materials/astm-f2924/',
+  '/standards/astm-f3001/':    '/materials/astm-f3001/',
+  '/standards/ams-4911/':      '/materials/ams-4911/',
+  '/standards/ams-4928/':      '/materials/ams-4928/',
+  '/standards/ams-4943/':      '/materials/ams-4943/',
+  '/standards/ams-4944/':      '/materials/ams-4944/',
+  '/standards/ams-2488/':      '/materials/ams-2488/',
+  '/standards/mil-t-9047/':    '/materials/mil-t-9047/',
+  '/standards/mil-std-810h/':  '/capabilities/inspection/',
+
+  // /de/capabilities/* — EN-only sub-pages, redirect to nearest EN hub.
+  '/de/capabilities/compliance/':           '/capabilities/certifications/',
+  '/de/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/de/capabilities/logistics/':            '/capabilities/capacity/',
+  '/de/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+
+  // 10 other locales × 4 sub-routes. Each /<lang>/capabilities/<sub>/  →  EN hub.
+  '/ja/capabilities/compliance/':           '/capabilities/certifications/',
+  '/fr/capabilities/compliance/':           '/capabilities/certifications/',
+  '/es/capabilities/compliance/':           '/capabilities/certifications/',
+  '/pt/capabilities/compliance/':           '/capabilities/certifications/',
+  '/it/capabilities/compliance/':           '/capabilities/certifications/',
+  '/ko/capabilities/compliance/':           '/capabilities/certifications/',
+  '/nl/capabilities/compliance/':           '/capabilities/certifications/',
+  '/pl/capabilities/compliance/':           '/capabilities/certifications/',
+  '/ru/capabilities/compliance/':           '/capabilities/certifications/',
+  '/ar/capabilities/compliance/':           '/capabilities/certifications/',
+  '/ja/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/fr/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/es/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/pt/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/it/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/ko/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/nl/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/pl/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/ru/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/ar/capabilities/lead-time/':            '/capabilities/manufacturing/',
+  '/ja/capabilities/logistics/':            '/capabilities/capacity/',
+  '/fr/capabilities/logistics/':            '/capabilities/capacity/',
+  '/es/capabilities/logistics/':            '/capabilities/capacity/',
+  '/pt/capabilities/logistics/':            '/capabilities/capacity/',
+  '/it/capabilities/logistics/':            '/capabilities/capacity/',
+  '/ko/capabilities/logistics/':            '/capabilities/capacity/',
+  '/nl/capabilities/logistics/':            '/capabilities/capacity/',
+  '/pl/capabilities/logistics/':            '/capabilities/capacity/',
+  '/ru/capabilities/logistics/':            '/capabilities/capacity/',
+  '/ar/capabilities/logistics/':            '/capabilities/capacity/',
+  '/ja/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/fr/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/es/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/pt/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/it/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/ko/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/nl/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/pl/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/ru/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+  '/ar/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
+
+  // Missing EN translation pages.
+  '/de/case-studies/':                      '/case-studies/',
+  '/de/industries/chemical/':               '/industries/chemical/',
   },
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
+      // F6 — Unified cross-language link filter. Handles all EN-only paths
+      // (per src/config/route-availability.mjs EN_ONLY_PREFIXES) and
+      // cross-language blog refs whose target translation does not exist
+      // (per filesystem scan of src/content/blog-translations/). Replaces
+      // the blog-only plugin with a single mechanism. Preserves anchor text
+      // (so readers still see "参考 X" citations), strips href so crawlers
+      // see zero clickable URLs to untranslated territory. Also drops
+      // hreflang <link rel="alternate"> for the same targets.
+      createRehypeI18nLinkPlugin({ translationsDir: './src/content/blog-translations' }),
       rehypeKatex,
       [rehypeAutoInternalLinksI18n, {
         keywordMap: {

@@ -18,17 +18,43 @@
 
 import { LANGUAGES, DEFAULT_LANG, type Lang } from '../i18n/ui';
 import { getLangFromUrl, removeLangPrefix, localizePath } from '../i18n/utils';
+import { isRouteAvailableInLang } from '@config/route-availability.mjs';
+import { buildBlogMap } from '../lib/blog-index';
 
 const currentLang = getLangFromUrl(Astro.url);
 const canonicalPath = removeLangPrefix(Astro.url.pathname);
 
+// F6 — Same blog-translation map as BaseLayout.astro: independent-content
+// blog translations must NOT be cross-linked when missing.  Uses the shared
+// `buildBlogMap()` helper so the EN canonical set (key 'en') is also
+// populated — required by the 2026-09-17 dead-link audit so that the
+// "English" entry of this selector on a DE page doesn't link to a non-
+// existent canonical.
+const blogTranslationMap = await buildBlogMap();
+
 // Ordered list: lang code → native name (matches LANGUAGES ordering)
-const langEntries = (Object.keys(LANGUAGES) as Lang[]).map((lang) => ({
-  code: lang,
-  name: LANGUAGES[lang],
-  isActive: lang === currentLang,
-  href: localizePath(canonicalPath || '/', lang),
-}));
+// Filter out locales where the current page is English-only — emitting
+// <a href="/de/products/"> for an untranslated page creates a 404 and a
+// dead hreflang alternate. Always keep `isActive` so users on /de/* can
+// still switch back to their current language even if the canonical is EN-only.
+const langEntries = (Object.keys(LANGUAGES) as Lang[])
+  .map((lang) => ({
+    code: lang,
+    name: LANGUAGES[lang],
+    isActive: lang === currentLang,
+    href: localizePath(canonicalPath || '/', lang),
+  }))
+  .filter((entry) => {
+    if (entry.isActive) return true;
+    // Single unified check that knows about both EN-only denylist AND
+    // blog translation availability — including the /blog/ hub itself.
+    return isRouteAvailableInLang(
+      canonicalPath || '/',
+      entry.code,
+      currentLang,
+      blogTranslationMap,
+    );
+  });
 ---
 
 <div class="relative language-selector group">

@@ -5,29 +5,56 @@ import MobileMenu from '@components/react/MobileMenu';
 import LanguageSelector from './LanguageSelector.astro';
 import ThemeSwitcher from './ThemeSwitcher.astro';
 import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
+import { isRouteAvailableInLang } from '@config/route-availability.mjs';
+import { loadBlogMap } from '../lib/rehype-blog-loader.mjs';
 
 const { currentPathname } = Astro.props;
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 const isActiveLink = (href: string) : boolean => { return href === currentPathname; }
 
+// F7 — Same blog translation index as BaseLayout.astro / LanguageSelector.astro
+// / rehype-i18n-link.mjs.  Built once per page render; threaded through every
+// availability check so /<lang>/blog/<slug>/ is treated consistently across
+// nav, hreflang, and markdown anchors.
+//
+// Uses `loadBlogMap()` (the 2026-09-17 audit helper) which — unlike the older
+// `loadBlogTranslations` — also populates key `'en'` with the EN canonical
+// slug set from `src/content/blog/*.md`.  Without the EN key, the canonical
+// blog hub `/blog` and any EN-only blog post `/blog/<slug>/` are reported as
+// unavailable in English locales and end up rendered as a disabled `<span>`
+// (data-i18n-missing) in the Resources dropdown — a visible UX regression
+// introduced by the previous fix order.
+const blogTranslationMap = loadBlogMap();
+
 // Locale-aware nav: English promotes Titanium Parts and Solutions (abbreviated
 // label for the /products hub) to top-level items right after Home; all other
 // locales keep the shared NAVIGATION structure unchanged.
 const navItems = getNavigation(currentLang);
+// F7 — Mark EN-only top-level items as "span" (not clickable) in non-English
+// locales. The label is preserved (e.g. "Products (EN only)") so users see the
+// cross-language reference without a deceptive dead link.  Passes
+// `currentLang` AND `blogTranslationMap` so blog paths get the same precision
+// as hreflang alternates (e.g. /blog/ is hidden in ar/ru, visible in de).
+const enOnly = (href: string) => !isRouteAvailableInLang(href, currentLang, currentLang, blogTranslationMap);
 
 // ── Navigation translation key mappings ────────────────────
-// Map top-level href → nav translation key
+// Map top-level href → nav translation key. Keys carry the trailing slash
+// to match `item.href` (e.g. "/industries/") which Astro renders with the
+// trailing slash per `trailingSlash: 'always'` in astro.config.mjs.  Earlier
+// versions stored keys without the slash ("/industries") which caused the
+// map lookup to miss and the label to silently fall back to "nav.home" —
+// the visible "Industries=Home" regression reported by the user.
 const navKeyByHref: Record<string, string> = {
   '/': 'nav.home',
-  '/services': 'nav.services',
-  '/materials': 'nav.materials',
-  '/capabilities': 'nav.capabilities',
-  '/industries': 'nav.industries',
-  '/resources': 'nav.resources',
-  '/products': 'nav.solutions',
-  '/equipment': 'nav.equipment',
-  '/parts': 'nav.parts',
+  '/services/': 'nav.services',
+  '/materials/': 'nav.materials',
+  '/capabilities/': 'nav.capabilities',
+  '/industries/': 'nav.industries',
+  '/resources/': 'nav.resources',
+  '/products/': 'nav.solutions',
+  '/equipment/': 'nav.equipment',
+  '/parts/': 'nav.parts',
 };
 
 // Map child href → child item translation key
@@ -233,8 +260,27 @@ const logoSubtext = t('header.logoSubtext');
       {navItems.map((item: NavItem) => {
         const isActive = isActiveLink(item.href);
         const hasChildren = item.children && item.children.length > 0;
+        const isEnOnly = enOnly(item.href);
+        const itemLabel = t(navKeyByHref[item.href] || item.name);
+        const itemLabelText = isEnOnly ? `${itemLabel} (EN)` : itemLabel;
         return (
         <div class="relative group">
+          {isEnOnly ? (
+            <span
+              data-i18n-missing={item.href}
+              title="English-only route — not translated to your locale"
+              aria-disabled="true"
+              class={`px-4 py-2 text-sm font-medium rounded-lg relative flex items-center gap-1`}
+              style={{ color: 'var(--theme-text)', opacity: 0.4, cursor: 'not-allowed' }}
+            >
+              {itemLabelText}
+              {hasChildren && (
+                <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              )}
+            </span>
+          ) : (
           <a
             href={localizePath(item.href, currentLang)}
             class={`px-4 py-2 text-sm font-medium rounded-lg transition-all relative flex items-center gap-1 ${
@@ -249,13 +295,14 @@ const logoSubtext = t('header.logoSubtext');
             onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
             onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.65'"
           >
-            {t(navKeyByHref[item.href] || 'nav.home')}
+            {itemLabelText}
             {hasChildren && (
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             )}
           </a>
+          )}
           {hasChildren && (
             <!-- Dropdown -->
             <div class="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
@@ -266,17 +313,30 @@ const logoSubtext = t('header.logoSubtext');
                     {t(getHeadingKey(item.href, item.children![0].heading))}
                   </h3>
                   <div class="flex flex-wrap gap-x-5 gap-y-3">
-                    {item.children![0].items.map((child) => (
-                      <a
-                        href={localizePath(child.href, currentLang)}
-                        class="text-sm py-2 px-3 rounded-lg transition-all whitespace-nowrap border"
-                        style="color: var(--theme-text); opacity: 0.7; border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-                        onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'; this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-                        onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.7'; this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.backgroundColor='transparent'"
-                      >
-                        {t(childNavKeyByHref[child.href] || child.name)}
-                      </a>
-                    ))}
+                    {item.children![0].items.map((child) => {
+                      const childEnOnly = enOnly(child.href);
+                      return childEnOnly ? (
+                        <span
+                          data-i18n-missing={child.href}
+                          title="English-only route"
+                          aria-disabled="true"
+                          class="text-sm py-2 px-3 rounded-lg whitespace-nowrap border"
+                          style="color: var(--theme-text); opacity: 0.4; border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); cursor: not-allowed;"
+                        >
+                          {t(childNavKeyByHref[child.href] || child.name)} (EN)
+                        </span>
+                      ) : (
+                        <a
+                          href={localizePath(child.href, currentLang)}
+                          class="text-sm py-2 px-3 rounded-lg transition-all whitespace-nowrap border"
+                          style="color: var(--theme-text); opacity: 0.7; border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+                          onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'; this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
+                          onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.7'; this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.backgroundColor='transparent'"
+                        >
+                          {t(childNavKeyByHref[child.href] || child.name)}
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               ) : (
@@ -289,19 +349,34 @@ const logoSubtext = t('header.logoSubtext');
                           {t(getHeadingKey(item.href, column.heading))}
                         </h3>
                         <ul class="flex flex-col gap-1.5">
-                          {column.items.map((child) => (
-                            <li>
-                              <a
-                                href={localizePath(child.href, currentLang)}
-                                class="block text-sm py-1.5 rounded transition-all hover:translate-x-0.5"
-                                style="color: var(--theme-text); opacity: 0.7;"
-                                onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
-                                onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.7'"
-                              >
-                                {t(childNavKeyByHref[child.href] || child.name)}
-                              </a>
-                            </li>
-                          ))}
+                          {column.items.map((child) => {
+                            const childEnOnly = enOnly(child.href);
+                            return childEnOnly ? (
+                              <li>
+                                <span
+                                  data-i18n-missing={child.href}
+                                  title="English-only route"
+                                  aria-disabled="true"
+                                  class="block text-sm py-1.5 rounded"
+                                  style="color: var(--theme-text); opacity: 0.4; cursor: not-allowed;"
+                                >
+                                  {t(childNavKeyByHref[child.href] || child.name)} (EN)
+                                </span>
+                              </li>
+                            ) : (
+                              <li>
+                                <a
+                                  href={localizePath(child.href, currentLang)}
+                                  class="block text-sm py-1.5 rounded transition-all hover:translate-x-0.5"
+                                  style="color: var(--theme-text); opacity: 0.7;"
+                                  onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
+                                  onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.7'"
+                                >
+                                  {t(childNavKeyByHref[child.href] || child.name)}
+                                </a>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     ))}

@@ -134,7 +134,12 @@ const siteDescription = SITE.description;
                 onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
               >
                 <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
-                {t(navKeyByHref[item.href] || 'nav.home')}
+                {/* 2026-09-17 nav audit — fallback to `item.name` so missing
+                    `navKeyByHref` entries (e.g. /industries/ when the trailing-
+                    slash key was missed) no longer silently fall through to
+                    `'nav.home'` and turn Industries / Resources / etc. into a
+                    duplicate "Home" link. */}
+                {t(navKeyByHref[item.href] || item.name)}
               </a>
             </li>
           ))}

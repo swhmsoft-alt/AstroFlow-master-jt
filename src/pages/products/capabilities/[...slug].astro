@@ -56,10 +56,13 @@ const sameCategoryCaps = allCapabilities.filter(
     c.id.replace(/\.json$/i, '').replace(/^.*[\\/\\\\]/, '') !== slug
 ).slice(0, 12);
 
-const entitySlug = (title: string) =>
-  title.toLowerCase().replace(/ /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
-const sysSlug = (title: string) =>
-  title.toLowerCase().replace(/ & /g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+// 2026-09-17 dead-link audit — removed the local `entitySlug` and `sysSlug`
+// helpers: both stripped spaces and punctuation without inserting hyphens, so
+// titles like "Cardiovascular Stent & TAVI Frames" produced the wrong slug
+// `cardiovascularstent-taviframes` (no hyphens between words).  The capability
+// page now uses `entry.slug` directly (Astro's canonical filename-based slug)
+// for both relatedEntities and relatedSystems anchors — single source of
+// truth that always matches the on-disk page URL.
 
 // ── Build relatedEntities for MicroCapabilityPage ──
 // 优先用 product-entities 反向引用；不足时用 enriched JSON 的 relatedEntities 补充
@@ -166,7 +169,13 @@ if (relatedProducts.length >= 3) {
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {relatedSystems.map((s) => {
             const sd = s.data;
-            const slug_s = sysSlug(sd.title);
+            // 2026-09-17 dead-link audit — the old `sysSlug(sd.title)` slugifier
+            // stripped spaces and punctuation without inserting hyphens, so
+            // titles like "Cardiovascular Stent & TAVI Frames" produced the
+            // wrong slug `cardiovascularstent-taviframes` (no hyphens between
+            // words).  Use Astro's canonical entry.slug instead, which matches
+            // the on-disk filename and therefore matches the actual page URL.
+            const slug_s = s.slug || s.id?.replace(/\.json$/i, '') || '';
             const count = (sd as any).productEntities?.length || 0;
             return (
               <a href={`/products/systems/${slug_s}/`} class="block p-5 rounded-xl border transition-all" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
