@@ -18,6 +18,38 @@ export interface GradeProperty {
   value: string;
 }
 
+/**
+ * Chemical-composition table row.
+ *
+ * `symbol` is the chemistry symbol (universal across locales) and is rendered
+ * verbatim. `nameKey` is the i18n lookup key for the human-readable element
+ * name (e.g. "aluminum" → `materials.<grade>.hasProperty.chemistry.elements.<i>.name`).
+ *
+ * Min / Max are weight-percent strings; pass "—" or "Balance" for non-applicable
+ * bounds. `typical` is optional (used when a single nominal value is helpful
+ * alongside the spec limits).
+ */
+export interface ChemistryElement {
+  symbol: string;
+  nameKey: string;
+  min: string;
+  max: string;
+  typical?: string;
+}
+
+export interface ChemistrySection {
+  /** i18n key for section title (e.g. "chemicalComposition") */
+  titleKey: string;
+  /** i18n key for section description */
+  descriptionKey: string;
+  /** Specification basis (e.g. "AMS 4928 / ASTM B348 Grade 5") — not translated, authoritative spec */
+  basis: string;
+  /** Footnote shown below the table (e.g. "Titanium balance") — not translated */
+  remark: string;
+  /** Element rows in display order */
+  elements: ChemistryElement[];
+}
+
 export interface GradeSection {
   title: string;
   description: string;
@@ -32,6 +64,15 @@ export interface GradePropertiesSection {
   title: string;
   description: string;
   properties: GradeProperty[];
+  /**
+   * Optional chemical-composition table.
+   *
+   * When present, rendered as a 3-column table (Element / Min % / Max %)
+   * directly below the mechanical-properties grid by GradeProperties.astro.
+   * When absent, the existing mechanical/physical grid renders unchanged —
+   * this keeps the optional field backward-compatible for the other 13 grades.
+   */
+  chemistry?: ChemistrySection;
 }
 
 export interface GradeData {
@@ -726,7 +767,33 @@ export const GRADE_DATA: GradeMap = {
         { label: "Electrical Resistivity", value: "170 µΩ·cm" },
         { label: "Max Service Temperature", value: "400°C (750°F)" },
         { label: "Fracture Toughness KIC (annealed)", value: "50–65 MPa√m" }
-      ]
+      ],
+      /**
+       * Chemical composition — Ti-6Al-4V per AMS 4928 / ASTM B348 Grade 5.
+       * Source of truth for spec limits (weight %); each `nameKey` resolves via
+       * `materials.grade-5.hasProperty.chemistry.elements.<i>.name` in i18n JSONs.
+       * Values follow AMS 4928 Table 1 + ASTM B348 Grade 5 limits; EN 10204 3.1
+       * MTRs supplied per order confirm actual chemistry against these limits.
+       */
+      chemistry: {
+        titleKey: "chemicalComposition",
+        descriptionKey: "chemicalCompositionDesc",
+        basis: "AMS 4928 / ASTM B348 Grade 5",
+        remark: "Titanium balance by difference.",
+        elements: [
+          { symbol: "Al", nameKey: "aluminum",  min: "5.5",   max: "6.75",  typical: "6.0"  },
+          { symbol: "V",  nameKey: "vanadium",  min: "3.5",   max: "4.5",   typical: "4.0"  },
+          { symbol: "Fe", nameKey: "iron",      min: "—",     max: "0.30"                    },
+          { symbol: "O",  nameKey: "oxygen",    min: "—",     max: "0.20"                    },
+          { symbol: "N",  nameKey: "nitrogen",  min: "—",     max: "0.05"                    },
+          { symbol: "C",  nameKey: "carbon",    min: "—",     max: "0.08"                    },
+          { symbol: "H",  nameKey: "hydrogen",  min: "—",     max: "0.015"                   },
+          { symbol: "Y",  nameKey: "yttrium",   min: "—",     max: "0.005"                   },
+          { symbol: "—",  nameKey: "otherEach", min: "—",     max: "0.10"                    },
+          { symbol: "—",  nameKey: "otherTotal",min: "—",     max: "0.40"                    },
+          { symbol: "Ti", nameKey: "titanium",  min: "—",     max: "Balance"                 }
+        ]
+      }
     },
     processedBy: {
       title: "Available Processing Methods",
