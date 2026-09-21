@@ -126,7 +126,22 @@ export interface PartsLandingData {
   heroH1: string;
   heroSubtitle: string;
   intro: string;
-  categories: { name: string; slug: string; blurb: string }[];
+  /**
+   * Top-level procurement categories shown on /parts/ landing.
+   * Each category gets an image + imageAlt + 4 review factors so the
+   * "Titanium Parts We Manufacture" section renders as a visual
+   * image+text card grid (see PartsLanding.astro). Optional image/
+   * imageAlt/reviewFactors keep backward compatibility with any
+   * code that may have consumed the original 3-field shape.
+   */
+  categories: {
+    name: string;
+    slug: string;
+    blurb: string;
+    image?: string;
+    imageAlt?: string;
+    reviewFactors?: string[];
+  }[];
   faqs: PartsFaq[];
 
   // ---- STEP 2 enhancements (Pillar Solution Page / AIO / EEAT) ----
@@ -200,13 +215,62 @@ export const PARTS_LANDING: PartsLandingData = {
   intro:
     'BOZE is a titanium parts manufacturing partner for aerospace, marine, UAV, motorsport, medical and industrial OEMs. Upload your drawing for a DFM review and quotation, or browse the part categories below to understand the titanium components we machine, fabricate and assemble — from Grade 1 CP-titanium to Ti-6Al-4V ELI.',
   categories: [
-    { name: 'Titanium CNC Parts', slug: 'titanium-cnc-parts', blurb: 'Precision CNC milled, turned and wire-EDM titanium components to ±0.005 mm.' },
-    { name: 'Titanium Fabricated Parts', slug: 'titanium-fabricated-parts', blurb: 'Welded, laser-cut, waterjet and formed titanium assemblies and fabrications.' },
-    { name: 'Titanium Pipe Components', slug: 'titanium-pipe-components', blurb: 'Pipe spool fabrication, flanges, fittings, tube assemblies and welded pipe systems.' },
-    { name: 'Titanium Marine Parts', slug: 'titanium-marine-parts', blurb: 'Corrosion-resistant titanium hardware for seawater, subsea and marine systems.' },
-    { name: 'Titanium UAV Components', slug: 'titanium-uav-components', blurb: 'Lightweight, high-strength titanium precision parts for UAV and drone airframes.' },
-    { name: 'Titanium Motorsport Parts', slug: 'titanium-motorsport-parts', blurb: 'High-performance titanium suspension, fasteners and exhaust components for racing.' },
-    { name: 'Titanium Medical Components', slug: 'titanium-medical-components', blurb: 'Biocompatible, certified titanium implants and surgical instruments.' },
+    {
+      name: 'Titanium CNC Parts',
+      slug: 'titanium-cnc-parts',
+      blurb: 'Precision CNC milled, turned and wire-EDM titanium components to ±0.005 mm.',
+      image: '/images/products/titanium-flat-mount-brake-adapter.webp',
+      imageAlt: 'CNC milled titanium flat-mount brake adapter with machined pockets and bolt pattern',
+      reviewFactors: ['3/5-axis CNC', '±0.005 mm tolerance', 'Prototype → 10,000+ pc', '1.0–2.5× cost index'],
+    },
+    {
+      name: 'Titanium Fabricated Parts',
+      slug: 'titanium-fabricated-parts',
+      blurb: 'Welded, laser-cut, waterjet and formed titanium assemblies and fabrications.',
+      image: '/images/products/titanium-ceramic-heater-clamp-plate.webp',
+      imageAlt: 'Fabricated titanium ceramic-heater clamp plate with bolt pattern and forming features',
+      reviewFactors: ['TIG / laser / formed', '±0.1 mm typical', '1 → 500 assemblies', '1.1–2.0× cost index'],
+    },
+    {
+      name: 'Titanium Pipe Components',
+      slug: 'titanium-pipe-components',
+      blurb: 'Pipe spool fabrication, flanges, fittings, tube assemblies and welded pipe systems.',
+      image: '/images/products/titanium-blind-flange-asme-b165.webp',
+      imageAlt: 'Titanium ASME B16.5 blind flange with machined sealing face and bolt holes',
+      reviewFactors: ['Welded spools', '±0.2 mm on spool OD', 'Project-order quantities', '1.2–2.4× cost index'],
+    },
+    {
+      name: 'Titanium Marine Parts',
+      slug: 'titanium-marine-parts',
+      blurb: 'Corrosion-resistant titanium hardware for seawater, subsea and marine systems.',
+      image: '/images/products/titanium-auv-propeller-shaft.webp',
+      imageAlt: 'CNC turned titanium AUV propeller shaft for marine and subsea service',
+      reviewFactors: ['CNC + fabrication', '±0.05 mm critical', 'Low-volume to series', '1.4–2.6× cost index'],
+    },
+    {
+      name: 'Titanium UAV Components',
+      slug: 'titanium-uav-components',
+      blurb: 'Lightweight, high-strength titanium precision parts for UAV and drone airframes.',
+      image: '/images/products/titanium-shadow-ring-bracket.webp',
+      imageAlt: 'Lightweight titanium shadow-ring bracket for UAV and drone airframe structures',
+      reviewFactors: ['5-axis + Swiss-type', '±0.005 mm thin-wall', 'Prototype → 1,000 pc', '1.6–3.0× cost index'],
+    },
+    {
+      name: 'Titanium Motorsport Parts',
+      slug: 'titanium-motorsport-parts',
+      blurb: 'High-performance titanium suspension, fasteners and exhaust components for racing.',
+      image: '/images/products/titanium-brake-rotor-disc.webp',
+      imageAlt: 'Machined titanium brake rotor disc for high-performance motorsport applications',
+      reviewFactors: ['CNC + welded assemblies', '±0.02 mm suspension', 'Small series lots', '1.5–2.8× cost index'],
+    },
+    {
+      name: 'Titanium Medical Components',
+      slug: 'titanium-medical-components',
+      blurb: 'Biocompatible, certified titanium implants and surgical instruments.',
+      image: '/images/products/titanium-acetabular-cup.webp',
+      imageAlt: 'Titanium acetabular cup for orthopedic medical implant applications',
+      reviewFactors: ['CNC + electropolish', '±0.01 mm · Ra ≤ 0.4 µm', 'Project / sterile-pack', '1.8–3.5× cost index'],
+    },
   ],
   faqs: [
     {

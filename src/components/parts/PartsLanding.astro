@@ -45,15 +45,53 @@ const sectionLinks = [
         Browse titanium part categories to understand what we machine, fabricate and assemble.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {d.categories.map((cat) => (
-          <a href={`/parts/${cat.slug}/`} class="group block p-6 rounded-xl border transition-all hover:-translate-y-0.5"
-            style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
-            <h3 class="text-lg font-bold" style="color: var(--theme-text);">{cat.name}</h3>
-            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{cat.blurb}</p>
-            <span class="mt-4 inline-flex items-center text-sm font-semibold" style="color: var(--theme-primary);">
-              View Category
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-            </span>
+        {d.categories.map((cat, idx) => (
+          <a
+            href={`/parts/${cat.slug}/`}
+            class="group flex flex-col rounded-xl border overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"
+          >
+            {cat.image && (
+              <div
+                class="aspect-[4/3] overflow-hidden"
+                style="background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface));"
+              >
+                <img
+                  src={cat.image}
+                  alt={cat.imageAlt || cat.name}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover"
+                  width="400"
+                  height="300"
+                />
+              </div>
+            )}
+            <div class="p-5 flex flex-col flex-1">
+              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">
+                <span class="font-mono mr-1" style="color: var(--theme-primary);">
+                  {String(idx + 1).padStart(2, '0')} —
+                </span>
+                {cat.name}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                {cat.blurb}
+              </p>
+              {cat.reviewFactors && cat.reviewFactors.length > 0 && (
+                <div class="mt-4 pt-4 border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                  <p class="text-[11px] font-bold uppercase tracking-widest" style="color: var(--theme-primary);">
+                    Key Facts
+                  </p>
+                  <p class="mt-1 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                    {cat.reviewFactors.join(' · ')}
+                  </p>
+                </div>
+              )}
+              <span class="mt-5 inline-flex items-center text-sm font-semibold" style="color: var(--theme-primary);">
+                View Category
+                <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </span>
+            </div>
           </a>
         ))}
       </div>
