@@ -97,6 +97,28 @@ export interface PartsCategory {
     title: string;
     items: { name: string; href: string; relation: string }[];
   };
+  /**
+   * Custom Part Families — visual catalog of drawing-based titanium part families
+   * we manufacture. Each family card carries a numbered title, description,
+   * review factors and a per-family RFQ CTA. Used on /parts/titanium-cnc-parts/
+   * to give buyers a quick visual scan of geometry capabilities before they
+   * browse the typical-components table or RFQ form.
+   */
+  customPartFamilies?: {
+    badge: string;
+    title: string;
+    intro: string;
+    boundaryNote: string;
+    families: {
+      number: string;
+      slug: string;
+      name: string;
+      description: string;
+      reviewFactors: string[];
+      image: string;
+      imageAlt: string;
+    }[];
+  };
 }
 
 export interface PartsLandingData {
@@ -359,6 +381,96 @@ export const PART_PAGES: PartsCategory[] = [
     directIntentResolver: {
       snapshot:
         'Custom titanium CNC parts from BOZE are precision-machined from certified titanium grades (Gr2, Gr5, Gr9, Gr23) on 3/5-axis CNC centers with ±0.005 mm tolerances. Production runs from single-piece prototypes to 10,000+ piece batches under AS9100D / ISO 9001 / ISO 13485 quality systems with EN 10204 3.1 mill certificates. Submit drawings via RFQ for a DFM review and quotation within 24–48 hours.',
+    },
+    customPartFamilies: {
+      badge: 'Custom Part Families',
+      title: 'Precision CNC Titanium Parts We Manufacture',
+      intro:
+        'BOZE manufactures drawing-based titanium components across milled, turned, threaded and complex custom geometries for industrial OEM and engineering projects.',
+      boundaryNote:
+        'Standard titanium bolts, flanges, fittings and other catalog product families are supplied through their dedicated BOZE product pages; this page focuses on drawing-based machined components.',
+      families: [
+        {
+          number: '01',
+          slug: 'milled',
+          name: 'CNC Milled Titanium Parts',
+          description:
+            'Custom milled titanium components for parts requiring pockets, holes, profiles, mounting features and drawing-controlled dimensional relationships.',
+          reviewFactors: ['Geometry', 'Datum', 'Profile', 'Hole Pattern', 'Surface Finish'],
+          image: '/images/products/titanium-flat-mount-brake-adapter.webp',
+          imageAlt: 'CNC milled titanium flat-mount brake adapter with machined pockets and bolt pattern',
+        },
+        {
+          number: '02',
+          slug: 'turned',
+          name: 'CNC Turned Titanium Parts',
+          description:
+            'Round and rotational titanium components manufactured from customer drawings with diameter, length, bore, groove and runout requirements reviewed before production.',
+          reviewFactors: ['OD', 'ID', 'Length', 'Groove', 'Runout'],
+          image: '/images/products/titanium-auv-propeller-shaft.webp',
+          imageAlt: 'CNC turned titanium AUV propeller shaft with concentric diameters',
+        },
+        {
+          number: '03',
+          slug: 'brackets-structural',
+          name: 'Brackets & Structural Components',
+          description:
+            'Machined titanium brackets, mounts and structural components can be produced to drawing-defined profiles, hole patterns, interfaces and inspection requirements.',
+          reviewFactors: ['Profile', 'Hole Pattern', 'Datum', 'Thickness', 'Interface'],
+          image: '/images/products/titanium-shadow-ring-bracket.webp',
+          imageAlt: 'Machined titanium shadow-ring bracket with profile and through-holes',
+        },
+        {
+          number: '04',
+          slug: 'complex-geometry',
+          name: 'Complex-Geometry Titanium Parts',
+          description:
+            'Multi-feature titanium components are reviewed for tool access, setups, wall thickness, datum strategy and inspection feasibility before machining.',
+          reviewFactors: ['Tool Access', 'Setups', 'Thin Walls', 'Profiles', 'GD&T'],
+          image: '/images/products/titanium-chlorine-compressor-impeller.webp',
+          imageAlt: 'Complex-geometry titanium chlorine compressor impeller with curved blades',
+        },
+        {
+          number: '05',
+          slug: 'discs-plates-housings',
+          name: 'Discs, Plates & Housings',
+          description:
+            'Machined titanium discs, plates and housing-type components can be produced with drawing-defined faces, bores, pockets, mounting features and surface requirements.',
+          reviewFactors: ['OD', 'Thickness', 'Bore', 'Flatness', 'Hole Pattern'],
+          image: '/images/products/titanium-brake-rotor-disc.webp',
+          imageAlt: 'Machined titanium brake rotor disc with bores and flat surfaces',
+        },
+        {
+          number: '06',
+          slug: 'shafts-sleeves-pins',
+          name: 'Shafts, Sleeves & Pins',
+          description:
+            'Titanium shafts, sleeves, pins and cylindrical components are reviewed for diameters, fits, shoulders, bores and runout requirements.',
+          reviewFactors: ['Diameter', 'Fit', 'Bore', 'Shoulder', 'Runout'],
+          image: '/images/products/titanium-bottom-bracket-spindle.webp',
+          imageAlt: 'CNC turned titanium bottom-bracket spindle with stepped diameters',
+        },
+        {
+          number: '07',
+          slug: 'threaded',
+          name: 'Threaded Titanium Components',
+          description:
+            'Internal and external threaded features can be machined according to the specified thread form, class, engagement and inspection requirements.',
+          reviewFactors: ['Thread Type', 'Class', 'Pitch', 'Engagement', 'Inspection'],
+          image: '/images/products/titanium-hub-bolt-m12.webp',
+          imageAlt: 'CNC machined titanium M12 hub bolt with external threads',
+        },
+        {
+          number: '08',
+          slug: 'valve-flow-control',
+          name: 'Valve & Flow-Control Components',
+          description:
+            'Drawing-based titanium valve, flow-control and fluid-system components can be reviewed for geometry, interfaces, sealing features and service requirements.',
+          reviewFactors: ['Bore', 'Seat', 'Thread', 'Seal Interface', 'Service Environment'],
+          image: '/images/products/titanium-ball-valve-stem.webp',
+          imageAlt: 'CNC machined titanium ball valve stem for fluid control',
+        },
+      ],
     },
     procurementSnapshot: {
       title: 'Procurement Snapshot',
