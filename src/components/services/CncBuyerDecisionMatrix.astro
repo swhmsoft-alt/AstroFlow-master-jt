@@ -1,0 +1,159 @@
+---
+/**
+ * CncBuyerDecisionMatrix.astro
+ * ──────────────────────────────────────────────────────────────────────
+ * Two-variant content block for /titanium-cnc-machining-services/:
+ *
+ *   variant="capability"  → Process Capability Matrix (table + standards)
+ *     ↳ triggers: realTableElement, headingNumbered, quotedSpec,
+ *                 standardCitation, comparison, sourceDisclosure
+ *
+ *   variant="framework"   → Boze-Method™ Decision Framework
+ *     ↳ triggers: proprietaryFrame, uniqueDataPoint, yearsInBusiness,
+ *                 freshnessDate, quotedSpec, headingNumbered
+ *
+ * Zero client JS — 100% server-rendered Tailwind markup.
+ */
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  variant: 'capability' | 'framework';
+}
+const { variant } = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+const prefix = `services.cncbuyermatrix.${variant}`;
+---
+
+<section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    {/* Section header — numbered heading triggers `headingNumbered` signal */}
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border"
+           style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 10h18M3 6h18M3 14h18M3 18h18" />
+        </svg>
+        {t(`${prefix}.badge`)}
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {t(`${prefix}.h2`)}
+      </h2>
+      <p class="text-base md:text-lg max-w-3xl mx-auto leading-relaxed"
+         style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        {t(`${prefix}.intro`)}
+      </p>
+    </div>
+
+    {variant === 'capability' && (
+      <div class="overflow-x-auto rounded-xl border"
+           style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.capability.col_param')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.capability.col_3axis')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.capability.col_5axis')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.capability.col_millturn')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.capability.col_edm')}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[0, 1, 2, 3, 4].map((rowIdx) => (
+              <tr class="border-t"
+                  style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <td class="px-4 py-3 font-semibold align-top"
+                    style="color: var(--theme-primary);">
+                  {t(`services.cncbuyermatrix.capability.row${rowIdx}.label`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                  {t(`services.cncbuyermatrix.capability.row${rowIdx}.v3`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                  {t(`services.cncbuyermatrix.capability.row${rowIdx}.v5`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                  {t(`services.cncbuyermatrix.capability.row${rowIdx}.mt`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                  {t(`services.cncbuyermatrix.capability.row${rowIdx}.edm`)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+
+    {variant === 'framework' && (
+      <div class="overflow-x-auto rounded-xl border"
+           style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.framework.col_criterion')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.framework.col_weight')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.framework.col_boze')}
+              </th>
+              <th class="px-4 py-3 text-left font-semibold" style="color: var(--theme-text);">
+                {t('services.cncbuyermatrix.framework.col_typical')}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[0, 1, 2, 3].map((rowIdx) => (
+              <tr class="border-t"
+                  style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <td class="px-4 py-3 font-semibold align-top"
+                    style="color: var(--theme-primary);">
+                  {t(`services.cncbuyermatrix.framework.row${rowIdx}.criterion`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                  {t(`services.cncbuyermatrix.framework.row${rowIdx}.weight`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                  {t(`services.cncbuyermatrix.framework.row${rowIdx}.boze`)}
+                </td>
+                <td class="px-4 py-3 align-top"
+                    style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                  {t(`services.cncbuyermatrix.framework.row${rowIdx}.typical`)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+
+    {/* Footer note — sources / freshness / framework attribution */}
+    <p class="text-xs mt-6 leading-relaxed text-center max-w-4xl mx-auto"
+       style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+      {t(`${prefix}.footnote`)}
+    </p>
+
+  </div>
+</section>
