@@ -3,7 +3,7 @@ import { SITE, getNavigation } from '@config/site';
 import type { NavItem } from '@config/site';
 import MobileMenu from '@components/react/MobileMenu';
 import LanguageSelector from './LanguageSelector.astro';
-import ThemeSwitcher from './ThemeSwitcher.astro';
+
 import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
 import { isRouteAvailableInLang } from '@config/route-availability.mjs';
 import { loadBlogMap } from '../lib/rehype-blog-loader.mjs';
@@ -390,9 +390,8 @@ const logoSubtext = t('header.logoSubtext');
       })}
     </div>
 
-    <!-- Theme Switcher + Language Picker + CTA Button -->
+    <!-- Language Picker + CTA Button (theme switcher removed — manual via themes.ts) -->
     <div class="hidden lg:flex lg:items-center lg:space-x-4">
-      <ThemeSwitcher />
       <LanguageSelector />
       <a
         href="/rfq/" target="_blank" rel="noopener noreferrer"

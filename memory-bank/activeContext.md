@@ -344,3 +344,23 @@ Ops / User scope (NOT Cline's responsibility):
 - `service-detail` pageType in schema.ts already supports Service + hasCredential × N — no schema.ts rewrite needed (per .clinerules red line: "不重写 src/lib/schema.ts").
 - English-only campaign page pattern (no SEO_CONFIG entry needed) matches `/as9100-titanium-supplier/` and `/titanium-cnc-machining-manufacturer/` exactly. Don't invent new i18n routing for campaign pages.
 - `faqItems` prop in BaseLayout auto-emits FAQPage JSON-LD — pre-existing mechanism, zero new code needed for FAQPage @type.
+
+---
+
+## Theme System — Closed-Loop（2026-09-24）
+
+**状态：** ACTIVE_THEME = `aerospace-precision`（默认深色）。改主题 = 改 `src/config/themes.ts` + 重 build。
+
+**单一真源：** `src/config/themes.ts`（THEMES 注册表，6 主题 / ACTIVE_THEME_ID / ACTIVE_THEME_META）。
+
+**6 主题：** aerospace-precision / light-beige / cold-titanium-steel / aerospace-gold / warm-modern-beige / pure-bw-orange。
+
+**已删除：** `ThemeSwitcher.astro`、`cmsThemes.ts`、`theme-demo.astro`（孤儿代码）。
+
+**验证：** check-undefined-slugs 0 issue；astro build 2309 HTML；dist/index.html SSR 输出 `const themeId = "aerospace-precision"` 正确。
+
+**给后续 Cline session 的提醒：**
+- 🚫 **不要重新添加 ThemeSwitcher 运行时切换 UI** — 用户明确要求手动管理。
+- 🚫 **不要在 .astro 内手写 [data-theme="..."]** — 全站统一由 ACTIVE_THEME_ID 驱动。
+- ✅ 改主题色：编辑 `src/config/themes.ts` (id, label, description, enabled) + 同步 `src/styles/global.css` 对应 `[data-theme="<id>"]` 块的 7 个变量。
+- ✅ 新增主题：THEMES 数组追加 + TypeScript union (`ThemeId`) 同步 + global.css 新增块。

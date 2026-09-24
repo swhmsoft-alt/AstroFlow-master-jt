@@ -11,6 +11,7 @@ import { DEFAULT_LANG } from '../i18n/ui';
 import { isRouteAvailableInLang } from '@config/route-availability.mjs';
 import { buildBlogMap } from '../lib/blog-index';
 import { detectPageType, buildBreadcrumbItems, buildPageGraph, type PageType, type BreadcrumbItem, type FaqItem, type HowToItem } from '../lib/schema';
+import { ACTIVE_THEME_ID } from '../config/themes';
 import BrandAbout from '@components/home/BrandAbout.astro';
 import CookieConsent from '@components/CookieConsent.astro';
 
@@ -36,7 +37,6 @@ const NAV_LABEL_MAP: Record<string, string> = (() => {
 interface Props {
   title?: string;
   description?: string;
-  hideThemeSwitcher?: boolean;
   canonicalURL?: string | URL;
   ogImage?: string;
   pubDate?: string | null;
@@ -168,7 +168,6 @@ const defaultAlternateLinks = getAlternateLinks(currentPathname).filter((link) =
 const {
   title: explicitTitle,
   description: explicitDesc,
-  hideThemeSwitcher = false,
   canonicalURL,
   ogImage,
   pubDate,
@@ -331,7 +330,9 @@ const ldJson = JSON.stringify(pageGraph);
 {/* hreflang x-default — always points at the canonical (English) URL so search engines
     have a fallback when no locale-specific alternate matches the user. */}
 <link rel="alternate" hreflang="x-default" href={`${SITE.url}${canonicalPath}`} />
-<script is:inline>(function(){try{var t=localStorage.getItem('titanium-theme');if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.setAttribute('data-theme','aerospace-precision')}catch(e){document.documentElement.setAttribute('data-theme','aerospace-precision')}})();</script>
+<!-- Theme bootstrap: ACTIVE_THEME_ID is injected at build-time from src/config/themes.ts.
+     No runtime toggle — change theme by editing themes.ts and rebuilding. -->
+<script is:inline define:vars={{ themeId: ACTIVE_THEME_ID }}>document.documentElement.setAttribute('data-theme', themeId);</script>
 
 {/* ══ Google Ads — Consent Mode v2 (GDPR, ePanel-friendly) ══ */}
 {isProd && gaId && (

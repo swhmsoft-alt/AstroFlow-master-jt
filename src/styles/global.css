@@ -18,21 +18,12 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   5 THEMES — defined statically so NO JS injection needed
+   6 THEMES — single-color per theme (NO dark/light pair).
+   Active theme controlled by src/config/themes.ts (build-time).
+   Each theme defines 7 design tokens (--theme-*).
    ════════════════════════════════════════════════════════════ */
 
-/* Theme 1: legacy-original */
-[data-theme="legacy-original"] {
-  --theme-bg: #0d0e10;
-  --theme-surface: #1a1c1e;
-  --theme-text: #e4e4e7;
-  --theme-primary: #ff5a00;
-  --theme-accent: #ff5a00;
-  --theme-nav-text: #FFFFFF;
-  --theme-nav-invert: 1;
-}
-
-/* Default theme (aerospace-precision — also the :root fallback) */
+/* Theme 1: aerospace-precision — existing default DARK */
 :root,
 [data-theme="aerospace-precision"] {
   --theme-bg: #0F172A;
@@ -44,41 +35,7 @@
   --theme-nav-invert: 1;
 }
 
-/* Theme 2: classic-titanium */
-[data-theme="classic-titanium"] {
-  --theme-bg: #F4F5F7;
-  --theme-surface: #FFFFFF;
-  --theme-text: #1E293B;
-  --theme-primary: #64748B;
-  --theme-accent: #0EA5E9;
-  --theme-nav-text: #1E293B;
-  --theme-nav-invert: 0;
-}
-
-
-/* Theme 4: anodized-colorway */
-[data-theme="anodized-colorway"] {
-  --theme-bg: #0B0F19;
-  --theme-surface: #161F30;
-  --theme-text: #E2E8F0;
-  --theme-primary: #8B5CF6;
-  --theme-accent: #EC4899;
-  --theme-nav-text: #E2E8F0;
-  --theme-nav-invert: 1;
-}
-
-/* Theme 5: sustainable-metallics */
-[data-theme="sustainable-metallics"] {
-  --theme-bg: #F8FAFC;
-  --theme-surface: #F1F5F9;
-  --theme-text: #0F172A;
-  --theme-primary: #059669;
-  --theme-accent: #475569;
-  --theme-nav-text: #0F172A;
-  --theme-nav-invert: 0;
-}
-
-/* Theme 6: light-beige — clean white light theme */
+/* Theme 2: light-beige — existing default LIGHT */
 [data-theme="light-beige"] {
   --theme-bg: #FAFAFA;
   --theme-surface: #FFFFFF;
@@ -86,5 +43,49 @@
   --theme-primary: #38BDF8;
   --theme-accent: #34D399;
   --theme-nav-text: #1E293B;
+  --theme-nav-invert: 0;
+}
+
+/* Theme 3: cold-titanium-steel — NEW (deep side, industrial) */
+[data-theme="cold-titanium-steel"] {
+  --theme-bg: #1B2533;
+  --theme-surface: #2A3441;
+  --theme-text: #E8ECEF;
+  --theme-primary: #94A3B8;
+  --theme-accent: #CBD5E1;
+  --theme-nav-text: #E8ECEF;
+  --theme-nav-invert: 1;
+}
+
+/* Theme 4: aerospace-gold — NEW (deep side, premium) */
+[data-theme="aerospace-gold"] {
+  --theme-bg: #0A1929;
+  --theme-surface: #14233D;
+  --theme-text: #F5F7FA;
+  --theme-primary: #C9A961;
+  --theme-accent: #E6D5A0;
+  --theme-nav-text: #F5F7FA;
+  --theme-nav-invert: 1;
+}
+
+/* Theme 5: warm-modern-beige — NEW (light side, warm) */
+[data-theme="warm-modern-beige"] {
+  --theme-bg: #F5F0E8;
+  --theme-surface: #FAF6EC;
+  --theme-text: #2B2520;
+  --theme-primary: #B87333;
+  --theme-accent: #D4A574;
+  --theme-nav-text: #2B2520;
+  --theme-nav-invert: 0;
+}
+
+/* Theme 6: pure-bw-orange — NEW (light side, pure minimal) */
+[data-theme="pure-bw-orange"] {
+  --theme-bg: #FFFFFF;
+  --theme-surface: #F5F5F5;
+  --theme-text: #0A0A0A;
+  --theme-primary: #FF5A00;
+  --theme-accent: #FF7A33;
+  --theme-nav-text: #0A0A0A;
   --theme-nav-invert: 0;
 }
