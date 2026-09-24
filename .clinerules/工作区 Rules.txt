@@ -1,115 +1,35 @@
 # [Workspace Environment & Engineering Constraints]
 # At the start of every session, read and strictly adhere to SEMANTIC_CLOSURE.md.
 
-1. Tech Stack Boundaries:
-   - Framework: Astro SSR/Static. All components, layouts, and pages must strictly adhere to Astro's standard component lifecycle and routing conventions.
-   - Environment: VS Code + Cline IDE extension environment. Always choose headless, scriptable tools over interactive terminal commands.
+## 0. HIGHEST PRIORITY: STOP IMMEDIATELY UPON TASK COMPLETION
+- **Strict Scoping**: Process ONLY requested tasks. Never autonomously alter configs, install packages, or create commits.
+- **Halt Condition**: Cease tool calls immediately when user query is answered, changes are validated, or blockers occur.
+- **Post-Tool Self-Check**: Ask "Is request satisfied?" after every tool call. If YES, stop immediately.
 
-2. Generic i18n & Translation Engineering Rules:
-   - Single Source of Truth: When handling localized text or translations, always locate and audit the primary fallback/source configuration file before propagating changes to secondary/localized variations.
-   - Structure Preservation: Retain exact JSON/TS key hierarchies, nested data types, and parameters. Never alter structural syntax during value translation or string replacement.
+## 1. Tech Stack & Engineering Rules
+- Framework: Astro SSR/Static. Adhere to standard lifecycle and routing conventions.
+- Environment: VS Code + Cline. Prefer headless, scriptable tools over interactive commands.
+- i18n & Structure: Single source of truth. Audit primary fallback config before editing. Preserve exact JSON/TS key hierarchies.
+- SEO & Conversion: Ensure strict semantic SEO, GEO schema integrity, and inquiry conversion flow stability.
 
-3. Core Business & Architecture Standard Filters (Apply to ALL file edits):
-   - SEO & GEO Awareness: When writing or editing markup, frontend metadata, JSON-LD schemas, routing logic, or content strings, always ensure strict conformance to semantic SEO optimization, localized geographic entity (GEO) schema integrity, and search-engine indexability.
-   - Conversion & Lead Generation (Inquiry Focus): Ensure that any UI component, CTA element, middleware, or web-form logic prioritizes operational stability, optimal user conversion flows, and reliable inquiry processing.
+## 2. Undefined Slug Prevention (CRITICAL)
+- NEVER use `|| undefined` in `getStaticPaths` params. Use `|| ''` instead.
+- ALWAYS use full fallback chain for slug interpolation:
+  `params: { slug: entry.slug || entry.id?.replace(/\.(json|md)$/, '') || '' }`
+  `href={`/path/${e.slug || e.id?.replace('.json','') || ''}/`}`
+- Run `node scripts/check-undefined-slugs.mjs` before creating/editing `[...slug].astro`.
 
-4. Undefined Slug Prevention (CRITICAL — see SEMANTIC_CLOSURE.md §4.4):
-    - NEVER use `|| undefined` as a fallback in `getStaticPaths` params. Use `|| ''` instead.
-    - ALWAYS add `|| ''` fallback to any `${...slug}` interpolation in `<a href>` template literals.
-    - **IMPORTANT: `|| ''` alone is not enough when `entry.slug` is empty but `entry.id` exists.**
-      Always use the **full fallback chain** from the proven pattern:
-      ```
-      params: { slug: entry.slug || entry.id?.replace(/\.(json|md)$/, '') || '' }
-      href={`/path/${e.slug || e.id?.replace('.json','') || ''}/`}
-      ```
-    - Before creating or editing any `[...slug].astro` file, run `node scripts/check-undefined-slugs.mjs`.
+## 3. Temp File Self-Cleanup
+- Delete ALL temporary scripts/logs (`_*.mjs`, `temp*.*`, `out.txt`, `fix*.py`) created during the session.
+- Run `git status --short` before concluding to ensure no untracked file remains.
 
-5. Workspace Execution State Constraints:
-    - Execution mode: All code changes must be implemented in active execution state (direct file edits, script execution, terminal commands).
-    - Intent verification: For high-risk/ambiguous tasks, Cline MUST clarify and confirm intent before implementing (see SEMANTIC_CLOSURE.md §1.1).
-    - Self-validation: After each implementation, Cline MUST run the Validation Checklist (see SEMANTIC_CLOSURE.md §6) and report results.
+## 4. Closed-Loop Engineering Principle
+- Follow unified loop: Input → Compute → Store → Output → Improve → Re-input. Prefer idempotent scripts.
 
-6. Temp File Self-Cleanup (CRITICAL — Task Completion Requirement):
-    - Cline MUST delete ALL temporary scripts, test files, scratch files, and any file it created during the session that is NOT part of the final application codebase.
-    - This includes but is not limited to: `_*.mjs`, `_*.js`, `_*.py`, `_*.ps1`, `fix*.py`, `fix*.mjs`, `temp*.*`, `build*.txt`, `deploy*.txt`, `check*.txt`, `out.txt`, `t.txt`.
-    - Exception: Files in `docs/`, `memory-bank/`, or explicitly requested by the user to keep are exempt.
-    - Constraint: Never delete files that the running application depends on (check `git status` or `import` references before deleting).
-    - Verification: At the end of each task, run `git status --short` to confirm no stray untracked files remain.
+## 5. Model Protocol & Secrets
+- Model: MiniMax-M3 via OpenAI-compatible endpoint (`https://api.minimaxi.com/v1`).
+- Secret: Store API key ONLY in `.env.production` (`MINIMAX_API_KEY`). Never inline in tracked files.
 
-7. Closed-Loop Engineering Principle (CRITICAL — see SEMANTIC_CLOSURE.md §0):
-   - All small projects, functions, mechanisms MUST follow the unified closed loop:
-       Input → Compute → Store → Output → Improve → Re-input (loop)  +  Reuse mechanism.
-   - Input: audit & reuse existing data/mechanisms (Single Source of Truth) before creating new.
-   - Compute: prefer idempotent scripts / pure functions (reproducible results).
-   - Store: persist result as the single authoritative source (e.g. data/keywords/*.json).
-   - Output: produce consumer-ready output WITHOUT altering existing runtime behavior.
-   - Improve: run validation gates (astro check, field integrity, git diff review).
-   - Re-input: feed verification/retrospective back to input to drive the next iteration.
-   - Reuse: prefer existing abstractions (repository.mjs, scripts/*, memory-bank) over parallel implementations.
-
-8. Cline LLM Provider — MiniMax M3 (OpenAI 兼容协议):
-   - **Default Provider**: MiniMax M3 via OpenAI-compatible endpoint.
-     Reference: https://platform.minimaxi.com/docs/token-plan/other-tools
-   - **Config values (single source of truth — DO NOT duplicate elsewhere)**:
-     ```
-     Provider     : OpenAI Compatible   (Cline 字段名也叫 "OpenAI" / "Custom")
-     Base URL     : https://api.minimaxi.com/v1
-     Model ID     : MiniMax-M3
-     API Key env  : MINIMAX_API_KEY    (mirrors DEEPSEEK_API_KEY pattern in .env.production)
-     ```
-   - **Secret handling (CRITICAL — security & .gitignore)**:
-     - The actual API key (`sk-cp-…` prefix) MUST be stored ONLY in `.env.production`,
-       NEVER inline in code, NEVER in `.clinerules`, NEVER in any tracked file.
-     - `.env.production` is already .gitignored — verify with `git check-ignore .env.production`
-       before committing.
-     - When the user has not yet obtained a Token Plan key, leave the value as an empty
-       placeholder (`MINIMAX_API_KEY=`) and instruct them to fetch from
-       https://platform.minimaxi.com → 控制台 → Token Plan.
-   - **Cline GUI setup path**:
-     1. VS Code sidebar → Cline ⚙️ Settings
-     2. API Provider → "OpenAI Compatible"
-     3. Base URL → `https://api.minimaxi.com/v1`
-     4. OpenAI API Key → read from `process.env.MINIMAX_API_KEY` (paste the `sk-cp-…` value)
-     5. Model ID → `MiniMax-M3`
-     6. Save → run a minimal task ("create hello.txt in cwd") as smoke test.
-   - **Headless / CLI / CI equivalent env vars** (set in the shell before launching Cline):
-     ```
-     OPENAI_API_KEY=<value of MINIMAX_API_KEY>
-     OPENAI_BASE_URL=https://api.minimaxi.com/v1
-     OPENAI_MODEL_ID=MiniMax-M3
-     ```
-   - **Protocol choice rationale**:
-     - MiniMax 同时提供 OpenAI 兼容 (`/v1`) 与 Anthropic 兼容 (`/anthropic`) 两条端点.
-     - Cline 底层走 OpenAI Chat Completions → 选 OpenAI 兼容.
-     - Anthropic 兼容的 prompt-cache 优势对 Cline 不生效（OpenAI 协议侧未启用），
-       故不要为了 cache 强行改 Cline.
-   - **Compatibility caveats (must verify before relying on)**:
-     - ⚠ Function calling / tool_calls schema support — MiniMax-M3 对 OpenAI tools 字段的
-       完整覆盖度未在官方文档明示. 首次接入后必须跑一次 tool-using 任务验证.
-     - ⚠ Server-Sent Events (stream=true) — Cline 依赖流式输出, 必须验证 `chat/completions`
-       的 SSE 行为正常.
-     - ⚠ Context window 上限 — 文档未公布, 需在控制台或实测中确认.
-   - **Self-test snippet** (run from PowerShell to validate network + auth BEFORE touching Cline):
-     ```powershell
-     $env:MINIMAX_API_KEY = "sk-cp-YOUR_KEY_HERE"
-     Invoke-RestMethod -Method Post `
-       -Uri "$($env:OPENAI_BASE_URL ?? 'https://api.minimaxi.com/v1')/chat/completions" `
-       -Headers @{ Authorization = "Bearer $env:MINIMAX_API_KEY" } `
-       -ContentType "application/json" `
-       -Body '{"model":"MiniMax-M3","messages":[{"role":"user","content":"ping"}]}'
-     ```
-     期望: HTTP 200 + `choices[0].message.content` 非空. 若返回 401 → key 错误;
-     若返回 404 → 检查 Base URL 是否带 `/v1` 冗余路径; 若超时 → 检查代理/DNS.
-   - **Fallback policy**:
-     - 当 MiniMax 不可用或 key 失效时, 临时回退至 `DEEPSEEK_API_KEY` (同在 .env.production).
-     - 永久切换 provider 必须在下一节变更日志中记录原因.
-
-9. Scope & Output Discipline (CRITICAL — anti-overreach):
-   - **Default to minimal action**: For simple questions, answer directly without invoking tools.
-   - **One tool, one purpose**: When a tool call is required, use the smallest possible set (1 read / 1 grep). Do NOT parallel-expand into directory tree listings or multi-file scans unless the user explicitly requests an audit.
-   - **No unsolicited plans**: Do NOT generate "rectification plans", "step-by-step solutions", or "improvement proposals" unless the user asks "what should I do" / "how to fix".
-   - **Length self-check before sending**: If a reply exceeds ~15 lines or 3 paragraphs, rewrite to 1–2 paragraphs.
-   - **Closeable in one round**: Each reply must be answerable by the user with "yes / no / just this one thing". If not, scope was exceeded — trim.
-   - **No fabricating history**: Never invent entries for `progress.md`, git history, or any audit log. Only log work actually performed in the current Cline session.
-   - **No tool calls for verification of obvious facts**: If a file path or filename can be answered from memory or from `ls`/`dir` output already in context, do not call additional tools.
-   - **Stop on over-traversal signal**: If the user says "don't ask every time", "just answer", or "stop exploring", immediately collapse to single-line answer mode for the remainder of the session.
+## 6. Scope & Output Discipline
+- Minimal action: Direct text answers for simple queries without tools.
+- Length limit: Keep replies concise (<=15 lines). No unsolicited refactoring plans or fabricated progress history.
