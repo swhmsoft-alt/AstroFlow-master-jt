@@ -7,6 +7,7 @@ import TitaniumEngineeringKnowHow from '../components/services/TitaniumEngineeri
 import CncDedicatedCta from '../components/services/CncDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
 import CncBuyerDecisionMatrix from '../components/services/CncBuyerDecisionMatrix.astro';
+import MethodologySources from '../components/services/MethodologySources.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -82,7 +83,7 @@ const t = useTranslations(lang);
             {t('services.cncbuyerdecision.s1.badge')}
           </span>
         </div>
-        <h2 class="text-xl md:text-2xl font-bold mb-3" style="color: var(--theme-text);">
+        <h2 class="text-2xl md:text-3xl font-bold mb-3" style="color: var(--theme-text);">
           {t('services.cncbuyerdecision.s1.h2')}
         </h2>
         <p class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
@@ -188,63 +189,36 @@ const t = useTranslations(lang);
   <!-- ============== S5: Boze-Method™ Decision Framework (variant=framework) ============== -->
   <CncBuyerDecisionMatrix variant="framework" />
 
-  <!-- ============== S6: Methodology & Sources (EEAT signals + numbered headings) ============== -->
-  <section class="relative py-20" style="background-color: var(--theme-surface);">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-4xl mx-auto">
-        {/* ## 1. About Boze — track record */}
-        <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
-          ## 1. About Boze — Track Record Since 2008
-        </h2>
-        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
-          Boze Titanium Manufacturing Center, operated by Baoji Boze Metal Products Co., Ltd., has been producing precision titanium parts since 2008. We are AS9100D-certified and NADCAP-accredited; our quality system is benchmarked against ISO 9001 and MIL-STD requirements. Our team of technicians and engineers holds qualifications in titanium-specific metallurgy and 5-axis programming.
-        </p>
-
-        {/* ## 2. Procurement Realities — buyer decision signals */}
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-10" style="color: var(--theme-text);">
-          ## 2. Procurement Realities — File Formats, Lead Time, MOQ
-        </h2>
-        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
-          Lead time for a titanium CNC machining order is 5–15 business days depending on complexity, with rush turnaround available in 3–5 business days. We accept STEP, IGES, DWG, DXF, SolidWorks, CATIA, NX, and Parasolid CAD file format uploads. Minimum order quantity (MOQ) is 1 piece for prototype; 50+ pieces unlocks production pricing. For example, a recent case study saw a customer reduce their scrap rate by 40% after switching to our heat-level material traceability workflow.
-        </p>
-
-        {/* ## 3. Quality, Standards & Yield Data */}
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-10" style="color: var(--theme-text);">
-          ## 3. Quality, Standards &amp; Yield Data
-        </h2>
-        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
-          We cite the following standards on every shipment: ASTM B381, ASTM B348, ASTM F136, AMS 4911, AMS 4928, ISO 5832-3, AS9100D, NADCAP, and Fed-Std-160. First-pass yield exceeds 99.5%; Cpk ≥ 1.33 is measured on every critical dimension; documented defect rate stays below 0.5%. Source: Boze internal FAIR data, according to AS9100D clause 8.5.1, cited from production-floor measurement (updated 2026-09-24, revised quarterly, last published 2026-09-24).
-        </p>
-
-        {/* ## 4. Capacity & Redundancy */}
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-10" style="color: var(--theme-text);">
-          ## 4. Capacity &amp; Redundancy — Production Volume Locked Within 72 Hours
-        </h2>
-        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
-          Monthly production capacity is 8,000+ parts across our dedicated titanium lines; backup machines are on standby for redundancy. Production volume is locked within 72 hours of PO confirmation. Compared to a typical job-shop, our yield rate, capacity, and lead time are 30–40% better — see the Boze-Method™ Decision Framework above for our proprietary selection matrix.
-        </p>
-
-        {/* ## 5. Methodology */}
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-10" style="color: var(--theme-text);">
-          ## 5. Methodology — A Proprietary Framework for Sourcing Decisions
-        </h2>
-        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
-          The Boze-Method™ Decision Framework is our proprietary 4-criterion selection matrix, built on first-hand shop-floor data and our original study of buyer requirements since 2008. It is not adapted from third-party research; it is the outcome of our own test programs and customer feedback. For example, when we benchmarked Boze vs. an overseas CNC shop, our scrap rate dropped from 1.8% to 0.6% after switching to a heat-level material traceability workflow. Sources: Boze internal benchmark, published 2026-09-24, revised quarterly.
-        </p>
-
-        {/* Quoted spec block — AI quotedSpec signal */}
-        <blockquote class="mt-8 p-6 rounded-xl border-l-4"
-                    style="background-color: color-mix(in srgb, var(--theme-primary) 5%, var(--theme-surface)); border-color: var(--theme-primary);">
-          <p class="text-sm md:text-base italic" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
-            "Boze Titanium Manufacturing Center produces precision titanium components to ±0.005 mm positional accuracy, Ra 0.4 µm default finish, and 99.5% first-pass yield across 8,000+ parts per month — backed by AS9100D and NADCAP certifications since 2008."
-          </p>
-          <footer class="text-xs mt-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
-            — Boze internal benchmark, published 2026-09-24.
-          </footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+  <!-- ============== S6: Methodology & Sources (componentized) ============== -->
+  <MethodologySources
+    badge="Methodology & Sources"
+    title="How We Source Decisions — and How You Can Verify Them"
+    subtitle="Five areas of operational transparency: track record, procurement realities, quality standards, capacity, and the proprietary framework behind every quotation."
+    items={[
+      {
+        title: 'About Boze — Track Record Since 2008',
+        body: 'Boze Titanium Manufacturing Center, operated by Baoji Boze Metal Products Co., Ltd., has been producing precision titanium parts since 2008. We are AS9100D-certified and NADCAP-accredited; our quality system is benchmarked against ISO 9001 and MIL-STD requirements. Our team of technicians and engineers holds qualifications in titanium-specific metallurgy and 5-axis programming.',
+      },
+      {
+        title: 'Procurement Realities — File Formats, Lead Time, MOQ',
+        body: 'Lead time for a titanium CNC machining order is 5–15 business days depending on complexity, with rush turnaround available in 3–5 business days. We accept STEP, IGES, DWG, DXF, SolidWorks, CATIA, NX, and Parasolid CAD file format uploads. Minimum order quantity (MOQ) is 1 piece for prototype; 50+ pieces unlocks production pricing. For example, a recent case study saw a customer reduce their scrap rate by 40% after switching to our heat-level material traceability workflow.',
+      },
+      {
+        title: 'Quality, Standards & Yield Data',
+        body: 'We cite the following standards on every shipment: ASTM B381, ASTM B348, ASTM F136, AMS 4911, AMS 4928, ISO 5832-3, AS9100D, NADCAP, and Fed-Std-160. First-pass yield exceeds 99.5%; Cpk ≥ 1.33 is measured on every critical dimension; documented defect rate stays below 0.5%. Source: Boze internal FAIR data, according to AS9100D clause 8.5.1, cited from production-floor measurement (updated 2026-09-24, revised quarterly, last published 2026-09-24).',
+      },
+      {
+        title: 'Capacity & Redundancy — Production Volume Locked Within 72 Hours',
+        body: 'Monthly production capacity is 8,000+ parts across our dedicated titanium lines; backup machines are on standby for redundancy. Production volume is locked within 72 hours of PO confirmation. Compared to a typical job-shop, our yield rate, capacity, and lead time are 30–40% better — see the Boze-Method™ Decision Framework above for our proprietary selection matrix.',
+      },
+      {
+        title: 'Methodology — A Proprietary Framework for Sourcing Decisions',
+        body: 'The Boze-Method™ Decision Framework is our proprietary 4-criterion selection matrix, built on first-hand shop-floor data and our original study of buyer requirements since 2008. It is not adapted from third-party research; it is the outcome of our own test programs and customer feedback. For example, when we benchmarked Boze vs. an overseas CNC shop, our scrap rate dropped from 1.8% to 0.6% after switching to a heat-level material traceability workflow. Sources: Boze internal benchmark, published 2026-09-24, revised quarterly.',
+      },
+    ]}
+    quote='"Boze Titanium Manufacturing Center produces precision titanium components to ±0.005 mm positional accuracy, Ra 0.4 µm default finish, and 99.5% first-pass yield across 8,000+ parts per month — backed by AS9100D and NADCAP certifications since 2008."'
+    quoteSource="Boze internal benchmark, published 2026-09-24."
+  />
 
   <!-- Audience Hub + Dedicated CTA -->
   <AudienceHub industry="cnc-machining" />
