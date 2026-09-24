@@ -7,6 +7,40 @@
 
 ## Recent Activity (2026-09-24)
 
+### Schema fix — `/parts/<slug>/` Product entity missing `image` (Google Rich Results)
+
+**Problem:** Google Rich Results Test 对 `/parts/titanium-cnc-parts/` 报 1 个严重问题 + 4 个非严重警告：
+- 严重：`Product` 实体缺 `image` 字段 → Google 无法生成产品 rich result
+- 非严重（按纪律保留）：缺 `aggregateRating` / `review`（B2B MadeToOrder，无伪造纪律；schema-issues.md P0-1 明令禁止）
+- 非严重：Merchant Info 无效（RFQ Offer 无 price/priceCurrency；同 B2B 设计决策）
+
+**Root cause:**
+- `src/lib/schema.ts:1022-1032` 的 `case 'part-detail':` 调用 `buildProduct({ ..., image: data.productImage, ... })`，`buildProduct` 已支持 image 输出（schema.ts:623）。
+- 但 7 个 `/parts/<slug>.astro` 页面（`titanium-cnc-parts`、`titanium-fabricated-parts`、`titanium-pipe-components`、`titanium-marine-parts`、`titanium-uav-components`、`titanium-motorsport-parts`、`titanium-medical-components`）调用 `<BaseLayout>` 时**未传 `productImage` 道具**。
+- `PartsCategory` 接口此前**没有顶层 `image` 字段**（仅 `customPartFamilies.families[i].image` 与 `PARTS_LANDING.categories[i].image` 存在，但前者仅 CNC 一页有，后者属 `/parts/` hub listing 而非 per-page data）。
+
+**Files changed (8 个)：**
+
+1. `src/data/parts.ts`
+   - `PartsCategory` 接口新增 `image?: string` + `imageAlt?: string`（lines 30-38），含 JSDoc 说明此字段用于 JSON-LD Product.image 解析 Google Rich Results 严重警告，URL 由页面层 `${SITE}${image}` 拼接为绝对路径。
+   - 7 个 `PART_PAGES` 条目各新增 `image` + `imageAlt` 字段（与 `PARTS_LANDING.categories[i].image` 同源），保证视觉与结构化数据一致。
+
+2. `src/pages/parts/titanium-{cnc,fabricated,pipe,marine,uav,motorsport,medical}-parts.astro` × 7
+   - 每个 `<BaseLayout>` 新增 `productImage={data.image ? \`${SITE}${data.image}\` : undefined}`，参照 `src/pages/products/product-entities/[...slug].astro:24-26` 与 `src/pages/products/[...slug].astro:36` 既有模式。
+
+**Validation gates:**
+- G1 build → `npx astro build` → `[build] 2310 page(s) built in 73.86s` ✅
+- G2 dist grep 7 个 `/parts/<slug>/index.html` Product 实体均含 `"image":"https://cnc.bozemetal.com/images/products/<filename>.webp"` ✅
+- G3 7 张图片文件均在 `public/images/products/` 存在（.webp 格式）✅
+
+**Remaining non-severe warnings (保留，按纪律)：**
+- `aggregateRating` / `review` 字段缺失：B2B MadeToOrder 场景无真实客户评价数据；schema-issues.md §"Important Note on GSC Warnings" 明令禁止伪造以触发 rich result。
+- Merchant Info 无效：Offer `availability: MadeToOrder` + `url: /rfq/` 不带 price/priceCurrency，是真实的 RFQ 制造报价关系而非零售价格（schema.ts:594-614 + schema-issues.md P0-1 决策）。
+
+**Lessons:**
+- `buildProduct` 已支持 `image` 字段（schema.ts:623），但 7 个 part-detail 页面的 BaseLayout 调用从未透传 `productImage` —— 这是一个**接口支持但页面漏配**的典型 schema bug。下次新增 part-detail 模板时必须透传 `productImage`（可作为 PR 模板校验项）。
+- B2B MadeToOrder 页面的 Product 实体在 GSC 中必然触发 review/aggregateRating 非严重警告（除非有真实客户评价），属"已知非问题"，不应作为修复门对待。
+
 ### Trinity Audit upgrade — `/titanium-cnc-machining-services/` (39 → 97)
 
 **Problem:** `/titanium-cnc-machining-services/` 是 D1 Process 主枢纽页，承载 aerospace / medical / motorsport 三大钛流量 query，但 Trinity Audit 仅 39/100 —— Buyer 33 / EEAT 38 / AI 46，远低于 buyer SOP 闭环门 75。

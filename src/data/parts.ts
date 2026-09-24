@@ -27,6 +27,15 @@ export interface PartsCategory {
   heroBadge: string;
   heroH1: string;
   heroSubtitle: string;
+  /**
+   * Representative product image for JSON-LD Product entity (absolute URL is
+   * constructed by the page via `${SITE}${image}`). Resolves Google Rich
+   * Results Test's "missing image" severe warning on /parts/<slug>/ pages.
+   * Mirrors the per-category image used in PARTS_LANDING.categories so visual
+   * and structured-data representations stay in sync.
+   */
+  image?: string;
+  imageAlt?: string;
   applicationOverview: {
     title: string;
     body: string;
@@ -442,6 +451,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Custom Titanium CNC Parts Manufacturing',
     heroSubtitle:
       'Precision titanium precision parts machined on 3/5-axis CNC centers and turn-mill cells — from prototype to production, with wire EDM for complex geometries and titanium rapid prototyping.',
+    image: '/images/products/titanium-flat-mount-brake-adapter.webp',
+    imageAlt: 'CNC milled titanium flat-mount brake adapter with machined pockets and bolt pattern',
     directIntentResolver: {
       snapshot:
         'Custom titanium CNC parts from BOZE are precision-machined from certified titanium grades (Gr2, Gr5, Gr9, Gr23) on 3/5-axis CNC centers with ±0.005 mm tolerances. Production runs from single-piece prototypes to 10,000+ piece batches under AS9100D / ISO 9001 / ISO 13485 quality systems with EN 10204 3.1 mill certificates. Submit drawings via RFQ for a DFM review and quotation within 24–48 hours.',
@@ -731,6 +742,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Custom Titanium Fabrication Services',
     heroSubtitle:
       'Titanium fabricated parts and welded assemblies built from prototype to production — laser & waterjet cutting, TIG welding, forming and surface treatment with full material traceability.',
+    image: '/images/products/titanium-ceramic-heater-clamp-plate.webp',
+    imageAlt: 'Fabricated titanium ceramic-heater clamp plate with bolt pattern and forming features',
     applicationOverview: {
       title: 'Application Overview',
       body:
@@ -837,6 +850,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Titanium Pipe Components & Spool Fabrication',
     heroSubtitle:
       'Titanium pipe spool fabrication and pipe components — pipe, flanges, fittings, elbows and welded tube assemblies built to layout drawings for corrosive and seawater service.',
+    image: '/images/products/titanium-blind-flange-asme-b165.webp',
+    imageAlt: 'Titanium ASME B16.5 blind flange with machined sealing face and bolt holes',
     applicationOverview: {
       title: 'Application Overview',
       body:
@@ -940,6 +955,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Titanium Marine Parts & Components',
     heroSubtitle:
       'Corrosion-resistant titanium parts for marine, subsea and shipboard systems — shafts, flanges, pump and valve hardware manufactured to withstand seawater service.',
+    image: '/images/products/titanium-auv-propeller-shaft.webp',
+    imageAlt: 'CNC turned titanium AUV propeller shaft for marine and subsea service',
     applicationOverview: {
       title: 'Application Overview',
       body:
@@ -1044,6 +1061,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Titanium UAV Components & Drone Parts',
     heroSubtitle:
       'Lightweight, high-strength titanium UAV precision machining — airframe, gimbal, motor and payload components that reduce weight while increasing stiffness.',
+    image: '/images/products/titanium-shadow-ring-bracket.webp',
+    imageAlt: 'Lightweight titanium shadow-ring bracket for UAV and drone airframe structures',
     applicationOverview: {
       title: 'Application Overview',
       body:
@@ -1148,6 +1167,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Titanium Motorsport Parts & Racing Components',
     heroSubtitle:
       'High-performance titanium motorsport parts — suspension, fasteners, exhaust and drivetrain components machined to reduce unsprung weight and improve reliability.',
+    image: '/images/products/titanium-brake-rotor-disc.webp',
+    imageAlt: 'Machined titanium brake rotor disc for high-performance motorsport applications',
     applicationOverview: {
       title: 'Application Overview',
       body:
@@ -1252,6 +1273,8 @@ export const PART_PAGES: PartsCategory[] = [
     heroH1: 'Titanium Medical Components & Implants',
     heroSubtitle:
       'Biocompatible, certified titanium medical components — implants and surgical instruments machined from Ti-6Al-4V ELI and CP-titanium under ISO 13485.',
+    image: '/images/products/titanium-acetabular-cup.webp',
+    imageAlt: 'Titanium acetabular cup for orthopedic medical implant applications',
     applicationOverview: {
       title: 'Application Overview',
       body:
