@@ -1,0 +1,112 @@
+# AstroFlow .clineignore
+# 目的：减少 Cline 初始上下文 token 占用，提升意图理解准确度
+# 保留：src/ data/ scripts/ memory-bank/ .clinerules/ docs/ astro.config.mjs
+# 排除：依赖、构建产物、日志、临时脚本、密钥、大型参考文件
+
+# === Dependencies ===
+node_modules/
+.pnpm-store/
+.pnp.*
+
+# === Build outputs (dist 在 Validation Gates 时按需读取) ===
+dist/
+.astro/
+output/
+build/
+out/
+.cache/
+
+# === Coverage & test artifacts ===
+coverage/
+.nyc_output/
+*.test.js.map
+
+# === Logs (所有日志文件) ===
+*.log
+*.err
+*.tsbuildinfo
+
+# === Secrets (Cline 不应读取任何 .env* 文件) ===
+.env
+.env.*
+!.env.example
+.env.production
+
+# === IDE / OS noise ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+.windsurfrules
+.kilo/
+
+# === Lock files (374KB+，上下文价值低) ===
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# === Audit & backup outputs ===
+audit-results/
+backup_capabilities/
+
+# === Workspace root-level transient files (per 工作区 Rules §3 Temp File Self-Cleanup) ===
+# 这些是项目根目录的临时/一次性脚本，Cline 不应在意图理解阶段把它们误读为"待办任务"。
+# 注意：scripts/ 目录下的 check-undefined-slugs.mjs、check-keyword-map.mjs 等保留可见。
+/fix_*.py
+/fix_*.js
+/fix_*.cjs
+/fix_*.mjs
+/temp_*.py
+/temp_*.js
+/temp_*.mjs
+/temp_*.md
+/extract_*.py
+/extract_*.mjs
+/extract_*.js
+/test_*.mjs
+/test_*.json
+/test_data.json
+/debug_*.mjs
+/check_file_content.mjs
+/check_remote_now.mjs
+/check_translations.mjs
+/scan-i18n.mjs
+/translate_*.mjs
+/update_*.js
+/update_*.cjs
+/update_*.mjs
+/gen_*.py
+/tmp
+/tmp.*
+/extract_keys.py
+/extract_keys2.py
+/extract_nav_keys.py
+/i18n-translations-de-fr-es-pt.json
+/es_p1.json
+/i18n-report.json
+/_bg_audit.json
+/git_status.txt
+/build.txt
+/preview.log
+/preview.err
+/blog-translate-log.txt
+/translate_log.txt
+/translation_log.txt
+/upload_systems_log.txt
+/all_*.ps1
+/fix_*.ps1
+/all_subsea_ja.ps1
+/fix_ja_main.ps1
+/fix_main_badge.ps1
+
+# === 大型参考文件 (按需手动读取) ===
+/product-prompts.csv
+/entity-keywords.mjs
+/translate_extrusion.mjs
+/translate_hotforming.mjs
+/update_translations.js
+/add_metrology.mjs
+/_keys_en.json
+/temp_check.md
+/restored.astro
