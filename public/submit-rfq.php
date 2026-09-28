@@ -64,6 +64,18 @@ if (strlen($name) > 120 || strlen($phone) > 30 || strlen($details) > 5000) {
     exit;
 }
 
+// ── Optional fields (Phase E / /capabilities/eco-iteration/) ───────────
+//   Forwarded verbatim into the archive log + email body so the
+//   engineering team sees ECO / anodizing-tolerance / kitting flags
+//   without forcing the buyer to spell them out in `details`.
+$quantity          = preg_replace('/[\r\n]+/', ' ', trim($_POST['quantity'] ?? ''));
+$material          = preg_replace('/[\r\n]+/', ' ', trim($_POST['material'] ?? ''));
+$eco_control       = trim($_POST['eco_control'] ?? '');
+$anodizing_tolerance = trim($_POST['anodizing_tolerance'] ?? '');
+$kitting           = trim($_POST['kitting'] ?? '');
+
+$flagYes = function (string $v): string { return $v === 'yes' ? 'Yes' : 'Not requested'; };
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 3b. SERVER-SIDE ARCHIVE — every valid inquiry is appended to
 //     /rfq-inquiries.log (web root) so RFQs are never lost even if email
@@ -78,6 +90,11 @@ $archiveTxt .= "Email:   $email\n";
 $archiveTxt .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\n";
 $archiveTxt .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\n\n";
 $archiveTxt .= "Project Details:\n$details\n";
+$archiveTxt .= "Quantity: "          . ($quantity          !== '' ? $quantity          : 'Not specified') . "\n";
+$archiveTxt .= "Material: "          . ($material          !== '' ? $material          : 'Not specified') . "\n";
+$archiveTxt .= "ECO Control: "       . $flagYes($eco_control)       . "\n";
+$archiveTxt .= "Anodizing Tolerance: " . $flagYes($anodizing_tolerance) . "\n";
+$archiveTxt .= "Kitting / Sub-Assembly: " . $flagYes($kitting)   . "\n";
 $archiveTxt .= str_repeat('-', 40) . "\n";
 @file_put_contents($archiveLog, $archiveTxt, FILE_APPEND);
 
@@ -187,6 +204,12 @@ if ($attachment === null || $attachmentName === null) {
     $body .= "Phone:   " . ($phone !== '' ? $phone : 'Not provided') . "\r\n";
     $body .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\r\n\r\n";
     $body .= "Project Details:\r\n$details\r\n\r\n";
+    $body .= "--- Program Flags ---\r\n";
+    $body .= "Quantity: "              . ($quantity          !== '' ? $quantity          : 'Not specified') . "\r\n";
+    $body .= "Material: "              . ($material          !== '' ? $material          : 'Not specified') . "\r\n";
+    $body .= "ECO Control: "           . $flagYes($eco_control)       . "\r\n";
+    $body .= "Anodizing Tolerance: "   . $flagYes($anodizing_tolerance) . "\r\n";
+    $body .= "Kitting / Sub-Assembly: " . $flagYes($kitting)           . "\r\n\r\n";
     $headers  = "From: $fromName <$fromEmail>\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
@@ -205,6 +228,12 @@ if ($attachment === null || $attachmentName === null) {
     $body .= "Company: " . ($company !== '' ? $company : 'Not provided') . "\r\n";
     $body .= "Drawing: " . ($attachmentName ? $attachmentName : 'None') . "\r\n\r\n";
     $body .= "Project Details:\r\n$details\r\n\r\n";
+    $body .= "--- Program Flags ---\r\n";
+    $body .= "Quantity: "              . ($quantity          !== '' ? $quantity          : 'Not specified') . "\r\n";
+    $body .= "Material: "              . ($material          !== '' ? $material          : 'Not specified') . "\r\n";
+    $body .= "ECO Control: "           . $flagYes($eco_control)       . "\r\n";
+    $body .= "Anodizing Tolerance: "   . $flagYes($anodizing_tolerance) . "\r\n";
+    $body .= "Kitting / Sub-Assembly: " . $flagYes($kitting)           . "\r\n\r\n";
     if ($storedName !== '') {
         $body .= "Server copy: /rfq-files/$storedName (if the email attachment is missing, download this file via FTP/cPanel)\r\n\r\n";
     }
