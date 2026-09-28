@@ -180,6 +180,7 @@ export const NAVIGATION: NavItem[] = [
         items: [
           { name: 'Lead Time Guide', href: '/capabilities/lead-time/' },
           { name: 'Logistics & Shipping', href: '/capabilities/logistics/' },
+          { name: 'ECO Iteration & DFM', href: '/capabilities/eco-iteration/' },
         ],
       },
     ],

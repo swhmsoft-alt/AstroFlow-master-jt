@@ -89,6 +89,22 @@ export default defineConfig({
   '/titanium-compliance-and-certifications/': '/capabilities/compliance/',
   '/titanium-supplier-evaluation/': '/capabilities/supplier-evaluation/',
 
+  // BSI Phase E — ECO Iteration landing page moved under /capabilities/ hub.
+  '/eco-iterative-cnc-machining/': '/capabilities/eco-iteration/',
+
+  // /<lang>/capabilities/eco-iteration/ → EN hub (Phase E).
+  '/de/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/ja/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/fr/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/es/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/pt/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/it/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/ko/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/nl/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/pl/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/ru/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+  '/ar/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
+
   // F4 — `/standards/:slug/` → `/materials/:slug/` (canonical exists).
   // SpecificationTable.astro previously hard-coded `/standards/` prefix which
   // 404'd; the redirect is a safety net for any external inbound link.
@@ -210,6 +226,15 @@ export default defineConfig({
           },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
+          },
+          "ECO-controlled iterative CNC": {
+            "href": "/capabilities/eco-iteration/"
+          },
+          "ECO iteration CNC machining": {
+            "href": "/capabilities/eco-iteration/"
+          },
+          "iterative CNC with ECO control": {
+            "href": "/capabilities/eco-iteration/"
           },
           "titanium lead time": {
             "href": "/capabilities/lead-time/"

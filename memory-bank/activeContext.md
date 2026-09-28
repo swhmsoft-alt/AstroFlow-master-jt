@@ -306,6 +306,56 @@
 
 ---
 
+## Phase E (2026-09-28) — ECO-Controlled Iterative CNC Machining
+
+**Theme:** B2B conversion landing page targeting hardware design teams that need
+prototype → 500 pc manufacturing with strict ECO drawing version control, locked
+pricing, and engineer-reviewed DFM feedback.
+
+**Hub-Mapping-First decision:**
+- Decision Dimension: **D2 (Who can)** — NOT root-level (SOP F1)
+- URL: `https://cnc.bozemetal.com/capabilities/eco-iteration/`
+- Sibling pages: compliance / supplier-evaluation / lead-time / logistics
+
+**Implementation (5 Inbound Entries — CLOSED-LOOP):**
+
+| # | Entry | File | Status |
+|---|---|---|---|
+| 1 | Top NAV dropdown | `src/config/site.ts` | ✅ "Delivery & Logistics" group: `ECO Iteration & DFM` link added |
+| 2 | Footer trust block | (inherited from NAVIGATION) | ✅ Auto-rendered via Footer.astro |
+| 3 | Parent hub cross-link | `src/pages/capabilities.astro` | ✅ 7-Dimension matrix card inserted (matrix updated from 6 → 7 dimensions) |
+| 4 | `data/keywords/main-db.json` | — | ⏸ Deferred to Phase F-extend (project-wide pattern) |
+| 5 | `astro.config.mjs` keywordMap | `astro.config.mjs` | ✅ 3 new rehype phrases: `ECO-controlled iterative CNC` / `ECO iteration CNC machining` / `iterative CNC with ECO control` |
+
+**File ops:**
+- Created: `src/pages/capabilities/eco-iteration/index.astro` (38 KB, 5 sections: Hero / Comparison Table / 4 Pillars / 5-Step ECO Timeline / RFQ Form + Closing CTA + Sibling cross-links)
+- 301 redirects added in `astro.config.mjs`:
+  - `/eco-iterative-cnc-machining/` → `/capabilities/eco-iteration/`
+  - 10 locale redirects `/<lang>/capabilities/eco-iteration/` → EN hub
+- Route whitelisted in `src/config/route-availability.mjs` (EN-only)
+- Button.astro extended with `type?: 'button' | 'submit' | 'reset'` prop (backwards-compatible, default `'button'`) to support form submit
+- Parent hub `capabilities.astro` matrix header text: "Six Dimensions" → "Seven Dimensions"
+
+**JSON-LD injected (page-level `<script>`):**
+- `@type: ManufacturingService` (schema.org sub-type of Service, more specific for AIO/GEO)
+- `provider: { @type: Manufacturer, @id: #manufacturing-center, parentOrganization: { @type: Organization, @id: #organization } }` — references existing entity graph
+- `areaServed`: Worldwide / North America / EU
+- `serviceAudience: BusinessAudience` (hardware design engineers)
+- `hasOfferCatalog`: 4 `Offer` items (DFM Review, ECO Control, Anodizing Tolerance, Kitting)
+- `mentions`: 3 entity-registry @ids (Grade 5, Grade 23, CMM inspection)
+- BaseLayout auto-adds separate Service entity via `buildPageGraph()` (pageType="service-detail")
+
+**Build verification (2026-09-28 13:44):**
+- `node scripts/check-undefined-slugs.mjs` → **0 issues** (scanned 15 slug files)
+- `npx astro check` → New file: 0 errors, 1 known project-wide warning (`<script set:html>` pattern, same as rfq.astro / 5-axis-titanium-machining.astro)
+- `npx astro build` → 2310 pages built in 83.72s, **Complete!**
+- `dist/capabilities/eco-iteration/index.html` exists, contains `@type: ManufacturingService` + BreadcrumbList (Home > Capabilities > ECO Iteration) + Service + Organization entities
+- `dist/sitemap-0.xml` contains `<loc>https://cnc.bozemetal.com/capabilities/eco-iteration/</loc>` (verified via `$content.Contains()`)
+
+**Cleanup (G6):** `git status --short` shows only 6 expected changes — no Cline-created temp/log/scratch files.
+
+---
+
 ## Workflow Boundary · Cline Scope vs Ops Scope (lesson 2026-09-15 19:50)
 
 **Trigger:** User asked "有github为什么还需要FTP凭据" — pointing out that I had committed to executing `npm run deploy:inc` as part of "step H · commit + push + deploy" without questioning whether deploy was actually Cline's responsibility.

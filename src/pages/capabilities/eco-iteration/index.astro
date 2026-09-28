@@ -1,0 +1,521 @@
+---
+// =============================================================================
+// ECO-Controlled Iterative CNC Machining — B2B Conversion Landing Page
+// Phase E (Buyer Search Intelligence) — D2 (Who can do iterative ECO +
+// DFM review + locked pricing for prototype-to-low-volume hardware programs).
+//
+// Per Hub-Mapping-First SOP §2:
+//   • Decision Dimension: D2 (Who can) — under /capabilities/ master hub
+//   • URL path: /capabilities/eco-iteration/ (NOT root-level — see SOP F1/F8/F9)
+//   • Sibling pages: compliance/, supplier-evaluation/, lead-time/, logistics/
+// =============================================================================
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SubpageHero from '../../../components/ui/SubpageHero.astro';
+import Section from '../../../components/ui/Section.astro';
+import Button from '../../../components/ui/Button.astro';
+import Card from '../../../components/ui/Card.astro';
+import TrustBadges from '../../../components/landing/TrustBadges.astro';
+import { refsFromIds } from '../../../lib/entity-graph';
+
+const pageTitle =
+  'ECO-Controlled Iterative CNC Machining | DFM-Reviewed Quotes | Prototype → 500 pcs';
+const pageDescription =
+  'Engineer-reviewed DFM, strict ECO drawing version control, and locked-price quotes for hardware design teams. Move parts from prototype to 5–500 piece production without surprise re-quotes. ISO 9001:2015 certified, anodizing tolerance reserved up-front, no arbitrary MOQ.';
+const canonicalUrl = 'https://cnc.bozemetal.com/capabilities/eco-iteration/';
+
+const mentionRefs = refsFromIds([
+  'material:grade:grade-5',
+  'material:grade:grade-23',
+  'process:capability:cmm-inspection',
+]);
+
+const landingSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ManufacturingService',
+      '@id': `${canonicalUrl}#manufacturing-service`,
+      name: 'ECO-Controlled Iterative CNC Machining with DFM Review & Locked Pricing',
+      serviceType: 'Iterative CNC Manufacturing with Engineering Change Order (ECO) Version Control',
+      provider: {
+        '@type': 'Manufacturer',
+        '@id': 'https://cnc.bozemetal.com/#manufacturing-center',
+        name: 'Boze Titanium Manufacturing Center',
+        parentOrganization: {
+          '@type': 'Organization',
+          '@id': 'https://www.bozemetal.com/#organization',
+          name: 'Baoji Boze Metal Products Co., Ltd.',
+        },
+      },
+      description:
+        'Engineer-reviewed DFM feedback, strict ECO drawing version control, and locked-price quotations for hardware design teams. Prototype-to-low-volume production from 5 to 500 pieces per batch, with anodizing tolerance reserved up-front and no arbitrary MOQ.',
+      areaServed: [
+        { '@type': 'Country', name: 'Worldwide' },
+        { '@type': 'AdministrativeArea', name: 'North America' },
+        { '@type': 'AdministrativeArea', name: 'European Union' },
+      ],
+      serviceAudience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'Hardware design engineers, mechanical engineering teams, and procurement leads running iterative product development',
+      },
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'ECO-Controlled Iterative CNC Machining Capabilities',
+        itemListElement: [
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Engineer-Reviewed DFM Feedback & Locked Quote', description: '1-on-1 DFM review with a senior mechanical engineer and a price that does not change after revision unless scope changes are explicitly approved.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'ECO Version-Controlled Drawing Iteration', description: 'Every revision is logged, obsolete media physically destroyed and digitally shredded, and the active revision is locked at quote time.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Anodizing & Post-Processing Tolerance Reservation', description: 'Wall thickness, thread fit, and critical interfaces pre-compensated for Type II / Type III anodizing growth.' } },
+          { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sub-Assembly / Kitting Delivery', description: 'Multi-part kits bagged and labeled per BOM line so your build team can assemble directly from the shipping carton.' } },
+        ],
+      },
+      ...(mentionRefs.length > 0 ? { mentions: mentionRefs } : {}),
+    },
+  ],
+};
+
+interface ModeRow { dimension: string; broker: string; engineering: string; }
+const modeRows: ModeRow[] = [
+  { dimension: 'Quote Stability', broker: 'Re-quotes on every revision; pricing drifts upward once the order is "in flight"', engineering: 'Locked quote after DFM review — no revision-driven price change unless scope changes are explicitly approved by both sides' },
+  { dimension: 'Communication Channel', broker: 'Web form only, routed through a generic queue — your "account manager" rotates weekly', engineering: 'A senior mechanical engineer is your single point of contact from DFM through delivery, reachable by email and WhatsApp' },
+  { dimension: 'Revision Control (ECO)', broker: 'File-naming convention only; no enforced revision lock — old drawings may resurface on re-order', engineering: 'Every ECO is logged, obsolete media physically destroyed and digitally shredded, and the active revision is locked at quote time' },
+  { dimension: 'Post-Processing Tolerance', broker: '"Submit and pray" that anodizing does not eat your M2 threads — refund only if dimension fails after the fact', engineering: 'Wall thickness, thread fit, and critical interfaces pre-compensated for anodizing growth up-front — verified on the CMM before ship-out' },
+  { dimension: 'Low-Volume Re-Order', broker: 'Minimum order quantity silently raised between quotes; 50 pcs becomes 100 pcs becomes 250 pcs', engineering: 'No arbitrary MOQ — re-order the same revision from 5 pcs up to 500 pcs at the original per-piece price band' },
+];
+
+interface Pillar { number: string; title: string; body: string; bullets: string[]; iconPath: string; }
+const pillars: Pillar[] = [
+  { number: '01', title: 'Engineer-Reviewed DFM & Locked Quotes', body: 'Every RFQ is opened by a senior mechanical engineer — not a pricing bot. Wall thicknesses, radii, undercuts, and tolerance stack-ups are reviewed before the quote goes out, so what you approve is what gets built.', bullets: ['1-on-1 DFM review within 24 hours of CAD upload', 'Quote is locked at DFM sign-off — no upward drift on revision', 'Senior engineer stays on your file through delivery'], iconPath: 'M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+  { number: '02', title: 'Anodizing & Post-Processing Tolerance Intelligence', body: 'Type II and Type III anodizing adds 0.0008–0.0012 in of growth. We pre-compensate wall callouts, thread fit, and press-fit interfaces up-front, then verify the finished dimensions on the CMM before anything ships.', bullets: ['Wall thickness + thread callouts pre-compensated', 'Type II (sulfuric) and Type III (hard) anodizing covered', 'CMM verification of post-processed dimensions on every batch'], iconPath: 'M19.428 15.341A8 8 0 118.659 4.572m10.769 10.769L15.5 9.5m3.928 5.841L8.659 4.572M8.659 4.572L12 1.5' },
+  { number: '03', title: 'Low-MOQ Iteration Without Penalty', body: 'Prototype (5 pcs) to pilot build (50 pcs) to first-article production (500 pcs) — all priced from the same per-piece band as long as the revision is locked. We will not silently raise your MOQ between quotes.', bullets: ['5-piece prototyping on the same production process', 'Re-order 5–500 pcs at the original per-piece price', 'No "minimum order quantity" hidden in the fine print'], iconPath: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
+  { number: '04', title: 'Sub-Assembly & Kitting Delivery', body: 'Multi-part assemblies ship as labeled kits, bagged per BOM line, with hardware and fasteners included. Your build team can pull a bag and assemble — no kitting labor on your side.', bullets: ['BOM-line bagging with printed line labels', 'Fasteners, inserts, and hardware included', 'Carton labeled with kit ID, revision, and total piece count'], iconPath: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+];
+
+interface EcoStep { step: string; title: string; body: string; }
+const ecoSteps: EcoStep[] = [
+  { step: '01', title: 'Upload', body: 'Submit your STEP / IGES file plus 2D drawing through the in-page RFQ form. Tell us which revision you intend to lock.' },
+  { step: '02', title: 'DFM Review', body: 'A senior engineer reviews tolerances, post-processing growth, and manufacturability — and either approves the file for quote or returns it with redlines in under 24 hours.' },
+  { step: '03', title: 'Obsolete Media Destruction', body: 'When you submit a new revision, the previous STEP / IGES file is physically destroyed on the production floor and digitally shredded from the project folder. Old drawings cannot resurface on a future re-order.' },
+  { step: '04', title: 'CMM Verification', body: 'First-article parts are measured on a calibrated CMM against the locked drawing revision. The CMM report is filed against the ECO number — not a generic date stamp.' },
+  { step: '05', title: 'Re-Order at Locked Price', body: 'Re-order the same ECO revision from 5 pcs to 500 pcs at the original per-piece price band. No new quote, no MOQ surprise, no revision drift.' },
+];
+
+interface SiblingCapability { name: string; href: string; desc: string; }
+const siblingCapabilities: SiblingCapability[] = [
+  { name: 'Compliance', href: '/capabilities/compliance/', desc: 'AS9100D / ISO 13485 / ASTM / DFARS scope' },
+  { name: 'Supplier Evaluation', href: '/capabilities/supplier-evaluation/', desc: '7-dim framework + 25-point scorecard' },
+  { name: 'Lead Time', href: '/capabilities/lead-time/', desc: 'Sample → production tier breakdowns' },
+  { name: 'Logistics & Shipping', href: '/capabilities/logistics/', desc: 'Incoterms + packaging + freight routing' },
+  { name: 'Parent Hub', href: '/capabilities/', desc: 'All capability dimensions at a glance' },
+];
+
+const CHECK_PATH = 'M5 13l4 4L19 7';
+const ARROW_RIGHT_PATH = 'M14 5l7 7m0 0l-7 7m7-7H3';
+const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="service-detail"
+  serviceName="ECO-Controlled Iterative CNC Machining with DFM Review"
+  serviceDescription={pageDescription}
+  serviceCategory="Custom CNC Machining / Rapid Prototyping / Low-Volume Production"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(landingSchema)} />
+
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={CHEVRON_RIGHT_PATH} /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/capabilities/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Capabilities</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={CHEVRON_RIGHT_PATH} /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">ECO Iteration</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ==================== 1. HERO ==================== -->
+  <SubpageHero
+    h1="Precision CNC Machining Built for Iterative Hardware Design"
+    subtitle="Move parts from prototype to low-volume production (5 to 500 pieces). Every RFQ is opened by a senior mechanical engineer for 1-on-1 DFM review, with strict ECO drawing version control and a locked quote that does not change after revision."
+    badge="ECO-Controlled Iterative CNC"
+    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+    keyMetrics={[
+      { value: 'ISO 9001:2015', label: 'Certified QMS' },
+      { value: '±0.005 mm', label: 'Standard tolerance' },
+      { value: '5–500 pcs', label: 'Batch size band' },
+    ]}
+    entityChips={[
+      'Strict ECO Version Control',
+      'Anodizing Tolerance Reserved',
+      'No Arbitrary MOQ',
+      '1-on-1 DFM Review',
+    ]}
+  >
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+      <Button href="#rfq-form" variant="primary" size="lg">
+        Get an Engineer-Reviewed Quote
+        <svg class="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={ARROW_RIGHT_PATH} /></svg>
+      </Button>
+      <Button href="/rfq/" variant="outline" size="lg">
+        Or Use the Full RFQ Form
+      </Button>
+    </div>
+  </SubpageHero>
+  <TrustBadges />
+
+  <!-- ==================== 2. MODE COMPARISON TABLE ==================== -->
+  <Section background="white" id="comparison">
+    <div class="mx-auto max-w-5xl">
+      <header class="text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">
+          Why engineering teams leave automated broker platforms
+        </p>
+        <h2 class="mt-3 text-3xl font-bold leading-tight md:text-4xl" style="color: var(--theme-text);">
+          Automated Broker vs. Engineering-First CNC Partner
+        </h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed md:text-lg" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          A side-by-side comparison of what you actually experience on a low-volume,
+          ECO-driven hardware program — not a marketing promise.
+        </p>
+      </header>
+
+      <div class="mt-10 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+        <table class="min-w-[720px] w-full text-left text-sm">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+              <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Dimension</th>
+              <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Automated Broker Platform</th>
+              <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: var(--theme-primary);">Engineering CNC Center (Boze)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {modeRows.map((row) => (
+              <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <th class="px-4 py-4 align-top text-sm font-bold md:px-6" scope="row" style="color: var(--theme-text);">{row.dimension}</th>
+                <td class="px-4 py-4 align-top text-sm leading-relaxed md:px-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{row.broker}</td>
+                <td class="px-4 py-4 align-top text-sm font-medium leading-relaxed md:px-6" style="color: var(--theme-text);">
+                  <span class="inline-flex items-start gap-2">
+                    <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                    <span>{row.engineering}</span>
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4 text-center text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+        <span class="inline-flex items-center gap-1">
+          <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          Scroll horizontally on mobile to see all three columns.
+        </span>
+      </p>
+    </div>
+  </Section>
+
+  <!-- ==================== 3. FOUR PILLARS ==================== -->
+  <Section background="gray" id="pillars">
+    <div class="mx-auto max-w-6xl">
+      <header class="text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">
+          The four-pillar delivery model
+        </p>
+        <h2 class="mt-3 text-3xl font-bold leading-tight md:text-4xl" style="color: var(--theme-text);">
+          What engineering-first CNC machining looks like in practice
+        </h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed md:text-lg" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          These are the four capabilities that make the difference between a quote that arrives
+          on time and a program that lands without re-work.
+        </p>
+      </header>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {pillars.map((p) => (
+          <Card hover class="flex h-full flex-col" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);" aria-hidden="true">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={p.iconPath} /></svg>
+              </span>
+              <span class="font-mono text-sm font-bold" style="color: var(--theme-primary);">{p.number}</span>
+            </div>
+            <h3 class="mt-5 text-lg font-bold leading-snug" style="color: var(--theme-text);">{p.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{p.body}</p>
+            <ul class="mt-5 space-y-2 border-t pt-5" style="border-color: color-mix(in srgb, var(--theme-text) 10%, transparent);">
+              {p.bullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+                  <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- ==================== 4. ECO TIMELINE ==================== -->
+  <Section background="white" id="eco-process">
+    <div class="mx-auto max-w-5xl">
+      <header class="text-center">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">
+          Mistake-proof ECO workflow
+        </p>
+        <h2 class="mt-3 text-3xl font-bold leading-tight md:text-4xl" style="color: var(--theme-text);">
+          Five steps from uploaded CAD to a re-orderable, revision-locked part
+        </h2>
+        <p class="mx-auto mt-4 max-w-3xl text-base leading-relaxed md:text-lg" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Every drawing revision is treated as an Engineering Change Order (ECO). Old revisions
+          are physically destroyed and digitally shredded — they cannot silently resurface on a
+          future re-order.
+        </p>
+      </header>
+
+      <ol class="mt-2 relative space-y-8 md:ml-6 md:border-l md:pl-10" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        {ecoSteps.map((s, idx) => (
+          <li class="relative md:pl-2">
+            <span
+              class="absolute -left-[19px] top-0 flex h-10 w-10 items-center justify-center rounded-full font-mono text-xs font-bold ring-4 md:-left-[52px]"
+              style="background: var(--theme-primary); color: var(--theme-bg); --tw-ring-color: var(--theme-bg);"
+              aria-hidden="true"
+            >
+              {s.step}
+            </span>
+            <div class="rounded-2xl border p-6 md:p-7" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span class="font-mono text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Step {s.step}</span>
+                <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+                  · {idx === 0 ? 'Customer' : idx === 1 ? 'Engineering' : idx === 2 ? 'Documentation' : idx === 3 ? 'Inspection' : 'Re-order'}
+                </span>
+              </div>
+              <h3 class="mt-2 text-xl font-bold leading-snug" style="color: var(--theme-text);">{s.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed md:text-base" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </Section>
+
+  <!-- ==================== 5. RFQ FORM ==================== -->
+  <Section background="dark" id="rfq-form-section">
+    <div class="mx-auto max-w-4xl">
+      <div class="overflow-hidden rounded-3xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <div class="grid gap-0 lg:grid-cols-5">
+          <aside class="p-8 lg:col-span-2 lg:p-10" style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">RFQ — Engineer-reviewed in 24 hours</p>
+            <h2 class="mt-3 text-2xl font-bold leading-tight md:text-3xl" style="color: var(--theme-text);">Send your CAD. Get a locked quote.</h2>
+            <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+              Submit your STEP / IGES file plus a 2D drawing. A senior engineer reviews
+              every RFQ within 24 hours and replies with a locked quote, a feasibility
+              note, or a redlined drawing.
+            </p>
+            <ul class="mt-6 space-y-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                <span>1-on-1 DFM review within 24 hours</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                <span>Quote locked at DFM sign-off</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                <span>NDA on request — your IP stays yours</span>
+              </li>
+            </ul>
+            <p class="mt-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium" style="border-color: color-mix(in srgb, var(--theme-accent) 35%, transparent); background: color-mix(in srgb, var(--theme-accent) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+              <svg class="h-3.5 w-3.5 flex-shrink-0" style="color: var(--theme-accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+              Your designs are safe. We sign NDAs on request.
+            </p>
+          </aside>
+
+          <form id="rfq-form" name="rfq-eco-iterative" method="POST" action="/submit-rfq.php" enctype="multipart/form-data" class="space-y-5 p-6 lg:col-span-3 lg:p-10" style="background: var(--theme-bg);">
+            <p id="tm-form-error" role="status" aria-live="polite" class="hidden rounded-lg px-4 py-3 text-sm font-medium" style="background: color-mix(in srgb, #ef4444 15%, transparent); color: #fca5a5;"></p>
+
+            <input type="hidden" name="bot-field" value="" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="rfq-name" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Name <span style="color: var(--theme-primary);">*</span></label>
+                <input id="rfq-name" name="name" type="text" required autocomplete="name" placeholder="John Carter" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
+              </div>
+              <div>
+                <label for="rfq-email" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Corporate Email <span style="color: var(--theme-primary);">*</span></label>
+                <input id="rfq-email" name="email" type="email" required autocomplete="email" placeholder="name@company.com" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
+              </div>
+              <div>
+                <label for="rfq-phone" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Phone <span style="color: var(--theme-primary);">*</span></label>
+                <input id="rfq-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+1 555 000 1234" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
+              </div>
+              <div>
+                <label for="rfq-company" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Company</label>
+                <input id="rfq-company" name="company" type="text" autocomplete="organization" placeholder="AeroTech Industries" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
+              </div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="rfq-quantity" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Quantity <span style="color: var(--theme-primary);">*</span></label>
+                <select id="rfq-quantity" name="quantity" required class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);">
+                  <option value="">Select…</option>
+                  <option value="5">5 pcs (prototype)</option>
+                  <option value="10">10 pcs</option>
+                  <option value="25">25 pcs</option>
+                  <option value="50">50 pcs</option>
+                  <option value="100">100 pcs</option>
+                  <option value="250">250 pcs</option>
+                  <option value="500">500 pcs</option>
+                </select>
+              </div>
+              <div>
+                <label for="rfq-material" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Material</label>
+                <select id="rfq-material" name="material" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);">
+                  <option value="">Select material…</option>
+                  <option value="grade-5">Grade 5 (Ti-6Al-4V)</option>
+                  <option value="grade-23">Grade 23 (Ti-6Al-4V ELI)</option>
+                  <option value="grade-2">Grade 2 (CP titanium)</option>
+                  <option value="aluminum-6061">Aluminum 6061</option>
+                  <option value="other">Other (specify in details)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="rfq-details" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Project Details <span style="color: var(--theme-primary);">*</span></label>
+              <textarea id="rfq-details" name="details" rows="4" required placeholder="Drawing revision, target tolerances, post-processing requirements, delivery target…" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 resize-none" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);"></textarea>
+            </div>
+
+            <fieldset class="rounded-lg border p-4" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-surface));">
+              <legend class="px-2 text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Program flags</legend>
+              <label class="flex items-start gap-3 py-2 text-sm" style="color: var(--theme-text);">
+                <input type="checkbox" name="eco_control" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--theme-primary);" />
+                <span><span class="font-semibold">Strict ECO version control</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Lock this revision. Obsolete media will be destroyed on next submission.</span></span>
+              </label>
+              <label class="flex items-start gap-3 py-2 text-sm" style="color: var(--theme-text);">
+                <input type="checkbox" name="anodizing_tolerance" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--theme-primary);" />
+                <span><span class="font-semibold">Reserve anodizing tolerance up-front</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Pre-compensate wall callouts, thread fit, and press-fit interfaces for Type II / III anodizing.</span></span>
+              </label>
+              <label class="flex items-start gap-3 py-2 text-sm" style="color: var(--theme-text);">
+                <input type="checkbox" name="kitting" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--theme-primary);" />
+                <span><span class="font-semibold">Sub-assembly / kitting delivery</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Bag per BOM line with printed labels and hardware included.</span></span>
+              </label>
+            </fieldset>
+
+            <!-- CAD attachment advice — files are sent via email to avoid loss (matches HeroRfq pattern) -->
+            <div class="flex items-start gap-2.5 rounded-xl border px-4 py-3" style="border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));">
+              <svg class="mt-0.5 h-4 w-4 flex-shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                Need to send CAD attachments? Email them directly to
+                <a href="mailto:info@bozemetal.com" class="font-semibold underline underline-offset-2" style="color: var(--theme-primary);">info@bozemetal.com</a>
+                to avoid losing drawings.
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              class="mt-2 w-full rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-200 active:scale-[0.99]"
+              style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);"
+            >
+              Get an Instant Quote Within 24 Hours
+            </button>
+            <p class="mt-4 flex items-center justify-center gap-1.5 text-center text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              <svg class="h-3.5 w-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              100% confidential · Your designs are safe — NDA available on request
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <script>
+    // ============================================================
+    // RFQ form client-side enhancement (vanilla JS, no React island).
+    // Mirrors HeroRfq.astro pattern:
+    //   1. "Submitting…" state to prevent double submission
+    //   2. Error banner when PHP redirects back with ?rfq=error
+    // ============================================================
+    (() => {
+      const form = document.getElementById('rfq-form');
+      const errBox = document.getElementById('tm-form-error');
+      const submitBtn = form ? form.querySelector<HTMLButtonElement>('button[type="submit"]') : null;
+      let toastTimer = 0;
+
+      // PHP handler failed → redirected back with ?rfq=error
+      if (new URLSearchParams(window.location.search).get('rfq') === 'error') {
+        showToast('Sorry, your RFQ could not be sent. Please try again or email us directly at info@bozemetal.com.');
+      }
+
+      function showToast(msg: string) {
+        if (!errBox) return;
+        errBox.textContent = msg;
+        errBox.classList.remove('hidden');
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => errBox.classList.add('hidden'), 8000);
+      }
+
+      if (form && submitBtn) {
+        form.addEventListener('submit', () => {
+          // Prevent double-submission while the PHP handler processes the request.
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting…';
+        });
+      }
+    })();
+  </script>
+
+  <!-- ==================== CLOSING CTA ==================== -->
+  <Section background="white" id="next-step">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-2xl font-bold leading-tight md:text-3xl" style="color: var(--theme-text);">Not ready for a full RFQ yet?</h2>
+      <p class="mt-3 text-base leading-relaxed md:text-lg" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Send your STEP file to <a href="mailto:info@bozemetal.com" class="font-semibold underline" style="color: var(--theme-primary);">info@bozemetal.com</a>
+        for a free redline review — no commitment, no quote, just an engineer's read on manufacturability.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <Button href="mailto:info@bozemetal.com?subject=Redline%20Review%20Request" variant="primary" size="md">Email Engineering</Button>
+        <Button href="https://wa.me/8618623919905" variant="outline" size="md" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</Button>
+      </div>
+    </div>
+  </Section>
+
+  <!-- ==================== SIBLING CROSS-LINKS (Hub-Mapping-First Step 4 #3) ==================== -->
+  <Section background="gray" id="related-capabilities">
+    <div class="mx-auto max-w-5xl">
+      <header class="mb-8">
+        <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Other capabilities</p>
+        <h2 class="mt-2 text-2xl font-bold leading-tight md:text-3xl" style="color: var(--theme-text);">Explore the other capability dimensions</h2>
+      </header>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        {siblingCapabilities.map((s) => (
+          <a href={s.href} class="rounded-2xl border p-5 transition-transform duration-200 hover:-translate-y-0.5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-base font-bold" style="color: var(--theme-primary);">{s.name}</h3>
+            <p class="mt-2 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
