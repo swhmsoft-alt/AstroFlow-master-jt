@@ -280,6 +280,7 @@ export function getNavigation(lang: string): NavItem[] {
           { name: 'Titanium UAV Components', href: '/parts/titanium-uav-components' },
           { name: 'Titanium Motorsport Parts', href: '/parts/titanium-motorsport-parts' },
           { name: 'Titanium Medical Components', href: '/parts/titanium-medical-components' },
+          { name: 'Titanium Anodes', href: '/parts/titanium-anode' },
         ],
       },
     ],

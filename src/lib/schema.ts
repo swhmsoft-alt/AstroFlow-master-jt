@@ -721,6 +721,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   '/parts/titanium-uav-components': 'Titanium UAV Components',
   '/parts/titanium-motorsport-parts': 'Titanium Motorsport Parts',
   '/parts/titanium-medical-components': 'Titanium Medical Components',
+  '/parts/titanium-anode': 'Titanium Anodes',
 };
 
 const humanizeSeg = (seg: string) =>

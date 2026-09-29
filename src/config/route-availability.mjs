@@ -81,6 +81,7 @@ export const EN_ONLY_PREFIXES = Object.freeze([
   '/parts/titanium-uav-components/',
   '/parts/titanium-motorsport-parts/',
   '/parts/titanium-medical-components/',
+  '/parts/titanium-anode/',
 
   // ── 2026-09-17 dead-link audit (derived from dist/sitemap-*.xml) ──────
   // Each prefix below was verified as: present in the English sitemap while
