@@ -1,0 +1,426 @@
+---
+/**
+ * /parts/titanium-anode/ — Custom Titanium Anodes for Electrochemical Cells
+ *
+ * B2B procurement gateway. Module order follows the procurement decision
+ * path: identify → specify → match → submit → validate → trust → ask → convert.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import FinalCta from '../../components/landing/FinalCta.astro';
+import AudienceHub from '../../components/audience/AudienceHub.astro';
+import { ANODE_PAGE } from '../../data/anodes';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const d = ANODE_PAGE;
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
+
+const SITE = 'https://cnc.bozemetal.com';
+const canonicalUrl = `${SITE}/parts/${d.slug}/`;
+
+const supplementarySchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${canonicalUrl}#service`,
+      name: d.heroH1,
+      serviceType: 'Custom Titanium Anode Manufacturing',
+      description: d.metaDescription,
+      provider: { '@id': `${SITE}/#manufacturing-center` },
+      areaServed: 'Worldwide',
+      url: canonicalUrl,
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
+      mainEntity: d.faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={d.pageTitle}
+  description={d.metaDescription}
+  pageType="part-detail"
+  serviceName={d.heroH1}
+  productName={d.heroH1}
+  productImage={`${SITE}${d.heroImage}`}
+  productCategory={d.navName}
+  serviceCategory={d.navName}
+  canonicalURL={canonicalUrl}
+  alternateLinks={[{ lang: 'en', href: `/parts/${d.slug}/` }]}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(supplementarySchema)} />
+
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/parts/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.parts')}</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{d.navName}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- M1 Hero -->
+  <SubpageHero
+    h1={d.heroH1}
+    badge={d.heroBadge}
+    subtitle={d.heroSubtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={d.keyMetrics}
+    backgroundImage={d.heroImage}
+  >
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={d.engineeringCta.submitHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg transition-all" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%); color: #ffffff;">Get Quote</a>
+      <a href={d.engineeringCta.submitHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-7 py-3.5 text-sm font-bold rounded-lg border transition-all" style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Upload Drawing</a>
+    </div>
+  </SubpageHero>
+
+  <article>
+    <!-- M2 Anode Type Catalog -->
+    <section class="border-t py-14 lg:py-20" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color: var(--theme-primary);">{d.anodeTypes.badge}</p>
+        <h2 class="mt-3 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">{d.anodeTypes.title}</h2>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.anodeTypes.intro}</p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {d.anodeTypes.families.map((f) => (
+            <article class="rounded-2xl border overflow-hidden flex flex-col transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="aspect-[4/3] overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface));">
+                <img src={f.image} alt={f.imageAlt || ''} loading="lazy" decoding="async" class="w-full h-full object-cover" width="400" height="300" />
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">
+                  <span class="font-mono mr-1" style="color: var(--theme-primary);">{f.number} —</span>
+                  {f.title}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{f.body}</p>
+                <p class="mt-3 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Use when: {f.focus}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.anodeTypes.boundaryNote}</p>
+        <p class="mt-3 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Engineering note.</strong> {d.anodeTypes.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M3 Coating Chemistry Selector -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Coating Selector</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.coatingSelector.title}</h2>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.coatingSelector.intro}</p>
+
+        <div class="mt-10 overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                {d.coatingSelector.matrixColumns.map((col) => (
+                  <th class="px-5 py-3 font-semibold" style="color: var(--theme-primary);">{col}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {d.coatingSelector.matrixRows.map((row) => (
+                <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); background: var(--theme-surface);">
+                  <td class="px-5 py-4 font-medium" style="color: var(--theme-text);">{row.environment}</td>
+                  <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.irO2}</td>
+                  <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.ruO2}</td>
+                  <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.pt}</td>
+                  <td class="px-5 py-4" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{row.mixedMmo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Engineering note.</strong> {d.coatingSelector.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M4 Operating Parameters Required at RFQ -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">RFQ Inputs</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.operatingParameters.title}</h2>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.operatingParameters.intro}</p>
+
+        <ol class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {d.operatingParameters.groups.map((g) => (
+            <li class="rounded-xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="flex items-start gap-4">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg shrink-0 font-mono text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{g.number}</span>
+                <div class="min-w-0">
+                  <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">{g.parameter}</h3>
+                  <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{g.why}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Engineering note.</strong> {d.operatingParameters.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M5 Applications by Industry -->
+    <section class="border-t py-14 lg:py-20" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Applications</p>
+        <h2 class="mt-3 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">{d.applications.title}</h2>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.applications.intro}</p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {d.applications.items.map((app) => (
+            <article class="rounded-2xl border overflow-hidden flex flex-col transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="aspect-[4/3] overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-bg));">
+                <img src={app.image} alt={app.imageAlt} loading="lazy" decoding="async" class="w-full h-full object-cover" width="400" height="300" />
+              </div>
+              <div class="p-5 flex flex-col flex-1">
+                <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">{app.name}</h3>
+                <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{app.desc}</p>
+                <p class="mt-4 text-xs font-semibold" style="color: var(--theme-primary);">Service: {app.serviceConditions}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Boundary note.</strong> {d.applications.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M6 Engineering Considerations -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Engineering Considerations</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.engineeringConsiderations.title}</h2>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.engineeringConsiderations.intro}</p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {d.engineeringConsiderations.items.map((item) => (
+            <article class="rounded-xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="flex items-start gap-3">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg shrink-0 font-mono text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{item.number}</span>
+                <div class="min-w-0">
+                  <h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{item.title}</h3>
+                </div>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{item.body}</p>
+              <p class="mt-4 text-xs font-semibold" style="color: var(--theme-primary);">Focus: {item.focus}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Engineering note.</strong> {d.engineeringConsiderations.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M7 Manufacturing Workflow -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.manufacturingWorkflow.title}</h2>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.manufacturingWorkflow.intro}</p>
+
+        <ol class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {d.manufacturingWorkflow.steps.map((s) => (
+            <li class="rounded-xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{s.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{s.desc}</p>
+              <p class="mt-3 text-xs font-semibold" style="color: var(--theme-primary);">Focus: {s.focus}</p>
+            </li>
+          ))}
+        </ol>
+
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Engineering note.</strong> {d.manufacturingWorkflow.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M8 Quality & Inspection -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.qualityInspection.title}</h2>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.qualityInspection.intro}</p>
+
+        <ul class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {d.qualityInspection.items.map((it) => (
+            <li class="rounded-xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{it.label}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{it.detail}</p>
+              <p class="mt-4 text-xs font-semibold" style="color: var(--theme-primary);">{it.chips}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Standards note.</strong> {d.qualityInspection.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M9 Process Capabilities -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.processCapabilities.title}</h2>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.processCapabilities.intro}</p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {d.processCapabilities.capabilities.map((c) => (
+            <article class="rounded-xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <h3 class="text-base font-bold" style="color: var(--theme-text);">{c.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.desc}</p>
+              <p class="mt-4 text-xs font-semibold" style="color: var(--theme-primary);">Focus: {c.focus}</p>
+            </article>
+          ))}
+        </div>
+
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Capability note.</strong> {d.processCapabilities.caveat}
+        </p>
+      </div>
+    </section>
+
+    <!-- M10 FAQ -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">FAQ</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <div class="mt-8 space-y-4">
+          {d.faqs.map((f) => (
+            <details class="rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <summary class="font-semibold cursor-pointer" style="color: var(--theme-text);">{f.question}</summary>
+              <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{f.answer}</p>
+            </details>
+          ))}
+        </div>
+        <p class="mt-8 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          <strong style="color: var(--theme-text);">Standards note.</strong> Material specifications (ASTM B265, ASTM B348) cover raw stock scope. Finished-part acceptance criteria are governed by your drawing and PO.
+        </p>
+      </div>
+    </section>
+
+    <!-- M11 Engineering Consultation CTA -->
+    <section class="border-t py-14 lg:py-20" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          <div class="lg:col-span-2">
+            <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Engineering Consultation</p>
+            <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.engineeringCta.title}</h2>
+            <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.engineeringCta.intro}</p>
+            <ul class="mt-6 space-y-3">
+              {d.engineeringCta.bullets.map((b) => (
+                <li class="flex items-start gap-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+                  <svg class="w-5 h-5 mt-0.5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  <span class="text-sm leading-relaxed">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="mt-8 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Or reach us directly: <strong style="color: var(--theme-text);">info@bozemetal.com</strong> · <strong style="color: var(--theme-text);">+86 917 675 3303</strong>
+            </div>
+          </div>
+          <div class="lg:col-span-3 rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="md:col-span-2">
+                <label class="block text-xs font-semibold uppercase tracking-wide mb-2" style="color: var(--theme-primary);">Anode Type</label>
+                <select disabled class="w-full px-4 py-3 rounded-lg text-sm border appearance-none" style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">
+                  <option>Select anode type…</option>
+                  {d.engineeringCta.anodeTypeOptions.map((opt) => (
+                    <option>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-semibold uppercase tracking-wide mb-2" style="color: var(--theme-primary);">Application</label>
+                <select disabled class="w-full px-4 py-3 rounded-lg text-sm border appearance-none" style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">
+                  <option>Select application…</option>
+                  {d.engineeringCta.applicationOptions.map((opt) => (
+                    <option>{opt}</option>
+                  ))}
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-xs font-semibold uppercase tracking-wide mb-2" style="color: var(--theme-primary);">Operating Parameters &amp; Drawings</label>
+                <textarea disabled rows="5" placeholder="Electrolyte, pH, temperature, current density, design life, dimensions, active area, electrical connection…" class="w-full px-4 py-3 rounded-lg text-sm border resize-none" style="background: var(--theme-bg); color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);"></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+                  <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">PDF, JPG, PNG, STEP, IGES, STL, DWG accepted via the inquiry form.</span>
+                  <a href={d.engineeringCta.submitHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap px-7 py-3 rounded-lg font-bold text-sm transition-all hover:-translate-y-0.5" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%); color: #ffffff;">
+                    {d.engineeringCta.submitLabel}
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <p class="mt-5 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+              Form is a structured preview. Complete the inquiry at <strong style="color: var(--theme-text);"><a href={d.engineeringCta.submitHref}>/rfq/?category=titanium-anode</a></strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M12 Why BOZE -->
+    <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Why BOZE</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.whyUs.title}</h2>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.whyUs.intro}</p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {d.whyUs.items.map((w) => (
+            <article class="rounded-xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg mb-4" style="background: color-mix(in srgb, var(--theme-primary) 14%, transparent); color: var(--theme-primary);">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{w.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{w.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </article>
+
+  <!-- M13 Final CTA -->
+  <FinalCta />
+
+  <!-- Audience guidance -->
+  <AudienceHub industry="parts" />
+</BaseLayout>

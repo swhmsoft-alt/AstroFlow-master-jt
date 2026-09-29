@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Titanium anode substrate blank placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+  <g stroke="#38BDF8" stroke-width="1.5" fill="none" opacity="0.55">
+    <rect x="200" y="180" width="400" height="240" rx="8" stroke-dasharray="6 4"/>
+    <line x1="200" y1="180" x2="600" y2="420"/>
+    <line x1="600" y1="180" x2="200" y2="420"/>
+    <circle cx="400" cy="300" r="3" fill="#38BDF8"/>
+  </g>
+  <text x="400" y="500" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="22" font-weight="600" fill="#F8FAFC" letter-spacing="2">SUBSTRATE BLANK</text>
+  <text x="400" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#94A3B8" letter-spacing="1">ASTM B265 / ASTM B348 · CP-Ti GRID</text>
+</svg>
