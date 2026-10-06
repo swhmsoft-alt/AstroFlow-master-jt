@@ -47,7 +47,7 @@ const entitySlug = (title: string) =>
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/products" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products & Components</span></a>
+          <a href="/products/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Products & Components</span></a>
           <meta itemprop="position" content="2" />
           <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
         </li>
@@ -122,7 +122,7 @@ const entitySlug = (title: string) =>
                 <span class="text-lg mt-0.5 shrink-0">⚙️</span>
                 <div class="min-w-0 flex-1">
                   <h3 class="font-semibold text-sm leading-snug" style="color: var(--theme-text);">
-                    <a href={`/products/product-entities/${slug}`} class="hover:underline">{e.data.title}</a>
+                    <a href={`/products/product-entities/${slug}/`} class="hover:underline">{e.data.title}</a>
                   </h3>
                   {e.data.function && (
                     <p class="text-xs mt-1 line-clamp-2" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">

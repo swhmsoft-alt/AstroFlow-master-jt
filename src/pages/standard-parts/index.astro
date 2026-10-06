@@ -1,0 +1,32 @@
+---
+/**
+ * /standard-parts/ — Titanium Standard Parts (placeholder)
+ *
+ * 2026-10-06 — Empty page shell created during Solutions dropdown rollout.
+ * Content (Answer Module 6 elements: Direct Answer, Honest Positioning,
+ * Structured Body, Claim↔Evidence, Entities, Related anchors) will be built
+ * in a follow-up round once the user provides the research brief.
+ *
+ * Trailing-slash URL: `/standard-parts/` (Astro `trailingSlash: 'always'`).
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const pageTitle = 'Titanium Standard Parts';
+const pageDescription =
+  'Boze Titanium standard parts catalog — flanges, pipe fittings, fasteners and pipe components manufactured to ASTM, ASME and DIN standards. Page content under development.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL="/standard-parts/"
+>
+  <section class="container mx-auto px-4 py-16 md:py-24">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">{pageTitle}</h1>
+    <p class="text-lg text-theme-text/80 mb-6">{pageDescription}</p>
+    <p class="text-sm text-theme-text/60 italic">
+      Page content is under development. The Solutions dropdown is wired and the
+      canonical URL <code>/standard-parts/</code> is reserved for this hub.
+    </p>
+  </section>
+</BaseLayout>

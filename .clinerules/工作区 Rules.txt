@@ -33,3 +33,12 @@
 ## 6. Scope & Output Discipline
 - Minimal action: Direct text answers for simple queries without tools.
 - Length limit: Keep replies concise (<=15 lines). No unsolicited refactoring plans or fabricated progress history.
+
+## 7. URL 尾部斜杠强制规则 (Trailing Slash Mandate)
+- 所有 URL (`href` / `canonicalUrl` / `src` / `hreflang` / `sitemap` / `keywordMap`) 必须以 `/` 结尾
+- 禁止形式: `/parts`, `/products`, `/services`, `/titanium-cnc-machining-services`
+- 正确形式: `/parts/`, `/products/`, `/services/`, `/titanium-cnc-machining-services/`
+- 唯一例外: hash anchor (`#section`)、`mailto:`、`tel:`、外部 URL (`https://` 等)
+- 强制机制: `astro.config.mjs` 已设 `trailingSlash: 'always'` (line 23)
+- 来源: 用户指令 2026-10-06 — "如果网站存在未以/斜杠结尾，简直就是混蛋"
+- 新代码不允许违反,旧代码需逐轮审计修复 (Phase A 已完成 NAVIGATION 归一化)
