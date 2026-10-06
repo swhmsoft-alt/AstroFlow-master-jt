@@ -68,7 +68,7 @@ const sysSlug = system?.data?.slug || system?.slug || system?.id?.replace(/\.(js
             <ol class="space-y-3">
               {data.commonFailures.slice(0, 3).map((f: string, i: number) => (
                 <li class="flex items-start gap-2">
-                  <span class="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{i + 1}</span>
+                  <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{i + 1}</span>
                   <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{f}</p>
                 </li>
               ))}
@@ -86,7 +86,7 @@ const sysSlug = system?.data?.slug || system?.slug || system?.id?.replace(/\.(js
                 const capSlug = cap?.slug || cap?.id?.replace(/\.(json|md)$/, '') || '';
                 return (
                   <li class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{i + 1}</span>
+                    <span class="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{i + 1}</span>
                     <div>
                       <p class="text-sm font-semibold" style="color: var(--theme-text);">{p}</p>
                       {cap && (

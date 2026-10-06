@@ -413,7 +413,7 @@ export default function RFQForm() {
                   <h4 style={{color: t}} className="font-semibold text-sm mb-3">Upload Status</h4>
                   {file ? (
                     <div className="flex items-start gap-2">
-                      <FileCheck style={{color: p}} className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                      <FileCheck style={{color: p}} className="w-5 h-5 shrink-0 mt-0.5" />
                       <div className="flex-grow min-w-0">
                         <p style={{color: t}} className="font-medium text-sm truncate">{file.name}</p>
                         <p style={{color: muted}} className="text-xs">

@@ -130,7 +130,7 @@ const CADUpload: React.FC = () => {
               <h3 style={{ color: 'var(--theme-text)' }} className="font-semibold mb-4">Upload Status</h3>
               {file ? (
                 <div className="flex items-start gap-3">
-                  <FileCheck style={{ color: 'var(--theme-primary)' }} className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <FileCheck style={{ color: 'var(--theme-primary)' }} className="w-5 h-5 shrink-0 mt-0.5" />
                   <div className="flex-grow">
                     <p style={{ color: 'var(--theme-text)' }} className="font-medium">{file.name}</p>
                     <p style={{ color: 'color-mix(in srgb, var(--theme-text) 65%, transparent)' }} className="text-sm">

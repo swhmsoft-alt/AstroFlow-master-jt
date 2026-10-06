@@ -714,6 +714,8 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   '/products/standards': 'Standards',
   // Titanium Parts (top-level B2B procurement entry, English nav)
   '/parts': 'Titanium Parts',
+  // Solutions sub-hubs (Buyer Search Intelligence Phase G · Mill Products)
+  '/mill-products': 'Titanium Mill Products',
   '/parts/titanium-cnc-parts': 'Titanium CNC Parts',
   '/parts/titanium-fabricated-parts': 'Titanium Fabricated Parts',
   '/parts/titanium-pipe-components': 'Titanium Pipe Components',

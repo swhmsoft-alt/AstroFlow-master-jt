@@ -103,6 +103,8 @@ export const EN_ONLY_PREFIXES = Object.freeze([
   '/capabilities/supplier-evaluation/',
   '/capabilities/standards-compliance/',
   '/capabilities/eco-iteration/',
+  // EN-only Solutions sub-hub (Buyer Search Intelligence Phase G · Mill Products)
+  '/mill-products/',
   // EN-only interactive tools. NOTE: the '/tools/' hub ITSELF is localized
   // ('/de/tools/' is in the sitemap), so the individual tool routes must be
   // listed one by one instead of denylisting the whole '/tools/' subtree.

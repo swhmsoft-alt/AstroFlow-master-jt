@@ -58,6 +58,25 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "Surface Treatment"
     ]
   },
+  '/mill-products': {
+    h1: 'Premium Industrial Titanium Mill Products',
+    subtitle: 'Certified titanium bars, plates, tubes, wire, foil and mesh with documented material traceability and international specifications. Sourced through Baoji\'s titanium supply chain and prepared for aerospace, medical, semiconductor, chemical processing and industrial applications.',
+    badge: 'Mill Products Hub | AS9100D Supply Chain',
+    keyMetrics: [
+      { value: '6', label: 'Product Forms' },
+      { value: '5', label: 'CP / Alloy Grades' },
+      { value: 'ASTM/AMS/MIL', label: 'Specifications' },
+      { value: 'EN 10204 3.1', label: 'Mill Certification' },
+    ],
+    entityChips: [
+      'Bars & Rods',
+      'Plates & Sheets',
+      'Tubes & Pipes',
+      'Wire',
+      'Foil & Coils',
+      'Mesh',
+    ],
+  },
   '/materials': {
     h1: 'Titanium Materials Engineering Guide',
     subtitle: 'Comprehensive technical reference for procurement engineers — from Grade 1 CP-Titanium to Grade 5 ELI medical-grade alloys. Every grade documented with certified properties and application guidance.',

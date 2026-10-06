@@ -224,6 +224,26 @@ export default defineConfig({
           "AS9100D titanium compliance": {
             "href": "/capabilities/compliance/"
           },
+          // BSI Phase G · Buyer Search Intelligence · 5-Entry rule (keywordMap)
+          // Mill Products Hub inbound anchors
+          "titanium mill products": {
+            "href": "/mill-products/"
+          },
+          "titanium mill products hub": {
+            "href": "/mill-products/"
+          },
+          "titanium bar plate tube stock": {
+            "href": "/mill-products/"
+          },
+          "titanium mill product specifications": {
+            "href": "/mill-products/"
+          },
+          "AS9100D mill product supply": {
+            "href": "/mill-products/"
+          },
+          "titanium MTR documentation": {
+            "href": "/mill-products/"
+          },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
           },

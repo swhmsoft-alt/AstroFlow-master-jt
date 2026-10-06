@@ -1,32 +1,965 @@
 ---
 /**
- * /mill-products/ — Titanium Mill Products (placeholder)
+ * /mill-products/ — Titanium Mill Products Hub (Buyer Search Intelligence Phase G)
  *
- * 2026-10-06 — Empty page shell created during Solutions dropdown rollout.
- * Content (Answer Module 6 elements: Direct Answer, Honest Positioning,
- * Structured Body, Claim↔Evidence, Entities, Related anchors) will be built
- * in a follow-up round once the user provides the research brief.
+ * Page role: Procurement Hub + Material Entity Hub for titanium mill products.
+ * - 6 product forms (Bars/Rods, Plates/Sheets, Tubes/Pipes, Wire, Foil/Coils, Mesh)
+ * - 5 grades (CP Grade 1, CP Grade 2, Ti-6Al-4V Grade 5, Ti-3Al-2.5V Grade 9, Ti-6Al-4V ELI Grade 23)
+ * - 4 standard families (ASTM / AMS / ISO / MIL)
+ * - Specification flow + Selection matrix + Value-added routing + Traceability +
+ *   Certifications + Baoji sourcing + 5 Industry applications + Procurement info +
+ *   8 FAQ + RFQ CTA
  *
- * Trailing-slash URL: `/mill-products/` (Astro `trailingSlash: 'always'`).
+ * Schema: pageType="products-hub" → CollectionPage + ItemList + Service + Article + FAQPage
+ * No Product entity (single SKU model — only emit on per-form detail pages).
+ *
+ * Honest scope (方案 §10/11/14/23):
+ * - No "BOZE-冶炼" claims — we are a sourcing + processing partner.
+ * - No "100% Material Traceability" — "Full Material Traceability Available".
+ * - No "Certified implant wire" — "medical material specifications where applicable".
+ * - No mechanical Grade→Standard mapping.
+ * - No "Quote within 24 hours" — neutral response language.
+ *
+ * Per Buyer-Search-Intelligence-SOP §5 forbidden patterns:
+ * - No new component for a single page (F2).
+ * - No q/a keys in faqItems (F3) — uses { question, answer }.
+ * - No inline JSON-LD <script> blocks (F4) — only via BaseLayout buildPageGraph.
+ * - All internal hrefs end with / (F9 trailing-slash mandate).
+ * - No new URL paths invented — /mill-products/ was pre-reserved in NAVIGATION.
  */
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
 
-const pageTitle = 'Titanium Mill Products';
-const pageDescription =
-  'Boze Titanium mill products — plate, bar, tube, wire, foil, coil and mesh forms supplied per ASTM B265, B348, B338, F67 and F136. Page content under development.';
+const pageTitle = 'Titanium Mill Products | Bars, Plates, Tubes & More | BOZE Metal';
+const pageDescription = 'Certified titanium mill products including bars, plates, tubes, wire, foil and mesh. Multiple grades, ASTM/AMS specifications, MTR traceability and custom sizing from BOZE Metal in Baoji, China.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/';
+
+const hero = HERO_CONFIG['/mill-products'];
+
+// ── 6 product forms (ItemList entries + product entity gateway cards) ───────
+const productForms = [
+  {
+    slug: 'bars-rods',
+    name: 'Titanium Bars & Rods',
+    icon: '⬢',
+    summary: 'Round, square and hexagonal bars / rods for CNC machining, fabrication and industrial component production.',
+    forms: ['Round Bar', 'Square Bar', 'Hexagonal Bar', 'Rod'],
+    commonGrades: ['Grade 2', 'Grade 5', 'Grade 9', 'Grade 23'],
+    commonStandards: ['ASTM B348', 'AMS 4928', 'AMS 4965'],
+    typicalApplications: ['CNC Machining Blanks', 'Aerospace Components', 'Medical Components', 'Valve Parts', 'Industrial Equipment'],
+    href: '/materials/',
+  },
+  {
+    slug: 'plates-sheets',
+    name: 'Titanium Plates & Sheets',
+    icon: '▭',
+    summary: 'Plate and sheet products for fabricated structures, chemical processing equipment and precision industrial applications.',
+    forms: ['Plate', 'Sheet', 'Hot Rolled', 'Cold Rolled'],
+    commonGrades: ['Grade 1', 'Grade 2', 'Grade 5', 'Grade 9', 'Grade 23'],
+    commonStandards: ['ASTM B265', 'AMS 4911', 'AMS 4900'],
+    typicalApplications: ['Fabricated Structures', 'Heat-Resistant Assemblies', 'Chemical Processing Equipment', 'Precision Industrial Components'],
+    href: '/materials/',
+  },
+  {
+    slug: 'tubes-pipes',
+    name: 'Titanium Tubes & Pipes',
+    icon: '◯',
+    summary: 'Seamless and welded tubes and pipes for heat exchangers, chemical processing, fluid handling and hydraulic systems.',
+    forms: ['Seamless Tube', 'Welded Tube', 'Pipe'],
+    commonGrades: ['Grade 2', 'Grade 9', 'Grade 12'],
+    commonStandards: ['ASTM B338', 'ASTM B861', 'ASTM B862'],
+    typicalApplications: ['Heat Exchangers', 'Chemical Processing', 'Fluid Handling', 'Hydraulic Systems', 'Corrosion-Resistant Equipment'],
+    href: '/materials/',
+  },
+  {
+    slug: 'wire',
+    name: 'Titanium Wire',
+    icon: '∿',
+    summary: 'Titanium wire in coil and straight lengths for medical-material, welding, additive manufacturing and industrial applications.',
+    forms: ['Coil Wire', 'Straight Wire', 'Welding Wire'],
+    commonGrades: ['Grade 1', 'Grade 2', 'Grade 5', 'Grade 23'],
+    commonStandards: ['ASTM B863', 'AMS 4951'],
+    typicalApplications: ['Welding Feedstock', 'Additive Manufacturing Feedstock', 'Medical-Material Applications (where applicable)', 'Specialized Industrial'],
+    href: '/materials/',
+  },
+  {
+    slug: 'foil-coils',
+    name: 'Titanium Foil & Coils',
+    icon: '∽',
+    summary: 'Thin titanium foil and coil material for specialized industrial, chemical and precision applications.',
+    forms: ['Foil', 'Strip', 'Coil'],
+    commonGrades: ['Grade 1', 'Grade 2'],
+    commonStandards: ['ASTM B265'],
+    typicalApplications: ['Chemical Processing', 'Specialized Industrial Equipment', 'Energy Applications', 'Precision Components'],
+    href: '/materials/',
+  },
+  {
+    slug: 'mesh',
+    name: 'Titanium Mesh',
+    icon: '⧉',
+    summary: 'Woven titanium mesh for corrosion-resistant, electrochemical and filtration applications.',
+    forms: ['Woven Mesh'],
+    commonGrades: ['Grade 1', 'Grade 2'],
+    commonStandards: ['Customer Specifications'],
+    typicalApplications: ['Electrochemical Applications', 'Filtration', 'Corrosion-Resistant Assemblies', 'Specialized Industrial'],
+    href: '/materials/',
+  },
+];
+
+// ── 5 grades matrix (D1 — Material) ─────────────────────────────────────────
+const gradeMatrix = [
+  { grade: 'Grade 1', name: 'CP Titanium', characteristics: 'High ductility, formability, corrosion resistance', commonForms: 'Sheet, Plate, Tube' },
+  { grade: 'Grade 2', name: 'CP Titanium', characteristics: 'Balanced strength and corrosion resistance — most widely used CP grade', commonForms: 'Plate, Sheet, Tube, Bar' },
+  { grade: 'Grade 5', name: 'Ti-6Al-4V', characteristics: 'High strength-to-weight ratio, aerospace workhorse alloy', commonForms: 'Bar, Plate, Sheet' },
+  { grade: 'Grade 9', name: 'Ti-3Al-2.5V', characteristics: 'Strength, formability and corrosion resistance — common for tubing', commonForms: 'Tube, Sheet, Bar' },
+  { grade: 'Grade 23', name: 'Ti-6Al-4V ELI', characteristics: 'High purity / enhanced fracture toughness — commonly specified for demanding medical and critical applications where applicable specifications are met', commonForms: 'Bar, Plate, Wire' },
+];
+
+// ── Standards library (D1 — Material, supports §14 "no mechanical mapping") ─
+const standardsGroups = [
+  {
+    family: 'ASTM',
+    icon: '◕',
+    specs: ['ASTM B265 (Plate, Sheet, Strip)', 'ASTM B348 (Bar, Billet, Wire)', 'ASTM B338 (Tube)', 'ASTM B861 (Seamless Pipe)', 'ASTM B862 (Welded Pipe)', 'ASTM B863 (Wire)', 'ASTM F67 (CP Surgical Implant)', 'ASTM F136 (Ti-6Al-4V ELI Surgical Implant)'],
+  },
+  {
+    family: 'AMS',
+    icon: '◑',
+    specs: ['AMS 4900 (Plate, Sheet, Strip — CP)', 'AMS 4911 (Plate, Sheet, Strip — Ti-6Al-4V)', 'AMS 4928 (Bar, Forging Stock — Ti-6Al-4V)', 'AMS 4951 (Welding Wire)', 'AMS 4965 (Bar, Wire — Ti-6Al-4V)'],
+  },
+  {
+    family: 'ISO',
+    icon: '◔',
+    specs: ['ISO 5832-2 (Wrought CP Titanium)', 'ISO 5832-3 (Wrought Ti-6Al-4V for Surgical Implants)'],
+  },
+  {
+    family: 'MIL',
+    icon: '◓',
+    specs: ['MIL-T-9047 (Titanium / Titanium Alloy Tubing)'],
+  },
+];
+
+// ── Specification flow (D5 — How to start, AI-citable procurement model) ────
+const specFlowSteps = [
+  { n: '01', label: 'Product Form', detail: 'Bar, plate, sheet, tube, pipe, wire, foil or mesh' },
+  { n: '02', label: 'Titanium Grade', detail: 'CP (Grade 1, 2) or alloy (Grade 5, 9, 23, other)' },
+  { n: '03', label: 'Applicable Standard', detail: 'ASTM / AMS / ISO / MIL / customer specification' },
+  { n: '04', label: 'Dimensions', detail: 'Diameter, thickness, width, length — incl. tolerances' },
+  { n: '05', label: 'Material Condition', detail: 'Mill condition, annealed, solution treated, cold-worked' },
+  { n: '06', label: 'Quantity', detail: 'Piece count, total weight, lot or batch sizing' },
+  { n: '07', label: 'Surface / Finish', detail: 'Pickled, polished, ground, as-rolled, customer-specified' },
+  { n: '08', label: 'Inspection', detail: 'Dimensional, mechanical, NDT per applicable spec' },
+  { n: '09', label: 'Certification', detail: 'MTR per EN 10204 3.1, C of C, AS9102 FAIR' },
+  { n: '10', label: 'Delivery', detail: 'Destination, Incoterms, packaging, lead time target' },
+];
+
+// ── Selection matrix (D5 — Quick-decision answer sheet) ──────────────────────
+const selectionMatrix = [
+  { requirement: 'CNC machining blanks (round, square, hex)', recommendedForm: 'Bars & Rods' },
+  { requirement: 'Fabricated structures and welded assemblies', recommendedForm: 'Plates & Sheets' },
+  { requirement: 'Fluid / heat exchanger / hydraulic applications', recommendedForm: 'Tubes & Pipes' },
+  { requirement: 'Welding feedstock or specialized industrial wire', recommendedForm: 'Wire' },
+  { requirement: 'Ultra-thin material for specialized industrial use', recommendedForm: 'Foil & Coils' },
+  { requirement: 'Electrochemical or filtration assemblies', recommendedForm: 'Mesh' },
+];
+
+// ── Value-added processing (D2 — Mill Stock → CNC Parts) ────────────────────
+const valueAddedStages = [
+  {
+    title: 'Material Preparation',
+    icon: '✂',
+    items: ['Precision saw cutting to specified lengths', 'Blank preparation and custom dimensions', 'Tolerance to lot tolerance needs — mill-cert retained with each blank'],
+  },
+  {
+    title: 'CNC Manufacturing',
+    icon: '◊',
+    items: ['3-axis / 4-axis / 5-axis CNC machining from mill stock', 'Tight tolerance machining per ISO 2768 m-k', 'CMM inspection and first-article reports available'],
+  },
+  {
+    title: 'Finishing & Secondary Processing',
+    icon: '◈',
+    items: ['Deburring and edge preparation', 'In-house dimensional inspection per drawing', 'Export packaging and shipping documentation'],
+  },
+];
+
+// ── Material traceability (④ Claim ↔ Evidence) ───────────────────────────────
+const traceabilityCards = [
+  {
+    title: 'Material Traceability',
+    body: 'Material identification and documentation can be maintained from incoming material through processing, inspection and shipment, according to the applicable order requirements.',
+    icon: '◉',
+  },
+  {
+    title: 'MTR / Material Certificates',
+    body: 'Material Test Reports (MTR) and applicable certification documentation can be supplied per order and specification — typically per EN 10204 Type 3.1 issued by upstream mill independent of manufacturing.',
+    icon: '◐',
+  },
+  {
+    title: 'Inspection',
+    body: 'Inspection requirements can be reviewed against customer drawings, applicable material specifications and purchase order — including dimensional, mechanical and NDT where required.',
+    icon: '◎',
+  },
+  {
+    title: 'Documentation',
+    body: 'Standard documentation package: material certificates, inspection records, dimensional reports, traceability records and shipping documentation per order requirements.',
+    icon: '◑',
+  },
+];
+
+// ── Certifications (D2 — QMS stack, honest wording) ──────────────────────────
+const certifications = [
+  {
+    code: 'AS9100D',
+    domain: 'Aerospace & Defense QMS',
+    body: 'Our quality management systems support demanding aerospace and medical supply requirements. AS9100D is the aerospace QMS certification held by BOZE Metal — it covers the QMS, not individual material lots.',
+  },
+  {
+    code: 'ISO 13485:2016',
+    domain: 'Medical Device QMS',
+    body: 'QMS supports the manufacture of titanium components for medical-device programs per applicable specifications (e.g. ASTM F136 / ISO 5832-3 for Grade 23 ELI surgical implants where required by customer specification).',
+  },
+  {
+    code: 'ISO 9001:2015',
+    domain: 'Quality Management',
+    body: 'General-purpose QMS covering all stages of titanium stock procurement, processing, inspection and shipment.',
+  },
+];
+
+// ── Baoji supply chain (§21 — honest wording) ───────────────────────────────
+const baojiCards = [
+  {
+    title: 'Baoji Titanium Supply Chain',
+    body: 'BOZE Metal is based in Baoji, Shaanxi — a major titanium manufacturing and supply-chain center in China. Our location provides access to a broad network of upstream titanium material producers and supporting processors.',
+  },
+  {
+    title: 'Material Sourcing Flexibility',
+    body: 'Local supply-chain ecosystem supports material sourcing, specification review, processing coordination and documentation for international industrial customers.',
+  },
+  {
+    title: 'Procurement Coordination',
+    body: 'Coordination across material producers, processors and downstream CNC manufacturing reduces supplier handoffs between raw-material procurement and finished components.',
+  },
+  {
+    title: 'Export & Logistics',
+    body: 'Documented export experience and shipping preparation per destination requirements (Incoterms, packaging, country-of-origin documentation). For detailed logistics scope see the dedicated capability page.',
+    href: '/capabilities/logistics/',
+  },
+];
+
+// ── Industry applications (§22 — 5 industries, no Defense) ──────────────────
+const industries = [
+  {
+    name: 'Aerospace',
+    icon: '✈',
+    body: 'Lightweight, high-strength titanium stock for aerospace structures and components — typically specified to AMS 4911 / AMS 4928 for Ti-6Al-4V and AMS 4900 for CP.',
+    href: '/industries/aerospace/',
+  },
+  {
+    name: 'Medical',
+    icon: '✚',
+    body: 'Titanium grades and forms commonly specified for medical-device and implant-related manufacturing — subject to applicable material specifications (e.g. ASTM F136 / ISO 5832-3 for Grade 23 ELI).',
+    href: '/industries/medical/',
+  },
+  {
+    name: 'Semiconductor',
+    icon: '◧',
+    body: 'Titanium materials for corrosion-resistant and precision industrial equipment — commonly supplied as CP Grade 2 plate, bar and tube for chamber, gas-line and wet-process components.',
+    href: '/industries/semiconductor/',
+  },
+  {
+    name: 'Chemical Processing',
+    icon: '⚗',
+    body: 'Corrosion-resistant titanium mill products for demanding chemical environments — Grade 2 / Grade 12 / Pd-enhanced grades for reactors, heat exchangers and piping per ASTM B338 / B862.',
+    href: '/industries/chemical/',
+  },
+  {
+    name: 'Energy & Industrial Equipment',
+    icon: '⚡',
+    body: 'Titanium materials for heat exchangers, valves, fluid systems and specialized industrial equipment — across power-generation, hydrogen and general industrial programs.',
+    href: '/industries/energy/',
+  },
+];
+
+// ── Procurement / OEM info (§24) ────────────────────────────────────────────
+const procurementCapabilities = [
+  'Multiple Titanium Grades (CP and Alloy)',
+  'Six Product Forms in One Procurement Program',
+  'International Specifications (ASTM / AMS / ISO / MIL)',
+  'Material Traceability with Documentation',
+  'EN 10204 Type 3.1 Mill Test Reports',
+  'Custom Saw Cutting to Specified Lengths',
+  'Custom Quantities — Prototype to Production',
+  'Export Packaging & Country-of-Origin Documents',
+  'Global Shipping (Incoterms per Order)',
+  'Technical RFQ Support — Specification Reading',
+];
+
+// ── Honest scope — "What We Don't Cover" (§11 honest positioning) ───────────
+const whatWeDontCover = [
+  {
+    topic: 'BOZE does not produce titanium sponge or melt ingot',
+    reason: 'BOZE is a procurement, processing and CNC machining partner. We source mill products from upstream producers in the Baoji supply chain rather than operating primary melting.',
+  },
+  {
+    topic: 'Expanded / perforated titanium mesh availability varies by spec',
+    reason: 'Woven titanium mesh is generally available from supply chain partners. Expanded and perforated mesh products should be reviewed case-by-case against your specification.',
+  },
+  {
+    topic: 'Implant-grade certification is per lot per spec',
+    reason: 'We do not make blanket "implant certified" claims. Implant suitability per ASTM F136 / ISO 5832-3 is determined by lot-level MTR documentation and the customer-specified acceptance criteria.',
+  },
+  {
+    topic: 'No same-day / 24-hour quotation guarantee',
+    reason: 'We respond to RFQ with the appropriate material and quotation information as quickly as the inquiry and supply chain permit — but do not advertise a fixed turnaround SLA on the hub page.',
+  },
+];
+
+// ── FAQ items — 8 questions, schema-eligible (BaseLayout faqItems prop) ─────
+const faqItems = [
+  {
+    question: 'What titanium mill products does BOZE Metal supply?',
+    answer: 'BOZE Metal supplies six titanium mill product forms: bars & rods (round, square, hexagonal), plates & sheets, tubes & pipes (seamless and welded), wire (coil and straight), foil & coils, and woven mesh. Multiple commercially pure and alloy grades are available per applicable specifications.',
+  },
+  {
+    question: 'What titanium grades are typically available as stock?',
+    answer: 'Commercially pure Grade 1 and Grade 2 are the most widely stocked. Ti-6Al-4V (Grade 5), Ti-3Al-2.5V (Grade 9) and Ti-6Al-4V ELI (Grade 23) are commonly supplied as alloy stock. Other grades can be reviewed on request against the customer specification.',
+  },
+  {
+    question: 'Which material specifications can BOZE Metal work with?',
+    answer: 'BOZE Metal works with internationally recognized specifications including ASTM (B265, B348, B338, B861, B862, B863, F67, F136), AMS (4900, 4911, 4928, 4951, 4965), ISO 5832-2 / 5832-3 and MIL-T-9047 — as well as proprietary customer specifications. Specification availability depends on product form, grade, dimensions and supply condition; contact us to confirm the applicable specification for your requirement.',
+  },
+  {
+    question: 'Do titanium mill products come with material certificates?',
+    answer: 'Yes — Material Test Reports (MTR) and applicable certification documentation can be supplied per order and specification requirements, typically per EN 10204 Type 3.1 issued by the upstream mill independent of manufacturing. Customer-specified certification requirements (AS9102 FAIR, C of C, country-of-origin) are reviewed at RFQ stage.',
+  },
+  {
+    question: 'Can titanium stock be cut to custom dimensions?',
+    answer: 'Yes — precision saw cutting to specified lengths and blank preparation are available as part of the mill-product procurement workflow. Tolerance requirements should be specified in the RFQ alongside grade, form and applicable standard.',
+  },
+  {
+    question: 'Can BOZE Metal machine titanium mill products into finished parts?',
+    answer: 'Yes — mill stock can be sourced, cut to blanks, and routed into CNC machining (3-axis / 4-axis / 5-axis) under the same program. This is the typical BOZE workflow: mill stock → material preparation → CNC machining → inspection → finishing → shipment. See the capabilities page for the full manufacturing scope.',
+  },
+  {
+    question: 'Which industries does BOZE Metal supply titanium mill products to?',
+    answer: 'BOZE Metal supplies titanium mill products into aerospace, medical, semiconductor, chemical processing and energy / industrial equipment programs. Specification and documentation requirements vary significantly by industry — submit your drawing or specification for an industry-specific review.',
+  },
+  {
+    question: 'How do I request a titanium mill products quotation?',
+    answer: 'Send your product form, grade, applicable standard, dimensions, material condition, quantity, surface/finish requirements, inspection and certification requirements via the RFQ form. We will review the requirement and respond with the appropriate material and quotation information.',
+  },
+];
+
+// ── SchemaPageData for buildPageGraph ───────────────────────────────────────
+// pageType="products-hub" → buildCollectionPage + buildItemList (per 6 forms)
+// + optional Service + FAQPage auto via faqItems prop
+const itemListEntries = productForms.map((p) => ({ name: p.name, url: `${canonicalUrl}#${p.slug}` }));
 ---
 
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  canonicalURL="/mill-products/"
+  canonicalURL={canonicalUrl}
+  pageType="products-hub"
+  collectionName="Titanium Mill Products Collection"
+  collectionDescription={pageDescription}
+  itemCount={productForms.length}
+  items={itemListEntries}
+  serviceName="Titanium Mill Products Procurement Service"
+  serviceDescription="Procurement, sourcing, traceability and value-added processing for titanium bar, plate, sheet, tube, pipe, wire, foil, coil and mesh stock."
+  serviceCategory="Titanium Mill Products Procurement"
+  faqItems={faqItems}
+  faqName="Titanium Mill Products — Frequently Asked Questions"
+  articleHeadline="Titanium Mill Products Hub — Procurement Reference for B2B Buyers"
+  articleDatePublished="2026-10-06"
+  articleAuthor="BOZE CNC Ti Engineering Team"
 >
-  <section class="container mx-auto px-4 py-16 md:py-24">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4">{pageTitle}</h1>
-    <p class="text-lg text-theme-text/80 mb-6">{pageDescription}</p>
-    <p class="text-sm text-theme-text/60 italic">
-      Page content is under development. The Solutions dropdown is wired and the
-      canonical URL <code>/mill-products/</code> is reserved for this hub.
-    </p>
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 01 Hero (SubpageHero · HERO_CONFIG-driven)                      -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <SubpageHero
+    h1={hero.h1}
+    subtitle={hero.subtitle}
+    badge={hero.badge}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+  />
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 02 Product Forms (6 forms · Product Entity Gateway cards)       -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Product Forms</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Six Titanium Mill Product Forms
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal supplies titanium mill products in multiple forms, grades and specifications for manufacturing and further fabrication. Each form below is a gateway to the applicable materials, standards, typical dimensions and downstream processing options — review the form most relevant to your application, or submit your specification directly for a tailored quote.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          productForms.map((p) => (
+            <article id={p.slug} class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="text-3xl" aria-hidden="true">{p.icon}</span>
+                <h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.name}</h3>
+              </div>
+              <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.summary}</p>
+
+              <div class="space-y-3">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Forms</p>
+                  <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p.forms.join(' · ')}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Common Grades</p>
+                  <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p.commonGrades.join(' · ')}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Typical Standards</p>
+                  <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p.commonStandards.join(' · ')}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Typical Applications</p>
+                  <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{p.typicalApplications.join(' · ')}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Available Material Reference</p>
+                  <p class="text-sm mt-1">
+                    <a href={p.href} class="underline underline-offset-4 font-semibold" style="color: var(--theme-primary);">View {p.name.replace('Titanium ', '')} grades →</a>
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <!-- "Need a specific form?" connector to RFQ -->
+      <div class="mt-12 rounded-2xl border p-6 lg:p-8 text-center" style="background: color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface)); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <h3 class="text-xl font-bold mb-2" style="color: var(--theme-text);">Need a Specific Titanium Form or Size?</h3>
+        <p class="text-sm leading-relaxed mb-5 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          If you do not see the required titanium form, grade or dimension above, send us your material specification, drawing or purchasing requirement. BOZE Metal can review non-standard requirements and identify the appropriate material and processing route.
+        </p>
+        <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+          Send Your Specification
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 03 Titanium Grades (5-grade table, §13 honest wording)           -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Titanium Grades</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Titanium Grades Available as Mill Stock
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Titanium mill products are available in commercially pure titanium and titanium alloys, chosen for mechanical, corrosion, temperature and application requirements. The five grades below are the most commonly specified — other grades can be reviewed against your specification.
+        </p>
+      </header>
+
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <tr>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Grade</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Material</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Typical Characteristics</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Common Forms</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              gradeMatrix.map((g, i) => (
+                <tr style={i % 2 === 1 ? 'background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));' : ''}>
+                  <td class="px-4 py-3 font-semibold" style="color: var(--theme-primary);">{g.grade}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{g.name}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{g.characteristics}</td>
+                  <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{g.commonForms}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6 text-xs leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+        Grade 23 (Ti-6Al-4V ELI) is commonly specified for demanding medical and critical applications where applicable specifications are met — suitability per ASTM F136 / ISO 5832-3 is determined by lot-level documentation and customer-specified acceptance criteria, not by grade designation alone.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 04 Standards & Specifications (ASTM/AMS/ISO/MIL, §14)            -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Standards</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Material Standards & Specifications
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Material specifications define the required chemistry, mechanical properties, dimensions, surface condition and inspection requirements. BOZE Metal works with internationally recognized specifications and customer-specific material requirements. Specification availability depends on product form, grade, dimensions and supply condition.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          standardsGroups.map((g) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <div class="flex items-start gap-3 mb-4">
+                <span class="text-2xl" aria-hidden="true">{g.icon}</span>
+                <h3 class="text-xl font-bold" style="color: var(--theme-primary);">{g.family}</h3>
+              </div>
+              <ul class="space-y-2">
+                {g.specs.map((s) => (
+                  <li class="text-sm leading-relaxed pl-3 border-l-2" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent);">{s}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Specification availability depends on product form, grade, dimensions and supply condition. Contact BOZE Metal to confirm the applicable specification for your requirement. Note: grade-to-standard mapping is not mechanical — typical procurement combines <em>Grade + Product Form + Condition + Standard + Dimension + Inspection Requirement</em>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 05 How to Specify — Procurement Flow (§15, AI-citable model)    -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement Specification</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          How to Specify Titanium Mill Products
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          When procuring titanium stock, a complete specification typically combines ten inputs. Submitting these clearly reduces back-and-forth on quotation and accelerates material sourcing.
+        </p>
+      </header>
+
+      <!-- Visual Flow -->
+      <div class="mt-12 grid gap-3 md:grid-cols-5 lg:grid-cols-10">
+        {
+          specFlowSteps.map((s) => (
+            <div class="rounded-xl border p-4 text-center" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <p class="text-xs font-bold mb-1" style="color: var(--theme-primary);">{s.n}</p>
+              <p class="text-sm font-semibold mb-1" style="color: var(--theme-text);">{s.label}</p>
+              <p class="text-xs leading-snug" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{s.detail}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Detailed 10-step list -->
+      <div class="mt-12 max-w-4xl space-y-2">
+        {
+          specFlowSteps.map((s) => (
+            <details class="group rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-3">
+                <span class="flex items-center gap-3">
+                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{s.n}</span>
+                  <span class="text-sm font-bold" style="color: var(--theme-text);">{s.label}</span>
+                </span>
+                <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-5 pb-4 pl-13">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{s.detail}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 06 Selection Matrix (§16 — quick-decision answer)                -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Selection Guide</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Which Titanium Mill Product Do You Need?
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          A quick-decision matrix for common procurement scenarios. Match your requirement to the recommended form below — then review the grade and standard guidance for that form.
+        </p>
+      </header>
+
+      <div class="mt-12 overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="w-full text-left text-sm">
+          <thead style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+            <tr>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Requirement</th>
+              <th class="px-4 py-3 font-bold" style="color: var(--theme-text);">Recommended Form</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              selectionMatrix.map((row, i) => (
+                <tr style={i % 2 === 1 ? 'background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface));' : ''}>
+                  <td class="px-4 py-3 font-semibold" style="color: var(--theme-text);">{row.requirement}</td>
+                  <td class="px-4 py-3" style="color: var(--theme-primary);">{row.recommendedForm}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-10 text-center">
+        <p class="text-sm leading-relaxed mb-5 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          Need help selecting the right titanium grade or product form? Send your specification to our technical team.
+        </p>
+        <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold" style="background: var(--theme-surface); border: 2px solid var(--theme-primary); color: var(--theme-primary);">
+          Ask a Material Specialist
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 07 Value-Added Processing (§17 — Mill Stock → CNC Parts)         -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Value-Added Processing</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          From Titanium Mill Stock to Finished Components
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Mill products are often only the first stage of a titanium component supply chain. BOZE Metal can coordinate material preparation and downstream manufacturing requirements, helping customers reduce supplier handoffs between raw material procurement and finished components.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          valueAddedStages.map((stage) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <span class="text-3xl block mb-3" aria-hidden="true">{stage.icon}</span>
+              <h3 class="text-lg font-bold mb-3" style="color: var(--theme-primary);">{stage.title}</h3>
+              <ul class="space-y-2">
+                {stage.items.map((it) => (
+                  <li class="text-sm leading-relaxed flex items-start gap-2" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                    <svg class="h-4 w-4 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/titanium-cnc-machining-services/" class="inline-flex items-center gap-2 text-sm font-bold" style="color: var(--theme-primary);">
+          Explore Titanium CNC Machining Services
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 08 Material Quality, Certification & Traceability (§19)          -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Quality & Traceability</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Material Quality, Certification & Traceability
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          For critical titanium applications, material identity and documentation are as important as price and availability. BOZE Metal supports documented material traceability from incoming material through processing, inspection and shipment, according to the applicable order requirements.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          traceabilityCards.map((c) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <div class="flex items-start gap-3 mb-3">
+                <span class="text-2xl" aria-hidden="true">{c.icon}</span>
+                <h3 class="text-lg font-bold" style="color: var(--theme-text);">{c.title}</h3>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <TrustBadges />
+
+  <QualityControl />
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 09 Certifications (§20 — honest wording)                         -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Quality Systems</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Quality Systems for Demanding Industrial Markets
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Our quality management systems support demanding aerospace and medical supply requirements. The certifications below apply to our QMS scope — material-lot certification is reviewed at the order level.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          certifications.map((c) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary); letter-spacing: 0.08em;">{c.code}</p>
+              <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{c.domain}</h3>
+              <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 10 Sourcing from Baoji (§21 — honest wording)                    -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Sourcing</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Sourcing Titanium from Baoji, China's Titanium Valley
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal is based in Baoji, Shaanxi — a major titanium manufacturing and supply-chain center in China. Our location provides access to a broad network of titanium material producers, processors and supporting manufacturers. The local supply-chain ecosystem helps us coordinate material sourcing, specifications, processing and documentation for international industrial customers.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          baojiCards.map((b) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">{b.title}</h3>
+              <p class="text-sm leading-relaxed mb-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{b.body}</p>
+              {b.href && (
+                <a href={b.href} class="text-sm font-bold" style="color: var(--theme-primary);">View Logistics Capability →</a>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 11 Industry Applications (§22 — 5 industries)                    -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Industries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Titanium Mill Products for Demanding Industries
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal supplies titanium mill stock into the five industries below — each with distinct specification, traceability and documentation requirements.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          industries.map((ind) => (
+            <a href={ind.href} class="block rounded-2xl border p-6 lg:p-8 transition-all hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <span class="text-3xl block mb-3" aria-hidden="true">{ind.icon}</span>
+              <h3 class="text-lg font-bold mb-3" style="color: var(--theme-primary);">{ind.name}</h3>
+              <p class="text-sm leading-relaxed mb-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{ind.body}</p>
+              <p class="text-xs font-semibold" style="color: var(--theme-primary);">{ind.href} →</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 12 Procurement / OEM info (§24)                                  -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Titanium Mill Products for OEM & Industrial Procurement
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal supports OEM supply, industrial procurement programs and repeat-order contracts with documented material sourcing, processing and shipment per order requirements.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          procurementCapabilities.map((cap) => (
+            <div class="flex items-start gap-3 rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{cap}</span>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-10 text-base leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+        For repeat procurement programs, OEM supply and custom material requirements, contact BOZE Metal with your specification, annual volume and delivery requirements.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 13 Honest Scope — What Mill-Product Capability We Don't Cover   -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Scope</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          What We Don't Cover (And Why)
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Procurement teams are best served by clear scope — including what is intentionally outside our current coverage. The four items below are exclusions from this hub; they are either outside our operating model or require case-by-case review.
+        </p>
+      </header>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          whatWeDontCover.map((w) => (
+            <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, #dc2626 18%, transparent);">
+              <div class="flex items-start gap-3 mb-3">
+                <svg class="h-5 w-5 shrink-0 mt-0.5" style="color: #dc2626;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M4.93 4.93l14.14 14.14M12 2a10 10 0 100 20 10 10 0 000-20z" />
+                </svg>
+                <h3 class="text-base font-bold" style="color: var(--theme-text);">{w.topic}</h3>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{w.reason}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 14 FAQ (§25 — 8 questions, faqItems auto-emits FAQPage JSON-LD) -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-16 lg:py-24" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Titanium Mill Products FAQ
+        </h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Common questions from procurement engineers, sourcing managers and QA teams specifying titanium mill stock for aerospace, medical, chemical and industrial programs.
+        </p>
+      </header>
+
+      <div class="mt-12 max-w-4xl space-y-4">
+        {
+          faqItems.map((f, i) => (
+            <details class="group rounded-2xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 px-6 py-5">
+                <span class="flex items-start gap-4">
+                  <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);">{i + 1}</span>
+                  <span class="text-base font-bold leading-snug" style="color: var(--theme-text);">{f.question}</span>
+                </span>
+              </summary>
+              <div class="px-6 pb-6 pl-[4.5rem]">
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 15 RFQ CTA (§26)                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 opacity-25" aria-hidden="true">
+      <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--theme-primary) 30%, transparent) 0%, transparent 55%);"></div>
+    </div>
+    <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="mx-auto max-w-4xl rounded-3xl border p-8 text-center lg:p-12" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Request a Quote</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Request a Titanium Mill Products Quote
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Tell us what titanium material you need. Our team can review your product form, grade, dimensions, specification, quantity and documentation requirements before preparing a quotation.
+        </p>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-2 text-left max-w-2xl mx-auto">
+          <div class="rounded-xl border p-4" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--theme-primary);">Contact</p>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Name · Company · Business Email · Country / Region</p>
+          </div>
+          <div class="rounded-xl border p-4" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--theme-primary);">Requirement</p>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Product Form · Titanium Grade · Standard · Dimensions · Quantity · Delivery Date</p>
+          </div>
+          <div class="rounded-xl border p-4" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--theme-primary);">Certification</p>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Material Certificate Required · Inspection Requirements · Special Documentation</p>
+          </div>
+          <div class="rounded-xl border p-4" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--theme-primary);">Drawing Upload</p>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">PDF / DWG / STEP / STP / XLSX / DOCX (per site capability)</p>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+            Request a Technical Quote
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+          <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl border px-8 py-4 text-base font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">
+            Send Material Specification
+          </a>
+        </div>
+
+        <p class="mt-6 text-xs leading-relaxed max-w-xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+          We will review your requirement and respond with the appropriate material and quotation information.
+        </p>
+      </div>
+    </div>
   </section>
 </BaseLayout>

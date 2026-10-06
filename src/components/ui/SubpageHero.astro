@@ -67,7 +67,7 @@ const subTextSize = compact || (subtitle && subtitle.length > 200) ? 'text-lg md
 const subMaxWidth = isLongSubtitle ? 'max-w-5xl' : 'max-w-3xl';
 ---
 
-<section class="relative flex items-center overflow-hidden py-20 md:py-28 min-h-[360px]" style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);">
+<section class="relative flex items-center overflow-hidden py-20 md:py-28 min-h-90" style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);">
   {backgroundImage ? (
     <!-- Image Background (overlaid on gradient) -->
     <div class="absolute inset-0" style={`background-image: url(${backgroundImage}); background-size: cover; background-position: center;`}></div>
