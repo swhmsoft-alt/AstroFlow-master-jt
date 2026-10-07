@@ -77,6 +77,23 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'Mesh',
     ],
   },
+  '/standard-parts': {
+    h1: 'Titanium Standard Parts & Components',
+    subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',
+    badge: 'Standard Parts Hub | AS9100D Procurement',
+    keyMetrics: [
+      { value: '4', label: 'Product Families' },
+      { value: 'ASTM/ASME/DIN', label: 'Specifications' },
+      { value: 'Heat→Part', label: 'Traceability' },
+      { value: 'EN 10204 3.1', label: 'Mill Certification' },
+    ],
+    entityChips: [
+      'Titanium Flanges',
+      'Pipe Fittings',
+      'Titanium Fasteners',
+      'CNC Machined Components',
+    ],
+  },
   '/materials': {
     h1: 'Titanium Materials Engineering Guide',
     subtitle: 'Comprehensive technical reference for procurement engineers — from Grade 1 CP-Titanium to Grade 5 ELI medical-grade alloys. Every grade documented with certified properties and application guidance.',

@@ -855,7 +855,7 @@ export const PART_PAGES: PartsCategory[] = [
     applicationOverview: {
       title: 'Application Overview',
       body:
-        'Titanium pipe systems are specified for seawater, chemical, desalination, and heat-exchanger service where corrosion resistance and long life dominate total cost. BOZE fabricates titanium pipe components and complete spools — from pipe, flanges and fittings to welded tube assemblies — with full weld traceability and material certification.',
+        'Titanium pipe systems are specified for seawater, chemical, desalination, and heat-exchanger service where corrosion resistance and long life dominate total cost. BOZE fabricates titanium pipe components and complete spools — from pipe, flanges and fittings to welded tube assemblies — with full weld traceability and material certification. For standard catalog fittings per ASME B16.9 / B16.11, see <a href="/standard-parts/pipe-fittings/">Standard Pipe Fittings</a>.',
       keyPoints: [
         'Titanium pipe spool fabrication to isometric layout drawings',
         'Flanges, fittings, elbows, reducers and weld-neck components',

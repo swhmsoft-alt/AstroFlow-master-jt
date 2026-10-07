@@ -105,6 +105,12 @@ export const EN_ONLY_PREFIXES = Object.freeze([
   '/capabilities/eco-iteration/',
   // EN-only Solutions sub-hub (Buyer Search Intelligence Phase G · Mill Products)
   '/mill-products/',
+  // EN-only Solutions sub-hub (Buyer Search Intelligence Phase H · Standard Parts)
+  '/standard-parts/',
+  '/standard-parts/flanges/',
+  '/standard-parts/pipe-fittings/',
+  '/standard-parts/fasteners/',
+  '/standard-parts/machined-components/',
   // EN-only interactive tools. NOTE: the '/tools/' hub ITSELF is localized
   // ('/de/tools/' is in the sitemap), so the individual tool routes must be
   // listed one by one instead of denylisting the whole '/tools/' subtree.

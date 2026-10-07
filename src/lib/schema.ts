@@ -100,6 +100,8 @@ export type PageType =
   | 'industry-detail'
   | 'resources'
   | 'rfq'
+  | 'standard-parts-hub'
+  | 'standard-part-detail'
   | 'generic';
 
 // ── Helpers ───────────────────────────────────────────
@@ -684,6 +686,7 @@ export function detectPageType(path: string, explicit?: PageType): PageType {
   if (path === '/' || path === '') return 'home';
   if (path.startsWith('/services')) return path.split('/').filter(Boolean).length > 1 ? 'service-detail' : 'services-hub';
   if (path.startsWith('/parts')) return path.split('/').filter(Boolean).length > 1 ? 'part-detail' : 'parts-hub';
+  if (path.startsWith('/standard-parts')) return path.split('/').filter(Boolean).length > 1 ? 'standard-part-detail' : 'standard-parts-hub';
   if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
   if (path.startsWith('/tools')) return path.split('/').filter(Boolean).length > 1 ? 'tool-detail' : 'tools-hub';
   if (path.startsWith('/equipment')) return path.split('/').filter(Boolean).length > 1 ? 'equipment-detail' : 'generic';
@@ -716,6 +719,12 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   '/parts': 'Titanium Parts',
   // Solutions sub-hubs (Buyer Search Intelligence Phase G · Mill Products)
   '/mill-products': 'Titanium Mill Products',
+  // Solutions sub-hubs (Buyer Search Intelligence Phase H · Standard Parts)
+  '/standard-parts': 'Titanium Standard Parts',
+  '/standard-parts/flanges': 'Titanium Flanges',
+  '/standard-parts/pipe-fittings': 'Titanium Pipe Fittings',
+  '/standard-parts/fasteners': 'Titanium Fasteners',
+  '/standard-parts/machined-components': 'CNC Machined Standard Components',
   '/parts/titanium-cnc-parts': 'Titanium CNC Parts',
   '/parts/titanium-fabricated-parts': 'Titanium Fabricated Parts',
   '/parts/titanium-pipe-components': 'Titanium Pipe Components',
@@ -1002,6 +1011,41 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
 
     case 'service-detail':
     case 'industry-detail':
+      if (data.serviceName) {
+        graph.push(buildService({
+          name: data.serviceName,
+          description: data.serviceDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          category: data.serviceCategory,
+        }));
+      }
+      break;
+
+    // Phase H — Buyer Search Intelligence. /standard-parts/ Hub + sub-Hubs.
+    // Both pageTypes share the same graph-emission shape:
+    //   CollectionPage + ItemList  (when collectionName / items provided)
+    //   Service                   (when serviceName provided — no inline
+    //                              JSON-LD needed, F4 compliance)
+    // Deliberately distinct from `parts-hub` (no Service) so that the Hub
+    // can advertise the procurement capability natively. Does NOT emit
+    // Product (Product is reserved for individual SKU detail pages, F4).
+    case 'standard-parts-hub':
+    case 'standard-part-detail':
+      if (data.collectionName) {
+        const itemListId = `${data.pageUrl}#item-list`;
+        graph.push(buildCollectionPage({
+          name: data.collectionName,
+          description: data.collectionDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          mainEntity: data.items?.length ? itemListId : undefined,
+        }));
+        graph.push(buildItemList({
+          name: data.collectionName,
+          url: data.pageUrl,
+          numberOfItems: data.itemCount,
+          items: data.items,
+        }));
+      }
       if (data.serviceName) {
         graph.push(buildService({
           name: data.serviceName,

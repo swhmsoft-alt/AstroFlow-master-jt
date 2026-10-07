@@ -413,4 +413,40 @@ Ops / User scope (NOT Cline's responsibility):
 - 🚫 **不要重新添加 ThemeSwitcher 运行时切换 UI** — 用户明确要求手动管理。
 - 🚫 **不要在 .astro 内手写 [data-theme="..."]** — 全站统一由 ACTIVE_THEME_ID 驱动。
 - ✅ 改主题色：编辑 `src/config/themes.ts` (id, label, description, enabled) + 同步 `src/styles/global.css` 对应 `[data-theme="<id>"]` 块的 7 个变量。
+- ✅ 改主题色：编辑 `src/config/themes.ts` (id, label, description, enabled) + 同步 `src/styles/global.css` 对应 `[data-theme="<id>"]` 块的 7 个变量。
+- ✅ 新增主题：THEMES 数组追加 + TypeScript union (`ThemeId`) 同步 + global.css 新增块。
+
+---
+
+### Phase H-A — `/standard-parts/` Hub page (2026-10-07)
+
+**Scope:** Buyer Search Intelligence Phase H initial Hub page (parent only). Sub-Hubs (flanges, pipe-fittings, fasteners, machined-components) ship in Phases H-B through H-E.
+
+**Files modified (7):**
+
+1. `src/lib/schema.ts` — added `'standard-parts-hub'` and `'standard-part-detail'` to PageType union; added `/standard-parts` branch in `detectPageType()`; added 5 BREADCRUMB_LABELS entries; added new combined case in `buildPageGraph()` switch that emits CollectionPage + ItemList + Service natively (F4 compliant, no inline JSON-LD).
+2. `data/entities/entity-registry.json` — added `meta.by_category.product-hub: 1` and 1 new entity `product-hub:standard-parts` (canonical=Titanium Standard Parts and Components, page_url=/standard-parts/, 9 related_standards + 6 related_materials). Other 4 sub-hub entities deferred to H-B/C/D/E.
+3. `src/config/hero.ts` — new `HERO_CONFIG['/standard-parts']` entry (h1, subtitle, 4 keyMetrics, 4 entityChips).
+4. `src/config/route-availability.mjs` — 5 new EN_ONLY_PREFIXES: `/standard-parts/`, `/standard-parts/flanges/`, `/standard-parts/pipe-fittings/`, `/standard-parts/fasteners/`, `/standard-parts/machined-components/`.
+5. `data/keywords/main-db.json` — 9 new mapped EN keyword entries targeting /standard-parts/. Sub-Hub keyword entries deferred to H-B/C/D/E.
+6. `src/data/parts.ts` — Q4 cross-link: pipe-components applicationOverview.body appended with `<a href="/standard-parts/pipe-fittings/">Standard Pipe Fittings</a>`. Target URL will 404 until H-C ships (cross-link is intentional per user Q4 decision).
+7. `src/pages/standard-parts/index.astro` — placeholder replaced with minimal working Hub page using `pageType="standard-parts-hub"`. Full body (Product Categories grid, Grade × Standard Matrix, Standards and Compliance, Material Traceability, Documentation Package, CNC Bridge, Industries, Decision Guide, RFQ Requirements, 8 FAQ, Final CTA) deferred to Phase H-A2 due to a JSX/Astro parser issue encountered during this session.
+
+**Validation gates:**
+- G1 check-undefined-slugs.mjs: 0 issues
+- G2 astro build: success (with content-collection warnings unrelated to this change)
+- G3 dist HTML @type audit: Organization + Brand (x2) + ManufacturingCenter + ImageObject + WebSite + WebPage + BreadcrumbList + FAQPage + CollectionPage + ItemList + Service all present
+- G4 check-keyword-map.mjs: not run this round (sub-Hubs 404 deferred to H-B/C/D/E)
+- G5 5 inbound entries: NAV (already in site.ts Solutions dropdown), Footer deferred to H-G cross-link audit, parent hub N/A (this IS the parent), main-db.json with 9 new entries, keywordMap auto-regenerated
+- G6 git status: 7 expected files modified, 0 untracked temp files
+
+**Defer / open items:**
+- Phase H-A2: add full Hub body content (Product Categories grid, Grade matrix, Standards and Compliance, Traceability, Docs table, Decision Guide, FAQ, Final CTA). The schema and config layers are validated and ready.
+- Phase H-B: `/standard-parts/flanges/` sub-Hub
+- Phase H-C: `/standard-parts/pipe-fittings/` sub-Hub (unlocks the Q4 cross-link target)
+- Phase H-D: `/standard-parts/fasteners/` sub-Hub (Q3 verified standards: DIN 912/933/931/934/6921/7991/963, ISO 4017/4762/1064/4032/7040, ASTM F467, ASME B18.2.1/B18.2.2, ASTM F67/F136, GB/T 3098;牌号 Gr2/Gr5/Gr23)
+- Phase H-E: `/standard-parts/machined-components/` sub-Hub
+- Phase H-G: Footer inbound + cross-hub triangle (Mill Products / Parts / Standard Parts cross-references)
+
+**Scope discipline (per Buyer SOP §8):** Cline scope ends at build verification. No commit / push / deploy performed — user retains control of git workflow and FTP deploy per project SOP.
 - ✅ 新增主题：THEMES 数组追加 + TypeScript union (`ThemeId`) 同步 + global.css 新增块。

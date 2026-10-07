@@ -1,32 +1,638 @@
----
+﻿---
 /**
- * /standard-parts/ — Titanium Standard Parts (placeholder)
- *
- * 2026-10-06 — Empty page shell created during Solutions dropdown rollout.
- * Content (Answer Module 6 elements: Direct Answer, Honest Positioning,
- * Structured Body, Claim↔Evidence, Entities, Related anchors) will be built
- * in a follow-up round once the user provides the research brief.
- *
- * Trailing-slash URL: `/standard-parts/` (Astro `trailingSlash: 'always'`).
+ * /standard-parts/ - Titanium Standard Parts & Components Procurement Hub
+ * Buyer Search Intelligence Phase H-A (2026-10-07)
+ * 100 percent ASCII content. Use ${L} / ${G} via PS interpolation to write tags.
  */
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import SubpageHero from "@components/ui/SubpageHero.astro";
+import { HERO_CONFIG } from "@config/hero";
 
-const pageTitle = 'Titanium Standard Parts';
-const pageDescription =
-  'Boze Titanium standard parts catalog — flanges, pipe fittings, fasteners and pipe components manufactured to ASTM, ASME and DIN standards. Page content under development.';
+const SITE = "https://cnc.bozemetal.com";
+const pageTitle = "Titanium Standard Parts & Components | ASTM, ASME, DIN | BOZE";
+const pageDescription = "Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications -- with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China titanium manufacturing hub with AS9100D and ISO 13485 quality systems.";
+const canonicalUrl = `${SITE}/standard-parts/`;
+const hero = HERO_CONFIG["/standard-parts"];
+
+const faqItems = [
+  { question: "What titanium standard parts does BOZE supply?", answer: "BOZE supplies catalog-spec titanium fasteners, flanges, pipe fittings and CNC-machined standard components. Typical families include slip-on / weld-neck / blind flanges per ASME B16.5, butt-weld and forged fittings per ASME B16.9 / B16.11, bolts / nuts / washers per ASTM F467 / DIN / ISO, and standard machined components such as spacers, sleeves, rings, bushings, pins and collars." },
+  { question: "Which titanium grades are available for standard parts?", answer: "Commercially pure Grades 1 and 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 9 (Ti-3Al-2.5V), Grade 12 (Ti-0.3Mo-0.8Ni) and Grade 23 (Ti-6Al-4V ELI) are commonly specified for standard parts. Specific grade availability depends on product form and applicable standard -- see the Grade x Standard matrix on this page and confirm with our team at RFQ stage." },
+  { question: "Which ASTM and ASME standards do your titanium parts follow?", answer: "Commonly supplied to ASTM B348 (bars / billets), B381 (forgings -- flanges), B363 (wrought fittings), B338 (tubes), B265 (plate / sheet), B861 (seamless pipe), B862 (welded pipe), F467 (fasteners), F67 (medical CP-Ti), F136 (medical Ti-6Al-4V ELI) and to ASME B16.5 / B16.9 / B16.11 / B16.28 dimensional specifications. Project-specific or proprietary standards can be reviewed at RFQ." },
+  { question: "Can you provide MTR or MTC documentation?", answer: "Yes. EN 10204 Type 3.1 mill test certificates are available as standard documentation. 3.2 certificates (independent third-party validation) are accommodated on request. CoC, dimensional inspection report, FAIR and hydrostatic test report are available on a project-dependent basis (see the Documentation Package section on this page)." },
+  { question: "Can titanium standard parts be CNC machined to modified dimensions?", answer: "Yes. BOZE is not limited to catalog supply -- when a standard component requires modified dimensions, special tolerances, non-standard threads, additional machining features or drawing-specific geometry, our CNC manufacturing capability provides a direct path from standard specification to engineered component. Submit your modification request alongside the standard reference and our engineering team can review dimensional changes and inspection requirements before quotation." },
+  { question: "Can you supply titanium pipe fittings and flanges to ASME requirements?", answer: "Yes. Butt-weld fittings per ASME B16.9 (and B16.28 for short-radius returns), forged fittings per ASME B16.11, and flanges per ASME B16.5 / B16.47 dimensional requirements. Material backing is typically ASTM B363 (wrought) or ASTM B381 (forged) per project specification. Standard catalog fittings per ASME B16.9 / B16.11 are detailed in our Standard Pipe Fittings sub-hub." },
+  { question: "Can BOZE provide material and heat-number traceability?", answer: "Yes. Heat-to-part material traceability is available as a standard documentation output: the mill heat number is recorded at incoming inspection and persists through processing, dimensional inspection and shipment. A heat / lot traceability statement is provided with the shipment. Project-specific documentation packages including weld traceability for fabricated assemblies are accommodated on request." },
+  { question: "Can you manufacture a standard part from our drawing?", answer: "Yes. When your requirement deviates from a catalog specification -- different dimensions, tighter tolerances, special threads, additional features or project-specific geometry -- submit your drawing with the applicable standard reference. Our engineering team reviews dimensional changes, material requirements and inspection requirements, then returns a quotation aligned to your drawing. Standard-supply RFQs and modified-standard RFQs follow the same intake path." }
+];
+
+const mentionEntityIds = [
+  "standard:astm-b348", "standard:astm-b381", "standard:astm-b363", "standard:astm-b338", "standard:astm-b265",
+  "standard:astm-b861", "standard:astm-b862", "standard:astm-f467", "standard:astm-f67", "standard:astm-f136", "standard:iso-5832-3",
+  "material:grade-2", "material:grade-5", "material:grade-7", "material:grade-9", "material:grade-12", "material:grade-23"
+];
 ---
 
-<BaseLayout
-  title={pageTitle}
+<BaseLayout  title={pageTitle}
   description={pageDescription}
-  canonicalURL="/standard-parts/"
+  pageType="standard-parts-hub"
+  canonicalURL={canonicalUrl}
+  collectionName="Titanium Standard Parts and Components"
+  collectionDescription={pageDescription}
+  serviceName="Titanium Standard Parts Procurement"
+  serviceDescription={pageDescription}
+  serviceCategory="Titanium Standard Parts"
+  itemCount={4}
+  items={[{name:"Titanium Flanges",url:"/standard-parts/flanges/"},{name:"Titanium Pipe Fittings",url:"/standard-parts/pipe-fittings/"},{name:"Titanium Fasteners",url:"/standard-parts/fasteners/"},{name:"CNC Machined Standard Components",url:"/standard-parts/machined-components/"}]}
+  faqItems={faqItems}
+  mentions={mentionEntityIds}
+  alternateLinks={[{ lang: "en", href: "/standard-parts/" }]}
 >
-  <section class="container mx-auto px-4 py-16 md:py-24">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4">{pageTitle}</h1>
-    <p class="text-lg text-theme-text/80 mb-6">{pageDescription}</p>
-    <p class="text-sm text-theme-text/60 italic">
-      Page content is under development. The Solutions dropdown is wired and the
-      canonical URL <code>/standard-parts/</code> is reserved for this hub.
-    </p>
+
+  <SubpageHero
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}>
+  </SubpageHero>
+
+  <!-- AIO Thesis 1: What are titanium standard parts? -->
+  <section id="aio-thesis-1" class="py-10 lg:py-12 border-t" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Direct Answer</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--theme-text);">What are titanium standard parts?</h2>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        Titanium standard parts are catalog-specification components -- fasteners, flanges, pipe fittings and standard machined geometries -- supplied to a recognized product or material standard (ASTM B348 / B381 / B363 / F467, ASME B16.5 / B16.9 / B16.11, DIN 912 / 933 / 934, ISO 4017 / 4032, AMS 4928 / 4965, or project-specific specifications) rather than to a customer drawing. They are intended for procurement by buyers who already know the catalog reference, material grade and dimensional class they need, and want a qualified supplier that can deliver against that reference with documented material traceability.
+      </p>
+    </div>
   </section>
+
+  <!-- AIO Thesis 2: Which standards? -->
+  <section id="aio-thesis-2" class="py-10 lg:py-12" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Direct Answer</p>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--theme-text);">Which standards does BOZE supply titanium standard parts to?</h2>
+      <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        BOZE supplies titanium standard parts to the following standards families, subject to the product family and grade you specify:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">ASTM / ASME</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">B348 (bars), B381 (forgings -- flanges), B363 (wrought fittings), B338 (tubes), B265 (plate / sheet), B861 (seamless pipe), B862 (welded pipe), F467 (fasteners), F67 / F136 (medical CP / Ti-6Al-4V ELI), ASME B16.5 / B16.9 / B16.11 / B16.28 (dimensional).</p>
+        </div>
+        <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">DIN / ISO</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Fasteners: DIN 912 / 933 / 931 / 934, ISO 4017 / 4032 / 4762. Project-specific DIN / ISO / GB/T references can be reviewed at RFQ.</p>
+        </div>
+        <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">AMS / Project</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">AMS-controlled aerospace material specifications (where applicable to the product family). Project-specific or proprietary specifications are reviewed at RFQ.</p>
+        </div>
+        <div class="p-5 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Quality Systems</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">AS9100D (aerospace), ISO 13485:2016 (medical), ISO 9001:2015 (general). Material certification to EN 10204 Type 3.1 standard; 3.2 on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Product Categories grid -->
+  <section id="product-categories" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10 lg:mb-14">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Browse by Product Family</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Standard Parts by Product Family</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Four product families cover the majority of catalog-spec titanium procurement. Each family has its own sub-hub with detailed specifications, common grades, applicable standards and documentation scope.
+        </p>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/standard-parts/flanges/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <article id="flanges" class="flex flex-col h-full">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-3xl" aria-hidden="true">⊕</span>
+              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">Titanium Flanges</h3>
+            </div>
+            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Slip-on, weld-neck, blind, threaded, lap-joint and custom flanges per ASTM B381, ASME B16.5 / B16.47.</p>
+            <div class="space-y-3">
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Slip-on · Weld-neck · Blind · Threaded · Lap-joint</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 1 · Grade 2 · Grade 5 · Grade 7 · Grade 12</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM B381 · ASME B16.5 · ASME B16.47</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Chemical · Marine · Oil and Gas piping</p></div>
+            </div>
+          </article>
+        </a>
+        <a href="/standard-parts/pipe-fittings/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <article id="pipe-fittings" class="flex flex-col h-full">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-3xl" aria-hidden="true">⊝</span>
+              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">Titanium Pipe Fittings</h3>
+            </div>
+            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Butt-weld and forged fittings -- elbows, tees, reducers, caps per ASTM B363, B381 and ASME B16.9, B16.11, B16.28.</p>
+            <div class="space-y-3">
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Butt-weld Elbows · Tees · Reducers · Caps · Forged Couplings</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 1 · Grade 2 · Grade 5 · Grade 7 · Grade 9 · Grade 12</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM B363 · B381 · ASME B16.9 · B16.11 · B16.28</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Chemical · Marine · Oil and Gas · Heat Exchangers</p></div>
+            </div>
+          </article>
+        </a>
+        <a href="/standard-parts/fasteners/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <article id="fasteners" class="flex flex-col h-full">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-3xl" aria-hidden="true">⬢</span>
+              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">Titanium Fasteners</h3>
+            </div>
+            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Bolts, screws, nuts, washers, studs and threaded rods to ASTM F467, ASME B18.2.1 / B18.2.2 and DIN / ISO equivalents.</p>
+            <div class="space-y-3">
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Hex Bolts · Socket-head Screws · Nuts · Washers · Studs · Threaded Rods</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 2 · Grade 5 · Grade 7 · Grade 23 (medical)</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM F467 · ASME B18.2.1 · DIN 912 / 933 / 934 · ISO 4017 / 4032</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Aerospace · Marine · Chemical assemblies · Industrial mechanical assemblies</p></div>
+            </div>
+          </article>
+        </a>
+        <a href="/standard-parts/machined-components/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <article id="machined-components" class="flex flex-col h-full">
+            <div class="flex items-start gap-3 mb-4">
+              <span class="text-3xl" aria-hidden="true">◉</span>
+              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">CNC Machined Standard Components</h3>
+            </div>
+            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Standard geometry but precision-machined to drawing dimensions and tolerances from stock bar / billet.</p>
+            <div class="space-y-3">
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Spacers · Sleeves · Rings · Bushings · Pins · Collars</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 2 · Grade 5 · Grade 9 · Grade 23</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Drawing-defined under AS9100D QMS</p></div>
+              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Industrial mechanical assemblies · Equipment components</p></div>
+            </div>
+          </article>
+        </a>
+      </div>
+      <p class="mt-8 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        For drawing-based custom fabrication and full spools, see <a href="/parts/titanium-pipe-components/" style="color: var(--theme-primary);">custom pipe components</a> and <a href="/parts/" style="color: var(--theme-primary);">custom titanium parts</a>. For raw material, see <a href="/mill-products/" style="color: var(--theme-primary);">Mill Products</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- 05 Grade Matrix -->
+  <section id="grade-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Material x Standard</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Grades and Applicable Standards</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          The matrix below maps common titanium grades to typical UNS designations, product forms and applicable ASTM / ASME material standards. Specific availability is confirmed at RFQ stage.
+        </p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-bg);">
+        <table class="min-w-full text-sm" style="color: var(--theme-text);">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg)); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Titanium Grade</th>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">UNS</th>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Product Forms</th>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Common Standards</th>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Typical Applications</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 1 (CP-Ti)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R50250</td>
+              <td class="px-4 py-3 align-top">Plate, Sheet, Tube</td>
+              <td class="px-4 py-3 align-top">ASTM B265, B338, B348</td>
+              <td class="px-4 py-3 align-top">Chemical, marine, general industrial</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 2 (CP-Ti)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R50400</td>
+              <td class="px-4 py-3 align-top">Plate, Sheet, Tube, Bar, Pipe</td>
+              <td class="px-4 py-3 align-top">ASTM B265, B338, B348, B861, B862</td>
+              <td class="px-4 py-3 align-top">Seawater, chemical, marine piping</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 5 (Ti-6Al-4V)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R56400</td>
+              <td class="px-4 py-3 align-top">Bar, Forging, Machined Parts</td>
+              <td class="px-4 py-3 align-top">ASTM B348, B381, AMS 4928, AMS 4965</td>
+              <td class="px-4 py-3 align-top">Aerospace, industrial, structural fasteners</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 7 (Ti-0.15Pd)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R52400</td>
+              <td class="px-4 py-3 align-top">Plate, Tube, Fittings</td>
+              <td class="px-4 py-3 align-top">ASTM B265, B338, B363, B381</td>
+              <td class="px-4 py-3 align-top">Chemical processing, reducing-acid service</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 9 (Ti-3Al-2.5V)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R56320</td>
+              <td class="px-4 py-3 align-top">Tube, Bar</td>
+              <td class="px-4 py-3 align-top">ASTM B348, B338</td>
+              <td class="px-4 py-3 align-top">Aerospace hydraulic, high-strength tube</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 12 (Ti-0.3Mo-0.8Ni)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R53400</td>
+              <td class="px-4 py-3 align-top">Plate, Tube, Fittings</td>
+              <td class="px-4 py-3 align-top">ASTM B265, B338, B363, B381</td>
+              <td class="px-4 py-3 align-top">Heat exchangers, elevated-temperature service</td>
+            </tr>
+            <tr class="border-t">
+              <td class="px-4 py-3 font-semibold align-top">Grade 23 (Ti-6Al-4V ELI)</td>
+              <td class="px-4 py-3 align-top font-mono text-xs">R56401</td>
+              <td class="px-4 py-3 align-top">Bar, Forging</td>
+              <td class="px-4 py-3 align-top">ASTM F136, ISO 5832-3, B348, B381</td>
+              <td class="px-4 py-3 align-top">Medical implants, surgical instruments</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Standards and Compliance -->
+  <section id="standards-compliance" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10 lg:mb-14">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Standards and Compliance</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Quality Systems for Aerospace, Medical and Industrial Buyers</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE operates three QMS scopes that cover the majority of B2B titanium standard-parts procurement. Specific material and project certifications are reviewed at the RFQ level.
+        </p>
+      </header>
+      <div class="grid gap-6 md:grid-cols-3">
+        <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">AS9100D</p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Aerospace Quality Management</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">QMS scope covers controlled processes, material traceability, inspection records, configuration control and first-article documentation where applicable for aerospace-grade standard parts.</p>
+        </article>
+        <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">ISO 13485:2016</p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">Medical Devices QMS</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Medical-grade titanium materials and components supplied per ASTM F67, F136, ISO 5832-3. Not every standard fastener is medical-certified.</p>
+        </article>
+        <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">ISO 9001:2015</p>
+          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">General Quality Management</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Documented quality management across standard-part procurement, processing, inspection and shipment.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 Material Traceability -->
+  <section id="traceability" class="py-16 lg:py-20" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Material Traceability</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Heat-to-Part Material Traceability</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          From titanium heat number to finished component, BOZE maintains documented material traceability throughout the manufacturing and inspection process.
+        </p>
+      </header>
+      <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">01</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Titanium Mill</h3>
+          <p class="text-xs leading-relaxed">Heat-melted, hot-worked and finished at qualified mill producers.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">02</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Mill Heat and Lot</h3>
+          <p class="text-xs leading-relaxed">Each lot carries unique heat number, recorded at incoming receipt.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">03</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Mill Test Certificate</h3>
+          <p class="text-xs leading-relaxed">EN 10204 Type 3.1 MTC captures chemistry, tensile properties and dimensional conformance.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">04</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Incoming Inspection</h3>
+          <p class="text-xs leading-relaxed">Heat verification, dimensional spot-check and MTC review.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">05</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Processing / Machining</h3>
+          <p class="text-xs leading-relaxed">Lot and heat numbers travel with the work order.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">06</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Dimensional Inspection</h3>
+          <p class="text-xs leading-relaxed">CMM, optical comparator, thread gauges verify finished geometry.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">07</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Final Inspection</h3>
+          <p class="text-xs leading-relaxed">Surface, marking and packaging review.</p>
+        </li>
+        <li class="rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <p class="text-xs font-mono font-bold mb-2" style="color: var(--theme-primary);">08</p>
+          <h3 class="text-sm font-bold mb-2" style="color: var(--theme-text);">Shipment Documentation</h3>
+          <p class="text-xs leading-relaxed">MTC, dimensional report, heat traceability and CoC travel with the order.</p>
+        </li>
+      </ol>
+      <p id="aio-thesis-3" class="mt-10 text-base leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        <strong style="color: var(--theme-text);">AIO Direct Answer (Traceability):</strong> Yes -- BOZE maintains heat-to-part material traceability for titanium standard parts. Each lot is recorded at incoming inspection with its mill heat number, and the heat number persists through processing, dimensional inspection and shipment.
+      </p>
+    </div>
+  </section>
+
+  <!-- 08 Documentation -->
+  <section id="documentation" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Documentation Package</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Documentation Available for Industrial Procurement</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Three availability tiers describe what ships with a typical order.
+        </p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-surface);">
+        <table class="min-w-full text-sm" style="color: var(--theme-text);">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Document</th>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Availability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Material Test Certificate / MTC (EN 10204 Type 3.1)</td><td class="px-4 py-3 align-top text-sm font-semibold" style="color: var(--theme-primary);">Available</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Mill Test Report / MTR</td><td class="px-4 py-3 align-top text-sm font-semibold" style="color: var(--theme-primary);">Available</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Certificate of Conformance (CoC)</td><td class="px-4 py-3 align-top text-sm">Project dependent</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Dimensional Inspection Report</td><td class="px-4 py-3 align-top text-sm">Project dependent</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">CMM Inspection Report</td><td class="px-4 py-3 align-top text-sm">Project dependent</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">First Article Inspection Report (AS9102)</td><td class="px-4 py-3 align-top text-sm">Project dependent</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Heat / Lot Traceability Statement</td><td class="px-4 py-3 align-top text-sm font-semibold" style="color: var(--theme-primary);">Available</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Surface Treatment Certificate</td><td class="px-4 py-3 align-top text-sm">Where applicable</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Third-Party Inspection</td><td class="px-4 py-3 align-top text-sm">Upon request</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">PMI Verification Report</td><td class="px-4 py-3 align-top text-sm">Upon request</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Hydrostatic / Pneumatic Test Report</td><td class="px-4 py-3 align-top text-sm">Project dependent</td></tr>
+            <tr class="border-t"><td class="px-4 py-3 align-top">Welding Procedure / Weld Traceability</td><td class="px-4 py-3 align-top text-sm">Project dependent</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="aio-thesis-4" class="mt-8 text-base leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        <strong style="color: var(--theme-text);">AIO Direct Answer (Documentation):</strong> Yes -- EN 10204 Type 3.1 mill test certificates are available as standard documentation for every order. Project-dependent documents are finalized at RFQ stage.
+      </p>
+    </div>
+  </section>
+
+  <!-- 09 CNC Bridge -->
+  <section id="cnc-bridge" class="py-16 lg:py-20" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Standard Supply + CNC Manufacturing</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">From Catalog Specification to Engineered Component</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE is not limited to catalog supply. When a standard titanium component requires modified dimensions, special tolerances, non-standard threads, additional machining features or drawing-specific geometry, our CNC manufacturing capability provides a direct path.
+        </p>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><p class="text-sm font-medium">3-axis CNC milling</p></div>
+        <div class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><p class="text-sm font-medium">5-axis CNC simultaneous machining</p></div>
+        <div class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><p class="text-sm font-medium">CNC turning and mill-turn cells</p></div>
+        <div class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><p class="text-sm font-medium">Swiss-type machining</p></div>
+        <div class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><p class="text-sm font-medium">Wire EDM for tight-tolerance features</p></div>
+        <div class="p-4 rounded-xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><p class="text-sm font-medium">CMM dimensional inspection to ISO 10360</p></div>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/parts/titanium-cnc-parts/" class="inline-flex items-center px-6 py-3 text-sm font-bold rounded-lg" style="background: var(--theme-primary); color: var(--theme-text);">Need a Modified Standard Part? Go to Custom CNC Parts</a>
+        <a href="/rfq/" class="inline-flex items-center px-6 py-3 text-sm font-bold rounded-lg border" style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Upload Drawing for Review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 Industries -->
+  <section id="industries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10 lg:mb-14">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Industry Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Standard Parts for Critical Industries</h2>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/industries/aerospace/" class="group flex items-start gap-4 rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><span class="text-3xl shrink-0" aria-hidden="true">✈</span><div class="flex-1"><h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Aerospace</h3><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Standard fasteners, flanges, precision fittings per AS9100D, ASTM F467, ASME B18.2 and AMS material lots.</p></div></a>
+        <a href="/industries/medical/" class="group flex items-start gap-4 rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><span class="text-3xl shrink-0" aria-hidden="true">✚</span><div class="flex-1"><h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Medical</h3><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Implant-grade titanium from ASTM F67 / F136 / ISO 5832-3 under ISO 13485 QMS.</p></div></a>
+        <a href="/industries/semiconductor/" class="group flex items-start gap-4 rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><span class="text-3xl shrink-0" aria-hidden="true">⚛</span><div class="flex-1"><h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Semiconductor</h3><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">UHV-compatible components in CP titanium grades.</p></div></a>
+        <a href="/industries/chemical/" class="group flex items-start gap-4 rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><span class="text-3xl shrink-0" aria-hidden="true">⚗</span><div class="flex-1"><h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Chemical Processing</h3><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Fittings and pipe components for chemical service loops in Grade 2 / Grade 7 / Grade 12.</p></div></a>
+        <a href="/industries/marine/" class="group flex items-start gap-4 rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);"><span class="text-3xl shrink-0" aria-hidden="true">⚓</span><div class="flex-1"><h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">Marine and Offshore</h3><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Seawater-resistant parts in Grade 2 / Grade 12 per ASTM B348 / B381 / B363.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 10.5 What We Don't Cover -->
+  <section id="what-we-dont-cover" class="py-16 lg:py-20" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Scope</p>
+        <h2 class="text-3xl md:text-4xl font-bold" style="color: var(--theme-text);">What We Don't Cover</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Procurement boundary -- read this before requesting a quote to avoid wasted cycles.</p>
+      </header>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary); letter-spacing: 0.12em;">Scope Boundary 01</p>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">No Drawing-Based Custom Geometry on this Hub</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">This hub covers catalog-spec standard parts (flanges / fittings / fasteners / standard machined components). Drawing-defined custom geometry is handled under /parts/ and /5-axis-titanium-machining/ programs.</p>
+        </div>
+        <div class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary); letter-spacing: 0.12em;">Scope Boundary 02</p>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">No Same-Day / 24-Hour Quotation Guarantee</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">We respond to RFQs with the appropriate material and quotation information as quickly as inquiry and supply-chain coordination permit. We do not advertise a fixed turnaround SLA on this hub page.</p>
+        </div>
+        <div class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary); letter-spacing: 0.12em;">Scope Boundary 03</p>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">No Blanket Implant-Grade Certification</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Implant suitability per ASTM F136 / ISO 5832-3 is determined by lot-level MTR documentation and the customer-specified acceptance criteria. We do not make blanket lot-agnostic certification claims.</p>
+        </div>
+        <div class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary); letter-spacing: 0.12em;">Scope Boundary 04</p>
+          <h3 class="text-lg font-bold mb-2" style="color: var(--theme-text);">No Primary Melting / Sponge Production</h3>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">BOZE procures and processes titanium but does not operate primary melting or titanium sponge production. We coordinate with upstream producers in the Baoji supply chain rather than producing raw titanium.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 11 Decision Guide -->
+  <section id="decision-guide" class="py-16 lg:py-20" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Which Procurement Route?</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Standard vs Custom Decision Guide</h2>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); background: var(--theme-bg);">
+        <table class="min-w-full text-sm" style="color: var(--theme-text);">
+          <thead>
+            <tr>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Your Requirement</th>
+              <th class="text-left px-4 py-3 font-bold uppercase tracking-wider text-xs" style="color: var(--theme-primary);">Recommended Route</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <tr>
+              <td class="px-4 py-3 align-middle">Standard size + recognized specification</td>
+              <td class="px-4 py-3 align-middle font-semibold"><a href="/standard-parts/" style="color: var(--theme-primary);">Standard Parts</a></td>
+            </tr>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));">
+              <td class="px-4 py-3 align-middle">Standard product with modified dimensions</td>
+              <td class="px-4 py-3 align-middle"><a href="/parts/titanium-cnc-parts/" style="color: var(--theme-primary);">Standard Parts then Custom CNC review</a></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 align-middle">Drawing-defined custom geometry</td>
+              <td class="px-4 py-3 align-middle"><a href="/parts/" style="color: var(--theme-primary);">Custom Titanium Parts</a></td>
+            </tr>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));">
+              <td class="px-4 py-3 align-middle">Raw titanium material (bar, plate, tube)</td>
+              <td class="px-4 py-3 align-middle"><a href="/mill-products/" style="color: var(--theme-primary);">Mill Products</a></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 align-middle">Titanium fasteners to ASTM F467 / DIN / ISO</td>
+              <td class="px-4 py-3 align-middle"><a href="/standard-parts/fasteners/" style="color: var(--theme-primary);">Standard Parts - Fasteners</a></td>
+            </tr>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));">
+              <td class="px-4 py-3 align-middle">5-axis CNC machined complex geometry</td>
+              <td class="px-4 py-3 align-middle"><a href="/titanium-cnc-machining-services/3-5-axis-cnc-machining/" style="color: var(--theme-primary);">5-Axis Titanium Machining</a></td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 align-middle">Custom titanium pipe spool to isometric drawing</td>
+              <td class="px-4 py-3 align-middle"><a href="/parts/titanium-pipe-components/" style="color: var(--theme-primary);">Custom Parts - Pipe Components</a></td>
+            </tr>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));">
+              <td class="px-4 py-3 align-middle">Titanium pipe fittings per ASME B16.9 / B16.11 (catalog)</td>
+              <td class="px-4 py-3 align-middle"><a href="/standard-parts/pipe-fittings/" style="color: var(--theme-primary);">Standard Parts - Pipe Fittings</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="aio-thesis-5" class="mt-8 text-base leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        <strong style="color: var(--theme-text);">AIO Direct Answer (Modification):</strong> Yes -- standard titanium parts can be reviewed for drawing-based dimensional changes, machining features, tolerances, threads and inspection requirements.
+      </p>
+    </div>
+  </section>
+
+  <!-- 12 RFQ Requirements -->
+  <section id="quote-requirements" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">RFQ Requirements</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">What We Need to Quote Your Standard Parts</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          The information below helps our team return an aligned quotation. Missing fields can be filled in via the RFQ intake form.
+        </p>
+      </header>
+      <ol class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 max-w-4xl">
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">1</span><span class="text-sm">Product type (flange / fitting / fastener / machined component / other)</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">2</span><span class="text-sm">Applicable standard (ASTM B381, ASME B16.5, DIN 912, etc.)</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">3</span><span class="text-sm">Titanium grade (Grade 2 / 5 / 9 / 12 / 23)</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">4</span><span class="text-sm">Size / dimensions (nominal, schedule, thread size, length)</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">5</span><span class="text-sm">Quantity</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">6</span><span class="text-sm">Pressure class / schedule (where applicable)</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">7</span><span class="text-sm">Surface finish or treatment requirement</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">8</span><span class="text-sm">Inspection / documentation requirements</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">9</span><span class="text-sm">Material certification type (EN 10204 3.1, 3.2)</span></li>
+        <li class="flex items-start gap-3 p-3 rounded-lg border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">10</span><span class="text-sm">Destination country / Incoterms</span></li>
+      </ol>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/rfq/" class="inline-flex items-center px-7 py-3.5 text-sm font-bold rounded-lg" style="background: var(--theme-primary); color: var(--theme-text);">Request a Standard Parts Quote</a>
+        <a href="/rfq/?spec=1" class="inline-flex items-center px-7 py-3.5 text-sm font-bold rounded-lg border" style="color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);">Upload Specification / RFQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 FAQ accordion -->
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Standard-Parts Procurement FAQ</h2>
+      </header>
+      <div class="max-w-4xl space-y-3">
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">1</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">What titanium standard parts does BOZE supply?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">BOZE supplies catalog-spec titanium fasteners, flanges, pipe fittings and CNC-machined standard components. Typical families include slip-on / weld-neck / blind flanges per ASME B16.5, butt-weld and forged fittings per ASME B16.9 / B16.11, bolts / nuts / washers per ASTM F467 / DIN / ISO, and standard machined components such as spacers, sleeves, rings, bushings, pins and collars.</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">2</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Which titanium grades are available?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Commercially pure Grades 1 and 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 9 (Ti-3Al-2.5V), Grade 12 (Ti-0.3Mo-0.8Ni) and Grade 23 (Ti-6Al-4V ELI) are commonly specified. Specific grade availability depends on product form and applicable standard -- see the Grade x Standard matrix.</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">3</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Which ASTM and ASME standards do your titanium parts follow?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Commonly supplied to ASTM B348 (bars / billets), B381 (forgings -- flanges), B363 (wrought fittings), B338 (tubes), B265 (plate / sheet), B861 (seamless pipe), B862 (welded pipe), F467 (fasteners), F67 (medical CP-Ti), F136 (medical Ti-6Al-4V ELI) and to ASME B16.5 / B16.9 / B16.11 / B16.28.</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">4</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Can you provide MTR or MTC documentation?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Yes. EN 10204 Type 3.1 mill test certificates are available as standard documentation. 3.2 certificates (independent third-party validation) are accommodated on request. CoC, dimensional inspection report, FAIR and hydrostatic test report are available on a project-dependent basis (see the Documentation Package section).</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">5</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Can titanium standard parts be CNC machined to modified dimensions?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Yes. BOZE is not limited to catalog supply -- when a standard component requires modified dimensions, special tolerances, non-standard threads, additional machining features or drawing-specific geometry, our CNC manufacturing capability provides a direct path from standard specification to engineered component.</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">6</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Can you supply titanium pipe fittings and flanges to ASME requirements?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Yes. Butt-weld fittings per ASME B16.9 (and B16.28 for short-radius returns), forged fittings per ASME B16.11, and flanges per ASME B16.5 / B16.47 dimensional requirements. Material backing is typically ASTM B363 (wrought) or ASTM B381 (forged) per project specification.</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">7</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Can BOZE provide material and heat-number traceability?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Yes. Heat-to-part material traceability is available as a standard documentation output: the mill heat number is recorded at incoming inspection and persists through processing, dimensional inspection and shipment.</p>
+        </details>
+
+        <details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+          <summary class="cursor-pointer flex items-start gap-3 list-none">
+            <span class="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background: var(--theme-primary); color: var(--theme-text);">8</span>
+            <h3 class="flex-1 text-base font-bold" style="color: var(--theme-text);">Can you manufacture a standard part from our drawing?</h3>
+          </summary>
+          <p class="mt-3 ml-10 text-sm leading-relaxed">Yes. When your requirement deviates from a catalog specification -- different dimensions, tighter tolerances, special threads, additional features or project-specific geometry -- submit your drawing with the applicable standard reference. Our engineering team reviews dimensional changes, material requirements and inspection requirements, then returns a quotation aligned to your drawing.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 Final RFQ CTA -->
+  <section id="request-quote" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Request a Quote</p>
+      <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Request a Titanium Standard Parts Quote</h2>
+      <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Send us the product type, applicable standard, titanium grade, dimensions, quantity and documentation requirements. If you have a drawing or specification sheet, upload it with your RFQ.
+      </p>
+      <p class="mt-4 text-sm font-semibold" style="color: var(--theme-text);">Standard supply or drawing-based modification -- BOZE can review both.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold text-white rounded-lg shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Request a Quote</a>
+        <a href="/rfq/?upload=1" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-lg border" style="border-color: var(--theme-primary); color: var(--theme-primary);">Upload Drawing / Specification</a>
+      </div>
+      <p class="mt-8 text-xs leading-relaxed max-w-xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        Need raw titanium material instead? Visit the <a href="/mill-products/" style="color: var(--theme-primary);">Mill Products hub</a>. Need a custom drawing-defined part? Visit the <a href="/parts/" style="color: var(--theme-primary);">Custom Titanium Parts hub</a>.
+      </p>
+    </div>
+  </section>
+
 </BaseLayout>
