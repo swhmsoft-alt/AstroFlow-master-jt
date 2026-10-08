@@ -3,208 +3,232 @@
  * TitaniumKnowledgeBase.astro
  *
  * Resources-hub pillar page — `/resources/titanium-knowledge-base/`.
- * Composes:
- *   - SubpageHero               — full-width hero with badge / metrics
- *   - 2 AIO Speakable thesis    — schema references #tkb-aio-thesis-1/2
- *   - KnowledgeBaseHub (Island) — search + facets + grid + quick-view + CTA
  *
- * Schema authority (SOP §F4): this file does NOT emit any <script
- * type="application/ld+json">. The TechArticle + BreadcrumbList entities
- * are produced by BaseLayout → buildPageGraph() → buildTechArticle() in
- * src/lib/schema.ts. We feed the props via:
- *   - pageType="tech-article"   → triggers the 'tech-article' case branch
- *   - articleHeadline           → TechArticle.headline
- *   - articleDescription        → TechArticle.description
- *   - articleAbout              → TechArticle.about (multi-string array)
- *   - items[]                   → page-level ItemList (one per article)
+ * Architecture (post-mortem 2026-10-08):
+ *   The hub is a CONSUMER view of the existing blog. It does NOT own a
+ *   content source and does NOT create new articles. It reads
+ *   `getCollection('blog')` at build time, filters by titanium-tag
+ *   heuristics (`isTitaniumBlogEntry`), derives 4-dimension facets from
+ *   each entry's existing `tags` array, and links to the existing
+ *   `src/pages/blog/[...slug].astro` detail template via
+ *   `/blog/<entry.slug>/` (clean URL — NO `.md` suffix).
+ *
+ * Schema authority: pageType="tech-article" triggers buildPageGraph →
+ * buildTechArticle in src/lib/schema.ts. Zero inline JSON-LD here.
  */
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import SubpageHero from '../ui/SubpageHero.astro';
-import { getCollection } from 'astro:content';
-import { KnowledgeBaseHub, type KnowledgeHubStrings } from './KnowledgeBaseHub.tsx';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SubpageHero from "../ui/SubpageHero.astro";
+import { getCollection } from "astro:content";
+import {
+  KnowledgeBaseHub,
+  type KnowledgeHubStrings,
+} from "./KnowledgeBaseHub.tsx";
 import {
   toSchemaItemList,
-  toSchemaBreadcrumb,
-} from './KnowledgeJsonLd.tsx';
-import type {
-  KnowledgeArticle,
-  KnowledgeGrade,
-  KnowledgeProcess,
-  KnowledgeStandard,
-  KnowledgeIndustry,
-} from './knowledge-data';
+} from "./KnowledgeJsonLd.tsx";
+import {
+  deriveGradesFromTags,
+  deriveProcessesFromTags,
+  deriveStandardsFromTags,
+  deriveIndustriesFromTags,
+  isTitaniumBlogEntry,
+  STANDARD_LABELS,
+  type KnowledgeArticle,
+  type KnowledgeGrade,
+  type KnowledgeProcess,
+  type KnowledgeStandard,
+  type KnowledgeIndustry,
+} from "./knowledge-data";
 
-// ── Load all knowledge articles (single-language: en) ────────────────────
-const entries = await getCollection('knowledge');
-const articlesRaw = entries;
+// ── Load REAL blog articles (no fabrication) ──────────────────────────────
+const allBlog = await getCollection("blog");
+const titaniumEntries = allBlog
+  .filter((entry) =>
+    isTitaniumBlogEntry(entry.data.tags ?? [], entry.data.title)
+  )
+  .filter((entry) => {
+    // Exclude any entry still under the legacy knowledge/ slug if it
+    // somehow appears — defensive guard.
+    const id = entry.id;
+    return !id.startsWith("knowledge/");
+  });
 
-// Pre-render the markdown body to HTML for the Quick View modal.
-// We only need a substring (first 1200 chars), so a simple regex-based
-// strip is sufficient — keeps the build output small and avoids a
-// heavy HTML parser dependency.
+// Lightweight markdown → HTML for Quick View preview (first 1200 chars only).
 function htmlEscape(s: string): string {
   return s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
-
 function paragraphToHtml(para: string): string {
-  // Inline emphasis markers (very lightweight — no full markdown parser):
-  // **bold** → <strong>; leave the rest as plain text.
-  const escaped = htmlEscape(para);
-  return `<p>${escaped.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</p>`;
+  return `<p>${htmlEscape(para).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")}</p>`;
 }
-
 function markdownBodyToHtml(body: string): string {
-  // Split on blank lines → paragraphs; keep h2/h3 as headings.
-  const blocks = body.split(/\n{2,}/);
-  return blocks
+  return body
+    .split(/\n{2,}/)
     .map((b) => {
       const t = b.trim();
-      if (t.length === 0) return '';
-      if (t.startsWith('## ')) return `<h3>${htmlEscape(t.slice(3).trim())}</h3>`;
-      if (t.startsWith('### ')) return `<h4>${htmlEscape(t.slice(4).trim())}</h4>`;
+      if (t.length === 0) return "";
+      if (t.startsWith("## ")) return `<h3>${htmlEscape(t.slice(3).trim())}</h3>`;
+      if (t.startsWith("### ")) return `<h4>${htmlEscape(t.slice(4).trim())}</h4>`;
       return paragraphToHtml(t);
     })
-    .join('\n');
+    .join("\n");
 }
 
-const articles: KnowledgeArticle[] = articlesRaw
-  .map((entry) => ({
-    id: entry.id,
-    title: entry.data.title,
-    slug: entry.id,
-    summary: entry.data.summary,
-    bodyHtml: markdownBodyToHtml(entry.body ?? ''),
-    gradeTags: entry.data.gradeTags as readonly KnowledgeGrade[],
-    processTags: entry.data.processTags as readonly KnowledgeProcess[],
-    standardTags: entry.data.standardTags as readonly KnowledgeStandard[],
-    industryTags: entry.data.industryTags as readonly KnowledgeIndustry[],
-    publishedAt: entry.data.pubDate.toISOString().slice(0, 10),
-    updatedAt: (entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10),
-    readTimeMinutes: entry.data.readTimeMinutes,
-    primaryStandard: entry.data.primaryStandard,
-    featured: entry.data.featured,
-    wordCount: (entry.body ?? '').split(/\s+/).filter(Boolean).length,
-  }))
+// Map each blog entry to a `KnowledgeArticle` view-model. The slug is taken
+// from `entry.slug` (Astro 5 derived — never contains `.md`). All 4 facet
+// arrays are DERIVED from `entry.data.tags` — never fabricated.
+const articles: KnowledgeArticle[] = titaniumEntries
+  .map((entry) => {
+    const tags: readonly string[] = entry.data.tags ?? [];
+    const gradeTags = deriveGradesFromTags(tags);
+    const processTags = deriveProcessesFromTags(tags);
+    const standardTags = deriveStandardsFromTags(tags);
+    const industryTags = deriveIndustriesFromTags(tags);
+    // `primaryStandard` is the first standard the article qualifies for;
+    // if none, leave undefined (the card simply omits the badge).
+    const primaryStandard: KnowledgeStandard | undefined =
+      standardTags.length > 0 ? standardTags[0] : undefined;
+    const pubDate = entry.data.pubDate;
+    const updatedDate = entry.data.updatedDate ?? pubDate;
+    const bodyHtml = markdownBodyToHtml(entry.body ?? "");
+    const wordCount = (entry.body ?? "").split(/\s+/).filter(Boolean).length;
+    const readTimeMinutes = Math.max(1, Math.round(wordCount / 220));
+    return {
+      id: entry.id,
+      title: entry.data.title,
+      // Use Astro-derived `entry.slug` — guaranteed URL-safe (no `.md`).
+      slug: entry.slug,
+      summary: entry.data.description,
+      bodyHtml,
+      gradeTags: gradeTags as readonly KnowledgeGrade[],
+      processTags: processTags as readonly KnowledgeProcess[],
+      standardTags: standardTags as readonly KnowledgeStandard[],
+      industryTags: industryTags as readonly KnowledgeIndustry[],
+      publishedAt: pubDate.toISOString().slice(0, 10),
+      updatedAt: updatedDate.toISOString().slice(0, 10),
+      readTimeMinutes,
+      primaryStandard,
+      featured: entry.data.featured ?? false,
+      wordCount,
+    } satisfies KnowledgeArticle;
+  })
   // Sort: featured first, then most recent.
   .sort((a, b) => {
     if (a.featured !== b.featured) return a.featured ? -1 : 1;
     return b.updatedAt.localeCompare(a.updatedAt);
   });
 
-// ── Strings bridge (single-language for now; en only per Phase 1 scope) ──
+// ── Hub strings (single-language: en per P2-7 scope) ──────────────────────
 const strings: KnowledgeHubStrings = {
-  heroPlaceholder: 'Search by grade (Grade 5, Grade 23), standard (ASTM B348, AMS 4928), or process (5-axis, anodizing)',
-  heroShortcutHint: 'or press ⌘K',
-  heroResultTotalTemplate: 'Showing {n} technical articles',
-  heroResultFilteredTemplate: 'Showing {matched} of {total} articles',
-  popularTopicsLabel: 'Popular Topics',
-  clearSearchLabel: 'Clear search',
-  filtersResetLabel: 'Reset',
-  gridViewLabel: 'Grid',
-  listViewLabel: 'List',
-  quickViewLabel: 'Quick View',
-  readMoreLabel: 'Read article',
-  updatedLabel: 'Updated',
-  readTimeLabel: '{n} min read',
-  emptyTitle: 'No articles match your filters',
+  heroPlaceholder:
+    "Search titanium articles by grade (Grade 5, Grade 23), standard (ASTM B348, AMS 4928), or process (5-axis, anodizing)",
+  heroShortcutHint: "or press ⌘K",
+  heroResultTotalTemplate: "Showing {n} technical articles",
+  heroResultFilteredTemplate: "Showing {matched} of {total} articles",
+  popularTopicsLabel: "Popular Topics",
+  clearSearchLabel: "Clear search",
+  filtersResetLabel: "Reset",
+  gridViewLabel: "Grid",
+  listViewLabel: "List",
+  quickViewLabel: "Quick View",
+  readMoreLabel: "Read article",
+  updatedLabel: "Updated",
+  readTimeLabel: "{n} min read",
+  emptyTitle: "No articles match your filters",
   emptyDescription:
-    'Try removing a filter or searching by a broader term. If you have a specific titanium engineering question, our team responds in 1-2 business days.',
-  emptyResetLabel: 'Reset filters',
-  emptyCtaLabel: 'Talk to a Titanium Engineer',
-  emptyCtaHref: '/rfq/',
-  ctaTitle: 'Need a Custom Titanium Component?',
+    "Try removing a filter or searching by a broader term. If you have a specific titanium engineering question, our team responds in 1-2 business days.",
+  emptyResetLabel: "Reset filters",
+  emptyCtaLabel: "Talk to a Titanium Engineer",
+  emptyCtaHref: "/rfq/",
+  ctaTitle: "Need a Custom Titanium Component?",
   ctaSubtitle:
-    'Send your drawing + material spec to BOZE — we respond with a DFM-aware quote within 1-2 business days.',
-  ctaPrimaryLabel: 'Request an Instant RFQ',
-  ctaPrimaryHref: '/rfq/',
-  ctaSecondaryLabel: 'Browse Manufacturing Capabilities',
-  ctaSecondaryHref: '/capabilities/',
+    "Send your drawing + material spec to BOZE — we respond with a DFM-aware quote within 1-2 business days.",
+  ctaPrimaryLabel: "Request an Instant RFQ",
+  ctaPrimaryHref: "/rfq/",
+  ctaSecondaryLabel: "Browse Manufacturing Capabilities",
+  ctaSecondaryHref: "/capabilities/",
   ctaBullets: [
-    '1-2 business day DFM response',
-    'EN 10204 3.1 MTR included',
-    'AS9100D / ISO 13485 facility',
+    "1-2 business day DFM response",
+    "EN 10204 3.1 MTR included",
+    "AS9100D / ISO 13485 facility",
   ],
-  dialogCloseLabel: 'Close',
-  dialogReadFullLabel: 'Read full article',
-  dialogCtaLabel: 'Request RFQ',
-  dialogCtaHref: '/rfq/',
-  dialogGradeLabel: 'Titanium Grade',
-  dialogProcessLabel: 'Processes',
-  dialogStandardLabel: 'Standards',
-  dialogIndustryLabel: 'Application Sectors',
+  dialogCloseLabel: "Close",
+  dialogReadFullLabel: "Read full article",
+  dialogCtaLabel: "Request RFQ",
+  dialogCtaHref: "/rfq/",
+  dialogGradeLabel: "Titanium Grade",
+  dialogProcessLabel: "Processes",
+  dialogStandardLabel: "Standards",
+  dialogIndustryLabel: "Application Sectors",
 };
 
 const popularTopics = [
-  { id: 'grade-5-vs-23', label: 'Grade 5 vs Grade 23', query: 'Grade 5 vs Grade 23' },
-  { id: 'machining-tips', label: 'Titanium Machining Tips', query: 'titanium machining tips' },
-  { id: 'anodizing-colors', label: 'Anodizing Color Chart', query: 'anodizing color' },
-  { id: 'astm-b348', label: 'ASTM B348 Bar Spec', query: 'ASTM B348' },
-  { id: 'ams-4928', label: 'AMS 4928 Spec', query: 'AMS 4928' },
+  { id: "grade-5", label: "Grade 5 Titanium", query: "Grade 5" },
+  { id: "grade-23", label: "Grade 23 ELI", query: "Grade 23" },
+  { id: "astm-b348", label: "ASTM B348", query: "ASTM B348" },
+  { id: "5-axis", label: "5-Axis Machining", query: "5-Axis Machining" },
+  { id: "aerospace", label: "Aerospace", query: "Aerospace" },
 ];
 
 // ── Page-level structured-data inputs (no inline <script>) ────────────────
-const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://cnc.bozemetal.com').toString();
+const pageUrl = new URL(
+  Astro.url.pathname,
+  Astro.site ?? "https://cnc.bozemetal.com"
+).toString();
 const itemList = toSchemaItemList(articles, pageUrl);
-const breadcrumb = toSchemaBreadcrumb(
-  'https://cnc.bozemetal.com',
-  'Home',
-  'Resources',
-  'Titanium Knowledge Base',
-);
 
-// AIO Speakable anchors — 2 thesis-first paragraphs that an AI Overview
-// can cite as the authoritative answer for "titanium CNC machining" queries.
-const speakableSelectors = ['#tkb-aio-thesis-1', '#tkb-aio-thesis-2'];
+const speakableSelectors = ["#tkb-aio-thesis-1", "#tkb-aio-thesis-2"];
+
+// Aggregate the most-cited standards across the surfaced articles for the
+// page-level TechArticle.about field. We use a Set so a standard present in
+// multiple articles is listed once — derived from REAL data, not invented.
+const allAbout = new Set<string>();
+for (const a of articles) {
+  for (const s of a.standardTags) allAbout.add(STANDARD_LABELS[s]);
+  for (const g of a.gradeTags.slice(0, 2)) allAbout.add(g);
+  for (const i of a.industryTags.slice(0, 1)) allAbout.add(i);
+}
+const articleAbout = Array.from(allAbout).slice(0, 12);
 ---
 
 <BaseLayout
   title="Titanium Knowledge Base | CNC Machining, Grades, ASTM/AMS Standards"
-  description="Engineering knowledge base on titanium CNC machining: thermal dynamics, ASTM B348 / AMS 4928 / ASTM F136 specifications, Grade 5 vs Grade 23 selection, 5-axis machining, anodizing, and B2B procurement best practices."
+  description="Engineering knowledge base on titanium CNC machining: existing technical references curated from the BOZE blog, covering Grade 5 / Grade 23 selection, ASTM B348 / AMS 4928 / ASTM F136 specifications, 5-axis milling, anodizing, and B2B procurement workflows."
   pageType="tech-article"
   pageName="Titanium Knowledge Base"
   pageUrl={pageUrl}
   inLanguage="en-US"
   articleHeadline="Titanium Knowledge Base: CNC Machining, Grades, and Standards Reference"
-  articleDescription="Engineering reference for titanium CNC machining covering thermal dynamics, Grade 5 / Grade 23 selection, ASTM B348 / AMS 4928 / ASTM F136 specifications, 5-axis milling, anodizing, and B2B procurement workflows."
+  articleDescription="Curated titanium engineering references from the BOZE blog — covering Grade 5 / Grade 23 selection, ASTM B348 / AMS 4928 / ASTM F136 specifications, 5-axis milling, anodizing, and B2B procurement."
   articleAuthor="Boze Titanium Engineering Center"
   articleDatePublished="2026-08-12"
   articleDateModified={new Date().toISOString().slice(0, 10)}
-  articleAbout={[
-    'Titanium CNC Machining',
-    'Ti-6Al-4V (Grade 5)',
-    'Ti-6Al-4V ELI (Grade 23)',
-    'ASTM B348',
-    'AMS 4928',
-    'ASTM F136',
-    '5-Axis CNC Milling',
-    'Anodizing',
-  ]}
+  articleAbout={articleAbout}
   itemCount={articles.length}
   items={[...itemList.map((i) => ({ name: i.name, url: i.url }))]}
   speakableSelectors={speakableSelectors}
 >
   <SubpageHero
     title="Titanium Knowledge Base"
-    highlight="CNC Machining · Grades · Standards"
-    subtitle="Engineering reference for titanium procurement engineers: thermal dynamics, ASTM/AMS spec interpretation, grade selection, 5-axis machining, anodizing, and B2B supply workflows."
+    highlight="Curated from the BOZE blog"
+    subtitle="Engineering references on titanium CNC machining: grade selection, ASTM/AMS spec interpretation, 5-axis milling, anodizing, and B2B procurement workflows. Every link points to a real published article."
     badge="Pillar Reference"
     keyMetrics={[
-      { value: String(articles.length), label: 'Technical Articles' },
-      { value: '8', label: 'Titanium Grades Covered' },
-      { value: '7', label: 'ASTM / AMS Standards' },
-      { value: 'AS9100D', label: 'Quality System' },
+      { value: String(articles.length), label: "Articles curated" },
+      { value: "12+", label: "Titanium grades covered" },
+      { value: "ASTM/AMS", label: "Specs cited" },
+      { value: "AS9100D", label: "Quality system" },
     ]}
     entityChips={[
-      'Grade 5 (Ti-6Al-4V)',
-      'Grade 23 (ELI)',
-      'ASTM B348',
-      'AMS 4928',
-      'ASTM F136',
-      'AS9100D',
-      'ISO 13485',
+      "Grade 5 (Ti-6Al-4V)",
+      "Grade 23 (ELI)",
+      "ASTM B348",
+      "AMS 4928",
+      "ASTM F136",
+      "AS9100D",
+      "ISO 13485",
     ]}
   />
 
@@ -215,14 +239,14 @@ const speakableSelectors = ['#tkb-aio-thesis-1', '#tkb-aio-thesis-2'];
       class="mb-3 text-base leading-relaxed"
       style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"
     >
-      Titanium's anomalous thermal property profile (7 W/m·K thermal conductivity, roughly 50× lower than aluminum) traps 80% of cutting energy at the tool-chip interface, driving tool-edge temperatures past 1000°C within microseconds. Successful CNC machining of Grade 5 and Grade 23 titanium requires closed-loop coolant management at 70+ bar flood pressure, custom tool geometry with positive rake angles, and multi-pass CAM strategies to compensate for the 105-115 GPa modulus-driven springback.
+      The Titanium Knowledge Base curates existing engineering references from the BOZE blog. Every article here is a real, published piece — not generated content. The curation surfaces content across grade selection, ASTM/AMS spec interpretation, 5-axis milling, surface treatment, and B2B procurement workflows.
     </p>
     <p
       id="tkb-aio-thesis-2"
       class="text-base leading-relaxed"
       style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"
     >
-      Procurement-grade titanium engineering references must align to ASTM B348 (bars and billets), AMS 4928 (aerospace plate), and ASTM F136 (medical implants). The Extra Low Interstitial (ELI) Grade 23 variant commands a 15-30% raw-material premium but delivers measurably better fracture toughness and fatigue life — critical for long-term implants, cryogenic housings, and high-cycle aerospace rotating components.
+      Procurement-grade titanium engineering references must align to ASTM B348 (bars and billets), AMS 4928 (aerospace plate), and ASTM F136 (medical implants). The Extra Low Interstitial (ELI) Grade 23 variant commands a 15-30 percent raw-material premium but delivers measurably better fracture toughness and fatigue life — critical for long-term implants, cryogenic housings, and high-cycle aerospace rotating components.
     </p>
   </div>
 

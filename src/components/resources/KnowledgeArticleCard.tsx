@@ -47,7 +47,7 @@ export function KnowledgeArticleCard({
   article, mode, onQuickView,
   quickViewLabel, readMoreLabel, updatedLabel, readTimeLabel,
 }: Props) {
-  const articleHref = `/resources/titanium-knowledge-base/#${article.slug}`;
+  const articleHref = `/blog/${article.slug}/`;
   const summary = mode === 'list' ? clampSummary(article.summary, 180) : article.summary;
   const tagLimit = mode === 'list' ? 2 : 3;
 

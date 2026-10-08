@@ -41,7 +41,7 @@ export function toSchemaItemList(
 ): ReadonlyArray<KnowledgeItemListEntry> {
   return articles.map((a) => ({
     name: a.title,
-    url: `${pageUrl}#${a.slug}`,
+    url: `${pageUrl.replace(/\/resources\/titanium-knowledge-base\/?$/, '/blog')}${a.slug}/`,
     description: a.summary,
     datePublished: a.publishedAt,
     dateModified: a.updatedAt,

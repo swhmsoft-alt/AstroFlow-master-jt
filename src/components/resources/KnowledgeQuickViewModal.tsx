@@ -187,7 +187,7 @@ export function KnowledgeQuickViewModal({ article, open, onOpenChange, strings }
                 style={{ borderColor: 'color-mix(in srgb, var(--theme-text) 12%, transparent)' }}
               >
                 <a
-                  href={`/resources/titanium-knowledge-base/#${article.slug}`}
+                  href={`/blog/${article.slug}/`}
                   className="text-sm font-medium underline-offset-2 hover:underline"
                   style={{ color: 'var(--theme-primary)' }}
                 >

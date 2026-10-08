@@ -4,7 +4,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 // NOTE: previously imported `@reunmedia/astro-normalize-trailing-slash` here,
-// but that package exports raw .ts source from node_modules — Astro 5.18
+// but that package exports raw .ts source from node_modules 閳?Astro 5.18
 // refuses to strip types from node_modules at config-load time, so `astro dev`
 // crashes before any rendering starts.  The Astro built-in `trailingSlash: 'always'`
 // option below already enforces trailing slashes at the route level, and our
@@ -54,11 +54,11 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  // F4 — Industry page slug reconciliation.
+  // F4 閳?Industry page slug reconciliation.
   // Maps content-collection-derived slugs (aerospace-defense, etc.) and
   // entity-registry canonical slugs to the actual /pages/industries/*.astro
   // filenames, so F1 internal-link mesh and JSON-LD @id refs don't 404.
-  // 2026-08-25: 6 industry entities still have no dedicated page yet → fall
+  // 2026-08-25: 6 industry entities still have no dedicated page yet 閳?fall
   // back to the canonical /products/industries/ hub.
   redirects: {
     '/industries/aerospace-defense/':           '/industries/aerospace/',
@@ -71,9 +71,9 @@ export default defineConfig({
     '/industries/electroplating-surface-finishing/': '/products/industries/',
     '/industries/environmental-engineering/':   '/products/industries/',
     '/industries/general-industrial/':          '/products/industries/',
-    // F5 — Blog category → 7-cluster redirects (P2 of cluster migration).
+    // F5 閳?Blog category 閳?7-cluster redirects (P2 of cluster migration).
     // 8 effective redirects; 21 edge categories (1-2 posts) intentionally
-    // produce no static page and 404 naturally — see Plan §4 + §6.
+    // produce no static page and 404 naturally 閳?see Plan 鎼? + 鎼?.
     // Slug `'machining-processes'` is unchanged, no redirect needed.
     '/blog/category/materials-engineering/': '/blog/materials-grades/',
     '/blog/category/manufacturing-problems/': '/blog/problems-solutions/',
@@ -84,15 +84,15 @@ export default defineConfig({
     '/blog/category/titanium-cnc-machining-services/': '/blog/procurement-services/',
     '/blog/category/case-studies/': '/blog/applications-industries/',
 
-  // BSI Migration (2026-09-15) — Phase A/B migrated from root to /capabilities/
+  // BSI Migration (2026-09-15) 閳?Phase A/B migrated from root to /capabilities/
   // per Hub-Mapping-First SOP. 301 redirects preserve SEO authority.
   '/titanium-compliance-and-certifications/': '/capabilities/compliance/',
   '/titanium-supplier-evaluation/': '/capabilities/supplier-evaluation/',
 
-  // BSI Phase E — ECO Iteration landing page moved under /capabilities/ hub.
+  // BSI Phase E 閳?ECO Iteration landing page moved under /capabilities/ hub.
   '/eco-iterative-cnc-machining/': '/capabilities/eco-iteration/',
 
-  // /<lang>/capabilities/eco-iteration/ → EN hub (Phase E).
+  // /<lang>/capabilities/eco-iteration/ 閳?EN hub (Phase E).
   '/de/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
   '/ja/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
   '/fr/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
@@ -105,7 +105,7 @@ export default defineConfig({
   '/ru/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
   '/ar/capabilities/eco-iteration/': '/capabilities/eco-iteration/',
 
-  // F4 — `/standards/:slug/` → `/materials/:slug/` (canonical exists).
+  // F4 閳?`/standards/:slug/` 閳?`/materials/:slug/` (canonical exists).
   // SpecificationTable.astro previously hard-coded `/standards/` prefix which
   // 404'd; the redirect is a safety net for any external inbound link.
   '/standards/astm-b348/':     '/materials/astm-b348/',
@@ -129,13 +129,13 @@ export default defineConfig({
   '/standards/mil-t-9047/':    '/materials/mil-t-9047/',
   '/standards/mil-std-810h/':  '/capabilities/inspection/',
 
-  // /de/capabilities/* — EN-only sub-pages, redirect to nearest EN hub.
+  // /de/capabilities/* 閳?EN-only sub-pages, redirect to nearest EN hub.
   '/de/capabilities/compliance/':           '/capabilities/certifications/',
   '/de/capabilities/lead-time/':            '/capabilities/manufacturing/',
   '/de/capabilities/logistics/':            '/capabilities/capacity/',
   '/de/capabilities/supplier-evaluation/':  '/capabilities/manufacturing/',
 
-  // 10 other locales × 4 sub-routes. Each /<lang>/capabilities/<sub>/  →  EN hub.
+  // 10 other locales 鑴?4 sub-routes. Each /<lang>/capabilities/<sub>/  閳? EN hub.
   '/ja/capabilities/compliance/':           '/capabilities/certifications/',
   '/fr/capabilities/compliance/':           '/capabilities/certifications/',
   '/es/capabilities/compliance/':           '/capabilities/certifications/',
@@ -184,12 +184,12 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
-      // F6 — Unified cross-language link filter. Handles all EN-only paths
+      // F6 閳?Unified cross-language link filter. Handles all EN-only paths
       // (per src/config/route-availability.mjs EN_ONLY_PREFIXES) and
       // cross-language blog refs whose target translation does not exist
       // (per filesystem scan of src/content/blog-translations/). Replaces
       // the blog-only plugin with a single mechanism. Preserves anchor text
-      // (so readers still see "参考 X" citations), strips href so crawlers
+      // (so readers still see "閸欏倽鈧?X" citations), strips href so crawlers
       // see zero clickable URLs to untranslated territory. Also drops
       // hreflang <link rel="alternate"> for the same targets.
       createRehypeI18nLinkPlugin({ translationsDir: './src/content/blog-translations' }),
@@ -217,14 +217,14 @@ export default defineConfig({
           "5-Axis Machining": {
             "href": "/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
-          // BSI Phase F · Buyer Search Intelligence · 5-Entry rule (keywordMap)
+          // BSI Phase F 璺?Buyer Search Intelligence 璺?5-Entry rule (keywordMap)
           "AS9100D compliance hub": {
             "href": "/capabilities/compliance/"
           },
           "AS9100D titanium compliance": {
             "href": "/capabilities/compliance/"
           },
-          // BSI Phase G · Buyer Search Intelligence · 5-Entry rule (keywordMap)
+          // BSI Phase G 璺?Buyer Search Intelligence 璺?5-Entry rule (keywordMap)
           // Mill Products Hub inbound anchors
           "titanium mill products": {
             "href": "/mill-products/"
@@ -364,52 +364,52 @@ export default defineConfig({
           "electropolishing": {
             "href": "/products/capabilities/electropolishing/"
           },
-          "ELI Grade 4 – Low Interstitial Titanium": {
+          "legacy-materials-grade-4-eli": {
             "href": "/materials/grade-4-eli/"
           },
-          "Manufacturing Example: UHV Gas Showerhead — 2,400 Micro-Drilled Holes": {
+          "legacy-case-studies-semiconductor-uhv-showerhead": {
             "href": "/case-studies/semiconductor-uhv-showerhead/"
           },
-          "Grade 4 – Commercially Pure Titanium": {
+          "legacy-materials-grade-4": {
             "href": "/materials/grade-4/"
           },
-          "Grade 9 – Ti-3Al-2.5V Titanium Alloy": {
+          "legacy-materials-grade-9": {
             "href": "/materials/grade-9/"
           },
-          "Grade 21 – Ti-15V-3Cr-3Sn-3Al Beta Alloy": {
+          "legacy-materials-grade-21": {
             "href": "/materials/grade-21/"
           },
-          "Grade 19 – Ti-10V-2Fe-3Al Beta Titanium": {
+          "legacy-materials-grade-19": {
             "href": "/materials/grade-19/"
           },
-          "Manufacturing Example: Grade 23 ELI Bone Screws — Zero-Contamination": {
+          "legacy-case-studies-medical-bone-screws": {
             "href": "/case-studies/medical-bone-screws/"
           },
-          "Grade 1 – Commercially Pure Titanium": {
+          "legacy-materials-grade-1": {
             "href": "/materials/grade-1/"
           },
-          "Grade 3 – Commercially Pure Titanium": {
+          "legacy-materials-grade-3": {
             "href": "/materials/grade-3/"
           },
-          "Grade 6242 – Ti-6Al-2Sn-4Zr-2Mo Aerospace Ti": {
+          "legacy-materials-grade-6242": {
             "href": "/materials/grade-6242/"
           },
-          "Grade 6 – Ti-5Al-2.5Sn Titanium Alloy": {
+          "legacy-materials-grade-6": {
             "href": "/materials/grade-6/"
           },
-          "Grade 5 – Ti-6Al-4V Titanium Alloy": {
+          "legacy-materials-grade-5": {
             "href": "/materials/grade-5/"
           },
-          "Grade 23 – Ti-6Al-4V ELI Medical Titanium": {
+          "legacy-materials-grade-23": {
             "href": "/materials/grade-23/"
           },
           "Manufacturing Example: Thin-Wall Titanium Aerospace Housing": {
             "href": "/case-studies/aerospace-thin-wall-housing/"
           },
-          "Ti-6211 – Ti-6Al-2Nb-1Ta-0.8Mo Marine Grade Titanium": {
+          "legacy-materials-ti-6211": {
             "href": "/materials/ti-6211/"
           },
-          "Grade 2 – Commercially Pure Titanium": {
+          "legacy-materials-grade-2": {
             "href": "/materials/grade-2/"
           },
           "Energy": {
@@ -658,19 +658,19 @@ export default defineConfig({
           "Chemische Passivierung": {
             "href": "/de/titanium-surface-treatment/chemical-passivation/"
           },
-          "Titan-Oberflächenbehandlung": {
+          "Titan-Oberfl鐩瞔henbehandlung": {
             "href": "/de/titanium-surface-treatment/"
           },
-          "Titanschweißen": {
+          "Titanschwei鑴絜n": {
             "href": "/de/titanium-fabrication-services/titanium-welding-assembly/"
           },
-          "CNC-Fräsen & Drehen": {
+          "CNC-Fr鐩瞫en & Drehen": {
             "href": "/de/titanium-cnc-machining-services/cnc-milling-turning/"
           },
-          "Titanschweißen & Montage": {
+          "Titanschwei鑴絜n & Montage": {
             "href": "/de/titanium-fabrication-services/titanium-welding-assembly/"
           },
-          "CNC-Fräsen": {
+          "CNC-Fr鐩瞫en": {
             "href": "/de/titanium-cnc-machining-services/cnc-milling-turning/"
           },
           "Drahterodieren (Wire EDM)": {
@@ -730,73 +730,73 @@ export default defineConfig({
           "Wasserstrahlschneiden": {
             "href": "/de/titanium-fabrication-services/waterjet-cutting/"
           },
-          "化学的不動態化処理": {
+          "legacy-ja-titanium-surface-treatment-chemical-passivation": {
             "href": "/ja/titanium-surface-treatment/chemical-passivation/"
           },
-          "カスタム産業用部品": {
+          "legacy-ja-titanium-cnc-machining-services-custom-industrial-components": {
             "href": "/ja/titanium-cnc-machining-services/custom-industrial-components/"
           },
-          "CNCフライス・旋盤加工": {
+          "legacy-ja-titanium-cnc-machining-services-cnc-milling-turning": {
             "href": "/ja/titanium-cnc-machining-services/cnc-milling-turning/"
           },
-          "チタン増材製造（3Dプリンティング）": {
+          "閵変降鍋妷鍐差暭閺夋劘锛濋柅鐙呯礄3D閵夋ぜ鍎堕妷鐐藉剱閵堬絻鍏傞妶甯礆": {
             "href": "/ja/titanium-additive-manufacturing/"
           },
-          "チタン押出加工": {
+          "legacy-ja-titanium-forming-heavy-manufacturing-titanium-extrusion": {
             "href": "/ja/titanium-forming-heavy-manufacturing/titanium-extrusion/"
           },
-          "ワイヤー放電加工": {
+          "legacy-ja-titanium-cnc-machining-services-wire-edm-machining": {
             "href": "/ja/titanium-cnc-machining-services/wire-edm-machining/"
           },
-          "総合チタン加工・製造サービス": {
+          "legacy-ja": {
             "href": "/ja/"
           },
-          "3Dプリンティング SLM/DMLS": {
+          "legacy-ja-titanium-additive-manufacturing-3d-printing-slm": {
             "href": "/ja/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "チタン製缶板金サービス": {
+          "legacy-ja-titanium-fabrication-services": {
             "href": "/ja/titanium-fabrication-services/"
           },
-          "チタン表面処理": {
+          "legacy-ja-titanium-surface-treatment": {
             "href": "/ja/titanium-surface-treatment/"
           },
-          "研磨・サンドブラスト": {
+          "legacy-ja-titanium-surface-treatment-polishing-sandblasting": {
             "href": "/ja/titanium-surface-treatment/polishing-sandblasting/"
           },
-          "ラピッドプロトタイピング": {
+          "閵夆斂鍎熼妷鍐﹀剶閵夋ぜ鍎归妷鍫涘仾閵堛們鍎熼妷鐐藉仒": {
             "href": "/ja/titanium-additive-manufacturing/rapid-prototyping/"
           },
-          "チタン溶接・組立": {
+          "閵変降鍋妷铏喚閹恒儯鍏撶徊鍕彌": {
             "href": "/ja/titanium-fabrication-services/titanium-welding-assembly/"
           },
-          "チタン鍛造": {
+          "legacy-ja-titanium-forming-heavy-manufacturing-titanium-forging": {
             "href": "/ja/titanium-forming-heavy-manufacturing/titanium-forging/"
           },
-          "陽極酸化処理（タイプIIおよびIII）": {
+          "legacy-ja-titanium-surface-treatment-anodizing": {
             "href": "/ja/titanium-surface-treatment/anodizing/"
           },
-          "チタンCNC加工サービス": {
+          "legacy-ja-titanium-cnc-machining-services": {
             "href": "/ja/titanium-cnc-machining-services/"
           },
-          "少量生産": {
+          "鐏忔垿鍣洪悽鐔烘暁": {
             "href": "/ja/titanium-additive-manufacturing/low-volume-production/"
           },
-          "原材料準備・サイジング": {
+          "legacy-ja-titanium-forming-heavy-manufacturing-raw-material-preparation-sizing": {
             "href": "/ja/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing/"
           },
-          "3Dプリンティング SLM": {
+          "legacy-ja-titanium-additive-manufacturing-3d-printing-slm-2": {
             "href": "/ja/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "レーザー切断（シート＆チューブ）": {
+          "閵夘兙鍏楅妶韬插厳閸掑洦鏌囬敍鍫涘仭閵夌鍎撻敍鍡愬剨閵夈儯鍏楅妷鏍电礆": {
             "href": "/ja/titanium-fabrication-services/laser-cutting/"
           },
-          "ウォータージェット切断": {
+          "legacy-ja-titanium-fabrication-services-waterjet-cutting": {
             "href": "/ja/titanium-fabrication-services/waterjet-cutting/"
           },
-          "チタン成形・重型製造": {
+          "legacy-ja-titanium-forming-heavy-manufacturing": {
             "href": "/ja/titanium-forming-heavy-manufacturing/"
           },
-          "3/5軸CNC加工": {
+          "legacy-ja-titanium-cnc-machining-services-3-5-axis-cnc-machining": {
             "href": "/ja/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
           "Anodisation (Type II et Type III)": {
@@ -814,22 +814,22 @@ export default defineConfig({
           "Formage du Titane et Fabrication Lourde": {
             "href": "/fr/titanium-forming-heavy-manufacturing/"
           },
-          "Découpe Laser (Tôle et Tube)": {
+          "D鑼卌oupe Laser (T涔坙e et Tube)": {
             "href": "/fr/titanium-fabrication-services/laser-cutting/"
           },
-          "Usinage par Électroérosion au Fil": {
+          "Usinage par 鑴ectro鑼卹osion au Fil": {
             "href": "/fr/titanium-cnc-machining-services/wire-edm-machining/"
           },
-          "Services de Fabrication de Tôlerie Titane": {
+          "Services de Fabrication de T涔坙erie Titane": {
             "href": "/fr/titanium-fabrication-services/"
           },
-          "Composants Industriels Personnalisés": {
+          "Composants Industriels Personnalis鑼卻": {
             "href": "/fr/titanium-cnc-machining-services/custom-industrial-components/"
           },
-          "Préparation et Dimensionnement des Matières Premières": {
+          "Pr鑼卲aration et Dimensionnement des Mati鐚玶es Premi鐚玶es": {
             "href": "/fr/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing/"
           },
-          "Découpe au Jet d'Eau": {
+          "D鑼卌oupe au Jet d'Eau": {
             "href": "/fr/titanium-fabrication-services/waterjet-cutting/"
           },
           "Fraisage et Tournage CNC": {
@@ -880,43 +880,43 @@ export default defineConfig({
           "Corte por Chorro de Agua": {
             "href": "/es/titanium-fabrication-services/waterjet-cutting/"
           },
-          "Impresión 3D SLM/DMLS": {
+          "Impresi璐竛 3D SLM/DMLS": {
             "href": "/es/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "Preparación y Dimensionamiento de Materias Primas": {
+          "Preparaci璐竛 y Dimensionamiento de Materias Primas": {
             "href": "/es/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing/"
           },
-          "Impresión 3D SLM": {
+          "Impresi璐竛 3D SLM": {
             "href": "/es/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "Conformado de Titanio y Fabricación Pesada": {
+          "Conformado de Titanio y Fabricaci璐竛 Pesada": {
             "href": "/es/titanium-forming-heavy-manufacturing/"
           },
-          "Producción de Bajo Volumen": {
+          "Producci璐竛 de Bajo Volumen": {
             "href": "/es/titanium-additive-manufacturing/low-volume-production/"
           },
-          "Prototipado Rápido": {
+          "Prototipado R璋﹑ido": {
             "href": "/es/titanium-additive-manufacturing/rapid-prototyping/"
           },
-          "Extrusión de Titanio": {
+          "Extrusi璐竛 de Titanio": {
             "href": "/es/titanium-forming-heavy-manufacturing/titanium-extrusion/"
           },
-          "Mecanizado por Electroerosión por Hilo": {
+          "Mecanizado por Electroerosi璐竛 por Hilo": {
             "href": "/es/titanium-cnc-machining-services/wire-edm-machining/"
           },
-          "Fabricación Aditiva de Titanio": {
+          "Fabricaci璐竛 Aditiva de Titanio": {
             "href": "/es/titanium-additive-manufacturing/"
           },
-          "Servicios de Fabricación de Titanio": {
+          "Servicios de Fabricaci璐竛 de Titanio": {
             "href": "/es/titanium-fabrication-services/"
           },
-          "Pasivación Química": {
+          "Pasivaci璐竛 Qu閾唌ica": {
             "href": "/es/titanium-surface-treatment/chemical-passivation/"
           },
-          "Servicios Integrales de Fabricación y Procesamiento de Titanio": {
+          "Servicios Integrales de Fabricaci璐竛 y Procesamiento de Titanio": {
             "href": "/es/"
           },
-          "Corte Láser (Chapa y Tubo)": {
+          "Corte L璋﹕er (Chapa y Tubo)": {
             "href": "/es/titanium-fabrication-services/laser-cutting/"
           },
           "Forja de Titanio": {
@@ -955,58 +955,58 @@ export default defineConfig({
           "Polimento e Jateamento de Areia": {
             "href": "/pt/titanium-surface-treatment/polishing-sandblasting/"
           },
-          "Impressão 3D SLM/DMLS": {
+          "Impress鑼玱 3D SLM/DMLS": {
             "href": "/pt/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "Preparação e Dimensionamento de Matéria-Prima": {
+          "Prepara鑾借尗o e Dimensionamento de Mat鑼卹ia-Prima": {
             "href": "/pt/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing/"
           },
-          "Serviços de Usinagem CNC de Titânio": {
+          "Servi鑾給s de Usinagem CNC de Tit鑺抧io": {
             "href": "/pt/titanium-cnc-machining-services/"
           },
-          "Usinagem por Eletroerosão a Fio": {
+          "Usinagem por Eletroeros鑼玱 a Fio": {
             "href": "/pt/titanium-cnc-machining-services/wire-edm-machining/"
           },
-          "Produção de Baixo Volume": {
+          "Produ鑾借尗o de Baixo Volume": {
             "href": "/pt/titanium-additive-manufacturing/low-volume-production/"
           },
-          "Passivação Química": {
+          "Passiva鑾借尗o Qu閾唌ica": {
             "href": "/pt/titanium-surface-treatment/chemical-passivation/"
           },
-          "Soldagem e Montagem de Titânio": {
+          "Soldagem e Montagem de Tit鑺抧io": {
             "href": "/pt/titanium-fabrication-services/titanium-welding-assembly/"
           },
-          "Manufatura Aditiva de Titânio": {
+          "Manufatura Aditiva de Tit鑺抧io": {
             "href": "/pt/titanium-additive-manufacturing/"
           },
-          "Extrusão de Titânio": {
+          "Extrus鑼玱 de Tit鑺抧io": {
             "href": "/pt/titanium-forming-heavy-manufacturing/titanium-extrusion/"
           },
-          "Forjamento de Titânio": {
+          "Forjamento de Tit鑺抧io": {
             "href": "/pt/titanium-forming-heavy-manufacturing/titanium-forging/"
           },
-          "Tratamento de Superfície de Titânio": {
+          "Tratamento de Superf閾哻ie de Tit鑺抧io": {
             "href": "/pt/titanium-surface-treatment/"
           },
-          "Prototipagem Rápida": {
+          "Prototipagem R璋﹑ida": {
             "href": "/pt/titanium-additive-manufacturing/rapid-prototyping/"
           },
-          "Anodização (Tipo II e Tipo III)": {
+          "Anodiza鑾借尗o (Tipo II e Tipo III)": {
             "href": "/pt/titanium-surface-treatment/anodizing/"
           },
-          "Corte a Jato de Água": {
+          "Corte a Jato de 鑴昰ua": {
             "href": "/pt/titanium-fabrication-services/waterjet-cutting/"
           },
-          "Serviços Abrangentes de Fabricação e Processamento de Titânio": {
+          "Servi鑾給s Abrangentes de Fabrica鑾借尗o e Processamento de Tit鑺抧io": {
             "href": "/pt/"
           },
-          "Serviços de Fabricação de Titânio": {
+          "Servi鑾給s de Fabrica鑾借尗o de Tit鑺抧io": {
             "href": "/pt/titanium-fabrication-services/"
           },
-          "Impressão 3D SLM": {
+          "Impress鑼玱 3D SLM": {
             "href": "/pt/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "Conformação de Titânio e Fabricação Pesada": {
+          "Conforma鑾借尗o de Tit鑺抧io e Fabrica鑾借尗o Pesada": {
             "href": "/pt/titanium-forming-heavy-manufacturing/"
           },
           "Usinagem CNC de 3/5 Eixos": {
@@ -1087,73 +1087,73 @@ export default defineConfig({
           "Trattamento Superficiale del Titanio": {
             "href": "/it/titanium-surface-treatment/"
           },
-          "소량 생산": {
+          "legacy-ko-titanium-additive-manufacturing-low-volume-production": {
             "href": "/ko/titanium-additive-manufacturing/low-volume-production/"
           },
-          "티타늄 용접 및 조립": {
+          "legacy-ko-titanium-fabrication-services-titanium-welding-assembly": {
             "href": "/ko/titanium-fabrication-services/titanium-welding-assembly/"
           },
-          "티타늄 단조": {
+          "legacy-ko-titanium-forming-heavy-manufacturing-titanium-forging": {
             "href": "/ko/titanium-forming-heavy-manufacturing/titanium-forging/"
           },
-          "티타늄 압출": {
+          "legacy-ko-titanium-forming-heavy-manufacturing-titanium-extrusion": {
             "href": "/ko/titanium-forming-heavy-manufacturing/titanium-extrusion/"
           },
-          "아노다이징 (타입 II 및 III)": {
+          "legacy-ko-titanium-surface-treatment-anodizing": {
             "href": "/ko/titanium-surface-treatment/anodizing/"
           },
-          "3D 프린팅 SLM/DMLS": {
+          "legacy-ko-titanium-additive-manufacturing-3d-printing-slm": {
             "href": "/ko/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "와이어 방전 가공": {
+          "legacy-ko-titanium-cnc-machining-services-wire-edm-machining": {
             "href": "/ko/titanium-cnc-machining-services/wire-edm-machining/"
           },
-          "티타늄 표면 처리": {
+          "legacy-ko-titanium-surface-treatment": {
             "href": "/ko/titanium-surface-treatment/"
           },
-          "래피드 프로토타이핑": {
+          "legacy-ko-titanium-additive-manufacturing-rapid-prototyping": {
             "href": "/ko/titanium-additive-manufacturing/rapid-prototyping/"
           },
-          "원자재 준비 및 사이징": {
+          "legacy-ko-titanium-forming-heavy-manufacturing-raw-material-preparation-sizing": {
             "href": "/ko/titanium-forming-heavy-manufacturing/raw-material-preparation-sizing/"
           },
-          "연마 및 샌드블라스팅": {
+          "legacy-ko-titanium-surface-treatment-polishing-sandblasting": {
             "href": "/ko/titanium-surface-treatment/polishing-sandblasting/"
           },
-          "종합 티타늄 가공 및 제조 서비스": {
+          "legacy-ko": {
             "href": "/ko/"
           },
-          "티타늄 적층 제조": {
+          "legacy-ko-titanium-additive-manufacturing": {
             "href": "/ko/titanium-additive-manufacturing/"
           },
-          "티타늄 판금 제작 서비스": {
+          "legacy-ko-titanium-fabrication-services": {
             "href": "/ko/titanium-fabrication-services/"
           },
-          "맞춤형 산업용 부품": {
+          "legacy-ko-titanium-cnc-machining-services-custom-industrial-components": {
             "href": "/ko/titanium-cnc-machining-services/custom-industrial-components/"
           },
-          "티타늄 CNC 가공 서비스": {
+          "legacy-ko-titanium-cnc-machining-services": {
             "href": "/ko/titanium-cnc-machining-services/"
           },
-          "티타늄 성형 및 중공업 제조": {
+          "legacy-ko-titanium-forming-heavy-manufacturing": {
             "href": "/ko/titanium-forming-heavy-manufacturing/"
           },
-          "레이저 절단 (시트 및 튜브)": {
+          "legacy-ko-titanium-fabrication-services-laser-cutting": {
             "href": "/ko/titanium-fabrication-services/laser-cutting/"
           },
-          "3/5축 CNC 가공": {
+          "legacy-ko-titanium-cnc-machining-services-3-5-axis-cnc-machining": {
             "href": "/ko/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
-          "CNC 밀링 및 선반 가공": {
+          "legacy-ko-titanium-cnc-machining-services-cnc-milling-turning": {
             "href": "/ko/titanium-cnc-machining-services/cnc-milling-turning/"
           },
-          "3D 프린팅 SLM": {
+          "legacy-ko-titanium-additive-manufacturing-3d-printing-slm-2": {
             "href": "/ko/titanium-additive-manufacturing/3d-printing-slm/"
           },
-          "화학적 부동태화": {
+          "legacy-ko-titanium-surface-treatment-chemical-passivation": {
             "href": "/ko/titanium-surface-treatment/chemical-passivation/"
           },
-          "워터젯 절단": {
+          "legacy-ko-titanium-fabrication-services-waterjet-cutting": {
             "href": "/ko/titanium-fabrication-services/waterjet-cutting/"
           },
           "3/5-Assige CNC-bewerking": {
@@ -1192,7 +1192,7 @@ export default defineConfig({
           "Lasersnijden (Plaat": {
             "href": "/nl/titanium-fabrication-services/laser-cutting/"
           },
-          "Op maat gemaakte industriële componenten": {
+          "Op maat gemaakte industri姣沴e componenten": {
             "href": "/nl/titanium-cnc-machining-services/custom-industrial-components/"
           },
           "Oppervlaktebehandeling van Titanium": {
@@ -1246,43 +1246,43 @@ export default defineConfig({
           "Pasywacja Chemiczna": {
             "href": "/pl/titanium-surface-treatment/chemical-passivation/"
           },
-          "Usługi Obróbki CNC Tytanu": {
+          "Us鑹倁gi Obr璐竍ki CNC Tytanu": {
             "href": "/pl/titanium-cnc-machining-services/"
           },
-          "Cięcie Laserowe (Blacha i Rura)": {
+          "Ci鑷媍ie Laserowe (Blacha i Rura)": {
             "href": "/pl/titanium-fabrication-services/laser-cutting/"
           },
-          "Obróbka Powierzchniowa Tytanu": {
+          "Obr璐竍ka Powierzchniowa Tytanu": {
             "href": "/pl/titanium-surface-treatment/"
           },
-          "Obróbka Elektroerozyjna Drutowa (EDM)": {
+          "Obr璐竍ka Elektroerozyjna Drutowa (EDM)": {
             "href": "/pl/titanium-cnc-machining-services/wire-edm-machining/"
           },
-          "Niestandardowe Komponenty Przemysłowe": {
+          "Niestandardowe Komponenty Przemys鑹俹we": {
             "href": "/pl/titanium-cnc-machining-services/custom-industrial-components/"
           },
-          "Spawanie i Montaż Tytanu": {
+          "legacy-pl-titanium-fabrication-services-titanium-welding-assembly": {
             "href": "/pl/titanium-fabrication-services/titanium-welding-assembly/"
           },
-          "Produkcja Niskonakładowa": {
+          "Produkcja Niskonak鑹俛dowa": {
             "href": "/pl/titanium-additive-manufacturing/low-volume-production/"
           },
-          "Usługi Obróbki Plastycznej Tytanu": {
+          "Us鑹倁gi Obr璐竍ki Plastycznej Tytanu": {
             "href": "/pl/titanium-fabrication-services/"
           },
-          "Obróbka CNC 3": {
+          "Obr璐竍ka CNC 3": {
             "href": "/pl/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
-          "Formowanie Tytanu i Produkcja Ciężka": {
+          "Formowanie Tytanu i Produkcja Ci鑷嬪伓ka": {
             "href": "/pl/titanium-forming-heavy-manufacturing/"
           },
-          "Obróbka CNC 3/5-osiowa": {
+          "Obr璐竍ka CNC 3/5-osiowa": {
             "href": "/pl/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },
-          "Cięcie Wodne": {
+          "Ci鑷媍ie Wodne": {
             "href": "/pl/titanium-fabrication-services/waterjet-cutting/"
           },
-          "Kompleksowe Usługi Produkcji i Obróbki Tytanu": {
+          "Kompleksowe Us鑹倁gi Produkcji i Obr璐竍ki Tytanu": {
             "href": "/pl/"
           },
           "Polerowanie i Piaskowanie": {
@@ -1306,6 +1306,16 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss(), devDashboardApi()],
+    // P2-7: Exclude vitest + @testing-library/* from Vite dep optimizer so dev server can start when these packages are not installed.
+    optimizeDeps: {
+      exclude: [
+        'vitest',
+        '@testing-library/react',
+        '@testing-library/user-event',
+        '@testing-library/dom',
+        'jsdom',
+      ],
+    },
     build: {
       rollupOptions: {
         output: {

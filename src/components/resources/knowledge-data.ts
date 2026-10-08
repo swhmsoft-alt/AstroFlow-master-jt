@@ -2,65 +2,60 @@
  * knowledge-data.ts
  *
  * Type definitions + facet taxonomy for the Titanium Knowledge Base
- * (`/resources/titanium-knowledge-base/`). React-island-side; consumed by:
- *   - `KnowledgeBaseHub.tsx`     — orchestrates state + filtering
- *   - `KnowledgeFacetSidebar.tsx` — renders the 4-dim checkbox groups
- *   - `KnowledgeArticleGrid.tsx`  — renders the article cards
- *   - `useKnowledgeUrlState.ts`   — round-trips filters through URL params
+ * (`/resources/titanium-knowledge-base/`). The hub is a CONSUMER view of
+ * the existing blog collection — it does NOT own a content source. The
+ * 4-dimension facet taxonomy (grade / process / standard / industry) is
+ * derived at runtime from each blog entry's existing `tags` array via
+ * the `derive*FromTags` pure functions below. New articles are NEVER
+ * created by this module — only existing blog tags are matched.
  *
- * Single Source of Truth for the facet vocabulary. Adding a new grade /
- * process / standard / industry option means adding it to the corresponding
- * `Knowledge*` type union here AND to the matching zod enum in
- * `src/content/config.ts → knowledgeCollection`. The two stay in lockstep.
+ * Architectural rule (post-mortem 2026-10-08):
+ *   - Knowledge Base hub = `getCollection('blog')` filtered by tag heuristics
+ *   - 4 facets are derived from `entry.data.tags` (real blog tag vocabulary)
+ *   - Detail pages reuse the existing `src/pages/blog/[...slug].astro` route
+ *   - URL pattern: `/blog/<entry.slug>/` (Astro-derived, no `.md` extension)
  *
- * The 6-letter ISO-style slugs in each union (e.g. 'alpha-beta-gr5',
- * 'astm-b348') are the canonical URL param tokens — also reused as the
- * `id` field on the corresponding markdown frontmatter tag. Keep them
- * lowercase, kebab-cased, no spaces.
+ * If a tag does not appear in the dictionaries below, that blog entry simply
+ * will not be counted in the corresponding facet bucket. NO fabrication.
  */
 
 export type KnowledgeGrade =
-  | 'cp-gr1' | 'cp-gr2' | 'cp-gr3' | 'cp-gr4'
-  | 'alpha-beta-gr5' | 'alpha-beta-gr23'
-  | 'beta-gr19' | 'beta-gr21';
+  | "cp-gr1" | "cp-gr2" | "cp-gr3" | "cp-gr4"
+  | "alpha-beta-gr5" | "alpha-beta-gr23"
+  | "beta-gr19" | "beta-gr21";
 
 export type KnowledgeProcess =
-  | '5-axis-cnc' | 'swiss-lathe' | 'wire-edm' | 'anodizing' | 'pvd'
-  | 'additive-manufacturing' | 'fabrication';
+  | "5-axis-cnc" | "swiss-lathe" | "wire-edm" | "anodizing" | "pvd"
+  | "additive-manufacturing" | "fabrication";
 
 export type KnowledgeStandard =
-  | 'astm-b348' | 'astm-f136' | 'ams-4928' | 'iso-9001' | 'eu-ped'
-  | 'as9100d' | 'iso-13485';
+  | "astm-b348" | "astm-f136" | "ams-4928" | "iso-9001" | "eu-ped"
+  | "as9100d" | "iso-13485";
 
 export type KnowledgeIndustry =
-  | 'aerospace' | 'medical-implants' | 'marine-superyacht'
-  | 'racing-motorsport' | 'subsea-hydrofoil' | 'chemical';
+  | "aerospace" | "medical-implants" | "marine-superyacht"
+  | "racing-motorsport" | "subsea-hydrofoil" | "chemical";
 
-export type KnowledgeViewMode = 'grid' | 'list';
+export type KnowledgeViewMode = "grid" | "list";
 
-export type KnowledgeDimension = 'grade' | 'process' | 'standard' | 'industry';
+export type KnowledgeDimension = "grade" | "process" | "standard" | "industry";
 
 export interface KnowledgeArticle {
   readonly id: string;
   readonly title: string;
+  /** URL slug (no `.md`, no leading slash). Source: `entry.slug` from Astro. */
   readonly slug: string;
   readonly summary: string;
-  /** Pre-rendered HTML body (Markdown → HTML at build time). */
   readonly bodyHtml: string;
   readonly gradeTags: readonly KnowledgeGrade[];
   readonly processTags: readonly KnowledgeProcess[];
   readonly standardTags: readonly KnowledgeStandard[];
   readonly industryTags: readonly KnowledgeIndustry[];
-  /** ISO 8601 publication date (e.g. "2026-09-22"). */
   readonly publishedAt: string;
-  /** ISO 8601 last-modified date. */
   readonly updatedAt: string;
-  /** Estimated read time in minutes. */
   readonly readTimeMinutes: number;
-  /** The single most-prominent compliance standard for badge highlight. */
   readonly primaryStandard?: KnowledgeStandard;
   readonly featured: boolean;
-  /** Word count — used for readTime fallback when frontmatter is missing. */
   readonly wordCount: number;
 }
 
@@ -85,85 +80,162 @@ export interface KnowledgeFacetGroup {
   readonly options: readonly KnowledgeFacetOption[];
 }
 
-/** Human-readable labels for the grade dimension. */
 export const GRADE_LABELS: Readonly<Record<KnowledgeGrade, string>> = {
-  'cp-gr1': 'CP Grade 1',
-  'cp-gr2': 'CP Grade 2',
-  'cp-gr3': 'CP Grade 3',
-  'cp-gr4': 'CP Grade 4',
-  'alpha-beta-gr5': 'Grade 5 (Ti-6Al-4V)',
-  'alpha-beta-gr23': 'Grade 23 (Ti-6Al-4V ELI)',
-  'beta-gr19': 'Grade 19 (Ti-3Al-8V-6Cr-4Zr-4Mo)',
-  'beta-gr21': 'Grade 21 (Ti-15Mo-3Nb-3Al-0.2Si)',
+  "cp-gr1": "CP Grade 1",
+  "cp-gr2": "CP Grade 2",
+  "cp-gr3": "CP Grade 3",
+  "cp-gr4": "CP Grade 4",
+  "alpha-beta-gr5": "Grade 5 (Ti-6Al-4V)",
+  "alpha-beta-gr23": "Grade 23 (Ti-6Al-4V ELI)",
+  "beta-gr19": "Grade 19 (Ti-3Al-8V-6Cr-4Zr-4Mo)",
+  "beta-gr21": "Grade 21 (Ti-15Mo-3Nb-3Al-0.2Si)",
 };
 
-/** Human-readable labels for the process dimension. */
 export const PROCESS_LABELS: Readonly<Record<KnowledgeProcess, string>> = {
-  '5-axis-cnc': '5-Axis CNC Milling',
-  'swiss-lathe': 'Swiss Lathe Turning',
-  'wire-edm': 'Wire EDM',
-  'anodizing': 'Anodizing',
-  'pvd': 'PVD Coating',
-  'additive-manufacturing': 'Additive Manufacturing',
-  'fabrication': 'Fabrication & Welding',
+  "5-axis-cnc": "5-Axis CNC Milling",
+  "swiss-lathe": "Swiss Lathe Turning",
+  "wire-edm": "Wire EDM",
+  "anodizing": "Anodizing",
+  "pvd": "PVD Coating",
+  "additive-manufacturing": "Additive Manufacturing",
+  "fabrication": "Fabrication & Welding",
 };
 
-/** Human-readable labels for the standards dimension. */
 export const STANDARD_LABELS: Readonly<Record<KnowledgeStandard, string>> = {
-  'astm-b348': 'ASTM B348',
-  'astm-f136': 'ASTM F136',
-  'ams-4928': 'AMS 4928',
-  'iso-9001': 'ISO 9001',
-  'eu-ped': 'EU PED',
-  'as9100d': 'AS9100D',
-  'iso-13485': 'ISO 13485',
+  "astm-b348": "ASTM B348",
+  "astm-f136": "ASTM F136",
+  "ams-4928": "AMS 4928",
+  "iso-9001": "ISO 9001",
+  "eu-ped": "EU PED",
+  "as9100d": "AS9100D",
+  "iso-13485": "ISO 13485",
 };
 
-/** Human-readable labels for the industry dimension. */
 export const INDUSTRY_LABELS: Readonly<Record<KnowledgeIndustry, string>> = {
-  'aerospace': 'Aerospace',
-  'medical-implants': 'Medical Implants',
-  'marine-superyacht': 'Marine & Superyacht',
-  'racing-motorsport': 'Racing & Motorsport',
-  'subsea-hydrofoil': 'Subsea Hydrofoil',
-  'chemical': 'Chemical Processing',
+  "aerospace": "Aerospace",
+  "medical-implants": "Medical Implants",
+  "marine-superyacht": "Marine & Superyacht",
+  "racing-motorsport": "Racing & Motorsport",
+  "subsea-hydrofoil": "Subsea Hydrofoil",
+  "chemical": "Chemical Processing",
 };
 
-/** Default empty filter state — used on first paint and on reset. */
 export const EMPTY_FILTERS: KnowledgeFilters = {
-  query: '',
+  query: "",
   grades: [],
   processes: [],
   standards: [],
   industries: [],
-  view: 'grid',
+  view: "grid",
 } as const;
 
-/** Dimension → label map, drives sidebar group headers. */
 export const DIMENSION_LABELS: Readonly<Record<KnowledgeDimension, string>> = {
-  grade: 'Titanium Grade',
-  process: 'CNC & Processing',
-  standard: 'Standards & Compliance',
-  industry: 'Application Sector',
+  grade: "Titanium Grade",
+  process: "CNC & Processing",
+  standard: "Standards & Compliance",
+  industry: "Application Sector",
 };
 
-/** Type guard helpers — used by useKnowledgeUrlState to sanitize URL params. */
+const GRADE_TAG_PATTERNS: ReadonlyArray<readonly [RegExp, KnowledgeGrade]> = [
+  [/\bGrade\s*5\b/i, "alpha-beta-gr5"],
+  [/\bTi-?6Al-?4V\b(?!\s*ELI)/i, "alpha-beta-gr5"],
+  [/\bGrade\s*23\b/i, "alpha-beta-gr23"],
+  [/\bTi-?6Al-?4V\s*ELI\b/i, "alpha-beta-gr23"],
+  [/\bGrade\s*2\b/i, "cp-gr2"],
+  [/\bCP\s*Titanium\b/i, "cp-gr2"],
+  [/\bCommercially\s*Pure\b/i, "cp-gr2"],
+  [/\bGrade\s*1\b/i, "cp-gr1"],
+  [/\bGrade\s*3\b/i, "cp-gr3"],
+  [/\bGrade\s*4\b/i, "cp-gr4"],
+];
+
+const PROCESS_TAG_PATTERNS: ReadonlyArray<readonly [RegExp, KnowledgeProcess]> = [
+  [/\b5-?Axis\s*Machining\b/i, "5-axis-cnc"],
+  [/\bTitanium\s*CNC\b/i, "5-axis-cnc"],
+  [/\bCNC\s*Machining\b/i, "5-axis-cnc"],
+  [/\bTitanium\s*EDM\b/i, "wire-edm"],
+  [/\bEDM\b/i, "wire-edm"],
+  [/\bTitanium\s*Welding\b/i, "fabrication"],
+  [/\bTIG\s*Welding\b/i, "fabrication"],
+  [/\bAerospace\s*Welding\b/i, "fabrication"],
+  [/\bWelding\b/i, "fabrication"],
+  [/\bWelded\s*Assembl/i, "fabrication"],
+  [/\bAnodizing\b/i, "anodizing"],
+];
+
+const STANDARD_TAG_PATTERNS: ReadonlyArray<readonly [RegExp, KnowledgeStandard]> = [
+  [/\bASTM\s*B348\b/i, "astm-b348"],
+  [/\bASTM\s*F136\b/i, "astm-f136"],
+  [/\bISO\s*5832-?3\b/i, "astm-f136"],
+  [/\bASTM\s*F1472\b/i, "astm-b348"],
+  [/\bAS9100D\b/i, "as9100d"],
+  [/\bAS9100\b/i, "as9100d"],
+  [/\bAS9102\b/i, "as9100d"],
+  [/\bISO\s*13485\b/i, "iso-13485"],
+  [/\bEN\s*10204\b/i, "iso-9001"],
+];
+
+const INDUSTRY_TAG_PATTERNS: ReadonlyArray<readonly [RegExp, KnowledgeIndustry]> = [
+  [/\bAerospace\b/i, "aerospace"],
+  [/\bMedical\s*Implant/i, "medical-implants"],
+  [/\bChemical\s*Processing\b/i, "chemical"],
+  [/\bMarine\b/i, "marine-superyacht"],
+  [/\bRacing\b/i, "racing-motorsport"],
+];
+
+function deriveFromTags<T extends string>(
+  tags: readonly string[],
+  patterns: ReadonlyArray<readonly [RegExp, T]>,
+): T[] {
+  const joined = tags.join(" ");
+  const seen = new Set<T>();
+  for (const [pattern, id] of patterns) {
+    if (pattern.test(joined)) seen.add(id);
+  }
+  return Array.from(seen);
+}
+
+export function deriveGradesFromTags(tags: readonly string[]): KnowledgeGrade[] {
+  return deriveFromTags(tags, GRADE_TAG_PATTERNS);
+}
+
+export function deriveProcessesFromTags(tags: readonly string[]): KnowledgeProcess[] {
+  return deriveFromTags(tags, PROCESS_TAG_PATTERNS);
+}
+
+export function deriveStandardsFromTags(tags: readonly string[]): KnowledgeStandard[] {
+  return deriveFromTags(tags, STANDARD_TAG_PATTERNS);
+}
+
+export function deriveIndustriesFromTags(tags: readonly string[]): KnowledgeIndustry[] {
+  return deriveFromTags(tags, INDUSTRY_TAG_PATTERNS);
+}
+
+export function isTitaniumBlogEntry(
+  tags: readonly string[],
+  title: string,
+): boolean {
+  const hay = `${title} ${tags.join(" ")}`;
+  return /\b(titanium|Ti-6Al-4V|Ti-3Al-2\.5V|Ti-6Al-4V ELI)\b/i.test(hay)
+    || /\b(Grade\s*[1-9]|CP\s*Titanium)\b/i.test(hay);
+}
+
 const GRADE_SET: ReadonlySet<string> = new Set<KnowledgeGrade>([
-  'cp-gr1', 'cp-gr2', 'cp-gr3', 'cp-gr4',
-  'alpha-beta-gr5', 'alpha-beta-gr23',
-  'beta-gr19', 'beta-gr21',
+  "cp-gr1", "cp-gr2", "cp-gr3", "cp-gr4",
+  "alpha-beta-gr5", "alpha-beta-gr23",
+  "beta-gr19", "beta-gr21",
 ]);
 const PROCESS_SET: ReadonlySet<string> = new Set<KnowledgeProcess>([
-  '5-axis-cnc', 'swiss-lathe', 'wire-edm', 'anodizing', 'pvd',
-  'additive-manufacturing', 'fabrication',
+  "5-axis-cnc", "swiss-lathe", "wire-edm", "anodizing", "pvd",
+  "additive-manufacturing", "fabrication",
 ]);
 const STANDARD_SET: ReadonlySet<string> = new Set<KnowledgeStandard>([
-  'astm-b348', 'astm-f136', 'ams-4928', 'iso-9001', 'eu-ped',
-  'as9100d', 'iso-13485',
+  "astm-b348", "astm-f136", "ams-4928", "iso-9001", "eu-ped",
+  "as9100d", "iso-13485",
 ]);
 const INDUSTRY_SET: ReadonlySet<string> = new Set<KnowledgeIndustry>([
-  'aerospace', 'medical-implants', 'marine-superyacht',
-  'racing-motorsport', 'subsea-hydrofoil', 'chemical',
+  "aerospace", "medical-implants", "marine-superyacht",
+  "racing-motorsport", "subsea-hydrofoil", "chemical",
 ]);
 
 export function isKnowledgeGrade(v: string): v is KnowledgeGrade {
@@ -179,17 +251,9 @@ export function isKnowledgeIndustry(v: string): v is KnowledgeIndustry {
   return INDUSTRY_SET.has(v);
 }
 export function isKnowledgeViewMode(v: string): v is KnowledgeViewMode {
-  return v === 'grid' || v === 'list';
+  return v === "grid" || v === "list";
 }
 
-/**
- * Pure filter function — single point of filtering logic. Memoization is the
- * caller's responsibility (see KnowledgeBaseHub).
- *
- * @param articles  the full corpus (always the same reference, never mutated)
- * @param filters   current filter state from useKnowledgeUrlState
- * @param query     DEBOUNCED search query (caller pre-debounces for perf)
- */
 export function filterKnowledgeArticles(
   articles: readonly KnowledgeArticle[],
   filters: KnowledgeFilters,
@@ -202,14 +266,11 @@ export function filterKnowledgeArticles(
   const hasIndustry = filters.industries.length > 0;
   const hasAnyFilter = hasGrade || hasProcess || hasStandard || hasIndustry;
   if (q.length === 0 && !hasAnyFilter) return articles;
-
   return articles.filter((a) => {
-    // ── Free-text query — match title + summary + first 500 chars of body ──
     if (q.length > 0) {
       const hay = `${a.title} ${a.summary} ${a.bodyHtml.slice(0, 500)}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
-    // ── Facet filters: OR-within-dimension, AND-across-dimensions ──
     if (hasGrade && !filters.grades.some((g) => a.gradeTags.includes(g))) return false;
     if (hasProcess && !filters.processes.some((p) => a.processTags.includes(p))) return false;
     if (hasStandard && !filters.standards.some((s) => a.standardTags.includes(s))) return false;
@@ -218,14 +279,6 @@ export function filterKnowledgeArticles(
   });
 }
 
-/**
- * Compute the count for each facet option, EXCLUDING the dimension being
- * computed. This is the standard "Amazon-style" faceting: the grade counts
- * show "how many results would match if I picked THIS grade, given the
- * currently selected process/standard/industry filters".
- *
- * Result is memoization-friendly (pure, no closure captures).
- */
 export function computeFacetCounts(
   articles: readonly KnowledgeArticle[],
   filters: KnowledgeFilters,
@@ -234,19 +287,15 @@ export function computeFacetCounts(
 ): Readonly<Record<string, number>> {
   const q = query.trim().toLowerCase();
   const counts: Record<string, number> = {};
-
-  // Build a filter copy with the current dimension emptied.
   const filtersWithoutDim: KnowledgeFilters = {
     query: filters.query,
-    grades: dimension === 'grade' ? [] : filters.grades,
-    processes: dimension === 'process' ? [] : filters.processes,
-    standards: dimension === 'standard' ? [] : filters.standards,
-    industries: dimension === 'industry' ? [] : filters.industries,
+    grades: dimension === "grade" ? [] : filters.grades,
+    processes: dimension === "process" ? [] : filters.processes,
+    standards: dimension === "standard" ? [] : filters.standards,
+    industries: dimension === "industry" ? [] : filters.industries,
     view: filters.view,
   };
-
   for (const a of articles) {
-    // Apply the non-current-dimension filters (and the query).
     if (q.length > 0) {
       const hay = `${a.title} ${a.summary} ${a.bodyHtml.slice(0, 500)}`.toLowerCase();
       if (!hay.includes(q)) continue;
@@ -259,76 +308,38 @@ export function computeFacetCounts(
       && !filtersWithoutDim.standards.some((s) => a.standardTags.includes(s))) continue;
     if (filtersWithoutDim.industries.length > 0
       && !filtersWithoutDim.industries.some((i) => a.industryTags.includes(i))) continue;
-
-    // Count this article toward each tag it carries in the target dimension.
     const tags = (() => {
       switch (dimension) {
-        case 'grade': return a.gradeTags;
-        case 'process': return a.processTags;
-        case 'standard': return a.standardTags;
-        case 'industry': return a.industryTags;
+        case "grade": return a.gradeTags;
+        case "process": return a.processTags;
+        case "standard": return a.standardTags;
+        case "industry": return a.industryTags;
       }
     })();
     for (const t of tags) counts[t] = (counts[t] ?? 0) + 1;
   }
-
   return counts;
 }
 
-/** Build the 4 facet groups in stable display order. */
 export function buildFacetGroups(
   articles: readonly KnowledgeArticle[],
   filters: KnowledgeFilters,
   query: string,
 ): readonly KnowledgeFacetGroup[] {
-  const gradeCounts = computeFacetCounts(articles, filters, query, 'grade');
-  const processCounts = computeFacetCounts(articles, filters, query, 'process');
-  const standardCounts = computeFacetCounts(articles, filters, query, 'standard');
-  const industryCounts = computeFacetCounts(articles, filters, query, 'industry');
-
+  const gradeCounts = computeFacetCounts(articles, filters, query, "grade");
+  const processCounts = computeFacetCounts(articles, filters, query, "process");
+  const standardCounts = computeFacetCounts(articles, filters, query, "standard");
+  const industryCounts = computeFacetCounts(articles, filters, query, "industry");
   const buildOptions = (
     ids: readonly string[],
     labels: Readonly<Record<string, string>>,
     counts: Readonly<Record<string, number>>,
   ): readonly KnowledgeFacetOption[] =>
     ids.map((id) => ({ id, label: labels[id] ?? id, count: counts[id] ?? 0 }));
-
   return [
-    {
-      dimension: 'grade',
-      label: DIMENSION_LABELS.grade,
-      options: buildOptions(
-        Object.keys(GRADE_LABELS),
-        GRADE_LABELS as Readonly<Record<string, string>>,
-        gradeCounts,
-      ),
-    },
-    {
-      dimension: 'process',
-      label: DIMENSION_LABELS.process,
-      options: buildOptions(
-        Object.keys(PROCESS_LABELS),
-        PROCESS_LABELS as Readonly<Record<string, string>>,
-        processCounts,
-      ),
-    },
-    {
-      dimension: 'standard',
-      label: DIMENSION_LABELS.standard,
-      options: buildOptions(
-        Object.keys(STANDARD_LABELS),
-        STANDARD_LABELS as Readonly<Record<string, string>>,
-        standardCounts,
-      ),
-    },
-    {
-      dimension: 'industry',
-      label: DIMENSION_LABELS.industry,
-      options: buildOptions(
-        Object.keys(INDUSTRY_LABELS),
-        INDUSTRY_LABELS as Readonly<Record<string, string>>,
-        industryCounts,
-      ),
-    },
+    { dimension: "grade", label: DIMENSION_LABELS.grade, options: buildOptions(Object.keys(GRADE_LABELS), GRADE_LABELS as Readonly<Record<string, string>>, gradeCounts) },
+    { dimension: "process", label: DIMENSION_LABELS.process, options: buildOptions(Object.keys(PROCESS_LABELS), PROCESS_LABELS as Readonly<Record<string, string>>, processCounts) },
+    { dimension: "standard", label: DIMENSION_LABELS.standard, options: buildOptions(Object.keys(STANDARD_LABELS), STANDARD_LABELS as Readonly<Record<string, string>>, standardCounts) },
+    { dimension: "industry", label: DIMENSION_LABELS.industry, options: buildOptions(Object.keys(INDUSTRY_LABELS), INDUSTRY_LABELS as Readonly<Record<string, string>>, industryCounts) },
   ];
 }
