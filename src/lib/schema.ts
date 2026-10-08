@@ -99,6 +99,7 @@ export type PageType =
   | 'industries'
   | 'industry-detail'
   | 'resources'
+  | 'tech-article'
   | 'rfq'
   | 'standard-parts-hub'
   | 'standard-part-detail'
@@ -679,6 +680,53 @@ export function buildArticle(input: {
   };
 }
 
+/**
+ * Schema.org TechArticle builder.
+ *
+ * TechArticle is the precise Article subtype for technical / engineering
+ * content (per https://schema.org/TechArticle). It carries two
+ * TechArticle-specific properties absent from the generic Article builder:
+ *   - `proficiencyLevel` — declares the assumed reader knowledge tier.
+ *   - `about`            — the technical subject the article covers (entity
+ *                          link or string label). Used by Google to surface
+ *                          the article in "expertise"-filtered search.
+ *
+ * Emitted only for `pageType === 'tech-article'` pages (Titanium Knowledge
+ * Base, currently the only consumer). Backed by BaseLayout's
+ * `articleHeadline` / `articleDescription` props, which `buildPageGraph`
+ * already routes to this builder.
+ */
+export function buildTechArticle(input: {
+  headline: string;
+  description: string;
+  url: string;
+  author: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  mainEntityOfPage?: string;
+  /** Optional audience tier — 'Expert' for engineer-facing deep-dives, 'Beginner' for intro material. */
+  proficiencyLevel?: 'Beginner' | 'Expert';
+  /** Technical subject — entity link, schema.org @id, or plain string. */
+  about?: string | readonly string[];
+}) {
+  return {
+    '@type': 'TechArticle',
+    '@id': input.url,
+    headline: input.headline,
+    description: input.description,
+    url: input.url,
+    author: { '@type': 'Person', name: input.author },
+    datePublished: input.datePublished,
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
+    publisher: { '@id': ORG_ID },
+    mainEntityOfPage: { '@id': input.mainEntityOfPage || input.url },
+    ...(input.image ? { image: input.image } : {}),
+    ...(input.proficiencyLevel ? { proficiencyLevel: input.proficiencyLevel } : {}),
+    ...(input.about ? { about: input.about } : {}),
+  };
+}
+
 // ── Page type detection ───────────────────────────────
 
 export function detectPageType(path: string, explicit?: PageType): PageType {
@@ -784,6 +832,13 @@ export interface SchemaPageData {
   /** ISO 8601 last-modified timestamp for Article/BlogPosting schema. */
   articleDateModified?: string | null;
   articleImage?: string;
+  /**
+   * P2-7 — TechArticle-specific: a string or array of strings describing
+   * the technical subject the article covers. Forwarded to
+   * schema.org/TechArticle.about. Falls back to a generic titanium-machining
+   * label when caller omits it.
+   */
+  articleAbout?: string | readonly string[];
 
   // Service
   serviceName?: string;
@@ -1188,6 +1243,28 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           // blog content per Google's structured-data documentation. The
           // generic 'Article' fallback would also be valid but less specific.
           articleType: 'BlogPosting',
+        }));
+      }
+      break;
+
+    // P2-7 — Titanium Knowledge Base hub page emits a TechArticle entity.
+    // Drives the page-level structured-data so Google's "expertise" filter
+    // can surface the page for technical / engineering queries. Same prop
+    // surface as the blog-post case (articleHeadline / articleDescription /
+    // articleAuthor / articleDatePublished / articleDateModified).
+    case 'tech-article':
+      if (data.articleHeadline) {
+        graph.push(buildTechArticle({
+          headline: data.articleHeadline,
+          description: data.articleDescription ?? data.pageDescription,
+          url: data.pageUrl,
+          author: data.articleAuthor ?? 'Boze Titanium Engineering Center',
+          datePublished: data.articleDatePublished ?? new Date().toISOString(),
+          ...(data.articleDateModified ? { dateModified: data.articleDateModified } : {}),
+          image: data.articleImage,
+          mainEntityOfPage: data.pageUrl,
+          proficiencyLevel: 'Expert',
+          about: data.articleAbout ?? 'Titanium CNC Machining, ASTM/AMS Standards, Grade 5 / Grade 23 Selection',
         }));
       }
       break;

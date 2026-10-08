@@ -430,6 +430,62 @@ const industriesCollection = defineCollection({
   }),
 });
 
+// ── Knowledge Base (Titanium Knowledge Center, P2-7) ────────────────────────
+//
+// `src/content/knowledge/<slug>.md` drives the /resources/titanium-knowledge-base/
+// hub. Each article carries multi-dimensional facet tags (grade / process /
+// standard / industry) that the React island uses for URL-synced filtering.
+//
+// Why a `type: 'content'` collection (not `data`):
+//   - Long-form technical body that benefits from Markdown rendering.
+//   - Existing blog collection precedent (type: 'content').
+//   - frontmatter array fields play nicely with zod for tag-based facets.
+
+const knowledgeCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    pubDate: z.date(),
+    updatedDate: z.date().optional(),
+    author: z.string().default('Boze Titanium Engineering Center'),
+    // ── Facet tags (all optional; absence ⇒ article surfaces in no-filter mode) ──
+    gradeTags: z.array(
+      z.enum([
+        'cp-gr1', 'cp-gr2', 'cp-gr3', 'cp-gr4',
+        'alpha-beta-gr5', 'alpha-beta-gr23',
+        'beta-gr19', 'beta-gr21',
+      ])
+    ).default([]),
+    processTags: z.array(
+      z.enum([
+        '5-axis-cnc', 'swiss-lathe', 'wire-edm', 'anodizing', 'pvd',
+        'additive-manufacturing', 'fabrication',
+      ])
+    ).default([]),
+    standardTags: z.array(
+      z.enum([
+        'astm-b348', 'astm-f136', 'ams-4928', 'iso-9001', 'eu-ped',
+        'as9100d', 'iso-13485',
+      ])
+    ).default([]),
+    industryTags: z.array(
+      z.enum([
+        'aerospace', 'medical-implants', 'marine-superyacht',
+        'racing-motorsport', 'subsea-hydrofoil', 'chemical',
+      ])
+    ).default([]),
+    primaryStandard: z.enum([
+      'astm-b348', 'astm-f136', 'ams-4928', 'iso-9001', 'eu-ped',
+      'as9100d', 'iso-13485',
+    ]).optional(),
+    readTimeMinutes: z.number().int().positive().default(5),
+    featured: z.boolean().default(false),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+  }),
+});
+
 const productSpecsCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -488,4 +544,5 @@ export const collections = {
   industries: industriesCollection,
   'product-specs': productSpecsCollection,
   'case-studies': caseStudiesCollection,
+  knowledge: knowledgeCollection,
 };

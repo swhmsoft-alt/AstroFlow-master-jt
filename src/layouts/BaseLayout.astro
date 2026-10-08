@@ -79,6 +79,12 @@ interface Props {
    */
   articleDateModified?: string | null;
   articleImage?: string;
+  /**
+   * P2-7 — TechArticle.about payload. Forwarded to `SchemaPageData.articleAbout`
+   * which is consumed by the 'tech-article' case in buildPageGraph.
+   * Omit to use the schema.ts fallback ("Titanium CNC Machining, ...").
+   */
+  articleAbout?: string | readonly string[];
   collectionName?: string;
   collectionDescription?: string;
   itemCount?: number;
@@ -196,6 +202,7 @@ const {
   articleAuthor,
   articleDateModified,
   articleImage,
+  articleAbout,
   collectionName,
   collectionDescription,
   itemCount,
@@ -255,12 +262,13 @@ const resolvedServiceName = serviceName ?? ((pageType === 'service-detail' || pa
 // mirroring the previous blog-post behavior. Both page types derive Article
 // from page metadata; the type difference (BlogPosting vs Article) is decided
 // in schema.ts switch case.
-const resolvedArticleHeadline = articleHeadline ?? ((explicitPageType === 'blog-post' || explicitPageType === 'case-study') ? title : undefined);
+const resolvedArticleHeadline = articleHeadline ?? ((explicitPageType === 'blog-post' || explicitPageType === 'case-study' || explicitPageType === 'tech-article') ? title : undefined);
 const schemaData = {
   pageName: title, pageDescription: description, pageUrl: canonicalUrl, inLanguage: ogLocale.replace('_', '-'),
   breadcrumbItems,
   articleHeadline: resolvedArticleHeadline, articleDescription: articleDescription ?? description, articleAuthor: articleAuthor ?? author,
   articleDatePublished: pubDate ?? undefined, articleDateModified: articleDateModified ?? undefined, articleImage,
+  articleAbout,
   serviceName: resolvedServiceName, serviceDescription: serviceDescription ?? (resolvedServiceName ? description : undefined),
   serviceCategory, productName, productDescription: productDescription ?? (productName ? description : undefined), productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, collectionDescription, itemCount, items,

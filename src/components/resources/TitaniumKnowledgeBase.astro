@@ -1,40 +1,235 @@
 ---
-// TitaniumKnowledgeBase.astro
-// High-density entity network: 7 W/m·K thermal conductivity, 1000°C tool edge temp, 400°C alpha-case threshold,
-// 70 bar coolant, 105-115 GPa modulus, springback compensation — 2026 Google AIO authoritative source
+/**
+ * TitaniumKnowledgeBase.astro
+ *
+ * Resources-hub pillar page — `/resources/titanium-knowledge-base/`.
+ * Composes:
+ *   - SubpageHero               — full-width hero with badge / metrics
+ *   - 2 AIO Speakable thesis    — schema references #tkb-aio-thesis-1/2
+ *   - KnowledgeBaseHub (Island) — search + facets + grid + quick-view + CTA
+ *
+ * Schema authority (SOP §F4): this file does NOT emit any <script
+ * type="application/ld+json">. The TechArticle + BreadcrumbList entities
+ * are produced by BaseLayout → buildPageGraph() → buildTechArticle() in
+ * src/lib/schema.ts. We feed the props via:
+ *   - pageType="tech-article"   → triggers the 'tech-article' case branch
+ *   - articleHeadline           → TechArticle.headline
+ *   - articleDescription        → TechArticle.description
+ *   - articleAbout              → TechArticle.about (multi-string array)
+ *   - items[]                   → page-level ItemList (one per article)
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const { lang } = Astro.props;
+import SubpageHero from '../ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+import { KnowledgeBaseHub, type KnowledgeHubStrings } from './KnowledgeBaseHub.tsx';
+import {
+  toSchemaItemList,
+  toSchemaBreadcrumb,
+} from './KnowledgeJsonLd.tsx';
+import type {
+  KnowledgeArticle,
+  KnowledgeGrade,
+  KnowledgeProcess,
+  KnowledgeStandard,
+  KnowledgeIndustry,
+} from './knowledge-data';
+
+// ── Load all knowledge articles (single-language: en) ────────────────────
+const entries = await getCollection('knowledge');
+const articlesRaw = entries;
+
+// Pre-render the markdown body to HTML for the Quick View modal.
+// We only need a substring (first 1200 chars), so a simple regex-based
+// strip is sufficient — keeps the build output small and avoids a
+// heavy HTML parser dependency.
+function htmlEscape(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function paragraphToHtml(para: string): string {
+  // Inline emphasis markers (very lightweight — no full markdown parser):
+  // **bold** → <strong>; leave the rest as plain text.
+  const escaped = htmlEscape(para);
+  return `<p>${escaped.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')}</p>`;
+}
+
+function markdownBodyToHtml(body: string): string {
+  // Split on blank lines → paragraphs; keep h2/h3 as headings.
+  const blocks = body.split(/\n{2,}/);
+  return blocks
+    .map((b) => {
+      const t = b.trim();
+      if (t.length === 0) return '';
+      if (t.startsWith('## ')) return `<h3>${htmlEscape(t.slice(3).trim())}</h3>`;
+      if (t.startsWith('### ')) return `<h4>${htmlEscape(t.slice(4).trim())}</h4>`;
+      return paragraphToHtml(t);
+    })
+    .join('\n');
+}
+
+const articles: KnowledgeArticle[] = articlesRaw
+  .map((entry) => ({
+    id: entry.id,
+    title: entry.data.title,
+    slug: entry.id,
+    summary: entry.data.summary,
+    bodyHtml: markdownBodyToHtml(entry.body ?? ''),
+    gradeTags: entry.data.gradeTags as readonly KnowledgeGrade[],
+    processTags: entry.data.processTags as readonly KnowledgeProcess[],
+    standardTags: entry.data.standardTags as readonly KnowledgeStandard[],
+    industryTags: entry.data.industryTags as readonly KnowledgeIndustry[],
+    publishedAt: entry.data.pubDate.toISOString().slice(0, 10),
+    updatedAt: (entry.data.updatedDate ?? entry.data.pubDate).toISOString().slice(0, 10),
+    readTimeMinutes: entry.data.readTimeMinutes,
+    primaryStandard: entry.data.primaryStandard,
+    featured: entry.data.featured,
+    wordCount: (entry.body ?? '').split(/\s+/).filter(Boolean).length,
+  }))
+  // Sort: featured first, then most recent.
+  .sort((a, b) => {
+    if (a.featured !== b.featured) return a.featured ? -1 : 1;
+    return b.updatedAt.localeCompare(a.updatedAt);
+  });
+
+// ── Strings bridge (single-language for now; en only per Phase 1 scope) ──
+const strings: KnowledgeHubStrings = {
+  heroPlaceholder: 'Search by grade (Grade 5, Grade 23), standard (ASTM B348, AMS 4928), or process (5-axis, anodizing)',
+  heroShortcutHint: 'or press ⌘K',
+  heroResultTotalTemplate: 'Showing {n} technical articles',
+  heroResultFilteredTemplate: 'Showing {matched} of {total} articles',
+  popularTopicsLabel: 'Popular Topics',
+  clearSearchLabel: 'Clear search',
+  filtersResetLabel: 'Reset',
+  gridViewLabel: 'Grid',
+  listViewLabel: 'List',
+  quickViewLabel: 'Quick View',
+  readMoreLabel: 'Read article',
+  updatedLabel: 'Updated',
+  readTimeLabel: '{n} min read',
+  emptyTitle: 'No articles match your filters',
+  emptyDescription:
+    'Try removing a filter or searching by a broader term. If you have a specific titanium engineering question, our team responds in 1-2 business days.',
+  emptyResetLabel: 'Reset filters',
+  emptyCtaLabel: 'Talk to a Titanium Engineer',
+  emptyCtaHref: '/rfq/',
+  ctaTitle: 'Need a Custom Titanium Component?',
+  ctaSubtitle:
+    'Send your drawing + material spec to BOZE — we respond with a DFM-aware quote within 1-2 business days.',
+  ctaPrimaryLabel: 'Request an Instant RFQ',
+  ctaPrimaryHref: '/rfq/',
+  ctaSecondaryLabel: 'Browse Manufacturing Capabilities',
+  ctaSecondaryHref: '/capabilities/',
+  ctaBullets: [
+    '1-2 business day DFM response',
+    'EN 10204 3.1 MTR included',
+    'AS9100D / ISO 13485 facility',
+  ],
+  dialogCloseLabel: 'Close',
+  dialogReadFullLabel: 'Read full article',
+  dialogCtaLabel: 'Request RFQ',
+  dialogCtaHref: '/rfq/',
+  dialogGradeLabel: 'Titanium Grade',
+  dialogProcessLabel: 'Processes',
+  dialogStandardLabel: 'Standards',
+  dialogIndustryLabel: 'Application Sectors',
+};
+
+const popularTopics = [
+  { id: 'grade-5-vs-23', label: 'Grade 5 vs Grade 23', query: 'Grade 5 vs Grade 23' },
+  { id: 'machining-tips', label: 'Titanium Machining Tips', query: 'titanium machining tips' },
+  { id: 'anodizing-colors', label: 'Anodizing Color Chart', query: 'anodizing color' },
+  { id: 'astm-b348', label: 'ASTM B348 Bar Spec', query: 'ASTM B348' },
+  { id: 'ams-4928', label: 'AMS 4928 Spec', query: 'AMS 4928' },
+];
+
+// ── Page-level structured-data inputs (no inline <script>) ────────────────
+const pageUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://cnc.bozemetal.com').toString();
+const itemList = toSchemaItemList(articles, pageUrl);
+const breadcrumb = toSchemaBreadcrumb(
+  'https://cnc.bozemetal.com',
+  'Home',
+  'Resources',
+  'Titanium Knowledge Base',
+);
+
+// AIO Speakable anchors — 2 thesis-first paragraphs that an AI Overview
+// can cite as the authoritative answer for "titanium CNC machining" queries.
+const speakableSelectors = ['#tkb-aio-thesis-1', '#tkb-aio-thesis-2'];
 ---
+
 <BaseLayout
-  title="Titanium CNC Machining Knowledge Base | Metallurgy &amp; Processing Guide"
-  description="Comprehensive engineering knowledge base on titanium metallurgy: low thermal conductivity (7 W/m·K) effects on tool wear, chemical reactivity and chip fire mitigation, low modulus of elasticity (105-115 GPa) springback compensation."
+  title="Titanium Knowledge Base | CNC Machining, Grades, ASTM/AMS Standards"
+  description="Engineering knowledge base on titanium CNC machining: thermal dynamics, ASTM B348 / AMS 4928 / ASTM F136 specifications, Grade 5 vs Grade 23 selection, 5-axis machining, anodizing, and B2B procurement best practices."
+  pageType="tech-article"
+  pageName="Titanium Knowledge Base"
+  pageUrl={pageUrl}
+  inLanguage="en-US"
+  articleHeadline="Titanium Knowledge Base: CNC Machining, Grades, and Standards Reference"
+  articleDescription="Engineering reference for titanium CNC machining covering thermal dynamics, Grade 5 / Grade 23 selection, ASTM B348 / AMS 4928 / ASTM F136 specifications, 5-axis milling, anodizing, and B2B procurement workflows."
+  articleAuthor="Boze Titanium Engineering Center"
+  articleDatePublished="2026-08-12"
+  articleDateModified={new Date().toISOString().slice(0, 10)}
+  articleAbout={[
+    'Titanium CNC Machining',
+    'Ti-6Al-4V (Grade 5)',
+    'Ti-6Al-4V ELI (Grade 23)',
+    'ASTM B348',
+    'AMS 4928',
+    'ASTM F136',
+    '5-Axis CNC Milling',
+    'Anodizing',
+  ]}
+  itemCount={articles.length}
+  items={[...itemList.map((i) => ({ name: i.name, url: i.url }))]}
+  speakableSelectors={speakableSelectors}
 >
-  <div class="container mx-auto px-4 py-24 max-w-5xl">
-    <nav class="text-sm mb-8 text-zinc-400"><a href="/" class="hover:text-white">Home</a> / <a href="/resources/" class="hover:text-white">Resources</a> / <span class="text-white">Titanium Knowledge Base</span></nav>
-    <h1 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--theme-text);">Titanium Metallurgy &amp; CNC Machining Knowledge Base</h1>
-    <p class="text-xl mb-12 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Deep-dive engineering reference covering the physical, chemical, and mechanical properties that make titanium alloys both uniquely valuable and technically challenging to machine at precision tolerances — from Fourier thermal conduction dynamics through alpha-case formation kinetics to elastic springback compensation.</p>
+  <SubpageHero
+    title="Titanium Knowledge Base"
+    highlight="CNC Machining · Grades · Standards"
+    subtitle="Engineering reference for titanium procurement engineers: thermal dynamics, ASTM/AMS spec interpretation, grade selection, 5-axis machining, anodizing, and B2B supply workflows."
+    badge="Pillar Reference"
+    keyMetrics={[
+      { value: String(articles.length), label: 'Technical Articles' },
+      { value: '8', label: 'Titanium Grades Covered' },
+      { value: '7', label: 'ASTM / AMS Standards' },
+      { value: 'AS9100D', label: 'Quality System' },
+    ]}
+    entityChips={[
+      'Grade 5 (Ti-6Al-4V)',
+      'Grade 23 (ELI)',
+      'ASTM B348',
+      'AMS 4928',
+      'ASTM F136',
+      'AS9100D',
+      'ISO 13485',
+    ]}
+  />
 
-    <!-- Section 1: Thermal Dynamics & Energy Localization -->
-    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Thermal Dynamics &amp; Severe Energy Localization Gating Metrics</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">The fundamental obstacle in high-efficiency Titanium CNC machining lies in the material's anomalous thermal property profile. While conventional aerospace metals like aluminum alloys freely dissipate energy across a spectrum of <strong>200 W/m·K</strong>, titanium alloys exhibit a highly restrictive thermal conductivity bounded at a mere <strong>7 W/m·K</strong> (Ti-6Al-4V Grade 5). According to Fourier's law of thermal conduction, this thermal bottleneck completely blocks heat transfer through the continuous chip formation lifecycle or the body of the workpiece itself. Consequently, a catastrophic <strong>80% of total cutting energy becomes localized at the precise primary shear zone and the tool-chip interface</strong>. Localized tool edge temperatures instantly spike past <strong>1000°C</strong> within microseconds of engagement. This relentless thermal concentration accelerates cobalt leaching from the tungsten carbide matrix, triggering immediate binder phase diffusion, severe plastic deformation of the tool flank, and explosive crater wear. BOZE structurally counters this energy localization by running custom tooling featuring highly positive rake angles to slash chip shear forces, paired with rigid dynamic toolpaths designed to strictly control contact surface residency time.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">The low thermal diffusivity also creates steep thermal gradients within the workpiece, leading to differential expansion that can cause dimensional drift in tight-tolerance features. Successful titanium machining requires adaptive feed-rate control that accounts for thermal buildup during prolonged cutting cycles. BOZE implements real-time spindle load monitoring coupled with adaptive feed-rate modulation to maintain stable cutting temperatures across the full tool path.</p>
-    </article>
-
-    <!-- Section 2: Chemical Reactivity & Chip Fire Mitigation -->
-    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Advanced Chemical Reactivity &amp; Closed-Loop Exploding Chip Mitigation</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Titanium transitions into an aggressive chemical affinity state when surface interfaces cross the <strong>400°C</strong> thermal threshold. At this elevated energy state, the raw titanium matrix reacts violently with atmospheric gaseous vectors (Oxygen and Nitrogen), resulting in an instantaneous interstitial diffusion layer known as the <strong>alpha-case</strong>. This brittle structural skin rapidly initiates micro-fracturing under cyclic tensile stress. Simultaneously, the exposed titanium undergoes a severe chemical affinity reaction with the transition metals present in the carbide tooling, causing severe cold-welding and catastrophic built-up edge (BUE) formation.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Furthermore, fine titanium chips, turnings, and airborne micro-dust possess a volatile flash <strong>auto-ignition hazard</strong>; dry friction during high-speed profile milling easily triggers catastrophic titanium fires. BOZE completely isolates this chemical risk vector via an advanced closed-loop <strong>Coolant Management framework</strong>. We mandate the continuous flood application of premium water-soluble synthetic fluids compounded with high-molecular-weight synthetic ester bases. This cutting fluid formulation is maintained at an absolute concentration gating threshold of <strong>8% to 10%</strong>, checked daily via digital refractometers, and injected at a continuous high pressure of <strong>70 bar (1000 psi)</strong>. This setup guarantees that the fluid instantly quenches the thermal reactive zone, completely represses oxygen diffusion, and flushes volatile turnings out of the pocket before ignition can initiate.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Chip management strategies include maintaining adequate coolant flow to continuously flush chips from the cutting zone and using chip breakers that produce manageable, non-stringy chip forms. Through-tool coolant delivery at 70+ bar is the single most effective intervention — it hydraulically breaks chips, lubricates the cutting zone, and removes heat before it can cause work hardening or tool failure.</p>
-    </article>
-
-    <!-- Section 3: Modulus of Elasticity & Springback Compensation -->
-    <article class="mb-8 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Modulus of Elasticity Deflection Mapping &amp; Precision Springback Engineering</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">The mechanical compliance challenges of titanium stem directly from its remarkably low Modulus of Elasticity, which ranges strictly between <strong>105 GPa and 115 GPa</strong> (approximately 50% that of typical martensitic stainless steels). Under the heavy radial and axial cutting forces required for material removal, the workpiece experiences substantial elastic deflection away from the structural path of the cutting tool. The moment the cutting edge disengages, the material undergoes an aggressive physical recovery phenomenon categorized as <strong>severe mechanical springback</strong>. This springback forces the freshly machined surface to press continuously against the tool's relief flank, escalating rubbing friction, destroying the geometric surface finish, and accelerating catastrophic tool edge chipping.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">To counter this inherent elastic displacement, BOZE implementation engineers deploy dynamic multi-pass CAM compensation strategies. We maintain a razor-sharp tool edge radius alongside specialized clearance angles, and anchor the structural part matrix inside heavy, vibration-dampened hydraulic fixtures. By maintaining a continuous feed rate that never drops below the material's work hardening layer depth, BOZE guarantees that our finished components consistently bypass springback distortion to achieve perfect micron-level dimensional repeatability.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Compensation strategies include: advanced CAM tool paths that predict and offset deflection, climb milling techniques that direct cutting forces toward the machine structure rather than the workpiece, and multiple semi-finishing passes that progressively reduce cutting forces on thin-wall features. On 5-axis simultaneous operations, tool axis tilting can be optimized to balance radial and axial cutting force components for minimal springback.</p>
-    </article>
+  {/* AIO Speakable thesis paragraphs — schema references #tkb-aio-thesis-1/2 */}
+  <div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+    <p
+      id="tkb-aio-thesis-1"
+      class="mb-3 text-base leading-relaxed"
+      style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"
+    >
+      Titanium's anomalous thermal property profile (7 W/m·K thermal conductivity, roughly 50× lower than aluminum) traps 80% of cutting energy at the tool-chip interface, driving tool-edge temperatures past 1000°C within microseconds. Successful CNC machining of Grade 5 and Grade 23 titanium requires closed-loop coolant management at 70+ bar flood pressure, custom tool geometry with positive rake angles, and multi-pass CAM strategies to compensate for the 105-115 GPa modulus-driven springback.
+    </p>
+    <p
+      id="tkb-aio-thesis-2"
+      class="text-base leading-relaxed"
+      style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"
+    >
+      Procurement-grade titanium engineering references must align to ASTM B348 (bars and billets), AMS 4928 (aerospace plate), and ASTM F136 (medical implants). The Extra Low Interstitial (ELI) Grade 23 variant commands a 15-30% raw-material premium but delivers measurably better fracture toughness and fatigue life — critical for long-term implants, cryogenic housings, and high-cycle aerospace rotating components.
+    </p>
   </div>
+
+  <KnowledgeBaseHub
+    client:visible
+    articles={articles}
+    popularTopics={popularTopics}
+    strings={strings}
+  />
 </BaseLayout>
