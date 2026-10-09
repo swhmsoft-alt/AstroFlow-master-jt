@@ -383,6 +383,46 @@ export default defineConfig({
           "EN 10204 3.1 mill test report titanium": {
             "href": "/resources/titanium-grades-guide/"
           },
+          // BSI 2026-10-09 — Design & Engineering Guide pillar page (5-inbound #5: keywordMap)
+          "titanium design engineering guide": {
+            "href": "/resources/design-engineering-guide/"
+          },
+          "Titanium Design & Engineering Guide": {
+            "href": "/resources/design-engineering-guide/"
+          },
+          "titanium DFM hub": {
+            "href": "/resources/design-engineering-guide/"
+          },
+          "titanium DFM engineering hub": {
+            "href": "/resources/design-engineering-guide/"
+          },
+          "titanium DFM rules": {
+            "href": "/resources/design-engineering-guide/#rule-thin-wall"
+          },
+          "titanium minimum wall thickness": {
+            "href": "/resources/design-engineering-guide/#rule-thin-wall"
+          },
+          "titanium internal corner radius": {
+            "href": "/resources/design-engineering-guide/#rule-internal-radius"
+          },
+          "titanium deep hole drilling L/D ratio": {
+            "href": "/resources/design-engineering-guide/#rule-deep-hole"
+          },
+          "titanium thread depth DFM": {
+            "href": "/resources/design-engineering-guide/#rule-thread-depth"
+          },
+          "titanium 5-axis toolpath engagement": {
+            "href": "/resources/design-engineering-guide/#rule-5axis-toolpath"
+          },
+          "titanium surface roughness Ra stress relief": {
+            "href": "/resources/design-engineering-guide/#rule-surface-finish"
+          },
+          "ASME Y14.5 titanium GD&T": {
+            "href": "/resources/design-engineering-guide/"
+          },
+          "AS9100D titanium design review": {
+            "href": "/resources/design-engineering-guide/"
+          },
           "Coordinate Measuring Machine (CMM)": {
             "href": "/equipment/cmm/"
           },

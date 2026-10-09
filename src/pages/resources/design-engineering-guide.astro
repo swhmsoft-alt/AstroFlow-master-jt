@@ -1,4 +1,93 @@
 ---
+// src/pages/resources/design-engineering-guide.astro
+// English route for /resources/design-engineering-guide/.
+// Schema authority: BaseLayout props → buildPageGraph (no inline JSON-LD).
+// Mirrors `titanium-grades-guide.astro` sibling pattern.
+//
+// Answer Module 6 elements:
+//  ① Direct Answer — SubpageHero H1/subtitle (inside DesignEngineeringGuide.astro)
+//  ② Honest Positioning — Compliance ribbons (ISO 9001 / AS9100D / EN 10204 3.1)
+//  ③ Structured Body — Quick-Checker, Rules Matrix, Good-vs-Bad Dialog, Calculators
+//  ④ Claim ↔ Evidence — Every DFM rule cites ASTM/AMS/ASME/ISO/EN numbers
+//  ⑤ Entities — TechArticle + FAQPage + ItemList via buildPageGraph
+//  ⑥ Related — Internal links to /titanium-cnc-machining-services/, /materials/, /rfq/
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import DesignEngineeringGuide from '../../components/resources/DesignEngineeringGuide.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { DFM_RULES } from '../../components/resources/design-engineering-data';
+import {
+  toSchemaItemList,
+  toSchemaArticleAbout,
+} from '../../components/resources/DesignEngineeringJsonLd';
+
+const heroKey = '/resources/design-engineering-guide' as const;
+const hero = HERO_CONFIG[heroKey];
+
+const SITE_URL = 'https://cnc.bozemetal.com';
+const PAGE_URL = `${SITE_URL}/resources/design-engineering-guide/`;
+
+// 6 FAQ items — drive both the page @graph FAQPage entity and Answer Module ⑥
+const faqItems: ReadonlyArray<{ readonly question: string; readonly answer: string }> = [
+  {
+    question: 'What is the minimum wall thickness for Grade 5 titanium CNC machining?',
+    answer: 'For structural ribs with full backing, the minimum wall thickness is ≥ 0.8 mm. For unsupported continuous outer walls, ≥ 1.2 mm is required, with H/T ratio ≤ 10:1. Below 0.8 mm, titanium\u2019s low elastic modulus (E ≈ 110 GPa) causes elastic springback and harmonic chatter during pocketing. The remedy is trochoidal milling with 3 semi-finish passes (0.1 mm step-down) and AMS 2801 vacuum stress relief at 650 °C × 2 h.',
+  },
+  {
+    question: 'What is the recommended internal corner radius for titanium pocketing?',
+    answer: 'Never specify a 90° internal corner — it forces the end mill into a 180° wrap that spikes radial cutting force by ~1.5× and snaps the shank. The DFM rule is R ≥ 1.15 × tool radius. For a Ø 6 mm end mill this is R ≥ 3.45 mm; for Ø 10 mm, R ≥ 5.75 mm. If a sharp internal corner is required (e.g. sealing groove), switch to wire EDM (R 0.05 mm achievable) or sinker EDM.',
+  },
+  {
+    question: 'What is the maximum L/D ratio for deep-hole drilling in titanium?',
+    answer: 'For standard blind holes, L/D ≤ 5:1 with a standard carbide drill. For deeper holes up to L/D 12:1, a single-flute gun-drill with internal coolant channels at ≥ 100 bar is required. Beyond 12:1, step down to a smaller Ø in a pilot → Ø 3 → Ø 6 sequence. Titanium\u2019s low thermal conductivity (k ≈ 6.7 W/m·K, 1/8 of 304 SS) traps heat in the chip; without high-pressure through-tool coolant, galling and drill seizure occur above 50 m/min cutting speed.',
+  },
+  {
+    question: 'What is the maximum thread depth in Grade 5 titanium?',
+    answer: 'Limit blind-hole thread depth to ≤ 2.0 × D (for through-holes ≤ 2.5 × D, where D is the nominal thread diameter). Beyond this, the chip pack in the flute spikes tap torque past the fracture limit. For any blind thread in Grade 5 or Grade 23, replace cut tapping with thread milling (solid carbide, single-point 60° profile, radial interpolation Ø = thread Ø − 0.1 mm). This eliminates tap breakage and improves thread profile accuracy.',
+  },
+  {
+    question: 'How does 5-axis machining improve titanium surface finish?',
+    answer: '5-axis simultaneous machining with tool tilt 10–20° and lead angle 5–15° keeps radial engagement (ae/D) below 0.30. This eliminates chatter — the #1 cause of surface waviness in titanium — and improves surface finish by 2–4× (from Ra 1.6 µm to Ra 0.4 µm on a single finishing pass). It also reduces cycle time 30–50 % by enabling 5-axis swarf / flow toolpaths in Mastercam, HyperMill, or Vericut.',
+  },
+  {
+    question: 'What is the ASME Y14.5-2018 Profile tolerance for titanium machined parts?',
+    answer: 'BOZE regularly holds Profile of a Surface within 0.02 mm and True Position boundary down to Ø0.015 mm relative to a 3-plane datum frame (A-B-C). When designing sealing interfaces, perpendicularity and parallelism callouts must be held to a maximum of 0.01 mm to guarantee hermetic metal-to-metal seal under high-pressure gas tracking. Profile tolerances are verified using ZEISS CMM with ±1.9 µm volumetric accuracy, with full EN 10204 Type 3.1 MTRs per shipment.',
+  },
+];
+
+const itemList = toSchemaItemList(DFM_RULES, PAGE_URL);
+const articleAbout = toSchemaArticleAbout(DFM_RULES);
 ---
-<DesignEngineeringGuide />
+
+<BaseLayout
+  pageType="tech-article"
+  title={hero?.h1 ?? 'Titanium CNC Design & Engineering Guide | DFM Best Practices'}
+  description={hero?.subtitle ?? 'Engineering design guide for titanium CNC machined parts: thin-wall limits (≥ 0.8 mm), corner radius optimization (R ≥ 1.15 × tool radius), deep-hole drilling L/D ratios (5:1 blind, 12:1 gun-drill), and GD&T per ASME Y14.5-2018.'}
+  serviceName="Titanium DFM Engineering Hub"
+  serviceDescription="Authoritative Design-for-Manufacturability (DFM) reference for titanium 5-axis CNC machining — minimum wall thickness, internal corner radius, deep-hole L/D ratio, thread depth limits, 5-axis toolpath engagement, and AMS 2801 stress relief."
+  serviceCategory="Engineering Reference & DFM Best Practices"
+  faqItems={[...faqItems]}
+  faqName="Titanium DFM — Frequently Asked Questions"
+  articleAbout={articleAbout}
+  itemCount={itemList.length}
+  items={itemList.map((i) => ({ name: i.name, url: i.url }))}
+>
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm">
+        <li>
+          <a href="/" class="transition-colors hover:opacity-80" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Home</a>
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li>
+          <a href="/resources/" class="transition-colors hover:opacity-80" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Resources</a>
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li>
+          <span class="font-semibold" style="color: var(--theme-text);">Design &amp; Engineering Guide</span>
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <DesignEngineeringGuide />
+</BaseLayout>
