@@ -1,50 +1,125 @@
 ---
-// IndustryApplications.astro
-// High-density entity network: AS9100D, NADCAP, ASTM E1417, ASTM E112, ISO 13485, FDA 21 CFR Part 820,
-// ASTM F86, ISO 10993, SEMI F20, ASTM A967, Ra ≤ 0.2 µm, 10⁻⁹ Torr — regulatory compliance cross-index
+/**
+ * IndustryApplications.astro
+ *
+ * Astro shell for the Industry Applications Hub
+ * (`/resources/industry-applications/`).
+ *
+ * Architecture (post-restructure 2026-10-09):
+ *   - Static `<SubpageHero />` for the canonical title/lead/badge.
+ *   - Interactive React 19 client island `<IndustryApplicationsHub />`
+ *     (filtering, case grid, evidence modal, comparator, RFQ drawer).
+ *   - Schema authority: pageType="tech-article" + articleAbout + items
+ *     feeds BaseLayout's `buildPageGraph()`. No inline JSON-LD except
+ *     the allowed supplementary `knowsAbout` extension.
+ *   - 12 language routing handled by parent
+ *     `pages/resources/[lang]/industry-applications.astro`.
+ */
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../ui/SubpageHero.astro';
+import { IndustryApplicationsHub } from './IndustryApplicationsHub.tsx';
+import {
+  INDUSTRY_APPLICATIONS,
+  HUB_STRINGS_EN,
+} from '../../data/industry-applications-data';
+import {
+  toSchemaItemList,
+  aggregateArticleAbout,
+  buildSupplementaryKnowsAbout,
+  buildSupplementaryGraphObject,
+} from './IndustryApplicationsJsonLd.tsx';
+
+const pageUrl = 'https://cnc.bozemetal.com/resources/industry-applications/';
+const itemList = toSchemaItemList(
+  INDUSTRY_APPLICATIONS,
+  pageUrl,
+  '/resources/industry-applications/',
+);
+const articleAbout = aggregateArticleAbout(INDUSTRY_APPLICATIONS);
+const supplementary = buildSupplementaryKnowsAbout(INDUSTRY_APPLICATIONS);
+const supplementaryGraphJson = JSON.stringify(
+  buildSupplementaryGraphObject(supplementary),
+);
+const speakableSelectors = ['#iah-thesis', '#iah-dashboard-title'];
 ---
+
 <BaseLayout
-  title="Titanium Industry Applications | Aerospace, Medical, Semiconductor & Energy"
-  description="Cross-industry compliance frameworks for titanium CNC machining: AS9100D aerospace with ASTM E1417 NDT, ISO 13485 medical with ISO 10993 biocompatibility, SEMI F20 semiconductor UHV with electropolishing Ra ≤ 0.2 µm."
+  title="Titanium Industry Applications | Aerospace, Medical, Marine, Motorsport, Subsea, EDC"
+  description="Cross-industry titanium CNC machining solutions for Aerospace, Medical Implants, Marine Hydrofoil, Motorsport, Subsea & ROV, and High-End Wearable sectors. Each solution is anchored to AMS / ASTM / ISO / EN standards, real workshop evidence, and full EN 10204 3.1 traceability."
+  pageType="tech-article"
+  pageName="Titanium Industry Applications Hub"
+  pageUrl={pageUrl}
+  inLanguage="en-US"
+  articleHeadline="Titanium Industry Applications & Compliance Verification Hub: 6 Vertical Industry Solutions"
+  articleDescription="Six shop-floor-proven industry solutions — Aerospace structural brackets (AMS 4928, AS9100D), Medical implants (ASTM F136, ISO 13485, ISO 10993 Grade 0), Marine hydrofoils (Grade 7, 2000+ hr ASTM B117, NACE SP0198), Motorsport fasteners (AMS 2480, 95% UTS proof), Subsea housings (NACE MR0175, EU PED, 30 MPa), and EDC wearables (ISO 10993-5). Each application is anchored to a real standard, a real evidence metric, and full EN 10204 3.1 material traceability."
+  articleAuthor="Boze Titanium Engineering Center"
+  articleDatePublished="2026-10-09"
+  articleDateModified={new Date().toISOString().slice(0, 10)}
+  articleAbout={articleAbout}
+  collectionName="Titanium Industry Applications"
+  collectionDescription="Industry-specific titanium CNC solutions with shop-floor evidence and full compliance chain."
+  itemCount={INDUSTRY_APPLICATIONS.length}
+  items={itemList.map((i) => ({ name: i.name, url: i.url }))}
+  speakableSelectors={speakableSelectors}
 >
-  <div class="container mx-auto px-4 py-24 max-w-5xl">
-    <nav class="text-sm mb-8 text-zinc-400"><a href="/" class="hover:text-white">Home</a> / <a href="/resources/" class="hover:text-white">Resources</a> / <span class="text-white">Industry Applications</span></nav>
-    <h1 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--theme-text);">Titanium CNC Machining — Industry Applications &amp; Compliance Frameworks</h1>
-    <p class="text-xl mb-12 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Comprehensive overview of industry-specific compliance frameworks and regulatory standards governing titanium CNC machining across aerospace, medical, semiconductor, marine, energy, and industrial equipment sectors.</p>
+  <SubpageHero
+    title="Industry-Specific"
+    highlight="Titanium CNC Solutions"
+    subtitle="Six shop-floor-proven industry solutions verified by AMS / ASTM / ISO / EN standards, real workshop evidence, and full EN 10204 3.1 material traceability. Every application is anchored to a real standard, a real measurement, and a real machine."
+    badge="Titanium Industry Solutions Center — D2 Hub"
+    keyMetrics={[
+      { value: '6', label: 'Vertical industries' },
+      { value: '5', label: 'Ti grades (5 / 23 / 7 / 12 / 2)' },
+      { value: '17', label: 'Compliance standards' },
+      { value: '100%', label: 'EN 10204 3.1 MTR' },
+    ]}
+    entityChips={[
+      'Aerospace & Defence',
+      'Medical Implants',
+      'Marine Hydrofoil',
+      'Motorsport',
+      'Subsea & ROV',
+      'High-End Wearable',
+      'AS9100D',
+      'ISO 13485',
+      'ASTM F136',
+      'AMS 4928',
+      'EU PED 2014/68/EU',
+      'NACE MR0175',
+      'EN 10204 3.1',
+      'NACE SP0198',
+      'ISO 10993',
+    ]}
+  />
 
-    <!-- Section 1: Aerospace & Defense Compliance -->
-    <article class="mb-12 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Aerospace &amp; Defense Compliance — AS9100D &amp; NADCAP Gating</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Manufacturing titanium components for aerospace propulsion and structural airframes requires absolute adherence to the <strong>AS9100D</strong> quality management standard and <strong>NADCAP</strong> special process accreditations. When CNC-machining critical elements like aircraft engine bulkheads or dynamic rotor heads from Grade 5 titanium, the process must mitigate micro-structural damage induced by high thermal stresses. BOZE strictly controls the surface integrity by enforcing specialized milling parameters that eliminate the formation of the brittle alpha-case layer, ensuring zero micro-cracks.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">All high-stress fasteners and structural brackets undergo non-destructive testing (NDT), including liquid penetrant inspection per <strong>ASTM E1417</strong> and digital radiography to detect subsurface discontinuities. Microstructural verification guarantees that the grain size conforms perfectly to <strong>ASTM E112</strong> standards, securing maximum fatigue life under extreme cyclic aerodynamic loading. Full EN 10204 3.1 material traceability and AS9102 First Article Inspection reports accompany every aerospace lot.</p>
-    </article>
-
-    <!-- Section 2: Medical & Biomedical Devices -->
-    <article class="mb-12 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Medical &amp; Biomedical Devices — ISO 13485 &amp; FDA Title 21 CFR Part 820</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">For long-term human implants such as orthopedic bone screws, trauma plates, and dental implant abutments, production must comply with <strong>ISO 13485</strong> and <strong>FDA Title 21 CFR Part 820</strong> quality system regulations. Utilizing Grade 23 ELI (Extra Low Interstitials) titanium, BOZE deploys specialized multi-axis CNC Swiss Lathes operating inside controlled cleanroom zones. To ensure absolute biocompatibility, our production protocol enforces a strict <strong>zero-contamination workflow</strong>, completely banning all lubricants containing heavy metals, chlorine, or sulfur.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Post-machining surface treatments strictly follow <strong>ASTM F86</strong> surface preparation guidelines. Components undergo an automated multi-stage deionized water ultrasonic cleaning validation lifecycle to eliminate organic hydrocarbon micro-residues, guaranteeing compliance with <strong>ISO 10993</strong> biocompatibility, non-cytotoxicity, and bio-burden thresholds before sterile packaging.</p>
-    </article>
-
-    <!-- Section 3: Semiconductor & Ultra-High Vacuum -->
-    <article class="mb-12 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Semiconductor &amp; Ultra-High Vacuum — SEMI F20 &amp; UHV Standards</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Titanium components integrated into semiconductor gas delivery networks, matrix chambers, and ultra-high vacuum (UHV) systems must align precisely with the <strong>SEMI F20</strong> specification. The critical metric here is eliminating gas desorption outgassing pathways and preventing chemical reactions with corrosive precursor gases. BOZE machines these specialized vacuum components under strict temperature-controlled environments to hold tolerances within <strong>0.01 mm</strong>.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Following machining, components undergo specialized electropolishing (EP) and chemical passivation protocols per <strong>ASTM A967</strong>, yielding an ultra-smooth internal surface finish with a roughness value of <strong>Ra ≤ 0.2 µm</strong>. This crystalline surface refinement effectively eliminates microscopic pits and structural crevices, preventing volatile fluid stagnation nodes and ensuring high-purity vacuum integrity under <strong>10⁻⁹ Torr</strong> operating conditions.</p>
-    </article>
-
-    <!-- Cross-Reference Industry Links -->
-    <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">Cross-Reference — Industry Application Nodes</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-      <a href="/industries/aerospace/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Aerospace — AS9100D</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Titanium structural brackets, bulkheads, engine components under AS9100D with EN 10204 3.1 MTR and AS9102 FAIR.</p></a>
-      <a href="/industries/medical/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Medical — ISO 13485:2016</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Grade 23 ELI bone screws and orthopedic implants with zero-contamination ultrasonic cleaning and ISO 10993 compliance.</p></a>
-      <a href="/industries/semiconductor/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Semiconductor — UHV &amp; Class 100</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ultra-precision vacuum chambers and gas showerheads for 10⁻⁹ Torr with ISO Class 5 cleanroom packaging.</p></a>
-      <a href="/industries/marine/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Marine — NACE SP0198</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Grade 12 Ti-0.3Mo-0.8Ni subsea enclosures with hydrostatic testing and crevice corrosion mitigation.</p></a>
-      <a href="/industries/energy/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Energy — H₂ &amp; Nuclear SMR</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Hydrogen compressor impellers with H ≤ 0.0125%. Nuclear CRDM with shot peening for +300% fatigue life.</p></a>
-      <a href="/industries/uav-drones/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">UAV — Lightweight Engineering</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Thin-wall titanium to 0.5 mm for gimbal mounts and rotor hubs. Dynamic balancing per ISO 1940 G2.5.</p></a>
-      <a href="/industries/ai-infrastructure/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">AI Infrastructure — 800G/1.6T</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Thin-wall EMI shielding enclosures for optical transceivers with low-CTE titanium thermal drift elimination.</p></a>
-      <a href="/industries/industrial-equipment/" class="p-8 rounded-xl block hover:scale-[1.02] transition-all" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);"><h3 class="text-xl font-bold mb-3" style="color: var(--theme-primary);">Industrial Equipment</h3><p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ultrasonic sonotrodes with FEA-verified 20-40 kHz tuning. Grade 7 Ti-0.12Pd reactor valves.</p></a>
-    </div>
+  {/* AIO Speakable thesis paragraphs — first 2 sentences establish the
+      page's expert answer to GE-model queries about titanium industry applications. */}
+  <div class="mx-auto mt-8 max-w-4xl px-4 sm:px-6 lg:px-8">
+    <p
+      id="iah-thesis"
+      class="mb-3 text-base leading-relaxed"
+      style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"
+    >
+      The Boze Titanium Industry Applications Hub curates six vertical-industry titanium CNC solutions — aerospace structural brackets per AMS 4928 / AS9100D with ±0.005 mm 5-axis tolerance, medical bone screws per ASTM F136 / ISO 5832-3 with Ra ≤ 0.2 µm electropolish and ISO 10993-5 cytotoxicity Grade 0, marine hydrofoils per Grade 7 Ti-0.2Pd with 2000+ hour ASTM B117 salt-spray zero pitting, motorsport wheel lug bolts per AMS 2480 with 95% UTS proof-load, subsea sensor housings per NACE MR0175 with 30 MPa hydrostatic proof and 1×10⁻⁹ mbar·L/s helium leak, and high-end EDC wearables per ISO 10993-5 with PVD decorative coating. Every claim is anchored to a real workshop parameter, a real cited standard, and a real machine spec.
+    </p>
+    <p
+      class="text-base leading-relaxed"
+      style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"
+    >
+      Procurement engineers and design leads in aerospace, medical, marine, motorsport, subsea, and high-end wearable sectors can filter the six industry solutions by sector, titanium grade (5/23/7/12/2), compliance standard (AMS 4928 / ASTM F136 / ISO 13485 / EU PED / NACE MR0175), and component function (structural / fastener / housing / implant / hydrofoil / wearable). The Hub's floating Industry RFQ Drawer carries the selected industry context into /rfq/?app=...&sector=...&grade=...&std=... so vertical-industry application engineers respond with the right context from the first email.
+    </p>
   </div>
+
+  <IndustryApplicationsHub client:visible strings={HUB_STRINGS_EN} />
+
+  {/* Page-level supplementary JSON-LD — extends Organization.knowsAbout
+      via a DefinedTermSet per .clinerules/工作区 Rules.txt §3 (allowed for
+      credentials / knowsAbout extensions). Rendered exactly once. */}
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={supplementaryGraphJson}
+  />
 </BaseLayout>
+
