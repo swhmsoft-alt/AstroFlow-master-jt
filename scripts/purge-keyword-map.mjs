@@ -132,7 +132,8 @@ function main() {
       kept.push(e);
       continue;
     }
-    const normalized = e.href.endsWith('/') ? e.href : e.href + '/';
+    const withoutAnchor = e.href.split('#')[0];
+    const normalized = withoutAnchor.endsWith('/') ? withoutAnchor : withoutAnchor + '/';
     if (routes.has(normalized)) {
       kept.push(e);
     } else {

@@ -84,7 +84,8 @@ function main() {
       kept.push(e);
       continue;
     }
-    const normalized = href.endsWith('/') ? href : href + '/';
+    const withoutAnchor = href.split('#')[0];
+    const normalized = withoutAnchor.endsWith('/') ? withoutAnchor : withoutAnchor + '/';
     if (routes.has(normalized)) {
       kept.push(e);
     } else {

@@ -85,7 +85,14 @@ function langOf(href) {
 }
 
 function normalize(href) {
-  return href.endsWith('/') ? href : href + '/';
+  // Strip in-page #anchor before appending trailing slash.
+  // Without this, "/path/#anchor" becomes "/path/#anchor/" which never
+  // matches sitemap route "/path/". Anchors themselves are validated
+  // separately by browser behaviour at runtime; here we only gate route
+  // existence. (Fix for commit 71fec6c false-positive on
+  // /resources/titanium-grades-guide/#grade-grade-* anchors.)
+  const withoutAnchor = href.split('#')[0];
+  return withoutAnchor.endsWith('/') ? withoutAnchor : withoutAnchor + '/';
 }
 
 function isExternal(href) {
