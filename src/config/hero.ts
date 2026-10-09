@@ -204,6 +204,27 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "Compliance Docs"
     ]
   },
+  '/resources/titanium-grades-guide': {
+    h1: "The Buyer's Guide to Titanium Grades & Alloys",
+    subtitle: 'Authoritative selection reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) — with chemistry, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance. AS9100D · ISO 13485 · ISO 9001 · EN 10204 3.1 MTR.',
+    badge: 'Titanium Grades Reference Hub · ASTM/AMS/ISO',
+
+    keyMetrics: [
+      { value: '5', label: 'Core Grades' },
+      { value: 'UNS / ASTM', label: 'Authoritative IDs' },
+      { value: 'AS9100D', label: 'Aerospace Quality' },
+      { value: 'ISO 13485', label: 'Medical Quality' },
+    ],
+
+    entityChips: [
+      'Ti-6Al-4V',
+      'Ti-0.15Pd',
+      'Ti-0.3Mo-0.8Ni',
+      'UNS R56400',
+      'UNS R52400',
+      'EN 10204 3.1',
+    ],
+  },
   '/rfq': {
     h1: 'Request a Quote',
     subtitle: 'Submit your engineering RFQ for titanium CNC machining, additive manufacturing, fabrication, or surface treatment. Get a formal quote within 24-48 hours. Secure CAD upload.',

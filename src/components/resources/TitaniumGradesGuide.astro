@@ -1,106 +1,372 @@
 ---
-// TitaniumGradesGuide.astro
-// High-density entity network: Grade 1-4 CP, Grade 5 Ti-6Al-4V, Grade 23 ELI, Grade 7 Ti-0.12Pd, Grade 12
-// Featured Snippet target: structured table with chemical composition, tensile/yield, machinability rating, application nodes
-import BaseLayout from '../../layouts/BaseLayout.astro';
+/**
+ * TitaniumGradesGuide.astro
+ *
+ * Pillar-page shell for `/resources/titanium-grades-guide/`.
+ * Mirrors `TitaniumKnowledgeBase.astro` (sibling resources hub).
+ *
+ * Architecture (2026-10-08):
+ *   - Pure static hub: 5 grade detail cards + decision tree + standards matrix.
+ *   - One React 19 island (GradesGuideHub) for interactive comparison.
+ *   - All grade data sourced from `src/data/titanium-grades.ts` GRADE_DATA
+ *     (single source of truth, no fabrication).
+ *   - Schema authority: BaseLayout props → buildPageGraph in src/lib/schema.ts.
+ *     Zero inline JSON-LD here.
+ */
+import SubpageHero from '../ui/SubpageHero.astro';
+import {
+  HUB_GRADES,
+  HUB_STRINGS_EN,
+  type GradesGuideStrings,
+} from './grades-guide-data';
+import GradesGuideHub from './GradesGuideHub';
+
+const s: GradesGuideStrings = HUB_STRINGS_EN;
+const gradeCards = HUB_GRADES;
+
+const quickCompareRows = [
+  { label: s.unsLabel, get: (g: typeof HUB_GRADES[number]) => g.uns },
+  { label: s.classificationLabel, get: (g: typeof HUB_GRADES[number]) => g.classification },
+  { label: s.rmLabel, get: (g: typeof HUB_GRADES[number]) => g.rm },
+  { label: s.rp02Label, get: (g: typeof HUB_GRADES[number]) => g.rp02 },
+  { label: s.a5Label, get: (g: typeof HUB_GRADES[number]) => g.a5 },
+  { label: s.densityLabel, get: (g: typeof HUB_GRADES[number]) => g.density },
+  { label: s.maxTempLabel, get: (g: typeof HUB_GRADES[number]) => g.maxTemp },
+];
+
+const STANDARDS_MATRIX = [
+  { code: 'ASTM B348',  href: '/materials/astm-b348/',  scope: 'Bars and Billets — covers Grade 2, 5, 7, 12, 23 (and all other unalloyed + alloyed Ti grades).' },
+  { code: 'ASTM B265',  href: '/materials/astm-b265/',  scope: 'Sheet, Strip, and Plate — same grade coverage as B348.' },
+  { code: 'ASTM F136',  href: '/materials/astm-f136/',  scope: 'Wrought Ti-6Al-4V ELI (Grade 23) for Surgical Implants.' },
+  { code: 'ASTM F67',   href: '/materials/astm-f67/',   scope: 'Unalloyed Titanium for Surgical Implants (CP-Ti Grade 1–4 ELI).' },
+  { code: 'AMS 4928',   href: '/materials/ams-4928/',   scope: 'Grade 5 (Ti-6Al-4V) Bars, Wire, and Forgings — aerospace standard.' },
+  { code: 'AMS 4930',   href: '/materials/ams-4928/',   scope: 'Grade 23 (Ti-6Al-4V ELI) Bars and Forgings — aerospace + medical.' },
+  { code: 'ISO 5832-3', href: '/materials/iso-5832-3/', scope: 'Wrought Ti-6Al-4V alloy for surgical implants (international medical standard).' },
+  { code: 'MIL-T-9047', href: '/materials/mil-t-9047/', scope: 'US military spec for Ti sheet/strip/plate (Grades 1, 2, 3, 4, 5, 23).' },
+];
 ---
-<BaseLayout
-  title="Titanium Grades Guide | CP Ti, Ti-6Al-4V, Grade 23 ELI, Grade 7, Grade 12"
-  description="Comprehensive titanium alloy grades selection guide: Grade 1-4 CP, Grade 5 Ti-6Al-4V (895 MPa), Grade 23 Ti-6Al-4V ELI (O ≤ 0.13%), Grade 7 Ti-0.12Pd, Grade 12 Ti-0.3Mo-0.8Ni — with machinability ratings and application nodes."
->
-  <div class="container mx-auto px-4 py-24 max-w-5xl">
-    <nav class="text-sm mb-8 text-zinc-400"><a href="/" class="hover:text-white">Home</a> / <a href="/resources/" class="hover:text-white">Resources</a> / <span class="text-white">Titanium Grades Guide</span></nav>
-    <h1 class="text-4xl md:text-5xl font-bold mb-8" style="color: var(--theme-text);">Titanium Alloy Grades Guide — Selection Reference for Engineers</h1>
-    <p class="text-xl mb-12 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Authoritative reference covering all commercially significant titanium grades — from CP Grades 1-4 through aerospace Ti-6Al-4V, medical Grade 23 ELI, and specialty corrosion-resistant alloys Grade 7 and Grade 12. Each entry includes nominal chemical composition, tensile and yield strength, machinability rating, and core industrial application nodes.</p>
 
-    <!-- Section 1: Comprehensive Material Specification Matrix -->
-    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">Comprehensive Material Specification Matrix</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent);">
-              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Grade / UNS</th>
-              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Nominal Chemical Composition</th>
-              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Tensile / Yield (MPa)</th>
-              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Machinability (Steel = 100%)</th>
-              <th class="text-left py-3 px-3 font-bold" style="color: var(--theme-primary);">Core Application &amp; Fluid Nodes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <td class="py-3 px-3 font-semibold">Grade 1 (R50250)</td>
-              <td class="py-3 px-3">99.5% Ti, ≤ 0.18% O, ≤ 0.20% Fe</td>
-              <td class="py-3 px-3">≥ 240 / ≥ 170</td>
-              <td class="py-3 px-3"><strong>45%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">High ductility, gummy chips</span></td>
-              <td class="py-3 px-3">Deep-sea electrochemical anodes, plate heat exchangers, cryogenic burst discs</td>
-            </tr>
-            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <td class="py-3 px-3 font-semibold">Grade 2 (R50400)</td>
-              <td class="py-3 px-3">99.2% Ti, ≤ 0.25% O, ≤ 0.30% Fe</td>
-              <td class="py-3 px-3">≥ 345 / ≥ 275</td>
-              <td class="py-3 px-3"><strong>40%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Optimal strength-ductility</span></td>
-              <td class="py-3 px-3">Offshore desalination fluid blocks, subsea sensor enclosures, marine piping</td>
-            </tr>
-            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <td class="py-3 px-3 font-semibold">Grade 5 (R56400)</td>
-              <td class="py-3 px-3">Ti-6Al-4V (5.5-6.75% Al, 3.5-4.5% V)</td>
-              <td class="py-3 px-3">≥ 895 / ≥ 828</td>
-              <td class="py-3 px-3"><strong>22%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Severe work hardening</span></td>
-              <td class="py-3 px-3">Aerospace structural brackets, drone rotor hubs, hydrogen compressor impellers</td>
-            </tr>
-            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <td class="py-3 px-3 font-semibold">Grade 23 ELI (R56401)</td>
-              <td class="py-3 px-3">Ti-6Al-4V ELI (O ≤ 0.13%, Fe ≤ 0.25%)</td>
-              <td class="py-3 px-3">≥ 860 / ≥ 795</td>
-              <td class="py-3 px-3"><strong>20%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Ultra-low interstitials</span></td>
-              <td class="py-3 px-3">Orthopedic bone screws, dental implants, trauma plates, cardiac housings</td>
-            </tr>
-            <tr class="border-b" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
-              <td class="py-3 px-3 font-semibold">Grade 7 (R52400)</td>
-              <td class="py-3 px-3">Ti-0.12Pd (0.12-0.25% Palladium)</td>
-              <td class="py-3 px-3">≥ 345 / ≥ 275</td>
-              <td class="py-3 px-3"><strong>35%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">High tool drag, adhesion</span></td>
-              <td class="py-3 px-3">Hot reducing acid reactor valves, fluid manifolds, chlorine gas scrubbers</td>
-            </tr>
-            <tr>
-              <td class="py-3 px-3 font-semibold">Grade 12 (R53400)</td>
-              <td class="py-3 px-3">Ti-0.3Mo-0.8Ni (0.2-0.4% Mo, 0.6-0.9% Ni)</td>
-              <td class="py-3 px-3">≥ 483 / ≥ 345</td>
-              <td class="py-3 px-3"><strong>30%</strong><br><span style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">Enhanced hot strength</span></td>
-              <td class="py-3 px-3">High-temp petrochemical agitators, shell-and-tube vaporizing units</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </article>
+<!-- 1. Hero (BaseLayout owns the @graph) -->
+<SubpageHero
+  h1={`${s.heroTitlePrefix} ${s.heroTitleHighlight}`}
+  badge={s.heroBadge}
+  subtitle={s.heroSubtitle}
+  badgeIcon="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+  keyMetrics={[
+    { value: '5', label: 'Core Grades' },
+    { value: 'UNS / ASTM', label: 'Authoritative IDs' },
+    { value: 'AS9100D', label: 'Aerospace Quality' },
+    { value: 'ISO 13485', label: 'Medical Quality' },
+  ]}
+  entityChips={['Ti-6Al-4V', 'Ti-0.15Pd', 'Ti-0.3Mo-0.8Ni', 'UNS R56400', 'UNS R52400', 'EN 10204 3.1']}
+/>
 
-    <!-- Section 2: Grade 1-4 CP Titanium -->
-    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 1-4 CP Titanium — Extreme Ductility and Marine Desalination Architecture</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Commercially Pure (CP) Titanium grades operate as unalloyed alpha-phase crystal structures, where mechanical properties are tightly governed by the calibrated interstitial containment of iron and oxygen. Grade 1 exhibits maximum cold formability for deep-drawn cryogenic frameworks, while <strong>Grade 2 serves as the absolute workhorse for global subsea oceanographic infrastructure</strong>. The supreme resistance of CP titanium against localized chloride pitting and galvanic stress corrosion is due to its instantaneous passivation, creating a permanent, self-healing <strong>Titanium Dioxide (TiO₂) protective film</strong> upon atmospheric exposure.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">When CNC machining Grade 2 fluid manifolds, the primary engineering challenge is managing its extreme ductility and "gummy" material behavior. BOZE overcomes this by utilizing ground, highly polished carbide inserts with razor-sharp cutting edges to cleanly shear the material, successfully preventing material adhesion, tearing, and micro-burr generation across intricate marine sealing surfaces.</p>
-    </article>
-
-    <!-- Section 3: Grade 5 Ti-6Al-4V -->
-    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 5 (Ti-6Al-4V) — Alpha-Beta Aerostructural Dynamic Processing</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Representing more than 50% of the entire global titanium market volume, <strong>Grade 5 (Ti-6Al-4V)</strong> is a fully heat-treatable alpha-beta alloy engineered for supreme structural performance under cyclic fatigue loading. Possessing an ultimate tensile strength exceeding <strong>895 MPa</strong>, it delivers an unmatched strength-to-weight ratio across temperature spectrums up to 400°C.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Machining Grade 5 brackets and drone rotor hubs requires high-rigidity <strong>5-Axis Machining Centers</strong> to suppress structural chatter. The material's rapid work hardening mechanism demands that cutting tools never rub; BOZE engineers lock down toolpaths with an absolute minimum feed per tooth of <strong>0.08 mm</strong>. We employ PVD-coated AlTiN multi-layer tools, executing advanced high-feed trochoidal milling toolpaths that run at a controlled radial step-over (aₑ) of <strong>5% to 8%</strong>, keeping tool edge temperatures below the catastrophic diffusion phase threshold.</p>
-    </article>
-
-    <!-- Section 4: Grade 23 ELI -->
-    <article class="mb-16 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 23 ELI — Ultra-Pure Interstitial Bio-Gating for Orthopedic Hardware</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><strong>Grade 23 ELI (Ti-6Al-4V Extra Low Interstitials)</strong> stands as the ultra-purified chemical variant of Grade 5, where interstitial gas elements are severely restricted: Oxygen is capped at <strong>≤ 0.13%</strong> and Iron at <strong>≤ 0.25%</strong>. This molecular refinement dramatically upgrades fracture toughness at cryogenic ranges and ensures absolute biocompatibility for human tissue integration.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">BOZE processes Grade 23 ELI utilizing multi-axis <strong>CNC Swiss Lathes</strong> to manufacture critical orthopedic bone screws, dental implant abutments, and internal trauma plates. To protect the component matrix from cross-contamination, we enforce a strict <strong>zero-hydrocarbon production boundary</strong>. This involves running specialized synthetic ester cutting oils and conducting a mandatory multi-stage <strong>deionized water ultrasonic cleaning lifecycle</strong> to clear all organic micro-residues, achieving flawless compliance with rigid biomedical bio-burden and cytotoxicity validation standards.</p>
-    </article>
-
-    <!-- Section 5: Grade 7 & Grade 12 -->
-    <article class="mb-8 p-8 rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
-      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Grade 7 &amp; Grade 12 — Severe Chemical Processing &amp; Pitting Defense Systems</h2>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Designed explicitly to survive severe, highly localized crevice corrosion in chemical processing plants, <strong>Grade 7 integrates 0.12% to 0.25% Palladium (Pd)</strong>, making it the most corrosion-resistant titanium alloy available for reducing acid exposures. <strong>Grade 12 incorporates 0.3% Molybdenum and 0.8% Nickel</strong>, providing an economical, high-strength alternative that resists hot chloride crevice attacks up to 300°C.</p>
-      <p class="mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">BOZE machines these specialized alloys into high-pressure chemical reactor valves, fluid manifolds, and severe-service petrochemical mixing agitators. Processing these alloys demands precision thread chasing and internal channel pocketing. We implement dynamic CAM toolpaths to hold a continuous internal surface finish of <strong>Ra ≤ 0.4 µm</strong>, completely removing any micro-geometric stagnation nodes where aggressive corrosive fluids could accumulate.</p>
-    </article>
+<!-- 2. Decision Tree (static HTML) -->
+<section class="py-20" style="background-color: var(--theme-bg);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {s.decisionTitle}
+      </h2>
+      <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {s.decisionSubtitle}
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <details class="rounded-xl p-6 group" open style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="cursor-pointer font-bold text-lg flex items-center justify-between" style="color: var(--theme-primary);">
+          <span>{s.decisionAerospaceLabel}</span>
+          <span class="text-sm transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+          {s.decisionAerospaceAnswer}
+        </p>
+      </details>
+      <details class="rounded-xl p-6 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="cursor-pointer font-bold text-lg flex items-center justify-between" style="color: var(--theme-primary);">
+          <span>{s.decisionMedicalLabel}</span>
+          <span class="text-sm transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+          {s.decisionMedicalAnswer}
+        </p>
+      </details>
+      <details class="rounded-xl p-6 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="cursor-pointer font-bold text-lg flex items-center justify-between" style="color: var(--theme-primary);">
+          <span>{s.decisionChemicalLabel}</span>
+          <span class="text-sm transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+          {s.decisionChemicalAnswer}
+        </p>
+      </details>
+      <details class="rounded-xl p-6 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="cursor-pointer font-bold text-lg flex items-center justify-between" style="color: var(--theme-primary);">
+          <span>{s.decisionMarineLabel}</span>
+          <span class="text-sm transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+          {s.decisionMarineAnswer}
+        </p>
+      </details>
+      <details class="rounded-xl p-6 group md:col-span-2 lg:col-span-2" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <summary class="cursor-pointer font-bold text-lg flex items-center justify-between" style="color: var(--theme-primary);">
+          <span>{s.decisionIndustrialLabel}</span>
+          <span class="text-sm transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+          {s.decisionIndustrialAnswer}
+        </p>
+      </details>
+    </div>
   </div>
-</BaseLayout>
+</section>
+
+<!-- 3. Quick Comparison Matrix (static) -->
+<section class="py-20" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, var(--theme-surface) 50%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {s.quickComparisonTitle}
+      </h2>
+      <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {s.quickComparisonSubtitle}
+      </p>
+    </div>
+    <div class="overflow-x-auto rounded-xl" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+      <table class="w-full text-sm" style="color: var(--theme-text); border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th class="text-left p-4 font-bold border-b-2" style="border-color: var(--theme-primary); color: var(--theme-primary); min-width: 160px;" scope="col">Property</th>
+            {gradeCards.map((g) => (
+              <th key={g.key} class="text-left p-4 font-bold border-b-2" style="border-color: var(--theme-primary); color: var(--theme-primary); min-width: 180px;" scope="col">
+                {g.name.split(' – ')[0]}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {quickCompareRows.map((row) => (
+            <tr key={row.label}>
+              <th scope="row" class="text-left p-4 font-semibold border-b align-top" style="border-color: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+                {row.label}
+              </th>
+              {gradeCards.map((g) => (
+                <td key={g.key} class="p-4 border-b align-top" style="border-color: color-mix(in srgb, var(--theme-text) 8%, transparent);">
+                  {row.get(g)}
+                </td>
+              ))}
+            </tr>
+          ))}
+          <tr>
+            <th scope="row" class="text-left p-4 font-semibold border-b align-top" style="border-color: color-mix(in srgb, var(--theme-text) 8%, transparent); color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+              Full data sheet
+            </th>
+            {gradeCards.map((g) => (
+              <td key={g.key} class="p-4 border-b" style="border-color: color-mix(in srgb, var(--theme-text) 8%, transparent);">
+                <a href={g.detailHref} class="font-semibold hover:underline" style="color: var(--theme-primary);">
+                  {s.detailCtaLabel}
+                </a>
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Grade Detail Cards (5 cards: Grade 2/5/7/12/23) -->
+<section class="py-20" style="background-color: var(--theme-bg);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {s.detailCardsTitle}
+      </h2>
+      <p class="text-lg max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {s.detailCardsSubtitle}
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {gradeCards.map((g) => (
+        <article
+          id={`grade-${g.key}`}
+          class="rounded-2xl p-6 md:p-8"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+        >
+          <header class="mb-5 pb-5 border-b" style="border-color: color-mix(in srgb, var(--theme-text) 10%, transparent);">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
+              <div>
+                <h3 class="text-2xl font-bold" style="color: var(--theme-text);">
+                  {g.name.split(' – ')[0]}
+                </h3>
+                <p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+                  {g.name.split(' – ')[1] ?? ''}
+                </p>
+              </div>
+              <span
+                class="inline-block text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap"
+                style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); color: var(--theme-primary);"
+              >
+                {g.uns}
+              </span>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+              {g.tagline}
+            </p>
+          </header>
+
+          <dl class="grid grid-cols-2 gap-x-6 gap-y-3 mb-5 text-sm">
+            <div>
+              <dt class="font-semibold mb-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.classificationLabel}</dt>
+              <dd style="color: var(--theme-text);">{g.classification}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold mb-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.rmLabel}</dt>
+              <dd style="color: var(--theme-text);">{g.rm}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold mb-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.rp02Label}</dt>
+              <dd style="color: var(--theme-text);">{g.rp02}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold mb-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.a5Label}</dt>
+              <dd style="color: var(--theme-text);">{g.a5}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold mb-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.densityLabel}</dt>
+              <dd style="color: var(--theme-text);">{g.density}</dd>
+            </div>
+            <div>
+              <dt class="font-semibold mb-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.maxTempLabel}</dt>
+              <dd style="color: var(--theme-text);">{g.maxTemp}</dd>
+            </div>
+          </dl>
+
+          <div class="mb-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Applicable Standards</h4>
+            <ul class="space-y-1 text-sm">
+              {g.primaryStandards.map((std) => (
+                <li style="color: color-mix(in srgb, var(--theme-text) 85%, transparent);">
+                  <span class="font-mono text-xs mr-1" style="color: var(--theme-primary);">●</span>
+                  {std}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mb-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider mb-2" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Primary Applications</h4>
+            <ul class="space-y-1 text-sm">
+              {g.applications.map((app) => (
+                <li style="color: color-mix(in srgb, var(--theme-text) 85%, transparent);">— {app}</li>
+              ))}
+            </ul>
+          </div>
+
+          <a
+            href={g.detailHref}
+            class="inline-flex items-center font-semibold text-sm hover:underline"
+            style="color: var(--theme-primary);"
+          >
+            {s.detailCtaLabel}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 5. Interactive Comparison Tool (React 19 client island) -->
+<section class="py-20" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, var(--theme-surface) 50%);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <GradesGuideHub client:visible />
+  </div>
+</section>
+
+<!-- 6. International Standards Coverage (static) -->
+<section class="py-20" style="background-color: var(--theme-bg);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-bold mb-10" style="color: var(--theme-text);">
+      {s.standardsMatrixTitle}
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {STANDARDS_MATRIX.map((std) => (
+        <a
+          href={std.href}
+          class="rounded-xl p-5 block transition-all"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-text) 12%, transparent);"
+        >
+          <div class="flex items-baseline gap-3 mb-2">
+            <h3 class="text-lg font-bold font-mono" style="color: var(--theme-primary);">{std.code}</h3>
+            <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">→ Standard detail page</span>
+          </div>
+          <p class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{std.scope}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- 7. Compliance & Material Traceability (static ribbon) -->
+<section class="py-16" style="background-color: var(--theme-bg); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+        {s.complianceTitle}
+      </h2>
+      <p class="text-lg max-w-3xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+        {s.complianceSubtitle}
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <p class="text-2xl font-bold mb-1" style="color: var(--theme-primary);">AS9100D</p>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Aerospace QMS</p>
+      </div>
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <p class="text-2xl font-bold mb-1" style="color: var(--theme-primary);">ISO 13485</p>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Medical Devices QMS</p>
+      </div>
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <p class="text-2xl font-bold mb-1" style="color: var(--theme-primary);">ISO 9001:2015</p>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Quality Management</p>
+      </div>
+      <div class="rounded-xl p-5 text-center" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+        <p class="text-2xl font-bold mb-1" style="color: var(--theme-primary);">EN 10204 3.1</p>
+        <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Mill Test Report (MTR)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Engineering RFQ CTA (final) -->
+<section class="py-20" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 8%, transparent) 0%, color-mix(in srgb, var(--theme-primary) 15%, transparent) 100%);">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+      {s.rfqTitle}
+    </h2>
+    <p class="text-lg mb-8 max-w-2xl mx-auto" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+      {s.rfqSubtitle}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href="/rfq/?source=titanium-grades-guide"
+        class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-bold text-base transition-all"
+        style="background-color: var(--theme-primary); color: var(--theme-bg, #fff);"
+      >
+        {s.rfqPrimaryLabel}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+      <a
+        href="/contact/"
+        class="inline-flex items-center justify-center px-8 py-4 rounded-lg font-bold text-base transition-all border-2"
+        style="background-color: transparent; color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-text) 30%, transparent);"
+      >
+        {s.rfqSecondaryLabel}
+      </a>
+    </div>
+  </div>
+</section>

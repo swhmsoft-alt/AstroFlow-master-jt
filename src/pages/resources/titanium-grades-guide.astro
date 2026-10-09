@@ -1,5 +1,105 @@
 ---
-// src/pages/resources/titanium-grades-guide.astro (Standalone English route)
+// src/pages/resources/titanium-grades-guide.astro
+// English route for /resources/titanium-grades-guide/.
+// Schema authority: BaseLayout props → buildPageGraph (no inline JSON-LD).
+// Mirrors `titanium-knowledge-base.astro` sibling pattern.
+//
+// Answer Module 6 elements:
+//  ① Direct Answer — SubpageHero H1/subtitle (inside TitaniumGradesGuide.astro)
+//  ② Honest Positioning — Compliance Ribbon (AS9100D/ISO 13485/ISO 9001/EN 10204 3.1)
+//  ③ Structured Body — Decision Tree, Comparison Table, 5 Grade Cards, Standards Matrix
+//  ④ Claim ↔ Evidence — Every claim cites ASTM/AMS/ISO/UNS/EN 10204 numbers
+//  ⑤ Entities — TechArticle + FAQPage + ItemList via buildPageGraph
+//  ⑥ Related — Internal links to /materials/<grade>/ and /standards/
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import TitaniumGradesGuide from '../../components/resources/TitaniumGradesGuide.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const heroKey = '/resources/titanium-grades-guide' as const;
+const hero = HERO_CONFIG[heroKey];
+
+// 6 FAQ items — drive both the page @graph FAQPage entity and Answer Module ⑥
+const faqItems = [
+  {
+    question: 'What is the difference between Grade 5 and Grade 23 titanium?',
+    answer:
+      'Grade 5 (Ti-6Al-4V) and Grade 23 (Ti-6Al-4V ELI) share the same alpha-beta composition, but Grade 23 has lower interstitial limits (O ≤ 0.13%, N, C, Fe), giving superior fracture toughness, ductility at cryogenic temperatures, and biocompatibility. Grade 23 is qualified to ASTM F136 for surgical implants; Grade 5 is qualified to AMS 4928 and ASTM B348 for aerospace structures and engines.',
+  },
+  {
+    question: 'Which titanium grade is best for 5-axis aerospace CNC machining?',
+    answer:
+      'Grade 5 (Ti-6Al-4V) is the aerospace workhorse — approximately 50% of all titanium usage worldwide. It is qualified to AMS 4928 and ASTM B348, has the best strength-to-weight ratio (Rm 895 MPa min annealed, up to 1,100+ MPa in STA condition), and is heat-treatable. For cryogenic or fracture-critical aerospace components, Grade 23 ELI (AMS 4930) is preferred.',
+  },
+  {
+    question: 'What titanium grade should I choose for surgical implants?',
+    answer:
+      'Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3 is the standard for surgical implants requiring high fatigue strength and fracture toughness (orthopedic, trauma, spinal). For non-load-bearing devices, ELI Grade 4 (ASTM F67) is also used. BOZE CNC Ti is ISO 13485 certified for medical-device manufacturing with full EN 10204 3.1 MTRs.',
+  },
+  {
+    question: 'How does Grade 7 differ from Grade 2 in corrosion resistance?',
+    answer:
+      'Grade 7 (Ti-0.15Pd) contains a small palladium addition (0.12–0.25%) that cathodically modifies the surface oxide film, providing the most robust corrosion resistance of all CP titanium grades in reducing acid environments (HCl, dilute H₂SO₄, H₃PO₄) and chloride pitting conditions. Mechanical properties are nearly identical to Grade 2 (Rm ≥ 345 MPa). For less aggressive chloride service, Grade 12 (Ti-0.3Mo-0.8Ni) is a cost-effective alternative without the Pd premium.',
+  },
+  {
+    question: 'What is EN 10204 3.1 and why does it matter?',
+    answer:
+      'EN 10204 3.1 is the European standard for mill test reports (MTRs). A 3.1 certificate is issued and validated by the mill\'s independent quality department, confirming actual chemical composition and mechanical properties against the ordered specification. Every order from BOZE CNC Ti ships with full EN 10204 3.1 MTRs, providing complete heat-to-part material traceability for aerospace, medical, and oil & gas customers.',
+  },
+  {
+    question: 'When should I choose Grade 12 over Grade 7?',
+    answer:
+      'Choose Grade 12 (Ti-0.3Mo-0.8Ni) when service is in hot chloride or mildly reducing acid environments and you want to avoid the palladium premium. For very aggressive reducing acids (concentrated HCl, pure wet chloride under heat), Grade 7 still wins. Grade 12 saves 25–40% on material cost vs. Grade 7, and is widely used for chemical processing heat exchangers, FGD scrubbers, and desalination equipment.',
+  },
+];
+
+// 5 ItemList entries — drives buildPageGraph ItemList entity and feed grade detail cards.
+const itemList = [
+  { name: 'Grade 2 CP-Ti (UNS R50400) — Commercially Pure Titanium', url: '/materials/grade-2/' },
+  { name: 'Grade 5 Ti-6Al-4V (UNS R56400) — Alpha-Beta Alloy, Aerospace Workhorse', url: '/materials/grade-5/' },
+  { name: 'Grade 7 Ti-0.15Pd (UNS R52400) — Palladium-Stabilized Corrosion Grade', url: '/materials/grade-7/' },
+  { name: 'Grade 12 Ti-0.3Mo-0.8Ni (UNS R53400) — Cost-Effective Corrosion Grade', url: '/materials/grade-12/' },
+  { name: 'Grade 23 Ti-6Al-4V ELI (UNS R56401) — Medical Implant Standard', url: '/materials/grade-23/' },
+];
 ---
-<TitaniumGradesGuide />
+
+<BaseLayout
+  pageType="tech-article"
+  title={hero?.h1 ?? "Titanium Grades Guide | Grade 2, 5, 7, 12, 23 Selection Reference"}
+  description={hero?.subtitle ?? "Authoritative selection reference for Grade 2, 5, 7, 12, 23 titanium alloys."}
+  serviceName="Titanium Grades Selection Hub"
+  serviceDescription="Authoritative reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) titanium alloys — with chemical composition, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance."
+  serviceCategory="Material Selection Reference & Engineering Procurement"
+  faqItems={faqItems}
+  faqName="Titanium Grades — Frequently Asked Questions"
+  articleAbout="Ti-6Al-4V, Commercially Pure Titanium, ASTM B348, ASTM B265, ASTM F136, AMS 4928, AMS 4930, ISO 5832-3, EN 10204 3.1, Grade 23 ELI, aerospace machining, medical implants, biocompatibility, UNS R56400"
+  itemCount={itemList.length}
+  items={itemList}
+>
+  <!-- Breadcrumb (Home > Resources > Titanium Grades Guide) -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/resources/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+            <span itemprop="name">Resources</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Titanium Grades Guide</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <TitaniumGradesGuide />
+</BaseLayout>

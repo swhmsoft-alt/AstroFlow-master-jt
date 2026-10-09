@@ -349,6 +349,40 @@ export default defineConfig({
           "Comprehensive Titanium Manufacturing & Processing Services": {
             "href": "/"
           },
+          // BSI 2026-10-08 — Titanium Grades Guide pillar page (5-inbound #5: keywordMap)
+          "titanium grades guide": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "Titanium Grades Guide": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "titanium grade selection hub": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "titanium alloy grades comparison": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "Grade 5 vs Grade 23 titanium": {
+            "href": "/resources/titanium-grades-guide/#grade-grade-23"
+          },
+          "Grade 7 titanium corrosion resistance": {
+            "href": "/resources/titanium-grades-guide/#grade-grade-7"
+          },
+          "Grade 12 titanium chemical composition": {
+            "href": "/resources/titanium-grades-guide/#grade-grade-12"
+          },
+          "ASTM B348 titanium grades": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "AMS 4928 titanium specification": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "ISO 5832-3 Ti-6Al-4V surgical implants": {
+            "href": "/resources/titanium-grades-guide/"
+          },
+          "EN 10204 3.1 mill test report titanium": {
+            "href": "/resources/titanium-grades-guide/"
+          },
           "Coordinate Measuring Machine (CMM)": {
             "href": "/equipment/cmm/"
           },

@@ -1790,5 +1790,252 @@ export const GRADE_DATA: GradeMap = {
       { question: "What machining capabilities do you have for Ti-6211 components?", answer: "We offer precision 5-axis CNC machining, CNC turning, and wire EDM for Ti-6211 components. Our DMG Mori and Mazak machining centers with high-pressure coolant systems can handle complex pressure vessel components and structural parts. CMM dimensional verification per AS9102 is available for all critical features." }
     ],
     whyChooseUs: "BOZE CNC Ti is a precision manufacturer of Ti-6211 (Ti-6Al-2Nb-1Ta-0.8Mo) near-alpha titanium components for defense, deep-sea exploration, and marine engineering applications. Our AS9100D-certified facility sources 100% certified Ti-6211 plate, bars, and forgings, and transforms them into complex pressure vessel components, structural assemblies, and subsea hardware using state-of-the-art 5-axis CNC machining centers, precision turning, advanced TIG/laser welding, and wire EDM. Every component is produced under AS9100D and ISO 9001:2015 quality systems with full material traceability from mill to finished part. Our engineering team provides 24-hour DFM review and competitive quoting, backed by decades of metallurgical expertise in near-alpha titanium processing for critical marine service."
+  },
+
+  // ── Grade 7 — Added 2026-10-08 for /resources/titanium-grades-guide/ hub.
+  "grade-7": {
+    key: "grade-7",
+    name: "Grade 7 – Ti-0.15Pd Corrosion-Resistant Titanium",
+    nameCn: "Ti-0.15Pd 7级耐腐蚀钛合金",
+    uns: "UNS R52400",
+    tagline: "Commercially pure titanium with 0.12–0.25% palladium addition for the most aggressive reducing-acid and chloride environments.",
+    badge: "CP-Ti + Pd (Corrosion Grade)",
+    highlight: "Grade 7",
+    subtitle: "Ti-0.15Pd (Grade 7, UNS R52400) — a CP-Ti variant with a small palladium addition that dramatically improves corrosion resistance in reducing acids (HCl, H₂SO₄, H₃PO₄) and chloride-rich media while preserving CP-Ti formability and weldability.",
+    pageTitle: "Grade 7 Titanium (Ti-0.15Pd) | Corrosion-Resistant CP-Ti | Boze Titanium Manufacturing Center",
+    metaDescription: "Grade 7 (Ti-0.15Pd, UNS R52400) is a palladium-stabilized CP titanium offering the best corrosion resistance in reducing acids and chloride environments.",
+    entityDefinition: {
+      title: "What is Grade 7 Titanium (Ti-0.15Pd)?",
+      description: "Grade 7 is a commercially-pure titanium base with a deliberate 0.12–0.25% palladium addition. The palladium cathodically modifies the surface oxide film, providing the most robust corrosion resistance of all CP titanium grades in reducing acid environments and chloride pitting/crevice conditions, while retaining the formability and weldability of CP-Ti.",
+      classification: "Commercially Pure Titanium (Alpha Phase) + Pd Stabilizer",
+      commonNames: ["Ti-0.15Pd", "Grade 7", "UNS R52400", "ASTM B265 Grade 7", "ASTM B348 Grade 7"],
+      keyCharacteristics: [
+        "Best corrosion resistance among all CP titanium grades in reducing acids and chlorides",
+        "Cathodic Pd-stabilized oxide film — passive even in HCl and dilute H₂SO₄",
+        "Mechanical properties equivalent to Grade 2 (Rm ≥ 345 MPa)",
+        "Excellent formability and weldability — comparable to CP-Ti",
+        "Cost-effective alternative to nickel alloys (Hastelloy, Inconel) for wet corrosive service"
+      ]
+    },
+    conformsTo: {
+      title: "Applicable Standards",
+      description: "Grade 7 titanium conforms to the following international material standards:",
+      items: [
+        "ASTM B265 — Sheet, Strip, and Plate",
+        "ASTM B348 — Bars and Billets",
+        "ASTM B381 — Forgings",
+        "ASTM B861 — Seamless Pipe",
+        "AMS 4903 — Sheet, Strip, and Plate (CP-Ti Grade 7)",
+        "DIN 17850 — Ti 1 Pd (Titanium Grade 1 + Pd)"
+      ]
+    },
+    hasProperty: {
+      title: "Mechanical & Physical Properties",
+      description: "Typical room-temperature properties for Grade 7 (annealed, equivalent mechanical envelope to Grade 2):",
+      properties: [
+        { label: "Tensile Strength (min)", value: "345 MPa (50 ksi)" },
+        { label: "Yield Strength 0.2% Offset (min)", value: "275 MPa (40 ksi)" },
+        { label: "Elongation (min)", value: "20%" },
+        { label: "Hardness (HRB)", value: "≤ 80 HRB" },
+        { label: "Density", value: "4.51 g/cm³" },
+        { label: "Elastic Modulus", value: "105 GPa" },
+        { label: "Melting Point", value: "1,668°C (3,034°F)" },
+        { label: "Max Service Temperature", value: "316°C (600°F)" }
+      ],
+      chemistry: {
+        titleKey: "chemicalComposition",
+        descriptionKey: "chemicalCompositionDesc",
+        basis: "ASTM B348 Grade 7 / ASTM B265 Grade 7",
+        remark: "Palladium 0.12–0.25% provides cathodic protection. Titanium balance by difference.",
+        elements: [
+          { symbol: "Pd", nameKey: "palladium", min: "0.12", max: "0.25", typical: "0.15" },
+          { symbol: "Fe", nameKey: "iron",     min: "—",    max: "0.30"                   },
+          { symbol: "O",  nameKey: "oxygen",   min: "—",    max: "0.20"                   },
+          { symbol: "N",  nameKey: "nitrogen", min: "—",    max: "0.05"                   },
+          { symbol: "C",  nameKey: "carbon",   min: "—",    max: "0.08"                   },
+          { symbol: "H",  nameKey: "hydrogen", min: "—",    max: "0.015"                  },
+          { symbol: "—",  nameKey: "otherEach",min: "—",    max: "0.10"                   },
+          { symbol: "—",  nameKey: "otherTotal",min:"—",    max: "0.40"                   },
+          { symbol: "Ti", nameKey: "titanium", min: "—",    max: "Balance"                }
+        ]
+      }
+    },
+    processedBy: {
+      title: "Available Processing Methods",
+      description: "Grade 7 is processed using the same techniques as Grade 2 CP-Ti:",
+      items: [
+        "CNC machining — Fair; sharp carbide tools with high-pressure coolant",
+        "5-axis CNC machining — Suitable for complex chemical processing components",
+        "TIG welding — Excellent; matching ERTi-7 filler recommended for dissimilar joints",
+        "Hot forming — Readily formable at 260–540°C (500–1,000°F)",
+        "Cold forming — Good; similar to Grade 2",
+        "Chemical etching / pickling — Standard HF/HNO₃ baths",
+        "Anodizing — Type II and Type III for additional corrosion protection"
+      ]
+    },
+    manufacturedFrom: {
+      title: "Typical Products & Components",
+      description: "Grade 7 titanium is commonly fabricated into:",
+      items: [
+        "Chemical processing equipment for HCl, dilute H₂SO₄, and chloride service",
+        "Pickling tanks, baskets, and process vessels",
+        "Heat exchanger tube sheets in chloride-containing service",
+        "Anode baskets for electrolytic processes",
+        "Piping systems for wet corrosive streams",
+        "Valve and pump components for reducing-acid service",
+        "FGD (flue gas desulfurization) scrubber internals"
+      ]
+    },
+    usedIn: {
+      title: "Primary Industries",
+      description: "Grade 7 serves in the most aggressive chemical environments:",
+      items: [
+        "Chemical processing — Equipment for reducing acids, chlorides, and wet corrosive streams",
+        "Oil & gas — Downhole and topside chloride-rich service",
+        "Pharmaceutical — Process equipment requiring high purity and corrosion resistance",
+        "Pulp & paper — Bleach plant equipment and chemical recovery",
+        "Power generation — FGD scrubbers and condenser systems",
+        "Metallurgy — Electrolytic refining and electrowinning anodes"
+      ]
+    },
+    alternativeTo: {
+      title: "Alternative Materials",
+      description: "Depending on cost targets, Grade 7 may be substituted by:",
+      items: [
+        "Grade 12 (Ti-0.3Mo-0.8Ni) — Lower cost alternative with similar reducing-acid performance",
+        "Nickel alloys (Hastelloy C-276, Inconel 625) — Superior corrosion resistance but 4–6× the cost",
+        "Stainless 254 SMO / AL-6XN — Lower cost but inferior resistance to reducing acids",
+        "Zirconium — Superior in some acids but 10× the cost"
+      ]
+    },
+    faqs: [
+      { question: "What makes Grade 7 titanium more corrosion-resistant than Grade 2?", answer: "Grade 7 contains 0.12–0.25% palladium, which cathodically modifies the surface oxide film. This Pd-stabilized oxide remains passive in reducing environments (HCl, dilute H₂SO₄, H₃PO₄) where Grade 2's oxide can break down. The mechanical properties are nearly identical to Grade 2." },
+      { question: "Is Grade 7 weldable? What filler should I use?", answer: "Yes. Grade 7 is weldable by TIG and laser using matching ERTi-7 filler metal (or Grade 2 ERTi-2 for non-critical joints). Inert gas shielding is critical — both sides of the weld must be protected with argon backing to maintain corrosion resistance." }
+    ],
+    whyChooseUs: "BOZE CNC Ti supplies Grade 7 (Ti-0.15Pd) titanium components for the most aggressive chemical service. Our certified mill sources provide full EN 10204 3.1 MTRs and Pd content verification. AS9100D-controlled CNC machining and welding processes preserve the Pd-stabilized corrosion envelope in the finished part."
+  },
+
+  // ── Grade 12 — Added 2026-10-08 for /resources/titanium-grades-guide/ hub.
+  "grade-12": {
+    key: "grade-12",
+    name: "Grade 12 – Ti-0.3Mo-0.8Ni Titanium Alloy",
+    nameCn: "Ti-0.3Mo-0.8Ni 12级耐蚀钛合金",
+    uns: "UNS R53400",
+    tagline: "Cost-effective corrosion resistance — nearly matches Grade 7 in reducing acids at a lower palladium-free price point.",
+    badge: "CP-Ti + Mo/Ni (Corrosion Grade)",
+    highlight: "Grade 12",
+    subtitle: "Ti-0.3Mo-0.8Ni (Grade 12, UNS R53400) — a near-alpha alloy with Mo and Ni additions that provide corrosion resistance close to Grade 7 in many environments, at meaningfully lower cost (no Pd premium).",
+    pageTitle: "Grade 12 Titanium (Ti-0.3Mo-0.8Ni) | Cost-Effective Corrosion Resistance | Boze Titanium Manufacturing Center",
+    metaDescription: "Grade 12 (Ti-0.3Mo-0.8Ni, UNS R53400) titanium alloy delivers corrosion resistance approaching Grade 7 without the palladium cost premium.",
+    entityDefinition: {
+      title: "What is Grade 12 Titanium (Ti-0.3Mo-0.8Ni)?",
+      description: "Grade 12 is a near-alpha titanium alloy containing 0.2–0.4% molybdenum and 0.6–0.9% nickel. The Mo+Ni additions provide corrosion resistance comparable to Grade 7 in many reducing environments, with slightly improved elevated-temperature strength. It is a cost-effective alternative to Pd-bearing grades when the corrosion envelope is acceptable.",
+      classification: "Near-Alpha Titanium Alloy (α + minor β)",
+      commonNames: ["Ti-0.3Mo-0.8Ni", "Grade 12", "UNS R53400", "ASTM B265 Grade 12", "ASTM B348 Grade 12"],
+      keyCharacteristics: [
+        "Corrosion resistance close to Grade 7 in hot chloride and reducing-acid environments",
+        "No Pd — 25-40% lower material cost than Grade 7",
+        "Slightly higher elevated-temperature strength than CP-Ti grades",
+        "Good weldability and formability",
+        "Most widely used for chemical processing heat exchangers and piping in mild service"
+      ]
+    },
+    conformsTo: {
+      title: "Applicable Standards",
+      description: "Grade 12 titanium conforms to:",
+      items: [
+        "ASTM B265 — Sheet, Strip, and Plate",
+        "ASTM B348 — Bars and Billets",
+        "ASTM B381 — Forgings",
+        "ASTM B861 — Seamless Pipe",
+        "AMS 4904 — Sheet, Strip, and Plate (Grade 12)",
+        "DIN 17850 — Ti 0.3 Mo 0.8 Ni"
+      ]
+    },
+    hasProperty: {
+      title: "Mechanical & Physical Properties",
+      description: "Typical room-temperature properties for Grade 12 (annealed condition):",
+      properties: [
+        { label: "Tensile Strength (min)", value: "483 MPa (70 ksi)" },
+        { label: "Yield Strength 0.2% Offset (min)", value: "345 MPa (50 ksi)" },
+        { label: "Elongation (min)", value: "18%" },
+        { label: "Hardness (HRB)", value: "≤ 88 HRB" },
+        { label: "Density", value: "4.51 g/cm³" },
+        { label: "Elastic Modulus", value: "105 GPa" },
+        { label: "Melting Point", value: "1,668°C (3,034°F)" },
+        { label: "Max Service Temperature", value: "316°C (600°F) — short exposure to 350°C" }
+      ],
+      chemistry: {
+        titleKey: "chemicalComposition",
+        descriptionKey: "chemicalCompositionDesc",
+        basis: "ASTM B348 Grade 12 / ASTM B265 Grade 12",
+        remark: "Molybdenum and nickel provide near-Grade 7 corrosion resistance without Pd premium. Titanium balance by difference.",
+        elements: [
+          { symbol: "Mo", nameKey: "molybdenum", min: "0.2",  max: "0.4",  typical: "0.3" },
+          { symbol: "Ni", nameKey: "nickel",     min: "0.6",  max: "0.9",  typical: "0.8" },
+          { symbol: "Fe", nameKey: "iron",       min: "—",    max: "0.30"                   },
+          { symbol: "O",  nameKey: "oxygen",     min: "—",    max: "0.20"                   },
+          { symbol: "N",  nameKey: "nitrogen",   min: "—",    max: "0.05"                   },
+          { symbol: "C",  nameKey: "carbon",     min: "—",    max: "0.08"                   },
+          { symbol: "H",  nameKey: "hydrogen",   min: "—",    max: "0.015"                  },
+          { symbol: "—",  nameKey: "otherEach",  min: "—",    max: "0.10"                   },
+          { symbol: "—",  nameKey: "otherTotal", min: "—",    max: "0.40"                   },
+          { symbol: "Ti", nameKey: "titanium",   min: "—",    max: "Balance"                }
+        ]
+      }
+    },
+    processedBy: {
+      title: "Available Processing Methods",
+      description: "Grade 12 processes like a CP-Ti with slightly higher strength:",
+      items: [
+        "CNC machining — Fair; sharp carbide tools with high-pressure coolant recommended",
+        "5-axis CNC machining — Suitable for complex chemical process equipment",
+        "TIG welding — Good; matching ERTi-12 filler for critical corrosion service",
+        "Hot forming — Readily formable at 260–540°C (500–1,000°F)",
+        "Cold forming — Limited compared to Grade 2 due to higher strength",
+        "Bending and rolling — Good for tube and sheet fabrication",
+        "Anodizing — Type II and Type III for color coding and wear resistance"
+      ]
+    },
+    manufacturedFrom: {
+      title: "Typical Products & Components",
+      description: "Grade 12 is widely used in:",
+      items: [
+        "Chemical processing heat exchangers and condensers",
+        "Piping systems for hot chloride solutions",
+        "Tank linings and process vessel internals",
+        "Anode baskets for electrolytic processes",
+        "FGD scrubber internals",
+        "Desalination plant components",
+        "Hydrometallurgical process equipment"
+      ]
+    },
+    usedIn: {
+      title: "Primary Industries",
+      description: "Grade 12 is the workhorse for cost-effective corrosion resistance:",
+      items: [
+        "Chemical processing — Heat exchangers, piping, and tanks for reducing-acid and chloride service",
+        "Oil & gas — Topside chloride-rich process piping",
+        "Desalination — Thermal and membrane process equipment",
+        "Pulp & paper — Bleach plant equipment",
+        "Power generation — FGD and condenser systems",
+        "Metallurgy — Electrolytic refining anodes"
+      ]
+    },
+    alternativeTo: {
+      title: "Alternative Materials",
+      description: "Grade 12 is often the cost-optimized choice vs.:",
+      items: [
+        "Grade 7 (Ti-0.15Pd) — Superior in pure chlorides; Grade 12 saves 25–40% on material cost",
+        "Grade 2 CP-Ti — Insufficient in reducing acids; upgrade to Grade 12 for hot chloride service",
+        "Stainless 316L — Lower cost but lower corrosion envelope and heavier",
+        "Stainless 254 SMO — Comparable corrosion, similar cost in some markets"
+      ]
+    },
+    faqs: [
+      { question: "When should I choose Grade 12 over Grade 7?", answer: "Choose Grade 12 when service is in hot chloride or mildly reducing acid environments and you want to avoid the Pd premium. For very aggressive reducing acids (concentrated HCl, pure wet chloride under heat), Grade 7 still wins. We help you benchmark the trade-off in your RFQ." },
+      { question: "Is Grade 12 weldable? What filler metal should I use?", answer: "Yes. Use matching ERTi-12 filler for critical corrosion service; ERTi-2 (Grade 2) is acceptable for less-demanding joints. Maintain strict inert gas backing to preserve the corrosion envelope across the weld." }
+    ],
+    whyChooseUs: "BOZE CNC Ti supplies Grade 12 (Ti-0.3Mo-0.8Ni) titanium components as the cost-effective workhorse for chemical, oil & gas, and desalination service. Our EN 10204 3.1 MTRs verify Mo and Ni content, and our AS9100D-controlled CNC and welding processes preserve the alloy's corrosion envelope in every shipped part."
   }
 };
