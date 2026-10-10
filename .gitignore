@@ -69,3 +69,6 @@ public/uploads/*.webp
 public/uploads/boze-tmc-*
 # ── RFQ inquiry archive download (customer data — never commit) ─
 rfq-downloads/
+
+# ===== Dev hook artifacts (local-only audit log, never commit) =====
+memory-bank/dev-log.md
