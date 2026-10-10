@@ -6,6 +6,7 @@ import ForgingProcessSpectrum from '../../components/services/ForgingProcessSpec
 import ForgingSpecsDashboard from '../../components/services/ForgingSpecsDashboard.astro';
 import MetallurgyGrainFlowKnowHow from '../../components/services/MetallurgyGrainFlowKnowHow.astro';
 import ForgingDedicatedCta from '../../components/services/ForgingDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -64,6 +65,19 @@ const t = useTranslations(lang);
 
   <!-- Grain Flow & Metallurgy Control — 2-column -->
   <MetallurgyGrainFlowKnowHow />
+
+  <!-- Visual Highlight — Open & Closed-Die Titanium Forging (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Forging"
+    title="Open & Closed-Die Titanium Forging"
+    body="Hot-die forging in the 850-950°C beta-transus window with controlled cooling — refining grain flow to deliver forged titanium parts with fatigue strength 20-30% above machined-from-bar equivalents."
+    bullets={["850-950°C forging window", "Up to 2,000-ton press force", "Beta-anneal + duplex anneal", "Forged + machined from one lot"]}
+    catalogId="titanium-forming-heavy-manufacturing.titanium-forging"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Forging Assessment -->
   <ForgingDedicatedCta />

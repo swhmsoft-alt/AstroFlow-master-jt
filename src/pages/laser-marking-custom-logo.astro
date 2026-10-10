@@ -5,6 +5,7 @@ import MarkingProcessSpectrum from '../components/services/MarkingProcessSpectru
 import MarkingSpecsDashboard from '../components/services/MarkingSpecsDashboard.astro';
 import ThermalStressContrastKnowHow from '../components/services/ThermalStressContrastKnowHow.astro';
 import MarkingDedicatedCta from '../components/services/MarkingDedicatedCta.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -57,6 +58,19 @@ const t = useTranslations(lang);
 
   <!-- Thermal Stress & Contrast Know-How — 2-column challenge/solution -->
   <ThermalStressContrastKnowHow />
+
+  <!-- Visual Highlight — Permanent Logo, Part Number & Traceability Marking (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Value-Added Services"
+    title="Permanent Logo, Part Number & Traceability Marking"
+    body="Fiber-laser marking for high-contrast logos, part numbers, lot codes, and 2D Data Matrix symbology — deep enough to survive abrasive blasting, yet shallow enough to preserve fatigue life of the substrate."
+    bullets={["Fiber & UV laser sources", "2D Data Matrix / UID per MIL-STD-130", "No-stress / low-microcrack marking", "Batch / lot / serial traceability"]}
+    catalogId="laser-marking-custom-logo.hub"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request Marking Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — 24-Hour Engineering Review -->
   <MarkingDedicatedCta />

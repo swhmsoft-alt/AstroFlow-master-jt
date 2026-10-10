@@ -7,6 +7,7 @@ import WireEdmSpecsDashboard from '../../components/services/WireEdmSpecsDashboa
 import WireEdmKnowHow from '../../components/services/WireEdmKnowHow.astro';
 import WireEdmDedicatedCta from '../../components/services/WireEdmDedicatedCta.astro';
 import EdmBroachingSinkerSection from '../../components/services/EdmBroachingSinkerSection.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -66,6 +67,19 @@ const t = useTranslations(lang);
 
   <!-- Wire EDM Engineering Know-How — 2-column challenge/solution -->
   <WireEdmKnowHow />
+
+  <!-- Visual Highlight — Wire EDM for Hardened Titanium & Tight Tolerances (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Wire EDM Machining"
+    title="Wire EDM for Hardened Titanium & Tight Tolerances"
+    body="Submerged wire EDM with 0.1 mm brass wire cuts hardened titanium alloys to ±0.005 mm — ideal for micro-medical implants, fine slot features, and post-heat-treatment finish machining without distortion."
+    bullets={["±0.005 mm positional accuracy", "Ra 0.2 μm wire-cut finish", "Hardened titanium to 60+ HRC", "Tap-free micro-hole arrays"]}
+    catalogId="titanium-cnc-machining-services.wire-edm-machining"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- EDM Broaching & Sinker EDM -->
   <EdmBroachingSinkerSection />

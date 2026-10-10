@@ -6,6 +6,7 @@ import PrepProcessSpectrum from '../../components/services/PrepProcessSpectrum.a
 import PrepSpecsDashboard from '../../components/services/PrepSpecsDashboard.astro';
 import SizingHardeningTraceabilityKnowHow from '../../components/services/SizingHardeningTraceabilityKnowHow.astro';
 import PrepDedicatedCta from '../../components/services/PrepDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -64,6 +65,19 @@ const t = useTranslations(lang);
 
   <!-- Hardening Suppression & Traceability Control — 2-column -->
   <SizingHardeningTraceabilityKnowHow />
+
+  <!-- Visual Highlight — Billet Sawing, Conditioning & Traceability (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Raw Material Preparation"
+    title="Billet Sawing, Conditioning & Traceability"
+    body="From incoming bar/billet to forge-ready stock — precision abrasive sawing, defect removal by hand-grinding, full identity preservation, and heat-lot traceability tied to MTC EN 10204 3.1."
+    bullets={["Abrasive sawing to ±0.5 mm", "Defect removal by hand-grinding", "Heat-lot identity preserved", "MTC 3.1 with every batch"]}
+    catalogId="titanium-forming-heavy-manufacturing.raw-material-preparation-sizing"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Processing & Compliance Assessment -->
   <PrepDedicatedCta />

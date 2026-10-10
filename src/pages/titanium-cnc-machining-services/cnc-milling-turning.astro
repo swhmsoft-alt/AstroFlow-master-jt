@@ -6,6 +6,7 @@ import TurnMillSpectrum from '../../components/services/TurnMillSpectrum.astro';
 import TurnMillSpecsDashboard from '../../components/services/TurnMillSpecsDashboard.astro';
 import TurnMillKnowHow from '../../components/services/TurnMillKnowHow.astro';
 import TurnMillDedicatedCta from '../../components/services/TurnMillDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -65,6 +66,19 @@ const t = useTranslations(lang);
 
   <!-- Turn-Mill Engineering Know-How -->
   <TurnMillKnowHow />
+
+  <!-- Visual Highlight — Turn-Mill Centers for Cylindrical Parts (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="CNC Milling & Turning"
+    title="Turn-Mill Centers for Cylindrical Titanium Parts"
+    body="Combined milling and turning on multi-axis turn-mill centers — eliminating the second setup and the resulting tolerance stack-up for shafts, bushings, and medical bone-screw type geometry."
+    bullets={["Single-setup turn + mill", "Live-tool 12-station turrets", "Bar feeder up to 65 mm diameter", "Sub-spindle part-off available"]}
+    catalogId="titanium-cnc-machining-services.cnc-milling-turning"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA for Turn-Mill DFM Analysis -->
   <TurnMillDedicatedCta />

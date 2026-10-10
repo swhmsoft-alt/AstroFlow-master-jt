@@ -5,6 +5,7 @@ import PackagingProcessSpectrum from '../components/services/PackagingProcessSpe
 import PackagingSpecsDashboard from '../components/services/PackagingSpecsDashboard.astro';
 import SmearingWarehouseInterlockKnowHow from '../components/services/SmearingWarehouseInterlockKnowHow.astro';
 import PackagingDedicatedCta from '../components/services/PackagingDedicatedCta.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -57,6 +58,19 @@ const t = useTranslations(lang);
 
   <!-- Smearing & Warehouse Interlock Know-How — 2-column challenge/solution -->
   <SmearingWarehouseInterlockKnowHow />
+
+  <!-- Visual Highlight — Custom Branded Packaging & Kitting (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Value-Added Services"
+    title="Custom Branded Packaging & Kitting"
+    body="White-glove packaging for high-value titanium parts — from anti-corrosion VCI bags to customer-branded boxes with custom labels, kitting per assembly drawing, and tamper-evident seals for OEM delivery."
+    bullets={["VCI anti-corrosion per MIL-PRF-22019", "White-label box & label customization", "Multi-part kitting per BOM", "Tamper-evident seals for export"]}
+    catalogId="branded-custom-packaging-services.hub"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request Packaging Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — 24-Hour Packaging Quote -->
   <PackagingDedicatedCta />

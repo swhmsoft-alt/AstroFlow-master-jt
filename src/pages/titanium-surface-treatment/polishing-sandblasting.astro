@@ -6,6 +6,7 @@ import TexturingProcessSpectrum from '../../components/services/TexturingProcess
 import TexturingSpecsDashboard from '../../components/services/TexturingSpecsDashboard.astro';
 import SmearingEmbeddingControlKnowHow from '../../components/services/SmearingEmbeddingControlKnowHow.astro';
 import TexturingDedicatedCta from '../../components/services/TexturingDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -65,6 +66,19 @@ const t = useTranslations(lang);
 
   <!-- Smearing & Embedding Control Know-How — 2-column challenge/solution -->
   <SmearingEmbeddingControlKnowHow />
+
+  <!-- Visual Highlight — Mechanical & Electro-Polishing for Mirror Finish (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Polishing & Sandblasting"
+    title="Mechanical & Electro-Polishing for Mirror Finish"
+    body="Multi-stage polishing to Ra 0.025 μm mirror finish, glass-bead / aluminum-oxide sandblasting for matte texture, and electro-polishing for ultra-clean medical surfaces — all with consistent lot-to-lot results."
+    bullets={["Ra 0.025 μm mirror finish", "Glass-bead / Al₂O₃ blasting", "Electro-polish to medical grade", "Lot-traced surface finish"]}
+    catalogId="titanium-surface-treatment.polishing-sandblasting"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — 24-Hour Architectural Review -->
   <TexturingDedicatedCta />

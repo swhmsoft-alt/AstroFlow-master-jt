@@ -1,0 +1,231 @@
+---
+/**
+ * ImageTextSplit — Generic left-image/right-text OR right-image/left-text
+ * reusable section. Designed for the 23 service pages (hub + leaf).
+ *
+ * Single source of truth for image paths and alt text:
+ *   - src/content/image-catalog.json
+ *   - Components look up by `catalogId` to get { webp, png, svg, alt }
+ *   - `imageSrc` and `imageAlt` are still accepted as overrides for ad-hoc use
+ *
+ * Props:
+ *   - catalogId     REQUIRED for new pages — id from image-catalog.json
+ *                   (e.g. "titanium-cnc-machining-services.hub")
+ *   - imageSrc      OPTIONAL override (used by ad-hoc / marketing pages)
+ *   - imageAlt      OPTIONAL override
+ *   - eyebrow       small label above the title
+ *   - title         main H2 heading
+ *   - body          paragraph (~80-150 chars recommended)
+ *   - bullets       3-5 supporting points
+ *   - ctaLabel      CTA button text
+ *   - ctaHref       CTA button link
+ *   - imagePosition 'left' (default) or 'right'
+ *   - background    'dark' | 'card' | 'white' | 'gray'
+ *   - badge         optional corner badge (e.g. "Since 2008")
+ *   - iconPath      optional inline SVG path next to the title
+ */
+import imageCatalogRaw from '../../content/image-catalog.json';
+
+// Build a lookup map once. Key: catalogId, Value: catalog entry.
+const catalogMap: Record<string, (typeof imageCatalogRaw.images)[number]> = {};
+for (const entry of imageCatalogRaw.images) {
+  catalogMap[entry.id] = entry;
+}
+
+interface Props {
+  catalogId?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  eyebrow?: string;
+  title: string;
+  body: string;
+  bullets?: string[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  imagePosition?: 'left' | 'right';
+  background?: 'dark' | 'card' | 'white' | 'gray';
+  badge?: string;
+  iconPath?: string;
+}
+
+const {
+  catalogId,
+  imageSrc: imageSrcOverride,
+  imageAlt: imageAltOverride,
+  eyebrow,
+  title,
+  body,
+  bullets = [],
+  ctaLabel,
+  ctaHref,
+  imagePosition = 'left',
+  background = 'dark',
+  badge,
+  iconPath,
+} = Astro.props;
+
+// Resolve image source: catalogId takes priority, then explicit override.
+// Build the onerror fallback chain from catalog: webp -> png -> svg.
+const catalogEntry = catalogId ? catalogMap[catalogId] : undefined;
+let primarySrc: string;
+let fallbackChain: string[] = [];
+let resolvedAlt: string;
+let isPlaceholder: boolean;
+
+if (catalogEntry) {
+  // Try webp first, then png, then svg. The actual browser only uses one
+  // src; the rest live in data-fallback so the onerror handler can chain.
+  primarySrc = catalogEntry.webp;
+  fallbackChain = [catalogEntry.png, catalogEntry.svg].filter(Boolean);
+  resolvedAlt = imageAltOverride || catalogEntry.alt;
+  isPlaceholder = catalogEntry.status === 'placeholder';
+} else if (imageSrcOverride) {
+  primarySrc = imageSrcOverride;
+  resolvedAlt = imageAltOverride || '';
+  isPlaceholder = false;
+} else {
+  // Misconfiguration guard — make it obvious instead of silently broken.
+  throw new Error(
+    `ImageTextSplit requires either "catalogId" (from image-catalog.json) or an explicit "imageSrc". ` +
+    `Title: "${title}". Add a catalog entry first, then reference its id.`
+  );
+}
+
+// Backgrounds — match Section.astro's color tokens
+const bgStyles: Record<string, string> = {
+  dark: '',
+  card: 'border-y',
+  gradient: '',
+  white: '',
+  gray: ''
+};
+
+const bgColors: Record<string, string> = {
+  dark: '',
+  card: 'background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);',
+  gradient: '',
+  white: 'background: var(--theme-surface);',
+  gray: 'background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));'
+};
+
+const sectionStyle = bgColors[background];
+const sectionClass = `py-16 lg:py-24 ${bgStyles[background]} relative overflow-hidden`;
+
+// Grid order: imagePosition 'left' => image first, text second
+const orderImage = imagePosition === 'left' ? 'order-1' : 'order-1 lg:order-2';
+const orderText  = imagePosition === 'left' ? 'order-2' : 'order-2 lg:order-1';
+
+// Default CTA
+const ctaText = ctaLabel || 'Request a Quote';
+const ctaUrl  = ctaHref || '/rfq/';
+
+// Check icon for bullets
+const checkPath = "M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z";
+
+// Inline onerror handler that walks the fallback chain stored in data-fb.
+// Once the chain is exhausted the image is hidden (parent keeps its background).
+const onerrorScript = `
+  var fb=this.getAttribute('data-fb');
+  if(fb){
+    var chain=fb.split('|');
+    var next=chain.shift();
+    this.setAttribute('data-fb',chain.join('|'));
+    if(next){this.src=next}
+    else{this.style.display='none';this.setAttribute('data-failed','1')}
+  } else {
+    this.style.display='none';
+    this.setAttribute('data-failed','1');
+  }
+`.replace(/\s+/g, ' ').trim();
+---
+
+<section class={sectionClass} style={sectionStyle || undefined}>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+      <!-- Image column -->
+      <div class={`${orderImage} relative`}>
+        {badge && (
+          <div
+            class="absolute -top-3 -right-3 lg:-top-4 lg:-right-4 z-10 inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded-full shadow-lg"
+            style="background-color: var(--theme-primary); color: var(--theme-bg);"
+          >
+            {badge}
+          </div>
+        )}
+        <div
+          class="relative overflow-hidden rounded-2xl"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent); box-shadow: 0 20px 60px -20px color-mix(in srgb, var(--theme-primary) 30%, transparent);"
+        >
+          <img
+            src={primarySrc}
+            alt={resolvedAlt}
+            class="w-full h-auto block"
+            loading="lazy"
+            decoding="async"
+            data-fb={fallbackChain.join('|') || undefined}
+            data-catalog-id={catalogId || undefined}
+            data-placeholder={isPlaceholder ? 'true' : undefined}
+            style="display:block;width:100%;height:auto;"
+            onerror={onerrorScript}
+          />
+        </div>
+        <!-- Decorative dot pattern -->
+        <div class="absolute -bottom-6 -left-6 w-32 h-32 -z-10 opacity-30 pointer-events-none hidden lg:block" aria-hidden="true">
+          <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 16px 16px;"></div>
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div class={orderText}>
+        {eyebrow && (
+          <div class="inline-flex items-center mb-4">
+            <span class="w-8 h-px mr-3" style="background-color: var(--theme-primary);"></span>
+            <span class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">
+              {eyebrow}
+            </span>
+          </div>
+        )}
+
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight" style="color: var(--theme-text);">
+          {iconPath && (
+            <svg class="inline-block w-8 h-8 mr-2 -mt-1 align-middle" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPath} />
+            </svg>
+          )}
+          {title}
+        </h2>
+
+        <p class="text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          {body}
+        </p>
+
+        {bullets.length > 0 && (
+          <ul class="space-y-3 mb-7">
+            {bullets.map((b) => (
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mt-0.5 mr-3 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={checkPath} />
+                </svg>
+                <span class="text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{b}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {ctaLabel && ctaHref && (
+          <a
+            href={ctaUrl}
+            class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+            style="background-color: var(--theme-primary); color: var(--theme-bg);"
+          >
+            {ctaText}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

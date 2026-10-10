@@ -16,6 +16,7 @@ import QuickStatsBanner from '../../components/services/QuickStatsBanner.astro';
 import WhyBozeVsOthers from '../../components/services/WhyBozeVsOthers.astro';
 import FileProcessAndCapacity from '../../components/services/FileProcessAndCapacity.astro';
 import HowToChooseAxis from '../../components/services/HowToChooseAxis.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -133,6 +134,19 @@ const serviceJsonLd = {
 
   <!-- 12. BOZE vs Others (Buyer: comparison) -->
   <WhyBozeVsOthers />
+
+  <!-- Visual Highlight — Three, Four & Five-Axis Titanium Machining (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="3 / 4 / 5-Axis CNC"
+    title="Three, Four & Five-Axis Titanium Machining"
+    body="From simple 3-axis prismatic parts to 5-axis simultaneous blisks and impellers — choose the axis configuration that minimizes setups, reduces tolerance stack-up, and fits your volume target."
+    bullets={["5-axis simultaneous up to 800 mm", "Tightest ±0.005 mm tolerance", "Aerospace / medical / motorsport focus", "DFM review included on every RFQ"]}
+    catalogId="titanium-cnc-machining-services.3-5-axis-cnc-machining"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- 13. FAQ (AI: FAQPage schema) -->
   <FaqSection />

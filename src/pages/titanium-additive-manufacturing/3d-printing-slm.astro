@@ -6,6 +6,7 @@ import SlmProcessBreakdown from '../../components/services/SlmProcessBreakdown.a
 import SlmMechanicalDashboard from '../../components/services/SlmMechanicalDashboard.astro';
 import MetallurgyDefectControl from '../../components/services/MetallurgyDefectControl.astro';
 import SlmDedicatedCta from '../../components/services/SlmDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -65,6 +66,19 @@ const t = useTranslations(lang);
 
   <!-- Micro-Void & Layer Purity Control — 2-column -->
   <MetallurgyDefectControl />
+
+  <!-- Visual Highlight — SLM / DMLS Titanium Powder-Bed Fusion (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="3D Printing · SLM / DMLS"
+    title="Selective Laser Melting of Titanium Powder"
+    body="Selective laser melting in a vacuum chamber fuses Ti-6Al-4V powder to 99.95% density — achieving UTS 1,050 MPa, elongation 12%+, and post-HIP fatigue performance that meets AMS 4999 wrought baseline."
+    bullets={["Quad-laser 400×400×450 mm build volume", "99.95% density via vacuum SLM", "Post-HIP + solution + aging", "AMS 4999 / ASTM F3301 process"]}
+    catalogId="titanium-additive-manufacturing.3d-printing-slm"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — SLM Feasibility Review -->
   <SlmDedicatedCta />

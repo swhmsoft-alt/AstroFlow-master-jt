@@ -6,6 +6,7 @@ import HeavySpecsDashboard from '../components/services/HeavySpecsDashboard.astr
 import HotFormingStressKnowHow from '../components/services/HotFormingStressKnowHow.astro';
 import HeavyDedicatedCta from '../components/services/HeavyDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -57,6 +58,19 @@ const t = useTranslations(lang);
 
   <!-- Hot Forming & Stress Relief Engineering Know-How — 2-column -->
   <HotFormingStressKnowHow />
+
+  <!-- Visual Highlight — Heavy-Duty Titanium Forming & Forging (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Forming Hub"
+    title="Heavy-Duty Titanium Forming & Forging"
+    body="Multi-ton forming capacity — hot forging, extrusion, plate rolling and stress-relief heat treatment in vacuum furnaces up to 1,200°C — for the largest structural titanium assemblies in aerospace, marine and energy."
+    bullets={["Press force up to 2,000 tons", "Vacuum stress-relief up to 1,200°C", "Open & closed-die forging", "ASME B16.9 / EN 13480 compliance"]}
+    catalogId="titanium-forming-heavy-manufacturing.hub"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Heavy Compliance Assessment -->
   <AudienceHub industry="forming" />

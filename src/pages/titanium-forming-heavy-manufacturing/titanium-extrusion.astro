@@ -6,6 +6,7 @@ import ExtrusionProcessSpectrum from '../../components/services/ExtrusionProcess
 import ExtrusionSpecsDashboard from '../../components/services/ExtrusionSpecsDashboard.astro';
 import DieGallingLubricationKnowHow from '../../components/services/DieGallingLubricationKnowHow.astro';
 import ExtrusionDedicatedCta from '../../components/services/ExtrusionDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -64,6 +65,19 @@ const t = useTranslations(lang);
 
   <!-- Die Lubrication & Thermal Control Know-How — 2-column -->
   <DieGallingLubricationKnowHow />
+
+  <!-- Visual Highlight — Hot Titanium Extrusion for Complex Profiles (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Extrusion"
+    title="Hot Titanium Extrusion for Complex Profiles"
+    body="Hot-extrusion of titanium billets through hardened dies under glass-pack lubrication — producing seamless tubes, complex profiles, and near-net-shape preforms that minimize subsequent machining stock."
+    bullets={["Glass-pack lubrication", "ø20-300 mm seamless tubes", "Custom profile cross-sections", "Near-net-shape preforms"]}
+    catalogId="titanium-forming-heavy-manufacturing.titanium-extrusion"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Extrusion Feasibility Review -->
   <ExtrusionDedicatedCta />

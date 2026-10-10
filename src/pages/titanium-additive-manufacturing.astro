@@ -6,6 +6,7 @@ import AdditiveSpecsDashboard from '../components/services/AdditiveSpecsDashboar
 import AdditiveQualityKnowHow from '../components/services/AdditiveQualityKnowHow.astro';
 import AdditiveDedicatedCta from '../components/services/AdditiveDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -58,6 +59,19 @@ const t = useTranslations(lang);
 
   <!-- Additive Quality & Process Control — 2-column -->
   <AdditiveQualityKnowHow />
+
+  <!-- Visual Highlight — 3D Printing from Prototype to Production (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Additive Hub"
+    title="3D Printing from Prototype to Production"
+    body="Quad-laser SLM/DMLS platforms deliver full-density titanium parts with mechanical properties that match or exceed wrought material — eliminating tooling cost for runs from 1 to 1,000+ units."
+    bullets={["99.95% density via vacuum SLM", "Mechanical match to wrought Ti-6Al-4V", "Lattice structures & internal channels", "HIP + heat treatment in-house"]}
+    catalogId="titanium-additive-manufacturing.hub"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — AM Design Review -->
   <AudienceHub industry="additive" />

@@ -6,6 +6,7 @@ import LaserProcessSpectrum from '../../components/services/LaserProcessSpectrum
 import LaserSpecsDashboard from '../../components/services/LaserSpecsDashboard.astro';
 import OxideSlagMitigation from '../../components/services/OxideSlagMitigation.astro';
 import LaserDedicatedCta from '../../components/services/LaserDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -64,6 +65,19 @@ const t = useTranslations(lang);
 
   <!-- Oxide & Slag Mitigation Protocols — 2-column -->
   <OxideSlagMitigation />
+
+  <!-- Visual Highlight — Fiber-Laser Cutting for Titanium Sheet & Tube (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Laser Cutting"
+    title="Fiber-Laser Cutting for Titanium Sheet & Tube"
+    body="12 kW fiber-laser cutting of titanium sheet up to 3,000×1,500 mm and tube up to ø220 mm — delivering oxide-free, weld-ready edges at ±0.03 mm accuracy with nitrogen or argon assist gas."
+    bullets={["12 kW fiber laser source", "3,000×1,500 mm sheet capacity", "ø220 mm tube rotary cutting", "Weld-ready dross-free edges"]}
+    catalogId="titanium-fabrication-services.laser-cutting"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Laser Nesting & Quote -->
   <LaserDedicatedCta />

@@ -7,6 +7,7 @@ import ReactiveWeldingKnowHow from '../components/services/ReactiveWeldingKnowHo
 import PipeSpoolFabricationSection from '../components/services/PipeSpoolFabricationSection.astro';
 import FabDedicatedCta from '../components/services/FabDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -62,6 +63,19 @@ const t = useTranslations(lang);
 
   <!-- Reactive Welding Engineering Know-How — 2-column -->
   <ReactiveWeldingKnowHow />
+
+  <!-- Visual Highlight — Welding, Cutting & Assembly Under One Roof (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Fabrication Hub"
+    title="Welding, Cutting & Assembly Under One Roof"
+    body="Precision TIG/laser welding with full argon-purge chamber protection, plus CNC cutting and pipe-spool fabrication — delivering weld-ready assemblies that pass radiographic and dye-pen testing on the first inspection."
+    bullets={["Argon-purge chamber welding to AMS 2680", "Sheet / tube / pipe-spool assembly", "EN 13480 / ASME IX WPS-qualified", "Radiographic & DP testing on site"]}
+    catalogId="titanium-fabrication-services.hub"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — WPS & RFQ Assessment -->
   <AudienceHub industry="fabrication" />

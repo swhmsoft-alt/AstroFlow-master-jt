@@ -6,6 +6,7 @@ import PassivationSpectrum from '../../components/services/PassivationSpectrum.a
 import PassivationSpecsDashboard from '../../components/services/PassivationSpecsDashboard.astro';
 import HydrogenEmbrittlementAcidControlKnowHow from '../../components/services/HydrogenEmbrittlementAcidControlKnowHow.astro';
 import PassivationDedicatedCta from '../../components/services/PassivationDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -65,6 +66,19 @@ const t = useTranslations(lang);
 
   <!-- Hydrogen Embrittlement & Acid Control Know-How — 2-column challenge/solution -->
   <HydrogenEmbrittlementAcidControlKnowHow />
+
+  <!-- Visual Highlight — Nitric & Citric Acid Passivation per ASTM F86 (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Chemical Passivation"
+    title="Nitric & Citric Acid Passivation per ASTM F86"
+    body="Medical-grade passivation per ASTM F86 and AMS 2700 — removing free-iron contamination and forming a stable, corrosion-resistant oxide layer safe for implant contact and pharmaceutical service."
+    bullets={["ASTM F86 medical-grade", "AMS 2700 / ASTM A967", "Citric acid (eco) or nitric", "Validated <0.1 μg/cm² iron"]}
+    catalogId="titanium-surface-treatment.chemical-passivation"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — 24-Hour Commercial Quote -->
   <PassivationDedicatedCta />

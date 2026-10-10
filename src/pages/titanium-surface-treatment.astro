@@ -6,6 +6,7 @@ import SurfaceSpecsDashboard from '../components/services/SurfaceSpecsDashboard.
 import GallingOsseointegrationKnowHow from '../components/services/GallingOsseointegrationKnowHow.astro';
 import SurfaceDedicatedCta from '../components/services/SurfaceDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -58,6 +59,19 @@ const t = useTranslations(lang);
 
   <!-- Anti-Galling & Osseointegration Engineering — 2-column challenge/solution -->
   <GallingOsseointegrationKnowHow />
+
+  <!-- Visual Highlight — Surface Engineering for Critical Applications (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Surface Hub"
+    title="Surface Engineering for Critical Titanium Applications"
+    body="AMS-spec anodizing, chemical passivation and micro-arc plasma treatments — from galling-resistant aerospace interfaces to bio-compatible osseointegration surfaces for medical implants."
+    bullets={["AMS 2488 / AMS 2700 compliant", "Type II / III anodizing in 12 colors", "ASTM F86 medical-grade passivation", "Ra control 0.025-0.8 μm"]}
+    catalogId="titanium-surface-treatment.hub"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — 24-Hour Engineering Assessment -->
   <AudienceHub industry="surface" />

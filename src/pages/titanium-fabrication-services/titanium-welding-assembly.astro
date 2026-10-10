@@ -6,6 +6,7 @@ import WeldingAssemblySpectrum from '../../components/services/WeldingAssemblySp
 import AssemblySpecsDashboard from '../../components/services/AssemblySpecsDashboard.astro';
 import BrittleGallingControlKnowHow from '../../components/services/BrittleGallingControlKnowHow.astro';
 import AssemblyDedicatedCta from '../../components/services/AssemblyDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -64,6 +65,19 @@ const t = useTranslations(lang);
 
   <!-- Brittle Layer & Galling Control Engineering — 2-column -->
   <BrittleGallingControlKnowHow />
+
+  <!-- Visual Highlight — TIG & Plasma Welding with Argon-Purge Chambers (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Welding & Assembly"
+    title="TIG & Plasma Welding with Argon-Purge Chambers"
+    body="Argon-purge glove-box welding with oxygen <50 ppm and full-traverse backing gas — producing titanium welds with no discoloration, ASTM E1417-accepted radiographic soundness, and ASME IX WPS qualification."
+    bullets={["<50 ppm oxygen in glove box", "ASME IX WPS / PQR qualified", "Radiographic & dye-pen testing", "Pipe-spool to 24 inch diameter"]}
+    catalogId="titanium-fabrication-services.titanium-welding-assembly"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — PQR & Commercial Assessment -->
   <AssemblyDedicatedCta />

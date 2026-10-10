@@ -1,0 +1,212 @@
+---
+/**
+ * /image-catalog/ — Internal status page for the 23 service-page images.
+ *
+ * Visibility:
+ *   - dev (`astro dev`):  full catalog table with prompt, alt, on-disk check
+ *   - prod (`astro build`): noindex + meta-refresh to /.  Also excluded from
+ *     sitemap via astro.config.mjs filter and from robots.txt.
+ *
+ * The data source is `src/content/image-catalog.json` (single source of truth).
+ *
+ * This page intentionally does NOT use BaseLayout — it is an internal
+ * diagnostic surface, not a public marketing page.
+ */
+import { existsSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import imageCatalogRaw from '../../content/image-catalog.json';
+
+const isDev = import.meta.env.DEV;
+
+if (!isDev) {
+  Astro.response.status = 404;
+  Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+}
+
+type Entry = (typeof imageCatalogRaw.images)[number];
+
+type ResolvedRow = Entry & {
+  webpExists: boolean;
+  webpBytes: number | null;
+  pngExists: boolean;
+  svgExists: boolean;
+  state: 'real' | 'partial' | 'placeholder';
+};
+
+function probe(publicPath: string): { exists: boolean; bytes: number | null } {
+  try {
+    const p = join(process.cwd(), 'public', publicPath.replace(/^\//, ''));
+    if (!existsSync(p)) return { exists: false, bytes: null };
+    return { exists: true, bytes: statSync(p).size };
+  } catch {
+    return { exists: false, bytes: null };
+  }
+}
+
+const rows: ResolvedRow[] = imageCatalogRaw.images.map((e) => {
+  const webp = probe(e.webp);
+  const png = probe(e.png);
+  const svg = probe(e.svg);
+  const all = webp.exists && png.exists && svg.exists;
+  const any = webp.exists || png.exists || svg.exists;
+  return {
+    ...e,
+    webpExists: webp.exists,
+    webpBytes: webp.bytes,
+    pngExists: png.exists,
+    svgExists: svg.exists,
+    state: all ? 'real' : any ? 'partial' : 'placeholder',
+  };
+});
+
+const total = rows.length;
+const real = rows.filter((r) => r.state === 'real').length;
+const partial = rows.filter((r) => r.state === 'partial').length;
+const placeholder = rows.filter((r) => r.state === 'placeholder').length;
+
+const stateBadge: Record<ResolvedRow['state'], string> = {
+  real: '✅ real',
+  partial: '⚠️ partial',
+  placeholder: '⏳ placeholder',
+};
+const stateColor: Record<ResolvedRow['state'], string> = {
+  real: '#16a34a',
+  partial: '#d97706',
+  placeholder: '#6b7280',
+};
+
+function fmtBytes(n: number | null): string {
+  if (n == null) return '—';
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  return `${(n / 1024 / 1024).toFixed(2)} MB`;
+}
+---
+{isDev ? (
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Image Catalog — dev only</title>
+      <meta name="robots" content="noindex,nofollow" />
+      <style is:global>
+        :root {
+          --bg: #0f172a;
+          --surface: #1e293b;
+          --border: #334155;
+          --text: #e2e8f0;
+          --muted: #94a3b8;
+          --primary: #38bdf8;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .wrap { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        h1 { font-size: 28px; margin: 0 0 4px; }
+        .sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+        .summary { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+        .pill { padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: 13px; }
+        .pill b { color: var(--primary); font-weight: 600; margin-left: 4px; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        thead th { text-align: left; padding: 10px 12px; background: var(--surface); border-bottom: 1px solid var(--border); font-weight: 600; position: sticky; top: 0; }
+        tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tbody tr:hover { background: rgba(56, 189, 248, 0.04); }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+        .ok { color: #16a34a; }
+        .no { color: #6b7280; }
+        .id { font-family: ui-monospace, SFMono-Regular, monospace; font-size: 12px; color: var(--primary); }
+        .prompt { color: var(--muted); font-size: 12px; line-height: 1.4; max-width: 480px; }
+        details summary { cursor: pointer; color: var(--primary); }
+        details[open] summary { margin-bottom: 6px; }
+        code { background: var(--surface); padding: 1px 5px; border-radius: 4px; font-size: 11px; }
+      </style>
+    </head>
+    <body>
+      <div class="wrap">
+        <h1>🖼️ Image Catalog</h1>
+        <p class="sub">
+          Single source of truth for the 23 service-page images. Marketing drops
+          <code>&#123;filename&#125;.&#123;webp,png,svg&#125;</code> into
+          <code>public/images/hubs/&#123;category&#125;/</code> and the next build picks
+          them up. <b>Dev only</b> — this page is excluded from sitemap and
+          returns 404 in production.
+        </p>
+
+        <div class="summary">
+          <div class="pill">Total <b>{total}</b></div>
+          <div class="pill">✅ Real <b>{real}</b></div>
+          <div class="pill">⚠️ Partial <b>{partial}</b></div>
+          <div class="pill">⏳ Placeholder <b>{placeholder}</b></div>
+          <div class="pill">Catalog v{imageCatalogRaw.version}</div>
+          <div class="pill">Last updated {imageCatalogRaw.lastUpdated}</div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Catalog ID</th>
+              <th>Page</th>
+              <th>Category / Filename</th>
+              <th>Files (webp · png · svg)</th>
+              <th>Priority</th>
+              <th>Alt (short)</th>
+              <th>Prompt</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <td>
+                  <span class="badge" style={`background:${stateColor[r.state]}22;color:${stateColor[r.state]}`}>
+                    {stateBadge[r.state]}
+                  </span>
+                </td>
+                <td class="id">{r.id}</td>
+                <td>
+                  <a href={r.page} style="color:var(--primary);text-decoration:none;">{r.page}</a>
+                  <div style="color:var(--muted);font-size:11px;margin-top:2px;">{r.pageName}</div>
+                </td>
+                <td>
+                  <code>{r.category}</code>
+                  <div style="color:var(--muted);font-size:11px;margin-top:2px;">{r.filename}</div>
+                </td>
+                <td style="font-family:ui-monospace,monospace;font-size:11px;line-height:1.6;">
+                  <div>
+                    <span class={r.webpExists ? 'ok' : 'no'}>{r.webpExists ? '✓' : '✗'}</span> {r.webp}
+                    {r.webpBytes != null && <span style="color:var(--muted)"> · {fmtBytes(r.webpBytes)}</span>}
+                  </div>
+                  <div>
+                    <span class={r.pngExists ? 'ok' : 'no'}>{r.pngExists ? '✓' : '✗'}</span> {r.png}
+                  </div>
+                  <div>
+                    <span class={r.svgExists ? 'ok' : 'no'}>{r.svgExists ? '✓' : '✗'}</span> {r.svg}
+                  </div>
+                </td>
+                <td>{r.priority}</td>
+                <td style="max-width:240px;">{r.alt}</td>
+                <td class="prompt">
+                  <details>
+                    <summary>View prompt</summary>
+                    {r.prompt}
+                  </details>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </body>
+  </html>
+) : (
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Not found</title>
+      <meta name="robots" content="noindex,nofollow" />
+      <meta http-equiv="refresh" content="0;url=/" />
+    </head>
+    <body>
+      <p>Not found.</p>
+    </body>
+  </html>
+)}

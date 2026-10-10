@@ -6,6 +6,7 @@ import CncTechnicalDashboard from '../components/services/CncTechnicalDashboard.
 import TitaniumEngineeringKnowHow from '../components/services/TitaniumEngineeringKnowHow.astro';
 import CncDedicatedCta from '../components/services/CncDedicatedCta.astro';
 import AudienceHub from '../components/audience/AudienceHub.astro';
+import ImageTextSplit from '../components/ui/ImageTextSplit.astro';
 import CncBuyerDecisionMatrix from '../components/services/CncBuyerDecisionMatrix.astro';
 import MethodologySources from '../components/services/MethodologySources.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
@@ -153,6 +154,20 @@ const t = useTranslations(lang);
 
   <!-- Titanium Engineering Know-How — Challenge/Solution 2-column -->
   <TitaniumEngineeringKnowHow />
+
+  <!-- Visual Highlight — End-to-End Titanium Machining Solutions (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium CNC Hub"
+    title="End-to-End Titanium Machining Solutions"
+    body="From single-axis prototypes to full 5-axis production — every titanium grade (CP-Ti, Ti-6Al-4V, Grade 23 ELI) machined to AS9100D and ISO 13485 standards under one roof."
+    bullets={["5-axis simultaneous machining up to 800 mm", "AS9100D / ISO 13485 / ISO 9001 certified", "Closed-loop Cpk ≥ 1.67 verification", "In-house finishing & assembly"]}
+    catalogId="titanium-cnc-machining-services.hub"
+    imagePosition="left"
+    background="dark"
+    badge="AS9100D"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- ============== S4: FAQ (5 <details>) ============== -->
   <section class="relative py-20" style="background-color: var(--theme-bg);">

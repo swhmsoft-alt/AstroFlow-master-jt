@@ -24,7 +24,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin') && !page.includes('/thank-you'),
+      filter: (page) => !page.includes('/theme-demo') && !page.includes('/admin') && !page.includes('/thank-you') && !page.includes('/image-catalog'),
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date(),

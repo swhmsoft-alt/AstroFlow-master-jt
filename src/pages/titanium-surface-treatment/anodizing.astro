@@ -9,6 +9,7 @@ import GallingColorVariationKnowHow from '../../components/services/GallingColor
 import AnodizingLogisticsTimeline from '../../components/services/AnodizingLogisticsTimeline.astro';
 import AnodizingFaqAccordion, { ANODIZING_FAQ_ITEMS } from '../../components/services/AnodizingFaqAccordion.astro';
 import AnodizingDedicatedCta from '../../components/services/AnodizingDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -76,6 +77,19 @@ const t = useTranslations(lang);
 
   <!-- Galling & Color Variation Know-How — 2-column challenge/solution -->
   <GallingColorVariationKnowHow />
+
+  <!-- Visual Highlight — Type II / III Titanium Anodizing in 12 Colors (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Titanium Anodizing"
+    title="Type II / III Titanium Anodizing in 12 Colors"
+    body="AMS 2488-compliant titanium anodizing in voltage-controlled colors — Type II for cosmetic/identification, Type III for wear resistance, with batch color match to within ±5 V across any production volume."
+    bullets={["AMS 2488 compliant", "Type II cosmetic + Type III wear", "12 standard voltage colors", "±5 V color match batch-to-batch"]}
+    catalogId="titanium-surface-treatment.anodizing"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Logistics Workflow Timeline — 5-step RFQ → crate -->
   <AnodizingLogisticsTimeline />

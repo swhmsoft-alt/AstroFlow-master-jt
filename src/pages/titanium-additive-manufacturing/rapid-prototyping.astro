@@ -6,6 +6,7 @@ import RapidValuePillars from '../../components/services/RapidValuePillars.astro
 import PrototypingSpecsDashboard from '../../components/services/PrototypingSpecsDashboard.astro';
 import HybridPostProcessing from '../../components/services/HybridPostProcessing.astro';
 import RapidPrototypeCta from '../../components/services/RapidPrototypeCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -65,6 +66,19 @@ const t = useTranslations(lang);
 
   <!-- Hybrid Additive-Subtractive Post-Processing — 2-column -->
   <HybridPostProcessing />
+
+  <!-- Visual Highlight — Functional Titanium Prototypes in 3-5 Days (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Rapid Prototyping"
+    title="Functional Titanium Prototypes in 3-5 Days"
+    body="Skip the tooling. Get full-titanium functional prototypes delivered within 3-5 business days — same mechanical properties as the production part, perfect for fit-checks, form verification, and field testing."
+    bullets={["3-5 business-day lead time", "No tooling cost", "Same material as production", "DFM review on every quote"]}
+    catalogId="titanium-additive-manufacturing.rapid-prototyping"
+    imagePosition="left"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Rapid Assessment -->
   <RapidPrototypeCta />

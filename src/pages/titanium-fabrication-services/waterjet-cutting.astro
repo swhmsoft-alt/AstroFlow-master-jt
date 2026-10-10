@@ -6,6 +6,7 @@ import WaterjetAdvantages from '../../components/services/WaterjetAdvantages.ast
 import WaterjetSpecsDashboard from '../../components/services/WaterjetSpecsDashboard.astro';
 import TaperStriationKnowHow from '../../components/services/TaperStriationKnowHow.astro';
 import WaterjetDedicatedCta from '../../components/services/WaterjetDedicatedCta.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 import { HERO_CONFIG } from '../../config/hero';
 const lang = getLangFromUrl(Astro.url);
@@ -64,6 +65,19 @@ const t = useTranslations(lang);
 
   <!-- Taper & Striation Elimination Know-How — 2-column -->
   <TaperStriationKnowHow />
+
+  <!-- Visual Highlight — Cold-Cut Waterjet for Heat-Sensitive Titanium (TODO: marketing-review copy) -->
+  <ImageTextSplit
+    eyebrow="Waterjet Cutting"
+    title="Cold-Cut Waterjet for Heat-Sensitive Titanium"
+    body="Abrasive waterjet cutting at 60,000 psi slices titanium without any heat-affected zone — preserving the metallurgical condition for medical, aerospace, and cryogenic applications where HAZ is unacceptable."
+    bullets={["Zero heat-affected zone", "60,000 psi cutting pressure", "Up to 200 mm titanium thickness", "No thermal distortion"]}
+    catalogId="titanium-fabrication-services.waterjet-cutting"
+    imagePosition="right"
+    background="dark"
+    ctaLabel="Request a Quote"
+    ctaHref="/rfq/"
+  />
 
   <!-- Dedicated CTA — Waterjet Assessment -->
   <WaterjetDedicatedCta />
