@@ -525,6 +525,70 @@ Ops / User scope (NOT Cline's responsibility):
 
 **Scope:** Buyer Search Intelligence Phase G-2.1 — apply user-provided LLM optimization recommendations to the Phase G-2 plate-and-sheet sub-page. Three categories: (a) H1 / page-title / meta-description realignment to remove Coil/Foil from page scope, (b) repair 3 dead-link references to non-existent `/mill-products/foil-coils/`, (c) add 3 long-tail procurement FAQ items.
 
+- (new) Phase G-3.5: create `/mill-products/foil-coils/` sub-page so that future references on the plates-sheets page can point to it instead of /rfq/.
+
+---
+
+### Phase G-4 — `/mill-products/bars-rods/` Sub-Page (2026-10-12)
+
+**Scope:** Buyer Search Intelligence Phase G-4 · Mill Products Bar & Rod sub-page. Second sub-page under existing `/mill-products/` Hub. Mirrors the Phase G-2 plate-and-sheet pattern with 13-zone structure; URL aligned with existing hub gateway card `slug: 'bars-rods'`.
+
+**URL:** `/mill-products/bars-rods/`
+
+**Files modified (4):**
+
+1. `src/config/hero.ts` — new `HERO_CONFIG['/mill-products/bars-rods']` entry (h1, subtitle, 4 keyMetrics, 6 entityChips: ASTM B348 / AMS 4928 / ASTM F136 / ISO 5832-3 / EN 10204 3.1 / AS9100D).
+2. `src/pages/mill-products/bars-rods.astro` — NEW (554 lines). 13-zone structure:
+   - S00 SubpageHero (Direct Answer ①)
+   - S01 What We Don't Cover (6 honest cards: no primary melting / no blanket aerospace / no certified implant / no 24h quote / UT order-specified / 3.1 vs 3.2)
+   - S02 Grade × Form Matrix Table (10 grades × UNS / composition / round+square+hex+billet form / use)
+   - S03 Specification EAV Table (10 attributes × value × standard: Ø3.0–300 mm / h7-h9 / Ra ≤ 0.8 μm / UT per ASTM E213 / AMS-STD-2154 / EN 10204 3.1)
+   - S04 Industry Applications (2× ImageTextSplit — medical Grade 23 / aerospace AMS 4928 — + 4-card grid: chemical / marine / semiconductor / general industrial)
+   - S05 Production Pipeline Timeline (6 stages: VAR → forge → hot roll → cold draw/centerless grind → vacuum anneal → UT/MTR)
+   - S06 Boundary Conditions (3 cards: 400°C creep / reducing acid / deep-hole L:D > 10:1 work hardening)
+   - S07 TrustBadges (reused component, F2)
+   - S08 QualityControl (reused component, F2)
+   - S09 Supply Chain & Lead Time (3 cards: capacity / MOQ / standard 3-5 days + non-standard 4-6 weeks)
+   - S10 Capability Comparison Matrix (3-row table)
+   - S11 Applications (reused component, F2)
+   - S12 FAQ Accordion (6 Q/A — {question, answer} keys, F3 compliant; auto-emits FAQPage schema)
+   - S13 Related Tier1 (5 outbound anchors) + RFQ CTA (⑥)
+   - BaseLayout props: `pageType="standard-part-detail"` + `serviceName` + `serviceCategory` + `collectionName` + `itemCount` + `items` + `faqItems` + `faqName` → auto-emit CollectionPage + ItemList + Service + FAQPage (F4 compliant, no inline JSON-LD)
+3. `src/pages/mill-products/index.astro` — gateway card `bars-rods` href: `/materials/` → `/mill-products/bars-rods/` (closes the inbound 5-Entry rule for parent-hub cross-link; also closes Phase G-3 follow-on for this form).
+4. `astro.config.mjs` — keywordMap: 6 new phrases (`titanium bars and rods`, `titanium bar and rod`, `ASTM B348 round bar`, `AMS 4928 titanium bar`, `ASTM F136 medical rod`, `Ti-6Al-4V centerless ground bar`) → `/mill-products/bars-rods/`.
+5. `data/keywords/main-db.json` — 6 new EN keyword entries (same 6 phrases) with `note: BSI Phase G-4 · 5-Entry rule · Bar & Rod sub-page`.
+
+**Honest positioning (per mill-products hub §10/11/14/23 baseline):**
+- No primary melting claim (sourcing + processing partner)
+- No blanket "aerospace-grade" — material specs applied "where applicable"
+- No 24-hour quote promise — same-week standard response language
+- "100% UT" / "full traceability" framed as "where specified / available" (per order)
+- "ISO 13485" framed as "ISO 13485-aligned material handling"
+- "Certified implant" not used; "medical material specifications where applicable" used instead (BOZE is material supplier + processor, not finished device maker)
+
+**All Claim ↔ Evidence citations are real standards:**
+ASTM B348 §4/§5/§8/§9/§10 · AMS 4928 §3.3 · AMS 4965 · ASTM F136 · ISO 5832-3 · ISO 286-1 · ISO 4287 · ASTM E213 · AMS-STD-2154 · EN 10204 §4 · AS9100D · ISO 13485 · ASTM E112
+
+**Validation gates (pending build):**
+- G1 `check-undefined-slugs.mjs` → ⏳ deferred to user env
+- G2 `npx astro build` → ⏳ deferred (PowerShell shell-integration blocker persists)
+- G3 dist HTML @type audit → ⏳ pending
+- G4 `check-keyword-map.mjs` → ⏳ pending
+- G5 manual review of 5 inbound entries → ✅ verified (hub cross-link updated, keywordMap +6, main-db +6, hero entry, page created)
+- G6 `git status` → ⏳ pending commit
+
+**Lessons:**
+- Hub gateway card `slug: 'bars-rods'` was pre-defined in Phase G but href was a placeholder; the new sub-page activates the existing slug without any schema.ts or hub-index refactor.
+- "Where applicable" language for medical/aerospace specs is essential — BOZE is not a device manufacturer or a primary melter, so any blanket "certified implant wire" or "100% aerospace bar" claim would overstate scope.
+- ImageTextSplit reused two existing project SVG assets (`titanium-bone-screw.svg` for medical, `titanium-bell-crank-rocker-arm.svg` for aerospace) — no asset fabrication, F9 compliant.
+- AMS-STD-2154 (correct bar/rod UT standard) replaces the user's original "AMS STD 2155" reference; 2154 is the actual Aerospace Material Specification standard for ultrasonic inspection of wrought metals.
+
+**Follow-on work (deferred to future phases):**
+- (carried) Phase G-3 follow-on: hub gateway card href alignment for the remaining 4 forms (tubes-pipes, wire, foil-coils, mesh) — plates-sheets (G-2) and bars-rods (G-4) are now live; 4 more remain pointing to `/materials/`.
+- (carried) Phase G-2.2 Schema: extend `standard-part-detail` to optionally emit Product entity when `productName` is passed (opt-in); add `buildSupplyChain()` and `supplyChain` BaseLayout prop; add `deliveryLeadTime` to Product/Offer output.
+- (new) Phase G-5: `/mill-products/tubes-pipes/` sub-page (next product form, identical pattern).
+- (new) Phase G-3.5: create `/mill-products/foil-coils/` sub-page so that future references on the plates-sheets page can point to it instead of /rfq/.
+
 **Files modified (2):**
 
 1. `src/config/hero.ts` — `HERO_CONFIG['/mill-products/plates-sheets']` realigned:

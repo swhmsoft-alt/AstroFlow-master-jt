@@ -97,6 +97,26 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase G-4 · Mill Products Bar & Rod sub-page
+  '/mill-products/bars-rods': {
+    h1: 'Titanium Bar & Rod — Industrial Mill Stock',
+    subtitle: 'Round, square and hexagonal titanium bar and rod stock in CP Gr1/2, aerospace Gr5 (Ti-6Al-4V), medical Gr23 (Ti-6Al-4V ELI) and corrosion-resistant Gr7 / Gr9 / Gr12. Diameter range Ø3.0–300 mm, centerless-ground and cold-drawn h7–h9 tolerance where specified. EN 10204 3.1 mill certification; standard stock ships in 3–5 days with non-standard alloys and custom heat-treat in 4–6 weeks.',
+    badge: 'Mill Products / Bar & Rod | AS9100D',
+    keyMetrics: [
+      { value: 'Ø3.0–300 mm', label: 'Diameter range' },
+      { value: 'h7–h9', label: 'Tolerance grade' },
+      { value: '9+ grades', label: 'Stock range' },
+      { value: '3–5 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASTM B348',
+      'AMS 4928',
+      'ASTM F136',
+      'ISO 5832-3',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',

@@ -260,6 +260,25 @@ export default defineConfig({
           "ASME SB265 plate stock": {
             "href": "/mill-products/plates-sheets/"
           },
+          // BSI Phase G-4 · Mill Products Bar & Rod sub-page (5-inbound #4)
+          "titanium bars and rods": {
+            "href": "/mill-products/bars-rods/"
+          },
+          "titanium bar and rod": {
+            "href": "/mill-products/bars-rods/"
+          },
+          "ASTM B348 round bar": {
+            "href": "/mill-products/bars-rods/"
+          },
+          "AMS 4928 titanium bar": {
+            "href": "/mill-products/bars-rods/"
+          },
+          "ASTM F136 medical rod": {
+            "href": "/mill-products/bars-rods/"
+          },
+          "Ti-6Al-4V centerless ground bar": {
+            "href": "/mill-products/bars-rods/"
+          },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
           },
