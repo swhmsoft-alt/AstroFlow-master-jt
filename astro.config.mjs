@@ -244,6 +244,22 @@ export default defineConfig({
           "titanium MTR documentation": {
             "href": "/mill-products/"
           },
+          // BSI Phase G-2 · Mill Products Plate & Sheet sub-page (5-inbound #4)
+          "titanium plate and sheet": {
+            "href": "/mill-products/plates-sheets/"
+          },
+          "titanium plates and sheets": {
+            "href": "/mill-products/plates-sheets/"
+          },
+          "ASTM B265 plate and sheet": {
+            "href": "/mill-products/plates-sheets/"
+          },
+          "AMS 4911 titanium plate": {
+            "href": "/mill-products/plates-sheets/"
+          },
+          "ASME SB265 plate stock": {
+            "href": "/mill-products/plates-sheets/"
+          },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
           },

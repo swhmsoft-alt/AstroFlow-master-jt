@@ -1,0 +1,543 @@
+---
+/**
+ * /mill-products/plates-sheets/ — Titanium Plate, Sheet, Coil & Foil Sub-Page
+ * Buyer Search Intelligence Phase G-2 · Mill Products Plate & Sheet
+ * Schema: pageType="standard-part-detail" → CollectionPage + ItemList + Service
+ * (auto-emitted via src/lib/schema.ts; F4 compliant, no inline JSON-LD)
+ * F2: No new component for a single page. F3: { question, answer } keys. F9: trailing slash.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/plates-sheets'];
+
+const pageTitle = 'Titanium Plate, Sheet, Coil & Foil | Industrial Mill Stock | BOZE Metal';
+const pageDescription = 'Precision-rolled titanium plate, sheet, coil and foil — CP Gr1/2/3/4, aerospace Gr5 / Ti-6-2-4-2, corrosion-resistant Gr7 / Gr12. ASTM B265 / ASME SB265 / AMS 4911 / AMS 4919 compliant. EN 10204 3.1/3.2 MTR. Standard stock 3–5 days; custom rolling 6–8 weeks.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/plates-sheets/';
+
+// ── S02 Grade × Form Matrix ────────────────────────────────────────────────
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial', form: 'Sheet, Plate', use: 'Chemical processing, formable structures' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'Plate, Sheet, Tube, Bar', use: 'Most widely specified CP — pressure vessels, marine' },
+  { family: 'CP Titanium', grade: 'Grade 3', uns: 'R50550', composition: 'Unalloyed Ti, higher strength', form: 'Plate, Sheet', use: 'Higher-stress chemical service' },
+  { family: 'CP Titanium', grade: 'Grade 4', uns: 'R50700', composition: 'Unalloyed Ti, highest CP strength', form: 'Plate, Sheet', use: 'Aerospace structures, fasteners, surgical hardware' },
+  { family: 'Aerospace α-β', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V — α-β alloy', form: 'Plate, Sheet, Bar', use: 'Aerospace workhorse — airframe, engine brackets' },
+  { family: 'Aerospace α-β ELI', grade: 'Grade 23 (Ti-6Al-4V ELI)', uns: 'R56401', composition: '6% Al, 4% V, low interstitials', form: 'Plate, Sheet, Bar, Wire', use: 'Fracture-critical, medical device' },
+  { family: 'Near-α', grade: 'Grade 9 (Ti-3Al-2.5V)', uns: 'R56320', composition: '3% Al, 2.5% V', form: 'Sheet, Tube, Bar', use: 'High-pressure hydraulic tubing, moderate strength' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12–0.25% Pd', form: 'Plate, Sheet, Bar', use: 'Reducing acids, HCl service, chemical industry' },
+  { family: 'Corrosion-resistant', grade: 'Grade 12 (Ti-0.3Mo-0.8Ni)', uns: 'R53400', composition: 'CP + 0.3% Mo, 0.8% Ni', form: 'Plate, Sheet, Bar, Tube', use: 'High-temperature salt water, hot brine' },
+  { family: 'High-temperature', grade: 'Ti-6Al-2Sn-4Zr-2Mo (Ti-6-2-4-2)', uns: 'R54620', composition: '6Al-2Sn-4Zr-2Mo', form: 'Plate, Sheet, Bar, Forging', use: 'Aero engine components, high-temp sections' },
+];
+
+// ── S03 Specification EAV ──────────────────────────────────────────────────
+const specAttributes = [
+  { attr: 'Thickness range', value: '0.0197″ (foil) → 6.0″ (plate)', std: 'ASTM B265 §3 · ASME SB265' },
+  { attr: 'Max sheet dimensions', value: 'Width 12 ft × length 50 ft', std: 'AMS 4911 · AMS 4919' },
+  { attr: 'Thickness tolerance (foil ≤ 0.040″)', value: '±0.0005″ typical', std: 'AMS 4911 §3.3.2' },
+  { attr: 'Thickness tolerance (plate ≥ 0.1875″)', value: '±0.005″ or ±5% of nominal', std: 'ASTM B265 §9' },
+  { attr: 'Surface finish (mill)', value: 'Hot-rolled, pickled, cold-rolled, polished', std: 'ASTM B265 §10 · AMS 4911 §3.4' },
+  { attr: 'Flatness (plate)', value: '≤ 0.040″ / ft of length', std: 'AMS 4911 §3.3.4' },
+  { attr: 'NDT (UT)', value: 'Class A1 / A2 / A3 per order', std: 'ASTM E213 · AMS-STD-2154' },
+  { attr: 'NDT (RT)', value: 'Available on request for critical sections', std: 'ASTM E1417 · E1742' },
+  { attr: 'Material certificate', value: 'EN 10204 3.1 (default) / 3.2 (on request)', std: 'EN 10204 §4' },
+  { attr: 'First-article inspection', value: 'AS9102 FAIR (on request)', std: 'AS9102' },
+];
+
+// ── S05 Production Pipeline ────────────────────────────────────────────────
+const pipeline = [
+  { n: '01', title: 'Incoming Material Verification', body: 'VAR-refined titanium ingot sourced to ASTM B348 / AMS 4928 chemistry; incoming spectrometer verification before stock release.' },
+  { n: '02', title: 'Hot Rolling Breakdown', body: 'Controlled heating window per grade; breakdown pass optimizes grain structure and minimizes internal soundness defects.' },
+  { n: '03', title: 'Cold Rolling & Gauge Control', body: 'Multi-stand reversible mill with closed-loop laser gauge and tension control. Tolerance held per ASTM B265 §9 / AMS 4911 §3.3.' },
+  { n: '04', title: 'Vacuum Annealing & Pickling', body: 'Stress relief or solution anneal per grade; acid pickling removes oxide scale and exposes base metal surface finish.' },
+  { n: '05', title: 'NDT, MTR & Shipment', body: 'UT/RT executed per order spec; EN 10204 3.1 MTR issued; laser-marked lot identity preserved to piece for downstream traceability.' },
+];
+
+// ── S06 Boundary Conditions ────────────────────────────────────────────────
+const boundaries = [
+  { icon: '🌡️', title: 'Temperature Ceiling', body: 'Standard CP titanium and common α-β alloys are intended for service below 300–500 °C. Sustained operation above this range requires elevated-temperature grades such as Ti-6Al-2Sn-4Zr-2Mo (Ti-6-2-4-2) — confirm alloy selection before high-temperature specification.' },
+  { icon: '🧪', title: 'Reducing-Acid Embrittlement', body: 'Strong reducing inorganic acids (HCl, H₂SO₄ at high concentration) and anhydrous fluoride media attack unalloyed CP titanium. Specify Grade 7 (Pd-bearing, 0.12–0.25% Pd) or Grade 12 (0.3% Mo, 0.8% Ni) for these environments to suppress hydrogen uptake.' },
+  { icon: '✂️', title: 'High-Strength Alloy Springback', body: 'High-strength alloys (Ti-6Al-2Sn-4Zr-2Mo, Gr5 in cold-worked tempers) exhibit significant springback at room temperature. Warm working or heated shear / waterjet cutting recommended for tight-tolerance cut-to-shape fabrication.' },
+];
+
+// ── S09 Supply Chain & Lead Time ───────────────────────────────────────────
+const supplyChain = [
+  { icon: '🏭', title: 'Monthly Capacity', body: 'Baoji-sourced plate and sheet rolled in commercial-scale lots; standard inventory supports both single-piece engineering prototypes and ton-scale industrial production. Final capacity is confirmed at RFQ stage against current upstream mill schedule.' },
+  { icon: '📦', title: 'MOQ Flexibility', body: 'Standard stock dimensions carry no minimum order quantity. Non-standard alloy × dimension combinations are scheduled against minimum mill batch sizes per upstream supplier. Single-piece sample pieces are available for grade-level evaluation on request.' },
+  { icon: '⏱️', title: 'Lead Time Windows', body: 'Standard stock & coil slitting: 3–5 business days. Non-standard alloy × dimension combinations: 4–6 weeks. Custom rolling (gauge, width, or length not in upstream mill catalog): 6–8 weeks. Expedited engineering review is available for prototype programs.' },
+];
+
+// ── S10 Capability Comparison Matrix ───────────────────────────────────────
+const comparisonRows = [
+  { dim: 'Thickness / gauge control', traditional: 'Standard mill tolerance; ultra-thin coil prone to break and edge crack', ours: 'High-rigidity cluster mill with closed-loop laser gauge; foil ±0.0005″ / sheet ±0.005″' },
+  { dim: 'Alloy coverage', traditional: 'Common CP Gr1/Gr2 + Gr5; limited or no Pd / ELI / Ti-6-2-4-2', ours: 'CP Gr1/2/3/4 + Gr5/Gr23/Gr7/Gr9/Gr12/Ti-6-2-4-2 + refractory-metal cross-supply' },
+  { dim: 'MOQ & lead-time flexibility', traditional: 'Fixed large-lot schedule; high per-item minimum quantity', ours: 'Standard stock 3–5 days; prototype single-piece → ton-scale industrial production' },
+  { dim: 'Multi-metal supply coordination', traditional: 'Single titanium supply, no cross-metal coordination', ours: 'Tantalum, niobium, zirconium, hafnium and other refractory metals coordinated alongside titanium' },
+];
+
+// ── S12 FAQ (F3: must use { question, answer } keys) ───────────────────────
+const faqItems = [
+  { question: 'How is surface scratch prevented on cold-rolled titanium sheet for 3C electronics stamping?', answer: 'Cold-rolled bright sheet is supplied with a dual-side protective PE/PVC lamination. Intermediate annealing reduces hardness for low-springback stamping. After blanking and stamping, the film is removed at the assembler, exposing the mirror-finish 2B / BA surface beneath.' },
+  { question: 'How does Grade 7 titanium resist hydrogen embrittlement in chemical processing service?', answer: 'Grade 7 contains 0.12–0.25% palladium as an alloying addition. Under cathodic polarization, the Pd lowers the hydrogen overpotential, suppressing hydrogen-atom ingress into the titanium matrix and reducing the risk of hydrogen-induced cracking in reducing-acid service.' },
+  { question: 'How is batch traceability maintained for aerospace plate conforming to AMS 4911?', answer: 'Each shipped plate is laser-marked with the upstream heat number and mill batch identity. An EN 10204 3.1 mill test certificate is issued with the shipment and includes chemical composition, tensile / yield / elongation, and UT results per ASTM E213. Independent 3.2 witnessing is available on request.' },
+  { question: 'How is gauge tolerance controlled on ultra-thin titanium foil (≤ 0.0197″)?', answer: 'Multi-stand reversible cluster mill with in-line X-ray / laser gauge, closed-loop tension control, and roll-crown adjustment. Foil gauge typically held to ±0.0005″ (≈ ±0.013 mm) with slit edges deburred and the coil interleaved with neutral-pH paper for storage stability.' },
+  { question: 'What is the lead-time difference between standard stock and custom-rolled plate or sheet?', answer: 'Standard plate and sheet stock in common dimensions ships in 3–5 business days. Non-standard alloy × dimension combinations require 4–6 weeks. Fully custom rolling (gauge, width, or length not in upstream mill catalog) requires 6–8 weeks. Expedited engineering review is available for prototype programs.' },
+  { question: 'How should Grade 12 (Ti-0.3Mo-0.8Ni) be selected versus Grade 2 CP for chemical vessels?', answer: 'Grade 12 contains 0.2–0.4% molybdenum and 0.6–0.9% nickel, which improves resistance to crevice corrosion in hot brine, hot chloride solutions and moderate-concentration reducing media. Grade 2 remains the default for oxidizing media (nitric acid, moist chlorine) and general atmospheric exposure. Confirm service environment before final grade selection.' },
+];
+
+// ── S13 Related Outbound ───────────────────────────────────────────────────
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Bars, tubes, wire, foil and mesh stock from one supplier.', href: '/mill-products/' },
+  { title: 'Grade Library', desc: 'Grade 1 / Grade 2 / Grade 5 / Grade 23 / Ti-6-2-4-2 chemistry and datasheets.', href: '/materials/' },
+  { title: 'CNC Machining Services', desc: 'Downstream 3 / 5-axis machining of plate and sheet blanks.', href: '/titanium-cnc-machining-services/' },
+  { title: 'Compliance & Certifications', desc: 'AS9100D / ISO 13485 / EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+  { title: 'Engineering Tools', desc: 'Plate and sheet weight, tolerance, and grade-selection utilities.', href: '/tools/' },
+];
+
+// ── CollectionPage / ItemList data (auto-emitted via schema.ts) ────────────
+const itemListItems = [
+  { name: 'Titanium Plate', url: 'https://cnc.bozemetal.com/mill-products/plates-sheets/#plate' },
+  { name: 'Titanium Sheet', url: 'https://cnc.bozemetal.com/mill-products/plates-sheets/#sheet' },
+  { name: 'Titanium Hot-Rolled Plate', url: 'https://cnc.bozemetal.com/mill-products/plates-sheets/#hot-rolled' },
+  { name: 'Titanium Cold-Rolled Sheet', url: 'https://cnc.bozemetal.com/mill-products/plates-sheets/#cold-rolled' },
+  { name: 'Titanium Coil & Foil (cross-ref)', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/' },
+  { name: 'Titanium Strip (cross-ref)', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/' },
+];
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Plate, Sheet, Coil & Foil Mill Stock"
+  serviceDescription="Industrial titanium plate, sheet, coil and foil stock in CP Gr1/2/3/4, aerospace Gr5 / Ti-6-2-4-2, and corrosion-resistant Gr7 / Gr12. Supplied to ASTM B265 / ASME SB265 / AMS 4911 / AMS 4919 with EN 10204 3.1 / 3.2 mill certification."
+  serviceCategory="Raw Materials > Non-Ferrous Metals > Titanium"
+  collectionName="Industrial Titanium Plate, Sheet, Coil & Foil"
+  collectionDescription="Precision-rolled titanium plate, sheet, coil and foil stock for aerospace, chemical processing, 3C electronics, marine and industrial applications."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering & Procurement FAQ — Titanium Plate & Sheet"
+>
+
+  <!-- ═══ S00 SubpageHero — Direct Answer ① ═══ -->
+  <SubpageHero
+    h1={hero.h1}
+    subtitle={hero.subtitle}
+    badge={hero.badge}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+  />
+
+  <!-- ═══ S01 What We Don't Cover — Honest Positioning ② ═══ -->
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Don't Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal is a sourcing and processing partner for titanium mill products, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Ingot / VAR / EBM melting is not in our vertically integrated scope. We source plate and sheet from upstream mills that hold the metallurgical chain-of-custody; our scope is sourcing, processing, and quality verification.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚠️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket "aerospace-grade"</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment's classification. Confirm criticality class, specification (AMS 4911, AMS 4919, ASTM B265), and required documentation per RFQ.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Standard quotes are returned within 1–3 business days. Non-standard alloy × dimension combinations or first-time engineering review may require additional coordination before quotation. Sample-evaluation requests follow a similar review path.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔍</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 100% traceability blanket claim</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Material traceability is documented per order specification. EN 10204 3.1 mill test certificates are standard; 3.2 independent-witness certification is available on request. Documentation depth varies by spec and by application criticality.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">📦</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No universal stock guarantee</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Not every grade × thickness × width × length combination is held as standing inventory. Stock availability is confirmed at RFQ stage. Custom rolling is scheduled against upstream-mill minimum batch quantities when required.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🚫</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No coil / foil in this sub-page</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            This page covers plate, sheet, hot-rolled and cold-rolled forms. Dedicated coil, foil, strip and ultra-thin gauge (≤ 0.040″) coverage is provided on the Foil &amp; Coils sub-page at <a href="/mill-products/foil-coils/" class="font-semibold underline" style="color: var(--theme-primary);">/mill-products/foil-coils/</a>.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S02 Grade × Form Matrix — Structured Body ③#1 ═══ -->
+  <section id="grade-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Grade × Plate / Sheet Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Plate and sheet form availability per titanium family, with UNS designation, nominal composition, and typical use. Refer to ASTM B265 for dimensional envelopes, and ASTM F67 / F136 for medical-grade specifications.
+        </p>
+      </header>
+
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Nominal Composition</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Plate / Sheet Form</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                  <span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span>
+                  <span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span>
+                </td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Reference: ASTM B265 §4 (plate/sheet/strip composition), ASTM F67 (unalloyed surgical implant), ASTM F136 (Ti-6Al-4V ELI surgical implant), AMS 4911 / AMS 4919 / AMS 4928 / AMS 4965 / AMS 4943 / AMS 4944.</p>
+    </div>
+  </section>
+
+  <!-- ═══ S03 Specification EAV — Structured Body ③#2 ═══ -->
+  <section id="specifications" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specifications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Specification Envelope</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Dimensional envelope, surface finish, non-destructive testing, and certification packages. Confirm critical specifications at RFQ stage; not every combination is held as standing inventory.
+        </p>
+      </header>
+
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard Alignment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S04 Industry Applications — Structured Body ③#3 (ImageTextSplit ×2 + 4 cards) ═══ -->
+  <ImageTextSplit
+    imageSrc="/uploads/titanium-cnc-machining-manufacturing-facility.jpg"
+    imageAlt="Titanium plate and sheet stock in a precision rolling and processing facility"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Aerospace · AMS 4911 / AMS 4919"
+    title="Engine Heat Shields & Airframe Skin"
+    body="Grade 5 (Ti-6Al-4V) plate and Ti-6Al-2Sn-4Zr-2Mo (Ti-6-2-4-2) sheet, vacuum-annealed for fatigue-critical aerospace sections and engine thermal-management hardware."
+    bullets={[
+      "0.5″–6.0″ plate envelope per AMS 4911 dimensional tolerance",
+      "Mill product + UT per ASTM E213 / AMS-STD-2154, Class A",
+      "Heat-lot and batch MTR per EN 10204 3.1, with optional 3.2 witnessing",
+    ]}
+    ctaLabel="View aerospace mill stock"
+    ctaHref="/mill-products/"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-smartphone-mid-frame.svg"
+    imageAlt="Cold-rolled titanium sheet and foil for 3C electronics mid-frames"
+    imagePosition="right"
+    background="dark"
+    eyebrow="3C Electronics · Cold-Rolled Bright Foil"
+    title="Smartphone Mid-Frame & Foldable Hinge Bracket"
+    body="Grade 23 (Ti-6Al-4V ELI) cold-rolled bright sheet with dual-side protective film, intermediate-annealed for low-springback stamping and mirror-finish post-deformation surface."
+    bullets={[
+      "0.1–0.5 mm gauge, ±0.005 mm thickness tolerance",
+      "Cold-rolled bright 2B / BA surface, Ra ≤ 0.2 μm",
+      "Custom width slitting and dual-side protective lamination available",
+    ]}
+    ctaLabel="View foil & coil stock"
+    ctaHref="/mill-products/foil-coils/"
+  />
+
+  <section id="applications-text" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where Plate and Sheet Are Deployed</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Additional industrial application areas for plate and sheet stock — chemical processing, marine and desalination, medical (where applicable), and general industrial fabrication.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚗️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Chemical Processing</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Pressure-vessel shells, reactor liners, shell-and-tube heat-exchanger plates. Gr7 (Pd-bearing) and Gr12 (Mo-Ni) for hot brine and reducing-acid service.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🌊</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Marine &amp; Desalination</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            High-pressure RO membrane housings, seawater-resistant flange stock, shipboard piping. ASTM B265 Gr2 / Gr12 standard forms for marine service.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Medical (where applicable)</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Plate and sheet stock to ASTM F67 (unalloyed) and ASTM F136 (Ti-6Al-4V ELI) for medical device, implant, and surgical instrument manufacture, with ISO 13485 handling.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏗️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">General Industrial</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Welded assemblies, structural frames, heat-resistant components. Plate and sheet feedstock for downstream CNC machining, waterjet cutting, and laser cutting operations.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S05 Production Pipeline Timeline — Structured Body ③#4 ═══ -->
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Plate and Sheet Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          From incoming VAR-refined ingot through rolling, annealing, NDT and MTR issuance — five controlled stages with documentation checkpoints at each handoff.
+        </p>
+      </header>
+
+      <ol class="mt-12 space-y-8">
+        {pipeline.map((p, idx) => (
+          <li class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">
+              {p.n}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3>
+              <p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ S06 Boundary Conditions — Structured Body ③#5 ═══ -->
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries &amp; Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Three service-environment boundaries that drive alloy selection and process planning. Confirm these constraints at the RFQ stage.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {boundaries.map((b) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{b.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S07 TrustBadges — Reused component (F2) ═══ -->
+  <TrustBadges />
+
+  <!-- ═══ S08 QualityControl — Reused component (F2) ═══ -->
+  <QualityControl />
+
+  <!-- ═══ S09 Supply Chain & Lead Time (brief §6) ═══ -->
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Supply Chain</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Capacity, MOQ &amp; Lead Time</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          B2B procurement windows for plate and sheet stock. Custom rolling windows reflect upstream-mill minimum batch sizes; standard stock windows reflect in-Warehouse inventory.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {supplyChain.map((s) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{s.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S10 Capability Comparison Matrix (brief §4) ═══ -->
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Capability Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Traditional Supplier vs. Our Mill-Supply Approach</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Four procurement dimensions where a flexible mill-stock program materially outperforms a single-source, single-metal supplier.
+        </p>
+      </header>
+
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Traditional Supplier</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Our Mill-Supply Approach</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((c, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.traditional}</td>
+                <td class="p-3 font-medium" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.ours}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S11 Applications — Reused component (F2) ═══ -->
+  <Applications />
+
+  <!-- ═══ S12 FAQ Accordion (F3: question/answer keys; FAQPage schema auto-emitted) ═══ -->
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering &amp; Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Six common buyer questions on surface handling, alloy selection, traceability, gauge tolerance, lead time, and Gr2 vs. Gr12 selection for chemical service.
+        </p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">
+        {faqItems.map((f, i) => (
+          <details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <summary class="cursor-pointer flex items-start gap-3 list-none">
+              <span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span>
+              <span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span>
+              <svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+              {f.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ S13 Related Tier1 Links + RFQ CTA ⑥ ═══ -->
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities &amp; RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Five next-step anchors: parent hub, grade library, downstream machining, compliance evidence, and engineering tools.
+        </p>
+      </header>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a
+            href={r.href}
+            class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1"
+            style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          >
+            <h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p>
+            <span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">
+              Continue
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a
+          href="/rfq/"
+          class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+          style="background: var(--theme-primary); color: var(--theme-bg);"
+        >
+          Submit Plate / Sheet RFQ
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a
+          href="/mill-products/"
+          class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-all duration-200 hover:-translate-y-0.5"
+          style="background: transparent; color: var(--theme-text); border-color: color-mix(in srgb, var(--theme-primary) 40%, transparent);"
+        >
+          Browse All Mill Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+

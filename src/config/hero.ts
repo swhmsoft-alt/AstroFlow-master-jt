@@ -77,6 +77,26 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'Mesh',
     ],
   },
+  // BSI Phase G-2 · Mill Products Plate & Sheet sub-page
+  '/mill-products/plates-sheets': {
+    h1: 'Titanium Plate, Sheet, Coil & Foil — Industrial Mill Stock',
+    subtitle: 'Precision-rolled titanium plate, sheet, coil and foil spanning 0.0197" foil to 6" plate in CP Gr1/2/3/4, aerospace Gr5/Ti-6-2-4-2, and corrosion-resistant Gr7/Gr12. EN 10204 3.1/3.2 mill certification; standard stock ships in 3–5 days with non-standard alloys and custom rolling in 6–8 weeks.',
+    badge: 'Mill Products / Plate & Sheet | AS9100D',
+    keyMetrics: [
+      { value: '0.0197″–6″', label: 'Thickness range' },
+      { value: '12′×50′', label: 'Max dimensions' },
+      { value: '10+ grades', label: 'Stock range' },
+      { value: '3–5 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASTM B265',
+      'ASME SB265',
+      'AMS 4911',
+      'AMS 4919',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',

@@ -735,6 +735,7 @@ export function detectPageType(path: string, explicit?: PageType): PageType {
   if (path.startsWith('/services')) return path.split('/').filter(Boolean).length > 1 ? 'service-detail' : 'services-hub';
   if (path.startsWith('/parts')) return path.split('/').filter(Boolean).length > 1 ? 'part-detail' : 'parts-hub';
   if (path.startsWith('/standard-parts')) return path.split('/').filter(Boolean).length > 1 ? 'standard-part-detail' : 'standard-parts-hub';
+  if (path.startsWith('/mill-products')) return path.split('/').filter(Boolean).length > 1 ? 'standard-part-detail' : 'mill-products-hub';
   if (path.startsWith('/products')) return path.split('/').filter(Boolean).length > 1 ? 'product-detail' : 'products-hub';
   if (path.startsWith('/tools')) return path.split('/').filter(Boolean).length > 1 ? 'tool-detail' : 'tools-hub';
   if (path.startsWith('/equipment')) return path.split('/').filter(Boolean).length > 1 ? 'equipment-detail' : 'generic';
@@ -767,6 +768,12 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   '/parts': 'Titanium Parts',
   // Solutions sub-hubs (Buyer Search Intelligence Phase G · Mill Products)
   '/mill-products': 'Titanium Mill Products',
+  '/mill-products/plates-sheets': 'Titanium Plate & Sheet Stock',
+  '/mill-products/bars-rods': 'Titanium Bar & Rod Stock',
+  '/mill-products/tubes-pipes': 'Titanium Tube & Pipe Stock',
+  '/mill-products/wire': 'Titanium Wire Stock',
+  '/mill-products/foil-coils': 'Titanium Foil & Coil Stock',
+  '/mill-products/mesh': 'Titanium Mesh Stock',
   // Solutions sub-hubs (Buyer Search Intelligence Phase H · Standard Parts)
   '/standard-parts': 'Titanium Standard Parts',
   '/standard-parts/flanges': 'Titanium Flanges',
