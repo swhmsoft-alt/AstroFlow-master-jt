@@ -591,6 +591,12 @@ export function buildProduct(input: {
   price?: number;
   /** B2B Request-Quote page URL. When set without price, emits a price-less manufacturing Offer (MadeToOrder) → RFQ. */
   rfqUrl?: string;
+  /**
+   * Phase G-2.2 — Offer.deliveryLeadTime. ISO 8601 duration (e.g. "P5D") or
+   * descriptive text (e.g. "5-7 days"). When set, the Offer entity carries
+   * the lead-time hint for crawlers and rich-result eligibility.
+   */
+  deliveryLeadTime?: string;
 }) {
   const hasPrice = input.price != null;
   const hasRfq = Boolean(input.rfqUrl);
@@ -601,6 +607,7 @@ export function buildProduct(input: {
           '@id': `${input.url}#offer`,
           url: hasPrice ? input.url : input.rfqUrl,
           ...(hasPrice ? { price: input.price, priceCurrency: 'USD' } : {}),
+          ...(input.deliveryLeadTime ? { deliveryLeadTime: input.deliveryLeadTime } : {}),
           availability: hasPrice
             ? 'https://schema.org/InStock'
             : 'https://schema.org/MadeToOrder',
@@ -865,6 +872,12 @@ export interface SchemaPageData {
   /** Phase 3 — Product material (e.g. "Grade 5 Ti-6Al-4V"). Maps to schema.org Product.material. */
   productMaterial?: string;
   /**
+   * Phase G-2.2 — Offer.deliveryLeadTime for the standard-part-detail case.
+   * Forwarded to buildProduct → Offer. Optional; omit to skip the field.
+   * Example: "5-7 days" or ISO 8601 duration "P5D".
+   */
+  productDeliveryLeadTime?: string;
+  /**
    * Phase 3 — Override howToItem for product-detail pages. When the page has
    * a spec-driven manufacturing_process list, pass it as a HowToItem so the
    * main graph emits a single HowTo entity without a parallel page-level script.
@@ -1088,9 +1101,11 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     //   CollectionPage + ItemList  (when collectionName / items provided)
     //   Service                   (when serviceName provided — no inline
     //                              JSON-LD needed, F4 compliance)
-    // Deliberately distinct from `parts-hub` (no Service) so that the Hub
-    // can advertise the procurement capability natively. Does NOT emit
-    // Product (Product is reserved for individual SKU detail pages, F4).
+    // Phase G-2.2: now also emits a Product entity for the standard-part-detail
+    // case when productName (or serviceName as fallback) is present, with
+    // deliveryLeadTime forwarded from productDeliveryLeadTime. The product
+    // hub (`standard-parts-hub`) still does NOT emit Product — that's the
+    // procurement landing page, not a per-SKU page.
     case 'standard-parts-hub':
     case 'standard-part-detail':
       if (data.collectionName) {
@@ -1115,6 +1130,24 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           url: data.pageUrl,
           category: data.serviceCategory,
         }));
+      }
+      // Phase G-2.2: opt-in Product entity for standard-part-detail (not
+      // standard-parts-hub, which remains a procurement landing page).
+      if (pageType === 'standard-part-detail') {
+        const productName = data.productName ?? data.serviceName;
+        if (productName) {
+          graph.push(buildProduct({
+            name: productName,
+            description: data.productDescription ?? data.serviceDescription ?? data.pageDescription,
+            url: data.pageUrl,
+            image: data.productImage,
+            category: data.productCategory,
+            ...(data.productSku ? { sku: data.productSku } : {}),
+            ...(data.productMaterial ? { material: data.productMaterial } : {}),
+            rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
+            deliveryLeadTime: data.productDeliveryLeadTime,
+          }));
+        }
       }
       break;
 

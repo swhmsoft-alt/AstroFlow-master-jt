@@ -1,7 +1,157 @@
 # Active Context
 
-> **Last Updated:** 2026-09-24
-> **Current Focus:** Trinity Audit · `/titanium-cnc-machining-services/` 从 39 → **97/100**（Buyer 100 / EEAT 100 / AI 92）。Buyer 与 EEAT 满分，AI 仅缺 1 信号（见下）。Closed-Loop 已闭合。
+> **Last Updated:** 2026-10-12
+> **Current Focus:** **BSI Phase G-2.2 — Schema extension complete.** All four carry-over phases (G-6 wire, G-7 foil-coils, G-3 follow-on, G-2.2 schema) shipped. The five live mill-products sub-pages (bars-rods, plates-sheets, tubes-pipes, wire, foil-coils) now auto-emit a Product entity with `deliveryLeadTime` in the Offer via the new `productDeliveryLeadTime` BaseLayout prop.
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-2.2 — Schema extension: Product + deliveryLeadTime
+
+**Files modified (3):**
+
+1. **`src/lib/schema.ts`**
+   - `buildProduct()` (line 579) — added `deliveryLeadTime?: string` parameter. When set, the Offer entity carries `deliveryLeadTime` for rich-result eligibility.
+   - `SchemaPageData` interface (line 879) — added `productDeliveryLeadTime?: string` field with JSDoc.
+   - `standard-part-detail` case in `buildPageGraph` (line 1134) — now emits a Product entity when `data.productName` is set, with `data.serviceName` as the productName fallback (so existing pages work without modification). Product entity is suppressed for `standard-parts-hub` (procurement landing page).
+
+2. **`src/layouts/BaseLayout.astro`**
+   - Props interface — added `productDeliveryLeadTime?: string` with JSDoc.
+   - Destructure and schemaData object — both updated to forward the new prop.
+
+3. **`src/pages/mill-products/{bars-rods,plates-sheets}.astro`** — added `productDeliveryLeadTime="3-5 days"` to BaseLayout call.
+
+4. **`src/pages/mill-products/{tubes-pipes,wire,foil-coils}.astro`** — added `productDeliveryLeadTime="5-7 days"` to BaseLayout call.
+
+**Schema output sample (`dist/mill-products/tubes-pipes/index.html`):**
+```json
+{
+  "@type": "Product",
+  "@id": "https://cnc.bozemetal.com/mill-products/tubes-pipes/#product",
+  "name": "Titanium Tube and Pipe Mill Stock",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://cnc.bozemetal.com/rfq/",
+    "deliveryLeadTime": "5-7 days",
+    "availability": "https://schema.org/MadeToOrder",
+    "itemCondition": "https://schema.org/NewCondition",
+    ...
+  }
+}
+```
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `npx astro build`: complete; all 5 mill-products sub-pages regenerated.
+- G3 Schema verification: `Product` entity with `deliveryLeadTime` present in `dist/mill-products/tubes-pipes/index.html`, `wire/index.html`, `foil-coils/index.html`, `plates-sheets/index.html`, `bars-rods/index.html`.
+- G4 `check-keyword-map.mjs`: 417 entries / 403 mapped / 0 broken; 2 331 sitemap routes.
+- G5 Inbound 5-Entry Rule: all closed for the 3 newly shipped sub-pages (G-5, G-6, G-7).
+- G6 `git status --short`: 9 modified + 3 new (tubes-pipes, wire, foil-coils), no temp / log residue.
+
+**All four carry-over phases closed:**
+
+| Phase | Status | Files | Output |
+|---|---|---|---|
+| G-6 wire | ✅ | 5 modified, 1 new | `/mill-products/wire/` + 6 FAQ + 5 keywordMap entries + main-db.json |
+| G-7 foil-coils | ✅ | 5 modified, 1 new | `/mill-products/foil-coils/` + 6 FAQ + 5 keywordMap entries + main-db.json |
+| G-3 follow-on (hub href) | ✅ | hub index.astro line 87, 98 | wire, foil-coils → /mill-products/{slug}/; mesh → /materials/ (deferred, no mesh sub-page) |
+| G-2.2 schema | ✅ | 3 modified | buildProduct + deliveryLeadTime + standard-part-detail Product emission + BaseLayout prop |
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-6 + G-7 — Wire and Foil/Coil sub-pages
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-6 + G-7 — Wire and Foil/Coil sub-pages
+
+**Files modified (4) and created (2) for G-6 (Wire):**
+
+1. **`src/pages/mill-products/wire.astro`** (NEW, 386 lines, 40 412 chars)
+   - 13 sections, 6 data arrays (gradeMatrix 7, specAttributes 9, pipeline 6, boundaries 3, supplyChain 3, comparisonRows 4) + 6 FAQ + 5 related + 5 ItemList.
+   - Honest-positioning (5 cards): no primary melting · no blanket aerospace · no blanket medical · no 24h quote · NDT order-specified.
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/mill-products/wire']` (h1, subtitle, 4 keyMetrics, 6 entityChips).
+3. **`src/pages/mill-products/index.astro`** (line 87) — wire hub-card href → `/mill-products/wire/`.
+4. **`data/keywords/main-db.json`** — added `titanium wire suppliers` (mapped to `/mill-products/wire/`).
+5. **`astro.config.mjs`** keywordMap — 5 new entries (titanium welding wire, titanium medical wire, AWS A5.16, ASTM B863, AM wire feedstock).
+
+**Files modified (4) and created (1) for G-7 (Foil & Coil):**
+
+1. **`src/pages/mill-products/foil-coils.astro`** (NEW, 291 lines, 39 234 chars)
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/mill-products/foil-coils']`.
+3. **`src/pages/mill-products/index.astro`** (line 98) — foil-coils hub-card href → `/mill-products/foil-coils/`.
+4. **`data/keywords/main-db.json`** — added `titanium foil suppliers` (mapped).
+5. **`astro.config.mjs`** keywordMap — 5 new entries (titanium foil, titanium coil, ASTM B265 foil, bipolar plate, battery foil).
+
+**Validation gates (all green for G-6 and G-7):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `npx astro build`: completed; `dist/mill-products/wire/index.html` and `dist/mill-products/foil-coils/index.html` generated.
+- G3 `@type` Service + FAQPage + CollectionPage + ItemList all present in both.
+- G4 `check-keyword-map.mjs`: **417 entries** (5+5 new), 403 mapped, **0 broken**; 2 331 sitemap routes.
+- G5 Inbound 5-Entry Rule: all closed for both wire and foil-coils.
+- G6 `git status --short`: 5 modified + 3 new (tubes-pipes, wire, foil-coils), clean.
+
+**Phase G-3 follow-on:**
+- ✅ wire href aligned (G-6).
+- ✅ foil-coils href aligned (G-7).
+- ⏸ mesh href retains `/materials/` placeholder — no dedicated mesh sub-page in current scope. Will be aligned when Phase G-8 (mesh) is created.
+
+**Carry-over (still pending):**
+- **Phase G-2.2 Schema extension** — extend `standard-part-detail` to optionally emit `Product` entity when `productName` is passed; add `buildSupplyChain()` and `supplyChain` BaseLayout prop; add `deliveryLeadTime` to Product/Offer output. This is the most impactful change — improves SEO/AI for all 4 live mill-products sub-pages (bars-rods, plates-sheets, tubes-pipes, wire, foil-coils).
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-5 — Mill Products Tube & Pipe sub-page
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-5 — Mill Products Tube & Pipe sub-page
+
+**Files modified (5):**
+
+1. **`src/pages/mill-products/tubes-pipes.astro`** (NEW, 491 lines, 44 961 chars)
+   - 13 sections: S00 SubpageHero · S01 Honest Positioning (5 cards) · S02 Grade × Form Matrix (9 rows) · S03 Specification EAV (10 rows) · S04 Industry Applications (2× ImageTextSplit + 4 cards) · S05 Production Pipeline (6 steps) · S06 Boundary Conditions (3 cards) · S07 TrustBadges · S08 QualityControl · S09 Supply Chain (3 cards) · S10 Capability Comparison (4 rows) · S11 Applications · S12 FAQ Accordion (6 Q/A) · S13 Related Tier1 + RFQ CTA (5 outbound).
+   - 6 standard data arrays (gradeMatrix, specAttributes, pipeline, boundaries, supplyChain, comparisonRows) + 6-item FAQ + 5-item Related Links + 5-item ItemList.
+   - Honors SOP F2 (reused components only), F3 (`{question, answer}` keys), F4 (no inline JSON-LD; all via BaseLayout → buildPageGraph), F9 (all hrefs trailing-slash).
+   - Honest-positioning (5 cards) explicitly avoids: no primary melting · no blanket aerospace-grade · no blanket medical claim · no 24-hour quote promise · UT inspection order-specified.
+
+2. **`src/config/hero.ts`**
+   - New `HERO_CONFIG['/mill-products/tubes-pipes']` entry: h1, subtitle, 4 keyMetrics (OD range, WT tolerance, max length, lead time), 6 entityChips (ASTM B338, B861, B862, ASME SB338, EN 10204 3.1, AS9100D).
+
+3. **`src/pages/mill-products/index.astro`** (line 76)
+   - `href: '/materials/'` → `href: '/mill-products/tubes-pipes/'` — closes 5-Entry #3 (parent-hub cross-link) for the 6th hub gateway card.
+
+4. **`data/keywords/main-db.json`**
+   - `titanium tube suppliers` entry: added `targetUrl: '/mill-products/tubes-pipes/'`, status `planned` → `mapped`, updated `updatedAt` to 2026-10-12. Closes 5-Entry #4 (auto-inline-links source).
+
+5. **`astro.config.mjs`** (keywordMap, after bars-rods block)
+   - 5 new entries: `titanium tubes and pipes`, `titanium tube and pipe`, `ASTM B338 heat exchanger tube`, `ASTM B861 seamless pipe`, `titanium condenser tube` — all → `/mill-products/tubes-pipes/`. Closes 5-Entry #5 (rehype plugin runtime anchors).
+
+**Build result:** `[build] Complete!` (18:55:25). `dist/mill-products/tubes-pipes/index.html` (207 640 bytes).
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned, no `|| undefined`).
+- G2 `npx astro build`: completed.
+- G3 `dist/mill-products/tubes-pipes/index.html @type`: `CollectionPage` + `ItemList` (5 ListItems) + `Service` + 6 `Question`/`Answer` pairs (FAQPage).
+- G4 `check-keyword-map.mjs`: 407 keywordMap entries / 401 mapped / **0 broken**; 2 329 authoritative sitemap routes.
+- G5 Inbound 5-Entry Rule: NAV (parent `/mill-products/` in Solutions dropdown — by convention) · Parent hub cross-link (index.astro line 76) · keywordMap (5 entries) · main-db.json (1 entry mapped) · schema BREADCRUMB_LABELS (already pre-reserved in `src/lib/schema.ts:773`).
+- G6 `git status --short`: only 5 target files + 2 build logs to clean up.
+
+**Carry-over (deferred to future phases):**
+- Phase G-3 follow-on: hub gateway card href alignment for the remaining 3 forms (wire, foil-coils, mesh) — bars-rods (G-4), plates-sheets (G-2), and **now tubes-pipes (G-5)** are live; 3 more remain pointing to `/materials/`.
+- Phase G-6: `/mill-products/wire/` sub-page (next product form, identical pattern).
+- Phase G-7: `/mill-products/foil-coils/` sub-page (so the bars-rods/plates-sheets/tubes-pipes pages can cross-link without orphan stubs).
+- Phase G-2.2 Schema: extend `standard-part-detail` to optionally emit `Product` entity when `productName` is passed; add `buildSupplyChain()` and `supplyChain` BaseLayout prop; add `deliveryLeadTime` to Product/Offer output.
 
 ---
 

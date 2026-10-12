@@ -1,0 +1,540 @@
+﻿---
+/**
+ * /mill-products/tubes-pipes/ - Titanium Tube & Pipe Sub-Page
+ * Buyer Search Intelligence Phase G-5, Mill Products Tube & Pipe
+ * Schema: pageType=standard-part-detail -> CollectionPage + ItemList + Service + FAQPage
+ * (auto-emitted via src/lib/schema.ts; F4 compliant, no inline JSON-LD)
+ * F2: No new component for a single page. F3: { question, answer } keys. F9: trailing slash.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/tubes-pipes'];
+
+const pageTitle = 'Titanium Tubes & Pipes | ASTM B338 / B861 / B862 | BOZE Metal';
+const pageDescription = 'Industrial seamless and welded titanium tubes and pipes in CP Gr1/2, near-alpha Gr9 (Ti-3Al-2.5V), Pd-stabilized Gr7 and Gr12. WT within plus or minus 10 percent of nominal, 100 percent eddy-current tested, EN 10204 3.1 MTR, AS9100D supply chain. Standard stock ships in 5-7 days.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/tubes-pipes/';
+
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial', form: 'Seamless, Welded, U-Bend', use: 'High-formability chemical and biomedical service' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'Seamless, Welded, U-Bend, Coil', use: 'Workhorse CP - heat-exchanger tubing, condenser / cooler service' },
+  { family: 'CP Titanium', grade: 'Grade 3', uns: 'R50550', composition: 'Unalloyed Ti, higher strength', form: 'Seamless, Welded', use: 'Higher-stress chemical service' },
+  { family: 'Near-alpha', grade: 'Grade 9 (Ti-3Al-2.5V)', uns: 'R56320', composition: '3% Al, 2.5% V, alpha-beta lean alloy', form: 'Seamless, Welded', use: 'High-pressure hydraulic and aerospace tubing, moderate strength' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12-0.25% Pd', form: 'Seamless, Welded', use: 'Reducing acid (HCl), chemical-industry heat-exchanger service' },
+  { family: 'Corrosion-resistant', grade: 'Grade 12 (Ti-0.3Mo-0.8Ni)', uns: 'R53400', composition: 'CP + 0.3% Mo, 0.8% Ni', form: 'Seamless, Welded', use: 'High-temperature salt water, hot brine, MSF desalination' },
+  { family: 'Aerospace alpha-beta', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V, alpha-beta alloy', form: 'Seamless, Welded', use: 'High-strength hydraulic lines, aero structural tubing' },
+  { family: 'Aerospace alpha-beta ELI', grade: 'Grade 23 (Ti-6Al-4V ELI)', uns: 'R56401', composition: '6% Al, 4% V, low interstitials', form: 'Seamless', use: 'Fracture-critical, medical-grade heat-exchanger service (where applicable)' },
+  { family: 'High-temperature', grade: 'Ti-6Al-2Sn-4Zr-2Mo (Ti-6-2-4-2)', uns: 'R54620', composition: '6Al-2Sn-4Zr-2Mo', form: 'Seamless', use: 'High-temperature aero engine and exhaust sections' },
+];
+
+const specAttributes = [
+  { attr: 'Outside diameter (OD) range', value: 'O.D. 3.0 mm to 219 mm (1/8 inch to 8 inch NPS)', std: 'ASTM B338 S4, ASTM B861 S4' },
+  { attr: 'Wall-thickness (WT) tolerance', value: 'Within plus or minus 10 percent of nominal wall thickness', std: 'ASTM B338 S7, ISO 1127' },
+  { attr: 'Length', value: 'Random length to 18 000 mm, cut-to-length available', std: 'ASTM B338 S4' },
+  { attr: 'Seamless forms', value: 'Cold-drawn seamless tube, hot-extruded seamless pipe', std: 'ASTM B861' },
+  { attr: 'Welded forms', value: 'ERW / HFW welded tube with 100% ET, weld bead conditioned', std: 'ASTM B862' },
+  { attr: 'Tensile strength (UTS)', value: 'Gr.2 >= 345 MPa, Gr.5 >= 895 MPa, Gr.12 >= 483 MPa', std: 'Room-temperature tensile per ASTM E8' },
+  { attr: 'Elongation', value: 'Gr.2 >= 20 percent, Gr.5 >= 10 percent, Gr.12 >= 18 percent', std: 'ASTM E8, 4D gauge' },
+  { attr: 'Non-destructive testing', value: '100% eddy-current (ET) per ASTM E426, UT per ASTM E213 on request', std: 'ASTM B338 S9, ASME Sec. V' },
+  { attr: 'Hydrostatic / pneumatic test', value: 'Hydrostatic test on every tube, pneumatic where required by spec', std: 'ASTM B338 S10' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; 3.2 with independent witness on request', std: 'EN 10204, ASTM B338 S14' },
+];
+
+const pipeline = [
+  { n: '01', title: 'Incoming sponge and ingot verification', body: 'Grade-certified sponge titanium is VAR or EBM melted to ingot, with upstream mill heat-lot, chemistry, and macro-etch test records verified against the procurement specification before tube-stock production begins.' },
+  { n: '02', title: 'Tube-billet preparation', body: 'For seamless product, cylindrical billets are hot-extruded or cross-roll pierced to form the mother tube. For welded product, strip or sheet coil is slit to width and edge-conditioned prior to forming.' },
+  { n: '03', title: 'Cold-rolling or drawing (seamless), roll-forming and welding (welded)', body: 'Seamless tube is reduced to final OD x WT on multi-stand cold pilger mills or draw benches with intermediate anneals. Welded tube is roll-formed then welded by HFW or TIG with full-penetration autogenous or wire-additive process; weld bead is conditioned online.' },
+  { n: '04', title: 'Continuous bright anneal and straightening', body: 'Final recrystallization anneal under protective atmosphere (O2 below 50 ppm) restores ductility. Tube is then straightened, cut to length, and ends deburred to the dimensional callout.' },
+  { n: '05', title: '100 percent NDT and pressure test', body: 'Every tube is eddy-current tested (ET) for longitudinal and transverse defects per ASTM E426. Hydrostatic test at the spec pressure; pneumatic test where the order requires. UT per ASTM E213 is added where the spec calls for Class A or B.' },
+  { n: '06', title: 'Documentation, MTR, packaging', body: 'EN 10204 3.1 mill test report (chemistry and mechanical) is issued per heat and lot, with dimensional, NDT, and pressure-test records attached. Tube is end-capped, bundled, and packed in seaworthy wooden cases or plywood crates.' },
+];
+
+const boundaries = [
+  { icon: '🌡️', title: 'High-temperature service ceiling', body: 'Unalloyed CP titanium (Gr.1 or Gr.2) is sensitive to intergranular oxidation above 300 C in strongly oxidizing or specific fluoride-bearing media. For high-temperature or high-pressure structural service, specify Gr.5 (Ti-6Al-4V) or Gr.7 (Ti-Pd) where the medium is a hot reducing acid.' },
+  { icon: '⚡', title: 'Galvanic (bimetallic) isolation required', body: 'In seawater and chloride-bearing service, titanium tubes must be electrically isolated from carbon-steel tube-sheets and flanges. Use insulating gaskets, PTFE or EPDM washers, and titanium-clad tube-sheets; avoid direct carbon-steel contact to prevent galvanic-couple corrosion of the ferrous member.' },
+  { icon: '🔧', title: 'Bend-radius and cold-forming limits', body: 'Cold bending must keep bend radius R >= 3 x OD to avoid wall thinning and wrinkling. For tighter geometry or thin-wall condenser U-bends, use mandrel-controlled induction bending with post-form stress-relief anneal; ovality is held within 2 percent of nominal OD on request.' },
+];
+
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity envelope', body: 'Mill-schedule-aligned production for seamless (cold-drawn) and welded (HFW) tubes in standard OD x WT combinations. Prototype heat-exchanger sample quantities down to a few hundred kilograms are feasible through to ton-scale industrial procurement orders on the same upstream mill source.' },
+  { icon: '📦', title: 'Stock and MOQ flexibility', body: 'Standard stocked OD x WT combinations have no minimum order quantity for engineering sampling. Non-stock dimensions, custom alloys, and U-bend coil fabrication are scheduled against upstream-mill batches; MOQ is determined by the mill campaign and confirmed at RFQ.' },
+  { icon: '🗓️', title: 'Lead-time windows', body: 'Standard stocked tube items ship in 5-7 days. Custom OD x WT combinations, special-alloy pulls, and U-bend coil fabrication run 6-8 weeks, driven by upstream-mill rolling campaign and post-form NDT cycle. Engineering review and final quotation timing is confirmed at the RFQ stage.' },
+];
+
+const comparisonRows = [
+  { dim: 'Seawater service life', ours: 'Over 30 years (effectively maintenance-free in clean seawater)', alt1: '10-15 years (Cu-Ni susceptible to sulphide and ammonia attack)', alt2: '5-8 years (316L prone to pitting and crevice corrosion in chloride media)' },
+  { dim: 'Density and mass penalty', ours: '4.51 g/cm3 (about 45 percent lighter than Cu-Ni)', alt1: '8.9 g/cm3 (heavy, increases support-structure load)', alt2: '7.93 g/cm3 (intermediate)' },
+  { dim: 'Heat-transfer stability', ours: 'High (oxide film resists fouling, no spalling)', alt1: 'Moderate (verdigris or patina can build and shed)', alt2: 'Lower (biofouling and scale attachment frequent)' },
+  { dim: 'Life-cycle cost (LCC)', ours: 'Higher initial investment, lowest total LCC over service life', alt1: 'Moderate initial, mid-life LCC due to inspection and repair', alt2: 'Lowest initial, highest maintenance and replacement frequency' },
+];
+
+const faqItems = [
+  { question: 'How do you prevent hydrogen embrittlement and HAZ grain coarsening when welding titanium heat-exchanger tubes?', answer: 'Use high-purity argon (>= 99.999 percent) for both purge (backing) and trailing-shield protection on the ID and OD. Hold inter-pass temperature below 150 C to limit oxygen, nitrogen, and hydrogen pickup. For thin-wall condenser tubes, orbital TIG with a water-cooled copper backing bar is the standard joint configuration. Post-weld vacuum stress relief is applied where the order spec calls for it.' },
+  { question: 'How do you verify that delivered titanium tube meets ASTM B338 or ASME SB338 chemistry and mechanical requirements?', answer: 'Each lot is shipped with a heat-lot spectrographic chemistry report, room-temperature tensile results, and a record of 100 percent eddy-current and hydrostatic tests. Where the order requires, mechanical tests are extended with flattening, flare, and reverse-bend tests. Third-party inspection by Lloyds Register, Bureau Veritas, DNV, or customer-appointed agencies is welcomed; our mill is set up for witnessed test programs at the RFQ stage.' },
+  { question: 'How do you control wrinkling and springback when bending thin-wall titanium tubes for U-bend heat-exchangers?', answer: 'Mandrel-assisted CNC bending with controlled strain distribution, combined with intermediate stress-relief anneals, keeps ovality within 2 percent of nominal OD on standard U-bend packages. Springback is compensated by a closed-loop bend-angle algorithm that updates with each tube actual modulus. For very thin walls or tight radius, induction hot-bending at 600-750 C is used to suppress wall thinning.' },
+  { question: 'How is chemical and mechanical consistency maintained across kilometer-length tube lots in large projects?', answer: 'Heat-lot integrity is preserved from VAR-refined ingot through extrusion, cold reduction, and final anneal. 100 percent of production is eddy-current tested; UT class A or B is added per the order spec. Each shipment carries a 3.1 MTR with chemistry, tensile, and NDT results traceable to the originating heat. Multi-lot projects are co-mingled only after chemistry cross-check at incoming inspection.' },
+  { question: 'How can procurement teams manage titanium price volatility and origin-of-material compliance risk?', answer: 'Annual framework agreements with cost-pass-through indexed to a recognized sponge-titanium reference allow buyers to lock conversion margin while remaining exposed (or hedged) on raw-material movement. Each shipment is delivered with a Certificate of Origin and customs declaration suitable for international EPC and OEM projects. Independent chain-of-custody is available through the supplier ISO 9001 and AS9100D records, opened for audit at the RFQ stage.' },
+  { question: 'What is the right way to attach titanium tubes to a carbon-steel tubesheet without causing galvanic corrosion?', answer: 'Use a titanium-clad or titanium-lined tubesheet, or fit a transition joint that brings the wetted surface to titanium. At the tube-to-tubesheet joint, explosive welding plus a full-penetration seal weld is the conventional method. Insulating gaskets and non-conductive fasteners are added where any ferrous member remains in the assembly, to break the galvanic couple.' },
+];
+
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Bars, plates, tubes, wire, foil and mesh stock from one supplier.', href: '/mill-products/' },
+  { title: 'Plate and Sheet Stock', desc: 'CP, aerospace and corrosion-resistant plate and sheet to ASTM B265 or AMS 4911.', href: '/mill-products/plates-sheets/' },
+  { title: 'Bar and Rod Stock', desc: 'Round, square, hex bar and billet to ASTM B348 or AMS 4928 for downstream machining.', href: '/mill-products/bars-rods/' },
+  { title: 'CNC Machining of Tube Assemblies', desc: 'Downstream precision machining, header fabrication and end-fitting welding.', href: '/titanium-cnc-machining-services/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+];
+
+const itemListItems = [
+  { name: 'Titanium Seamless Tube (ASTM B861)', url: 'https://cnc.bozemetal.com/mill-products/tubes-pipes/#seamless' },
+  { name: 'Titanium Welded Tube (ASTM B862)', url: 'https://cnc.bozemetal.com/mill-products/tubes-pipes/#welded' },
+  { name: 'Titanium U-Bend Heat-Exchanger Tube', url: 'https://cnc.bozemetal.com/mill-products/tubes-pipes/#u-bend' },
+  { name: 'Titanium Condenser Tube (ASTM B338)', url: 'https://cnc.bozemetal.com/mill-products/tubes-pipes/#condenser' },
+  { name: 'Titanium Process Pipe (ASTM B861 or B862)', url: 'https://cnc.bozemetal.com/mill-products/tubes-pipes/#process-pipe' },
+];
+---
+
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Tube and Pipe Mill Stock"
+  serviceDescription="Industrial seamless and welded titanium tubes and pipes (O.D. 3-219 mm) for heat-exchanger, condenser, chemical-processing and hydraulic service. Supplied in CP Gr1 or Gr2, near-alpha Gr9 (Ti-3Al-2.5V), Pd-stabilized Gr7, Gr12 (Ti-0.3Mo-0.8Ni), and aerospace Gr5 (Ti-6Al-4V). Manufactured to ASTM B338 or B861 or B862 with EN 10204 3.1 or 3.2 mill certification, 100 percent eddy-current testing, and full heat-to-tube material traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Tube and Pipe"
+  collectionDescription="Seamless and welded titanium tube and pipe stock for shell-and-tube heat exchangers, MSF desalination bundles, power-plant condensers, chemical-processing reactors, hydraulic and aerospace fluid-handling systems."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Tube and Pipe"
+  productDeliveryLeadTime="5-7 days"
+>
+
+  <!-- S00 SubpageHero, Direct Answer (1) -->
+  <SubpageHero
+    h1={hero.h1}
+    subtitle={hero.subtitle}
+    badge={hero.badge}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+  />
+
+
+  <!-- S01 What We Dont Cover, Honest Positioning (2) -->
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal is a sourcing and processing partner for titanium tube and pipe, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment on titanium heat-exchanger and process-pipe projects.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Ingot, VAR, and EBM melting is not in our vertically integrated scope. We source tube-billet and welded-tube strip from upstream mills that hold the metallurgical chain-of-custody; our scope is sourcing, processing, and quality verification.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚠️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace-grade</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment classification. Confirm criticality class, specification (ASTM B338, B861, B862, AMS), and required documentation per RFQ.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket medical claim</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            We supply tube to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Engineering review and quotation timelines are confirmed at the RFQ stage based on the order complexity, alloy, OD x WT, and downstream processing required. Standard stocked items typically receive a same-week response.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔍</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">UT inspection is order-specified</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            100 percent eddy-current testing (ET) per ASTM E426 is standard. Ultrasonic examination per ASTM E213 and ASME Sec. V is available and applied where the order specification requires it; UT class and acceptance criteria are stated at the RFQ, not assumed by default.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S02 Grade x Form Matrix, Structured Body (3) #1 -->
+  <section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Tube and Pipe Grade x Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Nine procurement-grade entries mapping chemical composition, UNS designation, available tube / pipe forms (seamless, welded, U-bend, coil), and typical use. Specific OD, WT, and heat-treat state are confirmed per order.
+        </p>
+      </header>
+
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Nominal Composition</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Tube / Pipe Form</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                  <span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span>
+                  <span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span>
+                </td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        Composition and form matrix indicative. Specific OD x WT combinations, tolerances, and heat-treat state are confirmed per order.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- S03 Specification EAV, Structured Body (3) #2 -->
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Tube and Pipe Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Ten procurement-critical attribute / value / standard references for titanium tube and pipe stock. Use this as a cross-check table when drafting an RFQ; the applicable spec is selected per order.
+        </p>
+      </header>
+
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard Alignment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S04 Industry Applications, Structured Body (3) #3 -->
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-heat-exchanger-tube-bundle.svg"
+    imageAlt="Titanium Grade 2 seamless and welded tubes for shell-and-tube heat exchangers and condensers"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Petrochemical and Refinery, ASTM B338"
+    title="Shell-and-Tube Heat Exchanger Tubing"
+    body="Grade 2 (CP) seamless and welded titanium tube is the workhorse for shell-and-tube heat exchangers in refinery overhead condensers, chemical reactor feed-effluent exchangers, and chlorine-bearing process service. Tubes are supplied in mill-annealed temper with 100 percent eddy-current testing, ready for U-bending and tube-sheet rolling without further heat treatment."
+    bullets={[
+      "U-bend and straight-leg configurations to ASTM B338 S5",
+      "Mill-annealed temper, no further heat treat required prior to bending",
+      "Hydrostatic test on every tube per ASTM B338 S10",
+    ]}
+    ctaLabel="View condenser tube specs"
+    ctaHref="/mill-products/tubes-pipes/#condenser"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-process-pipe-fabrication.svg"
+    imageAlt="Titanium Grade 12 process pipe for MSF desalination and hot brine service"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Desalination and Power, ASTM B861 or B862"
+    title="MSF Desalination and Power-Plant Condenser Pipe"
+    body="Grade 12 (Ti-0.3Mo-0.8Ni) welded pipe and Grade 2 U-bend tubing carry hot brine and seawater through multi-stage flash (MSF) and multi-effect distillation (MED) trains, and through surface condensers in coastal and nuclear power plants. Gr12 is selected for its hot-salt-water corrosion margin; Gr2 is the standard seawater choice for surface condensers."
+    bullets={[
+      "Long-random-length welded pipe to ASTM B862",
+      "Hot-brine and seawater grade selection (Gr12 vs Gr2)",
+      "ISO 10893 ET and hydrostatic test on every length",
+    ]}
+    ctaLabel="View desalination pipe specs"
+    ctaHref="/mill-products/tubes-pipes/#process-pipe"
+  />
+
+  <section id="applications-cards" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Tube and Pipe Across Process Industries</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Four additional service environments where titanium tube and pipe is the default specification, with the grade and form that procurement teams typically call out.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛢️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Oil and Gas</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Hydraulic and instrument tubing on offshore platforms in seawater and sour-service environments. Grade 2 and Grade 9 selected by chloride and H2S exposure.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">✈️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Aerospace</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Grade 5 (Ti-6Al-4V) and Grade 9 (Ti-3Al-2.5V) hydraulic and fuel lines, AMS 4944 / 4945 supply. High-pressure pneumatic and fuel system tubing.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚡</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Power Generation</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Surface condensers, feed-water heater tubing, and FGD absorber recirculation lines. Grade 2 standard; Grade 7 or 12 for chloride / reducing-acid exposure.
+          </p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🧪</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Chemical Processing</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Reactor feed lines, chloride-bearing process piping, and reducing-acid (HCl) heat-exchanger service where Grade 7 (Ti-Pd) is the standard specification.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S05 Production Pipeline Timeline, Structured Body (3) #4 -->
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Tube and Pipe Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          From incoming VAR-refined ingot through tube-billet preparation, cold-rolling or welding, bright anneal, 100 percent NDT, and EN 10204 3.1 MTR issuance - six controlled stages with documentation checkpoints at each handoff.
+        </p>
+      </header>
+
+      <ol class="mt-12 space-y-8">
+        {pipeline.map((p) => (
+          <li class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">
+              {p.n}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3>
+              <p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- S06 Boundary Conditions, Structured Body (3) #5 -->
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries and Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Three service-environment boundaries that drive alloy selection and process planning. Confirm these constraints at the RFQ stage.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {boundaries.map((b) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{b.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S07 TrustBadges, Reused component (F2) -->
+  <TrustBadges />
+
+
+  <!-- S08 QualityControl, Reused component (F2) -->
+  <QualityControl />
+
+
+  <!-- S09 Supply Chain and Lead Time -->
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement and Lead Time</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Supply Chain and Lead-Time Windows</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Stock availability, MOQ flexibility, and lead-time windows for titanium tube and pipe. Final lead time is confirmed at the RFQ stage against the current upstream-mill schedule.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {supplyChain.map((s) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{s.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S10 Capability Comparison Matrix, Structured Body (3) #6 -->
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dimensional Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">CP Titanium Tube vs. Cu-Ni and 316L</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Four procurement-relevant dimensions comparing industrial CP-titanium tube (Gr.2) against the conventional Cu-Ni (B10 or B30) and austenitic stainless (316L) alternatives in seawater and process-fluid service.
+        </p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">CP Titanium (Gr.2)</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Cu-Ni Alloy (B10 or B30)</th>
+              <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Austenitic SS (316L)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((c, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+                <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S11 Applications, Reused component (F2) -->
+  <Applications />
+
+
+  <!-- S12 FAQ Accordion (F3: question and answer keys; FAQPage schema auto-emitted) -->
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering and Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Six common buyer questions on welding practice, ASTM B338 conformance, U-bend forming, large-project chemistry consistency, price-hedging strategies, and galvanic isolation.
+        </p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">
+        {faqItems.map((f, i) => (
+          <details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <summary class="cursor-pointer flex items-start gap-3 list-none">
+              <span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span>
+              <span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span>
+              <svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+              {f.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- S13 Related Tier1 Links and RFQ CTA (6) -->
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Five next-step anchors: parent hub, sister plate and bar stock, downstream machining of tube assemblies, and compliance evidence.
+        </p>
+      </header>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a
+            href={r.href}
+            class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1"
+            style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"
+          >
+            <h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p>
+            <span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">
+              Continue
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a
+          href="/rfq/"
+          class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+          style="background: var(--theme-primary); color: var(--theme-bg);"
+        >
+          Request a quotation and engineering review
+        </a>
+        <a
+          href="/mill-products/"
+          class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200"
+          style="border-color: var(--theme-primary); color: var(--theme-primary);"
+        >
+          Browse all mill products
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

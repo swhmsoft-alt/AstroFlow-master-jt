@@ -1,0 +1,427 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/wire'];
+const pageTitle = 'Titanium Wire | ASTM B863 / AMS 4951 | BOZE Metal';
+const pageDescription = 'Industrial titanium wire in coil and straight lengths in CP Gr1/2, Gr5 (Ti-6Al-4V), Gr23 (Ti-6Al-4V ELI) and Gr9 (Ti-3Al-2.5V). Diameter 0.1-6.0 mm. ASTM B863 / AMS 4951 with EN 10204 3.1 MTR. Standard stock ships in 5-7 days.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/wire/';
+
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial', form: 'Coil, Straight, Spool', use: 'Formable welding feedstock, biomedical forming wire' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'Coil, Straight, Spool', use: 'General-purpose welding wire, mesh feedstock' },
+  { family: 'CP Titanium', grade: 'Grade 4', uns: 'R50700', composition: 'Unalloyed Ti, highest CP strength', form: 'Straight, Spool', use: 'High-strength fastener wire, surgical hardware' },
+  { family: 'Aerospace a-b', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V, a-b alloy', form: 'Straight, Spool', use: 'AM feedstock, high-strength spring wire' },
+  { family: 'Aerospace a-b ELI', grade: 'Grade 23 (Ti-6Al-4V ELI)', uns: 'R56401', composition: '6% Al, 4% V, low interstitials', form: 'Straight, Spool', use: 'Fracture-critical medical wire' },
+  { family: 'Near-a', grade: 'Grade 9 (Ti-3Al-2.5V)', uns: 'R56320', composition: '3% Al, 2.5% V', form: 'Coil, Straight, Spool', use: 'Aerospace tubing feedstock, structural wire' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12-0.25% Pd', form: 'Coil, Straight', use: 'Reducing-acid mesh, electrolyzer electrode' },
+];
+
+const specAttributes = [
+  { attr: 'Diameter range', value: '0.10 mm to 6.0 mm (0.004 inch to 0.236 inch)', std: 'ASTM B863 S5, AMS 4951 S3.1' },
+  { attr: 'Diameter tolerance', value: 'Plus or minus 0.01 mm on fine wire below 0.5 mm; plus or minus 0.025 mm on 1.0-6.0 mm', std: 'ASTM B863 S5' },
+  { attr: 'Surface finish', value: 'Bright drawn, matte etched, pickled oxide-removed, or oxide-dark as-annealed', std: 'AMS 4951 S3.2' },
+  { attr: 'Coil and spool formats', value: 'Layer-wound coil, traverse-wound spool, pancake; up to 50 kg spool', std: 'Customer specification' },
+  { attr: 'Tensile strength (UTS)', value: 'Gr.2 >= 345 MPa, Gr.5 >= 895 MPa, Gr.23 >= 860 MPa', std: 'ASTM E8' },
+  { attr: 'Elongation', value: 'Gr.2 >= 20 percent, Gr.5 >= 10 percent, Gr.23 >= 10 percent', std: 'ASTM E8' },
+  { attr: 'Weldability classification', value: 'AWS A5.16 ERTi-1, ERTi-2, ERTi-5, ERTi-9', std: 'AWS A5.16, ASME Sec. II Part C' },
+  { attr: 'NDT', value: '100 percent visual and eddy-current continuity on medical-grade wire; class-by-class per spec', std: 'ASTM B863 S7' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; 3.2 with independent witness on request', std: 'EN 10204, ASTM B863 S9' },
+];
+
+const pipeline = [
+  { n: '01', title: 'Incoming rod stock verification', body: 'Grade-certified titanium rod or wire-bar is received with upstream-mill heat-lot, chemistry, and macro-etch records. Lot is verified against ASTM B863 or AMS 4951 before the drawing line starts.' },
+  { n: '02', title: 'Surface preparation', body: 'Oxide and surface contamination are removed by alkaline cleaning, acid pickling, and a lubricant coat applied to the rod surface to support multi-pass drawing.' },
+  { n: '03', title: 'Multi-pass cold drawing and intermediate anneal', body: 'Wire is drawn through successive diamond dies with area reductions of 20-30 percent per pass. Intermediate vacuum anneals restore ductility so further reduction is achievable without cracking.' },
+  { n: '04', title: 'Final anneal and surface finish selection', body: 'Bright anneal under protective atmosphere produces a clean, oxide-thin surface; vacuum anneal produces a soft matte surface; pickled finish removes the oxide layer entirely for medical and welding applications.' },
+  { n: '05', title: 'NDT and continuity check', body: '100 percent visual and eddy-current continuity test on medical-grade wire. Spring and aerospace wire is class-tested per spec; welding wire is lot-tested for chemistry, surface contamination, and cast-helix.' },
+  { n: '06', title: 'Winding, packaging, MTR', body: 'Wire is wound on customer-specified spools or in coils, vacuum-sealed for medical and AM grades, and accompanied by an EN 10204 3.1 MTR with chemistry and mechanical data traceable to the originating heat.' },
+];
+
+const boundaries = [
+  { icon: '🔁', title: 'Spring-back in elastic applications', body: 'CP titanium wire has a lower modulus than steel (about 105 GPa vs 200 GPa for spring steel), so spring designs need additional active coils to match steel-spring force. Grade 5 and Grade 9 give higher strength and slightly higher modulus for fatigue-critical spring service.' },
+  { icon: '🛡️', title: 'Surface contamination in welding and biomedical use', body: 'Bright and pickled wire is the only acceptable surface for TIG and plasma-arc welding feed and medical device forming. Oxide-dark annealed wire must be pickled or mechanically cleaned before weld use, otherwise oxygen and nitrogen pickup embrittle the weld.' },
+  { icon: '⚙️', title: 'Diameter tolerance and cast-helix limits', body: 'For springs and formed clips, the cast-helix (residual curvature on the spool) must remain under 25 mm per meter; for fine welding wire below 0.8 mm, ovality is held to within 0.005 mm. Confirm tolerance class at the RFQ.' },
+];
+
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity envelope', body: 'Drawing capacity in the 0.10-6.0 mm diameter range. Sample spools down to 1-5 kg are feasible for engineering trials; production runs of several hundred kilograms per spool are standard. AWS-class welding wire and medical-grade wire are scheduled against upstream rod campaigns.' },
+  { icon: '📦', title: 'Stock and MOQ flexibility', body: 'Standard stocked grade and diameter combinations have no minimum order quantity for engineering sampling. Non-stock diameter, custom surface finish, and small-lot medical-grade wire are scheduled against upstream-mill batches; MOQ is determined by the mill campaign and confirmed at the RFQ stage.' },
+  { icon: '🗓️', title: 'Lead-time windows', body: 'Standard stocked wire items ship in 5-7 days. Non-standard alloy, fine medical-grade draws, and AM-grade feedstock run 4-6 weeks, driven by upstream-rod heat and drawing campaign. Engineering review and final quotation timing is confirmed at the RFQ stage.' },
+];
+
+const comparisonRows = [
+  { dim: 'Specific strength (UTS / density)', ours: 'Up to 260 kNm/kg (Gr.5)', alt1: 'Up to 180 kNm/kg (annealed 302 SS)', alt2: 'Up to 200 kNm/kg (Niti superelastic)' },
+  { dim: 'Density and mass', ours: '4.51 g/cm3 (about 44 percent lighter than steel)', alt1: '7.93 g/cm3 (reference austenitic SS)', alt2: '6.45 g/cm3 (Nitinol typical)' },
+  { dim: 'Biocompatibility (ISO 10993)', ours: 'Inherently biocompatible (CP and Ti-6Al-4V ELI)', alt1: 'Limited (Ni release restrictions)', alt2: 'Limited (Ni release restrictions)' },
+  { dim: 'Fatigue life vs. spring steel', ours: 'Comparable to spring steel at lower force; needs more active coils to match force', alt1: 'Reference baseline', alt2: 'Inferior to steel; superelastic only' },
+];
+
+const faqItems = [
+  { question: 'How do you select the right titanium welding wire for a given base material?', answer: 'Match the weld-wire grade to the base metal: Gr.1 or Gr.2 (ERTi-1, ERTi-2) for CP titanium base; Gr.5 (ERTi-5) for Ti-6Al-4V base; Gr.9 (ERTi-9) for Ti-3Al-2.5V base. Bright or pickled finish is mandatory to avoid oxygen and nitrogen pickup. AWS A5.16 classification is supplied on the spool label and the 3.1 MTR.' },
+  { question: 'How is medical-grade wire handled differently from industrial wire?', answer: 'Medical wire is drawn in a clean-room environment with white-gown handling, vacuum-sealed in medical-grade pouches, and shipped with lot-traceable EN 10204 3.1 MTR plus biocompatibility documentation where the order spec calls for it. We are a material supplier and processor; downstream device-level certification remains the device maker responsibility.' },
+  { question: 'What is the typical surface finish for AM wire feedstock?', answer: 'AM wire is supplied bright-clean, with the surface oxide mechanically removed and the wire lubricated for stable feeding through the AM deposition head. Pickled finish is also offered for critical cleanliness. Diameter tolerance is held to plus or minus 0.02 mm and ovality under 0.005 mm for stable feed rates.' },
+  { question: 'How is spring-back controlled when forming titanium wire into springs or clips?', answer: 'Spring-back is about 2-3 times higher than for steel at the same diameter because of the lower modulus. We use stress-relief anneal after rough forming and age or straightening after final forming to lock in geometry. Closed-loop CNC spring coiling with force-feedback and post-form measurement is the standard process for high-volume spring orders.' },
+  { question: 'Can titanium wire be drawn below 0.1 mm?', answer: 'Industrial-class titanium wire is drawn down to about 0.05 mm for specialty applications such as braided catheter reinforcement and micro-spring. Below 0.05 mm the wire is classed as filament and requires different production routes. Confirm the diameter range and tolerance class at the RFQ stage.' },
+  { question: 'What documentation is supplied with each wire shipment?', answer: 'EN 10204 3.1 mill test report (chemistry, tensile, elongation), surface-finish declaration, AWS A5.16 classification for welding wire, and ASTM F67 or F136 traceability for medical wire. Independent third-party witness tests by Lloyds, Bureau Veritas, DNV, or customer-appointed agencies are welcomed and arranged at the RFQ stage.' },
+];
+
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Bars, plates, tubes, wire, foil and mesh stock from one supplier.', href: '/mill-products/' },
+  { title: 'Bar and Rod Stock', desc: 'Round, square, hex bar and billet to ASTM B348 or AMS 4928 for wire-bar feedstock and machined components.', href: '/mill-products/bars-rods/' },
+  { title: 'Tube and Pipe Stock', desc: 'Seamless and welded tube and pipe to ASTM B338, B861, B862 for heat-exchanger and process-pipe service.', href: '/mill-products/tubes-pipes/' },
+  { title: 'Welding and Fabrication Services', desc: 'Downstream TIG and plasma welding, header fabrication, and titanium welding assembly.', href: '/titanium-fabrication-services/titanium-welding-assembly/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+];
+
+const itemListItems = [
+  { name: 'Titanium Welding Wire (AWS A5.16 / ASTM B863)', url: 'https://cnc.bozemetal.com/mill-products/wire/#welding' },
+  { name: 'Titanium Medical Wire (ASTM F67 / F136)', url: 'https://cnc.bozemetal.com/mill-products/wire/#medical' },
+  { name: 'Titanium Spring and Forming Wire', url: 'https://cnc.bozemetal.com/mill-products/wire/#spring' },
+  { name: 'Titanium Additive-Manufacturing Wire Feedstock', url: 'https://cnc.bozemetal.com/mill-products/wire/#am-feedstock' },
+  { name: 'Titanium Mesh and Filter Wire', url: 'https://cnc.bozemetal.com/mill-products/wire/#mesh' },
+];
+---
+
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Wire Mill Stock"
+  serviceDescription="Industrial titanium wire in coil and straight lengths (0.10-6.0 mm) for welding feedstock, medical device forming, additive-manufacturing feedstock, spring and clip forming, and mesh and filter production. Supplied in CP Gr1 / Gr2 / Gr3 / Gr4, aerospace Gr5 (Ti-6Al-4V), medical Gr23 (Ti-6Al-4V ELI), near-alpha Gr9 (Ti-3Al-2.5V), and corrosion-resistant Gr7 (Ti-Pd). Manufactured to ASTM B863, AMS 4951, AWS A5.16 with EN 10204 3.1 or 3.2 mill certification, full heat-to-wire material traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Wire"
+  collectionDescription="Titanium wire stock in coil, straight and spooled forms for welding feedstock, medical device forming, additive-manufacturing feedstock, spring and clip forming, mesh and filter production, and specialized industrial use."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Wire"
+  productDeliveryLeadTime="5-7 days"
+>
+
+  <SubpageHero
+    h1={hero.h1}
+    subtitle={hero.subtitle}
+    badge={hero.badge}
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+  />
+
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          BOZE Metal is a sourcing and processing partner for titanium wire, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment on welding, medical and additive-manufacturing wire orders.
+        </p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sponge, VAR and EBM melting and wire-bar production is not in our vertically integrated scope. We source wire-bar and rod from upstream mills; our scope is drawing, annealing, surface finishing, and quality verification.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚠️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace-grade</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment classification. Confirm criticality class, specification (ASTM B863, AMS 4951, AWS A5.16), and required documentation per RFQ.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket medical claim</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply wire to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Engineering review and quotation timelines are confirmed at the RFQ stage based on the order complexity, alloy, diameter, and downstream processing required. Standard stocked items typically receive a same-week response.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔍</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">NDT scope is order-specified</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">100 percent visual and eddy-current continuity testing is standard on medical-grade wire. Spring and aerospace wire is class-tested per spec; welding wire is lot-tested for chemistry, surface contamination, and cast-helix. Test scope is stated at the RFQ, not assumed by default.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Wire Grade x Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Seven procurement-grade entries mapping chemical composition, UNS designation, available wire form (coil, straight, spool), and typical use. Specific diameter, surface finish, and temper are confirmed per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Composition</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Form</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span></td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Wire Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Nine procurement-critical attribute, value, and standard references for titanium wire. Use this as a cross-check table when drafting an RFQ; the applicable spec is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-welding-wire-coil.svg"
+    imageAlt="Titanium welding wire on spool for TIG and plasma-arc welding"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Welding and Fabrication, AWS A5.16"
+    title="Welding Wire and Filler Metal"
+    body="Grade 1, Grade 2, Grade 5, and Grade 9 welding wire in bright or pickled finish, classified to AWS A5.16 (ERTi-1, ERTi-2, ERTi-5, ERTi-9). Spool sizes from 0.5 kg up to 50 kg layer-wound or traverse-wound. Surface contamination checked lot-by-lot; the 3.1 MTR carries AWS classification, chemistry, and tensile results traceable to the originating heat."
+    bullets={['AWS A5.16 classification on every spool label', 'Bright or pickled finish only; no oxide-dark feed', 'Cast-helix under 25 mm per meter for feed consistency']}
+    ctaLabel="View welding wire specs"
+    ctaHref="/mill-products/wire/#welding"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-medical-wire-spool.svg"
+    imageAlt="Titanium Grade 23 medical wire vacuum-packed for surgical forming"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Medical and Additive Manufacturing, ASTM F67 / F136"
+    title="Medical Wire and AM Feedstock"
+    body="Grade 23 (Ti-6Al-4V ELI) medical wire is drawn in a clean-room environment, vacuum-sealed in medical-grade pouches, and shipped with full lot traceability for downstream device forming. Grade 5 (Ti-6Al-4V) AM feedstock is bright-clean with controlled ovality and surface state, suitable for additive-manufacturing deposition heads."
+    bullets={['White-gown clean-room draw and packaging', 'Diameter tolerance plus or minus 0.02 mm for AM feed', 'Vacuum-sealed foil pouch on medical wire']}
+    ctaLabel="View medical wire specs"
+    ctaHref="/mill-products/wire/#medical"
+  />
+
+  <section id="applications-cards" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Wire Across Process Industries</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four additional service environments where titanium wire is the default specification, with the grade and form that procurement teams typically call out.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛢️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Oil and Gas</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Down-hole logging cable, instrument-tubing wire, and corrosion-resistant mesh for offshore platforms. Grade 2 standard, Grade 7 for reducing-acid exposure.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">✈️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Aerospace</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Spring wire for fasteners and clips; hydraulic-line welding wire; fastener-stock wire. Grade 5 and Grade 9 selected by strength and formability.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Medical Devices</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Suture and clip wire; orthodontic wire; braided-catheter reinforcement. Grade 23 (Ti-6Al-4V ELI) is the default medical material specification.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🧪</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Chemical Processing</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Woven mesh, electrolyzer electrode wire, and chemical-industry forming. Grade 7 (Ti-Pd) for reducing-acid exposure where applicable.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Wire Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">From incoming rod stock verification through surface preparation, multi-pass drawing, final anneal, NDT, and EN 10204 3.1 MTR issuance - six controlled stages with documentation checkpoints at each handoff.</p>
+      </header>
+      <ol class="mt-12 space-y-8">
+        {pipeline.map((p) => (
+          <li class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">{p.n}</div>
+            <div class="flex-1">
+              <h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3>
+              <p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries and Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three service-environment boundaries that drive alloy selection, surface finish, and process planning. Confirm these constraints at the RFQ stage.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {boundaries.map((b) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{b.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <TrustBadges />
+  <QualityControl />
+
+
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement and Lead Time</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Supply Chain and Lead-Time Windows</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Stock availability, MOQ flexibility, and lead-time windows for titanium wire. Final lead time is confirmed at the RFQ stage against the current upstream-mill schedule.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {supplyChain.map((s) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{s.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dimensional Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Wire vs. Stainless Steel and Nitinol</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four procurement-relevant dimensions comparing titanium wire (Gr.5 reference) against the conventional austenitic stainless and Nitinol alternatives in spring, forming, and biomedical service.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Titanium Wire (Gr.5)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Austenitic SS (302 / 316LVM)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Nitinol (Ni-Ti)</th>
+          </tr></thead>
+          <tbody>
+            {comparisonRows.map((c, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+                <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <Applications />
+
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering and Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six common buyer questions on welding-wire selection, medical handling, AM feedstock, spring-back, fine wire, and shipment documentation.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">
+        {faqItems.map((f, i) => (
+          <details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <summary class="cursor-pointer flex items-start gap-3 list-none">
+              <span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span>
+              <span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span>
+              <svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent hub, sister bar and tube stock, downstream welding service, and compliance evidence.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p>
+            <span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/mill-products/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all mill products</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

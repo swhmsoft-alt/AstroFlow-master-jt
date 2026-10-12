@@ -117,6 +117,66 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase G-5 · Mill Products Tube & Pipe sub-page
+  '/mill-products/tubes-pipes': {
+    h1: 'Titanium Tubes & Pipes — Heat Exchanger & Process Mill Stock',
+    subtitle: 'Seamless and welded titanium tubes and pipes in CP Gr1/2, near-α Gr9 (Ti-3Al-2.5V), Pd-stabilized Gr7, and Gr12 (Ti-0.3Mo-0.8Ni). OD Ø3–219 mm, WT within ±10% of nominal, lengths up to 18 000 mm. Supplied to ASTM B338 / B861 / B862 with EN 10204 3.1 MTR and 100% eddy-current testing; standard stock ships in 5–7 days with non-standard dimensions and alloy in 6–8 weeks.',
+    badge: 'Mill Products / Tubes & Pipes | AS9100D',
+    keyMetrics: [
+      { value: 'Ø3–219 mm', label: 'OD range' },
+      { value: '±10%', label: 'WT tolerance' },
+      { value: '18 000 mm', label: 'Max length' },
+      { value: '5–7 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASTM B338',
+      'ASTM B861',
+      'ASTM B862',
+      'ASME SB338',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
+  // BSI Phase G-7 · Mill Products Foil & Coil sub-page
+  '/mill-products/foil-coils': {
+    h1: 'Titanium Foil & Coil — Thin Mill Stock for Chemical, Energy & Precision',
+    subtitle: 'Titanium foil and coil stock in CP Gr1 / Gr2, with Pd-stabilized Gr7 for reducing-acid service. Thickness 0.025–0.5 mm (foil) and 0.5–3.0 mm (coil), width 50–610 mm, mill-annealed or hard-rolled temper. Supplied to ASTM B265 with EN 10204 3.1 MTR; standard stock ships in 5–7 days with non-standard dimensions and alloy in 4–6 weeks.',
+    badge: 'Mill Products / Foil & Coil | AS9100D',
+    keyMetrics: [
+      { value: '0.025–3.0 mm', label: 'Thickness range' },
+      { value: '50–610 mm', label: 'Width range' },
+      { value: 'CP / Pd-Gr7', label: 'Grade family' },
+      { value: '5–7 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASTM B265',
+      'AMS 4900',
+      'ASME SB265',
+      'ISO 5832-2',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
+  // BSI Phase G-6 · Mill Products Wire sub-page
+  '/mill-products/wire': {
+    h1: 'Titanium Wire — Welding, Medical & Additive Stock',
+    subtitle: 'Titanium wire in coil and straight lengths in CP Gr1/2, aerospace Gr5 (Ti-6Al-4V), medical Gr23 (Ti-6Al-4V ELI) and Gr9 (Ti-3Al-2.5V). Diameter Ø0.1–6.0 mm, coil and spooled, bright / matte / oxide-dark finishes. Supplied to ASTM B863 / AMS 4951 with EN 10204 3.1 MTR; standard stock ships in 5–7 days with non-standard alloys and small-diameter draws in 4–6 weeks.',
+    badge: 'Mill Products / Wire | AS9100D',
+    keyMetrics: [
+      { value: 'Ø0.1–6.0 mm', label: 'Diameter range' },
+      { value: 'CP / ELI / α-β', label: 'Grade family' },
+      { value: 'Coil / Spool', label: 'Pack form' },
+      { value: '5–7 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASTM B863',
+      'AMS 4951',
+      'AMS 4954',
+      'AWS A5.16',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',

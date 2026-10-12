@@ -1,0 +1,332 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/foil-coils'];
+const pageTitle = 'Titanium Foil and Coil | ASTM B265 / AMS 4900 | BOZE Metal';
+const pageDescription = 'Industrial titanium foil (0.025-0.5 mm) and coil (0.5-3.0 mm) in CP Gr1/2, Gr4 and Pd-stabilized Gr7. Width 50-610 mm, mill-annealed or hard-rolled temper. Supplied to ASTM B265 with EN 10204 3.1 MTR. Standard stock ships in 5-7 days.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/foil-coils/';
+
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial', form: 'Foil, Coil', use: 'High-formability chemical, biomedical and battery service' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'Foil, Coil', use: 'Standard CP service, sound speaker and chemical processing' },
+  { family: 'CP Titanium', grade: 'Grade 4', uns: 'R50700', composition: 'Unalloyed Ti, highest CP strength', form: 'Foil, Coil', use: 'High-strength thin-gauge service, deep-draw formed parts' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12-0.25% Pd', form: 'Foil, Coil', use: 'Reducing-acid service, HCl electrolyzer and bipolar plate' },
+  { family: 'Corrosion-resistant', grade: 'Grade 12 (Ti-0.3Mo-0.8Ni)', uns: 'R53400', composition: 'CP + 0.3% Mo, 0.8% Ni', form: 'Foil, Coil', use: 'Hot-brine and seawater thin-gauge service' },
+  { family: 'Aerospace a-b', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V, a-b alloy', form: 'Foil, Coil', use: 'High-strength foil and spring shim, aerospace honeycomb core' },
+];
+
+const specAttributes = [
+  { attr: 'Foil thickness range', value: '0.025 mm to 0.5 mm (0.001 inch to 0.020 inch)', std: 'ASTM B265 S3, AMS 4900' },
+  { attr: 'Coil thickness range', value: '0.5 mm to 3.0 mm (0.020 inch to 0.118 inch)', std: 'ASTM B265 S3' },
+  { attr: 'Width range', value: '50 mm to 610 mm (2 inch to 24 inch)', std: 'ASTM B265 S3' },
+  { attr: 'Thickness tolerance', value: 'Plus or minus 0.005 mm on foil below 0.1 mm; plus or minus 5 percent on coil above 0.5 mm', std: 'ASTM B265 S5' },
+  { attr: 'Surface finish', value: 'Bright mill finish, descaled, or surface-conditioned per spec', std: 'AMS 4900' },
+  { attr: 'Temper', value: 'Mill-annealed (M) or hard-rolled (H) per spec', std: 'ASTM B265 S7' },
+  { attr: 'Tensile strength (UTS)', value: 'Gr.2 >= 345 MPa, Gr.4 >= 550 MPa, Gr.5 >= 895 MPa', std: 'ASTM E8' },
+  { attr: 'Elongation', value: 'Gr.2 >= 20 percent, Gr.4 >= 15 percent, Gr.5 >= 10 percent', std: 'ASTM E8' },
+  { attr: 'Coil form', value: 'Level-wound coil, traverse-wound spool, pancake, sheet-cut', std: 'Customer specification' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; 3.2 with independent witness on request', std: 'EN 10204' },
+];
+
+const pipeline = [
+  { n: '01', title: 'Incoming sheet-bar stock verification', body: 'Grade-certified titanium sheet-bar is received with upstream-mill heat-lot, chemistry, and macro-etch records. Lot is verified against ASTM B265 or AMS 4900 before the rolling line starts.' },
+  { n: '02', title: 'Cold rolling and intermediate anneal', body: 'Sheet-bar is reduced to foil-gauge thickness through a multi-stand cold rolling mill with intermediate vacuum anneals to restore ductility between passes. Hard-rolled temper is achieved by skipping the final anneal.' },
+  { n: '03', title: 'Bright anneal and surface conditioning', body: 'Final anneal under protective atmosphere produces a clean, oxide-thin surface suitable for downstream forming. Descaling, brushing, and polishing are added where the order requires a specific surface finish.' },
+  { n: '04', title: 'Slitting, cut-to-length, leveling', body: 'Foil is slit to customer-specified width (50-610 mm) and either level-wound into coils, traverse-wound onto spools, or cut to sheet length. Tension and edge-burr control are critical for downstream stamping and forming.' },
+  { n: '05', title: 'NDT and visual inspection', body: '100 percent visual inspection at production speed; eddy-current continuity check on Class A foil; mechanical-test sample per heat for UTS, elongation, and grain size per ASTM E8 and E112.' },
+  { n: '06', title: 'Packaging and MTR', body: 'Foil is interleaved with neutral paper or laser-cut PET film, vacuum-sealed in foil pouches for medical and AM grades, and shipped with an EN 10204 3.1 MTR with chemistry, mechanical data, and dimensional report traceable to the originating heat.' },
+];
+
+const boundaries = [
+  { icon: '🔁', title: 'Rolling direction and grain structure', body: 'Foil rolling produces anisotropic mechanical properties: tensile strength is highest along the rolling direction and lower transverse. Confirm whether the downstream forming operation requires equal-biaxial or uniaxial forming, and select the temper and grain-size class accordingly.' },
+  { icon: '🛡️', title: 'Surface contamination in chemical and biomedical use', body: 'Bright annealed and descaled surfaces are required for chemical and biomedical service. Surface oxide residue from anneal will compromise corrosion performance in reducing-acid media; specify a descaled or pickled surface for these applications.' },
+  { icon: '⚙️', title: 'Thickness tolerance in thin foil', body: 'For foil below 0.1 mm, standard mill tolerance is plus or minus 10 percent of nominal. Tight-tolerance foil (plus or minus 0.005 mm or better) is available with a tooling surcharge; confirm tolerance class at the RFQ stage.' },
+];
+
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity envelope', body: 'Rolling capacity in the 0.025-3.0 mm thickness range and 50-610 mm width. Engineering samples of small coil lengths are feasible; production runs of several hundred kilograms per coil are standard. Specialty alloy pulls are scheduled against upstream-mill sheet-bar batches.' },
+  { icon: '📦', title: 'Stock and MOQ flexibility', body: 'Standard stocked grade and thickness combinations have no minimum order quantity for engineering sampling. Non-stock thickness, custom width, and small-lot medical or energy foils are scheduled against upstream-mill batches; MOQ is determined by the mill campaign and confirmed at the RFQ stage.' },
+  { icon: '🗓️', title: 'Lead-time windows', body: 'Standard stocked foil and coil items ship in 5-7 days. Non-standard alloy, custom width, and tight-tolerance foil run 4-6 weeks, driven by upstream-mill rolling campaign. Engineering review and final quotation timing is confirmed at the RFQ stage.' },
+];
+
+const comparisonRows = [
+  { dim: 'Specific strength (UTS / density)', ours: 'Up to 200 kNm/kg (Gr.2 annealed)', alt1: 'Up to 170 kNm/kg (annealed 302 SS)', alt2: 'Up to 150 kNm/kg (commercially pure nickel)' },
+  { dim: 'Density and mass', ours: '4.51 g/cm3 (about 44 percent lighter than steel)', alt1: '7.93 g/cm3 (reference austenitic SS)', alt2: '8.9 g/cm3 (commercially pure copper)' },
+  { dim: 'Corrosion in chloride media', ours: 'Effectively immune to pitting and crevice corrosion in seawater and brine', alt1: 'Susceptible to pitting and crevice corrosion in chloride media', alt2: 'Susceptible to ammonia and sulfide attack' },
+  { dim: 'Formability at thin gauge', ours: 'Good at 0.025-0.1 mm annealed; deep-draw and stamping on Gr.1 / Gr.2', alt1: 'Work-hardens rapidly; spring-back concerns', alt2: 'Softer but limited corrosion in chloride media' },
+];
+
+const faqItems = [
+  { question: 'How do you select the right titanium foil grade for chemical and energy service?', answer: 'Match the alloy to the medium. CP Gr1 and Gr2 are the workhorse for general chemical and battery-foil service. Gr7 (Ti-Pd) is required for reducing acids (HCl, dilute H2SO4) and is the default for chlor-alkali membrane and HCl electrolyzer applications. Gr12 is selected for hot brine and seawater thin-gauge service.' },
+  { question: 'How is foil thickness tolerance controlled below 0.1 mm?', answer: 'For foil below 0.1 mm, the rolling mill uses a laser-thickness gauge with closed-loop feedback to maintain thickness within plus or minus 0.005 mm of target. Standard mill tolerance is plus or minus 10 percent of nominal; tight-tolerance foil is available with a tooling surcharge and is typically scheduled against a dedicated rolling campaign.' },
+  { question: 'What surface finish is required for bipolar-plate and electrolyzer service?', answer: 'Bright annealed and descaled surface is the standard. For PEM and chlor-alkali electrolyzers, the foil is often surface-conditioned to a controlled roughness (Ra 0.2-0.8 micrometer) to optimize coating adhesion. Gr7 (Ti-Pd) is the default alloy for chlor-alkeli cells; confirm coating requirement and post-coat surface state at the RFQ stage.' },
+  { question: 'How is grain structure controlled in annealed foil?', answer: 'Grain size is set by the final anneal temperature and dwell time, with a target ASTM grain size number of 7-9 for annealed CP foil (about 20-40 micrometer). Cross-grain uniformity is monitored by sampling per coil; mechanical-test results and grain-size data are reported on the 3.1 MTR.' },
+  { question: 'Can titanium foil be supplied cut-to-length as sheet?', answer: 'Yes. Foil can be supplied level-wound in coil, traverse-wound on spool, or cut-to-length as sheet with customer-specified length and width. Laser-cut blank shapes are also available where the order requires a specific blank geometry; tolerance and edge-quality are confirmed at the RFQ stage.' },
+  { question: 'What documentation is supplied with each foil shipment?', answer: 'EN 10204 3.1 mill test report (chemistry, tensile, elongation, grain size), surface-finish declaration, and dimensional report per coil or per sheet bundle. Independent third-party witness tests by Lloyds, Bureau Veritas, DNV, or customer-appointed agencies are welcomed and arranged at the RFQ stage.' },
+];
+
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Bars, plates, tubes, wire, foil and mesh stock from one supplier.', href: '/mill-products/' },
+  { title: 'Plate and Sheet Stock', desc: 'CP, aerospace and corrosion-resistant plate and sheet to ASTM B265 or AMS 4911.', href: '/mill-products/plates-sheets/' },
+  { title: 'Wire Stock', desc: 'Coil and straight titanium wire for welding, medical, AM feedstock and spring service.', href: '/mill-products/wire/' },
+  { title: 'Tube and Pipe Stock', desc: 'Seamless and welded tube and pipe to ASTM B338, B861, B862 for heat-exchanger and process-pipe service.', href: '/mill-products/tubes-pipes/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+];
+
+const itemListItems = [
+  { name: 'Titanium Chemical-Processing Foil (ASTM B265 / Gr.7)', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/#chemical' },
+  { name: 'Titanium Bipolar-Plate and Electrolyzer Foil', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/#bipolar' },
+  { name: 'Titanium Battery and Energy-Storage Foil', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/#battery' },
+  { name: 'Titanium Aerospace Honeycomb and Shim Foil', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/#aerospace' },
+  { name: 'Titanium Coil for Stamping and Forming', url: 'https://cnc.bozemetal.com/mill-products/foil-coils/#forming' },
+];
+---
+
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Foil and Coil Mill Stock"
+  serviceDescription="Industrial titanium foil (0.025-0.5 mm) and coil (0.5-3.0 mm) in CP Gr1 / Gr2 / Gr4, Pd-stabilized Gr7, Gr12, and aerospace Gr5. Width 50-610 mm, mill-annealed or hard-rolled temper. Manufactured to ASTM B265 and AMS 4900 with EN 10204 3.1 / 3.2 mill certification, full heat-to-coil material traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Foil and Coil"
+  collectionDescription="Titanium foil and coil stock for chemical processing, chlor-alkali and PEM electrolyzer, battery and energy-storage, aerospace honeycomb and shim, and stamping / forming applications."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Foil and Coil"
+  productDeliveryLeadTime="5-7 days"
+>
+
+  <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">BOZE Metal is a sourcing and processing partner for titanium foil and coil, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment on thin-gauge foil orders.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">🛑</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sponge, VAR and EBM melting and sheet-bar production is not in our vertically integrated scope. We source sheet-bar from upstream mills; our scope is cold-rolling, annealing, slitting, surface conditioning, and quality verification.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">⚠️</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace-grade</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment classification. Confirm criticality class, specification (ASTM B265, AMS 4900), and required documentation per RFQ.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">🏥</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket medical claim</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply foil to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">⏱️</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Engineering review and quotation timelines are confirmed at the RFQ stage based on the order complexity, alloy, thickness, and downstream processing required. Standard stocked items typically receive a same-week response.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">🔍</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">NDT and surface metrology</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Visual inspection at production speed and eddy-current continuity on Class A foil are standard. Laser-thickness gauge records and roughness metrology are available on request. NDT and metrology scope are stated at the RFQ, not assumed by default.</p></article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Foil and Coil Grade x Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six procurement-grade entries mapping chemical composition, UNS designation, available foil or coil form, and typical use. Specific thickness, width, and temper are confirmed per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Composition</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Form</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span></td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Foil and Coil Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ten procurement-critical attribute, value, and standard references for titanium foil and coil. Use this as a cross-check table when drafting an RFQ; the applicable spec is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-foil-coil-strip.svg"
+    imageAlt="Titanium foil coil ready for slitting, annealing, and surface conditioning"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Chemical and Energy, ASTM B265"
+    title="Foil for Chemical Processing and Electrolyzer Service"
+    body="Grade 7 (Ti-Pd) foil is the default specification for chlor-alkali membrane cells, HCl electrolyzers, and reducing-acid chemical-processing service where austenitic SS would pit or fail. Bright-annealed and descaled surface is the standard; surface-conditioned roughness Ra 0.2-0.8 micrometer is available for coating adhesion on bipolar-plate applications."
+    bullets={['Grade 7 (Ti-Pd) for HCl and chlor-alkali service', 'Bright anneal plus descaling for clean surface', 'Surface-conditioned for coating adhesion']}
+    ctaLabel="View chemical foil specs"
+    ctaHref="/mill-products/foil-coils/#chemical"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-foil-rolling-mill.svg"
+    imageAlt="Titanium aerospace honeycomb and battery-foil coil on rolling mill"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Aerospace and Battery, AMS 4900"
+    title="Foil for Aerospace Honeycomb and Battery Service"
+    body="Grade 2 (CP) annealed foil is supplied for battery-current-collector and cell-pack applications where corrosion resistance in electrolyte and formability for deep-draw cases are required. Grade 5 (Ti-6Al-4V) hard-rolled foil is supplied for aerospace honeycomb core and high-strength shim stock. AMS 4900 reference is standard for aerospace lots."
+    bullets={['Grade 2 annealed for battery foil', 'Grade 5 hard-rolled for honeycomb and shim', 'AMS 4900 for aerospace-class orders']}
+    ctaLabel="View aerospace and battery foil specs"
+    ctaHref="/mill-products/foil-coils/#aerospace"
+  />
+
+  <section id="applications-cards" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Foil and Coil Across Process Industries</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four additional service environments where titanium foil and coil are the default specification, with the grade and form that procurement teams typically call out.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">⚡</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">PEM Electrolyzer</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Bipolar plate and PTL current-collector foil. Grade 1 annealed, surface-conditioned to Ra 0.4-0.8 micrometer for catalyst coating.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">🧪</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Chemical Processing</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Spacer and demister foil for HCl and chlor-alkali towers. Grade 7 standard for reducing-acid exposure.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">🎵</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Audio and Precision</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Speaker-diaphragm foil and precision-stamping feedstock. Gr.1 annealed for ultra-low residual stress and consistent grain size.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-2xl" aria-hidden="true">🔋</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Battery and Energy Storage</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Current-collector foil for advanced battery and capacitor cell designs. Gr.2 annealed is the workhorse specification.</p></article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Foil and Coil Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">From incoming sheet-bar verification through cold rolling, bright anneal, slitting, NDT, and EN 10204 3.1 MTR issuance - six controlled stages with documentation checkpoints at each handoff.</p>
+      </header>
+      <ol class="mt-12 space-y-8">{pipeline.map((p) => (<li class="flex flex-col md:flex-row gap-6 items-start"><div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">{p.n}</div><div class="flex-1"><h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3><p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p></div></li>))}</ol>
+    </div>
+  </section>
+
+
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries and Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three service-environment boundaries that drive alloy selection, surface finish, and tolerance class. Confirm these constraints at the RFQ stage.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{boundaries.map((b) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{b.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <TrustBadges />
+  <QualityControl />
+
+
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement and Lead Time</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Supply Chain and Lead-Time Windows</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Stock availability, MOQ flexibility, and lead-time windows for titanium foil and coil. Final lead time is confirmed at the RFQ stage against the current upstream-mill schedule.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{supplyChain.map((s) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{s.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dimensional Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Foil vs. Stainless Steel, Nickel and Copper</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four procurement-relevant dimensions comparing titanium foil (Gr.2 annealed reference) against the conventional austenitic stainless, nickel, and copper foil alternatives in chemical, electrolyzer, and stamping service.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Titanium Foil (Gr.2)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Austenitic SS (302 / 316L)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Nickel / Copper Foil</th>
+          </tr></thead>
+          <tbody>{comparisonRows.map((c, i) => (<tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+            <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+            <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+          </tr>))}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <Applications />
+
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering and Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six common buyer questions on grade selection for chemical and energy service, thickness tolerance, surface finish for electrolyzer, grain structure, sheet-cut formats, and shipment documentation.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">{faqItems.map((f, i) => (<details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><summary class="cursor-pointer flex items-start gap-3 list-none"><span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span><span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span><svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div></details>))}</div>
+    </div>
+  </section>
+
+
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent hub, sister plate / wire stock, downstream fabrication, and compliance evidence.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{relatedLinks.map((r) => (<a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p><span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span></a>))}</div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/mill-products/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all mill products</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

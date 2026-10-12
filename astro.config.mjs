@@ -279,6 +279,54 @@ export default defineConfig({
           "Ti-6Al-4V centerless ground bar": {
             "href": "/mill-products/bars-rods/"
           },
+          // BSI Phase G-5 · Mill Products Tube & Pipe sub-page (5-inbound #4)
+          "titanium tubes and pipes": {
+            "href": "/mill-products/tubes-pipes/"
+          },
+          "titanium tube and pipe": {
+            "href": "/mill-products/tubes-pipes/"
+          },
+          "ASTM B338 heat exchanger tube": {
+            "href": "/mill-products/tubes-pipes/"
+          },
+          "ASTM B861 seamless pipe": {
+            "href": "/mill-products/tubes-pipes/"
+          },
+          "titanium condenser tube": {
+            "href": "/mill-products/tubes-pipes/"
+          },
+          // BSI Phase G-6 · Mill Products Wire sub-page (5-inbound #4)
+          "titanium welding wire": {
+            "href": "/mill-products/wire/"
+          },
+          "titanium medical wire": {
+            "href": "/mill-products/wire/"
+          },
+          "AWS A5.16 titanium wire": {
+            "href": "/mill-products/wire/"
+          },
+          "ASTM B863 titanium wire": {
+            "href": "/mill-products/wire/"
+          },
+          "titanium AM wire feedstock": {
+            "href": "/mill-products/wire/"
+          },
+          // BSI Phase G-7 · Mill Products Foil & Coil sub-page (5-inbound #4)
+          "titanium foil": {
+            "href": "/mill-products/foil-coils/"
+          },
+          "titanium coil": {
+            "href": "/mill-products/foil-coils/"
+          },
+          "ASTM B265 titanium foil": {
+            "href": "/mill-products/foil-coils/"
+          },
+          "titanium bipolar plate foil": {
+            "href": "/mill-products/foil-coils/"
+          },
+          "titanium battery foil": {
+            "href": "/mill-products/foil-coils/"
+          },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
           },

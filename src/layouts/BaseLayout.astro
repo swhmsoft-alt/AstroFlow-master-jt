@@ -57,6 +57,13 @@ interface Props {
   productMaterial?: string;
   productHowto?: HowToItem;
   productFaqItems?: FaqItem[];
+  /**
+   * Phase G-2.2 — Offer.deliveryLeadTime for standard-part-detail Product
+   * entity. Example: "5-7 days" or ISO 8601 duration "P5D". When the
+   * standard-part-detail case auto-emits a Product entity, this value is
+   * forwarded to the Offer.
+   */
+  productDeliveryLeadTime?: string;
   // Phase 2C — tool detail (WebApplication schema entity)
   toolName?: string;
   toolDescription?: string;
@@ -192,6 +199,7 @@ const {
   productMaterial,
   productHowto,
   productFaqItems,
+  productDeliveryLeadTime,
   toolName,
   toolDescription,
   toolCategory,
@@ -279,6 +287,8 @@ const schemaData = {
   comparisonList,
   // Phase 3 — product-detail entity field overrides (replaces page-level JSON-LD)
   productSku, productMaterial, productHowto, productFaqItems,
+  // Phase G-2.2 — Offer.deliveryLeadTime for standard-part-detail Product
+  productDeliveryLeadTime,
   // Phase 2C — tool detail (WebApplication)
   toolName, toolDescription, toolCategory, toolSubCategory, toolRfqPath,
 };
