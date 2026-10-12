@@ -77,13 +77,13 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'Mesh',
     ],
   },
-  // BSI Phase G-2 · Mill Products Plate & Sheet sub-page
+  // BSI Phase G-2.1 · Mill Products Plate & Sheet sub-page (title & scope aligned)
   '/mill-products/plates-sheets': {
-    h1: 'Titanium Plate, Sheet, Coil & Foil — Industrial Mill Stock',
-    subtitle: 'Precision-rolled titanium plate, sheet, coil and foil spanning 0.0197" foil to 6" plate in CP Gr1/2/3/4, aerospace Gr5/Ti-6-2-4-2, and corrosion-resistant Gr7/Gr12. EN 10204 3.1/3.2 mill certification; standard stock ships in 3–5 days with non-standard alloys and custom rolling in 6–8 weeks.',
+    h1: 'Titanium Plate & Sheet — Industrial Mill Stock',
+    subtitle: 'Precision-rolled titanium plate and sheet in CP Gr1/2/3/4, aerospace Gr5 / Ti-6Al-2Sn-4Zr-2Mo, and corrosion-resistant Gr7 / Gr12. Plate thickness up to 6″ with sheet in the 0.5–4.8 mm range. EN 10204 3.1/3.2 mill certification; standard stock ships in 3–5 days with non-standard alloys and custom rolling in 6–8 weeks.',
     badge: 'Mill Products / Plate & Sheet | AS9100D',
     keyMetrics: [
-      { value: '0.0197″–6″', label: 'Thickness range' },
+      { value: '0.5 mm–6″', label: 'Sheet–plate thickness range' },
       { value: '12′×50′', label: 'Max dimensions' },
       { value: '10+ grades', label: 'Stock range' },
       { value: '3–5 days', label: 'Standard lead time' },

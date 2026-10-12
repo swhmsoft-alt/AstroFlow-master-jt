@@ -518,3 +518,56 @@ Ops / User scope (NOT Cline's responsibility):
 **Follow-on work (deferred to future phases):**
 - Phase G-3: Hub gateway card href alignment for the other 5 forms (bars-rods, tubes-pipes, wire, foil-coils, mesh) — currently 5 of 6 hub gateway cards still link to `/materials/`, the schema and BREADCRUMB_LABELS are now in place for them to follow the same pattern.
 - Phase G-4: `/mill-products/bars-rods/` sub-page (next product form, identical pattern).
+
+---
+
+### Phase G-2.1 — `/mill-products/plates-sheets/` Title & Scope Alignment (2026-10-12)
+
+**Scope:** Buyer Search Intelligence Phase G-2.1 — apply user-provided LLM optimization recommendations to the Phase G-2 plate-and-sheet sub-page. Three categories: (a) H1 / page-title / meta-description realignment to remove Coil/Foil from page scope, (b) repair 3 dead-link references to non-existent `/mill-products/foil-coils/`, (c) add 3 long-tail procurement FAQ items.
+
+**Files modified (2):**
+
+1. `src/config/hero.ts` — `HERO_CONFIG['/mill-products/plates-sheets']` realigned:
+   - h1: `'Titanium Plate, Sheet, Coil & Foil — Industrial Mill Stock'` → `'Titanium Plate & Sheet — Industrial Mill Stock'` (Coil/Foil removed)
+   - subtitle: removed "coil and foil"; expanded to `Plate thickness up to 6″ with sheet in the 0.5–4.8 mm range` (honest sheet/plate only)
+   - keyMetrics[0]: `'0.0197″–6″ Thickness range'` → `'0.5 mm–6″ Sheet–plate thickness range'`
+2. `src/pages/mill-products/plates-sheets.astro` — 6 edits:
+   - pageTitle: rewritten to `'Titanium Plate & Sheet Stock | ASME SB265 & AMS 4911 | BOZE Metal'` (59 chars, within Google's 60-char display limit)
+   - pageDescription: rewritten to 155-char EAV-structured meta (thickness range, grade matrix, MTR & QMS evidence, lead time)
+   - serviceName / serviceDescription / collectionName / collectionDescription — all Coil/Foil removed
+   - specAttributes: `0.0197″ (foil) → 6.0″ (plate)` → `0.5 mm (sheet) → 6.0″ (plate)`; `(foil ≤ 0.040″)` → `(thin sheet ≤ 0.040″)`
+   - itemListItems: removed 2 dead cross-ref entries pointing to non-existent `/mill-products/foil-coils/` (F9 URL Fabrication rule)
+   - "No coil / foil in this sub-page" card: link target `/mill-products/foil-coils/` → `/rfq/` with explicit "Foil/coil/strip inquiry routes through the RFQ form" wording
+   - Second `<ImageTextSplit>` reframed from "Smartphone Mid-Frame & Foldable Hinge Bracket" (3C Electronics, 0.1–0.5 mm foil gauge) to "Pressure Vessel Shells & Reactor Liners" (Chemical Processing, 0.1875″–6″ Gr2 / Gr7 plate); CTA `/mill-products/foil-coils/` → `/rfq/`; `imageSrc` switched from non-existent `titanium-pressure-vessel-shell.svg` to existing `titanium-submersible-pressure-hull.svg`
+   - FAQ section: Q1–Q6 retained; added Q7 (Ti-6Al-2Sn-4Zr-2Mo vs Ti-6Al-4V high-temp creep selection per AMS 4975), Q8 (Grade 7 vs Grade 12 reducing-acid service and MTR requirements), Q9 (AMS 4911 vs AMS 4919 plate differentiation — annealed vs STA).
+
+**Cross-references removed (F9 compliance):**
+- `itemListItems[4]` → `'/mill-products/foil-coils/'` ❌ (page does not exist) — removed
+- `itemListItems[5]` → `'/mill-products/foil-coils/'` ❌ (page does not exist) — removed
+- "No coil/foil" card anchor → `'/mill-products/foil-coils/'` ❌ (page does not exist) — replaced with `/rfq/`
+- `ImageTextSplit` ctaHref → `'/mill-products/foil-coils/'` ❌ (page does not exist) — replaced with `/rfq/`
+
+All four dead links replaced with `/rfq/` (canonical intake) — preserves conversion path while honoring F9.
+
+**Validation gates:**
+- G1 `check-undefined-slugs.mjs` → ⏳ deferred to user env (Phase G-2 pattern)
+- G2 `npx astro build` → ⏳ deferred (PowerShell shell-integration blocker persists)
+- G3 dist HTML @type audit → ⏳ pending
+- G4 `check-keyword-map.mjs` → ⏳ pending
+- G5 manual review of 8 edits vs user recommendations → ✅ verified each maps 1:1
+- G6 `git status` → ⏳ pending commit
+
+**Deferred (intentionally not in this phase):**
+- Schema Product + SupplyChain entities for `/mill-products/{slug}/` pages — `standard-part-detail` case explicitly does NOT emit Product (schema.ts:1093, F4 design); SupplyChain requires new `buildSupplyChain()` builder. Both require a future schema-evolution phase (proposed: Phase G-2.2 Schema Schema Evolution).
+- `/mill-products/foil-coils/` sub-page — separate Phase G-3 task; current intent is to consolidate foil/coil in next sub-page phase so future cross-references have a real target.
+- Product entity + deliveryLeadTime on this sub-page (per user rec §3) — same F4-conflict reason as above.
+
+**Lessons:**
+- User-provided LLM optimization recs read like an SEO playbook (60-char title cap, 155-char meta cap, EAV property slices for AIO/AI-summary extraction). Cline executed them 1:1 with file-level edits, using the existing project patterns.
+- Dead links to non-existent URL → F9 violation. Remediation pattern: route through `/rfq/` (canonical) or remove. Selecting `/rfq/` preserves conversion flow.
+- Tailored ImageTextSplit reframing (3C foil → pressure-vessel plate) used an existing `titanium-submersible-pressure-hull.svg` instead of fabricating a new svg; preserves the "no asset fabrication" red line.
+
+**Follow-on work (deferred to future phases):**
+- (carried from Phase G-2) Phase G-3: Hub gateway card href alignment for the other 5 forms; Phase G-4: `/mill-products/bars-rods/` sub-page.
+- (new) Phase G-2.2 Schema: extend `standard-part-detail` to optionally emit Product entity when `productName` is passed (opt-in); add `buildSupplyChain()` and `supplyChain` BaseLayout prop; add `deliveryLeadTime` to Product/Offer output.
+- (new) Phase G-3.5: create `/mill-products/foil-coils/` sub-page so that future references on the plates-sheets page can point to it instead of /rfq/.
