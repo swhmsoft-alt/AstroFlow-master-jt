@@ -236,6 +236,26 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase H-D · Standard Parts Fasteners sub-page
+  '/standard-parts/fasteners': {
+    h1: 'Titanium Fasteners — DIN / ISO / NAS / AS9100D',
+    subtitle: 'High-precision titanium fasteners in CP Gr.2 (semiconductor / chemical) and Gr.5 (Ti-6Al-4V, motorsport / aerospace). Socket head cap screws, hex head bolts, hex nuts, flange nuts, washers, threaded rod. To DIN 912 / DIN 933 / DIN 934 / DIN 6923 / ISO 4014 / ISO 4017 / ISO 4032 / ASME B18.2.1 plus aerospace NAS / AN / MS. AS9100D QMS. Thread-rolled (no cutting) with continuous grain flow. Standard stock 24-48 hours, custom machined 7-10 days, batch heading 3-4 weeks.',
+    badge: 'Standard Parts / Fasteners | AS9100D',
+    keyMetrics: [
+      { value: 'M2-M36', label: 'Metric size range' },
+      { value: '6g/6H or 3A/3B', label: 'Thread tolerance' },
+      { value: 'SHCS / Hex / Nut / Washer', label: 'Item form' },
+      { value: '24-48 hours', label: 'Stock lead time' },
+    ],
+    entityChips: [
+      'DIN 912',
+      'ISO 4014/4017',
+      'ASME B18.2.1',
+      'NAS / AN / MS',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',

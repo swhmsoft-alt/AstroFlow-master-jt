@@ -1,0 +1,365 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/standard-parts/fasteners'];
+const pageTitle = 'Titanium Fasteners | DIN 912 / ISO 4014 / NAS | BOZE Metal';
+const pageDescription = 'High-precision titanium fasteners in CP Gr.2 and Gr.5 (Ti-6Al-4V). Socket head cap screws, hex bolts, hex nuts, flange nuts, washers, threaded rod. To DIN 912 / DIN 933 / DIN 934 / DIN 6923 / ISO 4014 / ISO 4017 / ISO 4032 and aerospace NAS / AN / MS. AS9100D QMS. Standard stock 24-48 hours, custom machined 7-10 days, batch heading 3-4 weeks.';
+const canonicalUrl = 'https://cnc.bozemetal.com/standard-parts/fasteners/';
+
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'SHCS, hex bolts, hex nuts, washers, threaded rod, custom', use: 'Semiconductor wet bench, marine, chemical processing, biomedical forming, general corrosion-resistant hardware' },
+  { family: 'Aerospace a-b', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V, a-b alloy', form: 'SHCS, hex bolts, hex nuts, flange nuts, washers, custom', use: 'Motorsport suspension and brake calipers, premium bicycle, aerospace structural, high-strength fatigue-critical service' },
+];
+
+const specAttributes = [
+  { attr: 'Industrial standard compliance', value: 'DIN 912, DIN 933, DIN 934, DIN 6923, DIN 125, DIN 9021, ISO 4014, ISO 4017, ISO 4032, ISO 7093, ASME B18.2.1, ASME B18.2.2', std: 'DIN / ISO / ASME' },
+  { attr: 'Aerospace standard compliance', value: 'NAS 1351, NAS 1352, NAS 620, NAS 630, AN 3 / AN 4 / AN 5 / AN 6, MS 27039, MS 21250', std: 'NAS / AN / MS' },
+  { attr: 'Quality management system', value: 'AS9100D (aerospace), ISO 9001 (industrial), IATF 16949 (automotive on request)', std: 'AS9100D, ISO 9001' },
+  { attr: 'Thread tolerance class', value: '6g / 6H (industrial standard) or 3A / 3B (aerospace high precision)', std: 'ISO 965-1, ASME B1.1' },
+  { attr: 'Item matrix', value: 'Socket head cap screws, hex head bolts, hex nuts, flange nuts, washers, threaded rod, custom per drawing', std: 'Customer specification' },
+  { attr: 'Size range (metric)', value: 'M2 to M36 (standard); M42 to M64 on request', std: 'DIN 912, ISO 4014' },
+  { attr: 'Tensile strength (Gr.5)', value: 'Ultimate >= 895 MPa, 0.2 percent YS >= 828 MPa (per ASTM F468)', std: 'ASTM F468, ASTM E8' },
+  { attr: 'Head-forming process', value: 'Cold heading (M2 to M16) and warm heading (M16 to M36) with grain-flow preservation', std: 'Internal process standard' },
+  { attr: 'Thread-forming process', value: 'Thread rolling (no cutting) for continuous grain flow and >= 30 percent fatigue gain', std: 'Internal process standard' },
+  { attr: 'Surface finish', value: 'As-machined, anti-seize coated, PVD-coated, or multi-color anodized (purple / blue / gold / green / rainbow)', std: 'MIL-DTL-16232, AMS 2471' },
+  { attr: 'MOQ', value: 'Standard stocked items: 100 pieces; custom machined: 50 pieces; large-batch heading: scheduled mill campaign', std: 'Customer specification' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; AS9100D batch record with PMI, hardness, and tensile test report', std: 'EN 10204, AS9100D' },
+];
+
+const pipeline = [
+  { n: '01', title: 'Raw material PMI and traceability', body: 'Every heat-lot of Grade 2 (CP) or Grade 5 (Ti-6Al-4V) wire rod / bar is received with the upstream-mill 3.1 MTR and verified by XRF positive-material-identification (PMI) before release to the heading line. Heat number is logged for full downstream traceability.' },
+  { n: '02', title: 'Cold and warm heading of the head', body: 'Bolts and screws are headed on multi-station cold headers (M2 to M16) or warm headers (M16 to M36). Heading energy, lubrication, and die geometry are tuned per grade to preserve the radial grain-flow from the wire surface through the head. Mismatch causes head-base cracking, which is caught by 100 percent eddy-current test on the first-off sample.' },
+  { n: '03', title: 'Thread rolling (no cutting)', body: 'Threads are produced by cold thread-rolling between hardened flat or cylindrical dies. Rolling displaces the metal rather than cutting it, so the grain flow follows the thread profile and is unbroken at the root radius. The result is a 30-50 percent fatigue-strength gain over a cut thread of the same nominal size.' },
+  { n: '04', title: 'Heat treatment and surface finishing', body: 'Gr.5 parts are vacuum solution-treated and aged to the required temper. Surface finish is then applied: as-machined for industrial service, anti-seize coated (PTFE, nickel, or Cu-free formulation) for galling-prone service, or multi-color anodized for motorsport / bicycle / consumer color coding.' },
+  { n: '05', title: '100 percent thread and dimensional inspection', body: 'Every part is thread-checked with calibrated Go / No-Go ring or plug gauges. Critical dimensions (head height, across-flats, across-corners) are checked on an optical comparator. Surface-defect screening is done on a vision system for A-class orders.' },
+  { n: '06', title: 'AS9100D release, packaging, and shipping', body: 'EN 10204 3.1 mill test report (chemistry, mechanical, dimensional) is issued per batch under AS9100D. Aerospace lots are individually bagged and trace-labeled with heat number, batch, and inspection record. Standard lots are bulk-packed in foam-padded cartons. Standard stock ships in 24-48 hours; custom machined 7-10 days; batch heading 3-4 weeks.' },
+];
+
+const boundaries = [
+  { icon: '🌡️', title: 'High-temperature service ceiling', body: 'Grade 5 (Ti-6Al-4V) fasteners lose strength progressively above about 315 C. Above about 350 C, sustained tensile load will accelerate creep and reduce preload retention. For sustained high-temperature service, specify nickel-based or other alloy fasteners; for short excursions up to about 400 C, confirm preload at the RFQ stage.' },
+  { icon: '⚡', title: 'Torque-control warning', body: 'Titanium has a lower elastic modulus than steel. The same tightening torque that preloads a steel bolt to its proof load will over-stretch a titanium bolt, causing yield and loss of preload. Use the manufacturer-published torque table for the specific grade, finish, and thread size; do not use a generic steel torque value.' },
+  { icon: '🔧', title: 'Anti-seize required for titanium-on-titanium', body: 'Titanium fasteners in titanium nuts (or titanium-on-titanium clamped joints) will gall and seize on the first installation cycle if run dry. Apply a qualified anti-seize compound (PTFE-based, nickel-based, or Cu-free per spec) on the thread and under-head bearing surface for every assembly and disassembly.' },
+];
+
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity and MOQ', body: 'Cold-heading capacity from M2 to M16; warm-heading capacity from M16 to M36. Engineering sample supported down to 50 pieces for custom machined; production runs of several hundred thousand pieces per month are standard for high-volume orders. Special alloy pulls and exotic dimensions are scheduled against the upstream-mill wire campaign.' },
+  { icon: '📦', title: 'Stock and lead time', value: '', std: '' },
+  { icon: '🗓️', title: 'Documentation and third-party witness', body: 'EN 10204 3.1 mill test report (chemistry, mechanical, dimensional) is standard under AS9100D. 3.2 with independent witness from Lloyds, Bureau Veritas, DNV, or customer-appointed agencies is supported and arranged at the RFQ stage. PMI verification, hardness, and tensile test report are attached to each batch.' },
+];
+
+const comparisonRows = [
+  { dim: 'Density and specific strength', ours: 'Lightest: about 4.51 g/cm3, ratio of strength to density is highest', alt1: 'Heavy: about 7.85 g/cm3, very high absolute strength', alt2: 'Heavy: about 7.98 g/cm3, moderate strength' },
+  { dim: 'Ultimate tensile strength', ours: 'Gr.5 >= 895 MPa; high strength with 40-50 percent weight saving versus steel', alt1: '>= 1220 MPa (12.9 grade); highest absolute strength but heavy', alt2: '>= 620 MPa (316L); moderate strength, heavy' },
+  { dim: 'Chemical and corrosion resistance', ours: 'Excellent: immune to seawater, chloride, and most chemical attack; no protective coating required', alt1: 'Poor: no corrosion resistance without plating or coating', alt2: 'Good: pitting risk in chloride media, especially under deposits' },
+  { dim: 'Fatigue and damping behaviour', ours: 'Low modulus gives high elastic compliance and excellent vibration damping; ideal for motorsport and dynamic aerospace', alt1: 'High modulus gives high stiffness but more brittle impact behaviour', alt2: 'Moderate modulus and fatigue performance; general purpose' },
+];
+
+const faqItems = [
+  { question: 'Why do aerospace and motorsport titanium bolts require thread rolling rather than thread cutting?', answer: 'Cutting a thread interrupts the metal grain flow at the thread root and creates a sharp stress-concentration feature. Rolling a thread by plastic deformation preserves continuous grain flow along the thread profile, smooths the root radius, and typically improves fatigue strength by 30-50 percent versus a cut thread of the same nominal size.' },
+  { question: 'Why is Grade 2 (CP) the default for semiconductor wet-bench fasteners rather than Grade 5?', answer: 'Wet-bench equipment is exposed to strong acids and alkalis (HCl, H2O2, SC1, SC2) at elevated temperature. Grade 5 contains 6 percent aluminum and 4 percent vanadium; the aluminum in particular can interfere with the passive-film stability in reducing-acid chemistries. Grade 2 (CP) has a cleaner, more stable TiO2 passive film and is the workhorse specification for wet-bench fasteners, tanks, and piping.' },
+  { question: 'How is color consistency guaranteed across multi-color anodized batches?', answer: 'Color consistency depends on the thickness of the TiO2 layer, which is controlled by electrolyte temperature, chemical concentration, voltage, and dwell time. We use a temperature-controlled electrolytic bath with closed-loop voltage regulation and a membrane-thickness gauge for in-process verification. This holds the oxide thickness to plus or minus 0.1 micrometer and produces consistent purple / blue / gold / green / rainbow colors across batches.' },
+  { question: 'Is anti-seize compound required for every titanium fastener installation?', answer: 'Anti-seize is required for any titanium-on-titanium threaded joint (titanium bolt in titanium nut) and for any disassembly-and-reassembly service. For single-use aerospace installations (e.g. NAS bolt in a steel nut) anti-seize is generally not required. The fastener manufacturer should be consulted for the specific application and qualified anti-seize (PTFE-, nickel-, or Cu-free formulation) selected per spec.' },
+  { question: 'What is the lead time for custom titanium fasteners?', answer: 'Standard stocked items (common DIN / ISO sizes in Gr.2 and Gr.5) ship in 24-48 hours. Custom machined parts (non-standard dimensions, custom head, special thread, or non-standard alloy) take 7-10 days. Large-batch heading (cold or warm) for a new part number takes 3-4 weeks. Final lead time is confirmed at the RFQ stage.' },
+  { question: 'How do I select between DIN, ISO, and NAS / AN / MS standards for the same application?', answer: 'DIN (DIN 912, 933, 934) and ISO (ISO 4014, 4017, 4032) are interchangeable for most global industrial and automotive applications; ISO is the preferred global standard. NAS, AN, and MS are U.S. aerospace / defense specifications and are mandatory for many legacy and current aerospace platforms. The choice is driven by the engineering drawing and the end-customer spec, not by the material. BOZE supplies all three families from one production line.' },
+];
+
+const relatedLinks = [
+  { title: 'All Titanium Standard Parts', desc: 'Flanges, pipe fittings, fasteners, and CNC-machined standard components from one supplier.', href: '/standard-parts/' },
+  { title: 'Titanium Flanges', desc: 'Weld-neck, slip-on, blind, threaded, and lap-joint flanges to ASME B16.5 / ASTM B381.', href: '/standard-parts/flanges/' },
+  { title: 'Titanium Pipe Fittings', desc: 'Butt-weld elbows, tees, reducers, caps, and stub ends to ASME B16.9 / ASTM B363.', href: '/standard-parts/pipe-fittings/' },
+  { title: 'CNC Machined Standard Components', desc: 'Custom machined titanium parts to print, including brackets, manifolds, and specialty assemblies.', href: '/standard-parts/machined-components/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+];
+
+const itemListItems = [
+  { name: 'Titanium Socket Head Cap Screw (DIN 912 / ISO 4762)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#shcs' },
+  { name: 'Titanium Hex Head Bolt and Set Screw (DIN 933 / ISO 4017)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#hex-bolt' },
+  { name: 'Titanium Hex Nut and Flange Nut (DIN 934 / DIN 6923)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#nut' },
+  { name: 'Titanium Washer and Lock Washer (DIN 125 / DIN 9021)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#washer' },
+  { name: 'Titanium Aerospace Fastener (NAS / AN / MS)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#aerospace' },
+];
+---
+
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Fasteners Mill-Standard Parts"
+  serviceDescription="Industrial titanium fasteners (socket head cap screws DIN 912, hex head bolts DIN 933, hex nuts DIN 934, flange nuts DIN 6923, washers DIN 125/DIN 9021, threaded rod, custom per drawing) in CP Gr.2 / Gr.5 (Ti-6Al-4V). Industrial standards DIN 912 / DIN 933 / DIN 934 / DIN 6923 / DIN 125 / ISO 4014 / ISO 4017 / ISO 4032 / ASME B18.2.1 / ASME B18.2.2 plus aerospace NAS / AN / MS. AS9100D QMS. Manufactured by thread-rolled (no cutting) cold heading and warm heading with full heat-to-fastener material traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Fasteners"
+  collectionDescription="Titanium fasteners (bolts, nuts, washers, threaded rod, custom) for motorsport, premium bicycle, aerospace structural, semiconductor wet-bench, marine, and chemical-processing applications."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Fasteners"
+  productDeliveryLeadTime="24-48 hours (stock) / 7-10 days (custom machined) / 3-4 weeks (batch heading)"
+>
+  <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">BOZE Metal is a sourcing and processing partner for titanium fasteners, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment on fastener orders for motorsport, aerospace, and semiconductor service.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sponge, VAR, and EBM melting and bar production is not in our vertically integrated scope. We source wire rod and bar from upstream mills; our scope is cold and warm heading, thread rolling, heat treatment, surface coating, and quality verification.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚠️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace-grade</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment classification. Confirm criticality class, specification (DIN / ISO / ASME B18 / NAS / AN / MS), and required documentation per RFQ.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket medical claim</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply fasteners to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Engineering review and quotation timelines are confirmed at the RFQ stage based on the order complexity, alloy, size, finish, and downstream processing required. Standard stocked items typically receive a same-day or next-day response.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔍</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Anodizing color scope</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Standard anodizing palette is purple, blue, gold, green, and rainbow. Custom Pantone-matching is order-specified and subject to a per-batch setup fee; color reference is held in the AS9100D batch record. Confirm the color and tolerance at the RFQ stage.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fastener Grade x Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Two procurement-grade entries mapping chemical composition, UNS designation, available fastener form (SHCS, hex bolt, nut, washer, threaded rod, custom), and typical use. Specific size, tolerance, and finish are confirmed per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Composition</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Fastener Form</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span></td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fastener Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Twelve procurement-critical attribute, value, and standard references for titanium fasteners. Use this as a cross-check table when drafting an RFQ; the applicable spec is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-socket-head-cap-screws.svg"
+    imageAlt="Titanium Grade 5 socket head cap screws DIN 912 in M6 M8 M10 sizes with anodized finish"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Motorsport and Bicycle, DIN 912 / ISO 4762"
+    title="Socket Head Cap Screws for High-Strength Lightweight Service"
+    body="Grade 5 (Ti-6Al-4V) socket head cap screws (SHCS) per DIN 912 / ISO 4762 are the workhorse specification for motorsport suspension, brake calipers, premium-bicycle frame joints, and aerospace structural assemblies. Thread rolling (no cutting) preserves continuous grain flow and delivers 30-50 percent fatigue-strength gain over a cut thread. Anti-seize coated and multi-color anodized variants are available."
+    bullets={['Cold-headed M2 to M16; warm-headed M16 to M36', 'Thread-rolled (no cutting) per DIN 13-1 / ISO 965-1', 'Multi-color anodizing (purple / blue / gold / green / rainbow)']}
+    ctaLabel="View SHCS specs"
+    ctaHref="/standard-parts/fasteners/#shcs"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-hex-nut-flange-nut.svg"
+    imageAlt="Titanium Grade 5 hex nut DIN 934 and flange nut DIN 6923 with anti-seize coating"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Aerospace and Semiconductor, NAS / AN / MS"
+    title="Hex Nuts, Flange Nuts, and Aerospace Fasteners"
+    body="Grade 2 (CP) hex nuts per DIN 934 / ISO 4032 are the workhorse specification for semiconductor wet-bench, marine, and chemical-processing hardware where corrosion resistance is the priority. Grade 5 (Ti-6Al-4V) flange nuts per DIN 6923 and aerospace NAS / AN / MS hardware are the workhorse for high-strength, fatigue-critical service. Anti-seize coating and AS9100D batch traceability are standard."
+    bullets={['Hex nuts DIN 934 / ISO 4032, flange nuts DIN 6923', 'Aerospace NAS 1351, NAS 620, MS 27039', 'PTFE or Ni-based anti-seize coating standard']}
+    ctaLabel="View nuts and aerospace fasteners specs"
+    ctaHref="/standard-parts/fasteners/#nut"
+  />
+
+
+  <section id="applications-cards" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fasteners Across Industries</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four additional service environments where titanium fasteners are the default specification, with the grade and standard that procurement teams typically call out.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏎️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Motorsport</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Suspension links, brake calipers, wheel hubs. Gr.5 SHCS and hex bolts, 40-50 percent weight saving versus steel. Anodized colour-coding.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🚴</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Premium Bicycle</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Frame joints, disc-rotor bolts, stem and seat-post clamps. Gr.5 for high-stress; Gr.2 for non-structural. Anodized finish.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">✈️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Aerospace Structural</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Airframe secondary structure, engine accessories, satellite brackets. NAS / AN / MS specifications; AS9100D release; full PMI traceability.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔬</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Semiconductor Wet-Bench</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Tank and rack fasteners in HCl, H2O2, SC1, SC2 chemistries. Gr.2 (CP) standard; PVD or PTFE coating optional. Resist trace-metal contamination.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fastener Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">From raw-material PMI verification through cold and warm heading, thread rolling, heat treatment, surface coating, 100 percent Go/No-Go inspection, and AS9100D release - six controlled stages with documentation checkpoints at each handoff.</p>
+      </header>
+      <ol class="mt-12 space-y-8">{pipeline.map((p) => (<li class="flex flex-col md:flex-row gap-6 items-start"><div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">{p.n}</div><div class="flex-1"><h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3><p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p></div></li>))}</ol>
+    </div>
+  </section>
+
+
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries and Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three service-environment boundaries that drive alloy selection, finish, and installation practice. Confirm these constraints at the RFQ stage.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{boundaries.map((b) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{b.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <TrustBadges />
+  <QualityControl />
+
+
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement and Lead Time</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Supply Chain and Lead-Time Windows</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Stock availability, MOQ flexibility, and lead-time windows for titanium fasteners. Final lead time is confirmed at the RFQ stage against the current upstream-mill wire campaign.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{supplyChain.map((s) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{s.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dimensional Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Fasteners vs. Steel and Stainless Steel</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four procurement-relevant dimensions comparing titanium fasteners (Gr.5 reference) against 12.9-grade alloy steel and 316L stainless steel in motorsport, aerospace, and chemical-processing service.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Titanium Fastener (Gr.5)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Alloy Steel Fastener (12.9 Grade)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">316L Stainless Steel Fastener</th>
+          </tr></thead>
+          <tbody>{comparisonRows.map((c, i) => (<tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+            <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+            <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+          </tr>))}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <Applications />
+
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering and Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six common buyer questions on thread rolling vs cutting, Gr.2 vs Gr.5 in semiconductor service, anodizing color consistency, anti-seize requirement, custom lead time, and DIN vs NAS standard selection.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">{faqItems.map((f, i) => (<details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><summary class="cursor-pointer flex items-start gap-3 list-none"><span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span><span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span><svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div></details>))}</div>
+    </div>
+  </section>
+
+
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent standard-parts hub, sister flanges / pipe-fittings sub-pages, downstream machined-components sub-page, and compliance evidence.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{relatedLinks.map((r) => (<a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p><span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span></a>))}</div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/standard-parts/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all titanium standard parts</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

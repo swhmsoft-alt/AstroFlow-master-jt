@@ -1,7 +1,49 @@
 # Active Context
 
 > **Last Updated:** 2026-10-12
-> **Current Focus:** **BSI Phase H-C — `/standard-parts/pipe-fittings/` sub-page shipped.** Second Titanium Standard Parts sub-page (after H-B flanges). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green, all 6 gates pass.
+> **Current Focus:** **BSI Phase H-D — `/standard-parts/fasteners/` sub-page shipped.** Third Titanium Standard Parts sub-page (after H-B flanges, H-C pipe-fittings). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green, all 6 gates pass.
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase H-D — Standard Parts Fasteners sub-page
+
+**Files modified (3) and created (1):**
+
+1. **`src/pages/standard-parts/fasteners.astro`** (NEW, 326 lines, 42 231 chars)
+   - 13 sections, 6 data arrays (gradeMatrix 2, specAttributes 12, pipeline 6, boundaries 3, supplyChain 3, comparisonRows 4) + 6 FAQ + 5 related + 5 ItemList.
+   - Honest-positioning (5 cards): no primary melting, no blanket aerospace, no blanket medical, no 24h quote, anodizing color scope.
+   - Uses `productDeliveryLeadTime="24-48 hours (stock) / 7-10 days (custom machined) / 3-4 weeks (batch heading)"` (G-2.2 mechanism auto-emits Product + deliveryLeadTime).
+   - Sub-forms: socket head cap screws (SHCS), hex head bolts, hex nuts, flange nuts, washers, threaded rod, custom.
+   - Standards: DIN 912, DIN 933, DIN 934, DIN 6923, DIN 125, DIN 9021, ISO 4014, ISO 4017, ISO 4032, ASME B18.2.1, ASME B18.2.2, NAS 1351, NAS 620, AN 3-6, MS 27039, MS 21250.
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/standard-parts/fasteners']` (h1, subtitle, 4 keyMetrics including M2-M36 / 6g-6H-3A-3B / SHCS-Hex-Nut-Washer / 24-48 hours, 6 entityChips including DIN 912 / ISO 4014-4017 / ASME B18.2.1 / NAS-AN-MS).
+
+3. **`astro.config.mjs` keywordMap** — 1 retarget + 4 new entries:
+   - `titanium fasteners` href: `/products/capabilities/cnc-turning-of-bolt-heads-and-threads/` → `/standard-parts/fasteners/`
+   - 4 new: `titanium socket head cap screw`, `DIN 912 titanium bolt`, `titanium hex bolt`, `aerospace titanium fastener` — all → `/standard-parts/fasteners/`
+
+4. **`data/keywords/main-db.json`** — `titanium fasteners` retargeted from old capability path to `/standard-parts/fasteners/`, updatedAt → 2026-10-12.
+
+**No changes to schema.ts or BaseLayout.astro** — `standard-part-detail` case was already implemented in Phase H-A, and the G-2.2 `productDeliveryLeadTime` prop auto-emits `Product` + `deliveryLeadTime` for this case. Hub index.astro already had the fasteners card linking to `/standard-parts/fasteners/` (line 119).
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `npx astro build`: complete (09:49:16).
+- G3 Schema: `Product` entity with `deliveryLeadTime: "24-48 hours (stock) / 7-10 days (custom machined) / 3-4 weeks (batch heading)"` + 5 ItemList + 6 FAQ + CollectionPage + Service all present in `dist/standard-parts/fasteners/index.html`.
+- G4 `check-keyword-map.mjs`: **436 entries** (4 new), 405 mapped (0 new mapped; 1 retargeted), **0 broken**, 2335 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed for fasteners (hub link line 119, keywordMap 5 entries, main-db.json retargeted, BREADCRUMB_LABELS pre-reserved line 788, route-availability pre-reserved line 112).
+- G6 `git status --short`: 3 modified + 1 new = 4 files, no temp/log residue.
+
+**Files changed (4):**
+  M astro.config.mjs (1 retarget + 4 new keywordMap entries)
+  M data/keywords/main-db.json (1 retargeted mapped entry)
+  M src/config/hero.ts (1 new HERO_CONFIG entry)
+  A src/pages/standard-parts/fasteners.astro (NEW, 326 lines)
+
+Ref: BSI Phase H-D (2026-10-12). Titanium Standard Parts sub-page status: 3/4 live (flanges / pipe-fittings / fasteners; machined-components is still deferred to H-E).
+
 
 ---
 

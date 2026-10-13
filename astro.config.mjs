@@ -776,6 +776,22 @@ export default defineConfig({
           "titanium buttweld fittings": {
             "href": "/standard-parts/pipe-fittings/"
           },
+          // BSI Phase H-D · Standard Parts Fasteners sub-page (5-inbound #4)
+          "titanium fasteners": {
+            "href": "/standard-parts/fasteners/"
+          },
+          "titanium socket head cap screw": {
+            "href": "/standard-parts/fasteners/"
+          },
+          "DIN 912 titanium bolt": {
+            "href": "/standard-parts/fasteners/"
+          },
+          "titanium hex bolt": {
+            "href": "/standard-parts/fasteners/"
+          },
+          "aerospace titanium fastener": {
+            "href": "/standard-parts/fasteners/"
+          },
           "Titanium Forging": {
             "href": "/titanium-forming-heavy-manufacturing/titanium-forging/"
           },
