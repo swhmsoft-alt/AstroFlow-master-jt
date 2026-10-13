@@ -1599,4 +1599,146 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       "Material Traceability"
     ]
   },
+  // BSI 2026-10-13 — Grade 5 Ti-6Al-4V material-specific machining sub-page
+  // (5-inbound #1: heroKey for /titanium-cnc-machining-services/grade-5-titanium-cnc-machining/)
+  '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining': {
+    h1: 'Grade 5 Titanium CNC Machining Services — Ti-6Al-4V (UNS R56400)',
+    subtitle:
+      'Precision Ti-6Al-4V (Grade 5) components for aerospace, medical, and advanced industrial applications. Controlled cutting temperatures, thin-wall deformation management, and documented material traceability. AS9100D / ISO 13485 controlled process, ±0.005 mm tolerance target, MTR supported.',
+    badge: 'Grade 5 Ti-6Al-4V | AS9100D / ISO 13485',
+    keyMetrics: [
+      { value: '±0.005mm', label: 'Tolerance' },
+      { value: 'Ra 0.8μm', label: 'Finish' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-6Al-4V', 'UNS R56400', 'AS9100D', 'ISO 13485', 'MTR', '5-Axis'],
+  },
+  // BSI 2026-10-13 — Grade 23 Ti-6Al-4V ELI material-specific machining sub-page
+  // (5-inbound #1: heroKey for /titanium-cnc-machining-services/grade-23-titanium-cnc-machining/)
+  '/titanium-cnc-machining-services/grade-23-titanium-cnc-machining': {
+    h1: 'Grade 23 Titanium CNC Machining Services — Ti-6Al-4V ELI (UNS R56407)',
+    subtitle:
+      'Precision Ti-6Al-4V ELI (Grade 23) components for orthopedic, spinal, dental, and surgical-instrument applications. ASTM F136 / ISO 5832-3 controlled process with ELI interstitial verification, ASTM F86 surface preparation, and sterilization-compatible finishing. ±0.005 mm tolerance target on validated micro-features.',
+    badge: 'Grade 23 Ti-6Al-4V ELI | ASTM F136 / ISO 13485',
+    keyMetrics: [
+      { value: '±0.005mm', label: 'Tolerance' },
+      { value: 'ASTM F136', label: 'Standard' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-6Al-4V ELI', 'UNS R56407', 'ASTM F136', 'ISO 5832-3', 'ISO 13485', 'ASTM F86'],
+  },
+  // BSI 2026-10-13 — Grade 2 CP-Ti material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining': {
+    h1: 'Grade 2 Titanium CNC Machining Services — CP-Ti (UNS R50400)',
+    subtitle:
+      'Precision Grade 2 commercially pure titanium (CP-Ti) components for chemical processing, marine, biomedical, and desalination applications. ASTM B348 / B265 / B338 controlled process with ASTM B600 surface preparation, MTR-supported material traceability, and iron-contamination-controlled workflow.',
+    badge: 'Grade 2 CP-Ti | ASTM B348 / ISO 9001',
+    keyMetrics: [
+      { value: '±0.025mm', label: 'Tolerance' },
+      { value: 'CP-Ti', label: '99.2% Ti' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['CP-Ti', 'UNS R50400', 'ASTM B348', 'ASTM B265', 'ASTM B338', 'ASTM F67'],
+  },
+  // BSI 2026-10-13 — Grade 9 Ti-3Al-2.5V material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-9-titanium-cnc-machining': {
+    h1: 'Grade 9 Titanium CNC Machining Services — Ti-3Al-2.5V (UNS R56320)',
+    subtitle:
+      'Precision Ti-3Al-2.5V (Grade 9) components for aerospace hydraulic tubing, high-pressure fluid systems, marine, and motorsport applications. AMS 4943 / 4944 / 4945 and ASTM B338 / B861 controlled process with MTR-supported traceability and fatigue-optimized surface integrity.',
+    badge: 'Grade 9 Ti-3Al-2.5V | AMS 4943 / AS9100D',
+    keyMetrics: [
+      { value: '±0.01mm', label: 'Tube OD' },
+      { value: 'AMS 4943', label: 'Standard' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-3Al-2.5V', 'UNS R56320', 'AMS 4943', 'ASTM B338', 'AS9100D', 'Aerospace'],
+  },
+  // BSI 2026-10-13 — Grade 4 CP-Ti material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-4-titanium-cnc-machining': {
+    h1: 'Grade 4 Titanium CNC Machining Services — CP-Ti (UNS R50700)',
+    subtitle:
+      'Precision Grade 4 commercially pure titanium (CP-Ti, UNS R50700) components for chemical processing, marine, medical, and aerospace structural applications where higher strength than Grade 2 is needed. ASTM B348 / B265 / B338 controlled process with MTR-supported traceability and ASTM B600 surface preparation.',
+    badge: 'Grade 4 CP-Ti | ASTM B348 / ISO 9001',
+    keyMetrics: [
+      { value: '±0.025mm', label: 'Tolerance' },
+      { value: 'CP-Ti', label: 'High-O' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['CP-Ti', 'UNS R50700', 'ASTM B348', 'ASTM B265', 'ASTM B338', 'ASTM F67'],
+  },
+  // BSI 2026-10-13 — Grade 7 Ti-0.2Pd material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-7-titanium-cnc-machining': {
+    h1: 'Grade 7 Titanium CNC Machining Services — Ti-0.2Pd (UNS R52400)',
+    subtitle:
+      'Precision Grade 7 palladium-stabilized titanium (Ti-0.2Pd, UNS R52400) components for chemical processing in reducing-acid environments (HCl, H2SO4, H3PO4, hot brine). ASTM B348 / B265 / B338 controlled process with MTR-supported Pd-content verification and ASTM B600 surface preparation.',
+    badge: 'Grade 7 Ti-0.2Pd | ASTM B348 / Pd-stabilized',
+    keyMetrics: [
+      { value: '±0.025mm', label: 'Tolerance' },
+      { value: 'Ti-0.2Pd', label: 'GR 7' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-0.2Pd', 'UNS R52400', 'ASTM B348', 'ASTM B338', 'ASTM F67', 'Reducing-Acid'],
+  },
+  // BSI 2026-10-13 — Grade 12 Ti-0.3Mo-0.8Ni material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-12-titanium-cnc-machining': {
+    h1: 'Grade 12 Titanium CNC Machining Services — Ti-0.3Mo-0.8Ni (UNS R53400)',
+    subtitle:
+      'Precision Grade 12 "improved" titanium (Ti-0.3Mo-0.8Ni, UNS R53400) components for hot-brine, chloride, and chemical processing applications. ASTM B348 / B265 / B338 / B861 controlled process with MTR-supported Mo / Ni verification and ASTM B600 surface preparation.',
+    badge: 'Grade 12 Ti-0.3Mo-0.8Ni | ASTM B348 / Improved CP-Ti',
+    keyMetrics: [
+      { value: '±0.025mm', label: 'Tolerance' },
+      { value: 'Ti-Mo-Ni', label: 'GR 12' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-0.3Mo-0.8Ni', 'UNS R53400', 'ASTM B348', 'ASTM B338', 'ASTM B861', 'Hot-Brine'],
+  },
+  // BSI 2026-10-13 — Grade 21 Ti-15Mo-3Nb-3Al material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-21-titanium-cnc-machining': {
+    h1: 'Grade 21 Titanium CNC Machining Services — Ti-15Mo-3Nb-3Al-0.2Si (UNS R58210)',
+    subtitle:
+      'Precision Grade 21 metastable beta titanium (Ti-15Mo-3Nb-3Al-0.2Si, UNS R58210) components for high-strength aerospace structural and fastener applications. AMS 4915 / 4917 / 4928 controlled process with MTR-supported traceability and coordinated solution-treat + age sequence.',
+    badge: 'Grade 21 Ti-15Mo-3Nb-3Al | AMS 4915 / Beta Alloy',
+    keyMetrics: [
+      { value: '1100+ MPa', label: 'UTS' },
+      { value: 'Beta', label: 'Heat-Treat' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-15Mo-3Nb-3Al', 'UNS R58210', 'AMS 4915', 'AMS 4928', 'Aerospace', 'Beta'],
+  },
+  // BSI 2026-10-13 — Grade 6 alpha-titanium material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-6-titanium-cnc-machining': {
+    h1: 'Grade 6 Titanium CNC Machining Services — Ti-5Al-2.5Sn (UNS R54520)',
+    subtitle:
+      'Precision Grade 6 alpha titanium (Ti-5Al-2.5Sn, UNS R54520) components for high-temperature aerospace structures, jet-engine compressor components, and pressure vessels. AMS 4910 / 4925 / 4966 controlled process with MTR-supported traceability and ASTM B600 surface preparation for alpha-case removal.',
+    badge: 'Grade 6 Ti-5Al-2.5Sn | AMS 4910 / Alpha Alloy',
+    keyMetrics: [
+      { value: '~895 MPa', label: 'UTS' },
+      { value: '480 °C', label: 'Service' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-5Al-2.5Sn', 'UNS R54520', 'AMS 4910', 'AMS 4925', 'High-Temp', 'Alpha'],
+  },
+  // BSI 2026-10-13 — Grade 8 Pd-stabilized near-α material-specific machining sub-page
+  '/titanium-cnc-machining-services/grade-8-titanium-cnc-machining': {
+    h1: 'Grade 8 Titanium CNC Machining Services — Ti-3Al-2.5V + 0.05Pd (UNS R56323)',
+    subtitle:
+      'Precision Grade 8 palladium-stabilized near-alpha titanium (Ti-3Al-2.5V + 0.05Pd, UNS R56323) components for aerospace hydraulic tubing requiring both cold-formability and reducing-acid corrosion resistance. AMS 4943 / 4944 / 4945 controlled process with MTR-supported Pd verification.',
+    badge: 'Grade 8 Ti-3Al-2.5V + 0.05Pd | AMS 4943 / Hydraulic',
+    keyMetrics: [
+      { value: '~620 MPa', label: 'UTS' },
+      { value: 'Pd 0.05%', label: 'Stabilized' },
+      { value: '1 piece', label: 'MOQ' },
+      { value: '5–7 d', label: 'Prototype' },
+    ],
+    entityChips: ['Ti-3Al-2.5V + 0.05Pd', 'UNS R56323', 'AMS 4943', 'AMS 4944', 'Reducing-Acid', 'Hydraulic'],
+  },
 };

@@ -1,0 +1,595 @@
+---
+/**
+ * Grade 5 Titanium CNC Machining Services — Ti-6Al-4V
+ *
+ * D1 (Process) + D1 (Material) hub-mapping decision per Buyer Search
+ * Intelligence SOP §1. Sub-page under the /titanium-cnc-machining-services/
+ * Process hub. The four existing siblings (3-5-axis, cnc-milling-turning,
+ * custom-industrial-components, wire-edm) cover generic multi-axis/process
+ * scope; this page is the **material-specific** Grade 5 Ti-6Al-4V
+ * machining deep-dive.
+ *
+ * Schema: Service entity emitted via BaseLayout pageType="service-detail".
+ * FAQPage schema injected as a small inline JSON-LD (matches existing
+ * FaqSection.astro convention — TODO: fold into BaseLayout in a future
+ * refactor so SOP F4 is fully satisfied at the framework level).
+ *
+ * 5 inbound entries (SOP §1 Step 4):
+ *   1. NAVIGATION in src/config/site.ts (added under "CNC Machining" column)
+ *   2. Footer.astro (inherits from NAVIGATION)
+ *   3. Sibling cross-link in 3-5-axis-cnc-machining.astro
+ *   4. data/keywords/main-db.json (5 mapped entries)
+ *   5. astro.config.mjs keywordMap (5 entries)
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = 'Grade 5 Titanium CNC Machining Services | Ti-6Al-4V (UNS R56400)';
+const pageDescription =
+  'Precision Grade 5 Titanium (Ti-6Al-4V, UNS R56400) CNC machining services for aerospace, medical, and advanced industrial components. AS9100D / ISO 13485 controlled process, ±0.005 mm tolerance target, MTR-supported.';
+const canonicalUrl = 'https://cnc.bozemetal.com/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/';
+
+const heroKey = '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining';
+
+// FAQ items (5 buyer-decision-support Q&A). Keys must be {question, answer}
+// per Schema.org / SOP F3 — never {q, a}.
+const faqItems = [
+  {
+    question: 'What is Grade 5 titanium and how is it designated in standards?',
+    answer:
+      'Grade 5 titanium is the common designation for the wrought alpha-beta alloy Ti-6Al-4V (UNS R56400). It is referenced in ASTM B348 (bars and billets), AMS 4928 (aerospace), and ISO 5832-3 (surgical implants). For medical-implant applications the ELI variant is Grade 23 (Ti-6Al-4V ELI) per ASTM F136.',
+  },
+  {
+    question: 'What tolerance can be achieved on Grade 5 Ti-6Al-4V machined components?',
+    answer:
+      'For validated, supported geometries the machining process can target linear dimensional tolerances up to ±0.005 mm and GD&T positional tolerances up to 0.01 mm. Final tolerance commitment is confirmed after CAD, drawing, material condition, feature geometry, and inspection method review — not all features can be held at the tightest band simultaneously.',
+  },
+  {
+    question: 'What quality documentation is supplied with each order?',
+    answer:
+      'Material Test Reports (MTR) per EN 10204 3.1 (or per the agreed specification), heat / lot identification, dimensional inspection records, and the agreed certificates of conformance are reviewed against the order documentation. Customer-supplied material is accepted by prior agreement and routed through incoming inspection.',
+  },
+  {
+    question: 'What is the minimum order quantity for a Grade 5 titanium prototype?',
+    answer:
+      'A 1-piece minimum order quantity is supported to allow engineering teams to evaluate fit, critical dimensions, GD&T, thin-wall behavior, and surface finish before committing to a production run. Indicative prototype lead time is 5–7 working days, subject to drawing completeness, material availability, and inspection scope.',
+  },
+  {
+    question: 'Can customer-supplied titanium stock be used?',
+    answer:
+      'Yes — by prior agreement, customer-supplied material is accepted subject to specification review, incoming inspection, material identification, and traceability requirements. This arrangement can help customers retain purchasing control over approved aerospace- or medical-grade stock and reduce working-capital exposure on raw material.',
+  },
+];
+
+// FAQPage JSON-LD payload (matches visible content; matches existing
+// FaqSection.astro convention). TODO: refactor into BaseLayout so SOP F4
+// is satisfied at the framework level instead of per-page.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((it) => ({
+    '@type': 'Question',
+    name: it.question,
+    acceptedAnswer: { '@type': 'Answer', text: it.answer },
+  })),
+};
+
+// Material / quality standards (Section 2 of the buyer brief)
+const standards = [
+  { code: 'ASTM B348', scope: 'Titanium and titanium alloy bars and billets', application: 'Verify grade, condition, dimensions, and material certification against the purchase order.' },
+  { code: 'ASTM F136', scope: 'Wrought Ti-6Al-4V ELI alloy for surgical implant applications', application: 'Confirm ELI material designation and applicable requirements for implant-related components.' },
+  { code: 'ISO 5832-3', scope: 'Wrought Ti-6Al-4V alloy for surgical implants', application: 'Verify the specified material grade and applicable product requirements.' },
+  { code: 'AMS 4928', scope: 'Aerospace titanium alloy material specification', application: 'Confirm specification applicability to the ordered product form, condition, and procurement requirements.' },
+  { code: 'AS9100D', scope: 'Aerospace quality management system', application: 'Applicable when the manufacturing facility holds the relevant certification.' },
+  { code: 'ISO 13485', scope: 'Medical device quality management system', application: 'Applicable when the manufacturing facility holds the relevant certification.' },
+  { code: 'ISO 9001', scope: 'Quality management system', application: 'Applicable when the manufacturing facility holds the relevant certification.' },
+];
+
+// Three Critical Controls (Section 3 of the buyer brief)
+const criticalControls = [
+  {
+    title: 'Thermal Management and Cutting-Edge Stability',
+    challenge: 'Grade 5 titanium has low thermal conductivity. Heat concentrates near the tool–workpiece interface rather than dissipating rapidly through the workpiece and chips. Combined with titanium\'s chemical reactivity at elevated temperatures, this can accelerate tool wear, promote adhesion, and increase the risk of edge chipping or unstable surface conditions.',
+    approach: 'We select cutting parameters, tool geometry, carbide grades, and coatings according to the component geometry, engagement conditions, and material condition. Where compatible with the machine setup and tool design, high-pressure coolant (HPC) and through-spindle coolant delivery help control the cutting zone and evacuate chips. Toolpath strategies, engagement control, and cutting-edge condition monitoring are used to manage heat generation and reduce avoidable tool failure.',
+    outcome: 'More controlled cutting conditions for Ti-6Al-4V; reduced risk of tool-related dimensional drift and surface damage; improved process repeatability through controlled tool life and machining parameters. Final achievable tolerances depend on part geometry, setup rigidity, material condition, feature accessibility, and the inspection method.',
+  },
+  {
+    title: 'Thin-Wall Stability, Springback, and GD&T Control',
+    challenge: 'Grade 5 titanium has an elastic modulus of approximately 110 GPa. Thin walls and slender features can deflect under cutting forces and recover elastically after the tool passes. Residual stress, fixture pressure, tool engagement, and datum changes can further affect the final geometry. A nominally accurate toolpath is not enough: the finished part must satisfy the specified geometric relationships and inspection datums.',
+    approach: 'We develop machining sequences around the component\'s structural stiffness and critical features. Depending on the drawing and setup, the process may incorporate 3-axis / 4-axis / 5-axis CNC machining selected for feature access and datum control, dedicated or custom workholding to minimize distortion without excessive clamping pressure, balanced roughing and finishing sequences, optimized tool engagement and cutting direction for thin-wall features, in-process measurement and tool / coordinate compensation where supported by the process, and final dimensional inspection against the drawing\'s GD&T requirements.',
+    outcome: 'For suitable, validated geometries, the machining process can target linear dimensional tolerance up to ±0.005 mm and GD&T positional tolerance up to 0.01 mm. These are project-specific precision targets, not universal guarantees. The final tolerance commitment is confirmed after reviewing the CAD model, drawing, material condition, feature geometry, production volume, and measurement requirements.',
+  },
+  {
+    title: 'Stress Relief, Surface Integrity, and Finishing',
+    challenge: 'Material removal can redistribute residual stresses, particularly in thin-wall structures and components machined from stress-bearing stock. Tool condition, cutting parameters, burr formation, and post-machining treatment can also affect surface integrity and dimensional stability. Surface roughness alone does not establish fatigue performance, corrosion resistance, or suitability for a safety-critical application.',
+    approach: 'We define the finishing sequence around the component\'s material specification and functional requirements. Depending on the agreed process, this may include rough machining followed by a controlled finishing pass, vacuum stress-relief heat treatment (where specified and metallurgically appropriate), deburring and edge conditioning per drawing requirements, surface-finish inspection at designated locations, Type II anodizing (where compatible with the specified titanium alloy and approved finishing process), and final dimensional inspection after applicable secondary operations.',
+    outcome: 'Default surface-finish target Ra 0.8 μm, subject to drawing and feature accessibility; dimensional verification after specified finishing operations; documented material identity and agreed inspection records; defined acceptance criteria for critical surfaces, edges, and geometric features. Additional finishing processes, coatings, or treatments are confirmed against the component\'s functional requirements before quotation.',
+  },
+];
+
+// Commercial terms (Section 4 of the buyer brief)
+const leadTimeRows = [
+  { phase: 'Prototype / Engineering Validation', moq: '1 piece', leadTime: '5–7 working days', objective: 'Validate fit, interfaces, critical dimensions, and manufacturability', notes: 'Heat treatment included in the stated prototype target when specified and feasible within the agreed process' },
+  { phase: 'Production', moq: 'Based on the production order', leadTime: '3–4 weeks', objective: 'Establish repeatable output against the approved drawing and inspection plan', notes: 'Scheduled according to the approved process route' },
+];
+
+// Tier 1 outbound anchors (Answer Module ⑥ Related)
+const relatedLinks = [
+  { name: '3/4/5-Axis Titanium Machining', desc: 'Axis configuration selection for Ti-6Al-4V', href: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/' },
+  { name: 'Titanium CNC Milling & Turning', desc: 'Milling, turning, and mill-turn for Grade 5', href: '/titanium-cnc-machining-services/cnc-milling-turning/' },
+  { name: 'Grade 5 Ti-6Al-4V Material Data', desc: 'Composition, mechanical properties, and forms', href: '/materials/grade-5/' },
+  { name: 'AS9100D Compliance Hub', desc: 'Aerospace / medical / defense compliance scope', href: '/capabilities/compliance/' },
+  { name: 'Submit Grade 5 RFQ', desc: 'Upload drawing for DFM engineering review', href: '/rfq/' },
+];
+---
+
+<BaseLayout
+  pageType="service-detail"
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  serviceName="Grade 5 Titanium (Ti-6Al-4V) CNC Machining Services"
+  serviceDescription="Precision CNC machining of Grade 5 titanium (Ti-6Al-4V, UNS R56400) for aerospace structural components, medical device parts, and advanced industrial assemblies. AS9100D / ISO 13485 / ISO 9001 controlled process with MTR-supported material traceability."
+  serviceCategory="CNC Machining — Titanium"
+  faqItems={faqItems}
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Titanium CNC Machining Services</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Grade 5 Ti-6Al-4V</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <SubpageHero
+    h1={HERO_CONFIG[heroKey].h1}
+    subtitle={HERO_CONFIG[heroKey].subtitle}
+    badge={HERO_CONFIG[heroKey].badge}
+    badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+    keyMetrics={HERO_CONFIG[heroKey].keyMetrics}
+    entityChips={HERO_CONFIG[heroKey].entityChips}
+  />
+
+  <!-- ① Direct Answer (Engineering Trust Bar) -->
+  <TrustBadges />
+
+  <!-- ================= ② HONEST POSITIONING (Scope & Limits) ================= -->
+  <section class="relative py-16" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Scope &amp; Limits</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          What This Page Covers — and What It Does Not
+        </h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          We machine Ti-6Al-4V Grade 5 to customer-defined drawings and purchase specifications, with material standards, condition, inspection requirements, and acceptance criteria confirmed during RFQ review. The limits below are not caveats — they are the procurement boundaries you should validate before releasing a drawing.
+        </p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">In Scope</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Subtractive CNC Machining</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">3-axis, 4-axis, 5-axis milling, turning, mill-turn, and wire EDM of wrought Ti-6Al-4V bar, billet, plate, and near-net forging stock.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">In Scope</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Compliant Traceability</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">MTR per EN 10204 3.1, lot / heat identification, dimensional inspection records, and agreed certificates of conformance reviewed against the order documentation.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">In Scope</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Engineered Finishing</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Vacuum stress-relief (where specified), deburring, edge conditioning, surface-finish inspection, and Type II anodizing on compatible alloys.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 15%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Out of Scope</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Finished-Device Compliance</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">For implant-related applications, material conformity alone does not establish finished-device compliance. Final validation, regulatory responsibilities, and acceptance testing remain with the customer.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 15%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Out of Scope</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Universal Tolerance Guarantees</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">±0.005 mm and Ra 0.8 μm are project-specific precision targets. Final tolerance is confirmed after CAD, drawing, material condition, feature geometry, volume, and inspection-method review.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 15%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Out of Scope</p>
+          <h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">NDA-as-ITAR-Proof</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">We do not represent NDA coverage alone as proof of ITAR compliance. Any ITAR-controlled technical data requires a separate compliance and authorization review before transfer or processing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ③ STRUCTURED BODY · SECTION 2: Material & Quality Standards ================= -->
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering Compliance</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Material Compliance Starts with the Correct Specification
+        </h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          For aerospace structural components, medical device components, and precision industrial assemblies, material selection is only the first control point. The manufacturing process must also preserve drawing requirements, material identity, dimensional conformity, and lot-level documentation.
+        </p>
+      </header>
+
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="w-full text-left">
+          <thead>
+            <tr style="background: linear-gradient(135deg, var(--theme-primary) 12%, var(--theme-surface));">
+              <th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Standard / Specification</th>
+              <th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Material or Quality Scope</th>
+              <th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Application in Procurement</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              standards.map((s, i) => (
+                <tr style={`background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);`}>
+                  <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">{s.code}</span></td>
+                  <td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{s.scope}</p></td>
+                  <td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.application}</p></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MTR callout -->
+      <div
+        class="mt-8 rounded-xl p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-4"
+        style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);"
+      >
+        <svg class="w-7 h-7 md:mr-1 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        </svg>
+        <div class="flex-1">
+          <p class="text-base font-bold mb-1" style="color: var(--theme-text);">Material Documentation: MTR supplied with each shipment covered by the agreed traceability requirements.</p>
+          <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Material certificates, heat or lot identification, and purchase specification requirements are reviewed against the order documentation. Customer-supplied material can be processed subject to incoming inspection, material identification, and agreed acceptance criteria.</p>
+        </div>
+        <a href="/rfq/" class="inline-flex items-center justify-center whitespace-nowrap px-6 py-3 rounded-lg font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shrink-0" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%); color: #ffffff;">
+          Submit Drawing &amp; Material Specification
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ③ STRUCTURED BODY · SECTION 3: Three Critical Controls ================= -->
+  <section class="relative py-20" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Technical Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Three Critical Controls for Precision Ti-6Al-4V Machining
+        </h2>
+      </header>
+      <div class="space-y-6">
+        {
+          criticalControls.map((c, i) => (
+            <article class="rounded-2xl border p-6 md:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <div class="flex items-start gap-4 mb-5">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="text-xl md:text-2xl font-bold leading-snug" style="color: var(--theme-text);">{c.title}</h3>
+              </div>
+              <div class="grid gap-5 md:grid-cols-3">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Challenge</p>
+                  <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.challenge}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Our Machining Approach</p>
+                  <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.approach}</p>
+                </div>
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Outcome</p>
+                  <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.outcome}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+          Send Your Thin-Wall or Complex-Geometry Part for DFM Review
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ③ STRUCTURED BODY · SECTION 4: Lead Time & MOQ ================= -->
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Flexible Supply Chain</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          From One-Off Prototype to Repeatable Production
+        </h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          Titanium machining projects often face two competing pressures: engineering teams need rapid design validation, while procurement teams need control over material exposure, scrap risk, and production lead time. Our commercial model supports prototype evaluation, process refinement, and subsequent production planning without requiring a large initial order.
+        </p>
+      </header>
+
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="w-full text-left">
+          <thead>
+            <tr style="background: linear-gradient(135deg, var(--theme-primary) 12%, var(--theme-surface));">
+              <th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Commercial Parameter</th>
+              <th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Prototype / Engineering Validation</th>
+              <th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Production</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-text);">Minimum order quantity</span></td>
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">1 piece</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">Based on the production order</span></td>
+            </tr>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface)); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-text);">Indicative lead time</span></td>
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">5–7 working days</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">3–4 weeks</span></td>
+            </tr>
+            <tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-text);">Typical objective</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">Validate fit, interfaces, critical dimensions, and manufacturability</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">Establish repeatable output against the approved drawing and inspection plan</span></td>
+            </tr>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 2%, var(--theme-surface)); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-text);">Heat treatment</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">Included in the stated prototype target when specified and feasible within the agreed process</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">Scheduled according to the approved process route</span></td>
+            </tr>
+            <tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-text);">Material documentation</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">As agreed in the purchase specification</span></td>
+              <td class="px-5 py-4 align-top"><span class="text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">MTR and traceability documentation per the order requirements</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs italic leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        Lead times are planning targets, not automatic guarantees. They begin after the required technical information, material availability, order approval, and production arrangements are confirmed. Complex geometry, external processing, inspection requirements, and customer-supplied material may affect the schedule.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= ③ STRUCTURED BODY · SECTION 4b: Customer-Supplied Stock ================= -->
+  <section class="relative py-20" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Customer-Supplied Material</p>
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+            Control Material Spend and Buy-to-Fly Exposure
+          </h2>
+          <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+            For high-value titanium components, raw material can represent a significant share of total part cost. Purchasing additional stock for prototypes or low-volume production can also increase working-capital exposure. <strong>Customer-supplied material is accepted by prior agreement</strong>, subject to specification review, incoming inspection, identification, and traceability requirements.
+          </p>
+          <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+            We can review the relationship between incoming stock size, finished-part envelope, machining allowance, and expected chip generation during DFM. Buy-to-Fly ratio depends on the starting material form and mass, finished-part mass, nesting or stock strategy, and process route. It is evaluated as a project-specific material-efficiency measure rather than a guaranteed percentage reduction.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+              Request a Prototype Quote or Production Cost Review
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+          </div>
+        </div>
+        <div class="rounded-2xl border p-6 md:p-7" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <p class="text-xs font-bold uppercase tracking-wider mb-4" style="color: var(--theme-primary);">Customer-Supplied Stock — What It Helps With</p>
+          <ul class="space-y-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Retain purchasing control over approved aerospace- or medical-grade stock.</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Use existing inventory or centrally managed material allocations.</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Reduce the need to finance additional raw material through the machining supplier.</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Improve visibility into material utilization and scrap exposure.</li>
+          </ul>
+          <hr class="my-5" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);" />
+          <p class="text-xs font-bold uppercase tracking-wider mb-3" style="color: var(--theme-primary);">Commercial &amp; Project Protection</p>
+          <ul class="space-y-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Mutual NDA available before sensitive CAD files or technical drawings are exchanged.</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>MTR documentation for material covered by the agreed traceability requirements.</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>RFQ review covering material, tolerances, finish, inspection, and delivery requirements.</li>
+            <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Customer-supplied stock accepted subject to technical and quality approval.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications gallery (reused landing component) -->
+  <Applications />
+
+  <!-- ================= ⑤ FINAL CONVERSION FOOTER (Section 5) ================= -->
+  <section class="relative overflow-hidden" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Submit Your Engineering Package</p>
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+            Have a Ti-6Al-4V Component Ready for Manufacturing?
+          </h2>
+          <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+            Send your drawing to initiate a technical review of manufacturability, dimensional requirements, material specifications, and the proposed machining route. Whether you are validating a one-piece prototype or preparing a repeat production order, the review starts with the actual component — not a generic machining capability list.
+          </p>
+          <div class="mt-6">
+            <p class="text-sm font-bold mb-2" style="color: var(--theme-text);">Accepted file formats: <span style="color: var(--theme-primary);">STEP, STP, DXF</span>, and supporting engineering drawings in agreed formats.</p>
+            <p class="text-sm mb-1" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">For an efficient review, include:</p>
+            <ul class="text-sm space-y-1.5" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>3D CAD model and dimensioned 2D drawing</li>
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Material grade, product form, and applicable specification</li>
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Critical dimensions and <strong>GD&amp;T</strong> callouts</li>
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Required surface finish and post-processing</li>
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Prototype quantity or forecast production volume</li>
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Inspection, certification, and documentation requirements</li>
+              <li class="flex items-start gap-2"><span class="mt-1.5 inline-block w-1.5 h-1.5 rounded-full shrink-0" style="background: var(--theme-primary);"></span>Target delivery date and shipping destination</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border p-8" style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">What Happens Next</p>
+          <ol class="space-y-5">
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">1</span>
+              <div>
+                <h3 class="text-base font-bold mb-1" style="color: var(--theme-text);">Drawing and Specification Review</h3>
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">We review the component geometry, material requirements, critical features, and available manufacturing information.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">2</span>
+              <div>
+                <h3 class="text-base font-bold mb-1" style="color: var(--theme-text);">DFM and Process Feasibility</h3>
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">We identify potential machining constraints, thin-wall risks, datum considerations, finishing requirements, and any information needed to finalize the process route.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">3</span>
+              <div>
+                <h3 class="text-base font-bold mb-1" style="color: var(--theme-text);">RFQ and Delivery Planning</h3>
+                <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">We prepare a quotation based on the confirmed scope, including material responsibility, manufacturing operations, inspection requirements, lead time, and documentation.</p>
+              </div>
+            </li>
+          </ol>
+          <p class="mt-6 text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);"><strong style="color: var(--theme-text);">Target response:</strong> Initial RFQ acknowledgment within <strong style="color: var(--theme-primary);">24 hours on working days</strong>, with a DFM review and quotation timeline confirmed according to drawing completeness and project complexity.</p>
+
+          <hr class="my-6" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);" />
+          <p class="text-sm font-bold mb-2" style="color: var(--theme-text);">Confidentiality Comes First</p>
+          <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);"><strong style="color: var(--theme-primary);">Mutual NDA available before technical file exchange.</strong> We treat customer drawings, CAD models, specifications, and project information as confidential under the agreed contractual terms. Any ITAR-controlled technical data requires a separate compliance and authorization review before transfer or processing. We do not represent NDA coverage alone as proof of ITAR compliance.</p>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg flex-1" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+              Upload CAD/STEP for DFM Review
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+            <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold flex-1" style="border-color: var(--theme-primary); color: var(--theme-primary);">
+              Request a Grade 5 Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ⑥ RELATED (Tier 1 outbound) ================= -->
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Related Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Continue the Engineering Review
+        </h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          relatedLinks.map((r) => (
+            <a href={r.href} class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{r.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.desc}</p>
+              <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{r.href} →</p>
+            </a>
+          ))
+        }
+        <!-- BSI 2026-10-13 · Sibling cross-link to Grade 23 ELI material-specific sub-page -->
+        <a href="/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/" class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-primary);">Grade 23 Ti-6Al-4V ELI Machining</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Medical / implant counterpart of Grade 5 — ELI interstitial limits, ASTM F136, ASTM F86 passivation, sterilization compatibility.</p>
+          <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/ →</p>
+        </a>
+        <!-- BSI 2026-10-13 · Sibling cross-link to Grade 2 CP-Ti sub-page -->
+        <a href="/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/" class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-primary);">Grade 2 CP-Ti Machining</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">CP-Ti counterpart — chemical / marine / biomedical focus, ASTM B348, gummy-chip control, ASTM B600 surface preparation.</p>
+          <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/ →</p>
+        </a>
+        <!-- BSI 2026-10-13 · Sibling cross-link to Grade 9 Ti-3Al-2.5V sub-page -->
+        <a href="/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/" class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-primary);">Grade 9 Ti-3Al-2.5V Machining</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Near-alpha counterpart — aerospace hydraulic tubing, AMS 4943, thin-wall tube / fatigue surface integrity.</p>
+          <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/ →</p>
+        </a>
+        <!-- BSI 2026-10-13 · Sibling cross-link to Grade 6 Ti-5Al-2.5Sn sub-page (Phase Q) -->
+        <a href="/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/" class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-primary);">Grade 6 Ti-5Al-2.5Sn Machining</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Alpha alloy counterpart for high-temperature aerospace — jet-engine compressor, pressure vessels, AMS 4910/4925.</p>
+          <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/ →</p>
+        </a>
+        <!-- BSI 2026-10-13 · Sibling cross-link to Grade 8 Ti-3Al-2.5V + 0.05Pd sub-page (Phase R) -->
+        <a href="/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/" class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-primary);">Grade 8 Ti-3Al-2.5V + 0.05Pd Machining</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Pd-stabilized near-alpha — GR9 formability + GR7 reducing-acid corrosion, hydraulic tubing.</p>
+          <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/ →</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ (visible body, mirrors faqJsonLd) ================= -->
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
+          Grade 5 Ti-6Al-4V CNC Machining — Engineering FAQ
+        </h2>
+      </header>
+      <div class="max-w-4xl mx-auto space-y-4">
+        {
+          faqItems.map((it, idx) => (
+            <details class="group rounded-xl overflow-hidden border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);" open={idx === 0}>
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-bold text-base md:text-lg list-none" style="color: var(--theme-text);">
+                <span class="flex items-start">
+                  <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg mr-4 shrink-0 text-xs font-bold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{idx + 1}</span>
+                  <span class="leading-snug">{it.question}</span>
+                </span>
+                <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <div class="px-6 pb-6 pt-2 text-sm md:text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">
+                {it.answer}
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!--
+    FAQPage JSON-LD (visible content mirrors this structure).
+    TODO: refactor BaseLayout to accept a faqItems prop and emit FAQPage via
+    buildPageGraph() so SOP F4 is satisfied at the framework level.
+  -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>
+
+

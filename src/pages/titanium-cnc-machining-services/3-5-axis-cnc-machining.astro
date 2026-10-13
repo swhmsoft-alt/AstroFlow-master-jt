@@ -155,6 +155,25 @@ const serviceJsonLd = {
   <MultiAxisCta />
   <AudienceHub industry="cnc-machining" />
 
+  <!-- 15. Related: BSI 2026-10-13 sibling cross-link to Grade 5 Ti-6Al-4V material-specific sub-page -->
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="rounded-2xl border p-6 md:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Material-Specific Deep-Dive</p>
+        <h2 class="text-xl md:text-2xl font-bold leading-snug mb-2" style="color: var(--theme-text);">
+          Machining Grade 5 Ti-6Al-4V (UNS R56400)?
+        </h2>
+        <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+          For aerospace structural components, medical device parts, and advanced industrial assemblies requiring the specific properties of Ti-6Al-4V (Grade 5), see our material-specific deep-dive covering thermal management, thin-wall stability, ±0.005 mm tolerance targets, MTR-supported material traceability, and customer-supplied stock.
+        </p>
+        <a href="/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">
+          Open Grade 5 Ti-6Al-4V Machining Page
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Service JSON-LD schema (AI citation) -->
   <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
 </BaseLayout>

@@ -1,0 +1,272 @@
+---
+/**
+ * Grade 9 Titanium CNC Machining Services — Ti-3Al-2.5V (UNS R56320)
+ *
+ * BSI Phase L — fourth material-specific sub-page under the
+ * /titanium-cnc-machining-services/ Process hub.
+ *
+ * Key characteristics:
+ *  - Standard:  AMS 4943 / AMS 4944 / AMS 4945 (seamless and welded tube
+ *               for aerospace hydraulic systems), ASTM B338, ASTM B861
+ *  - UNS:       R56320
+ *  - Property:  Near-alpha alloy; medium strength (between CP-Ti and Ti-6Al-4V);
+ *               excellent cold formability and weldability
+ *  - Form:      Primarily supplied as seamless tube and bar
+ *  - Application focus: Aerospace hydraulic tubing (F-15/F-18/F-22/A-10),
+ *                       high-pressure fluid systems, marine, motorsport
+ *
+ * Schema: Service entity via BaseLayout pageType="service-detail".
+ * FAQPage JSON-LD inline at end (TODO refactor to BaseLayout).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = 'Grade 9 Titanium CNC Machining Services | Ti-3Al-2.5V (UNS R56320)';
+const pageDescription =
+  'Precision Grade 9 Titanium (Ti-3Al-2.5V, UNS R56320) CNC machining services for aerospace hydraulic tubing, high-pressure fluid systems, marine, and motorsport applications. AMS 4943 / ASTM B338 controlled process, MTR-supported material traceability.';
+const canonicalUrl = 'https://cnc.bozemetal.com/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/';
+
+const heroKey = '/titanium-cnc-machining-services/grade-9-titanium-cnc-machining';
+
+const faqItems = [
+  {
+    question: 'What is Grade 9 titanium and how does it differ from Grade 5 / Grade 2?',
+    answer:
+      'Grade 9 is a near-alpha titanium alloy with nominal 3% aluminum and 2.5% vanadium, designated UNS R56320. Its strength sits between commercially pure Grade 2 (UNS R50400) and Ti-6Al-4V Grade 5 (UNS R56400): roughly twice the strength of Grade 2, while retaining excellent cold formability and weldability. It is most commonly supplied as seamless tube for aerospace hydraulic systems, but bar and plate forms are also available.',
+  },
+  {
+    question: 'Why is Grade 9 the standard for aerospace hydraulic tubing?',
+    answer:
+      'The combination of medium strength (~620 MPa UTS in the annealed condition), high fatigue resistance, good cold formability for bending and flaring, and reliable weldability makes Ti-3Al-2.5V the workhorse specification for high-pressure hydraulic lines on military and civil aircraft. AMS 4943 / AMS 4944 / AMS 4945 govern seamless and welded tube forms used in flight-control, brake, and utility hydraulic systems.',
+  },
+  {
+    question: 'How is thin-wall tube machined without vibration and chatter?',
+    answer:
+      'Thin-wall Ti-3Al-2.5V tube and tube fittings require tuned workholding (matching elastomer or split-ring mandrels sized to the tube ID), sharp single-point tooling, low-engagement passes, and active chatter control through variable-helix end mills or tuned tool geometries. For long thin-wall fittings, an extended-reach or stabilized tool holder plus coolant-through tooling helps maintain straightness and surface finish.',
+  },
+  {
+    question: 'What surface finish is required for high-cycle fatigue performance?',
+    answer:
+      'High-cycle hydraulic fittings and rotating components are fatigue-critical. Surface roughness and any machining-induced micro-cracks or tear-out directly affect fatigue life. We use controlled finishing passes, sharp tools, and where specified, electropolishing or vibratory finishing to reduce surface tensile stress concentration. Final surface finish is verified at the agreed inspection locations.',
+  },
+  {
+    question: 'What is the minimum order quantity for a Grade 9 prototype?',
+    answer:
+      'A 1-piece minimum order quantity is supported to allow engineering teams to evaluate the tubing, fitting, or component before committing to a production run. Indicative prototype lead time is 5–7 working days, subject to drawing completeness, material availability (especially for seamless tube sizes), and inspection scope.',
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((it) => ({
+    '@type': 'Question',
+    name: it.question,
+    acceptedAnswer: { '@type': 'Answer', text: it.answer },
+  })),
+};
+
+const standards = [
+  { code: 'AMS 4943', scope: 'Titanium alloy, seamless hydraulic tubing (Ti-3Al-2.5V)', application: 'Verify specification applicability for seamless hydraulic tube.' },
+  { code: 'AMS 4944', scope: 'Titanium alloy, seamless, cold worked, hydraulic tubing (Ti-3Al-2.5V)', application: 'Verify specification applicability for cold-worked seamless hydraulic tube.' },
+  { code: 'AMS 4945', scope: 'Titanium alloy, welded hydraulic tubing (Ti-3Al-2.5V)', application: 'Verify specification applicability for welded hydraulic tube.' },
+  { code: 'ASTM B338', scope: 'Seamless and welded titanium and titanium alloy tubes for condensers and heat exchangers (Grade 9 form)', application: 'Confirm specification applicability for tube applications.' },
+  { code: 'ASTM B861', scope: 'Titanium and titanium alloy seamless pipe (Grade 9 form)', application: 'Confirm specification applicability for seamless pipe.' },
+  { code: 'AS9100D', scope: 'Aerospace quality management system', application: 'Applicable when the manufacturing facility holds the relevant certification and the program has aerospace overlap.' },
+  { code: 'ISO 9001', scope: 'Quality management system', application: 'Applicable when the manufacturing facility holds the relevant certification.' },
+];
+
+const criticalControls = [
+  {
+    title: 'Cold-Worked Property Retention and Over-Anneal Avoidance',
+    challenge: 'Cold-worked Ti-3Al-2.5V tube and bar rely on the residual cold-work for higher strength. Excessive heat input during machining — whether from the cut itself, the tool engagement, or post-machining stress relief — can locally recrystallize the alloy, dropping the yield / UTS in the affected zone and compromising fatigue performance. Sustained temperature excursions above ~550 °C can also promote alpha-case formation on the surface, reducing fatigue life and corrosion resistance.',
+    approach: 'We select cutting parameters and tool geometries to keep the cutting-zone temperature below the alloy over-aging range. Sharp tools, high-pressure coolant, and conservative engagement keep the bulk material cool. When stress relief or post-machining heat treatment is specified, parameters are reviewed against AMS 4943 / AMS 4944 / AMS 4945 and the customer specification to preserve the agreed mechanical-property envelope.',
+    outcome: 'Mechanical properties consistent with the agreed specification at the machined surface and in the bulk. Final tolerance and property targets are confirmed after CAD, drawing, material condition, and inspection method review.',
+  },
+  {
+    title: 'Thin-Wall Tube and Hydraulic-Fitting Machining',
+    challenge: 'Thin-wall Ti-3Al-2.5V tube and tube fittings present large length-to-diameter ratios, low section stiffness, and high sensitivity to vibration, chatter, and ovality. Standard workholding strategies (3-jaw chuck on the OD) oval the tube and mark the sealing surface. Unsupported turning of long thin-wall sections leads to chatter, poor surface finish, and out-of-tolerance features.',
+    approach: 'We use ID-matched mandrels (elastomer, split-ring, or expanding mandrel sized to the tube ID) to support the wall and seal the roundness during cutting. Sharp single-point tooling, low radial engagement, and where compatible, variable-helix end mills suppress chatter. Coolant-through tooling maintains temperature stability. For long fittings, an extended-reach or stabilized holder reduces deflection.',
+    outcome: 'Thin-wall features held within drawing tolerance, sealing surfaces free of chatter and ID-mandrel marking, and surface finish compatible with the agreed fatigue / pressure-cycle performance. Final tolerance and surface-finish commitment is confirmed after CAD, drawing, tube-form, and inspection-method review.',
+  },
+  {
+    title: 'High-Cycle Fatigue Surface Integrity',
+    challenge: 'Aerospace hydraulic fittings and rotating components can accumulate 10⁶–10⁸ stress cycles over service life. Machining-induced surface defects — tear-out, micro-cracks, excessive roughness, white-layer recrystallization — act as fatigue crack initiation sites and reduce the achievable endurance limit by 30–50% relative to a polished surface. Surface roughness alone is not a complete indicator; sub-surface damage from abusive cutting parameters is just as critical.',
+    approach: 'We use controlled finishing passes with sharp tools, single-point finishing for critical surfaces, and where specified, electropolishing or vibratory finishing to reduce surface tensile stress concentration. Surface-finish values are verified at the agreed inspection locations, and we can document the cutting parameters used on each finishing pass for the customer fatigue-life qualification file.',
+    outcome: 'Surface integrity compatible with the agreed fatigue-life requirement, with documented cutting parameters and measured surface-finish values at the agreed inspection locations. Fatigue-life qualification remains the customer responsibility based on the agreed material / surface / loading combination.',
+  },
+];
+
+const relatedLinks = [
+  { name: '3/4/5-Axis Titanium Machining', desc: 'Axis configuration selection for Ti-3Al-2.5V components', href: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/' },
+  { name: 'Grade 5 Ti-6Al-4V Machining', desc: 'Higher-strength alloyed counterpart for structural components', href: '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/' },
+  { name: 'Grade 2 CP-Ti Machining', desc: 'Lower-strength CP counterpart for corrosion-service components', href: '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/' },
+  { name: 'Grade 9 Ti-3Al-2.5V Material Data', desc: 'Composition, mechanical properties, and forms', href: '/materials/grade-9/' },
+  { name: 'Submit Grade 9 RFQ', desc: 'Upload drawing for DFM engineering review', href: '/rfq/' },
+];
+---
+
+<BaseLayout
+  pageType="service-detail"
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  serviceName="Grade 9 Titanium (Ti-3Al-2.5V) CNC Machining Services"
+  serviceDescription="Precision CNC machining of Grade 9 titanium (Ti-3Al-2.5V, UNS R56320) for aerospace hydraulic tubing, high-pressure fluid systems, marine, and motorsport components. AMS 4943 / 4944 / 4945 and ASTM B338 / B861 controlled process with MTR-supported material traceability and fatigue-optimized surface integrity."
+  serviceCategory="CNC Machining — Near-Alpha Titanium"
+  faqItems={faqItems}
+>
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a><meta itemprop="position" content="1" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Titanium CNC Machining Services</span></a><meta itemprop="position" content="2" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Grade 9 Ti-3Al-2.5V</span><meta itemprop="position" content="3" /></li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero h1={HERO_CONFIG[heroKey].h1} subtitle={HERO_CONFIG[heroKey].subtitle} badge={HERO_CONFIG[heroKey].badge} badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" keyMetrics={HERO_CONFIG[heroKey].keyMetrics} entityChips={HERO_CONFIG[heroKey].entityChips} />
+
+  <TrustBadges />
+
+  <!-- ② HONEST POSITIONING -->
+  <section class="relative py-16" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Scope &amp; Limits</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">What This Page Covers — and What It Does Not</h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We machine Grade 9 Ti-3Al-2.5V tube, bar, and machined fittings to customer-defined drawings, with material standards, condition, and acceptance criteria confirmed during RFQ review.</p>
+      </header>
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">In Scope</p><h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Hydraulic Tube + Fittings</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Seamless and welded tube machining, port machining, fitting bodies, threaded connections for aerospace hydraulic systems.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">In Scope</p><h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Bar + Plate Machining</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">3-axis, 4-axis, 5-axis milling, turning, mill-turn of Ti-3Al-2.5V bar and plate for structural and rotational components.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><p class="text-xs font-bold uppercase tracking-wider" style="color: var(--theme-primary);">In Scope</p><h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Fatigue-Optimized Surface</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Controlled finishing, optional electropolishing or vibratory finishing, documented cutting parameters.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 15%, transparent);"><p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Out of Scope</p><h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Fatigue-Life Qualification</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">We document and prepare the surface for fatigue qualification but do not perform in-house S-N or fatigue testing.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 15%, transparent);"><p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Out of Scope</p><h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Bending / Flaring</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">We machine finished parts from supplied tube / bar. Tube bending, flaring, and hydroforming are typically done by a dedicated tube-processing partner.</p></article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-text) 15%, transparent);"><p class="text-xs font-bold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Out of Scope</p><h3 class="mt-2 text-lg font-bold" style="color: var(--theme-text);">Universal Tolerance</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">±0.01 mm tube OD and ±0.025 mm wall are project-specific targets. Final commitment confirmed after CAD and review.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ Material Standards -->
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering Compliance</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Material Compliance Starts with the Correct Specification</h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">For aerospace hydraulic fittings and rotating components, the material specification is the first control point. The manufacturing process must preserve drawing requirements, Ti-3Al-2.5V material identity, mechanical-property envelope, and lot-level documentation.</p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="w-full text-left">
+          <thead><tr style="background: linear-gradient(135deg, var(--theme-primary) 12%, var(--theme-surface));"><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Standard / Specification</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Material or Quality Scope</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Application in Procurement</th></tr></thead>
+          <tbody>
+            {standards.map((s) => (<tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">{s.code}</span></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{s.scope}</p></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.application}</p></td></tr>))}
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-8 rounded-xl p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-4" style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 6%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);">
+        <svg class="w-7 h-7 md:mr-1 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+        <div class="flex-1"><p class="text-base font-bold mb-1" style="color: var(--theme-text);">Material Documentation: MTR supplied with each shipment covered by the agreed traceability requirements.</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Material certificates, mechanical-property envelope, heat / lot identification, and purchase specification requirements are reviewed against the order documentation.</p></div>
+        <a href="/rfq/" class="inline-flex items-center justify-center whitespace-nowrap px-6 py-3 rounded-lg font-bold text-sm transition-all duration-200 hover:-translate-y-0.5 shrink-0" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%); color: #ffffff;">Submit Drawing &amp; Material Specification<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ Three Critical Controls -->
+  <section class="relative py-20" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Technical Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Three Critical Controls for Ti-3Al-2.5V Machining</h2>
+      </header>
+      <div class="space-y-6">
+        {criticalControls.map((c, i) => (
+          <article class="rounded-2xl border p-6 md:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start gap-4 mb-5">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="text-xl md:text-2xl font-bold leading-snug" style="color: var(--theme-text);">{c.title}</h3>
+            </div>
+            <div class="grid gap-5 md:grid-cols-3">
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Challenge</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.challenge}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Our Machining Approach</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.approach}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Outcome</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.outcome}</p></div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Send Your Hydraulic Fitting for DFM Review<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <!-- ⑤ Final Conversion Footer (compact) -->
+  <section class="relative" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-4xl mx-auto rounded-3xl border p-8 md:p-10 text-center" style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Submit Your Engineering Package</p>
+        <h2 class="text-2xl md:text-3xl font-bold leading-tight mb-3" style="color: var(--theme-text);">Have a Ti-3Al-2.5V Component Ready for Manufacturing?</h2>
+        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Send your drawing to initiate a technical review of manufacturability, mechanical-property envelope, fatigue-critical surface preparation, and the proposed machining route. Accepted file formats: STEP, STP, DXF. <strong>Target response: initial RFQ acknowledgment within 24 hours on working days.</strong> Mutual NDA available before technical file exchange.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Upload CAD/STEP for DFM Review<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></a>
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Request a Grade 9 Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ RELATED -->
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Related Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Continue the Engineering Review</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a href={r.href} class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{r.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.desc}</p>
+            <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{r.href} →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Grade 9 Ti-3Al-2.5V CNC Machining — Engineering FAQ</h2>
+      </header>
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqItems.map((it, idx) => (
+          <details class="group rounded-xl overflow-hidden border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);" open={idx === 0}>
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-bold text-base md:text-lg list-none" style="color: var(--theme-text);">
+              <span class="flex items-start">
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg mr-4 shrink-0 text-xs font-bold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{idx + 1}</span>
+                <span class="leading-snug">{it.question}</span>
+              </span>
+              <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm md:text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{it.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>

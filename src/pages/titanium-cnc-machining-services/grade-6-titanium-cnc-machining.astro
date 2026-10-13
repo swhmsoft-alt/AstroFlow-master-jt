@@ -1,0 +1,165 @@
+---
+/**
+ * Grade 6 Titanium CNC Machining Services — Ti-5Al-2.5Sn (UNS R54520)
+ *
+ * BSI Phase Q — single-phase alpha alloy for high-temperature aerospace
+ * applications. Not heat-treatable; relies on solid-solution strengthening.
+ * Categories the alpha sub-tree of the material cluster.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = 'Grade 6 Titanium CNC Machining Services — Ti-5Al-2.5Sn (UNS R54520)';
+const pageDescription = 'Precision Grade 6 alpha titanium (Ti-5Al-2.5Sn, UNS R54520) CNC machining services for high-temperature aerospace structures, jet-engine compressor components, and pressure vessels. AMS 4910 / 4925 / 4966 controlled process, MTR-supported traceability.';
+const canonicalUrl = 'https://cnc.bozemetal.com/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/';
+
+const heroKey = '/titanium-cnc-machining-services/grade-6-titanium-cnc-machining';
+
+const faqItems = [
+  { question: 'What is Grade 6 titanium and when is it used?', answer: 'Grade 6 is a single-phase alpha titanium alloy (UNS R54520) with nominal 5% aluminum and 2.5% tin. It is the most widely used alpha alloy for high-temperature aerospace applications, particularly older airframe structures, jet-engine compressor blades and vanes, honeycomb core, and pressure vessels. Grade 6 is not heat-treatable; strength is fixed by the Al + Sn solid-solution addition, and the alloy retains useful strength and creep resistance up to ~480 °C.' },
+  { question: 'What is alpha case and why is it a problem in Grade 6?', answer: 'Alpha case is a hard, brittle oxygen-enriched surface layer that forms when titanium is heated in air above ~600 °C. In Grade 6 — used in high-temperature service — any oxygen pickup from welding, grinding, or aggressive machining reduces fatigue life and can crack under thermal cycling. The alpha case must be removed by chemical milling or pick-and-pass machining in the final pass before service.' },
+  { question: 'Can Grade 6 be welded?', answer: 'Yes. Grade 6 has excellent weldability in the annealed condition; it is the workhorse titanium for welded aerospace pressure vessels. Welds are typically left in the as-welded condition or stress-relieved at 540–675 °C for 30–60 min. The WPS / WPQ must be qualified against the customer specification.' },
+  { question: 'What surface finish does Grade 6 require?', answer: 'Default surface-finish target Ra 0.8 µm, subject to drawing and feature accessibility. For fatigue-loaded or thermal-cycling components, the alpha case from any aggressive machining or grinding must be removed by chemical milling or light pick-pass machining per AMS 2402 / ASTM B600.' },
+  { question: 'What is the minimum order quantity for a Grade 6 prototype?', answer: 'A 1-piece minimum order quantity is supported. Indicative prototype lead time is 5–7 working days, subject to drawing completeness, material availability, and inspection scope.' },
+];
+
+const faqJsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((it) => ({ '@type': 'Question', name: it.question, acceptedAnswer: { '@type': 'Answer', text: it.answer } })) };
+
+const standards = [
+  { code: 'AMS 4910', scope: 'Titanium alloy sheet, strip, and plate (Ti-5Al-2.5Sn)', application: 'Verify specification applicability for plate and sheet stock.' },
+  { code: 'AMS 4925', scope: 'Titanium alloy bars, wire, and forgings (Ti-5Al-2.5Sn)', application: 'Verify specification for bar and forging stock.' },
+  { code: 'AMS 4966', scope: 'Titanium alloy forging stock (Ti-5Al-2.5Sn)', application: 'Confirm specification applicability for forged preforms.' },
+  { code: 'MIL-T-9047', scope: 'Titanium and titanium alloy sheet, strip, and plate (military)', application: 'Reference for legacy military aerospace programs.' },
+  { code: 'ASTM B600', scope: 'Surface preparation of titanium and titanium alloy surfaces', application: 'Pickling / chemical-milling reference for alpha-case removal.' },
+];
+
+const criticalControls = [
+  { title: 'Alpha-Case and Heat-Input Control', challenge: 'Grade 6 is used in high-temperature service where any oxygen pickup from welding, grinding, or aggressive machining reduces fatigue life and can crack under thermal cycling. The hard, brittle oxygen-enriched surface layer (alpha case) must be removed by chemical milling or controlled pick-pass machining before service.', approach: 'We confirm the material condition and any prior thermal exposure at incoming inspection. Cutting parameters are tuned to keep the cutting-zone temperature well below the alpha-case formation range, with high-pressure coolant and conservative engagement. Where the customer specification requires chemical milling, we schedule the pickling step per ASTM B600 / AMS 2402 between rough and final machining.', outcome: 'Bulk mechanical properties consistent with the agreed specification, with the alpha case removed from machined surfaces before shipment.' },
+  { title: 'Thin-Wall Stability and Low-Elastic-Modulus Compensation', challenge: 'Alpha titanium has a low elastic modulus (~110 GPa) and limited work-hardening response. Thin-wall and slender features in Grade 6 deflect under cutting forces and recover elastically after the tool passes. The same drawing features that work for GR5 (stiffer) often need different sequencing for GR6 to hit the same tolerance band.', approach: 'We use balanced roughing and finishing sequences, dedicated workholding sized to the part envelope, and conservative engagement on thin-wall features. In-process measurement catches deflection between roughing and finishing, so geometry drift can be corrected before final pass.', outcome: 'Thin-wall features held within drawing tolerance at the agreed strength level. For suitable validated geometries, the process can target linear dimensional tolerance up to ±0.025 mm — project-specific targets, not universal guarantees.' },
+  { title: 'High-Temperature Surface Integrity and Alpha-Case Removal', challenge: 'In addition to machining-induced alpha case, the same risk exists from any subsequent grinding, welding, or post-machining heat treatment. Surface roughness alone does not establish fatigue performance or thermal-cycling resistance; sub-surface alpha case can seed crack initiation at high temperature.', approach: 'We schedule ASTM B600 alkaline cleaning + acid pickling for components that go into high-temperature service. For very tight fatigue / creep requirements, light pick-pass machining removes 0.05–0.10 mm of surface material to eliminate the alpha case after heavy machining.', outcome: 'Surface free of alpha case and embedded contamination, with documented surface-finish values and pickling records.' },
+];
+
+const relatedLinks = [
+  { name: '3/4/5-Axis Titanium Machining', desc: 'Axis configuration selection for Grade 6 components', href: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/' },
+  { name: 'Grade 5 Ti-6Al-4V Machining', desc: 'Higher-strength α+β alloy counterpart for room temperature', href: '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/' },
+  { name: 'Grade 9 Ti-3Al-2.5V Machining', desc: 'Near-α alloy for hydraulic tubing', href: '/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/' },
+  { name: 'Grade 6 Ti-5Al-2.5Sn Material Data', desc: 'Composition, mechanical properties, and forms', href: '/materials/grade-6/' },
+  { name: 'Submit Grade 6 RFQ', desc: 'Upload drawing for DFM engineering review', href: '/rfq/' },
+];
+---
+
+<BaseLayout pageType="service-detail" title={pageTitle} description={pageDescription} canonicalURL={canonicalUrl} serviceName="Grade 6 Alpha Titanium (Ti-5Al-2.5Sn) CNC Machining Services" serviceDescription="Precision CNC machining of Grade 6 alpha titanium (Ti-5Al-2.5Sn, UNS R54520) for high-temperature aerospace structures, jet-engine compressor components, and pressure vessels. AMS 4910 / 4925 / 4966 controlled process with MTR-supported traceability and ASTM B600 surface preparation for alpha-case removal." serviceCategory="CNC Machining — Alpha Titanium" faqItems={faqItems}>
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a><meta itemprop="position" content="1" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Titanium CNC Machining Services</span></a><meta itemprop="position" content="2" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Grade 6 Ti-5Al-2.5Sn</span><meta itemprop="position" content="3" /></li></ol></div></nav>
+
+  <SubpageHero h1={HERO_CONFIG[heroKey].h1} subtitle={HERO_CONFIG[heroKey].subtitle} badge={HERO_CONFIG[heroKey].badge} badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" keyMetrics={HERO_CONFIG[heroKey].keyMetrics} entityChips={HERO_CONFIG[heroKey].entityChips} />
+
+  <TrustBadges />
+
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering Compliance</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">High-Temperature Material Compliance Starts with the Correct Specification</h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">For aerospace structures, jet-engine compressor components, and pressure vessels operating above ~300 °C, Grade 6 (Ti-5Al-2.5Sn) is the standard alpha-alloy specification. The material specification — including the Al / Sn limits and the agreed final-anneal condition — is the first control point. The manufacturing process must preserve the as-annealed microstructure, document surface preparation, and control alpha-case formation.</p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="w-full text-left">
+          <thead><tr style="background: linear-gradient(135deg, var(--theme-primary) 12%, var(--theme-surface));"><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Standard / Specification</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Material or Quality Scope</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Application in Procurement</th></tr></thead>
+          <tbody>
+            {standards.map((s) => (<tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">{s.code}</span></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{s.scope}</p></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.application}</p></td></tr>))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Technical Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Three Critical Controls for Grade 6 Ti-5Al-2.5Sn Machining</h2>
+      </header>
+      <div class="space-y-6">
+        {criticalControls.map((c, i) => (
+          <article class="rounded-2xl border p-6 md:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start gap-4 mb-5">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="text-xl md:text-2xl font-bold leading-snug" style="color: var(--theme-text);">{c.title}</h3>
+            </div>
+            <div class="grid gap-5 md:grid-cols-3">
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Challenge</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.challenge}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Our Machining Approach</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.approach}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Outcome</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.outcome}</p></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <section class="relative" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-4xl mx-auto rounded-3xl border p-8 md:p-10 text-center" style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Submit Your Engineering Package</p>
+        <h2 class="text-2xl md:text-3xl font-bold leading-tight mb-3" style="color: var(--theme-text);">Have a Grade 6 Ti-5Al-2.5Sn Component Ready for Manufacturing?</h2>
+        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Send your drawing to initiate a technical review. Accepted file formats: STEP, STP, DXF. <strong>Target response: initial RFQ acknowledgment within 24 hours on working days.</strong> Mutual NDA available before technical file exchange.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Upload CAD/STEP for DFM Review<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></a>
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Request a Grade 6 Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Related Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Continue the Engineering Review</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a href={r.href} class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{r.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.desc}</p>
+            <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{r.href} →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Grade 6 Ti-5Al-2.5Sn CNC Machining — Engineering FAQ</h2>
+      </header>
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqItems.map((it, idx) => (
+          <details class="group rounded-xl overflow-hidden border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);" open={idx === 0}>
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-bold text-base md:text-lg list-none" style="color: var(--theme-text);">
+              <span class="flex items-start">
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg mr-4 shrink-0 text-xs font-bold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{idx + 1}</span>
+                <span class="leading-snug">{it.question}</span>
+              </span>
+              <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm md:text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{it.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>

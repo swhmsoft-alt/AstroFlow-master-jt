@@ -1,0 +1,165 @@
+---
+/**
+ * Grade 7 Titanium CNC Machining Services — Ti-0.2Pd (UNS R52400)
+ *
+ * BSI Phase N — palladium-stabilized CP-Ti for reducing-acid corrosion.
+ * Identical mechanical properties to Grade 2, with significantly
+ * enhanced corrosion in HCl, H2SO4, H3PO4, and other reducing media.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = 'Grade 7 Titanium CNC Machining Services | Ti-0.2Pd (UNS R52400)';
+const pageDescription = 'Precision Grade 7 palladium-stabilized titanium (Ti-0.2Pd, UNS R52400) CNC machining services for chemical processing in reducing-acid environments. ASTM B348 / B265 / B338 controlled process, MTR-supported traceability.';
+const canonicalUrl = 'https://cnc.bozemetal.com/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/';
+
+const heroKey = '/titanium-cnc-machining-services/grade-7-titanium-cnc-machining';
+
+const faqItems = [
+  { question: 'What is Grade 7 titanium and when is it used over Grade 2?', answer: 'Grade 7 is Grade 2 with a small (0.12–0.25%) palladium addition. Mechanical properties are essentially identical to Grade 2 (same strength, ductility, weldability), but the palladium dramatically improves corrosion resistance in reducing-acid environments — dilute HCl, dilute H2SO4, H3PO4, oxalic acid, hot brine — where unalloyed Grade 2 can suffer general or pitting attack. The trade-off vs Grade 2 is a 3–10× material cost premium for the Pd-bearing stock.' },
+  { question: 'Is Grade 7 weldable and formable like Grade 2?', answer: 'Yes. The Pd addition is small enough that mechanical and fabrication behavior is essentially the same as Grade 2. The alloy can be cold-formed, hot-formed, machined, and welded using the same procedures as Grade 2, with the same gummy-chip considerations and the same iron-contamination control workflow.' },
+  { question: 'How is the palladium content verified?', answer: 'Palladium content is verified by the mill test report (MTR) per ASTM B348, with the typical analytical method being ICP-OES or XRF. The Pd lower limit is 0.12 wt% and the upper limit is 0.25 wt%; levels outside this band either fail to deliver the corrosion benefit (too low) or add cost without additional benefit (too high).' },
+  { question: 'What surface finish preserves Grade 7 corrosion resistance?', answer: 'The same contamination-controlled workflow used for Grade 2: dedicated tooling, ASTM B600 alkaline cleaning + acid pickling, and passivation scheduled per the agreed inspection plan.' },
+  { question: 'What is the minimum order quantity for a Grade 7 prototype?', answer: 'A 1-piece minimum order quantity is supported. Indicative prototype lead time is 5–7 working days, subject to drawing completeness, material availability, and inspection scope.' },
+];
+
+const faqJsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((it) => ({ '@type': 'Question', name: it.question, acceptedAnswer: { '@type': 'Answer', text: it.answer } })) };
+
+const standards = [
+  { code: 'ASTM B348', scope: 'Titanium and titanium alloy bars and billets (Grade 7 form)', application: 'Verify grade, condition, dimensions, and Pd limits.' },
+  { code: 'ASTM B265', scope: 'Titanium and titanium alloy strip, sheet, and plate (Grade 7 form)', application: 'Verify grade and Pd limits for plate / sheet.' },
+  { code: 'ASTM B338', scope: 'Seamless and welded titanium and titanium alloy tubes (Grade 7 form)', application: 'Confirm specification for heat-exchanger and condenser tube applications.' },
+  { code: 'ASTM F67', scope: 'Unalloyed titanium for surgical implant applications (Grade 7 form)', application: 'Reference for medical applications requiring reducing-acid resistance.' },
+  { code: 'ASTM B600', scope: 'Surface preparation of titanium and titanium alloy surfaces', application: 'Pickling / passivation reference.' },
+];
+
+const criticalControls = [
+  { title: 'Palladium Content Verification and Mill Traceability', challenge: 'The corrosion benefit of Grade 7 is entirely dependent on the 0.12–0.25% Pd addition. A bar that drifts below the lower limit behaves like Grade 2 in the reducing-acid environment, with no corrosion advantage. The MTR must show Pd content measured by ICP-OES or XRF, and the mill must be on the buyer qualified-supplier list.', approach: 'We confirm the MTR Pd value against the customer specification at incoming inspection. We also flag any mill not on the buyer qualified-supplier list, since the chemistry controls across the industry are not uniform. Customer-supplied material is accepted only with a complete MTR; partial or absent chemistry data is treated as a deviation.', outcome: 'Verified Pd content at the agreed acceptance range, with full chemistry traceability to the original heat.' },
+  { title: 'Reducing-Acid Corrosion Performance Preservation', challenge: 'Grade 7 corrosion performance in HCl, H2SO4, H3PO4, and similar reducing media is highly sensitive to surface condition. Iron contamination, embedded abrasive, or a damaged passive film can seed localized attack. In some reducing-acid services, even small surface defects grow rapidly.', approach: 'We segregate Grade 7 work from carbon-steel / 316L work where the order scope requires it, use dedicated tooling and workholding, and schedule ASTM B600 alkaline cleaning + acid pickling per the agreed inspection plan. Passivation schedules are matched to the customer downstream service environment.', outcome: 'Surface free of iron and abrasive embedment, with the passive film intact at the point of shipment. Corrosion qualification remains the customer responsibility.' },
+  { title: 'CP-Ti Fabrication Behavior (Forming, Welding, Machining)', challenge: 'Despite the Pd addition, Grade 7 fabrication behavior is essentially identical to Grade 2: gummy-chip machining, iron-contamination sensitivity, weldability under standard procedures.', approach: 'We machine, form, and weld Grade 7 to the same procedures as Grade 2, with the additional step of Pd content verification at incoming inspection. Cutting parameters, weld-prep geometry, and surface-preparation schedule are matched to the Grade 2 baseline, not to alloyed grades.', outcome: 'Cost-effective fabrication consistent with CP-Ti workflow, while preserving the corrosion benefit. Final tolerance and surface-finish commitment is confirmed after CAD, drawing, material condition, and inspection method review.' },
+];
+
+const relatedLinks = [
+  { name: '3/4/5-Axis Titanium Machining', desc: 'Axis configuration selection for Grade 7 components', href: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/' },
+  { name: 'Grade 2 CP-Ti Machining', desc: 'Base CP-Ti grade (no Pd) for non-reducing-acid service', href: '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/' },
+  { name: 'Grade 12 Ti-0.3Mo-0.8Ni Machining', desc: 'Hot-brine / chloride counterpart', href: '/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/' },
+  { name: 'Grade 7 Ti-0.2Pd Material Data', desc: 'Composition, mechanical properties, and forms', href: '/materials/grade-7/' },
+  { name: 'Submit Grade 7 RFQ', desc: 'Upload drawing for DFM engineering review', href: '/rfq/' },
+];
+---
+
+<BaseLayout pageType="service-detail" title={pageTitle} description={pageDescription} canonicalURL={canonicalUrl} serviceName="Grade 7 Palladium-Stabilized Titanium (Ti-0.2Pd) CNC Machining Services" serviceDescription="Precision CNC machining of Grade 7 palladium-stabilized titanium (Ti-0.2Pd, UNS R52400) for chemical processing in reducing-acid environments. ASTM B348 / B265 / B338 controlled process with MTR-supported Pd-content verification and ASTM B600 surface preparation." serviceCategory="CNC Machining — Corrosion-Resistant Titanium" faqItems={faqItems}>
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a><meta itemprop="position" content="1" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Titanium CNC Machining Services</span></a><meta itemprop="position" content="2" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Grade 7 Ti-0.2Pd</span><meta itemprop="position" content="3" /></li></ol></div></nav>
+
+  <SubpageHero h1={HERO_CONFIG[heroKey].h1} subtitle={HERO_CONFIG[heroKey].subtitle} badge={HERO_CONFIG[heroKey].badge} badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" keyMetrics={HERO_CONFIG[heroKey].keyMetrics} entityChips={HERO_CONFIG[heroKey].entityChips} />
+
+  <TrustBadges />
+
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering Compliance</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Reducing-Acid Material Compliance Starts with the Correct Specification</h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">For chemical processing in HCl, H2SO4, H3PO4, oxalic acid, hot brine, and similar reducing environments, the material specification — and in particular the palladium content — is the first control point. The manufacturing process must preserve drawing requirements, Pd content identity, dimensional conformity, and lot-level documentation.</p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="w-full text-left">
+          <thead><tr style="background: linear-gradient(135deg, var(--theme-primary) 12%, var(--theme-surface));"><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Standard / Specification</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Material or Quality Scope</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Application in Procurement</th></tr></thead>
+          <tbody>
+            {standards.map((s) => (<tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">{s.code}</span></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{s.scope}</p></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.application}</p></td></tr>))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Technical Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Three Critical Controls for Grade 7 Ti-0.2Pd Machining</h2>
+      </header>
+      <div class="space-y-6">
+        {criticalControls.map((c, i) => (
+          <article class="rounded-2xl border p-6 md:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start gap-4 mb-5">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="text-xl md:text-2xl font-bold leading-snug" style="color: var(--theme-text);">{c.title}</h3>
+            </div>
+            <div class="grid gap-5 md:grid-cols-3">
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Challenge</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.challenge}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Our Machining Approach</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.approach}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Outcome</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.outcome}</p></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <section class="relative" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-4xl mx-auto rounded-3xl border p-8 md:p-10 text-center" style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Submit Your Engineering Package</p>
+        <h2 class="text-2xl md:text-3xl font-bold leading-tight mb-3" style="color: var(--theme-text);">Have a Grade 7 Ti-0.2Pd Component Ready for Manufacturing?</h2>
+        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Send your drawing to initiate a technical review. Accepted file formats: STEP, STP, DXF. <strong>Target response: initial RFQ acknowledgment within 24 hours on working days.</strong> Mutual NDA available before technical file exchange.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Upload CAD/STEP for DFM Review<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></a>
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Request a Grade 7 Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Related Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Continue the Engineering Review</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a href={r.href} class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{r.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.desc}</p>
+            <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{r.href} →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Grade 7 Ti-0.2Pd CNC Machining — Engineering FAQ</h2>
+      </header>
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqItems.map((it, idx) => (
+          <details class="group rounded-xl overflow-hidden border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);" open={idx === 0}>
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-bold text-base md:text-lg list-none" style="color: var(--theme-text);">
+              <span class="flex items-start">
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg mr-4 shrink-0 text-xs font-bold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{idx + 1}</span>
+                <span class="leading-snug">{it.question}</span>
+              </span>
+              <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm md:text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{it.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>

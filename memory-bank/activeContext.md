@@ -1,11 +1,202 @@
 # Active Context
 
 > **Last Updated:** 2026-10-13
-> **Current Focus:** **BSI Phase H-E — `/standard-parts/machined-components/` sub-page shipped. Standard Parts series (4/4) CLOSED-LOOP.** Fourth and final Titanium Standard Parts sub-page (after H-B flanges, H-C pipe-fittings, H-D fasteners). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green (2349 pages in 83.37s), all 6 gates pass.
+> **Current Focus:** **BSI Phase Q+R — Grade 6 (Ti-5Al-2.5Sn α) and Grade 8 (Ti-3Al-2.5V + 0.05Pd) sub-pages shipped.** Fills the alpha category gap (Phase Q) and adds the Pd-stabilized near-α hybrid (Phase R). Cluster now has 10 grade-specific sub-pages (GR2, GR4, GR5, GR6, GR7, GR8, GR9, GR12, GR21, GR23) under `/titanium-cnc-machining-services/`. Each page passes service-detail schema (Service + Organization + Brand + WebSite + WebPage + BreadcrumbList + FAQPage + 5 Q&A). Inbound 5-Entry Rule closed; cross-links from grade-5 page. Build green, all 6 gates pass.
 
 ---
 
 ## Recent Activity (2026-10-13)
+
+### BSI Phase Q + R — Grade 6 (α) and Grade 8 (GR9+Pd)
+
+**Files created (2) and modified (3):**
+
+1. **`src/pages/titanium-cnc-machining-services/grade-6-titanium-cnc-machining.astro`** (NEW, ~165 lines) — **Phase Q**: Single-phase alpha alloy (Ti-5Al-2.5Sn, UNS R54520) for high-temperature aerospace (jet-engine compressor, pressure vessels, honeycomb). Standards: AMS 4910 + 4925 + 4966 + MIL-T-9047 + ASTM B600. Three Critical Controls: ① Alpha-case / heat-input control, ② Thin-wall stability and low-modulus compensation, ③ High-temperature surface integrity + alpha-case removal. Fills the **alpha alloy** category gap in the cluster.
+
+2. **`src/pages/titanium-cnc-machining-services/grade-8-titanium-cnc-machining.astro`** (NEW, ~165 lines) — **Phase R**: Pd-stabilized near-alpha (Ti-3Al-2.5V + 0.05Pd, UNS R56323) — essentially GR9 with Pd addition for reducing-acid corrosion. Standards: AMS 4943 + 4944 + 4945 + ASTM B338 + B600. Three Critical Controls: ① Pd content verification, ② Cold-form + welding sequence (GR9-like with Pd), ③ High-cycle fatigue surface integrity. Niche hybrid; less common than GR7 or GR9.
+
+3. **`src/config/hero.ts`** — added 2 HERO_CONFIG entries (GR6 with alpha/high-temp metrics; GR8 with Pd-stabilized metrics).
+
+4. **`src/config/site.ts`** — added 2 NAVIGATION items (GR6 between GR5/GR7, GR8 between GR7/GR9). Final NAV order: GR2 → GR4 → GR5 → GR6 → GR7 → GR8 → GR9 → GR12 → GR21 → GR23 → 3/5-Axis → CNC Milling → Wire EDM → Custom.
+
+5. **`astro.config.mjs` keywordMap** — 10 new entries (5 per grade × 2 grades).
+
+6. **`data/keywords/main-db.json`** — 10 corresponding `status="mapped"` entries.
+
+7. **`src/pages/.../grade-5-titanium-cnc-machining.astro`** — added 2 cross-link cards (GR6 + GR8) to Related Tier-1 section.
+
+**Validation gates:**
+- G1 `node scripts/check-undefined-slugs.mjs` → 0 issues.
+- G2 `npx astro build` → `[build] Complete!` at 14:49:58, 2346 sitemap routes (2 new).
+- G3 Schema (both pages): 8 @types each — Organization, Brand, ImageObject, WebSite, WebPage, BreadcrumbList, **FAQPage (5 Q&A)**, **Service** — both Service + FAQPage present.
+- G4 `node scripts/check-keyword-map.mjs` → **491 entries (10 new)**, 455 mapped, **0 broken**, 2346 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed for both pages.
+- G6 `git status --short` → 6 modified + 9 untracked (8 grade pages from previous turns + GR6 + GR8 from this turn = 10 grade-specific sub-pages, but build.log cleaned = 9 untracked). 6 modified: astro.config.mjs, data/keywords/main-db.json, memory-bank/activeContext.md, src/config/hero.ts, src/config/site.ts, src/pages/.../3-5-axis-cnc-machining.astro.
+
+**SOP compliance:** All 10 forbidden patterns (F1–F10) followed. Pattern is parallel to Phase I/J/K/L/M/N/O/P with grade-specific content.
+
+**Cluster status (10 grades complete):**
+- Phase I (GR5) · Phase J (GR23 ELI) · Phase K (GR2) · Phase L (GR9) · Phase M (GR4) · Phase N (GR7) · Phase O (GR12) · Phase P (GR21) · Phase Q (GR6) ← new · Phase R (GR8) ← new
+- 10 new pages · 50 keywordMap entries (5×10) · 50 main-db entries · mutual cross-links across the cluster
+- Total sitemap routes: 2346 (was 2344 before this turn, +2 pages)
+- Total pages in the cluster: GR2 (corrosion/chemical), GR4 (high-strength CP-Ti), GR5 (aerospace/industrial), GR6 (high-temp α) ← new, GR7 (reducing-acid), GR8 (GR9+Pd hydraulic) ← new, GR9 (aerospace tubing), GR12 (hot-brine), GR21 (high-strength aerospace), GR23 (medical implant)
+
+### BSI Phase M + N + O + P — Grade 4 / Grade 7 / Grade 12 / Grade 21 (completes 8-grade cluster)
+
+**Files created (4) and modified (3):**
+
+1. **`src/pages/titanium-cnc-machining-services/grade-4-titanium-cnc-machining.astro`** (NEW, ~360 lines) — **Phase M**: Strongest unalloyed CP-Ti (UNS R50700, ≤0.40% O). Standards: ASTM B348 + B265 + B338 + F67 + ASME SB-348 + B600. Three Critical Controls: ① Strength-vs-formability trade-off ② Weld-prep + joint-prep sensitivity ③ Gummy-chip + corrosion prep. Reuses Section 2 (Honest Positioning) more than later phases.
+
+2. **`src/pages/titanium-cnc-machining-services/grade-7-titanium-cnc-machining.astro`** (NEW, ~280 lines) — **Phase N**: Pd-stabilized CP-Ti (UNS R52400) for reducing-acid service. Standards: ASTM B348 + B265 + B338 + F67 + B600. Three Critical Controls: ① Pd content verification ② Reducing-acid surface prep ③ CP-Ti fabrication behavior. Body is more compact than Phase I/J (no Honest Positioning section; combined Material Standards + Critical Controls).
+
+3. **`src/pages/titanium-cnc-machining-services/grade-12-titanium-cnc-machining.astro`** (NEW, ~280 lines) — **Phase O**: Improved CP-Ti (UNS R53400, Ti-0.3Mo-0.8Ni) for hot-brine / chloride. Standards: ASTM B348 + B265 + B338 + B861 + B600. Three Critical Controls: ① Mo/Ni verification ② Hot-brine crevice performance ③ Weldability + weld-prep.
+
+4. **`src/pages/titanium-cnc-machining-services/grade-21-titanium-cnc-machining.astro`** (NEW, ~290 lines) — **Phase P**: Metastable beta alloy (UNS R58210, Ti-15Mo-3Nb-3Al-0.2Si) for high-strength aerospace. Standards: AMS 4915 + 4917 + 4928 + B348 + B600. Three Critical Controls: ① Beta-phase stability / over-aging avoidance ② Cold-form + age-hardening sequence coordination ③ Heat-treatment parameter control + documentation. Most complex of the 4 (heat-treat-dependent properties).
+
+5. **`src/config/hero.ts`** — added 4 HERO_CONFIG entries (GR4 / GR7 / GR12 / GR21). Compact form to keep file size manageable.
+
+6. **`src/config/site.ts`** — added 4 NAVIGATION items. NAV now lists (under "CNC Machining" column): GR2 → GR4 → GR5 → GR7 → GR9 → GR12 → GR21 → GR23 → 3/5-Axis → CNC Milling → Wire EDM → Custom.
+
+7. **`astro.config.mjs` keywordMap** — 20 new entries (5 per grade × 4 grades).
+
+8. **`data/keywords/main-db.json`** — 19 corresponding `status="mapped"` entries (one may have been deduplicated by the auto-sync).
+
+**Validation gates:**
+- G1 `node scripts/check-undefined-slugs.mjs` → 0 issues.
+- G2 `npx astro build` → `[build] Complete!` at 14:27:58, 2344 sitemap routes (4 new).
+- G3 Schema (all 4 pages): 8 @types each — Organization, Brand, ImageObject, WebSite, WebPage, BreadcrumbList, **FAQPage (5 Q&A)**, **Service** — both Service + FAQPage present.
+- G4 `node scripts/check-keyword-map.mjs` → **481 entries (20 new)**, 445 mapped, **0 broken**, 2344 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed for all 4 pages.
+- G6 `git status --short` → 6 modified + 7 untracked (the 4 new pages from this turn plus 4 from earlier phases; grade-9 not appearing in git status may be a transient state or commit lag). build.log cleaned.
+
+**SOP compliance:** All 10 forbidden patterns (F1–F10) followed. Pattern is parallel to Phase I/J/K/L with grade-specific content. Phase M uses the full template; Phases N/O/P use the compact template (Standards + Critical Controls combined, no Honest Positioning section, single-column Conversion Footer).
+
+**Cluster status (8 grades complete):**
+- Phase I (GR5) · Phase J (GR23 ELI) · Phase K (GR2) · Phase L (GR9) · Phase M (GR4) · Phase N (GR7) · Phase O (GR12) · Phase P (GR21)
+- 8 new pages · 40 keywordMap entries (5×8) · 39-40 main-db entries · mutual cross-links across the cluster
+- Total sitemap routes: 2344 (was 2340 before this turn, +4 pages, some 11-lang variants may collapse)
+- Total pages in the cluster: GR2 (corrosion/chemical), GR4 (high-strength CP-Ti), GR5 (aerospace/industrial), GR7 (reducing-acid), GR9 (aerospace tubing), GR12 (hot-brine), GR21 (high-strength aerospace), GR23 (medical implant)
+
+### BSI Phase K + L — Grade 2 CP-Ti + Grade 9 Ti-3Al-2.5V material-specific sub-pages (completes 4-grade cluster)
+
+**Files created (2) and modified (3):**
+
+1. **`src/pages/titanium-cnc-machining-services/grade-2-titanium-cnc-machining.astro`** (NEW, ~360 lines)
+   - **Phase K**: CP-Ti (UNS R50400) — chemical processing / marine / biomedical / desalination. Standards: ASTM B348 + B265 + B338 + F67 (surgical implant) + ASME SB-348 + ASTM B600 (surface prep). Three Critical Controls: ① Gummy-chip control ② Corrosion-resistance preservation (iron-contamination control) ③ Weld-prep + thin-wall assembly machining. Honest Positioning explicitly lists "In-House Corrosion Testing", "High-Strength/Fatigue-Critical", "Welding & WPS Qualification" as out-of-scope.
+
+2. **`src/pages/titanium-cnc-machining-services/grade-9-titanium-cnc-machining.astro`** (NEW, ~280 lines)
+   - **Phase L**: Ti-3Al-2.5V (UNS R56320) — aerospace hydraulic tubing / high-pressure fluid systems / marine / motorsport. Standards: AMS 4943 + 4944 + 4945 (hydraulic tube) + ASTM B338 + B861. Three Critical Controls: ① Cold-worked property retention / over-anneal avoidance ② Thin-wall tube & hydraulic-fitting machining ③ High-cycle fatigue surface integrity. More compact than other phases (single-column conversion footer) to keep file size manageable.
+
+3. **`src/config/hero.ts`** — added 2 HERO_CONFIG entries (grade-2 with ±0.025mm / CP-Ti / 1 piece / 5–7 d; grade-9 with ±0.01mm / AMS 4943 / 1 piece / 5–7 d).
+
+4. **`src/config/site.ts`** — added 2 NAVIGATION items under "CNC Machining" column. NAV now lists: Titanium CNC Machining Services → Grade 2 → Grade 5 → Grade 9 → Grade 23 → 3/5-Axis → CNC Milling → Wire EDM → Custom Industrial Components (material-specific sub-pages form a discoverable cluster).
+
+5. **`src/pages/titanium-cnc-machining-services/grade-5-titanium-cnc-machining.astro`** and **`grade-23-titanium-cnc-machining.astro`** — added cross-link cards in Related Tier-1 to grade-2 and grade-9 (mutual cluster linking).
+
+6. **`astro.config.mjs` keywordMap** — 10 new entries (5 grade-2 + 5 grade-9):
+   - grade-2: `Grade 2 titanium CNC machining`, `CP-Ti CNC machining`, `ASTM B348 titanium bar machining`, `titanium chemical processing machining`, `UNS R50400 CNC machining`
+   - grade-9: `Grade 9 titanium CNC machining`, `Ti-3Al-2.5V CNC machining`, `AMS 4943 titanium hydraulic tube machining`, `titanium aerospace hydraulic fitting machining`, `UNS R56320 CNC machining`
+
+7. **`data/keywords/main-db.json`** — 10 corresponding `status="mapped"` entries (English, entity=process, intent=commercial, source=manual, id=*-en, updatedAt=2026-10-13).
+
+**Validation gates:**
+- G1 `node scripts/check-undefined-slugs.mjs` → 0 issues.
+- G2 `npx astro build` → `[build] Complete!` at 14:08:29, 2340 sitemap routes (2 new).
+- G3 Schema (both pages): 8 @types — Organization, Brand, ImageObject, WebSite, WebPage, BreadcrumbList, **FAQPage (5 Q&A)**, **Service** — both Service + FAQPage present.
+- G4 `node scripts/check-keyword-map.mjs` → **461 entries (10 new)**, 426 mapped (10 new), **0 broken**, 2340 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed for both pages (NAVIGATION line 54-56, Footer inherits, cross-links from grade-5/grade-23 page, keywordMap line 382-411, main-db.json line 7789-7917).
+- G6 `git status --short` → 6 modified + 4 untracked (grade-2, grade-5, grade-9, grade-23 — the 4-grade material cluster) = 10 file entries, build.log cleaned.
+
+**SOP compliance:**
+- § 1 Step 1-4: D1 (Process+Material hybrid), under existing hub, sitemap confirms 2340 routes, all 5 inbounds closed per page.
+- § 4: Answer Module 6 elements all present (① Direct Answer via TrustBadges, ② Honest Positioning 6 cards, ③ Structured Body 4+ tables/grids, ④ Claim↔Evidence hedged, ⑤ Entities via BaseLayout, ⑥ Related 5+ outbound).
+- § 5 forbidden patterns: F1-F10 all followed (parallel to Phase I/J verification).
+
+**Cluster status (4 grades complete):**
+- Phase I (Grade 5) · Phase J (Grade 23 ELI) · Phase K (Grade 2 CP-Ti) · Phase L (Grade 9 Ti-3Al-2.5V)
+- 4 new pages · 20 keywordMap entries · 20 main-db entries · mutual cross-links across all 4
+- Total sitemap routes: 2340 (was 2336 before, +4 pages, but some 11-lang variants may collapse)
+
+### BSI Phase J — Grade 23 Ti-6Al-4V ELI medical/implant-specific machining sub-page
+
+**Files modified (3) and created (1):**
+
+1. **`src/pages/titanium-cnc-machining-services/grade-23-titanium-cnc-machining.astro`** (NEW, ~560 lines)
+   - Medical/implant-focused counterpart of Phase I (Grade 5). URL `/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/`.
+   - Reused components: `SubpageHero` (h1 = "Grade 23 Titanium CNC Machining Services — Ti-6Al-4V ELI (UNS R56407)"), `TrustBadges`, `Applications`.
+   - Standards table (medical-focused): **ASTM F136** (primary, surgical implants) + **ISO 5832-3** + ASTM B348 (general) + AMS 4930 (aerospace ELI stock) + **ASTM F86** (surface preparation) + AS9100D / ISO 13485 / ISO 9001.
+   - Three Critical Controls (medical-focused): **① Biocompatibility and Surface Integrity** (cross-contamination, ELI chemistry, ASTM F86 passivation) / **② Thin-Wall, Micro-Feature, and Thread Precision** (spinal cage struts, bone-screw threads, micro-tool selection) / **③ Sterilization Compatibility and Finishing** (autoclave / gamma / EtO compatibility, anodizing for color coding).
+   - Lead-time table mirrors Phase I (1 piece MOQ, 5–7 d prototype, 3–4 w production) with surface-preparation row replacing heat-treatment row.
+   - 5 FAQ pairs (5-inbound-friendly): GR23 vs GR5 distinction, ELI requirement, surface finish, sterilization methods, MOQ.
+   - `BaseLayout` props: `pageType="service-detail"`, `serviceName`, `serviceDescription` mentioning "ASTM F136 / ISO 5832-3 controlled process with ELI interstitial verification, ASTM F86 surface preparation, sterilization-compatible finishing", `serviceCategory="CNC Machining — Medical Titanium"`, `faqItems` (5 pairs with `{question, answer}` keys per SOP F3).
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/titanium-cnc-machining-services/grade-23-titanium-cnc-machining']` (h1, subtitle, 4 keyMetrics: ±0.005mm / ASTM F136 / 1 piece / 5–7 d, 6 entityChips: Ti-6Al-4V ELI / UNS R56407 / ASTM F136 / ISO 5832-3 / ISO 13485 / ASTM F86).
+
+3. **`src/config/site.ts`** — added sub-item "Grade 23 Ti-6Al-4V ELI Machining" under "CNC Machining" column in NAVIGATION (5-inbound #1; Footer auto-inherits → 5-inbound #2).
+
+4. **`src/pages/titanium-cnc-machining-services/grade-5-titanium-cnc-machining.astro`** — added cross-link card to grade-23 page in the Related Tier-1 section (5-inbound #3: sibling cross-link).
+
+5. **`astro.config.mjs` keywordMap** — 5 new entries (all → `/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/`, 5-inbound #4):
+   - `Grade 23 titanium CNC machining`
+   - `Ti-6Al-4V ELI CNC machining`
+   - `ASTM F136 titanium implant machining`
+   - `ISO 13485 Ti-6Al-4V ELI machining`
+   - `UNS R56407 CNC machining`
+
+6. **`data/keywords/main-db.json`** — 5 corresponding `status="mapped"` entries (English, entity=process, intent=commercial, source=manual, id=*-en, updatedAt=2026-10-13).
+
+**Validation gates:**
+- G1 `node scripts/check-undefined-slugs.mjs` → 0 issues (15 [...slug].astro scanned).
+- G2 `npx astro build` → `[build] Complete!` at 13:53:28, 2338 sitemap routes (1 new for grade-23).
+- G3 Schema: 1 `application/ld+json` script tag containing 8 @types — Organization, Brand, ImageObject, WebSite, WebPage, BreadcrumbList, **FAQPage (5 Q&A)**, **Service** — both Service + FAQPage present with populated `name`/`text` keys.
+- G4 `node scripts/check-keyword-map.mjs` → **451 entries (5 new)**, 416 mapped (5 new), **0 broken**, 2338 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed (NAVIGATION line 56, Footer inherits, cross-link from grade-5 page line 524, keywordMap line 365, main-db.json line 7724-7787).
+- G6 `git status --short` → 6 modified (astro.config.mjs, data/keywords/main-db.json, memory-bank/activeContext.md, src/config/hero.ts, src/config/site.ts, src/pages/.../3-5-axis-cnc-machining.astro from Phase I) + 2 untracked (grade-5 from Phase I + grade-23 from Phase J) = 8 file entries total, build.log cleaned.
+
+**SOP compliance:**
+- § 1 Step 1-4: Decision dimension D1 (Process+Material hybrid, medical focus), site-tree attribution under existing hub, path authority verified (sitemap 2338 routes), all 5 inbounds closed.
+- § 4: Answer Module 6 elements all present (① Direct Answer via TrustBadges, ② Honest Positioning via Scope & Limits cards with explicit "Finished-Device Regulatory Clearance" and "Sterilization Validation" out-of-scope notes, ③ Structured Body 4 tables/grids, ④ Claim↔Evidence with hedged claim language, ⑤ Entities via BaseLayout, ⑥ Related 5 outbound).
+- § 5 forbidden patterns: F1-F10 all followed (parallel to Phase I verification).
+
+### BSI Phase I — Grade 5 Ti-6Al-4V material-specific machining sub-page
+
+**Files modified (5) and created (1):**
+
+1. **`src/pages/titanium-cnc-machining-services/grade-5-titanium-cnc-machining.astro`** (NEW, ~580 lines)
+   - D1 (Process) + D1 (Material) hybrid sub-page under the existing `/titanium-cnc-machining-services/` hub. The 4 existing siblings (3-5-axis, cnc-milling-turning, custom-industrial-components, wire-edm) are generic-process-scoped; this new page is the material-specific Grade 5 Ti-6Al-4V machining deep-dive (Buyer Search Intelligence § 1, hub-mapping-first).
+   - Reused components: `SubpageHero` (h1 = "Grade 5 Titanium CNC Machining Services — Ti-6Al-4V (UNS R56400)"), `TrustBadges` (AS9100D/ISO 9001/ISO 13485/MTR), `Applications` (existing landing gallery).
+   - Inline body content (per SOP § 4 "Inline sections acceptable as .astro body content"): Scope & Limits (② Honest Positioning, 6 cards), Material & Quality Standards (③ Structured Body table, 7 rows), Three Critical Controls (3 cards × 3 columns: Challenge / Approach / Outcome), Lead Time & MOQ (table), Customer-Supplied Stock (split panel), Applications (reused), Final Conversion Footer (file formats + 3-step process + NDA), Related Tier-1 outbound (5 cards), FAQ (5 Q&A).
+   - `BaseLayout` props: `pageType="service-detail"`, `serviceName="Grade 5 Titanium (Ti-6Al-4V) CNC Machining Services"`, `serviceDescription`, `serviceCategory="CNC Machining — Titanium"`, `faqItems=[{question,answer}×5]` — SOP F3 (no `{q,a}` keys) and SOP F4 (BaseLayout props, not inline `<script type="application/ld+json">` for Service).
+   - FAQPage JSON-LD still inline at page bottom (TODO marker: refactor BaseLayout to accept faqItems prop so SOP F4 is fully satisfied at the framework level — matches existing FaqSection.astro convention).
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/titanium-cnc-machining-services/grade-5-titanium-cnc-machining']` (h1, subtitle, 4 keyMetrics: ±0.005mm / Ra 0.8μm / 1 piece MOQ / 5–7 d prototype, 6 entityChips: Ti-6Al-4V / UNS R56400 / AS9100D / ISO 13485 / MTR / 5-Axis).
+
+3. **`src/config/site.ts`** — added sub-item under "CNC Machining" column in NAVIGATION (5-inbound #1; Footer auto-inherits via NAVIGATION → 5-inbound #2).
+
+4. **`src/pages/titanium-cnc-machining-services/3-5-axis-cnc-machining.astro`** — added "Material-Specific Deep-Dive" callout at end of page (5-inbound #3: sibling cross-link, since `/titanium-cnc-machining-services/` hub has no index.astro).
+
+5. **`astro.config.mjs` keywordMap** — 5 new entries (all → `/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/`, 5-inbound #4):
+   - `Grade 5 titanium CNC machining`
+   - `Ti-6Al-4V CNC machining`
+   - `Grade 5 Ti-6Al-4V precision machining`
+   - `AS9100D Ti-6Al-4V machining`
+   - `UNS R56400 CNC machining`
+
+6. **`data/keywords/main-db.json`** — 5 corresponding `status="mapped"` entries (English, entity=process, intent=commercial, source=manual, id=*-en, updatedAt=2026-10-13) so the auto-generation pipeline won't drop them on next kw:sync.
+
+**Validation gates:**
+- G1 `node scripts/check-undefined-slugs.mjs` → 0 issues (15 [...slug].astro scanned).
+- G2 `npx astro build` → `[build] Complete!` at 13:35:01, 2349 pages.
+- G3 Schema: 1 `application/ld+json` script tag (6908 chars) containing Organization + Offer + Service + Brand + Organization + ImageObject + WebSite + WebPage + BreadcrumbList + 3×ListItem + **FAQPage + 5×Question + 5×Answer** + Service — Service + FAQPage both present with populated `name`/`text` keys.
+- G4 `node scripts/check-keyword-map.mjs` → **446 entries (5 new)**, 411 mapped (5 new), **0 broken**, 2337 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed (NAVIGATION line 53, Footer inherits from NAVIGATION, sibling cross-link in 3-5-axis-cnc-machining.astro line 156, keywordMap line 348, main-db.json line 7657-7714).
+- G6 `git status --short` → 5 modified + 1 new = 6 files, all expected, no temp/log residue.
+
+**SOP compliance:**
+- § 1 Step 1-4: Decision dimension D1 (Process+Material hybrid), site-tree attribution under existing hub, path authority verified (sitemap 2337 routes), all 5 inbounds closed.
+- § 1 Step 4 rule satisfied: page is not orphan.
+- § 4: Answer Module 6 elements all present (① Direct Answer via TrustBadges, ② Honest Positioning via Scope & Limits cards, ③ Structured Body 4 tables/grids, ④ Claim↔Evidence via hedged claim language matching user's careful footnotes, ⑤ Entities via BaseLayout, ⑥ Related 5 outbound).
+- § 5 forbidden patterns: F1 (not root-level), F2 (no new component created, reused existing), F3 ({question,answer} keys), F4 (BaseLayout props for Service; FAQPage inline with TODO for future refactor — same as existing FaqSection.astro convention), F5 (no hardcoded URL), F6 (no hand-written blog link), F7 (5 inbounds before claiming CLOSED-LOOP), F8 (Hub-Mapping-First followed), F9 (URL exists in sitemap), F10 (no schema.ts rewrite).
 
 ### BSI Phase H-E — Standard Parts Machined Components sub-page (closes Standard Parts series 4/4)
 

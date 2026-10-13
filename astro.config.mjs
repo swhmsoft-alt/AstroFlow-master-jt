@@ -343,6 +343,170 @@ export default defineConfig({
           "titanium filtration mesh": {
             "href": "/mill-products/mesh/"
           },
+          // BSI 2026-10-13 · Grade 5 Ti-6Al-4V material-specific machining
+          // sub-page (5-inbound #4: keywordMap)
+          "Grade 5 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/"
+          },
+          "Ti-6Al-4V CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/"
+          },
+          "Grade 5 Ti-6Al-4V precision machining": {
+            "href": "/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/"
+          },
+          "AS9100D Ti-6Al-4V machining": {
+            "href": "/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/"
+          },
+          "UNS R56400 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 23 Ti-6Al-4V ELI material-specific machining
+          // sub-page (5-inbound #4: keywordMap)
+          "Grade 23 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/"
+          },
+          "Ti-6Al-4V ELI CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/"
+          },
+          "ASTM F136 titanium implant machining": {
+            "href": "/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/"
+          },
+          "ISO 13485 Ti-6Al-4V ELI machining": {
+            "href": "/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/"
+          },
+          "UNS R56407 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 2 CP-Ti material-specific machining
+          // sub-page (5-inbound #4: keywordMap)
+          "Grade 2 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/"
+          },
+          "CP-Ti CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/"
+          },
+          "ASTM B348 titanium bar machining": {
+            "href": "/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/"
+          },
+          "titanium chemical processing machining": {
+            "href": "/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/"
+          },
+          "UNS R50400 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 9 Ti-3Al-2.5V material-specific machining
+          // sub-page (5-inbound #4: keywordMap)
+          "Grade 9 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/"
+          },
+          "Ti-3Al-2.5V CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/"
+          },
+          "AMS 4943 titanium hydraulic tube machining": {
+            "href": "/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/"
+          },
+          "titanium aerospace hydraulic fitting machining": {
+            "href": "/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/"
+          },
+          "UNS R56320 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 4 CP-Ti material-specific machining
+          "Grade 4 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-4-titanium-cnc-machining/"
+          },
+          "CP-Ti Grade 4 machining": {
+            "href": "/titanium-cnc-machining-services/grade-4-titanium-cnc-machining/"
+          },
+          "ASTM B348 Grade 4 bar machining": {
+            "href": "/titanium-cnc-machining-services/grade-4-titanium-cnc-machining/"
+          },
+          "high-strength CP-Ti structural machining": {
+            "href": "/titanium-cnc-machining-services/grade-4-titanium-cnc-machining/"
+          },
+          "UNS R50700 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-4-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 7 Ti-0.2Pd material-specific machining
+          "Grade 7 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/"
+          },
+          "Ti-0.2Pd CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/"
+          },
+          "palladium-stabilized titanium machining": {
+            "href": "/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/"
+          },
+          "titanium reducing-acid service machining": {
+            "href": "/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/"
+          },
+          "UNS R52400 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 12 Ti-0.3Mo-0.8Ni material-specific machining
+          "Grade 12 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/"
+          },
+          "Ti-0.3Mo-0.8Ni CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/"
+          },
+          "improved CP-Ti machining": {
+            "href": "/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/"
+          },
+          "titanium hot-brine service machining": {
+            "href": "/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/"
+          },
+          "UNS R53400 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 21 Ti-15Mo-3Nb-3Al beta material-specific machining
+          "Grade 21 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-21-titanium-cnc-machining/"
+          },
+          "Ti-15Mo-3Nb-3Al CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-21-titanium-cnc-machining/"
+          },
+          "beta titanium alloy machining": {
+            "href": "/titanium-cnc-machining-services/grade-21-titanium-cnc-machining/"
+          },
+          "AMS 4915 titanium plate machining": {
+            "href": "/titanium-cnc-machining-services/grade-21-titanium-cnc-machining/"
+          },
+          "UNS R58210 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-21-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 6 Ti-5Al-2.5Sn alpha material-specific machining
+          "Grade 6 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/"
+          },
+          "Ti-5Al-2.5Sn CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/"
+          },
+          "alpha titanium alloy machining": {
+            "href": "/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/"
+          },
+          "AMS 4910 titanium plate machining": {
+            "href": "/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/"
+          },
+          "UNS R54520 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/"
+          },
+          // BSI 2026-10-13 · Grade 8 Ti-3Al-2.5V + 0.05Pd material-specific machining
+          "Grade 8 titanium CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/"
+          },
+          "Ti-3Al-2.5V + 0.05Pd CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/"
+          },
+          "palladium-stabilized Grade 9 machining": {
+            "href": "/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/"
+          },
+          "AMS 4943 Pd-variant hydraulic tube machining": {
+            "href": "/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/"
+          },
+          "UNS R56323 CNC machining": {
+            "href": "/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/"
+          },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
           },

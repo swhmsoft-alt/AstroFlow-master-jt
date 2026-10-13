@@ -1,0 +1,166 @@
+---
+/**
+ * Grade 12 Titanium CNC Machining Services — Ti-0.3Mo-0.8Ni (UNS R53400)
+ *
+ * BSI Phase O — "improved" CP-Ti for hot brine, chloride, and reducing-acid
+ * service. Sits between Grade 2/7 and Grade 5 in strength; weldable and
+ * cold-formable like CP-Ti but with significantly better crevice and hot-
+ * brine corrosion than unalloyed grades.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const pageTitle = 'Grade 12 Titanium CNC Machining Services | Ti-0.3Mo-0.8Ni (UNS R53400)';
+const pageDescription = 'Precision Grade 12 "improved" titanium (Ti-0.3Mo-0.8Ni, UNS R53400) CNC machining services for hot-brine / chloride / chemical processing applications. ASTM B348 / B265 / B338 controlled process, MTR-supported traceability.';
+const canonicalUrl = 'https://cnc.bozemetal.com/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/';
+
+const heroKey = '/titanium-cnc-machining-services/grade-12-titanium-cnc-machining';
+
+const faqItems = [
+  { question: 'What is Grade 12 titanium and when is it used over Grade 2?', answer: 'Grade 12 is an "improved" CP-Ti alloy (UNS R53400) with small molybdenum (~0.3%) and nickel (~0.8%) additions. It retains CP-Ti weldability and cold-formability while offering roughly 50% higher strength than Grade 2 and significantly better crevice / hot-brine corrosion resistance. The trade-off vs Grade 5 is lower strength but better weldability, lower cost, and better performance in hot chloride brines.' },
+  { question: 'Is Grade 12 weldable and formable like Grade 2?', answer: 'Yes. The Mo and Ni additions are small enough that mechanical and fabrication behavior is essentially the same as Grade 2 — cold-forming, hot-forming, machining, and welding all use the same procedures. The alloy is often specified specifically because it welds well and resists hot-brine crevice attack.' },
+  { question: 'Where is Grade 12 used instead of Grade 2 / 7?', answer: 'Grade 12 is the workhorse for chemical processing, oil-and-gas, and power-generation applications where hot brine, chloride, or mildly reducing environments would attack Grade 2 but Grade 7 chemistry is unnecessary. Common uses: condenser and heat-exchanger tube, vessel and column internals, brine-handling piping, pulp-and-paper bleach stages, hydrometallurgical vessels.' },
+  { question: 'What surface finish preserves Grade 12 corrosion resistance?', answer: 'A clean, oxide-intact, contamination-free surface is the basis for Grade 12 corrosion resistance, identical to Grade 2. Iron, carbon-steel, or abrasive embedment can seed pitting and crevice attack. ASTM B600 alkaline cleaning + acid pickling is scheduled per the agreed inspection plan.' },
+  { question: 'What is the minimum order quantity for a Grade 12 prototype?', answer: 'A 1-piece minimum order quantity is supported. Indicative prototype lead time is 5–7 working days, subject to drawing completeness, material availability, and inspection scope.' },
+];
+
+const faqJsonLd = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((it) => ({ '@type': 'Question', name: it.question, acceptedAnswer: { '@type': 'Answer', text: it.answer } })) };
+
+const standards = [
+  { code: 'ASTM B348', scope: 'Titanium and titanium alloy bars and billets (Grade 12 form)', application: 'Verify grade, condition, dimensions, and Mo / Ni limits.' },
+  { code: 'ASTM B265', scope: 'Titanium and titanium alloy strip, sheet, and plate (Grade 12 form)', application: 'Verify grade and Mo / Ni limits for plate / sheet.' },
+  { code: 'ASTM B338', scope: 'Seamless and welded titanium and titanium alloy tubes (Grade 12 form)', application: 'Condenser and heat-exchanger tube applications.' },
+  { code: 'ASTM B861', scope: 'Titanium and titanium alloy seamless pipe (Grade 12 form)', application: 'Seamless pipe applications including brine and chemical service.' },
+  { code: 'ASTM B600', scope: 'Surface preparation of titanium and titanium alloy surfaces', application: 'Pickling / passivation reference.' },
+];
+
+const criticalControls = [
+  { title: 'Mo / Ni Content Verification and Mill Traceability', challenge: 'The hot-brine and crevice-corrosion advantage of Grade 12 depends on the small Mo + Ni additions. A bar that drifts below specification behaves like Grade 2 in hot chloride. The MTR must show both elements within the ASTM B348 limits.', approach: 'We confirm the MTR chemistry against the customer specification at incoming inspection. Customer-supplied material is accepted only with a complete MTR showing the Mo and Ni values.', outcome: 'Verified Mo + Ni content at the agreed acceptance range, with full chemistry traceability.' },
+  { title: 'Hot-Brine / Crevice-Corrosion Performance Preservation', challenge: 'Grade 12 is specified specifically for its hot-brine and crevice-corrosion resistance. Surface contamination, embedded iron, or a damaged passive film can undermine the crevice advantage and lead to premature failure in stagnant brine conditions.', approach: 'We segregate Grade 12 work from carbon-steel / 316L where the order scope requires it, use dedicated tooling, and schedule ASTM B600 surface preparation per the agreed inspection plan.', outcome: 'Surface free of iron and abrasive embedment, with the passive film intact at the point of shipment.' },
+  { title: 'Weldability and Weld-Prep Geometry', challenge: 'Grade 12 weldments retain CP-Ti-like weldability, but the Mo / Ni additions can shift the optimum weld parameter window. Improper shielding-gas coverage or contamination at the joint can degrade weld-metal corrosion resistance in the same way it does for Grade 2.', approach: 'We machine weld preps to ASME IX / AWS D1.6 geometry, schedule surface preparation before welding, and confirm the WPS / WPQ reference at the RFQ stage. Cutting parameters and weld-prep tolerance are matched to the Grade 2 / Grade 7 baseline.', outcome: 'Weld prep geometry and joint surface condition that meet the agreed WPS tolerance band, with welding and WPS / WPQ qualification remaining the customer responsibility.' },
+];
+
+const relatedLinks = [
+  { name: '3/4/5-Axis Titanium Machining', desc: 'Axis configuration selection for Grade 12 components', href: '/titanium-cnc-machining-services/3-5-axis-cnc-machining/' },
+  { name: 'Grade 2 CP-Ti Machining', desc: 'Base CP-Ti grade for general chemical service', href: '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/' },
+  { name: 'Grade 7 Ti-0.2Pd Machining', desc: 'Palladium-stabilized counterpart for reducing acid', href: '/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/' },
+  { name: 'Grade 12 Ti-0.3Mo-0.8Ni Material Data', desc: 'Composition, mechanical properties, and forms', href: '/materials/grade-12/' },
+  { name: 'Submit Grade 12 RFQ', desc: 'Upload drawing for DFM engineering review', href: '/rfq/' },
+];
+---
+
+<BaseLayout pageType="service-detail" title={pageTitle} description={pageDescription} canonicalURL={canonicalUrl} serviceName="Grade 12 Improved Titanium (Ti-0.3Mo-0.8Ni) CNC Machining Services" serviceDescription="Precision CNC machining of Grade 12 improved titanium (Ti-0.3Mo-0.8Ni, UNS R53400) for hot-brine, chloride, and chemical processing applications. ASTM B348 / B265 / B338 controlled process with MTR-supported Mo / Ni verification and ASTM B600 surface preparation." serviceCategory="CNC Machining — Corrosion-Resistant Titanium" faqItems={faqItems}>
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a><meta itemprop="position" content="1" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/titanium-cnc-machining-services/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">Titanium CNC Machining Services</span></a><meta itemprop="position" content="2" /><svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Grade 12 Ti-0.3Mo-0.8Ni</span><meta itemprop="position" content="3" /></li></ol></div></nav>
+
+  <SubpageHero h1={HERO_CONFIG[heroKey].h1} subtitle={HERO_CONFIG[heroKey].subtitle} badge={HERO_CONFIG[heroKey].badge} badgeIcon="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 001.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" keyMetrics={HERO_CONFIG[heroKey].keyMetrics} entityChips={HERO_CONFIG[heroKey].entityChips} />
+
+  <TrustBadges />
+
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering Compliance</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Hot-Brine / Chloride Material Compliance Starts with the Correct Specification</h2>
+        <p class="mt-4 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">For chemical processing, oil-and-gas, and power-generation applications in hot brine, chloride, or mildly reducing environments, the material specification — and in particular the Mo and Ni content — is the first control point.</p>
+      </header>
+      <div class="overflow-x-auto rounded-2xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+        <table class="w-full text-left">
+          <thead><tr style="background: linear-gradient(135deg, var(--theme-primary) 12%, var(--theme-surface));"><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Standard / Specification</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Material or Quality Scope</th><th class="px-5 py-4 text-sm font-bold uppercase tracking-wider" style="color: var(--theme-text);">Application in Procurement</th></tr></thead>
+          <tbody>
+            {standards.map((s) => (<tr style="background: var(--theme-surface); border-top: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><td class="px-5 py-4 align-top"><span class="font-bold text-sm" style="color: var(--theme-primary);">{s.code}</span></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{s.scope}</p></td><td class="px-5 py-4 align-top"><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.application}</p></td></tr>))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Technical Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Three Critical Controls for Grade 12 Ti-0.3Mo-0.8Ni Machining</h2>
+      </header>
+      <div class="space-y-6">
+        {criticalControls.map((c, i) => (
+          <article class="rounded-2xl border p-6 md:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start gap-4 mb-5">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl text-sm font-black shrink-0" style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, #000)); color: #0F172A;">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="text-xl md:text-2xl font-bold leading-snug" style="color: var(--theme-text);">{c.title}</h3>
+            </div>
+            <div class="grid gap-5 md:grid-cols-3">
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Challenge</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.challenge}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Our Machining Approach</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.approach}</p></div>
+              <div><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">Engineering Outcome</p><p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{c.outcome}</p></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Applications />
+
+  <section class="relative" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-4xl mx-auto rounded-3xl border p-8 md:p-10 text-center" style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 4%, var(--theme-surface))); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Submit Your Engineering Package</p>
+        <h2 class="text-2xl md:text-3xl font-bold leading-tight mb-3" style="color: var(--theme-text);">Have a Grade 12 Ti-0.3Mo-0.8Ni Component Ready for Manufacturing?</h2>
+        <p class="text-base leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Send your drawing to initiate a technical review. Accepted file formats: STEP, STP, DXF. <strong>Target response: initial RFQ acknowledgment within 24 hours on working days.</strong> Mutual NDA available before technical file exchange.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Upload CAD/STEP for DFM Review<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></a>
+          <a href="/rfq/" class="inline-flex items-center justify-center gap-2 rounded-xl border px-6 py-3 text-sm font-bold" style="border-color: var(--theme-primary); color: var(--theme-primary);">Request a Grade 12 Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden" style="background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <header class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Related Capabilities</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Continue the Engineering Review</h2>
+      </header>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {relatedLinks.map((r) => (
+          <a href={r.href} class="rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{r.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{r.desc}</p>
+            <p class="mt-4 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">{r.href} →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="relative py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Grade 12 Ti-0.3Mo-0.8Ni CNC Machining — Engineering FAQ</h2>
+      </header>
+      <div class="max-w-4xl mx-auto space-y-4">
+        {faqItems.map((it, idx) => (
+          <details class="group rounded-xl overflow-hidden border" style="background-color: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);" open={idx === 0}>
+            <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-bold text-base md:text-lg list-none" style="color: var(--theme-text);">
+              <span class="flex items-start">
+                <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg mr-4 shrink-0 text-xs font-bold" style="background-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{idx + 1}</span>
+                <span class="leading-snug">{it.question}</span>
+              </span>
+              <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-sm md:text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{it.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+</BaseLayout>
