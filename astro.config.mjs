@@ -528,6 +528,21 @@ export default defineConfig({
           "Custom Industrial Components": {
             "href": "/titanium-cnc-machining-services/custom-industrial-components/"
           },
+          "Titanium CNC Machined Components": {
+            "href": "/standard-parts/machined-components/"
+          },
+          "Custom CNC Machined Titanium Components": {
+            "href": "/standard-parts/machined-components/"
+          },
+          "Titanium Mating Flanges and Manifold Blocks": {
+            "href": "/standard-parts/machined-components/"
+          },
+          "Titanium Sensor and Instrument Housings": {
+            "href": "/standard-parts/machined-components/"
+          },
+          "Titanium Medical Implant Machining": {
+            "href": "/standard-parts/machined-components/"
+          },
           "deburring of components": {
             "href": "/products/capabilities/deburring-edge-rounding/"
           },

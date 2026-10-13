@@ -256,6 +256,19 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase H-E · Standard Parts Machined Components sub-page (closes the standard-parts sub-page set)
+  '/standard-parts/machined-components': {
+    h1: 'Titanium CNC Machined Standard Components | Custom to Print, ISO 2768, AS9100D',
+    subtitle: 'Custom CNC-machined titanium components to print in CP Gr.2 / Gr.5 (Ti-6Al-4V) / Gr.23 (Ti-6Al-4V ELI). Mating flanges, manifold blocks, sensor housings, pump and valve bodies, structural brackets, and medical implant prototypes. Tolerance to ISO 2768-m (and -k upgrade) with 5-axis contour per ASME Y14.5. AS9100D QMS with full CMM, surface-finish, and PMI inspection. Prototype 7-10 days, production 3-6 weeks.',
+    badge: 'ISO 2768-m/k · ASME Y14.5 · AS9100D · ASTM B348 · ASTM F67/F136',
+    keyMetrics: [
+      { value: '3 / 4 / 5-Axis + Wire EDM', label: 'CNC capacity' },
+      { value: '±0.01 mm', label: 'Tightest turning' },
+      { value: 'Ra 0.4 µm', label: 'Mirror finish on request' },
+      { value: '7-10 d / 3-6 w', label: 'Prototype / production' },
+    ],
+    entityChips: ['Gr.2 (CP)', 'Gr.5 (Ti-6Al-4V)', 'Gr.23 (ELI)', 'Custom to print', 'AS9100D'],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',

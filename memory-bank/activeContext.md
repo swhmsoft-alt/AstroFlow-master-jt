@@ -1,7 +1,60 @@
 # Active Context
 
-> **Last Updated:** 2026-10-12
-> **Current Focus:** **BSI Phase H-D — `/standard-parts/fasteners/` sub-page shipped.** Third Titanium Standard Parts sub-page (after H-B flanges, H-C pipe-fittings). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green, all 6 gates pass.
+> **Last Updated:** 2026-10-13
+> **Current Focus:** **BSI Phase H-E — `/standard-parts/machined-components/` sub-page shipped. Standard Parts series (4/4) CLOSED-LOOP.** Fourth and final Titanium Standard Parts sub-page (after H-B flanges, H-C pipe-fittings, H-D fasteners). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green (2349 pages in 83.37s), all 6 gates pass.
+
+---
+
+## Recent Activity (2026-10-13)
+
+### BSI Phase H-E — Standard Parts Machined Components sub-page (closes Standard Parts series 4/4)
+
+**Files modified (3) and created (1):**
+
+1. **`src/pages/standard-parts/machined-components.astro`** (NEW, 367 lines)
+   - 10 body sections, 9 data arrays: `gradeMatrix` 3 (Gr.2 CP, Gr.5 Ti-6Al-4V, Gr.23 ELI), `specAttributes` 12 (tolerance, material, surface, process, inspection, mill cert), `pipeline` 6 (drawing review -> PMI -> CNC/EDM -> heat treat -> surface -> CMM), `boundaries` 3 (thin-wall, cutting params, inspection scope), `supplyChain` 3 (capacity, stock/lead, witness), `comparisonRows` 4 (Ti vs 316L vs 6061), `faqItems` 6 (tolerance, 5-axis, surface, medical, lead time, small features), `relatedLinks` 5, `itemListItems` 5.
+   - Honest-positioning (5 cards): no primary melting, no blanket aerospace, no blanket medical, no 24h quote, tight-tolerance scope.
+   - Two ImageTextSplit modules: mating flanges / manifold blocks (Gr.2 chemical) and structural brackets / housings / medical implant (Gr.5/Gr.23).
+   - Uses `productDeliveryLeadTime="7-10 days (prototype) / 2-4 weeks (small batch) / 3-6 weeks (production)"` (G-2.2 mechanism auto-emits Product + deliveryLeadTime).
+   - Sub-forms: mating flanges, manifold blocks, sensor housings, pump/valve bodies, structural brackets, medical implant prototypes.
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/standard-parts/machined-components']` (h1, subtitle, 4 keyMetrics including 3/4/5-Axis + Wire EDM / ±0.01 mm / Ra 0.4 µm / 7-10 d - 3-6 w, 5 entityChips including Gr.2 / Gr.5 / Gr.23 ELI / Custom to print / AS9100D). Placed after H-D fasteners entry.
+
+3. **`astro.config.mjs` keywordMap** — 5 new entries (all → `/standard-parts/machined-components/`):
+   - `Titanium CNC Machined Components`
+   - `Custom CNC Machined Titanium Components`
+   - `Titanium Mating Flanges and Manifold Blocks`
+   - `Titanium Sensor and Instrument Housings`
+   - `Titanium Medical Implant Machining`
+
+4. **`data/keywords/main-db.json`** — 1 new mapped entry: `titanium cnc machined components` (id: `titanium-cnc-machined-components-en`, status=mapped, targetUrl=`/standard-parts/machined-components/`, updatedAt 2026-10-13).
+
+**No changes to schema.ts or BaseLayout.astro** — `standard-part-detail` case was already implemented in Phase H-A with `CollectionPage` + `ItemList` + `Service` + `FAQPage` + `Product` + `deliveryLeadTime`, and the G-2.2 `productDeliveryLeadTime` prop auto-emits for this case. Hub index.astro already had the machined-components card linking to `/standard-parts/machined-components/` (line 155).
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `node node_modules/astro/astro.js build`: complete (2349 pages in 83.37s, 11:47:36).
+- G3 Schema: `CollectionPage` + `ItemList` + `ListItem` + `BreadcrumbList` + `FAQPage` + `Answer` + `Offer` + `Brand` + `ImageObject` all present in `dist/standard-parts/machined-components/index.html`.
+- G4 `check-keyword-map.mjs`: **441 entries** (5 new), 406 mapped (1 new), **0 broken**, 2336 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed (hub link line 155, keywordMap 5 entries, main-db.json 1 new mapped, BREADCRUMB_LABELS pre-reserved line 789, route-availability pre-reserved line 113, detectPageType pre-reserved line 744).
+- G6 `git status --short`: 3 modified + 1 new = 4 files, all temp/log residue deleted (32 files cleaned).
+
+**Files changed (4):**
+  A src/pages/standard-parts/machined-components.astro (NEW, 367 lines)
+  M astro.config.mjs (5 new keywordMap entries)
+  M data/keywords/main-db.json (1 new mapped entry)
+  M src/config/hero.ts (1 new HERO_CONFIG entry)
+
+**Standard Parts series status (after H-E):** 4/4 CLOSED-LOOP
+- /standard-parts/ (H-A hub) ✅
+- /standard-parts/flanges/ (H-B) ✅
+- /standard-parts/pipe-fittings/ (H-C) ✅
+- /standard-parts/fasteners/ (H-D) ✅
+- /standard-parts/machined-components/ (H-E) ✅
+
+Ref: BSI Phase H-E (2026-10-13). Titanium Standard Parts sub-page status: **4/4 live (CLOSED-LOOP)**. This closes the standard-parts vertical for procurement-grade B2B titanium standard parts and components.
+
+**Build execution note (lesson learned):** Build took 83.37s, which exceeded the `run_commands` tool's 60s sync timeout. Future long-running build commands must be detached via a wrapper PowerShell script that writes a PID file and exits immediately, then poll the PID for completion. Synchronous `npx astro build` invocations will be killed by ^C at ~60s. Workaround pattern: `Start-Process powershell.exe -WindowStyle Hidden -File temp/build_detach.ps1`, then `Get-Process -Id <pid>` to poll.
 
 ---
 
