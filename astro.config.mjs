@@ -760,6 +760,22 @@ export default defineConfig({
           "ASTM B381 titanium flange": {
             "href": "/standard-parts/flanges/"
           },
+          // BSI Phase H-C · Standard Parts Pipe Fittings sub-page (5-inbound #4)
+          "titanium pipe fittings": {
+            "href": "/standard-parts/pipe-fittings/"
+          },
+          "titanium elbow": {
+            "href": "/standard-parts/pipe-fittings/"
+          },
+          "ASME B16.9 pipe fittings": {
+            "href": "/standard-parts/pipe-fittings/"
+          },
+          "ASTM B363 pipe fittings": {
+            "href": "/standard-parts/pipe-fittings/"
+          },
+          "titanium buttweld fittings": {
+            "href": "/standard-parts/pipe-fittings/"
+          },
           "Titanium Forging": {
             "href": "/titanium-forming-heavy-manufacturing/titanium-forging/"
           },

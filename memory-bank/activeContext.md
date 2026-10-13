@@ -1,7 +1,48 @@
 # Active Context
 
 > **Last Updated:** 2026-10-12
-> **Current Focus:** **BSI Phase H-B — `/standard-parts/flanges/` sub-page shipped.** First Titanium Standard Parts sub-Hub under `/standard-parts/` (Phase H Hub). Flanges is the first of 4 planned sub-pages (pipe-fittings / fasteners / machined-components). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green, all 6 gates pass.
+> **Current Focus:** **BSI Phase H-C — `/standard-parts/pipe-fittings/` sub-page shipped.** Second Titanium Standard Parts sub-page (after H-B flanges). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green, all 6 gates pass.
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase H-C — Standard Parts Pipe Fittings sub-page
+
+**Files modified (3) and created (1):**
+
+1. **`src/pages/standard-parts/pipe-fittings.astro`** (NEW, 328 lines, 41 720 chars)
+   - 13 sections, 6 data arrays (gradeMatrix 5, specAttributes 11, pipeline 6, boundaries 3, supplyChain 3, comparisonRows 4) + 6 FAQ + 5 related + 5 ItemList.
+   - Honest-positioning (5 cards): no primary melting, no blanket aerospace, no blanket medical, no 24h quote, NACE / NORSOK scope.
+   - Uses `productDeliveryLeadTime="5-7 days (stock) / 2-3 weeks (custom)"` (G-2.2 mechanism auto-emits Product + deliveryLeadTime).
+   - Sub-forms: elbows (90 LR / 90 SR / 45 / 180 return), tees (equal / reducing), reducers (concentric / eccentric), caps, stub ends, crosses, laterals.
+   - Standards: ASME B16.9, ASTM B363, ASME SB363, MSS SP-43, ASME Section VIII.
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/standard-parts/pipe-fittings']` (h1, subtitle, 4 keyMetrics, 6 entityChips including ASME B16.9 / ASTM B363 / ASME SB363 / MSS SP-43).
+
+3. **`astro.config.mjs` keywordMap** — 5 new entries:
+   - `titanium pipe fittings`, `titanium elbow`, `ASME B16.9 pipe fittings`, `ASTM B363 pipe fittings`, `titanium buttweld fittings` — all → `/standard-parts/pipe-fittings/`.
+
+4. **`data/keywords/main-db.json`** — new mapped entry `titanium pipe fittings` (transactional, targetUrl → `/standard-parts/pipe-fittings/`, updatedAt 2026-10-12).
+
+**No changes to schema.ts or BaseLayout.astro** — `standard-part-detail` case was already implemented in Phase H-A with `CollectionPage` + `ItemList` + `Service` + `FAQPage`, and the G-2.2 `productDeliveryLeadTime` prop auto-emits `Product` + `deliveryLeadTime` for this case. Hub index.astro already had the pipe-fittings card linking to `/standard-parts/pipe-fittings/` (line 117).
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `npx astro build`: complete (09:38:14).
+- G3 Schema: `Product` entity with `deliveryLeadTime: "5-7 days (stock) / 2-3 weeks (custom)"` + 5 ItemList + 6 FAQ + CollectionPage + Service all present in `dist/standard-parts/pipe-fittings/index.html`.
+- G4 `check-keyword-map.mjs`: **431 entries** (5 new), 405 mapped (1 new), **0 broken**, 2334 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed for pipe-fittings (hub link line 117, keywordMap 5 entries, main-db.json new mapped, BREADCRUMB_LABELS pre-reserved line 787, route-availability pre-reserved line 111).
+- G6 `git status --short`: 3 modified + 1 new = 4 files, no temp/log residue.
+
+**Files changed (4):**
+  M astro.config.mjs (5 new keywordMap entries)
+  M data/keywords/main-db.json (1 new mapped entry)
+  M src/config/hero.ts (1 new HERO_CONFIG entry)
+  A src/pages/standard-parts/pipe-fittings.astro (NEW, 328 lines)
+
+Ref: BSI Phase H-C (2026-10-12). Titanium Standard Parts sub-page status: 2/4 live (flanges / pipe-fittings; fasteners / machined-components are still deferred to H-D / H-E).
+
 
 ---
 

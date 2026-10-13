@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/standard-parts/pipe-fittings'];
+const pageTitle = 'Titanium Pipe Fittings | ASME B16.9 / ASTM B363 | BOZE Metal';
+const pageDescription = 'Industrial titanium butt-weld pipe fittings in Gr.1 / Gr.2 / Gr.5 (Ti-6Al-4V) / Gr.7 (Ti-Pd) / Gr.12 (Ti-0.3Mo-0.8Ni). NPS 1/2 to 24 inch, SCH 5S to SCH 160. Elbows (90 LR / 90 SR / 45), tees (equal / reducing), reducers (concentric / eccentric), caps, stub ends, crosses. Forged to ASME B16.9 and ASTM B363. Standard stock 5-7 days, custom 2-3 weeks.';
+const canonicalUrl = 'https://cnc.bozemetal.com/standard-parts/pipe-fittings/';
+
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial', form: 'Elbows, tees, reducers, caps, stub ends', use: 'High-formability fittings for chemical and biomedical service, deepest drawing and cold-forming operations' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'Elbows, tees, reducers, caps, stub ends', use: 'Workhorse CP fittings for chemical, chlor-alkali, and seawater piping' },
+  { family: 'Aerospace a-b', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V, a-b alloy', form: 'Elbows, tees, reducers, caps, stub ends', use: 'High-pressure and high-temperature service, aerospace and subsea headers' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12-0.25% Pd', form: 'Elbows, tees, reducers, caps, stub ends', use: 'Reducing-acid (HCl, dilute H2SO4) and chlor-alkali membrane electrolyzer piping' },
+  { family: 'Corrosion-resistant', grade: 'Grade 12 (Ti-0.3Mo-0.8Ni)', uns: 'R53400', composition: 'CP + 0.3% Mo, 0.8% Ni', form: 'Elbows, tees, reducers, caps, stub ends', use: 'Hot brine, seawater, and MSF / MED desalination piping' },
+];
+
+const specAttributes = [
+  { attr: 'Size range (NPS)', value: 'NPS 1/2 to NPS 24 (larger on request)', std: 'ASME B16.9' },
+  { attr: 'Wall thickness (schedule)', value: 'SCH 5S, 10S, 40S, 80S, 160, XXS; custom heavy wall available', std: 'ASME B36.19M' },
+  { attr: 'Fitting types', value: 'Elbows 90 LR / 90 SR / 45 / 180 return; tees equal / reducing; reducers concentric / eccentric; caps; stub ends; crosses; laterals', std: 'ASME B16.9' },
+  { attr: 'Stub end type', value: 'Type A (lap-joint), Type B (lap-joint with backing), Type C (butt-weld)', std: 'MSS SP-43' },
+  { attr: 'Bending radius (elbow)', value: 'LR = 1.5 x D (long radius), SR = 1.0 x D (short radius)', std: 'ASME B16.9' },
+  { attr: 'Forging standard', value: 'ASTM B363 (wrought) / ASME SB363', std: 'ASTM B363' },
+  { attr: 'Dimensional standard', value: 'ASME B16.9 (butt-weld), MSS SP-43 (stub ends)', std: 'ASME B16.9' },
+  { attr: 'Tensile strength (wrought)', value: 'Gr.2 >= 345 MPa, Gr.5 >= 895 MPa, Gr.7 >= 345 MPa, Gr.12 >= 483 MPa', std: 'ASTM E8' },
+  { attr: 'Wall thinning limit (elbow)', value: 'Plus or minus 10 percent of nominal wall thickness at the intrados (per ASME B16.9)', std: 'ASME B16.9' },
+  { attr: 'NDT', value: '100 percent RT per ASTM E1742; PT on weld prep; hydrostatic test; PMI verification', std: 'ASTM E1742, ASME Sec. V' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; 3.2 with independent witness on request', std: 'EN 10204' },
+];
+
+const pipeline = [
+  { n: '01', title: 'Drawing review and stress simulation', body: 'Engineering reviews the customer isometric and stress analysis, validates the bend radius and wall-thickness compensation factor, and confirms the forming process (hot-push vs hydraulic bulge vs press) for the specified NPS and schedule before raw material is released.' },
+  { n: '02', title: 'Raw material cutting and billet prep', body: 'For seamless elbows and tees, hot-push billet or seamless tube is cut to length and induction heated. For welded fittings, plate is cut to pattern, edge-prepped, and rolled to required geometry. All material is verified against ASTM B363 chemistry before forming.' },
+  { n: '03', title: 'Hot-push, hydraulic bulge, or press forming', body: 'Elbows are hot-pushed on a medium-frequency induction mandrel pusher; tees and reducers are formed by hydraulic bulge on a split die; stub ends are cold-formed from plate and machined. Wall-thinning at the intrados is held to within ASME B16.9 plus or minus 10 percent of nominal wall.' },
+  { n: '04', title: 'Vacuum anneal and stress relief', body: 'All formed fittings are vacuum-annealed to relieve cold-work and forming residual stress. The cycle is tuned per grade to restore ductility without grain coarsening. Dimensional stability is verified by pre- and post-anneal CMM measurements.' },
+  { n: '05', title: 'CNC bevel machining and dimensional control', body: 'High-rigidity CNC lathes cut the butt-weld bevel per ASME B16.9 (default 37.5 degrees, with 30-deg and 0-deg options on request). Out-of-roundness is held to within 1 percent of nominal OD; wall-thickness is CMM-checked at 8 circumferential locations.' },
+  { n: '06', title: 'NDT, hydrostatic test, PMI, and packaging', body: '100 percent radiographic test (RT) per ASTM E1742, surface PT on bevel and weld-prep, hydrostatic test to 1.5 x design pressure, and positive-material-identification (PMI) by XRF. EN 10204 3.1 MTR is issued with chemistry, mechanical, and NDT records traceable to the originating heat.' },
+];
+
+const boundaries = [
+  { icon: '🌡️', title: 'High-temperature service ceiling', body: 'CP titanium (Gr.2) loses tensile strength progressively above 300 C. Gr.5 (Ti-6Al-4V) is the default for sustained service above 300 C up to about 315 C. For service above 315 C, Gr.5 ELI or higher-temperature alloys are recommended; confirm at the RFQ stage.' },
+  { icon: '⚗️', title: 'Medium exclusion: dry chlorine and HF', body: 'Titanium must not be used in dry chlorine, anhydrous hydrogen fluoride, or high-concentration boiling phosphoric acid media. These cause rapid attack, hydrogen embrittlement, or violent corrosion. Use nickel-based or specific alloy alternatives for these services.' },
+  { icon: '🔧', title: 'Welding protection requirement', body: 'Field installation welding must use high-purity argon (>= 99.999 percent) trailing-shield and back-side purge. Any blue, gray, white, or powdery weld color indicates oxygen / nitrogen contamination; the affected zone must be removed and re-welded before commissioning.' },
+];
+
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity and MOQ', body: 'Forming capacity from NPS 1/2 to NPS 24 in SCH 5S through SCH 160. Engineering prototype sample supported down to 1 piece for custom geometries; production runs of several hundred pieces per heat are standard. Special alloy pulls and exotic dimensions are scheduled against the upstream-mill material campaign.' },
+  { icon: '📦', title: 'Stock and lead time', body: 'Standard stocked Gr.2 elbows, tees, reducers, caps in NPS 1/2 to 12 ship in 5-7 days. Non-standard schedule, exotic alloy, and large-diameter fittings run 2-3 weeks. Final lead time is confirmed at the RFQ stage.' },
+  { icon: '🗓️', title: 'Documentation and third-party witness', body: 'EN 10204 3.1 mill test report (chemistry, mechanical, NDT) is standard. 3.2 with independent witness from Lloyds, Bureau Veritas, DNV, or customer-appointed agencies is supported and arranged at the RFQ stage. PMI verification and hydrostatic test report are attached to each shipment.' },
+];
+
+const comparisonRows = [
+  { dim: 'Chloride corrosion resistance', ours: 'Immune to pitting, crevice, and chloride stress corrosion in seawater and brine', alt1: 'Susceptible to pitting above about 1000 ppm chloride; risk of chloride SCC', alt2: 'Liner integrity critical; debond or perforation risk on damage' },
+  { dim: 'Operating temperature ceiling', ours: 'About 315 C in Gr.5 ELI; about 300 C in Gr.2', alt1: 'About 400 C in 316L; risk of chloride SCC at 60-200 C', alt2: 'Limited by rubber or PTFE liner (about 100-200 C)' },
+  { dim: 'Service life (chlor-alkali or seawater)', ours: 'Decades; decades-long service with no replacement', alt1: '3-8 years; periodic local repair or replacement', alt2: '2-5 years; local delamination and perforation' },
+  { dim: 'LCC (life-cycle cost)', ours: 'Higher initial investment, decades of service with no maintenance', alt1: 'Lower initial cost, periodic replacement adds up', alt2: 'Moderate initial cost, frequent repair; liner risk' },
+];
+
+const faqItems = [
+  { question: 'How do you prevent inner wrinkling and outer wall thinning during hot-push of titanium elbows?', answer: 'By combining local medium-frequency induction heating with a mandrel limit pusher, the heating temperature gradient and the feed rate are tightly controlled so that the metal deforms uniformly in the circumferential direction. The mandrel limits the inner radius while the punch pushes the tube forward, holding wall-thinning to within ASME B16.9 plus or minus 10 percent of nominal wall thickness at the intrados.' },
+  { question: 'In chlor-alkali service, should I select Gr.2 (CP) or Gr.7 (Ti-Pd) titanium fittings?', answer: 'If the medium contains trace reducing acid or the geometry is in a crevice-corrosion high-risk zone (e.g. wet chlorine and hot brine headers), Gr.7 (Ti-Pd) is the default specification. The 0.12-0.25 percent Pd addition stabilizes the passive film in reducing environments and prevents under-deposit and gasket-face attack. CP Gr.2 remains the workhorse for oxidizing chloride media where crevice geometry is controlled.' },
+  { question: 'Can titanium pipe fittings be in direct contact with stainless or carbon steel supports?', answer: 'No. Direct metal-to-metal contact is strictly forbidden. Non-metallic insulating pads (PTFE, EPDM, or PVDF) must be placed between the titanium fitting and any carbon-steel or stainless-steel support. Direct contact causes galvanic corrosion of the ferrous member and surface carburization of the titanium, both of which lead to early failure.' },
+  { question: 'How is springback in cold-formed titanium fittings controlled?', answer: 'Multi-axis CNC press forming with closed-loop force feedback is used for cold-formed stub ends and concentric reducers. The press stroke is compensated in real time for springback using a strain-hardening model per grade; vacuum stress relief after forming removes residual stress to within plus or minus 0.5 percent dimensional drift.' },
+  { question: 'How is HAZ brittleness prevented during titanium fitting welding?', answer: 'Welding is performed under high-purity argon (>= 99.999 percent) trailing shield with simultaneous back-side purge. Interpass temperature is held below 150 C to limit oxygen, nitrogen, and hydrogen pickup. Post-weld vacuum stress relief is applied for thin-wall and high-pressure service; the resulting weld HAZ matches base-metal corrosion performance in standard ASTM B363 qualification testing.' },
+  { question: 'What is the lead time for custom non-standard titanium fittings?', answer: 'Custom non-standard fittings (special schedule, exotic alloy, custom geometry) are scheduled against the upstream-mill material campaign and the in-house forming lead time. Standard custom lead time is 2-3 weeks; large-diameter (NPS 20 and above) or multi-piece welded assemblies can run 4-6 weeks. Final lead time is confirmed at the RFQ stage.' },
+];
+
+const relatedLinks = [
+  { title: 'All Titanium Standard Parts', desc: 'Flanges, pipe fittings, fasteners, and CNC-machined standard components from one supplier.', href: '/standard-parts/' },
+  { title: 'Titanium Flanges', desc: 'Weld-neck, slip-on, blind, threaded, and lap-joint flanges to ASME B16.5 / ASTM B381.', href: '/standard-parts/flanges/' },
+  { title: 'Titanium Fasteners', desc: 'Bolts, nuts, screws, and threaded rods to DIN 912/933/931/934, ISO 4017/4762, and ASTM F467.', href: '/standard-parts/fasteners/' },
+  { title: 'Titanium Tubes and Pipes', desc: 'Seamless and welded tube and pipe to ASTM B338 / B861 / B862 for heat-exchanger and process-pipe service.', href: '/mill-products/tubes-pipes/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+];
+
+const itemListItems = [
+  { name: 'Titanium Butt-Weld Elbow (ASME B16.9)', url: 'https://cnc.bozemetal.com/standard-parts/pipe-fittings/#elbow' },
+  { name: 'Titanium Equal Tee and Reducing Tee (ASME B16.9)', url: 'https://cnc.bozemetal.com/standard-parts/pipe-fittings/#tee' },
+  { name: 'Titanium Concentric and Eccentric Reducer (ASME B16.9)', url: 'https://cnc.bozemetal.com/standard-parts/pipe-fittings/#reducer' },
+  { name: 'Titanium Pipe Cap and Lap-Joint Stub End (MSS SP-43)', url: 'https://cnc.bozemetal.com/standard-parts/pipe-fittings/#cap-stub' },
+  { name: 'Titanium Custom Forged or Welded Fitting (per drawing)', url: 'https://cnc.bozemetal.com/standard-parts/pipe-fittings/#custom' },
+];
+---
+
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Butt-Weld Pipe Fittings Mill-Standard Parts"
+  serviceDescription="Industrial titanium butt-weld pipe fittings (elbows 90 LR / 90 SR / 45, tees equal / reducing, reducers concentric / eccentric, caps, stub ends, crosses, laterals) in CP Gr.1 / Gr.2 / Gr.5 (Ti-6Al-4V) / Gr.7 (Ti-Pd) / Gr.12 (Ti-0.3Mo-0.8Ni). NPS 1/2 to NPS 24, SCH 5S to SCH 160. Manufactured to ASME B16.9 / ASTM B363 with EN 10204 3.1 / 3.2 mill certification, 100 percent RT per ASTM E1742, full heat-to-fitting material traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Pipe Fittings"
+  collectionDescription="Titanium butt-weld pipe fittings (elbows, tees, reducers, caps, stub ends, crosses, laterals) for fine chemical, chlor-alkali, desalination, subsea, and aerospace piping systems."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Pipe Fittings"
+  productDeliveryLeadTime="5-7 days (stock) / 2-3 weeks (custom)"
+>
+  <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">BOZE Metal is a sourcing and processing partner for titanium pipe fittings, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment on pipe-fitting orders for chemical, chlor-alkali, and desalination service.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sponge, VAR, and EBM melting and billet production is not in our vertically integrated scope. We source seamless tube, plate, and forging billet from upstream mills; our scope is hot-push / hydraulic bulge / press forming, heat treatment, bevel machining, NDT, and quality verification.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚠️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace-grade</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment classification. Confirm criticality class, specification (ASTM B363 / ASME SB363 / ASME B16.9 / MSS SP-43), and required documentation per RFQ.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket medical claim</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply fittings to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Engineering review and quotation timelines are confirmed at the RFQ stage based on the order complexity, alloy, NPS, schedule, and downstream processing required. Standard stocked items typically receive a same-week response.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔍</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">NACE / NORSOK scope</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sour-service and subsea service compliance is order-specified. NACE MR0175 / ISO 15156 hardness compliance, NORSOK M-630, and individual project qualification reports are available with a documented test scope. Confirm at the RFQ stage; the scope is not assumed by default.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fitting Grade x Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five procurement-grade entries mapping chemical composition, UNS designation, available fitting form (elbows, tees, reducers, caps, stub ends), and typical use. Specific NPS, schedule, and fitting type are confirmed per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Composition</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Fitting Form</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span></td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Pipe Fitting Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Eleven procurement-critical attribute, value, and standard references for titanium butt-weld pipe fittings. Use this as a cross-check table when drafting an RFQ; the applicable spec is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-elbow-reducer.svg"
+    imageAlt="Titanium Grade 2 butt-weld 90 degree long-radius elbow and concentric reducer"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Petrochemical and Chlor-Alkali, ASTM B363"
+    title="Elbows and Reducers for High-Pressure Chemical Piping"
+    body="Grade 2 (CP) and Grade 7 (Ti-Pd) butt-weld elbows (90 LR / 90 SR / 45) and concentric / eccentric reducers are the workhorse specification for chemical, chlor-alkali, and desalination piping. Hot-push and hydraulic-bulge forming is followed by vacuum anneal and CNC bevel machining. Wall-thinning at the intrados is held to within ASME B16.9 plus or minus 10 percent of nominal."
+    bullets={['Hot-push and hydraulic-bulge forming', 'Wall-thinning within ASME B16.9 plus or minus 10 percent', 'CNC 37.5-deg bevel per ASME B16.9']}
+    ctaLabel="View elbows and reducers specs"
+    ctaHref="/standard-parts/pipe-fittings/#elbow"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-tee-stub-end.svg"
+    imageAlt="Titanium equal tee, reducing tee, and lap-joint stub end for chemical and seawater piping"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Fine Chemical and Seawater, MSS SP-43"
+    title="Tees and Stub Ends for Branch Connection and Lap-Joint Assembly"
+    body="Grade 2 equal and reducing tees are the standard specification for branch connection in seawater and brine headers. Lap-joint stub ends (Type A / B / C per MSS SP-43) are supplied in CP Gr.2 for titanium-to-stainless transitions and titanium-to-carbon-steel (insulated) transitions. All tees and stub ends are 100 percent RT-tested and vacuum-annealed."
+    bullets={['Equal and reducing tees, ASME B16.9', 'Stub ends Type A / B / C, MSS SP-43', '100 percent RT and hydrostatic test']}
+    ctaLabel="View tees and stub ends specs"
+    ctaHref="/standard-parts/pipe-fittings/#tee"
+  />
+
+
+  <section id="applications-cards" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fittings Across Process Industries</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four additional service environments where titanium butt-weld pipe fittings are the default specification, with the grade and fitting type that procurement teams typically call out.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🧪</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Fine Chemical</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Reactor feed and product piping for HCl, H2SO4, chlorinated organics. Gr.7 (Ti-Pd) for reducing acid. ASME B16.9 dimensions.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🧂</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Chlor-Alkali</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Wet chlorine, NaClO, and NaOH cell and header piping. Gr.7 (Ti-Pd) is the default. Class 150 / 300 standard.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">💧</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Desalination</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">RO high-pressure piping and MSF / MED brine heater headers. Gr.2 for RO permeate and intake; Gr.12 for hot brine.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏭</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Subsea and Pharmaceutical</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Subsea jumpers and manifolds per NORSOK M-630. Pharmaceutical clean utility per ASME BPE (where applicable). Gr.5 ELI for fracture-critical subsea.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Fitting Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">From drawing review and stress simulation through hot-push / hydraulic-bulge forming, vacuum anneal, CNC bevel machining, NDT, and EN 10204 3.1 MTR issuance - six controlled stages with documentation checkpoints at each handoff.</p>
+      </header>
+      <ol class="mt-12 space-y-8">{pipeline.map((p) => (<li class="flex flex-col md:flex-row gap-6 items-start"><div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">{p.n}</div><div class="flex-1"><h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3><p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p></div></li>))}</ol>
+    </div>
+  </section>
+
+
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries and Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three service-environment boundaries that drive alloy selection, fitting form, and installation practice. Confirm these constraints at the RFQ stage.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{boundaries.map((b) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{b.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <TrustBadges />
+  <QualityControl />
+
+
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement and Lead Time</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Supply Chain and Lead-Time Windows</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Stock availability, MOQ flexibility, and lead-time windows for titanium pipe fittings. Final lead time is confirmed at the RFQ stage against the current upstream-mill material and forming schedule.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{supplyChain.map((s) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{s.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dimensional Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Fittings vs. Stainless Steel and Lined Carbon Steel</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four procurement-relevant dimensions comparing titanium butt-weld pipe fittings (Gr.2 reference) against the conventional austenitic stainless and lined carbon-steel alternatives in chemical, chlor-alkali, and seawater service.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Titanium Fitting (Gr.2 / Gr.7)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Austenitic SS Fitting (304L / 316L)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Lined Carbon Steel Fitting (Rubber / PTFE)</th>
+          </tr></thead>
+          <tbody>{comparisonRows.map((c, i) => (<tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+            <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+            <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+          </tr>))}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <Applications />
+
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering and Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six common buyer questions on hot-push wall-thinning, Gr.2 vs Gr.7 selection, galvanic isolation, springback control, HAZ brittleness, and custom non-standard lead time.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">{faqItems.map((f, i) => (<details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><summary class="cursor-pointer flex items-start gap-3 list-none"><span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span><span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span><svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div></details>))}</div>
+    </div>
+  </section>
+
+
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent standard-parts hub, sister flanges / fasteners sub-pages, downstream tube and pipe stock, and compliance evidence.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{relatedLinks.map((r) => (<a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p><span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span></a>))}</div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/standard-parts/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all titanium standard parts</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

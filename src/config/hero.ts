@@ -216,6 +216,26 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase H-C · Standard Parts Pipe Fittings sub-page
+  '/standard-parts/pipe-fittings': {
+    h1: 'Titanium Pipe Fittings — ASME B16.9 / ASTM B363 Buttweld',
+    subtitle: 'Butt-weld titanium pipe fittings in CP Gr.1 / Gr.2 / Gr.5 (Ti-6Al-4V) / Gr.7 (Ti-Pd) / Gr.12 (Ti-0.3Mo-0.8Ni). NPS 1/2 to 24 inch, SCH 5S to SCH 160. Elbows 90 LR / 90 SR / 45, tees equal / reducing, reducers concentric / eccentric, caps, stub ends, crosses, laterals. Forged to ASTM B363 and ASME B16.9 with MSS SP-43 stub ends. Standard stock 5-7 days, custom 2-3 weeks.',
+    badge: 'Standard Parts / Pipe Fittings | AS9100D',
+    keyMetrics: [
+      { value: 'NPS 1/2-24"', label: 'Size range' },
+      { value: 'SCH 5S-160', label: 'Wall schedule' },
+      { value: 'Elbows / Tees / Reducers', label: 'Fitting form' },
+      { value: '5-7 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASME B16.9',
+      'ASTM B363',
+      'ASME SB363',
+      'MSS SP-43',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',
