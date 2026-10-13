@@ -196,6 +196,26 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase H-B · Standard Parts Flanges sub-page
+  '/standard-parts/flanges': {
+    h1: 'Titanium Flanges — ASME B16.5 / ASTM B381 Forged',
+    subtitle: 'Forged titanium pipe flanges in CP Gr.2 / Gr.5 (Ti-6Al-4V) / Gr.7 (Ti-Pd) / Gr.12 (Ti-0.3Mo-0.8Ni) / Gr.23 (Ti-6Al-4V ELI). NPS 1/2 to 48 inch, Class 150 to 2500 (ASME B16.5) / PN 16 to PN 160 (EN 1092-1). Weld-neck, slip-on, blind, threaded, lap-joint and custom geometries. RF / RTJ / FF / MFM facing. Standard stock 5-7 days, custom forging 2-4 weeks.',
+    badge: 'Standard Parts / Flanges | AS9100D',
+    keyMetrics: [
+      { value: 'NPS 1/2-48"', label: 'Size range' },
+      { value: 'Class 150-2500', label: 'Pressure class' },
+      { value: 'WN / SO / BL / TH / LJ', label: 'Flange form' },
+      { value: '5-7 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASME B16.5',
+      'ASTM B381',
+      'ASME SB381',
+      'EN 1092-1 Type 11',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
     subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',

@@ -1,7 +1,50 @@
 # Active Context
 
 > **Last Updated:** 2026-10-12
-> **Current Focus:** **BSI Phase G-8 — `/mill-products/mesh/` sub-page shipped.** All six mill-products sub-pages (bars-rods, plates-sheets, tubes-pipes, wire, foil-coils, mesh) are now live with auto-emitted Product entity + deliveryLeadTime. Inbound 5-Entry Rule closed for all 6. Hub gateway card href alignment (G-3 follow-on) is now 100% complete.
+> **Current Focus:** **BSI Phase H-B — `/standard-parts/flanges/` sub-page shipped.** First Titanium Standard Parts sub-Hub under `/standard-parts/` (Phase H Hub). Flanges is the first of 4 planned sub-pages (pipe-fittings / fasteners / machined-components). Schema: standard-part-detail (CollectionPage + ItemList + Service + FAQPage + Product + deliveryLeadTime). Inbound 5-Entry Rule closed. Build green, all 6 gates pass.
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase H-B — Standard Parts Flanges sub-page
+
+**Files modified (3) and created (1):**
+
+1. **`src/pages/standard-parts/flanges.astro`** (NEW, 327 lines, 40 796 chars)
+   - 13 sections, 6 data arrays (gradeMatrix 5, specAttributes 10, pipeline 6, boundaries 3, supplyChain 3, comparisonRows 4) + 6 FAQ + 5 related + 5 ItemList.
+   - Honest-positioning (5 cards): no primary melting, no blanket aerospace, no blanket medical, no 24h quote, NACE / NORSOK scope.
+   - Uses `productDeliveryLeadTime="5-7 days (stock) / 2-4 weeks (custom)"` (G-2.2 mechanism auto-emits Product + deliveryLeadTime).
+   - Sub-forms: weld-neck (WN), slip-on (SO), blind (BL), threaded (TH), lap-joint (LJ), socket-weld (SW), custom.
+   - Standards: ASME B16.5, ASME SB381, ASTM B381, EN 1092-1 Type 11, ASME Section VIII.
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/standard-parts/flanges']` (h1, subtitle, 4 keyMetrics, 6 entityChips including ASME B16.5 / ASTM B381 / ASME SB381 / EN 1092-1 Type 11).
+
+3. **`astro.config.mjs` keywordMap** — 2 updates + 4 new entries:
+   - `titanium flanges` href: `/products/capabilities/cnc-machining-of-mating-flanges/` → `/standard-parts/flanges/`
+   - `CNC Machining of Fittings & Flanges` href: `/titanium-cnc-machining-services/` → `/standard-parts/flanges/`
+   - 4 new: `titanium weld neck flange`, `ASME B16.5 titanium flange`, `titanium blind flange`, `ASTM B381 titanium flange` — all → `/standard-parts/flanges/`
+
+4. **`data/keywords/main-db.json`** — `titanium flanges` retargeted from `/products/capabilities/cnc-machining-of-mating-flanges/` to `/standard-parts/flanges/`. Note updated to Phase H-B context, updatedAt → 2026-10-12.
+
+**No changes to schema.ts or BaseLayout.astro** — `standard-part-detail` case was already implemented in Phase H-A with `CollectionPage` + `ItemList` + `Service` + `FAQPage` (schema.ts:1099-1135), and the G-2.2 `productDeliveryLeadTime` prop auto-emits `Product` + `deliveryLeadTime` for this case. Hub index.astro already had the flanges card linking to `/standard-parts/flanges/` (line 110-117).
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `npx astro build`: complete (09:23:48).
+- G3 Schema: `Product` entity with `deliveryLeadTime: "5-7 days (stock) / 2-4 weeks (custom)"` + 5 ItemList + 6 FAQ + CollectionPage + Service all present in `dist/standard-parts/flanges/index.html`.
+- G4 `check-keyword-map.mjs`: **426 entries** (4 new), 404 mapped (0 new mapped; existing retargeted), **0 broken**, 2333 sitemap routes.
+- G5 Inbound 5-Entry Rule: closed for flanges (hub link line 110, keywordMap 5 entries, main-db.json retargeted, BREADCRUMB_LABELS pre-reserved, route-availability pre-reserved).
+- G6 `git status --short`: 3 modified + 1 new = 4 files, no temp/log residue.
+
+**Files changed (4):**
+  M astro.config.mjs
+  M data/keywords/main-db.json
+  M src/config/hero.ts
+  A src/pages/standard-parts/flanges.astro
+
+Ref: BSI Phase H-B (2026-10-12). Titanium Standard Parts sub-page status: 1/4 live (flanges; pipe-fittings / fasteners / machined-components are still deferred to H-C / H-D / H-E).
+
 
 ---
 

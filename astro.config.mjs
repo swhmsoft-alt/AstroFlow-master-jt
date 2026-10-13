@@ -428,7 +428,7 @@ export default defineConfig({
             "href": "/titanium-cnc-machining-services/"
           },
           "CNC Machining of Fittings & Flanges": {
-            "href": "/titanium-cnc-machining-services/"
+            "href": "/standard-parts/flanges/"
           },
           "CNC Milling": {
             "href": "/titanium-cnc-machining-services/cnc-milling-turning/"
@@ -745,7 +745,20 @@ export default defineConfig({
             "href": "/products/capabilities/cnc-turning-of-bolt-heads-and-threads/"
           },
           "titanium flanges": {
-            "href": "/products/capabilities/cnc-machining-of-mating-flanges/"
+            "href": "/standard-parts/flanges/"
+          },
+          // BSI Phase H-B · Standard Parts Flanges sub-page (5-inbound #4)
+          "titanium weld neck flange": {
+            "href": "/standard-parts/flanges/"
+          },
+          "ASME B16.5 titanium flange": {
+            "href": "/standard-parts/flanges/"
+          },
+          "titanium blind flange": {
+            "href": "/standard-parts/flanges/"
+          },
+          "ASTM B381 titanium flange": {
+            "href": "/standard-parts/flanges/"
           },
           "Titanium Forging": {
             "href": "/titanium-forming-heavy-manufacturing/titanium-forging/"
