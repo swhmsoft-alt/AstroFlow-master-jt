@@ -327,6 +327,22 @@ export default defineConfig({
           "titanium battery foil": {
             "href": "/mill-products/foil-coils/"
           },
+          // BSI Phase G-8 · Mill Products Woven Mesh sub-page (5-inbound #4)
+          "titanium woven mesh": {
+            "href": "/mill-products/mesh/"
+          },
+          "titanium mesh": {
+            "href": "/mill-products/mesh/"
+          },
+          "ASTM E2016 titanium mesh": {
+            "href": "/mill-products/mesh/"
+          },
+          "titanium chlor-alkali mesh": {
+            "href": "/mill-products/mesh/"
+          },
+          "titanium filtration mesh": {
+            "href": "/mill-products/mesh/"
+          },
           "titanium supplier evaluation": {
             "href": "/capabilities/supplier-evaluation/"
           },

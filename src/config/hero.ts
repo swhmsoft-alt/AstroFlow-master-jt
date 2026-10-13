@@ -157,6 +157,25 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase G-8 · Mill Products Woven Mesh sub-page
+  '/mill-products/mesh': {
+    h1: 'Titanium Woven Mesh — Electrochemical, Filtration & Cathodic-Protection Stock',
+    subtitle: 'Titanium woven wire mesh in CP Gr1 / Gr2, with Pd-stabilized Gr7 for reducing-acid and chlor-alkali service. Opening 0.05–6.0 mm, wire Ø 0.025–2.0 mm, plain / twill / dutch weave. Supplied to ASTM E2016 with EN 10204 3.1 MTR; standard stock ships in 5–7 days with custom mesh-count in 4–6 weeks.',
+    badge: 'Mill Products / Woven Mesh | AS9100D',
+    keyMetrics: [
+      { value: '0.05–6.0 mm', label: 'Opening range' },
+      { value: '0.025–2.0 mm', label: 'Wire Ø range' },
+      { value: 'Plain / Twill / Dutch', label: 'Weave pattern' },
+      { value: '5–7 days', label: 'Standard lead time' },
+    ],
+    entityChips: [
+      'ASTM E2016',
+      'ISO 9044',
+      'DIN 4185',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
   // BSI Phase G-6 · Mill Products Wire sub-page
   '/mill-products/wire': {
     h1: 'Titanium Wire — Welding, Medical & Additive Stock',

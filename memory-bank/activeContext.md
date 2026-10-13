@@ -1,7 +1,44 @@
 # Active Context
 
 > **Last Updated:** 2026-10-12
-> **Current Focus:** **BSI Phase G-2.2 — Schema extension complete.** All four carry-over phases (G-6 wire, G-7 foil-coils, G-3 follow-on, G-2.2 schema) shipped. The five live mill-products sub-pages (bars-rods, plates-sheets, tubes-pipes, wire, foil-coils) now auto-emit a Product entity with `deliveryLeadTime` in the Offer via the new `productDeliveryLeadTime` BaseLayout prop.
+> **Current Focus:** **BSI Phase G-8 — `/mill-products/mesh/` sub-page shipped.** All six mill-products sub-pages (bars-rods, plates-sheets, tubes-pipes, wire, foil-coils, mesh) are now live with auto-emitted Product entity + deliveryLeadTime. Inbound 5-Entry Rule closed for all 6. Hub gateway card href alignment (G-3 follow-on) is now 100% complete.
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-8 — Woven Mesh sub-page
+
+**Files modified (4) and created (1):**
+
+1. **`src/pages/mill-products/mesh.astro`** (NEW, 328 lines, 40 355 chars)
+   - 13 sections, 6 data arrays (gradeMatrix 6, specAttributes 10, pipeline 6, boundaries 3, supplyChain 3, comparisonRows 4) + 6 FAQ + 5 related + 5 ItemList.
+   - Honest-positioning (5 cards): no primary melting, no blanket aerospace, no blanket medical, no 24h quote, mesh-count scope.
+   - Uses `productDeliveryLeadTime="5-7 days"` (auto Product entity emission from G-2.2 schema).
+
+2. **`src/config/hero.ts`** — added `HERO_CONFIG['/mill-products/mesh']` (h1, subtitle, 4 keyMetrics, 6 entityChips including ASTM E2016 / ISO 9044 / DIN 4185).
+
+3. **`src/pages/mill-products/index.astro`** (line 108) — mesh hub card href `/materials/` → `/mill-products/mesh/`. Closes G-3 follow-on (now 6/6 hub card hrefs aligned).
+
+4. **`astro.config.mjs` keywordMap** — 5 new entries: titanium woven mesh, titanium mesh, ASTM E2016 titanium mesh, titanium chlor-alkali mesh, titanium filtration mesh.
+
+5. **`data/keywords/main-db.json`** — added `titanium mesh suppliers` (mapped to `/mill-products/mesh/`).
+
+**Validation gates (all green):**
+- G1 `check-undefined-slugs.mjs`: 0 issues (15 [...slug] files scanned).
+- G2 `npx astro build`: complete.
+- G3 Schema: `Product` entity with `deliveryLeadTime: "5-7 days"` + 5 ItemList + 6 FAQ + CollectionPage + Service all present in `dist/mill-products/mesh/index.html`.
+- G4 `check-keyword-map.mjs`: **422 entries** (5 new), 404 mapped (1 new), **0 broken**, 2332 sitemap routes.
+- G5 Inbound 5-Entry Rule: all closed for mesh.
+- G6 `git status --short`: 4 modified + 1 new = 5 files, no temp/log residue.
+
+**G-3 follow-on status: 100% complete (6/6 hub card hrefs aligned to /mill-products/{slug}/).** Previously aligned: bars-rods (G-4), plates-sheets (G-2), tubes-pipes (G-5), wire (G-6), foil-coils (G-7). Now mesh (G-8) closes the loop.
+
+---
+
+## Recent Activity (2026-10-12)
+
+### BSI Phase G-2.2 — Schema extension: Product + deliveryLeadTime
 
 ---
 

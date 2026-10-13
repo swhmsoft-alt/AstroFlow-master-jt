@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/mesh'];
+const pageTitle = 'Titanium Woven Mesh | ASTM E2016 / ISO 9044 | BOZE Metal';
+const pageDescription = 'Industrial titanium woven mesh in CP Gr1/2, Pd-stabilized Gr7 and Gr12. Opening 0.05-6.0 mm, wire 0.025-2.0 mm, plain / twill / dutch weave. Supplied to ASTM E2016 / ISO 9044 with EN 10204 3.1 MTR. Standard stock ships in 5-7 days.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/mesh/';
+
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial', form: 'Plain, Twill, Dutch weave', use: 'High-formability mesh, biomedical filtration, battery current collector' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength', form: 'Plain, Twill, Dutch weave', use: 'Workhorse CP mesh for electrochemical, chlor-alkali and general filtration' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12-0.25% Pd', form: 'Plain, Twill weave', use: 'Reducing-acid (HCl) and chlor-alkali electrolyzer mesh' },
+  { family: 'Corrosion-resistant', grade: 'Grade 12 (Ti-0.3Mo-0.8Ni)', uns: 'R53400', composition: 'CP + 0.3% Mo, 0.8% Ni', form: 'Plain, Twill weave', use: 'Hot brine, seawater mesh and cathodic-protection anodes' },
+  { family: 'Aerospace a-b', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V, a-b alloy', form: 'Plain, Twill weave', use: 'High-strength aerospace mesh, structural reinforcement' },
+  { family: 'Aerospace a-b ELI', grade: 'Grade 23 (Ti-6Al-4V ELI)', uns: 'R56401', composition: '6% Al, 4% V, low interstitials', form: 'Plain weave', use: 'Medical-grade mesh for implants and surgical reinforcement (where applicable)' },
+];
+
+const specAttributes = [
+  { attr: 'Opening (aperture) range', value: '0.05 mm to 6.0 mm (about 2 to 500 mesh count per inch)', std: 'ASTM E2016 S6, ISO 9044' },
+  { attr: 'Wire diameter', value: '0.025 mm to 2.0 mm', std: 'ASTM E2016 S5' },
+  { attr: 'Mesh count (per inch)', value: '2 to 500; standard stock in 4 / 10 / 20 / 30 / 40 / 50 / 60 / 80 / 100 / 200 / 325', std: 'ASTM E2016 S6' },
+  { attr: 'Weave pattern', value: 'Plain weave, Twill weave, Dutch weave (plain and twill)', std: 'ISO 9044, DIN 4185' },
+  { attr: 'Roll width', value: '1.0 m to 1.5 m standard, slit-to-width available', std: 'Customer specification' },
+  { attr: 'Roll length', value: 'Up to 30 m standard, custom length available', std: 'Customer specification' },
+  { attr: 'Surface finish', value: 'Bright (as-woven) or pickled (descaled, oxide-removed)', std: 'ASTM E2016 S8' },
+  { attr: 'Aperture tolerance', value: 'Plus or minus 5 to 10 percent of nominal opening per mesh count class', std: 'ISO 9044 S5' },
+  { attr: 'Tensile strength (wire)', value: 'Gr.2 >= 345 MPa, Gr.5 >= 895 MPa, Gr.7 >= 345 MPa', std: 'ASTM E8' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; 3.2 with independent witness on request', std: 'EN 10204' },
+];
+
+const pipeline = [
+  { n: '01', title: 'Incoming wire stock verification', body: 'Grade-certified titanium wire (matching the mesh wire diameter) is received with upstream-mill heat-lot, chemistry, and surface-state records. Lot is verified against ASTM E2016 and ISO 9044 before the weaving line starts.' },
+  { n: '02', title: 'Wire preparation and warp setup', body: 'Wire is straightened, stress-relieved, and lubricated for weaving. Warp wires are loaded onto a loom beam under controlled tension; shute wires are loaded into shuttles or rapier heads per the mesh count specification.' },
+  { n: '03', title: 'Weaving (plain / twill / dutch)', body: 'The loom weaves wire per the customer-specified pattern and mesh count. Plain weave is the workhorse for general filtration; twill weave for finer mesh counts above 200; dutch weave (plain or twill) for high-pressure filtration where mechanical strength is critical.' },
+  { n: '04', title: 'Surface cleaning and pickling', body: 'As-woven mesh is ultrasonic-cleaned to remove loom lubricant, then acid-pickled to remove the oxide scale from the heat-affected weaving zone. Bright anneal is available for the cleanest surface state.' },
+  { n: '05', title: 'NDT and dimensional inspection', body: '100 percent visual inspection of every roll. Aperture and wire diameter are sampled per ASTM E2016 (10 measurements per square foot). Mesh count is verified with calibrated reticle; tensile test on the wire per ASTM E8.' },
+  { n: '06', title: 'Slitting, rolling, packaging, MTR', body: 'Mesh is slit to customer-specified roll width, level-wound on cores, vacuum-sealed for medical / AM grades, and shipped with an EN 10204 3.1 MTR (chemistry, mechanical data, mesh count and aperture report) traceable to the originating heat.' },
+];
+
+const boundaries = [
+  { icon: '🌐', title: 'Aperture tolerance vs. mesh count', body: 'Fine-mesh counts above 200 (opening below 75 micrometer) require laser-monitored looms and tighter aperture tolerance. Standard mill tolerance is plus or minus 10 percent; tight-tolerance mesh (plus or minus 5 percent) is available with a tooling surcharge. Confirm the tolerance class at the RFQ stage.' },
+  { icon: '🛡️', title: 'Surface contamination in electrochemical and biomedical use', body: 'Bright annealed and pickled surface is required for chlor-alkali membrane, PEM, and biomedical service. As-woven mesh carries residual lubricant and oxide scale that must be removed before installation; specify surface conditioning at the RFQ stage.' },
+  { icon: '🧮', title: 'Weave pattern and pressure-drop selection', body: 'Plain weave is the workhorse for low-pressure filtration. Twill weave supports higher flow and finer mesh count. Dutch weave (plain or twill) supports high-pressure filtration with finer absolute retention. Confirm the service pressure, flow rate, and absolute retention target before weave selection.' },
+];
+
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity envelope', body: 'Weaving capacity in the 2 to 500 mesh-count range, wire 0.025-2.0 mm. Engineering samples of small panel sizes (about 0.5 m2) are feasible; production rolls of up to 30 m are standard. Specialty alloy and fine-mesh counts are scheduled against upstream wire campaigns.' },
+  { icon: '📦', title: 'Stock and MOQ flexibility', body: 'Standard stocked mesh-count / grade combinations have no minimum order quantity for engineering sampling. Non-stock mesh count, custom weave pattern, and small-lot medical-grade mesh are scheduled against upstream-mill batches; MOQ is determined by the mill campaign and confirmed at the RFQ stage.' },
+  { icon: '🗓️', title: 'Lead-time windows', body: 'Standard stocked mesh items ship in 5-7 days. Non-standard mesh count, custom alloy, and fine-mesh wire run 4-6 weeks, driven by upstream-wire heat and weaving campaign. Engineering review and final quotation timing is confirmed at the RFQ stage.' },
+];
+
+const comparisonRows = [
+  { dim: 'Seawater / brine corrosion', ours: 'Effectively immune to pitting and crevice corrosion in seawater and brine', alt1: 'Susceptible to pitting and crevice in chloride-bearing media', alt2: 'Susceptible to ammonia and sulfide attack' },
+  { dim: 'Specific strength (UTS / density)', ours: 'Up to 200 kNm/kg (Gr.2 annealed wire)', alt1: 'Up to 170 kNm/kg (annealed 302 SS wire)', alt2: 'Up to 130 kNm/kg (Ni 200 wire)' },
+  { dim: 'Biofouling in raw-water filtration', ours: 'Smooth, oxide-passive surface; minimal marine-fouling adhesion', alt1: 'Rough surface; high biofouling rate', alt2: 'Susceptible to biofouling and biofouling-driven pitting' },
+  { dim: 'Life-cycle cost (LCC)', ours: 'Higher initial investment, decades of service in seawater and reducing-acid media', alt1: 'Lower initial cost, frequent replacement in chloride service', alt2: 'Mid initial cost, replacement due to ammonia / sulfide attack' },
+];
+
+const faqItems = [
+  { question: 'How do you select the right titanium mesh grade and weave for a given service?', answer: 'Match the alloy to the medium. CP Gr1 and Gr2 are the workhorses for general filtration and electrochemical service. Gr7 (Ti-Pd) is required for reducing acids (HCl, dilute H2SO4) and is the default for chlor-alkali membrane cells. Gr12 is selected for hot brine and seawater. For the weave: plain weave for low-pressure general filtration, twill weave for fine mesh above 200 count, dutch weave (plain or twill) for high-pressure filtration where mechanical strength and absolute retention are critical.' },
+  { question: 'How is mesh-count and aperture tolerance controlled?', answer: 'Looms are calibrated with laser-monitored warp and shute position feedback. Aperture is measured with a calibrated reticle and a digital microscope on 10 locations per square foot per ASTM E2016. Standard mill tolerance is plus or minus 10 percent of nominal opening; tight-tolerance mesh is plus or minus 5 percent and is available with a tooling surcharge and dedicated weaving campaign.' },
+  { question: 'What surface finish is required for chlor-alkali and PEM electrolyzer service?', answer: 'Bright annealed and pickled surface is the standard for chlor-alkali membrane and PEM service. As-woven mesh carries residual lubricant and oxide scale that must be removed before installation. For coated anode applications (MMO / DSA), the mesh is also surface-conditioned to a controlled roughness to optimize catalytic coating adhesion.' },
+  { question: 'Can titanium mesh be supplied cut-to-size as disc or panel?', answer: 'Yes. Mesh is supplied level-wound on rolls, traverse-wound on spools, or cut-to-size as discs, panels, or stamped blanks. Laser-cut blank shapes are also available where the order requires a specific geometry; tolerance and edge-quality are confirmed at the RFQ stage.' },
+  { question: 'How is titanium mesh typically attached to a frame or header?', answer: 'Standard attachment methods include mechanical crimping into a frame groove, resistance or TIG welding to a titanium header, and sinter-bonding for filter elements. For chlor-alkali membrane cells, the mesh is typically resistance-welded to a current-distributor plate. Attachment method and material compatibility are confirmed at the RFQ stage.' },
+  { question: 'What documentation is supplied with each mesh shipment?', answer: 'EN 10204 3.1 mill test report (chemistry, mechanical data, mesh count and aperture report), surface-finish declaration, and dimensional report per roll. Independent third-party witness tests by Lloyds, Bureau Veritas, DNV, or customer-appointed agencies are welcomed and arranged at the RFQ stage.' },
+];
+
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Bars, plates, tubes, wire, foil and mesh stock from one supplier.', href: '/mill-products/' },
+  { title: 'Wire Stock', desc: 'Coil and straight titanium wire for weaving mesh and AM feedstock.', href: '/mill-products/wire/' },
+  { title: 'Tube and Pipe Stock', desc: 'Seamless and welded tube and pipe to ASTM B338, B861, B862 for heat-exchanger and process-pipe service.', href: '/mill-products/tubes-pipes/' },
+  { title: 'Plate and Sheet Stock', desc: 'CP, aerospace and corrosion-resistant plate and sheet to ASTM B265 or AMS 4911 for structural and chemical service.', href: '/mill-products/plates-sheets/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+];
+
+const itemListItems = [
+  { name: 'Titanium Electrochemical Mesh (PEM / chlor-alkali)', url: 'https://cnc.bozemetal.com/mill-products/mesh/#electrochemical' },
+  { name: 'Titanium Filtration Mesh (liquid and gas)', url: 'https://cnc.bozemetal.com/mill-products/mesh/#filtration' },
+  { name: 'Titanium Cathodic-Protection Anode Mesh', url: 'https://cnc.bozemetal.com/mill-products/mesh/#cathodic' },
+  { name: 'Titanium Battery and Hydrogen-Production Mesh', url: 'https://cnc.bozemetal.com/mill-products/mesh/#battery' },
+  { name: 'Titanium Medical and Implant Mesh (where applicable)', url: 'https://cnc.bozemetal.com/mill-products/mesh/#medical' },
+];
+---
+
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Woven Mesh Mill Stock"
+  serviceDescription="Industrial titanium woven wire mesh in CP Gr1 / Gr2 / Pd-stabilized Gr7 / Gr12 (Ti-0.3Mo-0.8Ni) / Gr5 (Ti-6Al-4V) / Gr23 (Ti-6Al-4V ELI). Opening 0.05-6.0 mm, wire 0.025-2.0 mm, plain / twill / dutch weave. Manufactured to ASTM E2016 and ISO 9044 with EN 10204 3.1 / 3.2 mill certification, full heat-to-mesh material traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Woven Mesh"
+  collectionDescription="Titanium woven mesh stock for electrochemical, chlor-alkali and PEM service, filtration, cathodic-protection anodes, battery and hydrogen production, and medical-grade (where applicable) applications."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Woven Mesh"
+  productDeliveryLeadTime="5-7 days"
+>
+  <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+
+
+  <section class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">BOZE Metal is a sourcing and processing partner for titanium woven mesh, not a primary melter. The following scope clarifications are necessary for accurate technical and commercial alignment on electrochemical, filtration, and cathodic-protection mesh orders.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sponge, VAR and EBM melting, wire-bar drawing, and wire production is not in our vertically integrated scope. We source wire and mesh-blank from upstream mills; our scope is weaving, surface conditioning, slitting, and quality verification.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚠️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace-grade</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Material specifications are applied "where applicable" per order. AS9100D governs our QMS, not every shipment classification. Confirm criticality class, specification (ASTM E2016, ISO 9044), and required documentation per RFQ.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket medical claim</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply mesh to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No 24-hour quote promise</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Engineering review and quotation timelines are confirmed at the RFQ stage based on the order complexity, alloy, mesh count, weave pattern, and downstream processing required. Standard stocked items typically receive a same-week response.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔍</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Mesh-count and aperture scope</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Standard stocked mesh counts are 4 through 325. Mesh counts above 325 (aperture below 45 micrometer) require specialized tooling and dedicated weaving campaigns; confirm feasibility and lead time at the RFQ stage.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Woven Mesh Grade x Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six procurement-grade entries mapping chemical composition, UNS designation, available weave form (plain / twill / dutch), and typical use. Specific mesh count, wire diameter, and weave pattern are confirmed per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Composition</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Weave Form</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span></td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Woven Mesh Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ten procurement-critical attribute, value, and standard references for titanium woven mesh. Use this as a cross-check table when drafting an RFQ; the applicable spec is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-electrochemical-mesh.svg"
+    imageAlt="Titanium woven mesh installed as electrode substrate in chlor-alkali membrane cell"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Electrochemical, ASTM E2016"
+    title="Mesh for Chlor-Alkali, PEM and MMO-Coated Anode"
+    body="Grade 2 (CP) and Pd-stabilized Grade 7 woven mesh is the standard substrate for chlor-alkali membrane cells, PEM electrolyzer current collectors, and mixed-metal-oxide (MMO) coated anodes. Bright-annealed and pickled surface is supplied; surface-conditioned roughness is available for catalytic coating adhesion."
+    bullets={['Grade 7 (Ti-Pd) for HCl and chlor-alkali service', 'Surface-conditioned for MMO / DSA coating adhesion', 'Mesh count 20 to 200 standard stock']}
+    ctaLabel="View electrochemical mesh specs"
+    ctaHref="/mill-products/mesh/#electrochemical"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-filtration-mesh.svg"
+    imageAlt="Titanium woven filtration mesh disc and roll for liquid and gas filtration"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Filtration and Cathodic Protection, ISO 9044"
+    title="Filtration and Cathodic-Protection Anode Mesh"
+    body="Grade 2 (CP) plain and twill weave mesh is the workhorse for seawater and brackish-water filtration. Grade 12 (Ti-0.3Mo-0.8Ni) dutch-weave mesh is supplied for hot brine and seawater filtration in chlor-alkali feed circuits. Grade 2 expanded-and-woven mesh is the standard cathodic-protection anode for pipeline and marine structure protection."
+    bullets={['Plain weave for general filtration', 'Dutch weave for high-pressure and fine-retention', 'Expanded mesh for cathodic-protection anode']}
+    ctaLabel="View filtration and CP mesh specs"
+    ctaHref="/mill-products/mesh/#filtration"
+  />
+
+
+  <section id="applications-cards" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Additional Applications</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Mesh Across Process Industries</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four additional service environments where titanium woven mesh is the default specification, with the grade and weave that procurement teams typically call out.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⚡</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Hydrogen Production</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">PEM and alkaline water electrolysis current collector. Grade 2 plain weave with Pt / Ir / Ru coating substrates.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔋</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Battery and Capacitor</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Current-collector mesh for advanced battery and supercapacitor cell designs. Gr.2 fine mesh is the workhorse specification.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏛️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Architectural Cladding</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Decorative and solar-shading woven mesh for marine and high-corrosion architectural facades. Gr.2 bright finish.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🔬</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Lab and Analytical</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sieving, sample filtration, and analytical support mesh. Gr.1 bright finish for inert laboratory service.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="pipeline" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Production Workflow</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Woven Mesh Production Workflow</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">From incoming wire stock verification through weaving, surface cleaning, NDT, slitting, and EN 10204 3.1 MTR issuance - six controlled stages with documentation checkpoints at each handoff.</p>
+      </header>
+      <ol class="mt-12 space-y-8">{pipeline.map((p) => (<li class="flex flex-col md:flex-row gap-6 items-start"><div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-lg font-black" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary); border: 2px solid color-mix(in srgb, var(--theme-primary) 35%, transparent);">{p.n}</div><div class="flex-1"><h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.title}</h3><p class="mt-2 text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.body}</p></div></li>))}</ol>
+    </div>
+  </section>
+
+
+  <section id="boundaries" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Operating Boundaries</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Operating Boundaries and Failure Modes</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three service-environment boundaries that drive alloy selection, surface finish, and weave-pattern class. Confirm these constraints at the RFQ stage.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{boundaries.map((b) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{b.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{b.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{b.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <TrustBadges />
+  <QualityControl />
+
+
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Procurement and Lead Time</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Supply Chain and Lead-Time Windows</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Stock availability, MOQ flexibility, and lead-time windows for titanium woven mesh. Final lead time is confirmed at the RFQ stage against the current upstream-mill schedule.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">{supplyChain.map((s) => (<article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><span class="text-3xl block" aria-hidden="true">{s.icon}</span><h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p></article>))}</div>
+    </div>
+  </section>
+
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dimensional Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Mesh vs. Stainless Steel and Nickel Mesh</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four procurement-relevant dimensions comparing titanium woven mesh (Gr.2 reference) against the conventional austenitic stainless and pure nickel mesh alternatives in seawater, electrochemical, and filtration service.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Titanium Mesh (Gr.2)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Austenitic SS Mesh (304 / 316L)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Nickel Mesh (Ni 200 / Monel)</th>
+          </tr></thead>
+          <tbody>{comparisonRows.map((c, i) => (<tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+            <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+            <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+          </tr>))}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <Applications />
+
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Engineering and Procurement FAQ</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Frequently Asked Questions</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Six common buyer questions on grade and weave selection, mesh-count tolerance, surface finish, cut-to-size formats, attachment methods, and shipment documentation.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">{faqItems.map((f, i) => (<details class="group rounded-xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><summary class="cursor-pointer flex items-start gap-3 list-none"><span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span><span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span><svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div></details>))}</div>
+    </div>
+  </section>
+
+
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent hub, wire feedstock, sister tube and plate stock, and compliance evidence.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{relatedLinks.map((r) => (<a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p><span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span></a>))}</div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/mill-products/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all mill products</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
