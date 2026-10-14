@@ -54,7 +54,7 @@ export const FAQ_ENTRIES: readonly FaqEntry[] = [
     category: 'general',
     question: 'Which industries does BOZE primarily serve?',
     answerHtml:
-      'BOZE serves <strong>aerospace & defense</strong>, <strong>medical devices</strong> (Class I–II long-term implants under ISO 13485), motorsports, chemical processing, marine & offshore, and general industrial OEMs. Our titanium manufacturing is purpose-built for buyers whose specifications require controlled raw-material traceability (DFARS, EN 10204 3.1) and ITAR-aware handling.',
+      'BOZE serves <strong>aerospace & defense</strong>, <strong>medical devices</strong> (Class I–II long-term implants under), motorsports, chemical processing, marine & offshore, and general industrial OEMs. Our titanium manufacturing is purpose-built for buyers whose specifications require controlled raw-material traceability (DFARS, EN 10204 3.1) and ITAR-aware handling.',
     tags: ['industries', 'markets', 'aerospace', 'medical', 'automotive', 'motorsport', 'chemical', 'marine'],
   },
   {
@@ -62,7 +62,7 @@ export const FAQ_ENTRIES: readonly FaqEntry[] = [
     category: 'general',
     question: 'How do I start a project with BOZE — and what information should I send?',
     answerHtml:
-      'Submit an inquiry through our <strong>RFQ portal</strong> at <code>/rfq/</code>. Please attach: (1) your 3D CAD model (STEP AP242 or native), (2) a drawing with GD&T callouts and surface-finish requirements, (3) target annual volume, (4) required certification scope (AS9100D, ISO 13485, EN 10204 3.1/3.2), and (5) any NDA or DFARS restrictions. Our engineering team returns a DFM report within <strong>1–2 business days</strong>.',
+      'Submit an inquiry through our <strong>RFQ portal</strong> at <code>/rfq/</code>. Please attach: (1) your 3D CAD model (STEP AP242 or native), (2) a drawing with GD&T callouts and surface-finish requirements, (3) target annual volume, (4) required certification scope (AS9100D, EN 10204 3.1/3.2), and (5) any NDA or DFARS restrictions. Our engineering team returns a DFM report within <strong>1–2 business days</strong>.',
     tags: ['rfq', 'process', 'how-to-start', 'project', 'inquiry', 'dfm'],
   },
   {
@@ -104,7 +104,7 @@ export const FAQ_ENTRIES: readonly FaqEntry[] = [
     category: 'materials',
     question: 'Can BOZE supply titanium raw materials that strictly comply with DFARS requirements for defense and aerospace applications?',
     answerHtml:
-      'Yes, absolutely. BOZE operates a fully locked-down aerospace material control network. Every batch of titanium alloy procured for defense and aerospace contracts strictly complies with <strong>DFARS 252.225-7014 Clause 1 (Preference for Domestic Specialty Metals)</strong> and its relevant supplements. All raw stock is sourced exclusively from tier-one, NADCAP-accredited mills in DFARS-approved qualifying countries. Each delivery is anchored by an authentic, unedited <strong>EN 10204 Type 3.1 Material Test Report (MTR)</strong>, charting complete chemical ladle analysis and mechanical destructive testing metrics. Our internal digital inventory ledger executes absolute <strong>heat number traceability</strong>, linking raw bar stock to the precise mill melt lot.',
+      'Yes, absolutely. BOZE operates a fully locked-down aerospace material control network. Every batch of titanium alloy procured for defense and aerospace contracts strictly complies with <strong>DFARS 252.225-7014 Clause 1 (Preference for Domestic Specialty Metals)</strong> and its relevant supplements. All raw stock is sourced exclusively from tier-one,-accredited mills in DFARS-approved qualifying countries. Each delivery is anchored by an authentic, unedited <strong>EN 10204 Type 3.1 Material Test Report (MTR)</strong>, charting complete chemical ladle analysis and mechanical destructive testing metrics. Our internal digital inventory ledger executes absolute <strong>heat number traceability</strong>, linking raw bar stock to the precise mill melt lot.',
     tags: ['dfars', '252.225-7014', 'domestic', 'specialty-metals', 'defense', 'aerospace', 'mtr', 'en-10204'],
   },
   {
@@ -180,7 +180,7 @@ export const FAQ_ENTRIES: readonly FaqEntry[] = [
     category: 'surface-finishing',
     question: 'What passivation and chemical treatments do you offer for titanium?',
     answerHtml:
-      'We provide <strong>chemical passivation per ASTM A967</strong> and <strong>AMS 2700</strong> using nitric-acid-based solutions (no hydrofluoric, no chromates) to remove surface contaminants and grow the natural passive oxide layer. We also perform <strong>alkaline peroxide etching</strong> for biomedical surface activation prior to coating. All chemical-process lines hold <strong>NADCAP</strong> accreditation through the chemical-processing partner we work with for similar finishes.',
+      'We provide <strong>chemical passivation per ASTM A967</strong> and <strong>AMS 2700</strong> using nitric-acid-based solutions (no hydrofluoric, no chromates) to remove surface contaminants and grow the natural passive oxide layer. We also perform <strong>alkaline peroxide etching</strong> for biomedical surface activation prior to coating. All chemical-process lines are operated by our qualified chemical-processing partner using documented procedures with full process traceability.',
     tags: ['passivation', 'astm-a967', 'ams-2700', 'chemical-treatment', 'oxide', 'nadcap'],
   },
 
@@ -204,9 +204,9 @@ export const FAQ_ENTRIES: readonly FaqEntry[] = [
   {
     id: 'as9100d-and-iso-13485',
     category: 'quality',
-    question: 'Are you certified to AS9100D and ISO 13485:2016?',
+    question: 'Are you certified to AS9100D and ?',
     answerHtml:
-      'Yes. Boze Titanium Manufacturing Center operates under <strong>AS9100D</strong> (aerospace) and <strong>ISO 13485:2016</strong> (medical devices) quality management systems. Documentation packages include <strong>First Article Inspection Reports (FAIR) per AS9102</strong>, process control plans, and full material-traceability chains. We do not currently hold <strong>AS9110</strong> (aviation MRO) or <strong>AS9120</strong> (aviation distributors) — those are out of scope.',
+      'Yes. Boze Titanium Manufacturing Center operates under <strong>AS9100D</strong> (aerospace) and <strong></strong> (medical devices) quality management systems. Documentation packages include <strong>First Article Inspection Reports (FAIR) per AS9102</strong>, process control plans, and full material-traceability chains. We do not currently hold <strong>AS9110</strong> (aviation MRO) or <strong>AS9120</strong> (aviation distributors) — those are out of scope.',
     tags: ['as9100d', 'iso-13485', 'certification', 'quality', 'fair', 'as9102'],
   },
   {
@@ -289,7 +289,7 @@ export const CATEGORY_META_DEFAULT: readonly CategoryMeta[] = [
   {
     id: 'quality',
     label: 'Quality & Certifications',
-    description: 'AS9100D, ISO 13485, NDT, FAIR, hydrogen embrittlement.',
+    description: 'AS9100D, NDT, FAIR, hydrogen embrittlement.',
   },
   {
     id: 'shipping',

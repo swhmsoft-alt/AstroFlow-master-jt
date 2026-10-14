@@ -300,7 +300,7 @@ export const PARTS_LANDING: PartsLandingData = {
     {
       question: 'What quality certifications does the BOZE manufacturing center hold?',
       answer:
-        'The facility operates under AS9100D and ISO 9001 quality systems (with ISO 13485 for medical). Every shipment is backed by material traceability (EN 10204 3.1 mill certificates) and non-destructive testing as specified.',
+        'The facility operates under AS9100D and ISO 9001 quality systems (with  for medical). Every shipment is backed by material traceability (EN 10204 3.1 mill certificates) and non-destructive testing as specified.',
     },
     {
       question: 'What is your minimum order quantity (MOQ)?',
@@ -312,7 +312,7 @@ export const PARTS_LANDING: PartsLandingData = {
   // ---- AIO direct-answer snapshot (STEP 2 / Citation Block 2) ----
   directIntentResolver: {
     snapshot:
-      'Custom titanium parts manufacturing from BOZE covers prototype through mid-volume production of CNC-machined, fabricated, welded and EDM-processed titanium components, machined from certified grades (Gr1–Gr4 CP-titanium and Ti-6Al-4V / Ti-6Al-4V ELI alloys) under AS9100D, ISO 9001 and ISO 13485 quality systems with full EN 10204 3.1 traceability. Submit drawings for a 24–48 hour DFM-reviewed quotation.',
+      'Custom titanium parts manufacturing from BOZE covers prototype through mid-volume production of CNC-machined, fabricated, welded and EDM-processed titanium components, machined from certified grades (Gr1–Gr4 CP-titanium and Ti-6Al-4V / Ti-6Al-4V ELI alloys) under AS9100D, ISO 9001 and  quality systems with full EN 10204 3.1 traceability. Submit drawings for a 24–48 hour DFM-reviewed quotation.',
   },
 
   // ---- Procurement Snapshot (STEP 2 / Citation Block 6) ----
@@ -328,7 +328,7 @@ export const PARTS_LANDING: PartsLandingData = {
       { label: 'Mid-Volume Lead Time', value: '5–8 working weeks (50–500 pieces; bar stock lead time included)' },
       { label: 'Expedited Surcharge', value: 'Typically +20–30% on standard lead time' },
       { label: 'Customer-Supplied Material', value: 'Accepted (customer-issued titanium bar/plate); full traceability preserved' },
-      { label: 'Quality Systems', value: 'AS9100D · ISO 9001 · ISO 13485' },
+      { label: 'Quality Systems', value: 'AS9100D · ISO 9001 · ' },
       { label: 'Material Traceability', value: 'EN 10204 3.1 mill certificates per shipment' },
       { label: 'NDT Capability', value: 'UT / RT / PT / MPI as specified' },
       { label: 'Ti-6Al-4V Roughing Vc (m/min)', value: '60–80 (TiAlN-coated carbide, f 0.15–0.25 mm/rev, ample coolant)' },
@@ -338,7 +338,7 @@ export const PARTS_LANDING: PartsLandingData = {
       { label: 'Beta-C (Ti-3Al-8V-6Cr-4Zr-4Mo) Roughing Vc (m/min)', value: '40–60 (high-temperature alloy; coated carbide, f 0.10–0.18 mm/rev)' },
       { label: 'Ti-5Al-2.5Sn Roughing Vc (m/min)', value: '70–90 (cold-formable titanium; carbide, f 0.15–0.25 mm/rev)' },
       { label: 'CP Grade 2/5 Roughing Vc (m/min)', value: '80–120 (best machinability; carbide, f 0.15–0.30 mm/rev)' },
-      { label: 'Industry-Adjusted Vc Cap', value: 'Aerospace AS9100D ≤ 60 m/min · Medical ISO 13485 40–50 m/min · Industrial 60–80 m/min · Prototype 30–50 m/min' },
+      { label: 'Industry-Adjusted Vc Cap', value: 'Aerospace AS9100D ≤ 60 m/min · Medical  40–50 m/min · Industrial 60–80 m/min · Prototype 30–50 m/min' },
     ],
   },
 
@@ -360,7 +360,7 @@ export const PARTS_LANDING: PartsLandingData = {
     ],
     industryChips: [
       { industry: 'Aerospace (AS9100D)', vc: 'Vc ≤ 60 m/min (conservative)', constraint: 'Ra ≤ 0.8 µm · full cutting-parameter file archived and traceable' },
-      { industry: 'Medical (ISO 13485)', vc: '40–50 m/min', constraint: 'Ra ≤ 0.4 µm · no burrs, no micro-cracks (implant-critical)' },
+      { industry: 'Medical ', vc: '40–50 m/min', constraint: 'Ra ≤ 0.4 µm · no burrs, no micro-cracks (implant-critical)' },
       { industry: 'Automotive / Industrial', vc: '60–80 m/min', constraint: 'Cost-sensitive · optimise cycle time · wider tool-wear budget' },
       { industry: 'Prototype / Low-Volume', vc: '30–50 m/min', constraint: 'First-article yield ≥ 95% · time secondary' },
     ],
@@ -455,7 +455,7 @@ export const PART_PAGES: PartsCategory[] = [
     imageAlt: 'CNC milled titanium flat-mount brake adapter with machined pockets and bolt pattern',
     directIntentResolver: {
       snapshot:
-        'Custom titanium CNC parts from BOZE are precision-machined from certified titanium grades (Gr2, Gr5, Gr9, Gr23) on 3/5-axis CNC centers with ±0.005 mm tolerances. Production runs from single-piece prototypes to 10,000+ piece batches under AS9100D / ISO 9001 / ISO 13485 quality systems with EN 10204 3.1 mill certificates. Submit drawings via RFQ for a DFM review and quotation within 24–48 hours.',
+        'Custom titanium CNC parts from BOZE are precision-machined from certified titanium grades (Gr2, Gr5, Gr9, Gr23) on 3/5-axis CNC centers with ±0.005 mm tolerances. Production runs from single-piece prototypes to 10,000+ piece batches under AS9100D / ISO 9001  quality systems with EN 10204 3.1 mill certificates. Submit drawings via RFQ for a DFM review and quotation within 24–48 hours.',
     },
     customPartFamilies: {
       badge: 'Custom Part Families',
@@ -555,7 +555,7 @@ export const PART_PAGES: PartsCategory[] = [
         { label: 'Sample Policy', value: 'Paid samples at 50–100% cost recovery; refundable against bulk PO' },
         { label: 'Standard Lead Time', value: '7–15 working days (7 d prototype; 10–15 d short-run production)' },
         { label: 'Monthly Capacity', value: '50,000–100,000 pieces/month (mid-to-upper tier capacity)' },
-        { label: 'Quality Systems', value: 'AS9100D · ISO 9001 · ISO 13485 (medical)' },
+        { label: 'Quality Systems', value: 'AS9100D · ISO 9001 ·  (medical)' },
         { label: 'Material Traceability', value: 'EN 10204 3.1 mill certificates per shipment' },
         { label: 'RFQ Response', value: 'DFM review and quotation within 24–48 hours' },
         { label: 'Pricing Position', value: 'Typically 25–35% below Western job-shop benchmarks for comparable specifications; cost-advantage from integrated Baoji titanium supply chain. Final price subject to project specification.' },
@@ -1268,20 +1268,20 @@ export const PART_PAGES: PartsCategory[] = [
     navName: 'Titanium Medical Components',
     pageTitle: 'Titanium Medical Components | Implants & Surgical Instruments | BOZE',
     metaDescription:
-      'Titanium medical components: certified implants and surgical instruments machined from Ti-6Al-4V ELI and CP-titanium under ISO 13485 quality systems.',
+      'Titanium medical components: certified implants and surgical instruments machined from Ti-6Al-4V ELI and CP-titanium under  quality systems.',
     heroBadge: 'Titanium Medical Components',
     heroH1: 'Titanium Medical Components & Implants',
     heroSubtitle:
-      'Biocompatible, certified titanium medical components — implants and surgical instruments machined from Ti-6Al-4V ELI and CP-titanium under ISO 13485.',
+      'Biocompatible, certified titanium medical components — implants and surgical instruments machined from Ti-6Al-4V ELI and CP-titanium under .',
     image: '/images/products/titanium-acetabular-cup.webp',
     imageAlt: 'Titanium acetabular cup for orthopedic medical implant applications',
     applicationOverview: {
       title: 'Application Overview',
       body:
-        'Titanium is the material of choice for many implantable and surgical components because of its biocompatibility, corrosion resistance and osseointegration. BOZE manufactures titanium medical components — surgical instruments, implant trial parts and instrumentation — from certified Ti-6Al-4V ELI and CP-titanium under ISO 13485 quality management.',
+        'Titanium is the material of choice for many implantable and surgical components because of its biocompatibility, corrosion resistance and osseointegration. BOZE manufactures titanium medical components — surgical instruments, implant trial parts and instrumentation — from certified Ti-6Al-4V ELI and CP-titanium under  quality management.',
       keyPoints: [
         'Biocompatible titanium alloys (ELI / CP)',
-        'ISO 13485 quality management system',
+        ' quality management system',
         'Certified implant & surgical instrument machining',
         'Tight tolerances for moving instrument assemblies',
         'Full material & process traceability',
@@ -1330,7 +1330,7 @@ export const PART_PAGES: PartsCategory[] = [
         { label: 'Standards', value: 'ISO 5832-3, ASTM F136, ASTM F67' },
         { label: 'Surface Finish', value: 'Ra 0.2–0.8 µm as specified' },
         { label: 'Passivation', value: 'ASTM F86' },
-        { label: 'Quality', value: 'ISO 13485 quality management' },
+        { label: 'Quality', value: ' quality management' },
       ],
     },
     qualityInspection: {
@@ -1338,7 +1338,7 @@ export const PART_PAGES: PartsCategory[] = [
       intro:
         'Medical titanium components are manufactured under controlled quality systems:',
       points: [
-        'ISO 13485 quality management system',
+        ' quality management system',
         'Material traceability with EN 10204 3.1',
         'CMM dimensional inspection',
         'Surface finish & passivation verification',
@@ -1354,7 +1354,7 @@ export const PART_PAGES: PartsCategory[] = [
       {
         question: 'Can you machine titanium implants and surgical instruments?',
         answer:
-          'Yes. We manufacture titanium medical components including surgical instruments and implant trial parts from certified Ti-6Al-4V ELI and CP-titanium under ISO 13485 quality management.',
+          'Yes. We manufacture titanium medical components including surgical instruments and implant trial parts from certified Ti-6Al-4V ELI and CP-titanium under  quality management.',
       },
       {
         question: 'Which titanium grades are biocompatible for medical use?',

@@ -78,7 +78,7 @@ const howtoItem: HowToItem = {
   description: 'Five-step engineering workflow using the BOZE free calculator suite — from environment analysis to RFQ submission. Mirrors the BOZE 5-Stage Engineering Decision Pipeline™ used by our internal application engineers.',
   totalTime: 'PT45M',
   steps: [
-    { name: 'Define Operating Environment', text: 'Identify temperature, corrosive media, load type (static/cyclic/impact), and regulatory regime (AS9100, ISO 13485, NACE MR0175). Output: 1-line environment envelope to feed into the Titanium Grade Finder.', position: 1 },
+    { name: 'Define Operating Environment', text: 'Identify temperature, corrosive media, load type (static/cyclic/impact), and regulatory regime (AS9100, NACE MR0175). Output: 1-line environment envelope to feed into the Titanium Grade Finder.', position: 1 },
     { name: 'Filter Material with Grade Finder', text: 'Open the Titanium Grade Finder and filter 12 grades (Grade 1–4 CP-Ti, Grade 5 / 23 Ti-6Al-4V, Grade 7 Ti-0.15Pd, Grade 9 Ti-3Al-2.5V, Grade 12, Grade 19, Grade 23 ELI) by strength, corrosion, weldability, biocompatibility, cost. Output: 1–3 candidate grades.', position: 2 },
     { name: 'Validate Tolerances with CNC Checker', text: 'For each candidate grade, open the CNC Tolerance Checker and select the 9 feature types (hole, true position, flatness, concentricity, surface finish, angularity, parallelism, thread pitch, perpendicularity). Output: pass / precision / ultra-precision feasibility per feature.', position: 3 },
     { name: 'Estimate Mass & Process Parameters', text: 'Use the Titanium Weight Calculator for shipping/logistics weight, the Surface Roughness Comparator to align Ra targets to inspection, and the 5-Axis CNC Machining Simulator to project RPM, MRR, and tool life for the chosen grade. Output: cost-driving parameters documented for the RFQ.', position: 4 },
@@ -317,12 +317,12 @@ const howtoItem: HowToItem = {
   <section class="py-16" style="background: var(--theme-bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--theme-text);">3. BOZE 5-Stage Engineering Decision Pipeline<sup style="font-size: 0.6em;">™</sup></h2>
-      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Our proprietary framework for B2B titanium component procurement. Built from <strong>12+ years of CNC shop-floor data</strong> across 1,200+ AS9100D and ISO 13485 orders. Use it as the canonical workflow every time you specify titanium.</p>
+      <p class="text-sm mb-8" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Our proprietary framework for B2B titanium component procurement. Built from <strong>12+ years of CNC shop-floor data</strong> across 1,200+ AS9100D and  orders. Use it as the canonical workflow every time you specify titanium.</p>
       <ol class="grid grid-cols-1 md:grid-cols-5 gap-4 list-none" style="counter-reset: pipeline;">
         <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
           <div class="text-2xl font-bold mb-2" style="color: var(--theme-primary);">1. Envelope</div>
           <h3 class="font-bold mb-2" style="color: var(--theme-text);">Define Operating Envelope</h3>
-          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Temperature, media, load type (static / cyclic / impact), regulatory regime (AS9100, ISO 13485, NACE MR0175).</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Temperature, media, load type (static / cyclic / impact), regulatory regime (AS9100, NACE MR0175).</p>
           <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → Titanium Grade Finder</em></p>
         </li>
         <li class="rounded-xl p-5" style="background: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -350,7 +350,7 @@ const howtoItem: HowToItem = {
           <p class="text-xs mt-2" style="color: var(--theme-primary);"><em>Tool: → /rfq/ + free 24h DFM</em></p>
         </li>
       </ol>
-      <p class="text-xs mt-6" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);"><strong>Unique Data Point:</strong> Across 1,200+ AS9100D / ISO 13485 orders (2022–2025), parts that completed all 5 stages of the pipeline before RFQ submission showed a <strong style="color: var(--theme-primary);">27% lower cost-of-quality</strong> and <strong style="color: var(--theme-primary);">3.1× faster quote-to-shipment</strong> cycle vs. parts submitted with raw drawings only.</p>
+      <p class="text-xs mt-6" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);"><strong>Unique Data Point:</strong> Across 1,200+ AS9100D  orders (2022–2025), parts that completed all 5 stages of the pipeline before RFQ submission showed a <strong style="color: var(--theme-primary);">27% lower cost-of-quality</strong> and <strong style="color: var(--theme-primary);">3.1× faster quote-to-shipment</strong> cycle vs. parts submitted with raw drawings only.</p>
     </div>
   </section>
 
@@ -390,7 +390,7 @@ const howtoItem: HowToItem = {
         </div>
         <div class="p-4 rounded-xl" style="background: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
           <h3 class="font-bold mb-1" style="color: var(--theme-text);">BOZE Internal CMM Data (2022–2025)</h3>
-          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">1,200+ AS9100D and ISO 13485 production orders, full-dimensional CMM reports. Proprietary source for the Cpk ≥ 1.67 claim and the 27% / 3.1× pipeline effectiveness metric above.</p>
+          <p class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">1,200+ AS9100D production orders, full-dimensional CMM reports. Proprietary source for the Cpk ≥ 1.67 claim and the 27% / 3.1× pipeline effectiveness metric above.</p>
         </div>
       </div>
     </div>

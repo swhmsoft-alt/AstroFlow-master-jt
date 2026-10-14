@@ -14,7 +14,7 @@ const t = useTranslations(currentLang);
 const isActiveLink = (href: string) : boolean => { return href === currentPathname; }
 
 // F7 — Same blog translation index as BaseLayout.astro / LanguageSelector.astro
-// / rehype-i18n-link.mjs.  Built once per page render; threaded through every
+// rehype-i18n-link.mjs.  Built once per page render; threaded through every
 // availability check so /<lang>/blog/<slug>/ is treated consistently across
 // nav, hreflang, and markdown anchors.
 //

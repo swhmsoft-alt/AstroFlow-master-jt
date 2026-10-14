@@ -130,7 +130,7 @@ export const COMPLIANCE_STANDARD_IDS = [
 
 export const COMPLIANCE_STANDARD_LABELS: Readonly<Record<ComplianceStandard, string>> = {
   'iso-9001': 'ISO 9001:2015 — Quality Management',
-  'iso-13485': 'ISO 13485 — Medical Devices QMS',
+  'iso-13485': ' — Medical Devices QMS',
   'as9100d': 'AS9100D — Aerospace QMS',
   'astm-f136': 'ASTM F136 — Ti Grade 23 ELI for Surgical Implants',
   'astm-f86': 'ASTM F86 — Surface Preparation of Metallic Surgical Implants',
@@ -524,7 +524,7 @@ export const INDUSTRY_APPLICATIONS: readonly ApplicationCard[] = [
     directAnswer:
       'ASTM F136 Grade 23 (Ti-6Al-4V ELI) bone screws and trauma plates with mirror-polished surface finish Ra ≤ 0.2 µm, 100% ultrasonic cleaned, color-anodized for size identification, and full ISO 5832-3 + ISO 10993 biocompatibility documentation.',
     description:
-      'Long-term human implants (orthopedic bone screws, trauma plates, spinal fixation, dental abutments) require the highest-grade titanium with proven biocompatibility. Boze machines Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3 in a dedicated ISO 13485-compliant production cell. Threads are single-point micro-turned (M1.0–M4.0) and plates are 5-axis milled to sub-0.05 mm profile tolerance, then electropolished / anodized for size identification and 100% ultrasonic cleaned.',
+      'Long-term human implants (orthopedic bone screws, trauma plates, spinal fixation, dental abutments) require the highest-grade titanium with proven biocompatibility. Boze machines Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3 in a dedicated -compliant production cell. Threads are single-point micro-turned (M1.0–M4.0) and plates are 5-axis milled to sub-0.05 mm profile tolerance, then electropolished / anodized for size identification and 100% ultrasonic cleaned.',
     intent: 'commercial-investigation',
     featured: true,
     sector: 'medical-implant',
@@ -538,8 +538,8 @@ export const INDUSTRY_APPLICATIONS: readonly ApplicationCard[] = [
     },
     complianceChain: ['iso-13485', 'iso-9001', 'astm-f136', 'astm-f86', 'iso-5832-3', 'iso-10993', 'en-10204-3.1'],
     complianceBadges: [
-      { id: 'iso-13485', badge: 'ISO 13485', description: 'Medical Devices Quality Management System — required for finished medical device manufacture.', applies: true },
-      { id: 'iso-9001', badge: 'ISO 9001:2015', description: 'Foundational QMS, fully integrated with ISO 13485 process control.', applies: true },
+      { id: 'iso-13485', badge: '', description: 'Medical Devices Quality Management System — required for finished medical device manufacture.', applies: true },
+      { id: 'iso-9001', badge: 'ISO 9001:2015', description: 'Foundational QMS, fully integrated with  process control.', applies: true },
       { id: 'astm-f136', badge: 'ASTM F136', description: 'Standard spec for wrought Ti-6Al-4V ELI alloy for surgical implant applications.', applies: true },
       { id: 'astm-f86', badge: 'ASTM F86', description: 'Standard practice for surface preparation and marking of metallic surgical implants.', applies: true },
       { id: 'iso-5832-3', badge: 'ISO 5832-3', description: 'Implants for surgery — Wrought titanium 6-aluminium 4-vanadium alloy.', applies: true },
@@ -547,9 +547,9 @@ export const INDUSTRY_APPLICATIONS: readonly ApplicationCard[] = [
       { id: 'en-10204-3.1', badge: 'EN 10204 3.1', description: 'Mill Test Report with heat-number-locked certification — required for FDA 510(k) and CE-MDR submissions.', applies: true },
     ],
     challenge:
-      'Implant buyers require ISO 13485 QMS + ASTM F136 Grade 23 ELI (not commercial Grade 5) + validated biocompatibility per ISO 10993 + zero surface contamination. Stainless 316L implants cause nickel-ion sensitisation; CoCrMo is not MRI-conditional. Tight thread tolerances (M1.0–M4.0) and mirror finishes (Ra ≤ 0.2 µm) are not achievable on a general-purpose shop floor.',
+      'Implant buyers require  QMS + ASTM F136 Grade 23 ELI (not commercial Grade 5) + validated biocompatibility per ISO 10993 + zero surface contamination. Stainless 316L implants cause nickel-ion sensitisation; CoCrMo is not MRI-conditional. Tight thread tolerances (M1.0–M4.0) and mirror finishes (Ra ≤ 0.2 µm) are not achievable on a general-purpose shop floor.',
     solution:
-      'Dedicated ISO Class 7 cleanroom production cell, single-point micro-turning for threads (M1.0–M4.0), 5-axis milling of plates, electropolish + Type II anodize for color size-coding, 100% ultrasonic cleaning in deionised water. Full DMR (Device Master Record) per ISO 13485 §4.2.3 with biocompatibility reports.',
+      'Dedicated ISO Class 7 cleanroom production cell, single-point micro-turning for threads (M1.0–M4.0), 5-axis milling of plates, electropolish + Type II anodize for color size-coding, 100% ultrasonic cleaning in deionised water. Full DMR (Device Master Record) per  §4.2.3 with biocompatibility reports.',
     evidenceMetrics: [
       { label: 'Surface finish (post-electropolish)', value: 'Ra ≤ 0.2 µm', baseline: 'mirror-grade for bone-contact', standard: 'ASTM F86 / ISO 25178', emphasis: 'high' },
       { label: 'Cytotoxicity (ISO 10993-5)', value: 'Grade 0 (no reactivity)', baseline: 'vs negative control', standard: 'ISO 10993-5', emphasis: 'high' },
@@ -766,7 +766,7 @@ export const INDUSTRY_APPLICATIONS: readonly ApplicationCard[] = [
     directAnswer:
       'Precision micro-turned and 5-axis milled Grade 23 (Ti-6Al-4V ELI) microdermal piercing tops, EDC pen clips, and wearable hardware — ASTM F136 / ISO 5832-3 implant-grade, PVD colour coating, mirror finish Ra ≤ 0.1 µm, validated to ISO 10993-5 cytotoxicity Grade 0.',
     description:
-      'Body jewellery and high-end EDC hardware that sits in permanent contact with human tissue must meet the same biocompatibility standard as surgical implants. Boze micro-turns (Swiss-type) and 5-axis mills Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3 with sub-0.05 mm profile tolerance, post-machining electropolish to Ra ≤ 0.1 µm mirror finish, and optional PVD decorative coating (ZrN gold, TiAlN rainbow, DLC black). All production in an ISO 13485 cleanroom.',
+      'Body jewellery and high-end EDC hardware that sits in permanent contact with human tissue must meet the same biocompatibility standard as surgical implants. Boze micro-turns (Swiss-type) and 5-axis mills Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3 with sub-0.05 mm profile tolerance, post-machining electropolish to Ra ≤ 0.1 µm mirror finish, and optional PVD decorative coating (ZrN gold, TiAlN rainbow, DLC black). All production in an  cleanroom.',
     intent: 'informational',
     featured: false,
     sector: 'edc-luxury-hardware',
@@ -780,7 +780,7 @@ export const INDUSTRY_APPLICATIONS: readonly ApplicationCard[] = [
     },
     complianceChain: ['iso-13485', 'iso-9001', 'astm-f136', 'iso-5832-3', 'iso-10993'],
     complianceBadges: [
-      { id: 'iso-13485', badge: 'ISO 13485', description: 'Medical Devices QMS — used here to validate the production line for body-contact hardware.', applies: true },
+      { id: 'iso-13485', badge: '', description: 'Medical Devices QMS — used here to validate the production line for body-contact hardware.', applies: true },
       { id: 'iso-9001', badge: 'ISO 9001:2015', description: 'Foundational QMS.', applies: true },
       { id: 'astm-f136', badge: 'ASTM F136', description: 'Wrought Ti-6Al-4V ELI alloy for surgical implant applications — the same spec used for orthopedic bone screws.', applies: true },
       { id: 'iso-5832-3', badge: 'ISO 5832-3', description: 'Wrought titanium 6-aluminium 4-vanadium alloy for surgical implants.', applies: true },
@@ -789,7 +789,7 @@ export const INDUSTRY_APPLICATIONS: readonly ApplicationCard[] = [
     challenge:
       'High-end body jewellery and EDC buyers (CPF, Hinderer, Chris Reeve, AnoTek) want implant-grade materials at micro-feature tolerances, but most jewellery shops use industrial 316L (Ni release) or generic Grade 5 (no biocompatibility documentation). Buyers also demand consistent PVD colour across batches and mirror finishes that hold up to daily wear.',
     solution:
-      'Swiss-type micro-turning (for sub-1.5 mm features) and 5-axis micro-milling (for complex surfaces) in an ISO 13485 cleanroom. Electropolish to Ra ≤ 0.1 µm mirror finish, optional PVD (ZrN / TiAlN / DLC). 100% visual inspection under 10× stereo microscope. ISO 10993-5 cytotoxicity test report supplied per lot.',
+      'Swiss-type micro-turning (for sub-1.5 mm features) and 5-axis micro-milling (for complex surfaces) in an  cleanroom. Electropolish to Ra ≤ 0.1 µm mirror finish, optional PVD (ZrN / TiAlN / DLC). 100% visual inspection under 10× stereo microscope. ISO 10993-5 cytotoxicity test report supplied per lot.',
     evidenceMetrics: [
       { label: 'Surface finish (post-electropolish)', value: 'Ra ≤ 0.1 µm', baseline: 'mirror-grade for body contact', standard: 'ISO 25178', emphasis: 'high' },
       { label: 'Cytotoxicity (ISO 10993-5)', value: 'Grade 0 (no reactivity)', baseline: 'vs negative control', standard: 'ISO 10993-5', emphasis: 'high' },

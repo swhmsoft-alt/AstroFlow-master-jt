@@ -65,7 +65,7 @@ const faqItems = [
   { question: 'How do you select the right tolerance class for a custom machined titanium part?', answer: 'ISO 2768-m (medium) is the default for general machined dimensions; ISO 2768-k (fine) is used for critical features such as bearing surfaces, sealing faces, and datum references. Tighter-than-fine tolerances are quoted separately and typically involve grinding, EDM, or hard-turning as a secondary operation. Critical-tolerance features are flagged in the RFQ with the GD&T callouts per ASME Y14.5.' },
   { question: 'When is 5-axis simultaneous machining required rather than 3-axis or 4-axis?', answer: '3-axis covers prismatic features. 4-axis adds rotation around a fourth axis for wrap-around features. 5-axis simultaneous is required for undercuts, complex contours, and multi-face machining in a single setup; it eliminates the multiple re-fixturing that drives tolerance stack-up on 3+2 setups. 5-axis is selected for complex aerospace structural brackets, blisks, manifolds, and orthopedic implants.' },
   { question: 'What surface finish can be expected on machined titanium and how is it verified?', answer: 'Standard finish is Ra 1.6 micrometer as-machined. Fine finish is Ra 0.8 micrometer achievable in one pass with sharp tooling and light cut. Mirror Ra 0.4 micrometer requires secondary finishing (grinding, polishing, or buffing). Profilometer measurement is taken on representative features per ASME B46.1 and recorded in the dimensional report.' },
-  { question: 'How is medical-grade (Gr.23 ELI) machining different from industrial Gr.5?', answer: 'Gr.23 ELI has the same nominal composition as Gr.5 but with tighter limits on interstitial elements (Fe, O, N, H), which improves fracture toughness and fatigue life. The cutting parameters are essentially the same, but the documentation chain is stricter: full ASTM F136 chemistry, EN 10204 3.1 MTR, dual-melt verification, and AS9100D / ISO 13485 batch record. Medical-grade parts are typically produced in an ISO 13485-certified cell.' },
+  { question: 'How is medical-grade (Gr.23 ELI) machining different from industrial Gr.5?', answer: 'Gr.23 ELI has the same nominal composition as Gr.5 but with tighter limits on interstitial elements (Fe, O, N, H), which improves fracture toughness and fatigue life. The cutting parameters are essentially the same, but the documentation chain is stricter: full ASTM F136 chemistry, EN 10204 3.1 MTR, dual-melt verification, and AS9100D  batch record. Medical-grade parts are typically produced in an -certified cell.' },
   { question: 'What is the lead time for a custom prototype versus production run?', answer: 'Prototype (1-5 pieces): 7-10 days. Small batch (5-50 pieces): 2-4 weeks. Production batch (50-500 pieces): 3-6 weeks. The lead time is driven by raw-material availability (Gr.2 is fastest, Gr.5 and Gr.23 to order), programming and fixturing setup (one-time per part number), and machine calendar. Final lead time is confirmed at the RFQ stage.' },
   { question: 'How are small features (thin walls, sharp corners, deep holes) handled in titanium?', answer: 'Thin walls and sharp corners are best produced by wire EDM with a 0.1-0.3 mm wire (sharp internal corner radius about 0.05-0.15 mm). Deep holes are produced by gun-drilling with high-pressure through-tool coolant; depth-to-diameter ratio up to about 100:1 is achievable in titanium. Standard milling and turning are used for general features; the RFQ should call out the small-feature requirements so the process plan can select the right combination of milling, turning, and EDM.' },
 ];
@@ -75,7 +75,7 @@ const relatedLinks = [
   { title: 'Titanium Flanges', desc: 'Weld-neck, slip-on, blind, threaded, and lap-joint flanges to ASME B16.5 / ASTM B381.', href: '/standard-parts/flanges/' },
   { title: 'Titanium Pipe Fittings', desc: 'Butt-weld elbows, tees, reducers, caps, and stub ends to ASME B16.9 / ASTM B363.', href: '/standard-parts/pipe-fittings/' },
   { title: 'Titanium Fasteners', desc: 'Socket head cap screws, hex bolts, hex nuts, flange nuts, washers, threaded rod to DIN / ISO / NAS / ASME.', href: '/standard-parts/fasteners/' },
-  { title: 'Compliance and Certifications', desc: 'AS9100D, ISO 13485, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
+  { title: 'Compliance and Certifications', desc: 'AS9100D, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
 ];
 
 const itemListItems = [
@@ -227,8 +227,8 @@ const itemListItems = [
     background="dark"
     eyebrow="Aerospace and Medical, ASTM F136 / AMS 4928"
     title="Structural Brackets, Housings, and Medical Implant Machining"
-    body="Grade 5 (Ti-6Al-4V) structural brackets and Grade 23 (Ti-6Al-4V ELI) sensor housings and medical implant prototypes are machined to ASME Y14.5 GD&T with full CMM inspection. AMS 4928 solution-treat-and-age heat treatment is available for high-strength aerospace service. ISO 13485 documentation chain is maintained for medical-grade parts."
-    bullets={['3- to 5-axis contour per ASME Y14.5 GD&T', 'AMS 4928 STA heat treatment for aerospace', 'ISO 13485 documentation for medical grade (where applicable)']}
+    body="Grade 5 (Ti-6Al-4V) structural brackets and Grade 23 (Ti-6Al-4V ELI) sensor housings and medical implant prototypes are machined to ASME Y14.5 GD&T with full CMM inspection. AMS 4928 solution-treat-and-age heat treatment is available for high-strength aerospace service.  documentation chain is maintained for medical-grade parts."
+    bullets={['3- to 5-axis contour per ASME Y14.5 GD&T', 'AMS 4928 STA heat treatment for aerospace', ' documentation for medical grade (where applicable)']}
     ctaLabel="View brackets and housings specs"
     ctaHref="/standard-parts/machined-components/#bracket"
   />
@@ -255,7 +255,7 @@ const itemListItems = [
         <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
           <span class="text-2xl" aria-hidden="true">🏥</span>
           <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Medical Implant (where applicable)</h3>
-          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Implant-grade prototypes, surgical instrument bodies, trial components. Gr.23 ELI per ASTM F136. ISO 13485 documentation chain.</p>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Implant-grade prototypes, surgical instrument bodies, trial components. Gr.23 ELI per ASTM F136.  documentation chain.</p>
         </article>
         <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
           <span class="text-2xl" aria-hidden="true">🔬</span>

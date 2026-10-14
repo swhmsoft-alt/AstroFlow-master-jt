@@ -8,7 +8,7 @@ import QualityControl from '../../../components/landing/QualityControl.astro';
 import Applications from '../../../components/landing/Applications.astro';
 
 const pageTitle = 'Titanium Compliance & Certifications | Boze Manufacturing Capabilities';
-const pageDescription = 'Active compliance scope for aerospace, medical, and defense titanium CNC machining: AS9100D / ISO 13485 / ASTM B348 / F136 / EN 10204 3.1 / DFARS. The Compliance sub-page under /capabilities/.';
+const pageDescription = 'Active compliance scope for aerospace, medical, and defense titanium CNC machining: AS9100D  / ASTM B348 / F136 / EN 10204 3.1 / DFARS. The Compliance sub-page under /capabilities/.';
 const canonicalUrl = 'https://cnc.bozemetal.com/capabilities/compliance/';
 
 const complianceSchema = {
@@ -19,12 +19,12 @@ const complianceSchema = {
     name: 'Titanium Compliance & Certification Services',
     serviceType: 'Aerospace / Medical / Defense Compliance Documentation',
     provider: { '@type': 'ManufacturingPlant', '@id': 'https://www.bozemetal.com/#organization', name: 'Baoji Boze Metal Products Co., Ltd.', url: 'https://www.bozemetal.com', address: { '@type': 'PostalAddress', addressLocality: 'Baoji', addressRegion: 'Shaanxi', addressCountry: 'CN' } },
-    description: 'Active titanium machining compliance scope: AS9100D aerospace QMS, ISO 9001:2015 general QMS, ISO 13485:2016 medical device QMS, ASTM B348 / F136 material conformance, EN 10204 3.1 mill test certification, DFARS-compliant sourcing for US defense.',
+    description: 'Active titanium machining compliance scope: AS9100D aerospace QMS, ISO 9001:2015 general QMS:2016 medical device QMS, ASTM B348 / F136 material conformance, EN 10204 3.1 mill test certification, DFARS-compliant sourcing for US defense.',
     areaServed: 'Worldwide',
     hasCredential: [
       { '@type': 'EducationalOccupationalCredential', name: 'AS9100D Aerospace Quality Management System', description: 'QMS certification covering design, development, production, installation, and delivery of aerospace titanium components. Counterfeit-part prevention per AS9100D §8.1.4.' },
       { '@type': 'EducationalOccupationalCredential', name: 'ISO 9001:2015 Quality Management System', description: 'General-purpose QMS covering all stages of titanium CNC machining production.' },
-      { '@type': 'EducationalOccupationalCredential', name: 'ISO 13485:2016 Medical Device Quality Management', description: 'Medical-device QMS supporting manufacture of titanium surgical implants per ISO 13485 §7.5.1 / §7.5.6 / §7.5.8.' },
+      { '@type': 'EducationalOccupationalCredential', name: ' Medical Device Quality Management', description: 'Medical-device QMS supporting manufacture of titanium surgical implants per  §7.5.1 / §7.5.6 / §7.5.8.' },
       { '@type': 'EducationalOccupationalCredential', name: 'ASTM B348 / B265 / F136 Material Standard Compliance', description: 'Material standard conformance for titanium bar, billet, plate, and surgical-grade Ti-6Al-4V ELI.' },
       { '@type': 'EducationalOccupationalCredential', name: 'EN 10204 Type 3.1 Mill Test Certification', description: 'Mill test certificates per EN 10204 §4, issued by upstream mill independent of manufacturing.' },
       { '@type': 'EducationalOccupationalCredential', name: 'DFARS-compliant Material Sourcing', description: 'DFARS 252.225-7008 / 252.225-7009 compliant titanium stock sourcing for US defense and aerospace programs.' },
@@ -35,7 +35,7 @@ const complianceSchema = {
 // 8 active compliance scopes (③ 结构化主体)
 const complianceScopes = [
   { icon: '✈️', code: 'AS9100D', domain: 'Aerospace Quality Management', coverage: 'Aerospace, defense, and aviation titanium components', evidence: 'QMS certificate, documented AS9100D scope statement, internal audit reports available under NDA.' },
-  { icon: '🏥', code: 'ISO 13485:2016', domain: 'Medical Device QMS', coverage: 'Surgical implants, instruments, and Class I/II titanium medical components', evidence: 'QMS certificate, design-control file, process-validation records per ISO 13485 §7.5.6.' },
+  { icon: '🏥', code: '', domain: 'Medical Device QMS', coverage: 'Surgical implants, instruments, and Class I/II titanium medical components', evidence: 'QMS certificate, design-control file, process-validation records per  §7.5.6.' },
   { icon: '🛡️', code: 'ISO 9001:2015', domain: 'General Quality Management', coverage: 'All titanium machining production regardless of end-market', evidence: 'QMS certificate, process FMEA library, corrective-action log available for customer audits.' },
   { icon: '⚙️', code: 'ASTM B348 / F136', domain: 'Material Standard Conformance', coverage: 'Ti Grade 1–5 bar/billet; Ti-6Al-4V ELI implant-grade (F136)', evidence: 'MTR traceable to mill heat; chemistry verified by spectrometer; mechanicals per ASTM E8/E18.' },
   { icon: '📋', code: 'EN 10204 3.1', domain: 'Mill Test Certificate', coverage: 'All production orders — chemistry and mechanical properties from upstream mill', evidence: '3.1 certificate issued by mill, independent of Boze manufacturing, per EN 10204 §4.' },
@@ -57,8 +57,8 @@ const documentDeliverables = [
 
 // 5 things we explicitly do NOT cover (② 诚实定位)
 const whatWeDontCover = [
-  { topic: 'NADCAP-accredited heat treatment', reason: 'Heat treatment is subcontracted to NADCAP-accredited suppliers when in scope; we do not hold NADCAP accreditation in-house.' },
-  { topic: 'NADCAP-accredited NDT (penetrant, mag-particle, ultrasonic)', reason: 'NDT is performed by independent NADCAP-accredited labs (e.g., SGS, Bureau Veritas). We coordinate the testing and include the lab report in the FAIR package.' },
+  { topic: ' heat treatment', reason: 'Heat treatment is subcontracted to-accredited suppliers when in scope; we do not hold accreditation in-house.' },
+  { topic: ' NDT (penetrant, mag-particle, ultrasonic)', reason: 'NDT is performed by independent-accredited labs (e.g., SGS, Bureau Veritas). We coordinate the testing and include the lab report in the FAIR package.' },
   { topic: 'In-house CMM calibration', reason: 'CMM calibration is performed annually by accredited labs traceable to NIST / NPL standards. We do not issue CMM calibration certificates ourselves.' },
   { topic: 'ITAR-restricted part manufacturing for US persons', reason: 'We manufacture to drawing under commercial terms. For ITAR-controlled articles we work with US-domiciled distributors.' },
   { topic: 'Class III implantable device design responsibility', reason: 'We manufacture Class I/II titanium implants to validated processes. We are not a Class III design house and do not hold 510(k) / CE MDR Class III submission authority.' },
@@ -66,16 +66,16 @@ const whatWeDontCover = [
 
 // 10 compliance FAQs (drives FAQPage JSON-LD via BaseLayout — keys MUST be question/answer per src/lib/schema.ts:287-290)
 const complianceFaqs = [
-  { question: 'What certifications does Boze Titanium Manufacturing Center hold?', answer: 'Our titanium machining facility operates under AS9100D (aerospace QMS), ISO 9001:2015 (general QMS), and ISO 13485:2016 (medical device QMS). Certifications are issued by an accredited third-party certification body and are available for customer audit under NDA.' },
+  { question: 'What certifications does Boze Titanium Manufacturing Center hold?', answer: 'Our titanium machining facility operates under AS9100D (aerospace QMS), ISO 9001:2015 (general QMS), and  (medical device QMS). Certifications are issued by an accredited third-party certification body and are available for customer audit under NDA.' },
   { question: 'Are you AS9100D-certified for aerospace titanium CNC machining?', answer: 'Yes. Our AS9100D scope covers CNC machining, milling, turning, 5-axis machining, and inspection of titanium components for aerospace and aviation. We maintain a documented AS9100D scope statement, internal audit program, and management review per AS9100D §9.3.' },
-  { question: 'Do you hold ISO 13485 certification for medical titanium implants?', answer: 'Yes. We manufacture titanium surgical implants and instruments under ISO 13485:2016, with documented design-control records, process validation per ISO 13485 §7.5.6, and full traceability per ISO 13485 §7.5.8.' },
+  { question: 'Do you hold  certification for medical titanium implants?', answer: 'Yes. We manufacture titanium surgical implants and instruments under , with documented design-control records, process validation per  §7.5.6, and full traceability per  §7.5.8.' },
   { question: 'What material standards do you comply with for titanium?', answer: 'We routinely work to ASTM B348 (wrought titanium bar and billet, Grades 1–5), ASTM B265 (titanium plate and strip), ASTM F136 (Ti-6Al-4V ELI for surgical implants), AMS 4928 (aerospace material spec), and ISO 5832-3 (implants for surgery).' },
   { question: 'Can you provide EN 10204 3.1 mill test certificates?', answer: 'Yes. Every heat-traced order ships with an EN 10204 Type 3.1 certificate issued by the upstream mill (independent of our manufacturing). The 3.1 certificate includes chemical composition, mechanical properties, and heat-treatment condition traceable to the original mill heat number.' },
   { question: 'Are you DFARS-compliant for US defense procurement?', answer: 'We source titanium to DFARS 252.225-7008 / 252.225-7009 for US defense and aerospace programs. We provide a specialty-metal compliance letter on request confirming the mill source for each heat. Direct ITAR-restricted part manufacture is not our current scope — we work with US-domiciled distributors for ITAR articles.' },
   { question: 'How do you prevent counterfeit parts in aerospace titanium supply?', answer: 'Our AS9100D scope includes AS9100D §8.1.4 counterfeit-parts prevention: documented procurement controls, approved-supplier list, material verification at receipt (independent spectrometer check), quarantine of suspect material, and traceability of every heat from receipt through delivery.' },
   { question: 'Do you provide First Article Inspection Reports (FAIR)?', answer: 'Yes. We issue FAIRs per AS9102 (or customer-specific format) before production release. The FAIR includes dimensional report from CMM inspection, material certification, and process records. For AS9100D programs the FAIR is part of the documented first-article verification per AS9100D §8.5.1.1.' },
   { question: 'Are you compliant with REACH and RoHS for European markets?', answer: 'We provide SVHC (Substances of Very High Concern) declaration letters per REACH (EC) No 1907/2006 and RoHS 3 substance-compliance statements on request. For medical devices the REACH and RoHS requirements interact with MDR biocompatibility — we follow the customer-supplied regulatory matrix.' },
-  { question: 'What NDT methods do you support on titanium parts?', answer: 'We coordinate NDT through NADCAP-accredited independent labs: liquid penetrant (ASTM E1417), magnetic particle (ASTM E709 — limited on titanium), ultrasonic (ASTM E213 / E2375), and visual (ASTM E468). NDT is not performed in-house; we manage the lab interface and include the lab report in the FAIR package.' },
+  { question: 'What NDT methods do you support on titanium parts?', answer: 'We coordinate NDT through-accredited independent labs: liquid penetrant (ASTM E1417), magnetic particle (ASTM E709 — limited on titanium), ultrasonic (ASTM E213 / E2375), and visual (ASTM E468). NDT is not performed in-house; we manage the lab interface and include the lab report in the FAIR package.' },
 ];
 
 // 4 sibling sub-pages within /capabilities/ hub (⑥ Related)
@@ -93,7 +93,7 @@ const siblingCapabilities = [
   canonicalURL={canonicalUrl}
   pageType="service-detail"
   serviceName="Titanium Compliance & Certification Services"
-  serviceDescription="Active compliance scope for aerospace, medical, and defense titanium CNC machining under AS9100D, ISO 13485, ASTM, EN 10204, DFARS."
+  serviceDescription="Active compliance scope for aerospace, medical, and defense titanium CNC machining under AS9100D, ASTM, EN 10204, DFARS."
   serviceCategory="Compliance Documentation & Certified Machining"
   faqItems={complianceFaqs}
   faqName="Titanium Compliance — Frequently Asked Questions"
@@ -116,14 +116,14 @@ const siblingCapabilities = [
   <SubpageHero
     h1="Titanium Compliance & Certifications"
     badge="Sub-page of Capabilities · D2 'Who can' dimension"
-    subtitle="Our titanium machining facility operates under 8 active compliance scopes — AS9100D aerospace QMS, ISO 13485 medical device QMS, ISO 9001:2015 general QMS, ASTM B348 / F136 material conformance, EN 10204 3.1 mill test certification, DFARS-compliant sourcing, REACH / RoHS 3 EU declarations, and ISO 5832-3 implant material standards."
+    subtitle="Our titanium machining facility operates under 8 active compliance scopes — AS9100D aerospace QMS, medical device QMS, ISO 9001:2015 general QMS, ASTM B348 / F136 material conformance, EN 10204 3.1 mill test certification, DFARS-compliant sourcing, REACH / RoHS 3 EU declarations, and ISO 5832-3 implant material standards."
     keyMetrics={[
       { value: 'AS9100D', label: 'Aerospace QMS Certified' },
-      { value: 'ISO 13485', label: 'Medical Device QMS' },
+      { value: '', label: 'Medical Device QMS' },
       { value: 'EN 10204 3.1', label: 'Mill Test Certificates' },
       { value: '8 Active', label: 'Compliance Scopes' },
     ]}
-    entityChips={['AS9100D', 'ISO 9001:2015', 'ISO 13485:2016', 'ASTM B348', 'ASTM F136', 'EN 10204 3.1', 'DFARS', 'REACH / RoHS 3']}
+    entityChips={['AS9100D', 'ISO 9001:2015', '', 'ASTM B348', 'ASTM F136', 'EN 10204 3.1', 'DFARS', 'REACH / RoHS 3']}
   >
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg transition-all duration-200 hover:shadow-xl hover:opacity-90" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">

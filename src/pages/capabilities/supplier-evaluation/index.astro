@@ -23,7 +23,7 @@ const evaluationSchema = {
     areaServed: 'Worldwide',
     knowsAbout: [
       { '@type': 'Thing', name: 'AS9100D Aerospace Quality Management System' },
-      { '@type': 'Thing', name: 'ISO 13485:2016 Medical Device Quality Management' },
+      { '@type': 'Thing', name: ' Medical Device Quality Management' },
       { '@type': 'Thing', name: 'ASTM B348 / F136 Titanium Material Standards' },
       { '@type': 'Thing', name: 'EN 10204 Type 3.1 Mill Test Certification' },
       { '@type': 'Thing', name: 'DFARS Specialty-Metal Compliance' },
@@ -47,7 +47,7 @@ const evalDimensions = [
 const scorecardSample = [
   { dim: 'D1', criterion: 'Active AS9100D certificate issued by accredited CB?', points: 5 },
   { dim: 'D1', criterion: 'Documented QMS scope statement & internal audit program?', points: 4 },
-  { dim: 'D1', criterion: 'Active ISO 13485:2016 certificate for medical programs?', points: 4 },
+  { dim: 'D1', criterion: 'Active  certificate for medical programs?', points: 4 },
   { dim: 'D2', criterion: 'Mill Test Certificate per heat (EN 10204 3.1)?', points: 4 },
   { dim: 'D3', criterion: '≥100 CNC machining centers with titanium-specific experience?', points: 3 },
   { dim: 'D3', criterion: 'Tolerances to ±0.005 mm (aerospace-grade)?', points: 3 },
@@ -61,14 +61,14 @@ const triageSignals = [
   { color: '🟢', text: 'QMS certificate scope statement lists "titanium machining" specifically', meaning: 'Strong — scope-specific certificates indicate real QMS coverage' },
   { color: '🟢', text: 'MTR issued by upstream mill (not by the machine shop itself)', meaning: 'Strong — independent mill certification per EN 10204 §4' },
   { color: '🟡', text: 'MTR issued by the machine shop only (no separate mill 3.1)', meaning: 'Caution — should be mill-side 3.1, shop-issued CoC is supplementary' },
-  { color: '🟡', text: '"NADCAP-certified" claim without naming the special process', meaning: 'Caution — NADCAP is per-process (HT, NDT, etc.)' },
+  { color: '🟡', text: '"NADCAP-certified" claim without naming the special process', meaning: 'Caution — is per-process (HT, NDT, etc.)' },
   { color: '🔴', text: 'No certificate available for customer audit, even under NDA', meaning: 'Walk away — indicates fabricated credentials' },
   { color: '🔴', text: '"We can do anything" without specifying capability limits', meaning: 'Walk away — usually unmeasured capability or hidden outsourcing' },
 ];
 
 const whereWeDontCompete = [
-  { topic: 'Class III implantable device design responsibility', reason: 'We manufacture to drawing under ISO 13485, but we are not a Class III design house and do not hold 510(k) / CE MDR Class III submission authority.' },
-  { topic: 'In-house NADCAP-accredited heat treatment or NDT', reason: 'Heat treatment and NDT are subcontracted to NADCAP-accredited partner labs; we coordinate the testing and include their reports in the FAIR package.' },
+  { topic: 'Class III implantable device design responsibility', reason: 'We manufacture to drawing under , but we are not a Class III design house and do not hold 510(k) / CE MDR Class III submission authority.' },
+  { topic: 'In-house-accredited heat treatment or NDT', reason: 'Heat treatment and NDT are subcontracted to-accredited partner labs; we coordinate the testing and include their reports in the FAIR package.' },
   { topic: 'Direct ITAR-restricted part manufacture', reason: 'For ITAR-controlled articles we work with US-domiciled distributors; direct ITAR part manufacture is not our current scope.' },
   { topic: 'CMMC Level 2 certification today', reason: 'We are aligning with NIST 800-171 controls for CUI handling. Full CMMC L2 certification is in progress (target 2026 Q4).' },
 ];
@@ -80,12 +80,12 @@ const evalFaqs = [
   { question: 'What is a realistic tolerance capability for titanium 5-axis machining?', answer: '±0.005 mm (0.0002 in) on critical features is aerospace-grade. ±0.01 mm is typical for general aerospace. Beyond ±0.005 mm expect process review and additional cost. Ask for CMM uncertainty budgets per ISO 10360-2 to verify the claim.' },
   { question: 'What is the difference between EN 10204 3.1 and 3.2 certificates?', answer: '3.1 is issued by the mill independent of manufacturing — standard for titanium aerospace. 3.2 is co-signed by mill and independent third-party — higher-criticality applications. Shop-issued CoC is NOT a 3.1 substitute.' },
   { question: 'How do I check a supplier\'s supply-chain security for sanctions compliance?', answer: 'Ask for OFAC / EU sanctions screening procedure, annual supplier audit log, sample compliance letter. Verify they screen both mill and sub-tiers. For US defense, also request DFARS specialty-metal compliance letter confirming mill source for each heat number.' },
-  { question: 'What questions should I ask a titanium supplier on a site visit?', answer: 'Tour CNC floor + metrology lab, QMS scope statement + recent audit summary, sample MTR, sample FAIR package, financial summary under NDA, qualified mill sources list, customer references in your industry, known exclusions (Class III, NADCAP, ITAR — anything they cannot do).' },
+  { question: 'What questions should I ask a titanium supplier on a site visit?', answer: 'Tour CNC floor + metrology lab, QMS scope statement + recent audit summary, sample MTR, sample FAIR package, financial summary under NDA, qualified mill sources list, customer references in your industry, known exclusions (Class III, ITAR — anything they cannot do).' },
   { question: 'How many CNC machining centers does a serious titanium supplier need?', answer: 'For aerospace and medical titanium work, ≥100 CNC machining centers is the typical threshold. Below 50 centers you risk capacity issues during peak demand. Above 200 indicates a tier-1 supplier with diversified program mix.' },
 ];
 
 const siblingCapabilities = [
-  { name: 'Compliance', href: '/capabilities/compliance/', desc: 'AS9100D / ISO 13485 / ASTM / EN 10204 3.1 / DFARS scope' },
+  { name: 'Compliance', href: '/capabilities/compliance/', desc: 'AS9100D  / ASTM / EN 10204 3.1 / DFARS scope' },
   { name: 'Lead Time', href: '/capabilities/lead-time/', desc: 'Sample / prototype / production tier breakdown' },
   { name: 'Logistics & Shipping', href: '/capabilities/logistics/', desc: 'Incoterms + packaging + freight routing' },
   { name: 'Parent Hub', href: '/capabilities/', desc: 'All 6 capability dimensions at a glance' },
@@ -124,10 +124,10 @@ const siblingCapabilities = [
     keyMetrics={[
       { value: '7 Dimensions', label: 'Framework' },
       { value: '25 Points', label: 'Scorecard' },
-      { value: 'AS9100D / ISO 13485', label: 'Certifications' },
+      { value: 'AS9100D ', label: 'Certifications' },
       { value: '120+ Centers', label: 'Capacity' },
     ]}
-    entityChips={['AS9100D', 'ISO 13485', 'ASTM B348', 'EN 10204 3.1', 'DFARS', 'FAIR', 'CMM']}
+    entityChips={['AS9100D', '', 'ASTM B348', 'EN 10204 3.1', 'DFARS', 'FAIR', 'CMM']}
   >
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a href="/rfq/" class="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%);">Submit Supplier for Evaluation Review</a>

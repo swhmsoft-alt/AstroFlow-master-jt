@@ -271,7 +271,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/standard-parts': {
     h1: 'Titanium Standard Parts & Components',
-    subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015, AS9100D and ISO 13485 quality systems.',
+    subtitle: 'Standard-compliant titanium fasteners, flanges, pipe fittings and machined components supplied to ASTM, ASME, DIN and other applicable specifications — with certified materials, dimensional control and full heat-to-part material traceability. Sourced from Baoji, China\'s titanium manufacturing center, with ISO 9001:2015 and AS9100D quality systems.',
     badge: 'Standard Parts Hub | AS9100D Procurement',
     keyMetrics: [
       { value: '4', label: 'Product Families' },
@@ -357,7 +357,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
                 "label": "Aerospace"
           },
           {
-                "value": "ISO 13485",
+                "value": "",
                 "label": "Medical"
           }
     ],
@@ -398,14 +398,14 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/resources/titanium-grades-guide': {
     h1: "The Buyer's Guide to Titanium Grades & Alloys",
-    subtitle: 'Authoritative selection reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) — with chemistry, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance. AS9100D · ISO 13485 · ISO 9001 · EN 10204 3.1 MTR.',
+    subtitle: 'Authoritative selection reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) — with chemistry, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance. AS9100D ·  · ISO 9001 · EN 10204 3.1 MTR.',
     badge: 'Titanium Grades Reference Hub · ASTM/AMS/ISO',
 
     keyMetrics: [
       { value: '5', label: 'Core Grades' },
       { value: 'UNS / ASTM', label: 'Authoritative IDs' },
       { value: 'AS9100D', label: 'Aerospace Quality' },
-      { value: 'ISO 13485', label: 'Medical Quality' },
+      { value: '', label: 'Medical Quality' },
     ],
 
     entityChips: [
@@ -963,7 +963,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/titanium-surface-treatment': {
     h1: 'Titanium Surface Treatment Services',
-    subtitle: 'Precision titanium surface treatment services: anodizing, micro-arc oxidation (MAO), acid pickling & passivation. AMS 2488, ISO 13485, ASTM F86 certified surface engineering.',
+    subtitle: 'Precision titanium surface treatment services: anodizing, micro-arc oxidation (MAO), acid pickling & passivation. AMS 2488, ASTM F86 certified surface engineering.',
     badge: 'Precision Manufacturing',
 
     keyMetrics: [
@@ -976,7 +976,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
                 "label": "Anodize"
           },
           {
-                "value": "ISO 13485",
+                "value": "",
                 "label": "Medical"
           }
     ],
@@ -990,7 +990,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/titanium-surface-treatment/anodizing': {
     h1: 'Anodizing Services',
-    subtitle: 'Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. ISO 13485, AMS 2488D certified.',
+    subtitle: 'Precision titanium anodizing services: AMS 2488 Type II anti-galling anodizing, Type III pigment-free color coding, and high-purity acid pre-treatment. , AMS 2488D certified.',
     badge: 'Precision Manufacturing',
 
     keyMetrics: [
@@ -1205,7 +1205,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/capabilities/quality': {
     h1: 'Certified Quality Assurance & Titanium Traceability Infrastructure',
-    subtitle: 'Operating under a zero-defect quality philosophy. From raw titanium sponge verification via EN 10204 3.1 MTRs to multi-axis CMM dimensional validation, our precision infrastructure is strictly aligned with AS9100D and ISO 13485 standards to guarantee mission-critical compliance.',
+    subtitle: 'Operating under a zero-defect quality philosophy. From raw titanium sponge verification via EN 10204 3.1 MTRs to multi-axis CMM dimensional validation, our precision infrastructure is strictly aligned with AS9100D and  standards to guarantee mission-critical compliance.',
     badge: 'Quality & Compliance',
 
     keyMetrics: [
@@ -1224,7 +1224,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ],
     entityChips: [
           "AS9100D",
-          "ISO 13485",
+          "",
           "EN 10204 3.1",
           "FAIR",
           "SPC"
@@ -1305,7 +1305,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ],
     entityChips: [
           "AS9100D",
-          "ISO 13485",
+          "",
           "ISO 9001",
           "Nadcap",
           "CAPA"
@@ -1332,7 +1332,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     ],
     entityChips: [
           "AS9100D",
-          "ISO 13485",
+          "",
           "ISO 9001",
           "OEM/ODM",
           "Global Supply Chain"
@@ -1367,12 +1367,12 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/industries/medical': {
     h1: 'Medical Grade Titanium CNC Machining Services',
-    subtitle: 'ISO 13485:2016 certified manufacturing delivering biocompatible, high-precision titanium micro-components and orthopedic implants. Specializing in Swiss CNC turning for bone screws and dental abutments with zero-contamination ultrasonic cleaning lifecycle.',
+    subtitle: ' certified manufacturing delivering biocompatible, high-precision titanium micro-components and orthopedic implants. Specializing in Swiss CNC turning for bone screws and dental abutments with zero-contamination ultrasonic cleaning lifecycle.',
     badge: 'Medical Devices',
 
     keyMetrics: [
           {
-                "value": "ISO 13485",
+                "value": "",
                 "label": "Cert"
           },
           {
@@ -1385,7 +1385,7 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           }
     ],
     entityChips: [
-          "ISO 13485:2016",
+          "",
           "Swiss Turning",
           "Grade 23 ELI",
           "Ultrasonic Clean",
@@ -1604,15 +1604,15 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining': {
     h1: 'Grade 5 Titanium CNC Machining Services — Ti-6Al-4V (UNS R56400)',
     subtitle:
-      'Precision Ti-6Al-4V (Grade 5) components for aerospace, medical, and advanced industrial applications. Controlled cutting temperatures, thin-wall deformation management, and documented material traceability. AS9100D / ISO 13485 controlled process, ±0.005 mm tolerance target, MTR supported.',
-    badge: 'Grade 5 Ti-6Al-4V | AS9100D / ISO 13485',
+      'Precision Ti-6Al-4V (Grade 5) components for aerospace, medical, and advanced industrial applications. Controlled cutting temperatures, thin-wall deformation management, and documented material traceability. AS9100D  controlled process, ±0.005 mm tolerance target, MTR supported.',
+    badge: 'Grade 5 Ti-6Al-4V | AS9100D ',
     keyMetrics: [
       { value: '±0.005mm', label: 'Tolerance' },
       { value: 'Ra 0.8μm', label: 'Finish' },
       { value: '1 piece', label: 'MOQ' },
       { value: '5–7 d', label: 'Prototype' },
     ],
-    entityChips: ['Ti-6Al-4V', 'UNS R56400', 'AS9100D', 'ISO 13485', 'MTR', '5-Axis'],
+    entityChips: ['Ti-6Al-4V', 'UNS R56400', 'AS9100D', '', 'MTR', '5-Axis'],
   },
   // BSI 2026-10-13 — Grade 23 Ti-6Al-4V ELI material-specific machining sub-page
   // (5-inbound #1: heroKey for /titanium-cnc-machining-services/grade-23-titanium-cnc-machining/)
@@ -1620,14 +1620,14 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
     h1: 'Grade 23 Titanium CNC Machining Services — Ti-6Al-4V ELI (UNS R56407)',
     subtitle:
       'Precision Ti-6Al-4V ELI (Grade 23) components for orthopedic, spinal, dental, and surgical-instrument applications. ASTM F136 / ISO 5832-3 controlled process with ELI interstitial verification, ASTM F86 surface preparation, and sterilization-compatible finishing. ±0.005 mm tolerance target on validated micro-features.',
-    badge: 'Grade 23 Ti-6Al-4V ELI | ASTM F136 / ISO 13485',
+    badge: 'Grade 23 Ti-6Al-4V ELI | ASTM F136 ',
     keyMetrics: [
       { value: '±0.005mm', label: 'Tolerance' },
       { value: 'ASTM F136', label: 'Standard' },
       { value: '1 piece', label: 'MOQ' },
       { value: '5–7 d', label: 'Prototype' },
     ],
-    entityChips: ['Ti-6Al-4V ELI', 'UNS R56407', 'ASTM F136', 'ISO 5832-3', 'ISO 13485', 'ASTM F86'],
+    entityChips: ['Ti-6Al-4V ELI', 'UNS R56407', 'ASTM F136', 'ISO 5832-3', '', 'ASTM F86'],
   },
   // BSI 2026-10-13 — Grade 2 CP-Ti material-specific machining sub-page
   '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining': {

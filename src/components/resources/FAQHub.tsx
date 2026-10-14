@@ -389,7 +389,7 @@ export function FAQHub({ categories, entries, strings, ctaHref = '/rfq/' }: FAQH
         bullets={[
           '1–2 business day DFM response',
           'EN 10204 3.1 MTR included',
-          'AS9100D / ISO 13485 facility',
+          'AS9100D  facility',
         ]}
       />
     </section>

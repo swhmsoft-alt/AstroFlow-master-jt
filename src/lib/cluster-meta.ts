@@ -118,7 +118,7 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     name: 'Quality & Standards',
     h1: 'Titanium Parts Quality & Standards — AS9100 / ASTM / NDT',
     lede:
-      'AS9100D, ISO 13485, Nadcap, ASTM B348 / B265 / F136, MTR, CoC, FAI, dimensional inspection, surface finish measurement, and non-destructive testing for titanium parts.',
+      'AS9100D, Nadcap, ASTM B348 / B265 / F136, MTR, CoC, FAI, dimensional inspection, surface finish measurement, and non-destructive testing for titanium parts.',
     featured: 'ultimate-guide-titanium-surface-treatments-aerospace',
     adjacent: ['materials-grades', 'applications-industries'],
     icon:
@@ -126,7 +126,7 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
   subTags: [
     { tag: 'ASTM Standards', label: 'ASTM/ASME/AMS material standards' },
     { tag: 'Aerospace Quality', label: 'AS9100 and aerospace compliance' },
-    { tag: 'Supplier Qualification', label: 'AS9100 / ISO 13485 qualification' },
+    { tag: 'Supplier Qualification', label: 'AS9100  qualification' },
     { tag: 'AS9100D', label: 'AS9100D quality management' },
     { tag: 'Traceability', label: 'Material and process traceability' },
   ],
@@ -144,7 +144,7 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
   subTags: [
     { tag: 'Grade 23 Titanium', label: 'Implant-grade ELI applications' },
     { tag: 'ASTM F136', label: 'ASTM F136 surgical implant standard' },
-    { tag: 'ISO 13485', label: 'ISO 13485 medical device QMS' },
+    { tag: '', label: ' medical device QMS' },
     { tag: 'Titanium Medical Implants', label: 'Medical implant case studies' },
     { tag: 'Precision Machining', label: 'Precision applications across industries' },
   ],
@@ -154,7 +154,7 @@ export const CLUSTERS: readonly ClusterMeta[] = Object.freeze([
     name: 'Procurement & Services',
     h1: 'Procurement & Services — RFQ, Supplier Evaluation, Cost',
     lede:
-      'RFQ preparation, supplier qualification (AS9100 / ISO 13485), cost drivers, lead times, MOQ, Incoterms, and sourcing strategy for titanium CNC machined parts.',
+      'RFQ preparation, supplier qualification (AS9100 ), cost drivers, lead times, MOQ, Incoterms, and sourcing strategy for titanium CNC machined parts.',
     featured: 'how-to-choose-titanium-cnc-machining-supplier',
     adjacent: ['applications-industries', 'quality-standards'],
     icon:

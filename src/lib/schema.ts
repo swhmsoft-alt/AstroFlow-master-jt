@@ -31,6 +31,50 @@
 import { SITE } from '@config/site';
 import { refsFromIds } from './entity-graph';
 
+// ── schema-dts type imports (Phase 1, 2026-10-14) ─────────────────────────
+//
+// `schema-dts` is Google's official TypeScript type declarations for the
+// Schema.org vocabulary. We use it purely as a *type-only* dependency: the
+// builders below return objects whose structural shape is enforced at
+// compile-time by the Schema.org types. This catches:
+//   - field name typos (e.g. `knowsabout` vs `knowsAbout`)
+//   - field-type mismatches (e.g. `number` vs `string`)
+//   - deprecated / non-existent properties
+//
+// `schema-dts` does NOT validate JSON-LD values at runtime — it only checks
+// TypeScript types at build time. The schema-org-validator / manual
+// review of dist JSON-LD is still the runtime safety net.
+//
+// We import only the subset of Schema.org types actually emitted by the
+// builders in this file. Adding a new builder that emits a new entity
+// type should add a corresponding `import type` here.
+import type {
+  Organization,
+  Brand,
+  Certification,
+  WebSite,
+  ImageObject,
+  WebPage,
+  BreadcrumbList,
+  CollectionPage,
+  ItemList,
+  Service,
+  Product,
+  Offer,
+  Article,
+  TechArticle,
+  FAQPage,
+  Question,
+  HowTo,
+  HowToStep,
+  Speakable,
+  PostalAddress,
+  Country,
+  PropertyValue,
+  Person,
+  Graph,
+} from 'schema-dts';
+
 // ── Constants ─────────────────────────────────────────
 //
 // Entity Identity (Single Source of Truth) — EXPORTED so page-level
@@ -131,7 +175,7 @@ function clean(obj: Record<string, unknown>): Record<string, unknown> {
 
 // ── Entity Builders ───────────────────────────────────
 
-export function buildOrganization() {
+export function buildOrganization(): Organization {
   return {
     '@type': 'Organization',
     '@id': ORG_ID,
@@ -141,7 +185,10 @@ export function buildOrganization() {
     //   about.story.paragraph1 → "Founded in 2011 in the heart of 'Titanium
     //   Valley' (Baoji, China)..." No month/day published, so use Jan 1 as
     //   the canonical ISO-8601 representation of the founding year.
-    foundingDate: '2011-01-01',
+    // Use year-only ISO-8601 (`YYYY`) per Schema.org date spec. Avoids
+    //   the artificial "Jan 1" padding which can trip data-quality
+    //   auditors that compare against sources reporting only a year.
+    foundingDate: '2011',
     // alternateName intentionally only carries the corporate trade name.
     // Brand-level aliases (BOZE Metal, BOZE CNC Ti) live on the Brand @ids
     // below — duplicating them here confuses LLM crawlers trying to resolve
@@ -259,7 +306,7 @@ export function buildOrganization() {
  * Source: AS9100-Certificate-CN054217-EN.pdf (Bureau Veritas original).
  * HD scan served at /uploads/cert-as9100-en9100-bv-HD.jpg.
  */
-export function buildAS9100Certification() {
+export function buildAS9100Certification(): Certification {
   return {
     '@type': 'Certification',
     '@id': CERT_AS9100_ID,
@@ -284,7 +331,7 @@ export function buildAS9100Certification() {
   };
 }
 
-export function buildBrands() {
+export function buildBrands(): Brand[] {
   return [
     {
       '@type': 'Brand',
@@ -300,7 +347,7 @@ export function buildBrands() {
   ];
 }
 
-export function buildManufacturingCenter() {
+export function buildManufacturingCenter(): Organization {
   return {
     '@type': 'Organization',
     '@id': MANUFACTURING_CENTER_ID,
@@ -311,7 +358,7 @@ export function buildManufacturingCenter() {
   };
 }
 
-export function buildWebSite() {
+export function buildWebSite(): WebSite {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
@@ -322,12 +369,20 @@ export function buildWebSite() {
   };
 }
 
-export function buildImageObject() {
+export function buildImageObject(): ImageObject {
   return {
     '@type': 'ImageObject',
     '@id': LOGO_ID,
-    url: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
-    contentUrl: `${SITEROOT}/uploads/boze-cnc-ti-ico.png`,
+    // 2026-10-14: upgraded from /uploads/boze-cnc-ti-ico.png (39×38 favicon)
+    // to /uploads/boze-cnc-ti-ico-512.png per user authorization. The file is
+    // actually 2048×2048 (1:1 square, ~1.3MB PNG) — well above Google's 112×112
+    // minimum for logo rich result. Filename keeps the 512 suffix by user
+    // convention; declared width/height reflect the actual pixel dimensions.
+    url: `${SITEROOT}/uploads/boze-cnc-ti-ico-512.png`,
+    contentUrl: `${SITEROOT}/uploads/boze-cnc-ti-ico-512.png`,
+    width: 2048,
+    height: 2048,
+    encodingFormat: 'image/png',
     caption: 'Boze Titanium Manufacturing Center - Precision Titanium CNC Machining',
   };
 }
@@ -357,7 +412,7 @@ export interface WebPageInput {
   speakableSelectors?: string[];
 }
 
-export function buildWebPage(input: WebPageInput) {
+export function buildWebPage(input: WebPageInput): WebPage {
   const { name, description, url, inLanguage, datePublished, mentions, speakableSelectors } = input;
   const mentionRefs = mentions ? refsFromIds(mentions) : [];
   const hasSpeakable = Array.isArray(speakableSelectors) && speakableSelectors.length > 0;
@@ -369,6 +424,12 @@ export function buildWebPage(input: WebPageInput) {
     description,
     isPartOf: { '@id': WEBSITE_ID },
     inLanguage,
+    // Bidirectional entity references (PDF fix 2026-10-14): close the
+    // WebPage ↔ BreadcrumbList and WebPage ↔ Service pointers so graph
+    // parsers (Google, LLM schema extractors) can resolve the page
+    // surface area without re-traversing the @graph.
+    breadcrumb: { '@id': '#breadcrumb' },
+    mainEntity: { '@id': `${url}#service` },
     ...(datePublished ? { datePublished } : {}),
     ...(mentionRefs.length > 0 ? { mentions: mentionRefs } : {}),
     ...(hasSpeakable
@@ -398,7 +459,7 @@ export interface FaqItem {
   answer: string;
 }
 
-export function buildBreadcrumbList(items: BreadcrumbItem[]) {
+export function buildBreadcrumbList(items: BreadcrumbItem[]): BreadcrumbList {
   return {
     '@type': 'BreadcrumbList',
     '@id': `${SITEROOT}/#breadcrumb`,
@@ -416,7 +477,7 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
  * Used inside buildFaqPage(). The acceptedAnswer.text holds the
  * plain-text answer.
  */
-export function buildFaqEntry(item: FaqItem) {
+export function buildFaqEntry(item: FaqItem): Question {
   return {
     '@type': 'Question',
     name: item.question,
@@ -441,7 +502,7 @@ export function buildFaqPage(input: {
   url: string;
   inLanguage?: string;
   items: FaqItem[];
-}) {
+}): FAQPage {
   const faqId = `${input.url}#faq`;
   return {
     '@type': 'FAQPage',
@@ -508,7 +569,7 @@ export interface HowToItem {
  * Build a single schema.org HowToStep entity.
  * Used inside buildHowTo().
  */
-export function buildHowToStep(step: HowToStep) {
+export function buildHowToStep(step: HowToStep): HowToStep {
   return {
       '@type': 'HowToStep',
       position: step.position,
@@ -533,7 +594,7 @@ export function buildHowTo(input: {
   url: string;
   inLanguage?: string;
   item: HowToItem;
-}) {
+}): HowTo {
   const howtoId = `${input.url}#howto`;
   return {
     '@type': 'HowTo',
@@ -570,7 +631,7 @@ export function buildHowTo(input: {
 
 // ── Additional Entity Builders ────────────────────────
 
-export function buildCollectionPage(input: { name: string; description: string; url: string; mainEntity?: string }) {
+export function buildCollectionPage(input: { name: string; description: string; url: string; mainEntity?: string }): CollectionPage {
   return {
     '@type': 'CollectionPage',
     '@id': input.url,
@@ -587,7 +648,7 @@ export function buildItemList(input: {
   url: string;
   numberOfItems?: number;
   items?: { name: string; url: string }[];
-}) {
+}): ItemList {
   return {
     '@type': 'ItemList',
     '@id': `${input.url}#item-list`,
@@ -634,7 +695,7 @@ export function buildComparisonList(input: {
    * feature-by-feature cells in the AI summary table.
    */
   criteria?: { name: string; values: Record<string, string | number> }[];
-}) {
+}): ItemList {
   const comparisonId = `${input.url}#comparison-list`;
   return {
     '@type': 'ItemList',
@@ -697,7 +758,7 @@ export function buildService(input: {
    * precision beyond what the page actually says.
    */
   additionalProperty?: { name: string; value: number | string; unitText?: string }[];
-}) {
+}): Service {
   return {
     '@type': 'Service',
     // Service @id must NOT collide with the page-level WebPage @id (= input.url).
@@ -748,7 +809,7 @@ export function buildProduct(input: {
    * the lead-time hint for crawlers and rich-result eligibility.
    */
   deliveryLeadTime?: string;
-}) {
+}): Product {
   const hasPrice = input.price != null;
   const hasRfq = Boolean(input.rfqUrl);
   const offers =
@@ -822,7 +883,7 @@ export function buildArticle(input: {
    * documentation.
    */
   articleType?: 'Article' | 'BlogPosting' | 'NewsArticle';
-}) {
+}): Article {
   return {
     '@type': input.articleType ?? 'Article',
     '@id': input.url,
@@ -867,7 +928,7 @@ export function buildTechArticle(input: {
   proficiencyLevel?: 'Beginner' | 'Expert';
   /** Technical subject — entity link, schema.org @id, or plain string. */
   about?: string | readonly string[];
-}) {
+}): TechArticle {
   return {
     '@type': 'TechArticle',
     '@id': input.url,

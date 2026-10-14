@@ -13,8 +13,11 @@ interface EntityRef {
   material: string;
 }
 
-// Load all product-entities at build time
-const entityGlob = import.meta.glob('/src/content/product-entities/*.json', { eager: true, import: 'default' }) as Record<string, any>;
+// Load all product-entities at build time.
+// Note: Vite 5 / Astro 5 no longer supports absolute glob paths (e.g. '/src/...').
+// Absolute paths are converted to excessively long relative paths under the
+// importing file, exceeding Windows path limits. Use a file-relative glob.
+const entityGlob = import.meta.glob('../../../content/product-entities/*.json', { eager: true, import: 'default' }) as Record<string, any>;
 const allEntities: EntityRef[] = Object.values(entityGlob).map((e: any) => ({
   title: e.title || '',
   system: e.system || '',
@@ -91,7 +94,7 @@ const materials = await getCollection('materials');
 // FAQ items — also rendered as visible accordion on the page
 const faqItems = [
   { question: 'How many titanium alloys are in this materials library?', answer: 'The library catalogs 30+ titanium alloys organized by metallurgical class — Commercially Pure (Grade 1, 2, 3, 4), Alpha-Beta (Grade 5 Ti-6Al-4V, Grade 5 ELI, Grade 9, Grade 23), Near-Alpha (Grade 6, Ti-6242), Beta (Ti-10V-2Fe-3Al, Beta-C), Intermetallic (TiAl, Gamma-MET), and Shape Memory (Nitinol Ni-Ti).' },
-  { question: 'What certifications are available for these titanium alloys?', answer: 'Every alloy in the library is available with EN 10204 Type 3.1 mill certification, AS9102 first-article inspection, and full batch traceability per ASTM E415 spectrometric analysis. Aerospace grades are AS9100D and NADCAP-compliant. Medical grades meet ASTM F136 (Ti-6Al-4V ELI) and ISO 5832-3 biocompatibility per ISO 10993.' },
+  { question: 'What certifications are available for these titanium alloys?', answer: 'Every alloy in the library is available with EN 10204 Type 3.1 mill certification, AS9102 first-article inspection, and full batch traceability per ASTM E415 spectrometric analysis. Aerospace grades are AS9100D and-compliant. Medical grades meet ASTM F136 (Ti-6Al-4V ELI) and ISO 5832-3 biocompatibility per ISO 10993.' },
   { question: 'How are alloys classified in this library?', answer: 'Alloys are organized by microstructural class — Commercially Pure (CP-Ti grades 1-4 with varying oxygen and iron content), Alpha-Beta (the workhorse family including Ti-6Al-4V), Near-Alpha (high-temperature alloys for jet engines), Beta (high-strength alloys for fasteners and springs), Intermetallic (gamma TiAl for turbine blades), and Shape Memory (Nitinol for medical stents and actuators).' },
 ];
 const refMap = buildMaterialRef(materials);

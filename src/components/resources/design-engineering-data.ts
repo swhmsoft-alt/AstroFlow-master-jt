@@ -1037,7 +1037,7 @@ export const HUB_STRINGS_EN: DesignEngineeringHubStrings = {
   ctaSecondaryHref: '/contact/',
   ctaBullets: [
     '1\u20132 business day DFM response',
-    'AS9100D / ISO 13485 / ISO 9001 facility',
+    'AS9100D  / ISO 9001 facility',
     'EN 10204 Type 3.1 MTR included',
   ],
 };

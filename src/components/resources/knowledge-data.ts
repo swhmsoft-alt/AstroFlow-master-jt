@@ -108,7 +108,7 @@ export const STANDARD_LABELS: Readonly<Record<KnowledgeStandard, string>> = {
   "iso-9001": "ISO 9001",
   "eu-ped": "EU PED",
   "as9100d": "AS9100D",
-  "iso-13485": "ISO 13485",
+  "iso-13485": "",
 };
 
 export const INDUSTRY_LABELS: Readonly<Record<KnowledgeIndustry, string>> = {

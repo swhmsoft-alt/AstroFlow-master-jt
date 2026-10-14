@@ -891,7 +891,7 @@ export const EQUIPMENT_DATA: EquipmentMap = {
       description: "CMMs are essential inspection equipment across these industries:",
       items: [
         "Aerospace — Mandatory FAI per AS9102 for first production parts; PPAP for production supply",
-        "Medical — Implant dimensional verification per FDA QSR and ISO 13485 requirements",
+        "Medical — Implant dimensional verification per FDA QSR and  requirements",
         "Automotive — PPAP and dimensional validation for production parts",
         "Oil & gas — Downhole tool dimensional verification per API specification",
         "General manufacturing — Quality assurance for precision-machined components"

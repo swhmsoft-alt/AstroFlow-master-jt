@@ -153,7 +153,7 @@ export function buildSupplementaryKnowsAbout(
   set.add('ASTM F136 / ISO 5832-3 Implant-Grade Titanium Manufacturing');
   set.add('NACE SP0198 / MR0175 Subsea Titanium Corrosion Resistance');
   set.add('AMS 4928 Aerospace Titanium Structural Bracket Manufacturing');
-  set.add('AS9100D / ISO 13485 Dual-Certified Titanium Manufacturing');
+  set.add('AS9100D  Dual-Certified Titanium Manufacturing');
 
   return {
     knowsAbout: Array.from(set),

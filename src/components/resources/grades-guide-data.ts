@@ -165,7 +165,7 @@ export const HUB_STRINGS_EN: GradesGuideStrings = {
   heroTitlePrefix: "The Buyer's Guide to",
   heroTitleHighlight: 'Titanium Grades & Alloys',
   heroSubtitle:
-    'Authoritative selection reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) — with chemistry, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance. AS9100D · ISO 13485 · ISO 9001 · EN 10204 3.1 MTR.',
+    'Authoritative selection reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) — with chemistry, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance. AS9100D ·  · ISO 9001 · EN 10204 3.1 MTR.',
   decisionTitle: 'Decision Tree: Which Titanium Grade Do I Need?',
   decisionSubtitle:
     'Start with the dominant requirement of your application. The grade choice flows from there.',
