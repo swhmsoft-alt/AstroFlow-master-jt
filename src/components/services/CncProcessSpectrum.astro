@@ -1,8 +1,36 @@
 ---
+/**
+ * CncProcessSpectrum.astro
+ *
+ * Dual-purpose grid section used on the /titanium-cnc-machining-services/ hub:
+ *
+ *   variant="process" (default) — 4-card grid of CNC PROCESS capabilities
+ *     (3/5-Axis, Milling & Turning, Wire EDM, Custom Industrial Components)
+ *     This is the original CncProcessSpectrum behaviour and is unchanged.
+ *
+ *   variant="grade"              — 10-card grid of TITANIUM GRADE machining
+ *     services. One card per grade sub-page (Grade 2 / 4 / 5 / 6 / 7 / 8 / 9
+ *     / 12 / 21 / 23), so the hub page acts as a complete buyer-facing
+ *     index of every grade sub-page. Combined with the 3-grade top-nav
+ *     slim-down, this satisfies the Buyer Search Intelligence rule that
+ *     every sub-page must have an inbound link from the parent hub
+ *     (no orphan pages).
+ *
+ * 2026-10-14 — added variant="grade" branch. Existing 4-card variant
+ * untouched. No new component file (F2: do not create a new component
+ * for a single page); this extends the existing one.
+ */
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  variant?: 'process' | 'grade';
+}
+const { variant = 'process' } = Astro.props;
+
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
+// ============ PROCESS VARIANT DATA (existing 4-card layout) ============
 const processIndices = [0, 1, 2, 3];
 
 const icons: string[] = [
@@ -25,78 +53,385 @@ const hrefs: string[] = [
   '/titanium-cnc-machining-services/wire-edm-machining/',
   '/titanium-cnc-machining-services/custom-industrial-components/'
 ];
+
+// ============ GRADE VARIANT DATA (10-card layout) ============
+// 10 grade sub-pages that exist under /titanium-cnc-machining-services/.
+// Three of them (Grade 2 / 5 / 23) are flagged `featured: true` because they
+// also appear in the top navigation dropdown — the star badge on those cards
+// reinforces the "this is a flagship grade" signal to the buyer.
+//
+// accentColor follows the same five-bucket metallurgical taxonomy used by
+// src/components/materials/MaterialGradeMatrix.astro so the two pages look
+// coherent when buyers navigate between /materials/ and the CNC hub.
+interface GradeCard {
+  key: 'g2' | 'g4' | 'g5' | 'g6' | 'g7' | 'g8' | 'g9' | 'g12' | 'g21' | 'g23';
+  href: string;
+  gradeNumber: string;     // e.g. "2", "5", "23"
+  alloyName: string;       // e.g. "Ti-6Al-4V"
+  uns: string;             // e.g. "UNS R56400"
+  categoryKey: 'cp' | 'alpha' | 'alpha-beta' | 'near-alpha' | 'beta' | 'pd-stabilized' | 'improved-cp';
+  categoryLabel: string;   // English short label, also surfaced as eyebrow
+  accentColor: string;     // hex
+  accentColorDark: string; // hex (used in gradient)
+  standards: string[];    // 3 short codes
+  featured: boolean;
+  appKey: string;          // i18n key for the 1-line application summary
+}
+
+const gradeCards: GradeCard[] = [
+  {
+    key: 'g2',
+    href: '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/',
+    gradeNumber: '2',
+    alloyName: 'CP-Titanium',
+    uns: 'UNS R50400',
+    categoryKey: 'cp',
+    categoryLabel: 'Commercially Pure',
+    accentColor: '#3b82f6',
+    accentColorDark: '#1e40af',
+    standards: ['ASTM B348', 'ASTM B265', 'ASTM B338'],
+    featured: true,
+    appKey: 'services.cncgradehub.cards.g2.app',
+  },
+  {
+    key: 'g4',
+    href: '/titanium-cnc-machining-services/grade-4-titanium-cnc-machining/',
+    gradeNumber: '4',
+    alloyName: 'CP-Titanium (high O)',
+    uns: 'UNS R50700',
+    categoryKey: 'cp',
+    categoryLabel: 'Commercially Pure',
+    accentColor: '#3b82f6',
+    accentColorDark: '#1e40af',
+    standards: ['ASTM B348', 'ASTM B265', 'ASTM B338'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g4.app',
+  },
+  {
+    key: 'g5',
+    href: '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/',
+    gradeNumber: '5',
+    alloyName: 'Ti-6Al-4V',
+    uns: 'UNS R56400',
+    categoryKey: 'alpha-beta',
+    categoryLabel: 'Alpha-Beta Alloy',
+    accentColor: '#ff5a00',
+    accentColorDark: '#c2410c',
+    standards: ['ASTM B348', 'AMS 4911', 'AMS 4928'],
+    featured: true,
+    appKey: 'services.cncgradehub.cards.g5.app',
+  },
+  {
+    key: 'g6',
+    href: '/titanium-cnc-machining-services/grade-6-titanium-cnc-machining/',
+    gradeNumber: '6',
+    alloyName: 'Ti-5Al-2.5Sn',
+    uns: 'UNS R54520',
+    categoryKey: 'alpha',
+    categoryLabel: 'Alpha Alloy',
+    accentColor: '#06b6d4',
+    accentColorDark: '#0e7490',
+    standards: ['AMS 4910', 'AMS 4925', 'AMS 4966'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g6.app',
+  },
+  {
+    key: 'g7',
+    href: '/titanium-cnc-machining-services/grade-7-titanium-cnc-machining/',
+    gradeNumber: '7',
+    alloyName: 'Ti-0.2Pd (CP)',
+    uns: 'UNS R52400',
+    categoryKey: 'pd-stabilized',
+    categoryLabel: 'Pd-Stabilized',
+    accentColor: '#8b5cf6',
+    accentColorDark: '#6d28d9',
+    standards: ['ASTM B348', 'ASTM B265', 'ASTM B338'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g7.app',
+  },
+  {
+    key: 'g8',
+    href: '/titanium-cnc-machining-services/grade-8-titanium-cnc-machining/',
+    gradeNumber: '8',
+    alloyName: 'Ti-3Al-2.5V + Pd',
+    uns: 'UNS R56323',
+    categoryKey: 'pd-stabilized',
+    categoryLabel: 'Pd-Stabilized',
+    accentColor: '#8b5cf6',
+    accentColorDark: '#6d28d9',
+    standards: ['AMS 4943', 'AMS 4944', 'AMS 4945'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g8.app',
+  },
+  {
+    key: 'g9',
+    href: '/titanium-cnc-machining-services/grade-9-titanium-cnc-machining/',
+    gradeNumber: '9',
+    alloyName: 'Ti-3Al-2.5V',
+    uns: 'UNS R56320',
+    categoryKey: 'near-alpha',
+    categoryLabel: 'Near-Alpha Alloy',
+    accentColor: '#10b981',
+    accentColorDark: '#047857',
+    standards: ['AMS 4943', 'AMS 4944', 'ASTM B338'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g9.app',
+  },
+  {
+    key: 'g12',
+    href: '/titanium-cnc-machining-services/grade-12-titanium-cnc-machining/',
+    gradeNumber: '12',
+    alloyName: 'Ti-0.3Mo-0.8Ni',
+    uns: 'UNS R53400',
+    categoryKey: 'improved-cp',
+    categoryLabel: 'Improved CP-Ti',
+    accentColor: '#ec4899',
+    accentColorDark: '#be185d',
+    standards: ['ASTM B348', 'ASTM B265', 'ASTM B338'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g12.app',
+  },
+  {
+    key: 'g21',
+    href: '/titanium-cnc-machining-services/grade-21-titanium-cnc-machining/',
+    gradeNumber: '21',
+    alloyName: 'Ti-15Mo-3Nb-3Al',
+    uns: 'UNS R58210',
+    categoryKey: 'beta',
+    categoryLabel: 'Beta Alloy',
+    accentColor: '#ef4444',
+    accentColorDark: '#b91c1c',
+    standards: ['AMS 4915', 'AMS 4917', 'AMS 4928'],
+    featured: false,
+    appKey: 'services.cncgradehub.cards.g21.app',
+  },
+  {
+    key: 'g23',
+    href: '/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/',
+    gradeNumber: '23',
+    alloyName: 'Ti-6Al-4V ELI',
+    uns: 'UNS R56407',
+    categoryKey: 'alpha-beta',
+    categoryLabel: 'Alpha-Beta ELI',
+    accentColor: '#ff5a00',
+    accentColorDark: '#c2410c',
+    standards: ['ASTM F136', 'ISO 5832-3', 'ASTM B348'],
+    featured: true,
+    appKey: 'services.cncgradehub.cards.g23.app',
+  },
+];
+
+// Star icon path used on featured-grade badge
+const starPath = "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.367 2.446a1 1 0 00-.364 1.118l1.287 3.957c.299.921-.756 1.688-1.539 1.118l-3.366-2.446a1 1 0 00-1.176 0l-3.367 2.446c-.782.57-1.838-.197-1.538-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.063 9.384c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.957z";
+
+// Arrow icon for "Learn more"
+const arrowPath = "M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3";
 ---
-<section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
-  <!-- Engineering grid pattern -->
-  <div class="absolute inset-0 opacity-[0.03]">
-    <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
-  </div>
 
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        </svg>
-        {t('services.cncprocessspectrum.badge')}
+{variant === 'grade' ? (
+  <!-- ============== GRADE VARIANT: 10-card material grid ============== -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);">
+    <!-- Subtle grid pattern (lighter than process variant for visual differentiation) -->
+    <div class="absolute inset-0 opacity-[0.025]">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--theme-primary) 1px, transparent 0); background-size: 24px 24px;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          {t('services.cncgradehub.badge')}
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-5" style="color: var(--theme-text);">
+          {t('services.cncgradehub.titlePrefix')} <span style="color: var(--theme-primary);">{t('services.cncgradehub.titleHighlight')}</span>
+        </h2>
+        <p class="text-lg max-w-4xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('services.cncgradehub.subtitle')}
+        </p>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
-        {t('services.cncprocessspectrum.titlePrefix')} <span style="color: var(--theme-primary);">{t('services.cncprocessspectrum.titleHighlight')}</span>
-      </h2>
-      <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        {t('services.cncprocessspectrum.subtitle')}
-      </p>
-    </div>
 
-    <!-- Process Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {processIndices.map((idx) => (
-        <a
-          href={hrefs[idx]}
-          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full no-underline"
-          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent); display: block; text-decoration: none;"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
-        >
-          <!-- Icon -->
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d={icons[idx]} />
-            </svg>
-          </div>
+      <!-- Grade Cards Grid: 5 cols xl / 3 cols lg / 2 cols sm / 1 col -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+        {gradeCards.map((card) => (
+          <a
+            href={card.href}
+            class="group relative rounded-2xl overflow-hidden flex flex-col h-full no-underline transition-all duration-300"
+            style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent); display: block; text-decoration: none;"
+            onmouseover={`this.style.borderColor='${card.accentColor}'; this.style.boxShadow='0 12px 40px -10px ${card.accentColor}55'; this.style.transform='translateY(-4px)'`}
+            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'"
+          >
+            {/* Top visual zone — category color gradient with grade number */}
+            <div
+              class="relative h-28 flex items-center justify-center overflow-hidden"
+              style={`background: linear-gradient(135deg, ${card.accentColor} 0%, ${card.accentColorDark} 100%);`}
+            >
+              {/* Subtle grid pattern overlay */}
+              <div class="absolute inset-0 opacity-[0.12]">
+                <div class="absolute inset-0" style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 16px 16px;"></div>
+              </div>
 
-          <!-- Title -->
-          <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">
-            {t('services.cncprocessspectrum.' + idx + '.title')}
-          </h3>
+              {/* Diagonal accent stripe for featured grades */}
+              {card.featured && (
+                <div
+                  class="absolute top-0 right-0 w-16 h-16"
+                  style={`background: linear-gradient(135deg, transparent 50%, white 50%); opacity: 0.18;`}
+                ></div>
+              )}
 
-          <!-- Description -->
-          <p class="text-sm mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
-            {t('services.cncprocessspectrum.' + idx + '.desc')}
-          </p>
+              {/* Grade number (the visual anchor) */}
+              <div class="relative text-center text-white">
+                <div class="text-[2.75rem] leading-none font-black tracking-tighter" style="font-variant-numeric: tabular-nums;">
+                  G{card.gradeNumber}
+                </div>
+                <div class="text-[10px] font-semibold uppercase tracking-[0.2em] mt-1 opacity-85">
+                  Grade
+                </div>
+              </div>
 
-          <!-- Capabilities list -->
-          <ul class="space-y-2 mt-auto">
-            {capKeys[idx].map((capKey) => (
-              <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
-                <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              {/* Featured star badge */}
+              {card.featured && (
+                <div
+                  class="absolute top-2 left-2 inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-md"
+                  style="background: rgba(255,255,255,0.95); color: var(--theme-text);"
+                >
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d={starPath} />
+                  </svg>
+                  {t('services.cncgradehub.featuredBadge')}
+                </div>
+              )}
+            </div>
+
+            {/* Bottom text zone */}
+            <div class="flex flex-col flex-1 p-5">
+              {/* Category eyebrow */}
+              <div
+                class="text-[10px] font-bold uppercase tracking-[0.15em] mb-2"
+                style={`color: ${card.accentColor};`}
+              >
+                {card.categoryLabel}
+              </div>
+
+              {/* Alloy name (h3) */}
+              <h3 class="text-lg font-bold mb-1 leading-tight" style="color: var(--theme-text);">
+                {card.alloyName}
+              </h3>
+
+              {/* UNS designation */}
+              <div class="text-xs font-mono mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+                {card.uns}
+              </div>
+
+              {/* Standards tags */}
+              <div class="flex flex-wrap gap-1 mb-3">
+                {card.standards.map((std) => (
+                  <span
+                    class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold rounded"
+                    style="background-color: color-mix(in srgb, var(--theme-text) 4%, transparent); border: 1px solid color-mix(in srgb, var(--theme-text) 10%, transparent); color: color-mix(in srgb, var(--theme-text) 70%, transparent);"
+                  >
+                    {std}
+                  </span>
+                ))}
+              </div>
+
+              {/* Application summary */}
+              <p class="text-xs leading-relaxed mb-4 flex-1" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+                {t(card.appKey)}
+              </p>
+
+              {/* Learn more CTA */}
+              <div
+                class="inline-flex items-center text-xs font-bold mt-auto"
+                style={`color: ${card.accentColor};`}
+              >
+                {t('services.cncgradehub.learnMore')}
+                <svg class="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={arrowPath} />
                 </svg>
-                {t(capKey)}
-              </li>
-            ))}
-          </ul>
-
-          <!-- Corner hover accent -->
-          <div
-            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
-            style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
-            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
-            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
-          ></div>
-        </a>
-      ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+) : (
+  <!-- ============== PROCESS VARIANT: 4-card original layout (unchanged) ============== -->
+  <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
+    {/* Engineering grid pattern */}
+    <div class="absolute inset-0 opacity-[0.03]">
+      <div class="absolute inset-0" style="background-image: linear-gradient(var(--theme-primary) 1px, transparent 1px), linear-gradient(90deg, var(--theme-primary) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Section Header */}
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center px-4 py-2 mb-4 text-sm font-semibold rounded-full border" style="background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); border-color: var(--theme-primary); color: var(--theme-primary);">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          </svg>
+          {t('services.cncprocessspectrum.badge')}
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--theme-text);">
+          {t('services.cncprocessspectrum.titlePrefix')} <span style="color: var(--theme-primary);">{t('services.cncprocessspectrum.titleHighlight')}</span>
+        </h2>
+        <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('services.cncprocessspectrum.subtitle')}
+        </p>
+      </div>
+
+      {/* Process Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {processIndices.map((idx) => (
+          <a
+            href={hrefs[idx]}
+            class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full no-underline"
+            style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent); display: block; text-decoration: none;"
+            onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
+            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+          >
+            {/* Icon */}
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+              <svg class="w-6 h-6" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d={icons[idx]} />
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h3 class="text-lg font-bold mb-3" style="color: var(--theme-text);">
+              {t('services.cncprocessspectrum.' + idx + '.title')}
+            </h3>
+
+            {/* Description */}
+            <p class="text-sm mb-4 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">
+              {t('services.cncprocessspectrum.' + idx + '.desc')}
+            </p>
+
+            {/* Capabilities list */}
+            <ul class="space-y-2 mt-auto">
+              {capKeys[idx].map((capKey) => (
+                <li class="flex items-start text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
+                  <svg class="w-3.5 h-3.5 mt-0.5 mr-2 shrink-0" style="color: var(--theme-primary);" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  {t(capKey)}
+                </li>
+              ))}
+            </ul>
+
+            {/* Corner hover accent */}
+            <div
+              class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+              style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
+              onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
+              onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+            ></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

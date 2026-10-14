@@ -168,6 +168,13 @@ const t = useTranslations(lang);
     ctaHref="/rfq/"
   />
 
+  <!-- ============== S3.5: By Material Grade — 10-card grid (Buyer Search Intelligence) ==============
+       Covers ALL 10 grade sub-pages (Grade 2 / 4 / 5 / 6 / 7 / 8 / 9 / 12 / 21 / 23).
+       The top navigation dropdown only shows the 3 flagship grades (Grade 2 / 5 / 23),
+       so this grid is the SEO discovery surface for the remaining 7 grades — every
+       sub-page has a parent-hub inbound link here, satisfying the no-orphan rule. -->
+  <CncProcessSpectrum variant="grade" />
+
   <!-- ============== S4: FAQ (5 <details>) ============== -->
   <section class="relative py-20" style="background-color: var(--theme-bg);">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
