@@ -76,6 +76,10 @@ export const BRAND_BOZE_CNC_TI_ID = `${MAIN_SITE}/#brand-boze-cnc-ti`;
 export const WEBSITE_ID = `${SITEROOT}/#website`;
 export const LOGO_ID    = `${SITEROOT}/#boze-logo`;
 export const MANUFACTURING_CENTER_ID = `${SITEROOT}/#manufacturing-center`;
+// Certification @ids live under the Legal Org namespace (bozemetal.com) since
+// the certificate is issued to the corporate entity Baoji Boze Metal
+// Products Co., Ltd. (not the manufacturing-center plant).
+export const CERT_AS9100_ID = `${MAIN_SITE}/#certification-as9100`;
 
 // ── Page Type ─────────────────────────────────────────
 
@@ -133,6 +137,11 @@ export function buildOrganization() {
     '@id': ORG_ID,
     name: 'Baoji Boze Metal Products Co., Ltd.',
     legalName: 'Baoji Boze Metal Products Co., Ltd.',
+    // Corporate founding date. Source: src/i18n/translations/en.json
+    //   about.story.paragraph1 → "Founded in 2011 in the heart of 'Titanium
+    //   Valley' (Baoji, China)..." No month/day published, so use Jan 1 as
+    //   the canonical ISO-8601 representation of the founding year.
+    foundingDate: '2011-01-01',
     // alternateName intentionally only carries the corporate trade name.
     // Brand-level aliases (BOZE Metal, BOZE CNC Ti) live on the Brand @ids
     // below — duplicating them here confuses LLM crawlers trying to resolve
@@ -140,10 +149,63 @@ export function buildOrganization() {
     alternateName: ['BOZE', 'Boze Metal', 'Baoji Boze'],
     url: MAIN_SITE,
     logo: { '@id': LOGO_ID },
+    // ── Public contact data (verbatim from src/i18n/translations/*/footer.*,
+    //    cross-checked across all 12 locales for consistency) ─────────────
+    // Source: src/i18n/translations/en.json
+    //   footer.tel      → "Tel: 0917-6753303"           (Baoji landline)
+    //   footer.phone    → "Phone Number: +86-186-2391-9905" (international B2B mobile)
+    //   footer.email    → "Email: info@bozemetal.com"
+    //   footer.address  → "Add: C4 Workshop, North Area of High Tech Auto Parts
+    //                     Business Incubation Base, FengHuang 10th Road,
+    //                     High Tech Development Zone, Baoji City,
+    //                     Shaanxi Province, P.R. China 721013"
+    // We use the international mobile as the primary `telephone` because the
+    // cnc.bozemetal.com site serves a global B2B audience; the landline
+    // (0917-6753303) is preserved as a second `contactPoint` entry
+    // (contactType: 'customer service') so both numbers stay reachable.
+    email: 'info@bozemetal.com',
+    telephone: '+86-186-2391-9905',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress:
+        'C4 Workshop, North Area of High Tech Auto Parts Business Incubation Base, FengHuang 10th Road',
+      addressLocality: 'Baoji City',
+      addressRegion: 'Shaanxi Province',
+      postalCode: '721013',
+      addressCountry: { '@type': 'Country', name: 'P.R. China', identifier: 'CN' },
+    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        telephone: '+86-186-2391-9905',
+        email: 'info@bozemetal.com',
+        // Schema.org allows repeated `contactType`; provide both English and
+        // Chinese labels so multilingual LLMs/parsers can route correctly.
+        alternateName: ['Sales', 'Sales — B2B Procurement', '销售'],
+        // Schema.org 14.0 supports `contactOption` (TollFree / HearingImpairedSupported)
+        // — we leave it unset; the B2B audience is not a 1-800 caller.
+        availableLanguage: ['en', 'de', 'zh', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: '0917-6753303',
+        email: 'info@bozemetal.com',
+        alternateName: ['Customer Service', 'Tel (Landline)', '客服'],
+        availableLanguage: ['en', 'zh'],
+      },
+    ],
     brand: [
       { '@id': BRAND_BOZE_METAL_ID },
       { '@id': BRAND_BOZE_CNC_TI_ID },
     ],
+    // Active certifications held by the Legal Org. Source of truth:
+    //   AS9100D / EN 9100:2018 / ISO 9001:2015 — Bureau Veritas cert
+    //   number CN054217, issued 2025-04-08, expires 2028-04-07.
+    // The Certification @graph node is built by buildAS9100Certification()
+    // and emitted once per page in buildPageGraph().
+    hasCertification: [{ '@id': CERT_AS9100_ID }],
     industry: 'Titanium Manufacturing',
     knowsAbout: [
       'Titanium CNC Machining',
@@ -164,6 +226,12 @@ export function buildOrganization() {
           '@type': 'Service',
           name: 'Titanium Manufacturing Services',
           description: 'Precision titanium CNC machining, fabrication, additive manufacturing, and surface treatment for aerospace, medical, chemical, and industrial components.',
+          // areaServed: "Worldwide" — factually accurate. Boze is a Baoji-based
+          // Chinese titanium manufacturer with an export-only B2B website
+          // (cnc.bozemetal.com), 12+ locale switcher, international phone
+          // format (+86-186), and an explicit 'RFQ / Worldwide Procurement'
+          // funnel via the /rfq/ route. Verified by the Footer + Header
+          // chrome, the i18n routing table, and the public contact data.
           areaServed: 'Worldwide',
           category: 'Titanium Manufacturing',
         },
@@ -175,6 +243,44 @@ export function buildOrganization() {
       'https://www.instagram.com/boze.metal.products.company/',
       'https://www.youtube.com/@boze-666',
     ],
+  };
+}
+
+/**
+ * AS9100D / EN 9100:2018 / ISO 9001:2015 certification
+ *
+ * Bureau Veritas Certification, cert number CN054217, issued 2025-04-08,
+ * expires 2028-04-07. Issued to:
+ *   BAOJI BOZE METAL PRODUCTS CO.,LTD
+ *   C4 Workshop, North Area of High Tech Auto Parts Business Incubation Base,
+ *   FengHuang 10th Road, High Tech Development Zone, Baoji City,
+ *   Shaanxi Province, P.R. China
+ * Scope: Machining of metal standard part used for aviation.
+ * Source: AS9100-Certificate-CN054217-EN.pdf (Bureau Veritas original).
+ * HD scan served at /uploads/cert-as9100-en9100-bv-HD.jpg.
+ */
+export function buildAS9100Certification() {
+  return {
+    '@type': 'Certification',
+    '@id': CERT_AS9100_ID,
+    name: 'AS9100D / EN 9100:2018 / ISO 9001:2015 — Quality Management System for Aviation Standard Parts',
+    identifier: 'CN054217',
+    issuedBy: {
+      '@type': 'Organization',
+      name: 'Bureau Veritas Certification',
+      url: 'https://www.bureauveritas.com/',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '5th Floor, 100 Lower Thames Street',
+        addressLocality: 'London',
+        postalCode: 'EC3R 6DL',
+        addressCountry: { '@type': 'Country', name: 'United Kingdom', identifier: 'GB' },
+      },
+    },
+    validFrom: '2025-04-08',
+    validThrough: '2028-04-07',
+    url: `${SITEROOT}/uploads/cert-as9100-en9100-bv-HD.jpg`,
+    about: { '@id': ORG_ID },
   };
 }
 
@@ -564,15 +670,60 @@ export function buildService(input: {
   description: string;
   url: string;
   category?: string;
+  /**
+   * Schema.org Service.serviceType — e.g. "Precision CNC Machining",
+   * "5-axis CNC machining". Forwarded verbatim when provided.
+   * IMPORTANT: only declare processes the page actually advertises.
+   */
+  serviceType?: string;
+  /**
+   * Schema.org Service.areaServed — geographic scope. For the cnc.bozemetal.com
+   * site (export-only B2B), "Worldwide" is the factually accurate default;
+   * callers may override with a country/region list when serving a narrower
+   * audience. Do NOT emit this for purely domestic services.
+   */
+  areaServed?: string | string[];
+  /**
+   * Quantitative capability claims forwarded to buildService().additionalProperty.
+   * Each entry maps to a Schema.org PropertyValue. The values must be
+   * verbatim from the page's visible body (not synthesised).
+   */
+  serviceAdditionalProperty?: { name: string; value: number | string; unitText?: string }[];
+  /**
+   * Schema.org additionalProperty (PropertyValue[]) — quantitative
+   * capability claims that the page renders as visible text (tolerance,
+   * surface finish, yield, monthly capacity, etc.). The values MUST be
+   * verbatim from the page's visible body; do NOT synthesise or improve
+   * precision beyond what the page actually says.
+   */
+  additionalProperty?: { name: string; value: number | string; unitText?: string }[];
 }) {
   return {
     '@type': 'Service',
-    '@id': input.url,
+    // Service @id must NOT collide with the page-level WebPage @id (= input.url).
+    // The site data layer (`src/data/services-schema.ts`) already canonicalizes
+    // each hub-service to `${pageUrl}#service`, so we follow that convention.
+    '@id': `${input.url}#service`,
     name: input.name,
     description: input.description,
     url: input.url,
+    // WebPage keeps its canonical @id = input.url (no fragment) by convention;
+    // mainEntityOfPage therefore points at the WebPage entity directly.
+    mainEntityOfPage: { '@id': input.url },
     provider: { '@id': ORG_ID },
     ...(input.category ? { category: input.category } : {}),
+    ...(input.serviceType ? { serviceType: input.serviceType } : {}),
+    ...(input.areaServed ? { areaServed: input.areaServed } : {}),
+    ...(input.additionalProperty?.length
+      ? {
+          additionalProperty: input.additionalProperty.map((p) => ({
+            '@type': 'PropertyValue',
+            name: p.name,
+            value: p.value,
+            ...(p.unitText ? { unitText: p.unitText } : {}),
+          })),
+        }
+      : {}),
   };
 }
 
@@ -858,6 +1009,20 @@ export interface SchemaPageData {
   serviceName?: string;
   serviceDescription?: string;
   serviceCategory?: string;
+  /**
+   * Schema.org Service.serviceType forwarded to buildService(). Optional;
+   * omit when the page does not advertise a specific service-type label.
+   * For cnc.bozemetal.com (export-only B2B) the default areaServed is
+   * "Worldwide"; callers may pass a country/region list when narrower.
+   */
+  serviceType?: string;
+  /**
+   * Schema.org Service.areaServed forwarded to buildService(). For the
+   * cnc.bozemetal.com export-only B2B funnel, the default is "Worldwide".
+   * Pass a country/region list when the page explicitly serves a narrower
+   * audience (e.g. a domestic-only landing page).
+   */
+  serviceAreaServed?: string | string[];
 
   // Product
   productName?: string;
@@ -976,6 +1141,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
   // 1. Legal Organization + Brands + Manufacturing Center + WebSite — every page
   graph.push(buildOrganization());
   graph.push(...buildBrands());
+  graph.push(buildAS9100Certification());
   graph.push(buildManufacturingCenter());
   graph.push(buildImageObject());
   graph.push(buildWebSite());
@@ -1069,6 +1235,11 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
             description: data.serviceDescription ?? data.pageDescription,
             url: data.pageUrl,
             category: data.serviceCategory,
+            ...(data.serviceType ? { serviceType: data.serviceType } : {}),
+            ...(data.serviceAreaServed ? { areaServed: data.serviceAreaServed } : {}),
+            ...(data.serviceAdditionalProperty?.length
+              ? { additionalProperty: data.serviceAdditionalProperty }
+              : {}),
           }));
         }
         if (data.articleHeadline && data.articleDatePublished) {
@@ -1092,6 +1263,11 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           description: data.serviceDescription ?? data.pageDescription,
           url: data.pageUrl,
           category: data.serviceCategory,
+          ...(data.serviceType ? { serviceType: data.serviceType } : {}),
+          ...(data.serviceAreaServed ? { areaServed: data.serviceAreaServed } : {}),
+          ...(data.serviceAdditionalProperty?.length
+            ? { additionalProperty: data.serviceAdditionalProperty }
+            : {}),
         }));
       }
       break;
@@ -1129,6 +1305,11 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           description: data.serviceDescription ?? data.pageDescription,
           url: data.pageUrl,
           category: data.serviceCategory,
+          ...(data.serviceType ? { serviceType: data.serviceType } : {}),
+          ...(data.serviceAreaServed ? { areaServed: data.serviceAreaServed } : {}),
+          ...(data.serviceAdditionalProperty?.length
+            ? { additionalProperty: data.serviceAdditionalProperty }
+            : {}),
         }));
       }
       // Phase G-2.2: opt-in Product entity for standard-part-detail (not
@@ -1200,6 +1381,11 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           description: data.serviceDescription ?? data.pageDescription,
           url: data.pageUrl,
           category: data.serviceCategory,
+          ...(data.serviceType ? { serviceType: data.serviceType } : {}),
+          ...(data.serviceAreaServed ? { areaServed: data.serviceAreaServed } : {}),
+          ...(data.serviceAdditionalProperty?.length
+            ? { additionalProperty: data.serviceAdditionalProperty }
+            : {}),
         }));
       }
       break;

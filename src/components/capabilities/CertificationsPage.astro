@@ -7,9 +7,17 @@
  * Content: certification cards + validation matrix + audit lifecycle + FAQ.
  */
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import CertificationsShowcase from './CertificationsShowcase.astro';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 ---
+
+<!-- ════════════════════════════════════════════════════════════════
+     Section 0 — Official Certifications Showcase (1:1 port from supplyChain)
+     Inserted between SubpageHero (rendered in page) and QMS Section 1.
+     ════════════════════════════════════════════════════════════════ -->
+<CertificationsShowcase />
+
 
 <!-- ════════════════════════════════════════════════════════════════
      Section 1 — Core Certification Directory (证书明细卡片)

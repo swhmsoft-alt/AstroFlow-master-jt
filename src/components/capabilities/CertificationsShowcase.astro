@@ -1,0 +1,248 @@
+---
+/**
+ * CertificationsShowcase.astro
+ *
+ * Visual 1:1 port of the bozemetal.com/supplyChain "Certifications" module:
+ *   dark blue starry background + white certificate cards + orange hover.
+ *
+ * Inserted between SubpageHero and the existing
+ * "Verified Quality Management Systems" QMS section inside CertificationsPage.astro.
+ *
+ * Self-contained: hardcoded English content per spec (1:1 port).
+ * No i18n, no new dependencies, no global style changes.
+ */
+interface CertCard {
+  num: string;
+  title: string;
+  src: string;
+  alt: string;
+  href: string;
+  width: number;
+  height: number;
+}
+
+const cards: CertCard[] = [
+  {
+    num: '01',
+    title: 'Supplier certification',
+    src: '/uploads/cert-sgs-verified-supplier.jpg',
+    alt: 'SGS verified supplier certificate for Baoji Boze Metal Products Co., Ltd, issued under Alibaba verification by Intertek',
+    href: '/uploads/cert-sgs-verified-supplier.jpg',
+    width: 240,
+    height: 342,
+  },
+  {
+    num: '02',
+    title: 'SGS system certification',
+    src: '/uploads/cert-sgs-verified-supplier.jpg',
+    alt: 'SGS verified supplier certificate for Baoji Boze Metal Products Co., Ltd, issued under Alibaba verification by Intertek',
+    href: '/uploads/cert-sgs-verified-supplier.jpg',
+    width: 240,
+    height: 342,
+  },
+  {
+    num: '03',
+    title: 'European Representatives Recognition',
+    src: '/uploads/cert-eu-representative.jpg',
+    alt: 'EU Product Safety Act (ProdSG) European authorised representatives recognition certificate',
+    href: '/uploads/cert-eu-representative.jpg',
+    width: 240,
+    height: 342,
+  },
+  {
+    num: '04',
+    title: 'AS9100',
+    src: '/uploads/cert-as9100-en9100-bv.jpg',
+    alt: 'Bureau Veritas certificate of approval CN054217: EN 9100:2018 (AS9100) and ISO 9001:2015 for machining of aviation standard parts, issued 2025-04-08, expires 2028-04-07',
+    href: '/uploads/cert-as9100-en9100-bv-HD.jpg',
+    width: 240,
+    height: 342,
+  },
+  {
+    num: '05',
+    title: 'High-tech Enterprise Certificate',
+    src: '/uploads/cert-china-hightech.jpg',
+    alt: 'China High-tech Enterprise Certificate, national high-tech enterprise certification',
+    href: '/uploads/cert-china-hightech.jpg',
+    width: 240,
+    height: 342,
+  },
+];
+---
+
+<!-- ════════════════════════════════════════════════════════════════
+     Official Certifications Showcase (1:1 port from bozemetal.com/supplyChain)
+     ════════════════════════════════════════════════════════════════ -->
+<section
+  id="certifications-showcase"
+  aria-labelledby="certifications-heading"
+  class="relative py-20 md:py-24 overflow-hidden isolate"
+>
+  <!-- Background image (WebP with JPG fallback) -->
+  <picture aria-hidden="true" class="absolute inset-0 -z-10">
+    <source type="image/webp" srcset="/uploads/bg-certifications.webp" />
+    <img
+      src="/uploads/bg-certifications.jpg"
+      alt=""
+      role="presentation"
+      width="1920"
+      height="1021"
+      loading="lazy"
+      decoding="async"
+      class="h-full w-full object-cover select-none"
+    />
+  </picture>
+
+  <!-- Dark overlay for white text contrast (rgba(6,32,84,0.55)) -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10"
+    style="background-color: rgba(6, 32, 84, 0.55);"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Section Header: title left, description right (stacks on mobile) -->
+    <header class="mb-12 md:mb-16 lg:flex lg:items-end lg:justify-between lg:gap-10">
+      <h2
+        id="certifications-heading"
+        class="text-white font-bold leading-tight text-[clamp(2rem,4.2vw,3rem)]"
+      >
+        Certifications
+      </h2>
+      <p
+        class="mt-4 lg:mt-0 text-white/90 text-base md:text-[17px] leading-[1.6] lg:max-w-[58%]"
+      >
+        We always strive for growth. Approved by professional institutions and
+        certificate authority, our titanium products are manufactured to
+        international industry standards.
+      </p>
+    </header>
+
+    <!-- Card grid: 3 cols ≥992, 2 cols 768–991, 1 col <768 -->
+    <ul
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 md:gap-y-10 lg:gap-x-[62px] lg:gap-y-12"
+    >
+      {cards.map((card) => (
+        <li>
+          <article
+            class="cert-card group relative block aspect-[3/4] overflow-hidden"
+            data-cert-card
+          >
+            <!-- Orange gradient hover layer (sits under content) -->
+            <span
+              aria-hidden="true"
+              class="cert-card__hover absolute inset-0 opacity-0 transition-opacity duration-[400ms] ease-out pointer-events-none rounded-[2px]"
+            ></span>
+
+            <!-- Content layer (above gradient): 2-column grid — left: title+icon, right: cert photo (contained) -->
+            <div class="cert-card__content relative h-full p-5 md:p-6 lg:p-7 grid grid-cols-2 gap-3 z-10">
+              <!-- Left column: number+title (top) + icon (bottom) -->
+              <div class="flex flex-col justify-between min-w-0">
+                <div>
+                  <p class="cert-card__num text-[#f39800] text-[18px] font-semibold leading-none">
+                    {card.num}
+                  </p>
+                  <h3 class="cert-card__title mt-2 text-[#1a1a1a] text-[19px] md:text-[21px] lg:text-[23px] leading-[1.2] font-bold">
+                    {card.title}
+                  </h3>
+                </div>
+
+                <!-- Inline certificate SVG icon (currentColor) -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 39.469 60"
+                  aria-hidden="true"
+                  class="cert-card__icon h-9 md:h-10 w-auto text-[#f39800] mt-3 self-start"
+                >
+                  <path
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    d="M785.651,5426.42c0,2.05.011,3.96,0,5.86-0.012,1.59-.806,2.04-2.16,1.21-1.065-.64-2.153-1.26-3.156-2a1.376,1.376,0,0,0-1.856.03c-1.049.74-2.157,1.4-3.261,2.06-1.177.7-1.993,0.25-2.013-1.11-0.028-1.95-.007-3.9-.007-6-0.455-.02-.863-.05-1.272-.05-5.223-.01-10.447,0-15.671-0.01-1.561,0-1.864-.27-1.864-1.82q-0.011-24.435,0-48.85c0-1.55.3-1.83,1.865-1.83,8.421,0,16.841-.02,25.261.03a2.694,2.694,0,0,1,1.72.71q4.983,4.86,9.843,9.85a2.738,2.738,0,0,1,.715,1.72q0.06,19.215.029,38.43c0,1.43-.341,1.76-1.8,1.76C789.955,5426.42,787.892,5426.42,785.651,5426.42Zm-28.848-2.41h16.383a25.8,25.8,0,0,0-.064-4.59,4.286,4.286,0,0,0-1.877-3.32c-1.255-.72-1.366-1.73-.993-3.28a4.854,4.854,0,0,0,0-2.22,2.858,2.858,0,0,1,1.25-3.54,3.547,3.547,0,0,0,1.094-1.53,2.7,2.7,0,0,1,2.905-2.17,4.473,4.473,0,0,0,2.01-.66,2.957,2.957,0,0,1,3.859.02,4.456,4.456,0,0,0,2.017.64,2.647,2.647,0,0,1,2.831,2.1,3.833,3.833,0,0,0,1.158,1.62,2.82,2.82,0,0,1,1.2,3.55,4.355,4.355,0,0,0-.017,2.11c0.459,1.75.22,2.57-1.243,3.64a2.921,2.921,0,0,0-.934.98c-1.054,2.12-.693,4.38-.7,6.61h5.711v-37.13h-8.028c-2.435,0-2.443-.01-2.443-2.39v-8.11H756.8v47.67Zm22.638-4.78a4.652,4.652,0,0,1,3.9-1.54,1.7,1.7,0,0,0,.679-.74,23.672,23.672,0,0,1,1.762-2.35,1.359,1.359,0,0,0,.469-1.38c-0.145-.99,0-2.03-.049-3.05a1.761,1.761,0,0,0-.4-1.22,4.557,4.557,0,0,1-1.814-2.49,1.672,1.672,0,0,0-.951-.69c-0.95-.37-1.977-.57-2.878-1.03a1.04,1.04,0,0,0-1.423.01,4.044,4.044,0,0,1-3,1.03,1.162,1.162,0,0,0-.858.64,4.483,4.483,0,0,1-1.88,2.57,1.256,1.256,0,0,0-.351,1.13,4.517,4.517,0,0,1,0,3.19,1.258,1.256,0,0,0,.343,1.14,4.366,4.366,0,0,1,1.91,2.68,0.93,0.93,0,0,0,.683.57A4.734,4.734,0,0,1,779.441,5419.23Zm-3.825.63v10.67a15.458,15.458,0,0,0,1.767-1.11,2.719,2.719,0,0,1,4.028-.03,13.155,13.155,0,0,0,1.823,1.15v-10.69a10.282,10.282,0,0,0-1.758.78c-1.647,1.16-2.464,1.15-4.11,0A9.735,9.735,0,0,0,775.616,5419.86Zm7.713-41.55v6.09h6.081C787.385,5382.37,785.37,5380.36,783.329,5378.31Zm-9.164,14.46c-3.974,0-7.948.01-11.922,0a2.587,2.587,0,0,1-1.258-.12,1.7,1.7,0,0,1-.8-1.09,1.466,1.466,0,0,1,.749-1,2.722,2.722,0,0,1,1.257-.14h24.078c0.857,0.03,1.882-.07,1.91,1.16,0.027,1.25-1,1.19-1.86,1.19C782.269,5392.78,778.217,5392.77,774.165,5392.77Zm-2.281,3.6q4.968,0,9.936-.01c0.82,0,1.684.04,1.684,1.12,0,1.11-.855,1.24-1.734,1.24H761.9a3.633,3.633,0,0,1-.467-.01,1.194,1.194,0,0,1-1.292-1.22,1.128,1.128,0,0,1,1.342-1.12h10.4Zm-3.113-9.53c-2.334,0-4.669-.01-7,0-0.853,0-1.646-.13-1.62-1.19,0.023-.96.768-1.17,1.573-1.17h14.125c0.844,0,1.619.18,1.609,1.24-0.01,1.02-.762,1.12-1.563,1.12C773.518,5386.83,771.145,5386.84,768.771,5386.84Zm19.616,10.95a3.052,3.052,0,0,1-1.369.81,2.908,2.908,0,0,1-1.12-1.08,3.593,3.593,0,0,1,1.237-1.06,2.7,2.7,0,0,1,1.245.81C788.382,5397.44,788.385,5397.62,788.387,5397.79Z"
+                    transform="translate(-754.375 -5373.91)"
+                  />
+                </svg>
+              </div>
+              <!-- End left column -->
+
+              <!-- Right column: cert photo, contained within card (no overflow) -->
+              <a
+                href={card.href}
+                target="_blank"
+                rel="noopener"
+                class="cert-card__photo self-center justify-self-end inline-flex bg-[#ffe1b8] p-2 w-full max-w-[170px] md:max-w-[210px] lg:max-w-[230px] transition-colors duration-[400ms] ease-out"
+                aria-label={`Open full-size ${card.title} image in a new tab`}
+              >
+                <img
+                  src={card.src}
+                  alt={card.alt}
+                  width={card.width}
+                  height={card.height}
+                  loading="lazy"
+                  decoding="async"
+                  class="block w-full h-auto select-none"
+                />
+              </a>
+            </div>
+            <!-- End cert-card__content grid -->
+          </article>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  /* Scoped: things Tailwind cannot express cleanly.
+     - Orange gradient hover layer
+     - Number/title/icon/photo white-on-hover transitions */
+
+  .cert-card {
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .cert-card__hover {
+    background-image: linear-gradient(135deg, #f7a400 0%, #ef8f00 100%);
+  }
+
+  .cert-card[data-cert-card]:hover .cert-card__hover,
+  .cert-card[data-cert-card]:focus-within .cert-card__hover {
+    opacity: 1;
+  }
+
+  /* White text/icon on hover */
+  .cert-card[data-cert-card]:hover .cert-card__num,
+  .cert-card[data-cert-card]:hover .cert-card__title,
+  .cert-card[data-cert-card]:focus-within .cert-card__num,
+  .cert-card[data-cert-card]:focus-within .cert-card__title {
+    color: #ffffff;
+  }
+
+  .cert-card[data-cert-card]:hover .cert-card__icon,
+  .cert-card[data-cert-card]:focus-within .cert-card__icon {
+    color: #ffffff;
+    opacity: 1;
+  }
+
+  .cert-card__icon {
+    opacity: 0.6;
+    transition: color 400ms ease-out, opacity 400ms ease-out;
+  }
+
+  /* Photo backdrop white on hover */
+  .cert-card[data-cert-card]:hover .cert-card__photo,
+  .cert-card[data-cert-card]:focus-within .cert-card__photo {
+    background-color: #ffffff;
+  }
+
+  /* Num/title icon color transition (default) */
+  .cert-card__num,
+  .cert-card__title {
+    transition: color 400ms ease-out;
+  }
+
+  /* Prevent horizontal overflow on the section (safety net) */
+  #certifications-showcase {
+    max-width: 100vw;
+  }
+</style>

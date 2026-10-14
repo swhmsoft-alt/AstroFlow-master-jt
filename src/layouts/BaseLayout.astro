@@ -110,6 +110,31 @@ interface Props {
    * Choose the Right Titanium Grade") to maximise AI Overview citation rate.
    */
   howtoItem?: HowToItem;
+  /**
+   * Schema.org Service.serviceType forwarded to buildService(). When set,
+   * the emitted Service entity carries a `serviceType` property (e.g.
+   * "Precision CNC Machining"). Callers MUST only declare processes the
+   * page actually advertises.
+   */
+  serviceType?: string;
+  /**
+   * Schema.org Service.areaServed forwarded to buildService(). For the
+   * cnc.bozemetal.com export-only B2B funnel, the default is "Worldwide".
+   * Pass a country/region list when the page explicitly serves a narrower
+   * audience (e.g. a domestic-only landing page).
+   */
+  serviceAreaServed?: string | string[];
+  /**
+   * Optional override for the auto-generated JSON-LD BreadcrumbList. When
+   * provided, these items replace the auto-derived `breadcrumbRaw` produced
+   * from URL segments + SEO_CONFIG. The visible HTML breadcrumb on the page
+   * is rendered by the page itself; this prop exists ONLY to keep the
+   * JSON-LD BreadcrumbList in lock-step with whatever visible microdata /
+   * breadcrumbs the page renders (SOP §四.3 — JSON-LD must match the real
+   * navigation). Pass at minimum {position, name, item} tuples; item is
+   * the absolute URL (including `https://cnc.bozemetal.com`).
+   */
+  breadcrumbItems?: BreadcrumbItem[];
   serviceHubKey?: string;
   /** Override the auto-generated hreflang alternate links (e.g. for non-localized campaign pages) */
   alternateLinks?: { lang: string; href: string }[];
@@ -218,6 +243,10 @@ const {
   faqItems,
   faqName,
   howtoItem,
+  serviceType,
+  serviceAreaServed,
+  serviceAdditionalProperty,
+  breadcrumbItems: breadcrumbItemsOverride,
   serviceHubKey,
   alternateLinks: explicitAlternateLinks,
   prevURL,
@@ -257,11 +286,13 @@ const isProd = import.meta.env.PROD;
 const pageType = detectPageType(canonicalPath, explicitPageType);
 const homeLabel = t('blog.breadcrumb.home');
 const breadcrumbRaw = buildBreadcrumbItems(canonicalPath, SEO_CONFIG, siteUrl, currentLang, homeLabel);
-const breadcrumbItems = breadcrumbRaw.map((item: BreadcrumbItem) => {
-  const p = item.item.replace(siteUrl, '').replace(/\/+$/, '');
-  const lbl = p ? NAV_LABEL_MAP[p] : undefined;
-  return lbl ? { ...item, name: lbl } : item;
-});
+const breadcrumbItems = breadcrumbItemsOverride?.length
+  ? breadcrumbItemsOverride
+  : breadcrumbRaw.map((item: BreadcrumbItem) => {
+      const p = item.item.replace(siteUrl, '').replace(/\/+$/, '');
+      const lbl = p ? NAV_LABEL_MAP[p] : undefined;
+      return lbl ? { ...item, name: lbl } : item;
+    });
 const alternateLinks = explicitAlternateLinks || defaultAlternateLinks;
 
 const resolvedServiceName = serviceName ?? ((pageType === 'service-detail' || pageType === 'services-hub') ? title : undefined);
@@ -278,7 +309,7 @@ const schemaData = {
   articleDatePublished: pubDate ?? undefined, articleDateModified: articleDateModified ?? undefined, articleImage,
   articleAbout,
   serviceName: resolvedServiceName, serviceDescription: serviceDescription ?? (resolvedServiceName ? description : undefined),
-  serviceCategory, productName, productDescription: productDescription ?? (productName ? description : undefined), productImage, productCategory,
+  serviceCategory, serviceType, serviceAreaServed, serviceAdditionalProperty, productName, productDescription: productDescription ?? (productName ? description : undefined), productImage, productCategory,
   productRfqUrl, productDatePublished: pubDate ?? null, collectionName: collectionName ?? title, collectionDescription, itemCount, items,
   faqItems, faqName,
   howtoItem,

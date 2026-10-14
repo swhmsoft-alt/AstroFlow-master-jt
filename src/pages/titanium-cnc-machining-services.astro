@@ -20,21 +20,20 @@ const t = useTranslations(lang);
   serviceName="Titanium CNC Machining Services"
   serviceDescription="End-to-end titanium CNC machining solutions — from rapid prototyping to high-volume production — across 3/5-axis milling, turning, wire EDM, and custom industrial components."
   serviceCategory="Precision CNC Machining"
+  serviceType="Precision CNC Machining"
+  serviceAreaServed="Worldwide"
+  serviceAdditionalProperty={[
+    { name: 'Positional Accuracy', value: '±0.005 mm', unitText: 'mm' },
+    { name: 'Default Surface Finish', value: 'Ra 0.4', unitText: 'µm' },
+    { name: 'First-Pass Yield', value: '99.5%' },
+    { name: 'Monthly Production Capacity', value: '8,000+', unitText: 'parts' },
+  ]}
   serviceHubKey="cnc-machining"
-  articleHeadline="How to Source a Qualified Titanium CNC Machining Supplier: A Buyer's Guide"
-  articleDescription="A practical procurement guide covering file formats, lead time, MOQ, capacity, and quality standards for titanium CNC machining."
-  articleDateModified="2026-09-24"
-  howtoItem={{
-    name: 'How to source a titanium CNC machining supplier in 4 steps',
-    description: 'A repeatable procurement methodology from inquiry to production release, used by aerospace and medical device buyers.',
-    totalTime: 'PT72H',
-    steps: [
-      { name: 'Submit STEP / IGES / DWG / DXF drawing', text: 'Upload your CAD file via the RFQ form, or send SolidWorks / CATIA / NX directly to engineering@bozemetal.com.' },
-      { name: 'Receive DFM analysis within 24 hours', text: 'Our engineering team reviews manufacturability, tolerance feasibility, and material selection; you receive a written review within 24 hours.' },
-      { name: 'Approve the formal quotation', text: 'Once the DFM review is acknowledged, we issue a formal quote with tier-1 production pricing, lead time, and material certification plan.' },
-      { name: 'Production release with full documentation', text: 'Production volume is locked within 72 hours of PO confirmation; heat-level material traceability, FAIR, and CMM inspection data ship with the parts.' },
-    ],
-  }}
+  breadcrumbItems={[
+    { position: 1, name: t('nav.home'), item: 'https://cnc.bozemetal.com/' },
+    { position: 2, name: t('nav.services'), item: 'https://cnc.bozemetal.com/services/' },
+    { position: 3, name: 'Titanium CNC Machining Services', item: 'https://cnc.bozemetal.com/titanium-cnc-machining-services/' },
+  ]}
 >
   <!-- Breadcrumb -->
   <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -239,36 +238,4 @@ const t = useTranslations(lang);
   <AudienceHub industry="cnc-machining" />
 
   <CncDedicatedCta />
-
-  {/* Supplementary JSON-LD: Article node (service-detail pageType does not
-       emit Article via buildPageGraph; matches the as9100-titanium-supplier.astro
-       pattern of adding credential / supplementary entities as a parallel graph). */}
-  <script is:inline type="application/ld+json" set:html={JSON.stringify({
-    '@context': 'https://schema.org',
-    '@graph': [{
-      '@type': 'Article',
-      '@id': 'https://cnc.bozemetal.com/titanium-cnc-machining-services/#article',
-      headline: "How to Source a Qualified Titanium CNC Machining Supplier: A Buyer's Guide",
-      description: 'A practical procurement guide covering file formats, lead time, MOQ, capacity, and quality standards for titanium CNC machining.',
-      datePublished: '2026-09-24',
-      dateModified: '2026-09-24',
-      inLanguage: 'en-US',
-      author: { '@type': 'Organization', name: 'Boze Titanium Manufacturing Center' },
-      publisher: { '@id': 'https://www.bozemetal.com/#organization' },
-      isPartOf: { '@id': 'https://cnc.bozemetal.com/titanium-cnc-machining-services/#webpage' },
-    }],
-  })} />
-
-  {/* Numbered headings + quoted spec — satisfy AI headingNumbered + quotedSpec signals */}
-  <div style="display:none" aria-hidden="true">{`## 1. About Boze — Track Record Since 2008
-## 2. Procurement Realities — File Formats, Lead Time, MOQ
-## 3. Quality, Standards & Yield Data
-## 4. Capacity & Redundancy
-## 5. Methodology — Boze-Method™ Decision Framework
-Step 1: Submit STEP / IGES / DWG / DXF drawing
-Step 2: Receive DFM analysis within 24 hours
-Step 3: Approve the formal quotation
-Step 4: Production release with full documentation
-"±0.005 mm positional accuracy, Ra 0.4 µm default finish, 99.5% first-pass yield across 8,000+ parts per month."
-"AS9100D + NADCAP, heat-level material traceability, since 2008."`}</div>
 </BaseLayout>
