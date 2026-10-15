@@ -336,7 +336,24 @@ const ldJson = JSON.stringify(pageGraph);
 <meta name="generator" content={Astro.generator} />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href={fontUrl} rel="stylesheet" />
+{/* P0-3 LCP optimization (2026-10-15 PSI data): async-load Inter font CSS to remove render-blocking.
+    Saves ~200ms LCP per PageSpeed Insights report (k2s2qe9jss). The onload hack promotes
+    the preload link to stylesheet after CSS is fetched in parallel with HTML parsing.
+
+    Note: A font woff2 preload (as="font" type="font/woff2") was considered but NOT
+    implemented because: (a) the woff2 URL is version-pinned (Inter v18) and becomes
+    stale when Google upgrades; (b) hardcoded Latin subset does not help CJK pages where
+    Inter has no glyphs; (c) the preconnect + async CSS pattern already eliminates the
+    200ms render-blocking delay from the Google Fonts CSS request itself. If a future
+    Inter upgrade breaks the CSS URL, the onerror is silent and falls back to system
+    sans-serif (BaseLayout already sets font-family: Inter, monospace). */}
+<link
+  rel="preload"
+  as="style"
+  href={fontUrl}
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript><link rel="stylesheet" href={fontUrl} /></noscript>
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
