@@ -21,6 +21,27 @@ export default defineConfig({
   site: 'https://cnc.bozemetal.com',
   output: 'static',
   trailingSlash: 'always',
+  build: {
+    // P0-3B (2026-10-15, re-applied after PSI cache-policy diagnostic
+    // confirmed 90ms net LCP saving): inline all Astro-collected CSS
+    // into HTML. Trade-off: HTML size increases by ~30 KB (gzip
+    // compressed). The CSS is render-blocking (15.2 KiB / 130ms
+    // per PSI report k2s2qe9jss); inlining it eliminates the
+    // round-trip wait at the cost of slightly larger HTML. On 4G
+    // and faster networks, the LCP saving dominates; on 3G the
+    // download cost is roughly equal, but LCP 2.5s threshold
+    // matters for Google Page Experience ranking signal.
+    //
+    // First attempt (also commit fc91d92b era) was reverted on
+    // the hypothesis that "HTML +90 KB in slow networks might
+    // negate 130ms savings". That was an unverified assumption;
+    // PSI itself reports the 90ms saving as net positive even
+    // on its simulated network. Re-applying.
+    //
+    // Cache headers in public/.htaccess (1-year immutable) ensure
+    // the inlined CSS is still cached on repeat visits.
+    inlineStylesheets: 'always',
+  },
   integrations: [
     react(),
     sitemap({
