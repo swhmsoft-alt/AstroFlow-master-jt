@@ -1040,6 +1040,16 @@ export default defineConfig({
           "Wire EDM Machining": {
             "href": "/titanium-cnc-machining-services/wire-edm-machining/"
           },
+          // 2026-10-15 — Content Quality Audit A1: E-E-A-T author profile page
+          "garrett liu titanium engineer": {
+            "href": "/author/garrett-liu/"
+          },
+          "Boze engineering team": {
+            "href": "/author/garrett-liu/"
+          },
+          "titanium technical reviewer": {
+            "href": "/author/garrett-liu/"
+          },
           "3/5-Achsen-CNC-Bearbeitung": {
             "href": "/de/titanium-cnc-machining-services/3-5-axis-cnc-machining/"
           },

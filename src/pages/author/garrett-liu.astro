@@ -1,0 +1,244 @@
+---
+// =============================================================================
+// /author/garrett-liu/ — Author profile page (E-E-A-T signal)
+//
+// Phase: 2026-10-15 Content Quality Audit follow-up (A1 + A2)
+// Scope: English-only campaign page. Currently one named technical reviewer
+// is signed on (Garrett Liu, Lead Production Engineer) across the entire blog
+// corpus. Localized author pages are out of scope until a second named
+// technical reviewer is added — at that point we will either introduce a
+// i18n shim or a content collection under `src/content/authors/`.
+//
+// Red-line compliance:
+//   - 5.6 (no deceptive author info): no AI avatar, no fabricated credentials.
+//     The page intentionally uses an initials block instead of a headshot
+//     because no real headshot is available. Real LinkedIn / publication
+//     URLs are NOT invented.
+//   - F4 (single schema authority): the Person + WebPage JSON-LD below is a
+//     supplementary graph added because no existing pageType emits Person
+//     entities. BaseLayout's default global graph (Organization, Brand,
+//     WebSite, ImageObject, ManufacturingCenter) is preserved unchanged.
+// =============================================================================
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '@config/site';
+
+const siteUrl = Astro.site || new URL(SITE.url);
+const canonicalUrl = new URL('/author/garrett-liu/', siteUrl).toString();
+const personId = `${SITE.url}author/garrett-liu/#person`;
+
+const pageTitle = 'Garrett Liu — Lead Production Engineer | Boze Titanium Manufacturing Center';
+const pageDescription =
+  'Author profile for Garrett Liu, Lead Production Engineer at Boze Titanium Manufacturing Center. Specialist in Ti-6Al-4V (Grade 5) and commercially pure titanium metallurgy, ASTM/AMS standards conformance, and shop-floor CNC process engineering.';
+
+// Editorial & AI Use Policy (Audit A2). Public, on-page disclosure of how
+// the engineering blog content is produced and reviewed.
+const editorialPolicy = {
+  authoring:
+    'All blog content is authored by the Boze Titanium Manufacturing Center engineering team, with named technical review by Garrett Liu (Lead Production Engineer).',
+  review:
+    'Final published copy is human-reviewed and fact-checked against ASTM / AMS / ISO standards, manufacturer datasheets, and our internal shop-floor process data.',
+  ai:
+    'We use large language models (Gemini, Claude) for research assistance and editorial polish only. No LLM-authored content is published without human authorship, technical review by a named engineer, and final approval.',
+};
+
+// Surface the reviewer's recent scope. We list the most recently published
+// engineering articles so visitors and crawlers can see the breadth of the
+// corpus the reviewer signs off on. The blog frontmatter `author` field is
+// "Boze Titanium Manufacturing Center" (the team); the named technical
+// reviewer is exposed in the BlogAuthorBlock rendered on each article.
+const blog = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+);
+const recentArticles = blog.slice(0, 10).map((entry) => ({
+  title: entry.data.title,
+  href: `/blog/${entry.slug || entry.id.replace(/\.md$/, '')}/`,
+  pubDate: entry.data.pubDate,
+  category: entry.data.category || '',
+}));
+
+// Person + WebPage supplementary JSON-LD.
+// Person.worksFor references the existing global ManufacturingCenter @id so
+// the author is bound to the same canonical organization node as everything
+// else in the site graph.
+const personGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Garrett Liu',
+      givenName: 'Garrett',
+      familyName: 'Liu',
+      jobTitle: 'Lead Production Engineer',
+      description:
+        'Specialist in the metallurgy and mechanical behavior of reactive metals, with a focus on Ti-6Al-4V (Grade 5) and commercially pure titanium. Oversees the technical integrity of CNC machining processes and ensures conformance to ASTM/AMS standards across the Boze engineering blog corpus.',
+      worksFor: {
+        '@id': 'https://cnc.bozemetal.com/#manufacturing-center',
+        '@type': 'Organization',
+        name: 'Boze Titanium Manufacturing Center',
+      },
+      knowsAbout: [
+        'Titanium metallurgy',
+        'Ti-6Al-4V (Grade 5)',
+        'Commercially pure titanium (Grade 1, Grade 2, Grade 4)',
+        'Reactive metal machining',
+        'AS9100D quality systems',
+        'AS9102 first article inspection',
+        'ASTM B265 / B348 / F136 standards',
+        'AMS 4910 / 4925 / 4943 / 4966 standards',
+        'CNC toolpath engineering',
+        'Alpha-case prevention',
+        'CMM measurement and Cpk reporting',
+      ],
+      url: canonicalUrl,
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { '@id': `${SITE.url}#website` },
+      about: { '@id': personId },
+      inLanguage: 'en',
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/about/" itemprop="item" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">About</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Garrett Liu</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1="Garrett Liu"
+    badge="Lead Production Engineer"
+    subtitle="Technical reviewer for the Boze Titanium Manufacturing Center engineering blog. Specialist in titanium metallurgy, ASTM/AMS standards conformance, and CNC process engineering."
+  />
+
+  <!-- Profile card (no headshot — see comment at top of file) -->
+  <section class="relative py-16 lg:py-20" style="background-color: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <div class="rounded-2xl p-8 lg:p-10" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div class="shrink-0">
+            <div
+              class="w-24 h-24 rounded-2xl flex items-center justify-center text-2xl font-bold"
+              style="background: linear-gradient(to bottom right, var(--theme-primary), var(--theme-accent)); color: var(--theme-text);"
+              aria-hidden="true"
+            >
+              GL
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h2 class="text-2xl font-bold mb-2" style="color: var(--theme-text);">Role &amp; Affiliation</h2>
+            <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.78;">
+              Lead Production Engineer at Boze Titanium Manufacturing Center, operated by
+              <strong>Baoji Boze Metal Products Co., Ltd.</strong> — AS9100D- and ISO 9001-certified
+              since 2014, audited annually by an independent certification body. Located in Baoji,
+              Shaanxi, China.
+            </p>
+            <h2 class="text-2xl font-bold mb-2 mt-6" style="color: var(--theme-text);">Areas of Expertise</h2>
+            <ul class="grid sm:grid-cols-2 gap-2 text-sm" style="color: var(--theme-text); opacity: 0.78;">
+              <li>· Ti-6Al-4V (Grade 5) metallurgy</li>
+              <li>· Commercially pure titanium (CP Gr 1 / 2 / 4)</li>
+              <li>· ASTM B265 / B348 / F136 standards</li>
+              <li>· AMS 4910 / 4925 / 4943 / 4966</li>
+              <li>· AS9100D quality systems</li>
+              <li>· AS9102 first article inspection</li>
+              <li>· Reactive-metal chip control &amp; fire prevention</li>
+              <li>· Alpha-case prevention &amp; removal</li>
+              <li>· CMM measurement &amp; Cpk reporting</li>
+              <li>· 5-axis toolpath engineering</li>
+            </ul>
+            <h2 class="text-2xl font-bold mb-2 mt-6" style="color: var(--theme-text);">How to Reach the Reviewer</h2>
+            <p class="text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.78;">
+              Technical questions about published articles, engineering consultations, or drawings
+              for review can all be raised through the
+              <a href="/rfq/" style="color: var(--theme-primary); text-decoration: underline;">RFQ form</a>
+              (this site's contact form and RFQ are merged into a single page).
+              All manufacturing-engineering content on this site is reviewed against the audit
+              policy below before publication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial & AI Use Policy (Audit A2) -->
+  <section class="relative py-12" style="background-color: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <h2 class="text-2xl font-bold mb-4" style="color: var(--theme-text);">Editorial &amp; AI Use Policy</h2>
+      <p class="text-base leading-relaxed mb-3" style="color: var(--theme-text); opacity: 0.78;">
+        {editorialPolicy.authoring}
+      </p>
+      <p class="text-base leading-relaxed mb-3" style="color: var(--theme-text); opacity: 0.78;">
+        {editorialPolicy.review}
+      </p>
+      <p class="text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.78;">
+        {editorialPolicy.ai}
+      </p>
+    </div>
+  </section>
+
+  <!-- Recent engineering articles -->
+  <section class="relative py-12 lg:py-16" style="background-color: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+      <h2 class="text-2xl font-bold mb-6" style="color: var(--theme-text);">Recently Reviewed Engineering Articles</h2>
+      <p class="text-sm mb-6" style="color: var(--theme-text); opacity: 0.65;">
+        The 10 most recently published articles in the Boze engineering blog. Garrett Liu signs off on
+        every article in the corpus before publication.
+      </p>
+      <ul class="space-y-3">
+        {recentArticles.map((article) => (
+          <li>
+            <a
+              href={article.href}
+              class="block rounded-lg p-4 transition-colors"
+              style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-text);"
+            >
+              <span class="font-semibold">{article.title}</span>
+              <span class="block text-xs mt-1" style="opacity: 0.6;">
+                {article.category} · {new Date(article.pubDate).toISOString().slice(0, 10)}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm" style="color: var(--theme-text); opacity: 0.65;">
+        <a href="/blog/" class="underline" style="color: var(--theme-primary);">Browse the full engineering blog →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Person + WebPage JSON-LD (supplementary graph; preserves global entities) -->
+  <script type="application/ld+json" set:html={JSON.stringify(personGraph)} />
+</BaseLayout>

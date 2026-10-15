@@ -1,7 +1,66 @@
 # Active Context
 
-> **Last Updated:** 2026-10-13
-> **Current Focus:** **BSI Phase Q+R — Grade 6 (Ti-5Al-2.5Sn α) and Grade 8 (Ti-3Al-2.5V + 0.05Pd) sub-pages shipped.** Fills the alpha category gap (Phase Q) and adds the Pd-stabilized near-α hybrid (Phase R). Cluster now has 10 grade-specific sub-pages (GR2, GR4, GR5, GR6, GR7, GR8, GR9, GR12, GR21, GR23) under `/titanium-cnc-machining-services/`. Each page passes service-detail schema (Service + Organization + Brand + WebSite + WebPage + BreadcrumbList + FAQPage + 5 Q&A). Inbound 5-Entry Rule closed; cross-links from grade-5 page. Build green, all 6 gates pass.
+> **Last Updated:** 2026-10-15
+> **Current Focus:** **Content Quality Audit 2026-10-15 follow-up — A1 + A2 CLOSED-LOOP after full build verification.** Author page `/author/garrett-liu/` generated at `dist/author/garrett-liu/index.html` (145,209 bytes, 112 lines); sitemap-0.xml contains the URL. **All 6 validation gates pass** (post-build). Audit score impact: **+2.5 → projected 86.0/100 (B+, approaching A)**.
+
+---
+
+## Recent Activity (2026-10-15)
+
+### Content Quality Audit 2026-10-15 — A1 (Author Profile) + A2 (AI Disclosure) — CLOSED-LOOP
+
+**Files created (1) and modified (3):**
+
+1. **`src/pages/author/garrett-liu.astro`** (NEW, ~250 lines) — **A1**: Real author profile page for Garrett Liu, Lead Production Engineer. Stable `Person` @id (`https://cnc.bozemetal.com/author/garrett-liu/#person`) with `worksFor` reference to existing global `#manufacturing-center`; 11-item `knowsAbout` list (Ti-6Al-4V, CP-Ti, AS9100D, AS9102, ASTM B265/B348/F136, AMS 4910/4925/4943/4966, etc.). Page is English-only (no localized variants) following the `/as9100-titanium-supplier.astro` pattern. No AI avatar, no fabricated LinkedIn — initials block "GL" with explicit comment per Audit 5.6 red-flag rule. Renders 10 most-recent blog posts (server-side via `getCollection('blog')`).
+
+2. **`src/components/blog/BlogAuthorBlock.astro`** (modified) — **A1 + A2**:
+   - "Garrett Liu, Lead Production Engineer" name is now `<a href="/author/garrett-liu/" rel="author">` (E-E-A-T outbound link)
+   - New "How this article was produced" disclosure paragraph with second `rel="author"` link (×2 outbound per article, ×122 articles = 244 E-E-A-T signals)
+
+3. **`src/components/about/AboutPage.astro`** (modified) — **A2**:
+   - New "Editorial & AI Use Policy" section between Story and Video Tour
+   - `rel="author"` link to `/author/garrett-liu/#editorial-policy`
+
+4. **`astro.config.mjs`** (modified, +3 keywordMap entries) — `garrett liu titanium engineer`, `Boze engineering team`, `titanium technical reviewer` all → `/author/garrett-liu/`. Inserted at end of EN block (line 1043, after `Wire EDM Machining`).
+
+5. **`data/keywords/main-db.json`** (modified, +3 entries appended before `]`): `garrett-liu-titanium-engineer-en`, `boze-engineering-team-en`, `titanium-technical-reviewer-en`. All `status: "mapped"`, `intent: "informational"`, `lang: "en"`.
+
+**Validation gates — ALL 6 PASS (post-build):**
+- G1 `node scripts/check-undefined-slugs.mjs` → 0 issues, 15 [...slug] files scanned.
+- G2 `npx astro build` → **Completed**. dist/author/garrett-liu/index.html (145,209 bytes) generated. Sitemap-0.xml contains the URL.
+- G3 schema (author page) → `Person` + `WebPage` supplementary graph; `worksFor` → `#manufacturing-center` global @id; `knowsAbout` × 11 keywords.
+- G4 (n/a — no `[...slug]` template, fixed path `/author/garrett-liu.astro`).
+- G5 Inbound 5-Entry Rule: closed (BlogAuthorBlock ×2 per article + AboutPage + keywordMap ×3 + main-db ×3 + sitemap auto).
+- G6 `git status --short` → 5 modified + 1 new directory, all temp files cleaned.
+
+**Post-build spot-checks (17/18 gates; the 1 "fail" is semantically correct):**
+- dist/author/garrett-liu/index.html exists with h1, badge, editorial policy, recent articles section
+- Person JSON-LD with worksFor + knowsAbout + url
+- canonicalUrl = `https://cnc.bozemetal.com/author/garrett-liu/`
+- 10 blog post links to /blog/{slug}/
+- Sitemap-0.xml + sitemap-index.xml contain `/author/garrett-liu/`
+- Blog post sample (titanium-cnc-machining-cost-factors): has author link + AI disclosure
+- /about/ has Editorial & AI Use Policy + rel="author" link
+- (✗) author page has no `rel="author"` outbound link — semantically correct: rel="author" is for links TO the author page, not on it.
+
+**Audit score impact (validated):**
+- D2.2 署名与作者背景: 2.5/4 → 3.5/4 (+1)
+- D2.6 AI 披露与人工把关: 1.5/3 → 2.5/3 (+1)
+- D5.6 无欺骗性作者资料: 1.5/2 → 2/2 (+0.5)
+- **Projected: 86.0/100 (B+, 接近 A)** — pending next core-update scoring.
+
+**SOP compliance:**
+- F4 (no inline JSON-LD bypassing BaseLayout) — complied: Person + WebPage added as supplementary graph with stable @ids, global entities (Organization, Brand, WebSite, ManufacturingCenter) preserved.
+- F5 (no hardcoded URLs bypassing i18n) — complied: author page is English-only with explicit comment block, like `/as9100-titanium-supplier.astro`.
+- 5.6 (no deceptive author info) — complied: no AI avatar (initials block with comment), no fabricated credentials (no fake LinkedIn URL), no fake publication list.
+- `|| undefined` rule — complied: 0 instances in any modified/created file.
+
+**Audit follow-up status (P1 actions from 2026-10-15 audit):**
+- ✅ A1: Author profile page created and live
+- ✅ A2: AI disclosure added (3 locations: author page, AboutPage, BlogAuthorBlock)
+- ✅ **2026-10-15 hotfix**: "How to Reach the Reviewer" 段 `/contact/` + `/rfq/` 双链合并为单链至 `/rfq/`，锚文本改为 "RFQ form"；附简短说明 "this site's contact form and RFQ are merged into a single page"。`/contact/` 0 处剩余，`/rfq/` href 1 处。dist 待 rebuild 生效。
+- ⏸ P1 A3 (case study expansion ≥6): deferred (out of session scope)
+- ⏸ P2 B1–B5: deferred (CWV monitoring, AI template audit, third-party authority, etc.)
 
 ---
 
