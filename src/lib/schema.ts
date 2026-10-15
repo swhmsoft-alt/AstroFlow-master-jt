@@ -2,7 +2,7 @@
  * src/lib/schema.ts
  *
  * Whole-site Structured Data center for Boze Titanium Manufacturing Center.
- * Single file 鈥?no builder framework, no registry, no separate types.
+ * Single file -no builder framework, no registry, no separate types.
  *
  * Architecture: JSON-LD Graph with @id-pointer reference model.
  *  - Global entities (Organization, Brand, ManufacturingCenter, WebSite, ImageObject)
@@ -41,7 +41,7 @@ import { refsFromIds } from './entity-graph';
 //   - field-type mismatches (e.g. `number` vs `string`)
 //   - deprecated / non-existent properties
 //
-// `schema-dts` does NOT validate JSON-LD values at runtime 鈥?it only checks
+// `schema-dts` does NOT validate JSON-LD values at runtime -it only checks
 // TypeScript types at build time. The schema-org-validator / manual
 // review of dist JSON-LD is still the runtime safety net.
 //
@@ -78,7 +78,7 @@ import type {
 
 // 鈹€鈹€ Constants 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
 //
-// Entity Identity (Single Source of Truth) 鈥?EXPORTED so page-level
+// Entity Identity (Single Source of Truth) -EXPORTED so page-level
 // supplementary JSON-LD blocks can reference these by @id without ever
 // re-declaring the underlying entity fields.
 //
@@ -158,7 +158,7 @@ const B2B_EXPORT_MARKETS: { code: string; name: string }[] = [
 const countryId = (code: string) => `${SITEROOT}/#country-${code.toLowerCase()}`;
 
 /**
- * Shared areaServed @id-reference array 鈥?single source of truth used by
+ * Shared areaServed @id-reference array -single source of truth used by
  * Organization.areaServed, Organization.makesOffer[0].itemOffered.areaServed,
  * and every OfferCatalog itemOffered Service. The Country nodes themselves
  * are emitted once per page graph by buildMarketCountries().
@@ -232,11 +232,11 @@ function clean(obj: Record<string, unknown>): Record<string, unknown> {
 export function buildOrganization(): Organization {
   return {
     // schema.org Corporation subtype (2026-10-15, B2B entity strategy):
-    // Corporation rdfs:subClassOf Organization 鈥?the incorporated-for-profit
+    // Corporation rdfs:subClassOf Organization -the incorporated-for-profit
     // legal form of this entity. schema-dts models Corporation inside the
     // Organization union, so every @id reference site keeps its Organization
     // typing and spec-compliant parsers expand the subclass chain.
-    // Deliberately NOT LocalBusiness 鈥?see constants block above.
+    // Deliberately NOT LocalBusiness -see constants block above.
     '@type': 'Corporation',
     '@id': ORG_ID,
     name: 'Baoji Boze Metal Products Co., Ltd.',
@@ -251,11 +251,16 @@ export function buildOrganization(): Organization {
     foundingDate: '2011',
     // alternateName intentionally only carries the corporate trade name.
     // Brand-level aliases (BOZE Metal, BOZE CNC Ti) live on the Brand @ids
-    // below 鈥?duplicating them here confuses LLM crawlers trying to resolve
+    // below -duplicating them here confuses LLM crawlers trying to resolve
     // which node is canonical for a given alias. See Phase 2A / P2-2.
     alternateName: ['BOZE', 'Boze Metal', 'Baoji Boze'],
     url: MAIN_SITE,
     logo: { '@id': LOGO_ID },
+    // Phase 2B (2026-10-15): Google Rich Results Test 'LocalBusiness' branch
+    // (which fires when a Corporation carries a PostalAddress + telephone) requires
+    // an `image` field for the Knowledge Panel / visual anchor. Point to the same
+    // canonical Logo @id (no new ImageObject, no duplicate upload).
+    image: { '@id': LOGO_ID },
     // 鈹€鈹€ Public contact data (verbatim from src/i18n/translations/*/footer.*,
     //    cross-checked across all 12 locales for consistency) 鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
     // Source: src/i18n/translations/en.json
@@ -293,10 +298,10 @@ export function buildOrganization(): Organization {
         email: 'info@bozemetal.com',
         // Schema.org allows repeated `contactType`; provide both English and
         // Chinese labels so multilingual LLMs/parsers can route correctly.
-        alternateName: ['Sales', 'Sales 鈥?B2B Procurement'],
+        alternateName: ['Sales', 'Sales - B2B Procurement'],
         // Schema.org 14.0 supports `contactOption` (TollFree / HearingImpairedSupported)
-        // 鈥?we leave it unset; the B2B audience is not a 1-800 caller.
-        availableLanguage: ['en', 'de', 'zh', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'],
+        // We leave it unset; the B2B audience is not a 1-800 caller.
+        availableLanguage: ['en', 'de', 'ja', 'fr', 'es', 'pt', 'it', 'ko', 'nl', 'pl', 'ru', 'ar'],
       },
       {
         '@type': 'ContactPoint',
@@ -304,7 +309,7 @@ export function buildOrganization(): Organization {
         telephone: '0917-6753303',
         email: 'info@bozemetal.com',
         alternateName: ['Customer Service', 'Tel (Landline)'],
-        availableLanguage: ['en', 'zh'],
+        availableLanguage: ['en'],
       },
     ],
     brand: [
@@ -312,7 +317,7 @@ export function buildOrganization(): Organization {
       { '@id': BRAND_BOZE_CNC_TI_ID },
     ],
     // Active certifications held by the Legal Org. Source of truth:
-    //   AS9100D / EN 9100:2018 / ISO 9001:2015 鈥?Bureau Veritas cert
+    //   AS9100D / EN 9100:2018 / ISO 9001:2015 -Bureau Veritas cert
     //   number CN054217, issued 2025-04-08, expires 2028-04-07.
     // The Certification @graph node is built by buildAS9100Certification()
     // and emitted once per page in buildPageGraph().
@@ -338,7 +343,7 @@ export function buildOrganization(): Organization {
       'CMM Inspection & Metrology',
       'Material Traceability (MTR)',
       // Industrial standards (2026-10-15): every designator below is live
-      // site content 鈥?hero badges / highlight lists on the mill-products
+      // site content -hero badges / highlight lists on the mill-products
       // and standard-parts hubs (src/config/hero.ts) plus the Bureau Veritas
       // certificate scope. No MIL-SPEC entry: the site cites no specific
       // MIL-SPEC document, so claiming one would violate the honesty rule.
@@ -357,7 +362,7 @@ export function buildOrganization(): Organization {
           '@type': 'Service',
           name: 'Titanium Manufacturing Services',
           description: 'Precision titanium CNC machining, fabrication, additive manufacturing, and surface treatment for aerospace, medical, chemical, and industrial components.',
-          // B2B export markets (single source of truth 鈥?see
+          // B2B export markets (single source of truth -see
           // B2B_MARKET_AREA_SERVED). Supersedes the former opaque Text
           // 'Worldwide': the nine Country nodes resolve cleanly in entity
           // graphs while remaining factually accurate for the export-only
@@ -395,7 +400,7 @@ export function buildAS9100Certification(): Certification {
   return {
     '@type': 'Certification',
     '@id': CERT_AS9100_ID,
-    name: 'AS9100D / EN 9100:2018 / ISO 9001:2015 鈥?Quality Management System for Aviation Standard Parts',
+    name: 'AS9100D / EN 9100:2018 / ISO 9001:2015 -Quality Management System for Aviation Standard Parts',
     identifier: 'CN054217',
     issuedBy: {
       '@type': 'Organization',
@@ -470,7 +475,7 @@ const OFFER_CATALOG_ITEMS: { name: string; url: string; serviceType: string }[] 
 ];
 
 /**
- * schema.org OfferCatalog 鈥?the OEM/ODM + wholesale B2B export catalog.
+ * schema.org OfferCatalog -the OEM/ODM + wholesale B2B export catalog.
  *
  * Referenced from Organization.hasOfferCatalog ({ '@id': OFFER_CATALOG_ID })
  * and emitted once per page in buildPageGraph(). Declares to LLM crawlers
@@ -534,7 +539,7 @@ export function buildImageObject(): ImageObject {
     '@id': LOGO_ID,
     // 2026-10-14: upgraded from /uploads/boze-cnc-ti-ico.png (39脳38 favicon)
     // to /uploads/boze-cnc-ti-ico-512.png per user authorization. The file is
-    // actually 2048脳2048 (1:1 square, ~1.3MB PNG) 鈥?well above Google's 112脳112
+    // actually 2048脳2048 (1:1 square, ~1.3MB PNG) -well above Google's 112脳112
     // minimum for logo rich result. Filename keeps the 512 suffix by user
     // convention; declared width/height reflect the actual pixel dimensions.
     url: `${SITEROOT}/uploads/boze-cnc-ti-ico-512.png`,
@@ -553,14 +558,14 @@ export interface WebPageInput {
   inLanguage: string;
   datePublished?: string | null;
   /**
-   * F3 鈥?绔欑偣瀹炰綋鍥俱€?
+   * F3 -绔欑偣瀹炰綋鍥俱€?
    * 浼犲叆 entity-registry.json 涓殑 entity.id 鍒楄〃锛屾湰鍑芥暟瑙ｆ瀽涓?
    * schema.org @id 寮曠敤骞朵互 WebPage.mentions 褰㈠紡杈撳嚭锛屼緵 LLM crawler
    * 寤虹珛璺ㄩ〉瀹炰綋鍏宠仈鍥俱€傛棤 page_url 鐨勫疄浣撹嚜鍔ㄨ烦杩囥€?
    */
   mentions?: string[];
   /**
-   * AIO 鈥?Speakable CSS selectors. Targets in-page paragraphs that AIO
+   * AIO -Speakable CSS selectors. Targets in-page paragraphs that AIO
    * (Google AI Overviews) is permitted to cite as the authoritative answer
    * for voice / AI-summary features. Recommended: 3-5 thesis-first
    * paragraphs at the top of the page. Must match real DOM ids, e.g.
@@ -686,9 +691,9 @@ export function buildFaqPage(input: {
  *
  * Schema.org HowToStep reference:
  *   - position (int, required by Google rich-result guidelines)
- *   - name     (Text, recommended 鈥?short step title)
- *   - text     (Text, required 鈥?the step instruction itself)
- *   - url      (URL, optional 鈥?anchor to in-page section)
+ *   - name     (Text, recommended -short step title)
+ *   - text     (Text, required -the step instruction itself)
+ *   - url      (URL, optional -anchor to in-page section)
  */
 export interface HowToStep {
   name: string;
@@ -700,7 +705,7 @@ export interface HowToStep {
 }
 
 /**
- * A HowTo procedure 鈥?a recipe-style, step-by-step answer to a "how to"
+ * A HowTo procedure -a recipe-style, step-by-step answer to a "how to"
  * question. Mirrors the schema.org HowTo shape used by buildHowTo().
  *
  * Designed for AIO (Google AI Overviews) extraction: the procedure appears
@@ -754,7 +759,7 @@ export function buildHowToStep(step: HowToStep): HowToStep {
  *   Google rich-result requirements: https://developers.google.com/search/docs/appearance/structured-data/how-to
  */
 export function buildHowTo(input: {
-  /** URL of the page hosting the procedure 鈥?used to derive a unique @id. */
+  /** URL of the page hosting the procedure -used to derive a unique @id. */
   url: string;
   inLanguage?: string;
   item: HowToItem;
@@ -842,7 +847,7 @@ export function buildItemList(input: {
  * Reference: https://schema.org/ItemList
  */
 export function buildComparisonList(input: {
-  /** URL of the page hosting the comparison table 鈥?used to derive a unique @id. */
+  /** URL of the page hosting the comparison table -used to derive a unique @id. */
   url: string;
   /** Comparison-table heading (e.g. "Grade 5 vs Grade 23 (Ti-6Al-4V ELI)"). */
   name: string;
@@ -869,7 +874,7 @@ export function buildComparisonList(input: {
     url: input.url,
     numberOfItems: input.items.length,
     // ItemList item is a cross-page @id reference to an existing Product entity.
-    // Do NOT re-declare @type / name / description inline 鈥?Google treats inline
+    // Do NOT re-declare @type / name / description inline -Google treats inline
     // re-declarations as a Product owned by the host page and complains about
     // missing offers/review/aggregateRating on a page that is actually a BlogPosting.
     // Schema.org / Google guidance: a referenced Thing carries only @id.
@@ -896,13 +901,13 @@ export function buildService(input: {
   url: string;
   category?: string;
   /**
-   * Schema.org Service.serviceType 鈥?e.g. "Precision CNC Machining",
+   * Schema.org Service.serviceType -e.g. "Precision CNC Machining",
    * "5-axis CNC machining". Forwarded verbatim when provided.
    * IMPORTANT: only declare processes the page actually advertises.
    */
   serviceType?: string;
   /**
-   * Schema.org Service.areaServed 鈥?geographic scope. For the cnc.bozemetal.com
+   * Schema.org Service.areaServed -geographic scope. For the cnc.bozemetal.com
    * site (export-only B2B), "Worldwide" is the factually accurate default;
    * callers may override with a country/region list when serving a narrower
    * audience. Do NOT emit this for purely domestic services.
@@ -915,7 +920,7 @@ export function buildService(input: {
    */
   serviceAdditionalProperty?: { name: string; value: number | string; unitText?: string }[];
   /**
-   * Schema.org additionalProperty (PropertyValue[]) 鈥?quantitative
+   * Schema.org additionalProperty (PropertyValue[]) -quantitative
    * capability claims that the page renders as visible text (tolerance,
    * surface finish, yield, monthly capacity, etc.). The values MUST be
    * verbatim from the page's visible body; do NOT synthesise or improve
@@ -959,16 +964,16 @@ export function buildProduct(input: {
   image?: string;
   category?: string;
   datePublished?: string | null;
-  /** Phase 3 鈥?optional Product.sku (e.g. "TI-MOUSE-001"). */
+  /** Phase 3 -optional Product.sku (e.g. "TI-MOUSE-001"). */
   sku?: string;
-  /** Phase 3 鈥?optional Product.material (e.g. "Grade 5 Ti-6Al-4V"). */
+  /** Phase 3 -optional Product.material (e.g. "Grade 5 Ti-6Al-4V"). */
   material?: string;
   /** Real numeric retail price (USD). When set, offers is a retail Offer (price + InStock). */
   price?: number;
   /** B2B Request-Quote page URL. When set without price, emits a price-less manufacturing Offer (MadeToOrder) 鈫?RFQ. */
   rfqUrl?: string;
   /**
-   * Phase G-2.2 鈥?Offer.deliveryLeadTime. ISO 8601 duration (e.g. "P5D") or
+   * Phase G-2.2 -Offer.deliveryLeadTime. ISO 8601 duration (e.g. "P5D") or
    * descriptive text (e.g. "5-7 days"). When set, the Offer entity carries
    * the lead-time hint for crawlers and rich-result eligibility.
    */
@@ -1069,8 +1074,8 @@ export function buildArticle(input: {
  * TechArticle is the precise Article subtype for technical / engineering
  * content (per https://schema.org/TechArticle). It carries two
  * TechArticle-specific properties absent from the generic Article builder:
- *   - `proficiencyLevel` 鈥?declares the assumed reader knowledge tier.
- *   - `about`            鈥?the technical subject the article covers (entity
+ *   - `proficiencyLevel` -declares the assumed reader knowledge tier.
+ *   - `about`            -the technical subject the article covers (entity
  *                          link or string label). Used by Google to surface
  *                          the article in "expertise"-filtered search.
  *
@@ -1088,9 +1093,9 @@ export function buildTechArticle(input: {
   dateModified?: string;
   image?: string;
   mainEntityOfPage?: string;
-  /** Optional audience tier 鈥?'Expert' for engineer-facing deep-dives, 'Beginner' for intro material. */
+  /** Optional audience tier -'Expert' for engineer-facing deep-dives, 'Beginner' for intro material. */
   proficiencyLevel?: 'Beginner' | 'Expert';
-  /** Technical subject 鈥?entity link, schema.org @id, or plain string. */
+  /** Technical subject -entity link, schema.org @id, or plain string. */
   about?: string | readonly string[];
 }): TechArticle {
   return {
@@ -1223,7 +1228,7 @@ export interface SchemaPageData {
   articleDateModified?: string | null;
   articleImage?: string;
   /**
-   * P2-7 鈥?TechArticle-specific: a string or array of strings describing
+   * P2-7 -TechArticle-specific: a string or array of strings describing
    * the technical subject the article covers. Forwarded to
    * schema.org/TechArticle.about. Falls back to a generic titanium-machining
    * label when caller omits it.
@@ -1257,30 +1262,30 @@ export interface SchemaPageData {
   productDatePublished?: string | null;
   /** B2B Request-Quote URL for the Product offer (defaults to ${SITEROOT}/rfq/). */
   productRfqUrl?: string;
-  /** Phase 3 鈥?Product SKU. Per-page override of the entity's own sku field. */
+  /** Phase 3 -Product SKU. Per-page override of the entity's own sku field. */
   productSku?: string;
-  /** Phase 3 鈥?Product material (e.g. "Grade 5 Ti-6Al-4V"). Maps to schema.org Product.material. */
+  /** Phase 3 -Product material (e.g. "Grade 5 Ti-6Al-4V"). Maps to schema.org Product.material. */
   productMaterial?: string;
   /**
-   * Phase G-2.2 鈥?Offer.deliveryLeadTime for the standard-part-detail case.
+   * Phase G-2.2 -Offer.deliveryLeadTime for the standard-part-detail case.
    * Forwarded to buildProduct 鈫?Offer. Optional; omit to skip the field.
    * Example: "5-7 days" or ISO 8601 duration "P5D".
    */
   productDeliveryLeadTime?: string;
   /**
-   * Phase 3 鈥?Override howToItem for product-detail pages. When the page has
+   * Phase 3 -Override howToItem for product-detail pages. When the page has
    * a spec-driven manufacturing_process list, pass it as a HowToItem so the
    * main graph emits a single HowTo entity without a parallel page-level script.
    */
   productHowto?: HowToItem;
   /**
-   * Phase 3 鈥?Override faqItems for product-detail pages. When the page has
+   * Phase 3 -Override faqItems for product-detail pages. When the page has
    * a spec-driven FAQ list, pass it as a FaqItem[] so the main graph emits a
    * single FAQPage entity without a parallel page-level script.
    */
   productFaqItems?: FaqItem[];
 
-  // Tool (Phase 2C) 鈥?WebApplication entity for /tools/<slug>/ pages
+  // Tool (Phase 2C) -WebApplication entity for /tools/<slug>/ pages
   toolName?: string;
   toolDescription?: string;
   toolCategory?: string;
@@ -1305,7 +1310,7 @@ export interface SchemaPageData {
   faqName?: string;
 
   /**
-   * AIO 鈥?HowTo structured-data item. When provided, buildPageGraph will emit
+   * AIO -HowTo structured-data item. When provided, buildPageGraph will emit
    * an additional HowTo entity (recipe-style step-by-step procedure) regardless
    * of pageType. Use for procedural content pages that answer a "how to"
    * query (e.g. "how to choose a titanium grade", "how to qualify an AS9100
@@ -1315,18 +1320,18 @@ export interface SchemaPageData {
   howtoItem?: HowToItem;
 
   /**
-   * F3 鈥?Entity graph @id references. Pass an array of `entity.id` from
+   * F3 -Entity graph @id references. Pass an array of `entity.id` from
    * `data/entities/entity-registry.json`; each is resolved to a schema.org
    * @id + @type reference and emitted under WebPage.mentions.
    *
    * Use this for hub pages (industries, capabilities, materials, parts)
-   * to declare "this page is about these entities" 鈥?enables LLM crawlers
+   * to declare "this page is about these entities" -enables LLM crawlers
    * to build a site-wide entity graph even without crawling every detail
    * page.
    */
   mentions?: string[];
   /**
-   * AIO 鈥?Speakable CSS selectors. Targets in-page paragraphs that AIO
+   * AIO -Speakable CSS selectors. Targets in-page paragraphs that AIO
    * (Google AI Overviews) is permitted to cite as the authoritative answer
    * for voice / AI-summary features. Recommended: 3-5 thesis-first
    * paragraphs at the top of the page. Must match real DOM ids, e.g.
@@ -1336,7 +1341,7 @@ export interface SchemaPageData {
    */
   speakableSelectors?: string[];
   /**
-   * AIO 鈥?Comparison-table ItemList. When provided, buildPageGraph emits an
+   * AIO -Comparison-table ItemList. When provided, buildPageGraph emits an
    * additional ItemList entity where each ListItem references an existing
    * Product @id and the comparison criteria are exposed via PropertyValue.
    * AIO cites comparison tables for "best X for Y" queries.
@@ -1361,14 +1366,14 @@ export interface SchemaPageData {
  * Additional entities are added based on pageType.
  */
 export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
-  // `unknown[]` (not Record<string, unknown>[]) 鈥?the builders return
+  // `unknown[]` (not Record<string, unknown>[]) -the builders return
   // schema-dts leaf interfaces (and unions containing `string`), which
   // carry no index signature. Every consumer treats nodes as opaque
   // JSON-LD values, so the wider array type is the honest annotation and
   // removes a family of false-positive TS2345 errors at the push sites.
   const graph: unknown[] = [];
 
-  // 1. Legal Organization + Brands + Manufacturing Center + WebSite 鈥?every page
+  // 1. Legal Organization + Brands + Manufacturing Center + WebSite -every page
   graph.push(buildOrganization());
   graph.push(...buildBrands());
   graph.push(buildAS9100Certification());
@@ -1376,7 +1381,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
   graph.push(buildImageObject());
   graph.push(buildWebSite());
 
-  // 1b. B2B export-market Country nodes + OfferCatalog 鈥?every page. The
+  // 1b. B2B export-market Country nodes + OfferCatalog -every page. The
   //     Country nodes are the @id targets for every areaServed declaration
   //     (Organization, makesOffer Service, catalog items); the OfferCatalog
   //     enumerates the nine export service lines so any single page crawl
@@ -1384,7 +1389,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
   graph.push(...buildMarketCountries());
   graph.push(buildOfferCatalog());
 
-  // 2. WebPage 鈥?every page
+  // 2. WebPage -every page
   graph.push(buildWebPage({
     name: data.pageName,
     description: data.pageDescription,
@@ -1400,18 +1405,18 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     graph.push(buildBreadcrumbList(data.breadcrumbItems));
   }
 
-  // 4. FAQ (opt-in 鈥?independent of pageType so it works on service-detail,
+  // 4. FAQ (opt-in -independent of pageType so it works on service-detail,
   //    product-detail, blog-post, etc. when an accordion is present).
   if (data.faqItems?.length) {
     graph.push(buildFaqPage({
-      name: data.faqName ?? `${data.pageName} 鈥?Frequently Asked Questions`,
+      name: data.faqName ?? `${data.pageName} -Frequently Asked Questions`,
       url: data.pageUrl,
       inLanguage: data.inLanguage ?? 'en-US',
       items: data.faqItems,
     }));
   }
 
-  // 4b. AIO 鈥?HowTo (opt-in 鈥?independent of pageType). Emits a recipe-style
+  // 4b. AIO -HowTo (opt-in -independent of pageType). Emits a recipe-style
   //     step-by-step procedure entity that Google AI Overviews can extract
   //     for procedural "how to" queries.
   if (data.howtoItem?.steps?.length) {
@@ -1422,7 +1427,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
     }));
   }
 
-  // 4c. AIO 鈥?Comparison ItemList (opt-in 鈥?independent of pageType). Emits
+  // 4c. AIO -Comparison ItemList (opt-in -independent of pageType). Emits
   //     an ItemList entity referencing existing Product @ids, with comparison
   //     criteria as PropertyValue rows. AIO cites comparison tables for
   //     "best X for Y" queries.
@@ -1459,8 +1464,8 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           items: data.items,
         }));
       }
-      // F4 鈥?services-hub exposes Service + Article entities (Product removed in
-      // Phase 2B, 2026-09-12 鈥?see schema-issues.md P0-1 and P2-4). Hubs must
+      // F4 -services-hub exposes Service + Article entities (Product removed in
+      // Phase 2B, 2026-09-12 -see schema-issues.md P0-1 and P2-4). Hubs must
       // not emit Product entities because GSC then applies the retail-Product
       // enhancement check (review / aggregateRating / price / priceCurrency /
       // availability) and reports 5 false-positive warnings on every B2B hub
@@ -1510,15 +1515,15 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       }
       break;
 
-    // Phase H 鈥?Buyer Search Intelligence. /standard-parts/ Hub + sub-Hubs.
+    // Phase H -Buyer Search Intelligence. /standard-parts/ Hub + sub-Hubs.
     // Both pageTypes share the same graph-emission shape:
     //   CollectionPage + ItemList  (when collectionName / items provided)
-    //   Service                   (when serviceName provided 鈥?no inline
+    //   Service                   (when serviceName provided -no inline
     //                              JSON-LD needed, F4 compliance)
     // Phase G-2.2: now also emits a Product entity for the standard-part-detail
     // case when productName (or serviceName as fallback) is present, with
     // deliveryLeadTime forwarded from productDeliveryLeadTime. The product
-    // hub (`standard-parts-hub`) still does NOT emit Product 鈥?that's the
+    // hub (`standard-parts-hub`) still does NOT emit Product -that's the
     // procurement landing page, not a per-SKU page.
     case 'standard-parts-hub':
     case 'standard-part-detail':
@@ -1572,11 +1577,11 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
 
     case 'product-detail':
     case 'part-detail':
-      // Phase 2C 鈥?part-detail emits BOTH Product (the part being procured)
+      // Phase 2C -part-detail emits BOTH Product (the part being procured)
       // and Service (the manufacturing capability that backs the part). This
       // matches the B2B reality: customer procures a Part, but the Part is
       // fulfilled by a custom Manufacturing Service. See schema-issues.md P1-2.
-      // Phase 3 鈥?product-detail now accepts sku / material / howto / faqItems
+      // Phase 3 -product-detail now accepts sku / material / howto / faqItems
       // via SchemaPageData (previously only emitted via parallel page-level
       // JSON-LD blocks; see product-entities/[...slug].astro pre-Phase 3).
       if (data.productName) {
@@ -1592,7 +1597,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
         }));
       }
-      // Phase 3 鈥?product-detail page-level HowTo (manufacturing_process) is
+      // Phase 3 -product-detail page-level HowTo (manufacturing_process) is
       // now expressed via productHowto prop. The main graph emits a single
       // HowTo entity in the unified @graph.
       if (data.productHowto && data.productHowto.steps?.length) {
@@ -1602,12 +1607,12 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           item: data.productHowto,
         }));
       }
-      // Phase 3 鈥?product-detail FAQ (specEntry?.data.faqs or data.faq) now
+      // Phase 3 -product-detail FAQ (specEntry?.data.faqs or data.faq) now
       // expressed via productFaqItems prop. Falls back to existing faqItems if
       // the page-level override is not provided (backwards-compatible).
       if (data.productFaqItems?.length && !data.faqItems?.length) {
         graph.push(buildFaqPage({
-          name: data.faqName ?? `${data.pageName} 鈥?Frequently Asked Questions`,
+          name: data.faqName ?? `${data.pageName} -Frequently Asked Questions`,
           url: data.pageUrl,
           inLanguage: data.inLanguage ?? 'en-US',
           items: data.productFaqItems,
@@ -1628,7 +1633,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       }
       break;
 
-    // Phase 2C 鈥?equipment-detail emits a Product entity WITHOUT an Offer
+    // Phase 2C -equipment-detail emits a Product entity WITHOUT an Offer
     // (equipment pages are showcase, not retail sale). Mirrors part-detail
     // structure for consistency. See docs/schema-audit/schema-issues.md P1-5.
     case 'equipment-detail':
@@ -1646,8 +1651,8 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       }
       break;
 
-    // Phase 2C 鈥?tool-detail emits a WebApplication entity (interactive
-    // engineering calculators / utilities). NOT a Product 鈥?tools are free
+    // Phase 2C -tool-detail emits a WebApplication entity (interactive
+    // engineering calculators / utilities). NOT a Product -tools are free
     // utilities, not retail goods. See schema-issues.md P1-6.
     case 'tool-detail':
       if (data.toolName) {
@@ -1664,14 +1669,14 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           inLanguage: data.inLanguage ?? 'en-US',
           isPartOf: { '@id': WEBSITE_ID },
           provider: { '@id': ORG_ID },
-          // Free engineering tools 鈥?link to RFQ for downstream manufacturing
+          // Free engineering tools -link to RFQ for downstream manufacturing
           // service, but do NOT fabricate availability/price.
           ...(data.toolRfqPath ? { offers: { '@type': 'Offer', url: `${SITEROOT}${data.toolRfqPath}`, availability: 'https://schema.org/MadeToOrder', itemOffered: { '@type': 'Service', name: data.toolName } } } : {}),
         });
       }
       break;
 
-    // Phase 2C 鈥?case-study emits Article (NOT BlogPosting). Procurement
+    // Phase 2C -case-study emits Article (NOT BlogPosting). Procurement
     // evidence pages are not blog content. See schema-issues.md P1-1.
     case 'case-study':
       if (data.articleHeadline) {
@@ -1683,7 +1688,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           datePublished: data.articleDatePublished ?? new Date().toISOString(),
           image: data.articleImage,
           mainEntityOfPage: data.pageUrl,
-          // Generic Article (not BlogPosting) 鈥?case studies are procurement
+          // Generic Article (not BlogPosting) -case studies are procurement
           // evidence, not blog content.
           articleType: 'Article',
         }));
@@ -1698,7 +1703,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           url: data.pageUrl,
           author: data.articleAuthor ?? 'Boze Titanium Manufacturing Center',
           datePublished: data.articleDatePublished ?? new Date().toISOString(),
-          // Only emit dateModified when caller provides one 鈥?avoids
+          // Only emit dateModified when caller provides one -avoids
           // a fabricated value that would mislead search engines.
           ...(data.articleDateModified ? { dateModified: data.articleDateModified } : {}),
           image: data.articleImage,
@@ -1711,7 +1716,7 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       }
       break;
 
-    // P2-7 鈥?Titanium Knowledge Base hub page emits a TechArticle entity.
+    // P2-7 -Titanium Knowledge Base hub page emits a TechArticle entity.
     // Drives the page-level structured-data so Google's "expertise" filter
     // can surface the page for technical / engineering queries. Same prop
     // surface as the blog-post case (articleHeadline / articleDescription /
