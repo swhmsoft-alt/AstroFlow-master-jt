@@ -71,6 +71,11 @@ let primarySrc: string;
 let fallbackChain: string[] = [];
 let resolvedAlt: string;
 let isPlaceholder: boolean;
+// P0-3 Action C (CLS, 2026-10-15): intrinsic width/height from catalog prevents
+// layout shift while image loads. Falls back to undefined for ad-hoc imageSrc
+// (CSS .w-full.h-auto continues to drive size in that case).
+let imgWidth: number | undefined;
+let imgHeight: number | undefined;
 
 if (catalogEntry) {
   // Try webp first, then png, then svg. The actual browser only uses one
@@ -79,10 +84,15 @@ if (catalogEntry) {
   fallbackChain = [catalogEntry.png, catalogEntry.svg].filter(Boolean);
   resolvedAlt = imageAltOverride || catalogEntry.alt;
   isPlaceholder = catalogEntry.status === 'placeholder';
+  imgWidth = catalogEntry.width;
+  imgHeight = catalogEntry.height;
 } else if (imageSrcOverride) {
   primarySrc = imageSrcOverride;
   resolvedAlt = imageAltOverride || '';
   isPlaceholder = false;
+  // imageSrcOverride path: caller is responsible for sizing. Leave
+  // width/height undefined so the existing .w-full.h-auto CSS keeps
+  // the previous behavior for ad-hoc use.
 } else {
   // Misconfiguration guard — make it obvious instead of silently broken.
   throw new Error(
@@ -163,6 +173,8 @@ const onerrorScript = `
             class="w-full h-auto block"
             loading="lazy"
             decoding="async"
+            width={imgWidth}
+            height={imgHeight}
             data-fb={fallbackChain.join('|') || undefined}
             data-catalog-id={catalogId || undefined}
             data-placeholder={isPlaceholder ? 'true' : undefined}

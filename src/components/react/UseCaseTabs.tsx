@@ -108,6 +108,7 @@ export default function UseCaseTabs({ useCases }: Props) {
                     alt={useCase.industry}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     loading="lazy"
+                    decoding="async"
                     onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
                   )}
