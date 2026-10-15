@@ -245,6 +245,8 @@
 
 **Single most critical action**: P0-3 LCP/CLS optimization — inline critical CSS, defer non-critical CSS, self-host or preload Inter woff2, audit `<img>` for explicit width/height. Target: PSI Performance ≥ 90, LCP < 2.5s, CLS < 0.1.
 
+**Additional PSI-driven optimization (2026-10-15)**: PSI's "Serve static assets with an efficient cache policy" diagnostic flagged 6 _astro/*.js files totaling 121 KiB with no Cache-Control header. Fixed by adding FilesMatch rules in `public/.htaccess` for `/_astro/*.{js,mjs,css}` + `/fonts/*.{woff2,...}` + `/uploads/*.{webp,jpg,...}` → all 1-year immutable, plus `*.html` → must-revalidate. Committed as `fc91d92b`. Expected savings: 209 KiB (per PSI) up to ~1,005 KiB on a fully cold repeat visit.
+
 **Risk**: LCP/CLS in need-improve zone may hurt SERP once CrUX data accumulates. Current Performance 77 + need-improve LCP/CLS is "good enough for now" but not durable against Google Page Experience signal emphasis.
 
 **Strategic value**:
