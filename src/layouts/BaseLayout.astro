@@ -334,26 +334,26 @@ const ldJson = JSON.stringify(pageGraph);
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 {favicon.endsWith('.svg') ? <link rel="icon" type="image/svg+xml" href={favicon} /> : favicon.endsWith('.png') ? <link rel="icon" type="image/png" href={favicon} /> : <link rel="icon" href={favicon} />}
 <meta name="generator" content={Astro.generator} />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-{/* P0-3 LCP optimization (2026-10-15 PSI data): async-load Inter font CSS to remove render-blocking.
-    Saves ~200ms LCP per PageSpeed Insights report (k2s2qe9jss). The onload hack promotes
-    the preload link to stylesheet after CSS is fetched in parallel with HTML parsing.
+{/* P0-3D (2026-10-15): Inter font is now self-hosted (4 woff2 files in
+    /public/fonts/, ~70 KB total). @font-face declarations live in
+    src/styles/global.css (inlined to dist HTML for FCP). Replaces
+    the previous async Google Fonts CSS link (P0-3A). Removes the
+    200ms Google Fonts CSS round-trip + Google DNS/TCP/TLS handshake
+    identified by PSI report k2s2qe9jss. License: SIL OFL 1.1
+    (Inter, @fontsource v4.5.0). No more external font dependency
+    means no version-pinning risk from Google's CDN.
 
-    Note: A font woff2 preload (as="font" type="font/woff2") was considered but NOT
-    implemented because: (a) the woff2 URL is version-pinned (Inter v18) and becomes
-    stale when Google upgrades; (b) hardcoded Latin subset does not help CJK pages where
-    Inter has no glyphs; (c) the preconnect + async CSS pattern already eliminates the
-    200ms render-blocking delay from the Google Fonts CSS request itself. If a future
-    Inter upgrade breaks the CSS URL, the onerror is silent and falls back to system
-    sans-serif (BaseLayout already sets font-family: Inter, monospace). */}
+    P0-3A history (now superseded by P0-3D): the prior
+    Google Fonts async preload pattern is no longer needed.
+    fontUrl variable is retained for now (used by the
+    FontConfig/fallback chain) but the rendered <link> is gone. */}
 <link
   rel="preload"
-  as="style"
-  href={fontUrl}
-  onload="this.onload=null;this.rel='stylesheet'"
+  as="font"
+  type="font/woff2"
+  href="/fonts/Inter-400.woff2"
+  crossorigin="anonymous"
 />
-<noscript><link rel="stylesheet" href={fontUrl} /></noscript>
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
