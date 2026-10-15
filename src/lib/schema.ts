@@ -428,7 +428,12 @@ export function buildWebPage(input: WebPageInput): WebPage {
     // WebPage ↔ BreadcrumbList and WebPage ↔ Service pointers so graph
     // parsers (Google, LLM schema extractors) can resolve the page
     // surface area without re-traversing the @graph.
-    breadcrumb: { '@id': '#breadcrumb' },
+    // Use absolute @id (SITEROOT-scoped) so the WebPage → BreadcrumbList
+    // pointer resolves to the actual `buildBreadcrumbList()` node in the
+    // @graph. A relative `#breadcrumb` would fragment-resolve to
+    // `<page-url>#breadcrumb` and surface as an orphan stub in Google
+    // Rich Results Test (3rd BreadcrumbList entry with no itemListElement).
+    breadcrumb: { '@id': `${SITEROOT}/#breadcrumb` },
     mainEntity: { '@id': `${url}#service` },
     ...(datePublished ? { datePublished } : {}),
     ...(mentionRefs.length > 0 ? { mentions: mentionRefs } : {}),
