@@ -13,6 +13,15 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { HERO_CONFIG } from '../config/hero';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Phase 2A B2B entity strategy (2026-10-15): Removed the explicit
+// `serviceAreaServed="Worldwide"` prop from the BaseLayout call below.
+// Reason: The opaque "Worldwide" override made Google default
+// Service.areaServed resolution to provider.address = CN (Baoji), which
+// in turn mis-framed this page as "China-local service" instead of the
+// B2B export-offered 9-market list (US/CA/GB/DE/FR/IT/NL/JP/AU).
+// Letting the buildPageGraph default B2B_MARKET_ISO_CODES kick in
+// (see src/lib/schema.ts) yields the correct export-market signal.
 ---
 
 <BaseLayout
@@ -21,7 +30,6 @@ const t = useTranslations(lang);
   serviceDescription="End-to-end titanium CNC machining solutions — from rapid prototyping to high-volume production — across 3/5-axis milling, turning, wire EDM, and custom industrial components."
   serviceCategory="Precision CNC Machining"
   serviceType="Precision CNC Machining"
-  serviceAreaServed="Worldwide"
   serviceAdditionalProperty={[
     { name: 'Positional Accuracy', value: '±0.005 mm', unitText: 'mm' },
     { name: 'Default Surface Finish', value: 'Ra 0.4', unitText: 'µm' },
