@@ -43,5 +43,33 @@ RewriteRule .* - [F,L]
 </IfModule>
 # END BotControl
 
+# ── Cache-Control: long-lived static assets (PSI 2026-10-15) ──
+# _astro/  : Astro content-hashed bundles (filename includes hash) — safe
+#            for 1 year, immutable. The 6 _astro/*.js files (~121 KiB)
+#            were previously served with no Cache-Control, forcing full
+#            re-download on every repeat visit. Expected savings: ~121 KiB
+#            on visit 2+, plus ~885 KiB for /uploads/* and /fonts/* that
+#            were previously capped at 7 days.
+# fonts/   : Inter woff2 (P0-3D self-hosted, version-pinned to v4.5.0).
+#            Filenames are stable across version, so 1 year is safe.
+# uploads/ : User-uploaded images (also content-hashed by convention).
+#            Even if an upload is replaced, the filename changes.
+# HTML     : Always revalidate — content changes on every deploy.
+# (2026-10-15 LCP/CLS optimization pass)
+<IfModule mod_headers.c>
+  <FilesMatch "\/_astro\/.*\.(js|mjs|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\/fonts\/.*\.(woff2|woff|ttf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\/uploads\/.*\.(webp|jpg|jpeg|png|svg|gif|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 ErrorDocument 404 /404.html
 
