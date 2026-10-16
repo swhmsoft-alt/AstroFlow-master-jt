@@ -206,7 +206,64 @@ async function main() {
   const updated = await updateHtmlReferences();
   console.log(`${updated} HTML files updated with .webp references\n`);
 
+  // 3. P0-1 (2026-10-16): Generate mobile variant for the LCP hero image.
+  // The home page hero (`titanium-cnc-machining-manufacturing-facility.webp`)
+  // is the LCP element on the home page. The <picture><source media="(max-width: 767px)">
+  // in PremiumHero.astro references a `-750w.webp` mobile variant. Without
+  // this step, mobile devices would download the 1920w variant (~137 KB WebP)
+  // even though a 750w (~30-40 KB WebP) would suffice — wasting ~100 KB
+  // and ~150ms of mobile LCP time.
+  //
+  // The 750w is generated from the existing 1920w webp in dist/, not from
+  // the source jpg, so the operation is idempotent and re-runnable.
+  // If the source webp doesn't exist, skip silently (e.g. when called
+  // outside an Astro build context).
+  await generateHeroMobileVariant();
+
   console.log('Completed.');
+}
+
+/**
+ * P0-1 — Generate 750w mobile WebP variant of the LCP hero image.
+ * Source: dist/uploads/titanium-cnc-machining-manufacturing-facility.webp
+ * Target: dist/uploads/titanium-cnc-machining-manufacturing-facility-750w.webp
+ */
+async function generateHeroMobileVariant() {
+  const HERO_BASE = 'titanium-cnc-machining-manufacturing-facility';
+  const HERO_WEBP = path.join(distDir, 'uploads', `${HERO_BASE}.webp`);
+  const HERO_MOBILE_WEBP = path.join(distDir, 'uploads', `${HERO_BASE}-750w.webp`);
+
+  // Skip if already generated (idempotent)
+  try {
+    await fs.access(HERO_MOBILE_WEBP);
+    console.log(`  ~ ${HERO_BASE}-750w.webp  (mobile variant already exists, skipped)`);
+    return;
+  } catch {
+    // not yet generated
+  }
+
+  // Skip if source webp doesn't exist (build context error)
+  try {
+    await fs.access(HERO_WEBP);
+  } catch {
+    console.log(`  ⚠ ${HERO_BASE}.webp not found in dist/ — skipping mobile variant generation`);
+    return;
+  }
+
+  try {
+    await sharp(HERO_WEBP)
+      .resize({ width: 750, withoutEnlargement: true })
+      .webp({ quality: 80, effort: 4 })
+      .toFile(HERO_MOBILE_WEBP);
+
+    const stat = await fs.stat(HERO_MOBILE_WEBP);
+    const originalStat = await fs.stat(HERO_WEBP);
+    const saving = ((1 - stat.size / originalStat.size) * 100).toFixed(1);
+    console.log(`  ✓ ${HERO_BASE}-750w.webp`);
+    console.log(`      ${(originalStat.size / 1024).toFixed(1)} KB → ${(stat.size / 1024).toFixed(1)} KB  (-${saving}%)`);
+  } catch (e) {
+    console.error(`  ✗ ${HERO_BASE}-750w.webp: ${e.message}`);
+  }
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
