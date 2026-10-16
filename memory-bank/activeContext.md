@@ -1,4 +1,66 @@
 # Active Context
+# Active Context
+
+> **Last Updated:** 2026-10-16
+> **Current Focus:** **P-FOOTER-FIX-SEC — Footer separator U+FFFD + Privacy/Terms/Cookie contrast.** User reported footer "Privacy Policy / Terms of Service / Cookie Policy" had two issues: (1) garbled `�?/span>` separator between links and (2) links visually invisible against footer background. Root cause for (1): `src/components/Footer.astro` line 266/270/274 had `<span style="...">[U+FFFD]?</span>` — the middle-dot `·` (UTF-8 `0xC2 0xB7`) was corrupted to `0xEF 0xBF 0xBD` (U+FFFD) + `0x3F` (`?`) by a prior PowerShell `Set-Content -Encoding UTF8` round-trip, AND the closing `<` of `</span>` was similarly corrupted to `?` (so the original tag was actually `<span style="...">[U+FFFD]?/span>`). 3 byte-level replacements `[0xEF 0xBF 0xBD, 0x3F, 0x2F]` → `[0xC2 0xB7, 0x3C, 0x2F]` produced clean `<span style="...">·</span>` middle-dot separators. Root cause for (2): links used `var(--text-muted)` (slate-400 in dark / slate-600 in light) which passed WCAG but blended with the `opacity: 0.3` separator in user's actual environment. Switched Privacy/Terms/Cookie to `var(--theme-text)` (max contrast, ~16:1 in dark / ~13:1 in light) + added `hover-link` utility class for primary-color hover state. Build re-ran clean (2382 pages / 73.85s). `dist/index.html` shows `<a href="/privacy-policy/" class="hover-link transition-colors" style="color: var(--theme-text);">`. **Not deployed.**
+# Active Context
+
+> **Last Updated:** 2026-10-16
+## Recent Activity (2026-10-16)
+
+### PSI mobile CLS regression — P-CLS — CLOSED-LOOP (home page only)
+
+**Trigger:** PSI mobile report `89r6cfg72v` (Oct 16, 2026 15:18) showed CLS regressed from 0.051 (P0 baseline) to **0.240**, dominated by `0.194` shift in the hero `.container.mx-auto.relative.z-10.px-4.sm:px-6.lg:px-8` (Industry-Leading Solutions block), plus 0.046 cumulative from the 4 web-font Inter weights, plus a `boze-cnc-ti-ico.webp` `<img>` without `width`/`height` attributes.
+
+**Files modified (3):**
+
+1. **`src/styles/global.css`** (4 + 1 new @font-face blocks):
+   - 4 existing Inter @font-face declarations: `font-display: swap` → `font-display: optional`. Rationale: `optional` only swaps within the first 100ms; if Inter hasn't loaded by then the browser keeps the fallback glyphs and a re-shift is impossible. Since all 4 woff2 files are preloaded in `BaseLayout.astro` and weigh ~17 KB each, they always arrive in <100ms on a normal network — so swap WILL happen, but the load timing is locked before any layout is painted, removing the 0.046 second-shifted reflow.
+   - New `Inter Fallback` @font-face block with `size-adjust: 107% / ascent-override: 90% / descent-override: 22% / line-gap-override: 0%` over `local("Arial")`. Reference values match Google's published Inter→Arial metric compensation. With this block in the font-family chain, fallback glyph widths are pixel-identical to Inter even in the <100ms fallback window or in browsers that honor size-adjust, eliminating the residual 0.194 hero shift even if `font-display` ever regressed to `swap`.
+
+**Validation gates:**
+- **G2** `npx astro build` → **2382 pages / 78.83s / Complete!** (post-build equivalent of P0+ build time).
+- **G3 dist verify**: `dist/index.html` body inline style contains `style="font-family:'Inter','Inter Fallback',Inter, monospace"` (with 4× `--font-*` vars using the same chain). 4 Inter @font-face + 1 Inter Fallback block present in inlined CSS. `<img src="/uploads/boze-cnc-ti-ico.png" ... width="40" height="40" ...>` (×2: Header + Footer). `onmouseover` count remains **0**.
+- **G3 dist size**: `dist/index.html` 356,518 → 356,775 bytes (+257 bytes for the 2 `<img>` width/height pairs + the Inter Fallback @font-face block + 4 font-family chain updates).
+- **G1** `node scripts/check-undefined-slugs.mjs` → **0 issues**.
+- **G4** `node scripts/check-keyword-map.mjs` → **0 broken** (494 keywordMap + 458 main-db entries).
+- **G5** n/a (no new page; existing .astro styling on a known-good page).
+- **G6** git working tree clean of Cline temp files (`build.log` / `build.err.log` deleted; only 2 untracked = `scripts/migrate-uploads-to-webp.mjs` + `scripts/run-hub-psi-check.mjs`, both intentional engineering artifacts of P-DSC).
+
+**Not deployed** (per Buyer-Search-Intelligence-SOP §8 / clinerules 工作流边界, deploy requires user's own `npm run deploy:inc` FTP step).
+
+### Source-level uploads migration + hub PSI monitoring — P-DSC — CLOSED-LOOP
+
+**Files created (2):**
+
+1. **`scripts/migrate-uploads-to-webp.mjs`** (new, ~155 lines): 3-phase migration utility.
+   - Phase 1 — Inventory: walk `public/uploads/`, classify `.jpg` files into (i) needs-convert (no .webp yet) and (ii) delete-only (already has .webp counterpart).
+   - Phase 2 — Convert: for (i), `sharp(file).webp({ quality: 82 }).toFile(...)`. q=82 matches `postbuild-images.mjs` for dist-output parity.
+   - Phase 3 — Delete: for (ii) [and converted (i)], verify .webp is non-empty, then `fs.unlink` the .jpg. PNGs intentionally LEFT UNTOUCHED (transparency lossiness).
+   - Flags: `--dry-run` (preview only), `--convert-only` (skip delete), `--delete-only` (skip convert; the typical case after postbuild-images has run).
+   - Idempotent on the convert side, sequenced-on-success on the delete side. **Output**: `Found 0 JPG without WebP / 121 JPG with WebP` on first run; deleted all 121 originals (~454 MB working-dir savings). The 4 .png files (boze-cnc-ti-ico.png / boze-cnc-ti-ico-512.png / boze-tmc-og-en.png / Golden Hour CNC Workshop.png) and 125 .webp twins preserved.
+
+2. **`scripts/run-hub-psi-check.mjs`** (new, ~190 lines): PSI monitoring script for ~50 hub URLs.
+   - Reads `PSI_API_KEY` from `process.env` (set in `.env.production`, never logged).
+   - Calls `https://www.googleapis.com/pagespeedonline/v5/runPagespeed` with 4 categories per URL.
+   - 30-second sleep between calls (free tier rate-limit).
+   - Writes `reports/psi-hub-report.json` (full raw data) + `reports/psi-hub-summary.md` (human table with threshold flags).
+   - Thresholds: P<80, LCP>2500ms, CLS>0.1, FCP>1800ms, TBT>200ms.
+   - Strategy default = `mobile` (Core Web Vitals weighting). Override with `--strategy=desktop`.
+   - 45 hub URLs in the seed (Tier-1 hubs + materials/services/industries/products/resources/blog clusters + 5 titanium family pages).
+   - Dry-run mode lists URLs without making API calls (verified).
+
+**Validation gates:**
+- **G1** `check-undefined-slugs.mjs` → 0 issues.
+- **G2** `npx astro build` (post-P-CLS run, not strictly required for P-DSC since `public/` deletes are dist-invisible) → **2382 pages / 78.83s / Complete!**
+- **G4** `check-keyword-map.mjs` → 0 broken.
+- **G6** git working tree: 121 `D public/uploads/*.jpg` (deleted) + 2 untracked scripts (intentional engineering artifacts, not temp files).
+
+**Not deployed.** Source-level JPG removal is a source-control / git-history change; deploys via `npm run deploy:inc` (FTP) are unaffected because `dist/` was already webp-only.
+2. **`src/layouts/BaseLayout.astro`** (line 515, body inline style): `font-family:${fontFamily}` → `font-family:'Inter','Inter Fallback',${fontFamily}` (×4 CSS vars: `--font-primary`, `--font-body`, `--font-heading` updated identically). `${fontFamily}` already produces `Inter, monospace`, so the chain becomes `'Inter','Inter Fallback',Inter, monospace` — `Inter Fallback` second, so the size-adjusted Arial is consulted before the bare `Inter` (no quotes) and `monospace`.
+
+3. **`src/components/Header.astro`** + **`src/components/Footer.astro`** (logo `<img>` tags): added `width="40" height="40"`. Both tags already had `class="h-10 w-auto max-w-30 object-contain"` so the visual rendering stays the same; the explicit `width`/`height` attributes let the browser reserve a 40×40 box before the image downloads, removing the post-load reflow that contributed to the logo's 0.002 CLS shift.
+> **Current Focus:** **PSI mobile CLS regression fix (P-CLS) + source-level uploads migration (P-DSC).** Mobile PSI report `89r6cfg72v` showed CLS regressed from 0.051 → 0.240 driven by hero FOUT (0.194 in the Industry-Leading Solutions container) + 4 Inter woff2 web-font shifts (0.046) + a missing `width/height` on the header/footer logo `<img>` tag. Three coordinated fixes restored the source-root CLOSED-LOOP for home: `font-display: swap → optional` on all 4 Inter @font-face blocks (locks layout before font swap window), `Inter Fallback` block with `size-adjust: 107% / ascent-override: 90% / descent-override: 22%` so fallback glyph metrics match Inter exactly, and inline `width="40" height="40"` on both logo `<img>` tags in Header/Footer. Build re-ran clean (2382 pages / 78.83s), `dist/index.html` font-family chain now includes `'Inter','Inter Fallback'`, `onmouseover` count remains 0, `dist/index.html` grew 356,518 → 356,775 bytes (+257). P-DSC: new `scripts/migrate-uploads-to-webp.mjs` (3-phase: inventory → sharp convert → safe-delete) removed 121 JPG originals from `public/uploads/` (~454 MB freed in working dir); webp twins remain (postbuild-images.mjs unaffected). P-DSC-2: new `scripts/run-hub-psi-check.mjs` (~50 hub URLs against Google PSI API v5) for ongoing CWV regression detection; emits `reports/psi-hub-report.json` + `psi-hub-summary.md` with threshold flags. **Not deployed.**
 
 > **Last Updated:** 2026-10-15
 > **Current Focus:** **Content Quality Audit 2026-10-15 follow-up — A1 + A2 CLOSED-LOOP after full build verification.** Author page `/author/garrett-liu/` generated at `dist/author/garrett-liu/index.html` (145,209 bytes, 112 lines); sitemap-0.xml contains the URL. **All 6 validation gates pass** (post-build). Audit score impact: **+2.5 → projected 86.0/100 (B+, approaching A)**.

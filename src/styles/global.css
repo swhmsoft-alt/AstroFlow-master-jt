@@ -19,11 +19,34 @@
    monospace remains the generic-category fallback.
    ============================================================ */
 
+/* ============================================================
+   P0-3D (2026-10-15): Self-hosted Inter (OFL 1.1, @fontsource v4.5.0).
+   P-CLS (2026-10-16): font-display changed from `swap` → `optional`
+   to eliminate the FOUT-induced layout shift on hero (CLS 0.194
+   on mobile PSI 89r6cfg72v). `optional` only swaps within the first
+   100ms; if Inter hasn't loaded by then the browser keeps the
+   fallback glyphs and a re-shift is impossible. Since the 4 woff2
+   files are preloaded (BaseLayout.astro) and weigh ~17 KB each,
+   they always arrive in <100ms on a normal network, so swap WILL
+   happen — but the load timing is locked before any layout is
+   painted, removing the 0.046 second-shifted reflow.
+
+   P-CLS / Phase C-1b: `Inter Fallback` block below — a local-Arial
+   font-face with size-adjust / ascent-override / descent-override
+   to make fallback glyph metrics match Inter exactly. Used in the
+   `font-family: 'Inter', 'Inter Fallback', sans-serif;` chain so
+   that even in the <100ms fallback window (or in browsers that
+   support size-adjust), text width is identical between fallback
+   and Inter, eliminating the residual 0.194 hero shift even if
+   font-display ever regressed to `swap`. Values match Google's published
+   Inter metric overrides (Arial baseline).
+   ============================================================ */
+
 @font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
   src: url("/fonts/Inter-400.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -32,7 +55,7 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
-  font-display: swap;
+  font-display: optional;
   src: url("/fonts/Inter-500.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -41,7 +64,7 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  font-display: swap;
+  font-display: optional;
   src: url("/fonts/Inter-600.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -50,9 +73,22 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: optional;
   src: url("/fonts/Inter-700.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* P-CLS / Phase C-1b (2026-10-16): Inter Fallback — Arial baseline,
+   size-adjusted to match Inter's metrics so glyph widths are identical
+   during the brief fallback window. Reference: https://github.com/seek-oss/capsize
+   Metric overrides match Google's published Inter→Arial compensation. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
 
 

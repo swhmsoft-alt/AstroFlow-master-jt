@@ -512,7 +512,7 @@ const ldJson = JSON.stringify(pageGraph);
   </>
 )}
 </head>
-<body class="flex min-h-screen flex-col antialiased bg-theme-bg text-theme-text transition-colors duration-300" style={`font-family:${fontFamily};--font-primary:${fontFamily};--font-body:${fontFamily};--font-heading:${fontFamily};`}>
+<body class="flex min-h-screen flex-col antialiased bg-theme-bg text-theme-text transition-colors duration-300" style={`font-family:'Inter','Inter Fallback',${fontFamily};--font-primary:'Inter','Inter Fallback',${fontFamily};--font-body:'Inter','Inter Fallback',${fontFamily};--font-heading:'Inter','Inter Fallback',${fontFamily};`}>
 <Header currentPathname={currentPathname} />
 <main class="flex-1">
 <slot />

@@ -1,4 +1,4 @@
----
+ï»¿---
 import { NAVIGATION, SOCIAL_LINKS, SITE } from '@config/site';
 import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
 
@@ -36,6 +36,8 @@ const siteDescription = SITE.description;
             <img
               src={logoImage}
               alt={logoAlt}
+              width="40"
+              height="40"
               class="h-10 w-auto max-w-30 object-contain"
               style="filter: brightness(0) invert(var(--theme-nav-invert, 1));"
             />
@@ -124,7 +126,7 @@ const siteDescription = SITE.description;
                 style="color: var(--text-muted);"
               >
                 <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
-                {/* 2026-09-17 nav audit â€?fallback to `item.name` so missing
+                {/* 2026-09-17 nav audit â€” fallback to `item.name` so missing
                     `navKeyByHref` entries (e.g. /industries/ when the trailing-
                     slash key was missed) no longer silently fall through to
                     `'nav.home'` and turn Industries / Resources / etc. into a
@@ -133,7 +135,7 @@ const siteDescription = SITE.description;
               </a>
             </li>
           ))}
-          {/* 2026-10-08: Pillar Page â€?explicit Quick Link to Titanium Grades Guide (5-inbound #2) */}
+          {/* 2026-10-08: Pillar Page â€” explicit Quick Link to Titanium Grades Guide (5-inbound #2) */}
           <li>
             <a
               href={localizePath('/resources/titanium-grades-guide/', currentLang)}
@@ -144,7 +146,7 @@ const siteDescription = SITE.description;
               Titanium Grades Guide
             </a>
           </li>
-          {/* 2026-10-09: Pillar Page â€?explicit Quick Link to Design & Engineering Guide (5-inbound #2) */}
+          {/* 2026-10-09: Pillar Page â€” explicit Quick Link to Design & Engineering Guide (5-inbound #2) */}
           <li>
             <a
               href={localizePath('/resources/design-engineering-guide/', currentLang)}
@@ -261,16 +263,16 @@ const siteDescription = SITE.description;
           <a href="https://www.bozemetal.com/" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: var(--text-muted);">
             Parent Company: Boze Metal
           </a>
-          <span style="color: var(--theme-text); opacity: 0.3;">â€?/span>
-          <a href={localizePath('/privacy-policy/', currentLang)} class="transition-colors" style="color: var(--text-muted);">
+          <span style="color: var(--theme-text); opacity: 0.3;">Â·</span>
+          <a href={localizePath('/privacy-policy/', currentLang)} class="hover-link transition-colors" style="color: var(--theme-text);">
             {t('footer.privacyPolicy')}
           </a>
-          <span style="color: var(--theme-text); opacity: 0.3;">â€?/span>
-          <a href={localizePath('/terms-of-service/', currentLang)} class="transition-colors" style="color: var(--text-muted);">
+          <span style="color: var(--theme-text); opacity: 0.3;">Â·</span>
+          <a href={localizePath('/terms-of-service/', currentLang)} class="hover-link transition-colors" style="color: var(--theme-text);">
             {t('footer.termsOfService')}
           </a>
-          <span style="color: var(--theme-text); opacity: 0.3;">â€?/span>
-          <a href={localizePath('/cookie-policy/', currentLang)} class="transition-colors" style="color: var(--text-muted);">
+          <span style="color: var(--theme-text); opacity: 0.3;">Â·</span>
+          <a href={localizePath('/cookie-policy/', currentLang)} class="hover-link transition-colors" style="color: var(--theme-text);">
             {t('footer.cookiePolicy')}
           </a>
         </div>
