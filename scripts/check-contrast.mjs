@@ -35,7 +35,7 @@ const DIST = join(PROJECT_ROOT, 'dist');
 // ── CLI flags ──
 const args = process.argv.slice(2);
 let target = 4.5;
-let themeName = 'aerospace-precision';
+let themeName = 'pure-bw-orange';   // P2-1: production default (white bg + brand orange)
 let showFix = true;
 for (let i = 0; i < args.length; i++) {
   if (args[i] === '--target') target = parseFloat(args[++i]);
