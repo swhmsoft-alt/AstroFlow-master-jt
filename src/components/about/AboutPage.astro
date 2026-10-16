@@ -22,7 +22,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <p class="text-xl font-semibold mb-6 leading-relaxed" style="color: var(--theme-text);">
         {t('about.hero.headline')}
       </p>
-      <p class="text-base leading-relaxed max-w-3xl mx-auto" style="color: var(--theme-text); opacity: 0.7;">
+      <p class="text-base leading-relaxed max-w-3xl mx-auto" style="color: var(--text-muted);">
         {t('about.hero.description')}
       </p>
       <div class="mt-8 p-6 rounded-lg" style="background-color: var(--theme-surface); border-left: 4px solid var(--theme-primary);">
@@ -41,16 +41,16 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <h2 class="text-3xl font-bold mb-8" style="color: var(--theme-text);">
         {t('about.story.title')}
       </h2>
-      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">
+      <p class="text-base leading-relaxed mb-6" style="color: var(--text-muted);">
         {t('about.story.paragraph1')}
       </p>
-      <p class="text-base leading-relaxed mb-6" style="color: var(--theme-text); opacity: 0.75;">
+      <p class="text-base leading-relaxed mb-6" style="color: var(--text-muted);">
         {t('about.story.paragraph2')}
       </p>
       <h3 class="text-2xl font-bold mb-4 mt-10" style="color: var(--theme-text);">
         {t('about.story.subtitle')}
       </h3>
-      <p class="text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">
+      <p class="text-base leading-relaxed" style="color: var(--text-muted);">
         {t('about.story.description')}
       </p>
     </div>
@@ -65,14 +65,14 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
         Editorial &amp; AI Use Policy
       </h2>
       <div class="rounded-2xl p-6 lg:p-8" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-        <p class="text-base leading-relaxed mb-4" style="color: var(--theme-text); opacity: 0.78;">
+        <p class="text-base leading-relaxed mb-4" style="color: var(--text-muted);">
           All blog content on this site is authored by the Boze Titanium Manufacturing Center
           engineering team, with named technical review by
           <a href="/author/garrett-liu/" rel="author" style="color: var(--theme-primary); text-decoration: underline;">Garrett Liu, Lead Production Engineer</a>.
           Final published copy is human-reviewed and fact-checked against ASTM / AMS / ISO standards,
           manufacturer datasheets, and our internal shop-floor process data.
         </p>
-        <p class="text-base leading-relaxed" style="color: var(--theme-text); opacity: 0.78;">
+        <p class="text-base leading-relaxed" style="color: var(--text-muted);">
           We use large language models (Gemini, Claude) for research assistance and editorial polish only.
           No LLM-authored content is published without human authorship, technical review by a named
           engineer, and final approval. The full policy is published on the
@@ -91,7 +91,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
         <h2 class="text-3xl font-bold mb-4" style="color: var(--theme-text);">
           {t('about.video.tour')}
         </h2>
-        <p class="text-base" style="color: var(--theme-text); opacity: 0.7;">
+        <p class="text-base" style="color: var(--text-muted);">
           {t('about.video.subtitle')}
         </p>
       </div>
@@ -124,7 +124,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <h2 class="text-3xl font-bold mb-8" style="color: var(--theme-text);">
         {t('about.whyPartner.title')}
       </h2>
-      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">
+      <p class="text-base leading-relaxed mb-8" style="color: var(--text-muted);">
         {t('about.whyPartner.intro')}
       </p>
       <ul class="space-y-6">
@@ -132,28 +132,28 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
           <span class="shrink-0 w-6 h-6 mt-0.5 rounded-full flex items-center justify-center text-sm font-bold" style="background-color: var(--theme-primary); color: var(--theme-text);">1</span>
           <div class="ml-4">
             <strong class="block text-base font-semibold mb-1" style="color: var(--theme-text);">{t('about.whyPartner.item1Title')}</strong>
-            <span class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">{t('about.whyPartner.item1Desc')}</span>
+            <span class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.whyPartner.item1Desc')}</span>
           </div>
         </li>
         <li class="flex items-start">
           <span class="shrink-0 w-6 h-6 mt-0.5 rounded-full flex items-center justify-center text-sm font-bold" style="background-color: var(--theme-primary); color: var(--theme-text);">2</span>
           <div class="ml-4">
             <strong class="block text-base font-semibold mb-1" style="color: var(--theme-text);">{t('about.whyPartner.item2Title')}</strong>
-            <span class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">{t('about.whyPartner.item2Desc')}</span>
+            <span class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.whyPartner.item2Desc')}</span>
           </div>
         </li>
         <li class="flex items-start">
           <span class="shrink-0 w-6 h-6 mt-0.5 rounded-full flex items-center justify-center text-sm font-bold" style="background-color: var(--theme-primary); color: var(--theme-text);">3</span>
           <div class="ml-4">
             <strong class="block text-base font-semibold mb-1" style="color: var(--theme-text);">{t('about.whyPartner.item3Title')}</strong>
-            <span class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">{t('about.whyPartner.item3Desc')}</span>
+            <span class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.whyPartner.item3Desc')}</span>
           </div>
         </li>
         <li class="flex items-start">
           <span class="shrink-0 w-6 h-6 mt-0.5 rounded-full flex items-center justify-center text-sm font-bold" style="background-color: var(--theme-primary); color: var(--theme-text);">4</span>
           <div class="ml-4">
             <strong class="block text-base font-semibold mb-1" style="color: var(--theme-text);">{t('about.whyPartner.item4Title')}</strong>
-            <span class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">{t('about.whyPartner.item4Desc')}</span>
+            <span class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.whyPartner.item4Desc')}</span>
           </div>
         </li>
       </ul>
@@ -168,7 +168,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <h2 class="text-3xl font-bold mb-4" style="color: var(--theme-text);">
         {t('about.process.title')}
       </h2>
-      <p class="text-base leading-relaxed mb-10" style="color: var(--theme-text); opacity: 0.7;">
+      <p class="text-base leading-relaxed mb-10" style="color: var(--text-muted);">
         {t('about.process.intro')}
       </p>
 
@@ -176,35 +176,35 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <div class="mb-10 p-6 rounded-lg" style="background-color: var(--theme-bg);">
         <span class="inline-block text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">{t('about.process.step1Label')}</span>
         <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('about.process.step1Title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">{t('about.process.step1Desc')}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.process.step1Desc')}</p>
       </div>
 
       <!-- Step 02 -->
       <div class="mb-10 p-6 rounded-lg" style="background-color: var(--theme-bg);">
         <span class="inline-block text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">{t('about.process.step2Label')}</span>
         <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('about.process.step2Title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">{t('about.process.step2Desc')}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.process.step2Desc')}</p>
       </div>
 
       <!-- Step 03 -->
       <div class="mb-10 p-6 rounded-lg" style="background-color: var(--theme-bg);">
         <span class="inline-block text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">{t('about.process.step3Label')}</span>
         <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('about.process.step3Title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">{t('about.process.step3Desc')}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.process.step3Desc')}</p>
       </div>
 
       <!-- Step 04 -->
       <div class="mb-10 p-6 rounded-lg" style="background-color: var(--theme-bg);">
         <span class="inline-block text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">{t('about.process.step4Label')}</span>
         <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('about.process.step4Title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">{t('about.process.step4Desc')}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.process.step4Desc')}</p>
       </div>
 
       <!-- Step 05 -->
       <div class="p-6 rounded-lg" style="background-color: var(--theme-bg);">
         <span class="inline-block text-xs font-bold uppercase tracking-wider mb-2" style="color: var(--theme-primary);">{t('about.process.step5Label')}</span>
         <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('about.process.step5Title')}</h3>
-        <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.75;">{t('about.process.step5Desc')}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('about.process.step5Desc')}</p>
       </div>
     </div>
   </div>
@@ -217,7 +217,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <h2 class="text-3xl font-bold mb-6" style="color: var(--theme-text);">
         {t('about.innovation.title')}
       </h2>
-      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">
+      <p class="text-base leading-relaxed mb-8" style="color: var(--text-muted);">
         {t('about.innovation.description')}
       </p>
       <div class="p-6 rounded-lg inline-block" style="background-color: var(--theme-surface); border-left: 4px solid var(--theme-primary);">
@@ -236,25 +236,25 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
       <h2 class="text-3xl font-bold mb-6" style="color: var(--theme-text);">
         {t('about.contact.title')}
       </h2>
-      <p class="text-base leading-relaxed mb-8" style="color: var(--theme-text); opacity: 0.75;">
+      <p class="text-base leading-relaxed mb-8" style="color: var(--text-muted);">
         {t('about.contact.description')}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="p-4 rounded-lg" style="background-color: var(--theme-bg);">
-          <p class="text-sm" style="color: var(--theme-text); opacity: 0.7;">{t('footer.tel')}</p>
+          <p class="text-sm" style="color: var(--text-muted);">{t('footer.tel')}</p>
         </div>
         <div class="p-4 rounded-lg" style="background-color: var(--theme-bg);">
-          <p class="text-sm" style="color: var(--theme-text); opacity: 0.7;">{t('footer.phone')}</p>
+          <p class="text-sm" style="color: var(--text-muted);">{t('footer.phone')}</p>
         </div>
         <div class="p-4 rounded-lg" style="background-color: var(--theme-bg);">
-          <p class="text-sm" style="color: var(--theme-text); opacity: 0.7;">{t('footer.whatsapp')}</p>
+          <p class="text-sm" style="color: var(--text-muted);">{t('footer.whatsapp')}</p>
         </div>
         <div class="p-4 rounded-lg" style="background-color: var(--theme-bg);">
           <a href="mailto:info@bozemetal.com" class="text-sm transition-colors hover-opacity-only" style="color: var(--theme-primary);" >{t('footer.email')}</a>
         </div>
       </div>
       <div class="mt-4 p-4 rounded-lg" style="background-color: var(--theme-bg);">
-        <p class="text-sm leading-relaxed" style="color: var(--theme-text); opacity: 0.7;">{t('footer.address')}</p>
+        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">{t('footer.address')}</p>
       </div>
     </div>
   </div>

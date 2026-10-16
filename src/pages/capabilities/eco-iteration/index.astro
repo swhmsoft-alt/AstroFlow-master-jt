@@ -183,7 +183,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
   <Section background="white" id="comparison">
     <div class="mx-auto max-w-5xl">
       <header class="text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--primary-strong);">
           Why engineering teams leave automated broker platforms
         </p>
         <h2 class="mt-3 text-3xl font-bold leading-tight md:text-4xl" style="color: var(--theme-text);">
@@ -201,7 +201,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
             <tr style="background: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
               <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Dimension</th>
               <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Automated Broker Platform</th>
-              <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: var(--theme-primary);">Engineering CNC Center (Boze)</th>
+              <th class="px-4 py-4 text-xs font-semibold uppercase tracking-wider md:px-6" scope="col" style="color: var(--primary-strong);">Engineering CNC Center (Boze)</th>
             </tr>
           </thead>
           <tbody>
@@ -211,7 +211,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
                 <td class="px-4 py-4 align-top text-sm leading-relaxed md:px-6" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{row.broker}</td>
                 <td class="px-4 py-4 align-top text-sm font-medium leading-relaxed md:px-6" style="color: var(--theme-text);">
                   <span class="inline-flex items-start gap-2">
-                    <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                    <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--primary-strong);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
                     <span>{row.engineering}</span>
                   </span>
                 </td>
@@ -234,7 +234,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
   <Section background="gray" id="pillars">
     <div class="mx-auto max-w-6xl">
       <header class="text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--primary-strong);">
           The four-pillar delivery model
         </p>
         <h2 class="mt-3 text-3xl font-bold leading-tight md:text-4xl" style="color: var(--theme-text);">
@@ -250,17 +250,17 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
         {pillars.map((p) => (
           <Card hover class="flex h-full flex-col" style="border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
             <div class="flex items-center gap-3">
-              <span class="flex h-10 w-10 items-center justify-center rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-primary);" aria-hidden="true">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl" style="background: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--primary-strong);" aria-hidden="true">
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={p.iconPath} /></svg>
               </span>
-              <span class="font-mono text-sm font-bold" style="color: var(--theme-primary);">{p.number}</span>
+              <span class="font-mono text-sm font-bold" style="color: var(--primary-strong);">{p.number}</span>
             </div>
             <h3 class="mt-5 text-lg font-bold leading-snug" style="color: var(--theme-text);">{p.title}</h3>
             <p class="mt-3 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{p.body}</p>
             <ul class="mt-5 space-y-2 border-t pt-5" style="border-color: color-mix(in srgb, var(--theme-text) 10%, transparent);">
               {p.bullets.map((b) => (
                 <li class="flex items-start gap-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
-                  <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                  <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--primary-strong);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
                   <span>{b}</span>
                 </li>
               ))}
@@ -275,7 +275,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
   <Section background="white" id="eco-process">
     <div class="mx-auto max-w-5xl">
       <header class="text-center">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em]" style="color: var(--primary-strong);">
           Mistake-proof ECO workflow
         </p>
         <h2 class="mt-3 text-3xl font-bold leading-tight md:text-4xl" style="color: var(--theme-text);">
@@ -300,7 +300,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
             </span>
             <div class="rounded-2xl border p-6 md:p-7" style="border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent); background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-bg));">
               <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span class="font-mono text-xs font-semibold uppercase tracking-wider" style="color: var(--theme-primary);">Step {s.step}</span>
+                <span class="font-mono text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong);">Step {s.step}</span>
                 <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
                   · {idx === 0 ? 'Customer' : idx === 1 ? 'Engineering' : idx === 2 ? 'Documentation' : idx === 3 ? 'Inspection' : 'Re-order'}
                 </span>
@@ -320,7 +320,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
       <div class="overflow-hidden rounded-3xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent);">
         <div class="grid gap-0 lg:grid-cols-5">
           <aside class="p-8 lg:col-span-2 lg:p-10" style="background: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-surface));">
-            <p class="text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--theme-primary);">RFQ — Engineer-reviewed in 24 hours</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em]" style="color: var(--primary-strong);">RFQ — Engineer-reviewed in 24 hours</p>
             <h2 class="mt-3 text-2xl font-bold leading-tight md:text-3xl" style="color: var(--theme-text);">Send your CAD. Get a locked quote.</h2>
             <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">
               Submit your STEP / IGES file plus a 2D drawing. A senior engineer reviews
@@ -329,15 +329,15 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
             </p>
             <ul class="mt-6 space-y-3 text-sm" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
               <li class="flex items-start gap-2">
-                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--primary-strong);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
                 <span>1-on-1 DFM review within 24 hours</span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--primary-strong);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
                 <span>Quote locked at DFM sign-off</span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
+                <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--primary-strong);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d={CHECK_PATH} /></svg>
                 <span>NDA on request — your IP stays yours</span>
               </li>
             </ul>
@@ -354,15 +354,15 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
 
             <div class="grid gap-4 sm:grid-cols-2">
               <div>
-                <label for="rfq-name" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Name <span style="color: var(--theme-primary);">*</span></label>
+                <label for="rfq-name" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Name <span style="color: var(--primary-strong);">*</span></label>
                 <input id="rfq-name" name="name" type="text" required autocomplete="name" placeholder="John Carter" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
               </div>
               <div>
-                <label for="rfq-email" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Corporate Email <span style="color: var(--theme-primary);">*</span></label>
+                <label for="rfq-email" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Corporate Email <span style="color: var(--primary-strong);">*</span></label>
                 <input id="rfq-email" name="email" type="email" required autocomplete="email" placeholder="name@company.com" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
               </div>
               <div>
-                <label for="rfq-phone" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Phone <span style="color: var(--theme-primary);">*</span></label>
+                <label for="rfq-phone" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Phone <span style="color: var(--primary-strong);">*</span></label>
                 <input id="rfq-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+1 555 000 1234" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);" />
               </div>
               <div>
@@ -373,7 +373,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
 
             <div class="grid gap-4 sm:grid-cols-2">
               <div>
-                <label for="rfq-quantity" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Quantity <span style="color: var(--theme-primary);">*</span></label>
+                <label for="rfq-quantity" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Quantity <span style="color: var(--primary-strong);">*</span></label>
                 <select id="rfq-quantity" name="quantity" required class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);">
                   <option value="">Select…</option>
                   <option value="5">5 pcs (prototype)</option>
@@ -399,34 +399,34 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
             </div>
 
             <div>
-              <label for="rfq-details" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Project Details <span style="color: var(--theme-primary);">*</span></label>
+              <label for="rfq-details" class="block text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Project Details <span style="color: var(--primary-strong);">*</span></label>
               <textarea id="rfq-details" name="details" rows="4" required placeholder="Drawing revision, target tolerances, post-processing requirements, delivery target…" class="mt-2 w-full rounded-lg border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 resize-none" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: var(--theme-text);"></textarea>
             </div>
 
             <fieldset class="rounded-lg border p-4" style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); background: color-mix(in srgb, var(--theme-primary) 3%, var(--theme-surface));">
               <legend class="px-2 text-xs font-semibold uppercase tracking-wider" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Program flags</legend>
               <label class="flex items-start gap-3 py-2 text-sm" style="color: var(--theme-text);">
-                <input type="checkbox" name="eco_control" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--theme-primary);" />
+                <input type="checkbox" name="eco_control" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--primary-strong);" />
                 <span><span class="font-semibold">Strict ECO version control</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Lock this revision. Obsolete media will be destroyed on next submission.</span></span>
               </label>
               <label class="flex items-start gap-3 py-2 text-sm" style="color: var(--theme-text);">
-                <input type="checkbox" name="anodizing_tolerance" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--theme-primary);" />
+                <input type="checkbox" name="anodizing_tolerance" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--primary-strong);" />
                 <span><span class="font-semibold">Reserve anodizing tolerance up-front</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Pre-compensate wall callouts, thread fit, and press-fit interfaces for Type II / III anodizing.</span></span>
               </label>
               <label class="flex items-start gap-3 py-2 text-sm" style="color: var(--theme-text);">
-                <input type="checkbox" name="kitting" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--theme-primary);" />
+                <input type="checkbox" name="kitting" value="yes" class="mt-0.5 h-4 w-4 rounded border" style="accent-color: var(--primary-strong);" />
                 <span><span class="font-semibold">Sub-assembly / kitting delivery</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">Bag per BOM line with printed labels and hardware included.</span></span>
               </label>
             </fieldset>
 
             <!-- CAD attachment advice — files are sent via email to avoid loss (matches HeroRfq pattern) -->
             <div class="flex items-start gap-2.5 rounded-xl border px-4 py-3" style="border-color: color-mix(in srgb, var(--theme-primary) 25%, transparent); background: color-mix(in srgb, var(--theme-primary) 6%, var(--theme-bg));">
-              <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg class="mt-0.5 h-4 w-4 shrink-0" style="color: var(--primary-strong);" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <p class="text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
                 Need to send CAD attachments? Email them directly to
-                <a href="mailto:info@bozemetal.com" class="font-semibold underline underline-offset-2" style="color: var(--theme-primary);">info@bozemetal.com</a>
+                <a href="mailto:info@bozemetal.com" class="font-semibold underline underline-offset-2" style="color: var(--primary-strong);">info@bozemetal.com</a>
                 to avoid losing drawings.
               </p>
             </div>
@@ -491,7 +491,7 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
     <div class="mx-auto max-w-3xl text-center">
       <h2 class="text-2xl font-bold leading-tight md:text-3xl" style="color: var(--theme-text);">Not ready for a full RFQ yet?</h2>
       <p class="mt-3 text-base leading-relaxed md:text-lg" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
-        Send your STEP file to <a href="mailto:info@bozemetal.com" class="font-semibold underline" style="color: var(--theme-primary);">info@bozemetal.com</a>
+        Send your STEP file to <a href="mailto:info@bozemetal.com" class="font-semibold underline" style="color: var(--primary-strong);">info@bozemetal.com</a>
         for a free redline review — no commitment, no quote, just an engineer's read on manufacturability.
       </p>
       <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -505,13 +505,13 @@ const CHEVRON_RIGHT_PATH = 'M9 5l7 7-7 7';
   <Section background="gray" id="related-capabilities">
     <div class="mx-auto max-w-5xl">
       <header class="mb-8">
-        <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--theme-primary);">Other capabilities</p>
+        <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--primary-strong);">Other capabilities</p>
         <h2 class="mt-2 text-2xl font-bold leading-tight md:text-3xl" style="color: var(--theme-text);">Explore the other capability dimensions</h2>
       </header>
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         {siblingCapabilities.map((s) => (
           <a href={s.href} class="rounded-2xl border p-5 transition-transform duration-200 hover:-translate-y-0.5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
-            <h3 class="text-base font-bold" style="color: var(--theme-primary);">{s.name}</h3>
+            <h3 class="text-base font-bold" style="color: var(--primary-strong);">{s.name}</h3>
             <p class="mt-2 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{s.desc}</p>
           </a>
         ))}

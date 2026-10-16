@@ -280,9 +280,9 @@ export default function TitaniumSelectionWorkflow() {
               <div className="text-sm font-bold mb-1">
                 {i === 0 ? '🥇 ' : i === 1 ? '🥈 ' : '🥉 '}{a.name}
               </div>
-              <div className="text-xs mb-2" style={{ opacity: 0.8 }}>{a.grades[0]}</div>
-              <div className="text-xs" style={{ opacity: 0.7 }}>{a.description.slice(0, 80)}…</div>
-              <div className="flex gap-2 mt-2 text-xs" style={{ opacity: 0.7 }}>
+              <div className="text-xs mb-2" style={{color: 'var(--text-muted)'}}>{a.grades[0]}</div>
+              <div className="text-xs" style={{color: 'var(--text-muted)'}}>{a.description.slice(0, 80)}…</div>
+              <div className="flex gap-2 mt-2 text-xs" style={{color: 'var(--text-muted)'}}>
                 <span>💰 {a.costFactor.toFixed(1)}x</span>
                 <span>🔧 {a.machinability}</span>
                 <span>⚡ {a.density}g/cm³</span>
@@ -383,7 +383,7 @@ export default function TitaniumSelectionWorkflow() {
             }}>
             <div className="text-2xl mb-2">{g.icon}</div>
             <div className="font-bold mb-1">{g.label}</div>
-            <div className="text-xs" style={{ opacity: 0.7 }}>{g.description}</div>
+            <div className="text-xs" style={{color: 'var(--text-muted)'}}>{g.description}</div>
           </button>
         ))}
       </div>
@@ -417,8 +417,8 @@ export default function TitaniumSelectionWorkflow() {
                 color: selectedForm === f.id ? '#fff' : 'var(--theme-text)',
               }}>
               <div className="font-bold mb-1">{f.label}</div>
-              <div className="text-xs mb-2" style={{ opacity: 0.7 }}>{f.description}</div>
-              <div className="flex gap-2 text-xs" style={{ opacity: 0.7 }}>
+              <div className="text-xs mb-2" style={{color: 'var(--text-muted)'}}>{f.description}</div>
+              <div className="flex gap-2 text-xs" style={{color: 'var(--text-muted)'}}>
                 <span>📏 {f.sizeRange}</span>
                 <span>📦 {f.leadTime}</span>
               </div>

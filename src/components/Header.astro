@@ -226,7 +226,7 @@ const logoSubtext = t('header.logoSubtext');
                   {logoText}
                 </span>
                 {logoSubtext && (
-                  <span class="text-xs leading-tight" style="color: var(--theme-nav-text); opacity: 0.6; letter-spacing: 0.05em;">
+                  <span class="text-xs leading-tight" style="color: var(--text-muted); letter-spacing: 0.05em;">
                   {logoSubtext}
                 </span>
               )}
@@ -245,7 +245,7 @@ const logoSubtext = t('header.logoSubtext');
                 {logoText}
               </span>
               {logoSubtext && (
-                <span class="text-xs leading-tight" style="color: var(--theme-nav-text); opacity: 0.6; letter-spacing: 0.05em;">
+                <span class="text-xs leading-tight" style="color: var(--text-muted); letter-spacing: 0.05em;">
                   {logoSubtext}
                 </span>
               )}
@@ -271,7 +271,7 @@ const logoSubtext = t('header.logoSubtext');
               title="English-only route — not translated to your locale"
               aria-disabled="true"
               class={`px-4 py-2 text-sm font-medium rounded-lg relative flex items-center gap-1`}
-              style={{ color: 'var(--theme-text)', opacity: 0.4, cursor: 'not-allowed' }}
+              style={{ color: 'var(--text-muted)',cursor: 'not-allowed' }}
             >
               {itemLabelText}
               {hasChildren && (
@@ -319,7 +319,7 @@ const logoSubtext = t('header.logoSubtext');
                           title="English-only route"
                           aria-disabled="true"
                           class="text-sm py-2 px-3 rounded-lg whitespace-nowrap border"
-                          style="color: var(--theme-text); opacity: 0.4; border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); cursor: not-allowed;"
+                          style="color: var(--text-muted); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); cursor: not-allowed;"
                         >
                           {t(childNavKeyByHref[child.href] || child.name)} (EN)
                         </span>
@@ -327,7 +327,7 @@ const logoSubtext = t('header.logoSubtext');
                         <a
                           href={localizePath(child.href, currentLang)}
                           class="header-dropdown-single text-sm py-2 px-3 rounded-lg transition-all whitespace-nowrap border"
-                          style="color: var(--theme-text); opacity: 0.7; border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+                          style="color: var(--text-muted); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
                         >
                           {t(childNavKeyByHref[child.href] || child.name)}
                         </a>
@@ -354,7 +354,7 @@ const logoSubtext = t('header.logoSubtext');
                                   title="English-only route"
                                   aria-disabled="true"
                                   class="block text-sm py-1.5 rounded"
-                                  style="color: var(--theme-text); opacity: 0.4; cursor: not-allowed;"
+                                  style="color: var(--text-muted); cursor: not-allowed;"
                                 >
                                   {t(childNavKeyByHref[child.href] || child.name)} (EN)
                                 </span>
@@ -364,7 +364,7 @@ const logoSubtext = t('header.logoSubtext');
                                 <a
                                   href={localizePath(child.href, currentLang)}
                                   class="header-dropdown-multi block text-sm py-1.5 rounded transition-all hover:translate-x-0.5"
-                                  style="color: var(--theme-text); opacity: 0.7;"
+                                  style="color: var(--text-muted);"
                                 >
                                   {t(childNavKeyByHref[child.href] || child.name)}
                                 </a>

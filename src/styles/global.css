@@ -92,6 +92,9 @@
      and `opacity: 0.55` anti-patterns that fail contrast on every theme. */
   --text-muted:    #94A3B8;  /* slate-400 — ~7.4:1 on --theme-bg #0F172A */
   --text-muted-on-surface: #CBD5E1;  /* slate-300 — ~9.4:1 on --theme-surface */
+  /* --primary-strong: dark theme, --theme-primary already ≥4.5:1 vs bg, so alias. */
+  --primary-strong: var(--theme-primary);
+  --primary-on-primary: #0F172A;  /* dark text on bright primary CTA bg (Request a Quote, etc.) */
 }
 
 /* Theme 2: light-beige — existing default LIGHT */
@@ -106,6 +109,10 @@
   /* --text-muted pre-tuned: ~7.0:1 on #FAFAFA (≥4.5:1 AA pass) */
   --text-muted:    #475569;  /* slate-600 */
   --text-muted-on-surface: #475569;  /* slate-600 — ~8.4:1 on white */
+  /* --primary-strong: --theme-primary #38BDF8 only 1.95:1 on #FAFAFA (FAIL).
+     Sky-700 #0369A1 → 6.5:1 on #FAFAFA (AA pass), 7.7:1 on #FFFFFF. */
+  --primary-strong: #0369A1;
+  --primary-on-primary: #FFFFFF;
 }
 
 /* Theme 3: cold-titanium-steel — NEW (deep side, industrial) */
@@ -120,6 +127,8 @@
   /* --text-muted pre-tuned: ~6.0:1 on #1B2533 */
   --text-muted:    #BCC4CC;
   --text-muted-on-surface: #E8ECEF;  /* surface is lighter than bg, use full text */
+  --primary-strong: var(--theme-primary);   /* #94A3B8 already 6.0:1 on bg, passes */
+  --primary-on-primary: #1B2533;
 }
 
 /* Theme 4: aerospace-gold — NEW (deep side, premium) */
@@ -134,6 +143,8 @@
   /* --text-muted pre-tuned: ~7.5:1 on #0A1929 */
   --text-muted:    #B8C5D1;
   --text-muted-on-surface: #C9D6E2;  /* brighter to clear #14233D (~8:1) */
+  --primary-strong: var(--theme-primary);   /* #C9A961 gold already 9.4:1, passes */
+  --primary-on-primary: #0A1929;
 }
 
 /* Theme 5: warm-modern-beige — NEW (light side, warm) */
@@ -148,6 +159,10 @@
   /* --text-muted pre-tuned: ~5.5:1 on #F5F0E8 — warmer gray to harmonize */
   --text-muted:    #6B5B50;
   --text-muted-on-surface: #6B5B50;
+  /* --primary-strong: --theme-primary #B87333 only 3.4:1 on #F5F0E8 (FAIL).
+     Darker copper #6B3B14 → ~5.5:1 (AA pass). */
+  --primary-strong: #6B3B14;
+  --primary-on-primary: #FFFFFF;
 }
 
 /* Theme 6: pure-bw-orange — NEW (light side, pure minimal) */
@@ -162,4 +177,8 @@
   /* --text-muted pre-tuned: ~5.7:1 on white (≥4.5:1 AA pass) */
   --text-muted:    #525252;  /* neutral-600 */
   --text-muted-on-surface: #525252;  /* same on #F5F5F5 (~5.4:1) */
+  /* --primary-strong: --theme-primary #FF5A00 only 3.4:1 on white (FAIL).
+     Darker orange #C73E00 → 5.4:1 (AA pass). */
+  --primary-strong: #C73E00;
+  --primary-on-primary: #FFFFFF;
 }
