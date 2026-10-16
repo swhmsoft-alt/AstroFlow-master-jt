@@ -64,11 +64,11 @@ const supplementarySchema = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.home')}</span></a>
+          <a href="/" itemprop="item" class="transition-colors" style="color: var(--text-muted);"><span itemprop="name">{t('nav.home')}</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <a href="/parts/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"><span itemprop="name">{t('nav.parts')}</span></a>
+          <a href="/parts/" itemprop="item" class="transition-colors" style="color: var(--text-muted);"><span itemprop="name">{t('nav.parts')}</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -100,7 +100,7 @@ const supplementarySchema = {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color: var(--theme-primary);">{d.anodeTypes.badge}</p>
         <h2 class="mt-3 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">{d.anodeTypes.title}</h2>
-        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.anodeTypes.intro}</p>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">{d.anodeTypes.intro}</p>
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {d.anodeTypes.families.map((f) => (
@@ -114,14 +114,14 @@ const supplementarySchema = {
                   {f.title}
                 </h3>
                 <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{f.body}</p>
-                <p class="mt-3 text-xs font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">Use when: {f.focus}</p>
+                <p class="mt-3 text-xs font-semibold" style="color: var(--text-muted);">Use when: {f.focus}</p>
               </div>
             </article>
           ))}
         </div>
 
-        <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{d.anodeTypes.boundaryNote}</p>
-        <p class="mt-3 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">{d.anodeTypes.boundaryNote}</p>
+        <p class="mt-3 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Engineering note.</strong> {d.anodeTypes.caveat}
         </p>
       </div>
@@ -132,7 +132,7 @@ const supplementarySchema = {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Coating Selector</p>
         <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.coatingSelector.title}</h2>
-        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.coatingSelector.intro}</p>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">{d.coatingSelector.intro}</p>
 
         <div class="mt-10 overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
           <table class="w-full text-left text-sm">
@@ -157,7 +157,7 @@ const supplementarySchema = {
           </table>
         </div>
 
-        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Engineering note.</strong> {d.coatingSelector.caveat}
         </p>
       </div>
@@ -168,7 +168,7 @@ const supplementarySchema = {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">RFQ Inputs</p>
         <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.operatingParameters.title}</h2>
-        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.operatingParameters.intro}</p>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">{d.operatingParameters.intro}</p>
 
         <ol class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {d.operatingParameters.groups.map((g) => (
@@ -184,7 +184,7 @@ const supplementarySchema = {
           ))}
         </ol>
 
-        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Engineering note.</strong> {d.operatingParameters.caveat}
         </p>
       </div>
@@ -195,7 +195,7 @@ const supplementarySchema = {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Applications</p>
         <h2 class="mt-3 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: var(--theme-text);">{d.applications.title}</h2>
-        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.applications.intro}</p>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">{d.applications.intro}</p>
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {d.applications.items.map((app) => (
@@ -212,7 +212,7 @@ const supplementarySchema = {
           ))}
         </div>
 
-        <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-10 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Boundary note.</strong> {d.applications.caveat}
         </p>
       </div>
@@ -223,7 +223,7 @@ const supplementarySchema = {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Engineering Considerations</p>
         <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.engineeringConsiderations.title}</h2>
-        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.engineeringConsiderations.intro}</p>
+        <p class="mt-4 max-w-3xl text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">{d.engineeringConsiderations.intro}</p>
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {d.engineeringConsiderations.items.map((item) => (
@@ -240,7 +240,7 @@ const supplementarySchema = {
           ))}
         </div>
 
-        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Engineering note.</strong> {d.engineeringConsiderations.caveat}
         </p>
       </div>
@@ -250,7 +250,7 @@ const supplementarySchema = {
     <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.manufacturingWorkflow.title}</h2>
-        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.manufacturingWorkflow.intro}</p>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: var(--text-muted);">{d.manufacturingWorkflow.intro}</p>
 
         <ol class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {d.manufacturingWorkflow.steps.map((s) => (
@@ -262,7 +262,7 @@ const supplementarySchema = {
           ))}
         </ol>
 
-        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Engineering note.</strong> {d.manufacturingWorkflow.caveat}
         </p>
       </div>
@@ -272,7 +272,7 @@ const supplementarySchema = {
     <section class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.qualityInspection.title}</h2>
-        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.qualityInspection.intro}</p>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: var(--text-muted);">{d.qualityInspection.intro}</p>
 
         <ul class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {d.qualityInspection.items.map((it) => (
@@ -284,7 +284,7 @@ const supplementarySchema = {
           ))}
         </ul>
 
-        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Standards note.</strong> {d.qualityInspection.caveat}
         </p>
       </div>
@@ -294,7 +294,7 @@ const supplementarySchema = {
     <section class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.processCapabilities.title}</h2>
-        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.processCapabilities.intro}</p>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed" style="color: var(--text-muted);">{d.processCapabilities.intro}</p>
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {d.processCapabilities.capabilities.map((c) => (
@@ -306,7 +306,7 @@ const supplementarySchema = {
           ))}
         </div>
 
-        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed max-w-3xl" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Capability note.</strong> {d.processCapabilities.caveat}
         </p>
       </div>
@@ -325,7 +325,7 @@ const supplementarySchema = {
             </details>
           ))}
         </div>
-        <p class="mt-8 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        <p class="mt-8 text-sm leading-relaxed" style="color: var(--text-muted);">
           <strong style="color: var(--theme-text);">Standards note.</strong> Material specifications (ASTM B265, ASTM B348) cover raw stock scope. Finished-part acceptance criteria are governed by your drawing and PO.
         </p>
       </div>
@@ -338,7 +338,7 @@ const supplementarySchema = {
           <div class="lg:col-span-2">
             <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Engineering Consultation</p>
             <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.engineeringCta.title}</h2>
-            <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.engineeringCta.intro}</p>
+            <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">{d.engineeringCta.intro}</p>
             <ul class="mt-6 space-y-3">
               {d.engineeringCta.bullets.map((b) => (
                 <li class="flex items-start gap-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">
@@ -347,7 +347,7 @@ const supplementarySchema = {
                 </li>
               ))}
             </ul>
-            <div class="mt-8 text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+            <div class="mt-8 text-xs" style="color: var(--text-muted);">
               Or reach us directly: <strong style="color: var(--theme-text);">info@bozemetal.com</strong> · <strong style="color: var(--theme-text);">+86 917 675 3303</strong>
             </div>
           </div>
@@ -377,7 +377,7 @@ const supplementarySchema = {
               </div>
               <div class="md:col-span-2">
                 <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
-                  <span class="text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">PDF, JPG, PNG, STEP, IGES, STL, DWG accepted via the inquiry form.</span>
+                  <span class="text-xs" style="color: var(--text-muted);">PDF, JPG, PNG, STEP, IGES, STL, DWG accepted via the inquiry form.</span>
                   <a href={d.engineeringCta.submitHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap px-7 py-3 rounded-lg font-bold text-sm transition-all hover:-translate-y-0.5" style="background: linear-gradient(135deg, #ff8a3d 0%, #ff5a00 100%); color: #ffffff;">
                     {d.engineeringCta.submitLabel}
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
@@ -385,7 +385,7 @@ const supplementarySchema = {
                 </div>
               </div>
             </div>
-            <p class="mt-5 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+            <p class="mt-5 text-xs leading-relaxed" style="color: var(--text-muted);">
               Form is a structured preview. Complete the inquiry at <strong style="color: var(--theme-text);"><a href={d.engineeringCta.submitHref}>/rfq/?category=titanium-anode</a></strong>.
             </p>
           </div>
@@ -398,7 +398,7 @@ const supplementarySchema = {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">Why BOZE</p>
         <h2 class="mt-3 text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">{d.whyUs.title}</h2>
-        <p class="mt-4 max-w-3xl text-base leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{d.whyUs.intro}</p>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed" style="color: var(--text-muted);">{d.whyUs.intro}</p>
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {d.whyUs.items.map((w) => (
