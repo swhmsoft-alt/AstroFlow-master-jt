@@ -86,6 +86,12 @@
   --theme-accent: #34D399;
   --theme-nav-text: #F8FAFC;
   --theme-nav-invert: 1;
+  /* P2-1 / 2026-10-16: contrast-safe text tokens. Each pre-tuned to clear
+     WCAG AA (≥4.5:1) against its intended background, replacing the
+     project-wide `color-mix(in srgb, var(--theme-text) 50-70%, transparent)`
+     and `opacity: 0.55` anti-patterns that fail contrast on every theme. */
+  --text-muted:    #94A3B8;  /* slate-400 — ~7.4:1 on --theme-bg #0F172A */
+  --text-muted-on-surface: #CBD5E1;  /* slate-300 — ~9.4:1 on --theme-surface */
 }
 
 /* Theme 2: light-beige — existing default LIGHT */
@@ -97,6 +103,9 @@
   --theme-accent: #34D399;
   --theme-nav-text: #1E293B;
   --theme-nav-invert: 0;
+  /* --text-muted pre-tuned: ~7.0:1 on #FAFAFA (≥4.5:1 AA pass) */
+  --text-muted:    #475569;  /* slate-600 */
+  --text-muted-on-surface: #475569;  /* slate-600 — ~8.4:1 on white */
 }
 
 /* Theme 3: cold-titanium-steel — NEW (deep side, industrial) */
@@ -108,6 +117,9 @@
   --theme-accent: #CBD5E1;
   --theme-nav-text: #E8ECEF;
   --theme-nav-invert: 1;
+  /* --text-muted pre-tuned: ~6.0:1 on #1B2533 */
+  --text-muted:    #BCC4CC;
+  --text-muted-on-surface: #E8ECEF;  /* surface is lighter than bg, use full text */
 }
 
 /* Theme 4: aerospace-gold — NEW (deep side, premium) */
@@ -119,6 +131,9 @@
   --theme-accent: #E6D5A0;
   --theme-nav-text: #F5F7FA;
   --theme-nav-invert: 1;
+  /* --text-muted pre-tuned: ~7.5:1 on #0A1929 */
+  --text-muted:    #B8C5D1;
+  --text-muted-on-surface: #C9D6E2;  /* brighter to clear #14233D (~8:1) */
 }
 
 /* Theme 5: warm-modern-beige — NEW (light side, warm) */
@@ -130,6 +145,9 @@
   --theme-accent: #D4A574;
   --theme-nav-text: #2B2520;
   --theme-nav-invert: 0;
+  /* --text-muted pre-tuned: ~5.5:1 on #F5F0E8 — warmer gray to harmonize */
+  --text-muted:    #6B5B50;
+  --text-muted-on-surface: #6B5B50;
 }
 
 /* Theme 6: pure-bw-orange — NEW (light side, pure minimal) */
@@ -141,4 +159,7 @@
   --theme-accent: #FF7A33;
   --theme-nav-text: #0A0A0A;
   --theme-nav-invert: 0;
+  /* --text-muted pre-tuned: ~5.7:1 on white (≥4.5:1 AA pass) */
+  --text-muted:    #525252;  /* neutral-600 */
+  --text-muted-on-surface: #525252;  /* same on #F5F5F5 (~5.4:1) */
 }

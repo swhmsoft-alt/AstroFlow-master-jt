@@ -52,7 +52,7 @@ const siteDescription = SITE.description;
                   {logoText}
                 </span>
                 {logoSubtext && (
-                  <span class="text-xs leading-tight" style="color: var(--theme-text); opacity: 0.55; letter-spacing: 0.05em;">
+                  <span class="text-xs leading-tight" style="color: var(--text-muted); letter-spacing: 0.05em;">
                     {logoSubtext}
                   </span>
                 )}
@@ -60,7 +60,7 @@ const siteDescription = SITE.description;
             </>
           )}
         </a>
-        <p class="text-sm leading-relaxed max-w-xs" style="color: var(--theme-text); opacity: 0.55;">
+        <p class="text-sm leading-relaxed max-w-xs" style="color: var(--text-muted);">
           {t('footer.description')}
         </p>
         <div class="flex space-x-4">
@@ -69,7 +69,7 @@ const siteDescription = SITE.description;
             target="_blank"
             rel="noopener noreferrer"
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
-            style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
+            style="background-color: var(--theme-surface); color: var(--text-muted);"
             aria-label="LinkedIn (opens in new tab)"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -80,7 +80,7 @@ const siteDescription = SITE.description;
           <a
             href={SOCIAL_LINKS.facebook}
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
-            style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
+            style="background-color: var(--theme-surface); color: var(--text-muted);"
             aria-label="Facebook"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -90,7 +90,7 @@ const siteDescription = SITE.description;
           <a
             href={SOCIAL_LINKS.instagram}
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
-            style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
+            style="background-color: var(--theme-surface); color: var(--text-muted);"
             aria-label="Instagram"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ const siteDescription = SITE.description;
           <a
             href={SOCIAL_LINKS.youtube}
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
-            style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
+            style="background-color: var(--theme-surface); color: var(--text-muted);"
             aria-label="YouTube"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -121,10 +121,10 @@ const siteDescription = SITE.description;
               <a
                 href={localizePath(item.href, currentLang)}
                 class="text-sm inline-flex items-center group transition-colors"
-                style="color: var(--theme-text); opacity: 0.55;"
+                style="color: var(--text-muted);"
               >
                 <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
-                {/* 2026-09-17 nav audit â€” fallback to `item.name` so missing
+                {/* 2026-09-17 nav audit â€?fallback to `item.name` so missing
                     `navKeyByHref` entries (e.g. /industries/ when the trailing-
                     slash key was missed) no longer silently fall through to
                     `'nav.home'` and turn Industries / Resources / etc. into a
@@ -133,23 +133,23 @@ const siteDescription = SITE.description;
               </a>
             </li>
           ))}
-          {/* 2026-10-08: Pillar Page â€” explicit Quick Link to Titanium Grades Guide (5-inbound #2) */}
+          {/* 2026-10-08: Pillar Page â€?explicit Quick Link to Titanium Grades Guide (5-inbound #2) */}
           <li>
             <a
               href={localizePath('/resources/titanium-grades-guide/', currentLang)}
               class="text-sm inline-flex items-center group transition-colors"
-              style="color: var(--theme-text); opacity: 0.55;"
+              style="color: var(--text-muted);"
             >
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               Titanium Grades Guide
             </a>
           </li>
-          {/* 2026-10-09: Pillar Page â€” explicit Quick Link to Design & Engineering Guide (5-inbound #2) */}
+          {/* 2026-10-09: Pillar Page â€?explicit Quick Link to Design & Engineering Guide (5-inbound #2) */}
           <li>
             <a
               href={localizePath('/resources/design-engineering-guide/', currentLang)}
               class="text-sm inline-flex items-center group transition-colors"
-              style="color: var(--theme-text); opacity: 0.55;"
+              style="color: var(--text-muted);"
             >
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               Design &amp; Engineering Guide
@@ -165,25 +165,25 @@ const siteDescription = SITE.description;
         </h3>
         <ul class="space-y-3">
           <li>
-            <a href={localizePath('/services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+            <a href={localizePath('/services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--text-muted);">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.cncMachining')}
             </a>
           </li>
           <li>
-            <a href={localizePath('/titanium-additive-manufacturing', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+            <a href={localizePath('/titanium-additive-manufacturing', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--text-muted);">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.additiveManufacturing')}
             </a>
           </li>
           <li>
-            <a href={localizePath('/titanium-fabrication-services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+            <a href={localizePath('/titanium-fabrication-services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--text-muted);">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.fabrication')}
             </a>
           </li>
           <li>
-            <a href={localizePath('/titanium-surface-treatment', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+            <a href={localizePath('/titanium-surface-treatment', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--text-muted);">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.surfaceTreatment')}
             </a>
@@ -200,13 +200,13 @@ const siteDescription = SITE.description;
         </h3>
         <ul class="space-y-3 text-sm">
           <li>
-            <a href={localizePath('/about', currentLang)} class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+            <a href={localizePath('/about', currentLang)} class="inline-flex items-center group transition-colors" style="color: var(--text-muted);">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.aboutUs')}
             </a>
           </li>
           <li>
-            <a href="/rfq/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+            <a href="/rfq/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group transition-colors" style="color: var(--text-muted);">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.requestQuote')}
             </a>
@@ -230,21 +230,21 @@ const siteDescription = SITE.description;
           {t('footer.contactUs')}
         </h3>
         <ul class="space-y-3 text-sm">
-          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+          <li class="flex items-start" style="color: var(--text-muted);">
             <span>{t('footer.tel')}</span>
           </li>
-          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+          <li class="flex items-start" style="color: var(--text-muted);">
             <span>{t('footer.phone')}</span>
           </li>
-          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+          <li class="flex items-start" style="color: var(--text-muted);">
             <span>{t('footer.whatsapp')}</span>
           </li>
-          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+          <li class="flex items-start" style="color: var(--text-muted);">
             <a href="mailto:info@bozemetal.com" class="hover:opacity-100 transition-opacity" style="color: var(--theme-text);">
               {t('footer.email')}
             </a>
           </li>
-          <li class="flex items-start" style="color: var(--theme-text); opacity: 0.55;">
+          <li class="flex items-start" style="color: var(--text-muted);">
             <span class="text-xs leading-relaxed">{t('footer.address')}</span>
           </li>
         </ul>
@@ -254,23 +254,23 @@ const siteDescription = SITE.description;
     <!-- Bottom Bar -->
     <div class="mt-16 pt-8" style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
       <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-        <p class="text-sm" style="color: var(--theme-text); opacity: 0.55;">
+        <p class="text-sm" style="color: var(--text-muted);">
           &copy; {new Date().getFullYear()} Boze Titanium Manufacturing Center. Operated by Baoji Boze Metal Products Co., Ltd. All Rights Reserved.
         </p>
         <div class="flex items-center space-x-6 text-sm">
-          <a href="https://www.bozemetal.com/" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+          <a href="https://www.bozemetal.com/" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: var(--text-muted);">
             Parent Company: Boze Metal
           </a>
-          <span style="color: var(--theme-text); opacity: 0.3;">â€¢</span>
-          <a href={localizePath('/privacy-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+          <span style="color: var(--theme-text); opacity: 0.3;">â€?/span>
+          <a href={localizePath('/privacy-policy/', currentLang)} class="transition-colors" style="color: var(--text-muted);">
             {t('footer.privacyPolicy')}
           </a>
-          <span style="color: var(--theme-text); opacity: 0.3;">â€¢</span>
-          <a href={localizePath('/terms-of-service/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+          <span style="color: var(--theme-text); opacity: 0.3;">â€?/span>
+          <a href={localizePath('/terms-of-service/', currentLang)} class="transition-colors" style="color: var(--text-muted);">
             {t('footer.termsOfService')}
           </a>
-          <span style="color: var(--theme-text); opacity: 0.3;">â€¢</span>
-          <a href={localizePath('/cookie-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;">
+          <span style="color: var(--theme-text); opacity: 0.3;">â€?/span>
+          <a href={localizePath('/cookie-policy/', currentLang)} class="transition-colors" style="color: var(--text-muted);">
             {t('footer.cookiePolicy')}
           </a>
         </div>
