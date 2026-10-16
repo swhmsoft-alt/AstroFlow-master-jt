@@ -66,10 +66,9 @@ const t = useTranslations(currentLang);
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {whitepapers.map((wp, index) => (
         <div
-          class="group relative rounded-xl overflow-hidden transition-all duration-300 flex flex-col"
+          class="group relative rounded-xl overflow-hidden transition-all duration-300 flex flex-col hover-card"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-text) 42%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-text) 42%, transparent)'; this.style.boxShadow='none'"
+          
         >
           {/* Top accent bar */}
           <div class="h-1 w-full" style="background: linear-gradient(90deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, white));"></div>
@@ -89,7 +88,7 @@ const t = useTranslations(currentLang);
             </div>
 
             {/* Title */}
-            <h3 class="text-lg font-bold mb-3 leading-snug transition-colors" style="color: var(--theme-text);" onmouseover="this.style.color='var(--theme-primary)'" onmouseout="this.style.color='var(--theme-text)'">
+            <h3 class="text-lg font-bold mb-3 leading-snug transition-colors hover-color-only" style="color: var(--theme-text);" >
               {t(`resources.featuredinsights.whitepaper${index}.title`)}
             </h3>
 
@@ -101,10 +100,9 @@ const t = useTranslations(currentLang);
             {/* CTA */}
             <a
               href={wp.href}
-              class="inline-flex items-center text-sm font-semibold transition-all group/link"
+              class="inline-flex items-center text-sm font-semibold transition-all group/link hover-color-70-white"
               style="color: var(--theme-primary);"
-              onmouseover="this.style.color='color-mix(in srgb, var(--theme-primary) 70%, white)'"
-              onmouseout="this.style.color='var(--theme-primary)'"
+              
             >
               <span>{t('resources.featuredinsights.download_whitepaper')}</span>
               <svg class="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

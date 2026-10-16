@@ -107,10 +107,9 @@ const rfqUrl = '/rfq/?compliance=1';
         <li>
           <a
             href={s.pageUrl}
-            class="flex items-center justify-between p-3 rounded-lg transition-colors group"
+            class="flex items-center justify-between p-3 rounded-lg transition-colors group hover-card-soft"
             style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent);"
-            onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 5%, var(--theme-bg))'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'; this.style.backgroundColor='var(--theme-bg)'"
+            
           >
             <div class="min-w-0 flex-1">
               <div class="font-semibold text-sm truncate" style="color: var(--theme-text);">{s.name}</div>
@@ -144,10 +143,9 @@ const rfqUrl = '/rfq/?compliance=1';
 
   <a
     href={rfqUrl}
-    class="block w-full text-center px-5 py-3 rounded-lg font-semibold text-sm transition-all"
+    class="block w-full text-center px-5 py-3 rounded-lg font-semibold text-sm transition-all hover-lift"
     style="background: linear-gradient(135deg, var(--theme-primary), color-mix(in srgb, var(--theme-primary) 70%, var(--theme-accent))); color: var(--theme-bg); box-shadow: 0 4px 14px color-mix(in srgb, var(--theme-primary) 30%, transparent);"
-    onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 6px 18px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-    onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 14px color-mix(in srgb, var(--theme-primary) 30%, transparent)'"
+    
   >
     Request Compliance-Certified Quote →
   </a>

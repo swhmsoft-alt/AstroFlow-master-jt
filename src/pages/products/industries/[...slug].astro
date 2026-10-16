@@ -85,7 +85,7 @@ const seoDesc = data.seoDescription || `${data.description} Explore our titanium
                     </p>
                     <div class="flex flex-wrap gap-1.5">
                       {sysEntities.slice(0, 5).map((e) => (
-                        <a href={`/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/`} class="text-xs px-2 py-1 rounded transition-all" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);" onmouseover="this.style.background='color-mix(in srgb, var(--theme-primary) 18%, transparent)'" onmouseout="this.style.background='color-mix(in srgb, var(--theme-primary) 8%, transparent)'">
+                        <a href={`/products/product-entities/${e.slug || e.id?.replace('.json','') || ''}/`} class="text-xs px-2 py-1 rounded transition-all hover-bg-shorthand" style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent); color: var(--theme-primary);" >
                           {e.data.title}
                         </a>
                       ))}

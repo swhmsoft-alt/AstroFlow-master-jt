@@ -153,10 +153,9 @@ const notForLabel = t('services.multiaxiscomparison.not_for_label');
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       {axisConfigs.map((axis) => (
         <div
-          class="relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
+          class="relative rounded-xl p-8 flex flex-col h-full transition-all duration-300 hover-card-lift"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
-          onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 45%, transparent)'; this.style.transform='translateY(-4px)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 22%, transparent)'; this.style.transform='translateY(0)'"
+          
         >
           <div class="flex items-start mb-6">
             <div

@@ -1,0 +1,130 @@
+/* ============================================================================
+ * hover-utilities.css — T1-P0+ (2026-10-16)
+ *
+ * Site-wide hover utility classes for replacing inline `onmouseover` /
+ * `onmouseout` handlers. Each class is a named, semantic transition
+ * covering one of the recurring hover patterns seen across the
+ * 100+ .astro components in this project.
+ *
+ *   .hover-link         — text link (color + opacity 0.55 → 1)
+ *   .hover-card         — card (border + box-shadow glow)
+ *   .hover-card-strong  — card (border + larger box-shadow glow)
+ *   .hover-card-soft    — card (border only, no glow)
+ *   .hover-cta          — primary CTA (darker bg + box-shadow glow)
+ *   .hover-cta-secondary— secondary CTA (border + color)
+ *   .hover-cta-tertiary — accent CTA (border + color)
+ *   .hover-icon         — icon (bg + color + opacity)
+ *   .hover-item         — list item (background tint)
+ *   .hover-bar          — accent bar (scaleX transition)
+ *   .hover-lift         — translateY + box-shadow
+ *
+ * Components import this via the frontmatter `import '@styles/hover-utilities.css';`
+ * or — easier — by adding a single `@import './hover-utilities.css';` to
+ * `src/styles/global.css`. The classes become global to every Astro page.
+ *
+ * Trade-off: the rules are global (slightly larger CSS), but eliminate
+ * 100+ duplicated inline handlers and unblock CSP-strict deployments.
+ * ========================================================================== */
+
+/* Generic transition for all hover utilities (avoids per-class rules) */
+[class*="hover-"] {
+  transition-timing-function: ease-out;
+  transition-duration: 200ms;
+}
+
+/* 1. Text link: color → primary, opacity → 1 */
+.hover-link {
+  transition-property: color, opacity;
+}
+.hover-link:hover {
+  color: var(--theme-primary);
+  opacity: 1;
+}
+
+/* 2. Card with glow: border + box-shadow */
+.hover-card {
+  transition-property: border-color, box-shadow;
+}
+.hover-card:hover {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent);
+}
+.hover-card-strong:hover {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--theme-primary) 8%, transparent);
+}
+.hover-card-soft {
+  transition-property: border-color;
+}
+.hover-card-soft:hover {
+  border-color: var(--theme-primary);
+}
+
+/* 3. CTAs */
+.hover-cta {
+  transition-property: background-color, box-shadow;
+}
+.hover-cta:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+}
+.hover-cta-strong {
+  transition-property: background-color, box-shadow;
+}
+.hover-cta-strong:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 85%, black);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+}
+.hover-cta-secondary {
+  transition-property: border-color, color;
+}
+.hover-cta-secondary:hover {
+  border-color: var(--theme-primary);
+  color: var(--theme-primary);
+}
+.hover-cta-tertiary {
+  transition-property: border-color, color;
+}
+.hover-cta-tertiary:hover {
+  border-color: var(--theme-accent);
+  color: var(--theme-accent);
+}
+
+/* 4. Icon (bg + color + opacity) */
+.hover-icon {
+  transition-property: background-color, color, opacity;
+}
+.hover-icon:hover {
+  background-color: var(--theme-primary);
+  color: var(--theme-text);
+  opacity: 1;
+}
+
+/* 5. List item background (used for quality items, capability items, etc.) */
+.hover-item {
+  transition-property: background-color;
+}
+.hover-item:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg));
+}
+
+/* 6. Accent bar (scaleX transition, child selector requires parent hover) */
+.hover-bar {
+  transition-property: transform;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.hover-bar:hover,
+[class*="hover-card"]:hover .hover-bar,
+[class*="hover-card-soft"]:hover .hover-bar {
+  transform: scaleX(1);
+}
+
+/* 7. Lift effect (translateY + box-shadow) */
+.hover-lift {
+  transition-property: transform, box-shadow;
+}
+.hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+}

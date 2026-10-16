@@ -3,6 +3,11 @@
 /* Custom component classes used by .astro components */
 @import "./global.restore.css";
 
+/* T1-P0+ (2026-10-16): Site-wide hover utility classes.
+   Replaces ~100+ inline onmouseover/onmouseout handlers with scoped
+   :hover rules. See hover-utilities.css for the class catalog. */
+@import "./hover-utilities.css";
+
 /* ============================================================
    P0-3D (2026-10-15): Self-hosted Inter (OFL 1.1, @fontsource v4.5.0).
    Replaces the async Google Fonts CSS link in BaseLayout.astro.

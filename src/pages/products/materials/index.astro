@@ -189,10 +189,9 @@ const catDesc: Record<string, string> = {
           const color = catColor[cat] || 'var(--theme-primary)';
           return (
             <a href={`#${cat.toLowerCase().replace(/\s+/g, '-')}`}
-              class="px-4 py-2 text-sm font-medium rounded-full border transition-all"
+              class="px-4 py-2 text-sm font-medium rounded-full border transition-all hover-template-var"
               style="background: color-mix(in srgb, var(--theme-bg) 100%, transparent); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent); color: var(--theme-text);"
-              onmouseover="this.style.borderColor='{color}'; this.style.color='{color}'"
-              onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.color='var(--theme-text)'"
+              
             >{catShort[cat]} ({count})</a>
           );
         })}

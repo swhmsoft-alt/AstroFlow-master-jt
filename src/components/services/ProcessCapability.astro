@@ -84,10 +84,9 @@ const methodStandardText = t('services.processcapability.methodStandardText');
         <tbody>
           {rows.map((r, idx) => (
             <tr
-              class="transition-colors"
+              class="transition-colors hover-bg-soft"
               style={`border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); ${idx === rows.length - 1 ? 'border-bottom: none;' : ''}`}
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
-              onmouseout="this.style.backgroundColor='transparent'"
+              
             >
               <td class="px-5 py-5 align-top">
                 <p class="text-sm leading-relaxed font-semibold" style="color: var(--theme-text);">{r.feature}</p>

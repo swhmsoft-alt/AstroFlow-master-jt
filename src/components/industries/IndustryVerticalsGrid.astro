@@ -107,10 +107,9 @@ const industries: Industry[] = [
         <a
           href={industry.href}
           aria-label={`Learn more about ${industry.name} titanium machining`}
-          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col h-full no-underline"
+          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col h-full no-underline hover-card"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+          
         >
           {/* Header */}
           <div class="flex items-start justify-between mb-4">

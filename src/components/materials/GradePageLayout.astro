@@ -123,10 +123,9 @@ const hp = `materials.${gradeKey}.hero`;
         {grade.faqs.map((faq, idx) => (
           <details class="group rounded-xl overflow-hidden transition-all duration-200"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
-            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none transition-colors"
+            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none transition-colors hover-bg-soft"
               style="color: var(--theme-text);"
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
-              onmouseout="this.style.backgroundColor='transparent'">
+              >
               <span class="text-base font-semibold pr-4">{t(`materials.grades.${gradeKey}.faq.${idx}.question`)}</span>
               <svg class="w-5 h-5 shrink-0 transition-transform duration-200 group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />

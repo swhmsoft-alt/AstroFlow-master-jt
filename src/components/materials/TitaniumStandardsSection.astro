@@ -70,17 +70,17 @@ const orderedCategories = STANDARD_CATEGORIES.filter(cat => standardsByCategory[
                 return (
                   <a
                     href={localizePath(`/materials/${stdKey}/`, currentLang)}
-                    class="group relative p-5 rounded-xl transition-all duration-300"
+                    class="group relative p-5 rounded-xl transition-all duration-300 hover-card-3prop-lift"
                     style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-                    onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'; this.style.transform='translateY(-2px)'"
-                    onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'; this.style.transform='translateY(0)'"
+                    
+                    
                   >
                     <div class="flex items-center justify-between mb-2">
                       <h4 class="text-base font-bold group-hover:transition-colors" style="color: var(--theme-text);">
                         {std.name}
                       </h4>
-                      <svg class="w-4 h-4 transition-all duration-200" style="color: var(--theme-primary); opacity: 0;"
-                        onmouseover="this.style.opacity='1'; this.style.transform='translateX(2px)'"
+                      <svg class="w-4 h-4 transition-all duration-200 hover-translate-x" style="color: var(--theme-primary); opacity: 0;"
+                        
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                       </svg>

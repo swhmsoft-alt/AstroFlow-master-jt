@@ -139,10 +139,9 @@ const mtcCalloutCta = t('services.qualitycontrol.mtc_callout_cta');
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {inspections.map((ins) => (
           <div
-            class="rounded-xl p-5 transition-all duration-300"
+            class="rounded-xl p-5 transition-all duration-300 hover-card-lift"
             style="background-color: color-mix(in srgb, var(--theme-primary) 5%, var(--theme-surface)); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
-            onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 35%, transparent)'; this.style.transform='translateY(-3px)'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.transform='translateY(0)'"
+            
           >
             <div class="text-xs font-semibold uppercase tracking-widest mb-2" style="color: color-mix(in srgb, var(--theme-primary) 75%, transparent);">
               {ins.metric}
@@ -167,10 +166,10 @@ const mtcCalloutCta = t('services.qualitycontrol.mtc_callout_cta');
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {certs.map((cert) => (
           <div
-            class="rounded-2xl p-6 transition-all duration-300 flex flex-col h-full"
+            class="rounded-2xl p-6 transition-all duration-300 flex flex-col h-full hover-card-3prop-45"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
-            onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 45%, transparent)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px color-mix(in srgb, var(--theme-primary) 18%, transparent)'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 22%, transparent)'; this.style.transform='translateY(0)'; this.style.boxShadow=''"
+            
+            
           >
             <div
               class="w-fit mb-4 px-4 py-2 rounded-lg text-base font-bold tracking-wider"

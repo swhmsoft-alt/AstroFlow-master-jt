@@ -96,10 +96,9 @@ const t = useTranslations(currentLang);
         <tbody>
           {downloads.map((item, index) => (
             <tr
-              class="transition-colors"
+              class="transition-colors hover-bg-surface"
               style="border-bottom: 1px solid color-mix(in srgb, var(--theme-text) 20%, transparent); background-color: var(--theme-bg);"
-              onmouseover="this.style.backgroundColor='var(--theme-surface)'"
-              onmouseout="this.style.backgroundColor='var(--theme-bg)'"
+              
             >
               <td class="px-6 py-5">
                 <div class="flex flex-col">
@@ -128,10 +127,9 @@ const t = useTranslations(currentLang);
               <td class="px-6 py-5 text-right">
                 <a
                   href={item.href}
-                  class="inline-flex items-center text-sm font-semibold transition-all group/link"
+                  class="inline-flex items-center text-sm font-semibold transition-all group/link hover-color-70-white"
                   style="color: var(--theme-primary);"
-                  onmouseover="this.style.color='color-mix(in srgb, var(--theme-primary) 70%, white)'"
-                  onmouseout="this.style.color='var(--theme-primary)'"
+                  
                 >
                   <span>{t('resources.engineeringdownloads.downloadPrefix')} {item.format}</span>
                   <svg class="w-3.5 h-3.5 ml-1.5 transition-transform group-hover/link:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

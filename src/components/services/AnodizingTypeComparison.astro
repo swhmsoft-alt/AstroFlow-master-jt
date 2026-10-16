@@ -206,10 +206,9 @@ const cards: DifferentiatorCard[] = [0, 1, 2].map((idx) => ({
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
       {cards.map((card) => (
         <article
-          class="group relative rounded-xl p-7 flex flex-col transition-all"
+          class="group relative rounded-xl p-7 flex flex-col transition-all hover-card"
           style={`background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-text) 12%, transparent);`}
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-text) 12%, transparent)'; this.style.boxShadow='none'"
+          
         >
           <!-- Tag -->
           <span
@@ -275,10 +274,9 @@ const cards: DifferentiatorCard[] = [0, 1, 2].map((idx) => ({
 
           <!-- Corner accent -->
           <div
-            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl hover-stage-arrow-32"
             style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
-            onmouseover="this.style.borderWidth='32px 32px 0 0'; this.style.opacity='1'"
-            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+            
           ></div>
         </article>
       ))}

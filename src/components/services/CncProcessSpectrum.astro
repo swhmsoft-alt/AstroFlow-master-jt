@@ -388,10 +388,9 @@ const arrowPath = "M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3";
         {processIndices.map((idx) => (
           <a
             href={hrefs[idx]}
-            class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full no-underline"
+            class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full no-underline hover-card"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent); display: block; text-decoration: none;"
-            onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+            
           >
             {/* Icon */}
             <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
@@ -424,10 +423,9 @@ const arrowPath = "M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3";
 
             {/* Corner hover accent */}
             <div
-              class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+              class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl hover-stage-arrow"
               style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
-              onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
-              onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+              
             ></div>
           </a>
         ))}

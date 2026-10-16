@@ -95,9 +95,8 @@ const alloyData: AlloyRow[] = gradeKeys && gradeKeys.length > 0
           {alloyData.map((row, idx) => (
             <tr
               style={`border-bottom: 1px solid var(--theme-surface);${idx % 2 === 0 ? '' : ' background-color: color-mix(in srgb, var(--theme-text) 3%, transparent);'}`}
-              class="transition-all"
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 5%, transparent)'"
-              onmouseout="this.style.backgroundColor=''"
+              class="transition-all hover-bg-5"
+              
             >
               <td class="py-4 px-5 font-bold whitespace-nowrap" style="color: var(--theme-text);">
                 {row.grade}

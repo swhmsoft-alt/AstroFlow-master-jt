@@ -90,10 +90,9 @@ const industries: Industry[] = [
       {industries.map((industry) => (
         <a
           href={industry.href}
-          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col items-center text-center block no-underline"
+          class="group relative rounded-xl p-6 transition-all duration-300 flex flex-col items-center text-center block no-underline hover-card"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+          
         >
           {/* Icon */}
           <div

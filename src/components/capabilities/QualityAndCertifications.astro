@@ -73,10 +73,9 @@ const qcStages = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
       {certStandards.map((cert) => (
         <div
-          class="relative rounded-xl p-8 transition-all duration-300"
+          class="relative rounded-xl p-8 transition-all duration-300 hover-template-accent"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); border-top: 3px solid {cert.accentColor};"
-          onmouseover="this.style.borderColor='{cert.accentColor}'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-accent) 6%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+          
         >
           <div class="flex items-start justify-between mb-4">
             <div>

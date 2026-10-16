@@ -111,10 +111,9 @@ const ctaButton = t('services.leadtime.ctaButton');
         <tbody>
           {rows.map((r, idx) => (
             <tr
-              class="transition-colors"
+              class="transition-colors hover-bg-soft"
               style={`border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); ${idx === rows.length - 1 ? 'border-bottom: none;' : ''}`}
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
-              onmouseout="this.style.backgroundColor='transparent'"
+              
             >
               <td class="px-5 py-5 align-top">
                   <span class="font-bold text-sm" style="color: var(--theme-text);">{r.config}</span>

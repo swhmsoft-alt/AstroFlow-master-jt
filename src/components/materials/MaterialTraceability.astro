@@ -63,10 +63,9 @@ const items: TraceabilityItem[] = [
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {items.map((item) => (
         <div
-          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full"
+          class="group relative rounded-xl p-8 transition-all duration-300 flex flex-col h-full hover-card"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+          
         >
           {/* Icon */}
           <div
@@ -99,10 +98,9 @@ const items: TraceabilityItem[] = [
 
           {/* Corner accent on hover */}
           <div
-            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300"
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 hover-stage-arrow"
             style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
-            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
-            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+            
           ></div>
         </div>
       ))}
@@ -112,10 +110,9 @@ const items: TraceabilityItem[] = [
     <div class="text-center mt-12">
       <a
         href="/rfq/" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all hover-cta"
         style="background-color: var(--theme-primary); color: var(--theme-text);"
-        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
+        
       >
         {t('materials.materialtraceability.cta')}
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

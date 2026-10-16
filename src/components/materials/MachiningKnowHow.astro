@@ -67,10 +67,9 @@ const items: KnowHowItem[] = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
       {items.map((item) => (
         <div
-          class="group relative rounded-xl p-8 transition-all duration-300"
+          class="group relative rounded-xl p-8 transition-all duration-300 hover-card"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+          
         >
           {/* Icon */}
           <div

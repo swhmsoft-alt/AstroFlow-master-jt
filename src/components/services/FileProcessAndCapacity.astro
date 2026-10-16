@@ -93,10 +93,9 @@ const capLede = t('services.fileprocess.capLede');
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
       {processSteps.map((step) => (
         <div
-          class="rounded-2xl p-5 transition-all duration-300"
+          class="rounded-2xl p-5 transition-all duration-300 hover-card-lift"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 22%, transparent);"
-          onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 45%, transparent)'; this.style.transform='translateY(-3px)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 22%, transparent)'; this.style.transform='translateY(0)'"
+          
         >
           <div class="flex items-start mb-3">
             <span
@@ -147,10 +146,9 @@ const capLede = t('services.fileprocess.capLede');
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {capacity.map((row) => (
           <div
-            class="rounded-2xl p-5 text-center transition-all duration-300"
+            class="rounded-2xl p-5 text-center transition-all duration-300 hover-card-lift"
             style="background: linear-gradient(135deg, var(--theme-surface), color-mix(in srgb, var(--theme-primary) 5%, var(--theme-surface))); border: 1px solid color-mix(in srgb, var(--theme-primary) 25%, transparent);"
-            onmouseover="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 50%, transparent)'; this.style.transform='translateY(-4px)'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 25%, transparent)'; this.style.transform='translateY(0)'"
+            
           >
             <div class="text-3xl md:text-4xl font-bold mb-1" style="color: var(--theme-primary);">{row.value}</div>
             <div class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: color-mix(in srgb, var(--theme-primary) 80%, transparent);">{row.unit}</div>

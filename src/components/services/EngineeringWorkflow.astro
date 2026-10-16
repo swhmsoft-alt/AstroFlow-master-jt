@@ -70,10 +70,9 @@ const steps: WorkflowStep[] = [
             <div class="relative mb-6">
               {/* Circle */}
               <div
-                class="w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 z-10 relative"
+                class="w-20 h-20 rounded-full flex items-center justify-center transition-all duration-300 z-10 relative hover-card-25"
                 style="background-color: var(--theme-surface); border: 2px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
-                onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 25px color-mix(in srgb, var(--theme-primary) 15%, transparent)'"
-                onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+                
               >
                 <svg class="w-8 h-8" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
                   <g set:html={step.icon} />
@@ -118,10 +117,9 @@ const steps: WorkflowStep[] = [
     <div class="text-center mt-16">
       <a
         href="/rfq/" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all hover-cta"
         style="background-color: var(--theme-primary); color: #ffffff;"
-        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
+        
       >
         {t('services.workflow.cta')}
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

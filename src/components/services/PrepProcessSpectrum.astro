@@ -71,10 +71,9 @@ const t = useTranslations(currentLang);
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {processes.map((proc) => (
         <div
-          class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300"
+          class="group relative rounded-xl p-8 flex flex-col h-full transition-all duration-300 hover-card"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 18%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 18%, transparent)'; this.style.boxShadow='none'"
+          
         >
           <div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style="background-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
             <svg class="w-6 h-6" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
@@ -95,10 +94,9 @@ const t = useTranslations(currentLang);
             ))}
           </ul>
           <div
-            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl"
+            class="absolute top-0 right-0 w-0 h-0 transition-all duration-300 rounded-tr-xl hover-stage-arrow"
             style="border-style: solid; border-width: 0 0 0 0; border-color: transparent var(--theme-primary) transparent transparent; opacity: 0;"
-            onmouseover="this.style.borderWidth='40px 40px 0 0'; this.style.opacity='1'"
-            onmouseout="this.style.borderWidth='0 0 0 0'; this.style.opacity='0'"
+            
           ></div>
         </div>
       ))}

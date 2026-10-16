@@ -111,8 +111,7 @@ const defaultCanonical = canonicalURL;
           <tbody>
             {standard.technicalProperties.map((prop, idx) => (
               <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent); background-color: idx % 2 === 0 ? 'var(--theme-surface)' : 'color-mix(in srgb, var(--theme-primary) 2%, transparent)';"
-                onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 5%, transparent)'"
-                onmouseout="this.style.backgroundColor= idx % 2 === 0 ? 'var(--theme-surface)' : 'color-mix(in srgb, var(--theme-primary) 2%, transparent)'">
+                > class="hover-bg-5"
                 <td class="px-6 py-3.5 font-medium" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t(`materials.techspecs.${standard.faqCategoryKey}.label.${idx}`)}</td>
                 <td class="px-6 py-3.5 font-semibold" style="color: var(--theme-text);">{t(`materials.techspecs.${standard.faqCategoryKey}.value.${idx}`)}</td>
               </tr>
@@ -145,10 +144,9 @@ const defaultCanonical = canonicalURL;
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
         {standard.cncCapabilities.map((cap) => (
-          <div class="p-5 rounded-xl text-center transition-all duration-300"
+          <div class="p-5 rounded-xl text-center transition-all duration-300 hover-card-20-6"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-            onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+            
           >
             <div class="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-3" style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
               <svg class="w-5 h-5" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,10 +228,9 @@ const defaultCanonical = canonicalURL;
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {standard.qualityCerts.map((cert) => (
-          <div class="p-4 rounded-xl flex items-center gap-3 transition-all duration-300"
+          <div class="p-4 rounded-xl flex items-center gap-3 transition-all duration-300 hover-card-border-only"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-            onmouseover="this.style.borderColor='var(--theme-primary)'"
-            onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'"
+            
           >
             <svg class="w-5 h-5 shrink-0" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -301,10 +298,9 @@ const defaultCanonical = canonicalURL;
           <details class="group rounded-xl overflow-hidden transition-all duration-200"
             style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
           >
-            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none transition-colors"
+            <summary class="flex items-center justify-between px-6 py-5 cursor-pointer list-none transition-colors hover-bg-soft"
               style="color: var(--theme-text);"
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
-              onmouseout="this.style.backgroundColor='transparent'"
+              
             >
               <span class="text-base font-semibold pr-4">{t(qKey)}</span>
               <svg class="w-5 h-5 shrink-0 transition-transform duration-200 group-open:rotate-180" style="color: var(--theme-primary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -339,20 +335,18 @@ const defaultCanonical = canonicalURL;
         {standard.ctaDescription}
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="/rfq/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 text-base font-bold rounded-xl shadow-lg transition-all"
+        <a href="/rfq/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 text-base font-bold rounded-xl shadow-lg transition-all hover-cta-80-30"
           style="background-color: var(--theme-primary); color: var(--theme-text);"
-          onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-          onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''">
+          >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
           </svg>
           {t('materials.titaniumstandards.ctaUpload')}
         </a>
         <a href="/rfq/" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-8 py-4 text-base font-bold rounded-xl transition-all border"
+          class="inline-flex items-center gap-3 px-8 py-4 text-base font-bold rounded-xl transition-all border hover-bg-10"
           style="border-color: color-mix(in srgb, var(--theme-primary) 30%, transparent); color: var(--theme-text);"
-          onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 10%, transparent)'"
-          onmouseout="this.style.backgroundColor='transparent'">
+          >
           {t('materials.titaniumstandards.ctaContact')}
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -395,10 +389,9 @@ const defaultCanonical = canonicalURL;
           const relKey = relStd.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
           return (
             <a href={localizePath(`/materials/${relKey}/`, lang)}
-              class="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-xl transition-all"
+              class="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium rounded-xl transition-all hover-bg-8"
               style="color: var(--theme-primary); border: 1px solid color-mix(in srgb, var(--theme-primary) 20%, transparent); background-color: var(--theme-surface);"
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'; this.style.borderColor='var(--theme-primary)'"
-              onmouseout="this.style.backgroundColor='var(--theme-surface)'; this.style.borderColor='color-mix(in srgb, var(--theme-primary) 20%, transparent)'">
+              >
               {relStd}
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -409,10 +402,9 @@ const defaultCanonical = canonicalURL;
       </div>
       <div class="text-center mt-10">
         <a href={localizePath('/materials/', lang)}
-          class="inline-flex items-center gap-2 text-sm font-medium transition-all"
+          class="inline-flex items-center gap-2 text-sm font-medium transition-all hover-color-only"
           style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);"
-          onmouseover="this.style.color='var(--theme-primary)'"
-          onmouseout="this.style.color='color-mix(in srgb, var(--theme-text) 50%, transparent)'">
+          >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>

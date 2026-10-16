@@ -163,10 +163,9 @@ const takeawayCta = t('services.axismatrix.takeawayCta');
         <tbody>
           {dimensions.map((dim, idx) => (
             <tr
-              class="transition-colors"
+              class="transition-colors hover-bg-soft"
               style={`border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); ${idx === dimensions.length - 1 ? 'border-bottom: none;' : ''}`}
-              onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 4%, transparent)'"
-              onmouseout="this.style.backgroundColor='transparent'"
+              
             >
               <th
                 scope="row"

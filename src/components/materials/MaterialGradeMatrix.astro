@@ -187,10 +187,9 @@ const gradeGroups: GradeGroup[] = [
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             {group.grades.map((card) => (
               <div
-                class="group relative rounded-xl p-6 transition-all duration-300"
+                class="group relative rounded-xl p-6 transition-all duration-300 hover-template-var-3"
                 style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-                onmouseover="this.style.borderColor='{group.accentColor}'; this.style.boxShadow='0 0 30px color-mix(in srgb, {group.accentColor} 6%, transparent)'"
-                onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+                
               >
                 {/* Grade Header */}
                 <div class="flex items-start justify-between mb-4">
