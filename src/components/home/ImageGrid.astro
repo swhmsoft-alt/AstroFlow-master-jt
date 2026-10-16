@@ -116,12 +116,10 @@ const t = useTranslations(currentLang);
     
     <!-- Bottom CTA -->
     <div class="text-center mt-16">
-      <a 
-        href="https://cnc.bozemetal.com/services/" 
-        class="inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group"
+      <a
+        href="https://cnc.bozemetal.com/services/"
+        class="cta-glow inline-flex items-center px-8 py-4 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group"
         style="background-color: var(--theme-primary); color: var(--theme-text);"
-        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
       >
         {t('home.imageGrid.cta')}
         <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -131,3 +129,11 @@ const t = useTranslations(currentLang);
     </div>
   </div>
 </section>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  .cta-glow:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+  }
+</style>

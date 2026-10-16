@@ -60,14 +60,12 @@ const langEntries = (Object.keys(LANGUAGES) as Lang[])
 <div class="relative language-selector group">
   <!-- Trigger Button -->
   <button
-    class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer border"
+    class="lang-trigger inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg transition-all duration-200 cursor-pointer border"
     style="
       color: var(--theme-nav-text);
       border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);
       background-color: transparent;
     "
-    onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-    onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 15%, transparent)'; this.style.backgroundColor='transparent'"
     aria-label="Select language"
   >
     <!-- Globe Icon -->
@@ -96,15 +94,13 @@ const langEntries = (Object.keys(LANGUAGES) as Lang[])
           <a
             href={href}
             aria-label={name}
-            class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-150"
+            class={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-150 ${isActive ? 'lang-link-active' : 'lang-link'}`}
             style={{
               color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)',
               opacity: isActive ? 1 : 0.75,
               backgroundColor: isActive ? 'color-mix(in srgb, var(--theme-primary) 10%, transparent)' : 'transparent',
               fontWeight: isActive ? 600 : 400,
             }}
-            onmouseover={!isActive ? "this.style.color='var(--theme-primary)'; this.style.opacity='1'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'" : undefined}
-            onmouseout={!isActive ? "this.style.color='var(--theme-text)'; this.style.opacity='0.75'; this.style.backgroundColor='transparent'" : undefined}
           >
             <!-- Language Code Badge -->
             <span
@@ -131,5 +127,18 @@ const langEntries = (Object.keys(LANGUAGES) as Lang[])
   }
   .language-selector:hover .pointer-events-none {
     pointer-events: auto;
+  }
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  .lang-trigger:hover {
+    border-color: var(--theme-primary);
+    background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+  }
+  .lang-link {
+    transition: color 0.2s, opacity 0.2s, background-color 0.2s;
+  }
+  .lang-link:hover {
+    color: var(--theme-primary);
+    opacity: 1;
+    background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);
   }
 </style>

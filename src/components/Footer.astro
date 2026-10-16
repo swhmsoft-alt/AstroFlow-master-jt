@@ -70,8 +70,6 @@ const siteDescription = SITE.description;
             rel="noopener noreferrer"
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
             style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
-            onmouseover="this.style.backgroundColor='var(--theme-primary)'; this.style.color='var(--theme-text)'; this.style.opacity='1'"
-            onmouseout="this.style.backgroundColor='var(--theme-surface)'; this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
             aria-label="LinkedIn (opens in new tab)"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -83,8 +81,6 @@ const siteDescription = SITE.description;
             href={SOCIAL_LINKS.facebook}
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
             style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
-            onmouseover="this.style.backgroundColor='var(--theme-primary)'; this.style.color='var(--theme-text)'; this.style.opacity='1'"
-            onmouseout="this.style.backgroundColor='var(--theme-surface)'; this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
             aria-label="Facebook"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -95,8 +91,6 @@ const siteDescription = SITE.description;
             href={SOCIAL_LINKS.instagram}
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
             style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
-            onmouseover="this.style.backgroundColor='var(--theme-primary)'; this.style.color='var(--theme-text)'; this.style.opacity='1'"
-            onmouseout="this.style.backgroundColor='var(--theme-surface)'; this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
             aria-label="Instagram"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -107,8 +101,6 @@ const siteDescription = SITE.description;
             href={SOCIAL_LINKS.youtube}
             class="w-10 h-10 flex items-center justify-center rounded-lg transition-all"
             style="background-color: var(--theme-surface); color: var(--theme-text); opacity: 0.55;"
-            onmouseover="this.style.backgroundColor='var(--theme-primary)'; this.style.color='var(--theme-text)'; this.style.opacity='1'"
-            onmouseout="this.style.backgroundColor='var(--theme-surface)'; this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
             aria-label="YouTube"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -130,8 +122,6 @@ const siteDescription = SITE.description;
                 href={localizePath(item.href, currentLang)}
                 class="text-sm inline-flex items-center group transition-colors"
                 style="color: var(--theme-text); opacity: 0.55;"
-                onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
-                onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
               >
                 <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
                 {/* 2026-09-17 nav audit — fallback to `item.name` so missing
@@ -149,8 +139,6 @@ const siteDescription = SITE.description;
               href={localizePath('/resources/titanium-grades-guide/', currentLang)}
               class="text-sm inline-flex items-center group transition-colors"
               style="color: var(--theme-text); opacity: 0.55;"
-              onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
-              onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
             >
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               Titanium Grades Guide
@@ -162,8 +150,6 @@ const siteDescription = SITE.description;
               href={localizePath('/resources/design-engineering-guide/', currentLang)}
               class="text-sm inline-flex items-center group transition-colors"
               style="color: var(--theme-text); opacity: 0.55;"
-              onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
-              onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'"
             >
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               Design &amp; Engineering Guide
@@ -179,25 +165,25 @@ const siteDescription = SITE.description;
         </h3>
         <ul class="space-y-3">
           <li>
-            <a href={localizePath('/services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            <a href={localizePath('/services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.cncMachining')}
             </a>
           </li>
           <li>
-            <a href={localizePath('/titanium-additive-manufacturing', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            <a href={localizePath('/titanium-additive-manufacturing', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.additiveManufacturing')}
             </a>
           </li>
           <li>
-            <a href={localizePath('/titanium-fabrication-services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            <a href={localizePath('/titanium-fabrication-services', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.fabrication')}
             </a>
           </li>
           <li>
-            <a href={localizePath('/titanium-surface-treatment', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            <a href={localizePath('/titanium-surface-treatment', currentLang)} class="text-sm inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.services.surfaceTreatment')}
             </a>
@@ -214,13 +200,13 @@ const siteDescription = SITE.description;
         </h3>
         <ul class="space-y-3 text-sm">
           <li>
-            <a href={localizePath('/about', currentLang)} class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            <a href={localizePath('/about', currentLang)} class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.aboutUs')}
             </a>
           </li>
           <li>
-            <a href="/rfq/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+            <a href="/rfq/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center group transition-colors" style="color: var(--theme-text); opacity: 0.55;">
               <span class="w-0 group-hover:w-2 h-0.5 transition-all mr-0 group-hover:mr-2" style="background-color: var(--theme-primary);"></span>
               {t('footer.requestQuote')}
             </a>
@@ -230,10 +216,8 @@ const siteDescription = SITE.description;
         <div class="mt-8">
           <a
             href="/rfq/" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg shadow-lg transition-all"
+            class="cta-glow-strong inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg shadow-lg transition-all"
             style="background-color: var(--theme-primary); color: var(--theme-text);"
-            onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 50%, transparent)'"
-            onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
           >
             {t('footer.getStartedBtn')}
           </a>
@@ -274,23 +258,47 @@ const siteDescription = SITE.description;
           &copy; {new Date().getFullYear()} Boze Titanium Manufacturing Center. Operated by Baoji Boze Metal Products Co., Ltd. All Rights Reserved.
         </p>
         <div class="flex items-center space-x-6 text-sm">
-          <a href="https://www.bozemetal.com/" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+          <a href="https://www.bozemetal.com/" target="_blank" rel="noopener noreferrer" class="text-sm transition-colors" style="color: var(--theme-text); opacity: 0.55;">
             Parent Company: Boze Metal
           </a>
           <span style="color: var(--theme-text); opacity: 0.3;">•</span>
-          <a href={localizePath('/privacy-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+          <a href={localizePath('/privacy-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;">
             {t('footer.privacyPolicy')}
           </a>
           <span style="color: var(--theme-text); opacity: 0.3;">•</span>
-          <a href={localizePath('/terms-of-service/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+          <a href={localizePath('/terms-of-service/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;">
             {t('footer.termsOfService')}
           </a>
           <span style="color: var(--theme-text); opacity: 0.3;">•</span>
-          <a href={localizePath('/cookie-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;" onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.55'">
+          <a href={localizePath('/cookie-policy/', currentLang)} class="transition-colors" style="color: var(--theme-text); opacity: 0.55;">
             {t('footer.cookiePolicy')}
           </a>
         </div>
       </div>
     </div>
   </div>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  .footer-link {
+    transition: color 0.2s, opacity 0.2s;
+  }
+  .footer-link:hover {
+    color: var(--theme-primary);
+    opacity: 1;
+  }
+  .footer-social {
+    transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+  }
+  .footer-social:hover {
+    background-color: var(--theme-primary);
+    color: var(--theme-text);
+    opacity: 1;
+  }
+  /* Get Started CTA (50% glow variant). */
+  .cta-glow-strong:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  }
+</style>
 </footer>

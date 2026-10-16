@@ -35,24 +35,20 @@ const isEn = currentLang === DEFAULT_LANG;
       <p class="text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);" set:html={isEn ? linkify(t('home.cta.subtitle'), 5) : t('home.cta.subtitle')} />
       
       <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-        <a 
+        <a
           href="/rfq/" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg shadow-2xl hover:shadow-3xl transition-all group"
+          class="cta-glow-strong inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg shadow-2xl hover:shadow-3xl transition-all group"
           style="background-color: var(--theme-primary); color: var(--theme-text);"
-          onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 85%, black)'; this.style.boxShadow='0 0 25px color-mix(in srgb, var(--theme-primary) 50%, transparent)'"
-          onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
         >
           {t('home.cta.quote')}
           <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
-        <a 
+        <a
           href="https://cnc.bozemetal.com/services/"
-          class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 rounded-lg shadow-2xl hover:shadow-3xl transition-all group"
+          class="cta-secondary inline-flex items-center justify-center px-8 py-4 text-lg font-semibold border-2 rounded-lg shadow-2xl hover:shadow-3xl transition-all group"
           style="border-color: color-mix(in srgb, var(--theme-primary) 20%, transparent); color: color-mix(in srgb, var(--theme-text) 65%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.color='var(--theme-primary)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 20%, transparent)'; this.style.color='color-mix(in srgb, var(--theme-text) 65%, transparent)'"
         >
           {t('home.cta.tour')}
           <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,3 +79,15 @@ const isEn = currentLang === DEFAULT_LANG;
     </div>
   </div>
 </section>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  .cta-glow-strong:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 85%, black);
+    box-shadow: 0 0 25px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  }
+  .cta-secondary:hover {
+    border-color: var(--theme-primary);
+    color: var(--theme-primary);
+  }
+</style>

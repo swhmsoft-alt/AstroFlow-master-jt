@@ -73,10 +73,8 @@ const gradeGroups: GradeGroup[] = [
     <div class="space-y-8 max-w-5xl mx-auto">
       {gradeGroups.map((group) => (
         <div
-          class="rounded-xl p-8 transition-all duration-300"
+          class="grade-card rounded-xl p-8 transition-all duration-300"
           style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-          onmouseover="this.style.borderColor='var(--theme-primary)'; this.style.boxShadow='0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
         >
           <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
             <div>
@@ -122,10 +120,8 @@ const gradeGroups: GradeGroup[] = [
     <div class="text-center mt-12">
       <a
         href={localizePath('/services', currentLang)}
-        class="inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
+        class="cta-glow inline-flex items-center px-6 py-3 text-base font-semibold rounded-lg shadow-lg transition-all"
         style="background-color: var(--theme-primary); color: #ffffff;"
-        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
       >
         {t('home.materials.cta')}
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,3 +131,15 @@ const gradeGroups: GradeGroup[] = [
     </div>
   </div>
 </section>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  .grade-card:hover {
+    border-color: var(--theme-primary);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 6%, transparent);
+  }
+  .cta-glow:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+  }
+</style>

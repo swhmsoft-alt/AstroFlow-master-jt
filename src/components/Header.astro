@@ -292,8 +292,6 @@ const logoSubtext = t('header.logoSubtext');
               color: isActive ? 'var(--theme-primary)' : 'var(--theme-text)',
               opacity: isActive ? 1 : 0.65,
             }}
-            onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
-            onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.65'"
           >
             {itemLabelText}
             {hasChildren && (
@@ -328,10 +326,8 @@ const logoSubtext = t('header.logoSubtext');
                       ) : (
                         <a
                           href={localizePath(child.href, currentLang)}
-                          class="text-sm py-2 px-3 rounded-lg transition-all whitespace-nowrap border"
+                          class="header-dropdown-single text-sm py-2 px-3 rounded-lg transition-all whitespace-nowrap border"
                           style="color: var(--theme-text); opacity: 0.7; border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-                          onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'; this.style.borderColor='var(--theme-primary)'; this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-                          onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.7'; this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.backgroundColor='transparent'"
                         >
                           {t(childNavKeyByHref[child.href] || child.name)}
                         </a>
@@ -367,10 +363,8 @@ const logoSubtext = t('header.logoSubtext');
                               <li>
                                 <a
                                   href={localizePath(child.href, currentLang)}
-                                  class="block text-sm py-1.5 rounded transition-all hover:translate-x-0.5"
+                                  class="header-dropdown-multi block text-sm py-1.5 rounded transition-all hover:translate-x-0.5"
                                   style="color: var(--theme-text); opacity: 0.7;"
-                                  onmouseover="this.style.color='var(--theme-primary)'; this.style.opacity='1'"
-                                  onmouseout="this.style.color='var(--theme-text)'; this.style.opacity='0.7'"
                                 >
                                   {t(childNavKeyByHref[child.href] || child.name)}
                                 </a>
@@ -395,10 +389,8 @@ const logoSubtext = t('header.logoSubtext');
       <LanguageSelector />
       <a
         href="/rfq/" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-lg shadow-md transition-all"
+        class="cta-glow inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-lg shadow-md transition-all"
         style="background-color: var(--theme-primary); color: var(--theme-text);"
-        onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 80%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 50%, transparent)'"
-        onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow=''"
       >
         {t('hero.cta')}
       </a>
@@ -416,3 +408,30 @@ const logoSubtext = t('header.logoSubtext');
     />
   </nav>
 </header>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  /* The top-level nav <a> in the desktop strip changes color/opacity on hover. */
+  /* (Dropdown items + RFQ button have their own dedicated classes below.) */
+  nav > div > a[href]:not([class*="dropdown"]):not([class*="cta-glow"]):hover {
+    color: var(--theme-primary);
+    opacity: 1;
+  }
+  /* Single-column dropdown items (Services > child). */
+  .header-dropdown-single:hover {
+    color: var(--theme-primary);
+    opacity: 1;
+    border-color: var(--theme-primary);
+    background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+  }
+  /* Multi-column dropdown items (Industries, Capabilities, etc.). */
+  .header-dropdown-multi:hover {
+    color: var(--theme-primary);
+    opacity: 1;
+  }
+  /* RFQ button in the top-right. */
+  .cta-glow:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  }
+</style>

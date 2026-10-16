@@ -109,7 +109,7 @@ const qualityItems: TrustItem[] = [
         </h3>
         <div class="space-y-4">
           {capabilityItems.map((item) => (
-            <div class="flex items-start gap-4 p-4 rounded-lg transition-all" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, transparent);" onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg))'" onmouseout="this.style.backgroundColor='color-mix(in srgb, var(--theme-bg) 50%, transparent)'">
+            <div class="capability-item flex items-start gap-4 p-4 rounded-lg transition-all" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, transparent);">
               <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
                 <svg class="w-5 h-5" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.iconPath} />
@@ -134,7 +134,7 @@ const qualityItems: TrustItem[] = [
         </h3>
         <div class="space-y-4">
           {qualityItems.map((item) => (
-            <div class="flex items-start gap-4 p-4 rounded-lg transition-all" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, transparent);" onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg))'" onmouseout="this.style.backgroundColor='color-mix(in srgb, var(--theme-bg) 50%, transparent)'">
+            <div class="quality-item flex items-start gap-4 p-4 rounded-lg transition-all" style="background-color: color-mix(in srgb, var(--theme-bg) 50%, transparent);">
               <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, color-mix(in srgb, var(--theme-primary) 15%, transparent), color-mix(in srgb, var(--theme-primary) 5%, transparent));">
                 <svg class="w-5 h-5" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.iconPath} />
@@ -153,10 +153,8 @@ const qualityItems: TrustItem[] = [
           <a
             href="/rfq/"
             target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg transition-all group"
+            class="cta-glow-strong inline-flex items-center px-6 py-3 text-sm font-semibold rounded-lg transition-all group"
             style="background-color: var(--theme-primary); color: var(--theme-text);"
-            onmouseover="this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 85%, black)'; this.style.boxShadow='0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent)'"
-            onmouseout="this.style.backgroundColor='var(--theme-primary)'; this.style.boxShadow='none'"
           >
             {t('home.japanTrust.cta')}
             <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,3 +166,15 @@ const qualityItems: TrustItem[] = [
     </div>
   </div>
 </section>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover. */
+  .quality-item:hover,
+  .capability-item:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 8%, var(--theme-bg));
+  }
+  .cta-glow-strong:hover {
+    background-color: color-mix(in srgb, var(--theme-primary) 85%, black);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+  }
+</style>

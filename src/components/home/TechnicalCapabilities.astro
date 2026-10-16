@@ -72,10 +72,8 @@ const capabilities: Capability[] = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
       {capabilities.map((cap) => (
         <div
-          class="relative rounded-xl p-8 transition-all duration-300"
-          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"
-          onmouseover="this.style.borderColor=cap.accent; this.style.boxShadow='0 0 40px color-mix(in srgb, var(--theme-primary) 8%, transparent)'"
-          onmouseout="this.style.borderColor='color-mix(in srgb, var(--theme-primary) 12%, transparent)'; this.style.boxShadow='none'"
+          class="tech-cap-card relative rounded-xl p-8 transition-all duration-300"
+          style={`--card-accent: ${cap.accent}; background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);`}
         >
           <div class="flex items-start justify-between mb-4">
             <div>
@@ -97,7 +95,7 @@ const capabilities: Capability[] = [
           <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);" set:html={isEn ? linkify(cap.subtext, 3) : cap.subtext} />
 
           <!-- Bottom accent bar -->
-          <div class="absolute bottom-0 left-0 right-0 h-0.5 rounded-full" style="background: linear-gradient(90deg, var(--theme-primary), #14b8a6); transform: scaleX(0); transition: transform 0.3s;" onmouseover="this.style.transform='scaleX(1)'" onmouseout="this.style.transform='scaleX(0)'"></div>
+          <div class="tech-cap-bar absolute bottom-0 left-0 right-0 h-0.5 rounded-full" style="background: linear-gradient(90deg, var(--theme-primary), #14b8a6); transform: scaleX(0); transition: transform 0.3s;"></div>
         </div>
       ))}
     </div>
@@ -119,3 +117,17 @@ const capabilities: Capability[] = [
     </div>
   </div>
 </section>
+
+<style>
+  /* T1-P0 (2026-10-16): Replaced inline onmouseover/onmouseout with scoped :hover.
+     Each card carries its own --card-accent CSS variable (per-capability
+     color: var(--theme-primary) or #14b8a6) so the hover border picks up
+     the right accent without inline JS. */
+  .tech-cap-card:hover {
+    border-color: var(--card-accent);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--theme-primary) 8%, transparent);
+  }
+  .tech-cap-card:hover .tech-cap-bar {
+    transform: scaleX(1);
+  }
+</style>
