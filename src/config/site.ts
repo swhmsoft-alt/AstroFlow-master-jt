@@ -1,4 +1,4 @@
-// Site configuration
+﻿// Site configuration
 import { isRouteAvailableInLang } from './route-availability.mjs';
 
 export const SITE = {
@@ -32,7 +32,7 @@ function filterNavByLang(items: NavItem[], lang: string): NavItem[] {
         }))
         .filter((col) => col.items.length > 0);
       if (filteredChildren.length === 0) return null;
-      // Drop the parent if its own href is unavailable AND it has no surviving children — rare
+      // Drop the parent if its own href is unavailable AND it has no surviving children 鈥?rare
       if (!isRouteAvailableInLang(item.href, lang)) {
         return { ...item, children: filteredChildren };
       }
@@ -51,11 +51,11 @@ export const NAVIGATION: NavItem[] = [
         heading: 'CNC Machining',
         items: [
           { name: 'Titanium CNC Machining Services', href: '/titanium-cnc-machining-services/' },
-          // 2026-10-14 — Navigation slim-down per Buyer Search Intelligence.
+          // 2026-10-14 鈥?Navigation slim-down per Buyer Search Intelligence.
           // Only the 3 flagship grades (Grade 2 / 5 / 23) appear in the top
           // dropdown. The other 7 grade sub-pages are still reachable from
           // the /titanium-cnc-machining-services/ hub page card grid, the
-          // /materials/ dimension, keywordMap, and sitemaps — no orphan.
+          // /materials/ dimension, keywordMap, and sitemaps 鈥?no orphan.
           { name: 'Grade 2 CP-Ti Machining', href: '/titanium-cnc-machining-services/grade-2-titanium-cnc-machining/' },
           { name: 'Grade 5 Ti-6Al-4V Machining', href: '/titanium-cnc-machining-services/grade-5-titanium-cnc-machining/' },
           { name: 'Grade 23 Ti-6Al-4V ELI Machining', href: '/titanium-cnc-machining-services/grade-23-titanium-cnc-machining/' },
@@ -195,7 +195,7 @@ export const NAVIGATION: NavItem[] = [
   },
   {
     name: 'Industries',
-    // 2026-09-17 dead-link audit — trailing slash to match canonical page URL.
+    // 2026-09-17 dead-link audit 鈥?trailing slash to match canonical page URL.
     href: '/industries/',
     children: [
       {
@@ -221,6 +221,9 @@ export const NAVIGATION: NavItem[] = [
       {
         heading: 'Resource Hub',
         items: [
+          // 2026-10-17 - About promoted to first slot in Resources per Buyer Search Intelligence D5.
+          // Pinned at top so company credentials are reachable in 1 click from any page on the site.
+          { name: 'About', href: '/about/' },
           { name: 'Titanium Knowledge Base', href: '/resources/titanium-knowledge-base/' },
           { name: 'Titanium Grades Guide', href: '/resources/titanium-grades-guide/' },
           { name: 'Design & Engineering Guides', href: '/resources/design-engineering-guide/' },
@@ -230,9 +233,9 @@ export const NAVIGATION: NavItem[] = [
           { name: 'FAQs', href: '/resources/faq/' },
           { name: 'Engineering Tools', href: '/tools/' },
           { name: 'Downloads', href: '/resources/downloads/' },
-          // 2026-10-06 — trailing slash audit (Phase A). All hrefs normalized
+          // 2026-10-06 鈥?trailing slash audit (Phase A). All hrefs normalized
           // to match Astro's trailingSlash: 'always' canonical URLs.
-          // 2026-10-06 — /products/ moved out of Resources into the new
+          // 2026-10-06 鈥?/products/ moved out of Resources into the new
           // Solutions dropdown promoted at top level (see getNavigation).
           { name: 'Blog', href: '/blog/' },
         ],
@@ -244,12 +247,12 @@ export const NAVIGATION: NavItem[] = [
 /**
  * Return the navigation structure for the given locale.
  *
- * Only English (the default locale) promotes "Solutions" — a top-level dropdown
+ * Only English (the default locale) promotes "Solutions" 鈥?a top-level dropdown
  * that aggregates the four B2B procurement hubs (Custom Parts, the /products
  * Solutions hub, Standard Parts, Mill Products).  The dropdown is inserted
  * immediately after Home, giving the English order:
  *
- *     Home → Solutions (dropdown) → Services → Materials → ...
+ *     Home 鈫?Solutions (dropdown) 鈫?Services 鈫?Materials 鈫?...
  *
  * All other locales keep the shared NAVIGATION structure unchanged because the
  * localized product-hub pages are not built yet.
@@ -263,14 +266,14 @@ export function getNavigation(lang: string): NavItem[] {
   // Non-English locales: filter out nav items pointing to English-only paths.
   // This is the "0-link entry" rule: a URL not translated to the current
   // locale must not appear in the nav, hreflang alternate, or any internal
-  // link — otherwise the crawler discovers it and 404s. (See
+  // link 鈥?otherwise the crawler discovers it and 404s. (See
   // src/config/route-availability.mjs for the denylist.)
   if (lang !== 'en') return filterNavByLang(NAVIGATION, lang);
 
-  // Solutions — the abbreviated English nav label. The dropdown aggregates the
+  // Solutions 鈥?the abbreviated English nav label. The dropdown aggregates the
   // four product hubs (Custom Parts, the /products/ Solutions hub, Standard
   // Parts, Mill Products). All hrefs end with `/` per the trailing-slash
-  // mandate (.clinerules/工作区 Rules.txt §7).
+  // mandate (.clinerules/宸ヤ綔鍖?Rules.txt 搂7).
   const solutionsItem: NavItem = {
     name: 'Solutions',
     href: '/products/',
@@ -292,7 +295,7 @@ export function getNavigation(lang: string): NavItem[] {
   for (const item of NAVIGATION) {
     englishNav.push(item);
     // Insert the Solutions dropdown immediately after Home, giving the English
-    // order: Home → Solutions → Services → Materials → Capabilities → ...
+    // order: Home 鈫?Solutions 鈫?Services 鈫?Materials 鈫?Capabilities 鈫?...
     if (item.href === '/' && !solutionsInserted) {
       englishNav.push(solutionsItem);
       solutionsInserted = true;

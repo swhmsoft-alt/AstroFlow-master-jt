@@ -1,4 +1,4 @@
----
+﻿---
 /**
  * AboutPage.astro
  * The "About Boze Titanium Manufacturing Center" page content component.
@@ -57,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
   </div>
 </section>
 
-<!-- Editorial & AI Use Policy (Audit A2) — 2026-10-15 -->
+<!-- Editorial & AI Use Policy (Audit A2) 鈥?2026-10-15 -->
 <section class="relative py-12 lg:py-16" style="background-color: var(--theme-bg);">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
@@ -157,6 +157,123 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
           </div>
         </li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications & Compliance Section - 2026-10-17 -->
+<!-- D2 (Who can) evidence module: 5 audit-verified credentials, -->
+<!-- each card links to the full-resolution webp for procurement / QA teams. -->
+<!-- Maps to /capabilities/certifications/ for the deep hub. -->
+<section id="certifications" class="relative py-16 lg:py-20" style="background-color: var(--theme-surface);">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider mb-3 px-3 py-1 rounded-full" style="color: var(--theme-primary); background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+          Audited &amp; Verified
+        </span>
+        <h2 class="text-3xl font-bold mb-4" style="color: var(--theme-text);">
+          Certifications &amp; Compliance
+        </h2>
+        <p class="text-base leading-relaxed max-w-3xl mx-auto" style="color: var(--text-muted);">
+          Every shipment is backed by credentials your procurement and quality teams can independently verify. Click any certificate to open the full-resolution, audit-ready copy.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 list-none p-0 m-0">
+        <!-- 01 - AS9100D / EN9100 / ISO 9001:2015 (Bureau Veritas) -->
+        <li>
+          <a href="/uploads/cert-as9100-en9100-bv-HD.webp" target="_blank" rel="noopener"
+             class="group block rounded-xl overflow-hidden border h-full transition-all duration-300 hover:-translate-y-1"
+             style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <div class="aspect-[3/4] overflow-hidden" style="background-color: #ffffff;">
+              <img src="/uploads/cert-as9100-en9100-bv.webp"
+                   alt="Bureau Veritas AS9100D / EN 9100:2018 and ISO 9001:2015 certificate for Baoji Boze Metal Products Co., Ltd., certificate CN054217"
+                   width="240" height="342" loading="lazy" decoding="async"
+                   class="w-full h-full object-contain" />
+            </div>
+            <div class="p-3">
+              <h3 class="text-sm font-bold mb-1 leading-tight" style="color: var(--theme-text);">AS9100D / EN9100</h3>
+              <p class="text-xs leading-snug" style="color: var(--text-muted);">Bureau Veritas · Aerospace QMS</p>
+            </div>
+          </a>
+        </li>
+        <!-- 02 - ISO 9001:2015 (bundled in BV audit) -->
+        <li>
+          <a href="/uploads/cert-as9100-en9100-bv-HD.webp" target="_blank" rel="noopener"
+             class="group block rounded-xl overflow-hidden border h-full transition-all duration-300 hover:-translate-y-1"
+             style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <div class="aspect-[3/4] overflow-hidden" style="background-color: #ffffff;">
+              <img src="/uploads/cert-as9100-en9100-bv-HD.webp"
+                   alt="High-resolution Bureau Veritas multi-standard certificate: AS9100D, EN 9100:2018 and ISO 9001:2015"
+                   width="240" height="342" loading="lazy" decoding="async"
+                   class="w-full h-full object-contain" />
+            </div>
+            <div class="p-3">
+              <h3 class="text-sm font-bold mb-1 leading-tight" style="color: var(--theme-text);">ISO 9001:2015</h3>
+              <p class="text-xs leading-snug" style="color: var(--text-muted);">Bundled in BV audit · Issued 2025</p>
+            </div>
+          </a>
+        </li>
+        <!-- 03 - SGS Verified Supplier (Intertek) -->
+        <li>
+          <a href="/uploads/cert-sgs-verified-supplier.webp" target="_blank" rel="noopener"
+             class="group block rounded-xl overflow-hidden border h-full transition-all duration-300 hover:-translate-y-1"
+             style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <div class="aspect-[3/4] overflow-hidden" style="background-color: #ffffff;">
+              <img src="/uploads/cert-sgs-verified-supplier.webp"
+                   alt="SGS verified supplier certificate for Baoji Boze Metal Products Co., Ltd., issued under Alibaba verification by Intertek"
+                   width="240" height="342" loading="lazy" decoding="async"
+                   class="w-full h-full object-contain" />
+            </div>
+            <div class="p-3">
+              <h3 class="text-sm font-bold mb-1 leading-tight" style="color: var(--theme-text);">SGS Verified Supplier</h3>
+              <p class="text-xs leading-snug" style="color: var(--text-muted);">Intertek · On-site third-party audit</p>
+            </div>
+          </a>
+        </li>
+        <!-- 04 - EU Authorised Representative (ProdSG) -->
+        <li>
+          <a href="/uploads/cert-eu-representative.webp" target="_blank" rel="noopener"
+             class="group block rounded-xl overflow-hidden border h-full transition-all duration-300 hover:-translate-y-1"
+             style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <div class="aspect-[3/4] overflow-hidden" style="background-color: #ffffff;">
+              <img src="/uploads/cert-eu-representative.webp"
+                   alt="EU Product Safety Act (ProdSG) European authorised representatives recognition certificate"
+                   width="240" height="342" loading="lazy" decoding="async"
+                   class="w-full h-full object-contain" />
+            </div>
+            <div class="p-3">
+              <h3 class="text-sm font-bold mb-1 leading-tight" style="color: var(--theme-text);">EU Authorised Rep.</h3>
+              <p class="text-xs leading-snug" style="color: var(--text-muted);">ProdSG · EU import ready</p>
+            </div>
+          </a>
+        </li>
+        <!-- 05 - China National High-tech Enterprise -->
+        <li>
+          <a href="/uploads/cert-china-hightech.webp" target="_blank" rel="noopener"
+             class="group block rounded-xl overflow-hidden border h-full transition-all duration-300 hover:-translate-y-1"
+             style="background-color: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+            <div class="aspect-[3/4] overflow-hidden" style="background-color: #ffffff;">
+              <img src="/uploads/cert-china-hightech.webp"
+                   alt="China National High-tech Enterprise certificate for Baoji Boze Metal Products Co., Ltd."
+                   width="240" height="342" loading="lazy" decoding="async"
+                   class="w-full h-full object-contain" />
+            </div>
+            <div class="p-3">
+              <h3 class="text-sm font-bold mb-1 leading-tight" style="color: var(--theme-text);">National High-Tech</h3>
+              <p class="text-xs leading-snug" style="color: var(--text-muted);">China state certification · R&amp;D backed</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <div class="mt-10 text-center">
+        <a href="/capabilities/certifications/" class="inline-flex items-center text-sm font-semibold transition-colors" style="color: var(--theme-primary);">
+          View full credentials &amp; audit reports
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>

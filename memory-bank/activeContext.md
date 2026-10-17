@@ -1313,3 +1313,8 @@ All four dead links replaced with `/rfq/` (canonical intake) — preserves conve
 - (carried from Phase G-2) Phase G-3: Hub gateway card href alignment for the other 5 forms; Phase G-4: `/mill-products/bars-rods/` sub-page.
 - (new) Phase G-2.2 Schema: extend `standard-part-detail` to optionally emit Product entity when `productName` is passed (opt-in); add `buildSupplyChain()` and `supplyChain` BaseLayout prop; add `deliveryLeadTime` to Product/Offer output.
 - (new) Phase G-3.5: create `/mill-products/foil-coils/` sub-page so that future references on the plates-sheets page can point to it instead of /rfq/.
+
+## 2026-10-17 - About promotion + Certs module
+- src/config/site.ts: Added About as first item in Resources dropdown (Resource Hub column). Hardcoded label 'About' consistent with sibling entries; Footer + Header already link to /about/. 1-click discovery loop closed.
+- src/components/about/AboutPage.astro: Inserted Certifications & Compliance section (D2 evidence module) between Why Partner and Process. 5 cards (AS9100D/EN9100, ISO 9001:2015, SGS Verified, EU Authorised Rep., China High-tech), each linking to its full-res webp in /uploads/. Footer link to /capabilities/certifications/ deep hub.
+- Build: 2382 pages in 66.65s, no errors. G1 (slugs) 0, G4 (keyword map) 0 broken. Sitemap /about/ preserved.
