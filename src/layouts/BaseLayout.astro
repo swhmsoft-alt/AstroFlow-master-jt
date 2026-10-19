@@ -410,7 +410,12 @@ const ldJson = JSON.stringify(pageGraph);
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+{/* ── Robots meta: two literal tags, gated by short-circuit `noindex` prop.
+     Plain-text branches (no ternary, no dynamic concat). thank-you.astro
+     passes `noindex` and gets the noindex branch; all other pages get the
+     upgraded indexable tag with rich-result previews. ── */}
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+{!noindex && <meta name="robots" content="index,follow,max-image-preview:large,max-video-preview:-1" />}
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
