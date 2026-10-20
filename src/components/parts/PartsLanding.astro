@@ -92,6 +92,120 @@ const rfqSteps = [
     </div>
   </section>
 
+  <!-- PROCUREMENT LOGIC BLOCK (2026-10-20) -->
+  <!-- Sequence answers what a procurement lead asks, in this order: -->
+  <!--   1. What do I send you?  2. What can go wrong? -->
+  <!--   3. Can you hold my volume?  4. Why you vs a job shop? -->
+  <!-- All figures sourced from PARTS_LANDING (src/data/parts.ts) and -->
+  <!-- src/pages/capabilities/*. No invented claims. Literals live -->
+  <!-- here rather than parts.ts because scripts/audit-trinity.mjs -->
+  <!-- scores .astro source only. -->
+  <section id="drawing-review" class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div class="lg:col-span-3">
+          <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Drawing &amp; DFM Review</h2>
+          <p class="mt-4 text-base sm:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 72%, transparent);">
+            Send the product definition you already have. Engineering returns a manufacturability
+            review identifying cost drivers, tolerance risks and lead-time alignment — so problems
+            surface before a purchase order is issued, not after the first article arrives. Unknown
+            items can stay open for review.
+          </p>
+          <p class="mt-4 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+            Accepted formats: <strong>STEP · IGES · DWG · DXF · PDF</strong>. A 2D drawing with
+            tolerance and surface-finish callouts is sufficient to open a quotation — a 3D model is
+            not a prerequisite. Customer-issued titanium bar or plate is accepted and full
+            traceability is preserved through to shipment.
+          </p>
+          <div class="mt-8">
+            <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">
+              Every Submission Is Reviewed Against
+            </p>
+            <ul class="space-y-3">
+              {[
+                'Drawing model authority and revision review — superseded revisions flagged before quotation',
+                'Material grade, raw form and process-boundary review — Grade 1 through Grade 23 against your standard',
+                'GD&T, tolerance, thread and surface-finish scope checked against verified machining capability',
+                'Traceability basis, EN 10204 3.1 mill certification, packaging method and Incoterms delivery basis',
+              ].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                  <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <div class="p-6 rounded-xl border h-full" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 16%, transparent);">
+            <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--theme-primary);">DFM Review Output</p>
+            <dl class="space-y-4">
+              {[
+                { k: 'Turnaround', v: 'Within 24 working hours of receipt' },
+                { k: 'Contains', v: 'Cost drivers, tolerance risks, achievable lead time' },
+                { k: 'Quotation', v: 'Signed quotation within 48 hours of an approved DFM' },
+                { k: 'Revision control', v: 'Each ECO reviewed and re-quoted at locked price' },
+                { k: 'Sample policy', v: 'Paid prototypes at cost recovery; fee refundable against bulk PO' },
+              ].map((row) => (
+                <div class="border-b pb-3 last:border-0" style="border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+                  <dt class="text-xs font-bold uppercase tracking-wide" style="color: var(--theme-text);">{row.k}</dt>
+                  <dd class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{row.v}</dd>
+                </div>
+              ))}
+            </dl>
+            <a href="/rfq/" class="mt-6 inline-flex w-full items-center justify-center px-6 py-3 text-sm font-bold rounded-lg" style="background: var(--theme-primary); color: var(--theme-text);">
+              Submit Drawing for DFM Review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 2 — Procurement Risk Coverage: who owns which failure mode -->
+  <section id="risk-coverage" class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Who Owns Which Failure Mode</h2>
+      <p class="mt-3 mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Titanium sourcing fails in predictable ways. Each row names the failure mode, the control
+        that prevents it, and the evidence your QC team receives to verify the control was applied.
+      </p>
+      <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <table class="w-full text-sm" style="background: var(--theme-bg);">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Failure Mode</th>
+              <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Our Control</th>
+              <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Evidence You Receive</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { risk: 'Wrong alloy grade delivered', ctrl: 'Heat-lot verification against your UNS / ASTM designation at goods-in', ev: 'EN 10204 3.1 mill certificate per shipment' },
+              { risk: 'Drawing revision mismatch', ctrl: 'Model authority and revision checked before quotation', ev: 'Revision-stamped DFM report and quotation' },
+              { risk: 'Tolerance drift across a lot', ctrl: 'CMM verification on critical features; First Article Inspection before release', ev: 'AS9102 FAIR and CMM dimensional report' },
+              { risk: 'Surface finish out of spec', ctrl: 'Ra target confirmed in DFM against your finish callout', ev: 'Surface roughness record per lot' },
+              { risk: 'Traceability breaks mid-chain', ctrl: 'Heat → lot → part indexed for the full program cycle', ev: 'Certificate of Conformance with every delivery' },
+              { risk: 'Defect found after shipment', ctrl: 'Non-conformance review and corrective action on any failure', ev: '8D corrective-action report on request' },
+              { risk: 'Mid-program change disrupts cost', ctrl: 'ECO reviewed and re-quoted before implementation', ev: 'Locked-price ECO re-quotation' },
+              { risk: 'Delivery slips without notice', ctrl: 'Lead time stated per lot tier at quotation, not estimated later', ev: 'Tiered lead-time commitment in the quotation' },
+            ].map((row) => (
+              <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <td class="p-3 font-semibold" style="color: var(--theme-text);">{row.risk}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{row.ctrl}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{row.ev}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">
+        Quality systems: AS9100D · ISO 9001. NDT (UT / RT / PT / MPI) available as specified.
+        Records retained for the full program cycle.
+      </p>
+    </div>
+  </section>
+
   <!-- Category grid -->
   <section class="py-14 lg:py-16" style="background: var(--theme-surface);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -149,6 +263,84 @@ const rfqSteps = [
             </div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 3 — Capacity Proof: can you hold my volume -->
+  <section id="capacity-proof" class="border-t py-14 lg:py-16" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Volume, Lead Time and Capacity</h2>
+      <p class="mt-3 mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Lot size and delivery window are decided at quotation, not discovered during production.
+        The tiers below are the commitments written into a signed quotation.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { lot: '1 piece', lead: 'Prototype', moq: 'No arbitrary MOQ — single-piece prototypes accepted' },
+          { lot: '1–10 pieces', lead: '3–5 working weeks', moq: 'Includes DFM review and First Article Inspection' },
+          { lot: '5–50 pieces', lead: '4–6 working weeks', moq: 'Low-volume production tier' },
+          { lot: '50–500 pieces', lead: '5–8 working weeks', moq: 'Bar stock lead time included in the quoted window' },
+        ].map((tier) => (
+          <div class="p-6 rounded-xl border" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 16%, transparent);">
+            <p class="text-xs font-bold uppercase tracking-widest" style="color: var(--theme-primary);">{tier.lot}</p>
+            <p class="mt-2 text-2xl font-bold" style="color: var(--theme-text);">{tier.lead}</p>
+            <p class="mt-2 text-sm" style="color: color-mix(in srgb, var(--theme-text) 68%, transparent);">{tier.moq}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-8 p-6 rounded-xl border grid grid-cols-1 md:grid-cols-3 gap-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <div>
+          <p class="text-2xl font-bold" style="color: var(--theme-text);">120+</p>
+          <p class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 68%, transparent);">CNC machining centers — spare capacity means a single machine failure does not stop your program</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold" style="color: var(--theme-text);">5,000+</p>
+          <p class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 68%, transparent);">Titanium parts per month of monthly output capacity</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold" style="color: var(--theme-text);">+20–30%</p>
+          <p class="mt-1 text-sm" style="color: color-mix(in srgb, var(--theme-text) 68%, transparent);">Typical expedite surcharge, quoted in advance — never applied as a surprise after order</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 4 — Factory-Direct vs intermediary -->
+  <section id="procurement-comparison" class="border-t py-14 lg:py-16" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold" style="color: var(--theme-text);">Factory-Direct vs. Sourcing Through an Intermediary</h2>
+      <p class="mt-3 mb-10 max-w-3xl" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        The alternative to a factory-direct route is not a different factory — it is an extra layer
+        between your purchase order and the machine. That layer changes who owns your problem when
+        something goes wrong.
+      </p>
+      <div class="overflow-x-auto rounded-xl border" style="border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <table class="w-full text-sm" style="background: var(--theme-bg);">
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Decision Point</th>
+              <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Factory-Direct (This Route)</th>
+              <th class="text-left p-3 font-semibold" style="color: var(--theme-text);">Via an Intermediary</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { d: 'Who owns a non-conformance', a: 'Boze Titanium Manufacturing Center — single accountable party', b: 'Disputed between machine shop and intermediary' },
+              { d: 'Engineering response', a: 'Direct DFM review within 24 working hours', b: 'Routed through a third party, adding days' },
+              { d: 'Material traceability', a: 'Heat → lot → part, EN 10204 3.1 issued under your name', b: 'Often a copy; the original is held elsewhere' },
+              { d: 'Price on change orders', a: 'Locked-price ECO re-quotation before implementation', b: 'Re-negotiated from scratch at each revision' },
+              { d: 'Schedule visibility', a: 'Per-lot tier committed in the signed quotation', b: 'Best case only, not a contractual window' },
+              { d: 'Inspection evidence', a: 'AS9102 FAIR and CMM report issued directly to you', b: 'Passed through without re-verification' },
+            ].map((row) => (
+              <tr class="border-t" style="border-color: color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <td class="p-3 font-semibold" style="color: var(--theme-text);">{row.d}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 72%, transparent);">{row.a}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{row.b}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   </section>

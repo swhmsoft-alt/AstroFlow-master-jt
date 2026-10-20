@@ -1572,31 +1572,36 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       "Industries"
     ]
   },
+  // 2026-10-20 — /parts/ restructured to PROCUREMENT logic (not catalogue logic).
+  // Method borrowed from competitor procurement-funnel sequencing; all facts below
+  // are copied from src/data/parts.ts PARTS_LANDING (procurementSnapshot,
+  // comparisonMatrix, workflowPipeline) and src/pages/capabilities/* — nothing invented.
   '/parts': {
     h1: 'Custom Titanium Parts Manufacturing',
-    subtitle: 'Custom titanium components manufactured from prototype to production. BOZE provides precision CNC machining, welding, EDM and fabrication solutions with direct access to the Baoji titanium supply chain.',
+    subtitle:
+      'Factory-direct custom titanium parts from Baoji Titanium Valley — prototype through mid-volume production. Boze Titanium Manufacturing Center returns a DFM review with cost drivers and lead-time alignment within 24 hours, and a signed quotation within 48 hours of an approved DFM.',
     badge: 'Titanium Parts Procurement Gateway',
 
     keyMetrics: [
       {
-        "value": "7",
-        "label": "Part Categories"
+        "value": "24h",
+        "label": "DFM Review"
       },
       {
-        "value": "Gr1-Gr23",
-        "label": "Titanium Grades"
+        "value": "48h",
+        "label": "Signed Quotation"
       },
       {
-        "value": "24-48h",
-        "label": "Quote TAT"
+        "value": "1 pc",
+        "label": "Prototype MOQ"
       }
     ],
     entityChips: [
-      "CNC Machining",
-      "Welding & Fabrication",
-      "Wire EDM",
-      "Rapid Prototyping",
-      "Material Traceability"
+      "AS9100D",
+      "ISO 9001",
+      "EN 10204 3.1",
+      "Gr1–Gr23",
+      "5–50 / 50–500 Piece Lots"
     ]
   },
   // BSI 2026-10-13 — Grade 5 Ti-6Al-4V material-specific machining sub-page

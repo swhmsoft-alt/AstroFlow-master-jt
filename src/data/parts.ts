@@ -220,64 +220,64 @@ export const PARTS_LANDING: PartsLandingData = {
   heroBadge: 'Titanium Parts Procurement Gateway',
   heroH1: 'Custom Titanium Parts Manufacturing',
   heroSubtitle:
-    'Custom titanium components manufactured from prototype to production. BOZE provides precision CNC machining, welding, EDM and fabrication solutions with direct access to Baoji titanium supply chain.',
+    'Custom titanium components manufactured from prototype to production. Boze Titanium Manufacturing Center provides precision CNC machining, welding, EDM and fabrication solutions with direct access to the Baoji titanium supply chain.',
   intro:
-    'BOZE is a titanium parts manufacturing partner for aerospace, marine, UAV, motorsport, medical and industrial OEMs. Upload your drawing for a DFM review and quotation, or browse the part categories below to understand the titanium components we machine, fabricate and assemble — from Grade 1 CP-titanium to Ti-6Al-4V ELI.',
+    'Boze Titanium Manufacturing Center is a factory-direct titanium parts manufacturer serving industrial OEMs, engineering teams and procurement departments. Upload your drawing for a DFM review and quotation within 24 hours, or browse the part categories below to review the titanium components we machine, fabricate and assemble — from Grade 1 CP-titanium to Ti-6Al-4V ELI.',
   categories: [
     {
       name: 'Titanium CNC Parts',
       slug: 'titanium-cnc-parts',
       blurb: 'Precision CNC milled, turned and wire-EDM titanium components to ±0.005 mm.',
-      image: '/images/products/titanium-flat-mount-brake-adapter.webp',
-      imageAlt: 'CNC milled titanium flat-mount brake adapter with machined pockets and bolt pattern',
+      image: '/images/products/ti-parts-cat-cnc-machined-bracket_min.webp',
+      imageAlt: '5-axis CNC machined titanium bracket with pocketed cavities and precision-milled hole pattern',
       reviewFactors: ['3/5-axis CNC', '±0.005 mm tolerance', 'Prototype → 10,000+ pc', '1.0–2.5× cost index'],
     },
     {
       name: 'Titanium Fabricated Parts',
       slug: 'titanium-fabricated-parts',
       blurb: 'Welded, laser-cut, waterjet and formed titanium assemblies and fabrications.',
-      image: '/images/products/titanium-ceramic-heater-clamp-plate.webp',
-      imageAlt: 'Fabricated titanium ceramic-heater clamp plate with bolt pattern and forming features',
+      image: '/images/products/ti-parts-cat-fabricated-welded-assembly_min.webp',
+      imageAlt: 'Welded titanium plate assembly with continuous TIG weld bead and laser-cut deburred edges',
       reviewFactors: ['TIG / laser / formed', '±0.1 mm typical', '1 → 500 assemblies', '1.1–2.0× cost index'],
     },
     {
       name: 'Titanium Pipe Components',
       slug: 'titanium-pipe-components',
       blurb: 'Pipe spool fabrication, flanges, fittings, tube assemblies and welded pipe systems.',
-      image: '/images/products/titanium-blind-flange-asme-b165.webp',
-      imageAlt: 'Titanium ASME B16.5 blind flange with machined sealing face and bolt holes',
+      image: '/images/products/ti-parts-cat-pipe-spool-flanged-set_min.webp',
+      imageAlt: 'Titanium pipe spool with raised-face flanges, machined sealing faces and circumferential weld fillet',
       reviewFactors: ['Welded spools', '±0.2 mm on spool OD', 'Project-order quantities', '1.2–2.4× cost index'],
     },
     {
       name: 'Titanium Marine Parts',
       slug: 'titanium-marine-parts',
       blurb: 'Corrosion-resistant titanium hardware for seawater, subsea and marine systems.',
-      image: '/images/products/titanium-auv-propeller-shaft.webp',
-      imageAlt: 'CNC turned titanium AUV propeller shaft for marine and subsea service',
+      image: '/images/products/ti-parts-cat-marine-prosthetic-shaft_min.webp',
+      imageAlt: 'Turned titanium propeller shaft segment with diameter steps, threads and bearing seat for subsea service',
       reviewFactors: ['CNC + fabrication', '±0.05 mm critical', 'Low-volume to series', '1.4–2.6× cost index'],
     },
     {
       name: 'Titanium UAV Components',
       slug: 'titanium-uav-components',
       blurb: 'Lightweight, high-strength titanium precision parts for UAV and drone airframes.',
-      image: '/images/products/titanium-shadow-ring-bracket.webp',
-      imageAlt: 'Lightweight titanium shadow-ring bracket for UAV and drone airframe structures',
+      image: '/images/products/ti-parts-cat-uav-airframe-panel-bracket_min.webp',
+      imageAlt: 'Lightweight titanium UAV airframe bracket with thin walls, lightening holes and stiffening ribs',
       reviewFactors: ['5-axis + Swiss-type', '±0.005 mm thin-wall', 'Prototype → 1,000 pc', '1.6–3.0× cost index'],
     },
     {
       name: 'Titanium Motorsport Parts',
       slug: 'titanium-motorsport-parts',
       blurb: 'High-performance titanium suspension, fasteners and exhaust components for racing.',
-      image: '/images/products/titanium-brake-rotor-disc.webp',
-      imageAlt: 'Machined titanium brake rotor disc for high-performance motorsport applications',
+      image: '/images/products/ti-parts-cat-motorsport-suspension-control-arm_min.webp',
+      imageAlt: 'Titanium motorsport suspension control arm with machined lightening pockets and bearing bosses',
       reviewFactors: ['CNC + welded assemblies', '±0.02 mm suspension', 'Small series lots', '1.5–2.8× cost index'],
     },
     {
       name: 'Titanium Medical Components',
       slug: 'titanium-medical-components',
       blurb: 'Biocompatible, certified titanium implants and surgical instruments.',
-      image: '/images/products/titanium-acetabular-cup.webp',
-      imageAlt: 'Titanium acetabular cup for orthopedic medical implant applications',
+      image: '/images/products/ti-parts-cat-orthopedic-instrument_min.webp',
+      imageAlt: 'Mirror-polished Ti-6Al-4V ELI orthopedic instrument component with contoured grip and burr-free fillets',
       reviewFactors: ['CNC + electropolish', '±0.01 mm · Ra ≤ 0.4 µm', 'Project / sterile-pack', '1.8–3.5× cost index'],
     },
   ],
@@ -288,7 +288,7 @@ export const PARTS_LANDING: PartsLandingData = {
         'The Titanium Parts section is our B2B procurement gateway — it answers how we custom-manufacture titanium components to your drawings (CNC, welding, EDM, fabrication) and how to request a quote. The Products & Solutions section demonstrates our engineering systems and component capabilities. Both reference the same certified manufacturing center in Baoji, China.',
     },
     {
-      question: 'Which titanium grades can BOZE manufacture parts in?',
+      question: 'Which titanium grades can Boze Titanium Manufacturing Center produce parts in?',
       answer:
         'We machine and fabricate commercially pure grades (Gr1–Gr4) and alpha-beta, beta and near-beta alloys including Ti-6Al-4V (Gr5), Ti-6Al-4V ELI (Gr23), Ti-0.2Pd (Gr7), Gr9, Gr12, Gr19 and Gr21 — all supplied with material traceability and mill test certificates.',
     },
@@ -298,7 +298,7 @@ export const PARTS_LANDING: PartsLandingData = {
         'Yes. Use the "Upload Drawing" or "Request Quote" buttons on this page. Our engineering team performs a DFM (design-for-manufacturing) review and returns a quotation within 24–48 hours, including tolerance, surface finish and delivery recommendations.',
     },
     {
-      question: 'What quality certifications does the BOZE manufacturing center hold?',
+      question: 'What quality certifications does Boze Titanium Manufacturing Center hold?',
       answer:
         'The facility operates under AS9100D and ISO 9001 quality systems (with  for medical). Every shipment is backed by material traceability (EN 10204 3.1 mill certificates) and non-destructive testing as specified.',
     },
@@ -306,6 +306,42 @@ export const PARTS_LANDING: PartsLandingData = {
       question: 'What is your minimum order quantity (MOQ)?',
       answer:
         'We support prototypes, low-volume production and batch production. MOQ is project-dependent — for many CNC and fabricated titanium parts we can produce single-piece prototypes and ramp to production.',
+    },
+    // ---- Procurement-objection FAQ (2026-10-20) ----
+    // Added alongside the DFM Review / Risk Coverage / Capacity / Comparison
+    // sections so FAQPage schema covers the questions a procurement lead
+    // actually asks before issuing a PO. Every lead time below is copied from
+    // PARTS_LANDING.procurementSnapshot (working weeks, NOT business days) and
+    // from src/pages/capabilities/*. No invented numbers.
+    {
+      question: 'What documents ship with every delivery?',
+      answer:
+        'Every shipment is accompanied by an EN 10204 3.1 mill test certificate covering the heat lot, a Certificate of Conformance, and CMM dimensional reports on critical features. An AS9102 First Article Inspection report is issued before batch release. NDT (UT / RT / PT / MPI) is available where specified. Quality systems: AS9100D and ISO 9001.',
+    },
+    {
+      question: 'How do you handle engineering changes after production has started?',
+      answer:
+        'Each ECO is reviewed and re-quoted before it is implemented, so the price change is agreed before it is incurred rather than invoiced afterwards. The revised drawing goes through the same DFM review as the original submission. Detailed process: the ECO Iteration and DFM capability page.',
+    },
+    {
+      question: 'Can you hold my tolerance across a production lot, not just on the first article?',
+      answer:
+        'Tolerance is verified on production parts, not only on the sample. Critical features are CMM-verified and First Article Inspection gates the batch before release. Tolerance capability by part family is shown in the comparison table on this page — for example ±0.005 mm on titanium CNC parts, ±0.01 mm with Ra ≤ 0.4 µm on medical components.',
+    },
+    {
+      question: 'Can I order prototypes before committing to a production volume?',
+      answer:
+        'Yes. Single-piece prototypes are accepted with no arbitrary MOQ. Paid prototypes are supplied at cost recovery, and the sample fee is refundable against a bulk purchase order. Lot tiers are quoted per production run rather than assumed — see the lead-time table above for the 1-piece, 1–10 piece, 5–50 piece and 50–500 piece tiers.',
+    },
+    {
+      question: 'Will you keep our drawings and alloy grade confidential?',
+      answer:
+        'NDA is available on request and project codenames are used on shared documents. Drawings are retained only for the active program cycle. If you prefer to supply your own titanium bar or plate, that is accepted and full traceability is preserved through to shipment.',
+    },
+    {
+      question: 'What happens if a delivered part fails your incoming inspection?',
+      answer:
+        'Raise it against the shipment and we run a non-conformance review. A corrective-action report (8D format) is available on request, and the finding feeds back into the process control for the remaining lot. Certificate of Conformance and CMM evidence for the affected lot are reissued so your quality file stays complete.',
     },
   ],
 
