@@ -32,6 +32,14 @@ interface Props {
   compact?: boolean;
   /** Background image URL (default: none, uses gradient background) */
   backgroundImage?: string;
+  /** Background video URL (overlays backgroundImage; autoplay/loop/muted) */
+  backgroundVideo?: string;
+  /** Optional poster image for backgroundVideo (shown until first frame) */
+  backgroundVideoPoster?: string;
+  /** Ken Burns slideshow frames (URLs). Crossfades with slow scale+pan animation. Overrides backgroundImage/Video when set. */
+  kenBurnsSlides?: string[];
+  /** Ken Burns per-frame duration in seconds (default 8) */
+  kenBurnsFrameDuration?: number;
 }
 
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
@@ -53,8 +61,49 @@ const {
   keyMetrics,
   entityChips,
   compact = false,
-  backgroundImage = '/uploads/titanium-cnc-machining-manufacturing-facility.jpg',
+  backgroundImage = '/uploads/titanium-cnc-machining-manufacturing-facility.webp',
+  backgroundVideo,
+  backgroundVideoPoster,
+  kenBurnsSlides,
+  kenBurnsFrameDuration = 8,
 } = Astro.props;
+
+// Ken Burns: per-frame unique scale+pan transform
+// Each frame is visible for kenBurnsFrameDuration seconds, then crossfades to next.
+// Total cycle = frames.length * kenBurnsFrameDuration seconds.
+const kenBurnsVariants = [
+  { originX: '50%', originY: '50%' },
+  { originX: '30%', originY: '50%' },
+  { originX: '70%', originY: '50%' },
+  { originX: '50%', originY: '30%' },
+  { originX: '50%', originY: '70%' },
+  { originX: '20%', originY: '70%' },
+  { originX: '80%', originY: '30%' },
+  { originX: '50%', originY: '50%' },
+];
+
+const kbTotalCycle = (kenBurnsSlides && kenBurnsSlides.length > 0)
+  ? kenBurnsSlides.length * kenBurnsFrameDuration
+  : 0;
+
+// All frames share the SAME keyframes (visible during 0..(1/frames)*100 % of their
+// own timeline). Different animation-delays make them take turns being visible.
+// Per-frame transform-origin differs for varied Ken Burns motion.
+const kbSlicePercent = kenBurnsSlides && kenBurnsSlides.length > 0
+  ? 100 / kenBurnsSlides.length
+  : 0;
+const kbFadeInEnd = Math.min(1.5, kbSlicePercent * 0.15);
+const kbFadeOutStart = Math.max(kbSlicePercent - 1.5, kbFadeInEnd + 0.1);
+const sharedKeyframes = `@keyframes kb-show { 0% { opacity: 0; transform: scale(1.0); } ${kbFadeInEnd.toFixed(2)}% { opacity: 1; transform: scale(1.05); } ${kbFadeOutStart.toFixed(2)}% { opacity: 1; transform: scale(1.18); } ${kbSlicePercent.toFixed(2)}% { opacity: 0; transform: scale(1.18); } 100% { opacity: 0; transform: scale(1.0); } }`;
+
+const kbFrames = (kenBurnsSlides || []).map((src, i) => {
+  const v = kenBurnsVariants[i % kenBurnsVariants.length];
+  return {
+    src,
+    index: i,
+    style: `transform-origin: ${v.originX} ${v.originY}; animation: kb-show ${kbTotalCycle}s ${i * kenBurnsFrameDuration}s infinite;`,
+  };
+});
 
 // Static hero defaults
 const badgePrefix = 'Boze Titanium Manufacturing Center';
@@ -68,12 +117,49 @@ const subMaxWidth = isLongSubtitle ? 'max-w-5xl' : 'max-w-3xl';
 ---
 
 <section class="relative flex items-center overflow-hidden py-20 md:py-28 min-h-90" style="background: linear-gradient(135deg, var(--theme-bg) 0%, color-mix(in srgb, var(--theme-primary) 10%, var(--theme-bg)) 50%, var(--theme-surface) 100%);">
-  {backgroundImage ? (
-    <!-- Image Background (overlaid on gradient) -->
-    <div class="absolute inset-0" style={`background-image: url(${backgroundImage}); background-size: cover; background-position: center;`}></div>
-  ) : null}
-  <!-- Gradient overlay on image -->
-  {backgroundImage ? (
+  {kenBurnsSlides && kenBurnsSlides.length > 0 ? (
+    <>
+      {/* Ken Burns shared keyframes (per-frame transform-origin set inline) */}
+      <style set:html={sharedKeyframes}></style>
+      {/* Stacked frames, each fades + scales during its slice */}
+      <div class="absolute inset-0">
+        {kbFrames.map((f) => (
+          <img
+            src={f.src}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover"
+            style={f.style}
+          />
+        ))}
+      </div>
+    </>
+  ) : (
+    <>
+      {backgroundImage && !backgroundVideo ? (
+        <!-- Image Background (overlaid on gradient) -->
+        <div class="absolute inset-0" style={`background-image: url(${backgroundImage}); background-size: cover; background-position: center;`}></div>
+      ) : null}
+      {backgroundVideo ? (
+        <!-- Video Background (overlays backgroundImage if set; autoplay/loop/muted) -->
+        <video
+          class="absolute inset-0 w-full h-full object-cover"
+          src={backgroundVideo}
+          poster={backgroundVideoPoster || backgroundImage || undefined}
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        ></video>
+      ) : null}
+    </>
+  )}
+  <!-- Gradient overlay on image/video (always applied when any background is present) -->
+  {(backgroundImage || backgroundVideo || (kenBurnsSlides && kenBurnsSlides.length > 0)) ? (
     <div class="absolute inset-0" style="background: linear-gradient(to right, color-mix(in srgb, var(--theme-bg) 97%, transparent) 0%, color-mix(in srgb, var(--theme-bg) 85%, transparent) 40%, color-mix(in srgb, var(--theme-bg) 50%, transparent) 100%);"></div>
   ) : null}
   <!-- Ambient background glow -->
