@@ -1,0 +1,551 @@
+---
+/**
+ * /mill-products/ingot/ — Titanium Ingot Sub-Page
+ * Buyer Search Intelligence Phase G-9 · Mill Products Titanium Ingot
+ *
+ * UI / logic reference (user-supplied): heletitanium.com/titanium-products/titanium-plate/
+ * 11 of 12 blocks reused as skeleton; 1 replaced (their in-house mill video → honest
+ * sourcing boundary, because BOZE is a sourcing + processing partner, not a melter).
+ *
+ * Schema: pageType="standard-part-detail" → CollectionPage + ItemList + Service + FAQPage
+ * (auto-emitted via src/lib/schema.ts; F4 compliant, no inline JSON-LD)
+ * F2: No new component for a single page. F3: { question, answer } keys. F9: trailing slash.
+ *
+ * Honest scope:
+ * - No "BOZE melts titanium" claim — ingot is sourced from upstream Baoji melters.
+ * - No blanket aerospace / medical-device approval claim.
+ * - No fixed MOQ / lead time — quotation-specific values.
+ * - No invented melting-plant capacity figures.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import Applications from '../../components/landing/Applications.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/ingot'];
+
+const pageTitle = 'Titanium Ingot | ASTM B977 VAR Melt | BOZE Metal';
+const pageDescription = 'Titanium ingot to ASTM B977/B977M in CP Gr1/2/3/4, Gr5 (Ti-6Al-4V) and Gr23 (Ti-6Al-4V ELI). VAR single / double / triple melt, 5-60 kg weight class, Ø150-600 mm. Order-specific EN 10204 3.1 MTR with heat traceability.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/ingot/';
+
+// ── S02 Grade × Form Matrix ────────────────────────────────────────────────
+const gradeMatrix = [
+  { family: 'CP Titanium', grade: 'Grade 1', uns: 'R50250', composition: 'Unalloyed Ti, lowest interstitial content', form: 'Ingot, Billet', use: 'Chemical processing, high-formability forged components' },
+  { family: 'CP Titanium', grade: 'Grade 2', uns: 'R50400', composition: 'Unalloyed Ti, balanced strength and ductility', form: 'Ingot, Billet', use: 'Pressure vessels, heat exchangers, general forged parts' },
+  { family: 'CP Titanium', grade: 'Grade 3', uns: 'R50550', composition: 'Unalloyed Ti, higher strength than Grade 2', form: 'Ingot, Billet', use: 'Higher-stress chemical service forged components' },
+  { family: 'CP Titanium', grade: 'Grade 4', uns: 'R50700', composition: 'Unalloyed Ti, highest CP strength', form: 'Ingot, Billet', use: 'Fasteners, surgical hardware, airframe structural forgings' },
+  { family: 'Aerospace α-β', grade: 'Grade 5 (Ti-6Al-4V)', uns: 'R56400', composition: '6% Al, 4% V — α-β alloy', form: 'Ingot, Billet', use: 'Airframe and engine forgings — the aerospace workhorse' },
+  { family: 'Aerospace α-β ELI', grade: 'Grade 23 (Ti-6Al-4V ELI)', uns: 'R56401', composition: '6% Al, 4% V, controlled low interstitials', form: 'Ingot, Billet', use: 'Fracture-critical and medical-related supply where applicable' },
+  { family: 'Corrosion-resistant', grade: 'Grade 7 (Ti-Pd)', uns: 'R52400', composition: 'CP + 0.12–0.25% Pd', form: 'Ingot, Billet', use: 'Reducing-acid service forgings (HCl, dilute H2SO4)' },
+  { family: 'Corrosion-resistant', grade: 'Grade 12 (Ti-0.3Mo-0.8Ni)', uns: 'R53400', composition: 'CP + 0.3% Mo, 0.8% Ni', form: 'Ingot, Billet', use: 'Hot brine and seawater service forgings' },
+];
+
+// ── S03 Specification EAV ──────────────────────────────────────────────────
+const specAttributes = [
+  { attr: 'Ingot weight class', value: '5 kg to 60 kg per ingot (larger classes reviewed on request)', std: 'ASTM B977/B977M' },
+  { attr: 'Ingot diameter range', value: 'Ø150 mm to Ø600 mm, cylindrical', std: 'ASTM B977/B977M' },
+  { attr: 'Section form', value: 'Cylindrical ingot; rectangular section reviewed on request', std: 'ASTM B977/B977M' },
+  { attr: 'Melting route', value: 'VAR single melt, double melt (EBM + VAR), triple melt (VAR ×3)', std: 'AMS 2380' },
+  { attr: 'Melting method', value: 'Vacuum arc remelting (VAR); electron beam melting as first or final melt where specified', std: 'AMS 2380' },
+  { attr: 'Typical oxygen content (CP)', value: '0.13% max for Grade 2; lower for Grade 1', std: 'ASTM B977/B977M' },
+  { attr: 'Surface condition', value: 'As-cast, skin-machined or pickled; scaled surface reviewed on request', std: 'ASTM B977/B977M' },
+  { attr: 'Identification and marking', value: 'Heat number, grade, weight and furnace-run marking per ingot or bundle', std: 'ASTM B977/B977M' },
+  { attr: 'Chemistry basis', value: 'Full specification chemistry reported for every heat', std: 'ASTM B977/B977M' },
+  { attr: 'Heat / lot traceability', value: 'Heat or lot level; multi-heat consolidation reviewed on request', std: 'EN 10204 3.1' },
+  { attr: 'Mill certification', value: 'EN 10204 3.1 standard; 3.2 with independent witness on request', std: 'EN 10204' },
+  { attr: 'Downstream conversion', value: 'Forging, extrusion, rolling or re-melt route defined by the customer', std: 'Customer drawing / route' },
+];
+
+// ── S04 Form disambiguation (Ingot vs Billet vs Slab vs Sponge) ─────────────
+const formDisambiguation = [
+  { name: 'Ingot', body: 'The as-cast melting product itself — the direct charge for a forging, extrusion or re-melt route. State the melting route, weight class and diameter explicitly.' },
+  { name: 'Billet', body: 'The forged or reduced intermediate product derived from ingot. For billet, rod and bar geometry downstream of the forge, use the dedicated bar and rod page.' },
+  { name: 'Slab', body: 'Large cross-section flat stock produced by rolling. For plate and sheet geometry downstream of the slab, use the dedicated plate and sheet page.' },
+  { name: 'Sponge', body: 'The chlorination-grade porous titanium feed used to melt an ingot. Sponge is a raw melt feedstock, not a finished product, and is outside our supply scope.' },
+];
+
+// ── S05 Downstream preparation ─────────────────────────────────────────────
+const prepOptions = [
+  'Weight-matched ingot selection per furnace charge',
+  'Skin-machined or pickled surface on request',
+  'Length or height cut to the forge press opening',
+  'Heat marking and bundle identification preserved',
+];
+
+// ── S06 Process review (5 steps) ───────────────────────────────────────────
+const pipeline = [
+  { n: '01', title: 'Requirement review', body: 'Grade, specification revision, melting route, ingot weight, diameter, quantity and document scope are aligned before any melting campaign is scheduled.' },
+  { n: '02', title: 'Melting route confirmation', body: 'The single / double / triple VAR route, ingot weight class and furnace campaign are confirmed against the accepted quotation basis before the melt is scheduled.' },
+  { n: '03', title: 'Casting and ingot control', body: 'Melting, pouring and cooling are executed to the agreed route. Ingot weight, diameter and surface condition are controlled within the scope stated in the order.' },
+  { n: '04', title: 'Inspection and records', body: 'Chemistry, ingot geometry and surface are inspected to the agreed level. Furnace-run and heat records are retained against the ingot for traceability.' },
+  { n: '05', title: 'Marking, packing and release', body: 'Heat marking, document set, protective packing and the delivery basis are checked before the ingot lot is released for shipment.' },
+];
+
+// ── S07 Evidence cards ─────────────────────────────────────────────────────
+const evidenceCards = [
+  { icon: '◉', title: 'Material identity', body: 'Grade, heat or lot reference, product form, ingot weight and certificate link recorded for each released ingot lot.' },
+  { icon: '◐', title: 'Melting and chemistry records', body: 'Melting route, number of VAR passes, furnace-run data and full specification chemistry reported for the agreed heats.' },
+  { icon: '◑', title: 'Dimensional evidence', body: 'Ingot diameter, weight, height and surface condition, with the inspection method, sampling level and report format agreed per order.' },
+  { icon: '◒', title: 'Document release', body: 'Required document index, language, approval route and delivery timing confirmed before production. Release documents follow the order basis.' },
+];
+
+// ── S08 Before you order — four controls ───────────────────────────────────
+const orderControls = [
+  { title: 'Material identity', body: 'Grade, ingot form, specification revision, melting route and heat or lot basis.' },
+  { title: 'Geometry and route', body: 'Weight class, diameter, surface condition, ingot count and the downstream forging or re-melt route.' },
+  { title: 'Evidence and acceptance', body: 'Chemistry basis, melting records, inspection level, hold points and acceptance criteria.' },
+  { title: 'Commercial and delivery', body: 'Quantity basis, exclusions, protective packing, Incoterm and the schedule assumption behind the quoted date.' },
+];
+
+// ── S09 Supply chain ───────────────────────────────────────────────────────
+const supplyChain = [
+  { icon: '🏭', title: 'Capacity envelope', body: 'Melting capacity is scheduled against upstream Baoji VAR furnace campaigns rather than a captive plant. Engineering sample quantities and full heat quantities are both reviewable; campaign timing is confirmed at the RFQ stage.' },
+  { icon: '📦', title: 'MOQ flexibility', body: 'There is no blanket minimum order quantity for engineering sampling. Full heats, triple-melt routes and specific alloy campaigns are scheduled against upstream furnace batches; the accepted MOQ is stated in the quotation.' },
+  { icon: '🗓️', title: 'Lead-time windows', body: 'Lead time is driven by the melting campaign, the specified melt route and current alloy availability. Standard and non-standard routes are quoted as specific values at the RFQ stage rather than as a fixed schedule.' },
+  { icon: '⚠️', title: 'Melt route availability', body: 'Triple-melt routes and specific alloy campaigns require dedicated furnace time. Feasibility, campaign timing and the accepted route are confirmed before an order is accepted.' },
+];
+
+// ── S10 Comparison (Ti vs Al vs Cu) ────────────────────────────────────────
+const comparisonRows = [
+  { dim: 'Density', ours: '4.51 g/cm³ — lowest of the three, highest strength per unit mass', alt1: '2.70 g/cm³ — requires larger sections for equal stiffness', alt2: '8.96 g/cm³ — heavy, low strength per unit mass' },
+  { dim: 'Inclusivity and fracture control', ours: 'Tight inclusion control via multi-pass VAR; well suited to fatigue-critical forgings', alt1: 'Widely used where stiffness governs; different inclusion profile', alt2: 'High conductivity and thermal expansion make fatigue design different' },
+  { dim: 'Corrosion behaviour', ours: 'Passive film, resistant to seawater, chloride and oxidising media', alt1: 'Excellent oxide film; susceptible to chloride pitting when unalloyed', alt2: 'Susceptible to acidic and ammonia-bearing environments' },
+  { dim: 'Melting route sensitivity', ours: 'VAR must be repeated for the highest-purity aerospace routes; route is a real cost driver', alt1: 'Secondary remelt sufficient for most structural applications', alt2: 'Oxygen pickup is a common control concern rather than a purity driver' },
+  { dim: 'Downstream process fit', ours: 'Forge, extrude and roll at reduced temperature; strict control of forging ratio', alt1: 'Conventional forging and rolling window; broad process tolerance', alt2: 'Hot working window is narrow; high thermal mass affects tool load' },
+];
+
+// ── S11 FAQ ────────────────────────────────────────────────────────────────
+const faqItems = [
+  { question: 'What information is needed for a titanium ingot quotation?', answer: 'Provide the grade, the governing specification and revision, the melting route (single, double or triple VAR), the ingot weight class, the diameter, the ingot count, the surface condition, the downstream route (forging, extrusion, rolling or re-melt), the inspection and document requirements, packing and destination. Confirming the intended downstream process is the single most useful input, because it determines the accepted melting route.' },
+  { question: 'How do I choose between single, double and triple melt?', answer: 'The number of VAR passes controls how much gas, oxide and volatile contamination is refined out. Single melt is normally reviewed for non-critical CP and industrial use. Double melt (commonly EBM followed by VAR) is the general route for structural and pressure work. Triple VAR melt is specified where the highest purity and lowest inclusion levels are required, typically for fatigue-critical aerospace forgings. The route must be stated in the order — it is not selected by the supplier on the customer behalf.' },
+  { question: 'What ingot weight and diameter ranges are available?', answer: 'The commonly reviewed envelope is 5 kg to 60 kg per ingot with cylindrical diameters from Ø150 mm to Ø600 mm. Larger weight classes and rectangular sections are reviewed on request against the upstream melting route and the downstream press capacity. The accepted envelope for a specific order is confirmed in the quotation.' },
+  { question: 'How do oxygen and interstitial content affect downstream forging?', answer: 'Oxygen is the most consequential impurity in titanium because it raises strength while sharply reducing ductility. CP Grade 2 ingot is typically supplied to a maximum oxygen content around 0.13%. Higher oxygen narrows the usable forging window and increases the risk of cracking on the first reduction, while lower oxygen improves ductility but reduces strength. Specify the required oxygen and interstitial limits on the order rather than relying on a nominal chemistry.' },
+  { question: 'Does an ingot order include aerospace or medical qualification?', answer: 'No. General Grade 5 or Grade 23 ingot supply does not by itself constitute aerospace approval or finished medical device qualification. Approved material specifications (for example AMS 4928 or ASTM F136 for downstream bar and forging stock), source restrictions, customer-approved process sources and device-level qualification remain separate responsibilities unless explicitly written into the contract.' },
+  { question: 'Are MOQ, stock and lead time fixed for ingot?', answer: 'No. They depend on grade, melting route, ingot weight class, quantity, alloy availability and the current upstream furnace campaign. Treat them as quotation-specific values. Engineering sample quantities are generally reviewable; full heats and dedicated campaigns are scheduled against the melting plan.' },
+  { question: 'Can ingots be supplied cut or machined to a specific length?', answer: 'Ingots are supplied as-cast to the agreed weight, diameter and height. Cutting, skin-machining or pickling to the downstream forge press opening can be reviewed against the route, the tolerance, the surface requirement and the ingot quantity. The accepted process and final scope are stated in the quotation.' },
+];
+
+// ── S12 Related outbound (Tier 1 anchors) ──────────────────────────────────
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Bars, plates, tubes, wire, foil and mesh stock from one sourcing partner.', href: '/mill-products/' },
+  { title: 'Bar and Rod Stock', desc: 'Billet, bar and rod downstream of the forging route, to ASTM B348 and AMS 4928.', href: '/mill-products/bars-rods/' },
+  { title: 'Plate and Sheet Stock', desc: 'Rolled flat stock downstream of the slab route, to ASTM B265 and AMS 4911.', href: '/mill-products/plates-sheets/' },
+  { title: 'Titanium Grade Library', desc: 'Grade 1 / 2 / 5 / 23 chemistry, standards and property references.', href: '/materials/' },
+  { title: 'Material Traceability', desc: 'How heat and lot identity is carried from incoming material to shipment.', href: '/capabilities/traceability/' },
+];
+
+// ── CollectionPage / ItemList data (auto-emitted via schema.ts) ────────────
+const itemListItems = [
+  { name: 'Titanium Ingot ASTM B977', url: 'https://cnc.bozemetal.com/mill-products/ingot/#ingot' },
+  { name: 'CP Titanium Ingot Grade 1 / 2 / 3 / 4', url: 'https://cnc.bozemetal.com/mill-products/ingot/#cp-ingot' },
+  { name: 'Ti-6Al-4V (Grade 5) Titanium Ingot', url: 'https://cnc.bozemetal.com/mill-products/ingot/#grade-5-ingot' },
+  { name: 'Ti-6Al-4V ELI (Grade 23) Titanium Ingot', url: 'https://cnc.bozemetal.com/mill-products/ingot/#grade-23-ingot' },
+  { name: 'Titanium Ingot vs Billet, Slab and Sponge', url: 'https://cnc.bozemetal.com/mill-products/ingot/#form-selection' },
+  { name: 'VAR Melting Route and Triple-Melt Supply', url: 'https://cnc.bozemetal.com/mill-products/ingot/#process' },
+];
+---
+
+
+<BaseLayout
+
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Titanium Ingot Mill Stock"
+  serviceDescription="Titanium and titanium alloy ingots to ASTM B977/B977M in CP Grade 1 / 2 / 3 / 4, aerospace Grade 5 (Ti-6Al-4V) UNS R56400, ELI Grade 23 (Ti-6Al-4V ELI) UNS R56401, Grade 7 (Ti-Pd) and Grade 12 (Ti-0.3Mo-0.8Ni). VAR single, double or triple melt routing per AMS 2380. 5-60 kg weight class, Ø150-600 mm cylindrical geometry, as-cast / skin-machined / pickled surface, EN 10204 3.1 certification with heat-level traceability."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Industrial Titanium Ingot"
+  collectionDescription="Titanium ingot stock for forging, extrusion, rolling and re-melt routes, in CP and alpha-beta alloy grades, supplied with melting-route review, ingot geometry control and heat-level material traceability."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Titanium Ingot"
+  productDeliveryLeadTime="Quotation-specific"
+>
+
+  <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+<section id="honest-positioning" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Where We Do Not Compete</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">BOZE Metal is a sourcing and processing partner for titanium ingot, not a primary melter. Ingot is sourced from upstream Baoji melting campaigns. The following scope clarifications are necessary for accurate technical and commercial alignment before any melting route is committed.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🛑</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No primary melting</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Sponge chlorination, Kroll reduction, VAR / EB furnace operation and ingot pouring are not inside our vertically integrated scope. We source ingot from upstream melters; our scope is grade and route review, ingot geometry agreement, inspection coordination, documentation and shipment.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">✈️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No blanket aerospace approval</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">General Grade 5 ingot supply is not automatic aerospace approval. Approved material specifications, approved process sources, customer source restrictions and downstream forging qualification remain separate controls unless explicitly written into the order.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No medical-device qualification</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply material to medical material specifications (ASTM F67, F136) where applicable. We are a material supplier and processor, not a finished medical device manufacturer; downstream device-level certification remains the device maker responsibility.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No fixed MOQ or lead time</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Minimum order quantity and schedule depend on grade, melting route, weight class, alloy availability and the current upstream furnace campaign. Treat them as quotation-specific values confirmed during engineering review.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🧪</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No sponge supply</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Titanium sponge is the raw melt feedstock, not a finished product. If your requirement is sponge rather than cast ingot, that is a different supply chain and is outside our current scope — raise it at RFQ so we can decline or redirect honestly.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">📉</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No guaranteed melt-route substitution</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">A single-melt order cannot be silently upgraded, downgraded or substituted to a triple-melt route to meet a delivery date. Any route change requires written agreement and becomes part of the revised order basis.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<section id="order-basis" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Buying Essentials</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Freeze the Order Basis Before Comparing Price</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ingot price is dominated by melting route and campaign size, not by alloy name alone. Four variables decide the quotation — state all four before comparing offers.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-text);">Melting route</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">VAR single melt, double melt (EBM + VAR) or triple VAR melt, per AMS 2380. The number of remelts is the largest cost and purity driver in the order.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-text);">Ingot geometry</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ingot weight per piece, diameter, height, cylindrical or rectangular section, and the as-cast, skin-machined or pickled surface condition.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-text);">Downstream use</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Forging, extrusion, rolling or re-melt route, and the downstream specification the ingot must satisfy (for example ASTM B348 billet or AMS 4928 forging stock).</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <h3 class="text-lg font-bold" style="color: var(--theme-text);">Evidence</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Melt-route records, full chemistry, oxygen and interstitial limits, heat-level traceability, EN 10204 3.1 certificate and any third-party witnessing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+<section id="grade-form-matrix" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Library</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Ingot Grade × Form Matrix</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Eight procurement-grade entries mapping chemical family, UNS designation, available ingot form and typical downstream use. The accepted melting route, weight class and diameter are confirmed per order — these cards describe enquiry routes, not unconditional stock claims.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Family</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Composition</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Ingot Form</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.family}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns}</span></td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.composition}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.form}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+<section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Ingot Specification EAV Reference</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Twelve procurement-critical attribute, value and standard references for titanium ingot. Use this as a cross-check table when drafting an RFQ; the applicable specification is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="form-selection" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Form Selection</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Specify the Exact Form, Not Only "Titanium Ingot"</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Ingot, billet, slab and sponge are frequently conflated in enquiry traffic. The controlled purchase description is the exact grade, standard, melting route, weight class, diameter, surface condition and quantity.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {formDisambiguation.map((f, i) => (
+          <article id={['ingot', 'billet', 'slab', 'sponge'][i]} class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{f.name}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{f.body}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="/mill-products/bars-rods/" class="inline-flex items-center gap-2 text-sm font-bold" style="color: var(--theme-primary);">
+          View Titanium Bar &amp; Rod Stock
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+        <a href="/mill-products/plates-sheets/" class="inline-flex items-center gap-2 text-sm font-bold" style="color: var(--theme-primary);">
+          View Titanium Plate &amp; Sheet Stock
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<section id="downstream-prep" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Processing Options</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Downstream Preparation Matched to the Next Process</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Preparation for the forging, extrusion or re-melt route can be reviewed against grade, melting route, ingot geometry, surface requirement, tolerance and quantity.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {prepOptions.map((p) => (
+          <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+            <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">{p}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Before requesting a quotation: identify the ingot weight class, the downstream forging or extrusion press opening, and whether the route requires as-cast, skin-machined or pickled surface. The preparation method and achievable tolerance remain order-specific.
+      </p>
+    </div>
+  </section>
+
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-ingot-cast.svg"
+    imageAlt="Titanium ingot cast under vacuum arc remelting with heat-number marking"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Melting Route, ASTM B977 / AMS 2380"
+    title="VAR Melted Ingot for Fatigue-Critical Forging Routes"
+    body="Vacuum arc remelting is the standard refining route for titanium ingot. Each additional VAR pass removes gas, oxide and volatile contamination, which is why triple-melt routes are specified where the lowest inclusion level is required. CP Grade 1 / 2 / 3 / 4, Grade 5 (Ti-6Al-4V) and Grade 23 (Ti-6Al-4V ELI) ingot is reviewed against the melt count your downstream process requires."
+    bullets={['Single, double (EBM + VAR) and triple VAR melt routes', '5-60 kg weight class, Ø150-600 mm cylindrical', 'Full chemistry with oxygen and interstitial reporting']}
+    ctaLabel="Review the melt route options"
+    ctaHref="/mill-products/ingot/#order-basis"
+  />
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-ingot-cast.svg"
+    imageAlt="Titanium ingot heat marking and identification for mill traceability"
+    imagePosition="right"
+    background="dark"
+    eyebrow="Traceability, EN 10204 3.1"
+    title="Heat Marking and Ingot-Level Identity"
+    body="Each ingot lot is released against a heat or lot reference carried through melting, casting, inspection and shipment. Marking, document set, protective packing and delivery basis are checked before release, so the certificate, the ingot and the forging route downstream can be reconciled against one order basis."
+    bullets={['Heat or lot level traceability', 'EN 10204 3.1 standard, 3.2 with independent witness', 'Marking, packing list and release documents agreed in advance']}
+    ctaLabel="See the evidence package"
+    ctaHref="/mill-products/ingot/#evidence"
+  />
+
+
+  <section id="process" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Process Review</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Coordinate the Order from Specification to Release</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Melting is executed against the upstream campaign; melting route, ingot geometry, preparation, inspection scope and documentation are confirmed by quotation against the approved order basis.</p>
+      </header>
+      <div class="mt-12 space-y-6">
+        {pipeline.map((s) => (
+          <article class="flex flex-col sm:flex-row gap-5 rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="shrink-0 flex h-12 w-12 items-center justify-center rounded-xl text-lg font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">{s.n}</span>
+            <div>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{s.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+<section id="evidence" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Supply Scope &amp; Qualification</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Specify the Evidence Needed for Acceptance</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">A certificate name alone does not define the complete acceptance package. State the traceability level, inspection characteristics, melt-route records, marking, third-party involvement and release documents required by the order.</p>
+      </header>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {evidenceCards.map((c) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start gap-3 mb-3">
+              <span class="text-2xl" aria-hidden="true">{c.icon}</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{c.title}</h3>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <section id="before-you-order" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Before You Order</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Confirm Four Controls Before You Buy</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Use this short check before comparing quotations. The complete guide covers supplier evidence, acceptance, commercial scope and change control.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {orderControls.map((c) => (
+          <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-text);">{c.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{c.body}</p>
+          </article>
+        ))}
+      </div>
+      <div class="mt-8 text-center">
+        <a href="/resources/titanium-knowledge-base/" class="inline-flex items-center gap-2 text-sm font-bold" style="color: var(--theme-primary);">
+          Read the Titanium Knowledge Base
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Supply Chain</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Capacity, MOQ and Campaign Scheduling</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four supply-side controls that determine whether a specific ingot order can be accepted, and on what schedule.</p>
+      </header>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {supplyChain.map((s) => (
+          <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{s.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Material Comparison</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Ingot vs. Aluminium and Copper Feedstock</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five procurement-relevant dimensions comparing titanium ingot against the conventional non-ferrous melt-feedstock alternatives, in terms of melting route cost, inclusion control and downstream process fit.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Dimension</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Titanium Ingot (CP Gr.2 ref.)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Aluminium Ingot</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Copper Cathode / Billet</th>
+          </tr></thead>
+          <tbody>{comparisonRows.map((c, i) => (<tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+            <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.dim}</td>
+            <td class="p-3" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); font-weight: 600;">{c.ours}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt1}</td>
+            <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.alt2}</td>
+          </tr>))}</tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+<TrustBadges />
+
+  <QualityControl />
+
+  <Applications />
+
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Ingot FAQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Seven buyer questions on melt routes, ingot geometry, oxygen control, qualification boundaries, MOQ, lead time and cut-to-length preparation.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">{faqItems.map((f, i) => (<details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><summary class="cursor-pointer flex items-start gap-3 list-none"><span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span><span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span><svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div></details>))}</div>
+    </div>
+  </section>
+
+
+  <section id="ingot-rfq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Titanium Ingot Inquiry</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Send the Order Basis for Supply Review</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Share the available grade, specification, melting route, ingot geometry, quantity, downstream process and evidence requirements. The intended downstream process is the most useful single input, because it determines the accepted melting route.</p>
+      </header>
+      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Grade and specification review</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Melting route and ingot geometry scope</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Preparation and inspection requirements</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Quotation-specific availability and delivery basis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent hub, billet and bar downstream, plate and sheet downstream, grade library, and traceability evidence.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{relatedLinks.map((r) => (<a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p><span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span></a>))}</div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/mill-products/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all mill products</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -60,15 +60,16 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
   },
   '/mill-products': {
     h1: 'Premium Industrial Titanium Mill Products',
-    subtitle: 'Certified titanium bars, plates, tubes, wire, foil and mesh with documented material traceability and international specifications. Sourced through Baoji\'s titanium supply chain and prepared for aerospace, medical, semiconductor, chemical processing and industrial applications.',
+    subtitle: 'Certified titanium ingot, bars, plates, tubes, wire, foil and mesh with documented material traceability and international specifications. Sourced through Baoji\'s titanium supply chain and prepared for aerospace, medical, semiconductor, chemical processing and industrial applications.',
     badge: 'Mill Products Hub | AS9100D Supply Chain',
     keyMetrics: [
-      { value: '6', label: 'Product Forms' },
+      { value: '7', label: 'Product Forms' },
       { value: '5', label: 'CP / Alloy Grades' },
       { value: 'ASTM/AMS/MIL', label: 'Specifications' },
       { value: 'EN 10204 3.1', label: 'Mill Certification' },
     ],
     entityChips: [
+      'Ingots',
       'Bars & Rods',
       'Plates & Sheets',
       'Tubes & Pipes',
@@ -196,6 +197,27 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+// BSI Phase G-9 · Mill Products Titanium Ingot sub-page
+  '/mill-products/ingot': {
+    h1: 'Titanium Ingot — Melting Route, Weight Class & Billet Feedstock',
+    subtitle: 'Titanium ingot to ASTM B977/B977M in CP Grade 1 / 2 / 3 / 4, aerospace Grade 5 (Ti-6Al-4V) and ELI Grade 23 (Ti-6Al-4V ELI). VAR single, double (EBM + VAR) or triple melt routing per AMS 2380, 5-60 kg weight class at Ø150-600 mm. Sourced against upstream Baoji melting campaigns with EN 10204 3.1 certification and heat-level traceability; MOQ and schedule are quotation-specific.',
+    badge: 'Mill Products / Ingot | ASTM B977',
+    keyMetrics: [
+      { value: 'ASTM B977/B977M', label: 'Ingot specification' },
+      { value: '5–60 kg', label: 'Ingot weight class' },
+      { value: 'Ø150–600 mm', label: 'Cylindrical geometry' },
+      { value: 'VAR 1× / 2× / 3×', label: 'Melting route' },
+    ],
+    entityChips: [
+      'ASTM B977',
+      'AMS 2380',
+      'ASTM B348',
+      'AMS 4928',
+      'EN 10204 3.1',
+      'AS9100D',
+    ],
+  },
+  // BSI Phase G-6 · Mill Products Wire sub-page
   // BSI Phase H-B · Standard Parts Flanges sub-page
   '/standard-parts/flanges': {
     h1: 'Titanium Flanges — ASME B16.5 / ASTM B381 Forged',

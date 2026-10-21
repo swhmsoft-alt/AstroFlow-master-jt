@@ -364,6 +364,25 @@ export default defineConfig({
           "titanium filtration mesh": {
             "href": "/mill-products/mesh/"
           },
+          // BSI Phase G-9 · Mill Products Titanium Ingot sub-page (5-inbound #4)
+          "titanium ingot": {
+            "href": "/mill-products/ingot/"
+          },
+          "titanium ingots": {
+            "href": "/mill-products/ingot/"
+          },
+          "ASTM B977 titanium ingot": {
+            "href": "/mill-products/ingot/"
+          },
+          "AMS 2380 titanium ingot": {
+            "href": "/mill-products/ingot/"
+          },
+          "titanium ingot supplier": {
+            "href": "/mill-products/ingot/"
+          },
+          "titanium VAR remelt ingot": {
+            "href": "/mill-products/ingot/"
+          },
           // BSI 2026-10-13 · Grade 5 Ti-6Al-4V material-specific machining
           // sub-page (5-inbound #4: keywordMap)
           "Grade 5 titanium CNC machining": {

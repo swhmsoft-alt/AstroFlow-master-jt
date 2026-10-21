@@ -287,6 +287,21 @@ export function getNavigation(lang: string): NavItem[] {
           { name: 'Titanium Mill Products', href: '/mill-products/' },
         ],
       },
+      {
+        // BSI Phase G-9 · 5-inbound #1 — Mill Products sub-form access from the
+        // top Solutions dropdown. Each entry is a real page under the hub; no
+        // fabricated routes. Keep aligned with src/pages/mill-products/*.astro.
+        heading: 'Mill Products',
+        items: [
+          { name: 'Titanium Ingots', href: '/mill-products/ingot/' },
+          { name: 'Titanium Bars & Rods', href: '/mill-products/bars-rods/' },
+          { name: 'Titanium Plates & Sheets', href: '/mill-products/plates-sheets/' },
+          { name: 'Titanium Tubes & Pipes', href: '/mill-products/tubes-pipes/' },
+          { name: 'Titanium Wire', href: '/mill-products/wire/' },
+          { name: 'Titanium Foil & Coils', href: '/mill-products/foil-coils/' },
+          { name: 'Titanium Woven Mesh', href: '/mill-products/mesh/' },
+        ],
+      },
     ],
   };
   const englishNav: NavItem[] = [];

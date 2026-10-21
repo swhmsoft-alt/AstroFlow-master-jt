@@ -35,13 +35,24 @@ import Applications from '../../components/landing/Applications.astro';
 import { HERO_CONFIG } from '../../config/hero';
 
 const pageTitle = 'Titanium Mill Products | Bars, Plates, Tubes & More | BOZE Metal';
-const pageDescription = 'Certified titanium mill products including bars, plates, tubes, wire, foil and mesh. Multiple grades, ASTM/AMS specifications, MTR traceability and custom sizing from BOZE Metal in Baoji, China.';
+const pageDescription = 'Certified titanium mill products including ingots, bars, plates, tubes, wire, foil and mesh. Multiple grades, ASTM/AMS specifications, MTR traceability and custom sizing from BOZE Metal in Baoji, China.';
 const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/';
 
 const hero = HERO_CONFIG['/mill-products'];
 
 // ── 6 product forms (ItemList entries + product entity gateway cards) ───────
 const productForms = [
+  {
+    slug: 'ingot',
+    name: 'Titanium Ingots',
+    icon: '⬤',
+    summary: 'Cast titanium ingot as the forging, extrusion, rolling or re-melt feedstock, with melting route and heat traceability reviewed against the order basis.',
+    forms: ['VAR Ingot', 'Double Melt', 'Triple Melt'],
+    commonGrades: ['Grade 1', 'Grade 2', 'Grade 5', 'Grade 23'],
+    commonStandards: ['ASTM B977', 'AMS 2380'],
+    typicalApplications: ['Forging Billet Feedstock', 'Extrusion Feedstock', 'Rolling Feedstock', 'Re-melt and Additive Feedstock'],
+    href: '/mill-products/ingot/',
+  },
   {
     slug: 'bars-rods',
     name: 'Titanium Bars & Rods',
@@ -145,7 +156,7 @@ const standardsGroups = [
 
 // ── Specification flow (D5 — How to start, AI-citable procurement model) ────
 const specFlowSteps = [
-  { n: '01', label: 'Product Form', detail: 'Bar, plate, sheet, tube, pipe, wire, foil or mesh' },
+  { n: '01', label: 'Product Form', detail: 'Ingot, bar, plate, sheet, tube, pipe, wire, foil or mesh' },
   { n: '02', label: 'Titanium Grade', detail: 'CP (Grade 1, 2) or alloy (Grade 5, 9, 23, other)' },
   { n: '03', label: 'Applicable Standard', detail: 'ASTM / AMS / ISO / MIL / customer specification' },
   { n: '04', label: 'Dimensions', detail: 'Diameter, thickness, width, length — incl. tolerances' },
@@ -159,6 +170,7 @@ const specFlowSteps = [
 
 // ── Selection matrix (D5 — Quick-decision answer sheet) ──────────────────────
 const selectionMatrix = [
+  { requirement: 'Forging, extrusion or re-melt feedstock', recommendedForm: 'Ingots' },
   { requirement: 'CNC machining blanks (round, square, hex)', recommendedForm: 'Bars & Rods' },
   { requirement: 'Fabricated structures and welded assemblies', recommendedForm: 'Plates & Sheets' },
   { requirement: 'Fluid / heat exchanger / hydraulic applications', recommendedForm: 'Tubes & Pipes' },

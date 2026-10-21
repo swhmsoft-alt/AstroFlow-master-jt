@@ -30,6 +30,49 @@
 
 > **Last Updated:** 2026-10-16
 > **Current Focus:** **P-FOOTER-FIX-SEC — Footer separator U+FFFD + Privacy/Terms/Cookie contrast.** User reported footer "Privacy Policy / Terms of Service / Cookie Policy" had two issues: (1) garbled `�?/span>` separator between links and (2) links visually invisible against footer background. Root cause for (1): `src/components/Footer.astro` line 266/270/274 had `<span style="...">[U+FFFD]?</span>` — the middle-dot `·` (UTF-8 `0xC2 0xB7`) was corrupted to `0xEF 0xBF 0xBD` (U+FFFD) + `0x3F` (`?`) by a prior PowerShell `Set-Content -Encoding UTF8` round-trip, AND the closing `<` of `</span>` was similarly corrupted to `?` (so the original tag was actually `<span style="...">[U+FFFD]?/span>`). 3 byte-level replacements `[0xEF 0xBF 0xBD, 0x3F, 0x2F]` → `[0xC2 0xB7, 0x3C, 0x2F]` produced clean `<span style="...">·</span>` middle-dot separators. Root cause for (2): links used `var(--text-muted)` (slate-400 in dark / slate-600 in light) which passed WCAG but blended with the `opacity: 0.3` separator in user's actual environment. Switched Privacy/Terms/Cookie to `var(--theme-text)` (max contrast, ~16:1 in dark / ~13:1 in light) + added `hover-link` utility class for primary-color hover state. Build re-ran clean (2382 pages / 73.85s). `dist/index.html` shows `<a href="/privacy-policy/" class="hover-link transition-colors" style="color: var(--theme-text);">`. **Not deployed.**
+> ### BSI Phase G-9 · `/mill-products/ingot/` — Titanium Ingot Sub-Page — CLOSED-LOOP (2026-10-21)
+>
+> **Trigger:** user-supplied UI/logic reference `heletitanium.com/titanium-products/titanium-plate/`; target URL `https://cnc.bozemetal.com/mill-products/ingot/` returned 404 (no `ingot` file under `src/pages/mill-products/`).
+>
+> **UI/logic borrowed from reference (11 of 12 blocks reused):**
+> 1. Hero eyebrow-standard + 3 chips + in-page anchor CTAs
+> 2. **"Freeze the Order Basis Before Comparing Price"** (4-card) → re-axised to Melting Route / Ingot Geometry / Downstream Use / Evidence
+> 3. Grade cards w/ unified "confirmed by quotation" disclaimer → CP Gr1/2/3/4 + Gr5 + Gr23 + Gr7 + Gr12
+> 4. **"Specify the Exact Form, Not Only 'Titanium Plate'"** → Ingot / Billet / Slab / Sponge disambiguation, last card links to the dedicated bar+plate pages
+> 5. Processing Options 4× ✓ (re-axised: cutting → downstream forge/extrusion preparation)
+> 6. 5-step Process Review timeline (requirement → melt route → casting → inspection → release)
+> 7. ~~in-house mill video~~ **NOT borrowed** → replaced with an honest sourcing-boundary statement (BOZE is a sourcing + processing partner, not a melter)
+> 8. Application Context → reused existing `<Applications />` component (F2: no new component)
+> 9. "Specify the Evidence Needed for Acceptance" 4-card
+> 10. "Confirm Four Controls Before You Buy" 4-card (external guide link → internal `/resources/titanium-knowledge-base/`)
+> 11. FAQ ×6 → expanded to ×7 for ingot-specific questions
+> 12. Inquiry form → not rebuilt; 4 ✓ bullets kept as RFQ CTA copy routing to `/rfq/`
+> **Cross-cutting:** the reference's "confirmed by quotation / quotation-specific" tone system is inherited site-wide for this page.
+>
+> **Files modified (5):**
+> 1. `src/config/site.ts` — Solutions dropdown gained a second column "Mill Products" with all 7 sub-forms incl. Ingot (5-inbound #1).
+> 2. `src/config/hero.ts` — new `HERO_CONFIG['/mill-products/ingot']`; hub `keyMetrics` 6→7 Product Forms, subtitle + `entityChips` + 'Ingots' (5-inbound #3).
+> 3. `src/pages/mill-products/index.astro` — `productForms` 6→7 (ingot card), `selectionMatrix` +1 row, `specFlowSteps` step 01 wording, `pageDescription` (5-inbound #2).
+> 4. `astro.config.mjs` keywordMap — +6 phrases → `/mill-products/ingot/` (5-inbound #5).
+> 5. `data/keywords/main-db.json` — +6 EN entries, note `BSI Phase G-9` (5-inbound #4).
+>
+> **Files created (2):** `src/pages/mill-products/ingot.astro` (~535 lines, 18 H2, 16 sections) + `public/images/products/titanium-ingot-cast.svg` (1024×1024 placeholder matching the existing `*.svg` product-image style: VAR electrodes, cylindrical ingot body, heat marking, tier-1/2/3 grade label).
+>
+> **Standards cited (all externally verifiable, zero fabrication):** ASTM B977/B977M (ingot — primary), AMS 2380 (VAR melting), ASTM B348 / AMS 4928 / ASTM F136 (downstream), ASTM B265 / AMS 4911 (downstream flat). UNS R50250 / R50400 / R50550 / R50700 / R56400 / R56401 / R52400 / R53400.
+>
+> **Validation gates — ALL PASS:**
+> - **G1** `check-undefined-slugs.mjs` → 0 issues (15 files scanned).
+> - **G2** `npx astro build` → **2383 page(s) built in 77.16s / Complete!** (baseline 2382 → +1).
+> - **G3** dist verify (`dist/mill-products/ingot/index.html`): CollectionPage ×1 · ItemList ×1 · Service ×11 · FAQPage ×1 · BreadcrumbList ×1 · WebPage ×1 · Question ×7 · `"name":""` 0 · `"text":""` 0 · internal hrefs without trailing slash 0 · ld+json script blocks = 1 (F4 compliant) · section ids: honest-positioning, order-basis, grade-form-matrix, spec-eav, form-selection, downstream-prep, process, evidence, before-you-order, supply-chain, comparison, quality, applications, faq, ingot-rfq, related · sitemap-0.xml contains `mill-products/ingot` → **PASS**.
+> - **G4** `check-keyword-map.mjs` → 2370 authoritative routes; keywordMap 500 entries / **0 broken**; main-db 464 mapped / **0 broken**.
+> - **G5** 5 inbound entries verified: site.ts L296 · index.astro L38/46-54/159/173/316 · hero.ts L201 · main-db.json 12 hits · astro.config.mjs 6 hits.
+> - **G6** `git status --short` → 5 M + 2 ??, **zero** Cline temp/log residue (temp verifier `_verify_g9.mjs`, `build.log`, `build.err.log` all deleted).
+>
+> **Build-error post-mortem (worth recording):** three consecutive `npx astro build` failures were all caused by **fragmented chunked edits** — `insert_line` at a stale line offset interleaved new frontmatter blocks into the middle of open arrays, leaving orphaned data lines (`{ dim: … },` / `];` / `---` / stray `${…}`) inside the **template** region. The `.astro` frontmatter parsed fine (esbuild `loader:'ts'` on lines 1..149 → OK) and even `@astrojs/compiler parse()` succeeded, but esbuild on the *generated* TS failed with `Expected "}" but found ":"` at a line number that mapped to template source, not frontmatter. **Lesson:** after chunked writes to a `.astro` file, always verify the *generated* code (`transform()` → `esbuild.transformSync(code,{loader:'ts'})`), not the raw frontmatter — the raw-frontmatter check gave a false PASS three times. Single-shot verification script now recommended for any multi-chunk `.astro` creation.
+>
+> **Not deployed** (per Buyer-Search-Intelligence-SOP §8 / clinerules 工作流边界, deploy requires the user's own `npm run deploy:inc` FTP step).
+>
+> # Active Context
 # Active Context
 
 > **Last Updated:** 2026-10-16

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(59, 15%, 92%)"/>
+      <stop offset="100%" style="stop-color:hsl(59, 20%, 85%)"/>
+    </linearGradient>
+    <linearGradient id="ingotBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:hsl(59, 35%, 52%)"/>
+      <stop offset="45%" style="stop-color:hsl(59, 30%, 66%)"/>
+      <stop offset="100%" style="stop-color:hsl(59, 35%, 44%)"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.4)"/>
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.0)"/>
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.1)"/>
+    </linearGradient>
+  </defs>
+  <!-- 背景 -->
+  <rect width="1024" height="1024" fill="url(#bg)" rx="16"/>
+  <!-- 铸锭本体（圆柱锭：矩形柱体 + 椭圆顶面） -->
+  <rect x="358.4" y="225.28" width="307.2" height="358.4" fill="url(#ingotBody)" opacity="0.9"/>
+  <ellipse cx="512" cy="225.28" rx="153.6" ry="51.2"
+           fill="hsl(59, 30%, 70%)" opacity="0.95"/>
+  <ellipse cx="512" cy="225.28" rx="128" ry="40"
+           fill="none" stroke="hsl(59, 35%, 38%)" stroke-width="2.5" opacity="0.35"/>
+  <ellipse cx="512" cy="225.28" rx="76.8" ry="25.6"
+           fill="none" stroke="hsl(59, 35%, 38%)" stroke-width="2" opacity="0.2"/>
+  <!-- 柱体竖向高光 -->
+  <rect x="409.6" y="256" width="30.72" height="327.68" rx="15.36"
+        fill="rgba(255,255,255,0.28)"/>
+  <rect x="563.2" y="256" width="15.36" height="327.68" rx="7.68"
+        fill="rgba(0,0,0,0.10)"/>
+  <!-- 铸型分型线 / 浇注痕 -->
+  <rect x="358.4" y="399.36" width="307.2" height="4"
+        fill="hsl(59, 35%, 34%)" opacity="0.22"/>
+  <!-- 打标区示意（炉批号钢印） -->
+  <rect x="440.32" y="430.08" width="143.36" height="58.88" rx="5.12"
+        fill="none" stroke="hsl(59, 35%, 30%)" stroke-width="2.5" opacity="0.3"/>
+  <text x="512" y="454.4" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="21" font-weight="600"
+        fill="hsl(59, 35%, 32%)" opacity="0.42">HEAT No.</text>
+  <text x="512" y="480.6" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="26" font-weight="700"
+        fill="hsl(59, 35%, 30%)" opacity="0.34">Ti-6Al-4V</text>
+  <!-- 底部支承托盘 -->
+  <rect x="317.44" y="583.68" width="389.12" height="15.36" rx="7.68"
+        fill="hsl(59, 30%, 55%)" opacity="0.35"/>
+  <!-- VAR 重熔电极示意（上方双极棒） -->
+  <g opacity="0.16">
+    <rect x="430.08" y="143.36" width="20.48" height="71.68" rx="10.24"
+          fill="hsl(59, 35%, 40%)"/>
+    <rect x="573.44" y="143.36" width="20.48" height="71.68" rx="10.24"
+          fill="hsl(59, 35%, 40%)"/>
+    <circle cx="440.32" cy="133.12" r="15.36" fill="hsl(59, 35%, 40%)"/>
+    <circle cx="583.68" cy="133.12" r="15.36" fill="hsl(59, 35%, 40%)"/>
+  </g>
+  <!-- 轮廓框（与其他产品图统一） -->
+  <rect x="204.8" y="153.6" width="614.4" height="512" rx="40.96"
+        fill="none" stroke="hsl(59, 35%, 45%)" stroke-width="3" opacity="0.3"/>
+  <!-- 光泽层 -->
+  <rect width="1024" height="1024" fill="url(#shine)" rx="16"/>
+  <!-- 产品名称 -->
+  <text x="512" y="798.72" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="51.2" font-weight="600"
+        fill="hsl(59, 35%, 45%)">Titanium Ingot (VAR Cast)</text>
+  <!-- 材质信息 -->
+  <text x="512" y="870.4" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="25.6"
+        fill="#999">ASTM B977 · CP Gr1/2 · Gr5 · Gr23</text>
+  <!-- 底部水印 -->
+  <text x="512" y="962.56" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-size="18.432" fill="#bbb">
+    BOZE CNC Ti · Precision Titanium Component
+  </text>
+  <!-- 齿轮/CNC 装饰图标 -->
+  <g transform="translate(870.4,153.6) scale(0.3072)" opacity="0.12">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="hsl(59, 35%, 45%)" stroke-width="8"/>
+    <line x1="42" y1="0" x2="58" y2="0" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="21" y1="36.37" x2="29" y2="50.23" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="42" x2="0" y2="58" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-21" y1="36.37" x2="-29" y2="50.23" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-42" y1="0" x2="-58" y2="0" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-21" y1="-36.37" x2="-29" y2="-50.23" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="-42" x2="0" y2="-58" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="21" y1="-36.37" x2="29" y2="-50.23" stroke="hsl(59, 35%, 45%)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>
