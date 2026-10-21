@@ -110,8 +110,10 @@ const defaultCanonical = canonicalURL;
           </thead>
           <tbody>
             {standard.technicalProperties.map((prop, idx) => (
-              <tr style="border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent); background-color: idx % 2 === 0 ? 'var(--theme-surface)' : 'color-mix(in srgb, var(--theme-primary) 2%, transparent)';"
-                > class="hover-bg-5"
+              <tr
+                class="hover-bg-5"
+                style={`border-top: 1px solid color-mix(in srgb, var(--theme-primary) 8%, transparent); background-color: ${idx % 2 === 0 ? 'var(--theme-surface)' : 'color-mix(in srgb, var(--theme-primary) 2%, transparent)'};`}
+              >
                 <td class="px-6 py-3.5 font-medium" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{t(`materials.techspecs.${standard.faqCategoryKey}.label.${idx}`)}</td>
                 <td class="px-6 py-3.5 font-semibold" style="color: var(--theme-text);">{t(`materials.techspecs.${standard.faqCategoryKey}.value.${idx}`)}</td>
               </tr>

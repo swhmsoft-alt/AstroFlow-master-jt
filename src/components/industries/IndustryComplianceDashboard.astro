@@ -84,8 +84,8 @@ const t = useTranslations(currentLang);
     <div class="space-y-8 max-w-6xl mx-auto">
       {areas.map((area) => (
         <div
-          class="group relative rounded-xl p-8 transition-all duration-300 hover-template-var-2"
-          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); border-left: 3px solid {area.highlightColor};"
+          class="group relative rounded-xl p-8 transition-all duration-300 hover-accent-dyn"
+          style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent); border-left: 3px solid {area.highlightColor}; --dyn-accent: {area.highlightColor};"
           
         >
           <div class="flex flex-col lg:flex-row lg:items-start gap-6">

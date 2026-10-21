@@ -86,9 +86,9 @@ const ldJson = buildBreadcrumbLdJson(enrichedItems, siteUrl);
                 <a
                   href={item.href}
                   itemprop="item"
+                  class="hover-color-only"
                   style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);"
-                  
-                > class="hover-color-only"
+                >
                   <span itemprop="name">{item.label}</span>
                 </a>
               ) : (

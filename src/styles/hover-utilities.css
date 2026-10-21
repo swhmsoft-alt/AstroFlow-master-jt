@@ -24,10 +24,81 @@
  *
  * Trade-off: the rules are global (slightly larger CSS), but eliminate
  * 100+ duplicated inline handlers and unblock CSP-strict deployments.
+ *
+ * ── COMPLETENESS CONTRACT ─────────────────────────────────────────────
+ * Every class emitted by `scripts/cleanup-onmouseover.mjs` MUST have a
+ * rule here. `scripts/check-hover-classes.mjs` enforces this by diffing
+ * the tokens used in `src/**` against the selectors defined below.
+ *
+ * DO NOT reintroduce a blanket `[class*="hover-"]` rule: it grants
+ * transition-duration to classes that have no `transition-property`,
+ * which looks animated but renders as no-op. Each class below declares
+ * its own `transition-property`.
  * ========================================================================== */
 
-/* Generic transition for all hover utilities (avoids per-class rules) */
-[class*="hover-"] {
+/* ── 0. Dynamic-accent (per-item colour) ────────────────────────────────
+ * The 5 legacy `hover-template-*` / `hover-card-accent` classes referenced
+ * Astro template expressions ({cert.accentColor}, {area.highlightColor},
+ * {group.accentColor}, {color}) and therefore could never be expressed as
+ * static CSS. Each element already carries its colour inline, so we read
+ * it from the `--dyn-accent` custom property set on the same element.
+ * Falls back to --theme-primary when the property is absent.
+ */
+.hover-accent-dyn {
+  transition-property: border-color, box-shadow;
+}
+.hover-accent-dyn:hover {
+  border-color: var(--dyn-accent, var(--theme-primary));
+  box-shadow: 0 0 30px color-mix(in srgb, var(--dyn-accent, var(--theme-primary)) 30%, transparent);
+}
+
+/* ── 1. Generic easing for every declared utility ───────────────────────
+ * Scoped to the explicit list below (not a wildcard) so unknown classes
+ * never receive a transition without a matching transition-property.
+ */
+.hover-link,
+.hover-card,
+.hover-card-strong,
+.hover-card-soft,
+.hover-card-lift,
+.hover-card-border-only,
+.hover-card-25,
+.hover-card-20-6,
+.hover-card-24-8,
+.hover-card-3prop-45,
+.hover-card-3prop-lift,
+.hover-card-accent,
+.hover-accent-dyn,
+.hover-cta,
+.hover-cta-strong,
+.hover-cta-secondary,
+.hover-cta-tertiary,
+.hover-cta-lift-translate,
+.hover-cta-lift-2px,
+.hover-cta-large-glow,
+.hover-cta-80-30,
+.hover-cta-80-50-tx,
+.hover-icon,
+.hover-item,
+.hover-bar,
+.hover-stage-arrow,
+.hover-stage-arrow-32,
+.hover-lift,
+.hover-link-triple,
+.hover-link-bg,
+.hover-color-only,
+.hover-color-70-white,
+.hover-opacity-only,
+.hover-translate-x,
+.hover-bg-soft,
+.hover-bg-shorthand,
+.hover-bg-5,
+.hover-bg-6,
+.hover-bg-8,
+.hover-bg-10,
+.hover-bg-surface,
+.hover-bg-80-black,
+.hover-border-text-50 {
   transition-timing-function: ease-out;
   transition-duration: 200ms;
 }
@@ -127,4 +198,227 @@
 .hover-lift:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * 8. Classes emitted by cleanup-onmouseover.mjs but previously undefined.
+ * Each rule is a mechanical transcription of the inline handler the
+ * migration script removed, e.g.
+ *   this.style.backgroundColor='color-mix(in srgb, var(--theme-primary) 5%, transparent)'
+ * becomes
+ *   .hover-bg-5:hover { background-color: color-mix(...); }
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+/* --- Background tints -------------------------------------------------- */
+.hover-bg-soft,
+.hover-bg-shorthand,
+.hover-bg-5,
+.hover-bg-6,
+.hover-bg-10 {
+  transition-property: background-color;
+}
+.hover-bg-soft:hover { background-color: color-mix(in srgb, var(--theme-primary) 4%, transparent); }
+.hover-bg-shorthand:hover { background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent); }
+.hover-bg-5:hover { background-color: color-mix(in srgb, var(--theme-primary) 5%, transparent); }
+.hover-bg-6:hover { background-color: color-mix(in srgb, var(--theme-primary) 6%, transparent); }
+.hover-bg-10:hover { background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent); }
+
+/* hover-bg-8 also drove the border to primary */
+.hover-bg-8 {
+  transition-property: background-color, border-color;
+}
+.hover-bg-8:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+  border-color: var(--theme-primary);
+}
+
+.hover-bg-surface {
+  transition-property: background-color;
+}
+.hover-bg-surface:hover { background-color: var(--theme-surface); }
+
+/* --- Colour / opacity -------------------------------------------------- */
+.hover-color-only {
+  transition-property: color;
+}
+.hover-color-only:hover { color: var(--theme-primary); }
+
+.hover-color-70-white {
+  transition-property: color;
+}
+.hover-color-70-white:hover { color: color-mix(in srgb, var(--theme-primary) 70%, white); }
+
+.hover-opacity-only {
+  transition-property: opacity;
+}
+.hover-opacity-only:hover { opacity: 0.8; }
+
+.hover-border-text-50 {
+  transition-property: border-color;
+}
+.hover-border-text-50:hover { border-color: color-mix(in srgb, var(--theme-text) 50%, transparent); }
+
+/* --- Link with background + border -------------------------------------- */
+.hover-link-triple,
+.hover-link-bg {
+  transition-property: color, border-color, background-color, opacity;
+}
+.hover-link-triple:hover {
+  color: var(--theme-primary);
+  border-color: var(--theme-primary);
+  background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+}
+.hover-link-bg:hover {
+  color: var(--theme-primary);
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+}
+
+/* --- Card variants ------------------------------------------------------ */
+.hover-card-border-only {
+  transition-property: border-color;
+}
+.hover-card-border-only:hover { border-color: var(--theme-primary); }
+
+.hover-card-25,
+.hover-card-20-6,
+.hover-card-24-8 {
+  transition-property: border-color, box-shadow;
+}
+.hover-card-25:hover {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--theme-primary) 15%, transparent);
+}
+.hover-card-20-6:hover {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--theme-primary) 6%, transparent);
+}
+.hover-card-24-8:hover {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--theme-primary) 8%, transparent);
+}
+
+/* Card lift variants: border tint + translateY (+ optional glow) */
+.hover-card-lift {
+  transition-property: border-color, transform, box-shadow;
+}
+.hover-card-lift:hover {
+  border-color: color-mix(in srgb, var(--theme-primary) 45%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 18%, transparent);
+}
+
+.hover-card-3prop-45 {
+  transition-property: border-color, transform, box-shadow;
+}
+.hover-card-3prop-45:hover {
+  border-color: color-mix(in srgb, var(--theme-primary) 45%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--theme-primary) 18%, transparent);
+}
+
+.hover-card-3prop-lift {
+  transition-property: border-color, box-shadow, transform;
+}
+.hover-card-3prop-lift:hover {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 8%, transparent);
+  transform: translateY(-4px);
+}
+
+/* Accent-coloured card (theme accent, not per-item) */
+.hover-card-accent {
+  transition-property: border-color, box-shadow;
+}
+.hover-card-accent:hover {
+  border-color: var(--theme-accent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-accent) 30%, transparent);
+}
+
+/* --- CTA variants -------------------------------------------------------- */
+.hover-cta-lift-translate {
+  transition-property: opacity, box-shadow, transform;
+}
+.hover-cta-lift-translate:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  transform: translateY(-2px);
+}
+
+.hover-cta-lift-2px {
+  transition-property: box-shadow, transform;
+}
+.hover-cta-lift-2px:hover {
+  box-shadow: 0 0 60px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  transform: translateY(-2px);
+}
+
+.hover-cta-large-glow {
+  transition-property: box-shadow;
+}
+.hover-cta-large-glow:hover {
+  box-shadow: 0 8px 40px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+}
+
+.hover-cta-80-30 {
+  transition-property: background-color, box-shadow;
+}
+.hover-cta-80-30:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 40%, transparent);
+}
+
+.hover-cta-80-50-tx {
+  transition-property: background-color, box-shadow, transform;
+}
+.hover-cta-80-50-tx:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--theme-primary) 50%, transparent);
+  transform: translateY(-2px);
+}
+
+.hover-bg-80-black {
+  transition-property: background-color;
+}
+.hover-bg-80-black:hover {
+  background-color: color-mix(in srgb, var(--theme-primary) 80%, black);
+}
+
+/* --- Stage arrow (child of a hoverable card, opacity 0 at rest) ----------
+ * These are absolutely-positioned decorative triangles living INSIDE a
+ * card. `:hover` on the arrow itself never fires (it has zero area), so
+ * the visible state is driven from an ancestor — same approach as
+ * .hover-bar. The border-width itself is set in the BASE state so the
+ * triangle is hidden by opacity, not by collapsing its geometry.
+ */
+.hover-stage-arrow,
+.hover-stage-arrow-32 {
+  transition-property: border-width, opacity;
+}
+.hover-stage-arrow { border-width: 40px 40px 0 0; }
+.hover-stage-arrow-32 { border-width: 32px 32px 0 0; }
+
+.hover-stage-arrow:hover,
+.hover-stage-arrow-32:hover,
+[class*="hover-card"]:hover .hover-stage-arrow,
+[class*="hover-card"]:hover .hover-stage-arrow-32,
+[class*="hover-card-soft"]:hover .hover-stage-arrow,
+[class*="hover-card-soft"]:hover .hover-stage-arrow-32,
+.hover-accent-dyn:hover .hover-stage-arrow,
+.hover-accent-dyn:hover .hover-stage-arrow-32,
+.hover-card-accent:hover .hover-stage-arrow,
+a:hover .hover-stage-arrow,
+a:hover .hover-stage-arrow-32,
+li:hover .hover-stage-arrow,
+li:hover .hover-stage-arrow-32 {
+  opacity: 1;
+}
+
+/* --- Horizontal nudge ---------------------------------------------------- */
+.hover-translate-x {
+  transition-property: opacity, transform;
+}
+.hover-translate-x:hover {
+  opacity: 1;
+  transform: translateX(4px);
 }
