@@ -21,10 +21,23 @@
  * Principles:
  *  - Only Schema.org official types & properties
  *  - Only entities supported by actual page content
- *  - No fabricated values: no fake reviews / ratings / prices. The B2B RFQ Offer
- *    (price-less, MadeToOrder 鈫?/rfq/) is a real manufacturing-quotation
- *    relationship, NOT a retail sale. Offers only carry `price` when a real
- *    numeric price exists.
+ *  - No fabricated values: no fake reviews / ratings / prices. An `Offer` is
+ *    emitted ONLY when a real numeric retail price exists. Boze is a B2B
+ *    make-to-order machining business with no published list price, so
+ *    product-detail / standard-part-detail / part-detail Products carry no
+ *    `offers` node at all.
+ *
+ *    Why (GSC Merchant Listings, 2026-10-21): Google treats any
+ *    `Product.offers` node as a retail Merchant Listing and enforces the B2C
+ *    field set - ERROR on missing `price`/`priceSpecification`, plus WARNINGs
+ *    on `availability` enum, `hasMerchantReturnPolicy` and `shippingDetails`.
+ *    Those fields have no meaning for custom-machined B2B parts (no shelf
+ *    price, no consumer returns window, no parcel shipping policy). Emitting a
+ *    price-less RFQ Offer produced exactly those 4 GSC findings across every
+ *    locale mirror, so the Offer block was dropped rather than populated with
+ *    invented values. The RFQ relationship remains fully modelled through
+ *    `Organization.makesOffer` (itemOffered: Service) and the site-wide
+ *    `OfferCatalog` (`OFFER_CATALOG_ID`).
  *  - Every entity with an @id is referenceable across the site
  */
 
@@ -968,42 +981,65 @@ export function buildProduct(input: {
   sku?: string;
   /** Phase 3 -optional Product.material (e.g. "Grade 5 Ti-6Al-4V"). */
   material?: string;
-  /** Real numeric retail price (USD). When set, offers is a retail Offer (price + InStock). */
+  /**
+   * Real numeric retail price (USD). An `Offer` node is emitted ONLY when a
+   * real numeric price exists (retail stock sale). Boze's catalogue is B2B
+   * custom-manufactured to drawing - there is no published list price.
+   */
   price?: number;
-  /** B2B Request-Quote page URL. When set without price, emits a price-less manufacturing Offer (MadeToOrder) 鈫?RFQ. */
+  /**
+   * GSC Merchant Listings removal (2026-10-21) - no longer emits an Offer.
+   *
+   * Historical behaviour: when `price` was absent but `rfqUrl` was set, this
+   * builder emitted a price-less `Offer` (MadeToOrder -> /rfq/). Google treats
+   * any `Product.offers` node as a retail Merchant Listing and then enforces the
+   * B2C-only required/recommended field set:
+   *   - ERROR   missing field "price" / "priceSpecification" (in "offers")
+   *   - WARNING invalid "availability" enum value (in "offers")
+   *   - WARNING missing "hasMerchantReturnPolicy" (in "offers")
+   *   - WARNING missing "shippingDetails" (in "offers")
+   * Those fields are meaningless for a made-to-order B2B machining business
+   * (no shelf price, no consumer returns, no parcel shipping policy), so the
+   * only two honest options were fabricate them (schema spam - forbidden) or
+   * drop the Offer so Google never runs the Merchant Listings check.
+   *
+   * The property is retained as an accepted-but-ignored no-op so the 260
+   * `/products/product-entities/*` pages and every other existing caller keep
+   * compiling without churn. The RFQ relationship is still fully expressed in
+   * the graph via `Organization.makesOffer` (Service) and the site-wide
+   * `OfferCatalog`, plus the in-page RFQ CTA.
+   */
   rfqUrl?: string;
   /**
-   * Phase G-2.2 -Offer.deliveryLeadTime. ISO 8601 duration (e.g. "P5D") or
-   * descriptive text (e.g. "5-7 days"). When set, the Offer entity carries
-   * the lead-time hint for crawlers and rich-result eligibility.
+   * Offer.deliveryLeadTime. Only forwarded when a real numeric `price` exists
+   * (i.e. when an Offer node is actually emitted). B2B made-to-order parts
+   * surface their lead time in on-page content and in the Service entity's
+   * `additionalProperty`, not in a retail Offer.
    */
   deliveryLeadTime?: string;
 }): Product {
   const hasPrice = input.price != null;
-  const hasRfq = Boolean(input.rfqUrl);
-  const offers =
-    hasPrice || hasRfq
-      ? {
-          '@type': 'Offer',
-          '@id': `${input.url}#offer`,
-          url: hasPrice ? input.url : input.rfqUrl,
-          ...(hasPrice ? { price: input.price, priceCurrency: 'USD' } : {}),
-          ...(input.deliveryLeadTime ? { deliveryLeadTime: input.deliveryLeadTime } : {}),
-          availability: hasPrice
-            ? 'https://schema.org/InStock'
-            : 'https://schema.org/MadeToOrder',
-          itemCondition: 'https://schema.org/NewCondition',
-          seller: {
-            '@type': 'Organization',
-            '@id': ORG_ID,
-            name: 'Baoji Boze Metal Products Co., Ltd.',
-          },
-          itemOffered: {
-            '@type': 'Product',
-            '@id': `${input.url}#product`,
-          },
-        }
-      : undefined;
+  const offers = hasPrice
+    ? {
+        '@type': 'Offer',
+        '@id': `${input.url}#offer`,
+        url: input.url,
+        price: input.price,
+        priceCurrency: 'USD',
+        ...(input.deliveryLeadTime ? { deliveryLeadTime: input.deliveryLeadTime } : {}),
+        availability: 'https://schema.org/InStock',
+        itemCondition: 'https://schema.org/NewCondition',
+        seller: {
+          '@type': 'Organization',
+          '@id': ORG_ID,
+          name: 'Baoji Boze Metal Products Co., Ltd.',
+        },
+        itemOffered: {
+          '@type': 'Product',
+          '@id': `${input.url}#product`,
+        },
+      }
+    : undefined;
 
   return {
     '@type': 'Product',
@@ -1260,16 +1296,27 @@ export interface SchemaPageData {
   productImage?: string;
   productCategory?: string;
   productDatePublished?: string | null;
-  /** B2B Request-Quote URL for the Product offer (defaults to ${SITEROOT}/rfq/). */
+  /**
+   * B2B Request-Quote URL. Retained as an accepted-but-ignored no-op.
+   *
+   * GSC Merchant Listings fix (2026-10-21): this used to auto-inject a
+   * price-less `Offer` (MadeToOrder -> /rfq/) into every product-detail /
+   * standard-part-detail Product. Google reads any `Product.offers` as a retail
+   * Merchant Listing and then requires B2C-only fields that do not apply to a
+   * made-to-order machining business. Passing this prop no longer produces an
+   * Offer; the RFQ relationship is carried by `Organization.makesOffer`
+   * (Service) and the site-wide `OfferCatalog` instead.
+   */
   productRfqUrl?: string;
   /** Phase 3 -Product SKU. Per-page override of the entity's own sku field. */
   productSku?: string;
   /** Phase 3 -Product material (e.g. "Grade 5 Ti-6Al-4V"). Maps to schema.org Product.material. */
   productMaterial?: string;
   /**
-   * Phase G-2.2 -Offer.deliveryLeadTime for the standard-part-detail case.
-   * Forwarded to buildProduct 鈫?Offer. Optional; omit to skip the field.
-   * Example: "5-7 days" or ISO 8601 duration "P5D".
+   * Offer.deliveryLeadTime. Only emitted when a real numeric price produces an
+   * Offer node; ignored for the B2B made-to-order Product entities (which
+   * surface lead time in on-page content and via the Service entity's
+   * `additionalProperty`).
    */
   productDeliveryLeadTime?: string;
   /**
@@ -1557,6 +1604,15 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
       }
       // Phase G-2.2: opt-in Product entity for standard-part-detail (not
       // standard-parts-hub, which remains a procurement landing page).
+      //
+      // GSC Merchant Listings fix (2026-10-21): the RFQ `Offer` injection was
+      // removed here. A price-less `Offer` on a `Product` makes Google run the
+      // B2C retail Merchant Listings check, which then errors on missing
+      // price/priceSpecification and warns on availability /
+      // hasMerchantReturnPolicy / shippingDetails. These parts are made-to-order
+      // B2B goods quoted per drawing, so no Offer is emitted at all — the
+      // procurement path stays expressed by the Service entity above plus the
+      // site-wide Organization.makesOffer / OfferCatalog nodes.
       if (pageType === 'standard-part-detail') {
         const productName = data.productName ?? data.serviceName;
         if (productName) {
@@ -1568,8 +1624,6 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
             category: data.productCategory,
             ...(data.productSku ? { sku: data.productSku } : {}),
             ...(data.productMaterial ? { material: data.productMaterial } : {}),
-            rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
-            deliveryLeadTime: data.productDeliveryLeadTime,
           }));
         }
       }
@@ -1594,7 +1648,12 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           ...(data.productSku ? { sku: data.productSku } : {}),
           ...(data.productMaterial ? { material: data.productMaterial } : {}),
           datePublished: data.productDatePublished,
-          rfqUrl: data.productRfqUrl ?? `${SITEROOT}/rfq/`,
+          // No rfqUrl — GSC Merchant Listings fix (2026-10-21). A price-less
+          // Offer on a B2B made-to-order part triggers the retail Merchant
+          // Listings check (price/priceSpecification error + availability /
+          // hasMerchantReturnPolicy / shippingDetails warnings). No Offer is
+          // emitted; the RFQ path is carried by the Service entity below and
+          // by Organization.makesOffer / the site-wide OfferCatalog.
         }));
       }
       // Phase 3 -product-detail page-level HowTo (manufacturing_process) is
@@ -1645,8 +1704,9 @@ export function buildPageGraph(pageType: PageType, data: SchemaPageData) {
           image: data.productImage,
           category: data.productCategory,
           datePublished: data.productDatePublished,
-          // No rfqUrl 鈫?buildProduct skips the Offer block (buildProduct only
-          // emits offers when rfqUrl or price is provided, schema.ts:545-565).
+          // No rfqUrl / no price — buildProduct skips the Offer block entirely,
+          // so Google never runs the B2C Merchant Listings check on equipment
+          // showcase pages. See docs/schema-audit/schema-issues.md P1-5.
         }));
       }
       break;
