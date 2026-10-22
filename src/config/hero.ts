@@ -1441,6 +1441,33 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "MTR Traceable"
     ]
   },
+  '/industries/yacht': {
+    h1: 'Titanium CNC Machining for Superyacht & Yacht Refit Parts',
+    subtitle: 'AS9100D-controlled machining of Grade 2 commercially pure titanium and Grade 5 (Ti-6Al-4V) for superyacht refit and repair work — seacocks and through-hull fittings, seawater cooling and heat-exchanger components, wet exhaust parts, propulsion and shaft hardware, and performance sailing rig fittings. Full EN 10204 3.1 / 3.2 traceability with class-society-recognised specifications.',
+    badge: 'Yacht & Superyacht',
+
+    keyMetrics: [
+      {
+        "value": "Grade 2 / 5",
+        "label": "CP-Ti & Ti-6Al-4V"
+      },
+      {
+        "value": "EN 10204",
+        "label": "3.1 / 3.2 MTR"
+      },
+      {
+        "value": "1 pc",
+        "label": "Prototype MOQ"
+      }
+    ],
+    entityChips: [
+          "Ti-6Al-4V",
+          "Grade 2 CP-Ti",
+          "5-Axis CNC",
+          "Seawater Service",
+          "MTR Traceable"
+    ]
+  },
   '/industries/uav-drones': {
     h1: 'Lightweight Titanium CNC Machining for UAVs & Drones',
     subtitle: 'High strength-to-weight ratio precision titanium component manufacturing engineered to optimize drone flight endurance, payload capacity, and impact resistance. Specializing in 5-axis thin-wall milling and dynamic balanced structural hardware.',

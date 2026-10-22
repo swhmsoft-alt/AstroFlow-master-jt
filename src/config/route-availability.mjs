@@ -103,6 +103,13 @@ export const EN_ONLY_PREFIXES = Object.freeze([
   // Registered here so NAV filtering, hreflang emission and the rehype
   // i18n-link plugin all suppress this path in the other 11 locales.
   '/industries/luxury-hardware-and-displays/',
+  // 2026-10-22 — EN-only industry landing page. Superyacht / luxury-yacht
+  // refit parts is an English-only vertical by decision: the buyer vocabulary
+  // ("seacock", "through-hull fitting", "wet exhaust mixer", "class survey",
+  // "refit") is English-first, and no translated version exists yet.
+  // Registered here so NAV filtering, hreflang emission and the rehype
+  // i18n-link plugin all suppress this path in the other 11 locales.
+  '/industries/yacht/',
   // EN-only capability sub-pages (Buyer Search Intelligence Phase A–D)
   '/capabilities/compliance/',
   '/capabilities/lead-time/',

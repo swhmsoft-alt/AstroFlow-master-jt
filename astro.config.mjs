@@ -970,6 +970,42 @@ export default defineConfig({
           "precision boutique rack joint hardware": {
             "href": "/industries/luxury-hardware-and-displays/"
           },
+          // 2026-10-22 — Superyacht / luxury-yacht refit vertical.
+          // High-intent buyer phrases a refit yard or yacht engineering firm
+          // actually types. Deliberately EXCLUDES generic fleet/market terms
+          // ("superyacht market", "yacht industry size") — those are research
+          // queries, not part-procurement queries, and would dilute traffic
+          // quality. Every anchor below names a specific component a yard buys.
+          "superyacht refit titanium parts": {
+            "href": "/industries/yacht/"
+          },
+          "titanium seacock manufacturer": {
+            "href": "/industries/yacht/"
+          },
+          "titanium through-hull fittings supplier": {
+            "href": "/industries/yacht/"
+          },
+          "yacht seawater piping titanium components": {
+            "href": "/industries/yacht/"
+          },
+          "titanium wet exhaust mixer manufacturer": {
+            "href": "/industries/yacht/"
+          },
+          "yacht heat exchanger titanium tube plates": {
+            "href": "/industries/yacht/"
+          },
+          "waterjet impeller titanium CNC machining": {
+            "href": "/industries/yacht/"
+          },
+          "titanium propeller shaft sleeve manufacturer": {
+            "href": "/industries/yacht/"
+          },
+          "yacht rigging terminal titanium fittings": {
+            "href": "/industries/yacht/"
+          },
+          "titanium marine fasteners seawater service": {
+            "href": "/industries/yacht/"
+          },
           "titanium CNC parts": {
             "href": "/parts/titanium-cnc-parts/"
           },

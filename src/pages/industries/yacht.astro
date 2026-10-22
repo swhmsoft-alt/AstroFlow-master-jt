@@ -1,0 +1,421 @@
+---
+// src/pages/industries/yacht.astro
+// D1 dimension (What) -> /industries/ sub-tree. Grade 2 (CP-Ti) and Grade 5
+// (Ti-6Al-4V) titanium machining for superyacht / luxury motor yacht and
+// performance sailing-yacht refit and repair parts.
+//
+// -- Editorial decisions (auditable) ----------------------------------------
+// 1. SOURCE DISCIPLINE: an internal market study (2026-10) covering this
+//    vertical quoted three mutually inconsistent "refit market size" figures
+//    (USD 2.9bn / USD 3-5bn / USD 5.13bn) plus a fleet-wide "36% of industry
+//    revenue" share that cannot be reconciled with its own EUR 5.6bn refit
+//    figure. NONE of those numbers appear on this page. Only what is
+//    arithmetically self-consistent is stated: the 5-year class-survey cycle
+//    (the actual driver of replacement demand) and an explicitly-labelled
+//    qualitative note that the installed fleet is ageing into its refit window.
+// 2. NO THIRD-PARTY NAMES: the same study carried a 23-company shipyard
+//    prospect list (named yards plus direct email addresses) and a
+//    "who to attack first" ranking. None of it is reproduced. Naming third
+//    parties as suppliers/customers would misrepresent business relationships
+//    in structured data and publish competitor intelligence.
+// 3. SCHEMA: no inline application/ld+json. All JSON-LD is emitted by
+//    buildPageGraph() via the BaseLayout props below (SOP F4). BreadcrumbList
+//    is likewise produced from the visible breadcrumb markup.
+// 4. CLAIM DISCIPLINE: only figures already asserted elsewhere in this
+//    codebase are reused - +/-0.005 mm (hero.ts), 1-piece prototype MOQ
+//    (blog 8.2), EN 10204 3.1 / 3.2, ASTM B348 / B265 / B338 / B367 / B381.
+//    No fleet counts, no market sizes, no yard utilisation rates.
+// 5. FORM: CTAs deep-link to the existing /rfq/ form rather than duplicating
+//    it inline (SOP F2 - no bespoke component for a single page).
+// 6. LOCALE: English-only by decision. Registered in EN_ONLY_PREFIXES so nav,
+//    hreflang and the rehype i18n-link plugin suppress the path in the other
+//    11 locales (same mechanism as /industries/luxury-hardware-and-displays/).
+// 7. DISTINCTION FROM /industries/marine/: that page addresses subsea /
+//    offshore drilling hardware (NACE, pressure housings, ROV tooling). This
+//    page addresses surface-launched pleasure craft and the class-society
+//    regime. The two must not be merged - different buyers, different specs.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
+import IndustryCtaSection from '../../components/industries/IndustryCtaSection.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const hero = HERO_CONFIG['/industries/yacht'];
+---
+<BaseLayout
+  title={t('industries.yacht.page.title')}
+  description={t('industries.yacht.page.description')}
+  pageType="industry-detail"
+  serviceName={t('industries.yacht.page.serviceName')}
+  serviceDescription={t('industries.yacht.page.serviceDescription')}
+  serviceCategory={t('industries.yacht.page.serviceCategory')}
+  productName={t('industries.yacht.page.productName')}
+  productCategory={t('industries.yacht.page.productCategory')}
+  faqItems={[
+    { question: t('industries.yacht.faq.q1'), answer: t('industries.yacht.faq.a1') },
+    { question: t('industries.yacht.faq.q2'), answer: t('industries.yacht.faq.a2') },
+    { question: t('industries.yacht.faq.q3'), answer: t('industries.yacht.faq.a3') },
+    { question: t('industries.yacht.faq.q4'), answer: t('industries.yacht.faq.a4') },
+    { question: t('industries.yacht.faq.q5'), answer: t('industries.yacht.faq.a5') },
+  ]}
+  faqName="Titanium Machining for Superyacht Refit FAQ"
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/industries/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.industries')}</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('industries.yacht.nav.breadcrumb')}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+    compact={false}
+  />
+
+  <!-- In-page table of contents. Doubles as an AI/GEO navigation surface: each
+       anchor is a stable, human-readable section handle that a retrieval system
+       can cite directly, and it gives a human buyer a way past the hero without
+       scrolling. Anchors target the existing aria-labelledby ids. -->
+  <nav
+    class="border-b"
+    aria-label="Section contents"
+    style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <p class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+        {t('industries.yacht.toc.label')}
+      </p>
+      <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
+        {[
+          { href: '#yacht-grade-heading', label: t('industries.yacht.toc.i1') },
+          { href: '#yacht-propulsion-heading', label: t('industries.yacht.toc.i2') },
+          { href: '#yacht-throughhull-heading', label: t('industries.yacht.toc.i3') },
+          { href: '#yacht-systems-heading', label: t('industries.yacht.toc.i4') },
+          { href: '#yacht-rigging-heading', label: t('industries.yacht.toc.i5') },
+          { href: '#yacht-cert-heading', label: t('industries.yacht.toc.i6') },
+        ].map((item) => (
+          <li>
+            <a href={item.href} class="inline-flex items-center gap-2 text-sm hover:underline" style="color: color-mix(in srgb, var(--theme-primary) 80%, black);">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Section 1: Grade 2 vs Grade 5 selection. This is the single most
+       consequential decision a refit buyer makes, so it is argued from duty
+       rather than from marketing language. -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);" aria-labelledby="yacht-grade-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="yacht-grade-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.yacht.grade.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.yacht.grade.desc')}
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <caption class="text-left text-sm pb-4" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">
+            {t('industries.yacht.grade.table_caption')}
+          </caption>
+          <thead>
+            <tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th scope="col" class="px-4 py-3 font-bold" style="color: var(--theme-text); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.yacht.grade.th_duty')}</th>
+              <th scope="col" class="px-4 py-3 font-bold" style="color: var(--theme-text); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.yacht.grade.th_g2')}</th>
+              <th scope="col" class="px-4 py-3 font-bold" style="color: var(--theme-text); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.yacht.grade.th_g5')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { duty: t('industries.yacht.grade.r1_duty'), g2: t('industries.yacht.grade.r1_g2'), g5: t('industries.yacht.grade.r1_g5') },
+              { duty: t('industries.yacht.grade.r2_duty'), g2: t('industries.yacht.grade.r2_g2'), g5: t('industries.yacht.grade.r2_g5') },
+              { duty: t('industries.yacht.grade.r3_duty'), g2: t('industries.yacht.grade.r3_g2'), g5: t('industries.yacht.grade.r3_g5') },
+              { duty: t('industries.yacht.grade.r4_duty'), g2: t('industries.yacht.grade.r4_g2'), g5: t('industries.yacht.grade.r4_g5') },
+              { duty: t('industries.yacht.grade.r5_duty'), g2: t('industries.yacht.grade.r5_g2'), g5: t('industries.yacht.grade.r5_g5') },
+              { duty: t('industries.yacht.grade.r6_duty'), g2: t('industries.yacht.grade.r6_g2'), g5: t('industries.yacht.grade.r6_g5') },
+            ].map((row) => (
+              <tr>
+                <th scope="row" class="px-4 py-3 font-semibold" style="color: var(--theme-text); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{row.duty}</th>
+                <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 68%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{row.g2}</td>
+                <td class="px-4 py-3" style="color: color-mix(in srgb, var(--theme-text) 68%, transparent); border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{row.g5}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image-text split #1 — below-the-waterline fittings (the class-survey
+     replacement group). Placed directly after the grade-selection table so the
+     buyer has just read WHY Gr2 is the right answer, and now sees the part. -->
+  <ImageTextSplit
+    catalogId="yacht.below-waterline-fittings"
+    eyebrow={t('industries.yacht.split1.eyebrow')}
+    title={t('industries.yacht.split1.title')}
+    body={t('industries.yacht.split1.body')}
+    bullets={[
+      t('industries.yacht.split1.b1'),
+      t('industries.yacht.split1.b2'),
+      t('industries.yacht.split1.b3'),
+    ]}
+    ctaLabel={t('industries.yacht.split1.cta')}
+    ctaHref="/rfq/"
+    imagePosition="right"
+    background="dark"
+  />
+
+  <!-- Section 2: Propulsion & shafting - the highest-value, highest-liability group. -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);" aria-labelledby="yacht-propulsion-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="yacht-propulsion-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.yacht.propulsion.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.yacht.propulsion.desc')}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {[
+          { h: t('industries.yacht.propulsion.c1_h'), p: t('industries.yacht.propulsion.c1_p') },
+          { h: t('industries.yacht.propulsion.c2_h'), p: t('industries.yacht.propulsion.c2_p') },
+          { h: t('industries.yacht.propulsion.c3_h'), p: t('industries.yacht.propulsion.c3_p') },
+          { h: t('industries.yacht.propulsion.c4_h'), p: t('industries.yacht.propulsion.c4_p') },
+        ].map((c) => (
+          <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{c.h}</h3>
+            <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Below-the-waterline fittings - the group that drives
+       class-survey replacement and therefore repeat yard orders. -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);" aria-labelledby="yacht-throughhull-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="yacht-throughhull-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.yacht.throughhull.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.yacht.throughhull.desc')}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {[
+          { h: t('industries.yacht.throughhull.c1_h'), p: t('industries.yacht.throughhull.c1_p') },
+          { h: t('industries.yacht.throughhull.c2_h'), p: t('industries.yacht.throughhull.c2_p') },
+          { h: t('industries.yacht.throughhull.c3_h'), p: t('industries.yacht.throughhull.c3_p') },
+        ].map((c) => (
+          <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{c.h}</h3>
+            <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">{c.p}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="max-w-6xl mx-auto mt-10 rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+        <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{t('industries.yacht.throughhull.survey_h')}</h3>
+        <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">
+          {t('industries.yacht.throughhull.survey_p')}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Seawater cooling & exhaust - the two most corrosion-expensive
+       systems on any yacht and the highest-volume refit item. -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);" aria-labelledby="yacht-systems-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="yacht-systems-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.yacht.systems.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.yacht.systems.desc')}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {[
+          { h: t('industries.yacht.systems.c1_h'), p: t('industries.yacht.systems.c1_p') },
+          { h: t('industries.yacht.systems.c2_h'), p: t('industries.yacht.systems.c2_p') },
+          { h: t('industries.yacht.systems.c3_h'), p: t('industries.yacht.systems.c3_p') },
+          { h: t('industries.yacht.systems.c4_h'), p: t('industries.yacht.systems.c4_p') },
+        ].map((c) => (
+          <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{c.h}</h3>
+            <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Image-text split #2 — seawater systems / impeller. Mirrored left so the
+     page alternates image side down the scroll (luxury-page rhythm). -->
+  <ImageTextSplit
+    catalogId="yacht.seawater-pump-impeller"
+    eyebrow={t('industries.yacht.split2.eyebrow')}
+    title={t('industries.yacht.split2.title')}
+    body={t('industries.yacht.split2.body')}
+    bullets={[
+      t('industries.yacht.split2.b1'),
+      t('industries.yacht.split2.b2'),
+      t('industries.yacht.split2.b3'),
+    ]}
+    ctaLabel={t('industries.yacht.split2.cta')}
+    ctaHref="/rfq/"
+    imagePosition="left"
+    background="card"
+  />
+
+  <!-- Section 5: Rigging & deck hardware. Carbon-fibre galvanic compatibility is
+       the governing constraint here, not raw strength. -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);" aria-labelledby="yacht-rigging-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="yacht-rigging-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.yacht.rigging.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.yacht.rigging.desc')}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {[
+          { h: t('industries.yacht.rigging.c1_h'), p: t('industries.yacht.rigging.c1_p') },
+          { h: t('industries.yacht.rigging.c2_h'), p: t('industries.yacht.rigging.c2_p') },
+          { h: t('industries.yacht.rigging.c3_h'), p: t('industries.yacht.rigging.c3_p') },
+          { h: t('industries.yacht.rigging.c4_h'), p: t('industries.yacht.rigging.c4_p') },
+        ].map((c) => (
+          <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{c.h}</h3>
+            <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Image-text split #3 — rigging terminals. Returned to the right-hand image
+     side to close the page on a part shot rather than a text card. -->
+  <ImageTextSplit
+    catalogId="yacht.rigging-terminals"
+    eyebrow={t('industries.yacht.split3.eyebrow')}
+    title={t('industries.yacht.split3.title')}
+    body={t('industries.yacht.split3.body')}
+    bullets={[
+      t('industries.yacht.split3.b1'),
+      t('industries.yacht.split3.b2'),
+      t('industries.yacht.split3.b3'),
+    ]}
+    ctaLabel={t('industries.yacht.split3.cta')}
+    ctaHref="/rfq/"
+    imagePosition="right"
+    background="dark"
+  />
+
+  <!-- Section 6: Certification & traceability - the real procurement gate for a
+       class-society-approved part. The detailed NDT/inspection explanation is
+       folded behind <details> so it does not dominate the page visually; the
+       summary sentence stays in the open so a reader (and a retrieval system)
+       still gets the procurement-relevant fact without expanding. -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);" aria-labelledby="yacht-cert-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-8">
+        <h2 id="yacht-cert-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.yacht.cert.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.yacht.cert.desc')}
+        </p>
+
+        <details class="rounded-xl mb-6 group" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+          <summary class="cursor-pointer list-none flex items-center justify-between gap-4 p-5 font-semibold" style="color: var(--theme-text);">
+            <span>{t('industries.yacht.cert.ndt_h')}</span>
+            <svg class="w-5 h-5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </summary>
+          <div class="px-5 pb-5 leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">
+            {t('industries.yacht.cert.ndt_p')}
+          </div>
+        </details>
+
+        <a href="/capabilities/traceability/" class="inline-flex items-center px-6 py-3 rounded-lg font-semibold no-underline" style="background-color: var(--theme-primary); color: #ffffff;">
+          {t('industries.yacht.cert.cta')}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buyer-intent block - reuses the shared industry template (SOP F2). -->
+  <BuyerIntentBlock
+    industry="Yacht &amp; Superyacht"
+    whyTitanium={[
+      t('industries.yacht.bi.why1'),
+      t('industries.yacht.bi.why2'),
+      t('industries.yacht.bi.why3'),
+      t('industries.yacht.bi.why4'),
+    ]}
+    typicalComponents={[
+      t('industries.yacht.bi.comp1'),
+      t('industries.yacht.bi.comp2'),
+      t('industries.yacht.bi.comp3'),
+      t('industries.yacht.bi.comp4'),
+    ]}
+    manufacturing={[
+      t('industries.yacht.bi.mfg1'),
+      t('industries.yacht.bi.mfg2'),
+      t('industries.yacht.bi.mfg3'),
+      t('industries.yacht.bi.mfg4'),
+    ]}
+    qualityRequirements={[
+      t('industries.yacht.bi.qual1'),
+      t('industries.yacht.bi.qual2'),
+      t('industries.yacht.bi.qual3'),
+      t('industries.yacht.bi.qual4'),
+    ]}
+    ctaHref="/rfq/"
+    showCta={false}
+  />
+
+  <IndustryCtaSection />
+</BaseLayout>

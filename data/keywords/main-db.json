@@ -3503,6 +3503,58 @@
     "updatedAt": "2026-08-11T04:46:18.690Z"
   },
   {
+    "keyword": "Yacht & Superyacht",
+    "lang": "en",
+    "intent": "informational",
+    "entity": "industry",
+    "targetUrl": "/industries/yacht/",
+    "anchorText": "Yacht & Superyacht",
+    "source": "manual",
+    "status": "mapped",
+    "note": "seed yacht vertical (2026-10-22); EN-only landing page. Distinct from industry:marine-offshore, which covers subsea/offshore drilling hardware.",
+    "id": "yacht-superyacht-en",
+    "updatedAt": "2026-10-22T00:00:00.000Z"
+  },
+  {
+    "keyword": "superyacht refit titanium parts",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "industry",
+    "targetUrl": "/industries/yacht/",
+    "anchorText": "superyacht refit titanium parts",
+    "source": "manual",
+    "status": "mapped",
+    "note": "component-procurement intent; mirrors astro.config.mjs keywordMap",
+    "id": "superyacht-refit-titanium-parts-en",
+    "updatedAt": "2026-10-22T00:00:00.000Z"
+  },
+  {
+    "keyword": "titanium seacock manufacturer",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "industry",
+    "targetUrl": "/industries/yacht/",
+    "anchorText": "titanium seacock manufacturer",
+    "source": "manual",
+    "status": "mapped",
+    "note": "below-waterline fitting; high-intent refit buyer phrase",
+    "id": "titanium-seacock-manufacturer-en",
+    "updatedAt": "2026-10-22T00:00:00.000Z"
+  },
+  {
+    "keyword": "titanium through-hull fittings supplier",
+    "lang": "en",
+    "intent": "commercial",
+    "entity": "industry",
+    "targetUrl": "/industries/yacht/",
+    "anchorText": "titanium through-hull fittings supplier",
+    "source": "manual",
+    "status": "mapped",
+    "note": "class-survey replacement item; mirrors keywordMap",
+    "id": "titanium-through-hull-fittings-en",
+    "updatedAt": "2026-10-22T00:00:00.000Z"
+  },
+  {
     "keyword": "Marine & Offshore",
     "lang": "en",
     "intent": "informational",

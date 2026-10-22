@@ -217,6 +217,11 @@ export const NAVIGATION: NavItem[] = [
           // (ambiguous), whereas "Custom Hardware & Retail Displays" signals the
           // component supplier the buyer is actually looking for.
           { name: 'Custom Hardware & Retail Displays', href: '/industries/luxury-hardware-and-displays/' },
+          // 2026-10-22 - Yacht & superyacht refit vertical. Distinct from
+          // "Marine": that entry is subsea/offshore (drilling hardware, NACE
+          // pressure regime); this one is surface-launched pleasure craft under
+          // class-society survey. Different buyer, different specification set.
+          { name: 'Yacht & Superyacht', href: '/industries/yacht/' },
         ],
       },
     ],
