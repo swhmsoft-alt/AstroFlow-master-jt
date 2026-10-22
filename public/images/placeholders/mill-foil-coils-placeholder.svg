@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef2f7"/>
+      <stop offset="1" stop-color="#d8e0ea"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  <rect x="16" y="16" width="608" height="448" rx="12" fill="none" stroke="#9aa9bb" stroke-width="2" stroke-dasharray="10 8"/>
+  <g fill="none" stroke="#5c6b7f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="286" cy="252" rx="120" ry="118"/>
+    <ellipse cx="286" cy="252" rx="92" ry="90"/>
+    <ellipse cx="286" cy="252" rx="64" ry="62"/>
+    <ellipse cx="286" cy="252" rx="38" ry="37"/>
+    <path d="M154 252 L154 300 A120 118 0 0 0 406 300 L406 252" stroke-width="2" stroke-dasharray="6 5" opacity="0.5"/>
+    <path d="M406 168 L520 140 L520 176 L406 186 Z"/>
+    <path d="M452 168 L452 158" stroke-width="2" stroke-dasharray="5 4" opacity="0.5"/>
+  </g>
+  <text x="320" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="19" font-weight="600" letter-spacing="3" fill="#7b8a9c">PLACEHOLDER</text>
+</svg>

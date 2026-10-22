@@ -107,63 +107,75 @@ const mentionEntityIds = [
         </p>
       </header>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="/standard-parts/flanges/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <a href="/standard-parts/flanges/" class="group flex flex-col rounded-2xl border overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
           <article id="flanges" class="flex flex-col h-full">
-            <div class="flex items-start gap-3 mb-4">
-              <span class="text-3xl" aria-hidden="true">⊕</span>
-              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">Titanium Flanges</h3>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background: var(--theme-bg);">
+              <img src="/images/products/titanium-blind-flange-asme-b165.webp" alt="Titanium blind flange per ASME B16.5" width="640" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=function(){var s=this.src;if(s.lastIndexOf('.svg')!==s.length-4){this.src=s.replace(/\.\w+$/,'.svg')}else{this.style.display='none'}}" />
             </div>
-            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Slip-on, weld-neck, blind, threaded, lap-joint and custom flanges per ASTM B381, ASME B16.5 / B16.47.</p>
-            <div class="space-y-3">
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Slip-on · Weld-neck · Blind · Threaded · Lap-joint</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 1 · Grade 2 · Grade 5 · Grade 7 · Grade 12</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM B381 · ASME B16.5 · ASME B16.47</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Chemical · Marine · Oil and Gas piping</p></div>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-bold leading-snug mb-2" style="color: var(--theme-text);">Titanium Flanges</h3>
+              <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Slip-on, weld-neck, blind, threaded, lap-joint and custom flanges per ASTM B381, ASME B16.5 / B16.47.</p>
+              <div class="space-y-3">
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Slip-on · Weld-neck · Blind · Threaded · Lap-joint</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 1 · Grade 2 · Grade 5 · Grade 7 · Grade 12</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM B381 · ASME B16.5 · ASME B16.47</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Chemical · Marine · Oil and Gas piping</p></div>
+              </div>
+              <span class="mt-5 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--primary-strong);">View Titanium Flanges <span aria-hidden="true">&rarr;</span></span>
             </div>
           </article>
         </a>
-        <a href="/standard-parts/pipe-fittings/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <a href="/standard-parts/pipe-fittings/" class="group flex flex-col rounded-2xl border overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
           <article id="pipe-fittings" class="flex flex-col h-full">
-            <div class="flex items-start gap-3 mb-4">
-              <span class="text-3xl" aria-hidden="true">⊝</span>
-              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">Titanium Pipe Fittings</h3>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background: var(--theme-bg);">
+              <img src="/images/products/ti-parts-cat-pipe-spool-flanged-set_min.webp" alt="Titanium pipe spool with flanged set" width="640" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=function(){var s=this.src;if(s.lastIndexOf('.svg')!==s.length-4){this.src=s.replace(/\.\w+$/,'.svg')}else{this.style.display='none'}}" />
             </div>
-            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Butt-weld and forged fittings -- elbows, tees, reducers, caps per ASTM B363, B381 and ASME B16.9, B16.11, B16.28.</p>
-            <div class="space-y-3">
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Butt-weld Elbows · Tees · Reducers · Caps · Forged Couplings</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 1 · Grade 2 · Grade 5 · Grade 7 · Grade 9 · Grade 12</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM B363 · B381 · ASME B16.9 · B16.11 · B16.28</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Chemical · Marine · Oil and Gas · Heat Exchangers</p></div>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-bold leading-snug mb-2" style="color: var(--theme-text);">Titanium Pipe Fittings</h3>
+              <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Butt-weld and forged fittings -- elbows, tees, reducers, caps per ASTM B363, B381 and ASME B16.9, B16.11, B16.28.</p>
+              <div class="space-y-3">
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Butt-weld Elbows · Tees · Reducers · Caps · Forged Couplings</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 1 · Grade 2 · Grade 5 · Grade 7 · Grade 9 · Grade 12</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM B363 · B381 · ASME B16.9 · B16.11 · B16.28</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Chemical · Marine · Oil and Gas · Heat Exchangers</p></div>
+              </div>
+              <span class="mt-5 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--primary-strong);">View Titanium Pipe Fittings <span aria-hidden="true">&rarr;</span></span>
             </div>
           </article>
         </a>
-        <a href="/standard-parts/fasteners/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <a href="/standard-parts/fasteners/" class="group flex flex-col rounded-2xl border overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
           <article id="fasteners" class="flex flex-col h-full">
-            <div class="flex items-start gap-3 mb-4">
-              <span class="text-3xl" aria-hidden="true">⬢</span>
-              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">Titanium Fasteners</h3>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background: var(--theme-bg);">
+              <img src="/images/products/titanium-hub-bolt-m12.webp" alt="Titanium hex bolt M12" width="640" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=function(){var s=this.src;if(s.lastIndexOf('.svg')!==s.length-4){this.src=s.replace(/\.\w+$/,'.svg')}else{this.style.display='none'}}" />
             </div>
-            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Bolts, screws, nuts, washers, studs and threaded rods to ASTM F467, ASME B18.2.1 / B18.2.2 and DIN / ISO equivalents.</p>
-            <div class="space-y-3">
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Hex Bolts · Socket-head Screws · Nuts · Washers · Studs · Threaded Rods</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 2 · Grade 5 · Grade 7 · Grade 23 (medical)</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM F467 · ASME B18.2.1 · DIN 912 / 933 / 934 · ISO 4017 / 4032</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Aerospace · Marine · Chemical assemblies · Industrial mechanical assemblies</p></div>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-bold leading-snug mb-2" style="color: var(--theme-text);">Titanium Fasteners</h3>
+              <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Bolts, screws, nuts, washers, studs and threaded rods to ASTM F467, ASME B18.2.1 / B18.2.2 and DIN / ISO equivalents.</p>
+              <div class="space-y-3">
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Hex Bolts · Socket-head Screws · Nuts · Washers · Studs · Threaded Rods</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 2 · Grade 5 · Grade 7 · Grade 23 (medical)</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">ASTM F467 · ASME B18.2.1 · DIN 912 / 933 / 934 · ISO 4017 / 4032</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Aerospace · Marine · Chemical assemblies · Industrial mechanical assemblies</p></div>
+              </div>
+              <span class="mt-5 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--primary-strong);">View Titanium Fasteners <span aria-hidden="true">&rarr;</span></span>
             </div>
           </article>
         </a>
-        <a href="/standard-parts/machined-components/" class="group flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
+        <a href="/standard-parts/machined-components/" class="group flex flex-col rounded-2xl border overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 14%, transparent);">
           <article id="machined-components" class="flex flex-col h-full">
-            <div class="flex items-start gap-3 mb-4">
-              <span class="text-3xl" aria-hidden="true">◉</span>
-              <h3 class="text-lg font-bold leading-snug" style="color: var(--theme-text);">CNC Machined Standard Components</h3>
+            <div class="relative aspect-[4/3] overflow-hidden" style="background: var(--theme-bg);">
+              <img src="/images/products/titanium-headset-spacer.webp" alt="CNC machined titanium spacer" width="640" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=function(){var s=this.src;if(s.lastIndexOf('.svg')!==s.length-4){this.src=s.replace(/\.\w+$/,'.svg')}else{this.style.display='none'}}" />
             </div>
-            <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Standard geometry but precision-machined to drawing dimensions and tolerances from stock bar / billet.</p>
-            <div class="space-y-3">
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Spacers · Sleeves · Rings · Bushings · Pins · Collars</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 2 · Grade 5 · Grade 9 · Grade 23</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Drawing-defined under AS9100D QMS</p></div>
-              <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Industrial mechanical assemblies · Equipment components</p></div>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-bold leading-snug mb-2" style="color: var(--theme-text);">CNC Machined Standard Components</h3>
+              <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">Standard geometry but precision-machined to drawing dimensions and tolerances from stock bar / billet.</p>
+              <div class="space-y-3">
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Forms</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Spacers · Sleeves · Rings · Bushings · Pins · Collars</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Common Grades</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Grade 2 · Grade 5 · Grade 9 · Grade 23</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Standards</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Drawing-defined under AS9100D QMS</p></div>
+                <div><p class="text-xs font-semibold uppercase tracking-wider" style="color: var(--primary-strong); letter-spacing: 0.12em;">Typical Applications</p><p class="text-sm mt-1" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">Industrial mechanical assemblies · Equipment components</p></div>
+              </div>
+              <span class="mt-5 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--primary-strong);">View CNC Machined Components <span aria-hidden="true">&rarr;</span></span>
             </div>
           </article>
         </a>

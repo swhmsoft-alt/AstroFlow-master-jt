@@ -46,6 +46,7 @@ const productForms = [
     slug: 'ingot',
     name: 'Titanium Ingots',
     icon: '⬤',
+    image: '/images/placeholders/mill-ingot-placeholder.svg',
     summary: 'Cast titanium ingot as the forging, extrusion, rolling or re-melt feedstock, with melting route and heat traceability reviewed against the order basis.',
     forms: ['VAR Ingot', 'Double Melt', 'Triple Melt'],
     commonGrades: ['Grade 1', 'Grade 2', 'Grade 5', 'Grade 23'],
@@ -57,6 +58,7 @@ const productForms = [
     slug: 'bars-rods',
     name: 'Titanium Bars & Rods',
     icon: '⬢',
+    image: '/images/placeholders/mill-bars-rods-placeholder.svg',
     summary: 'Round, square and hexagonal bars / rods for CNC machining, fabrication and industrial component production.',
     forms: ['Round Bar', 'Square Bar', 'Hexagonal Bar', 'Rod'],
     commonGrades: ['Grade 2', 'Grade 5', 'Grade 9', 'Grade 23'],
@@ -68,6 +70,7 @@ const productForms = [
     slug: 'plates-sheets',
     name: 'Titanium Plates & Sheets',
     icon: '▭',
+    image: '/images/placeholders/mill-plates-sheets-placeholder.svg',
     summary: 'Plate and sheet products for fabricated structures, chemical processing equipment and precision industrial applications.',
     forms: ['Plate', 'Sheet', 'Hot Rolled', 'Cold Rolled'],
     commonGrades: ['Grade 1', 'Grade 2', 'Grade 5', 'Grade 9', 'Grade 23'],
@@ -79,6 +82,7 @@ const productForms = [
     slug: 'tubes-pipes',
     name: 'Titanium Tubes & Pipes',
     icon: '◯',
+    image: '/images/placeholders/mill-tubes-pipes-placeholder.svg',
     summary: 'Seamless and welded tubes and pipes for heat exchangers, chemical processing, fluid handling and hydraulic systems.',
     forms: ['Seamless Tube', 'Welded Tube', 'Pipe'],
     commonGrades: ['Grade 2', 'Grade 9', 'Grade 12'],
@@ -90,6 +94,7 @@ const productForms = [
     slug: 'wire',
     name: 'Titanium Wire',
     icon: '∿',
+    image: '/images/placeholders/mill-wire-placeholder.svg',
     summary: 'Titanium wire in coil and straight lengths for medical-material, welding, additive manufacturing and industrial applications.',
     forms: ['Coil Wire', 'Straight Wire', 'Welding Wire'],
     commonGrades: ['Grade 1', 'Grade 2', 'Grade 5', 'Grade 23'],
@@ -101,6 +106,7 @@ const productForms = [
     slug: 'foil-coils',
     name: 'Titanium Foil & Coils',
     icon: '∽',
+    image: '/images/placeholders/mill-foil-coils-placeholder.svg',
     summary: 'Thin titanium foil and coil material for specialized industrial, chemical and precision applications.',
     forms: ['Foil', 'Strip', 'Coil'],
     commonGrades: ['Grade 1', 'Grade 2'],
@@ -112,6 +118,7 @@ const productForms = [
     slug: 'mesh',
     name: 'Titanium Mesh',
     icon: '⧉',
+    image: '/images/placeholders/mill-mesh-placeholder.svg',
     summary: 'Woven titanium mesh for corrosion-resistant, electrochemical and filtration applications.',
     forms: ['Woven Mesh'],
     commonGrades: ['Grade 1', 'Grade 2'],
@@ -299,7 +306,7 @@ const industries = [
 // ── Procurement / OEM info (§24) ────────────────────────────────────────────
 const procurementCapabilities = [
   'Multiple Titanium Grades (CP and Alloy)',
-  'Six Product Forms in One Procurement Program',
+  'Seven Product Forms in One Procurement Program',
   'International Specifications (ASTM / AMS / ISO / MIL)',
   'Material Traceability with Documentation',
   'EN 10204 Type 3.1 Mill Test Reports',
@@ -334,7 +341,7 @@ const whatWeDontCover = [
 const faqItems = [
   {
     question: 'What titanium mill products does BOZE Metal supply?',
-    answer: 'BOZE Metal supplies six titanium mill product forms: bars & rods (round, square, hexagonal), plates & sheets, tubes & pipes (seamless and welded), wire (coil and straight), foil & coils, and woven mesh. Multiple commercially pure and alloy grades are available per applicable specifications.',
+    answer: 'BOZE Metal supplies seven titanium mill product forms: ingots (VAR, double and triple melt), bars & rods (round, square, hexagonal), plates & sheets, tubes & pipes (seamless and welded), wire (coil and straight), foil & coils, and woven mesh. Multiple commercially pure and alloy grades are available per applicable specifications.',
   },
   {
     question: 'What titanium grades are typically available as stock?',
@@ -367,7 +374,7 @@ const faqItems = [
 ];
 
 // ── SchemaPageData for buildPageGraph ───────────────────────────────────────
-// pageType="products-hub" → buildCollectionPage + buildItemList (per 6 forms)
+// pageType="products-hub" → buildCollectionPage + buildItemList (per 7 forms)
 // + optional Service + FAQPage auto via faqItems prop
 const itemListEntries = productForms.map((p) => ({ name: p.name, url: `${canonicalUrl}#${p.slug}` }));
 ---
@@ -402,14 +409,14 @@ const itemListEntries = productForms.map((p) => ({ name: p.name, url: `${canonic
   />
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
-  <!-- 02 Product Forms (6 forms · Product Entity Gateway cards)       -->
+  <!-- 02 Product Forms (7 forms · Product Entity Gateway cards)        -->
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <section class="py-16 lg:py-24" style="background: var(--theme-bg);">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <header class="max-w-3xl">
         <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Product Forms</p>
         <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">
-          Six Titanium Mill Product Forms
+          Seven Titanium Mill Product Forms
         </h2>
         <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: var(--text-muted);">
           BOZE Metal supplies titanium mill products in multiple forms, grades and specifications for manufacturing and further fabrication. Each form below is a gateway to the applicable materials, standards, typical dimensions and downstream processing options — review the form most relevant to your application, or submit your specification directly for a tailored quote.
@@ -419,12 +426,13 @@ const itemListEntries = productForms.map((p) => ({ name: p.name, url: `${canonic
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {
           productForms.map((p) => (
-            <article id={p.slug} class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
-              <div class="flex items-start gap-3 mb-4">
-                <span class="text-3xl" aria-hidden="true">{p.icon}</span>
-                <h3 class="text-xl font-bold" style="color: var(--theme-text);">{p.name}</h3>
+            <article id={p.slug} class="flex flex-col overflow-hidden rounded-2xl border transition-all hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+              <div class="relative aspect-[4/3] overflow-hidden" style="background: var(--theme-bg);">
+                <img src={p.image} alt={`${p.name} — illustrative placeholder, to be replaced with a product photograph`} width="640" height="480" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
-              <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.summary}</p>
+              <div class="flex flex-col flex-1 p-6 lg:p-8">
+                <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{p.name}</h3>
+                <p class="text-sm leading-relaxed mb-4" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{p.summary}</p>
 
               <div class="space-y-3">
                 <div>
@@ -450,6 +458,7 @@ const itemListEntries = productForms.map((p) => ({ name: p.name, url: `${canonic
                   </p>
                 </div>
               </div>
+            </div>
             </article>
           ))
         }
