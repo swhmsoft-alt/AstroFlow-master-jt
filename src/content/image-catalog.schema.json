@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "image-catalog.schema.json",
+  "title": "Image Catalog",
+  "description": "Single source of truth for the placeholder images rendered by <ImageTextSplit> on the service pages. Marketing drops the {webp,png,svg} triplet at public/images/hubs/{category}/{filename}.*; the build picks it up automatically. Renaming a filename or category requires updating the consuming page <ImageTextSplit catalogId> calls.",
+  "type": "object",
+  "required": ["version", "lastUpdated", "owner", "notes", "images"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "description": "Catalog contract version. Bump the minor when a field is added, major when a field is removed or renamed.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "lastUpdated": {
+      "description": "ISO date (YYYY-MM-DD) of the last content edit to this catalog.",
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "owner": {
+      "description": "Team accountable for keeping the catalog and the on-disk assets in sync.",
+      "type": "string",
+      "minLength": 1
+    },
+    "notes": {
+      "description": "Free-form operational notes for whoever edits this file next.",
+      "type": "string"
+    },
+    "images": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/image"
+      }
+    }
+  },
+  "definitions": {
+    "image": {
+      "type": "object",
+      "required": [
+        "id",
+        "page",
+        "pageName",
+        "category",
+        "filename",
+        "webp",
+        "png",
+        "svg",
+        "alt",
+        "prompt",
+        "decisionDim",
+        "status",
+        "priority",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Unique catalog key consumed as <ImageTextSplit catalogId=\"...\">. Convention: {category}.{filename}.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+\\.[a-z0-9-]+$"
+        },
+        "page": {
+          "description": "Page that owns this image. Must be a trailing-slash URL (project rule: astro.config.mjs sets trailingSlash 'always').",
+          "type": "string",
+          "pattern": "^/.+/$"
+        },
+        "pageName": {
+          "description": "Human-readable label for the page, shown on the dev-only /image-catalog/ status page.",
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "description": "Folder segment under public/images/hubs/.",
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "filename": {
+          "description": "File basename under public/images/hubs/{category}/, without extension.",
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "webp": {
+          "description": "Primary source. Must resolve to public/images/hubs/{category}/{filename}.webp.",
+          "type": "string",
+          "pattern": "^/images/hubs/[a-z0-9-]+/[a-z0-9-]+\\.webp$"
+        },
+        "png": {
+          "description": "First onerror fallback. Must resolve to public/images/hubs/{category}/{filename}.png.",
+          "type": "string",
+          "pattern": "^/images/hubs/[a-z0-9-]+/[a-z0-9-]+\\.png$"
+        },
+        "svg": {
+          "description": "Second onerror fallback. Must resolve to public/images/hubs/{category}/{filename}.svg.",
+          "type": "string",
+          "pattern": "^/images/hubs/[a-z0-9-]+/[a-z0-9-]+\\.svg$"
+        },
+        "alt": {
+          "description": "Accessible description of the finished image. Not a prompt.",
+          "type": "string",
+          "minLength": 1
+        },
+        "prompt": {
+          "description": "Generation brief for the image producer.",
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionDim": {
+          "description": "Buyer Search Intelligence decision dimension this page answers (see .clinerules Buyer-Search-Intelligence-SOP).",
+          "type": "string",
+          "enum": ["D1", "D2", "D3", "D4", "D5"]
+        },
+        "status": {
+          "description": "'placeholder' means marketing has not dropped the asset yet; 'real' means the triplet is on disk and checks/image-catalog.mjs should fail the build if it is not.",
+          "type": "string",
+          "enum": ["placeholder", "real"]
+        },
+        "priority": {
+          "description": "Production order for the image backlog.",
+          "type": "string",
+          "enum": ["P0", "P1", "P2", "P3"]
+        },
+        "width": {
+          "description": "Intrinsic width in px. Emitted as the <img width> attribute to reserve aspect-ratio space before download (CLS).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "height": {
+          "description": "Intrinsic height in px. Emitted as the <img height> attribute (CLS).",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        }
+      }
+    }
+  }
+}
