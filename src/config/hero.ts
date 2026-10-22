@@ -1414,6 +1414,33 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
           "MTR Tracing"
     ]
   },
+  '/industries/luxury-hardware-and-displays': {
+    h1: 'Bespoke Titanium Hardware & Retail Display Solutions',
+    subtitle: 'Aerospace-grade 5-axis CNC machining of Grade 2 and Grade 5 (Ti-6Al-4V) titanium for boutique fixture hardware, internal hanger skeletons, concealed structural connectors and premium fashion & leather-goods hardware — machined from your 3D CAD with a 1-piece prototype MOQ.',
+    badge: 'Luxury Hardware & Retail Displays',
+
+    keyMetrics: [
+          {
+            "value": "±0.005mm",
+            "label": "Tolerance"
+          },
+          {
+            "value": "1 pc",
+            "label": "Prototype MOQ"
+          },
+          {
+            "value": "Type II",
+            "label": "Anodizing"
+          }
+    ],
+    entityChips: [
+          "Ti-6Al-4V",
+          "Grade 2 CP-Ti",
+          "5-Axis CNC",
+          "AS9100D",
+          "MTR Traceable"
+    ]
+  },
   '/industries/uav-drones': {
     h1: 'Lightweight Titanium CNC Machining for UAVs & Drones',
     subtitle: 'High strength-to-weight ratio precision titanium component manufacturing engineered to optimize drone flight endurance, payload capacity, and impact resistance. Specializing in 5-axis thin-wall milling and dynamic balanced structural hardware.',

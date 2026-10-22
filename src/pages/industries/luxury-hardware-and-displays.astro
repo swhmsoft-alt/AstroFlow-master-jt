@@ -1,0 +1,299 @@
+---
+// src/pages/industries/luxury-hardware-and-displays.astro
+// D1 dimension (What) → /industries/ sub-tree. 5-axis CNC machining of Grade 2 /
+// Grade 5 (Ti-6Al-4V) titanium for luxury retail fixture hardware, boutique hanger
+// skeletons, and bespoke fashion & leather-goods hardware.
+//
+// ── Editorial decisions (auditable) ────────────────────────────────────────
+// 1. VOCABULARY FILTER (user mandate): no `brass` / `zinc alloy` / `stainless`
+//    tokens anywhere in this page. Those terms attract low-value die-casting
+//    and commodity-plating enquiries. The comparison table is therefore framed
+//    as "Aerospace Titanium vs Die-Cast & Plated Hardware" — the loser column is
+//    described by PROCESS (die-cast, electroplated) not by base metal name.
+// 2. SCHEMA: no inline <script type="application/ld+json">. All JSON-LD is emitted
+//    by buildPageGraph() via the BaseLayout props below (SOP F4). BreadcrumbList
+//    is likewise produced by BaseLayout from the visible breadcrumb markup.
+// 3. CLAIM DISCIPLINE: only figures already asserted elsewhere in this codebase
+//    are reused — ±0.005 mm (hero.ts /industries/energy), 1-piece prototype MOQ
+//    (content/blog/ti-6al-4v-grade-5-titanium-guide.md §8.2), AS9100D + ISO 9001.
+//    "PVD" was DROPPED (no dedicated in-house surface-treatment page evidences it)
+//    in favour of Type II anodizing, which /titanium-surface-treatment/ documents.
+// 4. FORM: the original brief inlined a bespoke RFQ form. Per SOP F2 (no new
+//    component for a single page) and DRY, CTAs deep-link to the existing
+//    /rfq/ form instead of duplicating it.
+// 5. LOCALE: English-only by decision. Registered in EN_ONLY_PREFIXES so nav,
+//    hreflang and the rehype i18n-link plugin suppress the path in the other 11
+//    locales (same mechanism as /industries/chemical/).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import BuyerIntentBlock from '../../components/industries/BuyerIntentBlock.astro';
+import IndustryCtaSection from '../../components/industries/IndustryCtaSection.astro';
+import { HERO_CONFIG } from '../../config/hero';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const hero = HERO_CONFIG['/industries/luxury-hardware-and-displays'];
+---
+
+<BaseLayout
+  title={t('industries.luxury.page.title')}
+  description={t('industries.luxury.page.description')}
+  pageType="industry-detail"
+  serviceName={t('industries.luxury.page.serviceName')}
+  serviceDescription={t('industries.luxury.page.serviceDescription')}
+  serviceCategory={t('industries.luxury.page.serviceCategory')}
+  productName={t('industries.luxury.page.productName')}
+  productCategory={t('industries.luxury.page.productCategory')}
+  faqItems={[
+    { question: t('industries.luxury.faq.q1'), answer: t('industries.luxury.faq.a1') },
+    { question: t('industries.luxury.faq.q2'), answer: t('industries.luxury.faq.a2') },
+    { question: t('industries.luxury.faq.q3'), answer: t('industries.luxury.faq.a3') },
+    { question: t('industries.luxury.faq.q4'), answer: t('industries.luxury.faq.a4') },
+  ]}
+  faqName="Luxury Retail Titanium Hardware FAQ"
+>
+  <!-- Breadcrumb -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.home')}</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/industries/" itemprop="item" class="transition-colors" style="color: color-mix(in srgb, var(--theme-text) 45%, transparent);">
+            <span itemprop="name">{t('nav.industries')}</span>
+          </a>
+          <meta itemprop="position" content="2" />
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: color-mix(in srgb, var(--theme-text) 35%, transparent);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <!-- Breadcrumb uses its OWN key, not the nav key: the breadcrumb carries the
+       semantic tier name ("Luxury Hardware & Displays") while the header nav uses
+       the short search-oriented anchor ("Custom Hardware & Retail Displays").
+       Keeping them separate lets the two tiers be tuned independently. -->
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">{t('industries.luxury.nav.breadcrumb')}</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    h1={hero.h1}
+    badge={hero.badge}
+    subtitle={hero.subtitle}
+    badgeIcon="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+    keyMetrics={hero.keyMetrics}
+    entityChips={hero.entityChips}
+    compact={false}
+  />
+
+  <!-- Section 1: Why aerospace titanium replaces die-cast & plated hardware.
+       Deliberately avoids naming the commodity base metals (see header note 1). -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);" aria-labelledby="lhd-materials-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="lhd-materials-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.luxury.materials.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.luxury.materials.desc')}
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm" style="border: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">
+          <caption class="sr-only">{t('industries.luxury.materials.table_caption')}</caption>
+          <thead>
+            <tr style="background-color: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+              <th scope="col" class="p-4 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.luxury.materials.th_feature')}</th>
+              <th scope="col" class="p-4 font-semibold" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.luxury.materials.th_boze')}</th>
+              <th scope="col" class="p-4 font-semibold" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 15%, transparent);">{t('industries.luxury.materials.th_alt')}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { k: 'density', boze: t('industries.luxury.materials.r1_boze'), alt: t('industries.luxury.materials.r1_alt') },
+              { k: 'surface', boze: t('industries.luxury.materials.r2_boze'), alt: t('industries.luxury.materials.r2_alt') },
+              { k: 'skin', boze: t('industries.luxury.materials.r3_boze'), alt: t('industries.luxury.materials.r3_alt') },
+              { k: 'tooling', boze: t('industries.luxury.materials.r4_boze'), alt: t('industries.luxury.materials.r4_alt') },
+              { k: 'leadtime', boze: t('industries.luxury.materials.r5_boze'), alt: t('industries.luxury.materials.r5_alt') },
+            ].map((row) => (
+              <tr style="border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 10%, transparent);">
+                <th scope="row" class="p-4 font-semibold" style="color: var(--theme-text);">{t(`industries.luxury.materials.${row.k}`)}</th>
+                <td class="p-4" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent);">{row.boze}</td>
+                <td class="p-4" style="color: color-mix(in srgb, var(--theme-text) 50%, transparent);">{row.alt}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image-text split #1 — boutique fixture structural connectors.
+       catalogId only (never imageSrc) per image-catalog-workflow.md §9 rule 1.
+       Image paths + alt come from src/content/image-catalog.json; the
+       webp -> png -> svg fallback chain is built by ImageTextSplit itself. -->
+  <ImageTextSplit
+    catalogId="luxury-hardware-and-displays.boutique-fixture-connectors"
+    eyebrow={t('industries.luxury.split1.eyebrow')}
+    title={t('industries.luxury.split1.title')}
+    body={t('industries.luxury.split1.body')}
+    bullets={[
+      t('industries.luxury.split1.b1'),
+      t('industries.luxury.split1.b2'),
+      t('industries.luxury.split1.b3'),
+    ]}
+    ctaLabel={t('industries.luxury.split1.cta')}
+    ctaHref="/rfq/"
+    imagePosition="right"
+    background="dark"
+  />
+
+  <!-- Section 2: Bespoke structural components for boutique fixtures -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);" aria-labelledby="lhd-fixtures-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="lhd-fixtures-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.luxury.fixtures.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.luxury.fixtures.desc')}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {[
+          { h: t('industries.luxury.fixtures.c1_h'), p: t('industries.luxury.fixtures.c1_p') },
+          { h: t('industries.luxury.fixtures.c2_h'), p: t('industries.luxury.fixtures.c2_p') },
+          { h: t('industries.luxury.fixtures.c3_h'), p: t('industries.luxury.fixtures.c3_p') },
+          { h: t('industries.luxury.fixtures.c4_h'), p: t('industries.luxury.fixtures.c4_p') },
+        ].map((c) => (
+          <div class="rounded-xl p-6" style="background-color: var(--theme-surface); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{c.h}</h3>
+            <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Image-text split #2 — bespoke fashion & leather-goods hardware -->
+  <ImageTextSplit
+    catalogId="luxury-hardware-and-displays.fashion-leather-hardware"
+    eyebrow={t('industries.luxury.split2.eyebrow')}
+    title={t('industries.luxury.split2.title')}
+    body={t('industries.luxury.split2.body')}
+    bullets={[
+      t('industries.luxury.split2.b1'),
+      t('industries.luxury.split2.b2'),
+      t('industries.luxury.split2.b3'),
+    ]}
+    ctaLabel={t('industries.luxury.split2.cta')}
+    ctaHref="/rfq/"
+    imagePosition="left"
+    background="card"
+  />
+
+  <!-- Section 3: Bespoke hardware for fashion & leather goods -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-surface);" aria-labelledby="lhd-fashion-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-12">
+        <h2 id="lhd-fashion-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.luxury.fashion.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.luxury.fashion.desc')}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        {[
+          { h: t('industries.luxury.fashion.c1_h'), p: t('industries.luxury.fashion.c1_p') },
+          { h: t('industries.luxury.fashion.c2_h'), p: t('industries.luxury.fashion.c2_p') },
+          { h: t('industries.luxury.fashion.c3_h'), p: t('industries.luxury.fashion.c3_p') },
+          { h: t('industries.luxury.fashion.c4_h'), p: t('industries.luxury.fashion.c4_p') },
+        ].map((c) => (
+          <div class="rounded-xl p-6" style="background-color: var(--theme-bg); border: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+            <h3 class="text-xl font-bold mb-3" style="color: var(--theme-text);">{c.h}</h3>
+            <p class="leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 62%, transparent);">{c.p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Surface finishing — links out to the real capability hub
+       (no PVD claim: not evidenced by a dedicated in-house capability page). -->
+  <section class="relative py-20 overflow-hidden" style="background-color: var(--theme-bg);" aria-labelledby="lhd-finishing-heading">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl mb-8">
+        <h2 id="lhd-finishing-heading" class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--theme-text);">
+          {t('industries.luxury.finishing.h_title')}
+        </h2>
+        <p class="text-lg leading-relaxed mb-6" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+          {t('industries.luxury.finishing.desc')}
+        </p>
+        <a href="/titanium-surface-treatment/" class="inline-flex items-center px-6 py-3 rounded-lg font-semibold no-underline" style="background-color: var(--theme-primary); color: #ffffff;">
+          {t('industries.luxury.finishing.cta')}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image-text split #3 — Type II anodizing evidence (links to /titanium-surface-treatment/) -->
+  <ImageTextSplit
+    catalogId="luxury-hardware-and-displays.type-ii-anodizing"
+    eyebrow={t('industries.luxury.split3.eyebrow')}
+    title={t('industries.luxury.split3.title')}
+    body={t('industries.luxury.split3.body')}
+    bullets={[
+      t('industries.luxury.split3.b1'),
+      t('industries.luxury.split3.b2'),
+      t('industries.luxury.split3.b3'),
+    ]}
+    ctaLabel={t('industries.luxury.split3.cta')}
+    ctaHref="/titanium-surface-treatment/"
+    imagePosition="right"
+    background="dark"
+  />
+
+  <!-- Buyer-intent block — reuses the shared industry template (SOP F2). -->
+  <BuyerIntentBlock
+    industry="Luxury Hardware &amp; Retail Displays"
+    whyTitanium={[
+      t('industries.luxury.bi.why1'),
+      t('industries.luxury.bi.why2'),
+      t('industries.luxury.bi.why3'),
+      t('industries.luxury.bi.why4'),
+    ]}
+    typicalComponents={[
+      t('industries.luxury.bi.comp1'),
+      t('industries.luxury.bi.comp2'),
+      t('industries.luxury.bi.comp3'),
+      t('industries.luxury.bi.comp4'),
+    ]}
+    manufacturing={[
+      t('industries.luxury.bi.mfg1'),
+      t('industries.luxury.bi.mfg2'),
+      t('industries.luxury.bi.mfg3'),
+      t('industries.luxury.bi.mfg4'),
+    ]}
+    qualityRequirements={[
+      t('industries.luxury.bi.qual1'),
+      t('industries.luxury.bi.qual2'),
+      t('industries.luxury.bi.qual3'),
+      t('industries.luxury.bi.qual4'),
+    ]}
+    ctaHref="/rfq/"
+    showCta={false}
+  />
+
+  <IndustryCtaSection />
+</BaseLayout>

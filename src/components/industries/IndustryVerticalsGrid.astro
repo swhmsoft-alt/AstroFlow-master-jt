@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { isRouteAvailableInLang } from '../../config/route-availability.mjs';
 const currentLang = getLangFromUrl(Astro.url);
 const t = useTranslations(currentLang);
 
@@ -75,7 +76,25 @@ const industries: Industry[] = [
     components: [t('industries.industryverticalsgrid.ind8_comp0'), t('industries.industryverticalsgrid.ind8_comp1'), t('industries.industryverticalsgrid.ind8_comp2'), t('industries.industryverticalsgrid.ind8_comp3')],
     painPoint: t('industries.industryverticalsgrid.ind8_pain'),
   },
+  {
+    // 2026-10-22 — EN-only vertical. href carries the trailing slash per the
+    // mandate (.clinerules/工作区 Rules §7); renderText/localizePath not needed
+    // because EN_ONLY_PREFIXES strips this card in every non-en locale.
+    name: t('industries.industryverticalsgrid.ind9_name'),
+    href: '/industries/luxury-hardware-and-displays/',
+    iconPath: "M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z",
+    components: [t('industries.industryverticalsgrid.ind9_comp0'), t('industries.industryverticalsgrid.ind9_comp1'), t('industries.industryverticalsgrid.ind9_comp2'), t('industries.industryverticalsgrid.ind9_comp3')],
+    painPoint: t('industries.industryverticalsgrid.ind9_pain'),
+  },
 ];
+
+// 2026-10-22 — EN-only verticals (e.g. /industries/chemical/,
+// /industries/luxury-hardware-and-displays/) are declared in EN_ONLY_PREFIXES.
+// Without this filter the card renders an <a href="/industries/..."> on every
+// localized /<lang>/industries/ page, and because those pages are never
+// generated in that locale the crawler discovers a 404. Same "0-link entry"
+// semantics as filterNavByLang() in src/config/site.ts.
+const visibleIndustries = industries.filter((i) => isRouteAvailableInLang(i.href, currentLang));
 ---
 
 <section class="relative py-24 overflow-hidden" style="background-color: var(--theme-bg);">
@@ -103,7 +122,7 @@ const industries: Industry[] = [
 
     <!-- Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
-      {industries.map((industry) => (
+      {visibleIndustries.map((industry) => (
         <a
           href={industry.href}
           aria-label={`Learn more about ${industry.name} titanium machining`}

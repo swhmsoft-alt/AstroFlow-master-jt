@@ -942,6 +942,34 @@ export default defineConfig({
           "Titanium CNC Machining Services": {
             "href": "/titanium-cnc-machining-services/"
           },
+          // 2026-10-22 — Luxury retail / boutique fixture hardware vertical.
+          // High-intent B2B buyer phrases only. Deliberately EXCLUDES commodity
+          // base-metal tokens (brass, zinc alloy, stainless steel) per the
+          // traffic-quality mandate: those attract low-value die-casting enquiries.
+          "titanium boutique fixture hardware": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "bespoke titanium store fixture components": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "custom retail display connectors manufacturer": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "titanium architectural hardware for luxury stores": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "luxury retail display hardware supplier": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "custom titanium bag hardware manufacturer": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "bespoke titanium buckles and clasps supplier": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
+          "precision boutique rack joint hardware": {
+            "href": "/industries/luxury-hardware-and-displays/"
+          },
           "titanium CNC parts": {
             "href": "/parts/titanium-cnc-parts/"
           },

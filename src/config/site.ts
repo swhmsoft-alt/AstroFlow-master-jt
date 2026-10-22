@@ -210,6 +210,13 @@ export const NAVIGATION: NavItem[] = [
           { name: 'Energy', href: '/industries/energy/' },
           { name: 'Chemical', href: '/industries/chemical/' },
           { name: 'Industrial Equipment', href: '/industries/industrial-equipment/' },
+          // 2026-10-22 — EN-only vertical (see EN_ONLY_PREFIXES). Anchor text follows
+          // the Buyer-Search nav rule: short (1-3 words), states the business
+          // attribute, matches EU/US B2B procurement search habits. Deliberately
+          // NOT "Luxury Retail & Boutique" — that reads as a boutique *store*
+          // (ambiguous), whereas "Custom Hardware & Retail Displays" signals the
+          // component supplier the buyer is actually looking for.
+          { name: 'Custom Hardware & Retail Displays', href: '/industries/luxury-hardware-and-displays/' },
         ],
       },
     ],
