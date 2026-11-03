@@ -383,6 +383,25 @@ export default defineConfig({
           "titanium VAR remelt ingot": {
             "href": "/mill-products/ingot/"
           },
+          // BSI Phase G-10 · Mill Products Dental Titanium Disc sub-page (5-inbound #4)
+          "dental titanium disc": {
+            "href": "/mill-products/dental-titanium-disc/"
+          },
+          "dental titanium discs": {
+            "href": "/mill-products/dental-titanium-disc/"
+          },
+          "titanium CAD/CAM disc blank": {
+            "href": "/mill-products/dental-titanium-disc/"
+          },
+          "ASTM F136 titanium disc": {
+            "href": "/mill-products/dental-titanium-disc/"
+          },
+          "98 mm titanium disc blank": {
+            "href": "/mill-products/dental-titanium-disc/"
+          },
+          "Zirkonzahn 95 mm titanium disc": {
+            "href": "/mill-products/dental-titanium-disc/"
+          },
           // BSI 2026-10-13 · Grade 5 Ti-6Al-4V material-specific machining
           // sub-page (5-inbound #4: keywordMap)
           "Grade 5 titanium CNC machining": {

@@ -40,7 +40,7 @@ const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/';
 
 const hero = HERO_CONFIG['/mill-products'];
 
-// ── 6 product forms (ItemList entries + product entity gateway cards) ───────
+// ── 8 product forms (ItemList entries + product entity gateway cards) ───────
 const productForms = [
   {
     slug: 'ingot',
@@ -115,6 +115,18 @@ const productForms = [
     href: '/mill-products/foil-coils/',
   },
   {
+    slug: 'dental-titanium-disc',
+    name: 'Dental Titanium Discs',
+    icon: '◉',
+    image: '/images/placeholders/mill-dental-titanium-disc-placeholder.svg',
+    summary: 'CAD/CAM disc blanks machined to dental milling-centre chuck interfaces, in CP Grade 1-4 and Grade 23 Ti-6Al-4V ELI, with chemistry control and heat-level traceability.',
+    forms: ['Open System 98 mm', 'Zirkonzahn 95 mm', 'Amann Girrbach 89 mm'],
+    commonGrades: ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 23'],
+    commonStandards: ['ASTM F67', 'ASTM F136', 'ISO 5832-2', 'ISO 5832-3'],
+    typicalApplications: ['Single Crowns', 'Custom Abutments', 'Full-Arch Frameworks', 'Screw-Retained Restorations', 'Implant Abutment Blanks'],
+    href: '/mill-products/dental-titanium-disc/',
+  },
+  {
     slug: 'mesh',
     name: 'Titanium Mesh',
     icon: '⧉',
@@ -184,6 +196,7 @@ const selectionMatrix = [
   { requirement: 'Welding feedstock or specialized industrial wire', recommendedForm: 'Wire' },
   { requirement: 'Ultra-thin material for specialized industrial use', recommendedForm: 'Foil & Coils' },
   { requirement: 'Electrochemical or filtration assemblies', recommendedForm: 'Mesh' },
+  { requirement: 'CAD/CAM disc blanks for dental milling centres', recommendedForm: 'Dental Titanium Discs' },
 ];
 
 // ── Value-added processing (D2 — Mill Stock → CNC Parts) ────────────────────
@@ -306,7 +319,7 @@ const industries = [
 // ── Procurement / OEM info (§24) ────────────────────────────────────────────
 const procurementCapabilities = [
   'Multiple Titanium Grades (CP and Alloy)',
-  'Seven Product Forms in One Procurement Program',
+  'Eight Product Forms in One Procurement Program',
   'International Specifications (ASTM / AMS / ISO / MIL)',
   'Material Traceability with Documentation',
   'EN 10204 Type 3.1 Mill Test Reports',
@@ -341,7 +354,7 @@ const whatWeDontCover = [
 const faqItems = [
   {
     question: 'What titanium mill products does BOZE Metal supply?',
-    answer: 'BOZE Metal supplies seven titanium mill product forms: ingots (VAR, double and triple melt), bars & rods (round, square, hexagonal), plates & sheets, tubes & pipes (seamless and welded), wire (coil and straight), foil & coils, and woven mesh. Multiple commercially pure and alloy grades are available per applicable specifications.',
+    answer: 'BOZE Metal supplies eight titanium mill product forms: ingots (VAR, double and triple melt), bars & rods (round, square, hexagonal), plates & sheets, tubes & pipes (seamless and welded), wire (coil and straight), foil & coils, woven mesh, and dental titanium CAD/CAM disc blanks. Multiple commercially pure and alloy grades are available per applicable specifications.',
   },
   {
     question: 'What titanium grades are typically available as stock?',

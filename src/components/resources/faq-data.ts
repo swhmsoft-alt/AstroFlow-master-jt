@@ -204,9 +204,9 @@ export const FAQ_ENTRIES: readonly FaqEntry[] = [
   {
     id: 'as9100d-and-iso-13485',
     category: 'quality',
-    question: 'Are you certified to AS9100D and ?',
+    question: 'Are you certified to AS9100D and ISO 13485?',
     answerHtml:
-      'Yes. Boze Titanium Manufacturing Center operates under <strong>AS9100D</strong> (aerospace) and <strong></strong> (medical devices) quality management systems. Documentation packages include <strong>First Article Inspection Reports (FAIR) per AS9102</strong>, process control plans, and full material-traceability chains. We do not currently hold <strong>AS9110</strong> (aviation MRO) or <strong>AS9120</strong> (aviation distributors) — those are out of scope.',
+      'Yes. Boze Titanium Manufacturing Center operates under <strong>AS9100D</strong> (aerospace) and <strong>ISO 13485</strong> (medical devices) quality management systems. Medical-grade product lines such as dental titanium CAD/CAM disc blanks are manufactured under an authorised ISO 13485:2016 contract manufacturing partner; the certificate scope and authorisation are available on request. Documentation packages include <strong>First Article Inspection Reports (FAIR) per AS9102</strong>, process control plans, and full material-traceability chains. We do not currently hold <strong>AS9110</strong> (aviation MRO) or <strong>AS9120</strong> (aviation distributors) — those are out of scope.',
     tags: ['as9100d', 'iso-13485', 'certification', 'quality', 'fair', 'as9102'],
   },
   {

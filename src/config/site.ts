@@ -312,6 +312,7 @@ export function getNavigation(lang: string): NavItem[] {
           { name: 'Titanium Wire', href: '/mill-products/wire/' },
           { name: 'Titanium Foil & Coils', href: '/mill-products/foil-coils/' },
           { name: 'Titanium Woven Mesh', href: '/mill-products/mesh/' },
+          { name: 'Dental Titanium Discs', href: '/mill-products/dental-titanium-disc/' },
         ],
       },
     ],

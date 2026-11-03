@@ -217,6 +217,27 @@ export const HERO_CONFIG: Record<string, HeroEntry> = {
       'AS9100D',
     ],
   },
+  // BSI Phase G-10 · Mill Products Dental Titanium Disc sub-page
+  '/mill-products/dental-titanium-disc': {
+    h1: 'Dental Titanium Discs — CAD/CAM Disc Blanks for Milling Centres',
+    subtitle:
+      'Dental titanium CAD/CAM disc blanks in commercially pure Grade 1 / 2 / 3 / 4 to ASTM F67 and ISO 5832-2, and Grade 23 Ti-6Al-4V ELI to ASTM F136 and ISO 5832-3. Open system Ø98 mm with central register step, Zirkonzahn Ø95 mm and Amann Girrbach Ø89 mm with side notch. Vacuum annealed for residual stress relief, CMM verified, EN 10204 3.1 with heat-level batch traceability, manufactured under an ISO 13485:2016-certified authorised contract manufacturing partner. MOQ and schedule are quotation-specific.',
+    badge: 'Mill Products / Dental Discs | ASTM F67 / F136',
+    keyMetrics: [
+      { value: 'Ø98 / 95 / 89 mm', label: 'Interface diameters' },
+      { value: 'CP Gr1-4 / Gr23', label: 'Grade family' },
+      { value: 'ASTM F67 / F136', label: 'Material standards' },
+      { value: 'Quotation-specific', label: 'Lead time' },
+    ],
+    entityChips: [
+      'ASTM F67',
+      'ASTM F136',
+      'ISO 5832-2',
+      'ISO 5832-3',
+      'ISO 13485:2016',
+      'EN 10204 3.1',
+    ],
+  },
   // BSI Phase G-6 · Mill Products Wire sub-page
   // BSI Phase H-B · Standard Parts Flanges sub-page
   '/standard-parts/flanges': {

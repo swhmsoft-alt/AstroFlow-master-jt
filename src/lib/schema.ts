@@ -1198,6 +1198,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   '/mill-products/wire': 'Titanium Wire Stock',
   '/mill-products/foil-coils': 'Titanium Foil & Coil Stock',
   '/mill-products/mesh': 'Titanium Mesh Stock',
+  '/mill-products/dental-titanium-disc': 'Dental Titanium CAD/CAM Disc Blanks',
   // Solutions sub-hubs (Buyer Search Intelligence Phase H 路 Standard Parts)
   '/standard-parts': 'Titanium Standard Parts',
   '/standard-parts/flanges': 'Titanium Flanges',

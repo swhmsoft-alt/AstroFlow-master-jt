@@ -1,0 +1,634 @@
+---
+/**
+ * /mill-products/dental-titanium-disc/ — Dental Titanium CAD/CAM Disc Blanks
+ * Buyer Search Intelligence Phase G-10 · Mill Products Dental Titanium Disc
+ *
+ * UI / logic reference: the CAD/CAM disc-blank product family (open-system
+ * Ø98 mm, Zirkonzahn Ø95 mm, Amann Girrbach Ø89 mm) as consumed by dental
+ * laboratories and milling centres.
+ *
+ * Schema: pageType="standard-part-detail" → CollectionPage + ItemList +
+ * Service + Product + FAQPage + BreadcrumbList (auto-emitted via
+ * src/lib/schema.ts; F4 compliant, no inline JSON-LD).
+ * F2: No new component for a single page. F3: { question, answer } keys.
+ * F9: trailing slash on every internal URL.
+ *
+ * Honest scope (verified 2026-11-03 against src/data/titanium-grades.ts
+ * GRADE_DATA SSoT and src/pages/mill-products/ingot.astro):
+ * - BOZE Metal is a sourcing + processing partner, NOT a melter and NOT a
+ *   disc mill. Disc blanks are machined from sourced bar / plate.
+ * - ISO 13485:2016 is held by our AUTHORISED CONTRACT MANUFACTURING PARTNER,
+ *   not by Baoji Boze Metal Products Co., Ltd. The partner is authorised to
+ *   supply BOZE. We never claim to hold the certificate ourselves, and we
+ *   never claim the blank itself is a certified medical device.
+ * - Material conformity is carried by ASTM F67 / F136 and ISO 5832-2 /
+ *   5832-3 plus EN 10204 3.1 MTR — NOT by the QMS certificate.
+ * - Interface brand names (Roland, VHF, Imes-Icore, Yenadent, Zirkonzahn,
+ *   Amann Girrbach) appear as published chuck-geometry compatibility
+ *   references only; no affiliation or endorsement is implied.
+ * - No fixed MOQ / lead time — quotation-specific values.
+ *
+ * Every mechanical and chemistry figure below is sourced from GRADE_DATA
+ * (src/data/titanium-grades.ts) — Grade 1 / 2 / 3 / 4 and Grade 23 ELI.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubpageHero from '../../components/ui/SubpageHero.astro';
+import ImageTextSplit from '../../components/ui/ImageTextSplit.astro';
+import TrustBadges from '../../components/landing/TrustBadges.astro';
+import QualityControl from '../../components/landing/QualityControl.astro';
+import { HERO_CONFIG } from '../../config/hero';
+
+const hero = HERO_CONFIG['/mill-products/dental-titanium-disc'];
+
+const pageTitle = 'Dental Titanium Discs | CAD/CAM Disc Blanks ASTM F67/F136 | BOZE Metal';
+const pageDescription = 'Dental titanium CAD/CAM disc blanks in CP Grade 1-4 (ASTM F67 / ISO 5832-2) and Grade 23 Ti-6Al-4V ELI (ASTM F136 / ISO 5832-3). Open-system 98 mm, Zirkonzahn 95 mm, Amann Girrbach 89 mm. Vacuum annealed, EN 10204 3.1 MTR with batch traceability.';
+const canonicalUrl = 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/';
+
+// ── S01 Interface geometry matrix (CAD/CAM chuck standards) ─────────────────
+// Diameters are the published blank geometries for each milling system.
+// "Step" = the central register boss that indexes the blank in the chuck;
+// "Side notch" = the peripheral locating feature on the AG blank.
+const interfaceMatrix = [
+  {
+    system: 'Open system',
+    dia: 'Ø98 mm (nominal)',
+    feature: 'Central register step',
+    machines: 'Roland, VHF, Imes-Icore, Yenadent and other open-interface chucks',
+    note: 'The most common CAD/CAM disc geometry. Chucks clamp on the outer diameter with the step locating the blank axially.',
+  },
+  {
+    system: 'Zirkonzahn system',
+    dia: 'Ø95 mm',
+    feature: 'Zirkonzahn-specific blank geometry',
+    machines: 'Zirkonzahn 5-axis milling units',
+    note: 'A dedicated interface, not interchangeable with the Ø98 mm open-system blank.',
+  },
+  {
+    system: 'Amann Girrbach system',
+    dia: 'Ø89 mm',
+    feature: 'Side notch locating feature',
+    machines: 'Amann Girrbach milling centres',
+    note: 'Located by a peripheral notch rather than a central step. Not interchangeable with Ø95 mm or Ø98 mm blanks.',
+  },
+];
+
+// ── S02 Grade × indication matrix (values from GRADE_DATA SSoT) ────────────
+const gradeMatrix = [
+  {
+    family: 'CP Titanium',
+    grade: 'Grade 1',
+    uns: 'R50250',
+    rm: '≥ 240 MPa (35 ksi)',
+    yld: '≥ 170 MPa (25 ksi)',
+    elong: '≥ 24%',
+    o2: 'Lowest interstitial of the CP grades',
+    use: 'High-ductility frameworks, burners, and full-arch structures where formability dominates',
+  },
+  {
+    family: 'CP Titanium',
+    grade: 'Grade 2',
+    uns: 'R50400',
+    rm: '≥ 345 MPa (50 ksi)',
+    yld: '≥ 275 MPa (40 ksi)',
+    elong: '≥ 20%',
+    o2: 'Typical max 0.13% for mill-stock supply',
+    use: 'Single crowns, abutments and general prosthetics — the most widely specified CP grade',
+  },
+  {
+    family: 'CP Titanium',
+    grade: 'Grade 3',
+    uns: 'R50550',
+    rm: '≥ 450 MPa (65 ksi)',
+    yld: '≥ 380 MPa (55 ksi)',
+    elong: '≥ 18%',
+    o2: 'Elevated by design — solid-solution strengthened',
+    use: 'Higher-load abutments and copings where CP Grade 2 strength is insufficient',
+  },
+  {
+    family: 'CP Titanium',
+    grade: 'Grade 4',
+    uns: 'R50700',
+    rm: '≥ 550 MPa (80 ksi)',
+    yld: '≥ 485 MPa (70 ksi)',
+    elong: '≥ 15%',
+    o2: 'Highest CP oxygen ceiling — highest CP strength',
+    use: 'Load-bearing implant components and surgical hardware; the strongest CP grade',
+  },
+  {
+    family: 'α-β ELI alloy',
+    grade: 'Grade 23 (Ti-6Al-4V ELI)',
+    uns: 'R56401',
+    rm: '≥ 860 MPa (125 ksi)',
+    yld: '≥ 795 MPa (115 ksi)',
+    elong: '≥ 10%',
+    o2: '≤ 0.13% maximum — extra-low interstitial',
+    use: 'Implant abutments, screw-retained frameworks and fatigue-critical components',
+  },
+];
+
+// ── S03 Specification EAV ──────────────────────────────────────────────────
+const specAttributes = [
+  { attr: 'Blank outside diameter', value: 'Ø98 mm open system / Ø95 mm Zirkonzahn / Ø89 mm Amann Girrbach', std: 'CAD/CAM interface geometry' },
+  { attr: 'Blank thickness', value: 'Commonly 10-16 mm; confirmed against machine pocket depth and part height', std: 'Machine capability' },
+  { attr: 'Material grades', value: 'CP Grade 1 / 2 / 3 / 4 and Grade 23 Ti-6Al-4V ELI', std: 'ASTM F67, F136, ISO 5832-2, 5832-3' },
+  { attr: 'Interstitial control (ELI)', value: 'Oxygen ≤ 0.13% maximum on Grade 23; nitrogen, carbon and hydrogen held to the same low-interstitial envelope', std: 'ASTM F136 / ISO 5832-3' },
+  { attr: 'Grain size control', value: 'Fine equiaxed alpha-beta microstructure reported per the accepted grain-size method', std: 'ASTM E112' },
+  { attr: 'Heat treatment', value: 'Vacuum annealing — stress relief at 700-800°C for Grade 23 where specified', std: 'Vacuum cycle per order' },
+  { attr: 'Hardness', value: 'Reported as micro-Vickers or the equivalent scale named on the order', std: 'ASTM E18' },
+  { attr: 'Dimensional inspection', value: 'CMM verification of diameter, thickness, step height and concentricity', std: 'Order specification' },
+  { attr: 'Surface defect inspection', value: 'Dye penetrant inspection where surface-defect acceptance is specified', std: 'ASTM E1417' },
+  { attr: 'Mill certification', value: 'EN 10204 Type 3.1 standard; Type 3.2 with independent witness on request', std: 'EN 10204' },
+  { attr: 'Batch traceability', value: 'Heat identity carried from incoming bar or plate through to the shipped blank', std: 'EN 10204 3.1' },
+  { attr: 'Manufacturing QMS', value: 'Manufactured under an ISO 13485:2016-certified contract manufacturing partner; authorisation available on request', std: 'ISO 13485:2016' },
+];
+
+// ── S04 Order basis — what to fix before quoting ───────────────────────────
+const orderBasis = [
+  { title: 'Interface and machine', body: 'Name the milling system and the exact blank diameter and feature geometry it expects. A Ø98 mm blank will not enter a Ø95 mm or Ø89 mm chuck, and the mismatch is discovered at the machine, not at the purchasing desk.' },
+  { title: 'Grade and specification', body: 'State the grade and the governing standard revision — ASTM F67 or ASTM F136 for the material, or the ISO 5832-2 / 5832-3 equivalent. Grade 2 and Grade 23 are not interchangeable in a clinical supply chain even when dimensions match.' },
+  { title: 'Blank geometry', body: 'Give the thickness and the machined-part height the laboratory intends to produce, so the blank can be sized against the machine pocket and the planned restoration height.' },
+  { title: 'Documentation scope', body: 'Define the mill certification level, the traceability granularity, the inspection characteristics required and the third-party witness arrangement before the order is placed.' },
+];
+
+// ── S05 Chemistry control (interstitials that separate medical from industrial) ──
+const chemistryControls = [
+  { element: 'Oxygen (O)', role: 'Primary solid-solution strengthener in titanium and the dominant ductility killer. It raises tensile strength and simultaneously reduces elongation, toughness and as-machined integrity.', limit: '≤ 0.13% max on Grade 23 ELI', std: 'ASTM F136 / ISO 5832-3' },
+  { element: 'Nitrogen (N)', role: 'The most damaging interstitial for ductility. Above specification it embeds at grain boundaries and is a primary contributor to hydrogen-assisted cracking and embrittlement.', limit: 'Held to the low-interstitial envelope; reported on the MTR', std: 'ASTM F136 / ISO 5832-3' },
+  { element: 'Hydrogen (H)', role: 'Diffuses into titanium during pickling, heat treatment and extended exposure to hydrogen-bearing environments, promoting delayed hydrogen-assisted cracking.', limit: 'Vacuum-annealed processing; reported on the MTR', std: 'ASTM F136 / ISO 5832-3' },
+  { element: 'Iron (Fe)', role: 'A common mill contaminant that forms brittle intermetallic phases, reducing ductility and fatigue life. Fe is the usual difference between a certified implant-grade heat and a general industrial heat.', limit: 'Reported on the MTR against the specification', std: 'ASTM F67 / F136' },
+  { element: 'Carbon (C)', role: 'Forms carbides at grain boundaries when elevated, again reducing toughness and fatigue resistance under cyclic loading.', limit: 'Reported on the MTR against the specification', std: 'ASTM F67 / F136' },
+];
+
+// ── S06 Machining envelope (relative guidance — no absolute sfm/f fabricated) ──
+const millingEnvelope = [
+  { parameter: 'Cutting speed', guidance: 'Reduce relative to steel on the same machine and the same tool material. Titanium generates heat at the cutting edge faster than steel because of its low thermal conductivity and its tendency to work-harden under dwell.', boundary: 'The absolute surface speed is set by machine rigidity, holder length, tool diameter and the blank grade — not by a table value.' },
+  { parameter: 'Feed per tooth', guidance: 'Keep the feed per tooth stable and relatively high for the tool diameter rather than reducing it. A light, dwelling feed promotes work hardening and accelerates edge breakdown on CP titanium.', boundary: 'Excessive feed on a thin disc risks deflection and step breakout; the acceptable combination is confirmed during the setup review.' },
+  { parameter: 'Coolant delivery', guidance: 'Flood or through-spindle coolant with sufficient pressure to reach the cutting edge and the full tooth space. Intermittent or starved cooling is the most common cause of titanium edge burn.', boundary: 'Coolant delivery capability varies by machine and by holder; confirm whether through-tool supply is available before the parameter set is committed.' },
+  { parameter: 'Tool strategy', guidance: 'Sharp, positive-rake carbide or a variable-helix geometry suited to titanium, with a rigid setup. Variable helix spreads engagement along the edge and reduces the heat concentration that causes burn.', boundary: 'Coated tooling selection is a function of the specific alloy, the cut length and the coolant present.' },
+  { parameter: 'Blank stability', guidance: 'Vacuum annealing before roughing removes residual stress from the machining of the blank itself, so the disc does not move or distort once the laboratory begins cutting abutment geometry.', boundary: 'Residual stress relief is specified per order; it is not implied by the grade designation alone.' },
+];
+
+// ── S07 Evidence / traceability cards ─────────────────────────────────────
+const evidenceCards = [
+  { icon: '🧾', title: 'EN 10204 3.1 mill test report', body: 'Every batch ships with a 3.1 MTR declaring the chemistry and mechanical results of the actual heat. Type 3.2 with an independent inspection witness can be arranged where the customer process requires it.' },
+  { icon: '🔗', title: 'Heat-to-blank batch traceability', body: 'The incoming bar or plate heat identity is carried through machining, inspection and shipment, so the certificate, the geometry and the blank can be reconciled against one order basis.' },
+  { icon: '🏥', title: 'ISO 13485 partner arrangement', body: 'Disc blanks are manufactured under a contract manufacturing partner holding ISO 13485:2016, authorised to supply BOZE. The certificate scope and the authorisation letter are available on request. The certificate is issued to the partner, not to Baoji Boze Metal Products Co., Ltd.' },
+  { icon: '🔬', title: 'Material, not device, conformity', body: 'The blank conforms to the material standards ASTM F67 or ASTM F136 and the ISO 5832-2 / 5832-3 equivalents. A material conformity statement is not a finished medical device approval, and device-level certification remains with the dental laboratory or manufacturer.' },
+];
+
+// ── S08 Before you order ──────────────────────────────────────────────────
+const orderControls = [
+  { title: 'Verify the interface', body: 'Confirm the blank diameter and locating feature against the actual machine model before the order, not against the reseller listing.' },
+  { title: 'Name the standard revision', body: 'ASTM F67 and ASTM F136 have revisions, and the MTR must declare the revision in force for the order. State it explicitly.' },
+  { title: 'Confirm the documentation set', body: 'Agree the mill certification level, the inspection characteristics and the third-party witness requirement in advance of manufacture.' },
+  { title: 'Separate material from device claims', body: 'Ask for material conformity to ASTM F67 / F136 and the material test report. A QMS certificate is a different document answering a different question.' },
+];
+
+// ── S09 Supply chain ───────────────────────────────────────────────────────
+const supplyChain = [
+  { icon: '🏭', title: 'Material sourcing', body: 'CP Grade 1-4 and Grade 23 ELI bar and plate are sourced against the specification named on the order, with the mill identity recorded on the MTR.' },
+  { icon: '⚙️', title: 'Precision machining', body: 'Blanks are turned and milled to the interface geometry and tolerance, with the register step and locating features produced in the same setup as the face and OD.' },
+  { icon: '🌡️', title: 'Vacuum processing', body: 'Vacuum annealing relieves residual stress so the disc stays dimensionally stable under the load of a five-axis finishing cut.' },
+  { icon: '🔍', title: 'Inspection and release', body: 'CMM dimensional verification, hardness and surface condition checks against the order, with the document pack released against the same order reference.' },
+];
+
+// ── S10 Comparison (disc blank vs bar vs plate) ───────────────────────────
+const formComparison = [
+  { form: 'Dental titanium disc blank', body: 'A finished, ready-to-clamp circular blank sized to a specific CAD/CAM chuck geometry. The laboratory buys this when it mills prosthetic restorations and does not want to cut blanks itself.', href: '/mill-products/dental-titanium-disc/' },
+  { form: 'Bar and rod stock', body: 'Cut lengths of round, square or hexagonal stock for general CNC machining. The right choice when the laboratory machines the blank from solid stock in-house.', href: '/mill-products/bars-rods/' },
+  { form: 'Plate and sheet stock', body: 'Rolled flat stock for fabricated structures. Used when the component is a plate- or sheet-derived part rather than a chuck-held round blank.', href: '/mill-products/plates-sheets/' },
+];
+
+// ── S11 FAQ (F3: { question, answer } keys only) ───────────────────────────
+const faqItems = [
+  { question: 'What material grades are available for dental titanium discs?', answer: 'Commercially pure Grade 1, 2, 3 and 4 to ASTM F67 and ISO 5832-2, and Grade 23 Ti-6Al-4V ELI to ASTM F136 and ISO 5832-3. Grade 2 is the most widely specified CP grade for crowns and abutments; Grade 23 ELI is specified for implant abutments and screw-retained frameworks where fatigue-critical behaviour matters. The grade, the standard revision and the mechanical results must all be declared on the mill test report for the order.' },
+  { question: 'What diameter blanks fit my CAD/CAM machine?', answer: 'Three published interfaces are supplied: the open system at Ø98 mm nominal with a central register step, the Zirkonzahn system at Ø95 mm, and the Amann Girrbach system at Ø89 mm with a peripheral side notch. The Ø98 mm open blank fits Roland, VHF, Imes-Icore and Yenadent chucks. These geometries are not interchangeable, and the brand names are referenced only to identify the published chuck geometry — they imply no affiliation or endorsement.' },
+  { question: 'Is your ISO 13485 certification available for dental titanium discs?', answer: 'The manufacturing is performed by our authorised contract manufacturing partner, which holds ISO 13485:2016. The certificate is issued to that partner, not to Baoji Boze Metal Products Co., Ltd., and the authorisation letter and the certificate scope are available on request. We do not claim to hold the certificate ourselves. For the product itself, material conformity is carried by ASTM F67 or ASTM F136, the ISO 5832-2 or 5832-3 equivalent, and the EN 10204 3.1 mill test report.' },
+  { question: 'What mechanical properties should I expect from a Grade 23 ELI dental disc?', answer: 'For Grade 23 Ti-6Al-4V ELI in the annealed condition: minimum tensile strength 860 MPa (125 ksi), minimum yield strength at 0.2% offset 795 MPa (115 ksi), minimum elongation 10%, and fracture toughness KIC of 70-85 MPa√m. For commercially pure Grade 2 the corresponding minima are 345 MPa tensile, 275 MPa yield and 20% elongation. These are typical annealed-condition minima; the actual values for your order are the ones declared on the mill test report.' },
+  { question: 'How is oxygen and other interstitial content controlled?', answer: 'Oxygen is the dominant interstitial in titanium and the primary determinant of the ductility-versus-strength trade-off. Grade 23 ELI is held to a maximum oxygen content of 0.13%, and nitrogen, carbon and hydrogen are controlled to the same low-interstitial envelope. On commercially pure Grade 2, mill-stock supply is typically at a 0.13% maximum. Every heat is reported against the specification on the mill test report, and it is that declared result which governs acceptance rather than the grade name alone.' },
+  { question: 'What inspection is performed on the blanks before shipment?', answer: 'Dimensional verification by CMM covering outside diameter, thickness, register step height and concentricity, plus hardness reported per ASTM E18 and surface condition verified against the order. Dye penetrant inspection to ASTM E1417 is applied where surface-defect acceptance is specified. Ultrasonic testing to ASTM E2375 is not applicable to a solid disc blank, because that standard addresses tubular product and a solid blank has no internal geometry to interrogate. Any additional inspection scope is agreed on the order.' },
+  { question: 'How should titanium disc blanks be milled to avoid tool wear?', answer: 'Three principles govern the setup. Keep the cutting speed well below the equivalent steel value, because titanium moves heat into the workpiece rather than into the chip. Keep the feed per tooth stable and relatively high for the tool diameter rather than reducing it, since a light dwelling feed work-hardens CP titanium and accelerates edge breakdown. Deliver coolant at the cutting edge under pressure, either flood or through-spindle, because starved cooling is the most frequent cause of titanium edge burn. Variable-helix tooling and a rigid setup complete the strategy. Absolute surface speeds and feeds are confirmed against your machine rigidity, holder, tool diameter and blank grade during the setup review rather than taken from a generic table.' },
+  { question: 'What are the minimum order quantity and lead time?', answer: 'Both are quotation-specific. They depend on the grade, the interface geometry, the blank dimensions, the quantity, the current bar and plate availability and the machining capacity of the order. Sample quantities are generally reviewable for engineering evaluation. Treat the confirmed values in the quotation as the operative figures rather than treating any published lead time as a commitment.' },
+];
+
+// ── S12 Related outbound (Tier 1 anchors) ──────────────────────────────────
+const relatedLinks = [
+  { title: 'All Titanium Mill Products', desc: 'Ingots, bars, plates, tubes, wire, foil, mesh and dental discs from one sourcing partner.', href: '/mill-products/' },
+  { title: 'Titanium Bar & Rod Stock', desc: 'The upstream stock for laboratories that cut their own blanks in-house.', href: '/mill-products/bars-rods/' },
+  { title: 'Titanium Grade Library', desc: 'Grade 1 / 2 / 3 / 4 and Grade 23 ELI chemistry, standards and property references.', href: '/materials/' },
+  { title: 'Material Traceability', desc: 'How heat and lot identity is carried from incoming material to shipment.', href: '/capabilities/traceability/' },
+  { title: 'Request a Quotation', desc: 'Send the interface, grade, geometry and documentation scope for engineering review.', href: '/rfq/' },
+];
+
+
+// ── CollectionPage / ItemList data (auto-emitted via schema.ts) ────────────
+const itemListItems = [
+  { name: 'Dental Titanium CAD/CAM Disc Blank', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#disc' },
+  { name: 'Open System Titanium Disc Blank 98 mm', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#interface-matrix' },
+  { name: 'Zirkonzahn System Titanium Disc Blank 95 mm', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#interface-matrix' },
+  { name: 'Amann Girrbach System Titanium Disc Blank 89 mm', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#interface-matrix' },
+  { name: 'Commercially Pure Titanium Dental Disc ASTM F67', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#grade-matrix' },
+  { name: 'Grade 23 Ti-6Al-4V ELI Dental Disc ASTM F136', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#grade-matrix' },
+  { name: 'Dental Titanium Disc Chemical Composition Control', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#chemistry' },
+  { name: 'Milling Guidelines for Titanium Disc Blanks', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#milling' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL={canonicalUrl}
+  pageType="standard-part-detail"
+  serviceName="Dental Titanium CAD/CAM Disc Blanks"
+  serviceDescription="Dental titanium disc blanks for CAD/CAM milling centres, in commercially pure Grade 1 / 2 / 3 / 4 to ASTM F67 and ISO 5832-2 and Grade 23 Ti-6Al-4V ELI to ASTM F136 and ISO 5832-3. Open-system 98 mm with central register step, Zirkonzahn 95 mm and Amann Girrbach 89 mm with side notch. Vacuum annealed for residual stress relief, EN 10204 3.1 certification with heat-level batch traceability, manufactured under an ISO 13485:2016-certified authorised contract manufacturing partner."
+  serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
+  collectionName="Dental Titanium CAD/CAM Disc Blanks"
+  collectionDescription="Titanium disc blanks machined to dental CAD/CAM chuck interfaces, in CP Grade 1-4 and Grade 23 Ti-6Al-4V ELI, supplied with chemistry control, vacuum annealing, dimensional inspection and heat-level material traceability."
+  itemCount={itemListItems.length}
+  items={itemListItems}
+  faqItems={faqItems}
+  faqName="Engineering and Procurement FAQ, Dental Titanium Disc Blanks"
+  productDeliveryLeadTime="Quotation-specific"
+>
+
+  <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+
+  <section id="honest-positioning" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Honest Positioning</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">What This Product Is, and What It Is Not</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">BOZE Metal is a sourcing and processing partner for titanium disc blanks. We source certified bar and plate, contract the manufacturing to an ISO 13485-certified partner, and control the order basis, geometry, inspection scope and documentation. The following scope clarifications matter for accurate technical and commercial alignment.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏥</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Not a medical device registration</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">A titanium blank is a semi-finished material product. It carries material conformity to ASTM F67 or ASTM F136, not a device approval. Device-level certification, clinical validation and CE or FDA registration remain the responsibility of the dental laboratory or manufacturer who mills the final restoration.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">📜</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">The ISO 13485 certificate is the partner's</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Manufacturing is performed under a contract manufacturing partner that holds ISO 13485:2016 and is authorised to supply BOZE. The certificate is issued to that partner, not to Baoji Boze Metal Products Co., Ltd. The certificate scope and the authorisation letter are available on request.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🏭</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Not a disc mill</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We do not roll or press titanium disc. Discs are sourced as bar and plate and machined to the interface geometry. Our scope is grade and specification review, interface geometry agreement, machining coordination, inspection, documentation and shipment.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🤝</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Brand names identify geometry only</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Roland, VHF, Imes-Icore, Yenadent, Zirkonzahn and Amann Girrbach are referenced solely to identify the published chuck geometry each blank is machined to. No affiliation, partnership or endorsement by those manufacturers is claimed or implied.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">🦷</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Not finished prosthetics</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">We supply the starting blank. Crowns, abutments, full-arch frameworks, screw-retained prostheses and any other finished restoration are milled from it by the dental laboratory or milling centre that owns the machine.</p>
+        </article>
+        <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <span class="text-2xl" aria-hidden="true">⏱️</span>
+          <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">No fixed MOQ or lead time</h3>
+          <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Minimum order quantity and schedule depend on grade, interface geometry, blank dimensions, quantity, current bar and plate availability and the machining plan. Treat them as quotation-specific values confirmed during engineering review.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="order-basis" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Order Basis</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Freeze Four Inputs Before Requesting a Quotation</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">A disc blank is fully defined by four inputs. State all four and the quotation can be produced on the first exchange instead of after three clarification rounds.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {orderBasis.map((o) => (
+          <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-text);">{o.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{o.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="interface-matrix" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Interface Geometry</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Match the Blank Diameter and Locating Feature to Your Machine</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three published disc geometries cover the dental CAD/CAM installed base. The diameter and the locating feature are what the chuck actually engages, so both must match. Brand names identify the published geometry only.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Interface</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Blank Diameter</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Locating Feature</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Machines Served</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Notes</th>
+          </tr></thead>
+          <tbody>
+            {interfaceMatrix.map((m, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.system}</td>
+                <td class="p-3 font-mono font-semibold" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.dia}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.feature}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.machines}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-8 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        The three geometries are not interchangeable. A Ø95 mm blank will not enter a Ø98 mm chuck even though both are described as "titanium discs". If your machine is a hybrid or a retrofit, send the machine model and the current blank part number and the interface is confirmed from those.
+      </p>
+    </div>
+  </section>
+
+  <section id="grade-matrix" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Grade Selection</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Commercially Pure and ELI Grades for Dental Restorations</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five grades, each with a different strength-to-ductility balance. Values are the typical annealed-condition minima recorded for each grade in the titanium grade library; the mill test report for the order governs acceptance.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Grade / UNS</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">R<sub>m</sub> (min)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">R<sub>p0.2</sub> (min)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">A<sub>5</sub> (min)</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Oxygen</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Typical Dental Use</th>
+          </tr></thead>
+          <tbody>
+            {gradeMatrix.map((g, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);"><span class="font-mono font-semibold" style="color: var(--theme-primary);">{g.grade}</span><span class="block text-xs" style="color: color-mix(in srgb, var(--theme-text) 55%, transparent);">UNS {g.uns} · {g.family}</span></td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.rm}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.yld}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.elong}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.o2}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{g.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-8 grid gap-5 md:grid-cols-2">
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">CP Grade 1-4 are supplied to ASTM F67 and ISO 5832-2. Grade 23 Ti-6Al-4V ELI is supplied to ASTM F136 and ISO 5832-3.</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Substituting Grade 5 for a Grade 23 callout fails a medical device audit even when the dimensional results are equivalent, because the MTR must declare the correct UNS number.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="spec-eav" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Specification Reference</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Dental Titanium Disc Blank Specification EAV</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Twelve procurement-critical attribute, value and standard references. Use this as a cross-check table when drafting an RFQ; the applicable specification is selected per order.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Attribute</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Value / Range</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {specAttributes.map((s, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{s.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="chemistry" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Chemical Composition Control</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">The Interstitials That Separate Medical-Grade Titanium from Industrial Titanium</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">A titanium heat can carry the right UNS number on the paperwork and still fail in the mouth. The interstitial elements decide whether the material is genuinely implant-grade or only nominally so.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Element</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Why It Is Controlled</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Control Basis</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Standard</th>
+          </tr></thead>
+          <tbody>
+            {chemistryControls.map((c, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-mono font-semibold" style="color: var(--theme-primary); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.element}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.role}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.limit}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{c.std}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-8 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        Every heat is reported against the specification on the mill test report. It is that declared result, not the grade name, which governs acceptance — and it is the document your quality system will audit.
+      </p>
+    </div>
+  </section>
+
+  <section id="milling" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Milling Intelligence</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Milling Titanium Disc Blanks Without Burning the Edge</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Titanium is the most difficult common dental metal to machine. These are the principles that govern a stable setup, stated as relationships rather than absolute numbers, because the correct surface speed depends on your machine, not on a table.</p>
+      </header>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Parameter</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Guidance</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Boundary</th>
+          </tr></thead>
+          <tbody>
+            {millingEnvelope.map((m, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.parameter}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.guidance}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{m.boundary}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-8 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        If your machine struggles with titanium in general, the blank geometry is often part of the cause. Send the machine model, the planned part geometry and the tooling in use, and the setup is reviewed against the actual machine rather than against a generic recommendation.
+      </p>
+    </div>
+  </section>
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-dental-disc-blank.svg"
+    imageAlt="Machined dental titanium CAD/CAM disc blank with central register step on the polished face"
+    imagePosition="left"
+    background="gray"
+    eyebrow="Traceability, EN 10204 3.1"
+    title="Batch Traceability from Mill Heat to Shipped Blank"
+    body="Every disc batch is released against a heat or lot reference carried through incoming inspection, machining, vacuum annealing, final dimensional verification and shipment. Marking, document set, protective packing and delivery basis are checked before release, so the certificate, the geometry and the blank can be reconciled against one order basis."
+    bullets={['Heat or lot level traceability from incoming bar or plate', 'EN 10204 3.1 standard, 3.2 with independent witness on request', 'Marking, packing list and release documents agreed in advance']}
+    ctaLabel="See the evidence package"
+    ctaHref="/mill-products/dental-titanium-disc/#evidence"
+  />
+
+  <section id="evidence" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Supply Scope &amp; Qualification</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Specify the Evidence Needed for Acceptance</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">A certificate name alone does not define the complete acceptance package. State the traceability level, the inspection characteristics, the third-party involvement and the release documents required by the order.</p>
+      </header>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {evidenceCards.map((c) => (
+          <article class="rounded-2xl border p-6 lg:p-8" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <div class="flex items-start gap-3 mb-3">
+              <span class="text-2xl" aria-hidden="true">{c.icon}</span>
+              <h3 class="text-lg font-bold" style="color: var(--theme-text);">{c.title}</h3>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="before-you-order" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Before You Order</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Confirm Four Controls Before You Buy</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Use this short check before comparing quotations. It separates the four questions buyers most often conflate: interface, standard revision, documentation set, and the scope of the material claim.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {orderControls.map((c) => (
+          <article class="rounded-2xl border p-6" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-text);">{c.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="supply-chain" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Supply Chain</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Sourcing, Machining, Vacuum Processing and Release</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Four supply-side controls that determine whether a specific blank order can be accepted, and on what schedule.</p>
+      </header>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {supplyChain.map((s) => (
+          <article class="rounded-2xl border p-6" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <span class="text-3xl block" aria-hidden="true">{s.icon}</span>
+            <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">{s.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{s.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="comparison" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Product Form Selection</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Disc Blank, Bar and Rod, or Plate and Sheet</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Three product forms answer the same underlying need. The controlled purchase description is the exact form, the exact grade, the exact interface and the exact document scope.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {formComparison.map((f) => (
+          <a href={f.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <h3 class="text-lg font-bold" style="color: var(--theme-primary);">{f.form}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 70%, transparent);">{f.body}</p>
+            <span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TrustBadges />
+
+  <QualityControl />
+
+  <section id="faq" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Frequently Asked Questions</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Dental Titanium Disc Blank FAQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Eight buyer questions on grades, machine interfaces, certification scope, mechanical properties, interstitial control, inspection, milling practice, and order quantities.</p>
+      </header>
+      <div class="mt-10 max-w-4xl space-y-3">{faqItems.map((f, i) => (<details class="group rounded-xl border p-5" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><summary class="cursor-pointer flex items-start gap-3 list-none"><span class="shrink-0 flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold" style="background: color-mix(in srgb, var(--theme-primary) 15%, transparent); color: var(--theme-primary);">Q{i + 1}</span><span class="flex-1 text-base font-semibold leading-relaxed" style="color: var(--theme-text);">{f.question}</span><svg class="w-5 h-5 mt-0.5 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--theme-primary);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary><div class="mt-3 ml-10 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 75%, transparent);">{f.answer}</div></details>))}</div>
+    </div>
+  </section>
+
+  <section id="disc-rfq" class="py-16 lg:py-20" style="background: var(--theme-bg);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Dental Titanium Disc Inquiry</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Send the Order Basis for Supply Review</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Share the machine model, the interface, the grade and specification revision, the blank geometry, the quantity and the evidence requirements. The machine model and the grade are the two inputs that determine whether the order can be accepted without a clarification round.</p>
+      </header>
+      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Machine model and blank interface</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Grade and standard revision</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Blank thickness and geometry</span>
+        </div>
+        <div class="flex items-start gap-3 rounded-2xl border p-5" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+          <svg class="h-5 w-5 mt-0.5 shrink-0" fill="none" stroke="var(--theme-primary)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          <span class="text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 78%, transparent);">Quantity and documentation scope</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="related" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Continue Your Specification Path</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Related Stock, Capabilities, and RFQ</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Five next-step anchors: parent hub, the upstream bar stock, the grade library, traceability evidence, and the quotation route.</p>
+      </header>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{relatedLinks.map((r) => (<a href={r.href} class="group block rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);"><h3 class="text-base font-bold leading-snug" style="color: var(--theme-text);">{r.title}</h3><p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{r.desc}</p><span class="mt-3 inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">Continue<svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></span></a>))}</div>
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <a href="/rfq/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-primary); color: var(--theme-bg);">Request a quotation and engineering review</a>
+        <a href="/mill-products/" class="inline-flex items-center px-8 py-4 text-base font-bold rounded-xl border transition-colors duration-200" style="border-color: var(--theme-primary); color: var(--theme-primary);">Browse all mill products</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
