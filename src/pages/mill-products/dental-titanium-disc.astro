@@ -211,6 +211,75 @@ const faqItems = [
   { question: 'What are the minimum order quantity and lead time?', answer: 'Both are quotation-specific. They depend on the grade, the interface geometry, the blank dimensions, the quantity, the current bar and plate availability and the machining capacity of the order. Sample quantities are generally reviewable for engineering evaluation. Treat the confirmed values in the quotation as the operative figures rather than treating any published lead time as a commitment.' },
 ];
 
+// ── S02b Product card — Dental Titanium Disc 98 mm CAD-CAM ─────────────────
+// Catalogue parameters for the flagship Ø98 mm open-system blank, as published
+// on the BOZE CNC-Ti product listing. The commercial rows (MOQ / lead time /
+// payment / certification wording) are that catalogue's own baseline and are
+// reconciled with the page-level honest-positioning statement below:
+// the blank is NOT a device-registered product, and the confirmed values for a
+// specific order are those in the quotation.
+const productCard = {
+  eyebrow: 'Product — Dental Titanium Disc 98 mm CAD-CAM',
+  title: 'Dental Titanium Disc 98 mm CAD-CAM — The Ø98 mm Open-System Blank',
+  body:
+    'Our Ø98 mm disc is the open-system CAD/CAM blank made for guided dental milling: ' +
+    'the diameter and the locating feature that a standard open-interface chuck actually ' +
+    'engages, delivered as a ready-to-clamp blank so the laboratory mills restorations ' +
+    'rather than cutting its own discs. It is sourced as certified plate, water-cut and ' +
+    'turn-milled to the published interface geometry, then vacuum annealed and ' +
+    'dimensionally verified before release.',
+  bullets: [
+    'Premium material — supplied in CP Grade 2 to ASTM F67 and in Grade 23 Ti-6Al-4V ELI to ASTM F136, both with biocompatibility and mechanical properties suited to implant and prosthetic use',
+    'Certified quality — manufactured to ASTM F67 and ASTM F136 under an ISO 13485:2016-certified authorised contract manufacturing partner',
+    'High durability — a stable, stress-relieved blank with the wear resistance and mechanical stability needed for long-lasting restorations',
+    'Versatile applications — full-arch restorations, implant-supported bridges, custom abutments and denture frameworks',
+    'Broad compatibility — suits the major open-interface milling systems, with the Ø98 mm geometry matching the published chuck standard',
+  ],
+  ctaLabel: 'Request a quotation for this disc',
+  ctaHref: '/rfq/',
+};
+
+// ── S02c Product Introduction — the published catalogue parameter set ───────
+const productIntroduction = [
+  { attr: 'Material', value: 'GR2 (CP Grade 2) / GR5 ELI / TC4 ELI / GR23 (Ti-6Al-4V ELI)', note: 'ASTM F67 for CP, ASTM F136 for the ELI alloy' },
+  { attr: 'Dimension', value: 'Ø98 mm × TK 10–25 mm', note: 'Ø98 mm open-system nominal geometry' },
+  { attr: 'Standard', value: 'ASTM F136 / ASTM F67', note: 'ISO 5832-3 and ISO 5832-2 equivalents' },
+  { attr: 'Processing', value: 'Water cutting and turn milling', note: 'Blanks cut from certified plate, then machined to the interface geometry' },
+  { attr: 'Surface', value: 'Polished or machined', note: 'Specified per order against the machining route' },
+  { attr: 'MOQ', value: '30 pieces', note: 'Catalogue baseline for this item; the confirmed quantity is set in the quotation' },
+  { attr: 'Delivery time', value: '1–3 days ready for shipment', note: 'Catalogue baseline from released stock; the confirmed schedule is set in the quotation' },
+  { attr: 'Customizable', value: 'Dimension, logo, package', note: 'OEM/ODM marking, engraving and packing options' },
+  { attr: 'Payment terms', value: '70% advance payment, balance before delivery', note: 'Standard terms for catalogue orders' },
+  { attr: 'Certified by', value: 'ISO 9001:2015 quality management, with manufacturing under an ISO 13485:2016 partner', note: 'The blank carries material conformity, not device registration — see the note below' },
+];
+
+// Published thickness ladder for the Ø98 mm blank (mm).
+const availableThicknesses = ['TK10', 'TK12', 'TK14', 'TK16', 'TK18', 'TK20', 'TK22', 'TK25'];
+
+// Product photography — real BOZE CNC-Ti Ø98 mm dental disc blanks.
+const productImages = [
+  {
+    src: '/images/products/titanium-dental-disc-98mm-01.webp',
+    alt: 'Two Ø98 mm titanium dental CAD/CAM disc blanks, machined faces with concentric turning marks',
+    caption: 'Pair of Ø98 mm blanks, machined face',
+  },
+  {
+    src: '/images/products/titanium-dental-disc-98mm-02.webp',
+    alt: 'Single Ø98 mm titanium dental CAD/CAM disc blank with polished rim and machined face',
+    caption: 'Single blank, polished rim and machined face',
+  },
+  {
+    src: '/images/products/titanium-dental-disc-98mm-03.webp',
+    alt: 'Two Ø98 mm titanium dental disc blanks at different thicknesses showing the machined edge profile',
+    caption: 'Thickness comparison, machined edge profile',
+  },
+  {
+    src: '/images/products/titanium-dental-disc-98mm-04.webp',
+    alt: 'Stack of Ø98 mm titanium dental disc blanks showing consistent diameter and face finish',
+    caption: 'Stacked blanks, consistent diameter and face finish',
+  },
+];
+
 // ── S12 Related outbound (Tier 1 anchors) ──────────────────────────────────
 const relatedLinks = [
   { title: 'All Titanium Mill Products', desc: 'Ingots, bars, plates, tubes, wire, foil, mesh and dental discs from one sourcing partner.', href: '/mill-products/' },
@@ -223,7 +292,7 @@ const relatedLinks = [
 
 // ── CollectionPage / ItemList data (auto-emitted via schema.ts) ────────────
 const itemListItems = [
-  { name: 'Dental Titanium CAD/CAM Disc Blank', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#disc' },
+  { name: 'Dental Titanium Disc 98 mm CAD-CAM — Product Specification', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#product' },
   { name: 'Open System Titanium Disc Blank 98 mm', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#interface-matrix' },
   { name: 'Zirkonzahn System Titanium Disc Blank 95 mm', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#interface-matrix' },
   { name: 'Amann Girrbach System Titanium Disc Blank 89 mm', url: 'https://cnc.bozemetal.com/mill-products/dental-titanium-disc/#interface-matrix' },
@@ -252,6 +321,80 @@ const itemListItems = [
 >
 
   <SubpageHero h1={hero.h1} subtitle={hero.subtitle} badge={hero.badge} keyMetrics={hero.keyMetrics} entityChips={hero.entityChips} />
+
+  <section id="product" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Product</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Dental Titanium Disc 98 mm CAD-CAM</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">The Ø98 mm open-system blank, in the published configuration: the grade, the diameter, the thickness ladder, the processing route and the commercial baseline, stated in full so a laboratory can compare it against a quotation line by line.</p>
+      </header>
+
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {productImages.map((img) => (
+          <figure class="overflow-hidden rounded-2xl border" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <img
+              src={img.src}
+              alt={img.alt}
+              width="740"
+              height="560"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto block"
+              style="display:block;width:100%;height:auto;"
+            />
+            <figcaption class="px-4 py-3 text-xs leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 60%, transparent);">{img.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="mt-12 overflow-x-auto">
+        <table class="w-full text-sm" style="border-collapse: collapse;">
+          <thead><tr style="background: color-mix(in srgb, var(--theme-primary) 8%, transparent);">
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Parameter</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-text); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Published Value</th>
+            <th class="text-left p-3 font-bold" style="color: var(--theme-primary); border-bottom: 2px solid color-mix(in srgb, var(--theme-primary) 30%, transparent);">Note</th>
+          </tr></thead>
+          <tbody>
+            {productIntroduction.map((r, i) => (
+              <tr style={i % 2 === 0 ? 'background: color-mix(in srgb, var(--theme-primary) 3%, transparent);' : ''}>
+                <td class="p-3 font-semibold" style="color: var(--theme-text); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{r.attr}</td>
+                <td class="p-3 font-mono" style="color: color-mix(in srgb, var(--theme-text) 80%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{r.value}</td>
+                <td class="p-3" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--theme-primary) 12%, transparent);">{r.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="text-lg font-bold" style="color: var(--theme-text);">Available thicknesses (mm)</h3>
+        <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Eight published thicknesses on the Ø98 mm blank. The thickness is matched to the machine pocket depth and to the height of the restoration the laboratory intends to mill.</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {availableThicknesses.map((t) => (
+            <span class="inline-flex items-center rounded-lg border px-3 py-1.5 font-mono text-sm font-semibold" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 22%, transparent); color: var(--theme-primary);">Φ98 × {t}</span>
+          ))}
+        </div>
+      </div>
+
+      <p class="mt-10 rounded-2xl border p-5 text-sm leading-relaxed" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent); color: color-mix(in srgb, var(--theme-text) 65%, transparent);">
+        <strong class="font-bold" style="color: var(--theme-text);">Reading these values correctly:</strong> the minimum order quantity, the readiness time and the payment terms above are the catalogue baseline for this item, and the values confirmed for a specific order are the ones stated in the quotation. The blank carries material conformity to ASTM F67 and ASTM F136 under an ISO 13485:2016-certified manufacturing partner and BOZE CNC-Ti's ISO 9001:2015 quality management system; it is a semi-finished material product, not a device registration, and FDA or CE device registration remains the responsibility of the laboratory or manufacturer that mills the final restoration.
+      </p>
+    </div>
+  </section>
+
+  <ImageTextSplit
+    imageSrc="/images/products/titanium-dental-disc-98mm-02.webp"
+    imageAlt="Single Ø98 mm titanium dental CAD/CAM disc blank with polished rim and machined face"
+    imagePosition="left"
+    background="gray"
+    eyebrow={productCard.eyebrow}
+    title={productCard.title}
+    body={productCard.body}
+    bullets={productCard.bullets}
+    ctaLabel={productCard.ctaLabel}
+    ctaHref={productCard.ctaHref}
+  />
 
   <section id="honest-positioning" class="py-16 lg:py-20" style="background: var(--theme-bg);">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
