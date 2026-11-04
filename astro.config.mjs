@@ -16,6 +16,31 @@ import { rehypeAutoInternalLinksI18n } from './src/lib/rehype-auto-internal-link
 import { createRehypeI18nLinkPlugin } from './src/lib/rehype-i18n-link.mjs';
 import devDashboardApi from './astro/integrations/dev-dashboard-vite-plugin.mjs';
 
+// ─────────────────────────────────────────────────────────────────────────────
+// NOTE ON `root` / WINDOWS PATH CASING  (do NOT set `root` here)
+// ─────────────────────────────────────────────────────────────────────────────
+// Astro derives every page's module URL from `config.root`
+//   (`static-build.js`: `new URL("./" + pageData.component, settings.config.root)`)
+// and keys its page registry by `viteID(componentURL)` = `fileURLToPath()`.
+//
+// `config.root` defaults to `process.cwd()` — the path string exactly as the
+// caller typed it. Vite/Rollup, in contrast, resolve module ids to the REAL
+// on-disk path (canonical drive-letter casing). On Windows, launching the build
+// from a lower-cased path (e.g. `c:\Users\...`) therefore produced registry keys
+// like `c:/Users/...` while Vite used `C:/Users/...`. The CSS→page lookup
+// silently failed, `pagesToCss` stayed empty, every CSS asset was treated as
+// "orphaned" and DELETED — and the whole site shipped with ZERO CSS while the
+// build reported success.
+//
+// Setting `root` explicitly does NOT fix it: Astro's config schema transforms
+// it with `new URL(...)` / `resolveDirAsUrl(...)`, and URL parsing lower-cases
+// the drive letter (it is parsed as a URL *scheme*).
+//
+// The correct fix lives in the build launcher (`scripts/astro-build.mjs`),
+// which spawns Astro with a canonicalised working directory so that Astro and
+// Vite always agree on path casing, no matter how the build was invoked.
+// ─────────────────────────────────────────────────────────────────────────────
+
 // https://astro.build
 export default defineConfig({
   site: 'https://cnc.bozemetal.com',
@@ -1093,6 +1118,31 @@ export default defineConfig({
           },
           "aerospace titanium fastener": {
             "href": "/standard-parts/fasteners/"
+          },
+          // BSI Fastener Types section (2026-11-03) - new product-type anchors
+          "titanium washer": {
+            "href": "/standard-parts/fasteners/#washers"
+          },
+          "titanium u-bolt": {
+            "href": "/standard-parts/fasteners/#u-bolts"
+          },
+          "titanium stud bolt": {
+            "href": "/standard-parts/fasteners/#studs"
+          },
+          "titanium threaded rod": {
+            "href": "/standard-parts/fasteners/#studs"
+          },
+          "titanium hex nut": {
+            "href": "/standard-parts/fasteners/#nuts"
+          },
+          "titanium countersunk screw": {
+            "href": "/standard-parts/fasteners/#screws"
+          },
+          "titanium machined fastener": {
+            "href": "/standard-parts/fasteners/#machined"
+          },
+          "titanium fastener assembly": {
+            "href": "/standard-parts/fasteners/#assemblies"
           },
           "Titanium Forging": {
             "href": "/titanium-forming-heavy-manufacturing/titanium-forging/"

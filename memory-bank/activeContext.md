@@ -1392,6 +1392,17 @@ All four dead links replaced with `/rfq/` (canonical intake) — preserves conve
 - (new) Phase G-2.2 Schema: extend `standard-part-detail` to optionally emit Product entity when `productName` is passed (opt-in); add `buildSupplyChain()` and `supplyChain` BaseLayout prop; add `deliveryLeadTime` to Product/Offer output.
 - (new) Phase G-3.5: create `/mill-products/foil-coils/` sub-page so that future references on the plates-sheets page can point to it instead of /rfq/.
 
+## 2026-11-04 - 全站 CSS 丢失根因修复（Windows 路径大小写）
+- **症状**：构建成功、页数正确（2387）、sitemap 正常，但**全站 2474 个 HTML 页面 0 个带全局 CSS**（`inlineStylesheets: 'always'` 下应内联 ~120KB Tailwind，实际只有 59 字节的 astro-island 样式）。构建无任何报错。
+- **根因（代码级确认）**：Astro `static-build.js:33` 用 `new URL("./" + pageData.component, settings.config.root)` 生成每个页面的 module URL，并以此作为 `internals.pagesByViteID` 的键（`viteID()` = `fileURLToPath()`）。`config.root` 默认取 `process.cwd()`——**调用方输入的路径字符串原样大小写**；而 Vite/Rollup 的模块 id 走真实磁盘路径（Windows 盘符规范大小写）。从 `c:\Users\...`（小写）启动时：键 = `c:/Users/.../src/pages/404.astro`，Vite id = `C:/Users/.../src/pages/404.astro` → `pagesByViteID.get()` 返回 `undefined` → `appendCSSToPage()` 从不执行 → `pagesToCss` 为空 → Astro CSS 插件把所有样式表判定为 orphaned 并 `delete bundle[id]`。
+- **证据**（临时注入 `plugin-css.js` 探针）：`pagesToCss entries = 0`；`inline asset _astro/_slug_.BKdOrBOp.css len 117473 matchedPages 0 of 301`；`viteIDkey = "c:/Users/..."` vs `TOPLEVEL id= "C:/Users/..." pageData= false`。从大写路径启动后 `pageData= true`、CSS 立即恢复。
+- **修复**：新增 `scripts/astro-build.mjs` 启动器，用 `fs.realpathSync.native()` / `fs.promises.realpath()` 取磁盘真实大小写的项目根，并以之作为子进程 `cwd` 启动 Astro。`package.json` 的 `build` 与 `build:detached:astro` 改用该启动器。
+- **为何不能用 `astro.config.mjs` 的 `root` 修**：Astro 配置 schema 用 `new URL(val)` / `resolveDirAsUrl()` 转换 `root`，URL 解析会把盘符当 **scheme** 小写化 → 显式设置无效（已实测验证）。此约束已写入 `astro.config.mjs` 注释，避免后人重蹈。
+- **为何不能用 `fs.realpathSync()`**：Node 的同步 realpath（JS 实现）**保留输入大小写**，实测 `c:\...` 进 → `c:\...` 出；只有 native/异步版本走 `GetFinalPathNameByHandle` 才返回真实大小写。
+- **排除项**：vite 6.4.3→6.4.5（结构一致，`viteMetadata` 在主 bundle `dep-*.js` 中，330/330 chunk 均有）、Astro 依赖漂移、缓存、循环导入、`inlineStylesheets` 配置、tailwind source base、`@tailwindcss/oxide`、自定义 vite 插件（`apply:'serve'`）、postbuild 脚本。独立微型 Astro 项目（同版本）构建 CSS 正常 → 工具链无问题。
+- **配套守卫**：新增 `scripts/check-html-shell.mjs`，断言每个非重定向页面含 `<html>` + `<style>` + Tailwind banner，接入 build 链 Step 6/6 —— 此类静默失败今后会被构建直接拦下。
+
+
 ## 2026-10-17 - About promotion + Certs module
 - src/config/site.ts: Added About as first item in Resources dropdown (Resource Hub column). Hardcoded label 'About' consistent with sibling entries; Footer + Header already link to /about/. 1-click discovery loop closed.
 - src/components/about/AboutPage.astro: Inserted Certifications & Compliance section (D2 evidence module) between Why Partner and Process. 5 cards (AS9100D/EN9100, ISO 9001:2015, SGS Verified, EU Authorised Rep., China High-tech), each linking to its full-res webp in /uploads/. Footer link to /capabilities/certifications/ deep hub.

@@ -215,3 +215,64 @@ export const HUB_STRINGS_EN: GradesGuideStrings = {
   classificationLabel: 'Classification',
   detailCtaLabel: 'View full grade data sheet →',
 };
+
+/**
+ * 6 FAQ items — drive the page @graph FAQPage entity (basePageGraph → buildFaqPage).
+ *
+ * MOVED HERE 2026-11-03 (was inline in `src/pages/resources/titanium-grades-guide.astro`).
+ * Reason: the page-level BaseLayout wrapper moved into the component itself (the
+ * `[lang]/[...slug].astro` catch-all renders this component bare, so a wrapper
+ * living only in the EN mount page produced 11 locale pages with no <html>,
+ * no <head>, no global CSS and no JSON-LD).  Keeping the data in this SSoT
+ * module means the EN page and the 11 locale pages emit an identical FAQPage.
+ */
+export const GRADES_GUIDE_FAQ_ITEMS: ReadonlyArray<{
+  readonly question: string;
+  readonly answer: string;
+}> = [
+  {
+    question: 'What is the difference between Grade 5 and Grade 23 titanium?',
+    answer:
+      'Grade 5 (Ti-6Al-4V) and Grade 23 (Ti-6Al-4V ELI) share the same alpha-beta composition, but Grade 23 has lower interstitial limits (O ≤ 0.13%, N, C, Fe), giving superior fracture toughness, ductility at cryogenic temperatures, and biocompatibility. Grade 23 is qualified to ASTM F136 for surgical implants; Grade 5 is qualified to AMS 4928 and ASTM B348 for aerospace structures and engines.',
+  },
+  {
+    question: 'Which titanium grade is best for 5-axis aerospace CNC machining?',
+    answer:
+      'Grade 5 (Ti-6Al-4V) is the aerospace workhorse — approximately 50% of all titanium usage worldwide. It is qualified to AMS 4928 and ASTM B348, has the best strength-to-weight ratio (Rm 895 MPa min annealed, up to 1,100+ MPa in STA condition), and is heat-treatable. For cryogenic or fracture-critical aerospace components, Grade 23 ELI (AMS 4930) is preferred.',
+  },
+  {
+    question: 'What titanium grade should I choose for surgical implants?',
+    answer:
+      'Grade 23 (Ti-6Al-4V ELI) per ASTM F136 / ISO 5832-3 is the standard for surgical implants requiring high fatigue strength and fracture toughness (orthopedic, trauma, spinal). For non-load-bearing devices, ELI Grade 4 (ASTM F67) is also used. BOZE CNC Ti is  certified for medical-device manufacturing with full EN 10204 3.1 MTRs.',
+  },
+  {
+    question: 'How does Grade 7 differ from Grade 2 in corrosion resistance?',
+    answer:
+      'Grade 7 (Ti-0.15Pd) contains a small palladium addition (0.12–0.25%) that cathodically modifies the surface oxide film, providing the most robust corrosion resistance of all CP titanium grades in reducing acid environments (HCl, dilute H₂SO₄, H₃PO₄) and chloride pitting conditions. Mechanical properties are nearly identical to Grade 2 (Rm ≥ 345 MPa). For less aggressive chloride service, Grade 12 (Ti-0.3Mo-0.8Ni) is a cost-effective alternative without the Pd premium.',
+  },
+  {
+    question: 'What is EN 10204 3.1 and why does it matter?',
+    answer:
+      'EN 10204 3.1 is the European standard for mill test reports (MTRs). A 3.1 certificate is issued and validated by the mill\'s independent quality department, confirming actual chemical composition and mechanical properties against the ordered specification. Every order from BOZE CNC Ti ships with full EN 10204 3.1 MTRs, providing complete heat-to-part material traceability for aerospace, medical, and oil & gas customers.',
+  },
+  {
+    question: 'When should I choose Grade 12 over Grade 7?',
+    answer:
+      'Choose Grade 12 (Ti-0.3Mo-0.8Ni) when service is in hot chloride or mildly reducing acid environments and you want to avoid the palladium premium. For very aggressive reducing acids (concentrated HCl, pure wet chloride under heat), Grade 7 still wins. Grade 12 saves 25–40% on material cost vs. Grade 7, and is widely used for chemical processing heat exchangers, FGD scrubbers, and desalination equipment.',
+  },
+];
+
+/**
+ * 5 ItemList entries — drives the page-level ItemList entity (TechArticle
+ * `about` targets) and mirrors the grade detail cards rendered by the hub.
+ */
+export const GRADES_GUIDE_ITEM_LIST: ReadonlyArray<{
+  readonly name: string;
+  readonly url: string;
+}> = [
+  { name: 'Grade 2 CP-Ti (UNS R50400) — Commercially Pure Titanium', url: '/materials/grade-2/' },
+  { name: 'Grade 5 Ti-6Al-4V (UNS R56400) — Alpha-Beta Alloy, Aerospace Workhorse', url: '/materials/grade-5/' },
+  { name: 'Grade 7 Ti-0.15Pd (UNS R52400) — Palladium-Stabilized Corrosion Grade', url: '/materials/grade-7/' },
+  { name: 'Grade 12 Ti-0.3Mo-0.8Ni (UNS R53400) — Cost-Effective Corrosion Grade', url: '/materials/grade-12/' },
+  { name: 'Grade 23 Ti-6Al-4V ELI (UNS R56401) — Medical Implant Standard', url: '/materials/grade-23/' },
+];

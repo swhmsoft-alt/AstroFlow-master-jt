@@ -32,6 +32,81 @@ const specAttributes = [
   { attr: 'Mill certification', value: 'EN 10204 3.1 standard; AS9100D batch record with PMI, hardness, and tensile test report', std: 'EN 10204, AS9100D' },
 ];
 
+const fastenerTypes = [
+  {
+    id: 'bolts',
+    title: 'Titanium Bolts and Hex Bolts',
+    image: '/images/products/titanium-hex-bolt-iso-4014.svg',
+    imageAlt: 'Grade 5 titanium hex bolt ISO 4014',
+    specify: ['Head and dimension standard', 'Diameter and pitch', 'Grip and length', 'Thread class'],
+    body: 'Specify finished-product standard, head geometry, under-head length, shank, thread extent and marking.',
+    href: '/products/product-entities/titanium-hex-bolt-iso-4014/',
+  },
+  {
+    id: 'screws',
+    title: 'Titanium Screws and Socket Heads',
+    image: '/images/products/titanium-socket-head-cap-screw-iso-4762.svg',
+    imageAlt: 'Grade 5 titanium socket head cap screw ISO 4762',
+    specify: ['Head and drive', 'Thread and length', 'Recess inspection'],
+    body: 'Define socket, button, countersunk or drawing-based geometry plus recess, head transition and thread requirements.',
+    href: '/products/product-entities/titanium-socket-head-cap-screw-iso-4762/',
+  },
+  {
+    id: 'nuts',
+    title: 'Titanium Nuts',
+    image: '/images/products/titanium-hex-nut-iso-4032.svg',
+    imageAlt: 'Grade 5 titanium hex nut ISO 4032',
+    specify: ['Style and internal thread class', 'Proof requirement', 'Mating bolt'],
+    body: 'Treat the nut as a matched joint component; state style, material, thread, proof requirement and anti-galling basis.',
+    href: '/products/product-entities/titanium-hex-nut-iso-4032/',
+  },
+  {
+    id: 'washers',
+    title: 'Titanium Washers',
+    image: '/images/products/titanium-flat-washer-iso-7089.svg',
+    imageAlt: 'Grade 5 titanium flat washer ISO 7089',
+    specify: ['OD, ID and thickness', 'Hardness and condition', 'Flatness', 'Surface'],
+    body: 'Define geometry, bearing role, material condition, surface and compatibility with the bolt, nut and joint face.',
+    href: '/products/product-entities/titanium-flat-washer-iso-7089/',
+  },
+  {
+    id: 'studs',
+    title: 'Stud Bolts and Threaded Rods',
+    image: '/images/products/titanium-threaded-rod-1m.svg',
+    imageAlt: 'Grade 5 titanium threaded rod 1 m length',
+    specify: ['Diameter and pitch', 'Overall and threaded length', 'End style', 'Marking'],
+    body: 'Specify full or partial thread, end condition, tolerance length and marking. Stud bolts per ASTM A193 and threaded rod in 1 m stock lengths.',
+    href: '/products/product-entities/titanium-threaded-rod-1m/',
+  },
+  {
+    id: 'u-bolts',
+    title: 'U-Bolts and Bent Fasteners',
+    image: '/images/products/titanium-u-bolt.svg',
+    imageAlt: 'Grade 5 titanium U-bolt',
+    specify: ['Rod diameter', 'Bend radius', 'Leg spacing', 'Thread length'],
+    body: 'Drawing control is essential for bent geometry: state rod diameter, bend radius, leg spacing and thread length so the formed part matches the mating flange or pipe.',
+    href: '/products/product-entities/titanium-u-bolt/',
+  },
+  {
+    id: 'machined',
+    title: 'CNC Machined Fasteners',
+    image: '/images/products/titanium-cryogenic-h2-flange-bolt.svg',
+    imageAlt: 'Grade 2 titanium cryogenic H2 flange bolt',
+    specify: ['Drawing and datums', 'Tolerances', 'Thread route', 'Surface'],
+    body: 'For shoulders, special heads, reduced shank, non-standard lengths and drawing-only geometry, machining from bar under a drawing datum scheme is the normal route.',
+    href: '/products/product-entities/titanium-cryogenic-h2-flange-bolt/',
+  },
+  {
+    id: 'assemblies',
+    title: 'Custom Fastener Assemblies',
+    image: '/images/products/titanium-water-bottle-cage-bolt.svg',
+    imageAlt: 'Grade 5 titanium water bottle cage bolt',
+    specify: ['Bolt, nut and washer set', 'Interfaces', 'Lot control', 'Packing'],
+    body: 'Freeze each component, mating thread, finish and marking into one lot-controlled kit. Interface geometry, torque values and packing are confirmed at the RFQ stage.',
+    href: '/products/product-entities/titanium-water-bottle-cage-bolt/',
+  },
+];
+
 const pipeline = [
   { n: '01', title: 'Raw material PMI and traceability', body: 'Every heat-lot of Grade 2 (CP) or Grade 5 (Ti-6Al-4V) wire rod / bar is received with the upstream-mill 3.1 MTR and verified by XRF positive-material-identification (PMI) before release to the heading line. Heat number is logged for full downstream traceability.' },
   { n: '02', title: 'Cold and warm heading of the head', body: 'Bolts and screws are headed on multi-station cold headers (M2 to M16) or warm headers (M16 to M36). Heading energy, lubrication, and die geometry are tuned per grade to preserve the radial grain-flow from the wire surface through the head. Mismatch causes head-base cracking, which is caught by 100 percent eddy-current test on the first-off sample.' },
@@ -77,12 +152,18 @@ const relatedLinks = [
   { title: 'Compliance and Certifications', desc: 'AS9100D, EN 10204 3.1 evidence chain.', href: '/capabilities/compliance/' },
 ];
 
+// ItemList mirrors the eight product-type cards rendered in the
+// "Titanium Fastener Types" section below, so every ListItem URL resolves
+// to a real anchor id on this page (no dangling #shcs / #nut / #washer).
 const itemListItems = [
-  { name: 'Titanium Socket Head Cap Screw (DIN 912 / ISO 4762)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#shcs' },
-  { name: 'Titanium Hex Head Bolt and Set Screw (DIN 933 / ISO 4017)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#hex-bolt' },
-  { name: 'Titanium Hex Nut and Flange Nut (DIN 934 / DIN 6923)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#nut' },
-  { name: 'Titanium Washer and Lock Washer (DIN 125 / DIN 9021)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#washer' },
-  { name: 'Titanium Aerospace Fastener (NAS / AN / MS)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#aerospace' },
+  { name: 'Titanium Bolts and Hex Bolts (DIN 933 / ISO 4014)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#bolts' },
+  { name: 'Titanium Screws and Socket Head Cap Screws (DIN 912 / ISO 4762)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#screws' },
+  { name: 'Titanium Nuts (DIN 934 / ISO 4032, DIN 6923)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#nuts' },
+  { name: 'Titanium Washers (DIN 125 / ISO 7089, DIN 127)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#washers' },
+  { name: 'Titanium Stud Bolts and Threaded Rods (ASTM A193)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#studs' },
+  { name: 'Titanium U-Bolts and Bent Fasteners', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#u-bolts' },
+  { name: 'CNC Machined Titanium Fasteners (per drawing)', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#machined' },
+  { name: 'Custom Titanium Fastener Assemblies', url: 'https://cnc.bozemetal.com/standard-parts/fasteners/#assemblies' },
 ];
 ---
 
@@ -96,7 +177,7 @@ const itemListItems = [
   serviceDescription="Industrial titanium fasteners (socket head cap screws DIN 912, hex head bolts DIN 933, hex nuts DIN 934, flange nuts DIN 6923, washers DIN 125/DIN 9021, threaded rod, custom per drawing) in CP Gr.2 / Gr.5 (Ti-6Al-4V). Industrial standards DIN 912 / DIN 933 / DIN 934 / DIN 6923 / DIN 125 / ISO 4014 / ISO 4017 / ISO 4032 / ASME B18.2.1 / ASME B18.2.2 plus aerospace NAS / AN / MS. AS9100D QMS. Manufactured by thread-rolled (no cutting) cold heading and warm heading with full heat-to-fastener material traceability."
   serviceCategory="Raw Materials, Non-Ferrous Metals, Titanium"
   collectionName="Industrial Titanium Fasteners"
-  collectionDescription="Titanium fasteners (bolts, nuts, washers, threaded rod, custom) for motorsport, premium bicycle, aerospace structural, semiconductor wet-bench, marine, and chemical-processing applications."
+  collectionDescription="Titanium fasteners (bolts, screws, nuts, washers, stud bolts, threaded rod, U-bolts, CNC-machined parts and custom assemblies) for motorsport, premium bicycle, aerospace structural, semiconductor wet-bench, marine, and chemical-processing applications."
   itemCount={itemListItems.length}
   items={itemListItems}
   faqItems={faqItems}
@@ -139,6 +220,36 @@ const itemListItems = [
           <h3 class="mt-3 text-lg font-bold" style="color: var(--theme-text);">Anodizing color scope</h3>
           <p class="mt-2 text-sm leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Standard anodizing palette is purple, blue, gold, green, and rainbow. Custom Pantone-matching is order-specified and subject to a per-batch setup fee; color reference is held in the AS9100D batch record. Confirm the color and tolerance at the RFQ stage.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="fastener-types" class="py-16 lg:py-20" style="background: var(--theme-surface);">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="max-w-3xl">
+        <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--theme-primary); letter-spacing: 0.12em;">Product Types</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight" style="color: var(--theme-text);">Titanium Fastener Types</h2>
+        <p class="mt-4 text-base md:text-lg leading-relaxed" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">Bolts, screws, nuts, washers, studs and drawing-based parts. For buyers comparing titanium fastener manufacturers and suppliers, each type must be tied to a material, thread, dimensional, process and inspection basis - not only a product name.</p>
+      </header>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {fastenerTypes.map((t) => (
+          <a href={t.href} class="group flex flex-col h-full rounded-2xl border overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg" style="background: var(--theme-bg); border-color: color-mix(in srgb, var(--theme-primary) 18%, transparent);">
+            <article id={t.id} class="flex flex-col h-full">
+              <div class="relative aspect-[4/3] overflow-hidden" style="background: var(--theme-surface);">
+                <img src={t.image} alt={t.imageAlt} width="1024" height="1024" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=function(){var s=this.src;if(s.lastIndexOf('.svg')!==s.length-4){this.src=s.replace(/\.\w+$/,'.svg')}else{this.style.display='none'}}" />
+              </div>
+              <div class="flex flex-col flex-1 p-5">
+                <h3 class="text-base font-bold leading-snug mb-3" style="color: var(--theme-text);">{t.title}</h3>
+                <p class="text-sm font-semibold leading-relaxed mb-3" style="color: var(--theme-primary);">
+                  <span class="font-bold">Specify:</span> {t.specify.join(' · ')}
+                </p>
+                <p class="text-sm leading-relaxed mb-5" style="color: color-mix(in srgb, var(--theme-text) 65%, transparent);">{t.body}</p>
+                <span class="mt-auto inline-flex items-center gap-1 text-sm font-bold" style="color: var(--theme-primary);">View specification <span aria-hidden="true">&rarr;</span></span>
+              </div>
+            </article>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -207,7 +318,7 @@ const itemListItems = [
 
 
   <ImageTextSplit
-    imageSrc="/images/products/titanium-socket-head-cap-screws.svg"
+    imageSrc="/images/products/titanium-socket-head-cap-screw-iso-4762.svg"
     imageAlt="Titanium Grade 5 socket head cap screws DIN 912 in M6 M8 M10 sizes with anodized finish"
     imagePosition="left"
     background="gray"
@@ -216,11 +327,11 @@ const itemListItems = [
     body="Grade 5 (Ti-6Al-4V) socket head cap screws (SHCS) per DIN 912 / ISO 4762 are the workhorse specification for motorsport suspension, brake calipers, premium-bicycle frame joints, and aerospace structural assemblies. Thread rolling (no cutting) preserves continuous grain flow and delivers 30-50 percent fatigue-strength gain over a cut thread. Anti-seize coated and multi-color anodized variants are available."
     bullets={['Cold-headed M2 to M16; warm-headed M16 to M36', 'Thread-rolled (no cutting) per DIN 13-1 / ISO 965-1', 'Multi-color anodizing (purple / blue / gold / green / rainbow)']}
     ctaLabel="View SHCS specs"
-    ctaHref="/standard-parts/fasteners/#shcs"
+    ctaHref="/standard-parts/fasteners/#screws"
   />
 
   <ImageTextSplit
-    imageSrc="/images/products/titanium-hex-nut-flange-nut.svg"
+    imageSrc="/images/products/titanium-hex-nut-iso-4032.svg"
     imageAlt="Titanium Grade 5 hex nut DIN 934 and flange nut DIN 6923 with anti-seize coating"
     imagePosition="right"
     background="dark"
@@ -229,7 +340,7 @@ const itemListItems = [
     body="Grade 2 (CP) hex nuts per DIN 934 / ISO 4032 are the workhorse specification for semiconductor wet-bench, marine, and chemical-processing hardware where corrosion resistance is the priority. Grade 5 (Ti-6Al-4V) flange nuts per DIN 6923 and aerospace NAS / AN / MS hardware are the workhorse for high-strength, fatigue-critical service. Anti-seize coating and AS9100D batch traceability are standard."
     bullets={['Hex nuts DIN 934 / ISO 4032, flange nuts DIN 6923', 'Aerospace NAS 1351, NAS 620, MS 27039', 'PTFE or Ni-based anti-seize coating standard']}
     ctaLabel="View nuts and aerospace fasteners specs"
-    ctaHref="/standard-parts/fasteners/#nut"
+    ctaHref="/standard-parts/fasteners/#nuts"
   />
 
 

@@ -13,16 +13,52 @@
  *   - Schema authority: BaseLayout props → buildPageGraph in src/lib/schema.ts.
  *     Zero inline JSON-LD here.
  */
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../ui/SubpageHero.astro';
 import {
   HUB_GRADES,
   HUB_STRINGS_EN,
+  GRADES_GUIDE_FAQ_ITEMS,
+  GRADES_GUIDE_ITEM_LIST,
   type GradesGuideStrings,
 } from './grades-guide-data';
 import GradesGuideHub from './GradesGuideHub';
+import { getLangFromUrl, localizePath } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
 
 const s: GradesGuideStrings = HUB_STRINGS_EN;
 const gradeCards = HUB_GRADES;
+
+// Page-level layout ownership (2026-11-03).
+//
+// WHY THIS MOVED INTO THE COMPONENT
+// --------------------------------
+// This component is mounted by BOTH:
+//   • src/pages/resources/titanium-grades-guide.astro   (EN route)
+//   • src/pages/[lang]/[...slug].astro                  (11 locale routes)
+//
+// The EN route used to supply the <BaseLayout> wrapper itself.  The locale
+// catch-all renders the component bare, so those 11 pages shipped WITHOUT
+// <html>/<head> — no global CSS, no Header/Footer, no JSON-LD (verified: the
+// emitted file started with `<!DOCTYPE html><!-- … --><section …`).
+// Owning the wrapper here makes every route emit a complete document, exactly
+// like the sibling resources components (TitaniumKnowledgeBase, FaqPage,
+// ManufacturingInsights, IndustryApplications, DownloadsPage) already do.
+const currentLang = getLangFromUrl(Astro.url);
+const heroKey = '/resources/titanium-grades-guide' as const;
+const hero = HERO_CONFIG[heroKey];
+
+// Canonical page URL — locale-aware, so /de/… gets its own canonical + the
+// EN route keeps the historical EN canonical.
+const pageUrl = new URL(
+  Astro.url.pathname,
+  Astro.site ?? 'https://cnc.bozemetal.com',
+).toString();
+
+const faqItems = GRADES_GUIDE_FAQ_ITEMS;
+const itemList = GRADES_GUIDE_ITEM_LIST;
+const homeHref = localizePath('/', currentLang);
+const resourcesHref = localizePath('/resources/', currentLang);
 
 const quickCompareRows = [
   { label: s.unsLabel, get: (g: typeof HUB_GRADES[number]) => g.uns },
@@ -46,7 +82,46 @@ const STANDARDS_MATRIX = [
 ];
 ---
 
-<!-- 1. Hero (BaseLayout owns the @graph) -->
+<BaseLayout
+  pageType="tech-article"
+  title={hero?.h1 ?? 'Titanium Grades Guide | Grade 2, 5, 7, 12, 23 Selection Reference'}
+  description={hero?.subtitle ?? 'Authoritative selection reference for Grade 2, 5, 7, 12, 23 titanium alloys.'}
+  canonicalURL={pageUrl}
+  serviceName="Titanium Grades Selection Hub"
+  serviceDescription="Authoritative reference for Grade 2, Grade 5 (Ti-6Al-4V), Grade 7 (Ti-0.15Pd), Grade 12 (Ti-0.3Mo-0.8Ni), and Grade 23 (Ti-6Al-4V ELI) titanium alloys — with chemical composition, mechanical properties, applicable ASTM/AMS/ISO standards, and CNC machining guidance."
+  serviceCategory="Material Selection Reference & Engineering Procurement"
+  faqItems={[...faqItems]}
+  faqName="Titanium Grades — Frequently Asked Questions"
+  articleAbout="Ti-6Al-4V, Commercially Pure Titanium, ASTM B348, ASTM B265, ASTM F136, AMS 4928, AMS 4930, ISO 5832-3, EN 10204 3.1, Grade 23 ELI, aerospace machining, medical implants, biocompatibility, UNS R56400"
+  itemCount={itemList.length}
+  items={itemList.map((i) => ({ name: i.name, url: i.url }))}
+>
+  <!-- Breadcrumb (Home > Resources > Titanium Grades Guide) — locale-aware -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={homeHref} itemprop="item" class="transition-colors" style="color: var(--text-muted);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-muted);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          <a href={resourcesHref} itemprop="item" class="transition-colors" style="color: var(--text-muted);">
+            <span itemprop="name">Resources</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Titanium Grades Guide</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- 1. Hero (BaseLayout owns the @graph) -->
 <SubpageHero
   h1={`${s.heroTitlePrefix} ${s.heroTitleHighlight}`}
   badge={s.heroBadge}
@@ -370,3 +445,4 @@ const STANDARDS_MATRIX = [
     </div>
   </div>
 </section>
+</BaseLayout>

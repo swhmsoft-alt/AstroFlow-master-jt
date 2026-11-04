@@ -1041,3 +1041,43 @@ export const HUB_STRINGS_EN: DesignEngineeringHubStrings = {
     'EN 10204 Type 3.1 MTR included',
   ],
 };
+
+/**
+ * 6 FAQ items — drive the page @graph FAQPage entity (buildPageGraph → buildFaqPage).
+ *
+ * MOVED HERE 2026-11-03 (was inline in `src/pages/resources/design-engineering-guide.astro`).
+ * Reason: the page-level BaseLayout wrapper moved into the component itself (the
+ * `[lang]/[...slug].astro` catch-all renders this component bare, so a wrapper
+ * living only in the EN mount page produced 11 locale pages with no <html>,
+ * no <head>, no global CSS and no JSON-LD).  Keeping the data in this SSoT
+ * module means the EN page and the 11 locale pages emit an identical FAQPage.
+ */
+export const DESIGN_ENGINEERING_FAQ_ITEMS: ReadonlyArray<{
+  readonly question: string;
+  readonly answer: string;
+}> = [
+  {
+    question: 'What is the minimum wall thickness for Grade 5 titanium CNC machining?',
+    answer: 'For structural ribs with full backing, the minimum wall thickness is ≥ 0.8 mm. For unsupported continuous outer walls, ≥ 1.2 mm is required, with H/T ratio ≤ 10:1. Below 0.8 mm, titanium\u2019s low elastic modulus (E ≈ 110 GPa) causes elastic springback and harmonic chatter during pocketing. The remedy is trochoidal milling with 3 semi-finish passes (0.1 mm step-down) and AMS 2801 vacuum stress relief at 650 °C × 2 h.',
+  },
+  {
+    question: 'What is the recommended internal corner radius for titanium pocketing?',
+    answer: 'Never specify a 90° internal corner — it forces the end mill into a 180° wrap that spikes radial cutting force by ~1.5× and snaps the shank. The DFM rule is R ≥ 1.15 × tool radius. For a Ø 6 mm end mill this is R ≥ 3.45 mm; for Ø 10 mm, R ≥ 5.75 mm. If a sharp internal corner is required (e.g. sealing groove), switch to wire EDM (R 0.05 mm achievable) or sinker EDM.',
+  },
+  {
+    question: 'What is the maximum L/D ratio for deep-hole drilling in titanium?',
+    answer: 'For standard blind holes, L/D ≤ 5:1 with a standard carbide drill. For deeper holes up to L/D 12:1, a single-flute gun-drill with internal coolant channels at ≥ 100 bar is required. Beyond 12:1, step down to a smaller Ø in a pilot → Ø 3 → Ø 6 sequence. Titanium\u2019s low thermal conductivity (k ≈ 6.7 W/m·K, 1/8 of 304 SS) traps heat in the chip; without high-pressure through-tool coolant, galling and drill seizure occur above 50 m/min cutting speed.',
+  },
+  {
+    question: 'What is the maximum thread depth in Grade 5 titanium?',
+    answer: 'Limit blind-hole thread depth to ≤ 2.0 × D (for through-holes ≤ 2.5 × D, where D is the nominal thread diameter). Beyond this, the chip pack in the flute spikes tap torque past the fracture limit. For any blind thread in Grade 5 or Grade 23, replace cut tapping with thread milling (solid carbide, single-point 60° profile, radial interpolation Ø = thread Ø − 0.1 mm). This eliminates tap breakage and improves thread profile accuracy.',
+  },
+  {
+    question: 'How does 5-axis machining improve titanium surface finish?',
+    answer: '5-axis simultaneous machining with tool tilt 10–20° and lead angle 5–15° keeps radial engagement (ae/D) below 0.30. This eliminates chatter — the #1 cause of surface waviness in titanium — and improves surface finish by 2–4× (from Ra 1.6 µm to Ra 0.4 µm on a single finishing pass). It also reduces cycle time 30–50 % by enabling 5-axis swarf / flow toolpaths in Mastercam, HyperMill, or Vericut.',
+  },
+  {
+    question: 'What is the ASME Y14.5-2018 Profile tolerance for titanium machined parts?',
+    answer: 'BOZE regularly holds Profile of a Surface within 0.02 mm and True Position boundary down to Ø0.015 mm relative to a 3-plane datum frame (A-B-C). When designing sealing interfaces, perpendicularity and parallelism callouts must be held to a maximum of 0.01 mm to guarantee hermetic metal-to-metal seal under high-pressure gas tracking. Profile tolerances are verified using ZEISS CMM with ±1.9 µm volumetric accuracy, with full EN 10204 Type 3.1 MTRs per shipment.',
+  },
+];

@@ -7,27 +7,115 @@
 // Schema authority: BaseLayout props → buildPageGraph() (no inline JSON-LD).
 // The 6 FAQ items + 6 ItemList entries are fed by the mount page
 // (`src/pages/resources/design-engineering-guide.astro`).
+//
+// PAGE-LEVEL LAYOUT OWNERSHIP (2026-11-03)
+// ----------------------------------------
+// The <BaseLayout> wrapper MOVED INTO THIS COMPONENT.  It used to live in the
+// EN mount page only, but this component is also rendered bare by the locale
+// catch-all `src/pages/[lang]/[...slug].astro`.  Those 11 locale pages
+// therefore shipped WITHOUT <html>/<head> — no global CSS, no Header/Footer,
+// no JSON-LD (the emitted file began `<!DOCTYPE html><!-- … --><section …`).
+// Owning the wrapper here makes every route emit a complete document, exactly
+// like the sibling resources components (TitaniumKnowledgeBase, FaqPage,
+// ManufacturingInsights, IndustryApplications, DownloadsPage) already do.
+//
+// The FAQ / ItemList / articleAbout payloads live in the SSoT data modules
+// (`design-engineering-data.ts`, `DesignEngineeringJsonLd.tsx`) so the EN page
+// and the 11 locale pages emit an identical @graph.
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubpageHero from '../ui/SubpageHero.astro';
 import DesignEngineeringHub from './DesignEngineeringHub';
+import {
+  DFM_RULES,
+  DESIGN_ENGINEERING_FAQ_ITEMS,
+} from './design-engineering-data';
+import {
+  toSchemaItemList,
+  toSchemaArticleAbout,
+} from './DesignEngineeringJsonLd';
+import { getLangFromUrl, localizePath } from '../../i18n/utils';
+import { HERO_CONFIG } from '../../config/hero';
+
+const currentLang = getLangFromUrl(Astro.url);
+// NOTE: HERO_CONFIG has no '/resources/design-engineering-guide' entry (the
+// EN page has always fallen back to the literal strings below), so `hero` is
+// undefined here and the `??` fallbacks are the live values.  The lookup is
+// kept so a future HERO_CONFIG entry applies automatically.
+const heroKey = '/resources/design-engineering-guide' as const;
+const hero = HERO_CONFIG[heroKey];
+
+// Canonical page URL — locale-aware, so /de/… gets its own canonical and the
+// EN route keeps the historical EN canonical.
+const pageUrl = new URL(
+  Astro.url.pathname,
+  Astro.site ?? 'https://cnc.bozemetal.com',
+).toString();
+
+const faqItems = DESIGN_ENGINEERING_FAQ_ITEMS;
+const itemList = toSchemaItemList(DFM_RULES, pageUrl);
+const articleAbout = toSchemaArticleAbout(DFM_RULES);
+
+const homeHref = localizePath('/', currentLang);
+const resourcesHref = localizePath('/resources/', currentLang);
 ---
-<SubpageHero
-  badge="Titanium DFM Engineering Hub · ASTM B348 / AMS 4928 / ASME Y14.5"
-  title="The Engineer's Guide to"
-  highlight="Titanium DFM & CNC Machinability"
-  subtitle="Authoritative Design-for-Manufacturability rules for titanium 5-axis CNC machining — minimum wall thickness, internal corner radius, deep-hole L/D ratio, thread depth limits, 5-axis toolpath engagement, and AMS 2801 stress relief — each backed by physics, real standards, and BOZE production data."
-  entityChips={[
-    'ASME Y14.5-2018',
-    'ISO 2768-f',
-    'ASTM B348 / AMS 4928',
-    '5-Axis CNC',
-    'CMM ±1.9 µm',
-    'EN 10204 3.1',
-  ]}
-  keyMetrics={[
-    { value: '±0.005 mm', label: 'Tight tolerance' },
-    { value: '12 : 1', label: 'Deep hole L/D max' },
-    { value: '650 °C', label: 'Vacuum stress relief' },
-    { value: '6', label: 'DFM rules' },
-  ]}
-/>
-<DesignEngineeringHub client:visible />
+<BaseLayout
+  pageType="tech-article"
+  title={hero?.h1 ?? 'Titanium CNC Design & Engineering Guide | DFM Best Practices'}
+  description={hero?.subtitle ?? 'Engineering design guide for titanium CNC machined parts: thin-wall limits (≥ 0.8 mm), corner radius optimization (R ≥ 1.15 × tool radius), deep-hole drilling L/D ratios (5:1 blind, 12:1 gun-drill), and GD&T per ASME Y14.5-2018.'}
+  canonicalURL={pageUrl}
+  serviceName="Titanium DFM Engineering Hub"
+  serviceDescription="Authoritative Design-for-Manufacturability (DFM) reference for titanium 5-axis CNC machining — minimum wall thickness, internal corner radius, deep-hole L/D ratio, thread depth limits, 5-axis toolpath engagement, and AMS 2801 stress relief."
+  serviceCategory="Engineering Reference & DFM Best Practices"
+  faqItems={[...faqItems]}
+  faqName="Titanium DFM — Frequently Asked Questions"
+  articleAbout={articleAbout}
+  itemCount={itemList.length}
+  items={itemList.map((i) => ({ name: i.name, url: i.url }))}
+>
+  <!-- Breadcrumb (Home > Resources > Design & Engineering Guide) — locale-aware -->
+  <nav class="border-b" aria-label="Breadcrumb" style="background: var(--theme-surface); border-color: color-mix(in srgb, var(--theme-primary) 12%, transparent);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 py-4 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href={homeHref} itemprop="item" class="transition-colors" style="color: var(--text-muted);">
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <svg class="w-4 h-4 inline mx-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--text-muted);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          <a href={resourcesHref} itemprop="item" class="transition-colors" style="color: var(--text-muted);">
+            <span itemprop="name">Resources</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="font-semibold" style="color: var(--theme-text);">Design &amp; Engineering Guide</span>
+          <meta itemprop="position" content="3" />
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <SubpageHero
+    badge="Titanium DFM Engineering Hub · ASTM B348 / AMS 4928 / ASME Y14.5"
+    title="The Engineer's Guide to"
+    highlight="Titanium DFM & CNC Machinability"
+    subtitle="Authoritative Design-for-Manufacturability rules for titanium 5-axis CNC machining — minimum wall thickness, internal corner radius, deep-hole L/D ratio, thread depth limits, 5-axis toolpath engagement, and AMS 2801 stress relief — each backed by physics, real standards, and BOZE production data."
+    entityChips={[
+      'ASME Y14.5-2018',
+      'ISO 2768-f',
+      'ASTM B348 / AMS 4928',
+      '5-Axis CNC',
+      'CMM ±1.9 µm',
+      'EN 10204 3.1',
+    ]}
+    keyMetrics={[
+      { value: '±0.005 mm', label: 'Tight tolerance' },
+      { value: '12 : 1', label: 'Deep hole L/D max' },
+      { value: '650 °C', label: 'Vacuum stress relief' },
+      { value: '6', label: 'DFM rules' },
+    ]}
+  />
+  <DesignEngineeringHub client:visible />
+</BaseLayout>
