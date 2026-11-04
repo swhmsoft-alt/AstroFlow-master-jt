@@ -1,18 +1,18 @@
 # Image Catalog Diagnostic Report
 
-**Generated**: 2026-10-22T06:12:50.156Z
+**Generated**: 2026-11-04T06:44:23.808Z
 **Catalog**: `src\content\image-catalog.json` v1.0.0
 
 ## Summary
 
 | Bucket | Count |
 | --- | --- |
-| Catalog entries | 26 |
-| Unique catalogIds referenced from pages | 26 |
-| Page references total | 26 |
+| Catalog entries | 29 |
+| Unique catalogIds referenced from pages | 29 |
+| Page references total | 29 |
 | Orphan catalog entries (in catalog, no page ref) | 0 |
 | Dangling page refs (refers to non-existent id) | 0 |
-| Legacy `imageSrc` / `imageAlt` on ImageTextSplit | 44 |
+| Legacy `imageSrc` / `imageAlt` on ImageTextSplit | 46 |
 | Catalog entries with missing file on disk | 31 |
 
 ## Catalog State Breakdown
@@ -42,9 +42,12 @@
 | `titanium-surface-treatment.polishing-sandblasting` | /titanium-surface-treatment/polishing-sandblasting/ | ✅ 363988B | ✅ 5388022B | ❌ | partial |
 | `branded-custom-packaging-services.hub` | /branded-custom-packaging-services/ | ✅ 665966B | ✅ 6208445B | ❌ | partial |
 | `laser-marking-custom-logo.hub` | /laser-marking-custom-logo/ | ✅ 178234B | ✅ 4181293B | ❌ | partial |
-| `luxury-hardware-and-displays.boutique-fixture-connectors` | /industries/luxury-hardware-and-displays/ | ❌ | ✅ 2214336B | ❌ | partial |
-| `luxury-hardware-and-displays.fashion-leather-hardware` | /industries/luxury-hardware-and-displays/ | ❌ | ✅ 2531046B | ❌ | partial |
-| `luxury-hardware-and-displays.type-ii-anodizing` | /industries/luxury-hardware-and-displays/ | ❌ | ✅ 2485847B | ❌ | partial |
+| `luxury-hardware-and-displays.boutique-fixture-connectors` | /industries/luxury-hardware-and-displays/ | ✅ 96126B | ✅ 2214336B | ❌ | partial |
+| `luxury-hardware-and-displays.fashion-leather-hardware` | /industries/luxury-hardware-and-displays/ | ✅ 156722B | ✅ 2531046B | ❌ | partial |
+| `yacht.below-waterline-fittings` | /industries/yacht/ | ✅ 519132B | ✅ 5818384B | ❌ | partial |
+| `yacht.seawater-pump-impeller` | /industries/yacht/ | ✅ 227946B | ✅ 4752628B | ❌ | partial |
+| `yacht.rigging-terminals` | /industries/yacht/ | ✅ 168344B | ✅ 3883730B | ❌ | partial |
+| `luxury-hardware-and-displays.type-ii-anodizing` | /industries/luxury-hardware-and-displays/ | ✅ 197804B | ✅ 2485847B | ❌ | partial |
 
 ## ❌ Files Missing on Disk
 
@@ -75,11 +78,11 @@ These entries in `image-catalog.json` reference files that do not exist.  Market
 - `/images/hubs/titanium-surface-treatment/polishing-sandblasting.svg`  (catalog `titanium-surface-treatment.polishing-sandblasting`, `svg`, status: `placeholder`)
 - `/images/hubs/branded-custom-packaging-services/hub.svg`  (catalog `branded-custom-packaging-services.hub`, `svg`, status: `placeholder`)
 - `/images/hubs/laser-marking-custom-logo/hub.svg`  (catalog `laser-marking-custom-logo.hub`, `svg`, status: `placeholder`)
-- `/images/hubs/luxury-hardware-and-displays/boutique-fixture-connectors.webp`  (catalog `luxury-hardware-and-displays.boutique-fixture-connectors`, `webp`, status: `placeholder`)
 - `/images/hubs/luxury-hardware-and-displays/boutique-fixture-connectors.svg`  (catalog `luxury-hardware-and-displays.boutique-fixture-connectors`, `svg`, status: `placeholder`)
-- `/images/hubs/luxury-hardware-and-displays/fashion-leather-hardware.webp`  (catalog `luxury-hardware-and-displays.fashion-leather-hardware`, `webp`, status: `placeholder`)
 - `/images/hubs/luxury-hardware-and-displays/fashion-leather-hardware.svg`  (catalog `luxury-hardware-and-displays.fashion-leather-hardware`, `svg`, status: `placeholder`)
-- `/images/hubs/luxury-hardware-and-displays/type-ii-anodizing.webp`  (catalog `luxury-hardware-and-displays.type-ii-anodizing`, `webp`, status: `placeholder`)
+- `/images/hubs/titanium-cnc-machining-services/custom-industrial-components.svg`  (catalog `yacht.below-waterline-fittings`, `svg`, status: `reused-cnc-machining`)
+- `/images/hubs/titanium-cnc-machining-services/3-5-axis-cnc-machining.svg`  (catalog `yacht.seawater-pump-impeller`, `svg`, status: `reused-cnc-machining`)
+- `/images/hubs/titanium-cnc-machining-services/cnc-milling-turning.svg`  (catalog `yacht.rigging-terminals`, `svg`, status: `reused-cnc-machining`)
 - `/images/hubs/luxury-hardware-and-displays/type-ii-anodizing.svg`  (catalog `luxury-hardware-and-displays.type-ii-anodizing`, `svg`, status: `placeholder`)
 
 ## 🟡 Legacy `imageSrc` / `imageAlt` Still Present on ImageTextSplit
@@ -90,6 +93,8 @@ These should be replaced with a single `catalogId` reference.
 - `src\pages\mill-products\bars-rods.astro` — imageSrc = `/images/products/titanium-bell-crank-rocker-arm.svg`
 - `src\pages\mill-products\bars-rods.astro` — imageAlt = `Titanium Grade 23 ELI bar stock for medical implant and surgical instrument manufacturing`
 - `src\pages\mill-products\bars-rods.astro` — imageAlt = `Titanium Grade 5 Ti-6Al-4V bar for aerospace fastener and structural component machining`
+- `src\pages\mill-products\dental-titanium-disc.astro` — imageSrc = `/images/products/titanium-dental-disc-blank.svg`
+- `src\pages\mill-products\dental-titanium-disc.astro` — imageAlt = `Machined dental titanium CAD/CAM disc blank with central register step on the polished face`
 - `src\pages\mill-products\foil-coils.astro` — imageSrc = `/images/products/titanium-foil-coil-strip.svg`
 - `src\pages\mill-products\foil-coils.astro` — imageSrc = `/images/products/titanium-foil-rolling-mill.svg`
 - `src\pages\mill-products\foil-coils.astro` — imageAlt = `Titanium foil coil ready for slitting, annealing, and surface conditioning`
@@ -114,8 +119,8 @@ These should be replaced with a single `catalogId` reference.
 - `src\pages\mill-products\wire.astro` — imageSrc = `/images/products/titanium-medical-wire-spool.svg`
 - `src\pages\mill-products\wire.astro` — imageAlt = `Titanium welding wire on spool for TIG and plasma-arc welding`
 - `src\pages\mill-products\wire.astro` — imageAlt = `Titanium Grade 23 medical wire vacuum-packed for surgical forming`
-- `src\pages\standard-parts\fasteners.astro` — imageSrc = `/images/products/titanium-socket-head-cap-screws.svg`
-- `src\pages\standard-parts\fasteners.astro` — imageSrc = `/images/products/titanium-hex-nut-flange-nut.svg`
+- `src\pages\standard-parts\fasteners.astro` — imageSrc = `/images/products/titanium-socket-head-cap-screw-iso-4762.webp`
+- `src\pages\standard-parts\fasteners.astro` — imageSrc = `/images/products/titanium-hex-nut-iso-4032.webp`
 - `src\pages\standard-parts\fasteners.astro` — imageAlt = `Titanium Grade 5 socket head cap screws DIN 912 in M6 M8 M10 sizes with anodized finish`
 - `src\pages\standard-parts\fasteners.astro` — imageAlt = `Titanium Grade 5 hex nut DIN 934 and flange nut DIN 6923 with anti-seize coating`
 - `src\pages\standard-parts\flanges.astro` — imageSrc = `/images/products/titanium-weld-neck-flange.svg`
